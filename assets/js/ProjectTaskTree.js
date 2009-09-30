@@ -44,7 +44,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 */
 	onTabSelect: function(event, tabKey) {
 		this.openProject(tabKey, 0);
-
+		
 		this.moveTabToFront(tabKey);
 	},
 
@@ -176,6 +176,21 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		$('project-tabs').insert({
 			'top': tab
 		});
+		
+		this.highlightTab(idTab);		
+	},
+	
+	highlightTab: function(idTab) {
+		/*
+		var label = $('projecttab-' + idTab).select('.labeltext').first();
+		
+		Effect.Shake(label, {
+			'distance': 5,
+			'duration': 0.3
+		});
+		
+		Effect.Pulsate(label);
+		*/
 	},
 
 

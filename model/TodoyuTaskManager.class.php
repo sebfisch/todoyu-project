@@ -998,6 +998,7 @@ class TodoyuTaskManager {
 	public static function getDefaultTaskData($idParentTask, $idProject = 0, $type = TASK_TYPE_TASK) {
 		$idParentTask	= intval($idParentTask);
 		$idProject		= intval($idProject);
+		$type			= intval($type);
 
 			// Find project if not available as parameter
 		if( $idProject === 0 && $idParentTask !== 0 ) {
@@ -1022,7 +1023,7 @@ class TodoyuTaskManager {
 			'date_end'			=> NOW,
 			'id_user_owner'		=> $idUser,
 			'id_user_assigned'	=> $idUser,
-			'type'				=> intval($type),
+			'type'				=> $type,
 			'class'				=> ''
 		);
 
