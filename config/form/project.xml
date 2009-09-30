@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="action">?ext=project&amp;controller=project</attribute>
+		<attribute name="name">project</attribute>
+		<attribute name="onsubmit">return Todoyu.Ext.project.Project.Edit.save(this);</attribute>
+		<attribute name="class">formProject</attribute>
+	</attributes>
+	<hiddenFields>
+		<field name="id" />
+	</hiddenFields>
+	<fieldsets>
+
+		<fieldset name="main">
+			<legend>Top</legend>
+			<class>top</class>
+			<elements>
+
+				<fieldset name="basic">
+					<legend>Main project data</legend>
+					<class>basic</class>
+					<elements>
+						<field type="textinput" name="title">
+							<label>LLL:project.task.title</label>
+							<validate>
+								<isNotEmpty msg="LLL:project.form.validation.title"/>
+							</validate>
+							<required/>
+						</field>
+						<field type="RTE" name="description">
+							<label>LLL:project.task.description</label>
+							<tinymce>
+								<theme>simple</theme>
+								<width>330px</width>
+								<height>200px</height>
+							</tinymce>
+							<required/>
+						</field>
+					</elements>
+				</fieldset>
+
+				<fieldset name="data">
+					<legend>Project data</legend>
+					<class>data</class>
+					<elements>
+						<field type="select" name="status">
+							<label>LLL:project.attr.status</label>
+							<source type="function">
+								<function>TodoyuProjectStatusManager::getProjectStatusOptions</function>
+							</source>
+						</field>
+						<field type="dateinput" name="date_start">
+							<label>LLL:project.attr.date_start</label>
+							<validate>
+								<dateBefore>
+									<field>date_end</field>
+								</dateBefore>
+								<isNotEmpty/>
+							</validate>
+							<class>myClass</class>
+							<required />
+						</field>
+						<field type="dateinput" name="date_end">
+							<label>LLL:project.attr.date_end</label>
+							<validate>
+								<dateAfter>
+									<field>date_start</field>
+								</dateAfter>
+								<isNotEmpty/>
+							</validate>
+							<required />
+						</field>
+						<field type="dateinput" name="date_deadline">
+							<label>LLL:project.attr.date_deadline</label>
+							<validate>
+								<dateAfter>
+									<field>date_start</field>
+								</dateAfter>
+								<isNotEmpty/>
+							</validate>
+						</field>
+						<field type="textinputAC" name="id_customer">
+							<label>LLL:project.attr.customer</label>
+							<config>
+								<acListener>
+									<ext>project</ext>
+									<controller>project</controller>
+									<cmd>autocompleteCustomer</cmd>
+								</acListener>
+								<acLabelFunc>TodoyuCustomerManager::getLabel</acLabelFunc>
+							</config>
+							<required />
+						</field>
+					</elements>
+				</fieldset>
+
+			</elements>
+		</fieldset>
+
+
+		<fieldset name="users">
+			<legend>Uev</legend>
+			<class>users</class>
+			<elements>
+
+				<field type="button" name="expandall">
+					<type>button</type>
+					<text>LLL:core.expandall</text>
+					<onclick>Todoyu.Form.expandAllForeignRecords(this.id);</onclick>
+					<class></class>
+				</field>
+
+				<field type="databaseRelation" name="projectusers">
+					<label>LLL:project.attr.projectusers</label>
+					<foreignRecordConf>
+						<foreignformxml>ext/project/config/form/project-user.xml</foreignformxml>
+						<foreignLabelUserFunc>TodoyuProjectViewHelper::getProjectUserLabel</foreignLabelUserFunc>
+						<addSubformConfig>
+							<ext>project</ext>
+							<controller>projectform</controller>
+						</addSubformConfig>
+					</foreignRecordConf>
+				</field>
+
+			</elements>
+		</fieldset>
+
+		<fieldset name="buttons">
+			<legend>Actions</legend>
+			<class>buttons</class>
+			<elements>
+				<field type="button" name="save">
+					<text>LLL:project.project.save</text>
+					<type>submit</type>
+					<class>buttonSave</class>
+					<noStorage/>
+				</field>
+				<field type="button" name="cancel">
+					<text>LLL:project.project.cancel</text>
+					<type>button</type>
+					<class>buttonCancel</class>
+					<onclick>Todoyu.Ext.project.Project.Edit.cancel(#id#)</onclick>
+					<noStorage/>
+				</field>
+			</elements>
+		</fieldset>
+
+	</fieldsets>
+</form>

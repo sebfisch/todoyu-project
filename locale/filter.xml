@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locallang>
+	<labels lang="en">
+		<label index="filterlabel.project">Project</label>
+		<label index="filterlabel.pleasechoose">Please Choose</label>
+
+		<label index="filterlabel.task.acknowledged">Acknowledged</label>
+		<label index="filterlabel.task.userAssigned">Assigned to</label>
+		<label index="filterlabel.task.currentUserAssigned">Assigned to me</label>
+		<label index="filterlabel.task.currentUserHasAcknowledged">Acknowledged by me</label>
+		<label index="filterlabel.task.status">Status</label>
+		<label index="filterlabel.task.owner">Owner is</label>
+		<label index="filterlabel.task.currentUserIsOwner">I am owner</label>
+		<label index="filterlabel.task.creator">Created by</label>
+		<label index="filterlabel.task.currentUserIsUserCreate">Created by me</label>
+		<label index="filterlabel.task.parentTask">Parenttask</label>
+		<label index="filterlabel.task.isPublic">Is public</label>
+		<label index="filterlabel.task.billingType">Billingtype</label>
+		<label index="filterlabel.task.fulltext">Fulltext</label>
+
+		<label index="filterLabel.task.timemanagement.label">Timemanagement</label>
+
+		<label index="filterlabel.task.deadline">Deadline</label>
+		<label index="filterlabel.task.deadlineDyn">Deadline (Dynamic)</label>
+		<label index="filterlabel.task.startdate">Startdate</label>
+		<label index="filterlabel.task.startdateDyn">Startdate (Dynamic)</label>
+		<label index="filterlabel.task.enddate">Enddate</label>
+		<label index="filterlabel.task.enddateDyn">Enddate (Dynamic)</label>
+
+		<label index="filterlabel.task.dyndateinput.today">Today</label>
+		<label index="filterlabel.task.dyndateinput.tomorrow">Tomorrow</label>
+		<label index="filterlabel.task.dyndateinput.dayaftertomorrow">The day after tomorrow</label>
+		<label index="filterlabel.task.dyndateinput.yesterday">Yesterday</label>
+		<label index="filterlabel.task.dyndateinput.daybeforeyesterday">The day before yesterday</label>
+		<label index="filterlabel.task.dyndateinput.currentweek">Current week</label>
+		<label index="filterlabel.task.dyndateinput.nextweek">Next week</label>
+		<label index="filterlabel.task.dyndateinput.lastweek">Last week</label>
+
+		<label index="filterlabel.project.fulltext">Title fulltext</label>
+		<label index="filterlabel.project.status">Status</label>
+		<label index="filterlabel.project.title">Title</label>
+		<label index="filterlabel.project.customer">Customer name</label>
+		<label index="filterlabel.project.projectleader">Projectleader</label>
+		<label index="filterlabel.project.projectsupervisor">Projektsupervisor</label>
+		<label index="filterlabel.project.fixproject">Is Fixed Project?</label>
+	</labels>
+	<labels lang="de">
+		<label index="filterlabel.project">Projekt-titel</label>
+		<label index="filterlabel.pleasechoose">Bitte wählen</label>
+
+		<label index="filterlabel.task.acknowledged">Zur Kenntnis genommen</label>
+		<label index="filterlabel.task.userAssigned">Zugewiesen an</label>
+		<label index="filterlabel.task.currentUserAssigned">Zugewiesen an mich</label>
+		<label index="filterlabel.task.currentUserHasAcknowledged">Von mir zur Kenntnis genommen</label>
+		<label index="filterlabel.task.status">Status</label>
+		<label index="filterlabel.task.owner">Eigner</label>
+		<label index="filterlabel.task.currentUserIsOwner">Ich bin Eigner</label>
+		<label index="filterlabel.task.creator">Angelegt von</label>
+		<label index="filterlabel.task.currentUserIsUserCreate">Von mir angelegt</label>
+		<label index="filterlabel.task.parentTask">Übergeordneter Task</label>
+		<label index="filterlabel.task.isPublic">Öffentlich</label>
+		<label index="filterlabel.task.billingType">Verrechnungstyp</label>
+		<label index="filterlabel.task.fulltext">Volltext</label>
+
+		<label index="filterLabel.task.timemanagement.label">Zeitplanung</label>
+
+		<label index="filterlabel.task.deadline">Deadline</label>
+		<label index="filterlabel.task.deadlineDyn">Deadline (Dynamisch)</label>
+		<label index="filterlabel.task.startdate">Startdatum</label>
+		<label index="filterlabel.task.startdateDyn">Startdatum (Dynamisch)</label>
+		<label index="filterlabel.task.enddate">Enddatum</label>
+		<label index="filterlabel.task.enddateDyn">Enddatum (Dynamisch)</label>
+
+		<label index="filterlabel.task.dyndateinput.today">Heute</label>
+		<label index="filterlabel.task.dyndateinput.tomorrow">Morgen</label>
+		<label index="filterlabel.task.dyndateinput.dayaftertomorrow">Übermorgen</label>
+		<label index="filterlabel.task.dyndateinput.yesterday">Gestern</label>
+		<label index="filterlabel.task.dyndateinput.daybeforeyesterday">Vorgestern</label>
+		<label index="filterlabel.task.dyndateinput.currentweek">Diese Woche</label>
+		<label index="filterlabel.task.dyndateinput.nextweek">Nächste Woche</label>
+		<label index="filterlabel.task.dyndateinput.lastweek">Letzte Woche</label>
+
+		<label index="filterlabel.project.fulltext">Titel Volltext</label>
+		<label index="filterlabel.project.status">Status</label>
+		<label index="filterlabel.project.title">Titel</label>
+		<label index="filterlabel.project.customer">Kunde</label>
+		<label index="filterlabel.project.projectleader">Projektleiter</label>
+		<label index="filterlabel.project.projectsupervisor">Projektsupervisor</label>
+		<label index="filterlabel.project.fixproject">Fixprojekte</label>
+	</labels>
+</locallang>

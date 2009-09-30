@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="action">?ext=project&amp;controller=task</attribute>
+		<attribute name="name">task</attribute>
+		<attribute name="onsubmit">return Todoyu.Ext.project.Task.Edit.save(this);</attribute>
+		<attribute name="class">formTask</attribute>
+	</attributes>
+	<hiddenFields>
+		<field name="id" />
+		<field name="id_project" />
+		<field name="status" />
+		<field name="type" />
+	</hiddenFields>
+	<fieldsets>
+
+		<fieldset name="left">
+			<legend>Left form column</legend>
+			<class>left noneFloatingInput</class>
+			<elements>
+
+				<field type="textinput" name="title">
+					<label>LLL:project.task.title</label>
+					<validate>
+						<isNotEmpty msg="Tasks needs a title" />
+					</validate>
+					<required />
+				</field>
+
+				<field type="RTE" name="description">
+					<label>LLL:project.task.description</label>
+					<tinymce>
+						<theme>simple</theme>
+						<width>350px</width>
+						<height>200px</height>
+					</tinymce>
+					<required />
+				</field>
+
+			</elements>
+		</fieldset>
+
+		<fieldset name="right">
+			<legend>Riht form column</legend>
+			<class>right</class>
+			<elements>
+
+				<field type="dateinput" name="date_start">
+					<label>LLL:project.task.date_start</label>
+					<validate>
+						<dateNotAfter msg="Start date has to be before enddate">
+							<field>date_end</field>
+						</dateNotAfter>
+					</validate>
+					<required/>
+				</field>
+
+				<field type="datetimeinput" name="date_end">
+					<label>LLL:project.task.date_end</label>
+					<validate>
+						<dateNotBefore msg="End date has to be after startdate">
+							<field>date_start</field>
+						</dateNotBefore>
+					</validate>
+				</field>
+
+				<field type="datetimeinput" name="date_deadline">
+					<label>LLL:project.task.date_deadline</label>
+					<validate>
+						<dateNotBefore msg="Deadline date has to be after startdate">
+							<field>date_start</field>
+							<allowEmpty />
+						</dateNotBefore>
+					</validate>
+				</field>
+
+				<field type="select" name="id_user_assigned">
+					<label>LLL:project.task.user_assigned</label>
+					<source type="function">
+						<function>TodoyuTaskViewHelper::getTaskAssignUserOptions</function>
+						<lazyInit />
+					</source>
+				</field>
+
+				<field type="select" name="id_user_owner">
+					<label>LLL:project.task.user_owner</label>
+					<source type="sql">
+						<fields>id,lastname,firstname</fields>
+						<tables>ext_user_user</tables>
+						<where>type = 1 AND active = 1 AND deleted = 0</where>
+						<order>lastname,firstname</order>
+						<label>TodoyuProjectViewHelper::concatName</label>
+						<value>id</value>
+					</source>
+				</field>
+
+				<field type="textinputAC" name="id_parenttask">
+					<label>Taskparent</label>
+					<config>
+						<acListener>
+							<ext>project</ext>
+							<controller>task</controller>
+							<cmd>autocompleteprojecttask</cmd>
+						</acListener>
+						<acLabelFunc>TodoyuTaskManager::getAutocompleteLabel</acLabelFunc>
+					</config>
+				</field>
+
+				<field type="select" name="id_worktype">
+					<label>LLL:project.task.worktype</label>
+					<source type="sql">
+						<fields>id,title</fields>
+						<tables>ext_project_worktype</tables>
+						<where>deleted = 0</where>
+						<order>title</order>
+						<label>title</label>
+						<value>id</value>
+					</source>
+				</field>
+
+				<field type="timeinput" name="estimated_workload">
+					<label>LLL:project.task.esitmated_workload</label>
+					<validate>
+						<isNotZerotime msg="LLL:task.attr.is_estimatedworkload_public.error"/>
+					</validate>
+					<required/>
+				</field>
+
+				<field type="checkbox" name="is_estimatedworkload_public">
+					<label>LLL:task.attr.is_estimatedworkload_public</label>
+				</field>
+
+				<field type="checkbox" name="is_public">
+					<label>LLL:task.attr.is_public</label>
+				</field>
+
+			</elements>
+		</fieldset>
+
+		<fieldset name="buttons">
+			<legend>Actions</legend>
+			<class>buttons</class>
+			<elements>
+
+				<field type="button" name="save">
+					<text>LLL:form.field.save</text>
+					<type>submit</type>
+					<class>buttonSave</class>
+					<hasIcon>1</hasIcon>
+				</field>
+
+				<field type="button" name="cancel">
+					<text>LLL:form.field.cancel</text>
+					<type>button</type>
+					<class>buttonChancel</class>
+					<hasIcon>1</hasIcon>
+					<onclick>Todoyu.Ext.project.Task.Edit.cancel(#id#)</onclick>
+				</field>
+
+			</elements>
+		</fieldset>
+	</fieldsets>
+</form>

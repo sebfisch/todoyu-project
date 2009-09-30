@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locallang>
+	<labels lang="en">
+		<label index="title">Create Project</label>
+	</labels>
+	<labels lang="de">
+		<label index="title">Projekt erstellen</label>
+	</labels>
+</locallang>

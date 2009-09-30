@@ -1,0 +1,11 @@
+<ul id="{$id}" class="{$class}" {if $style}style="{$style}"{/if}>
+{foreach $tree key branch tree}
+<li id="{$branch.htmlId}" class="{$branch.class} {$branch.status}{if $.foreach.tree.last} last{/if}">
+	{if $branch.expandable}
+	<a href="javascript:void(0)" onclick="{$branch.clickExpand}" class="navigate navigateSub"/>
+	{/if}
+	<a href="javascript:void(0)" onclick="{$branch.clickDetail}" class="info hoverLink" title="{$branch.title}">{$branch.label}</a>
+	{$branch.subtasks}
+</li>
+{/foreach}
+</ul>

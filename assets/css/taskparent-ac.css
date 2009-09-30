@@ -1,0 +1,25 @@
+div.taskparent-ac {
+	position: absolute;
+	width: 250px;
+	background-color: #fff;
+	border: 1px solid #888;
+	margin: 0;
+	padding: 0;
+}
+
+div.taskparent-ac ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+div.taskparent-ac ul li.selected {
+	background-color: #ffb;
+}
+div.taskparent-ac ul li {
+	list-style-type: none;
+	display: block;
+	margin: 0;
+	padding: 2px;
+	height: 32px;
+	cursor: pointer;
+}

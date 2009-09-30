@@ -1,0 +1,9 @@
+<div class="left description">{cleanHtml $description}</div>
+<div class="right properties">
+	<dl>
+		{foreach $data info}
+		<dt>{$info.label}</dt>
+		<dd>{$info.value}&#8203;</dd>
+		{/foreach}
+	</dl>
+</div>

@@ -1,0 +1,119 @@
+/* Task and project properties */
+.project .properties dt,
+.task .properties dt {
+	float: left;
+	width:100px;
+}
+.project .properties dd,
+.task .properties dd {
+	float: left;
+	width:180px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#project-tabs {
+	width:100%;
+	overflow:hidden;
+	margin-top: -20px;
+}
+
+/* Search */
+.searchmode-task {
+	background:url(../img/icons.png) no-repeat 3px 3px !important;
+}
+.searchmode-project {
+	background:url(../img/icons.png) no-repeat 3px -447px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.innerBox {
+	padding: 10px 0 32px 0;
+	/*background: url(../../../../core/assets/img/content/hr_ver.png) repeat-y 0 -167px;*/
+}
+
+
+div.taskDetails fieldset.left,
+div.projectDetails fieldset.left,
+div.projectEdit fieldset.left {
+	width: 60%;
+	float: left;
+	margin-bottom:25px;
+}
+
+div.taskDetails fieldset.left div.comment,
+div.taskDetails div.padding,
+div.projectDetails fieldset.left div.persons,
+div.projectDetails fieldset.left #costctrl,
+div.projectDetails fieldset.left #costctrl_total,
+div.projectDetails fieldset.left div.invoices {
+	padding: 0 20px;
+}
+
+div.taskDetails fieldset.left div.comment .content {
+		overflow: hidden;
+	}
+
+div.projectDetails fieldset.left div.invoices,
+div.projectDetails fieldset.left #costctrl_total,
+div.projectDetails fieldset.left #costctrl {
+	margin-top: 10px;
+}
+
+div.taskDetails fieldset.right,
+div.projectDetails fieldset.right {
+	width: 39%;
+	float: right;
+	margin-bottom:25px;
+}
+
+
+/* project colors */
+
+.project-status-planning h1 a.projectTitle { background: url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -72px; }			/* purple */
+.project-status-inprogress h1 a.projectTitle { background: url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -152px; }		/* orange */
+.project-status-done h1 a.projectTitle { background: url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -193px; }				/* green */
+.project-status-cleared h1 a.projectTitle { background: url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -234px; }			/* grey*/
+.project-status-warranty h1 a.projectTitle { background: url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -426px; }			/* blue*/
+
+.project-status-planning div.projectdetails {	border-left-color:purple; }
+.project-status-inprogress div.projectdetails { border-left-color:#ffac00; }
+.project-status-done div.projectdetails {	border-left-color:#77dc00; }
+.project-status-cleared div.projectdetails { border-left-color:grey; }
+.project-status-warranty div.projectdetails { border-left-color:blue; }
+
+
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locallang>
+	<labels lang="en">
+		<label index="title">Projects</label>
+		<label index="filter.remove">Remove filter</label>
+		<label index="filter.addFilter">Add</label>
+		<label index="filter.addNewFilter">Add a new filter</label>
+		<label index="filter.title">Title</label>
+		<label index="filter.status">Status</label>
+		<label index="filter.fulltext">Fulltext</label>
+		<label index="filter.projectleader">Projectleader</label>
+		<label index="filter.customer">Customer</label>
+		<label index="list.empty">No matching projects</label>
+	</labels>
+	<labels lang="de">
+		<label index="title">Projekte</label>
+		<label index="filter.remove">Filter entfernen</label>
+		<label index="filter.addFilter">Hinzufügen</label>
+		<label index="filter.addNewFilter">Neuer Filter hinzufügen</label>
+		<label index="filter.title">Titel</label>
+		<label index="filter.status">Status</label>
+		<label index="filter.fulltext">Volltext</label>
+		<label index="filter.projectleader">Projektleiter</label>
+		<label index="filter.customer">Kunde</label>
+		<label index="list.empty">Keine Projekte gefunden</label>
+	</labels>
+</locallang>

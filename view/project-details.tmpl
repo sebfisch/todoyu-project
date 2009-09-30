@@ -1,0 +1,23 @@
+<div id="project-{$id}-data" class="data">
+	<div class="properties infoBox">
+		<h4>{Label project.project.properties}</h4>
+		<div class="content overflow">
+			<dl>
+			{foreach $data info}
+				<dt>{$info.label}</dt>
+				<dd>{$info.value}</dd>
+			{/foreach}
+			</dl>
+		</div>
+	</div>
+	<div class="assignedUsers infoBox">
+		<h4>{Label project.project.involved_persons}</h4>
+		<div class="content overflow">{$projectInfo}</div>
+	</div>
+{if $description}
+	<div class="description infoBox">
+		<h4>{Label project.project.description}</h4>
+		<div class="content overflow">{cleanHtml $description}</div>
+	</div>
+{/if}
+</div>

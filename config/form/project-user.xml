@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<attributes>
+		<attribute name="name">projectusers</attribute>
+	</attributes>
+	<hiddenFields>
+		<field name="id" />
+	</hiddenFields>
+	<fieldsets>
+
+		<fieldset>
+			<legend>Top</legend>
+			<class>top</class>
+			<elements>
+				<field type="textinputAC" name="id_user">
+					<label>LLL:project.user.name</label>
+					<config>
+						<acListener>
+							<ext>project</ext>
+							<controller>autocomplete</controller>
+							<cmd>user</cmd>
+						</acListener>
+						<acLabelFunc>TodoyuUserManager::getLabel</acLabelFunc>
+					</config>
+					<required>1</required>
+				</field>
+				<field type="select" name="id_userrole">
+					<label>LLL:project.user.role</label>
+					<source type="function">
+						<function>TodoyuProjectDataSource::getProjectUserRoleOptions</function>
+					</source>
+				</field>
+				<field type="textinput" name="comment">
+					<label>LLL:project.user.comment</label>
+				</field>
+			</elements>
+		</fieldset>
+
+	</fieldsets>
+</form>

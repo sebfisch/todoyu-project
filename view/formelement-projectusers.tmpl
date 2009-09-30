@@ -1,0 +1,8 @@
+{extends "core/view/form/FormElement.tmpl"}
+
+{block name="field"}
+PROJECTUSERS
+<input type="text" name="{$htmlName}" id="{$htmlId}" value="{$default}" {$extraAttributes} />
+{$jsCode}
+<div id="taskparent-ac" class="taskparent-ac"></div>
+{/block}

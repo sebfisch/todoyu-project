@@ -1,0 +1,130 @@
+/* Project Contextmenu */
+
+#contextmenu .projectContextMenu {
+	background-image:url('../img/icons.png');
+}
+
+#contextmenu .projectDetails {
+	background-position:3px 3px;
+}
+
+#contextmenu .projectStatus {
+	background-image:url('../img/contextmenu.png');
+	background-position:3px 3px;
+}
+
+#contextmenu .projectEdit {
+	background-position:3px -27px;
+}
+
+#contextmenu .projectAddTask {
+	background-position:3px -57px;
+}
+
+#contextmenu .projectAddContainer {
+	background-position:3px -147px;
+}
+
+
+
+/* Task Contextmenu */
+
+#contextmenu .taskContextMenu {
+	background-image:url(../img/contextmenu.png);
+}
+
+#contextmenu .taskEdit {
+	background-position:3px -27px;
+}
+
+#contextmenu .taskClone {
+	background-position:3px -147px;
+}
+
+#contextmenu .taskAdd {
+	background-position:3px -177px;
+}
+/*
+#contextmenu .taskAddComment {
+	background-position:3px -265px;
+}
+*/
+#contextmenu .taskAddTask {
+	background-position:3px -87px;
+}
+
+#contextmenu .taskAddContainer {
+	background-position:3px -117px;
+}
+
+#contextmenu .taskStatus {
+	background-position:3px 3px;
+}
+
+#contextmenu .status ul li a {
+	background-image:url(../img/status.png);
+}
+
+#contextmenu .taskStatusPlanning {
+	background-position:3px 2px;
+}
+
+#contextmenu .taskStatusOpen {
+	background-position:3px -19px;
+}
+
+#contextmenu .taskStatusProgress {
+	background-position:3px -39px;
+}
+
+#contextmenu .taskStatusConfirm {
+	background-position:3px -85px;
+}
+
+#contextmenu .taskStatusDone {
+	background-position:3px -108px;
+}
+
+#contextmenu .taskStatusAccepted {
+	background-position:3px -108px;
+}
+
+#contextmenu .taskStatusRejected {
+	background-position:3px -132px;
+}
+
+#contextmenu .taskStatusCleared {
+	background-position:3px -156px;
+}
+
+#contextmenu .taskDelete {
+	background-position:3px -57px;
+}
+
+
+
+/* Container context menu */
+#contextmenu .containerEdit {
+	background-position:3px -207px;
+}
+
+#contextmenu .containerClone {
+	background-position:3px -267px;
+}
+
+#contextmenu .containerAdd {
+	background-position:3px -177px;
+}
+
+#contextmenu .containerAddTask {
+	background-position:3px -87px;
+}
+
+#contextmenu .containerAddContainer {
+	background-position:3px -117px;
+}
+
+#contextmenu .containerkDelete {
+	background-position:3px -237px;
+}
+
