@@ -143,7 +143,7 @@ class TodoyuTaskManager {
 			$data['type'] = TASK_TYPE_TASK;
 		}
 
-		if( $data['status'] == STATUS_DONE ) {
+		if( $data['status'] == STATUS_DONE || $data['status'] == STATUS_ACCEPTED ) {
 			$data['date_finish'] = NOW;
 		}
 
@@ -271,8 +271,13 @@ class TodoyuTaskManager {
 	 */
 	public static function updateTaskStatus($idTask, $newStatus) {
 		$data = array(
-		'status' => intval($newStatus)
+			'status' => intval($newStatus)
 		);
+
+			// Set finish date if task is done
+		if( $newStatus === STATUS_DONE || $newStatus === STATUS_ACCEPTED ) {
+			$data['date_finish']	= NOW;
+		}
 
 		self::updateTask($idTask, $data);
 	}
