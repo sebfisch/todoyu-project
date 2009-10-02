@@ -573,12 +573,11 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 		$value		= trim($value);
 
 		if( $value !== '' ) {
-			$time	= TodoyuTime::parseDate($value);
-			$compare= $negate ? '<=' : '>=';
+			list($logic, $timestampToCheck) = self::getTimestampAndLogicForSimpleDateInputs($value, $negate);
 
 			$queryParts = array(
 				'tables'	=> array('ext_project_task'),
-				'where'		=> 'ext_project_task.date_deadline ' . $compare . ' ' . $time
+				'where'		=> 'ext_project_task.date_deadline ' . $logic . ' ' . $timestampToCheck
 			);
 		}
 
@@ -789,7 +788,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 * @return	Array
 	 */
 	protected static function getTimestampAndLogicForSimpleDateInputs($value, $negate = false)	{
-		$value = TodoyuTime::parseDate($value);
+		$value = !is_numeric($value) ? TodoyuTime::parseDate($value) : $value;
 
 		if($negate)	{
 			$timestampToCheck = mktime(0, 0, 0, date('n', $value), date('d', $value), date('Y', $value));
