@@ -45,11 +45,11 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 	 *
 	 * @param	String		$orderBy
 	 * @param	String		$limit
-	 * @param	Bool		$and
+	 * @param	Bool		$showDeleted
 	 * @return	Array
 	 */
-	public function getProjectIDs($orderBy = '', $limit = '', $and = true) {
-		return parent::getItemIDs($order, $limit, $and);
+	public function getProjectIDs($orderBy = '', $limit = '', $showDeleted = false) {
+		return parent::getItemIDs($order, $limit, $showDeleted);
 	}
 
 
