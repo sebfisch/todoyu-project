@@ -613,7 +613,7 @@ class TodoyuProjectManager {
 					mmpu.id_project	= ' . $idProject . ' AND
 					mmpu.id_userrole= ur.id AND
 					mmpu.id_project	= p.id';
-		$group	= '	u.id';
+		$group	= '	mmpu.id';
 		$order	= '	u.lastname,
 					u.firstname';
 

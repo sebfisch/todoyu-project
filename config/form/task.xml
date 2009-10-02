@@ -64,7 +64,7 @@
 					</validate>
 				</field>
 
-				<field type="datetimeinput" name="date_deadline">
+				<field type="dateinput" name="date_deadline">
 					<label>LLL:project.task.date_deadline</label>
 					<validate>
 						<dateNotBefore msg="Deadline date has to be after startdate">

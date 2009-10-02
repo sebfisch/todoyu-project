@@ -59,12 +59,8 @@ class TodoyuUserrole extends TodoyuBaseObject {
 	 * @param	Boolean	$parsed
 	 * @return	String
 	 */
-	public function getTitle($parsed = true) {
-		if( $parsed ) {
-			return Label($this->get('title'));
-		} else {
-			return $this->get('title');
-		}
+	public function getTitle() {
+		return TodoyuDiv::getLabel($this->get('title'));
 	}
 
 }

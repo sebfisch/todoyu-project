@@ -148,7 +148,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask	= intval($params['task']);
 
 		if( TodoyuTaskManager::isTaskVisible($idTask) ) {
-			return TodoyuProjectRenderer::renderTask($idTask, $idTask, true);
+			return TodoyuProjectRenderer::renderTask($idTask, 0, true);
 		}
 	}
 

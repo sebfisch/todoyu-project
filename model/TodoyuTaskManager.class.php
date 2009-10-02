@@ -47,7 +47,7 @@ class TodoyuTaskManager {
 	 * Get object of a task.
 	 *
 	 * @param	Integer		$idTask		Task ID
-	 * @return	Task
+	 * @return	TodoyuTask
 	 */
 	public static function getTask($idTask) {
 		$idTask	= intval($idTask);
@@ -1205,6 +1205,26 @@ class TodoyuTaskManager {
 
 
 	/**
+	 * Modify form for task edit
+	 *
+	 * @param	TodoyuForm		$form
+	 * @param	Integer			$idTask
+	 * @return	TodoyuForm
+	 */
+	public static function modifyFormfieldForTask(TodoyuForm $form, $idTask) {
+		$idTask	= intval($idTask);
+
+			// If new, no need for a parent to set
+		if( $idTask === 0 ) {
+			$form->getField('id_parenttask')->remove();
+		}
+
+		return $form;
+	}
+
+
+
+	/**
 	 * Modify task form object for container editing
 	 *
 	 * @param	TodoyuForm		$form			Task edit form object
@@ -1215,10 +1235,14 @@ class TodoyuTaskManager {
 		$idTask	= intval($idTask);
 		$task	= self::getTask($idTask);
 
+			// Remove field which are not needed in the container
 		if( $task->isContainer() ) {
 			$form->getField('id_worktype')->remove();
 			$form->getField('estimated_workload')->remove();
 			$form->getField('is_estimatedworkload_public')->remove();
+			$form->getField('date_end')->remove();
+			$form->getField('id_user_assigned')->remove();
+			$form->getField('id_user_owner')->remove();
 		}
 
 		return $form;
