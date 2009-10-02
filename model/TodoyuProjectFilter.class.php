@@ -109,7 +109,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function filter_title($title, $negate = false) {
+	public static function Filter_title($title, $negate = false) {
 		$title		= trim($title);
 
 		if( $title === '' ) {

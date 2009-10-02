@@ -58,7 +58,6 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 		$project	= TodoyuProjectManager::getProject($idProject);
 
-
 			// Init page
 		TodoyuPage::init('ext/project/view/ext.tmpl');
 

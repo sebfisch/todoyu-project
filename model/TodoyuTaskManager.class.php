@@ -304,7 +304,7 @@ class TodoyuTaskManager {
 	 * Get the project object of a task
 	 *
 	 * @param	Integer		$idTask
-	 * @return	Project
+	 * @return	TodoyuProject
 	 */
 	public static function getProject($idTask) {
 		$idProject	= self::getProjectID($idTask);
@@ -396,6 +396,26 @@ class TodoyuTaskManager {
 
 
 	/**
+	 * Check if task has a parent
+	 *
+	 * @param	Integer		$idTask
+	 * @return 	Bool
+	 */
+	public static function hasParentTask($idTask) {
+		$idTask	= intval($idTask);
+
+		$field	= 'id_parenttask';
+		$table	= self::TABLE;
+		$where	= 'id = ' . $idTask;
+
+		$task	= Todoyu::db()->getRecordByQuery($field, $table, $where);
+
+		return intval($task['id_parenttask']) > 0;
+	}
+
+
+
+	/**
 	 * Get task tabs config array (labels parsed)
 	 *
 	 * @param	Integer		$idTask
@@ -464,41 +484,6 @@ class TodoyuTaskManager {
 			'label'		=> $labelFunction,
 			'content'	=> $contentFunction
 		);
-	}
-
-
-
-	/**
-	 * Get the rootline of a task (all parent task IDs)
-	 *
-	 * @param	Integer		$idTask
-	 * @return	Array
-	 */
-	public static function getTaskRootline($idTask) {
-		$idTask		= intval($idTask);
-		$cacheID	= 'taskrootline:'.$idTask;
-
-		if( TodoyuCache::isIn($cacheID) ) {
-			$rootline	= TodoyuCache::get($cacheID);
-		} else {
-			$rootline	= array();
-
-			$field	= 'id_parenttask';
-			$table	= 'ext_project_task';
-
-			while( $idTask != 0 ) {
-				$where	= 'id = ' . $idTask;
-				$idTask = intval(Todoyu::db()->getFieldValue($field, $table, $where));
-
-				if( $idTask !== 0 ) {
-					$rootline[] = $idTask;
-				}
-			}
-
-			TodoyuCache::set($cacheID, $rootline);
-		}
-
-		return $rootline;
 	}
 
 
@@ -1004,15 +989,25 @@ class TodoyuTaskManager {
 		$idParentTask	= intval($idParentTask);
 		$idProject		= intval($idProject);
 		$type			= intval($type);
+		$project		= TodoyuProjectManager::getProject($idProject);
+		$parentTask		= TodoyuTaskManager::getTask($idParentTask);
+
 
 			// Find project if not available as parameter
 		if( $idProject === 0 && $idParentTask !== 0 ) {
 			$idProject	= self::getProjectID($idParentTask);
 		}
 
-			// Set default task data
-		$idUser			= TodoyuAuth::getUserID();
-		$taskNumber		= TodoyuProjectManager::getNextTaskNumber($idProject);
+			// Get data
+		$idUser		= TodoyuAuth::getUserID();
+		$taskNumber	= TodoyuProjectManager::getNextTaskNumber($idProject);
+
+			// Calculate dates based on project and container parents
+		$range		= self::getParentDateRanges($idParentTask, $idProject, true);
+		$dateStart	= $range['start'] < NOW ? NOW : $range['start'];
+		$dateEnd	= $range['end'] < NOW ? NOW : $range['end'];
+
+		TodoyuDebug::printInFirebug($range);
 
 			// Set default data
 		$defaultData	= array(
@@ -1023,9 +1018,9 @@ class TodoyuTaskManager {
 			'estimated_workload'=> intval($GLOBALS['CONFIG']['EXT']['project']['Task']['defaultEstimatedWorkload']),
 			'id_project'		=> $idProject,
 			'id_parenttask'		=> $idParentTask,
-			'date_start'		=> NOW,
-			'date_deadline'		=> NOW,
-			'date_end'			=> NOW,
+			'date_start'		=> $dateStart,
+			'date_deadline'		=> $dateEnd,
+			'date_end'			=> $dateEnd,
 			'id_user_owner'		=> $idUser,
 			'id_user_assigned'	=> $idUser,
 			'type'				=> $type,
@@ -1048,6 +1043,159 @@ class TodoyuTaskManager {
 		$defaultData	= TodoyuHookManager::callHookDataModifier('project', 'taskDefaultData', $defaultData, array($idParentTask, $idProject));
 
 		return $defaultData;
+	}
+
+
+
+	/**
+	 * Get parent element date ranges. Parent means in this case container or project (not parent task)
+	 *
+	 * @param	Integer		$idTask			Task ID to check upwards from
+	 * @param	Integer		$idProject		Used for project range check, if task ID is 0
+	 * @param	Bool		$checkSelf		Check element itself for container
+	 * @return	Array		[start,end]
+	 */
+	public static function getParentDateRanges($idTask, $idProject = 0, $checkSelf = false) {
+		$idTask		= intval($idTask);
+		$idProject	= intval($idProject);
+		$range		= false;
+
+		if( $idTask > 0 ) {
+			$rootlineTasks	= self::getRootlineTasks($idTask);
+
+
+			if( $checkSelf !== true ) {
+					// Remove element itself
+				array_shift($rootlineTasks);
+			}
+
+				// Check all parent elements if there is a container
+				// and use its dates for the range
+			foreach($rootlineTasks as $task) {
+				if( $task['type'] == TASK_TYPE_CONTAINER ) {
+					$range	= array(
+						'start'	=> $task['date_start'],
+						'end'	=> $task['date_end']
+					);
+					break;
+				}
+			}
+		}
+
+			// If no container found, use project
+		if( $range === false ) {
+			if( $idProject !== 0 ) {
+				$project	= TodoyuProjectManager::getProject($idProject);
+			} elseif( $idTask !== 0 ) {
+				$project	= TodoyuTaskManager::getProject($idTask);
+			}
+
+			if( isset($project) ) {
+				$range	= array(
+					'start'	=> $project->getStartDate(),
+					'end'	=> $project->getEndDate()
+				);
+			}
+		}
+
+		return $range;
+	}
+
+
+
+	/**
+	 * Get parent task ID
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Integer
+	 */
+	public static function getParentTaskID($idTask) {
+		$idTask	= intval($idTask);
+
+		$field	= 'id_parenttask';
+		$table	= self::TABLE;
+		$where	= 'id = ' . $idTask;
+
+		$idParent	= Todoyu::db()->getFieldValue($field, $table, $where);
+
+		return intval($idParent);
+	}
+
+
+
+	/**
+	 * Get the rootline of a task (all parent task IDs)
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Array
+	 */
+	public static function getTaskRootline($idTask) {
+		$idTask		= intval($idTask);
+
+			// Check if already cached
+		$idCache	= 'rootline:' . $idTask;
+
+		if( TodoyuCache::isIn($idCache) ) {
+			$rootline	= TodoyuCache::get($idCache);
+		} else {
+			$idParent	= self::getParentTaskID($idTask);
+
+			$rootline	= array($idTask);
+
+			while( $idParent !== 0 ) {
+				$rootline[] = $idParent;
+				$idParent = self::getParentTaskID($idParent);
+			}
+
+			TodoyuCache::set($idCache, $rootline);
+		}
+
+		return $rootline;
+	}
+
+
+
+	/**
+	 * Get array which contains all tasks in the rootline of a task
+	 * The task itself is the first element
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Array
+	 */
+	public static function getRootlineTasks($idTask) {
+		$idTask	= intval($idTask);
+
+		$rootline	= self::getTaskRootline($idTask);
+		$list		= implode(',', $rootline);
+
+		$fields	= '*';
+		$table	= self::TABLE;
+		$where	= 'id IN(' . $list . ')';
+		$order	= 'FIND_IN_SET(id, ' . $list . ')';
+
+		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
+	}
+
+
+
+	/**
+	 * Get parent task of a task
+	 * If there is no parent task (task is in project root), return false
+	 *
+	 * @param	Integer		$idTask
+	 * @return	TodoyuTask	Or FALSE if there is no parent task
+	 */
+	public static function getParentTask($idTask) {
+		$idTask	= intval($idTask);
+
+		$task		= self::getTask($idTask);
+		$idParent	= $task->getParentTaskID();
+
+		if( $idParent != 0 ) {
+			return self::getTask($idParent);
+		} else {
+			return false;
+		}
 	}
 
 

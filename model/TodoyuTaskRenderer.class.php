@@ -122,7 +122,7 @@ class TodoyuTaskRenderer {
 		$idParentTask	= intval($idParentTask);
 
 			// Render form for new empty task
-		$form	= TodoyuTaskRenderer::renderTaskEditForm($idTask);
+		$form	= self::renderTaskEditForm($idTask);
 
 			// Render form into detail wrapper
 		$data	= array(

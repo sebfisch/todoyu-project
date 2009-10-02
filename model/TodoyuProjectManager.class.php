@@ -40,7 +40,7 @@ class TodoyuProjectManager {
 	 * Get project
 	 *
 	 * @param	Integer		$idProject
-	 * @return	Project
+	 * @return	TodoyuProject
 	 */
 	public static function getProject($idProject) {
 		$idProject	= intval($idProject);

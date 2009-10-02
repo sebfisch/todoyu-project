@@ -161,6 +161,17 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
+	 * Get parent task ID. May be 0 when task is in project root
+	 *
+	 * @return	Integer
+	 */
+	public function getParentTaskID() {
+		return intval($this->id_parenttask);
+	}
+
+
+
+	/**
 	 * Get project ID
 	 *
 	 * @return	Integer
