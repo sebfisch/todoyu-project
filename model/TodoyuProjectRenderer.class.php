@@ -609,7 +609,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 		$class		= 'tabs';
 		$jsHandler	= 'Todoyu.Ext.project.ProjectTaskTree.onTabSelect.bind(Todoyu.Ext.project.ProjectTaskTree)';
 		$tabs		= TodoyuProjectManager::getOpenProjectTabs();
-		$active		= TodoyuProjectManager::getCurrentProjectID();
+		$active		= TodoyuProjectManager::getActiveProjectID();
 
 		return TodoyuTabheadRenderer::renderTabs($listID, $class, $jsHandler, $tabs, $active);
 	}

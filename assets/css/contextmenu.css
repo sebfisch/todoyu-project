@@ -17,6 +17,10 @@
 	background-position:3px -27px;
 }
 
+#contextmenu .projectDelete {
+	background-position:3px -477px;
+}
+
 #contextmenu .projectAddTask {
 	background-position:3px -57px;
 }

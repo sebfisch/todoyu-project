@@ -267,6 +267,13 @@ $CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 		'class'		=> 'projectContextMenu projectEdit',
 		'position'	=> 20
 	),
+	'delete' => array(
+		'key'		=> 'delete',
+		'label'		=> 'LLL:project.contextmenu.delete',
+		'jsAction'	=> 'Todoyu.Ext.project.Project.remove(#ID#)',
+		'class'		=> 'projectContextMenu projectDelete',
+		'position'	=> 25
+	),
 	'status' => array(
 		'key'		=> 'status',
 		'label'		=> 'LLL:task.contextmenu.status.change',

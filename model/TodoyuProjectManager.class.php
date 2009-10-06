@@ -133,8 +133,10 @@ class TodoyuProjectManager {
 			$idProject = self::addProject(array());
 		}
 
+		$projectUsers	= TodoyuDiv::assureArray($data['projectusers']);
+
 			// Save project users
-		self::saveProjectUser($idProject, $data['projectusers']);
+		self::saveProjectUser($idProject, $projectUsers);
 		unset($data['projectusers']);
 
 			// Call save hooks
@@ -209,8 +211,31 @@ class TodoyuProjectManager {
 	 *
 	 * @return	Integer
 	 */
-	public static function getCurrentProjectID() {
-		return intval(TodoyuPreferenceManager::getPreference(EXTID_PROJECT, 'project'));
+	public static function getActiveProjectID() {
+		$idProject	= TodoyuProjectPreferences::getActiveProject();
+
+		if( $idProject !== 0 && ! self::isProjectVisible($idProject) ) {
+			$open		= TodoyuProjectPreferences::getOpenProjectTabs();
+			$open		= array_diff($open, array($idProject));
+			$idProject	= intval(array_shift($open));
+		}
+
+		return $idProject;
+	}
+
+
+
+	/**
+	 * Check if a project is visible (available and not deleted)
+	 *
+	 * @param	Integer		$idProject
+	 * @return	Bool
+	 */
+	public static function isProjectVisible($idProject) {
+		$idProject	= intval($idProject);
+		$project	= self::getProjectArray($idProject);
+
+		return $project !== false && intval($project['deleted']) !== 1;
 	}
 
 
@@ -366,7 +391,8 @@ class TodoyuProjectManager {
 			$table	= '	ext_project_project p,
 						ext_user_customer c';
 			$where	= '	p.id IN(' . $projectList . ') AND
-						(p.id_customer = 0 OR p.id_customer = c.id)';
+						(p.id_customer = 0 OR p.id_customer = c.id) AND
+						p.deleted = 0';
 			$order	= 'FIELD(p.id, ' . $projectList . ')';
 			$limit	= 3;
 

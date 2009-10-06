@@ -53,6 +53,22 @@ Todoyu.Ext.project.Project = {
 		this.Edit.createFormWrapDivs(idProject);
 		this.Edit.loadForm(idProject);
 	},
+	
+	remove: function(idProject) {
+		if( confirm('[LLL:project.js.removeProject]') ) {
+			if( confirm('[LLL:project.js.removeProjectConfirmAgain]') ) {
+				var url		= Todoyu.getUrl('project', 'project');
+				var options	= {
+					'parameters': {
+						'cmd': 'remove',
+						'project': idProject
+					}				
+				};
+				
+				Todoyu.send(url, options);
+			}
+		}
+	},
 
 
 

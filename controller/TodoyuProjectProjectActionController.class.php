@@ -98,6 +98,13 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 		TodoyuProjectManager::updateProjectStatus($idProject, $status);
 	}
 
+
+	public function removeAction(array $params) {
+		$idProject	= intval($params['project']);
+
+		TodoyuProjectManager::deleteProject($idProject);
+	}
+
 }
 
 

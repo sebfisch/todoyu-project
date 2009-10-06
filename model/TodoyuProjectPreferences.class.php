@@ -90,6 +90,14 @@ class TodoyuProjectPreferences {
 
 
 
+	/**
+	 * Get active project ID
+	 *
+	 * @return	Integer
+	 */
+	public static function getActiveProject() {
+		return intval(self::getPref('project'));
+	}
 
 
 
