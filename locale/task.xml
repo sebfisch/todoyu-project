@@ -92,7 +92,7 @@
 		<label index="contextmenu.container.delete">Container löschen</label>
 		<label index="status.planning">Planung</label>
 		<label index="status.open">Offen</label>
-		<label index="status.progress">In bearbeitung</label>
+		<label index="status.progress">In Bearbeitung</label>
 		<label index="status.confirm">Zur Abnahme</label>
 		<label index="status.done">Erledigt</label>
 		<label index="status.accepted">Abgenommen</label>
