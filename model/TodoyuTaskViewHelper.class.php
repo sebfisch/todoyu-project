@@ -18,7 +18,7 @@ class TodoyuTaskViewHelper {
 
 		foreach($users as $user) {
 			$options[] = array(
-				'label'	=> $user['lastname'] . ' ' . $user['firstname'] . ' [' . $user['rolelabel'] . ']',
+				'label'	=> $user['lastname'] . ' ' . $user['firstname'] . ' [' . TodoyuLocale::getLabel($user['rolelabel']) . ']',
 				'value'	=> $user['id']
 			);
 		}
