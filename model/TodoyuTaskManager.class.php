@@ -913,15 +913,16 @@ class TodoyuTaskManager {
 
 	/**
 	 * Get tasks in given timespan
-	 * If userIDs given: limit to tasks assigned to given users
-	 * If statuses given: limit to tasks with given statuses
+	 * If timestamp of start/end == 0: don't use it (there by this method can be used as well to query for tasks before / after a given timestamp)
+	 * If userIDs given:	limit to tasks assigned to given users
+	 * If statuses given:	limit to tasks with given statuses
 	 *
 	 * @param	Integer		$timesStart
 	 * @param	Intger		$timeEnd
 	 * @param	Array		$statusIDs
 	 * @param	Array		$userIDs		(id_user_assigned)
 	 */
-	public static function getTasksInTimeSpan($timeStart, $timeEnd, array $statusIDs = array(), array $userIDs = array() ) {
+	public static function getTasksInTimeSpan($timeStart = 0, $timeEnd = 0, array $statusIDs = array(), array $userIDs = array(), $limit = 200) {
 		$timeStart	= intval($timeStart);
 		$timeEnd	= intval($timeEnd);
 		$statusIDs	= TodoyuDiv::intvalArray($statusIDs, true, true);
@@ -929,9 +930,9 @@ class TodoyuTaskManager {
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '	deleted 	= 0 AND
-					date_start 	>= ' . $timeStart . ' AND
-					date_end 	<= ' . $timeEnd;
+		$where	= '	deleted 	= 0 ' .
+					($timeStart > 0	? 'AND date_start 	>= ' . $timeStart : '') .
+					($timeEnd > 0	? ' AND date_end 	<= ' . $timeEnd : '');
 
 		// Add status IDs
 		if( sizeof($statusIDs) > 0 ) {
@@ -944,7 +945,6 @@ class TodoyuTaskManager {
 		}
 
 		$order	= 'date_start';
-		$limit	= 100;
 		$index	= 'id';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit, $index);
