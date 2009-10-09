@@ -83,13 +83,13 @@ class TodoyuTaskRenderer {
 	 * @return	String
 	 */
 	public static function renderTaskEditForm($idTask) {
-		$idTask			= intval($idTask);
-		$task			= TodoyuTaskManager::getTask($idTask);
+		$idTask		= intval($idTask);
+		$task		= TodoyuTaskManager::getTask($idTask);
 
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/task.xml';
 		$form		= new TodoyuForm($xmlPath);
-		TodoyuFormHook::callBuildForm($xmlPath, $form, $idTask);
+		$form		= TodoyuFormHook::callBuildForm($xmlPath, $form, $idTask);
 
 			// Load form data
 		$formData	= $task->getTemplateData(0);

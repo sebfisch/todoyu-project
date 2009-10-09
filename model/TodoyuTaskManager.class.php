@@ -1007,8 +1007,6 @@ class TodoyuTaskManager {
 		$dateStart	= $range['start'] < NOW ? NOW : $range['start'];
 		$dateEnd	= $range['end'] < NOW ? NOW : $range['end'];
 
-		TodoyuDebug::printInFirebug($range);
-
 			// Set default data
 		$defaultData	= array(
 			'id'				=> 0,
@@ -1359,7 +1357,7 @@ class TodoyuTaskManager {
 	 * @param	Integer			$idTask
 	 * @return	TodoyuForm
 	 */
-	public static function modifyFormfieldForTask(TodoyuForm $form, $idTask) {
+	public static function modifyFormfieldsForTask(TodoyuForm $form, $idTask) {
 		$idTask	= intval($idTask);
 
 			// If new, no need for a parent to set

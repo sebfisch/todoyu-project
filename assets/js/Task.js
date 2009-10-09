@@ -30,9 +30,6 @@ Todoyu.Ext.project.Task = {
 	edit: function(idTask) {
 		this.Edit.createFormWrapDivs(idTask);
 		this.Edit.loadForm(idTask);
-
-			// Scroll to task
-		this.scrollTo(idTask);
 	},
 
 
@@ -225,11 +222,24 @@ Todoyu.Ext.project.Task = {
 	 */
 	onProjectTaskAdded: function(response) {
 			// Get task id from header
-		var idTask = response.getHeader('Todoyu-idTask');
+		var idTask = response.getTodoyuHeader('idTask');
 			// Add context menu to new task
 		this.addContextMenu(idTask);
 			// Scroll to new task
 		this.scrollTo(idTask);
+				
+		Todoyu.Hook.exec('onTaskEdit', idTask);
+	},
+	
+	
+	
+	/**
+	 * Focus title field in task edit form
+	 * @hooked	onTaskEdit
+	 * @param	Integer		idTask
+	 */
+	focusTitleField: function(idTask) {
+		$('task-' + idTask + '-field-title').focus();
 	},
 
 
@@ -617,6 +627,8 @@ Todoyu.Ext.project.Task = {
 		 */
 		onFormLoaded: function(idTask, response) {
 			this.ext.Task.scrollTo(idTask);
+			
+			Todoyu.Hook.exec('onTaskEdit', idTask);
 		},
 
 

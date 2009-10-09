@@ -79,6 +79,10 @@ $CONFIG['EXT']['project']['assets'] = array(
 			array(
 				'file'		=> 'ext/project/assets/js/TaskParentAc.js',
 				'position'	=> 108
+			),
+			array(
+				'file'		=> 'ext/project/assets/js/hooks.js',
+				'position'	=> 1000
 			)
 		),
 		'css' => array(
@@ -126,7 +130,7 @@ $CONFIG['EXT']['project']['assets'] = array(
 			)
 		)
 	),
-	
+
 	'panelwidget-statusfilter' => array(
 		'js' => array(
 			array(
@@ -141,7 +145,7 @@ $CONFIG['EXT']['project']['assets'] = array(
 			)
 		)
 	),
-	
+
 	'panelwidget-quickproject' => array (
 		'css' => array(
 			array(

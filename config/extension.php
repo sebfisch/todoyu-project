@@ -36,6 +36,7 @@ TodoyuRenderer::addAreaRenderer('project', 'content', 'TodoyuProjectRenderer::re
 $CONFIG['EXT']['project']['renderer']['panel'][]	= 'TodoyuProjectRenderer::renderPanelWidgets';
 
 
+TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTaskManager::modifyFormfieldsForTask');
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTaskManager::modifyFormfieldsForContainer');
 
 
