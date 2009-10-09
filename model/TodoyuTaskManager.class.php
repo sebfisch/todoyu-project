@@ -366,13 +366,10 @@ class TodoyuTaskManager {
 
 		$field	= '*';
 		$table	= self::TABLE;
-		$where	= '	id_parenttask	= ' . $idTask . ' AND
-					deleted			= 0';
+		$where	= '	id_parenttask	= ' . $idTask . ' AND deleted	= 0';
 		$groupBy= '';
 		$orderBy= 'date_create';
 		$limit	= '';
-
-
 
 		return Todoyu::db()->getArray($field, $table, $where, $groupBy, $orderBy, $limit);
 	}
@@ -703,7 +700,7 @@ class TodoyuTaskManager {
 
 		$task	= self::getTask($idTask);
 
-		// Add container icon
+			// Add container icon
 		if( $task->isContainer() ) {
 			$icons[] = array(
 				'class'	=> 'taskcontainer',
@@ -711,7 +708,7 @@ class TodoyuTaskManager {
 			);
 		}
 
-		// Add is public icon
+			// Add is public icon
 		if( $task->isPublic() ) {
 			$icons[] = array(
 				'class'	=> 'isPublic',
@@ -821,10 +818,10 @@ class TodoyuTaskManager {
 		$idTask	= intval($idTask);
 		$task	= self::getTaskArray($idTask);
 
-		// Remove id to get a new one on insert
+			// Remove id to get a new one on insert
 		unset($task['id']);
 
-		// Set new fields for the cloned version
+			// Set new fields for the cloned version
 		$task['tasknumber']		= TodoyuProjectManager::getNextTaskNumber($task['id_project']);
 		$task['is_acknowledged']= 0;
 		$task['title']			= 'Kopie von: ' . $task['title'];
@@ -921,8 +918,9 @@ class TodoyuTaskManager {
 	 * @param	Intger		$timeEnd
 	 * @param	Array		$statusIDs
 	 * @param	Array		$userIDs		(id_user_assigned)
+	 * @param	String		$limit
 	 */
-	public static function getTasksInTimeSpan($timeStart = 0, $timeEnd = 0, array $statusIDs = array(), array $userIDs = array(), $limit = 200) {
+	public static function getTasksInTimeSpan($timeStart = 0, $timeEnd = 0, array $statusIDs = array(), array $userIDs = array(), $limit = '') {
 		$timeStart	= intval($timeStart);
 		$timeEnd	= intval($timeEnd);
 		$statusIDs	= TodoyuDiv::intvalArray($statusIDs, true, true);
@@ -930,16 +928,17 @@ class TodoyuTaskManager {
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '	deleted 	= 0 ' .
-					($timeStart > 0	? 'AND date_start 	>= ' . $timeStart : '') .
-					($timeEnd > 0	? ' AND date_end 	<= ' . $timeEnd : '');
 
-		// Add status IDs
+		$where	=  ' deleted 	= 0 ';
+		$where	.= ($timeStart > 0	? (' AND date_start	>= ' . $timeStart .	' AND date_end >= ' . $timeStart) : '');
+		$where	.= ($timeEnd > 0	? (' AND date_end 	<= ' . $timeEnd .	' AND date_start <= ' . $timeEnd) : '');
+
+			// Add status IDs
 		if( sizeof($statusIDs) > 0 ) {
 			$where .= ' AND status IN(' . implode(',', $statusIDs) . ')';
 		}
 
-		// Add user IDs
+			// Add user IDs
 		if( sizeof($userIDs) ) {
 			$where .= ' AND id_user_assigned IN(' . implode(',', $userIDs) . ')';
 		}
@@ -1067,8 +1066,7 @@ class TodoyuTaskManager {
 				array_shift($rootlineTasks);
 			}
 
-				// Check all parent elements if there is a container
-				// and use its dates for the range
+				// Check all parent elements if there is a container and use its dates for the range
 			foreach($rootlineTasks as $task) {
 				if( $task['type'] == TASK_TYPE_CONTAINER ) {
 					$range	= array(
@@ -1239,11 +1237,11 @@ class TodoyuTaskManager {
 			$idProject	= self::getProjectID($idParentTask);
 		}
 
-		// Add temporary task
+			// Add temporary task
 		$idTempTask	= self::addTask($idProject);
 		$idUser		= TodoyuAuth::getUserID();
 
-		// Update temporary task, set deleted
+			// Update temporary task, set deleted
 		$update	= array(
 			'deleted'			=> 1,
 			'title'				=> Label('task.newTask.empty'),

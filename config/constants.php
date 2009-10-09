@@ -27,7 +27,6 @@
  */
 
 	// Statuses for projects and tasks
-	// @see	referring keys are defined in  constants.php
 define('STATUS_PLANNING', 	1);
 define('STATUS_OPEN',		2);
 define('STATUS_PROGRESS', 	3);
