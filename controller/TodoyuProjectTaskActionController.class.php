@@ -239,8 +239,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask		= intval($params['task']);
 		$tabKey		= $params['tab'];
 
-
-		TodoyuProjectPreferences::saveSelectedTab($idTask, $tabKey, AREA);
+		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tabKey, AREA);
 	}
 
 }
