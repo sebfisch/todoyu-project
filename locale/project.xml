@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="title">Project and task management</label>
+		<label index="ext.title">Project and task management</label>
 		<label index="createanewproject">Create a new project</label>
 		<label index="selectaprojectfromtree">Select one from the project tree.</label>
 		<label index="noprojectselected">You have not selected any project.</label>
