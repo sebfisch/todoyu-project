@@ -93,22 +93,38 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 	public static function renderProjectView($idProject, $idTask) {
 		$idProject	= intval($idProject);
 		$idTask		= intval($idTask);
-
-		TodoyuPage::addExtAssets('project');
+		$content	= '';
 
 		if( $idProject === 0 ) {
-			$tmpl	= 'ext/project/view/project-addfirst.tmpl';
-			$data	= array(
-				'tabs'		=> TodoyuProjectRenderer::renderAddFirstProjectTab()
-			);
+			$content= self::renderNoProjectSelectView();
 		} else {
-			$tmpl	= 'ext/project/view/projecttasktrees.tmpl';
-			$data	= array(
-				'idProject'	=> $idProject,
-				'tabs'		=> TodoyuProjectRenderer::renderProjectTabs($idProject),
-				'project'	=> self::renderTabbedProject($idProject, $idTask),
-			);
+			$content= self::renderSelectedProjectView($idProject, $idTask);
 		}
+
+		return $content;
+	}
+
+
+	protected static function renderNoProjectSelectView() {
+		$tmpl	= 'ext/project/view/project-noselected.tmpl';
+		$data	= array(
+			'tabs'		=> TodoyuProjectRenderer::renderNoProjectSelectedTab()
+		);
+
+		return render($tmpl, $data);
+	}
+
+
+	protected static function renderSelectedProjectView($idProject, $idTask = 0) {
+		$idProject	= intval($idProject);
+		$idTask		= intval($idTask);
+
+		$tmpl	= 'ext/project/view/projecttasktrees.tmpl';
+		$data	= array(
+			'idProject'	=> $idProject,
+			'tabs'		=> TodoyuProjectRenderer::renderProjectTabs($idProject),
+			'project'	=> self::renderTabbedProject($idProject, $idTask),
+		);
 
 		return render($tmpl, $data);
 	}
@@ -621,7 +637,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 	 *
 	 * @return	String
 	 */
-	public static function renderAddFirstProjectTab() {
+	public static function renderNoProjectSelectedTab() {
 		$listID		= 'project-tabs';
 		$class		= 'tabs';
 		$jsHandler	= 'Prototype.emptyFunction';
@@ -632,7 +648,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 				'htmlId'	=> 'projecttab-0',
 				'class'		=> 'projecttab',
 				'classKey'	=> '0',
-				'label'		=> 'No project selected'
+				'label'		=> Label('project.noproject.tab')
 			)
 		);
 

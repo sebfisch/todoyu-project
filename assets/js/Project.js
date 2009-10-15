@@ -205,49 +205,6 @@ Todoyu.Ext.project.Project = {
 	},
 
 
-
-	/**
-	 *	Add the very first project
-	 */
-	addFirstProject: function() {
-		var url		= Todoyu.getUrl('project', 'project');
-		var options	= {
-			'parameters': {
-				'cmd': 'addfirst'
-			},
-			'onComplete': this.onFirstProjectAdded.bind(this)
-		};
-		var target	= 'project-0';
-
-			// Set tab label
-		$('project-tabs').down('.labeltext', 0).update('[LLL:project.default.title]');
-
-		Todoyu.Ui.update(target, url, options);
-	},
-
-
-
-	/**
-	 *	Custom event handler, being evoked after creation of the very first project
-	 *
-	 *	@param	unknown	response
-	 */
-	onFirstProjectAdded: function(response) {
-		/*
-		var idProject	= response.getHeader('Todoyu-idProject');
-		var projectLabel= response.getHeader('Todoyu-projectLabel');
-
-		this.ext.ProjectTaskTree.addNewTabhead(idProject, projectLabel);
-
-		$('projects').insert(response.responseText);
-
-		this.ext.ProjectTaskTree.displayActiveProject(idProject);
-		this.edit(idProject);
-		*/
-	},
-
-
-
 	/**
 	 *	Refresh given project
 	 *

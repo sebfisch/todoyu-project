@@ -35,7 +35,9 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function defaultAction(array $params) {
+			// Set project tab
 		TodoyuFrontend::setActiveTab('project');
+
 
 			// Get deeplink parameters
 		$idProject	= intval($params['project']);
@@ -53,26 +55,36 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 			TodoyuProjectPreferences::saveCurrentProject($idProject);
 		}
 
-			// Prepend current project to list
-		TodoyuProjectPreferences::addNewOpenProjectTab($idProject);
 
-		$project	= TodoyuProjectManager::getProject($idProject);
 
 			// Init page
 		TodoyuPage::init('ext/project/view/ext.tmpl');
+			// Add project assets
+		TodoyuPage::addExtAssets('project', 'public');
 
-		$title	= TodoyuLocale::getLabel('project.page.title') . ' - ' . $project->getTitle();
+
+			// If a project is displayed
+		if( $idProject !== 0 ) {
+				// Prepend current project to list
+			TodoyuProjectPreferences::addNewOpenProjectTab($idProject);
+
+			$project= TodoyuProjectManager::getProject($idProject);
+			$title	= TodoyuLocale::getLabel('project.page.title') . ' - ' . $project->getTitle();
+		} else {
+			$title	= TodoyuLocale::getLabel('project.page.title.noSelected');
+		}
+
 		TodoyuPage::setTitle($title);
 
 
-		// Render panel widgets and content
+			// Render panel widgets and content
 		$panelWidgets		= TodoyuProjectRenderer::renderPanelWidgets($idProject, $idTask);
 		$projectTaskTree	= TodoyuProjectRenderer::renderProjectView($idProject, $idTask);
 
 		TodoyuPage::set('panelWidgets', $panelWidgets);
 		TodoyuPage::set('taskTree', $projectTaskTree);
 
-		TodoyuPage::addExtAssets('project', 'public');
+			// Add JS onload functions
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.ContextMenuTask.attach.bind(Todoyu.Ext.project.ContextMenuTask)');
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.ContextMenuProject.attach.bind(Todoyu.Ext.project.ContextMenuProject)');
 

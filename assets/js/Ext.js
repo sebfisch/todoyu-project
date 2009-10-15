@@ -155,7 +155,45 @@ Todoyu.Ext.project = {
 
 		detail.toggle();
 	},
+	
+	
+	/**
+	 *	Add the very first project
+	 */
+	addFirstProject: function() {
+		var url		= Todoyu.getUrl('project', 'project');
+		var options	= {
+			'parameters': {
+				'cmd': 'addfirst'
+			},
+			'onComplete': this.onFirstProjectAdded.bind(this)
+		};
+		var target	= 'project-0';
 
+			// Set tab label
+		$('projecttab-0-label').down('.labeltext', 0).update('[LLL:project.newproject.tab]');
+
+		Todoyu.Ui.update(target, url, options);
+	},
+
+
+	/**
+	 *	Custom event handler, being evoked after creation of the very first project
+	 *
+	 *	@param	unknown	response
+	 */
+	onFirstProjectAdded: function(response) {
+		
+	},
+	
+	
+	/**
+	 * Highlight the project tree
+	 */
+	highlightProjecttree: function() {		
+		Effect.Shake('panelwidget-projecttree');
+		new Effect.Highlight('panelwidget-projecttree');
+	},
 
 
 	/**

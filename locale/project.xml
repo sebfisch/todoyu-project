@@ -2,15 +2,26 @@
 <locallang>
 	<labels lang="en">
 		<label index="ext.title">Project and task management</label>
-		<label index="createanewproject">Create a new project</label>
-		<label index="selectaprojectfromtree">Select one from the project tree.</label>
-		<label index="noprojectselected">You have not selected any project.</label>
+		<label index="page.title">Projects</label>
+		<label index="page.title.noSelected">Projects - Select your project</label>
+
+		<label index="noproject.message">You have not selected any project.</label>
+		<label index="noproject.option.select">Select one from the project tree</label>
+		<label index="noproject.option.create">Create a new project</label>
+		<label index="noproject.tab">No project selected</label>
+
+		<label index="newproject.tab">Create a new project</label>
+		<label index="newproject.title">New project</label>
+
+
+
+
 		<label index="addcontainer">Add container</label>
 		<label index="addtask">Add task</label>
 		<label index="addproject">Add project</label>
 		<label index="editproject">Edit project</label>
 
-		<label index="page.title">Projects</label>
+
 		<label index="tab.label">Projects</label>
 
 		<label index="task.title">Title</label>
@@ -87,7 +98,7 @@
 		<label index="form.validation.dateBefore">Datum muss vor dem Ende sein</label>
 		<label index="form.validation.title">Please enter a project title</label>
 
-		<label index="default.title">My new project</label>
+
 
 	</labels>
 	<labels lang="de">

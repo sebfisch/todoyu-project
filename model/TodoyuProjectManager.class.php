@@ -794,7 +794,7 @@ class TodoyuProjectManager {
 			'date_update'	=> NOW,
 			'id_user_create'=> TodoyuAuth::getUserID(),
 			'deleted'		=> 0,
-			'title'			=> Label('project.default.title'),
+			'title'			=> TodoyuLocale::getLabel('project.newproject.title'),
 			'description'	=> '',
 			'status'		=> STATUS_PLANNING,
 			'id_customer'	=> 0,

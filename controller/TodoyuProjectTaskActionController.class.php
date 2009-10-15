@@ -95,14 +95,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function saveAction(array $params) {
-			// Get form data from request
 		$data			= $params['task'];
 		$idTask			= intval($data['id']);
 		$idParentTask	= intval($data['id_parenttask']);
 
-			// Create task object and override data with current form data
-//		$task = TodoyuTaskManager::getTask($idTask);
-//		$task->injectData($taskData);
 
 			// Initialize form for validation
 		$xmlPath	= 'ext/project/config/form/task.xml';

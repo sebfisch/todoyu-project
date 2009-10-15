@@ -27,7 +27,6 @@ class TodoyuProjectProjectformActionController extends TodoyuActionController {
 
 				return $form->getField($fieldName)->renderNewRecord($index);
 				break;
-
 		}
 	}
 
