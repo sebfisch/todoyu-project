@@ -114,11 +114,14 @@
 					<label>LLL:project.attr.projectusers</label>
 					<foreignRecordConf>
 						<foreignformxml>ext/project/config/form/project-user.xml</foreignformxml>
-						<foreignLabelUserFunc>TodoyuProjectViewHelper::getProjectUserLabel</foreignLabelUserFunc>
 						<addSubformConfig>
 							<ext>project</ext>
 							<controller>projectform</controller>
 						</addSubformConfig>
+						<label type="function">
+							<function>TodoyuProjectViewHelper::getProjectUserLabel</function>
+							<noLabel>Neuer Projektbeteiligter</noLabel>
+						</label>
 					</foreignRecordConf>
 				</field>
 

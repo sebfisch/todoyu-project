@@ -25,7 +25,7 @@ class TodoyuProjectProjectformActionController extends TodoyuActionController {
 				$form->setRecordID($idRecord);
 				$form->setName($formName);
 
-				return $form->getField($fieldName)->addNewRecord($index);
+				return $form->getField($fieldName)->renderNewRecord($index);
 				break;
 
 		}

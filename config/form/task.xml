@@ -118,10 +118,10 @@
 					</source>
 				</field>
 
-				<field type="timeinput" name="estimated_workload">
+				<field type="duration" name="estimated_workload">
 					<label>LLL:project.task.esitmated_workload</label>
 					<validate>
-						<isNotZerotime msg="LLL:task.attr.is_estimatedworkload_public.error"/>
+						<isNotZerotime msg="LLL:task.attr.estimated_workload.error"/>
 					</validate>
 					<required/>
 				</field>

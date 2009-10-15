@@ -39,10 +39,9 @@ class TodoyuProjectViewHelper {
 	public static function getProjectUserLabel(TodoyuFormElement $formElement, array $data) {
 		$idUser		= intval($data['id_user']);
 		$idUserrole	= intval($data['id_userrole']);
+		$label		= '';
 
-		if( $idUser	=== 0 ) {
-			$label	= Label('LLL:project.attr.projectusers.new');
-		} else {
+		if( $idUser	!== 0 ) {
 			$user	= TodoyuUserManager::getUser($idUser);
 			$role	= TodoyuUserroleManager::getUserrole($idUserrole);
 
