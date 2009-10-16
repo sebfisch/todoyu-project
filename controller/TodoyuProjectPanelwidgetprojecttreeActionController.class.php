@@ -20,7 +20,7 @@ class TodoyuProjectPanelwidgetProjecttreeActionController extends TodoyuActionCo
 
 		return $projectTree->renderTaskTree($idParent, $type, false);
 	}
-	
+
 	public function collapseAction(array $params) {
 		$idElement	= intval($params['element']);
 		$type		= $params['type'];
@@ -34,11 +34,11 @@ class TodoyuProjectPanelwidgetProjecttreeActionController extends TodoyuActionCo
 			break;
 		}
 	}
-	
+
 	public function expandAction(array $params) {
 		$idElement	= intval($params['element']);
 		$type		= $params['type'];
-		
+
 		switch($type) {
 			case 'project':
 				TodoyuPreferenceManager::savePreference(EXTID_PROJECT, 'panelwidget-projecttree-exp-project', $idElement);
@@ -48,11 +48,11 @@ class TodoyuProjectPanelwidgetProjecttreeActionController extends TodoyuActionCo
 			break;
 		}
 	}
-	
+
 	public function updatetreeAction(array $params) {
 		$currentFilters	= $params['filter'];
 		$currentFilters	= is_array($currentFilters) ? $currentFilters : array();
-		
+
 		TodoyuPanelWidgetProjectTree::updateActiveFilters($currentFilters, AREA);
 
 		$params			= array();
@@ -60,16 +60,16 @@ class TodoyuProjectPanelwidgetProjecttreeActionController extends TodoyuActionCo
 
 		return $projectTree->renderTree();
 	}
-	
+
 	public function updatefilterAction(array $params) {
 		$action	= $params['action'];
 		$field	= $params['field'];
 
 		if( $action === 'add' ) {
-			TodoyuPanelWidgetProjectTree::addNewFilter($field, '', $idArea);
+			TodoyuPanelWidgetProjectTree::addNewFilter($field, '', AREA);
 		}
 		if( $action === 'remove' ) {
-			TodoyuPanelWidgetProjectTree::removeFilter($field, $idArea);
+			TodoyuPanelWidgetProjectTree::removeFilter($field, AREA);
 		}
 
 		$params			= array();
@@ -77,7 +77,7 @@ class TodoyuProjectPanelwidgetProjecttreeActionController extends TodoyuActionCo
 
 		return $projectTree->renderFilters();
 	}
-		
+
 }
 
 ?>

@@ -207,16 +207,18 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 		foreach($taskIDs as $idTask) {
 			$task			= TodoyuTaskManager::getTask($idTask);
 
-			$taskData = array(	'idProject'		=> $task->getProjectID(),
-								'idTask'		=> $idTask,
-								'htmlId'		=> 'panelwidget-projecttree-task-' . $idTask,
-								'status'		=> $task->getStatusKey(),
-								'clickExpand'	=> 'Todoyu.Ext.project.PanelWidget.ProjectTree.toggleSubtasks(' . $idTask . ')',
-								'clickDetail'	=> 'Todoyu.Ext.project.PanelWidget.ProjectTree.openProjectTask(' . $task->getProjectID() . ',' . $idTask . ')',
-								'title'			=> 'Task ID: ' . $idTask,
-								'label'			=> $task->getTitle(),
-								'class'			=> '',
-								'expandable'	=> false);
+			$taskData = array(
+				'idProject'		=> $task->getProjectID(),
+				'idTask'		=> $idTask,
+				'htmlId'		=> 'panelwidget-projecttree-task-' . $idTask,
+				'status'		=> $task->getStatusKey(),
+				'clickExpand'	=> 'Todoyu.Ext.project.PanelWidget.ProjectTree.toggleSubtasks(' . $idTask . ')',
+				'clickDetail'	=> 'Todoyu.Ext.project.PanelWidget.ProjectTree.openProjectTask(' . $task->getProjectID() . ',' . $idTask . ')',
+				'title'			=> 'Task ID: ' . $idTask,
+				'label'			=> $task->getTitle(),
+				'class'			=> '',
+				'expandable'	=> false
+			);
 
 
 			if( $this->isTaskExpanded($idTask) ) {
@@ -273,7 +275,7 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 
 			// Load form data
 		$formData		= array();
-		$activeFilters	= $this->getActiveFilters( $this->getArea() );
+		$activeFilters	= $this->getActiveFilters(AREA);
 			// Set a global variable for the form
 		$form->setVars(	array( 'idArea' => $this->idArea) );
 		$displayFieldset	= $form->getFieldset('display');

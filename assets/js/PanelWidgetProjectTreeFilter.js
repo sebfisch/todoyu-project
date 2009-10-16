@@ -123,7 +123,7 @@ Todoyu.Ext.project.PanelWidget.ProjectTree.Filter = {
 	 *	@param	String	value
 	 */
 	onFieldChange: function(field, value) {
-			// Only update tree if a file with a name (which will be submitted) has changed
+			// Only update tree if a field with a name (which will be submitted) has changed
 		if( field.name ) {
 			this.updateTree();
 		}
