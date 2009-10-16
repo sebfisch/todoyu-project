@@ -241,10 +241,9 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 	 */
 	public static function renderProjectAssignedUsers($idProject) {
 		$idProject	= intval($idProject);
-		$users		= TodoyuProjectManager::getProjectUsers($idProject);
 		$tmpl		= 'ext/project/view/project-assignedusers.tmpl';
 		$data		= array(
-			'users'	=> $users
+			'users'	=> TodoyuProjectManager::getProjectUsers($idProject)
 		);
 
 		return render($tmpl, $data);

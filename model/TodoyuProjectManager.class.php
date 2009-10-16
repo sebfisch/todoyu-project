@@ -620,30 +620,31 @@ class TodoyuProjectManager {
 	public static function getProjectUsers($idProject) {
 		$idProject	= intval($idProject);
 
+			// Get project users
 		$fields	= '	u.*,
 					ur.id as id_userrole,
 					ur.rolekey as rolekey,
 					ur.title as rolelabel,
-					mmpu.comment as comment,
-					c.shortname as customer,
-					c.id as id_customer_user';
+					mmpu.comment';
 		$table	= '	ext_user_user u,
-					ext_user_customer c,
-					ext_user_mm_customer_user mmcu,
-					ext_project_project p,
 					ext_project_userrole ur,
 					ext_project_mm_project_user mmpu';
-		$where	= '	u.id			= mmpu.id_user AND
-					u.id			= mmcu.id_user AND
-					mmcu.id_customer= c.id AND
+		$where	= '	mmpu.id_user	= u.id AND
 					mmpu.id_project	= ' . $idProject . ' AND
-					mmpu.id_userrole= ur.id AND
-					mmpu.id_project	= p.id';
+					mmpu.id_userrole= ur.id';
 		$group	= '	mmpu.id';
 		$order	= '	u.lastname,
 					u.firstname';
 
-		return Todoyu::db()->getArray($fields, $table, $where, $group, $order);
+		$users	= Todoyu::db()->getArray($fields, $table, $where, $group, $order);
+
+			// Get company information
+		foreach($users as $index => $user) {
+			$users[$index]['company'] = TodoyuUserManager::getUserCompanyRecords($user['id']);
+		}
+
+
+		return $users;
 	}
 
 
