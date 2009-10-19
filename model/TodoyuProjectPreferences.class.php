@@ -228,7 +228,7 @@ class TodoyuProjectPreferences {
 	 * @param	Array		$projectIDs
 	 */
 	public static function saveOpenProjectTabs(array $projectIDs = array()) {
-		$projectIDs	= TodoyuDiv::intvalArray($projectIDs, true, true);
+		$projectIDs	= TodoyuArray::intval($projectIDs, true, true);
 		$list		= implode(',', $projectIDs);
 
 		TodoyuPreferenceManager::savePreference(EXTID_PROJECT, 'projecttabs', $list, 0, true);

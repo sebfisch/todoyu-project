@@ -476,7 +476,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 */
 	public static function Filter_status($statuses, $negate) {
 		$statuses	= explode(',', $statuses);
-		$statuses	= TodoyuDiv::intvalArray($statuses, true, true);
+		$statuses	= TodoyuArray::intval($statuses, true, true);
 
 		if( sizeof($statuses) === 0 ) {
 			return false;
@@ -762,7 +762,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 		if($value)	{
 			$value = explode(',', $value);
 
-			$value = TodoyuDiv::intvalArray($value, true, true);
+			$value = TodoyuArray::intval($value, true, true);
 			$value = implode(',',$value);
 
 			$tables = array('ext_project_task');

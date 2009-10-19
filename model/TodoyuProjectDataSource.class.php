@@ -60,7 +60,7 @@ class TodoyuProjectDataSource {
 	 */
 	public static function getProjectUserRoleOptions(TodoyuFormElement $field) {
 		$roles	= self::getProjectUserRoles();
-		$roles	= TodoyuDiv::reformArray($roles, array('id'=>'value','title'=>'label'), true);
+		$roles	= TodoyuArray::reform($roles, array('id'=>'value','title'=>'label'), true);
 
 		return $roles;
 	}

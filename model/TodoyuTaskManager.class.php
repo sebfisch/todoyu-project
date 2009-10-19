@@ -105,7 +105,7 @@ class TodoyuTaskManager {
 	 * @return	Array
 	 */
 	public static function getTasks(array $taskIDs, $orderBy = 'id') {
-		$taskIDs= TodoyuDiv::intvalArray($taskIDs, true, true);
+		$taskIDs= TodoyuArray::intval($taskIDs, true, true);
 		$tasks	= array();
 
 		if( sizeof($taskIDs) > 0 ) {
@@ -346,7 +346,7 @@ class TodoyuTaskManager {
 
 		$subtasks	= self::getSubtasks($idTask);
 
-		return TodoyuDiv::getColumnFromArray($subtasks, 'id');
+		return TodoyuArray::getColumn($subtasks, 'id');
 	}
 
 
@@ -421,7 +421,7 @@ class TodoyuTaskManager {
 	 */
 	public static function getTabs($idTask, $evalLabel = true) {
 		if( is_null(self::$tabs) ) {
-			self::$tabs = TodoyuDiv::sortArrayByLabel($GLOBALS['CONFIG']['EXT']['project']['task']['tabs']);
+			self::$tabs = TodoyuArray::sortByLabel($GLOBALS['CONFIG']['EXT']['project']['task']['tabs']);
 		}
 
 		$tabs = self::$tabs;
@@ -541,7 +541,7 @@ class TodoyuTaskManager {
 			$taskData	= array_merge($taskData, $hookTaskData);
 		}
 
-		$taskData = TodoyuDiv::sortArrayByLabel($taskData);
+		$taskData = TodoyuArray::sortByLabel($taskData);
 
 		return $taskData;
 	}
@@ -923,8 +923,8 @@ class TodoyuTaskManager {
 	public static function getTasksInTimeSpan($timeStart = 0, $timeEnd = 0, array $statusIDs = array(), array $userIDs = array(), $limit = '') {
 		$timeStart	= intval($timeStart);
 		$timeEnd	= intval($timeEnd);
-		$statusIDs	= TodoyuDiv::intvalArray($statusIDs, true, true);
-		$userIDs	= TodoyuDiv::intvalArray($userIDs, true, true);
+		$statusIDs	= TodoyuArray::intval($statusIDs, true, true);
+		$userIDs	= TodoyuArray::intval($userIDs, true, true);
 
 		$fields	= '*';
 		$table	= self::TABLE;

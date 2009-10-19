@@ -133,7 +133,7 @@ class TodoyuProjectManager {
 			$idProject = self::addProject(array());
 		}
 
-		$projectUsers	= TodoyuDiv::assureArray($data['projectusers']);
+		$projectUsers	= TodoyuArray::assure($data['projectusers']);
 
 			// Save project users
 		self::saveProjectUser($idProject, $projectUsers);
@@ -436,7 +436,7 @@ class TodoyuProjectManager {
 			$data	= array_merge($data, $hookInfo);
 		}
 
-		$data = TodoyuDiv::sortArrayByLabel($data);
+		$data = TodoyuArray::sortByLabel($data);
 
 		return $data;
 	}
@@ -562,7 +562,7 @@ class TodoyuProjectManager {
 	 */
 	public static function getLostTaskInTaskTree($idProject, array $displayedTasks) {
 		$idProject		= intval($idProject);
-		$displayedTasks	= TodoyuDiv::intvalArray($displayedTasks, true, true);
+		$displayedTasks	= TodoyuArray::intval($displayedTasks, true, true);
 
 		$activeFilters	= self::getTaskTreeFilterStruct();
 
