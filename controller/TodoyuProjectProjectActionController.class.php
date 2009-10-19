@@ -24,6 +24,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	public function editAction(array $params) {
 		$idProject	= intval($params['project']);
 
+
 		TodoyuProjectPreferences::saveExpandedDetails($idProject, true);
 
 		return TodoyuProjectRenderer::renderProjectEditForm($idProject);

@@ -2,32 +2,31 @@
 <locallang>
 	<labels lang="en">
 		<label index="section.general">General settings</label>
-
-		<label index="right.use">Use the extension</label>
-		<label index="right.write">Write something</label>
-		<label index="right.see">See everything</label>
-		<label index="right.delete">Delete stuff</label>
-		<label index="right.move">Delete stuff</label>
-
-		<label index="section.panelwidgets">PanelWidgets</label>
-
-		<label index="right.PanelWidgetStatusFilter">Show status filter widget</label>
-		<label index="right.PanelWidgetProjectTree">show project tree widget</label>
-		<label index="right.PanelWidgetQuickProject">show create project widget</label>
+		
+		<label index="section.actions">Actions</label>
+		<label index="right.action:ext:default">Project default view</label>
+		
+		<label index="section.project">Project</label>
+		<label index="right.project:create">Create a new project</label>
+		<label index="right.project:edit">Edit project</label>
+		<label index="right.project:changeStatus">Change project status</label>
+		<label index="right.project:delete">Delete project</label>
+		<label index="right.project:delete.comment">Delete project and all tasks</label>
+		
+		<label index="section.task">Task</label>
+		<label index="right.task:create">Create a new project</label>
+		<label index="right.task:edit">Edit project</label>
+		<label index="right.task:changeStatus">Change project status</label>
+		<label index="right.task:delete">Delete project</label>
+		<label index="right.task:delete.comment">Delete project and all tasks</label>
+		
+		<label index="section.panelwidgets">PanelWidgets</label>		
+		<label index="right.panelwidget:statusFilter">PanelWidget Statusfilter</label>
+		<label index="right.panelwidget:projectTree">PanelWidget ProjectTree</label>
+		<label index="right.panelwidget:quickProject">PanelWidget QuickProject</label>
+		
 	</labels>
 	<labels lang="de">
-		<label index="section.general">Allgemeine Einstellungen</label>
 
-		<label index="right.use">Extension benutzen</label>
-		<label index="right.write">Schreibrechte</label>
-		<label index="right.see">See everything</label>
-		<label index="right.delete">Löschen</label>
-		<label index="right.move">Delete stuff</label>
-
-		<label index="section.panelwidgets">PanelWidgets</label>
-
-		<label index="right.PanelWidgetStatusFilter">Statusfilter-widget anzeigen</label>
-		<label index="right.PanelWidgetProjectTree">Projektbaum-widget anzeigen</label>
-		<label index="right.PanelWidgetQuickProject">Projekt erstellen widget anzeigen</label>
 	</labels>
 </locallang>
