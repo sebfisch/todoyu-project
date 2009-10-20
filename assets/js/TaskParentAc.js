@@ -33,7 +33,8 @@ Todoyu.Ext.project.TaskParentAC = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type field
+	 * @todo	comment
+	 * @param	unknown_type field
 	 */
 	init: function(field) {
 		this.field 		= $(field);

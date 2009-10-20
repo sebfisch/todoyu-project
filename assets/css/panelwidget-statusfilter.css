@@ -14,7 +14,6 @@
 	background-color: #fff;
 	cursor: pointer;
 	padding: 2px 5px;
-
 }
 
 #panelwidget-statusfilter li.odd {
@@ -28,8 +27,10 @@
 	background-image:url('../img/panelwidget-statusfilter.png');
 }
 
+/* -------------------
+	status icons
+   ------------------ */
 
-/* Status icons */
 #panelwidget-statusfilter li.statusPlanning label {
 	background-position:0 -30px;
 }

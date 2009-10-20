@@ -40,52 +40,34 @@
 	height:16px;
 }
 
+/* -------------------
+	project status
+   ------------------- */
 
-
-
-/* Project status */
-
-/* Planning: purple */
+/* planning: purple */
 #panelwidget-projecttree ul.tree li.projectPlanning > a.info {
 	border-left: 3px #7f007f solid;
 }
 
-/* Progress: orange */
+/* progress: orange */
 #panelwidget-projecttree ul.tree li.projectProgress > a.info {
 	border-left: 3px #ffac00 solid;
 }
 
-/* Warranty: blue */
+/* warranty: blue */
 #panelwidget-projecttree ul.tree li.projectWarranty > a.info {
 	border-left: 3px #2335e0 solid;
 }
 
-/* Done: green */
+/* done: green */
 #panelwidget-projecttree ul.tree li.projectDone > a.info {
 	border-left: 3px #77dc00  solid;
 }
 
-/* Cleared: grey*/
+/* cleared: grey*/
 #panelwidget-projecttree ul.tree li.projectCleared > a.info {
 	border-left: 3px grey solid;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ul.tree {
 	position:relative;
@@ -133,14 +115,10 @@ ul.tree li.project a.info {
 	background:url(../../../../core/assets/img/tree/sprite-tree.png) 3px -47px no-repeat;
 }
 
+/* -----------------
+	task status
+   ----------------- */
 
-
-
-
-
-
-
-/* Task status */
 ul.tree li.project ul.subtree li.open a.info {
 	background:url(../../../../core/assets/img/taskstati/sprite-taskstati.png) 2px -124px no-repeat;
 }
@@ -166,10 +144,9 @@ ul.tree li.project ul li.cleared a.info {
 	background:url(../../../../core/assets/img/taskstati/sprite-taskstati.png) 2px -337px no-repeat;
 }
 
-
-
-
-/* Subtasks */
+/* ---------------
+	subtasks
+   -------------- */
 ul.tree li ul.subtree {
 	margin-left:19px;
 	margin-bottom:5px;
@@ -182,15 +159,9 @@ ul.tree li.last > ul {
 	padding-left:4px;
 }
 
-
-
-
-
-
-
-
-/** OLD **/
-
+/* -----------------
+	OLD!
+   ---------------- */
 
 #tree_projects input.projectsNameFilterVisible {
 	position: absolute;
@@ -200,11 +171,6 @@ ul.tree li.last > ul {
 }
 
 /* tree - old todoyu css!!! */
-
-
-
-
-
 
 ul.tree a.navigateMain {
 	margin-top:10px;
@@ -250,9 +216,7 @@ ul.tree li.project a.info, ul.tree li.status a.info { background-image:url(../..
 ul.tree li.project .task-status-planing a.info, #tree_status_planing a.info { background:url(../../../../core/assets/img/sprite-taskstati.png) no-repeat 0 0; }
 ul.tree li.project .task-status-planing a.info:hover, #tree_status_planing a.info:hover { background:url(../../../../core/assets/img/sprite-taskstati.png) no-repeat 0 -180px; }
 
-
 ul.tree li.project .task-status-quicktask a.info,#tree_status_quicktask a.info { color:#00aeff; }
-
 
 ul.tree .treeLI ul li {display:none;}
 ul.tree li.expanded > ul > li { display:block;}
@@ -261,8 +225,6 @@ ul.tree li.dragHover > ul > li {display:block;}
 ul.tree li.fixedproject a.info{
 	background: url(../../../../core/assets/img/tree/sprite-tree.png) no-repeat 2px 2px;
 }
-
-
 
 ul.tree li.planning li a.info,
 ul.tree li.inprogress li a.info,

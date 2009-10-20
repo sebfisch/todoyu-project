@@ -1,4 +1,6 @@
-/* Task */
+/* ------------
+	task
+   ----------- */
 .task {
 }
 
@@ -73,7 +75,9 @@
 	font-weight: bold;
 }
 
-/* Additional stuff */
+/* ----------------------
+	additional stuff
+   ---------------------- */
 .task h3 span.additionalStuff {
 	position: absolute;
 	height: 16px;
@@ -100,9 +104,6 @@
 	background: url('../img/icons.png') no-repeat 0 -206px;
 }
 
-
-
-
 /* Info icons */
 .task .headLabel .infoIcons {
 	margin-right: 4px;
@@ -125,8 +126,6 @@
 	background: url('../img/icons.png') no-repeat 0 -328px;
 }
 
-
-
 /* Task header icons */
 
 #taskList h3 span.timewarning {
@@ -148,10 +147,9 @@ span.taskTitleFixTaskSymbol {
 	padding: 0;
 }
 
-
-
-
-/* Task Details */
+/* ------------------
+	task details
+   ------------------ */
 .task .details {
 	border-left-width: 1px;
 	border-left-style: solid;
@@ -161,7 +159,7 @@ span.taskTitleFixTaskSymbol {
 		padding: 5px 0;
 	}
 
-/* Description */
+/* description */
 	.tasks .task .details .left {
 		float: left;
 		width: 350px;
@@ -188,7 +186,7 @@ span.taskTitleFixTaskSymbol {
 		margin: 0.2em 0 0.2em 2em;
 	}
 
-/* Properties */
+/* properties */
 	.tasks .task .details .right {
 		float: right;
 		width: 285px;
@@ -213,7 +211,7 @@ span.taskTitleFixTaskSymbol {
 		line-height: 18px;
 	}
 
-/* Task tabs */
+/* task tabs */
 	#content .taskTabs .tabs {
 		top: 0;
 		left: 0px;
@@ -238,7 +236,7 @@ span.taskTitleFixTaskSymbol {
 		background-color: #e3eace;
 	}
 
-	/* Task Tabs Content */
+	/* task tabs content */
 	.task .tabContent {
 		padding: 10px 0 5px 0;
 		background-color: #e3eace;
@@ -276,7 +274,6 @@ span.taskTitleFixTaskSymbol {
 		background: #D6DCC5 url(../../../../core/assets/img/toggle_tab.png) no-repeat 0px 100%;
 	}
 
-
 #taskList .activeTabContent .taskOptionBlock {
 	position: relative;
 	padding: 5px;
@@ -292,58 +289,9 @@ span.taskTitleFixTaskSymbol {
 	background: #d5dee5;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	#taskList.projectTaskList h3 span.billable-time {
 		right: 115px;
 	}
-
-
 
 	#taskList.projectTaskList h3 span.additionalStuff {
 		right: 0;
@@ -358,40 +306,20 @@ span.taskTitleFixTaskSymbol {
 	background-color: #F7F9FA;
 }
 
+/* -----------------
+	task colors
+   ---------------- */
 
-
-
-
-
-
-
-
-/* Task colors */
-
-	/* Container */
+	/* container */
 .task.container h3 .headLabel {
 	border-left-color: #000 !important;
 }
 
-
-/* Subtasks */
+/* subtasks */
 .tasks .subtasks {
 	padding-left: 10px;
 	background: url(../../../../core/assets/img/content/hr_hor.png) repeat-x 0 bottom;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .task-inline-edit .type-dateinput input {
 	width:50px;
@@ -405,7 +333,6 @@ span.taskTitleFixTaskSymbol {
 	padding:5px;
 }
 
-
 .taskcontainer {
 	background:url('../img/icons.png') no-repeat -5px -75px;
 }
@@ -415,13 +342,9 @@ span.taskTitleFixTaskSymbol {
 	clear:both;
 }
 
-
 .calendaricon {
 	background:url('../img/icons.png') no-repeat 0 -180px;
 }
-
-
-
 
 #taskList,
 #tasks {
@@ -431,7 +354,6 @@ span.taskTitleFixTaskSymbol {
 #taskList h1.headerProjTermine {
 	margin-top: 20px;
 }
-
 
 /*
 #taskList h1 span.invoice_taskDate,
@@ -485,7 +407,6 @@ span.taskTitleFixTaskSymbol {
 }
 */
 
-
 /* Additional task icons */
 
 .additionalStuff .isPublic{
@@ -509,7 +430,6 @@ span.taskTitleFixTaskSymbol {
 .billing_gratis {
 	background: url(../../img/sprite-icons.png) no-repeat -60px -16px !important;
 }
-
 
 .task-status-container h3 a,
 .task-status-container div.taskdetails {border-left-color: #1E2022; background-color:#FBFBF4; /*background: url(../../../../core/assets/img/bgs/taskcontainer.png);*/ }

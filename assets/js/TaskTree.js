@@ -26,7 +26,8 @@ Todoyu.Ext.project.TaskTree = {
 
 	/**
 	 * Enter description here...
-	 *
+	 * 
+	 *  @todo	comment
 	 */
 	init: function() {
 		this.installObservers();
@@ -37,6 +38,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Enter description here...
 	 *
+	 * @todo	comment
 	 */
 	installObservers: function() {
 		Todoyu.PanelWidget.observe('statusfilter', this.onStatusFilterUpdate.bind(this));
@@ -46,7 +48,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type idProject
+	 * @todo	comment
+	 * @param	unknown_type idProject
 	 */
 	tree: function(idProject) {
 		return $('project-' + idProject + '-tasks');
@@ -57,7 +60,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type idProject
+	 * @todo	comment
+	 * @param	unknown_type idProject
 	 */
 	toggle: function(idProject) {
 		this.tree(idProject).toggle();
@@ -68,7 +72,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type idProject
+	 * @todo	comment
+	 * @param	unknown_type idProject
 	 */
 	hide: function(idProject) {
 		var taskTree = this.tree(idProject);
@@ -81,6 +86,7 @@ Todoyu.Ext.project.TaskTree = {
 
 	/**
 	 * Update task tree with a new filter configuration
+	 * 
 	 * @param	Integer		idProject
 	 * @param	String		filterName
 	 * @param	String		filterValue
@@ -108,7 +114,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type response
+	 * @todo	comment
+	 * @param	unknown_type response
 	 */
 	onUpdated: function(response) {
 		this.addContextMenu();
@@ -119,8 +126,9 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type widgetName
-	 * @param unknown_type params
+	 * @todo	comment
+	 * @param	unknown_type widgetName
+	 * @param	unknown_type params
 	 */
 	onStatusFilterUpdate: function(widgetName, params) {
 		var idProject 	= this.getProjectID();
@@ -133,7 +141,8 @@ Todoyu.Ext.project.TaskTree = {
 
 	/**
 	 * Enter description here...
-	 *
+	 * 
+	 * @todo	comment
 	 */
 	getProjectID: function() {
 		return this.ext.ProjectTaskTree.getActiveProjectID();
@@ -143,7 +152,8 @@ Todoyu.Ext.project.TaskTree = {
 
 	/**
 	 * Enter description here...
-	 *
+	 * 
+	 * @todo	comment
 	 * @param unknown_type idTask
 	 */
 	toggleSubtasks: function(idTask) {
@@ -176,7 +186,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type idTask
+	 * @todo	comment
+	 * @param	unknown_type idTask
 	 */
 	toggleSubtaskTriggerIcon: function(idTask) {
 		$('task-' + idTask + '-subtasks-trigger').toggleClassName('expanded');
@@ -187,7 +198,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type idTask
+	 * @todo	comment
+	 * @param	unknown_type idTask
 	 */
 	areSubtasksLoaded: function(idTask) {
 		return Todoyu.exists('task-' + idTask + '-subtasks');
@@ -198,7 +210,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type idTask
+	 * @todo	comment
+	 * @param	unknown_type idTask
 	 */
 	areSubtasksVisible: function(idTask) {
 		return $('task-' + idTask + '-subtasks').visible();
@@ -209,7 +222,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type idTask
+	 * @todo	comment
+	 * @param	unknown_type idTask
 	 */
 	loadSubtasks: function(idTask) {
 		var url		= Todoyu.getUrl('project', 'subtasks');
@@ -236,8 +250,9 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param unknown_type idTask
-	 * @param unknown_type isOpen
+	 * @todo	comment
+	 * @param	unknown_type idTask
+	 * @param	unknown_type isOpen
 	 */
 	saveSubtaskOpenStatus: function(idTask, isOpen) {
 		Todoyu.Pref.save('project', 'subtasks', isOpen?1:0, idTask);
@@ -248,6 +263,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Enter description here...
 	 *
+	 * @todo	comment
 	 */
 	addContextMenu: function() {
 		Todoyu.Ext.project.ContextMenuTask.reattach();

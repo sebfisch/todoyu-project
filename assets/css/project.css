@@ -1,4 +1,6 @@
-/* Header */
+/* --------------
+	header
+   -------------- */
 #projects {
 
 }
@@ -35,7 +37,6 @@
 	margin-top:-5px;
 	padding:5px;
 }
-
 
 #search-results h1 span.first,
 .project h1 span.first {
@@ -77,19 +78,11 @@
 }
 
 
+/* ----------------
+	tasktree
+   ---------------- */
 
-
-
-
-
-
-
-
-/* Tasktree */
-
-
-
-/* Lost tasks */
+/* lost tasks */
 .tasks .lostTasks {
 	margin-top:20px;
 	margin-bottom:30px;
@@ -102,10 +95,7 @@
 	font-size:14px;
 }
 
-
-
-
-/* Edit */
+/* edit */
 .project .edit .formLabel {
 	width:150px;
 	text-align:left;
@@ -145,22 +135,11 @@
 	width:150px;
 }
 
+/* --------------
+	project
+   -------------- */
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* Project */
-
-/* Details */
+/* details */
 #search-results .projectdetails,
 .project .projectdetails {
 	border-top-width: 5px;
@@ -172,7 +151,7 @@
 	margin-bottom:10px;
 }
 
-/* Properties */
+/* properties */
 	#search-results .projectdetails .properties dt,
 	.project .projectdetails .properties dt {
 		float:left;
@@ -186,7 +165,7 @@
 		width:210px;
 	}
 
-	/* Assigned users */
+	/* assigned users */
 	#search-results .projectdetails ul.assignedUsersList,
 	.project .projectdetails ul.assignedUsersList {
 		margin:0;
@@ -213,62 +192,14 @@
 		width:150px;
 	}
 
-	/* Description */
+	/* description */
 	.project .projectdetails .description {
 	}
 
 
-/* Title */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* -------------
+	title
+   ------------- */
 #taskList h1.projectTitle a.addComment {
 	background: url(../../../../core/assets/img/sprite-icons.png) no-repeat 0 -16px;
 }
@@ -281,17 +212,6 @@
 	position: static;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 /* General styles: move to top css file */
 .type-dateinput input {
 	width:60px;
@@ -301,7 +221,6 @@
 	float:left;
 	width:100%;
 }
-
 
 .projectedit .main {
 	float:left;
@@ -316,7 +235,6 @@
 	width:78%;
 }
 
-
 .projectedit .dates {
 	float:left;
 	width:30%;
@@ -329,14 +247,6 @@
 	width:100%;
 }
 
-
 .projectedit .fieldset-clear-bottom {
 	clear:both;
 }
-
-
-
-
-
-
-

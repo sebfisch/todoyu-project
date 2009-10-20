@@ -1,4 +1,6 @@
-/* Project Contextmenu */
+/* --------------------------
+	project contextmenu
+   -------------------------- */
 
 #contextmenu .projectContextMenu {
 	background-image:url('../img/icons.png');
@@ -29,9 +31,9 @@
 	background-position:3px -147px;
 }
 
-
-
-/* Task Contextmenu */
+/* ---------------------------
+	task contextmenu
+   ---------------------------  */
 
 #contextmenu .taskContextMenu {
 	background-image:url(../img/contextmenu.png);
@@ -105,9 +107,10 @@
 	background-position:3px -57px;
 }
 
+/* ---------------------------
+	container context menu
+   --------------------------- */
 
-
-/* Container context menu */
 #contextmenu .containerEdit {
 	background-position:3px -207px;
 }
@@ -131,4 +134,3 @@
 #contextmenu .containerkDelete {
 	background-position:3px -237px;
 }
-

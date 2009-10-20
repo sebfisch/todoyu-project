@@ -157,6 +157,7 @@ Todoyu.Ext.project = {
 	},
 	
 	
+
 	/**
 	 *	Add the very first project
 	 */
@@ -177,6 +178,7 @@ Todoyu.Ext.project = {
 	},
 
 
+
 	/**
 	 *	Custom event handler, being evoked after creation of the very first project
 	 *
@@ -185,8 +187,9 @@ Todoyu.Ext.project = {
 	onFirstProjectAdded: function(response) {
 		
 	},
-	
-	
+
+
+
 	/**
 	 * Highlight the project tree
 	 */
@@ -194,6 +197,7 @@ Todoyu.Ext.project = {
 		Effect.Shake('panelwidget-projecttree');
 		new Effect.Highlight('panelwidget-projecttree');
 	},
+
 
 
 	/**
