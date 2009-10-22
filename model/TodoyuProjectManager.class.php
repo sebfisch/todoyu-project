@@ -321,16 +321,45 @@ class TodoyuProjectManager {
 		$isExpanded	= TodoyuProjectPreferences::isProjectDetailsExpanded($idProject);
 
 		$ownItems	= $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Project'];
+		$allowed	= array();
 
-		if( $isExpanded ) {
-			unset($ownItems['showdetails']);
-		} else {
-			unset($ownItems['hidedetails']);
+		$allowed[] = $ownItems['header'];
+
+			// Show details
+		if( allowed('project', 'project:details') ) {
+			if( $isExpanded ) {
+				$allowed['hidedetails'] = $ownItems['hidedetails'];
+			} else {
+				$allowed['showdetails'] = $ownItems['showdetails'];
+			}
 		}
 
-		$items	= array_merge_recursive($items, $ownItems);
+			// Edit
+		if( allowed('project', 'project:edit') ) {
+			$allowed['edit'] = $ownItems['edit'];
+		}
 
-		return $items;
+			// Delete
+		if( allowed('project', 'project:delete') ) {
+			$allowed['delete'] = $ownItems['delete'];
+		}
+
+			// Status
+		if( allowed('project', 'project:status') ) {
+			$allowed['status'] = $ownItems['status'];
+		}
+
+			// Add task
+		if( allowed('project', 'project:addtask') ) {
+			$allowed['addtask'] = $ownItems['addtask'];
+		}
+
+			// Add container
+		if( allowed('project', 'project:addcontainer') ) {
+			$allowed['addcontainer'] = $ownItems['addcontainer'];
+		}
+
+		return array_merge_recursive($items, $allowed);
 	}
 
 

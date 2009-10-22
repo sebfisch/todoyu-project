@@ -60,5 +60,9 @@ class TodoyuPanelWidgetQuickProject extends TodoyuPanelWidget implements TodoyuP
 
 		return parent::render();
 	}
+
+	public static function isAllowed() {
+		return allowed('project', 'panelwidget.quickProject.use');
+	}
 }
 ?>

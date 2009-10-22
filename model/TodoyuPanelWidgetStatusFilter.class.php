@@ -133,6 +133,11 @@ class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuP
 		TodoyuProjectPreferences::savePref(self::PREF, $statuses, 0, true, $idArea);
 	}
 
+
+	public static function isAllowed() {
+		return allowed('project', 'panelwidget.statusFilter.use');
+	}
+
 }
 
 ?>

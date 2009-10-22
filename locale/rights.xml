@@ -3,22 +3,26 @@
 	<labels lang="en">
 		<label index="section.general">General settings</label>
 		
+		
 		<label index="section.actions">Actions</label>
 		<label index="right.action:ext:default">Project default view</label>
 		
 		<label index="section.project">Project</label>
-		<label index="right.project:create">Create a new project</label>
+		<label index="right.project:details">Show project details</label>
 		<label index="right.project:edit">Edit project</label>
-		<label index="right.project:changeStatus">Change project status</label>
 		<label index="right.project:delete">Delete project</label>
-		<label index="right.project:delete.comment">Delete project and all tasks</label>
+		<label index="right.project:status">Change project status</label>
+		<label index="right.project:addtask">Add task to project</label>
+		<label index="right.project:addcontainer">Add container to project</label>
+
 		
-		<label index="section.task">Task</label>
-		<label index="right.task:create">Create a new project</label>
+		<label index="section.task">Task / Container</label>
 		<label index="right.task:edit">Edit project</label>
-		<label index="right.task:changeStatus">Change project status</label>
-		<label index="right.task:delete">Delete project</label>
-		<label index="right.task:delete.comment">Delete project and all tasks</label>
+		<label index="right.task:clone">Clone task</label>
+		<label index="right.task:addtask">Add subtask</label>
+		<label index="right.task:addcontainer">Add subcontainer</label>
+		<label index="right.task:status">Change project status</label>
+		<label index="right.task:delete">Delete task</label>
 		
 		<label index="section.panelwidgets">PanelWidgets</label>		
 		<label index="right.panelwidget:statusFilter">PanelWidget Statusfilter</label>

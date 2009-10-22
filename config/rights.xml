@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rights labels="ext/project/locale/rights.xml">
+	
 	<section key="general">
-		
-	</section>
-	<section key="actions">
-		<allow right="action:ext:default" />
-	</section>
+		<allow right="use" />		
+	</section>	
+
 	<section key="project">
-		<allow right="project:create" />
+		<allow right="project:details" />
 		<allow right="project:edit" />
-		<allow right="project:changeStatus" />
 		<allow right="project:delete" />
+		<allow right="project:status" />
+		<allow right="project:addtask" />
+		<allow right="project:addcontainer" />
 	</section>
+	
 	<section key="task">
-		<allow right="task:create" />
 		<allow right="task:edit" />
-		<allow right="task:changeStatus" />
-		<allow right="task:delete" />
+		<allow right="task:clone" />
+		<allow right="task:addtask" />
+		<allow right="task:addcontainer" />
+		<allow right="task:status" />
+		<allow right="task:delete" />		
 	</section>
+	
 	<section key="panelwidgets">
-		<allow right="panelwidget:projectTree" />
-		<allow right="panelwidget:statusFilter" />
-		<allow right="panelwidget:quickProject" />
+		<allow right="panelwidget.projectTree.use" />
+		<allow right="panelwidget.statusFilter.use" />
+		<allow right="panelwidget.quickProject.use" />
 	</section>
+	
 </rights>
