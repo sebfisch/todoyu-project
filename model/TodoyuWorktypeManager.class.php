@@ -50,27 +50,74 @@ class TodoyuWorktypeManager {
 
 
 	/**
+	 * Get all worktypes
+	 *
+	 * @return	Array
+	 */
+	public static function getAllWorktypes() {
+		$fields	= '*';
+		$table	= self::TABLE;
+		$where	= 'deleted = 0';
+		$order	= 'title';
+
+		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
+	}
+
+
+
+	/**
 	 * Save worktype record to database
 	 *
 	 * @param	Array	$formData
 	 * @param	String	$xmlPath
 	 * @return	Integer
 	 */
-	public static function save(array $formData, $xmlPath) {
-		$idWorktype	= intval($formData['id']);
-		unset($formData['id']);
+	public static function saveWorktype(array $data) {
+		$idWorktype	= intval($data['id']);
+		$xmlPath	= 'ext/project/config/form/admin/worktype.xml';
 
-		if($idWorktype === 0)	{
-			$idWorktype = self::createNewRecord();
+		if( $idWorktype === 0 ) {
+			$idWorktype = self::addWorktype();
 		}
 
-		$formData	= TodoyuFormHook::callSaveData($xmlPath, $formData, $idWorktype);
+		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idWorktype);
 
-		$formData['date_update']	= NOW;
-
-		Todoyu::db()->doUpdate(self::TABLE , 'id = '.$idWorktype, $formData);
+		self::updateWorktype($idWorktype, $data);
 
 		return $idWorktype;
+	}
+
+
+
+	/**
+	 * Add worktype record
+	 *
+	 * @param	Array		$data
+	 * @return	Integer
+	 */
+	public static function addWorktype(array $data = array()) {
+		unset($data['id']);
+
+		$data['id_user_create']	= userid();
+		$data['date_create']	= NOW;
+
+		return Todoyu::db()->addRecord(self::TABLE, $data);
+	}
+
+
+
+	/**
+	 * Update worktype record
+	 *
+	 * @param	Integer		$idWorktype
+	 * @param	Array		$data
+	 * @return	Bool
+	 */
+	public static function updateWorktype($idWorktype, array $data) {
+		$idWorktype	= intval($idWorktype);
+		unset($data['id']);
+
+		return Todoyu::db()->updateRecord(self::TABLE, $idWorktype, $data);
 	}
 
 
@@ -81,19 +128,14 @@ class TodoyuWorktypeManager {
 	 * @param	Array	$params
 	 * @return	Array
 	 */
-	public static function getRecordList(array $params = array()) {
-		$worktypes = array();
+	public static function getRecords() {
+		$worktypes	= self::getAllWorktypes();
+		$reform		= array(
+			'id'	=> 'id',
+			'title'	=> 'label'
+		);
 
-		$result	= Todoyu::db()->doSelect('id, title', self::TABLE , 'deleted = 0');
-
-		while($row = Todoyu::db()->fetchAssoc($result))	{
-			$worktypes[] = array(
-				'id' 	=> $row['id'],
-				'label'	=> $row['title']
-			);
-		}
-
-		return $worktypes;
+		return TodoyuArray::reform($worktypes, $reform);
 	}
 
 
@@ -101,36 +143,13 @@ class TodoyuWorktypeManager {
 	/**
 	 * Sets deleted flag for current worktype
 	 *
-	 * @param	Integer	$idWorktype
+	 * @param	Integer		$idWorktype
 	 */
-	public static function delete($idWorktype)	{
+	public static function deleteWorktype($idWorktype)	{
 		$idWorktype	= intval($idWorktype);
 
-		$update = array(
-				'deleted'	=> 1
-		);
-
-		Todoyu::db()->doUpdate(self::TABLE , 'id = '.$idWorktype, $update);
+		return Todoyu::db()->deleteRecord(self::TABLE, $idWorktype);
 	}
-
-
-
-	/**
-	 * Creates an empty worktype record
-	 *
-	 * @return	Integer
-	 */
-	protected static function createNewRecord()	{
-		$insertArray = array(
-			'id_user_create'	=> userid(),
-			'date_create'		=> NOW,
-			'deleted'			=> 0
-		);
-
-		return Todoyu::db()->doInsert(self::TABLE , $insertArray);
-	}
-
-
 }
 
 ?>

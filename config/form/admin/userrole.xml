@@ -1,46 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
-	<attributes>
-		<attribute name="action">?ext=sysmanager&amp;controller=records</attribute>
-		<attribute name="name">userrole</attribute>
-		<attribute name="onsubmit">return Todoyu.Ext.sysmanager.Extensions.Records.saveRecord(this);</attribute>
-	</attributes>
 	<hiddenFields>
 		<field name="id" />
 	</hiddenFields>
+
 	<fieldsets>
 		<fieldset name="main">
 			<legend>Main userrole Fields</legend>
 			<elements>
+
 				<field type="textinput" name="title">
 					<label>LLL:project.userrole.attr.title</label>
-					<required>1</required>
+					<required />
 				</field>
+
 				<field type="textinput" name="rolekey">
 					<label>LLL:project.userrole.attr.rolekey</label>
-					<required>1</required>
+					<required />
 				</field>
+
 			</elements>
 		</fieldset>
 
-		<fieldset name="buttons">
-			<legend>Actions</legend>
-			<class>buttons</class>
-			<elements>
-				<field type="button" name="save">
-					<type>submit</type>
-					<text>LLL:form.field.save</text>
-					<class>buttonSave</class>
-					<hasIcon>1</hasIcon>
-				</field>
-				<field type="button" name="cancel">
-					<text>LLL:form.field.cancel</text>
-					<type>button</type>
-					<class>buttonCancel</class>
-					<hasIcon>1</hasIcon>
-					<onclick>Todoyu.Ext.sysmanager.Extensions.Records.closeForm();</onclick>
-				</field>
-			</elements>
-		</fieldset>
 	</fieldsets>
 </form>

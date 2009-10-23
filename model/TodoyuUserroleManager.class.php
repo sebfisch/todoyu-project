@@ -49,24 +49,53 @@ class TodoyuUserroleManager {
 	}
 
 
+	public static function getAllUserroles() {
+		$fields	= '*';
+		$table	= self::TABLE;
+		$where	= 'deleted = 0';
+		$order	= 'id';
+
+		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
+	}
+
+
 
 	/**
 	 * Saves userrole record
 	 *
 	 */
-	public static function save(array $formData, $xmlPath) {
-		$idUserrole	= intval($formData['id']);
-		unset($formData['id']);
+	public static function saveUserrole(array $data) {
+		$idUserrole	= intval($data['id']);
+		$xmlPath	= 'ext/project/config/form/admin/userrole.xml';
 
-		if($idUserrole === 0)	{
-			$idUserrole = self::createNewRecord();
+		if( $idUserrole === 0 ) {
+			$idUserrole = self::addUserrole();
 		}
 
-		$formData	= TodoyuFormHook::callSaveData($xmlPath, $formData, $idUserrole);
+		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idUserrole);
 
-		Todoyu::db()->doUpdate(self::TABLE , 'id = '.$idUserrole, $formData);
+		self::updateUserrole($idUserrole, $data);
 
 		return $idUserrole;
+	}
+
+
+	public static function addUserrole(array $data = array()) {
+		unset($data['id']);
+
+		$data['date_create']	= NOW;
+		$data['id_user_create']	= userid();
+
+		return Todoyu::db()->addRecord(self::TABLE, $data);
+	}
+
+
+	public static function updateUserrole($idUserrole, array $data) {
+		$idUserrole	= intval($idUserrole);
+
+		$data['date_update']	= NOW;
+
+		return Todoyu::db()->updateRecord(self::TABLE, $idUserrole, $data);
 	}
 
 
@@ -76,14 +105,10 @@ class TodoyuUserroleManager {
 	 *
 	 * @param	Integer	$idWorktype
 	 */
-	public static function delete($idUserrole)	{
+	public static function deleteUserrole($idUserrole)	{
 		$idUserrole	= intval($idUserrole);
 
-		$update = array(
-				'deleted'	=> 1
-		);
-
-		Todoyu::db()->doUpdate(self::TABLE , 'id = '.$idUserrole, $update);
+		return Todoyu::db()->deleteRecord(self::TABLE, $idUserrole);
 	}
 
 
@@ -94,34 +119,15 @@ class TodoyuUserroleManager {
 	 * @param	Array	$params
 	 * @return	Array
 	 */
-	public static function getRecordList(array $params = array()) {
-		$userroles = array();
-
-		$result	= Todoyu::db()->doSelect('id, title, rolekey', self::TABLE , 'deleted = 0');
-
-		while($row = Todoyu::db()->fetchAssoc($result))	{
-			$userroles[] = array(
-				'id' 	=> $row['id'],
-				'label'	=> $row['title']
-			);
-		}
-
-		return $userroles;
-	}
-
-
-
-	/**
-	 * Creates an empty worktype record
-	 *
-	 * @return	Integer
-	 */
-	protected static function createNewRecord()	{
-		$insertArray = array(
-			'deleted'			=> 0
+	public static function getRecords() {
+		$userroles	= self::getAllUserroles();
+		$reform		= array(
+			'id'	=> 'id',
+			'title'	=> 'label'
 		);
 
-		return Todoyu::db()->doInsert(self::TABLE , $insertArray);
+		return TodoyuArray::reform($userroles, $reform);
 	}
+
 }
 ?>
