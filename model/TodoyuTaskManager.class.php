@@ -667,7 +667,7 @@ class TodoyuTaskManager {
 
 		$info[]	= array(
 			'label'	=> Label('task.attr.user_owner'),
-			'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $data['user_create']['lastname'] . ', ' . $data['user_create']['firstname'] . '</a>',
+			'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $data['user_owner']['lastname'] . ', ' . $data['user_owner']['firstname'] . '</a>',
 			'position'	=> 90
 		);
 

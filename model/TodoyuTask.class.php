@@ -309,6 +309,12 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 
+	protected function loadForeignData() {
+
+	}
+
+
+
 	/**
 	 * Get data for template rendering
 	 *
@@ -328,6 +334,7 @@ class TodoyuTask extends TodoyuBaseObject {
 				$data['project']		= $this->getProjectArray();
 				$data['user_create']	= $this->getUserArray('create');
 				$data['user_assigned']	= $this->getUserArray('assigned');
+				$data['user_owner']		= $this->getUserArray('owner');
 				$data['worktype']		= $this->getWorktype();
 				$data['fulltitle'] 		= $this->getFullTitle();
 				$data['customer'] 		= $this->getProject()->getCustomerArray();
