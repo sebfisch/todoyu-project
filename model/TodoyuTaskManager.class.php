@@ -638,12 +638,6 @@ class TodoyuTaskManager {
 		);
 
 		$info[]	= array(
-			'label'	=> Label('task.attr.is_onblock'),
-			'value'	=> 'Weiss ich nicht...',
-			'position'	=> 40
-		);
-
-		$info[]	= array(
 			'label'	=> Label('task.attr.date_create'),
 			'value'	=> TodoyuTime::format($data['date_create'], 'datetime'),
 			'position'	=> 50
