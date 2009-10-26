@@ -202,9 +202,7 @@ class TodoyuTask extends TodoyuBaseObject {
 	 * @return	Project
 	 */
 	public function getProject() {
-		$idProject	= $this->getProjectID();
-
-		return TodoyuProjectManager::getProject($idProject);
+		return TodoyuProjectManager::getProject($this->getProjectID());
 	}
 
 
