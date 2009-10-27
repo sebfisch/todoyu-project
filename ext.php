@@ -29,12 +29,20 @@
 if( ! defined('TODOYU') ) die('NO ACCESS');
 
 
-	// declare ext ID, path
+
+	// Declare ext ID, path
 define('EXTID_PROJECT', 112);
 define('PATH_EXT_PROJECT', PATH_EXT . '/project');
 
+	// Register module locales
+TodoyuLocale::register('project', PATH_EXT_PROJECT . '/locale/project.xml');
+TodoyuLocale::register('task', PATH_EXT_PROJECT . '/locale/task.xml');
+TodoyuLocale::register('projectFilter', PATH_EXT_PROJECT . '/locale/filter.xml');
+TodoyuLocale::register('panelwidget-projecttree', PATH_EXT_PROJECT . '/locale/panelwidget-projecttree.xml');
+TodoyuLocale::register('panelwidget-statusfilter', PATH_EXT_PROJECT . '/locale/panelwidget-statusfilter.xml');
+TodoyuLocale::register('panelwidget-quickproject', PATH_EXT_PROJECT . '/locale/panelwidget-quickproject.xml');
 
-	// request configurations, dwoo plugins
+	// Request configurations
 require_once( PATH_EXT_PROJECT . '/config/constants.php' );
 require_once( PATH_EXT_PROJECT . '/config/extension.php' );
 require_once( PATH_EXT_PROJECT . '/config/filters.php' );
@@ -43,18 +51,8 @@ require_once( PATH_EXT_PROJECT . '/config/panelwidgets.php' );
 require_once( PATH_EXT_PROJECT . '/config/hooks.php' );
 require_once( PATH_EXT_PROJECT . '/dwoo/plugins.php');
 
-
-	// Extension locals
-TodoyuLocale::register('project', PATH_EXT_PROJECT . '/locale/project.xml');
-TodoyuLocale::register('task', PATH_EXT_PROJECT . '/locale/task.xml');
-TodoyuLocale::register('projectFilter', PATH_EXT_PROJECT . '/locale/filter.xml');
-TodoyuLocale::register('panelwidget-projecttree', PATH_EXT_PROJECT . '/locale/panelwidget-projecttree.xml');
-TodoyuLocale::register('panelwidget-statusfilter', PATH_EXT_PROJECT . '/locale/panelwidget-statusfilter.xml');
-TodoyuLocale::register('panelwidget-quickproject', PATH_EXT_PROJECT . '/locale/panelwidget-quickproject.xml');
-
-
+		// Add menu entry
 if( TodoyuAuth::isLoggedIn() ) {
-		// add menu entry
 	TodoyuFrontend::addMenuEntry('project', 'LLL:project.tab.label', '?ext=project', 20);
 }
 
