@@ -99,23 +99,25 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask			= intval($data['id']);
 		$idParentTask	= intval($data['id_parenttask']);
 
+			// Create a cache record for the hooks
+		$task = new TodoyuTask(0);
+		$task->injectData($data);
+		TodoyuCache::addRecord($task);
+
 
 			// Initialize form for validation
 		$xmlPath	= 'ext/project/config/form/task.xml';
-		$form		= new TodoyuForm($xmlPath);
-
-			// Call form hooks
-		$form		= TodoyuFormHook::callBuildForm($xmlPath, $form, $idTask);
+		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
 
 		$form->setFormData($data);
 
-			// Set parenttask open status
-		if( $idParentTask !== 0 ) {
-			TodoyuProjectPreferences::saveSubtasksVisibility($idParentTask, true);
-		}
-
 			// Check if form is valid
 		if( $form->isValid() ) {
+				// Set parenttask open status
+			if( $idParentTask !== 0 ) {
+				TodoyuProjectPreferences::saveSubtasksVisibility($idParentTask, true);
+			}
+
 				// If form is valid, get form storage data and update task
 			$storageData= $form->getStorageData();
 
