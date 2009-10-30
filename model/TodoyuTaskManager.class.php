@@ -962,17 +962,17 @@ class TodoyuTaskManager {
 		$timeStart	= intval($timeStart);
 		$timeEnd	= intval($timeEnd);
 		$statusIDs	= TodoyuArray::intval($statusIDs, true, true);
-		$userIDs	= TodoyuArray::intval($userIDs, true, true);
-
+		$userIDs	= TodoyuArray::intval($userIDs, true, true);		
+		
 		$fields	= '*';
 		$table	= self::TABLE;
 
 		$where	=  ' deleted 	= 0 ';
-		$where	.= ($timeStart > 0	? (' AND date_start	>= ' . $timeStart .	' AND date_end >= ' . $timeStart) : '');
-		$where	.= ($timeEnd > 0	? (' AND date_end 	<= ' . $timeEnd .	' AND date_start <= ' . $timeEnd) : '');
+//		$where	.= ($timeStart	> 0	? (' AND date_start	>= ' . $timeStart .	' AND date_end >= ' . $timeStart) : '');
+		$where	.= ($timeEnd	> 0	? (' AND date_end 	<= ' . $timeEnd .	' AND date_start <= ' . $timeEnd) : '');
 
 			// Add status IDs
-		if( sizeof($statusIDs) > 0 ) {
+		if( count($statusIDs) > 0 ) {
 			$where .= ' AND status IN(' . implode(',', $statusIDs) . ')';
 		}
 
