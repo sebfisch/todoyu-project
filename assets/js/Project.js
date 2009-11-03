@@ -365,6 +365,16 @@ Todoyu.Ext.project.Project = {
 				}
 			}
 
+		},
+		
+		onCustomerAutocomplete: function(request) {
+			if( request.getTodoyuHeader('acElements') == 0 ) {
+				var list = Builder.build(request.responseText);
+				list.down('li').update('HHHH');
+				//request.responseText = Builder.
+			}
+			
+			return request;
 		}
 	}
 };

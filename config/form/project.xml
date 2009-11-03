@@ -20,6 +20,7 @@
 					<legend>Main project data</legend>
 					<class>basic</class>
 					<elements>
+
 						<field type="textinput" name="title">
 							<label>LLL:project.task.title</label>
 							<validate>
@@ -27,6 +28,7 @@
 							</validate>
 							<required/>
 						</field>
+
 						<field type="RTE" name="description">
 							<label>LLL:project.task.description</label>
 							<tinymce>
@@ -36,6 +38,7 @@
 							</tinymce>
 							<required/>
 						</field>
+
 					</elements>
 				</fieldset>
 
@@ -43,12 +46,14 @@
 					<legend>Project data</legend>
 					<class>data</class>
 					<elements>
+
 						<field type="select" name="status">
 							<label>LLL:project.attr.status</label>
 							<source type="function">
 								<function>TodoyuProjectStatusManager::getProjectStatusOptions</function>
 							</source>
 						</field>
+
 						<field type="dateinput" name="date_start">
 							<label>LLL:project.attr.date_start</label>
 							<validate>
@@ -60,6 +65,7 @@
 							<class>myClass</class>
 							<required />
 						</field>
+
 						<field type="dateinput" name="date_end">
 							<label>LLL:project.attr.date_end</label>
 							<validate>
@@ -70,6 +76,7 @@
 							</validate>
 							<required />
 						</field>
+
 						<field type="dateinput" name="date_deadline">
 							<label>LLL:project.attr.date_deadline</label>
 							<validate>
@@ -79,6 +86,7 @@
 								<isNotEmpty/>
 							</validate>
 						</field>
+
 						<field type="textinputAC" name="id_customer">
 							<label>LLL:project.attr.customer</label>
 							<config>
@@ -88,9 +96,13 @@
 									<cmd>autocompleteCustomer</cmd>
 								</acListener>
 								<acLabelFunc>TodoyuCustomerManager::getLabel</acLabelFunc>
+								<options>
+									<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onCustomerAutocomplete</onCompleteCustom>
+								</options>
 							</config>
 							<required />
 						</field>
+
 					</elements>
 				</fieldset>
 

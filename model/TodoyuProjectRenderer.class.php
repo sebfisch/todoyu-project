@@ -159,6 +159,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 
 		$project	= TodoyuProjectManager::getProject($idProject);
 
+		$tmpl	= 'ext/project/view/projecttasktree.tmpl';
 		$data	= array(
 			'idProject'	=> $idProject,
 			'statusKey'	=> $project->getStatusKey(),
@@ -166,7 +167,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 			'tasktree'	=> self::renderProjectTaskTree($idProject, $idTask, $tab)
 		);
 
-		return render('ext/project/view/projecttasktree.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 
@@ -498,13 +499,12 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 		);
 
 
-
 			// Render details if task is expanded
 		if( $isExpanded ) {
-			if( is_null($tab) && $idTask === $idTaskShow ) {
-				$activeTab	= TodoyuProjectPreferences::getActiveTaskTab($idTask);
-			} else {
+			if( ! is_null($tab) && $idTask === $idTaskShow ) {
 				$activeTab	= trim(strtolower($tab));
+			} else {
+				$activeTab	= TodoyuProjectPreferences::getActiveTaskTab($idTask);
 			}
 
 			$data['details']= TodoyuTaskRenderer::renderTaskDetail($idTask, $activeTab);
