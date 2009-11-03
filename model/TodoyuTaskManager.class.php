@@ -619,43 +619,28 @@ class TodoyuTaskManager {
 
 		$info	= array();
 
-		$info[] = array(
-			'label'		=> Label('task.attr.worktype'),
-			'value'		=> $data['worktype']['title'],// 'Internes / Administration',
-			'position'	=> 10
-		);
-
+			// Status
 		$info[]	= array(
 			'label'		=> Label('task.attr.status'),
 			'value'		=> $data['statuslabel'],
 			'position'	=> 20
 		);
 
-		$info[]	= array(
-			'label'	=> Label('task.attr.esitmated_workload'),
-			'value'	=> TodoyuTime::sec2hour($data['estimated_workload']),
-			'position'	=> 30
-		);
-
+			// Date create
 		$info[]	= array(
 			'label'	=> Label('task.attr.date_create'),
 			'value'	=> TodoyuTime::format($data['date_create'], 'datetime'),
 			'position'	=> 50
 		);
 
+			// Date start
 		$info[]	= array(
 			'label'	=> Label('task.attr.date_start'),
 			'value'	=> TodoyuTime::format( $data['date_start'], 'date'),
 			'position'	=> 60
 		);
 
-		$formatEnd	= date('m', $data['date_end']) === '00' ? 'date' : 'datetime';
-		$info[]	= array(
-			'label'	=> Label('task.attr.date_end'),
-			'value'	=> TodoyuTime::format($data['date_end'], $formatEnd),
-			'position'	=> 70
-		);
-
+			// Date deadline
 		if( $data['date_deadline'] > 0 ) {
 			$formatDeadline	= date('s', $data['date_deadline']) === '00' ? 'date' : 'datetime';
 			$info[]	= array(
@@ -665,26 +650,53 @@ class TodoyuTaskManager {
 			);
 		}
 
-		$info[]	= array(
-			'label'	=> Label('task.attr.user_owner'),
-			'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $data['user_owner']['lastname'] . ', ' . $data['user_owner']['firstname'] . '</a>',
-			'position'	=> 90
-		);
+			// Attributes which are only for tasks
+		if( $task->isTask() ) {
+				// Worktype
+			$info[] = array(
+				'label'		=> Label('task.attr.worktype'),
+				'value'		=> $data['worktype']['title'],// 'Internes / Administration',
+				'position'	=> 10
+			);
 
-		$info[]	= array(
-			'label'	=> Label('task.attr.user_assigned'),
-			'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $data['user_assigned']['lastname'] . ', ' . $data['user_assigned']['firstname'] . '</a>',
-			'position'	=> 100
-		);
+				// Estimated workload
+			$info[]	= array(
+				'label'	=> Label('task.attr.esitmated_workload'),
+				'value'	=> TodoyuTime::sec2hour($data['estimated_workload']),
+				'position'	=> 30
+			);
+
+				// Date end (if set)
+			$formatEnd	= date('m', $data['date_end']) === '00' ? 'date' : 'datetime';
+			$info[]	= array(
+				'label'	=> Label('task.attr.date_end'),
+				'value'	=> TodoyuTime::format($data['date_end'], $formatEnd),
+				'position'	=> 70
+			);
+
+				// User owner
+			$info[]	= array(
+				'label'	=> Label('task.attr.user_owner'),
+				'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $data['user_owner']['lastname'] . ', ' . $data['user_owner']['firstname'] . '</a>',
+				'position'	=> 90
+			);
+
+				// User assigned
+			$info[]	= array(
+				'label'	=> Label('task.attr.user_assigned'),
+				'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $data['user_assigned']['lastname'] . ', ' . $data['user_assigned']['firstname'] . '</a>',
+				'position'	=> 100
+			);
+		}
 
 		return $info;
 	}
 
 
-	
+
 	/**
 	 *	Add container info to task data
-	 * 
+	 *
 	 *	@param	Array	$taskData
 	 *	@param	Integer	$idTask
 	 *	@param	Integer	$infoLevel
@@ -962,8 +974,8 @@ class TodoyuTaskManager {
 		$timeStart	= intval($timeStart);
 		$timeEnd	= intval($timeEnd);
 		$statusIDs	= TodoyuArray::intval($statusIDs, true, true);
-		$userIDs	= TodoyuArray::intval($userIDs, true, true);		
-		
+		$userIDs	= TodoyuArray::intval($userIDs, true, true);
+
 		$fields	= '*';
 		$table	= self::TABLE;
 

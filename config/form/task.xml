@@ -47,11 +47,6 @@
 
 				<field type="dateinput" name="date_start">
 					<label>LLL:project.task.date_start</label>
-					<validate>
-						<dateNotAfter msg="Start date has to be before enddate">
-							<field>date_end</field>
-						</dateNotAfter>
-					</validate>
 					<required/>
 				</field>
 
@@ -72,6 +67,7 @@
 							<allowEmpty />
 						</dateNotBefore>
 					</validate>
+					<required/>
 				</field>
 
 				<field type="select" name="id_user_assigned">

@@ -42,6 +42,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 			// Get deeplink parameters
 		$idProject	= intval($params['project']);
 		$idTask		= intval($params['task']);
+		$taskTab	= $params['tab'];
 
 			// Find project if only the task is given as parameter
 		if( $idTask !== 0 && $idProject === 0 ) {
@@ -79,7 +80,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 			// Render panel widgets and content
 		$panelWidgets		= TodoyuProjectRenderer::renderPanelWidgets($idProject, $idTask);
-		$projectTaskTree	= TodoyuProjectRenderer::renderProjectView($idProject, $idTask);
+		$projectTaskTree	= TodoyuProjectRenderer::renderProjectView($idProject, $idTask, $taskTab);
 
 		TodoyuPage::set('panelWidgets', $panelWidgets);
 		TodoyuPage::set('taskTree', $projectTaskTree);

@@ -90,7 +90,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 	 * @param	Integer		$idTask			Make sure this task is visible (tree open)
 	 * @return	String
 	 */
-	public static function renderProjectView($idProject, $idTask) {
+	public static function renderProjectView($idProject, $idTask, $tab = null) {
 		$idProject	= intval($idProject);
 		$idTask		= intval($idTask);
 		$content	= '';
@@ -98,13 +98,20 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 		if( $idProject === 0 ) {
 			$content= self::renderNoProjectSelectView();
 		} else {
-			$content= self::renderSelectedProjectView($idProject, $idTask);
+			$content= self::renderSelectedProjectView($idProject, $idTask, $tab);
 		}
 
 		return $content;
 	}
 
 
+
+	/**
+	 * Render project view where no project is selected yet.
+	 * Instead of the tree, there will be an infobox with options
+	 *
+	 * @return	String
+	 */
 	protected static function renderNoProjectSelectView() {
 		$tmpl	= 'ext/project/view/project-noselected.tmpl';
 		$data	= array(
@@ -115,15 +122,23 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 	}
 
 
-	protected static function renderSelectedProjectView($idProject, $idTask = 0) {
+
+	/**
+	 * Render project view with a currently selected project (and task)
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idTask
+	 * @return	String
+	 */
+	protected static function renderSelectedProjectView($idProject, $idTask = 0, $tab = null) {
 		$idProject	= intval($idProject);
 		$idTask		= intval($idTask);
 
 		$tmpl	= 'ext/project/view/projecttasktrees.tmpl';
 		$data	= array(
 			'idProject'	=> $idProject,
-			'tabs'		=> TodoyuProjectRenderer::renderProjectTabs($idProject),
-			'project'	=> self::renderTabbedProject($idProject, $idTask),
+			'tabs'		=> self::renderProjectTabs($idProject),
+			'project'	=> self::renderTabbedProject($idProject, $idTask, $tab),
 		);
 
 		return render($tmpl, $data);
@@ -138,7 +153,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 	 * @param	Integer	$idTask
 	 * @return 	String
 	 */
-	public static function renderTabbedProject($idProject, $idTask) {
+	public static function renderTabbedProject($idProject, $idTask, $tab = null) {
 		$idProject	= intval($idProject);
 		$idTask		= intval($idTask);
 
@@ -148,15 +163,10 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 			'idProject'	=> $idProject,
 			'statusKey'	=> $project->getStatusKey(),
 			'header'	=> self::renderProjectHeader($idProject),
-			'tasktree'	=> self::renderProjectTaskTree($idProject, $idTask)
+			'tasktree'	=> self::renderProjectTaskTree($idProject, $idTask, $tab)
 		);
 
 		return render('ext/project/view/projecttasktree.tmpl', $data);
-	}
-
-
-	public static function renderFirstProjectInfo() {
-		return 'YOUR FIRST PROJECT ADD';
 	}
 
 
@@ -287,7 +297,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 	 * @param	Integer		$idTask				Make sure this task is visible
 	 * @return	String
 	 */
-	public static function renderProjectTaskTree($idProject, $idTaskShow = 0) {
+	public static function renderProjectTaskTree($idProject, $idTaskShow = 0, $tab = null) {
 		$idProject	= intval($idProject);
 		$idTaskShow	= intval($idTaskShow);
 
@@ -307,7 +317,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 
 			// Render tasks (with their subtasks)
 		foreach( $rootTaskIDs as $idTask ) {
-			$treeHtml .= self::renderTask($idTask, $idTaskShow);
+			$treeHtml .= self::renderTask($idTask, $idTaskShow, false, $tab);
 		}
 
 			// Add a list of lost task (this task should be display, but their parent doesn't match the current filter)
@@ -464,7 +474,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 	 * @param	Bool		$withoutSubtasks	Don't render subtasks
 	 * @return	String		Rendered task HTML for project task tree view
 	 */
-	public static function renderTask($idTask, $idTaskShow = 0, $withoutSubtasks = false) {
+	public static function renderTask($idTask, $idTaskShow = 0, $withoutSubtasks = false, $tab = null) {
 		$idTask		= intval($idTask);
 		$idTaskShow = intval($idTaskShow);
 		$task		= TodoyuTaskManager::getTask($idTask);
@@ -491,7 +501,12 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 
 			// Render details if task is expanded
 		if( $isExpanded ) {
-			$activeTab		= TodoyuProjectPreferences::getActiveTaskTab($idTask);
+			if( is_null($tab) && $idTask === $idTaskShow ) {
+				$activeTab	= TodoyuProjectPreferences::getActiveTaskTab($idTask);
+			} else {
+				$activeTab	= trim(strtolower($tab));
+			}
+
 			$data['details']= TodoyuTaskRenderer::renderTaskDetail($idTask, $activeTab);
 		}
 
