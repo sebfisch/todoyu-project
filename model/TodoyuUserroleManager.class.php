@@ -103,12 +103,12 @@ class TodoyuUserroleManager {
 	/**
 	 * Sets deleted flag for current worktype
 	 *
-	 * @param	Integer	$idWorktype
+	 * @param	Integer	$idUserrole
 	 */
-	public static function deleteUserrole($idUserrole)	{
-		$idUserrole	= intval($idUserrole);
+	public static function deleteUserrole($idUserRole)	{
+		$idUserRole	= intval($idUserRole);
 
-		return Todoyu::db()->deleteRecord(self::TABLE, $idUserrole);
+		return Todoyu::db()->deleteRecord(self::TABLE, $idUserRole);
 	}
 
 

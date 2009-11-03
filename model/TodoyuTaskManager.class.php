@@ -1038,9 +1038,6 @@ class TodoyuTaskManager {
 		$idParentTask	= intval($idParentTask);
 		$idProject		= intval($idProject);
 		$type			= intval($type);
-		$project		= TodoyuProjectManager::getProject($idProject);
-		$parentTask		= TodoyuTaskManager::getTask($idParentTask);
-
 
 			// Find project if not available as parameter
 		if( $idProject === 0 && $idParentTask !== 0 ) {
@@ -1442,6 +1439,5 @@ class TodoyuTaskManager {
 		return $form;
 	}
 }
-
 
 ?>

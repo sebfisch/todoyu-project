@@ -116,8 +116,6 @@ class TodoyuTaskRenderer {
 	 */
 	public static function renderNewTaskEditForm() {
 		$idTask			= 0;
-		$idProject		= intval($idProject);
-		$idParentTask	= intval($idParentTask);
 
 			// Render form for new empty task
 		$form	= self::renderTaskEditForm($idTask);
@@ -168,7 +166,6 @@ class TodoyuTaskRenderer {
 		$class		= 'tabs taskTabheads';
 		$jsHandler	= 'Todoyu.Ext.project.Task.Tab.onSelect.bind(Todoyu.Ext.project.Task.Tab)';
 		$tabs		= TodoyuTaskManager::getTabs($idTask);
-		$idArea		= Todoyu::getArea();
 		$activeTab	= is_null($activeTab) ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab;
 
 			// Add special fields for task tabs
@@ -213,9 +210,6 @@ class TodoyuTaskRenderer {
 		return render($tmpl, $data);
 	}
 
-
-
 }
-
 
 ?>

@@ -157,31 +157,38 @@ class TodoyuTaskFilterDataSource {
 			case 'tomorrow':
 				$generalDaySummand = 1;
 				break;
+
 			case 'dayaftertomorrow':
 				$generalDaySummand = 2;
 				break;
+
 			case 'yesterday':
 				$generalDaySummand = -1;
 				break;
+
 			case 'daybeforeyesterday':
 				$generalDaySummand = -2;
 				break;
+
 			case 'currentweek':
 				$individualStartSummand = $dayBeginn;
 				$individualEndSummand	= $dayEnd;
 				break;
+
 			case 'nextweek':
 				$individualStartSummand = $dayBeginn;
 				$individualEndSummand	= $dayEnd;
 
 				$generalDaySummand = 7;
 				break;
+
 			case 'lastweek':
 				$individualStartSummand = $dayBeginn;
 				$individualEndSummand	= $dayEnd;
 
 				$generalDaySummand = -7;
 				break;
+
 			case 'todoay':
 			default:
 				// do nothing
@@ -219,4 +226,5 @@ class TodoyuTaskFilterDataSource {
 		return $definitions;
 	}
 }
+
 ?>

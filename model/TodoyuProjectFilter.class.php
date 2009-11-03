@@ -49,7 +49,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 	 * @return	Array
 	 */
 	public function getProjectIDs($orderBy = '', $limit = '', $showDeleted = false) {
-		return parent::getItemIDs($order, $limit, $showDeleted);
+		return parent::getItemIDs($orderBy, $limit, $showDeleted);
 	}
 
 
