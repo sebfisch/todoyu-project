@@ -123,6 +123,9 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 			$idTaskReal	= TodoyuTaskManager::saveTask($storageData);
 
+				// Save task as open
+			TodoyuProjectPreferences::saveTaskExpandedStatus($idTaskReal, true);
+
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTaskReal);
 			TodoyuHeader::sendTodoyuHeader('idTaskOld', $idTask);
 

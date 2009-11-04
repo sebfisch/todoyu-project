@@ -1214,7 +1214,7 @@ class TodoyuTaskManager {
 		$fields	= '*';
 		$table	= self::TABLE;
 		$where	= 'id IN(' . $list . ')';
-		$order	= 'FIND_IN_SET(id, ' . $list . ')';
+		$order	= 'FIND_IN_SET(id, \'' . $list . '\')';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
 	}
