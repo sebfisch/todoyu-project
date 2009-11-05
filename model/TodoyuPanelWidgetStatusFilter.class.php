@@ -83,7 +83,7 @@ class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuP
 	 * @return	String
 	 */
 	public function renderContent() {
-		$statusesInfos	= TodoyuProjectStatusManager::getProjectStatusInfos();
+		$statusesInfos	= $this->getStatusesInfos();
 		$selected		= $this->getSelectedStatusIDs();
 
 		$tmpl 	= 'ext/project/view/panelwidget-statusfilter.tmpl';
@@ -98,6 +98,23 @@ class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuP
 		$this->setContent($content);
 
 		return $content;
+	}
+
+
+
+	/**
+	 *	Get panelwidget statuses infos
+	 *
+	 *	@return	Array
+	 */
+	private function getStatusesInfos() {
+		if (array_key_exists('statusesInfos', $this->config)) {
+			$statusesInfos	= $this->config['statusesInfos'];
+		} else {
+			$statusesInfos	= TodoyuProjectStatusManager::getProjectStatusInfos();
+		}
+
+		return $statusesInfos;
 	}
 
 
@@ -135,7 +152,7 @@ class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuP
 	}
 
 
-	
+
 	/**
 	 *	Check allowance
 	 *
