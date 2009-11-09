@@ -368,6 +368,7 @@ Todoyu.Ext.project.Project = {
 		},
 		
 		onCustomerAutocomplete: function(request) {
+			/*
 			if( request.getTodoyuHeader('acElements') == 0 ) {
 				var list = Builder.build(request.responseText);
 				list.down('li').update('HHHH');
@@ -375,6 +376,7 @@ Todoyu.Ext.project.Project = {
 			}
 			
 			return request;
+			*/
 		}
 	}
 };

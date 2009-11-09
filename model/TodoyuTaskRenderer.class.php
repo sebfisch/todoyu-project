@@ -114,13 +114,14 @@ class TodoyuTaskRenderer {
 	 *
 	 * @return	String
 	 */
-	public static function renderNewTaskEditForm() {
+	public static function renderNewTaskEditForm($idProject, $idParentTask = 0) {
 		$idTask			= 0;
 
 			// Render form for new empty task
 		$form	= self::renderTaskEditForm($idTask);
 
 			// Render form into detail wrapper
+		$tmpl	= 'ext/project/view/task-detail-data-wrap.tmpl';
 		$data	= array(
 			'idTask'	=> $idTask,
 			'task'	=> array(
@@ -128,7 +129,6 @@ class TodoyuTaskRenderer {
 			),
 			'taskdata'	=> $form
 		);
-		$tmpl	= 'ext/project/view/task-detail-data-wrap.tmpl';
 
 		return render($tmpl, $data);
 	}

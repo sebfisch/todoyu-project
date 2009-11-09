@@ -196,10 +196,12 @@ class TodoyuProjectPreferences {
 	public static function saveTaskExpandedStatus($idTask, $expanded = true) {
 		$idTask	= intval($idTask);
 
-		if( $expanded ) {
-			self::savePref('tasktree-task-exp', $idTask);
-		} else {
-			self::deletePref('tasktree-task-exp', $idTask);
+		if( $idTask !== 0 ) {
+			if( $expanded ) {
+				self::savePref('tasktree-task-exp', $idTask);
+			} else {
+				self::deletePref('tasktree-task-exp', $idTask);
+			}
 		}
 	}
 

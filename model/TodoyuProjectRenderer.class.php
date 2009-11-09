@@ -549,7 +549,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 		$task		= TodoyuTaskManager::getTask($idTask);
 
 			// Get task data for rendering
-		$taskData	= $task->getTemplateData(3);
+		$taskData	= $task->getTemplateData(2);
 
 			// Render edit form wraped by details and data div like in the view template
 		$wrapedForm	= TodoyuTaskRenderer::renderNewTaskEditForm($idProject, $idParentTask);
