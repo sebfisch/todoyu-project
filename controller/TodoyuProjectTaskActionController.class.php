@@ -125,16 +125,9 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 */
 	public function saveAction(array $params) {
 		$data			= $params['task'];
-
-			// Convert 'HH:MM' to integer of seconds
-		if (strpos($data['estimated_workload'], ':') !== false) {
-			$tmp	= explode(':', $data['estimated_workload']);
-			$data['estimated_workload']	= $tmp[0] * 3600 + $tmp[1] * 60;
-		}
-
 		$idTask			= intval($data['id']);
 		$idParentTask	= intval($data['id_parenttask']);
-
+		
 			// Create a cache record for the hooks
 		$task = new TodoyuTask(0);
 		$task->injectData($data);
@@ -155,7 +148,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 				// If form is valid, get form storage data and update task
 			$storageData= $form->getStorageData();
-
+			
+				// Save task
 			$idTaskReal	= TodoyuTaskManager::saveTask($storageData);
 
 				// Save task as open (and its parent)
