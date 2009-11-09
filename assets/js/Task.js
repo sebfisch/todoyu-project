@@ -62,12 +62,42 @@ Todoyu.Ext.project.Task = {
 				'cmd': 'setstatus',
 				'status': status
 			},
-			'onComplete': this.refresh.bind(this, idTask)
+			'onComplete': this.onStatusUpdated.bind(this, idTask, status)
 		};
-
+		
 		Todoyu.send(url, options);
 	},
-
+	
+	
+	
+	/**
+	 * Handler when status has been updated
+	 * @param	Integer			idTask
+	 * @param	Integer			status
+	 * @param	Ajax.response	response
+	 */
+	onStatusUpdated: function(idTask, status, response) {
+		this.refresh(idTask);
+	},
+	
+	
+	
+	/**
+	 * Get status key of the task
+	 * @param	Integer		idTask
+	 */
+	getStatus: function(idTask) {
+		var classNames 	= $('task-' + idTask + '-header').down('span.headLabel').classNames();
+		var statusClass	= classNames.grep(/.*Status(\d)/).first();
+		var statusKey	= statusClass.split('Status').last();
+		
+		return statusKey;
+	},
+	
+	setStatus: function(idTask, status) {
+		
+	},
+	
 
 
 	/**
@@ -84,15 +114,24 @@ Todoyu.Ext.project.Task = {
 				'cmd': 'get',
 				'task': idTask
 			},
-			'onComplete': function(idTask, response) {
-				this.addContextMenu(idTask);
-			}.bind(this, idTask)
+			'onComplete': this.onRefreshed.bind(this, idTask)
 		};
 
 			// Detach menu
 		this.removeContextMenu(idTask);
 			// Update task
 		Todoyu.Ui.replace(target, url, options);
+	},
+	
+	
+	
+	/**
+	 * Handler when task has been refreshed
+	 * @param	Integer			idTask
+	 * @param	Ajax.Response	response
+	 */
+	onRefreshed: function(idTask, response) {
+		this.addContextMenu(idTask);
 	},
 
 

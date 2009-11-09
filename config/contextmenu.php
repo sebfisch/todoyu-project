@@ -93,7 +93,7 @@ $CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 				'key'		=> 'status-open',
 				'label'		=> 'LLL:task.status.open',
 				'jsAction'	=> 'Todoyu.Ext.project.Task.updateStatus(#ID#, ' . STATUS_OPEN . ')',
-				'class'		=> 'taskContextMenu taskstatusOpen'
+				'class'		=> 'taskContextMenu taskStatusOpen'
 			),
 			'progress'	=> array(
 				'key'		=> 'status-progress',

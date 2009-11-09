@@ -72,35 +72,35 @@
 }
 
 #contextmenu .taskStatusPlanning {
-	background-position:3px 2px;
+	background-position:4px 3px;
 }
 
 #contextmenu .taskStatusOpen {
-	background-position:3px -19px;
+	background-position:4px -27px;
 }
 
 #contextmenu .taskStatusProgress {
-	background-position:3px -39px;
+	background-position:4px -57px;
 }
 
 #contextmenu .taskStatusConfirm {
-	background-position:3px -85px;
+	background-position:4px -87px;
 }
 
 #contextmenu .taskStatusDone {
-	background-position:3px -108px;
+	background-position:4px -117px;
 }
 
 #contextmenu .taskStatusAccepted {
-	background-position:3px -108px;
+	background-position:4px -117px;
 }
 
 #contextmenu .taskStatusRejected {
-	background-position:3px -132px;
+	background-position:4px -147px;
 }
 
 #contextmenu .taskStatusCleared {
-	background-position:3px -156px;
+	background-position:4px -177px;
 }
 
 #contextmenu .taskDelete {
