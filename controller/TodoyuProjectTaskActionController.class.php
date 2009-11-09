@@ -125,6 +125,13 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 */
 	public function saveAction(array $params) {
 		$data			= $params['task'];
+
+			// Convert 'HH:MM' to integer of seconds
+		if (strpos($data['estimated_workload'], ':') !== false) {
+			$tmp	= explode(':', $data['estimated_workload']);
+			$data['estimated_workload']	= $tmp[0] * 3600 + $tmp[1] * 60;
+		}
+
 		$idTask			= intval($data['id']);
 		$idParentTask	= intval($data['id_parenttask']);
 
