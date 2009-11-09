@@ -54,6 +54,13 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 * Add a subtask to a task
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function addsubtaskAction(array $params) {
 			// Parent for the new subtask
 		$idParentTask	= intval($params['task']);

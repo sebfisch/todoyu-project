@@ -7,7 +7,7 @@
 *
 *  This script is part of the todoyu project.
 *  The todoyu project is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License, version 2, 
+*  it under the terms of the GNU General Public License, version 2,
 *  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
 *  the Free Software Foundation;
 *
@@ -23,5 +23,10 @@ TodoyuHookManager::registerHook('project', 'taskdata', 		'TodoyuTaskManager::get
 TodoyuHookManager::registerHook('project', 'projectdata', 	'TodoyuProjectManager::getProjectDataAttributes');
 TodoyuHookManager::registerHook('project', 'additionalIcons', 'TodoyuTaskManager::getAdditionalProjectTaskIcons');
 TodoyuHookManager::registerHook('project', 'infoIcons', 		'TodoyuTaskManager::getProjectTaskInfoIcons');
+TodoyuHookManager::registerHook('project', 'taskinfo', 'TodoyuTaskManager::addContainerInfoToTaskData');
+
+TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTaskManager::modifyFormfieldsForTask');
+TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTaskManager::modifyFormfieldsForContainer');
+
 
 ?>

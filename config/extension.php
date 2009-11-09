@@ -36,18 +36,10 @@ TodoyuRenderer::addAreaRenderer('project', 'content', 'TodoyuProjectRenderer::re
 $CONFIG['EXT']['project']['renderer']['panel'][]	= 'TodoyuProjectRenderer::renderPanelWidgets';
 
 
-TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTaskManager::modifyFormfieldsForTask');
-TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTaskManager::modifyFormfieldsForContainer');
-
-
 TodoyuRenderer::addAreaRenderer('project', 'projectinfo', 'TodoyuProjectRenderer::renderProjectAssignedUsers');
-
-TodoyuHookManager::registerHook('project', 'taskinfo', 'TodoyuTaskManager::addContainerInfoToTaskData');
 
 TodoyuContextMenuManager::registerFunction('Task', 'TodoyuTaskManager::getContextMenuItems', 10);
 TodoyuContextMenuManager::registerFunction('Project', 'TodoyuProjectManager::getContextMenuItems', 10);
-
-
 
 
 	// @see	constants are defined in  constants.php

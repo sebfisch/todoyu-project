@@ -52,7 +52,7 @@ class TodoyuTaskManager {
 	public static function getTask($idTask) {
 		$idTask	= intval($idTask);
 
-		return TodoyuCache::getRecord('TodoyuTask', $idTask);
+		return TodoyuRecordManager::getRecord('TodoyuTask', $idTask);
 	}
 
 
@@ -1404,10 +1404,14 @@ class TodoyuTaskManager {
 	 */
 	public static function modifyFormfieldsForTask(TodoyuForm $form, $idTask) {
 		$idTask	= intval($idTask);
+		$task	= self::getTask($idTask);
 
-			// If new, no need for a parent to set
-		if( $idTask === 0 ) {
-			$form->getField('id_parenttask')->remove();
+		if( $task->isTask() ) {
+				// New task have no parent
+			if( $idTask === 0 ) {
+	//			$form->getField('id_parenttask')->remove();
+	//			$form->addHiddenField('id_parenttask', 0);
+			}
 		}
 
 		return $form;
