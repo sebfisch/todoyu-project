@@ -43,6 +43,14 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		return TodoyuProjectRenderer::renderNewTaskEdit(0, $idProject, TASK_TYPE_TASK);
 	}
 
+
+
+	/**
+	 *	'addprojectcontainer' action method
+	 *
+	 *	@param	Array	$params
+	 *	@return	String
+	 */
 	public function addprojectcontainerAction(array $params) {
 		$idProject 	= intval($params['project']);
 
@@ -73,6 +81,13 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 *	'addsubcontainer' action method
+	 *
+	 *	@param	Array	$params
+	 *	@return	String
+	 */
 	public function addsubcontainerAction(array $params) {
 			// Parent for the new subtask
 		$idParentTask	= intval($params['task']);
@@ -85,6 +100,13 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 *	'edit'	action method
+	 *
+	 *	@param	Array	$params
+	 *	@return	String
+	 */
 	public function editAction(array $params) {
 		$idTask		= intval($params['task']);
 
@@ -110,7 +132,6 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$task = new TodoyuTask(0);
 		$task->injectData($data);
 		TodoyuCache::addRecord($task);
-
 
 			// Initialize form for validation
 		$xmlPath	= 'ext/project/config/form/task.xml';
@@ -146,6 +167,13 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		}
 	}
 
+
+
+	/**
+	 *	'setstatus' action method
+	 *
+	 *	@param	Array	$params
+	 */
 	public function setstatusAction(array $params) {
 		$idTask		= intval($params['task']);
 		$idStatus	= intval($params['status']);
@@ -153,6 +181,13 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		TodoyuTaskManager::updateTaskStatus($idTask, $idStatus);
 	}
 
+
+
+	/**
+	 *	'get' action method
+	 *
+	 *	@param	Array $params
+	 */
 	public function getAction(array $params) {
 		$idTask	= intval($params['task']);
 
@@ -161,6 +196,14 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		}
 	}
 
+
+
+	/**
+	 *	'detail' action method
+	 *
+	 *	@param	Array $params
+	 *	@return	String
+	 */
 	public function detailAction(array $params) {
 		$idTask		= intval($params['task']);
 
@@ -174,6 +217,14 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		return TodoyuTaskRenderer::renderTaskDetail($idTask);
 	}
 
+
+
+	/**
+	 *	'clone' action method
+	 *
+	 *	@param	Array $params
+	 *	@return	String
+	 */
 	public function cloneAction(array $params) {
 		$idTask		= intval($params['task']);
 		$idTaskNew	= TodoyuTaskManager::cloneTask($idTask);
@@ -183,6 +234,14 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		return TodoyuProjectRenderer::renderTask($idTaskNew, 0, true);
 	}
 
+
+
+	/**
+	 *	'clonecontainer' action method
+	 *
+	 *	@param	Array $params
+	 *	@return	String
+	 */
 	public function cloneContainerAction(array $params) {
 		$idContainer		= intval($params['container']);
 		$cloneSubElements	= intval($params['cloneSubElements']) === 1;
@@ -194,18 +253,40 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		return TodoyuProjectRenderer::renderTask($idContainerNew, 0, false);
 	}
 
+
+
+	/**
+	 *	'acknowledge' action method
+	 *
+	 *	@param	Array	$params
+	 */
 	public function acknowledgeAction(array $params) {
 		$idTask	= intval($params['task']);
 
 		TodoyuTaskManager::setTaskAcknowledged($idTask);
 	}
 
+
+
+	/**
+	 *	'delete' action method
+	 *
+	 *	@param	Array	$params
+	 */
 	public function deleteAction(array $params) {
 		$idTask		= intval($params['task']);
 
 		TodoyuTaskManager::deleteTask($idTask, true);
 	}
 
+
+
+	/**
+	 *	'autocompleteprojecttask' action method
+	 *
+	 *	@param	Array	$params
+	 *	@return	String
+	 */
 	public function autocompleteprojecttaskAction(array $params) {
 		$formName	= $params['formName'];
 		$sword		= $params['sword'];
@@ -233,6 +314,13 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		return TodoyuRenderer::renderAutocompleteList($tasks);
 	}
 
+
+
+	/**
+	 *	'tabload' action method
+	 *
+	 *	@param	Array	$params
+	 */
 	public function tabloadAction(array $params) {
 		$idTask		= intval($params['task']);
 		$tabKey		= $params['tab'];
@@ -244,6 +332,13 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		return TodoyuDiv::callUserFunction($tabConf['content'], $idTask);
 	}
 
+
+
+	/**
+	 *	'tabselected' action method
+	 *
+	 *	@param	Array	$params
+	 */
 	public function tabselectedAction(array $params) {
 		$idTask		= intval($params['task']);
 		$tabKey		= $params['tab'];

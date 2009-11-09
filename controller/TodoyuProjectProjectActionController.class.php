@@ -2,6 +2,12 @@
 
 class TodoyuProjectProjectActionController extends TodoyuActionController {
 
+	/**
+	 *	'add' action method
+	 *
+	 *	@param	Array $params
+	 *	@return	String
+	 */
 	public function addAction(array $params) {
 		$idProject	= intval($params['project']);
 
@@ -16,19 +22,33 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 *	'addfirst' action method
+	 *
+	 *	@param	Array	$params
+	 *	@return	String
+	 */
 	public function addfirstAction(array $params) {
 		return TodoyuProjectRenderer::renderNewProjectEdit();
 	}
 
 
+
+	/**
+	 *	'edit' action method
+	 *
+	 *	@param	Array	$params
+	 *	@return	String
+	 */
 	public function editAction(array $params) {
 		$idProject	= intval($params['project']);
-
 
 		TodoyuProjectPreferences::saveExpandedDetails($idProject, true);
 
 		return TodoyuProjectRenderer::renderProjectEditForm($idProject);
 	}
+
 
 
 	/**
@@ -67,6 +87,13 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 *	'details' action method
+	 *
+	 *	@param	Array	$params
+	 *	@return String
+	 */
 	public function detailsAction(array $params) {
 		$idProject	= intval($params['project']);
 
@@ -74,6 +101,13 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 *	'autocompleteCustomer' action method
+	 *
+	 *	@param	Array	$params
+	 *	@return	String
+	 */
 	public function autocompleteCustomerAction(array $params) {
 		$sword	= $params['sword'];
 		$results = TodoyuUserFilterDataSource::autocompleteCustomers($sword);
@@ -82,6 +116,13 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 *	'autocmpletion' action method
+	 *
+	 *	@param	Array	$params
+	 *	@return	String
+	 */
 	public function autocompletionAction(array $params) {
 		$sword	= $params['sword'];
 		$config	= array();
@@ -92,6 +133,12 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 *	'setstatus' action method
+	 *
+	 *	@param	Array	$params
+	 */
 	public function setstatusAction(array $params) {
 		$idProject	= intval($params['project']);
 		$status		= intval($params['status']);
@@ -100,6 +147,12 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 *	'remove' action method
+	 *
+	 *	@param	Array	$params
+	 */
 	public function removeAction(array $params) {
 		$idProject	= intval($params['project']);
 
@@ -107,6 +160,5 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	}
 
 }
-
 
 ?>

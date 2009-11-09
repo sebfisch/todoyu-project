@@ -760,7 +760,6 @@ class TodoyuProjectManager {
 
 
 
-
 	/**
 	 * Save project users form data
 	 *

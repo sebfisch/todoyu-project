@@ -55,7 +55,7 @@ class TodoyuProjectDataSource {
 	/**
 	 * Get user project roles formatted as option array for the form
 	 *
-	 * @param	TodoyuForm		$form		Reference to current form
+	 * @param	TodoyuFormElement	$field		Reference to current field
 	 * @return	Array
 	 */
 	public static function getProjectUserRoleOptions(TodoyuFormElement $field) {
