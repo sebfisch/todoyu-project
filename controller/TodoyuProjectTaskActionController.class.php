@@ -46,10 +46,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'addprojectcontainer' action method
+	 *	Add a new container directly to the project
 	 *
-	 *	@param	Array	$params
-	 *	@return	String
+	 *	@param	Array		$params
+	 *	@return	String		Container edit form
 	 */
 	public function addprojectcontainerAction(array $params) {
 		$idProject 	= intval($params['project']);
@@ -221,10 +221,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'clone' action method
+	 *	Clone a task and add it right behind the clone source
 	 *
-	 *	@param	Array $params
-	 *	@return	String
+	 *	@param	Array 		$params
+	 *	@return	String		Cloned task html
 	 */
 	public function cloneAction(array $params) {
 		$idTask		= intval($params['task']);

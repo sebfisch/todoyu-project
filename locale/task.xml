@@ -15,7 +15,9 @@
 		<label index="attr.user_assigned">Assigned to</label>
 		<label index="attr.user_owner">Task owner</label>
 		<label index="attr.is_public">Is public</label>
-		<label index="attr.is_estimatedworkload_public">Is estimated workload public</label>
+		<label index="attr.is_estimatedworkload_public">Est. workload pub.</label>
+		<label index="attr.is_estimatedworkload_public.1">Is public</label>
+		<label index="attr.is_estimatedworkload_public.0">Not public</label>
 		<label index="attr.is_estimatedworkload_public.error">Please fill in the estimated workwold for this task</label>
 		<label index="attr.notAcknowledged">Not acknowledged (NEW)</label>
 		<label index="attr.timeover">'Enddate or deadline exceed'</label>
@@ -55,7 +57,7 @@
 		<label index="type.task">Task</label>
 		<label index="type.container">Container</label>
 		<label index="billable_time">Billable time</label>
-
+		<label index="title.cloned">Copy of: %s</label>
 	</labels>
 	<labels lang="de">
 		<label index="attr.title">Titel</label>

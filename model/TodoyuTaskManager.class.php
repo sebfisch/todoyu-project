@@ -665,6 +665,13 @@ class TodoyuTaskManager {
 				'value'	=> TodoyuTime::sec2hour($data['estimated_workload']),
 				'position'	=> 30
 			);
+						
+				// Estimated workload
+			$info[]	= array(
+				'label'		=> Label('task.attr.is_estimatedworkload_public'),
+				'value'		=> Label('task.attr.is_estimatedworkload_public.' . $data['is_estimatedworkload_public']),
+				'position'	=> 31
+			);
 
 				// Date end (if set)
 			$formatEnd	= date('m', $data['date_end']) === '00' ? 'date' : 'datetime';
@@ -874,8 +881,9 @@ class TodoyuTaskManager {
 			// Set new fields for the cloned version
 		$task['tasknumber']		= TodoyuProjectManager::getNextTaskNumber($task['id_project']);
 		$task['is_acknowledged']= 0;
-		$task['title']			= 'Kopie von: ' . $task['title'];
+		$task['title']			= TodoyuLocale::getFormatLabel('task.title.cloned', array($task['title']));
 		$task['id_user_owner']	= userid();
+		$task['status']			= STATUS_OPEN;
 
 		$task = array_merge($task, $options);
 

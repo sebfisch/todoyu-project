@@ -59,6 +59,10 @@
 	margin: 0 0 0 8px;
 }
 
+.task h3 .headLabel span.taskNumber {
+	cursor:default;
+}
+
 .task h3 .headLabel span.taskDate {
 	margin-left: 0;
 }
