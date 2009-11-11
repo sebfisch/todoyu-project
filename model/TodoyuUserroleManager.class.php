@@ -49,6 +49,12 @@ class TodoyuUserroleManager {
 	}
 
 
+
+	/**
+	 * Get all visible userroles
+	 *
+	 * @return	Array
+	 */
 	public static function getAllUserroles() {
 		$fields	= '*';
 		$table	= self::TABLE;

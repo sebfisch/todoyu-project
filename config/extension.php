@@ -81,7 +81,8 @@ TodoyuExtManager::addRecordConfig('project', 'userrole', array(
 	'list'	=> 'TodoyuUserroleManager::getRecords',
 	'save'	=> 'TodoyuUserroleManager::saveUserrole',
 	'delete'=> 'TodoyuUserroleManager::deleteUserrole',
-	'object'=> 'TodoyuUserrole'
+	'object'=> 'TodoyuUserrole',
+	'table'	=> 'ext_project_userrole'
 ));
 
 TodoyuExtManager::addRecordConfig('project', 'worktype', array(
@@ -90,7 +91,8 @@ TodoyuExtManager::addRecordConfig('project', 'worktype', array(
 	'list'	=> 'TodoyuWorktypeManager::getRecords',
 	'save'	=> 'TodoyuWorktypeManager::saveWorktype',
 	'delete'=> 'TodoyuWorktypeManager::deleteWorktype',
-	'object'=> 'TodoyuWorktype'
+	'object'=> 'TodoyuWorktype',
+	'table'	=> 'ext_project_worktype'
 ));
 
 
