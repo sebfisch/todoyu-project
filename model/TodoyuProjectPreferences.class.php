@@ -301,7 +301,7 @@ class TodoyuProjectPreferences {
 		$projectIDs	= self::getOpenProjectTabs();
 
 			// Remove project from list if already in
-		$projectIDs	= TodoyuDiv::arrayRemoveByValue($projectIDs, array($idProject));
+		$projectIDs	= TodoyuArray::removeByValue($projectIDs, array($idProject));
 
 			// Prepend the current one
 		array_unshift($projectIDs, $idProject);
