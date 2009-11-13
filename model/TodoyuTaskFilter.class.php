@@ -787,7 +787,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	protected static function getTimestampAndLogicForSimpleDateInputs($value, $negate = false)	{
+	public static function getTimestampAndLogicForSimpleDateInputs($value, $negate = false)	{
 		$value = !is_numeric($value) ? TodoyuTime::parseDate($value) : $value;
 
 		if($negate)	{
