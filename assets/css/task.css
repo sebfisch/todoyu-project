@@ -1,6 +1,7 @@
 /* ------------
-	task
+	Task
    ----------- */
+
 .task {
 }
 
@@ -26,7 +27,9 @@
 	font-weight: normal;
 }
 
-/* Task header */
+/* -------------------- 
+	Task header
+   -------------------- */
 .task h3 a.expandable {
 	display: block;
 	position: absolute;
@@ -79,9 +82,12 @@
 	font-weight: bold;
 }
 
+
+
 /* ----------------------
-	additional stuff
+	Additional stuff
    ---------------------- */
+
 .task h3 span.additionalStuff {
 	position: absolute;
 	height: 16px;
@@ -151,9 +157,12 @@ span.taskTitleFixTaskSymbol {
 	padding: 0;
 }
 
+
+
 /* ------------------
-	task details
+	Task details
    ------------------ */
+
 .task .details {
 	border-left-width: 1px;
 	border-left-style: solid;
@@ -163,18 +172,11 @@ span.taskTitleFixTaskSymbol {
 		padding: 5px 0;
 	}
 
-/* description */
+		/* Description */
 	.tasks .task .details .left {
 		float: left;
 		width: 350px;
 		padding: 0 5px;
-	}
-
-	.tasks .task .details fieldset.left {
-	}
-
-
-	.tasks .task .details .description {
 	}
 
 	.tasks .task .details .description * {
@@ -190,7 +192,7 @@ span.taskTitleFixTaskSymbol {
 		margin: 0.2em 0 0.2em 2em;
 	}
 
-/* properties */
+		/* properties */
 	.tasks .task .details .right {
 		float: right;
 		width: 285px;
@@ -201,12 +203,29 @@ span.taskTitleFixTaskSymbol {
 		width: 43%;
 	}
 
-	.tasks .task .details fieldset.right .fField {width:56%;}
-	.tasks .task .details fieldset.right div.typeCheckbox .fLabel {width:92%;}
-	.tasks .task .details fieldset.right div.typeCheckbox .fField {width:2%;margin-left:5px;}
+	.tasks .task .details fieldset.right .fField {
+		width:56%;
+	}
+	
+	.tasks .task .details fieldset.right div.typeCheckbox .fLabel {
+		width:92%;
+	}
+	
+	.tasks .task .details fieldset.right div.typeCheckbox .fField {
+		width:2%;
+		margin-left:5px;
+	}
 
-	.tasks .task .details .properties dt {float: left;width: 130px;}
-	.tasks .task .details .properties dd {float: left;width: 150px;padding-right: 3px;}
+	.tasks .task .details .properties dt {
+		float: left;
+		width: 130px;
+	}
+	
+	.tasks .task .details .properties dd {
+		float: left;
+		width: 150px;
+		padding-right: 3px;
+	}
 
 	.tasks .task .details .properties dt,
 	.tasks .task .details .properties dd,
@@ -215,7 +234,7 @@ span.taskTitleFixTaskSymbol {
 		line-height: 18px;
 	}
 
-/* task tabs */
+		/* task tabs */
 	#content .taskTabs .tabs {
 		top: 0;
 		left: 0px;
@@ -311,7 +330,7 @@ span.taskTitleFixTaskSymbol {
 }
 
 /* -----------------
-	task colors
+	Task colors
    ---------------- */
 
 	/* container */
@@ -319,7 +338,7 @@ span.taskTitleFixTaskSymbol {
 	border-left-color: #000 !important;
 }
 
-/* subtasks */
+	/* subtasks */
 .tasks .subtasks {
 	padding-left: 10px;
 	background: url(../../../../core/assets/img/content/hr_hor.png) repeat-x 0 bottom;
@@ -411,29 +430,41 @@ span.taskTitleFixTaskSymbol {
 }
 */
 
-/* Additional task icons */
+
+
+/* ------------------
+	Additional task icons
+   ------------------ */
 
 .additionalStuff .isPublic{
 	background: url(../img/icons_dev.png) no-repeat 0 0;
 }
 
-/* task header billing types: */
+	/* task header billing types: */
 .billing_clarify, .billing_bug, .billing_addexpense, .billing_gratis {
 	width: 10px;
 	height: 16px;
 }
+
 .billing_clarify {
 	background: url(../../img/sprite-icons.png) no-repeat -60px -79px !important;
 }
+
 .billing_bug {
 	background: url(../../img/sprite-icons.png) no-repeat -62px -49px !important;
 }
+
 .billing_addexpense {
 	background: url(../../img/sprite-icons.png) no-repeat -62px -234px !important;
 }
+
 .billing_gratis {
 	background: url(../../img/sprite-icons.png) no-repeat -60px -16px !important;
 }
 
 .task-status-container h3 a,
-.task-status-container div.taskdetails {border-left-color: #1E2022; background-color:#FBFBF4; /*background: url(../../../../core/assets/img/bgs/taskcontainer.png);*/ }
+.task-status-container div.taskdetails {
+	border-left-color:#1E2022;
+	background-color:#FBFBF4;
+	/*background: url(../../../../core/assets/img/bgs/taskcontainer.png);*/
+}

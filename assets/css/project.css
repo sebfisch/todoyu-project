@@ -1,5 +1,5 @@
 /* --------------
-	header
+	Header
    -------------- */
 #projects {
 
@@ -78,11 +78,12 @@
 }
 
 
+
 /* ----------------
-	tasktree
+	Tasktree
    ---------------- */
 
-/* lost tasks */
+	/* lost tasks */
 .tasks .lostTasks {
 	margin-top:20px;
 	margin-bottom:30px;
@@ -95,7 +96,7 @@
 	font-size:14px;
 }
 
-/* edit */
+	/* edit */
 .project .edit .formLabel {
 	width:150px;
 	text-align:left;
@@ -103,10 +104,6 @@
 
 .project .edit .formField {
 	width:520px;
-}
-
-.project .edit fieldset.top {
-
 }
 
 .project .edit fieldset.basic {
@@ -135,11 +132,13 @@
 	width:150px;
 }
 
+
+
 /* --------------
-	project
+	Project
    -------------- */
 
-/* details */
+	/* details */
 #search-results .projectdetails,
 .project .projectdetails {
 	border-top-width: 5px;
@@ -151,7 +150,7 @@
 	margin-bottom:10px;
 }
 
-/* properties */
+		/* properties */
 	#search-results .projectdetails .properties dt,
 	.project .projectdetails .properties dt {
 		float:left;
@@ -197,8 +196,9 @@
 	}
 
 
+
 /* -------------
-	title
+	Title
    ------------- */
 #taskList h1.projectTitle a.addComment {
 	background: url(../../../../core/assets/img/sprite-icons.png) no-repeat 0 -16px;
@@ -212,7 +212,9 @@
 	position: static;
 }
 
-/* General styles: move to top css file */
+
+
+	/* General styles @todo Move to top css file */
 .type-dateinput input {
 	width:60px;
 }

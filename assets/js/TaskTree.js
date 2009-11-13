@@ -64,7 +64,9 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	unknown_type idProject
 	 */
 	toggle: function(idProject) {
-		this.tree(idProject).toggle();
+		if ( this.tree(idProject) ) {
+			this.tree(idProject).toggle();
+		}
 	},
 
 
@@ -248,7 +250,7 @@ Todoyu.Ext.project.TaskTree = {
 
 
 	/**
-	 * Enter description here...
+	 * Save task tree sub tasks opened status pref
 	 *
 	 * @todo	comment
 	 * @param	unknown_type idTask
@@ -261,7 +263,7 @@ Todoyu.Ext.project.TaskTree = {
 
 
 	/**
-	 * Enter description here...
+	 * Add task tree context menu
 	 *
 	 * @todo	comment
 	 */

@@ -54,6 +54,13 @@ Todoyu.Ext.project.Project = {
 		this.Edit.loadForm(idProject);
 	},
 	
+	
+	
+	/**
+	 *	Delete given project
+	 *
+	 *	@param	Integer	idProject
+	 */
 	remove: function(idProject) {
 		if( confirm('[LLL:project.js.removeProject]') ) {
 			if( confirm('[LLL:project.js.removeProjectConfirmAgain]') ) {
@@ -223,6 +230,14 @@ Todoyu.Ext.project.Project = {
 		Todoyu.Ui.update(target, url, options);
 	},
 	
+	
+	
+	/**
+	 *	Change status of given project to given status
+	 *
+	 *	@param	Integer	idProject
+	 *	@param	Integer	status
+	 */
 	updateStatus: function(idProject, status) {
 		var url	= Todoyu.getUrl('project', 'project');
 		var options	= {

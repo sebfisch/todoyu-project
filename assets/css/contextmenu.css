@@ -1,5 +1,5 @@
 /* --------------------------
-	project contextmenu
+	Project contextmenu
    -------------------------- */
 
 #contextmenu .projectContextMenu {
@@ -31,8 +31,10 @@
 	background-position:3px -147px;
 }
 
+
+
 /* ---------------------------
-	task contextmenu
+	Task contextmenu
    ---------------------------  */
 
 #contextmenu .taskContextMenu {
@@ -107,8 +109,10 @@
 	background-position:3px -57px;
 }
 
+
+
 /* ---------------------------
-	container context menu
+	Container context menu
    --------------------------- */
 
 #contextmenu .containerEdit {

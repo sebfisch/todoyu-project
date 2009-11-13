@@ -27,37 +27,47 @@
 	background-image:url('../img/panelwidget-statusfilter.png');
 }
 
+
+
 /* -------------------
-	status icons
+	Status icons
    ------------------ */
 
 #panelwidget-statusfilter li.statusPlanning label {
 	background-position:0 -30px;
 }
+
 #panelwidget-statusfilter li.statusOpen label {
 	background-position:0 -120px;
 }
+
 #panelwidget-statusfilter li.statusProgress label {
 	background-position:0 -150px;
 }
 #panelwidget-statusfilter li.statusConfirm label {
 	background-position:0 -60px;
 }
+
 #panelwidget-statusfilter li.statusDone label {
 	background-position:0 -180px;
 }
+
 #panelwidget-statusfilter li.statusAccepted label {
 	background-position:0 -180px;
 }
+
 #panelwidget-statusfilter li.statusRejected label {
 	background-position:0 -90px;
 }
+
 #panelwidget-statusfilter li.statusCleared label {
 	background-position:0 -210px;
 }
+
 #panelwidget-statusfilter li.statusWarranty label {
 	background-position:0 0;
 }
+
 #panelwidget-statusfilter li.statusCustomer label {
 	background-position:0 0;
 }

@@ -12,9 +12,11 @@ div.taskparent-ac ul {
 	margin: 0;
 	padding: 0;
 }
+
 div.taskparent-ac ul li.selected {
 	background-color: #ffb;
 }
+
 div.taskparent-ac ul li {
 	list-style-type: none;
 	display: block;
