@@ -743,6 +743,9 @@ Todoyu.Ext.project.Task = {
 			} else {
 				this.ext.Task.update(idTaskOld, content);
 				this.ext.Task.addContextMenu(idTask);
+
+				Todoyu.Hook.exec('onTaskSaved', idTask);
+
 				/*
 				if(idTaskOld === 0)	{
 					var idProject = this.ext.ProjectTaskTree.getActiveProjectID();
