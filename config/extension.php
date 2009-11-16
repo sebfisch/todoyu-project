@@ -27,9 +27,6 @@
  */
 
 
-if( ! defined('TODOYU') ) die('NO ACCESS');
-
-
 TodoyuRenderer::addAreaRenderer('project', 'content', 'TodoyuProjectRenderer::renderProjectView');
 
 //$CONFIG['EXT']['project']['renderer']['content'][] 	= 'TodoyuProjectRenderer::renderProjectView';
