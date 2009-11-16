@@ -838,6 +838,47 @@ class TodoyuProjectManager {
 		return $defaultData;
 	}
 
+
+
+	/**
+	 *	Get data for submenu entries of currently open projects
+	 *
+	 *	@return	Array
+	 */
+	public function getOpenProjectSubmenuEntryTitles() {
+		$entries		= array();
+
+		$projectsData	= self::getOpenProjectsSubmenuEntriesData();
+		foreach($projectsData as $idProject => $project) {
+			$entries[ $idProject ]	= $project['customer']['shortname'] . ': ' . $project['title'];
+		}
+
+		return $entries;
+	}
+
+
+
+	/**
+	 *	Get data (array) of the currently open projects
+	 *
+	 *	@return	Array
+	 */
+	public function getOpenProjectsSubmenuEntriesData() {
+		$openProjectIDs	= TodoyuProjectPreferences::getOpenProjectTabs();
+
+		$projectsData	= array();
+		foreach($openProjectIDs as $idProject) {
+			$project	= TodoyuProjectManager::getProject($idProject);
+
+			$data				= $project->getTemplateData();
+			$data['customer']	= $project->getCustomer();
+
+			$projectsData[$idProject]	= $data;
+		}
+
+		return $projectsData;
+	}
+
 }
 
 ?>

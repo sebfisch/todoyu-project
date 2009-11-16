@@ -173,9 +173,6 @@ class TodoyuProject extends TodoyuBaseObject {
 
 
 
-
-
-
 	/**
 	 * loads foreign data of a project
 	 *
