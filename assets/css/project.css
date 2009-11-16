@@ -192,7 +192,9 @@
 	}
 
 	/* description */
-	.project .projectdetails .description {
+	.project .projectdetails .description ul {
+		list-style-position:inside;
+		list-style-type:square;
 	}
 
 
