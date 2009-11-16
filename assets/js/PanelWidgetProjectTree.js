@@ -41,7 +41,7 @@ Todoyu.Ext.project.PanelWidget.ProjectTree = {
 		var filterValues = $H(filterValues);
 		var options	= {
 			'parameters': {
-				'cmd': 'updatetree'
+				'action': 'updatetree'
 			}
 		};
 
@@ -104,7 +104,7 @@ Todoyu.Ext.project.PanelWidget.ProjectTree = {
 		} else {
 			var options	= {
 				parameters: {
-					'cmd': 		'subtasks',
+					'action': 		'subtasks',
 					'parent':	idItem,
 					'type':		type,
 					'area':		Todoyu.getArea()
@@ -176,7 +176,7 @@ Todoyu.Ext.project.PanelWidget.ProjectTree = {
 	sendClose: function(type, idElement) {
 		var options = {
 			'parameters': {
-				'cmd': 'collapse',
+				'action': 'collapse',
 				'type': type,
 				'element': idElement
 			}
@@ -196,7 +196,7 @@ Todoyu.Ext.project.PanelWidget.ProjectTree = {
 	sendOpen: function(type, idElement) {
 		var options = {
 			'parameters': {
-				'cmd': 'expand',
+				'action': 'expand',
 				'type': type,
 				'element': idElement
 			}

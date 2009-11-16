@@ -18,7 +18,7 @@
 						<acListener>
 							<ext>project</ext>
 							<controller>autocomplete</controller>
-							<cmd>user</cmd>
+							<action>user</action>
 						</acListener>
 						<acLabelFunc>TodoyuUserManager::getLabel</acLabelFunc>
 					</config>

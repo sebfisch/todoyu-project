@@ -31,7 +31,7 @@
 						<acListener>
 							<ext>project</ext>
 							<controller>panelwidget-projecttree</controller>
-							<cmd>autocomplete-user</cmd>
+							<action>autocomplete-user</action>
 						</acListener>
 						<acLabelFunc>TodoyuUserManager::getLabel</acLabelFunc>
 					</config>
@@ -43,7 +43,7 @@
 						<acListener>
 							<ext>project</ext>
 							<controller>project</controller>
-							<cmd>autocompleteCustomer</cmd>
+							<action>autocompleteCustomer</action>
 						</acListener>
 						<acLabelFunc>TodoyuCustomerManager::getLabel</acLabelFunc>
 					</config>

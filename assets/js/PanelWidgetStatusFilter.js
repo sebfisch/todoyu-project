@@ -150,8 +150,8 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	 */
 	savePreference: function() {
 		var pref	= this.getSelectedStatuses().join(',');
-		var cmd		= 'panelwidget' + this.key;
+		var action		= 'panelwidget' + this.key;
 
-		Todoyu.Pref.save('project', cmd, pref);
+		Todoyu.Pref.save('project', action, pref);
 	}
 };

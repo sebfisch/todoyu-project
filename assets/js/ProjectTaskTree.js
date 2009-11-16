@@ -95,7 +95,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		var url		= Todoyu.getUrl('project', 'projecttasktree');
 		var options = {
 			'parameters': {
-				'cmd': 		'project',
+				'action': 		'project',
 				'project': 	idProject,
 				'task': 	idTask
 			},
@@ -284,7 +284,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		var url		= Todoyu.getUrl('project', 'projecttasktree');
 		var options	= {
 			'parameters': {
-				'cmd': 'openprojects',
+				'action': 'openprojects',
 				'projects': this.openProjects.join(',')
 			}
 		};

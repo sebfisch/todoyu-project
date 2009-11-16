@@ -93,7 +93,7 @@
 								<acListener>
 									<ext>project</ext>
 									<controller>project</controller>
-									<cmd>autocompleteCustomer</cmd>
+									<action>autocompleteCustomer</action>
 								</acListener>
 								<acLabelFunc>TodoyuCustomerManager::getLabel</acLabelFunc>
 								<options>

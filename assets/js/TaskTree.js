@@ -97,7 +97,7 @@ Todoyu.Ext.project.TaskTree = {
 		var url		= Todoyu.getUrl('project', 'tasktree');
 		var options	= {
 			'parameters': {
-				'cmd': 'update',
+				'action': 'update',
 				'project': idProject
 			},
 			'onComplete': this.onUpdated.bind(this)
@@ -231,7 +231,7 @@ Todoyu.Ext.project.TaskTree = {
 		var url		= Todoyu.getUrl('project', 'subtasks');
 		var options	= {
 			'parameters': {
-				'cmd': 'load',
+				'action': 'load',
 				'task': idTask,
 				'show': 0
 			},

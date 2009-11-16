@@ -146,7 +146,7 @@ Todoyu.Ext.project = {
 			url		= Todoyu.getUrl('project', 'preference');
 			options = {
 				'parameters': {
-					'cmd':	'collapse_tree_task',
+					'action':	'collapse_tree_task',
 					'task': idTask
 				}
 			};
@@ -165,7 +165,7 @@ Todoyu.Ext.project = {
 		var url		= Todoyu.getUrl('project', 'project');
 		var options	= {
 			'parameters': {
-				'cmd': 'addfirst'
+				'action': 'addfirst'
 			},
 			'onComplete': this.onFirstProjectAdded.bind(this)
 		};

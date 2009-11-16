@@ -151,17 +151,17 @@ Todoyu.Ext.project.PanelWidget.ProjectTree.Filter = {
 		var	url		= Todoyu.getUrl('project', 'panelwidgetprojecttree');
 		var options	= {
 			'parameters': {
-				'cmd': 'updatefilter'
+				'action': 'updatefilter'
 			},
 			'onComplete': this.onUpdated.bind(this)
 		};
 
 		if( option.add ) {
-			options.parameters.action	='add';
+			options.parameters.command	='add';
 			options.parameters.field	= option.add;
 		}
 		if( option.remove ) {
-			options.parameters.action	='remove';
+			options.parameters.command	='remove';
 			options.parameters.field	= option.remove;
 		}
 

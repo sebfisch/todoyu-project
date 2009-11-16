@@ -61,14 +61,21 @@ class TodoyuProjectPanelwidgetProjecttreeActionController extends TodoyuActionCo
 		return $projectTree->renderTree();
 	}
 
+
+
+	/**
+	 * Update filterlist for project tree (add or remove a filter)
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function updatefilterAction(array $params) {
-		$action	= $params['action'];
+		$command= $params['command'];
 		$field	= $params['field'];
 
-		if( $action === 'add' ) {
+		if( $command === 'add' ) {
 			TodoyuPanelWidgetProjectTree::addNewFilter($field, '', AREA);
-		}
-		if( $action === 'remove' ) {
+		} elseif( $command === 'remove' ) {
 			TodoyuPanelWidgetProjectTree::removeFilter($field, AREA);
 		}
 

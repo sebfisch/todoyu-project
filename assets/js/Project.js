@@ -67,7 +67,7 @@ Todoyu.Ext.project.Project = {
 				var url		= Todoyu.getUrl('project', 'project');
 				var options	= {
 					'parameters': {
-						'cmd': 'remove',
+						'action': 'remove',
 						'project': idProject
 					}				
 				};
@@ -92,7 +92,7 @@ Todoyu.Ext.project.Project = {
 				var url		= Todoyu.getUrl('project', 'project');
 				var options	= {
 					'parameters': {
-						'cmd': 'details',
+						'action': 'details',
 						'project': idProject
 					}
 				};
@@ -162,7 +162,7 @@ Todoyu.Ext.project.Project = {
 		var url		= Todoyu.getUrl('project', 'project');
 		var options	= {
 			'parameters': {
-				'cmd': 'add'
+				'action': 'add'
 			},
 			'onComplete': this.onAdded.bind(this)
 		};
@@ -221,7 +221,7 @@ Todoyu.Ext.project.Project = {
 		var url		= Todoyu.getUrl('project', 'project');
 		var options	= {
 			'parameters': {
-				'cmd': 'details',
+				'action': 'details',
 				'project': idProject
 			}
 		};
@@ -243,7 +243,7 @@ Todoyu.Ext.project.Project = {
 		var options	= {
 			'parameters': {
 				'project': idProject,
-				'cmd': 'setstatus',
+				'action': 'setstatus',
 				'status': status
 			},
 			'onComplete': this.refresh.bind(this, idProject)
@@ -297,7 +297,7 @@ Todoyu.Ext.project.Project = {
 			var url 	= Todoyu.getUrl('project', 'project');
 			var options = {
 				'parameters': {
-					'cmd': 'edit',
+					'action': 'edit',
 					'project': idProject
 				}
 			};
@@ -318,7 +318,7 @@ Todoyu.Ext.project.Project = {
 
 			$(form).request({
 				'parameters': {
-					'cmd': 'save'
+					'action': 'save'
 				},
 				onComplete: this.onSaved.bind(this)
 			});
