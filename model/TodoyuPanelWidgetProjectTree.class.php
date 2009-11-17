@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-
 class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
 
