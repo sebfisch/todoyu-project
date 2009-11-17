@@ -32,18 +32,13 @@ $CONFIG['EXT']['project']['info'] = array(
 		'email'		=> 'ferni@snowflake.ch',
 		'company'	=> 'snowflake productions, Zürich'
 	),
-	'dependencies' 		=> 'user',
-	'conflicts'			=> '',
 	'state' 			=> 'beta',
-	'version' => '0.1.0',
-	'constraints' => array(
+	'version' 			=> '0.1.0',
+	'constraints' 		=> array(
 		'depends' => array(
 			'user' => '0.1.0'
 		),
-		'conflicts' => array(
-		),
-		'suggests' => array(
-		),
+		'conflicts' => array()
 	)
 );
 
