@@ -23,6 +23,7 @@
 		<label index="attr.timeover">'Enddate or deadline exceed'</label>
 		<label index="attr.overtimed">Task overtimed</label>
 		<label index="search.label">Tasks</label>
+		<label index="search.mode.label">Search tasks</label>
 		<label index="date.deadline.short">D</label>
 		<label index="contextmenu.showinproject">Show in project</label>
 		<label index="contextmenu.edit">Edit task</label>

@@ -20,8 +20,8 @@
 ***************************************************************/
 
 
-TodoyuSearchManager::addSearchEngine('task', 'TodoyuTaskSearch::getResults', 'TodoyuTaskSearch::getSuggestions', 'task.search.label', 'Tasks durchsuchen', 10);
-TodoyuSearchManager::addSearchEngine('project', 'TodoyuProjectSearch::getResults', 'TodoyuProjectSearch::getSuggestions', 'project.search.label', 'Projekte durchsuchen', 20);
+TodoyuSearchManager::addSearchEngine('task', 'TodoyuTaskSearch::getResults', 'TodoyuTaskSearch::getSuggestions', 'task.search.label', 'task.search.mode.label', 10);
+TodoyuSearchManager::addSearchEngine('project', 'TodoyuProjectSearch::getResults', 'TodoyuProjectSearch::getSuggestions', 'project.search.label', 'project.search.mode.label', 20);
 
 
 //$CONFIG['EXT']['search']['engines']['task'] = array(
