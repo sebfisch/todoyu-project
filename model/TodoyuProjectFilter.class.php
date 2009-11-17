@@ -70,9 +70,10 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 
 		$where .= ' AND ' . Todoyu::db()->buildLikeQuery($searchWords, $searchInFields);
 
-		return array(	'tables'	=> $tables,
-						'where'		=> $where
-					);
+		return array(
+			'tables'	=> $tables,
+			'where'		=> $where
+		);
 	}
 
 
@@ -121,9 +122,10 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 		$tables	= array('ext_project_project');
 		$where	= Todoyu::db()->buildLikeQuery($titleParts, array('ext_project_project.title'));
 
-		return array(	'tables'=> $tables,
-						'where'	=> $where
-					);
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where
+		);
 	}
 
 
@@ -135,7 +137,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function filter_customer($idCustomer, $negate = false) {
+	public static function Filter_customer($idCustomer, $negate = false) {
 		$idCustomer	= intval($idCustomer);
 
 		if( $idCustomer === 0 ) {
@@ -145,9 +147,10 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 		$tables	= array('ext_project_project');
 		$where	= 'ext_project_project.id_customer = ' . $idCustomer;
 
-		return array(	'tables'=> $tables,
-						'where'	=> $where
-					);
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where
+		);
 	}
 
 
@@ -159,7 +162,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function filter_projectleader($idProjectleader, $negate = false) {
+	public static function Filter_projectleader($idProjectleader, $negate = false) {
 		$idProjectleader	= intval($idProjectleader);
 
 		if( $idProjectleader === 0 ) {
@@ -167,14 +170,24 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 		}
 
 		$tables	= array('ext_project_project');
-		$where	= '	ext_project_project.id IN (SELECT ext_project_project.id FROM ext_project_project,ext_project_mm_project_user,ext_project_userrole WHERE  ext_project_project.id 						= ext_project_mm_project_user.id_project AND
-					ext_project_mm_project_user.id_user			= ' . $idProjectleader . ' AND
-					ext_project_mm_project_user.id_userrole	= ext_project_userrole.id AND
-					ext_project_userrole.rolekey					= \'projectleader\')';
+		$where	= '	ext_project_project.id IN (
+						SELECT
+							ext_project_project.id
+						FROM
+							ext_project_project,
+							ext_project_mm_project_user,
+							ext_project_userrole
+						WHERE
+							ext_project_project.id 					= ext_project_mm_project_user.id_project AND
+							ext_project_mm_project_user.id_user		= ' . $idProjectleader . ' AND
+							ext_project_mm_project_user.id_userrole	= ext_project_userrole.id AND
+							ext_project_userrole.rolekey			= \'projectleader\'
+					)';
 
-		return array(	'tables'=> $tables,
-						'where'	=> $where
-					);
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where
+		);
 	}
 
 
@@ -186,7 +199,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function filter_projectsupervisor($idProjectsupervisor, $negate = false) {
+	public static function Filter_projectsupervisor($idProjectsupervisor, $negate = false) {
 		$idProjectsupervisor	= intval($idProjectsupervisor);
 
 		if( $idProjectsupervisor === 0 ) {
@@ -199,9 +212,10 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 					ext_project_mm_project_user.id_userrole	= ext_project_userrole.id AND
 					ext_project_userrole.rolekey					= \'projectsupervisor\')';
 
-		return array(	'tables'=> $tables,
-						'where'	=> $where
-					);
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where
+		);
 	}
 
 
@@ -213,16 +227,17 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function filter_isfixed($isFixed, $negate = false)	{
+	public static function Filter_isfixed($isFixed, $negate = false)	{
 		$tables = array('ext_project_project');
 
 		$value = $negate === true ? 0 : 1;
 
 		$where = ' is_fixed = '.intval($value);
 
-		return array(	'tables' => $tables,
-						'where' => $where
-					);
+		return array(
+			'tables' => $tables,
+			'where' => $where
+		);
 	}
 
 
