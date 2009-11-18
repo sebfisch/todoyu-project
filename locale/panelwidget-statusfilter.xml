@@ -3,7 +3,5 @@
 	<labels lang="en">
 		<label index="title">Status filter</label>
 	</labels>
-	<labels lang="de">
-		<label index="title">Task-status Filter</label>
-	</labels>
+	<labels lang="de"></labels>
 </locallang>

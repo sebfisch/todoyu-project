@@ -11,15 +11,5 @@
 		<label index="filter.customer">Customer</label>
 		<label index="list.empty">No matching projects</label>
 	</labels>
-	<labels lang="de">
-		<label index="title">Projekte</label>
-		<label index="filter.remove">Filter entfernen</label>
-		<label index="filter.addFilter">Hinzufügen</label>
-		<label index="filter.addNewFilter">Neuer Filter hinzufügen</label>
-		<label index="filter.status">Status</label>
-		<label index="filter.fulltext">Volltext</label>
-		<label index="filter.projectleader">Projektleiter</label>
-		<label index="filter.customer">Kunde</label>
-		<label index="list.empty">Keine Projekte gefunden</label>
-	</labels>
+	<labels lang="de"></labels>
 </locallang>
