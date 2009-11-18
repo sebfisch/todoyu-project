@@ -4,26 +4,17 @@
 		<label index="ext.title">Project and task management</label>
 		<label index="page.title">Projects</label>
 		<label index="page.title.noSelected">Projects - Select your project</label>
-
 		<label index="noproject.message">You have not selected any project.</label>
 		<label index="noproject.option.select">Select one from the project tree</label>
 		<label index="noproject.option.create">Create a new project</label>
 		<label index="noproject.tab">No project selected</label>
-
 		<label index="newproject.tab">Create a new project</label>
 		<label index="newproject.title">New project</label>
-
-
-
-
 		<label index="addcontainer">Add container</label>
 		<label index="addtask">Add task</label>
 		<label index="addproject">Add project</label>
 		<label index="editproject">Edit project</label>
-
-
 		<label index="tab.label">Projects</label>
-
 		<label index="task.title">Title</label>
 		<label index="task.description">Description</label>
 		<label index="task.worktype">Worktype</label>
@@ -37,7 +28,6 @@
 		<label index="task.start_tracking">Start timetracking</label>
 		<label index="task.billing_type">Billing type</label>
 		<label index="task.task_done">Is Task done?</label>
-
 		<label index="status.planning">Planning</label>
 		<label index="status.open">Open</label>
 		<label index="status.progress">In progress</label>
@@ -49,16 +39,12 @@
 		<label index="status.warranty">In warranty</label>
 		<label index="status.customer">Customer</label>
 		<label index="status.undefined">Undefined</label>
-
 		<label index="project.properties">Properties</label>
 		<label index="project.description">Description</label>
 		<label index="project.involved_persons">Involved persons</label>
 		<label index="project.cancel">Cancel editing</label>
 		<label index="project.save">Save project</label>
-
-
 		<label index="newProject.tabLabel">New Project</label>
-
 		<label index="projectrole.projectleader">Projectleader</label>
 		<label index="projectrole.projectleader_ext">Projectleader external</label>
 		<label index="projectrole.employee">Employee</label>
@@ -75,32 +61,24 @@
 		<label index="attr.projectusers">Projectusers</label>
 		<label index="attr.projectusers.new">Projectusers</label>
 		<label index="taskno">Tasknr.</label>
-
 		<label index="user.name">Person</label>
 		<label index="user.role">Projectrole</label>
 		<label index="user.comment">Comment</label>
-
 		<label index="contextmenu.showdetails">Show details</label>
 		<label index="contextmenu.hidedetails">Hide details</label>
 		<label index="contextmenu.edit">Edit project</label>
 		<label index="contextmenu.delete">Delete project</label>
 		<label index="contextmenu.add.task">Add a new task</label>
 		<label index="contextmenu.add.container">Add a new container</label>
-
 		<label index="worktype.attr.title">Title</label>
 		<label index="userrole.attr.title">Title</label>
 		<label index="userrole.attr.rolekey">Role Key word</label>
-
 		<label index="tasktree.losttasks">Matching tasks whichs parent are not displayed in the list</label>
-
 		<label index="records.userrole">Userroles</label>
 		<label index="records.worktype">Worktypes</label>
-
 		<label index="form.validation.dateBefore">Datum muss vor dem Ende sein</label>
 		<label index="form.validation.title">Please enter a project title</label>
-
-
-
+		<label index="noLabel.newProjectParticipant">New Project participant</label>
 	</labels>
 	<labels lang="de">
 		<label index="createanewproject">Ein neues Project anlegen</label>
@@ -110,7 +88,6 @@
 		<label index="addtask">Task hinzufügen</label>
 		<label index="addproject">Projekt hinzufügen</label>
 		<label index="editproject">Projekt editieren</label>
-
 		<label index="page.title">Projekte</label>
 		<label index="tab.label">Projekte</label>
 		<label index="task.title">Titel</label>
@@ -122,7 +99,6 @@
 		<label index="task.startworkload">Zeiterfassung starten</label>
 		<label index="task.billing_type">Berrechnungstyp</label>
 		<label index="task.is_task_done">Task erledigt</label>
-
 		<label index="status.planning">In Planung</label>
 		<label index="status.open">Offen</label>
 		<label index="status.progress">In Bearbeitung</label>
@@ -134,7 +110,6 @@
 		<label index="status.warranty">Garantie</label>
 		<label index="status.customer">Kundenwunsch</label>
 		<label index="status.undefined">Undefiniert</label>
-
 		<label index="attr.status">Status</label>
 		<label index="attr.customer">Customer</label>
 		<label index="attr.date_start">Startdatum</label>
@@ -142,36 +117,30 @@
 		<label index="attr.date_finish">Fertigstellung</label>
 		<label index="attr.date_deadline">Deadline</label>
 		<label index="attr.projectusers">Beteiligte Personen</label>
-
 		<label index="project.properties">Eigenschaften</label>
 		<label index="project.description">Beschreibung</label>
 		<label index="project.involved_persons">Beteiligte Personen</label>
 		<label index="project.cancel">Abbrechen</label>
 		<label index="project.save">Speichern</label>
-
 		<label index="projectrole.projectleader">Projektleiter</label>
 		<label index="projectrole.projectleader_ext">Projektleiter extern</label>
 		<label index="projectrole.employee">Angestellter</label>
 		<label index="projectrole.employee_ext">Externer Mitarbeiter</label>
 		<label index="projectrole.projectsupervisor">Projekt-Supervisor</label>
-
 		<label index="worktype.attr.title">Titel</label>
 		<label index="userrole.attr.title">Titel</label>
 		<label index="userrole.attr.rolekey">Schlüsselwort</label>
-
 		<label index="search.label">Projekte</label>
 		<label index="attr.status">Status</label>
 		<label index="attr.customer">Kunde</label>
 		<label index="taskno">Tasknr.</label>
-
 		<label index="user.name">Person</label>
 		<label index="user.role">Projektrolle</label>
 		<label index="user.comment">Kommentar</label>
-
 		<label index="link.to_task_top">Zum Beginn dieses Tasks springen</label>
 		<label index="form.formValidation.dateBefore">Datum muss vor dem Ende sein</label>
-
 		<label index="records.userrole">Projektrollen</label>
 		<label index="records.worktype">Leistungsarten</label>
+		<label index="noLabel.newProjectParticipant">Neuer Projektbeteiligter</label>
 	</labels>
 </locallang>

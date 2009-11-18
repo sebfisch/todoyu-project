@@ -132,7 +132,7 @@
 						</addSubformConfig>
 						<label type="function">
 							<function>TodoyuProjectViewHelper::getProjectUserLabel</function>
-							<noLabel>Neuer Projektbeteiligter</noLabel>
+							<noLabel>LLL:project.noLabel.newProjectParticipant</noLabel>
 						</label>
 					</foreignRecordConf>
 				</field>
