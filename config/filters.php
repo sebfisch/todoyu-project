@@ -328,7 +328,7 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 		),
 		'title' => array(
 			'funcRef'	=> 'TodoyuProjectFilter::filter_title',
-			'label'		=> 'LLL:projectFilter.filterlabel.project.title',
+			'label'		=> 'LLL:core.title',
 			'optgroup'	=> 'LLL:project.search.label',
 			'widget'	=> 'textinput',
 		),

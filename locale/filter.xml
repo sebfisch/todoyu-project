@@ -38,7 +38,6 @@
 
 		<label index="filterlabel.project.fulltext">Title fulltext</label>
 		<label index="filterlabel.project.status">Status</label>
-		<label index="filterlabel.project.title">Title</label>
 		<label index="filterlabel.project.customer">Customer name</label>
 		<label index="filterlabel.project.projectleader">Projectleader</label>
 		<label index="filterlabel.project.projectsupervisor">Projektsupervisor</label>
@@ -82,7 +81,6 @@
 
 		<label index="filterlabel.project.fulltext">Titel Volltext</label>
 		<label index="filterlabel.project.status">Status</label>
-		<label index="filterlabel.project.title">Titel</label>
 		<label index="filterlabel.project.customer">Kunde</label>
 		<label index="filterlabel.project.projectleader">Projektleiter</label>
 		<label index="filterlabel.project.projectsupervisor">Projektsupervisor</label>

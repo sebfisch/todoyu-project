@@ -20,7 +20,7 @@
 			<elements>
 
 				<field type="textinput" name="title">
-					<label>LLL:project.task.title</label>
+					<label>LLL:core.title</label>
 					<validate>
 						<isNotEmpty msg="Tasks needs a title" />
 					</validate>
@@ -109,7 +109,7 @@
 						<tables>ext_project_worktype</tables>
 						<where>deleted = 0</where>
 						<order>title</order>
-						<label>title</label>
+						<label>LLL:core.title</label>
 						<value>id</value>
 					</source>
 				</field>

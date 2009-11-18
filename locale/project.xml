@@ -15,7 +15,6 @@
 		<label index="addproject">Add project</label>
 		<label index="editproject">Edit project</label>
 		<label index="tab.label">Projects</label>
-		<label index="task.title">Title</label>
 		<label index="task.description">Description</label>
 		<label index="task.worktype">Worktype</label>
 		<label index="task.esitmated_workload">Estimated workload</label>
@@ -70,8 +69,6 @@
 		<label index="contextmenu.delete">Delete project</label>
 		<label index="contextmenu.add.task">Add a new task</label>
 		<label index="contextmenu.add.container">Add a new container</label>
-		<label index="worktype.attr.title">Title</label>
-		<label index="userrole.attr.title">Title</label>
 		<label index="userrole.attr.rolekey">Role Key word</label>
 		<label index="tasktree.losttasks">Matching tasks whichs parent are not displayed in the list</label>
 		<label index="records.userrole">Userroles</label>
@@ -90,7 +87,6 @@
 		<label index="editproject">Projekt editieren</label>
 		<label index="page.title">Projekte</label>
 		<label index="tab.label">Projekte</label>
-		<label index="task.title">Titel</label>
 		<label index="task.description">Beschreibung</label>
 		<label index="task.worktype">Leistungsart</label>
 		<label index="task.esitmated_workload">Geschätzer Aufwand</label>
@@ -127,8 +123,6 @@
 		<label index="projectrole.employee">Angestellter</label>
 		<label index="projectrole.employee_ext">Externer Mitarbeiter</label>
 		<label index="projectrole.projectsupervisor">Projekt-Supervisor</label>
-		<label index="worktype.attr.title">Titel</label>
-		<label index="userrole.attr.title">Titel</label>
 		<label index="userrole.attr.rolekey">Schlüsselwort</label>
 		<label index="search.label">Projekte</label>
 		<label index="attr.status">Status</label>

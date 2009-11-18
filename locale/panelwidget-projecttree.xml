@@ -5,7 +5,6 @@
 		<label index="filter.remove">Remove filter</label>
 		<label index="filter.addFilter">Add</label>
 		<label index="filter.addNewFilter">Add a new filter</label>
-		<label index="filter.title">Title</label>
 		<label index="filter.status">Status</label>
 		<label index="filter.fulltext">Fulltext</label>
 		<label index="filter.projectleader">Projectleader</label>
@@ -17,7 +16,6 @@
 		<label index="filter.remove">Filter entfernen</label>
 		<label index="filter.addFilter">Hinzufügen</label>
 		<label index="filter.addNewFilter">Neuer Filter hinzufügen</label>
-		<label index="filter.title">Titel</label>
 		<label index="filter.status">Status</label>
 		<label index="filter.fulltext">Volltext</label>
 		<label index="filter.projectleader">Projektleiter</label>

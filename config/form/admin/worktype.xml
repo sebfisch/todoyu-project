@@ -11,7 +11,7 @@
 			<elements>
 
 				<field type="textinput" name="title">
-					<label>LLL:project.worktype.attr.title</label>
+					<label>LLL:core.title</label>
 					<required />
 				</field>
 
