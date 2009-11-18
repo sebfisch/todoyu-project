@@ -15,7 +15,6 @@
 		<label index="addproject">Add project</label>
 		<label index="editproject">Edit project</label>
 		<label index="tab.label">Projects</label>
-		<label index="task.description">Description</label>
 		<label index="task.worktype">Worktype</label>
 		<label index="task.esitmated_workload">Estimated workload</label>
 		<label index="task.date_start">Date start</label>
@@ -39,7 +38,6 @@
 		<label index="status.customer">Customer</label>
 		<label index="status.undefined">Undefined</label>
 		<label index="project.properties">Properties</label>
-		<label index="project.description">Description</label>
 		<label index="project.involved_persons">Involved persons</label>
 		<label index="project.cancel">Cancel editing</label>
 		<label index="project.save">Save project</label>
@@ -87,7 +85,6 @@
 		<label index="editproject">Projekt editieren</label>
 		<label index="page.title">Projekte</label>
 		<label index="tab.label">Projekte</label>
-		<label index="task.description">Beschreibung</label>
 		<label index="task.worktype">Leistungsart</label>
 		<label index="task.esitmated_workload">Geschätzer Aufwand</label>
 		<label index="task.date_start">Startdatum</label>
@@ -114,7 +111,6 @@
 		<label index="attr.date_deadline">Deadline</label>
 		<label index="attr.projectusers">Beteiligte Personen</label>
 		<label index="project.properties">Eigenschaften</label>
-		<label index="project.description">Beschreibung</label>
 		<label index="project.involved_persons">Beteiligte Personen</label>
 		<label index="project.cancel">Abbrechen</label>
 		<label index="project.save">Speichern</label>

@@ -30,7 +30,7 @@
 						</field>
 
 						<field type="RTE" name="description">
-							<label>LLL:project.task.description</label>
+							<label>LLL:core.description</label>
 							<tinymce>
 								<theme>simple</theme>
 								<width>330px</width>

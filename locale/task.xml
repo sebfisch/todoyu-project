@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="attr.description">Description</label>
 		<label index="attr.worktype">Worktype</label>
 		<label index="attr.status">Status</label>
 		<label index="attr.esitmated_workload">Estimated workload</label>
@@ -60,7 +59,6 @@
 		<label index="title.cloned">Copy of: %s</label>
 	</labels>
 	<labels lang="de">
-		<label index="attr.description">Beschreibung</label>
 		<label index="attr.worktype">Leistungsart</label>
 		<label index="attr.status">Status</label>
 		<label index="attr.esitmated_workload">Geschätzter Aufwand</label>
