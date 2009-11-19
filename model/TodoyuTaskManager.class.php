@@ -621,21 +621,21 @@ class TodoyuTaskManager {
 
 			// Status
 		$info[]	= array(
-			'label'		=> Label('core.status'),
+			'label'		=> 'LLL:core.status',
 			'value'		=> $data['statuslabel'],
 			'position'	=> 20
 		);
 
 			// Date create
 		$info[]	= array(
-			'label'	=> Label('task.attr.date_create'),
+			'label'	=> 'LLL:task.attr.date_create',
 			'value'	=> TodoyuTime::format($data['date_create'], 'datetime'),
 			'position'	=> 50
 		);
 
 			// Date start
 		$info[]	= array(
-			'label'	=> Label('task.attr.date_start'),
+			'label'	=> 'LLL:task.attr.date_start',
 			'value'	=> TodoyuTime::format( $data['date_start'], 'date'),
 			'position'	=> 60
 		);
@@ -644,7 +644,7 @@ class TodoyuTaskManager {
 		if( $data['date_deadline'] > 0 ) {
 			$formatDeadline	= date('s', $data['date_deadline']) === '00' ? 'date' : 'datetime';
 			$info[]	= array(
-				'label'	=> Label('task.attr.date_deadline'),
+				'label'	=> 'LLL:task.attr.date_deadline',
 				'value'	=> TodoyuTime::format($data['date_deadline'], $formatDeadline),
 				'position'	=> 80
 			);
@@ -654,7 +654,7 @@ class TodoyuTaskManager {
 		if( $task->isTask() ) {
 				// Worktype
 			$info[] = array(
-				'label'		=> Label('task.attr.worktype'),
+				'label'		=> 'LLL:task.attr.worktype',
 				'value'		=> $data['worktype']['title'],// 'Internes / Administration',
 				'position'	=> 10
 			);
@@ -668,7 +668,7 @@ class TodoyuTaskManager {
 
 				// Estimated workload
 			$info[]	= array(
-				'label'		=> Label('task.attr.is_estimatedworkload_public'),
+				'label'		=> 'LLL:task.attr.is_estimatedworkload_public',
 				'value'		=> Label('task.attr.is_estimatedworkload_public.' . $data['is_estimatedworkload_public']),
 				'position'	=> 31
 			);
@@ -676,21 +676,21 @@ class TodoyuTaskManager {
 				// Date end (if set)
 			$formatEnd	= date('m', $data['date_end']) === '00' ? 'date' : 'datetime';
 			$info[]	= array(
-				'label'	=> Label('task.attr.date_end'),
+				'label'	=> 'LLL:task.attr.date_end',
 				'value'	=> TodoyuTime::format($data['date_end'], $formatEnd),
 				'position'	=> 70
 			);
 
 				// User owner
 			$info[]	= array(
-				'label'	=> Label('task.attr.user_owner'),
+				'label'	=> 'LLL:task.attr.user_owner',
 				'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $data['user_owner']['lastname'] . ', ' . $data['user_owner']['firstname'] . '</a>',
 				'position'	=> 90
 			);
 
 				// User assigned
 			$info[]	= array(
-				'label'	=> Label('task.attr.user_assigned'),
+				'label'	=> 'LLL:task.attr.user_assigned',
 				'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $data['user_assigned']['lastname'] . ', ' . $data['user_assigned']['firstname'] . '</a>',
 				'position'	=> 100
 			);
@@ -815,7 +815,7 @@ class TodoyuTaskManager {
 			$icons[]= array(
 				'id'		=> 'task-' . $idTask . '-notacknowledged',
 				'class'		=> 'notAcknowledged',
-				'label'		=> Label('task.attr.notAcknowledged'),
+				'label'		=> 'LLL:task.attr.notAcknowledged',
 				'onclick'	=> 'Todoyu.Ext.project.Task.setAcknowledged(' . $idTask . ')'
 			);
 		}
@@ -824,7 +824,7 @@ class TodoyuTaskManager {
 			$icons[]= array(
 				'id'		=> 'task-' . $idTask . '-timeover',
 				'class'		=> 'timeover',
-				'label'		=> Label('task.attr.timeover')
+				'label'		=> 'LLL:task.attr.timeover'
 			);
 		}
 

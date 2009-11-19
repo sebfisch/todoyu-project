@@ -662,7 +662,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 				'htmlId'	=> 'projecttab-0',
 				'class'		=> 'projecttab',
 				'classKey'	=> '0',
-				'label'		=> Label('project.noproject.tab')
+				'label'		=> 'LLL:project.noproject.tab'
 			)
 		);
 

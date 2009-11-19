@@ -484,31 +484,31 @@ class TodoyuProjectManager {
 		$project	= TodoyuProjectManager::getProject($idProject);
 
 		$info[]	= array(
-			'label'		=> Label('core.status'),
+			'label'		=> 'LLL:core.status',
 			'value'		=> $project->getStatusLabel(),
 			'position'	=> 10
 		);
 
 		$info[]	= array(
-			'label'		=> Label('project.attr.customer'),
+			'label'		=> 'LLL:project.attr.customer',
 			'value'		=> $project->getCustomer()->getName(),
 			'position'	=> 20
 		);
 
 		$info[]	= array(
-			'label'		=> Label('project.attr.date_start'),
+			'label'		=> 'LLL:project.attr.date_start',
 			'value'		=> TodoyuTime::format($project->getStartDate(), 'D2MlongY4'),
 			'position'	=> 30
 		);
 
 		$info[]	= array(
-			'label'		=> Label('project.attr.date_end'),
+			'label'		=> 'LLL:project.attr.date_end',
 			'value'		=> TodoyuTime::format($project->getEndDate(), 'D2MlongY4'),
 			'position'	=> 32
 		);
 
 		$info[]	= array(
-			'label'		=> Label('project.attr.date_deadline'),
+			'label'		=> 'LLL:project.attr.date_deadline',
 			'value'		=> TodoyuTime::format($project->getDeadlineDate(), 'D2MlongY4'),
 			'position'	=> 34
 		);

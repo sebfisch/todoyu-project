@@ -4,7 +4,7 @@
 		<div class="content overflow">
 			<dl>
 			{foreach $data info}
-				<dt>{$info.label}</dt>
+				<dt>{Label $info.label true}</dt>
 				<dd>{$info.value}</dd>
 			{/foreach}
 			</dl>
