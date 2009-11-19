@@ -308,7 +308,7 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 			'type'	=> 'public'
 		),
 	),
-	'filterWidgets' => array(
+	'widgets' => array(
 		'fulltext' => array(
 			'funcRef'	=> 'TodoyuProjectFilter::filter_fulltext',
 			'label'		=> 'LLL:projectFilter.filterlabel.project.fulltext',
