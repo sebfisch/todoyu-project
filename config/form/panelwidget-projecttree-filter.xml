@@ -14,7 +14,7 @@
 				</field>
 
 				<field type="select" name="status">
-					<label>LLL:panelwidget-projecttree.filter.status</label>
+					<label>LLL:core.status</label>
 					<multiple>1</multiple>
 					<source type="function">
 						<function>TodoyuPanelWidgetProjectTree::getStatusOptions</function>

@@ -48,7 +48,7 @@
 					<elements>
 
 						<field type="select" name="status">
-							<label>LLL:project.attr.status</label>
+							<label>LLL:core.status</label>
 							<source type="function">
 								<function>TodoyuProjectStatusManager::getProjectStatusOptions</function>
 							</source>

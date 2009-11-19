@@ -2,7 +2,6 @@
 <locallang>
 	<labels lang="en">
 		<label index="attr.worktype">Worktype</label>
-		<label index="attr.status">Status</label>
 		<label index="attr.esitmated_workload">Estimated workload</label>
 		<label index="attr.is_onblock">Work frequency</label>
 		<label index="attr.billingtype">Work frequency</label>

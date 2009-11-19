@@ -484,7 +484,7 @@ class TodoyuProjectManager {
 		$project	= TodoyuProjectManager::getProject($idProject);
 
 		$info[]	= array(
-			'label'		=> Label('project.attr.status'),
+			'label'		=> Label('core.status'),
 			'value'		=> $project->getStatusLabel(),
 			'position'	=> 10
 		);

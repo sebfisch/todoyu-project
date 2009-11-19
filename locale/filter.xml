@@ -7,7 +7,6 @@
 		<label index="filterlabel.task.userAssigned">Assigned to</label>
 		<label index="filterlabel.task.currentUserAssigned">Assigned to me</label>
 		<label index="filterlabel.task.currentUserHasAcknowledged">Acknowledged by me</label>
-		<label index="filterlabel.task.status">Status</label>
 		<label index="filterlabel.task.owner">Owner is</label>
 		<label index="filterlabel.task.currentUserIsOwner">I am owner</label>
 		<label index="filterlabel.task.creator">Created by</label>
@@ -32,7 +31,6 @@
 		<label index="filterlabel.task.dyndateinput.nextweek">Next week</label>
 		<label index="filterlabel.task.dyndateinput.lastweek">Last week</label>
 		<label index="filterlabel.project.fulltext">Title fulltext</label>
-		<label index="filterlabel.project.status">Status</label>
 		<label index="filterlabel.project.customer">Customer name</label>
 		<label index="filterlabel.project.projectleader">Projectleader</label>
 		<label index="filterlabel.project.projectsupervisor">Projektsupervisor</label>

@@ -621,7 +621,7 @@ class TodoyuTaskManager {
 
 			// Status
 		$info[]	= array(
-			'label'		=> Label('task.attr.status'),
+			'label'		=> Label('core.status'),
 			'value'		=> $data['statuslabel'],
 			'position'	=> 20
 		);
@@ -665,7 +665,7 @@ class TodoyuTaskManager {
 				'value'	=> TodoyuTime::sec2hour($data['estimated_workload']),
 				'position'	=> 30
 			);
-						
+
 				// Estimated workload
 			$info[]	= array(
 				'label'		=> Label('task.attr.is_estimatedworkload_public'),

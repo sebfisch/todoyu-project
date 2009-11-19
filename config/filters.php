@@ -42,7 +42,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 		 */
 		'status' => array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_status',
-			'label'		=> 'LLL:projectFilter.filterlabel.task.status',
+			'label'		=> 'LLL:core.status',
 			'optgroup'	=> 'LLL:task.search.label',
 			'widget'	=> 'select',
 			'wConf'		=> array(
@@ -317,7 +317,7 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 		),
 		'status' => array(
 			'funcRef'	=> 'TodoyuProjectFilter::filter_status',
-			'label'		=> 'LLL:projectFilter.filterlabel.project.status',
+			'label'		=> 'LLL:core.status',
 			'optgroup'	=> 'LLL:project.search.label',
 			'widget'	=> 'select',
 			'wConf'		=> array(

@@ -38,7 +38,6 @@
 		<label index="projectrole.projectsupervisor">Projectsupervisor</label>
 		<label index="search.label">Projects</label>
 		<label index="search.mode.label">Search projects</label>
-		<label index="attr.status">Status</label>
 		<label index="attr.customer">Customer</label>
 		<label index="attr.date_start">Startdate</label>
 		<label index="attr.date_end">Enddate</label>
