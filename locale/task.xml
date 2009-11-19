@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
+		<label index="task">Task</label>
+		<label index="tasks">Tasks</label>
 		<label index="attr.title">Task title</label>
 		<label index="attr.worktype">Worktype</label>
 		<label index="attr.esitmated_workload">Estimated workload</label>
