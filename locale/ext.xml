@@ -50,7 +50,6 @@
 		<label index="attr.projectusers">Projectusers</label>
 		<label index="attr.projectusers.new">Projectusers</label>
 		<label index="attr.title">Project title</label>
-		<label index="user.name">Person</label>
 		<label index="user.role">Projectrole</label>
 		<label index="user.comment">Comment</label>
 		<label index="contextmenu.showdetails">Show details</label>

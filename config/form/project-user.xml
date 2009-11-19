@@ -13,7 +13,7 @@
 			<class>top</class>
 			<elements>
 				<field type="textinputAC" name="id_user">
-					<label>LLL:project.user.name</label>
+					<label>LLL:user.customer.attr.customer-user.person</label>
 					<config>
 						<acListener>
 							<ext>project</ext>
