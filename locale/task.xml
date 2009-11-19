@@ -57,6 +57,17 @@
 		<label index="type.container">Container</label>
 		<label index="billable_time">Billable time</label>
 		<label index="title.cloned">Copy of: %s</label>
+		<label index="worktype">Worktype</label>
+		<label index="esitmated_workload">Estimated workload</label>
+		<label index="date_start">Date start</label>
+		<label index="date_deadline">Customer deadline</label>
+		<label index="date_end">Internal deadline</label>
+		<label index="user_assigned">Assigned to</label>
+		<label index="user_owner">Task owner</label>
+		<label index="startTracking">Start timetracking</label>
+		<label index="billing_type">Billing type</label>
+		<label index="taskDone">Is Task done?</label>
+		<label index="taskno">Taskno.</label>
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

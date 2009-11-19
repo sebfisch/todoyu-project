@@ -15,17 +15,6 @@
 		<label index="addproject">Add project</label>
 		<label index="editproject">Edit project</label>
 		<label index="tab.label">Projects</label>
-		<label index="task.worktype">Worktype</label>
-		<label index="task.esitmated_workload">Estimated workload</label>
-		<label index="task.date_start">Date start</label>
-		<label index="task.date_deadline">Customer deadline</label>
-		<label index="task.date_end">Internal deadline</label>
-		<label index="task.user_assigned">Assigned to</label>
-		<label index="task.user_owner">Task owner</label>
-		<label index="task.project">Project</label>
-		<label index="task.start_tracking">Start timetracking</label>
-		<label index="task.billing_type">Billing type</label>
-		<label index="task.task_done">Is Task done?</label>
 		<label index="status.planning">Planning</label>
 		<label index="status.open">Open</label>
 		<label index="status.progress">In progress</label>
@@ -57,7 +46,6 @@
 		<label index="attr.date_deadline">Deadline</label>
 		<label index="attr.projectusers">Projectusers</label>
 		<label index="attr.projectusers.new">Projectusers</label>
-		<label index="taskno">Tasknr.</label>
 		<label index="user.name">Person</label>
 		<label index="user.role">Projectrole</label>
 		<label index="user.comment">Comment</label>
