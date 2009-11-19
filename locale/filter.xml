@@ -2,7 +2,6 @@
 <locallang>
 	<labels lang="en">
 		<label index="filterlabel.project">Project</label>
-		<label index="filterlabel.pleasechoose">Please Choose</label>
 		<label index="filterlabel.task.acknowledged">Acknowledged</label>
 		<label index="filterlabel.task.userAssigned">Assigned to</label>
 		<label index="filterlabel.task.currentUserAssigned">Assigned to me</label>

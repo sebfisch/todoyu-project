@@ -118,7 +118,7 @@ class TodoyuTaskFilterDataSource {
 	 */
 	public static function getDynamicDateinput($definitions)	{
 		$optionsArray = array(
-			''					=> array('label' => Label('LLL:projectFilter.filterlabel.pleasechoose')),
+			''					=> array('label' => Label('LLL:form.select.pleaseChoose')),
 			'today'				=> array('label' => Label('LLL:projectFilter.filterlabel.task.dyndateinput.today')),
 			'tomorrow'			=> array('label' => Label('LLL:projectFilter.filterlabel.task.dyndateinput.tomorrow')),
 			'dayaftertomorrow'	=> array('label' => Label('LLL:projectFilter.filterlabel.task.dyndateinput.dayaftertomorrow')),
