@@ -35,7 +35,7 @@ define('EXTID_PROJECT', 112);
 define('PATH_EXT_PROJECT', PATH_EXT . '/project');
 
 	// Register module locales
-TodoyuLocale::register('project', PATH_EXT_PROJECT . '/locale/project.xml');
+TodoyuLocale::register('project', PATH_EXT_PROJECT . '/locale/ext.xml');
 TodoyuLocale::register('task', PATH_EXT_PROJECT . '/locale/task.xml');
 TodoyuLocale::register('projectFilter', PATH_EXT_PROJECT . '/locale/filter.xml');
 TodoyuLocale::register('panelwidget-projecttree', PATH_EXT_PROJECT . '/locale/panelwidget-projecttree.xml');
