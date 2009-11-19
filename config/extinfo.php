@@ -28,9 +28,9 @@ $CONFIG['EXT']['project']['info'] = array(
 	'title'				=> 'Project and task management',
 	'description' 		=> 'Basic project and task management',
 	'author' 			=> array(
-		'name'		=> 'Erni Fabian',
-		'email'		=> 'ferni@snowflake.ch',
-		'company'	=> 'snowflake productions, Zürich'
+		'name'		=> 'Todoyu Core Team',
+		'email'		=> 'team@todoyu.com',
+		'company'	=> 'Snowflake Productions, Zürich'
 	),
 	'state' 			=> 'beta',
 	'version' 			=> '0.1.0',
