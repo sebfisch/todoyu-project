@@ -1,6 +1,6 @@
 <h1 class="title headerLine contextmenuproject" id="project-{$id}-header">
 	<span class="first"><a id="project-{$id}-toggler" class="toggler{if $details} expanded{/if}" onclick="Todoyu.Ext.project.Project.toggleDetails({$id})" href="javascript:void(0);"></a></span>
-	<span class="title"><a id="project-{$id}-titlelabel" class="titleLabel" onclick="Todoyu.Ext.project.Project.toggleDetails({$id})" href="javascript:void(0);" title="ID: {$id}">{$fulltitle}</a></span>
+	<span class="title"><a id="project-{$id}-titlelabel" class="titleLabel" {if allowed('project','project:details')}onclick="Todoyu.Ext.project.Project.toggleDetails({$id})"{/if} href="javascript:void(0);" title="ID: {$id}">{$fulltitle}</a></span>
 	<span class="additionalStuff" id="project-{$id}-additionalStuff">
 	{if allowed('project', 'project:edit')}
 		<a onclick="Todoyu.Ext.project.Project.edit({$id})" class="editProject" title="{Label project.editproject}" href="javascript:void(0)"></a>
@@ -14,6 +14,12 @@
 	</span>
 	<span class="rgt"><!-- right --></span>
 </h1>
+
 <div id="project-{$id}-details" class="projectdetails bcStatus{$status}"{if ! $details} style="display:none"{/if}>
 	{$details}
 </div>
+
+
+
+
+

@@ -95,6 +95,8 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 *	@return String
 	 */
 	public function detailsAction(array $params) {
+		restrict('project', 'project:details');
+
 		$idProject	= intval($params['project']);
 
 		return TodoyuProjectRenderer::renderProjectDetails($idProject);

@@ -209,7 +209,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 			$withDetails = TodoyuProjectPreferences::isProjectDetailsExpanded($idProject);
 		}
 
-		if( $withDetails === true ) {
+		if( $withDetails === true && allowed('project', 'project:details') ) {
 			$data['details'] = self::renderProjectDetails($idProject);
 		}
 

@@ -2,7 +2,7 @@
 <rights labels="ext/project/locale/rights.xml">
 	
 	<section key="general">
-		<allow right="use" />		
+			
 	</section>	
 
 	<section key="project">
