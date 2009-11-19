@@ -3,6 +3,7 @@
 	<labels lang="en">
 		<label index="ext.title">Project and task management</label>
 		<label index="page.title">Projects</label>
+		<label index="tab.label">Projects</label>
 		<label index="project">Project</label>
 		<label index="projects">Projects</label>
 		<label index="page.title.noSelected">Projects - Select your project</label>
@@ -16,7 +17,6 @@
 		<label index="addtask">Add task</label>
 		<label index="addproject">Add project</label>
 		<label index="editproject">Edit project</label>
-		<label index="tab.label">Projects</label>
 		<label index="status.planning">Planning</label>
 		<label index="status.open">Open</label>
 		<label index="status.progress">In progress</label>
@@ -41,6 +41,8 @@
 		<label index="search.label">Projects</label>
 		<label index="search.mode.label">Search projects</label>
 		<label index="attr.customer">Customer</label>
+		<label index="attr.id">Project ID</label>
+		<label index="attr.status">Project status</label>
 		<label index="attr.date_start">Startdate</label>
 		<label index="attr.date_end">Enddate</label>
 		<label index="attr.date_finish">Finishdate</label>
