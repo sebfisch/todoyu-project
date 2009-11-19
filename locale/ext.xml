@@ -45,6 +45,7 @@
 		<label index="attr.date_deadline">Deadline</label>
 		<label index="attr.projectusers">Projectusers</label>
 		<label index="attr.projectusers.new">Projectusers</label>
+		<label index="attr.title">Project title</label>
 		<label index="user.name">Person</label>
 		<label index="user.role">Projectrole</label>
 		<label index="user.comment">Comment</label>

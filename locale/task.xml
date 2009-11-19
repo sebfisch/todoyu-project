@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
+		<label index="attr.title">Task title</label>
 		<label index="attr.worktype">Worktype</label>
 		<label index="attr.esitmated_workload">Estimated workload</label>
 		<label index="attr.is_onblock">Work frequency</label>
@@ -67,6 +68,7 @@
 		<label index="billing_type">Billing type</label>
 		<label index="taskDone">Is Task done?</label>
 		<label index="taskno">Taskno.</label>
+		<label index="description">Task description</label>
 	</labels>
 	<labels lang="de"></labels>
 </locallang>
