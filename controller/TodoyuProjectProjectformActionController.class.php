@@ -13,8 +13,7 @@ class TodoyuProjectProjectformActionController extends TodoyuActionController {
 			case 'projectusers':
 					// Render project users form
 				$xmlPath= 'ext/project/config/form/project.xml';
-				$form	= new TodoyuForm($xmlPath);
-				$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $index);
+				$form	= TodoyuFormManager::getForm($xmlPath, $index);
 
 				// Load (/preset) form data
 				$formData	= array();

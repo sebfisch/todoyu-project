@@ -275,8 +275,7 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 
 			// Build form object
 		$xmlPath	= 'ext/project/config/form/project.xml';
-		$form		= new TodoyuForm($xmlPath);
-		$form		= TodoyuFormHook::callBuildForm($xmlPath, $form, $idProject);
+		$form		= TodoyuFormManager::getForm($xmlPath, $idProject);
 
 			// Load form data
 		$formData	= $project->getTemplateData(true);

@@ -94,7 +94,8 @@ Todoyu.Ext.project.Project = {
 					'parameters': {
 						'action': 'details',
 						'project': idProject
-					}
+					},
+					'onComplete': this.onDetailsToggled.bind(this, idProject)
 				};
 				Todoyu.Ui.update(detailDiv, url, options);
 			}
@@ -106,6 +107,11 @@ Todoyu.Ext.project.Project = {
 		this.updateToggleIcon(idProject);
 
 		this.saveDetailsExpanded(idProject, detailDiv.visible());
+	},
+	
+	
+	onDetailsToggled: function(idProject, response) {
+		console.log('OnComplete erreicht');
 	},
 
 

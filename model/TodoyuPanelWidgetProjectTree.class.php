@@ -269,8 +269,7 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 	private function renderFilterForm() {
 			// Construct form object
 		$xmlPath 	= 'ext/project/config/form/panelwidget-projecttree-filter.xml';
-		$form 		= new TodoyuForm($xmlPath);
-		$form		= TodoyuFormHook::callBuildForm($xmlPath, $form, 0);
+		$form 		= TodoyuFormManager::getForm($xmlPath);
 
 			// Load form data
 		$formData		= array();
@@ -598,8 +597,14 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 	}
 
 
+
+	/**
+	 * Check if panelwidget is allowed
+	 *
+	 * @return unknown
+	 */
 	public static function isAllowed() {
-		return allowed('project', 'panelwidget.projectTree.use');
+		return allowed('project', 'panelwidget:projectTree:use');
 	}
 
 }

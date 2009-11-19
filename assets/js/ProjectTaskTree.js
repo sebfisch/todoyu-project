@@ -186,13 +186,15 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * Highlight the front tab
 	 * @param	String		idTab
 	 */
-	highlightTab: function(idTab) {	
+	highlightTab: function(idTab) {
+		/*
 		var label = $('projecttab-' + idTab).select('.labeltext').first();
 		
 		Effect.Shake(label, {
 			'distance': 5,
 			'duration': 0.3
 		});
+		*/
 	},
 
 

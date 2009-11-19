@@ -159,7 +159,7 @@ class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuP
 	 *	@return	Boolean
 	 */
 	public static function isAllowed() {
-		return allowed('project', 'panelwidget.statusFilter.use');
+		return allowed('project', 'panelwidget:statusFilter:use');
 	}
 
 }

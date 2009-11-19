@@ -110,7 +110,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	public function editAction(array $params) {
 		$idTask		= intval($params['task']);
 
-		TodoyuProjectPreferences::saveTaskExpandedStatus($idTask, true);
+//		TodoyuProjectPreferences::saveTaskExpandedStatus($idTask, true);
 
 		return TodoyuTaskRenderer::renderTaskEditForm($idTask);
 	}
@@ -127,7 +127,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$data			= $params['task'];
 		$idTask			= intval($data['id']);
 		$idParentTask	= intval($data['id_parenttask']);
-		
+
 			// Create a cache record for the hooks
 		$task = new TodoyuTask(0);
 		$task->injectData($data);
@@ -148,18 +148,19 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 				// If form is valid, get form storage data and update task
 			$storageData= $form->getStorageData();
-			
+
 				// Save task
 			$idTaskReal	= TodoyuTaskManager::saveTask($storageData);
 
 				// Save task as open (and its parent)
-			TodoyuProjectPreferences::saveTaskExpandedStatus($idTaskReal, true);
+//			TodoyuProjectPreferences::saveTaskExpandedStatus($idTaskReal, true);
 			TodoyuProjectPreferences::saveTaskExpandedStatus($idParentTask, true);
 
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTaskReal);
 			TodoyuHeader::sendTodoyuHeader('idTaskOld', $idTask);
 
-			return TodoyuProjectRenderer::renderTask($idTaskReal, $idTaskReal);
+//			return TodoyuProjectRenderer::renderTask($idTaskReal, $idTaskReal);
+			return TodoyuProjectRenderer::renderTask($idTaskReal, 0);
 		} else {
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTask);
 			TodoyuHeader::sendTodoyuErrorHeader();

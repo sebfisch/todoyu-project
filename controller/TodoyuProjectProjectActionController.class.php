@@ -44,7 +44,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	public function editAction(array $params) {
 		$idProject	= intval($params['project']);
 
-		TodoyuProjectPreferences::saveExpandedDetails($idProject, true);
+//		TodoyuProjectPreferences::saveExpandedDetails($idProject, true);
 
 		return TodoyuProjectRenderer::renderProjectEditForm($idProject);
 	}
@@ -63,8 +63,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/project.xml';
-		$form		= new TodoyuForm($xmlPath);
-		$form		= TodoyuFormHook::callBuildForm($xmlPath, $form, $idProject);
+		$form		= TodoyuFormManager::getForm($xmlPath, $idProject);
 
 			// Set form data
 		$form->setFormData($project);
@@ -74,7 +73,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 				// Save project
 			$idProjectNew	= TodoyuProjectManager::saveProject($storageData);
 
-			TodoyuProjectPreferences::saveExpandedDetails($idProjectNew, true);
+//			TodoyuProjectPreferences::saveExpandedDetails($idProjectNew, true);
 
 			TodoyuHeader::sendTodoyuHeader('idProject', $idProjectNew);
 			TodoyuHeader::sendTodoyuHeader('idProjectOld', $idProject);
