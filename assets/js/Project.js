@@ -379,6 +379,11 @@ Todoyu.Ext.project.Project = {
 
 				if(newActiveProjectID)	{
 					Todoyu.Ext.project.ProjectTaskTree.onTabSelect('', newActiveProjectID);
+				} else {
+					if ( $$('li.projecttab').length == 0 ) {
+							// No project-tab found? reload to show startup-wizard
+						Todoyu.goTo('project');
+					}
 				}
 			}
 
