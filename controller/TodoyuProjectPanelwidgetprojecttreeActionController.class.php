@@ -85,6 +85,18 @@ class TodoyuProjectPanelwidgetProjecttreeActionController extends TodoyuActionCo
 		return $projectTree->renderFilters();
 	}
 
+
+
+	/**
+	 * Autocompletes user by given searchword
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function autocompleteUserAction(array $params)	{
+		$results = TodoyuUserFilterDataSource::autocompleteUsers($params['sword']);
+		return TodoyuRenderer::renderAutocompleteList($results);
+	}
 }
 
 ?>

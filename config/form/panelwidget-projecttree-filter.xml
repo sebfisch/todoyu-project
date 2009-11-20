@@ -30,8 +30,8 @@
 					<config>
 						<acListener>
 							<ext>project</ext>
-							<controller>panelwidget-projecttree</controller>
-							<action>autocomplete-user</action>
+							<controller>panelwidgetprojecttree</controller>
+							<action>autocompleteuser</action>
 						</acListener>
 						<acLabelFunc>TodoyuUserManager::getLabel</acLabelFunc>
 					</config>
