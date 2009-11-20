@@ -119,14 +119,14 @@ class TodoyuTaskFilterDataSource {
 	public static function getDynamicDateinput($definitions)	{
 		$optionsArray = array(
 			''					=> array('label' => Label('LLL:form.select.pleaseChoose')),
-			'today'				=> array('label' => Label('LLL:projectFilter.filterlabel.task.dyndateinput.today')),
-			'tomorrow'			=> array('label' => Label('LLL:projectFilter.filterlabel.task.dyndateinput.tomorrow')),
-			'dayaftertomorrow'	=> array('label' => Label('LLL:projectFilter.filterlabel.task.dyndateinput.dayaftertomorrow')),
-			'yesterday'			=> array('label' => Label('LLL:projectFilter.filterlabel.task.dyndateinput.yesterday')),
-			'daybeforeyesterday'=> array('label' => Label('LLL:projectFilter.filterlabel.task.dyndateinput.daybeforeyesterday')),
-			'currentweek'		=> array('label' => Label('LLL:projectFilter.filterlabel.task.dyndateinput.currentweek')),
-			'nextweek'			=> array('label' => Label('LLL:projectFilter.filterlabel.task.dyndateinput.nextweek')),
-			'lastweek'			=> array('label' => Label('LLL:projectFilter.filterlabel.task.dyndateinput.lastweek')),
+			'today'				=> array('label' => Label('LLL:projectFilter.task.dyndateinput.today')),
+			'tomorrow'			=> array('label' => Label('LLL:projectFilter.task.dyndateinput.tomorrow')),
+			'dayaftertomorrow'	=> array('label' => Label('LLL:projectFilter.task.dyndateinput.dayaftertomorrow')),
+			'yesterday'			=> array('label' => Label('LLL:projectFilter.task.dyndateinput.yesterday')),
+			'daybeforeyesterday'=> array('label' => Label('LLL:projectFilter.task.dyndateinput.daybeforeyesterday')),
+			'currentweek'		=> array('label' => Label('LLL:projectFilter.task.dyndateinput.currentweek')),
+			'nextweek'			=> array('label' => Label('LLL:projectFilter.task.dyndateinput.nextweek')),
+			'lastweek'			=> array('label' => Label('LLL:projectFilter.task.dyndateinput.lastweek')),
 		);
 
 		$optionsArray[$definitions['value']]['selected'] = true;
