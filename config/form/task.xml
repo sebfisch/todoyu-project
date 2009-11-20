@@ -45,7 +45,7 @@
 			<class>right</class>
 			<elements>
 
-				<field type="dateinput" name="date_start">
+				<field type="datetimeinput" name="date_start">
 					<label>LLL:task.date_start</label>
 					<required/>
 				</field>
@@ -59,7 +59,7 @@
 					</validate>
 				</field>
 
-				<field type="dateinput" name="date_deadline">
+				<field type="datetimeinput" name="date_deadline">
 					<label>LLL:task.date_deadline</label>
 					<validate>
 						<dateNotBefore msg="Deadline date has to be after startdate">
