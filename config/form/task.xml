@@ -97,6 +97,7 @@
 							<ext>project</ext>
 							<controller>task</controller>
 							<action>autocompleteprojecttask</action>
+							<minChars>1</minChars>
 						</acListener>
 						<acLabelFunc>TodoyuTaskManager::getAutocompleteLabel</acLabelFunc>
 					</config>

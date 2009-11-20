@@ -234,22 +234,25 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 * @return	Array
 	 */
 	public static function Filter_tasknumberortitle($value, $negate = false) {
-		$taskNumber	= intval($value);
+		$taskNumber = trim($value);
 		$title		= trim($value);
 		$queryParts	= false;
 
 		$whereParts	= array();
 
 			// If tasknumber was numeric and bigger than zero, check the tasknumber
-		if( $taskNumber > 0 ) {
+		if( strpos($taskNumber, '.') === false && intval($taskNumber) > 0 ) {
+			$taskNumber	= intval($value);
 			$whereParts[] = 'ext_project_task.tasknumber = ' . $taskNumber;
+		} else if(strpos($taskNumber, '.') !== false)	{
+			list($project, $task) = explode('.', $taskNumber);
+			$whereParts[] = '(ext_project_task.id_project = '.intval($project).' AND ext_project_task.tasknumber = '.intval($task).')';
 		}
 
 			// If value was not empty, check matches in the title
 		if( $title !== '' ) {
 			$whereParts[] = 'ext_project_task.title LIKE \'%' . Todoyu::db()->escape($title) . '%\'';
 		}
-
 
 		if( sizeof($whereParts) > 0 ) {
 			$tables	= array('ext_project_task');
