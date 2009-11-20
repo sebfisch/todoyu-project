@@ -1070,11 +1070,7 @@ class TodoyuTaskManager {
 			'estimated_workload'=> intval($GLOBALS['CONFIG']['EXT']['project']['Task']['defaultEstimatedWorkload']),
 			'id_project'		=> $idProject,
 			'id_parenttask'		=> $idParentTask,
-			'date_start'		=> $dateStart,
-			'date_deadline'		=> $dateEnd,
-			'date_end'			=> $dateEnd,
 			'id_user_owner'		=> $idUser,
-			'id_user_assigned'	=> $idUser,
 			'type'				=> $type,
 			'class'				=> ''
 		);
@@ -1272,51 +1268,6 @@ class TodoyuTaskManager {
 		$task		= new TodoyuTask(0);
 		$task->injectData($defaultData);
 		TodoyuCache::set($idCache, $task);
-	}
-
-
-
-	/**
-	 * Add a new temporary task. The new task has the deleted flag (which will
-	 * be removed when task is saved) and is filled in with default values
-	 *
-	 * @param	Integer		$idParentTask
-	 * @param	Integer		$idProject
-	 * @return	Integer		ID of the temporary task
-	 */
-	public static function addTemporaryTask($idParentTask, $idProject = 0, $type = TASK_TYPE_TASK) {
-		$idParentTask	= intval($idParentTask);
-		$idProject		= intval($idProject);
-
-		if( $idParentTask !== 0 ) {
-			$idProject	= self::getProjectID($idParentTask);
-		}
-
-			// Add temporary task
-		$idTempTask	= self::addTask($idProject);
-		$idUser		= TodoyuAuth::getUserID();
-
-			// Update temporary task, set deleted
-		$update	= array(
-			'deleted'			=> 1,
-			'title'				=> Label('task.newTask.empty'),
-			'status'			=> STATUS_OPEN,
-			'estimated_workload'=> intval($GLOBALS['CONFIG']['EXT']['project']['Task']['defaultEstimatedWorkload']),
-			'id_project'		=> $idProject,
-			'id_parenttask'		=> $idParentTask,
-			'date_start'		=> NOW,
-			'date_deadline'		=> NOW,
-			'date_end'			=> NOW,
-			'id_user_owner'		=> $idUser,
-			'id_user_assigned'	=> $idUser,
-			'type'				=> intval($type)
-			);
-
-		$update	= TodoyuHookManager::callHookDataModifier('project', 'addTemporaryTask', $update, array($idProject, $idParentTask));
-
-		self::updateTask($idTempTask, $update);
-
-		return $idTempTask;
 	}
 
 

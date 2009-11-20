@@ -95,6 +95,6 @@ TodoyuExtManager::addRecordConfig('project', 'worktype', array(
 
 
 
-$CONFIG['EXT']['project']['Task']['defaultEstimatedWorkload'] = 3600;
+$CONFIG['EXT']['project']['Task']['defaultEstimatedWorkload'] = 0;
 
 ?>
