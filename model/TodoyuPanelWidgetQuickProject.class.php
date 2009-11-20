@@ -19,6 +19,12 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Panelwidget to add a project
+ *
+ * @package		Todoyu
+ * @subpackage	Project
+ */
 class TodoyuPanelWidgetQuickProject extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
 	/**
