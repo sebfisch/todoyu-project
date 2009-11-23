@@ -64,12 +64,12 @@ Todoyu.Ext.project.Task = {
 			},
 			'onComplete': this.onStatusUpdated.bind(this, idTask, status)
 		};
-		
+
 		Todoyu.send(url, options);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Handler when status has been updated
 	 * @param	Integer			idTask
@@ -79,9 +79,9 @@ Todoyu.Ext.project.Task = {
 	onStatusUpdated: function(idTask, status, response) {
 		this.refresh(idTask);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Get status key of the task
 	 * @param	Integer		idTask
@@ -90,21 +90,20 @@ Todoyu.Ext.project.Task = {
 		var classNames 	= $('task-' + idTask + '-header').down('span.headLabel').classNames();
 		var statusClass	= classNames.grep(/.*Status(\d)/).first();
 		var statusKey	= statusClass.split('Status').last();
-		
+
 		return statusKey;
 	},
-	
+
 	setStatus: function(idTask, status) {
-		
+
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Refresh a task if loaded
 	 *
-	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer		idTask
 	 */
 	refresh: function(idTask) {
 		var target	= 'task-' + idTask;
@@ -117,10 +116,12 @@ Todoyu.Ext.project.Task = {
 			'onComplete': this.onRefreshed.bind(this, idTask)
 		};
 
-			// Detach menu
-		this.removeContextMenu(idTask);
-			// Update task
-		Todoyu.Ui.replace(target, url, options);
+		if( Todoyu.exists(target) ) {
+				// Detach menu
+			this.removeContextMenu(idTask);
+				// Update task
+			Todoyu.Ui.replace(target, url, options);
+		}
 	},
 
 
@@ -189,7 +190,7 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 * Clone given task
-	 * 
+	 *
 	 * @param	Integer	idTask
 	 */
 	clone: function(idTask) {
@@ -276,15 +277,15 @@ Todoyu.Ext.project.Task = {
 		this.addContextMenu(idTask);
 			// Scroll to new task
 		this.scrollTo(idTask);
-				
+
 		Todoyu.Hook.exec('onTaskEdit', idTask);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Focus title field in task edit form
-	 * 
+	 *
 	 * @hooked	onTaskEdit
 	 * @param	Integer		idTask
 	 */
@@ -613,8 +614,8 @@ Todoyu.Ext.project.Task = {
 		var value = open ? 1 : 0;
 		this.ext.savePref('taskopen', value, idTask);
 	},
-	
-	
+
+
 	isLoaded: function(idTask) {
 		return Todoyu.exists('task-' + idTask);
 	},
@@ -697,7 +698,7 @@ Todoyu.Ext.project.Task = {
 		 */
 		onFormLoaded: function(idTask, response) {
 			this.ext.Task.scrollTo(idTask);
-			
+
 			Todoyu.Hook.exec('onTaskEdit', idTask);
 		},
 

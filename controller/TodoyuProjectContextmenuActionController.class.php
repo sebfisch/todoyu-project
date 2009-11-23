@@ -27,13 +27,17 @@
  */
 class TodoyuProjectContextmenuActionController extends TodoyuActionController {
 
+	/**
+	 * Contextmenu for tasks (and containers)
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function taskAction(array $params) {
 		$idTask		= intval($params['task']);
 		$contextMenu= new TodoyuContextMenu('Task', $idTask);
 
-		TodoyuHeader::sendHeaderJSON();
-
-		return $contextMenu->getJSON();
+		return $contextMenu->printJSON();
 	}
 
 
@@ -41,9 +45,7 @@ class TodoyuProjectContextmenuActionController extends TodoyuActionController {
 		$idProject	= intval($params['project']);
 		$contextMenu= new TodoyuContextMenu('Project', $idProject);
 
-		TodoyuHeader::sendHeaderJSON();
-
-		return $contextMenu->getJSON();
+		return $contextMenu->printJSON();
 	}
 
 }

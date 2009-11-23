@@ -291,7 +291,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 */
 	public function autocompleteprojecttaskAction(array $params) {
 		$formName	= $params['formName'];
-		$sword		= $params['sword'];
+		$sword		= trim($params['sword']);
 		$formData	= $params[$formName];
 		$idProject	= intval($formData['id_project']);
 		$idTask		= intval($formData['id']);
@@ -302,12 +302,12 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 				'value'	=> $sword
 			),
 			array(
-				'filter'=> 'project',
-				'value'	=> $idProject
-			),
-			array(
 				'filter'=> 'nottask',
 				'value'	=> $idTask
+			),
+			array(
+				'filter'=> 'project',
+				'value'	=> $idProject
 			)
 		);
 

@@ -1,11 +1,16 @@
-#quickProject {
-	padding: 5px;
-}
-
-#panelwidget-quickproject button span.iconAddQuickproject {
-	background-position: 8px -990px;
-}
-
 #panelwidget-quickproject h1 .title {
-	background: transparent url('../img/icons.png') no-repeat 5px -415px;
+	background:url('../img/icons.png') no-repeat 5px -415px;
 }
+
+#panelwidget-quickproject .content {
+	padding:5px;
+}
+
+#panelwidget-quickproject button.addQuickProject .icon {
+	background:url(../img/icons.png) no-repeat 2px -419px;
+}
+
+#panelwidget-quickproject button.addQuickTask .icon {
+	background:url(../img/icons.png) no-repeat 2px -509px;
+}
+

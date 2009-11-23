@@ -1,6 +1,5 @@
 <?php
 
-Todoyu::log('add project tab');
 		// Add menu entry
 if( TodoyuAuth::isLoggedIn() ) {
 	TodoyuFrontend::addMenuEntry('project', 'LLL:project.tab.label', '?ext=project', 20);

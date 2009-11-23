@@ -355,7 +355,7 @@ class TodoyuTaskManager {
 			$allowed['add'] = $ownItems['add'];
 
 				// Status
-			if( allowed('project', 'task:status') ) {
+			if( allowed('project', 'task:status') && $task->isTask() ) {
 				$allowed['status'] = $ownItems['status'];
 			}
 

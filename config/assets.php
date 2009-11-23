@@ -81,6 +81,10 @@ $CONFIG['EXT']['project']['assets'] = array(
 				'position'	=> 108
 			),
 			array(
+				'file'		=> 'ext/project/assets/js/QuickTask.js',
+				'position'	=> 109
+			),
+			array(
 				'file'		=> 'ext/project/assets/js/hooks.js',
 				'position'	=> 1000
 			)
@@ -147,6 +151,12 @@ $CONFIG['EXT']['project']['assets'] = array(
 	),
 
 	'panelwidget-quickproject' => array (
+		'js' => array(
+			array(
+				'file' => 'ext/project/assets/js/PanelWidgetQuickProject.js',
+				'position' => 130,
+			)
+		),
 		'css' => array(
 			array(
 				'file' => 'ext/project/assets/css/panelwidget-quickproject.css',

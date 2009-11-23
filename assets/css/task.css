@@ -168,6 +168,10 @@ span.taskTitleFixTaskSymbol {
 	border-left-style: solid;
 }
 
+.task.container .details {
+	border-color:#000 !important;
+}
+
 	.tasks .task .details .data {
 		padding: 5px 0;
 	}
