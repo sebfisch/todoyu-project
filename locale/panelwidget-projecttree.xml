@@ -9,6 +9,7 @@
 		<label index="filter.projectleader">Projectleader</label>
 		<label index="filter.customer">Customer</label>
 		<label index="list.empty">No matching projects</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

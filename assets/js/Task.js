@@ -97,7 +97,7 @@ Todoyu.Ext.project.Task = {
 	setStatus: function(idTask, status) {
 		
 	},
-	
+
 
 
 	/**
@@ -122,9 +122,9 @@ Todoyu.Ext.project.Task = {
 			// Update task
 		Todoyu.Ui.replace(target, url, options);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Handler when task has been refreshed
 	 * @param	Integer			idTask
@@ -188,10 +188,9 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Clone given task
 	 * 
-	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer	idTask
 	 */
 	clone: function(idTask) {
 		var url		= Todoyu.getUrl('project', 'task');

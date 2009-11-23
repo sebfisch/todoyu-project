@@ -65,6 +65,7 @@
 		<label index="form.validation.dateBefore">Date must be before end</label>
 		<label index="form.validation.title">Please enter a project title</label>
 		<label index="noLabel.newProjectParticipant">New Project participant</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

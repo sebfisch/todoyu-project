@@ -71,6 +71,7 @@
 		<label index="taskDone">Is Task done?</label>
 		<label index="taskno">Taskno.</label>
 		<label index="description">Task description</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>
