@@ -8,6 +8,7 @@
 	<section key="project">
 		<allow right="project:details" />
 		<allow right="project:edit" />
+		<allow right="project:add" />
 		<allow right="project:delete" />
 		<allow right="project:status" />
 		<allow right="project:addtask" />
