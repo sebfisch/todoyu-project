@@ -24,6 +24,27 @@
 		<allow right="task:delete" />		
 	</section>
 	
+	<section key="status">
+		<allow right="status:1:see" />
+		<allow right="status:1:changeto" />
+		<allow right="status:2:see" />
+		<allow right="status:2:changeto" />
+		<allow right="status:3:see" />
+		<allow right="status:3:changeto" />
+		<allow right="status:4:see" />
+		<allow right="status:4:changeto" />
+		<allow right="status:5:see" />
+		<allow right="status:5:changeto" />
+		<allow right="status:6:see" />
+		<allow right="status:6:changeto" />
+		<allow right="status:7:see" />
+		<allow right="status:7:changeto" />
+		<allow right="status:8:see" />
+		<allow right="status:8:changeto" />
+		<allow right="status:9:see" />
+		<allow right="status:9:changeto" />
+	</section>
+	
 	<section key="panelwidgets">
 		<allow right="panelwidget:projectTree:use" />
 		<allow right="panelwidget:statusFilter:use" />

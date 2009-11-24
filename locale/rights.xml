@@ -6,6 +6,7 @@
 		<label index="section.project">Project</label>
 		<label index="right.project:details">Show project details</label>
 		<label index="right.project:edit">Edit project</label>
+		<label index="right.project:add">Add a new project</label>
 		<label index="right.project:delete">Delete project</label>
 		<label index="right.project:status">Change project status</label>
 		<label index="right.project:addtask">Add task to project</label>
@@ -17,11 +18,29 @@
 		<label index="right.task:addcontainer">Add subcontainer</label>
 		<label index="right.task:status">Change project status</label>
 		<label index="right.task:delete">Delete task</label>
+		<label index="section.status">Status (task and project)</label>
+		<label index="right.status:1:see">See planing status</label>
+		<label index="right.status:1:changeto">Change to 'Planing' status</label>
+		<label index="right.status:2:see">See 'Open' status</label>
+		<label index="right.status:2:changeto">Change to 'Open' status</label>
+		<label index="right.status:3:see">See 'In progress' status</label>
+		<label index="right.status:3:changeto">Change to 'In progress' status</label>
+		<label index="right.status:4:see">See 'For confirmation' status</label>
+		<label index="right.status:4:changeto">Change to 'For confirmation' status</label>
+		<label index="right.status:5:see">See 'Done' status</label>
+		<label index="right.status:5:changeto">Change to 'Done' status</label>
+		<label index="right.status:6:see">See 'Accepted' status</label>
+		<label index="right.status:6:changeto">Change to 'Accepted' status</label>
+		<label index="right.status:7:see">See 'Rejected 'status</label>
+		<label index="right.status:7:changeto">Change 'Rejected' status</label>
+		<label index="right.status:8:see">See 'Cleared' status</label>
+		<label index="right.status:8:changeto">Change 'Cleared' status</label>
+		<label index="right.status:9:see">See 'In warranty' status</label>
+		<label index="right.status:9:changeto">Change 'In warranty' status</label>
 		<label index="section.panelwidgets">PanelWidgets</label>		
 		<label index="right.panelwidget:statusFilter:use">PanelWidget Statusfilter</label>
 		<label index="right.panelwidget:projectTree:use">PanelWidget ProjectTree</label>
 		<label index="right.panelwidget:quickProject:use">PanelWidget QuickProject</label>
-<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>
