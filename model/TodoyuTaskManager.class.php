@@ -552,6 +552,7 @@ class TodoyuTaskManager {
 	 * @return	String
 	 */
 	public static function getContextMenuHeader($idTask) {
+
 		$task	= self::getTaskArray($idTask);
 
 		return TodoyuDiv::cropText($task['title'], 24, '', false);
