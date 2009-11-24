@@ -151,7 +151,7 @@ Todoyu.Ext.project.PanelWidget.ProjectTree.Filter = {
 		var	url		= Todoyu.getUrl('project', 'panelwidgetprojecttree');
 		var options	= {
 			'parameters': {
-				'action': 'updatefilter'
+				'action':	'updatefilter'
 			},
 			'onComplete': this.onUpdated.bind(this)
 		};

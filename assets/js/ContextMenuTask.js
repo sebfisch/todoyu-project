@@ -68,8 +68,8 @@ Todoyu.Ext.project.ContextMenuTask = {
 		var url		= Todoyu.getUrl('project', 'contextmenu');
 		var options	= {
 			'parameters': {
-				'action': 'task',
-				'task': idTask
+				'action':	'task',
+				'task':		idTask
 			}
 		};
 

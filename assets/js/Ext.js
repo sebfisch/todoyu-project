@@ -74,8 +74,8 @@ Todoyu.Ext.project = {
 		var url		= Todoyu.getUrl('project', 'projecttasktree');
 		var options = {
 			'parameters': {
-				'project': 	idProject,
-				'task': 	Todoyu.Helper.intval(idTask)
+				'project':	idProject,
+				'task':		Todoyu.Helper.intval(idTask)
 			},
 			'onComplete': 	this.onTreeUpdate.bind(this)
 		};
@@ -129,7 +129,7 @@ Todoyu.Ext.project = {
 			url		= Todoyu.getUrl('project', 'taskdetail');
 			options	= {
 				'parameters': {
-					'task': idTask
+					'task':	idTask
 				},
 				'asynchronous': false,
 				'onComplete': function(response) {
@@ -147,7 +147,7 @@ Todoyu.Ext.project = {
 			options = {
 				'parameters': {
 					'action':	'collapse_tree_task',
-					'task': idTask
+					'task':		idTask
 				}
 			};
 			Todoyu.send(url, options);
@@ -165,7 +165,7 @@ Todoyu.Ext.project = {
 		var url		= Todoyu.getUrl('project', 'project');
 		var options	= {
 			'parameters': {
-				'action': 'addfirst'
+				'action':	'addfirst'
 			},
 			'onComplete': this.onFirstProjectAdded.bind(this)
 		};

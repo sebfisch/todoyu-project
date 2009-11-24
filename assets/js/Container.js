@@ -39,9 +39,9 @@ Todoyu.Ext.project.Container = {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action': 'cloneContainer',
-				'container': idContainer,
-				'cloneSubElements': (cloneSubElements?1:0)
+				'action':			'cloneContainer',
+				'container':		idContainer,
+				'cloneSubElements':	(cloneSubElements ? 1 : 0)
 			},
 			'onComplete': this.onCloned.bind(this)
 		};

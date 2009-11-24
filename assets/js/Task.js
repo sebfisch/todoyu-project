@@ -58,9 +58,9 @@ Todoyu.Ext.project.Task = {
 		var url	= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'task': idTask,
-				'action': 'setstatus',
-				'status': status
+				'task':		idTask,
+				'action':	'setstatus',
+				'status':	status
 			},
 			'onComplete': this.onStatusUpdated.bind(this, idTask, status)
 		};
@@ -110,8 +110,8 @@ Todoyu.Ext.project.Task = {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action': 'get',
-				'task': idTask
+				'action':	'get',
+				'task':		idTask
 			},
 			'onComplete': this.onRefreshed.bind(this, idTask)
 		};
@@ -151,8 +151,8 @@ Todoyu.Ext.project.Task = {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action': 'delete',
-				'task': idTask
+				'action':	'delete',
+				'task':		idTask
 			}
 		};
 
@@ -197,8 +197,8 @@ Todoyu.Ext.project.Task = {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action': 'clone',
-				'task': idTask
+				'action':	'clone',
+				'task':		idTask
 			},
 			'onComplete': this.onCloned.bind(this)
 		};
@@ -251,8 +251,8 @@ Todoyu.Ext.project.Task = {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action': 'addprojecttask',
-				'project': idProject
+				'action':	'addprojecttask',
+				'project':	idProject
 			},
 			'onComplete': this.onProjectTaskAdded.bind(this)
 		};
@@ -307,7 +307,7 @@ Todoyu.Ext.project.Task = {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action':			'addprojectcontainer',
+				'action':		'addprojectcontainer',
 				'project':		idProject
 			},
 			'onComplete': this.onProjectContainerAdded.bind(this)
@@ -345,8 +345,8 @@ Todoyu.Ext.project.Task = {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action': 'addsubtask',
-				'task': idTask
+				'action':	'addsubtask',
+				'task':		idTask
 			},
 			'onComplete': this.onSubTaskAdded.bind(this, idTask)
 		};
@@ -391,8 +391,8 @@ Todoyu.Ext.project.Task = {
 		if( ! Todoyu.exists(idSubtaskContainer) ) {
 			$(idTaskContainer).insert({
 				'after': new Element('div', {
-					'id': idSubtaskContainer,
-					'class': 'subtasks'
+					'id':		idSubtaskContainer,
+					'class':	'subtasks'
 				})
 			});
 		}
@@ -410,8 +410,8 @@ Todoyu.Ext.project.Task = {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action': 'addsubcontainer',
-				'task': idTask
+				'action':	'addsubcontainer',
+				'task':		idTask
 			},
 			'onComplete': this.onSubContainerAdded.bind(this, idTask)
 		};
@@ -478,8 +478,8 @@ Todoyu.Ext.project.Task = {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action': 'acknowledge',
-				'task': idTask
+				'action':	'acknowledge',
+				'task':		idTask
 			}
 		};
 
@@ -588,8 +588,8 @@ Todoyu.Ext.project.Task = {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action': 'detail',
-				'task': idTask
+				'action':	'detail',
+				'task':		idTask
 			},
 			'asynchronous': false
 		};
@@ -715,7 +715,7 @@ Todoyu.Ext.project.Task = {
 
 			$(form).request({
 				'parameters': {
-					'action': 'save'
+					'action':	'save'
 				},
 				onComplete: this.onSaved.bind(this)
 			});
@@ -832,9 +832,9 @@ Todoyu.Ext.project.Task = {
 			var url 	= Todoyu.getUrl('project', 'task');
 			var options	= {
 				'parameters': {
-					'action': 'tabload',
-					'task': idTask,
-					'tab': tabKey
+					'action':	'tabload',
+					'task':		idTask,
+					'tab':		tabKey
 				}
 			};
 			var tabDiv	= this.buildTabID(idTask, tabKey);
@@ -857,8 +857,8 @@ Todoyu.Ext.project.Task = {
 			var loader	= new Element('img', {'src':'assets/img/ajax-loader.gif'});
 			var spacer	= new Element('p', {'style':'padding:50px;text-align:center'}).update(loader);
 			var tabDiv	= new Element('div', {
-					'id': 	this.buildTabID(idTask, tabKey),
-					'class':'tab'
+					'id':		this.buildTabID(idTask, tabKey),
+					'class':	'tab'
 				}).update(spacer);
 			$(tabContainer).insert({'top': tabDiv});
 		},
@@ -904,9 +904,9 @@ Todoyu.Ext.project.Task = {
 			var url = Todoyu.getUrl('project', 'task');
 			var options	= {
 				'parameters': {
-					'action': 'tabselected',
-					'idTask': idTask,
-					'tab': tabKey
+					'action':	'tabselected',
+					'idTask':	idTask,
+					'tab':		tabKey
 				}
 			};
 

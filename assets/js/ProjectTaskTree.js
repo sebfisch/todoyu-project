@@ -95,7 +95,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		var url		= Todoyu.getUrl('project', 'projecttasktree');
 		var options = {
 			'parameters': {
-				'action': 		'project',
+				'action': 	'project',
 				'project': 	idProject,
 				'task': 	idTask
 			},
@@ -174,7 +174,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		tab.remove();
 
 		$('project-tabs').insert({
-			'top': tab
+			'top':	tab
 		});
 		
 		this.highlightTab(idTab);		
@@ -286,8 +286,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		var url		= Todoyu.getUrl('project', 'projecttasktree');
 		var options	= {
 			'parameters': {
-				'action': 'openprojects',
-				'projects': this.openProjects.join(',')
+				'action':	'openprojects',
+				'projects':	this.openProjects.join(',')
 			}
 		};
 

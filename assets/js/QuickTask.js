@@ -18,7 +18,7 @@ Todoyu.Ext.project.QuickTask = {
 		var url		= Todoyu.getUrl('project', 'quicktask');
 		var options	= {
 			'parameters': {
-				'action': 'popup'
+				'action':	'popup'
 			}
 		};
 		this.savedCallback = callback;
@@ -42,7 +42,7 @@ Todoyu.Ext.project.QuickTask = {
 
 		$(form).request({
 			'parameters': {
-				'action': 'save'
+				'action':	'save'
 			},
 			'onComplete': this.onSaved.bind(this, form)
 		});

@@ -104,7 +104,7 @@ Todoyu.Ext.project.PanelWidget.ProjectTree = {
 		} else {
 			var options	= {
 				parameters: {
-					'action': 		'subtasks',
+					'action': 	'subtasks',
 					'parent':	idItem,
 					'type':		type,
 					'area':		Todoyu.getArea()
@@ -176,9 +176,9 @@ Todoyu.Ext.project.PanelWidget.ProjectTree = {
 	sendClose: function(type, idElement) {
 		var options = {
 			'parameters': {
-				'action': 'collapse',
-				'type': type,
-				'element': idElement
+				'action':	'collapse',
+				'type':		type,
+				'element':	idElement
 			}
 		};
 
@@ -196,9 +196,9 @@ Todoyu.Ext.project.PanelWidget.ProjectTree = {
 	sendOpen: function(type, idElement) {
 		var options = {
 			'parameters': {
-				'action': 'expand',
-				'type': type,
-				'element': idElement
+				'action':	'expand',
+				'type':		type,
+				'element':	idElement
 			}
 		};
 
