@@ -628,13 +628,6 @@ class TodoyuTaskManager {
 
 		$info	= array();
 
-			// Status
-		$info[]	= array(
-			'label'		=> 'LLL:core.status',
-			'value'		=> $data['statuslabel'],
-			'position'	=> 20
-		);
-
 			// Date create
 		$info[]	= array(
 			'label'	=> 'LLL:task.attr.date_create',
@@ -642,25 +635,35 @@ class TodoyuTaskManager {
 			'position'	=> 50
 		);
 
-			// Date start
-		$info[]	= array(
-			'label'	=> 'LLL:task.attr.date_start',
-			'value'	=> TodoyuTime::format( $data['date_start'], 'date'),
-			'position'	=> 60
-		);
 
-			// Date deadline
-		if( $data['date_deadline'] > 0 ) {
-			$formatDeadline	= date('s', $data['date_deadline']) === '00' ? 'date' : 'datetime';
-			$info[]	= array(
-				'label'	=> 'LLL:task.attr.date_deadline',
-				'value'	=> TodoyuTime::format($data['date_deadline'], $formatDeadline),
-				'position'	=> 80
-			);
-		}
 
 			// Attributes which are only for tasks
 		if( $task->isTask() ) {
+
+				// Status
+			$info[]	= array(
+				'label'		=> 'LLL:core.status',
+				'value'		=> $data['statuslabel'],
+				'position'	=> 20
+			);
+
+				// Date start
+			$info[]	= array(
+				'label'	=> 'LLL:task.attr.date_start',
+				'value'	=> TodoyuTime::format( $data['date_start'], 'date'),
+				'position'	=> 60
+			);
+
+				// Date deadline
+			if( $data['date_deadline'] > 0 ) {
+				$formatDeadline	= date('s', $data['date_deadline']) === '00' ? 'date' : 'datetime';
+				$info[]	= array(
+					'label'	=> 'LLL:task.attr.date_deadline',
+					'value'	=> TodoyuTime::format($data['date_deadline'], $formatDeadline),
+					'position'	=> 80
+				);
+			}
+
 				// Worktype
 			$info[] = array(
 				'label'		=> 'LLL:task.attr.worktype',
@@ -1392,9 +1395,9 @@ class TodoyuTaskManager {
 	/**
 	 * Modify task form object for container editing
 	 *
-	 * @param	TodoyuForm		$form			Task edit form object
+	 * @param	TodoyuForm	$form			Task edit form object
 	 * @param	Integer		$idTask			Task ID
-	 * @return	TodoyuForm		Moddified form object
+	 * @return	TodoyuForm	Moddified form object
 	 */
 	public static function modifyFormfieldsForContainer(TodoyuForm $form, $idTask) {
 		$idTask	= intval($idTask);
@@ -1405,10 +1408,16 @@ class TodoyuTaskManager {
 			$form->getField('id_worktype')->remove();
 			$form->getField('estimated_workload')->remove();
 			$form->getField('is_estimatedworkload_public')->remove();
+			$form->getField('date_start')->remove();
 			$form->getField('date_end')->remove();
+			$form->getField('date_deadline')->remove();
 			$form->getField('id_user_assigned')->remove();
 			$form->getField('id_user_owner')->remove();
+			$form->getField('status')->remove();
 		}
+
+			// Call hooks to modify $form
+		$form	= TodoyuHookManager::callHookDataModifier('project', 'modifyFormfieldsForContainer', $form, array('idTask' => $idTask));
 
 		return $form;
 	}

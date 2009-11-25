@@ -40,9 +40,9 @@ class TodoyuTaskRenderer {
 
 		$tmpl	= 'ext/project/view/task-details.tmpl';
 		$data	= array(
-			'task'	=> $task,
+			'task'		=> $task,
 			'idTask'	=> $idTask,
-			'taskdata'	=> self::renderTaskData($idTask)
+			'taskData'	=> self::renderTaskData($idTask)
 		);
 
 			// Only add tabs if its a normal task (not container)
@@ -68,7 +68,7 @@ class TodoyuTaskRenderer {
 		$task	= TodoyuTaskManager::getTask($idTask);
 
 			// Get task template data
-		$data	= $task->getTemplateData(0);
+		$data			= $task->getTemplateData(0);
 		$data['data']	= TodoyuTaskManager::getTaskDataArray($idTask);
 
 		return render('ext/project/view/task-data.tmpl', $data);
