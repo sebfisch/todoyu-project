@@ -291,7 +291,7 @@ $CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 				'key'		=> 'status-open',
 				'label'		=> 'LLL:task.status.open',
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_OPEN . ')',
-				'class'		=> 'projectContextMenu taskstatusOpen'
+				'class'		=> 'projectContextMenu taskStatusOpen'
 			),
 			'progress'	=> array(
 				'key'		=> 'status-progress',
@@ -328,6 +328,12 @@ $CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 				'label'		=> 'LLL:task.status.cleared',
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_CLEARED . ')',
 				'class'		=> 'projectContextMenu taskStatusCleared'
+			),
+			'warranty'	=> array(
+				'key'		=> 'status-warranty',
+				'label'		=> 'LLL:task.status.warranty',
+				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_WARRANTY . ')',
+				'class'		=> 'projectContextMenu taskStatusWarranty'
 			)
 		)
 	),

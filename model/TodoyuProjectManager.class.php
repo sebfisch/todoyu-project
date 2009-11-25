@@ -347,6 +347,14 @@ class TodoyuProjectManager {
 			// Status
 		if( allowed('project', 'project:status') ) {
 			$allowed['status'] = $ownItems['status'];
+
+			$statuses = array_flip(TodoyuProjectStatusManager::getProjectStatuses());
+
+			foreach($allowed['status']['submenu'] as $key => $status) {
+				if( ! allowed('project', 'status:' . $statuses[$key] . ':changeto') ) {
+					unset($allowed['status']['submenu'][$key]);
+				}
+			}
 		}
 
 			// Add task

@@ -9,7 +9,6 @@
 	<hiddenFields>
 		<field name="id" />
 		<field name="id_project" />
-		<field name="status" />
 		<field name="type" />
 	</hiddenFields>
 	<fieldsets>
@@ -68,6 +67,14 @@
 						</dateNotBefore>
 					</validate>
 					<required/>
+				</field>
+
+				<field type="select" name="status">
+					<label>LLL:task.attr.status</label>
+					<source type="function">
+						<function>TodoyuProjectViewHelper::getProjectStatusOptions</function>
+						<lazyInit />
+					</source>
 				</field>
 
 				<field type="select" name="id_user_assigned">

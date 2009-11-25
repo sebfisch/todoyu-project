@@ -64,6 +64,31 @@ class TodoyuProjectViewHelper {
 		return $data['lastname'] . ' ' . $data['firstname'];
 	}
 
+
+
+	/**
+	 * Get status options
+	 * Only allowed "changeto" status and current are available
+	 *
+	 * @return	Array
+	 */
+	public static function getProjectStatusOptions(TodoyuFormElement $field) {
+		$statuses	= TodoyuProjectStatusManager::getProjectStatuses();
+		$values		= $field->getValue();
+		$value		= intval($values[0]);
+
+		foreach($statuses as $statusID => $statusKey)	{
+			if( allowed('project', 'status:' . $statusID . ':changeto') || $value == $statusID ) {
+				$options[] = array(
+					'value'		=> $statusID,
+					'label'		=> TodoyuProjectStatusManager::getProjectStatusLabel($statusKey)
+				);
+			}
+		}
+
+		return $options;
+	}
+
 }
 
 ?>

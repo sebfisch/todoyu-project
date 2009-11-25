@@ -1,2 +1,6 @@
-{Button label="panelwidget-quickproject.title" class="addQuickProject" id="panelwidget-quickproject-addproject" onclick="Todoyu.Ext.project.PanelWidget.QuickProject.addProject()"}
-{Button label="panelwidget-quicktaskwizard.addQuicktask" class="addQuickTask" id="panelwidget-quickproject-addtask" onclick="Todoyu.Ext.project.PanelWidget.QuickProject.addTask()"}
+{restrict 'project' 'project:add'}
+{Button label="panelwidget-quickproject.addProject" class="addQuickProject" id="panelwidget-quickproject-addproject" onclick="Todoyu.Ext.project.PanelWidget.QuickProject.addProject()"}
+{/restrict}
+{restrict 'project' 'project:addtask'}
+{Button label="panelwidget-quickproject.addTask" class="addQuickTask" id="panelwidget-quickproject-addtask" onclick="Todoyu.Ext.project.PanelWidget.QuickProject.addTask()"}
+{/restrict}

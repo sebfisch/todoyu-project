@@ -72,6 +72,7 @@
 		<label index="taskno">Taskno.</label>
 		<label index="description">Task description</label>
 <!--  ......................................... added after 20091122 -->
+		<label index="attr.status">Status</label>
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

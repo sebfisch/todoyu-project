@@ -161,26 +161,6 @@ class TodoyuProjectStatusManager {
 
 
 	/**
-	 * gets the options for the status selector in project edit
-	 *
-	 * @return array
-	 */
-	public static function getProjectStatusOptions(TodoyuFormElement $field) {
-		$statuses = self::getProjectStatuses();
-
-		foreach($statuses as $statusID => $statusKey)	{
-			$options[] = array(
-				'value'		=> $statusID,
-				'label'		=> self::getProjectStatusLabel($statusKey)
-			);
-		}
-
-		return $options;
-	}
-
-
-
-	/**
 	 * Get all project statuses
 	 *
 	 * @return	Array

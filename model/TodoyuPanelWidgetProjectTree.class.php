@@ -413,10 +413,12 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 		$options	= array();
 
 		foreach($statusInfos as $index => $statusInfo) {
-			$options[] = array(
-				'value'	=> $statusInfo['index'],
-				'label'	=> $statusInfo['label']
-			);
+			if( allowed('project', 'status:' . $statusInfo['index'] . ':see') ) {
+				$options[] = array(
+					'value'	=> $statusInfo['index'],
+					'label'	=> $statusInfo['label']
+				);
+			}
 		}
 
 		return $options;

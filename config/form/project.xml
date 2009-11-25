@@ -50,7 +50,7 @@
 						<field type="select" name="status">
 							<label>LLL:core.status</label>
 							<source type="function">
-								<function>TodoyuProjectStatusManager::getProjectStatusOptions</function>
+								<function>TodoyuProjectViewHelper::getProjectStatusOptions</function>
 							</source>
 						</field>
 

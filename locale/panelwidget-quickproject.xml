@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="title">Create Project</label>
+		<label index="title">Add task/project</label>
+		<label index="addProject">Add new Project</label>
+		<label index="addTask">Add new task</label>
 <!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>

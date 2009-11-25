@@ -108,7 +108,6 @@ class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuP
 	 *	@return	Array
 	 */
 	private function getStatusesInfos() {
-
 		if (array_key_exists('statusesInfos', $this->config)) {
 			$statusInfos	= $this->config['statusesInfos'];
 		} else {

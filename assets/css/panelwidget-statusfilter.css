@@ -65,7 +65,7 @@
 }
 
 #panelwidget-statusfilter li.statusWarranty label {
-	background-position:0 0;
+	background-position:0 -240px;
 }
 
 #panelwidget-statusfilter li.statusCustomer label {
