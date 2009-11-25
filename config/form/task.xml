@@ -117,7 +117,7 @@
 						<tables>ext_project_worktype</tables>
 						<where>deleted = 0</where>
 						<order>title</order>
-						<label>LLL:core.title</label>
+						<label>title</label>
 						<value>id</value>
 					</source>
 				</field>
