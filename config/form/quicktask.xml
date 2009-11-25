@@ -2,7 +2,7 @@
 <form>
 	<attributes>
 		<attribute name="name">quicktask</attribute>
-		<attribute name="onsubmit">return Todoyu.Ext.project.QuickTask.save(this)</attribute>
+		<attribute name="onsubmit">return false</attribute>
 		<attribute name="class">formQuicktask</attribute>
 	</attributes>
 
@@ -12,12 +12,12 @@
 			<elements>
 
 				<field type="textinput" name="title">
-					<label>LLL:core.title</label>
+					<label>core.title</label>
 					<required>1</required>
 				</field>
 
 				<field type="textinputAC" name="id_project">
-					<label>LLL:project.project</label>
+					<label>project.project</label>
 					<config>
 						<acListener>
 							<ext>project</ext>
@@ -30,7 +30,7 @@
 				</field>
 
 				<field type="RTE" name="description">
-					<label>LLL:core.description</label>
+					<label>core.description</label>
 					<tinymce>
 						<theme>simple</theme>
 						<width>240px</width>
@@ -39,7 +39,7 @@
 				</field>
 
 				<field type="select" name="id_worktype">
-					<label>LLL:task.worktype</label>
+					<label>task.worktype</label>
 					<source type="sql">
 						<fields>id,title</fields>
 						<tables>ext_project_worktype</tables>
@@ -52,17 +52,17 @@
 				</field>
 
 				<field type="timeinput" name="workload_tracked">
-					<label>LLL:panelwidget-quicktaskwizard.workloadTracked.label</label>
+					<label>panelwidget-quicktaskwizard.workloadTracked.label</label>
 				</field>
 
 				<field type="checkbox" name="start_tracking">
-					<label>LLL:timetracking.start</label>
+					<label>timetracking.start</label>
 					<default>1</default>
 					<onchange>Todoyu.Ext.project.QuickTask.preventStartDone('start', this)</onchange>
 				</field>
 
 				<field type="checkbox" name="task_done">
-					<label>LLL:task.taskDone</label>
+					<label>task.taskDone</label>
 					<onchange>Todoyu.Ext.project.QuickTask.preventStartDone('done', this)</onchange>
 				</field>
 
@@ -73,17 +73,10 @@
 				<legend>Actions</legend>
 				<class>buttons</class>
 				<elements>
-					<field type="button" name="save">
-						<text>LLL:form.field.save</text>
-						<type>submit</type>
-						<class>buttonSave</class>
-						<hasIcon>1</hasIcon>
+					<field type="saveButton" name="save">
+						<onclick>Todoyu.Ext.project.QuickTask.save(this.form)</onclick>
 					</field>
-					<field type="button" name="cancel">
-						<text>LLL:form.field.cancel</text>
-						<type>button</type>
-						<class>buttonCancel</class>
-						<hasIcon>1</hasIcon>
+					<field type="cancelButton" name="cancel">
 						<onclick>Todoyu.Ext.project.QuickTask.closePopup()</onclick>
 					</field>
 				</elements>

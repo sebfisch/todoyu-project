@@ -10,11 +10,11 @@
 			<elements>
 
 				<field type="textinput" name="title">
-					<label>LLL:core.title</label>
+					<label>core.title</label>
 				</field>
 
 				<field type="select" name="status">
-					<label>LLL:core.status</label>
+					<label>core.status</label>
 					<multiple>1</multiple>
 					<source type="function">
 						<function>TodoyuPanelWidgetProjectTree::getStatusOptions</function>
@@ -22,11 +22,11 @@
 				</field>
 
 				<field type="textinput" name="fulltext">
-					<label>LLL:panelwidget-projecttree.filter.fulltext</label>
+					<label>panelwidget-projecttree.filter.fulltext</label>
 				</field>
 
 				<field type="textinputAC" name="projectleader">
-					<label>LLL:panelwidget-projecttree.filter.projectleader</label>
+					<label>panelwidget-projecttree.filter.projectleader</label>
 					<config>
 						<acListener>
 							<ext>project</ext>
@@ -38,7 +38,7 @@
 				</field>
 
 				<field type="textinputAC" name="customer">
-					<label>LLL:panelwidget-projecttree.filter.customer</label>
+					<label>panelwidget-projecttree.filter.customer</label>
 					<config>
 						<acListener>
 							<ext>project</ext>
@@ -61,7 +61,7 @@
 			<elements>
 
 				<field type="select" name="add">
-					<label>LLL:panelwidget-projecttree.filter.addFilter</label>
+					<label>panelwidget-projecttree.filter.addFilter</label>
 					<source type="function">
 						<function>TodoyuPanelWidgetProjectTree::getAvailableFields</function>
 						<lazyInit />

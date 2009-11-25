@@ -13,7 +13,7 @@
 			<class>top</class>
 			<elements>
 				<field type="textinputAC" name="id_user">
-					<label>LLL:user.customer.attr.customer-user.person</label>
+					<label>user.customer.attr.customer-user.person</label>
 					<config>
 						<acListener>
 							<ext>project</ext>
@@ -25,13 +25,13 @@
 					<required>1</required>
 				</field>
 				<field type="select" name="id_userrole">
-					<label>LLL:project.user.role</label>
+					<label>project.user.role</label>
 					<source type="function">
 						<function>TodoyuProjectDataSource::getProjectUserRoleOptions</function>
 					</source>
 				</field>
 				<field type="textinput" name="comment">
-					<label>LLL:project.user.comment</label>
+					<label>project.user.comment</label>
 				</field>
 			</elements>
 		</fieldset>

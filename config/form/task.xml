@@ -3,7 +3,7 @@
 	<attributes>
 		<attribute name="action">?ext=project&amp;controller=task</attribute>
 		<attribute name="name">task</attribute>
-		<attribute name="onsubmit">return Todoyu.Ext.project.Task.Edit.save(this);</attribute>
+		<attribute name="onsubmit">return false</attribute>
 		<attribute name="class">formTask</attribute>
 	</attributes>
 	<hiddenFields>
@@ -19,15 +19,15 @@
 			<elements>
 
 				<field type="textinput" name="title">
-					<label>LLL:core.title</label>
+					<label>core.title</label>
 					<validate>
-						<isNotEmpty msg="Tasks needs a title" />
+						<isNotEmpty msg="task.error.title" />
 					</validate>
 					<required />
 				</field>
 
 				<field type="RTE" name="description">
-					<label>LLL:core.description</label>
+					<label>core.description</label>
 					<tinymce>
 						<theme>simple</theme>
 						<width>350px</width>
@@ -45,12 +45,12 @@
 			<elements>
 
 				<field type="datetimeinput" name="date_start">
-					<label>LLL:task.date_start</label>
+					<label>task.date_start</label>
 					<required/>
 				</field>
 
 				<field type="datetimeinput" name="date_end">
-					<label>LLL:task.date_end</label>
+					<label>task.date_end</label>
 					<validate>
 						<dateNotBefore msg="End date has to be after startdate">
 							<field>date_start</field>
@@ -59,7 +59,7 @@
 				</field>
 
 				<field type="datetimeinput" name="date_deadline">
-					<label>LLL:task.date_deadline</label>
+					<label>task.date_deadline</label>
 					<validate>
 						<dateNotBefore msg="Deadline date has to be after startdate">
 							<field>date_start</field>
@@ -70,7 +70,7 @@
 				</field>
 
 				<field type="select" name="status">
-					<label>LLL:task.attr.status</label>
+					<label>task.attr.status</label>
 					<source type="function">
 						<function>TodoyuProjectViewHelper::getProjectStatusOptions</function>
 						<lazyInit />
@@ -78,7 +78,7 @@
 				</field>
 
 				<field type="select" name="id_user_assigned">
-					<label>LLL:task.user_assigned</label>
+					<label>task.user_assigned</label>
 					<source type="function">
 						<function>TodoyuTaskViewHelper::getTaskAssignUserOptions</function>
 						<lazyInit />
@@ -86,7 +86,7 @@
 				</field>
 
 				<field type="select" name="id_user_owner">
-					<label>LLL:task.user_owner</label>
+					<label>task.user_owner</label>
 					<source type="sql">
 						<fields>id,lastname,firstname</fields>
 						<tables>ext_user_user</tables>
@@ -111,7 +111,7 @@
 				</field>
 
 				<field type="select" name="id_worktype">
-					<label>LLL:task.worktype</label>
+					<label>task.worktype</label>
 					<source type="sql">
 						<fields>id,title</fields>
 						<tables>ext_project_worktype</tables>
@@ -123,7 +123,7 @@
 				</field>
 
 				<field type="duration" name="estimated_workload">
-					<label>LLL:task.esitmated_workload</label>
+					<label>task.esitmated_workload</label>
 					<validate>
 						<isNotZerotime msg="LLL:task.attr.estimated_workload.error"/>
 					</validate>
@@ -131,11 +131,11 @@
 				</field>
 
 				<field type="checkbox" name="is_estimatedworkload_public">
-					<label>LLL:task.attr.is_estimatedworkload_public</label>
+					<label>task.attr.is_estimatedworkload_public</label>
 				</field>
 
 				<field type="checkbox" name="is_public">
-					<label>LLL:task.attr.is_public</label>
+					<label>task.attr.is_public</label>
 				</field>
 
 			</elements>
@@ -145,22 +145,12 @@
 			<legend>Actions</legend>
 			<class>buttons</class>
 			<elements>
-
-				<field type="button" name="save">
-					<text>LLL:form.field.save</text>
-					<type>submit</type>
-					<class>buttonSave</class>
-					<hasIcon>1</hasIcon>
-				</field>
-
-				<field type="button" name="cancel">
-					<text>LLL:form.field.cancel</text>
-					<type>button</type>
-					<class>buttonChancel</class>
-					<hasIcon>1</hasIcon>
+				<field type="saveButton" name="save">
+					<onclick>Todoyu.Ext.project.Task.Edit.save(this.form)</onclick>
+				</field>				
+				<field type="cancelButton" name="cancel">
 					<onclick>Todoyu.Ext.project.Task.Edit.cancel(#id#)</onclick>
 				</field>
-
 			</elements>
 		</fieldset>
 	</fieldsets>
