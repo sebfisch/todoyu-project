@@ -2,10 +2,23 @@
 
 class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 
+	/**
+	 * @todo comment
+	 *
+	 *	@param	Array	$params
+	 */
 	public function popupAction(array $params) {
 		return TodoyuQuickTaskManager::renderForm();
 	}
 
+
+
+	/**
+	 * Save quick task
+	 *
+	 *	@param	Array	$params
+	 *	@return	String
+	 */
 	public function saveAction(array $params) {
 		$formData	= $params['quicktask'];
 

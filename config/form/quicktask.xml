@@ -56,7 +56,7 @@
 				</field>
 
 				<field type="checkbox" name="start_tracking">
-					<label>LLL:panelwidget-quicktaskwizard.startTracking.label</label>
+					<label>LLL:timetracking.start</label>
 					<default>1</default>
 					<onchange>Todoyu.Ext.project.QuickTask.preventStartDone('start', this)</onchange>
 				</field>
