@@ -978,8 +978,10 @@ class TodoyuTaskManager {
 	 * @param	Array		$statusIDs
 	 * @param	Array		$userIDs		(id_user_assigned)
 	 * @param	String		$limit
+	 * @param	Boolean		$getContainers
+	 * @return	Array
 	 */
-	public static function getTasksInTimeSpan($timeStart = 0, $timeEnd = 0, array $statusIDs = array(), array $userIDs = array(), $limit = '') {
+	public static function getTasksInTimeSpan($timeStart = 0, $timeEnd = 0, array $statusIDs = array(), array $userIDs = array(), $limit = '', $getContainers = false) {
 		$timeStart	= intval($timeStart);
 		$timeEnd	= intval($timeEnd);
 		$statusIDs	= TodoyuArray::intval($statusIDs, true, true);
@@ -988,7 +990,7 @@ class TodoyuTaskManager {
 		$fields	= '*';
 		$table	= self::TABLE;
 
-		$where	=  ' deleted 	= 0 ';
+		$where	=  ' deleted 	= 0 ' . ($getContainers ? '' : ' AND type = 1 ');
 //		$where	.= ($timeStart	> 0	? (' AND date_start	>= ' . $timeStart .	' AND date_end >= ' . $timeStart) : '');
 		$where	.= ($timeEnd	> 0	? (' AND date_end 	<= ' . $timeEnd .	' AND date_start <= ' . $timeEnd) : '');
 
