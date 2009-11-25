@@ -37,7 +37,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	public function __construct($idProject) {
 		parent::__construct($idProject, 'ext_project_project');
 
-		if($idProject === 0)	{
+		if( $idProject === 0 )	{
 			$this->initialize();
 		}
 	}

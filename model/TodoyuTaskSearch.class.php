@@ -142,8 +142,8 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 	 * @return	Array
 	 */
 	public static function searchTask($sword)	{
-		$fields = array('id', 'title', 'description', 'id_project', 'tasknumber');
-		$table = 'ext_project_task';
+		$fields	= array('id', 'title', 'description', 'id_project', 'tasknumber');
+		$table	= 'ext_project_task';
 
 		if(strstr($sword, '.'))	{
 			list($project, $taskNumber) = explode('.', $sword);
@@ -154,7 +154,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 			$where = Todoyu::db()->buildLikeQuery($searchWords, $fields);
 		}
 
-		if($where)	{
+		if( $where )	{
 			$where.= ' AND deleted = 0';
 		}
 

@@ -76,7 +76,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 				// setup query parts array
 			$tables	= array('ext_project_task');
 
-			if($negate)	{
+			if( $negate )	{
 				$where	= 'ext_project_task.id_project != ' . $idProject;
 			} else {
 				$where	= 'ext_project_task.id_project = ' . $idProject;
@@ -392,7 +392,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 				// set up query parts array
 			$tables	= ('ext_project_task');
 
-			if($negate)	{
+			if( $negate )	{
 				$where	= 'ext_project_task.id_user_assigned != ' . intval($idUser);
 			} else {
 				$where	= 'ext_project_task.id_user_assigned = ' . intval($idUser);
@@ -486,7 +486,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 		}
 
 		$tables	= array('ext_project_task');
-		if($negate)	{
+		if( $negate )	{
 			$where	= 'ext_project_task.status NOT IN(' . implode(',', $statuses) . ')';
 		} else {
 			$where	= 'ext_project_task.status IN(' . implode(',', $statuses) . ')';
@@ -762,7 +762,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 * @return	Array
 	 */
 	public static function Filter_billingType($value, $negate = false)	{
-		if($value)	{
+		if( $value )	{
 			$value = explode(',', $value);
 
 			$value = TodoyuArray::intval($value, true, true);
@@ -770,7 +770,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 
 			$tables = array('ext_project_task');
 
-			if($negate)	{
+			if( $negate )	{
 				$where = 'ext_project_task.ext_projectbilling_type NOT IN ('.$value.')';
 			} else {
 				$where = 'ext_project_task.ext_projectbilling_type IN ('.$value.')';
@@ -793,7 +793,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	public static function getTimestampAndLogicForSimpleDateInputs($value, $negate = false)	{
 		$value = !is_numeric($value) ? TodoyuTime::parseDate($value) : $value;
 
-		if($negate)	{
+		if( $negate )	{
 			$timestampToCheck = mktime(0, 0, 0, date('n', $value), date('d', $value), date('Y', $value));
 			$logic = '>=';
 		} else {

@@ -403,7 +403,7 @@ class TodoyuTaskManager {
 	public static function getSubtasks($idTask) {
 		$idTask	= intval($idTask);
 
-		if($idTask === 0)	{
+		if( $idTask === 0 )	{
 			return array();
 		}
 
