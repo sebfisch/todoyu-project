@@ -23,7 +23,7 @@ Todoyu.Ext.project.QuickTask = {
 		};
 		this.savedCallback = callback;
 
-		Todoyu.Popup.openWindow(this.popupID, 'Quicktask wizard', 420, 310, url, options);
+		Todoyu.Popup.openWindow(this.popupID, 'Quicktask wizard', 450, 304, url, options);
 	},
 	
 	closePopup: function() {
