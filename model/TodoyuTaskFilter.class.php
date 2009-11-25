@@ -244,7 +244,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 		if( strpos($taskNumber, '.') === false && intval($taskNumber) > 0 ) {
 			$taskNumber	= intval($value);
 			$whereParts[] = 'ext_project_task.tasknumber = ' . $taskNumber;
-		} else if(strpos($taskNumber, '.') !== false)	{
+		} else if( strpos($taskNumber, '.') !== false )	{
 			list($project, $task) = explode('.', $taskNumber);
 			$whereParts[] = '(ext_project_task.id_project = '.intval($project).' AND ext_project_task.tasknumber = '.intval($task).')';
 		}

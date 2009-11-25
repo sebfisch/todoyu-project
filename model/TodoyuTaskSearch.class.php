@@ -145,7 +145,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 		$fields	= array('id', 'title', 'description', 'id_project', 'tasknumber');
 		$table	= 'ext_project_task';
 
-		if(strstr($sword, '.'))	{
+		if( strstr($sword, '.') )	{
 			list($project, $taskNumber) = explode('.', $sword);
 			$where = 'id_project = '.intval($project).' AND tasknumber = '.intval($taskNumber);
 		} else {
