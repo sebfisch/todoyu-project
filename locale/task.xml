@@ -20,7 +20,7 @@
 		<label index="attr.is_estimatedworkload_public.0">Not public</label>
 		<label index="attr.is_estimatedworkload_public.error">Please fill in the estimated workwold for this task</label>
 		<label index="attr.notAcknowledged">Not acknowledged (NEW)</label>
-		<label index="attr.timeover">'Enddate or deadline exceed'</label>
+		<label index="attr.timeover">Enddate or deadline exceed</label>
 		<label index="attr.overtimed">Task overtimed</label>
 		<label index="search.label">Tasks</label>
 		<label index="search.mode.label">Search tasks</label>
