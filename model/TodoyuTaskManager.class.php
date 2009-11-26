@@ -237,7 +237,7 @@ class TodoyuTaskManager {
 			}
 		}
 
-		// Delete all subtasks
+			// Delete all subtasks
 		$table	= self::TABLE;
 		$where	= 'id_parenttask = ' . $idTask;
 		$data	= array('deleted'		=> 1,
@@ -274,7 +274,7 @@ class TodoyuTaskManager {
 			'status' => intval($newStatus)
 		);
 
-			// Set finish date if task is done
+			// Set finishing date if task is done
 		if( $newStatus === STATUS_DONE || $newStatus === STATUS_ACCEPTED ) {
 			$data['date_finish']	= NOW;
 		}
@@ -395,7 +395,7 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Get subtasks (as data array) of a task
+	 * Get subtasks (as data array) of given task
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Array
@@ -635,9 +635,7 @@ class TodoyuTaskManager {
 			'position'	=> 50
 		);
 
-
-
-			// Attributes which are only for tasks
+			// Attributes which are only for tasks (not relevant for containers)
 		if( $task->isTask() ) {
 
 				// Status
@@ -726,7 +724,7 @@ class TodoyuTaskManager {
 		$infoLevel	= intval($infoLevel);
 		$task		= self::getTask($idTask);
 
-			// Add special class Todoyufor containers
+			// Add special CSS class for containers
 		if( $task->isContainer() ) {
 			$taskData['class'] .= ' container';
 		}
@@ -835,7 +833,7 @@ class TodoyuTaskManager {
 
 			// Task-only infos (not relevant for containers)
 		if ( $task->isTask() ) {
-			if( $task->getDeadlineDate() > NOW || $task->getEndDate() > NOW ) {
+			if( $task->getDeadlineDate() < NOW || $task->getEndDate() < NOW ) {
 				$icons[]= array(
 					'id'		=> 'task-' . $idTask . '-timeover',
 					'class'		=> 'timeover',
