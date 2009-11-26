@@ -77,6 +77,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	Ajax.response	response
 	 */
 	onStatusUpdated: function(idTask, status, response) {
+		Todoyu.Hook.exec('taskStatusUpdated', idTask, status);
 		this.refresh(idTask);
 	},
 
@@ -95,7 +96,7 @@ Todoyu.Ext.project.Task = {
 	},
 
 	setStatus: function(idTask, status) {
-
+		console.log('not implemented yet');
 	},
 
 
