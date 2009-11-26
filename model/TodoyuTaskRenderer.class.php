@@ -32,6 +32,7 @@ class TodoyuTaskRenderer {
 	 * Render a task detail
 	 *
 	 * @param	Integer		$idTask
+	 * @param	String		$activeTab
 	 * @return	String
 	 */
 	public static function renderTaskDetail($idTask, $activeTab = null) {
@@ -112,7 +113,9 @@ class TodoyuTaskRenderer {
 	 * Render edit form to edit a new task. This form is wraped by
 	 * the "detail" and "data" div as used in detail view
 	 *
-	 * @return	String
+	 *	@param	Integer	$idProject
+	 *	@param	Integer	$idParentTask
+	 *	@return	String
 	 */
 	public static function renderNewTaskEditForm($idProject, $idParentTask = 0) {
 		$idTask			= 0;
@@ -157,11 +160,11 @@ class TodoyuTaskRenderer {
 	 * Render the heads of all tabs
 	 *
 	 * @param	Integer		$idTask
+	 * @param	String		$activeTab
 	 * @return	String
 	 */
 	public static function renderTabHeads($idTask, $activeTab = null) {
 		$idTask		= intval($idTask);
-
 		$listID		= 'task-' . $idTask . '-tabheads';
 		$class		= 'tabs taskTabheads';
 		$jsHandler	= 'Todoyu.Ext.project.Task.Tab.onSelect.bind(Todoyu.Ext.project.Task.Tab)';
@@ -183,6 +186,7 @@ class TodoyuTaskRenderer {
 	 * Render the active tab content of a task
 	 *
 	 * @param	Integer		$idTask
+	 * @param	String		$activeTab
 	 * @return	String
 	 */
 	public static function renderTabContent($idTask, $activeTab = null) {

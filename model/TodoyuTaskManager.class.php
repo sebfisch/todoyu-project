@@ -823,6 +823,7 @@ class TodoyuTaskManager {
 
 		$icons	= array();
 
+			// Is acknowledged?
 		if( ! $task->isAcknowledged() ) {
 			$icons[]= array(
 				'id'		=> 'task-' . $idTask . '-notacknowledged',
@@ -832,12 +833,15 @@ class TodoyuTaskManager {
 			);
 		}
 
-		if( $task->getDeadlineDate() > NOW || $task->getEndDate() > NOW ) {
-			$icons[]= array(
-				'id'		=> 'task-' . $idTask . '-timeover',
-				'class'		=> 'timeover',
-				'label'		=> 'LLL:task.attr.timeover'
-			);
+			// Task-only infos (not relevant for containers)
+		if ( $task->isTask() ) {
+			if( $task->getDeadlineDate() > NOW || $task->getEndDate() > NOW ) {
+				$icons[]= array(
+					'id'		=> 'task-' . $idTask . '-timeover',
+					'class'		=> 'timeover',
+					'label'		=> 'LLL:task.attr.timeover'
+				);
+			}
 		}
 
 		return $icons;

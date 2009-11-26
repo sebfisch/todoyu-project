@@ -19,11 +19,11 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-TodoyuHookManager::registerHook('project', 'taskdata', 		'TodoyuTaskManager::getTaskDataAttributes');
-TodoyuHookManager::registerHook('project', 'projectdata', 	'TodoyuProjectManager::getProjectDataAttributes');
-TodoyuHookManager::registerHook('project', 'additionalIcons', 'TodoyuTaskManager::getAdditionalProjectTaskIcons');
+TodoyuHookManager::registerHook('project', 'taskdata', 			'TodoyuTaskManager::getTaskDataAttributes');
+TodoyuHookManager::registerHook('project', 'projectdata', 		'TodoyuProjectManager::getProjectDataAttributes');
+TodoyuHookManager::registerHook('project', 'additionalIcons',	'TodoyuTaskManager::getAdditionalProjectTaskIcons');
 TodoyuHookManager::registerHook('project', 'infoIcons', 		'TodoyuTaskManager::getProjectTaskInfoIcons');
-TodoyuHookManager::registerHook('project', 'taskinfo', 'TodoyuTaskManager::addContainerInfoToTaskData');
+TodoyuHookManager::registerHook('project', 'taskinfo',			'TodoyuTaskManager::addContainerInfoToTaskData');
 
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTaskManager::modifyFormfieldsForTask');
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTaskManager::modifyFormfieldsForContainer');
