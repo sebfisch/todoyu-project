@@ -89,6 +89,7 @@ Todoyu.Ext.project.Project = {
 	},
 
 
+
 	/**
 	 *	Toggle display of project details
 	 *
@@ -262,7 +263,7 @@ Todoyu.Ext.project.Project = {
 				'action':	'setstatus',
 				'status':	status
 			},
-			'onComplete': this.refresh.bind(this, idProject)
+			'onComplete':	this.refresh.bind(this, idProject)
 		};
 
 		Todoyu.send(url, options);

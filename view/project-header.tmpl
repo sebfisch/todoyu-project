@@ -16,7 +16,7 @@
 </h1>
 
 {restrict 'project' 'project:details'}
-<div id="project-{$id}-details" class="projectdetails bcStatus{$status}"{if ! $details} style="display:none"{/if}>
+<div id="project-{$id}-details"{if ! $details} style="display:none"{/if}>
 	{$details}
 </div>
 {/restrict}
