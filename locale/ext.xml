@@ -66,6 +66,7 @@
 		<label index="form.validation.title">Please enter a project title</label>
 		<label index="noLabel.newProjectParticipant">New Project participant</label>
 <!--  ......................................... added after 20091122 -->
+		<label index="js.removeProject">Really delete this project?</label>
 	</labels>
 	<labels lang="de"></labels>
 </locallang>
