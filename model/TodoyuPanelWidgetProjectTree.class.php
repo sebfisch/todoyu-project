@@ -385,7 +385,7 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 
 		$options	= array();
 		$options[]	= array(
-			'label' => 'LLL:panelwidget-projecttree.filter.addNewFilter',
+			'label' => Label('panelwidget-projecttree.filter.addNewFilter'),
 			'value' => '0'
 		);
 
@@ -393,7 +393,7 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 			$field = $field->getForm()->getField($fieldName);
 
 			$options[] = array(
-				'label'	=> '- ' . TodoyuDiv::getLabel($field->getLabel()),
+				'label'	=> '- ' . Label($field->getLabel()),
 				'value'	=> $fieldName
 			);
 		}

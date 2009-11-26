@@ -52,8 +52,9 @@
 				<field type="datetimeinput" name="date_end">
 					<label>task.date_end</label>
 					<validate>
-						<dateNotBefore msg="End date has to be after startdate">
+						<dateNotBefore>
 							<field>date_start</field>
+							<allowEmpty />
 						</dateNotBefore>
 					</validate>
 				</field>
