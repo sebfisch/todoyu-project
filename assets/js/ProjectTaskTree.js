@@ -179,6 +179,20 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		
 		this.highlightTab(idTab);		
 	},
+
+
+
+	/**
+	 * Open (activate) first project tab
+	 */
+	openFirstTab: function() {
+		var allTabs = 	$$('li.projecttab');
+		if ( allTabs.length > 0 ) {
+			var idFirstTab = this.getFirstTab();
+			
+			this.displayActiveProject(idFirstTab);
+		}
+	},
 	
 	
 	
@@ -228,17 +242,15 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * @param	Integer		idProject
 	 */
 	displayActiveProject: function(idProject) {
-		
-			$('projects').childElements().invoke('hide');
-			$('project-' + idProject).show();
-	
-			$('project-tabs').childElements().invoke('removeClassName', 'active');
-			$('projecttab-' + idProject).addClassName('active');
-	
-			this.moveTabToFront(idProject);
-	
-			this.saveOpenProjects();
-				
+		$('projects').childElements().invoke('hide');
+		$('project-' + idProject).show();
+
+		$('project-tabs').childElements().invoke('removeClassName', 'active');
+		$('projecttab-' + idProject).addClassName('active');
+
+		this.moveTabToFront(idProject);
+
+		this.saveOpenProjects();
 	},
 
 
@@ -251,15 +263,20 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	isProjectLoaded: function(idProject) {
 		return Todoyu.exists('project-' + idProject);
 	},
-	
+
+
+
 	isTaskLoaded: function(idTask) {
 		return this.ext.Task.isLoaded(idTask);
 	},
-	
+
+
+
 	isProjectActive: function(idProject) {
 		return $('project-tabs').select('li.active').first().readAttribute('id').split('-')[1] == idProject;
 	},
 	
+
 
 	/**
 	 * Check whether given project is loaded (the resp. project tab exists)

@@ -85,7 +85,7 @@ Todoyu.Ext.project.Project = {
 	 */
 	onRemoved: function(idProjectRemoved) {
 		this.ext.ProjectTaskTree.removeProject(idProjectRemoved);
-		this.ext.ProjectTaskTree.hide(idProjectRemoved);
+		this.ext.ProjectTaskTree.openFirstTab();
 	},
 
 
