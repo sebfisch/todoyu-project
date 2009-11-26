@@ -124,7 +124,7 @@ Todoyu.Ext.project.PanelWidget.ProjectTree = {
 
 
 
-		//subtasks = $('pwdgt-projecttree-subtasks-' + idElement);
+//	subtasks = $('pwdgt-projecttree-subtasks-' + idElement);
 /*
 		if( subtasks.visible() ) {
 			subtasks.hide();

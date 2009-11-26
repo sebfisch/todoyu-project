@@ -68,7 +68,8 @@ Todoyu.Ext.project.Project = {
 				'parameters': {
 					'action':	'remove',
 					'project':	idProject
-				}				
+				},
+				'onComplete': this.onRemoved.bind(this, idProject)			
 			};
 			
 			Todoyu.send(url, options);
@@ -78,7 +79,18 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Toggle project details
+	 * Handle completion event after project having been deleted. Remove project from project task tree and remove project tab.
+	 *
+	 *	@param	Integer	idProjectRemoved  
+	 */
+	onRemoved: function(idProjectRemoved) {
+		this.ext.ProjectTaskTree.removeProject(idProjectRemoved);
+		this.ext.ProjectTaskTree.hide(idProjectRemoved);
+	},
+
+
+	/**
+	 *	Toggle display of project details
 	 *
 	 *	@param	Integer	idProject
 	 */
@@ -109,7 +121,7 @@ Todoyu.Ext.project.Project = {
 	
 	
 	onDetailsToggled: function(idProject, response) {
-		console.log('OnComplete erreicht');
+//		console.log('OnComplete erreicht');
 	},
 
 

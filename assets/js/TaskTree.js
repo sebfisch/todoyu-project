@@ -25,9 +25,7 @@ Todoyu.Ext.project.TaskTree = {
 
 
 	/**
-	 * Enter description here...
-	 * 
-	 *  @todo	comment
+	 * Init project task tree
 	 */
 	init: function() {
 		this.installObservers();
@@ -36,9 +34,7 @@ Todoyu.Ext.project.TaskTree = {
 
 
 	/**
-	 * Enter description here...
-	 *
-	 * @todo	comment
+	 * Install observers
 	 */
 	installObservers: function() {
 		Todoyu.PanelWidget.observe('statusfilter', this.onStatusFilterUpdate.bind(this));
@@ -49,7 +45,7 @@ Todoyu.Ext.project.TaskTree = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idProject
+	 * @param	Integer	idProject
 	 */
 	tree: function(idProject) {
 		return $('project-' + idProject + '-tasks');
@@ -86,6 +82,7 @@ Todoyu.Ext.project.TaskTree = {
 	},
 
 
+
 	/**
 	 * Update task tree with a new filter configuration
 	 * 
@@ -111,6 +108,7 @@ Todoyu.Ext.project.TaskTree = {
 
 		Todoyu.Ui.update(target, url, options);
 	},
+
 
 
 	/**
@@ -270,4 +268,5 @@ Todoyu.Ext.project.TaskTree = {
 	addContextMenu: function() {
 		Todoyu.Ext.project.ContextMenuTask.reattach();
 	}
+
 };
