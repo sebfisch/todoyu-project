@@ -814,7 +814,7 @@ class TodoyuProjectManager {
 
 		$projectFilter = new TodoyuProjectFilter($conditions, $conjunction);
 
-		return $projectFilter->getProjectIDs('title');
+		return $projectFilter->getProjectIDs('ext_project_project.title');
 	}
 
 
