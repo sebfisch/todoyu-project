@@ -89,7 +89,7 @@
 		<label index="attr.date_deadline">Kunden Frist</label>
 		<label index="attr.date_end">Interne Frist</label>
 		<label index="attr.user_assigned">Zugewiesen</label>
-		<label index="attr.user_owner">Aufgaben Eigner</label>
+		<label index="attr.user_owner">Aufgaben-Eigner</label>
 		<label index="attr.is_public">Ist öffentlich</label>
 		<label index="attr.is_estimatedworkload_public">Geschätzter Aufwand</label>
 		<label index="attr.is_estimatedworkload_public.1">Ist öffentlich</label>
@@ -141,7 +141,7 @@
 		<label index="date_deadline">Kunden-Frist</label>
 		<label index="date_end">Interne Frist</label>
 		<label index="user_assigned">Zugewiesen</label>
-		<label index="user_owner">Aufgaben Eigner</label>
+		<label index="user_owner">Aufgaben-Eigner</label>
 		<label index="startTracking">Zeitaufzeichnung starten</label>
 		<label index="billing_type">Verrechnungs-Typ</label>
 		<label index="taskDone">Aufgabe erledigt?</label>
