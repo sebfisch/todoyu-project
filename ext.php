@@ -26,10 +26,6 @@
  * @subpackage	Project
  */
 
-
-
-
-
 	// Declare ext ID, path
 define('EXTID_PROJECT', 112);
 define('PATH_EXT_PROJECT', PATH_EXT . '/project');

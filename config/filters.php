@@ -32,9 +32,15 @@ $CONFIG['FILTERS']['TASK'] = array(
 		'position'			=> 10,
 		'RenderFunction'	=> 'TodoyuTaskSearchRenderer::renderResults',
 		'assets'			=> array(
-			'ext'	=> 'project',
-			'type'	=> 'public'
-		),
+			array(
+				'ext'	=> 'project',
+				'type'	=> 'public'
+			),
+			array(
+				'ext'	=> 'portal',
+				'type'	=> 'public'
+			)
+		)
 	),
 	'widgets' => array(
 		/**
@@ -304,9 +310,11 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 		'position'			=> 20,
 		'RenderFunction'	=> 'TodoyuProjectSearchRenderer::renderSearchResults',
 		'assets'			=> array(
-			'ext'	=> 'project',
-			'type'	=> 'public'
-		),
+			array(
+				'ext'	=> 'project',
+				'type'	=> 'public'
+			)
+		)
 	),
 	'widgets' => array(
 		'fulltext' => array(

@@ -15,6 +15,7 @@
 		<label index="attr.user_assigned">Assigned to</label>
 		<label index="attr.user_owner">Task Owner</label>
 		<label index="attr.is_public">Is public</label>
+		<label index="attr.id_parenttask">Parenttask</label>
 		<label index="attr.is_estimatedworkload_public">Est. workload pub.</label>
 		<label index="attr.is_estimatedworkload_public.1">Is public</label>
 		<label index="attr.is_estimatedworkload_public.0">Not public</label>
@@ -91,6 +92,7 @@
 		<label index="attr.user_assigned">Zugewiesen</label>
 		<label index="attr.user_owner">Aufgaben-Eigner</label>
 		<label index="attr.is_public">Ist öffentlich</label>
+		<label index="attr.id_parenttask">Übergeordnete Aufg.</label>
 		<label index="attr.is_estimatedworkload_public">Geschätzter Aufwand</label>
 		<label index="attr.is_estimatedworkload_public.1">Ist öffentlich</label>
 		<label index="attr.is_estimatedworkload_public.0">Nicht öffentlich</label>
@@ -98,7 +100,7 @@
 		<label index="attr.notAcknowledged">Nicht bestätigt (Neu)</label>
 		<label index="attr.timeover">End-Datum oder Frist ist abgelaufen</label>
 		<label index="attr.overtimed">Aufgabezeit überzogen</label>
-		<label index="search.label">Aufgabe</label>
+		<label index="search.label">Aufgaben</label>
 		<label index="search.mode.label">Aufgaben-Suche</label>
 		<label index="date.deadline.short">F</label>
 		<label index="contextmenu.showinproject">Zeige in Projekt</label>
@@ -152,5 +154,5 @@
 		<label index="attr.user_assigned.error">Dies ist ein Pflichtfeld</label>
 		<label index="attr.id_worktype.error">Dies ist ein Pflichtfeld</label>
 
-	</labels>	
+	</labels>
 </locallang>

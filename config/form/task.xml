@@ -79,7 +79,7 @@
 				</field>
 
 				<field type="select" name="id_user_assigned">
-					<label>task.user_assigned</label>
+					<label>task.attr.user_assigned</label>
 					<source type="function">
 						<function>TodoyuTaskViewHelper::getTaskAssignUserOptions</function>
 						<lazyInit />
@@ -90,7 +90,7 @@
 				</field>
 
 				<field type="select" name="id_user_owner">
-					<label>task.user_owner</label>
+					<label>task.attr.user_owner</label>
 					<source type="sql">
 						<fields>id,lastname,firstname</fields>
 						<tables>ext_user_user</tables>
@@ -115,7 +115,7 @@
 				</field>
 
 				<field type="select" name="id_worktype">
-					<label>task.worktype</label>
+					<label>task.attr.worktype</label>
 					<source type="function">
 						<function>TodoyuTaskViewHelper::getTaskWorktypeOptions</function>
 						<lazyInit />
@@ -126,7 +126,7 @@
 				</field>
 
 				<field type="duration" name="estimated_workload">
-					<label>task.esitmated_workload</label>
+					<label>task.attr.esitmated_workload</label>
 					<validate>
 						<isNotZerotime msg="LLL:task.attr.estimated_workload.error"/>
 					</validate>

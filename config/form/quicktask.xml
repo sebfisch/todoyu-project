@@ -39,7 +39,7 @@
 				</field>
 
 				<field type="select" name="id_worktype">
-					<label>task.worktype</label>
+					<label>task.attr.worktype</label>
 					<source type="sql">
 						<fields>id,title</fields>
 						<tables>ext_project_worktype</tables>
@@ -52,7 +52,7 @@
 				</field>
 
 				<field type="timeinput" name="workload_tracked">
-					<label>panelwidget-quicktaskwizard.workloadTracked.label</label>
+					<label>task.attr.esitmated_workload</label>
 				</field>
 
 				<field type="checkbox" name="start_tracking">

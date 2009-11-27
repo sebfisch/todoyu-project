@@ -635,6 +635,13 @@ class TodoyuTaskManager {
 			'position'	=> 50
 		);
 
+			// User owner
+		$info[]	= array(
+			'label'	=> 'LLL:task.attr.user_owner',
+			'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $data['user_owner']['lastname'] . ', ' . $data['user_owner']['firstname'] . '</a>',
+			'position'	=> 90
+		);
+
 			// Attributes which are only for tasks (not relevant for containers)
 		if( $task->isTask() ) {
 
@@ -689,13 +696,6 @@ class TodoyuTaskManager {
 				'label'	=> 'LLL:task.attr.date_end',
 				'value'	=> TodoyuTime::format($data['date_end'], $formatEnd),
 				'position'	=> 70
-			);
-
-				// User owner
-			$info[]	= array(
-				'label'	=> 'LLL:task.attr.user_owner',
-				'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $data['user_owner']['lastname'] . ', ' . $data['user_owner']['firstname'] . '</a>',
-				'position'	=> 90
 			);
 
 				// User assigned
@@ -1414,7 +1414,7 @@ class TodoyuTaskManager {
 			$form->getField('date_end')->remove();
 			$form->getField('date_deadline')->remove();
 			$form->getField('id_user_assigned')->remove();
-			$form->getField('id_user_owner')->remove();
+//			$form->getField('id_user_owner')->remove();
 			$form->getField('status')->remove();
 		}
 
