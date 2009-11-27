@@ -2,14 +2,22 @@
 <locallang>
 	<labels lang="en">
 		<label index="title">Projects</label>
-		<label index="filter.remove">Remove filter</label>
+		<label index="filter.remove">Remove Filter</label>
 		<label index="filter.addFilter">Add</label>
 		<label index="filter.addNewFilter">Add a new filter</label>
 		<label index="filter.fulltext">Fulltext</label>
-		<label index="filter.projectleader">Projectleader</label>
+		<label index="filter.projectleader">Project Manager</label>
 		<label index="filter.customer">Customer</label>
-		<label index="list.empty">No matching projects</label>
-<!--  ......................................... added after 20091122 -->
+		<label index="list.empty">No matching Projects</label>
 	</labels>
-	<labels lang="de"></labels>
+	<labels lang="de">
+		<label index="title">Projekte</label>
+		<label index="filter.remove">Filter löschen</label>
+		<label index="filter.addFilter">Anfügen</label>
+		<label index="filter.addNewFilter">Neuen Filter anfügen</label>
+		<label index="filter.fulltext">Volltext</label>
+		<label index="filter.projectleader">Projektleiter</label>
+		<label index="filter.customer">Kunde</label>
+		<label index="list.empty">Keine Projekte gefunden</label>
+	</labels>	
 </locallang>
