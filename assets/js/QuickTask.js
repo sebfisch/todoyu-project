@@ -112,7 +112,7 @@ Todoyu.Ext.project.QuickTask = {
 
 	
 	/**
-	 * Prevent field 'done' being checked at time of creation of new quicktask
+	 * Prevent field 'done' being checked and 'start timetracking' being selected together at time of creation of new quicktask
 	 * 
 	 * 	@param	String	key
 	 * 	@param	String	field
