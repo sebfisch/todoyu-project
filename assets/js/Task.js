@@ -560,7 +560,7 @@ Todoyu.Ext.project.Task = {
 	},
 
 
-
+	
 	/**
 	 * Enter description here...
 	 *
@@ -614,6 +614,7 @@ Todoyu.Ext.project.Task = {
 		var value = open ? 1 : 0;
 		this.ext.savePref('taskopen', value, idTask);
 	},
+
 
 
 	isLoaded: function(idTask) {
