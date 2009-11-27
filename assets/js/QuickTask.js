@@ -1,18 +1,41 @@
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
+
 Todoyu.Ext.project.QuickTask = {
-	
+
 	ext: Todoyu.Ext.project,
-	
+
 	fieldStart: 'quicktask-0-field-start-tracking',
 
 	fieldDone: 'quicktask-0-field-task-done',
-	
+
 	popupID: 'quicktask',
-	
+
 	savedCallback: null,
-	
-	
+
+
+
 	/**
-	 *	Toggle quick task popup
+	 * Toggle quick task popup
+	 * 
+	 *	@param	Callback	callback
 	 */
 	openPopup: function(callback) {
 		var url		= Todoyu.getUrl('project', 'quicktask');
@@ -25,7 +48,12 @@ Todoyu.Ext.project.QuickTask = {
 
 		Todoyu.Popup.openWindow(this.popupID, 'Quicktask wizard', 450, 304, url, options);
 	},
-	
+
+
+
+	/**
+	 * Close quicktask wizard popup
+	 */	
 	closePopup: function() {
 		Todoyu.Popup.close(this.popupID);
 	},	
@@ -33,7 +61,7 @@ Todoyu.Ext.project.QuickTask = {
 
 
 	/**
-	 *	Save (quick-) task
+	 * Save (quick-) task
 	 *
 	 *	@param	String	form
 	 */
@@ -50,6 +78,14 @@ Todoyu.Ext.project.QuickTask = {
 		return false;
 	},
 
+
+
+	/**
+	 * Evoked upon completion of saving a quicktask
+	 * 
+	 * 	@param	String	form
+	 * 	@param	Object	response
+	 */
 	onSaved: function(form, response) {
 		if( response.hasTodoyuError() ) {
 			$(form).replace(response.responseText);
@@ -75,6 +111,12 @@ Todoyu.Ext.project.QuickTask = {
 
 
 	
+	/**
+	 * Prevent field 'done' being checked at time of creation of new quicktask
+	 * 
+	 * 	@param	String	key
+	 * 	@param	String	field
+	 */
 	preventStartDone: function(key, field) {
 		if( key === 'start' ) {
 			if( $(this.fieldDone).checked ) {

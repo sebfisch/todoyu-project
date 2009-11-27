@@ -187,7 +187,7 @@ Todoyu.Ext.project.TaskTree = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	toggleSubtaskTriggerIcon: function(idTask) {
 		$('task-' + idTask + '-subtasks-trigger').toggleClassName('expanded');
@@ -199,7 +199,7 @@ Todoyu.Ext.project.TaskTree = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	areSubtasksLoaded: function(idTask) {
 		return Todoyu.exists('task-' + idTask + '-subtasks');
@@ -211,7 +211,7 @@ Todoyu.Ext.project.TaskTree = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	areSubtasksVisible: function(idTask) {
 		return $('task-' + idTask + '-subtasks').visible();
@@ -223,7 +223,7 @@ Todoyu.Ext.project.TaskTree = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	loadSubtasks: function(idTask) {
 		var url		= Todoyu.getUrl('project', 'subtasks');
@@ -251,7 +251,7 @@ Todoyu.Ext.project.TaskTree = {
 	 * Save task tree sub tasks opened status pref
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 * @param	unknown_type isOpen
 	 */
 	saveSubtaskOpenStatus: function(idTask, isOpen) {

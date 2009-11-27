@@ -20,6 +20,7 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 	 *	@return	String
 	 */
 	public function saveAction(array $params) {
+		$params['quicktask']['start_tracking'] = intval($params['quicktask']['start_tracking']);
 		$formData	= $params['quicktask'];
 
 			// Construct form object

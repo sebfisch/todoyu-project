@@ -22,11 +22,12 @@ Todoyu.Ext.project.Task = {
 
 	ext: Todoyu.Ext.project,
 
+
+
 	/**
-	 * Enter description here...
+	 * Load and display editing form of given task
 	 *
-	 * @todo	comment
-	 * @param	unknown_type idTask
+	 *	@param	Integer	idTask
 	 */
 	edit: function(idTask) {
 		this.Edit.createFormWrapDivs(idTask);
@@ -36,10 +37,9 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Scoll to given task
 	 *
-	 * @todo	comment
-	 * @param	unknown_type idTask
+	 *	@param	Integer	idTask
 	 */
 	scrollTo: function(idTask) {
 		$('task-' + idTask).scrollToElement();
@@ -48,11 +48,10 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Change status of given task to given status, in DB and visual 
 	 *
-	 * @todo	comment
-	 * @param	unknown_type idTask
-	 * @param	unknown_type status
+	 *	@param	Integer	idTask
+	 *	@param	unknown_type status
 	 */
 	updateStatus: function(idTask, status) {
 		var url	= Todoyu.getUrl('project', 'task');
@@ -72,9 +71,10 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 * Handler when status has been updated
-	 * @param	Integer			idTask
-	 * @param	Integer			status
-	 * @param	Ajax.response	response
+	 * 
+	 *	@param	Integer			idTask
+	 *	@param	Integer			status
+	 *	@param	Ajax.response	response
 	 */
 	onStatusUpdated: function(idTask, status, response) {
 		Todoyu.Hook.exec('taskStatusUpdated', idTask, status);
@@ -85,6 +85,7 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 * Get status key of the task
+	 * 
 	 * @param	Integer		idTask
 	 */
 	getStatus: function(idTask) {
@@ -104,7 +105,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Refresh a task if loaded
 	 *
-	 * @param	Integer		idTask
+	 *	@param	Integer		idTask
 	 */
 	refresh: function(idTask) {
 		var target	= 'task-' + idTask;
@@ -129,8 +130,9 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 * Handler when task has been refreshed
-	 * @param	Integer			idTask
-	 * @param	Ajax.Response	response
+	 * 
+	 *	@param	Integer			idTask
+	 *	@param	Ajax.Response	response
 	 */
 	onRefreshed: function(idTask, response) {
 		this.addContextMenu(idTask);
@@ -139,10 +141,9 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Confirm whether user is sure, and evoke deletion of given task if
 	 *
-	 * @todo	comment
-	 * @param	unknown_type idTask
+	 *	@param	Integer idTask
 	 */
 	remove: function(idTask) {
 		if( ! confirm('[LLL:task.js.removetask.question]') ) {
@@ -173,11 +174,10 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Update (reload) given task
 	 *
-	 * @todo	comment
-	 * @param	unknown_type idTask
-	 * @param	unknown_type taskHtml
+	 *	@param	Integer idTask
+	 *	@param	String	taskHtml
 	 */
 	update: function(idTask, taskHtml) {
 		this.removeContextMenu(idTask);
@@ -340,7 +340,7 @@ Todoyu.Ext.project.Task = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	addSubTask: function(idTask) {
 		var url		= Todoyu.getUrl('project', 'task');
@@ -383,7 +383,7 @@ Todoyu.Ext.project.Task = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	createSubTaskContainer: function(idTask) {
 		var idSubtaskContainer	= 'task-' + idTask + '-subtasks';
@@ -405,7 +405,7 @@ Todoyu.Ext.project.Task = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	addSubContainer: function(idTask) {
 		var url		= Todoyu.getUrl('project', 'task');
@@ -448,7 +448,7 @@ Todoyu.Ext.project.Task = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	addContextMenu: function(idTask) {
 		this.ext.ContextMenuTask.attachToElement('task-' + idTask + '-header');
@@ -459,7 +459,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Enter description here...
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	removeContextMenu: function(idTask) {
 		Todoyu.ContextMenu.detachMenuFromElement('task-' + idTask + '-header');
@@ -470,8 +470,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Enter description here...
 	 *
-	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	setAcknowledged: function(idTask) {
 		this.fadeAcknowledgeIcon(idTask);
@@ -493,7 +492,7 @@ Todoyu.Ext.project.Task = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	fadeAcknowledgeIcon: function(idTask) {
 		var idElement = 'task-' + idTask + '-notacknowledged';
@@ -508,7 +507,7 @@ Todoyu.Ext.project.Task = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	toggleDetails: function(idTask) {
 		var details;
@@ -535,7 +534,7 @@ Todoyu.Ext.project.Task = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	isDetailsLoaded: function(idTask) {
 		return Todoyu.exists('task-' + idTask + '-details');
@@ -547,7 +546,7 @@ Todoyu.Ext.project.Task = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 * @param	unknown_type tab
 	 */
 	showDetails: function(idTask, tab) {
@@ -566,7 +565,7 @@ Todoyu.Ext.project.Task = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 */
 	showSubtasks: function(idTask) {
 		var idDiv	= 'task-' + idTask + '-subtasks';
@@ -582,7 +581,7 @@ Todoyu.Ext.project.Task = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 * @param	unknown_type tab
 	 */
 	loadDetails: function(idTask, tab) {
@@ -608,7 +607,7 @@ Todoyu.Ext.project.Task = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idTask
+	 * @param	Integer idTask
 	 * @param	unknown_type open
 	 */
 	saveTaskOpen: function(idTask, open) {
@@ -635,7 +634,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 */
 		createFormWrapDivs: function(idTask) {
 			var idHeader	= 'task-' + idTask + '-header';
@@ -673,7 +672,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 */
 		loadForm: function(idTask) {
 			var url 	= Todoyu.getUrl('project', 'task');
@@ -694,7 +693,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 * @param	unknown_type response
 		 */
 		onFormLoaded: function(idTask, response) {
@@ -773,7 +772,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 * @param	unknown_type formHTML
 		 */
 		updateFormDiv: function(idTask, formHTML) {
@@ -786,7 +785,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 */
 		cancel: function(idTask) {
 			this.ext.Task.refresh(idTask);
@@ -826,7 +825,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 * @param	unknown_type tabKey
 		 */
 		load: function(idTask, tabKey) {
@@ -849,7 +848,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 * @param	unknown_type tabKey
 		 */
 		createTabContainer: function(idTask, tabKey) {
@@ -870,7 +869,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 * @param	unknown_type tabKey
 		 */
 		buildTabID: function(idTask, tabKey) {
@@ -883,7 +882,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 * @param	unknown_type tabKey
 		 */
 		activate: function(idTask, tabKey) {
@@ -898,7 +897,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 * @param	unknown_type tabKey
 		 */
 		saveSelection: function(idTask, tabKey) {
@@ -920,7 +919,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 */
 		hideAll: function(idTask) {
 			var tabDiv	= this.getContainer(idTask);
@@ -935,7 +934,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 * @param	unknown_type activeTab
 		 */
 		setActiveHead: function(idTask, activeTab) {
@@ -955,7 +954,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 * @param	unknown_type tabKey
 		 */
 		setVisible: function(idTask, tabKey) {
@@ -968,7 +967,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 */
 		getContainer: function(idTask) {
 			return $('task-' + idTask + '-tabs');
@@ -980,7 +979,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idTask
+		 * @param	Integer idTask
 		 * @param	unknown_type tabKey
 		 */
 		getHeadID: function(idTask, tabKey) {

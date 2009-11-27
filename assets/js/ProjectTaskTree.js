@@ -193,11 +193,12 @@ Todoyu.Ext.project.ProjectTaskTree = {
 			this.displayActiveProject(idFirstTab);
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Highlight the front tab
+	 * 
 	 * @param	String		idTab
 	 */
 	highlightTab: function(idTab) {
@@ -215,7 +216,6 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 	/**
 	 * Remove surplus (spare) project
-	 *
 	 */
 	removeSurplusProject: function() {
 		var surplusTab = $('project-tabs').down('li').next('li', this.maxOpenTabs-1);
@@ -259,6 +259,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * Check whether given project is loaded (is displayed as content in one of the projects tabs)
 	 *
 	 * @param	Integer	idProject
+	 * @return	Boolean
 	 */
 	isProjectLoaded: function(idProject) {
 		return Todoyu.exists('project-' + idProject);
@@ -266,22 +267,35 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 
+	/**
+	 * Check whether given task is loaded
+	 * 
+	 *	@param	Integer	idTask
+	 * 	@return	Boolean
+	 */
 	isTaskLoaded: function(idTask) {
 		return this.ext.Task.isLoaded(idTask);
 	},
 
 
 
+	/**
+	 * Check whether given project is currently active (tab is activated)
+	 * 
+	 *	@param	Integer	idProject
+	 * 	@return	Boolean
+	 */
 	isProjectActive: function(idProject) {
 		return $('project-tabs').select('li.active').first().readAttribute('id').split('-')[1] == idProject;
 	},
-	
+
 
 
 	/**
 	 * Check whether given project is loaded (the resp. project tab exists)
 	 *
-	 * @param	Integer	idProject
+	 *	@param	Integer	idProject
+	 *	@return	Boolean
 	 */
 	hasProjectTab: function(idProject) {
 		return Todoyu.exists('projecttab-' + idProject);
@@ -291,7 +305,6 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 	/**
 	 * Save currently open projects in user prefs
-	 *
 	 */
 	saveOpenProjects: function() {
 		this.openProjects = [];
@@ -337,6 +350,5 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		}
 
 	}
-
 
 };
