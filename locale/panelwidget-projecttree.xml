@@ -14,7 +14,7 @@
 		<label index="title">Projekte</label>
 		<label index="filter.remove">Filter löschen</label>
 		<label index="filter.addFilter">Anfügen</label>
-		<label index="filter.addNewFilter">Neuen Filter anfügen</label>
+		<label index="filter.addNewFilter">Neuen Filter erstellen</label>
 		<label index="filter.fulltext">Volltext</label>
 		<label index="filter.projectleader">Projektleiter</label>
 		<label index="filter.customer">Kunde</label>

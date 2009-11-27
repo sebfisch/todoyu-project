@@ -79,7 +79,7 @@
 	<labels lang="de">
 		<label index="task">Aufgabe</label>
 		<label index="tasks">Aufgaben</label>
-		<label index="attr.title">Aufgaben Titel</label>
+		<label index="attr.title">Aufgaben-Titel</label>
 		<label index="attr.worktype">Leistungsart</label>
 		<label index="attr.esitmated_workload">Geschätzter Aufwand</label>
 		<label index="attr.is_onblock">Block-Aufgabe</label>
@@ -99,7 +99,7 @@
 		<label index="attr.timeover">End-Datum oder Frist ist abgelaufen</label>
 		<label index="attr.overtimed">Aufgabezeit überzogen</label>
 		<label index="search.label">Aufgabe</label>
-		<label index="search.mode.label">Aufgaben Suche</label>
+		<label index="search.mode.label">Aufgaben-Suche</label>
 		<label index="date.deadline.short">F</label>
 		<label index="contextmenu.showinproject">Zeige in Projekt</label>
 		<label index="contextmenu.edit">Aufgabe bearbeiten</label>
@@ -145,8 +145,8 @@
 		<label index="startTracking">Zeitaufzeichnung starten</label>
 		<label index="billing_type">Verrechnungs-Typ</label>
 		<label index="taskDone">Aufgabe erledigt?</label>
-		<label index="taskno">Aufgaben-nr.</label>
-		<label index="description">Aufgaben Beschreibung</label>
+		<label index="taskno">Aufgaben-Nr.</label>
+		<label index="description">Aufgaben-Beschreibung</label>
 		<label index="attr.status">Status</label>
 		<label index="error.title">Bitte einen Aufgaben-Titel angeben</label>
 		<label index="attr.user_assigned.error">Dies ist ein Pflichtfeld</label>

@@ -124,12 +124,12 @@
 		<label index="contextmenu.delete">Projekt löschen</label>
 		<label index="contextmenu.add.task">Neue Aufgabe hinzufügen</label>
 		<label index="contextmenu.add.container">Neuen Container hinzufügen</label>
-		<label index="userrole.attr.rolekey">Rollen-Stichwort</label>
+		<label index="userrole.attr.rolekey">Rollen-Schlüssel</label>
 		<label index="tasktree.losttasks">Aufgaben bei welchen die übergeordnete Aufgabe mit dem aktuellen Filter nicht angezeigt wird</label>
-		<label index="records.userrole">Benutzer Rollen</label>
+		<label index="records.userrole">Benutzer-Rollen</label>
 		<label index="records.worktype">Arbeits-Kategorie</label>
-		<label index="form.validation.dateBefore">Datum muss vor dem Ende-Datum liegen</label>
-		<label index="form.validation.title">Bitte füllen Sie einen Projekt-Titel ein</label>
+		<label index="form.validation.dateBefore">Datum muss vor dem End-Datum liegen</label>
+		<label index="form.validation.title">Bitte füllen Projekt-Titel angeben</label>
 		<label index="noLabel.newProjectParticipant">Neuer Projekt-Mitarbeiter</label>
 	</labels>	
 </locallang>

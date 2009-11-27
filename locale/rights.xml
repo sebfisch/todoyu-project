@@ -44,23 +44,23 @@
 		<label index="right.panelwidget:projectTree:use">Steuerelement Projekt-Baum</label>
 		<label index="right.panelwidget:quickProject:use">Steuerelement Kurz-Projekt</label>
 		<label index="right.status:2:changeto">Status ändern in 'Offen'</label>
-		<label index="right.status:3:see">Siehe 'In Bearbeitung'-Status</label>
+		<label index="right.status:3:see">'In Bearbeitung'-Status sehen</label>
 		<label index="right.status:3:changeto">Status ändern in 'In Bearbeitung'</label>
-		<label index="right.status:4:see">Sie 'Zur Abnahme'-Status</label>
+		<label index="right.status:4:see">'Zur Abnahme'-Status sehen</label>
 		<label index="right.status:4:changeto">Status ändern in 'Zur Abnahme'</label>
-		<label index="right.status:5:see">Siehe 'Erledigt'-Status</label>
+		<label index="right.status:5:see">'Erledigt'-Status sehen</label>
 		<label index="right.status:5:changeto">Status änder in 'Erledigt'</label>
-		<label index="right.status:6:see">Siehe 'Abgenommen'-Status</label>
+		<label index="right.status:6:see">'Abgenommen'-Status sehen</label>
 		<label index="right.status:6:changeto">Status ändern in 'Abgenommen'</label>
-		<label index="right.status:7:see">Sie 'Zurückgewiesen '-Status</label>
+		<label index="right.status:7:see">'Zurückgewiesen '-Status sehen</label>
 		<label index="right.status:7:changeto">Status ändern in 'Zurückgewiesen'</label>
-		<label index="right.status:8:see">Siehe 'Erledigt'-Status</label>
+		<label index="right.status:8:see">'Erledigt'-Status sehen</label>
 		<label index="right.status:8:changeto">Status ändern in 'Erledigt'</label>
-		<label index="right.status:9:see">Siehe 'Garantie'-Status</label>
+		<label index="right.status:9:see">'Garantie'-Status sehen</label>
 		<label index="right.status:9:changeto">Status ändern in 'Garantie'</label>
 		<label index="section.panelwidgets">Steuerelemente</label>		
-		<label index="right.panelwidget:statusFilter:use">Statusfilter Element</label>
-		<label index="right.panelwidget:projectTree:use">Projektbaum Element</label>
+		<label index="right.panelwidget:statusFilter:use">Statusfilter-Element</label>
+		<label index="right.panelwidget:projectTree:use">Projektbaum-Element</label>
 		<label index="right.panelwidget:quickProject:use">Schnell-Project Element</label>
 	</labels>	
 </locallang>
