@@ -84,6 +84,9 @@
 						<function>TodoyuTaskViewHelper::getTaskAssignUserOptions</function>
 						<lazyInit />
 					</source>
+					<validate>
+						<isNotZero msg="LLL:task.attr.user_assigned.error"/>
+					</validate>
 				</field>
 
 				<field type="select" name="id_user_owner">
@@ -113,14 +116,13 @@
 
 				<field type="select" name="id_worktype">
 					<label>task.worktype</label>
-					<source type="sql">
-						<fields>id,title</fields>
-						<tables>ext_project_worktype</tables>
-						<where>deleted = 0</where>
-						<order>title</order>
-						<label>title</label>
-						<value>id</value>
+					<source type="function">
+						<function>TodoyuTaskViewHelper::getTaskWorktypeOptions</function>
+						<lazyInit />
 					</source>
+					<validate>
+						<isNotZero msg="LLL:task.attr.id_worktype.error"/>
+					</validate>
 				</field>
 
 				<field type="duration" name="estimated_workload">

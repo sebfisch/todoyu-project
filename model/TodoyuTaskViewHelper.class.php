@@ -4,7 +4,7 @@
 class TodoyuTaskViewHelper {
 
 	/**
-	 * Get users to which a task can be assigned (this are only project users)
+	 * Get users to which a task can be assigned (this are only project users) as options array
 	 *
 	 * @param	TodoyuFormElement		$field
 	 * @return	Array
@@ -14,7 +14,13 @@ class TodoyuTaskViewHelper {
 		$idProject	= intval($formData['id_project']);
 
 		$users	= TodoyuProjectManager::getProjectUsers($idProject);
-		$options= array();
+		$options= array(
+			0	=> array(
+				'disabled'	=> true,
+				'label'		=> 'LLL:form.select.pleaseSelect',
+				'value'		=> 0,
+			)
+		);
 
 		foreach($users as $user) {
 			$options[] = array(
@@ -26,6 +32,35 @@ class TodoyuTaskViewHelper {
 		return $options;
 	}
 
+
+
+	/**
+	 * Get stored worktypes as options array
+	 *
+	 * @param	TodoyuFormElement		$field
+	 * @return	Array
+	 */
+	public static function getTaskWorktypeOptions(TodoyuFormElement $field) {
+		$options= array(
+			0	=> array(
+				'disabled'	=> true,
+				'label'		=> 'LLL:form.select.pleaseSelect',
+				'value'		=> 0,
+			)
+		);
+
+		$worktypes	= TodoyuWorktypeManager::getAllWorktypes();
+		foreach($worktypes as $num => $type) {
+			if ($type['deleted'] == 0) {
+				$options[] = array(
+					'label'	=> $type['title'],
+					'value'	=> $type['id']
+				);
+			}
+		}
+
+		return $options;
+	}
 }
 
 ?>

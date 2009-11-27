@@ -74,6 +74,8 @@
 <!--  ......................................... added after 20091122 -->
 		<label index="attr.status">Status</label>
 		<label index="error.title">Please enter a title for the task</label>
+		<label index="attr.user_assigned.error">This field is required</label>
+		<label index="attr.id_worktype.error">This field is required</label>
 	</labels>
 	<labels lang="de"></labels>
 </locallang>
