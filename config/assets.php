@@ -26,7 +26,7 @@
  * @subpackage	Project
  */
 
-if( ! defined('TODOYU') ) die('NO ACCESS');
+
 
 
 $CONFIG['EXT']['project']['assets'] = array(
