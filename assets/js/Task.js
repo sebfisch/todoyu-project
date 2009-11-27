@@ -190,7 +190,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Clone given task
+	 * Clone given task (open new task creation form with attributes of task filled-in, title renamed to 'copy of..')
 	 *
 	 * @param	Integer	idTask
 	 */
@@ -211,10 +211,9 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Handle completion of task being cloned
 	 *
-	 * @todo	comment
-	 * @param	unknown_type response
+	 * @param	Object	response
 	 */
 	onCloned: function(response) {
 			// Get task id from header
@@ -228,9 +227,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
-	 *
-	 * @todo	comment
+	 * Remove new task container element from DOM
 	 */
 	removeNewTaskContainer: function() {
 		if( Todoyu.exists('task-0') ) {
@@ -244,7 +241,7 @@ Todoyu.Ext.project.Task = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idProject
+	 * @param	Integer idProject
 	 */
 	addTaskToProject: function(idProject) {
 		this.removeNewTaskContainer();
@@ -299,8 +296,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Enter description here...
 	 *
-	 * @todo	comment
-	 * @param	unknown_type idProject
+	 * @param	Integer idProject
 	 */
 	addContainerToProject: function(idProject) {
 		this.removeNewTaskContainer();
@@ -365,9 +361,8 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Enter description here...
 	 *
-	 * @todo	comment
-	 * @param	unknown_type idParentTask
-	 * @param	unknown_type response
+	 * @param	Integer	idParentTask
+	 * @param	Object	response
 	 */
 	onSubTaskAdded: function(idParentTask, response) {
 		var idTask = response.getHeader('Todoyu-idTask');
@@ -431,7 +426,7 @@ Todoyu.Ext.project.Task = {
 	 * Enter description here...
 	 *
 	 * @todo	comment
-	 * @param	unknown_type idParentTask
+	 * @param	Integer idParentTask
 	 * @param	unknown_type response
 	 */
 	onSubContainerAdded: function(idParentTask, response) {
@@ -804,7 +799,7 @@ Todoyu.Ext.project.Task = {
 		/**
 		 * Enter description here...
 		 *
-		 * @param unknown_type idTask
+		 * @param Integer idTask
 		 * @param unknown_type tabKey
 		 */
 		show: function(idTask, tabKey) {
@@ -993,7 +988,7 @@ Todoyu.Ext.project.Task = {
 		 * Enter description here...
 		 *
 		 * @todo	comment
-		 * @param	unknown_type idItem
+		 * @param	Integer	idItem
 		 */
 		getKeyFromID: function(idItem) {
 			return idItem.split('-').last();
