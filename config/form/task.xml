@@ -102,7 +102,7 @@
 				</field>
 
 				<field type="textinputAC" name="id_parenttask">
-					<label>Taskparent</label>
+					<label>task.attr.id_parenttask</label>
 					<config>
 						<acListener>
 							<ext>project</ext>
@@ -150,7 +150,7 @@
 			<elements>
 				<field type="saveButton" name="save">
 					<onclick>Todoyu.Ext.project.Task.Edit.save(this.form)</onclick>
-				</field>				
+				</field>
 				<field type="cancelButton" name="cancel">
 					<onclick>Todoyu.Ext.project.Task.Edit.cancel(#id#)</onclick>
 				</field>

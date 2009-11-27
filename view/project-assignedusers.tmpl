@@ -6,7 +6,7 @@
 	</li>
 	{foreach $users user}
 	<li class="listItem {cycle values="odd,even"}">
-		<span class="name"><a href="javascript:void(0)" onclick="console.log('test')">{$user.lastname}, {$user.firstname}</a></span>
+		<span class="name"><a href="javascript:void(0)" style="cursor:default">{$user.lastname}, {$user.firstname}</a></span>
 		<span class="customer">{$user.company[0].title}&nbsp;</span>
 		<span class="role">{Label $user.rolelabel true}</span>
 	</li>
