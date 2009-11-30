@@ -85,7 +85,7 @@
 						<lazyInit />
 					</source>
 					<validate>
-						<isNotZero msg="LLL:task.attr.user_assigned.error"/>
+						<isNotZero />
 					</validate>
 				</field>
 

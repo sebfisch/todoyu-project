@@ -27,7 +27,8 @@
  */
 
 $CONFIG['FILTERS']['TASK'] = array(
-	'config' => array(
+	'key'		=> 'task',
+	'config'	=> array(
 		'label'				=> 'LLL:task.search.label',
 		'position'			=> 10,
 		'RenderFunction'	=> 'TodoyuTaskSearchRenderer::renderResults',
@@ -305,7 +306,8 @@ $CONFIG['FILTERS']['TASK'] = array(
 
 
 $CONFIG['FILTERS']['PROJECT'] = array(
-	'config' => array(
+	'key'		=> 'project',
+	'config' 	=> array(
 		'label'				=> 'LLL:project.search.label',
 		'position'			=> 20,
 		'RenderFunction'	=> 'TodoyuProjectSearchRenderer::renderSearchResults',

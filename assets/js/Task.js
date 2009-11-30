@@ -728,37 +728,18 @@ Todoyu.Ext.project.Task = {
 		 * @param	unknown_type response
 		 */
 		onSaved: function(response) {
-			var idTask		= response.getHeader('Todoyu-idTask');
-			var idTaskOld	= response.getHeader('Todoyu-idTaskOld');
-			var hasError	= response.getHeader('Todoyu-error') == 1;
-			//var idTaskParent= response.getHeader('Todoyu-idTaskParent');
-			var content		= response.responseText;
+			var idTask		= response.getTodoyuHeader('idTask');
+			var idTaskOld	= response.getTodoyuHeader('idTaskOld');
 
-			if( hasError ) {
-				this.updateFormDiv(idTask, content);
+			if( response.hasTodoyuError() ) {
+				this.updateFormDiv(idTask, response.responseText);
+				Todoyu.notifyError('[LLL:task.save.error]');
 			} else {
-				this.ext.Task.update(idTaskOld, content);
+				this.ext.Task.update(idTaskOld, response.responseText);
 				this.ext.Task.addContextMenu(idTask);
 
 				Todoyu.Hook.exec('onTaskSaved', idTask);
-
-				/*
-				if(idTaskOld === 0)	{
-					var idProject = this.ext.ProjectTaskTree.getActiveProjectID();
-
-					$('task-'+idTaskOld).remove();
-
-					var target	= 'project-' + idProject + '-tasks';
-
-					if(idTaskParent > 0)	{
-						target = 'task-' + idTaskParent + '-subtasks';
-					}
-
-					$(target).insert(response.responseText);
-				} else {
-					this.ext.Task.update(idTask, response.responseText);
-				}
-				*/
+				Todoyu.notifySuccess('[LLL:task.save.success]');
 			}
 		},
 

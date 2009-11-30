@@ -118,12 +118,12 @@
 		<label index="attr.title">Projekt Titel</label>
 		<label index="user.role">Projekt Rolle</label>
 		<label index="user.comment">Kommentar</label>
-		<label index="contextmenu.showdetails">Zeige Details</label>
+		<label index="contextmenu.showdetails">Details anzeigen</label>
 		<label index="contextmenu.hidedetails">Verstecke Details</label>
 		<label index="contextmenu.edit">Projekt bearbeiten</label>
 		<label index="contextmenu.delete">Projekt löschen</label>
-		<label index="contextmenu.add.task">Neue Aufgabe hinzufügen</label>
-		<label index="contextmenu.add.container">Neuen Container hinzufügen</label>
+		<label index="contextmenu.add.task">Aufgabe hinzufügen</label>
+		<label index="contextmenu.add.container">Container hinzufügen</label>
 		<label index="userrole.attr.rolekey">Rollen-Schlüssel</label>
 		<label index="tasktree.losttasks">Aufgaben bei welchen die übergeordnete Aufgabe mit dem aktuellen Filter nicht angezeigt wird</label>
 		<label index="records.userrole">Benutzer-Rollen</label>
@@ -131,5 +131,5 @@
 		<label index="form.validation.dateBefore">Datum muss vor dem End-Datum liegen</label>
 		<label index="form.validation.title">Bitte füllen Projekt-Titel angeben</label>
 		<label index="noLabel.newProjectParticipant">Neuer Projekt-Mitarbeiter</label>
-	</labels>	
+	</labels>
 </locallang>

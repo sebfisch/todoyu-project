@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-
 class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
 	/**

@@ -101,7 +101,7 @@
 		<label index="attr.timeover">End-Datum oder Frist ist abgelaufen</label>
 		<label index="attr.overtimed">Aufgabezeit überzogen</label>
 		<label index="search.label">Aufgaben</label>
-		<label index="search.mode.label">Aufgaben-Suche</label>
+		<label index="search.mode.label">Aufgaben suchen</label>
 		<label index="date.deadline.short">F</label>
 		<label index="contextmenu.showinproject">Zeige in Projekt</label>
 		<label index="contextmenu.edit">Aufgabe bearbeiten</label>

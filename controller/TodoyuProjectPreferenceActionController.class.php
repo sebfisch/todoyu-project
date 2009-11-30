@@ -1,5 +1,29 @@
 <?php
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
 
+/**
+ * ActionController for project prefernces
+ * @package		Todoyu
+ * @subpackage	Project
+ */
 class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 
 	public function detailsexpandedAction(array $params) {
@@ -9,6 +33,13 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 		TodoyuProjectPreferences::saveExpandedDetails($idProject, $expanded);
 	}
 
+
+
+	/**
+	 * Save task open/closed status
+	 *
+	 * @param	Array		$params
+	 */
 	public function taskopenAction(array $params) {
 		$idTask		= intval($params['item']);
 		$expanded	= intval($params['value']) === 1;

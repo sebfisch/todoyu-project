@@ -115,11 +115,8 @@
 			<class>users</class>
 			<elements>
 
-				<field type="button" name="expandall">
-					<type>button</type>
-					<text>LLL:core.expandall</text>
-					<onclick>Todoyu.Form.expandAllForeignRecords(this.id);</onclick>
-					<class></class>
+				<field type="expandAllButton" name="expandAll">
+					<fields>projectusers</fields>
 				</field>
 
 				<field type="databaseRelation" name="projectusers">
@@ -146,7 +143,7 @@
 			<elements>
 				<field type="saveButton" name="save">
 					<onclick>Todoyu.Ext.project.Project.Edit.save(this.form)</onclick>
-				</field>				
+				</field>
 				<field type="cancelButton" name="cancel">
 					<onclick>Todoyu.Ext.project.Project.Edit.cancel(#id#)</onclick>
 				</field>
