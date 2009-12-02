@@ -159,10 +159,16 @@ class TodoyuProjectManager {
 	public static function deleteProject($idProject) {
 		$idProject	= intval($idProject);
 
-		$data	= array('deleted'		=> 1,
-						'date_update'	=> NOW);
+			// Delete project
+		$data	= array(
+			'deleted'		=> 1,
+			'date_update'	=> NOW
+		);
 
-		return self::updateProject($idProject, $data);
+		self::updateProject($idProject, $data);
+
+			// Delete all tasks of project
+		TodoyuTaskManager::deleteProjectTasks($idProject);
 	}
 
 

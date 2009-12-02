@@ -240,8 +240,30 @@ class TodoyuTaskManager {
 			// Delete all subtasks
 		$table	= self::TABLE;
 		$where	= 'id_parenttask = ' . $idTask;
-		$data	= array('deleted'		=> 1,
-		'date_update'	=> NOW);
+		$data	= array(
+			'deleted'		=> 1,
+			'date_update'	=> NOW
+		);
+
+		Todoyu::db()->doUpdate($table, $where, $data);
+	}
+
+
+
+	/**
+	 * Delete all tasks of given project
+	 *
+	 * @param	Integer		$idProject
+	 */
+	public static function deleteProjectTasks($idProject) {
+		$idProject	= intval($idProject);
+
+		$table	= self::TABLE;
+		$where	= 'id_project = ' . $idProject;
+		$data	= array(
+			'deleted'		=> 1,
+			'date_update'	=> NOW
+		);
 
 		Todoyu::db()->doUpdate($table, $where, $data);
 	}

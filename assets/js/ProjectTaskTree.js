@@ -80,8 +80,12 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * @param	Integer		idProject
 	 */
 	removeProject: function(idProject) {
-		$('projecttab-' + idProject).remove();
-		$('project-' + idProject).remove();
+		if ( $('project-' + idProject) ) {
+			$('project-' + idProject).remove();
+			if ( this.hasProjectTab(idProject) ) {
+				$('projecttab-' + idProject).remove();	
+			}
+		}
 	},
 
 
@@ -189,8 +193,10 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		var allTabs = 	$$('li.projecttab');
 		if ( allTabs.length > 0 ) {
 			var idFirstTab = this.getFirstTab();
+			this.moveTabToFront(idFirstTab);
 			
-			this.displayActiveProject(idFirstTab);
+			var activeProjectID	= this.getActiveProjectID();
+			this.openProject(activeProjectID);
 		}
 	},
 

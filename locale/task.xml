@@ -14,9 +14,9 @@
 		<label index="attr.date_end">Internal Deadline</label>
 		<label index="attr.user_assigned">Assigned to</label>
 		<label index="attr.user_owner">Task Owner</label>
-		<label index="attr.is_public">Is public</label>
+		<label index="attr.is_public">Task is publicly visible</label>
 		<label index="attr.id_parenttask">Parenttask</label>
-		<label index="attr.is_estimatedworkload_public">Est. workload pub.</label>
+		<label index="attr.is_estimatedworkload_public">Est. workload public visible</label>
 		<label index="attr.is_estimatedworkload_public.1">Is public</label>
 		<label index="attr.is_estimatedworkload_public.0">Not public</label>
 		<label index="attr.is_estimatedworkload_public.error">Please fill in the estimated workload for this task</label>
@@ -97,9 +97,9 @@
 		<label index="attr.date_end">Interne Frist</label>
 		<label index="attr.user_assigned">Zugewiesen</label>
 		<label index="attr.user_owner">Aufgaben-Eigner</label>
-		<label index="attr.is_public">Ist öffentlich</label>
+		<label index="attr.is_public">Task ist öffentlich sichtbar</label>
 		<label index="attr.id_parenttask">Übergeordnete Aufg.</label>
-		<label index="attr.is_estimatedworkload_public">Geschätzter Aufwand</label>
+		<label index="attr.is_estimatedworkload_public">Geschätzter Aufwand öffentlich sichtbar</label>
 		<label index="attr.is_estimatedworkload_public.1">Ist öffentlich</label>
 		<label index="attr.is_estimatedworkload_public.0">Nicht öffentlich</label>
 		<label index="attr.is_estimatedworkload_public.error">Bitte füllen Sie den gesschätzten Aufwand ein</label>
