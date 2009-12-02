@@ -48,12 +48,42 @@ $CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 		'class'		=> 'taskContextMenu taskEdit',
 		'position'	=> 20
 	),
-	'clone'	=> array(
-		'key'		=> 'clone',
-		'label'		=> 'LLL:task.contextmenu.clone',
-		'jsAction'	=> 'Todoyu.Ext.project.Task.clone(#ID#)',
-		'class'		=> 'taskContextMenu taskClone',
-		'position'	=> 30
+	'actions' => array(
+		'key'		=> 'actions',
+		'label'		=> 'LLL:task.contextmenu.actions',
+		'jsAction'	=> 'void(0)',
+		'class'		=> 'taskContextMenu taskActions',
+		'position'	=> 30,
+		'submenu'	=> array(
+			'copy'	=> array(
+				'key'		=> 'copy',
+				'label'		=> 'LLL:task.contextmenu.copy',
+				'jsAction'	=> 'Todoyu.Ext.project.Task.copy(#ID#)',
+				'class'		=> 'taskContextMenu taskCopy',
+				'position'	=> 10
+			),
+			'cut'	=> array(
+				'key'		=> 'cut',
+				'label'		=> 'LLL:task.contextmenu.cut',
+				'jsAction'	=> 'Todoyu.Ext.project.Task.cut(#ID#)',
+				'class'		=> 'taskContextMenu taskCut',
+				'position'	=> 20
+			),
+			'clone'	=> array(
+				'key'		=> 'clone',
+				'label'		=> 'LLL:task.contextmenu.clone',
+				'jsAction'	=> 'Todoyu.Ext.project.Task.clone(#ID#)',
+				'class'		=> 'taskContextMenu taskClone',
+				'position'	=> 30
+			),
+			'delete'	=> array(
+				'key'		=> 'delete',
+				'label'		=> 'LLL:task.contextmenu.delete',
+				'jsAction'	=> 'Todoyu.Ext.project.Task.remove(#ID#)',
+				'class'		=> 'taskContextMenu taskDelete',
+				'position'	=> 40
+			)
+		)
 	),
 	'add'	=> array(
 		'key'		=> 'add',
@@ -132,13 +162,6 @@ $CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 				'class'		=> 'taskContextMenu taskStatusCleared'
 			)
 		)
-	),
-	'delete'	=> array(
-		'key'		=> 'delete',
-		'label'		=> 'LLL:task.contextmenu.delete',
-		'jsAction'	=> 'Todoyu.Ext.project.Task.remove(#ID#)',
-		'class'		=> 'taskContextMenu taskDelete',
-		'position'	=> 60
 	)
 );
 
@@ -165,12 +188,42 @@ $CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
 		'class'		=> 'taskContextMenu containerEdit',
 		'position'	=> 20
 	),
-	'clone'	=> array(
-		'key'		=> 'clone',
-		'label'		=> 'LLL:task.contextmenu.container.clone',
-		'jsAction'	=> 'Todoyu.Ext.project.Container.clone(#ID#)',
-		'class'		=> 'taskContextMenu containerClone',
-		'position'	=> 30
+	'actions' => array(
+		'key'		=> 'actions',
+		'label'		=> 'LLL:task.contextmenu.container.actions',
+		'jsAction'	=> 'void(0)',
+		'class'		=> 'taskContextMenu containerActions',
+		'position'	=> 30,
+		'submenu'	=> array(
+			'copy'	=> array(
+				'key'		=> 'copy',
+				'label'		=> 'LLL:task.contextmenu.container.copy',
+				'jsAction'	=> 'Todoyu.Ext.project.Container.copy(#ID#)',
+				'class'		=> 'taskContextMenu containerCopy',
+				'position'	=> 10
+			),
+			'cut'	=> array(
+				'key'		=> 'cut',
+				'label'		=> 'LLL:task.contextmenu.container.cut',
+				'jsAction'	=> 'Todoyu.Ext.project.Container.cut(#ID#)',
+				'class'		=> 'taskContextMenu containerCut',
+				'position'	=> 20
+			),
+			'clone'	=> array(
+				'key'		=> 'clone',
+				'label'		=> 'LLL:task.contextmenu.container.clone',
+				'jsAction'	=> 'Todoyu.Ext.project.Container.clone(#ID#)',
+				'class'		=> 'taskContextMenu containerClone',
+				'position'	=> 30
+			),
+			'delete'	=> array(
+				'key'		=> 'delete',
+				'label'		=> 'LLL:task.contextmenu.container.delete',
+				'jsAction'	=> 'Todoyu.Ext.project.Container.remove(#ID#)',
+				'class'		=> 'taskContextMenu containerDelete',
+				'position'	=> 40
+			)
+		)
 	),
 	'add'	=> array(
 		'key'		=> 'add',
@@ -219,13 +272,6 @@ $CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
 				'class'		=> 'taskContextMenu taskStatusCleared'
 			)
 		)
-	),
-	'delete'	=> array(
-		'key'		=> 'delete',
-		'label'		=> 'LLL:task.contextmenu.container.delete',
-		'jsAction'	=> 'Todoyu.Ext.project.Container.remove(#ID#)',
-		'class'		=> 'taskContextMenu containerkDelete',
-		'position'	=> 60
 	)
 );
 

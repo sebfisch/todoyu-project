@@ -139,10 +139,11 @@
    -------------- */
 
 	/* details */
-#search-results .projectdetails,
-.project .projectdetails {
+#search-results .projectstatus,
+.project .projectstatus {
 	border-top-width: 5px;
 	border-top-style: solid;
+	margin-bottom:5px;
 }
 
 #search-results .projectdetails .description,

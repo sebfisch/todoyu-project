@@ -324,38 +324,67 @@ class TodoyuTaskManager {
 		$idTask	= intval($idTask);
 		$task	= TodoyuTaskManager::getTask($idTask);
 		$allowed= array();
+		$type	= '';
 
 		if( $task->isTask() ) {
 			$ownItems	=& $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Task'];
+			$type		= 'task';
 		} elseif( $task->isContainer() ) {
 			$ownItems	=& $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Container'];
+			$type		= 'container';
 		}
-
 
 		if( $task->isTask() || $task->isContainer() ) {
 			$allowed['header']	= $ownItems['header'];
 
 				// Edit
-			if( allowed('project', 'task:edit') ) {
+			if( allowed('project', $type . ':edit') ) {
 				$allowed['edit'] = $ownItems['edit'];
 			}
 
-				// Clone
-			if( allowed('project', 'task:clone') ) {
-				$allowed['clone'] = $ownItems['clone'];
+				// Actions (with submenu)
+			$allowed['actions'] = $ownItems['actions'];
+			unset($allowed['actions']['submenu']);
+
+				// Add copy
+			if( allowed('project',  $type . ':copy') ) {
+				$allowed['actions']['submenu']['copy'] = $ownItems['actions']['submenu']['copy'];
 			}
 
-				// Add
-			if( ! allowed('project', 'task:addtask') ) {
-				unset($ownItems['add']['submenu']['task']);
+				// Add cut
+			if( allowed('project',  $type . ':cut') ) {
+				$allowed['actions']['submenu']['cut'] = $ownItems['actions']['submenu']['cut'];
 			}
-			if( ! allowed('project', 'task:addcontainer') ) {
-				unset($ownItems['add']['submenu']['container']);
+
+				// Add clone
+			if( allowed('project',  $type . ':clone') ) {
+				$allowed['actions']['submenu']['clone'] = $ownItems['actions']['submenu']['clone'];
 			}
+
+				// Add delete
+			if( allowed('project',  $type . ':delete') ) {
+				$allowed['actions']['submenu']['delete'] = $ownItems['actions']['submenu']['delete'];
+			}
+
+
+
+				// Add (with submenu)
 			$allowed['add'] = $ownItems['add'];
+			unset($allowed['add']['submenu']);
+
+				// Add subtask
+			if( allowed('project',  $type . ':addtask') ) {
+				$allowed['add']['submenu']['task'] =$ownItems['add']['submenu']['task'];
+			}
+
+				// Add subcontainer
+			if( allowed('project',  $type . ':addcontainer') ) {
+				$allowed['add']['submenu']['container'] =$ownItems['add']['submenu']['container'];
+			}
+
 
 				// Status
-			if( allowed('project', 'task:status') && $task->isTask() ) {
+			if( $task->isTask() && allowed('project', 'task:status') ) {
 				$allowed['status'] = $ownItems['status'];
 
 				$statuses = array_flip(TodoyuProjectStatusManager::getProjectStatuses());
@@ -367,13 +396,37 @@ class TodoyuTaskManager {
 				}
 			}
 
-				// Delete
-			if( allowed('project', 'task:delete') ) {
-				$allowed['delete'] = $ownItems['delete'];
-			}
 		}
 
 		return array_merge_recursive($items, $allowed);
+	}
+
+
+
+	/**
+	 * Remove empty parent menues if they have no submenu entries
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Array		$items
+	 * @return	Array
+	 */
+	public static function removeEmptyContextMenuParents($idTask, array $items) {
+			// Remove actions if empty
+		if( ! is_array($items['actions']['submenu']) ) {
+			unset($items['actions']);
+		}
+
+			// Remove add if empty
+		if( ! is_array($items['add']['submenu']) ) {
+			unset($items['add']);
+		}
+
+			// Remove status if empty
+		if( ! is_array($items['status']['submenu']) ) {
+			unset($items['status']);
+		}
+
+		return $items;
 	}
 
 
@@ -1423,6 +1476,20 @@ class TodoyuTaskManager {
 
 		return $form;
 	}
+
+
+	public static function copyTask($idTask, $idParent, $withSubtasks) {
+		$idTask	= intval($idTask);
+
+
+	}
+
+
+	public static function moveTask($idTask, $idParent) {
+		$idTask	= intval($idTask);
+
+	}
+
 }
 
 ?>

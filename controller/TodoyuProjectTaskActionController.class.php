@@ -223,6 +223,27 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 
+	public function copyAction(array $params) {
+		$idTask	= intval($params['task']);
+
+		TodoyuTaskManager::copyTask($idTask);
+	}
+
+
+	public function cutAction(array $params) {
+		$idTask	= intval($params['task']);
+
+		TodoyuTaskManager::cutTask($idTask);
+	}
+
+	public function pasteAction(array $params) {
+		$idTask	= intval($params['task']);
+
+		TodoyuTaskManager::pasteTask($idTask);
+	}
+
+
+
 	/**
 	 *	Clone a task and add it right behind the clone source
 	 *

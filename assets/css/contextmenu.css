@@ -45,8 +45,24 @@
 	background-position:3px -27px;
 }
 
+#contextmenu .taskActions {
+	background-position:3px -297px;
+}
+
+#contextmenu .taskCopy {
+	background-position:3px -387px;
+}
+
+#contextmenu .taskCut {
+	background-position:3px -327px;
+}
+
 #contextmenu .taskClone {
 	background-position:3px -147px;
+}
+
+#contextmenu .taskDelete {
+	background-position:3px -57px;
 }
 
 #contextmenu .taskAdd {
@@ -109,10 +125,6 @@
 	background-position:4px -237px;
 }
 
-#contextmenu .taskDelete {
-	background-position:3px -57px;
-}
-
 
 
 /* ---------------------------
@@ -123,12 +135,30 @@
 	background-position:3px -207px;
 }
 
-#contextmenu .containerClone {
-	background-position:3px -267px;
-}
+
 
 #contextmenu .containerAdd {
 	background-position:3px -177px;
+}
+
+#contextmenu .containerActions {
+	background-position:3px -508px;
+}
+
+#contextmenu .containerCopy {
+	background-position:3px -418px;
+}
+
+#contextmenu .containerCut {
+	background-position:3px -447px;
+}
+
+#contextmenu .containerClone {
+	background-position:3px -479px;
+}
+
+#contextmenu .containerDelete {
+	background-position:3px -237px;
 }
 
 #contextmenu .containerAddTask {
@@ -139,6 +169,3 @@
 	background-position:3px -117px;
 }
 
-#contextmenu .containerkDelete {
-	background-position:3px -237px;
-}

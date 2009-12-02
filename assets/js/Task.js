@@ -33,6 +33,95 @@ Todoyu.Ext.project.Task = {
 		this.Edit.createFormWrapDivs(idTask);
 		this.Edit.loadForm(idTask);
 	},
+	
+	copy: function(idTask) {
+		console.log('copy task');
+	},
+	
+	onCopied: function(idTask, response) {
+		
+	},
+	
+	cut: function(idTask) {
+		
+	},
+	
+	onCut: function(idTask, response) {
+		
+	},
+	
+	/**
+	 * Confirm whether user is sure, and evoke deletion of given task if
+	 *
+	 *	@param	Integer idTask
+	 */
+	remove: function(idTask) {
+		if( ! confirm('[LLL:task.js.removetask.question]') ) {
+			return;
+		}
+
+		var url		= Todoyu.getUrl('project', 'task');
+		var options	= {
+			'parameters': {
+				'action':	'delete',
+				'task':		idTask
+			},
+			'onComplete': this.onRemoved.bind(this, idTask)
+		};
+
+		Todoyu.send(url, options);
+
+		Effect.BlindUp('task-' + idTask, {
+			'duration': 0.7
+		});
+
+		if( Todoyu.exists('task-' + idTask + '-subtasks') ) {
+			Effect.BlindUp('task-' + idTask + '-subtasks', {
+				'duration': 0.3
+			});
+		}
+	},
+	
+	onRemoved: function(idTask, response) {
+		
+	},
+	
+	
+	/**
+	 * Clone given task (open new task creation form with attributes of task filled-in, title renamed to 'copy of..')
+	 *
+	 * @param	Integer	idTask
+	 */
+	clone: function(idTask) {
+		var url		= Todoyu.getUrl('project', 'task');
+		var options	= {
+			'parameters': {
+				'action':	'clone',
+				'task':		idTask
+			},
+			'onComplete': this.onCloned.bind(this, idTask)
+		};
+		var target	= 'task-' + idTask;
+
+		Todoyu.Ui.append(target, url, options);
+	},
+
+
+
+	/**
+	 * Handle completion of task being cloned
+	 *
+	 * @param	Object	response
+	 */
+	onCloned: function(idSourceTask, response) {
+			// Get task id from header
+		var idTask = response.getTodoyuHeader('idTask');
+			// Attach context menu
+		this.addContextMenu(idTask);
+			// Open edit mode
+		this.edit(idTask);
+	},
+	
 
 
 
@@ -140,36 +229,7 @@ Todoyu.Ext.project.Task = {
 
 
 
-	/**
-	 * Confirm whether user is sure, and evoke deletion of given task if
-	 *
-	 *	@param	Integer idTask
-	 */
-	remove: function(idTask) {
-		if( ! confirm('[LLL:task.js.removetask.question]') ) {
-			return;
-		}
 
-		var url		= Todoyu.getUrl('project', 'task');
-		var options	= {
-			'parameters': {
-				'action':	'delete',
-				'task':		idTask
-			}
-		};
-
-		Todoyu.send(url, options);
-
-		Effect.BlindUp('task-' + idTask, {
-			'duration': 0.7
-		});
-
-		if( Todoyu.exists('task-' + idTask + '-subtasks') ) {
-			Effect.BlindUp('task-' + idTask + '-subtasks', {
-				'duration': 0.3
-			});
-		}
-	},
 
 
 
@@ -185,43 +245,6 @@ Todoyu.Ext.project.Task = {
 		$('task-' + idTask).replace(taskHtml);
 
 		this.addContextMenu(idTask);
-	},
-
-
-
-	/**
-	 * Clone given task (open new task creation form with attributes of task filled-in, title renamed to 'copy of..')
-	 *
-	 * @param	Integer	idTask
-	 */
-	clone: function(idTask) {
-		var url		= Todoyu.getUrl('project', 'task');
-		var options	= {
-			'parameters': {
-				'action':	'clone',
-				'task':		idTask
-			},
-			'onComplete': this.onCloned.bind(this)
-		};
-		var target	= 'task-' + idTask;
-
-		Todoyu.Ui.append(target, url, options);
-	},
-
-
-
-	/**
-	 * Handle completion of task being cloned
-	 *
-	 * @param	Object	response
-	 */
-	onCloned: function(response) {
-			// Get task id from header
-		var idTask = response.getHeader('Todoyu-idTask');
-			// Attach context menu
-		this.addContextMenu(idTask);
-			// Open edit mode
-		this.edit(idTask);
 	},
 
 

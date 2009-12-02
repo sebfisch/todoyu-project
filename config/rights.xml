@@ -17,32 +17,46 @@
 	
 	<section key="task">
 		<allow right="task:edit" />
-		<allow right="task:clone" />
 		<allow right="task:addtask" />
 		<allow right="task:addcontainer" />
 		<allow right="task:status" />
-		<allow right="task:delete" />		
+		<allow right="task:delete" />
+		<allow right="task:clone" />		
+		<allow right="task:copy" />		
+		<allow right="task:cut" />		
+	</section>
+	
+	<section key="container">
+		<allow right="container:edit" />
+		<allow right="container:addtask" />
+		<allow right="container:addcontainer" />
+		<allow right="container:delete" />
+		<allow right="container:clone" />		
+		<allow right="container:copy" />		
+		<allow right="container:cut" />		
 	</section>
 	
 	<section key="status">
 		<allow right="status:1:see" />
-		<allow right="status:1:changeto" />
 		<allow right="status:2:see" />
-		<allow right="status:2:changeto" />
 		<allow right="status:3:see" />
-		<allow right="status:3:changeto" />
 		<allow right="status:4:see" />
-		<allow right="status:4:changeto" />
 		<allow right="status:5:see" />
-		<allow right="status:5:changeto" />
 		<allow right="status:6:see" />
-		<allow right="status:6:changeto" />
 		<allow right="status:7:see" />
-		<allow right="status:7:changeto" />
 		<allow right="status:8:see" />
-		<allow right="status:8:changeto" />
 		<allow right="status:9:see" />
+		<allow right="status:10:see" />
+		<allow right="status:1:changeto" />
+		<allow right="status:2:changeto" />
+		<allow right="status:3:changeto" />
+		<allow right="status:4:changeto" />
+		<allow right="status:5:changeto" />
+		<allow right="status:6:changeto" />
+		<allow right="status:7:changeto" />
+		<allow right="status:8:changeto" />
 		<allow right="status:9:changeto" />
+		<allow right="status:10:changeto" />
 	</section>
 	
 	<section key="panelwidgets">
@@ -50,9 +64,5 @@
 		<allow right="panelwidget:statusFilter:use" />
 		<allow right="panelwidget:quickProject:use" />
 	</section>
-	
-	<section key="panelwidgetStatusFilter">
-		
-	</section>	
 	
 </rights>
