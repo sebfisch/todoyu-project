@@ -37,6 +37,7 @@ TodoyuRenderer::addAreaRenderer('project', 'projectinfo', 'TodoyuProjectRenderer
 
 TodoyuContextMenuManager::registerFunction('Task', 'TodoyuTaskManager::getContextMenuItems', 10);
 TodoyuContextMenuManager::registerFunction('Task', 'TodoyuTaskManager::removeEmptyContextMenuParents', 100000);
+TodoyuContextMenuManager::registerFunction('Task', 'TodoyuTaskClipboard::getTaskContextMenuItems', 100);
 TodoyuContextMenuManager::registerFunction('Project', 'TodoyuProjectManager::getContextMenuItems', 10);
 
 

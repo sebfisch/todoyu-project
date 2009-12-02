@@ -180,6 +180,12 @@ Todoyu.Ext.project.TaskTree = {
 			this.saveSubtaskOpenStatus(idTask, subtasks.visible());
 		}
 	},
+	
+	expandSubtasks: function(idTask) {
+		if( ! this.areSubtasksVisible(idTask) ) {
+			this.toggleSubtasks(idTask);
+		}
+	},
 
 
 

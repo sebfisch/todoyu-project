@@ -65,6 +65,22 @@
 	background-position:3px -57px;
 }
 
+#contextmenu .taskPaste {
+	background-position:3px -537px;
+}
+
+#contextmenu .taskPasteIn {
+	background-position:3px -567px;
+}
+
+#contextmenu .taskPasteBefore {
+	background-position:3px -628px;
+}
+
+#contextmenu .taskPasteAfter {
+	background-position:3px -598px;
+}
+
 #contextmenu .taskAdd {
 	background-position:3px -177px;
 }

@@ -400,4 +400,40 @@ $CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 );
 
 
+
+	/**
+	 * Context menu configuration for project
+	 */
+
+$CONFIG['EXT']['project']['ContextMenu']['TaskClipboard'] = array(
+	'paste'	=> array(
+		'key'		=> 'paste',
+		'label'		=> 'LLL:task.contextmenu.paste',
+		'jsAction'	=> 'void(0)',
+		'class'		=> 'taskContextMenu taskPaste',
+		'position'	=> 35,
+		'submenu'	=> array(
+			'in'	=> array(
+				'key'		=> 'paste-in',
+				'label'		=> 'LLL:task.contextmenu.paste.in',
+				'jsAction'	=> 'Todoyu.Ext.project.Task.paste(#ID#, \'in\')',
+				'class'		=> 'taskContextMenu taskPasteIn'
+			),
+			'before'	=> array(
+				'key'		=> 'paste-before',
+				'label'		=> 'LLL:task.contextmenu.paste.before',
+				'jsAction'	=> 'Todoyu.Ext.project.Task.paste(#ID#, \'before\')',
+				'class'		=> 'taskContextMenu taskPasteBefore'
+			),
+			'after'	=> array(
+				'key'		=> 'paste-after',
+				'label'		=> 'LLL:task.contextmenu.paste.after',
+				'jsAction'	=> 'Todoyu.Ext.project.Task.paste(#ID#, \'after\')',
+				'class'		=> 'taskContextMenu taskPasteAfter'
+			)
+		)
+	)
+);
+
+
 ?>

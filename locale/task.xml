@@ -43,6 +43,10 @@
 		<label index="contextmenu.container.cut">Cut</label>
 		<label index="contextmenu.container.clone">Clone</label>
 		<label index="contextmenu.container.delete">Delete</label>
+		<label index="contextmenu.paste">Insert copied Task ...</label>
+		<label index="contextmenu.paste.in">as Subtask</label>
+		<label index="contextmenu.paste.before">before this Task</label>
+		<label index="contextmenu.paste.after">after this Task</label>
 		<label index="status.planning">Planning</label>
 		<label index="status.open">Open</label>
 		<label index="status.progress">In Progress</label>
@@ -114,7 +118,7 @@
 		<label index="contextmenu.actions">Aufgabe ...</label>
 		<label index="contextmenu.copy">Kopieren</label>
 		<label index="contextmenu.cut">Ausschneiden</label>
-		<label index="contextmenu.clone">Dublizieren</label>
+		<label index="contextmenu.clone">Duplizieren</label>
 		<label index="contextmenu.delete">Löschen</label>
 		<label index="contextmenu.add">Neu anfügen ...</label>
 		<label index="contextmenu.add.task">Aufgabe</label>
@@ -124,7 +128,7 @@
 		<label index="contextmenu.container.actions">Container ...</label>
 		<label index="contextmenu.container.copy">Kopieren</label>
 		<label index="contextmenu.container.cut">Ausschneiden</label>
-		<label index="contextmenu.container.clone">Dublizieren</label>
+		<label index="contextmenu.container.clone">Duplizieren</label>
 		<label index="contextmenu.container.delete">Löschen</label>
 		<label index="status.planning">Planung</label>
 		<label index="status.open">Offen</label>

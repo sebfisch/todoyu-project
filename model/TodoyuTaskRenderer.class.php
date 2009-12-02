@@ -70,7 +70,7 @@ class TodoyuTaskRenderer {
 
 			// Get task template data
 		$data			= $task->getTemplateData(0);
-		$data['data']	= TodoyuTaskManager::getTaskDataArray($idTask);
+		$data['data']	= TodoyuTaskManager::getTaskInfos($idTask);
 
 		return render('ext/project/view/task-data.tmpl', $data);
 	}

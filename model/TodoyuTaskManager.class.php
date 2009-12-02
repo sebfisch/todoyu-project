@@ -58,12 +58,12 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Get task record
+	 * Get task record data
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function getTaskArray($idTask) {
+	public static function getTaskData($idTask) {
 		return Todoyu::db()->getRecord(self::TABLE, $idTask);
 	}
 
@@ -191,12 +191,37 @@ class TodoyuTaskManager {
 		$data['date_update']	= NOW;
 		$data['id_user_create']	= TodoyuAuth::getUserID();
 
-		if( empty($data['tasknumber']) ) {
-			$idProject	= intval($data['id_project']);
-			$data['tasknumber'] = TodoyuProjectManager::getNextTaskNumber($idProject);
-		}
+			// Create task number
+		$idProject	= intval($data['id_project']);
+		$data['tasknumber'] = TodoyuProjectManager::getNextTaskNumber($idProject);
+
+			// Create sorting flag
+		$idParent	= intval($data['id_parent']);
+		$data['sorting']	= self::getNextSortingPosition($idProject, $idParent);
+
+		TodoyuDebug::printInFirebug($data, '$data');
 
 		return Todoyu::db()->addRecord(self::TABLE, $data);
+	}
+
+
+	public static function getNextSortingPosition($idProject, $idParent) {
+		$idProject	= intval($idProject);
+		$idParent	= intval($idParent);
+
+		$fields		= 'MAX(sorting) as sorting';
+		$table		= self::TABLE;
+		$where		= '	id_project		= ' . $idProject . ' AND
+						id_parenttask	= ' . $idParent;
+		$group		= 'sorting';
+
+		$row		= Todoyu::db()->getRecordByQuery($fields, $table, $where, $group);
+
+		if( $row === false ) {
+			return 0;
+		} else {
+			return intval($row['sorting']) + 1;
+		}
 	}
 
 
@@ -470,6 +495,38 @@ class TodoyuTaskManager {
 
 
 	/**
+	 * Get ALL subtasks of a task (the whole tree, instead only the direct childs)
+	 * Get also sub-sub-...-tasks
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Array
+	 */
+	public static function getAllSubtaskIDs($idTask) {
+		$idTask		= intval($idTask);
+		$subtasks	= array();
+
+		$field	= 'id';
+		$table	= self::TABLE;
+		$whereF	= '	id_parenttask IN(%s)';
+
+		$where	= sprintf($whereF, $idTask);
+
+		$newTasks	= Todoyu::db()->getColumn($field, $table, $where);
+
+		while( sizeof($newTasks) > 0 ) {
+			$subtasks = array_merge($subtasks, $newTasks);
+
+			$where = sprintf($whereF, implode(',', $newTasks));
+
+			$newTasks = Todoyu::db()->getColumn($field, $table, $where);
+		}
+
+		return $subtasks;
+	}
+
+
+
+	/**
 	 * Get subtasks (as data array) of given task
 	 *
 	 * @param	Integer		$idTask
@@ -636,7 +693,7 @@ class TodoyuTaskManager {
 	 */
 	public static function getContextMenuHeader($idTask) {
 
-		$task	= self::getTaskArray($idTask);
+		$task	= self::getTaskData($idTask);
 
 		return TodoyuDiv::cropText($task['title'], 24, '', false);
 	}
@@ -650,7 +707,7 @@ class TodoyuTaskManager {
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function getTaskDataArray($idTask) {
+	public static function getTaskInfos($idTask) {
 		$idTask		= intval($idTask);
 		$taskData	= array();
 
@@ -950,86 +1007,6 @@ class TodoyuTaskManager {
 		);
 
 		self::updateTask($idTask, $update);
-	}
-
-
-
-	/**
-	 * Clone a task
-	 *
-	 * @param 	Integer		$idTask
-	 * @return	Integer
-	 */
-	public static function cloneTask($idTask, array $options = array()) {
-		$idTask	= intval($idTask);
-		$task	= self::getTaskArray($idTask);
-
-			// Remove id to get a new one on insert
-		unset($task['id']);
-
-			// Set new fields for the cloned version
-		$task['tasknumber']		= TodoyuProjectManager::getNextTaskNumber($task['id_project']);
-		$task['is_acknowledged']= 0;
-		$task['title']			= TodoyuLocale::getFormatLabel('task.title.cloned', array($task['title']));
-		$task['id_user_owner']	= userid();
-		$task['status']			= STATUS_OPEN;
-
-		$task = array_merge($task, $options);
-
-		return self::addTask($task);
-	}
-
-
-
-	/**
-	 * Clone given container
-	 *
-	 * @param	Integer	$idContainer
-	 * @param	Array	$options
-	 * @param	Boolean	$cloneSubElements
-	 * @return	Integer	ID of new container
-	 */
-	public static function cloneContainer($idContainer, array $options = array(), $cloneSubElements = false) {
-		$idContainer	= intval($idContainer);
-		$idNewContainer	= self::cloneTask($idContainer, $options);
-
-		if( $cloneSubElements ) {
-			self::cloneSubElements($idContainer, $idNewContainer);
-		}
-
-		return $idNewContainer;
-	}
-
-
-
-	/**
-	 * Clone sub elements of given parent element
-	 *
-	 * @param	Integer	$idSourceElement
-	 * @param	Integer	$idTargetElement
-	 */
-	public static function cloneSubElements($idSourceElement, $idTargetElement) {
-		$idSourceElement	= intval($idSourceElement);
-		$idTargetElement	= intval($idTargetElement);
-
-		$subElements = self::getSubtasks($idSourceElement);
-
-		// Force a new parent task for the cloned object
-		$options = array('id_parenttask' => $idTargetElement);
-
-		foreach($subElements as $subElement) {
-
-			switch( $subElement['type'] ) {
-				case TASK_TYPE_TASK:
-					self::cloneTask($subElement['id'], $options);
-					break;
-
-				case TASK_TYPE_CONTAINER:
-					self::cloneContainer($subElement['id'], $options, true);
-					break;
-			}
-
-		}
 	}
 
 
@@ -1373,7 +1350,7 @@ class TodoyuTaskManager {
 		$idTask	= intval($idTask);
 
 		if( $idTask !== 0 ) {
-			$task = self::getTaskArray($idTask);
+			$task = self::getTaskData($idTask);
 
 			if( is_array($task) ) {
 				return true;
@@ -1500,16 +1477,204 @@ class TodoyuTaskManager {
 	}
 
 
-	public static function copyTask($idTask, $idParent, $withSubtasks) {
-		$idTask	= intval($idTask);
+	public static function copyTask($idTask, $idParent, $withSubtasks = true, $idProject = 0) {
+		$idTask		= intval($idTask);
+		$idParent	= intval($idParent);
+		$idProject	= intval($idProject);
 
+			// Get orginal task data
+		$data		= self::getTaskData($idTask);
+
+			// Set new project id if given
+		if( $idProject !== 0 ) {
+			$data['id_project'] = $idProject;
+		}
+			// Set new parent (needed for sorting)
+		$data['id_parenttask']	= $idParent;
+
+			// Add new task (with old data)
+		$idTaskNew	= self::addTask($data);
+
+		TodoyuDebug::printLastQueryInFirebug('copy task');
+
+			// Call data modifier hook, so other extensions can change data if they want
+		$hookData	= array(
+			'idTask'	=> $idTask,
+			'idTaskNew'	=> $idTaskNew,
+			'idParent'	=> $idParent,
+			'idProject'	=> $idProject
+		);
+		$data		= TodoyuHookManager::callHookDataModifier('project', 'taskcopy', $data, $hookData);
+
+			// Set status
+		$data['status']		= STATUS_OPEN;
+			// Remove old tasknumber
+		unset($data['tasknumber']);
+
+			// Update task data
+		self::updateTask($idTaskNew, $data);
+
+			// Copy subtasks if enabled
+		if( $withSubtasks && $idTask !== $idParent ) {
+			$subtaskIDs = self::getSubtaskIDs($idTask);
+
+			foreach($subtaskIDs as $idSubtask) {
+				$idSubtaskNew = self::copyTask($idSubtask, $idTaskNew, true, $idProject);
+			}
+		}
+
+		return $idTaskNew;
+	}
+
+
+
+	public static function moveTask($idTask, $idParent) {
+		$idTask		= intval($idTask);
+		$idParent	= intval($idParent);
+		$taskData	= self::getTaskData($idTask);
+		$parentData	= self::getTaskData($idParent);
+
+			// Basic update
+		$update		= array(
+			'id_parenttask'	=> $idParent,
+			'id_project'	=> $parentData['id_project']
+		);
+
+			// If project changed, generate a new tasknumber
+		if( $taskData['id_project'] != $parentData['id_project'] ) {
+			$update['tasknumber']	= TodoyuProjectManager::getNextTaskNumber($parentData['id_project']);
+		}
+
+			// Update the moved task
+		self::updateTask($idTask, $update);
+
+			// If project changed, update also all subtasks with new project ID and generate new tasknumber
+		if( $taskData['id_project'] != $parentData['id_project'] ) {
+			$allSubtaskIDs	= self::getAllSubtaskIDs($idTask);
+
+			foreach($allSubtaskIDs as $idSubtask) {
+				$subUpdate	= array(
+					'id_project'	=> $parentData['id_project'],
+					'tasknumber'	=> TodoyuProjectManager::getNextTaskNumber($parentData['id_project'])
+				);
+
+				Todoyu::db()->updateRecord(self::TABLE, $idSubtask, $subUpdate);
+			}
+		}
+	}
+
+
+	public static function changeProject($idTask, $idProject) {
+		$idTask		= intval($idTask);
+		$idProject	= intval($idProject);
+
+		$subtasks	= self::getSubtaskIDs($idTask);
 
 	}
 
 
-	public static function moveTask($idTask, $idParent) {
-		$idTask	= intval($idTask);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * Clone a task
+	 *
+	 * @param 	Integer		$idTask
+	 * @return	Integer
+	 */
+	public static function cloneTask($idTask, array $options = array()) {
+		$idTask	= intval($idTask);
+		$task	= self::getTaskData($idTask);
+
+			// Remove id to get a new one on insert
+		unset($task['id']);
+
+			// Set new fields for the cloned version
+		$task['tasknumber']		= TodoyuProjectManager::getNextTaskNumber($task['id_project']);
+		$task['is_acknowledged']= 0;
+		$task['title']			= TodoyuLocale::getFormatLabel('task.title.cloned', array($task['title']));
+		$task['id_user_owner']	= userid();
+		$task['status']			= STATUS_OPEN;
+
+		$task = array_merge($task, $options);
+
+		return self::addTask($task);
+	}
+
+
+
+	/**
+	 * Clone given container
+	 *
+	 * @param	Integer	$idContainer
+	 * @param	Array	$options
+	 * @param	Boolean	$cloneSubElements
+	 * @return	Integer	ID of new container
+	 */
+	public static function cloneContainer($idContainer, array $options = array(), $cloneSubElements = false) {
+
+
+		$idContainer	= intval($idContainer);
+		$idNewContainer	= self::cloneTask($idContainer, $options);
+
+		if( $cloneSubElements ) {
+			self::cloneSubElements($idContainer, $idNewContainer);
+		}
+
+		return $idNewContainer;
+	}
+
+
+
+	/**
+	 * Clone sub elements of given parent element
+	 *
+	 * @param	Integer	$idSourceElement
+	 * @param	Integer	$idTargetElement
+	 */
+	public static function cloneSubElements($idSourceElement, $idTargetElement) {
+		$idSourceElement	= intval($idSourceElement);
+		$idTargetElement	= intval($idTargetElement);
+
+		$subElements = self::getSubtasks($idSourceElement);
+
+		// Force a new parent task for the cloned object
+		$options = array('id_parenttask' => $idTargetElement);
+
+		foreach($subElements as $subElement) {
+
+			switch( $subElement['type'] ) {
+				case TASK_TYPE_TASK:
+					self::copyTask($subElement['id'], $idTargetElement);
+					break;
+
+				case TASK_TYPE_CONTAINER:
+					self::cloneContainer($subElement['id'], $options, true);
+					break;
+			}
+
+		}
 	}
 
 }

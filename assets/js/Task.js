@@ -35,20 +35,93 @@ Todoyu.Ext.project.Task = {
 	},
 	
 	copy: function(idTask) {
-		console.log('copy task');
+		var url		= Todoyu.getUrl('project', 'task');
+		var options	= {
+			'parameters': {
+				'action': 'copy',
+				'task': idTask
+			},
+			'onComplete': this.onCopied.bind(this, idTask)			
+		};
+		
+		Todoyu.send(url, options);
+		
+		this.highlight(idTask);
 	},
 	
 	onCopied: function(idTask, response) {
 		
 	},
 	
+	
 	cut: function(idTask) {
+		var url		= Todoyu.getUrl('project', 'task');
+		var options	= {
+			'parameters': {
+				'action': 'cut',
+				'task': idTask
+			},
+			'onComplete': this.onCopied.bind(this, idTask)			
+		};
 		
+		Todoyu.send(url, options);
+		
+		this.highlight(idTask);
 	},
 	
 	onCut: function(idTask, response) {
 		
 	},
+	
+	paste: function(idTask, mode) {
+		var url		= Todoyu.getUrl('project', 'task');
+		var options	= {
+			'parameters': {
+				'action': 'paste',
+				'task': idTask,
+				'mode': mode
+			},
+			'onComplete': this.onPasted.bind(this, idTask, mode)			
+		}
+		
+		Todoyu.send(url, options);		
+	},
+	
+	onPasted: function(idTask, mode, response) {
+		var idTaskNew		= response.getTodoyuHeader('idTask');
+		var clipboardAction	= response.getTodoyuHeader('clipboardAction');
+		
+		if( clipboardAction === 'cut' ) {
+			if( Todoyu.exists('task-' + idTask) ) {
+				$('task-' + idTask).remove();
+			}
+		}
+		
+		
+		if( mode === 'in' ) {
+			if( Todoyu.exists('task-' + idTask + '-subtasks') ) {
+				$('task-' + idTask + '-subtasks').insert({
+					'bottom': response.responseText
+				});
+				//this.ext.TaskTree.expandSubtasks(idTask);
+			} else {
+				this.refresh(idTask);
+			}			
+		} else if( mode === 'before' ) {
+			$('task-' + idTask).insert({
+				'before': response.responseText
+			});
+		} else if( mode === 'after' ) {
+			var target = Todoyu.exists('task-' + idTask + '-subtasks') ? 'task-' + idTask + '-subtasks' : 'task-' + idTask;
+			$(target).insert({
+				'after': response.responseText
+			});
+		}
+		
+		this.ext.ContextMenuTask.reattach();
+		this.highlight(idTaskNew);
+	},
+	
 	
 	/**
 	 * Confirm whether user is sure, and evoke deletion of given task if
@@ -123,8 +196,6 @@ Todoyu.Ext.project.Task = {
 	},
 	
 
-
-
 	/**
 	 * Scoll to given task
 	 *
@@ -133,7 +204,12 @@ Todoyu.Ext.project.Task = {
 	scrollTo: function(idTask) {
 		$('task-' + idTask).scrollToElement();
 	},
-
+	
+	highlight: function(idTask) {
+		if( Todoyu.exists('task-' + idTask) ) {
+			new Effect.Highlight('task-' + idTask);
+		}
+	},
 
 
 	/**

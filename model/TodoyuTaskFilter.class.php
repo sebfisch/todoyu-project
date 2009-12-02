@@ -52,7 +52,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 * @return	Array
 	 */
 	public function getTaskIDs() {
-		$taskIDs = parent::getItemIDs(self::TABLE . '.date_start', 100);
+		$taskIDs = parent::getItemIDs(self::TABLE . '.sorting ASC', 100);
 
 		return $taskIDs;
 	}

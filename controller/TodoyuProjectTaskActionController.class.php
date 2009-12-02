@@ -226,20 +226,25 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	public function copyAction(array $params) {
 		$idTask	= intval($params['task']);
 
-		TodoyuTaskManager::copyTask($idTask);
+		TodoyuTaskClipboard::addTaskCopy($idTask);
 	}
 
 
 	public function cutAction(array $params) {
 		$idTask	= intval($params['task']);
 
-		TodoyuTaskManager::cutTask($idTask);
+		TodoyuTaskClipboard::addTaskCut($idTask);
 	}
 
 	public function pasteAction(array $params) {
 		$idTask	= intval($params['task']);
+		$mode	= $params['mode'];
 
-		TodoyuTaskManager::pasteTask($idTask);
+		$idTaskNew = TodoyuTaskClipboard::pasteTask($idTask, $mode);
+
+		TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
+
+		return TodoyuProjectRenderer::renderTask($idTaskNew);
 	}
 
 
@@ -252,7 +257,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 */
 	public function cloneAction(array $params) {
 		$idTask		= intval($params['task']);
-		$idTaskNew	= TodoyuTaskManager::cloneTask($idTask);
+		$idTaskNew	= TodoyuTaskManager::copyTask($idTask);
 
 		TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
 
