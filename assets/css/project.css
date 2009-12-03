@@ -146,54 +146,54 @@
 	margin-bottom:5px;
 }
 
-#search-results .projectdetails .description,
-.project .projectdetails .description {
+#search-results .description,
+.project .description {
 	margin-bottom:10px;
 }
 
 		/* properties */
-	#search-results .projectdetails .properties dt,
-	.project .projectdetails .properties dt {
+	#search-results .properties dt,
+	.project .properties dt {
 		float:left;
 		width:90px;
 	}
 
-	#search-results .projectdetails .properties dd,
-	.project .projectdetails .properties dd {
+	#search-results .properties dd,
+	.project .properties dd {
 		float:left;
 		padding-right:3px;
 		width:210px;
 	}
 
 	/* assigned users */
-	#search-results .projectdetails ul.assignedUsersList,
-	.project .projectdetails ul.assignedUsersList {
+	#search-results ul.assignedUsersList,
+	.project ul.assignedUsersList {
 		margin:0;
 	}
 
-	#search-results .projectdetails ul.assignedUsersList .name,
-	.project .projectdetails ul.assignedUsersList .name {
+	#search-results ul.assignedUsersList .name,
+	.project ul.assignedUsersList .name {
 		background:url('../../../user/assets/img/icons.png') no-repeat 0 4px;
 		padding-left:20px;
 	}
 
-	#search-results .projectdetails ul.assignedUsersList .name,
-	.project .projectdetails ul.assignedUsersList .name {
+	#search-results ul.assignedUsersList .name,
+	.project ul.assignedUsersList .name {
 		width:150px;
 	}
 
-	#search-results .projectdetails ul.assignedUsersList .customer,
-	.project .projectdetails ul.assignedUsersList .customer {
+	#search-results ul.assignedUsersList .customer,
+	.project ul.assignedUsersList .customer {
 		width:150px;
 	}
 
-	#search-results .projectdetails ul.assignedUsersList .role,
-	.project .projectdetails ul.assignedUsersList .role {
+	#search-results ul.assignedUsersList .role,
+	.project ul.assignedUsersList .role {
 		width:150px;
 	}
 
 	/* description */
-	.project .projectdetails .description ul {
+	.project .description ul {
 		list-style-position:inside;
 		list-style-type:square;
 	}
