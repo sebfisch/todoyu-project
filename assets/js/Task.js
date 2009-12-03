@@ -71,6 +71,7 @@ Todoyu.Ext.project.Task = {
 	
 	onCut: function(idTask, response) {
 		
+		
 	},
 	
 	paste: function(idTask, mode) {
@@ -839,6 +840,9 @@ Todoyu.Ext.project.Task = {
 
 				Todoyu.Hook.exec('onTaskSaved', idTask);
 				Todoyu.notifySuccess('[LLL:task.save.success]');
+				
+				this.ext.Task.scrollTo(idTask);
+				this.ext.Task.highlight.bind(this.ext.Task).delay(0.5, idTask);
 			}
 		},
 

@@ -87,6 +87,7 @@
 					<validate>
 						<isNotZero />
 					</validate>
+					<required/>
 				</field>
 
 				<field type="select" name="id_user_owner">
@@ -123,6 +124,7 @@
 					<validate>
 						<isNotZero msg="LLL:task.attr.id_worktype.error"/>
 					</validate>
+					<required/>
 				</field>
 
 				<field type="duration" name="estimated_workload">

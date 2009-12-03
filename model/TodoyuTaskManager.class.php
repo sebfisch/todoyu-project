@@ -132,10 +132,10 @@ class TodoyuTaskManager {
 		$idProject	= intval($data['id_project']);
 
 		if( $idTask === 0 ) {
-			$idTask = self::addTask();
+			$idTask = self::addTask($data);
 
 				// Set tasknumber
-			$data['tasknumber']	= TodoyuProjectManager::getNextTaskNumber($idProject);
+//			$data['tasknumber']	= TodoyuProjectManager::getNextTaskNumber($idProject);
 		}
 
 			// Check for type
@@ -191,36 +191,50 @@ class TodoyuTaskManager {
 		$data['date_update']	= NOW;
 		$data['id_user_create']	= TodoyuAuth::getUserID();
 
+		TodoyuDebug::printInFirebug($data, 'data');
+
 			// Create task number
 		$idProject	= intval($data['id_project']);
 		$data['tasknumber'] = TodoyuProjectManager::getNextTaskNumber($idProject);
 
 			// Create sorting flag
-		$idParent	= intval($data['id_parent']);
+		$idParent	= intval($data['id_parenttask']);
 		$data['sorting']	= self::getNextSortingPosition($idProject, $idParent);
 
-		TodoyuDebug::printInFirebug($data, '$data');
+//		TodoyuDebug::printInFirebug($data, '$data');
 
 		return Todoyu::db()->addRecord(self::TABLE, $data);
 	}
 
 
-	public static function getNextSortingPosition($idProject, $idParent) {
-		$idProject	= intval($idProject);
-		$idParent	= intval($idParent);
 
-		$fields		= 'MAX(sorting) as sorting';
+	/**
+	 * Get next sorting position for a new task. For every subtask, sorting starts new
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idParentTask
+	 * @return	Integer
+	 */
+	public static function getNextSortingPosition($idProject, $idParentTask) {
+		$idProject		= intval($idProject);
+		$idParentTask	= intval($idParentTask);
+
+		$field		= 'MAX(sorting) as sorting';
 		$table		= self::TABLE;
 		$where		= '	id_project		= ' . $idProject . ' AND
-						id_parenttask	= ' . $idParent;
+						id_parenttask	= ' . $idParentTask;
 		$group		= 'sorting';
+		$order		= 'sorting DESC';
+		$limit		= 1;
 
-		$row		= Todoyu::db()->getRecordByQuery($fields, $table, $where, $group);
+		$maxSorting	= Todoyu::db()->getFieldValue($field, $table, $where, $group, $order, $limit, 'sorting'); // getRecordByQuery($fields, $table, $where, $group);
 
-		if( $row === false ) {
+		TodoyuDebug::printLastQueryInFirebug();
+
+		if( $maxSorting === false ) {
 			return 0;
 		} else {
-			return intval($row['sorting']) + 1;
+			return intval($maxSorting) + 1;
 		}
 	}
 
@@ -303,7 +317,7 @@ class TodoyuTaskManager {
 	 */
 	public static function addContainer(array $data) {
 		$data['type']				= TASK_TYPE_CONTAINER;
-		$data['id_user_assigned']	= userid();
+//		$data['id_user_assigned']	= userid();
 
 		return self::addTask($data);
 	}

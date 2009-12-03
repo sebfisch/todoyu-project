@@ -1,5 +1,30 @@
 <?php
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
 
+/**
+ * Project task clipboard
+ *
+ * @package		Todoyu
+ * @subpackage	Project
+ */
 class TodoyuTaskClipboard {
 
 	public static function addTask($idTask, $mode = 'copy', $withSubtasks = true) {
@@ -59,10 +84,19 @@ class TodoyuTaskClipboard {
 	}
 
 
+
+	/**
+	 * Add contextmenu to paste tasks
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Array		$items
+	 * @return	Array
+	 */
 	public static function getTaskContextMenuItems($idTask, array $items) {
 		$idTask	= intval($idTask);
 
-		if( self::hasTask() ) {
+			// Only show context menu in project area and if something is on the clipboard
+		if( AREA === EXTID_PROJECT && self::hasTask() ) {
 			$ownItems	= $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['TaskClipboard'];
 
 			$items	= array_merge_recursive($items, $ownItems);
@@ -70,7 +104,6 @@ class TodoyuTaskClipboard {
 
 		return $items;
 	}
-
 
 }
 

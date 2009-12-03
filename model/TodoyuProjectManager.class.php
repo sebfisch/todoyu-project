@@ -409,16 +409,7 @@ class TodoyuProjectManager {
 
 		$highestNumber	= Todoyu::db()->getFieldValue($field, $table, $where, '', '', '', 'tasknr');
 
-//		TodoyuDebug::printInFirebug(Todoyu::db()->getLastQuery(), 'last query after checking the highest number');
-
-		TodoyuDebug::printInFirebug($highestNumber, 'top');
-
-//		echo "GITH: " . $highestNumber;
-
 		$nextNumber		= intval($highestNumber) + 1;
-
-		TodoyuDebug::printInFirebug($nextNumber, '$nextNumber');
-
 
 		return $nextNumber;
 	}
