@@ -61,7 +61,7 @@ Todoyu.Ext.project.Task = {
 				'action': 'cut',
 				'task': idTask
 			},
-			'onComplete': this.onCopied.bind(this, idTask)			
+			'onComplete': this.onCut.bind(this, idTask)			
 		};
 		
 		Todoyu.send(url, options);
