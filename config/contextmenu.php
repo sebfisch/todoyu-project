@@ -402,7 +402,7 @@ $CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 
 
 	/**
-	 * Context menu configuration for project
+	 * Context menu configuration task clipboard functions
 	 */
 
 $CONFIG['EXT']['project']['ContextMenu']['TaskClipboard'] = array(

@@ -240,45 +240,27 @@ class TodoyuTaskManager {
 	 * @param	Integer		$idTask
 	 */
 	public static function deleteTask($idTask, $deleteSubtasks = true) {
-		$data	= array('deleted'		=> 1,
-		'date_update'	=> NOW);
-
-		self::updateTask($idTask, $data);
-
-		if( $deleteSubtasks ) {
-			self::deleteSubtasks($idTask, true);
-		}
-	}
-
-
-
-	/**
-	 * Delete all subtasks
-	 *
-	 * @param	Integer		$idTask				Task ID whichs subtaks shall be deleted
-	 * @param	Bool		$recursive			Delete recursive => delete subtasks of subtasks of subtasks ...
-	 */
-	public static function deleteSubtasks($idTask, $recursive = false) {
-		$idTask	= intval($idTask);
-
-		// Delete all subtasks of the subtasks
-		if( $recursive ) {
-			$subtaskIDs	= self::getSubtaskIDs($idTask);
-
-			foreach($subtaskIDs as $idSubtask) {
-				self::deleteSubtasks($idSubtask, true);
-			}
-		}
-
-			// Delete all subtasks
-		$table	= self::TABLE;
-		$where	= 'id_parenttask = ' . $idTask;
 		$data	= array(
 			'deleted'		=> 1,
 			'date_update'	=> NOW
 		);
 
-		Todoyu::db()->doUpdate($table, $where, $data);
+		self::updateTask($idTask, $data);
+
+			// Delete all subtasks
+		if( $deleteSubtasks ) {
+			$allSubtaskIDs	= self::getAllSubtaskIDs($idTask);
+
+			if( sizeof($allSubtaskIDs) > 0 ) {
+				$where	= 'id IN(' . implode(',', $allSubtaskIDs) . ')';
+				$update	= array(
+					'deleted'		=> 1,
+					'date_update'	=> NOW
+				);
+
+				Todoyu::db()->doUpdate(self::TABLE, $where, $update);
+			}
+		}
 	}
 
 
@@ -495,9 +477,12 @@ class TodoyuTaskManager {
 	public static function getSubtaskIDs($idTask) {
 		$idTask	= intval($idTask);
 
-		$subtasks	= self::getSubtasks($idTask);
+		$field	= 'id';
+		$table	= self::TABLE;
+		$where	= '	id_parenttask 	= ' . $idTask . ' AND
+					deleted 		= 0';
 
-		return TodoyuArray::getColumn($subtasks, 'id');
+		return Todoyu::db()->getColumn($field, $table, $where);
 	}
 
 
@@ -515,7 +500,8 @@ class TodoyuTaskManager {
 
 		$field	= 'id';
 		$table	= self::TABLE;
-		$whereF	= '	id_parenttask IN(%s)';
+		$whereF	= '	id_parenttask IN(%s) AND
+					deleted	= 0';
 
 		$where	= sprintf($whereF, $idTask);
 
@@ -549,7 +535,8 @@ class TodoyuTaskManager {
 
 		$field	= '*';
 		$table	= self::TABLE;
-		$where	= '	id_parenttask	= ' . $idTask . ' AND deleted	= 0';
+		$where	= '	id_parenttask	= ' . $idTask . ' AND
+					deleted	= 0';
 		$groupBy= '';
 		$orderBy= 'date_create';
 		$limit	= '';
@@ -571,6 +558,29 @@ class TodoyuTaskManager {
 		$subtaskIDs	= self::getSubtaskIDs($idTask);
 
 		return sizeof($subtaskIDs) > 0 ;
+	}
+
+
+
+	/**
+	 * Check if a task is a subtask of a task.
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Integer		$idParent
+	 * @param	Bool		$checkDeep		TRUE: check all levels, FALSE: check only direct childs
+	 * @return	Bool
+	 */
+	public static function isSubtaskOf($idTask, $idParent, $checkDeep = false) {
+		$idTask		= intval($idTask);
+		$idParent	= intval($idParent);
+
+		if( $checkDeep ) {
+			$subtasks	= self::getAllSubtaskIDs($idParent);
+		} else {
+			$subtasks	= self::getSubtaskIDs($idParent);
+		}
+
+		return in_array($idTask, $subtasks);
 	}
 
 

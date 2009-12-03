@@ -72,6 +72,53 @@ class TodoyuTaskClipboard {
 
 
 	/**
+	 * Get current clipboard mode
+	 *
+	 * @return	String
+	 */
+	public static function getCurrentMode() {
+		$data	= self::getData();
+
+		return $data['mode'];
+	}
+
+
+	/**
+	 * Get current task ID in clipboard
+	 *
+	 * @return	Integer
+	 */
+	public static function getCurrentTask() {
+		$data	= self::getData();
+
+		return intval($data['task']);
+	}
+
+
+
+	/**
+	 * Check if clipboard is in copy mode
+	 *
+	 * @return	Bool
+	 */
+	public static function isInCopyMode() {
+		return self::getCurrentMode() === 'copy';
+	}
+
+
+
+	/**
+	 * Check if clipboard is in cut mode
+	 *
+	 * @return	Bool
+	 */
+	public static function isInCutMode() {
+		return self::getCurrentMode() === 'cut';
+	}
+
+
+
+	/**
 	 * Clear clipboard (remove current task)
 	 *
 	 */
@@ -162,16 +209,18 @@ class TodoyuTaskClipboard {
 			// Only show context menu in project area and if something is on the clipboard
 		if( AREA === EXTID_PROJECT && self::hasTask() ) {
 			$ownItems	= $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['TaskClipboard'];
+			$data		= self::getData();
+			$isSubtask	= TodoyuTaskManager::isSubtaskOf($idTask, $data['task'], true);
 
-
-
-
-
+				// Don't allow paste on itself or subtaks when: cut-mode or with-subtasks
+			if( $idTask == $data['task'] || $isSubtask ) {
+				if( $data['mode'] === 'cut' || $data['subtasks'] ) {
+					unset($ownItems['paste']);
+				}
+			}
 
 			$items	= array_merge_recursive($items, $ownItems);
 		}
-
-
 
 		return $items;
 	}
