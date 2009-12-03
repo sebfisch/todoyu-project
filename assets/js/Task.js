@@ -34,26 +34,61 @@ Todoyu.Ext.project.Task = {
 		this.Edit.loadForm(idTask);
 	},
 	
+	
+	
+	/**
+	 * Copy a task (and subtasks) to clipboard
+	 * 
+	 * @param	Integer		idTask
+	 */
 	copy: function(idTask) {
+		var withSubtasks = false;
+		
+			// Ask to copy subtasks
+		if (this.hasSubtasks(idTask)) {
+			withSubtasks = confirm('Auch Unteraufgaben mitkopieren?') ? 1 : 0;
+		}
+		
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
 				'action': 'copy',
-				'task': idTask
+				'task': idTask,
+				'subtasks': withSubtasks
 			},
 			'onComplete': this.onCopied.bind(this, idTask)			
 		};
 		
 		Todoyu.send(url, options);
 		
+			// Highlight copied task
 		this.highlight(idTask);
+		
+			// Highlight subtasks if selected to copy
+		if( withSubtasks ) {
+			this.highlightSubtasks(idTask);
+		}		
 	},
 	
+	
+	
+	/**
+	 * Handler when copied to clipboard
+	 * 
+	 * @param	Integer			idTask
+	 * @param	Ajax.Response	response
+	 */
 	onCopied: function(idTask, response) {
 		
 	},
 	
 	
+	
+	/**
+	 * Cut task (to clipboard)
+	 * 
+	 * @param	Integer		idTask
+	 */
 	cut: function(idTask) {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
@@ -67,13 +102,29 @@ Todoyu.Ext.project.Task = {
 		Todoyu.send(url, options);
 		
 		this.highlight(idTask);
+		this.highlightSubtasks(idTask);
 	},
 	
+	
+	
+	/**
+	 * Handler when task is cut
+	 * 
+	 * @param	Integer			idTask
+	 * @param	Ajax.Response	response
+	 */
 	onCut: function(idTask, response) {
 		
-		
 	},
 	
+	
+	
+	/**
+	 * Paste task
+	 * 
+	 * @param	Integer		idTask		Task where to paste
+	 * @param	String		mode		Insert mode (in,after,before)
+	 */
 	paste: function(idTask, mode) {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
@@ -88,39 +139,109 @@ Todoyu.Ext.project.Task = {
 		Todoyu.send(url, options);		
 	},
 	
+	
+	
+	/**
+	 * Handler when task is pasted
+	 * 
+	 * @param	Integer			idTask
+	 * @param	String			insertMode
+	 * @param	Ajax.Response	response
+	 */
 	onPasted: function(idTask, insertMode, response) {
 		var idTaskNew		= response.getTodoyuHeader('idTask');
 		var clipboardMode	= response.getTodoyuHeader('clipboardMode');
 		
+			// If task was cut, remove old element
 		if( clipboardMode === 'cut' ) {
 			if( Todoyu.exists('task-' + idTaskNew) ) {
 				$('task-' + idTaskNew).remove();
 			}
 		}
 		
-		
+			// Insert as subtask of the current task
 		if( insertMode === 'in' ) {
+				// If subtask container already exists, add it
 			if( Todoyu.exists('task-' + idTask + '-subtasks') ) {
 				$('task-' + idTask + '-subtasks').insert({
 					'bottom': response.responseText
 				});
-				//this.ext.TaskTree.expandSubtasks(idTask);
+				this.ext.TaskTree.expandSubtasks(idTask);
 			} else {
+					// If no subtask container available, refresh task with its subtasks
 				this.refresh(idTask);
 			}			
 		} else if( insertMode === 'before' ) {
+				// Insert task before current
 			$('task-' + idTask).insert({
 				'before': response.responseText
 			});
 		} else if( insertMode === 'after' ) {
+				// Insert task after current
 			var target = Todoyu.exists('task-' + idTask + '-subtasks') ? 'task-' + idTask + '-subtasks' : 'task-' + idTask;
 			$(target).insert({
 				'after': response.responseText
 			});
 		}
 		
+			// Attach context menu to all tasks (so the pasted ones get one too)
 		this.ext.ContextMenuTask.reattach();
+			// Highlight the new pasted task
 		this.highlight(idTaskNew);
+		this.highlightSubtasks(idTaskNew);
+	},
+	
+	
+	
+	/**
+	 * Clone given task (open new task creation form with attributes of task filled-in, title renamed to 'copy of..')
+	 *
+	 * @param	Integer	idTask
+	 */
+	clone: function(idTask) {
+		var withSubtasks = false;
+		
+			// Ask to copy subtasks
+		if (this.hasSubtasks(idTask)) {
+			withSubtasks = confirm('Auch Unteraufgaben klonen?') ? 1 : 0;
+		}
+		
+		var url		= Todoyu.getUrl('project', 'task');
+		var options	= {
+			'parameters': {
+				'action':	'clone',
+				'task':		idTask,
+				'subtasks': withSubtasks
+			},
+			'onComplete': this.onCloned.bind(this, idTask)
+		};
+		
+		if( this.hasSubtasks(idTask) ) {
+			var target	= 'task-' + idTask + '-subtasks';
+		} else {
+			var target	= 'task-' + idTask;
+		}
+
+		Todoyu.Ui.append(target, url, options);
+	},
+
+
+
+	/**
+	 * Handle completion of task being cloned
+	 *
+	 * @param	Object	response
+	 */
+	onCloned: function(idSourceTask, response) {
+			// Get task id from header
+		var idTask = response.getTodoyuHeader('idTask');
+			// Attach context menu
+		this.addContextMenu(idTask);
+			// Highlight cloned element
+		this.highlight(idTask);
+		this.highlightSubtasks(idTask);
+		
+		Todoyu.Hook.exec('taskcloned', idSourceTask, idTask);
 	},
 	
 	
@@ -156,46 +277,16 @@ Todoyu.Ext.project.Task = {
 		}
 	},
 	
+	
+	
+	/**
+	 * Handler when task removed
+	 * 
+	 * @param	Integer			idTask
+	 * @param	Ajax.Response	response
+	 */
 	onRemoved: function(idTask, response) {
 		
-	},
-	
-	
-	/**
-	 * Clone given task (open new task creation form with attributes of task filled-in, title renamed to 'copy of..')
-	 *
-	 * @param	Integer	idTask
-	 */
-	clone: function(idTask) {
-		var url		= Todoyu.getUrl('project', 'task');
-		var options	= {
-			'parameters': {
-				'action':	'clone',
-				'task':		idTask
-			},
-			'onComplete': this.onCloned.bind(this, idTask)
-		};
-		var target	= 'task-' + idTask;
-
-		Todoyu.Ui.append(target, url, options);
-	},
-
-
-
-	/**
-	 * Handle completion of task being cloned
-	 *
-	 * @param	Object	response
-	 */
-	onCloned: function(idSourceTask, response) {
-			// Get task id from header
-		var idTask = response.getTodoyuHeader('idTask');
-			// Attach context menu
-		this.addContextMenu(idTask);
-			// Highlight cloned element
-		this.highlight(idTask);
-		
-		Todoyu.Hook.exec('taskcloned', idSourceTask, idTask);
 	},
 	
 
@@ -208,10 +299,40 @@ Todoyu.Ext.project.Task = {
 		$('task-' + idTask).scrollToElement();
 	},
 	
+	
+	
+	/**
+	 * Highlight a task
+	 * 
+	 * @param	Integer		idTask
+	 */
 	highlight: function(idTask) {
 		if( Todoyu.exists('task-' + idTask) ) {
 			new Effect.Highlight('task-' + idTask);
 		}
+	},
+	
+	
+	
+	/**
+	 * Highlight subtask container of a task
+	 * 
+	 * @param	Integer		idTask
+	 */
+	highlightSubtasks: function(idTask) {
+		if( Todoyu.exists('task-' + idTask + '-subtasks') ) {
+			new Effect.Highlight('task-' + idTask + '-subtasks');
+		}
+	},
+	
+	
+	
+	/**
+	 * Check if a task has subtasks
+	 * @param	Integer		idTask
+	 */
+	hasSubtasks: function(idTask) {
+		return Todoyu.exists('task-' + idTask + '-subtasks') || Todoyu.exists('task-' + idTask + '-subtasks-trigger');
 	},
 
 

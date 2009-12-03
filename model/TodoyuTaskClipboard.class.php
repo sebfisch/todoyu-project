@@ -128,9 +128,9 @@ class TodoyuTaskClipboard {
 		$taskParent		= TodoyuTaskManager::getTaskData($idParentTask);
 
 		if( $dataClipboard['mode'] === 'copy' ) {
-			$idNewTask = TodoyuTaskManager::copyTask($dataClipboard['task'], $idParentTask, $dataClipboard['subtasks'], $taskParent['id_project']);
+			$idNewTask = TodoyuTaskManager::copyTask($dataClipboard['task'], $idParentTask, $dataClipboard['subtasks'], $currentTask['id_project']);
 		} elseif( $dataClipboard['mode'] === 'cut' ) {
-			$idNewTask = TodoyuTaskManager::moveTask($dataClipboard['task'], $idParentTask, $dataClipboard['id_project']);
+			$idNewTask = TodoyuTaskManager::moveTask($dataClipboard['task'], $idParentTask, $currentTask['id_project']);
 		}
 
 			// Clear clipboard
@@ -163,8 +163,15 @@ class TodoyuTaskClipboard {
 		if( AREA === EXTID_PROJECT && self::hasTask() ) {
 			$ownItems	= $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['TaskClipboard'];
 
+
+
+
+
+
 			$items	= array_merge_recursive($items, $ownItems);
 		}
+
+
 
 		return $items;
 	}

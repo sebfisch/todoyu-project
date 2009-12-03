@@ -1485,6 +1485,16 @@ class TodoyuTaskManager {
 	}
 
 
+
+	/**
+	 * Copy a task (set also a new parent)
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Integer		$idParent
+	 * @param	Bool		$withSubtasks
+	 * @param	Integer		$idProject
+	 * @return	Integer
+	 */
 	public static function copyTask($idTask, $idParent, $withSubtasks = true, $idProject = 0) {
 		$idTask		= intval($idTask);
 		$idParent	= intval($idParent);
@@ -1543,9 +1553,10 @@ class TodoyuTaskManager {
 	 * @param	Integer		$idTask				Task to move
 	 * @param	Integer		$idParentTask		New parent task
 	 */
-	public static function moveTask($idTask, $idParentTask) {
+	public static function moveTask($idTask, $idParentTask, $idProject = 0) {
 		$idTask			= intval($idTask);
 		$idParentTask	= intval($idParentTask);
+		$idProject		= intval($idProject);
 		$taskData		= self::getTaskData($idTask);
 		$parentData		= self::getTaskData($idParentTask);
 
@@ -1556,6 +1567,8 @@ class TodoyuTaskManager {
 
 		if( $idParentTask !== 0 ) {
 			$update['id_project'] = $parentData['id_project'];
+		} else {
+			$update['id_project'] = $idProject;
 		}
 
 			// If project changed, generate a new tasknumber
@@ -1565,8 +1578,6 @@ class TodoyuTaskManager {
 
 			// Update the moved task
 		self::updateTask($idTask, $update);
-
-		TodoyuDebug::printLastQueryInFirebug('moveTask');
 
 			// If project changed, update also all subtasks with new project ID and generate new tasknumber
 		if( $taskData['id_project'] != $parentData['id_project'] ) {
@@ -1593,22 +1604,32 @@ class TodoyuTaskManager {
 	 * @param 	Integer		$idTask
 	 * @return	Integer
 	 */
-	public static function cloneTask($idTask) {
-		$idTask	= intval($idTask);
-		$task	= self::getTaskData($idTask);
+	public static function cloneTask($idTask, $withSubtasks = true) {
+		$idTask		= intval($idTask);
+		$taskData	= TodoyuTaskManager::getTaskData($idTask);
 
-		return self::addTask($task);
+		$idNewTask	= self::copyTask($idTask, $taskData['id_parenttask'], $withSubtasks, $taskData['id_project']);
+
+		TodoyuTaskManager::changeTaskOrder($idNewTask, $idTask, 'after');
+
+		return $idNewTask;
 	}
 
 
+
+	/**
+	 * Change to sorting order of the tasks
+	 *
+	 * @param	Integer		$idTaskMove			Task which was moved
+	 * @param	Integer		$idTaskRef			Task which is the reference for after/before
+	 * @param	String		$moveMode			Mode: after or before
+	 */
 	public static function changeTaskOrder($idTaskMove, $idTaskRef, $moveMode) {
 		$idTaskMove	= intval($idTaskMove);
 		$idTaskRef	= intval($idTaskRef);
 		$taskMove	= TodoyuTaskManager::getTaskData($idTaskMove);
 		$taskRef	= TodoyuTaskManager::getTaskData($idTaskRef);
 		$after		= strtolower(trim($moveMode)) === 'after';
-
-//		TodoyuDebug::printInFirebug($taskRef, '$taskRef');
 
 			// Update parameters
 		$update	= array();
@@ -1638,14 +1659,10 @@ class TodoyuTaskManager {
 
 		Todoyu::db()->doUpdate($table, $where, $update, $noQuote);
 
-		TodoyuDebug::printLastQueryInFirebug('move other tasks');
-
 			// Update moved task
 		$update['sorting'] = $after ? $taskRef['sorting'] + 1 : $taskRef['sorting'];
 
 		Todoyu::db()->updateRecord(self::TABLE, $idTaskMove, $update, $noQuote);
-
-		TodoyuDebug::printLastQueryInFirebug('move moved task');
 	}
 
 }

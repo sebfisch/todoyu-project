@@ -223,19 +223,41 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 
+	/**
+	 * Copy a task (and subtasks)
+	 * Add to clipboard, the copy action happens when pasting
+	 *
+	 * @param	Array		$params
+	 */
 	public function copyAction(array $params) {
-		$idTask	= intval($params['task']);
+		$idTask			= intval($params['task']);
+		$withSubtasks	= intval($params['subtasks']) === 1;
 
-		TodoyuTaskClipboard::addTaskCopy($idTask);
+		TodoyuTaskClipboard::addTaskCopy($idTask, $withSubtasks);
 	}
 
 
+
+	/**
+	 * Cut a task and subtasks
+	 * Add to clipboard, the copy action happens when pasting
+	 *
+	 * @param	Array		$params
+	 */
 	public function cutAction(array $params) {
-		$idTask	= intval($params['task']);
+		$idTask			= intval($params['task']);
 
 		TodoyuTaskClipboard::addTaskCut($idTask);
 	}
 
+
+
+	/**
+	 * Paste a copied or cut task
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function pasteAction(array $params) {
 		$idTask	= intval($params['task']);
 		$mode	= $params['mode'];
@@ -256,9 +278,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 *	@return	String		Cloned task html
 	 */
 	public function cloneAction(array $params) {
-		$idTask		= intval($params['task']);
+		$idTask			= intval($params['task']);
+		$withSubtasks	= intval($params['subtasks']) === 1;
 
-		$idTaskNew	= TodoyuTaskManager::cloneTask($idTask);
+		$idTaskNew		= TodoyuTaskManager::cloneTask($idTask, $withSubtasks);
 
 		TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
 
