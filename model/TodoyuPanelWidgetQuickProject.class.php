@@ -56,7 +56,7 @@ class TodoyuPanelWidgetQuickProject extends TodoyuPanelWidget implements TodoyuP
 	 *	@return	String
 	 */
 	public function renderContent()	{
-		$tmpl = 'ext/project/view/panelwidget-quickproject.tmpl';
+		$tmpl = 'ext/project/view/panelwidgets/panelwidget-quickproject.tmpl';
 
 		$data = array();
 

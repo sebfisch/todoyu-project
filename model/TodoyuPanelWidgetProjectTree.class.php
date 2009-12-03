@@ -254,7 +254,7 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 			'tree'	=> $this->getTaskTreeData($idParent, $type),
 			'style'	=> 'display:' . ($display ? 'block' : 'none')
 		);
-		$tmpl	= 'ext/project/view/panelwidget-projecttree-tree.tmpl';
+		$tmpl	= 'ext/project/view/panelwidgets/panelwidget-projecttree-tree.tmpl';
 
 		return render($tmpl, $data);
 	}
@@ -305,7 +305,7 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 	 * @return	String
 	 */
 	public function renderTree() {
-		$tmpl	= 'ext/project/view/panelwidget-projecttree-tree.tmpl';
+		$tmpl	= 'ext/project/view/panelwidgets/panelwidget-projecttree-tree.tmpl';
 		$data	= array(
 			'id'	=> 'panelwidget-projecttree-tree',
 			'class'	=> 'tree',
@@ -323,7 +323,7 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 	 * @return	String
 	 */
 	public function renderFilters() {
-		$tmpl	= 'ext/project/view/panelwidget-projecttree-filter.tmpl';
+		$tmpl	= 'ext/project/view/panelwidgets/panelwidget-projecttree-filter.tmpl';
 		$data	= array(
 			'id'	=> $this->getID(),
 			'filter'=> $this->renderFilterForm()

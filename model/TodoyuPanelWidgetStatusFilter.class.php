@@ -85,7 +85,7 @@ class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuP
 		$statusesInfos	= $this->getStatusesInfos();
 		$selected		= $this->getSelectedStatusIDs();
 
-		$tmpl 	= 'ext/project/view/panelwidget-statusfilter.tmpl';
+		$tmpl 	= 'ext/project/view/panelwidgets/panelwidget-statusfilter.tmpl';
 		$data	= array(
 			'id'		=> $this->getID(),
 			'statuses'	=> $statusesInfos,
