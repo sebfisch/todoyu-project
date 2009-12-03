@@ -88,18 +88,18 @@ Todoyu.Ext.project.Task = {
 		Todoyu.send(url, options);		
 	},
 	
-	onPasted: function(idTask, mode, response) {
+	onPasted: function(idTask, insertMode, response) {
 		var idTaskNew		= response.getTodoyuHeader('idTask');
-		var clipboardAction	= response.getTodoyuHeader('clipboardAction');
+		var clipboardMode	= response.getTodoyuHeader('clipboardMode');
 		
-		if( clipboardAction === 'cut' ) {
-			if( Todoyu.exists('task-' + idTask) ) {
-				$('task-' + idTask).remove();
+		if( clipboardMode === 'cut' ) {
+			if( Todoyu.exists('task-' + idTaskNew) ) {
+				$('task-' + idTaskNew).remove();
 			}
 		}
 		
 		
-		if( mode === 'in' ) {
+		if( insertMode === 'in' ) {
 			if( Todoyu.exists('task-' + idTask + '-subtasks') ) {
 				$('task-' + idTask + '-subtasks').insert({
 					'bottom': response.responseText
@@ -108,11 +108,11 @@ Todoyu.Ext.project.Task = {
 			} else {
 				this.refresh(idTask);
 			}			
-		} else if( mode === 'before' ) {
+		} else if( insertMode === 'before' ) {
 			$('task-' + idTask).insert({
 				'before': response.responseText
 			});
-		} else if( mode === 'after' ) {
+		} else if( insertMode === 'after' ) {
 			var target = Todoyu.exists('task-' + idTask + '-subtasks') ? 'task-' + idTask + '-subtasks' : 'task-' + idTask;
 			$(target).insert({
 				'after': response.responseText
@@ -192,8 +192,10 @@ Todoyu.Ext.project.Task = {
 		var idTask = response.getTodoyuHeader('idTask');
 			// Attach context menu
 		this.addContextMenu(idTask);
-			// Open edit mode
-		this.edit(idTask);
+			// Highlight cloned element
+		this.highlight(idTask);
+		
+		Todoyu.Hook.exec('taskcloned', idSourceTask, idTask);
 	},
 	
 

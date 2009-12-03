@@ -257,30 +257,12 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 */
 	public function cloneAction(array $params) {
 		$idTask		= intval($params['task']);
-		$idTaskNew	= TodoyuTaskManager::copyTask($idTask);
+
+		$idTaskNew	= TodoyuTaskManager::cloneTask($idTask);
 
 		TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
 
-		return TodoyuProjectRenderer::renderTask($idTaskNew, 0, true);
-	}
-
-
-
-	/**
-	 *	'clonecontainer' action method
-	 *
-	 *	@param	Array $params
-	 *	@return	String
-	 */
-	public function cloneContainerAction(array $params) {
-		$idContainer		= intval($params['container']);
-		$cloneSubElements	= intval($params['cloneSubElements']) === 1;
-
-		$idContainerNew		= TodoyuTaskManager::cloneContainer($idContainer, array(), $cloneSubElements);
-
-		TodoyuHeader::sendTodoyuHeader('idContainer', $idContainerNew);
-
-		return TodoyuProjectRenderer::renderTask($idContainerNew, 0, false);
+		return TodoyuProjectRenderer::renderTask($idTaskNew, 0);
 	}
 
 

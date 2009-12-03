@@ -27,6 +27,13 @@
  */
 class TodoyuTaskClipboard {
 
+	/**
+	 * Add a task to clipboard
+	 *
+	 * @param	Integer		$idTask				Task to hold on clipboard
+	 * @param 	String		$mode				Clipboard mode
+	 * @param	Bool		$withSubtasks		Copy subtasks
+	 */
 	public static function addTask($idTask, $mode = 'copy', $withSubtasks = true) {
 		$idTask	= intval($idTask);
 		$data	= array(
@@ -39,6 +46,12 @@ class TodoyuTaskClipboard {
 	}
 
 
+
+	/**
+	 * Get clipboard data (task, mode, subtasks)
+	 *
+	 * @return	Array
+	 */
 	public static function getData() {
 		$data	= TodoyuClipboard::get('task');
 
@@ -47,38 +60,89 @@ class TodoyuTaskClipboard {
 
 
 
+	/**
+	 * Check if a task is in clipboard
+	 *
+	 * @return	Bool
+	 */
 	public static function hasTask() {
 		return TodoyuClipboard::has('task');
 	}
 
+
+
+	/**
+	 * Clear clipboard (remove current task)
+	 *
+	 */
 	public static function clear() {
 		TodoyuClipboard::remove('task');
 	}
 
 
+
+	/**
+	 * Add task for copy mode
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Bool		$widthSubtasks
+	 */
 	public static function addTaskCopy($idTask, $widthSubtasks = true) {
 		self::addTask($idTask, 'copy', $widthSubtasks);
 	}
 
+
+
+	/**
+	 * Add task for cut mode
+	 *
+	 * @param	Integer		$idTask
+	 */
 	public static function addTaskCut($idTask) {
 		self::addTask($idTask, 'cut', true);
 	}
 
-	public static function pasteTask($idParent = 0, $mode = 'in') {
-		$idParent		= intval($idParent);
-		$dataClipboard	= self::getData();
-		$taskParent		= TodoyuTaskManager::getTaskData($idParent);
 
-		if( $dataClipboard['mode'] === 'copy' ) {
-			$idNewTask	= TodoyuTaskManager::copyTask($dataClipboard['task'], $idParent, $dataClipboard['subtasks'], $taskParent['id_project']);
-		} elseif( $dataClipboard['mode'] === 'cut' ) {
-			TodoyuTaskManager::moveTask($dataClipboard['task'], $idParent, $dataClipboard['id_project']);
-			$idNewTask = $dataClipboard['task'];
+
+	/**
+	 * Paste current task in clipboard
+	 *
+	 * @param	Integer		$idCurrentTask		New parent task
+	 * @param	String		$insertMode		Insert mode (before,in,after)
+	 * @return	Integer		New task ID (or old if only moved)
+	 */
+	public static function pasteTask($idCurrentTask = 0, $insertMode = 'in') {
+		$idCurrentTask	= intval($idCurrentTask);
+		$currentTask	= TodoyuTaskManager::getTaskData($idCurrentTask);
+		$dataClipboard	= self::getData();
+
+
+			// In: Current is parent, After/Before: Currents parent is the parent
+		if( $insertMode === 'in' ) {
+			$idParentTask = $idCurrentTask;
+		} else {
+			$idParentTask = $currentTask['id_parenttask'];
 		}
 
+
+		$taskParent		= TodoyuTaskManager::getTaskData($idParentTask);
+
+		if( $dataClipboard['mode'] === 'copy' ) {
+			$idNewTask = TodoyuTaskManager::copyTask($dataClipboard['task'], $idParentTask, $dataClipboard['subtasks'], $taskParent['id_project']);
+		} elseif( $dataClipboard['mode'] === 'cut' ) {
+			$idNewTask = TodoyuTaskManager::moveTask($dataClipboard['task'], $idParentTask, $dataClipboard['id_project']);
+		}
+
+			// Clear clipboard
 		self::clear();
 
-		TodoyuHeader::sendTodoyuHeader('clipboardAction', $dataClipboard['mode']);
+			// Fix order
+		if( $insertMode === 'after' || $insertMode === 'before' ) {
+			TodoyuTaskManager::changeTaskOrder($idNewTask, $idCurrentTask, $insertMode);
+		}
+
+			// Send current mo
+		TodoyuHeader::sendTodoyuHeader('clipboardMode', $dataClipboard['mode']);
 
 		return $idNewTask;
 	}

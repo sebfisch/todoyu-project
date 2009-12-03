@@ -34,36 +34,8 @@ Todoyu.Ext.project.Container = {
 	 *	@param	Integer	idContainer
 	 */
 	clone: function(idContainer) {
-		var cloneSubElements = confirm('[LLL:task.cloneSubtasks.confirm]');
-
-		var url		= Todoyu.getUrl('project', 'task');
-		var options	= {
-			'parameters': {
-				'action':			'cloneContainer',
-				'container':		idContainer,
-				'cloneSubElements':	(cloneSubElements ? 1 : 0)
-			},
-			'onComplete': this.onCloned.bind(this)
-		};
-		var target	= 'task-' + idContainer;
-
-		Todoyu.Ui.append(target, url, options);
+		this.ext.Task.clone(idContainer);
 	},
-
-
-
-	/**
-	 *	Event handler 'onCloned'
-	 *
-	 *	@param	unknown	response
-	 */
-	onCloned: function(response) {
-			// Get task id from header
-		var idContainer = response.getHeader('Todoyu-idContainer');
-			// Attach context menu
-		this.ext.Task.addContextMenu(idContainer);
-	},
-
 
 
 	/**
