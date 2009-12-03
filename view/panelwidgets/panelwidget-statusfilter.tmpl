@@ -1,10 +1,7 @@
-<form id="panelwidget-{$id}-form">
-	<ul id="panelwidget-{$id}-list">
-	{foreach $statuses idStatus status}
-		<li class="status{ucwords $status.key} {cycle values="odd,even"}">
-			<input value="{$status.index}" id="panelwidget-{$id}-status-{$status.key}" name="status[]" class="checkbox" type="checkbox" {if inArray($status.index, $selected)}checked="checked"{/if} />
-			<label for="panelwidget-{$id}-status-{$status.key}">{Label $status.label true}</label>
-		</li>
-	{/foreach}
-	</ul>
-</form>
+<select id="panelwidget-{$id}-list" name="statuses" multiple="multiple" />
+{foreach $statuses idStatus status}
+	<option value="{$status.index}" class="status{ucwords $status.key} {cycle values="odd,even"} {if in_array($status.index, $selected)}selected{/if}" {if in_array($status.index, $selected)}selected="selected"{/if}>
+		{Label $status.label true}
+	</option>
+{/foreach}
+</select>

@@ -20,9 +20,9 @@
 	background-color: #F3F4F8;
 }
 
-#panelwidget-statusfilter li label {
+#panelwidget-statusfilter-list option {
 	cursor: pointer;
-	padding-left:24px;
+	padding-left:22px;
 	margin-left:3px;
 	background-image:url('../img/panelwidget-statusfilter.png');
 }
@@ -33,41 +33,41 @@
 	Status icons
    ------------------ */
 
-#panelwidget-statusfilter li.statusPlanning label {
-	background-position:0 -30px;
+#panelwidget-statusfilter .statusPlanning {
+	background-position:2px -28px;
 }
 
-#panelwidget-statusfilter li.statusOpen label {
-	background-position:0 -120px;
+#panelwidget-statusfilter .statusOpen {
+	background-position:2px -118px;
 }
 
-#panelwidget-statusfilter li.statusProgress label {
-	background-position:0 -150px;
+#panelwidget-statusfilter .statusProgress {
+	background-position:2px -148px;
 }
-#panelwidget-statusfilter li.statusConfirm label {
-	background-position:0 -60px;
-}
-
-#panelwidget-statusfilter li.statusDone label {
-	background-position:0 -180px;
+#panelwidget-statusfilter .statusConfirm {
+	background-position:2px -58px;
 }
 
-#panelwidget-statusfilter li.statusAccepted label {
-	background-position:0 -180px;
+#panelwidget-statusfilter .statusDone {
+	background-position:2px -178px;
 }
 
-#panelwidget-statusfilter li.statusRejected label {
-	background-position:0 -90px;
+#panelwidget-statusfilter .statusAccepted {
+	background-position:2px -178px;
 }
 
-#panelwidget-statusfilter li.statusCleared label {
-	background-position:0 -210px;
+#panelwidget-statusfilter .statusRejected {
+	background-position:2px -88px;
 }
 
-#panelwidget-statusfilter li.statusWarranty label {
-	background-position:0 -240px;
+#panelwidget-statusfilter .statusCleared {
+	background-position:2px -208px;
 }
 
-#panelwidget-statusfilter li.statusCustomer label {
-	background-position:0 0;
+#panelwidget-statusfilter .statusWarranty {
+	background-position:2px -238px;
+}
+
+#panelwidget-statusfilter .statusCustomer {
+	background-position:2px -2px;
 }

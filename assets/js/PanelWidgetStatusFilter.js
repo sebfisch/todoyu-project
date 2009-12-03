@@ -29,6 +29,8 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	 */
 	ext: Todoyu.Ext.project,
 
+	list:	null,
+	
 	/**
 	 * PanelWidget ID
 	 */
@@ -38,14 +40,16 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	 * Initialization of the PanelWidget
 	 */
 	init: function() {
-		this.installObserver();
+		this.list	= 'panelwidget-statusfilter-list';
+		
+		this.installObservers();
 	},
 
 	/**
 	 * Install event observer for the PanelWidget
 	 */
-	installObserver: function() {
-		this.getForm().observe('click', this.onClick.bindAsEventListener(this));
+	installObservers: function() {
+		this.getForm().observe('change', this.onSelectionChange.bind(this));
 	},
 
 
@@ -54,7 +58,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	 * Get the PanelWidget form
 	 */
 	getForm: function() {
-		return $('panelwidget-' + this.key + '-form');
+		return $('panelwidget-' + this.key + '-list');
 	},
 
 
@@ -64,20 +68,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	 *
 	 * @param	Event		event
 	 */
-	onClick: function(event) {
-			// Ignore label click events, because this there will also be a click event for the input
-		if( event.element().tagName === 'LABEL' ) {
-			return false;
-		}
-
-		var outOfLabel = event.findElement('label') === undefined;
-		var notCheckbox= event.findElement('input') === undefined;
-
-		if( outOfLabel && notCheckbox ) {
-			var input		= event.findElement('li').select('input')[0];
-			input.checked	= !input.checked;
-		}
-
+	onSelectionChange: function(event) {
 		this.onUpdate();
 	},
 
@@ -99,17 +90,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	 * @return	Array
 	 */
 	getValue: function() {
-		var statuses = this.getForm().serialize(true)['status[]'];
-
-		if( typeof(statuses) === 'string' ) {
-			statuses = [statuses];
-		}
-
-		if( typeof(statuses) === 'undefined' ) {
-			statuses = [];
-		}
-
-		return statuses;
+		return this.getSelectedStatuses();
 	},
 
 
@@ -120,7 +101,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	 * @return Array
 	 */
 	getSelectedStatuses: function() {
-		return this.getValue();
+		return $F(this.list);
 	},
 
 
@@ -140,7 +121,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	 *	@return	Boolean
 	 */
 	isAnyStatusSelected: function() {
-		return this.getSelectedStatuses().length > 0;
+		return this.getNumSelected() > 0;
 	},
 
 
