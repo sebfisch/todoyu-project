@@ -1,0 +1,10 @@
+/* -----------------
+	Submenu
+   ----------------- */
+
+	/* Projects */
+#navi-main-list-project li.itemProject a {
+	background-image:url(../img/icons.png) !important;
+	background-repeat:no-repeat;
+	background-position:6px -444px;
+}

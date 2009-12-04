@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 	<attributes>
-		<attribute name="action"></attribute>
 		<attribute name="name">panelwidget-projecttree-filter</attribute>
 	</attributes>
 	<fieldsets>
