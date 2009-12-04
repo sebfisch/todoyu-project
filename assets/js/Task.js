@@ -332,7 +332,34 @@ Todoyu.Ext.project.Task = {
 	 * @param	Integer		idTask
 	 */
 	hasSubtasks: function(idTask) {
-		return Todoyu.exists('task-' + idTask + '-subtasks') || Todoyu.exists('task-' + idTask + '-subtasks-trigger');
+		return Todoyu.exists('task-' + idTask + '-subtasks') || Todoyu.exists('task-' + idTask + '-subtasks-trigger').hasClassName('expandable');
+	},
+	
+	
+	
+	/**
+	 * check if task has a parent task
+	 * 
+	 * @param	Integer	idTask
+	 */
+	hasParentTask: function(idTask){
+		return $('task-'+idTask).up().hasClassName('subtasks');
+	},
+	
+	
+	
+	/**
+	 * Removes trigger form parent its the only subtask
+	 * 
+	 * @param	Integer idTask
+	 */
+	checkAndRemoveTriggerFromParent: function(idTask)	{
+		var idArray = $('task-'+idTask).up().id.split('-');
+		var idParentTask = idArray[1];
+		
+		if(!($('task-'+idParentTask+'-subtasks').select('div.task').size() > 1))	{
+			$('task-'+idParentTask+'-subtasks-trigger').removeClassName('expandable');
+		}
 	},
 
 
@@ -787,10 +814,21 @@ Todoyu.Ext.project.Task = {
 	 * @param	Integer idTask
 	 */
 	showSubtasks: function(idTask) {
-		var idDiv	= 'task-' + idTask + '-subtasks';
-
+		var idDiv		= 'task-' + idTask + '-subtasks';
+		var idTrigger	= 'task-' + idTask + '-subtasks-trigger';
+		
 		if( $(idDiv) ) {
 			$(idDiv).show();
+		}
+		
+		if( $(idTrigger) ){
+			if(!$(idTrigger).hasClassName('expandable'))	{
+				$(idTrigger).addClassName('expandable');
+			}
+			
+			if(!$(idTrigger).hasClassName('expanded'))	{
+				$(idTrigger).addClassName('expanded');
+			}
 		}
 	},
 
@@ -992,6 +1030,9 @@ Todoyu.Ext.project.Task = {
 		 * @param	Integer idTask
 		 */
 		cancel: function(idTask) {
+			if(this.ext.Task.hasParentTask(idTask) && idTask == 0){
+				this.ext.Task.checkAndRemoveTriggerFromParent(idTask);
+			}
 			this.ext.Task.refresh(idTask);
 		}
 	},
