@@ -37,7 +37,7 @@ class TodoyuTaskViewHelper {
 		$formData	= $field->getForm()->getFormData();
 		$idProject	= intval($formData['id_project']);
 
-		$users	= TodoyuProjectManager::getProjectUsers($idProject);
+		$users	= TodoyuUserManager::getInternalUsers();
 		$options= array(
 			0	=> array(
 				'disabled'	=> true,
@@ -48,7 +48,7 @@ class TodoyuTaskViewHelper {
 
 		foreach($users as $user) {
 			$options[] = array(
-				'label'	=> $user['lastname'] . ' ' . $user['firstname'] . ' [' . TodoyuLocale::getLabel($user['rolelabel']) . ']',
+				'label'	=> $user['lastname'] . ' ' . $user['firstname'],
 				'value'	=> $user['id']
 			);
 		}
