@@ -99,4 +99,10 @@ TodoyuExtManager::addRecordConfig('project', 'worktype', array(
 
 $CONFIG['EXT']['project']['Task']['defaultEstimatedWorkload'] = 0;
 
+/**
+ * Temporary tab force for all tasks
+ * Don't set it here!
+ */
+$CONFIG['EXT']['project']['Task']['forceTab'] = false;
+
 ?>

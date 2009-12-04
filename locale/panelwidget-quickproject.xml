@@ -7,7 +7,7 @@
 	</labels>
 	<labels lang="de">
 		<label index="title">Projekt erfassen</label>
-		<label index="addProject">Neues Project erfassen</label>
+		<label index="addProject">Neues Projekt erfassen</label>
 		<label index="addTask">Neue Aufgabe erfassen</label>
 	</labels>
 </locallang>

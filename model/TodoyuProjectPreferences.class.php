@@ -131,7 +131,6 @@ class TodoyuProjectPreferences {
 		$idArea	= intval($idArea);
 
 		return self::getPrefs('tasktree-subtasks', 0, $idArea);
-
 	}
 
 
@@ -147,10 +146,16 @@ class TodoyuProjectPreferences {
 		$idTask	= intval($idTask);
 		$idArea	= is_null($idArea) ? AREA : intval($idArea);
 
-		$prefTab= self::getPref('task-tab', $idTask, $idArea);
+			// Override selected tab
+		$forceTab	= self::getForcedTaskTab();
+		if( $forceTab !== false ) {
+			$prefTab = $forceTab;
+		} else {
+			$prefTab= self::getPref('task-tab', $idTask, $idArea);
 
-		if( $prefTab === false ) {
-			$prefTab = TodoyuTaskManager::getDefaultTab($idTask);
+			if( $prefTab === false ) {
+				$prefTab = TodoyuTaskManager::getDefaultTab($idTask);
+			}
 		}
 
 		return $prefTab;
@@ -318,7 +323,28 @@ class TodoyuProjectPreferences {
 	 */
 	public static function getVisibleStatuses($idProject) {
 		$idProject	= intval($idProject);
+	}
 
+
+
+	/**
+	 * Set forced tab for current rendering
+	 *
+	 * @param	String		$tab
+	 */
+	public static function setForcedTaskTab($tab) {
+		$GLOBALS['CONFIG']['EXT']['project']['Task']['forceTab'] = $tab;
+	}
+
+
+
+	/**
+	 * Get currently forced tab (or false)
+	 *
+	 * @return	String		Or FALSE
+	 */
+	public static function getForcedTaskTab() {
+		return $GLOBALS['CONFIG']['EXT']['project']['Task']['forceTab'];
 	}
 
 }

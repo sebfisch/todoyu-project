@@ -336,6 +336,7 @@ Todoyu.Ext.project.Task = {
 	},
 
 
+
 	/**
 	 * Change status of given task to given status, in DB and visual 
 	 *
