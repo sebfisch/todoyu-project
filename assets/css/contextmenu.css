@@ -141,7 +141,9 @@
 	background-position:4px -237px;
 }
 
-
+#contextmenu .taskStatusAccepted {
+	background-position:4px -267px;
+}
 
 /* ---------------------------
 	Container context menu
