@@ -215,13 +215,13 @@ Todoyu.Ext.project.PanelWidget.ProjectTree = {
 	openProject: function(idProject) {
 		this.ext.ProjectTaskTree.openProject(idProject);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Open a specific task in a project
-	 * @param {Object} idProject
-	 * @param {Object} idTask
+	 *	@param {Object} idProject
+	 *	@param {Object} idTask
 	 */
 	openProjectTask: function(idProject, idTask) {
 		this.ext.ProjectTaskTree.openProject(idProject, idTask);

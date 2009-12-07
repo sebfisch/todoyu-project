@@ -418,6 +418,13 @@ Todoyu.Ext.project.Task = {
 		return statusKey;
 	},
 
+
+	/**
+	 * Set status of given task
+	 * 
+	 * 	@param	Integer	idTask
+	 * 	@param	status
+	 */
 	setStatus: function(idTask, status) {
 		console.log('not implemented yet');
 	},
@@ -582,7 +589,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Evokes adding of sub task to given task. Ensures existence of subtasks display DOM-element in parent task, so the sub tasks can be shown.
+	 * Evoke adding of sub task to given task. Ensures existence of subtasks display DOM-element in parent task, so the sub tasks can be shown.
 	 *
 	 *	@param	Integer	idTask
 	 */
@@ -873,6 +880,10 @@ Todoyu.Ext.project.Task = {
 
 
 
+/* -----------------------------------------------
+	Todoyu.Ext.project.Task.Edit
+-------------------------------------------------- */
+
 	/**
 	 * Edit project task
 	 */
@@ -1028,6 +1039,11 @@ Todoyu.Ext.project.Task = {
 		}
 	},
 
+
+
+/* -----------------------------------------------
+	Todoyu.Ext.project.Task.Tab
+-------------------------------------------------- */
 
 	/**
 	 * Project task tab

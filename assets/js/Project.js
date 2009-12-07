@@ -33,7 +33,7 @@ Todoyu.Ext.project.Project = {
 
 	/**
 	 *
-	 * @param {Object} idProject
+	 *	@param {Object} idProject
 	 */
 	getHeader: function(idProject) {
 		return $('project-' + idProject + '-header');
@@ -44,7 +44,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 *	Edit given project
 	 *
-	 * @param Integer	idProject
+	 *	@param Integer	idProject
 	 */
 	edit: function(idProject){
 		this.hideDetails(idProject);
@@ -272,6 +272,10 @@ Todoyu.Ext.project.Project = {
 
 
 
+/* -----------------------------------------------
+	Todoyu.Ext.project.Project.Edit
+-------------------------------------------------- */
+
 	/**
 	 *	Edit project (class) methods
 	 */
@@ -383,7 +387,7 @@ Todoyu.Ext.project.Project = {
 		/**
 		 * Cancel project editing / creation
 		 *
-		 * @param	Integer	idProject
+		 *	@param	Integer	idProject
 		 */
 		cancel: function(idProject) {
 			if(idProject > 0)	{
