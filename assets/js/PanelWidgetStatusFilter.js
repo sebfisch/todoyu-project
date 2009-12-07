@@ -91,7 +91,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	/**
 	 * Get form value of the PanelWidget (selected statuses)
 	 *
-	 * @return	Array
+	 *	@return	Array
 	 */
 	getValue: function() {
 		return this.getSelectedStatuses();
@@ -102,7 +102,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	/**
 	 * Get selected statuses
 	 *
-	 * @return Array
+	 *	@return Array
 	 */
 	getSelectedStatuses: function() {
 		return $F(this.list);

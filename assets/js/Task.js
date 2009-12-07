@@ -555,7 +555,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Evoke adding of new container to given project
 	 *
 	 *	@param	Integer idProject
 	 */
