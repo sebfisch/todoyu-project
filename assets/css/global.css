@@ -8,3 +8,16 @@
 	background-repeat:no-repeat;
 	background-position:6px -444px;
 }
+
+	/* Search */
+#navi-main-list-search li.itemSearchTask a {
+	background-image:url(../img/icons.png) !important;
+	background-repeat:no-repeat;
+	background-position:6px 6px;
+}
+#navi-main-list-search li.itemSearchProject a {
+	background-image:url(../img/icons.png) !important;
+	background-repeat:no-repeat;
+	background-position:6px -444px;
+}
+
