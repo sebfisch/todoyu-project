@@ -22,22 +22,23 @@ Todoyu.Ext.project.TaskParentAC = {
 
 	ext: Todoyu.Ext.project,
 
-	field: null,
-	url: null,
-	acContainer: null,
+	field:			null,
+	url:			null,
+	acContainer:	null,
+	
 	acOptions: {
 		'paramName': 'query'
 	},
 
 
+
 	/**
-	 * Enter description here...
+	 * Init project task parent autocompleter 
 	 *
-	 * @todo	comment
-	 * @param	unknown_type field
+	 *	@param	String	idField
 	 */
-	init: function(field) {
-		this.field 		= $(field);
+	init: function(idField) {
+		this.field 		= $(idField);
 		this.acContainer= $('taskparent-ac');
 		this.url		= Todoyu.getUrl('project', 'taskparent-ac');
 
