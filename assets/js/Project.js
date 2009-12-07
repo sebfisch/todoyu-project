@@ -229,6 +229,7 @@ Todoyu.Ext.project.Project = {
 	},
 
 
+
 	/**
 	 *	Refresh given project
 	 *
@@ -246,9 +247,9 @@ Todoyu.Ext.project.Project = {
 
 		Todoyu.Ui.update(target, url, options);
 	},
-	
-	
-	
+
+
+
 	/**
 	 *	Change status of given project to given status
 	 *
@@ -405,7 +406,14 @@ Todoyu.Ext.project.Project = {
 			}
 
 		},
-		
+
+
+
+		/**
+		 * 
+		 * 	@param	Object	request
+		 * 	@return	Object
+		 */
 		onCustomerAutocomplete: function(request) {
 			/*
 			if( request.getTodoyuHeader('acElements') == 0 ) {

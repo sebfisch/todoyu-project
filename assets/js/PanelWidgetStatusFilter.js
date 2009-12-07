@@ -36,6 +36,8 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	 */
 	key: 'statusfilter',
 
+
+
 	/**
 	 * Initialization of the PanelWidget
 	 */
@@ -44,6 +46,8 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 		
 		this.installObservers();
 	},
+
+
 
 	/**
 	 * Install event observer for the PanelWidget

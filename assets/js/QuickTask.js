@@ -93,7 +93,7 @@ Todoyu.Ext.project.QuickTask = {
 			var idTask		= response.getTodoyuHeader('idTask');
 			var idProject	= response.getTodoyuHeader('idProject');
 			var start		= response.getTodoyuHeader('start') == 1;
-			
+
 			this.closePopup();
 			Todoyu.notifySuccess('[LLL:project.quicktask.saved]');
 
@@ -101,7 +101,7 @@ Todoyu.Ext.project.QuickTask = {
 				var idTask= response.getTodoyuHeader('idTask');
 				Todoyu.Ext.timetracking.Task.start(idTask);
 			}
-			
+
 			if( this.savedCallback !== null ) {
 				this.savedCallback(idTask, idProject, start);
 				this.savedCallback = null;
@@ -159,5 +159,5 @@ Todoyu.Ext.project.QuickTask = {
 			$(this.fieldStart).disabled = false;
 		}
 	}
-	
+
 };

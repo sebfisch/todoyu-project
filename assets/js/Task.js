@@ -33,22 +33,23 @@ Todoyu.Ext.project.Task = {
 		this.Edit.createFormWrapDivs(idTask);
 		this.Edit.loadForm(idTask);
 	},
-	
-	
+
+
+
 	
 	/**
 	 * Copy a task (and subtasks) to clipboard
 	 * 
-	 * @param	Integer		idTask
+	 *	@param	Integer		idTask
 	 */
 	copy: function(idTask) {
 		var withSubtasks = false;
-		
+
 			// Ask to copy subtasks
 		if (this.hasSubtasks(idTask)) {
 			withSubtasks = confirm('Auch Unteraufgaben mitkopieren?') ? 1 : 0;
 		}
-		
+
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
@@ -58,36 +59,36 @@ Todoyu.Ext.project.Task = {
 			},
 			'onComplete': this.onCopied.bind(this, idTask)			
 		};
-		
+
 		Todoyu.send(url, options);
-		
+
 			// Highlight copied task
 		this.highlight(idTask);
-		
+
 			// Highlight subtasks if selected to copy
 		if( withSubtasks ) {
 			this.highlightSubtasks(idTask);
 		}		
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Handler when copied to clipboard
 	 * 
-	 * @param	Integer			idTask
-	 * @param	Ajax.Response	response
+	 *	@param	Integer			idTask
+	 *	@param	Ajax.Response	response
 	 */
 	onCopied: function(idTask, response) {
-		
+
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Cut task (to clipboard)
 	 * 
-	 * @param	Integer		idTask
+	 *	@param	Integer		idTask
 	 */
 	cut: function(idTask) {
 		var url		= Todoyu.getUrl('project', 'task');
@@ -98,32 +99,32 @@ Todoyu.Ext.project.Task = {
 			},
 			'onComplete': this.onCut.bind(this, idTask)			
 		};
-		
+
 		Todoyu.send(url, options);
-		
+
 		this.highlight(idTask);
 		this.highlightSubtasks(idTask);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Handler when task is cut
 	 * 
-	 * @param	Integer			idTask
-	 * @param	Ajax.Response	response
+	 *	@param	Integer			idTask
+	 *	@param	Ajax.Response	response
 	 */
 	onCut: function(idTask, response) {
-		
+
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Paste task
 	 * 
-	 * @param	Integer		idTask		Task where to paste
-	 * @param	String		mode		Insert mode (in,after,before)
+	 *	@param	Integer		idTask		Task where to paste
+	 *	@param	String		mode		Insert mode (in,after,before)
 	 */
 	paste: function(idTask, mode) {
 		var url		= Todoyu.getUrl('project', 'task');
@@ -133,20 +134,20 @@ Todoyu.Ext.project.Task = {
 				'task': idTask,
 				'mode': mode
 			},
-			'onComplete': this.onPasted.bind(this, idTask, mode)			
+			'onComplete': this.onPasted.bind(this, idTask, mode)
 		}
-		
-		Todoyu.send(url, options);		
+
+		Todoyu.send(url, options);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Handler when task is pasted
 	 * 
-	 * @param	Integer			idTask
-	 * @param	String			insertMode
-	 * @param	Ajax.Response	response
+	 *	@param	Integer			idTask
+	 *	@param	String			insertMode
+	 *	@param	Ajax.Response	response
 	 */
 	onPasted: function(idTask, insertMode, response) {
 		var idTaskNew		= response.getTodoyuHeader('idTask');
@@ -158,7 +159,7 @@ Todoyu.Ext.project.Task = {
 				$('task-' + idTaskNew).remove();
 			}
 		}
-		
+
 			// Insert as subtask of the current task
 		if( insertMode === 'in' ) {
 				// If subtask container already exists, add it
@@ -170,7 +171,7 @@ Todoyu.Ext.project.Task = {
 			} else {
 					// If no subtask container available, refresh task with its subtasks
 				this.refresh(idTask);
-			}			
+			}
 		} else if( insertMode === 'before' ) {
 				// Insert task before current
 			$('task-' + idTask).insert({
@@ -183,20 +184,20 @@ Todoyu.Ext.project.Task = {
 				'after': response.responseText
 			});
 		}
-		
+
 			// Attach context menu to all tasks (so the pasted ones get one too)
 		this.ext.ContextMenuTask.reattach();
 			// Highlight the new pasted task
 		this.highlight(idTaskNew);
 		this.highlightSubtasks(idTaskNew);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Clone given task (open new task creation form with attributes of task filled-in, title renamed to 'copy of..')
 	 *
-	 * @param	Integer	idTask
+	 *	@param	Integer	idTask
 	 */
 	clone: function(idTask) {
 		var withSubtasks = false;
@@ -205,7 +206,7 @@ Todoyu.Ext.project.Task = {
 		if (this.hasSubtasks(idTask)) {
 			withSubtasks = confirm('Auch Unteraufgaben klonen?') ? 1 : 0;
 		}
-		
+
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
@@ -215,7 +216,7 @@ Todoyu.Ext.project.Task = {
 			},
 			'onComplete': this.onCloned.bind(this, idTask)
 		};
-		
+
 		if( this.hasSubtasks(idTask) ) {
 			var target	= 'task-' + idTask + '-subtasks';
 		} else {
@@ -230,7 +231,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handle completion of task being cloned
 	 *
-	 * @param	Object	response
+	 *	@param	Object	response
 	 */
 	onCloned: function(idSourceTask, response) {
 			// Get task id from header
@@ -240,11 +241,12 @@ Todoyu.Ext.project.Task = {
 			// Highlight cloned element
 		this.highlight(idTask);
 		this.highlightSubtasks(idTask);
-		
+
 		Todoyu.Hook.exec('taskcloned', idSourceTask, idTask);
 	},
-	
-	
+
+
+
 	/**
 	 * Confirm whether user is sure, and evoke deletion of given task if
 	 *
@@ -276,19 +278,21 @@ Todoyu.Ext.project.Task = {
 			});
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Handler when task removed
 	 * 
-	 * @param	Integer			idTask
-	 * @param	Ajax.Response	response
+	 *	@param	Integer			idTask
+	 *	@param	Ajax.Response	response
 	 */
 	onRemoved: function(idTask, response) {
 		
 	},
 	
+
+
 
 	/**
 	 * Scoll to given task
@@ -298,67 +302,68 @@ Todoyu.Ext.project.Task = {
 	scrollTo: function(idTask) {
 		$('task-' + idTask).scrollToElement();
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Highlight a task
 	 * 
-	 * @param	Integer		idTask
+	 *	@param	Integer		idTask
 	 */
 	highlight: function(idTask) {
 		if( Todoyu.exists('task-' + idTask) ) {
 			new Effect.Highlight('task-' + idTask);
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Highlight subtask container of a task
 	 * 
-	 * @param	Integer		idTask
+	 *	@param	Integer		idTask
 	 */
 	highlightSubtasks: function(idTask) {
 		if( Todoyu.exists('task-' + idTask + '-subtasks') ) {
 			new Effect.Highlight('task-' + idTask + '-subtasks');
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Check if a task has subtasks
-	 * @param	Integer		idTask
+	 *	@param	Integer		idTask
 	 */
 	hasSubtasks: function(idTask) {
 		return Todoyu.exists('task-' + idTask + '-subtasks') || Todoyu.exists('task-' + idTask + '-subtasks-trigger').hasClassName('expandable');
 	},
-	
-	
-	
+
+
+
 	/**
 	 * check if task has a parent task
 	 * 
-	 * @param	Integer	idTask
+	 *	@param	Integer	idTask
 	 */
 	hasParentTask: function(idTask){
 		return $('task-'+idTask).up().hasClassName('subtasks');
 	},
-	
-	
-	
+
+
+
 	/**
-	 * Removes trigger form parent its the only subtask
+	 * Remove expand-trigger from parent of give task if its the only sub task
 	 * 
-	 * @param	Integer idTask
+	 *	@param	Integer	idTask
 	 */
 	checkAndRemoveTriggerFromParent: function(idTask)	{
 		var idArray = $('task-'+idTask).up().id.split('-');
 		var idParentTask = idArray[1];
-		
-		if(!($('task-'+idParentTask+'-subtasks').select('div.task').size() > 1))	{
-			$('task-'+idParentTask+'-subtasks-trigger').removeClassName('expandable');
+
+			// Is this the only sub task? remove expandability
+		if( ! ($('task-' + idParentTask + '-subtasks').select('div.task').size() > 1) )	{
+			$('task-' + idParentTask + '-subtasks-trigger').removeClassName('expandable');
 		}
 	},
 
@@ -403,7 +408,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Get status key of the task
 	 * 
-	 * @param	Integer		idTask
+	 *	@param	Integer		idTask
 	 */
 	getStatus: function(idTask) {
 		var classNames 	= $('task-' + idTask + '-header').down('span.headLabel').classNames();
@@ -457,10 +462,6 @@ Todoyu.Ext.project.Task = {
 
 
 
-
-
-
-
 	/**
 	 * Update (reload) given task
 	 *
@@ -489,10 +490,9 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Evoke adding of a task to given project.
 	 *
-	 * @todo	comment
-	 * @param	Integer idProject
+	 *	@param	Integer idProject
 	 */
 	addTaskToProject: function(idProject) {
 		this.removeNewTaskContainer();
@@ -514,10 +514,10 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Handled after completion of (request of) task being added to project. Adds context menu to new task and scrolls new task into view.
 	 *
 	 * @todo	comment
-	 * @param	unknown_type response
+	 *	@param	unknown_type response
 	 */
 	onProjectTaskAdded: function(response) {
 			// Get task id from header
@@ -535,8 +535,8 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Focus title field in task edit form
 	 *
-	 * @hooked	onTaskEdit
-	 * @param	Integer		idTask
+	 *	@hooked	onTaskEdit
+	 *	@param	Integer		idTask
 	 */
 	focusTitleField: function(idTask) {
 		$('task-' + idTask + '-field-title').focus();
@@ -547,7 +547,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Enter description here...
 	 *
-	 * @param	Integer idProject
+	 *	@param	Integer idProject
 	 */
 	addContainerToProject: function(idProject) {
 		this.removeNewTaskContainer();
@@ -567,27 +567,24 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Evoked after container having been added to project. Add context menu and scroll to the new container.
 	 *
-	 * @todo	comment
-	 * @param	unknown_type response
+	 *	@param	Object	response
 	 */
 	onProjectContainerAdded: function(response) {
 			// Get task id from header
 		var idContainer = response.getHeader('Todoyu-idContainer');
-			// Add context menu to new task
+
 		this.addContextMenu(idContainer);
-			// Scroll to new task
 		this.scrollTo(idContainer);
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Evokes adding of sub task to given task. Ensures existence of subtasks display DOM-element in parent task, so the sub tasks can be shown.
 	 *
-	 * @todo	comment
-	 * @param	Integer idTask
+	 *	@param	Integer	idTask
 	 */
 	addSubTask: function(idTask) {
 		var url		= Todoyu.getUrl('project', 'task');
@@ -610,26 +607,26 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Evoked upon completion of request having added a sub task to given parent task. Adds context menu to new task, ensures subtasks (including the new one) of given task are shown, scrolls new task into view.
 	 *
-	 * @param	Integer	idParentTask
-	 * @param	Object	response
+	 *	@param	Integer	idParentTask
+	 *	@param	Object	response
 	 */
 	onSubTaskAdded: function(idParentTask, response) {
 		var idTask = response.getHeader('Todoyu-idTask');
 
-		this.addContextMenu(idTask);
 		this.showSubtasks(idParentTask);
+
+		this.addContextMenu(idTask);
 		this.scrollTo(idTask);
 	},
 
 
 
 	/**
-	 * Enter description here...
+	 * Adds DOM-element to show subtasks of (and in) given task in.
 	 *
-	 * @todo	comment
-	 * @param	Integer idTask
+	 *	@param	Integer	idTask
 	 */
 	createSubTaskContainer: function(idTask) {
 		var idSubtaskContainer	= 'task-' + idTask + '-subtasks';
@@ -648,10 +645,9 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Evokes adding of container under given task, ensures given task has a subtasks display element
 	 *
-	 * @todo	comment
-	 * @param	Integer idTask
+	 *	@param	Integer	idTask
 	 */
 	addSubContainer: function(idTask) {
 		var url		= Todoyu.getUrl('project', 'task');
@@ -674,11 +670,10 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Evoked after completion of request adding sub container to given task. Attaches context menu to container, activates display of subtasks of task (including the new container), scrolls container into focus.
 	 *
-	 * @todo	comment
-	 * @param	Integer idParentTask
-	 * @param	unknown_type response
+	 *	@param	Integer	idParentTask
+	 *	@param	Object	response
 	 */
 	onSubContainerAdded: function(idParentTask, response) {
 		var idContainer = response.getHeader('Todoyu-idContainer');
@@ -691,10 +686,9 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Attach context menu to given task
 	 *
-	 * @todo	comment
-	 * @param	Integer idTask
+	 *	@param	Integer	idTask
 	 */
 	addContextMenu: function(idTask) {
 		this.ext.ContextMenuTask.attachToElement('task-' + idTask + '-header');
@@ -703,9 +697,9 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
-	 * @todo	comment
-	 * @param	Integer idTask
+	 * Remove context menu from given task
+	 *
+	 *	@param	Integer	idTask
 	 */
 	removeContextMenu: function(idTask) {
 		Todoyu.ContextMenu.detachMenuFromElement('task-' + idTask + '-header');
@@ -714,9 +708,9 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Set given task being acknowledged
 	 *
-	 * @param	Integer idTask
+	 *	@param	Integer	idTask
 	 */
 	setAcknowledged: function(idTask) {
 		this.fadeAcknowledgeIcon(idTask);
@@ -735,10 +729,9 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Fade out 'acknowledged' icon of given task
 	 *
-	 * @todo	comment
-	 * @param	Integer idTask
+	 *	@param	Integer	dTask
 	 */
 	fadeAcknowledgeIcon: function(idTask) {
 		var idElement = 'task-' + idTask + '-notacknowledged';
@@ -750,10 +743,9 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Toggle visibility of details of given task, if not shown currently and not loaded yet: load details and show them.
 	 *
-	 * @todo	comment
-	 * @param	Integer idTask
+	 *	@param	Integer	idTask
 	 */
 	toggleDetails: function(idTask) {
 		var details;
@@ -777,10 +769,10 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Check whether details of given task are loaded (details container element exists in DOM)
 	 *
-	 * @todo	comment
-	 * @param	Integer idTask
+	 *	@param	Integer	idTask
+	 *	@return	Boolean
 	 */
 	isDetailsLoaded: function(idTask) {
 		return Todoyu.exists('task-' + idTask + '-details');
@@ -789,11 +781,10 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Show details of given task, if not loaded yet: load them
 	 *
-	 * @todo	comment
-	 * @param	Integer idTask
-	 * @param	unknown_type tab
+	 *	@param	Integer	idTask
+	 *	@param	String	tab
 	 */
 	showDetails: function(idTask, tab) {
 		if( this.isDetailsLoaded(idTask) ) {
@@ -808,10 +799,9 @@ Todoyu.Ext.project.Task = {
 
 	
 	/**
-	 * Enter description here...
+	 * Show sub tasks of given task.
 	 *
-	 * @todo	comment
-	 * @param	Integer idTask
+	 *	@param	Integer	idTask
 	 */
 	showSubtasks: function(idTask) {
 		var idDiv		= 'task-' + idTask + '-subtasks';
@@ -820,13 +810,13 @@ Todoyu.Ext.project.Task = {
 		if( $(idDiv) ) {
 			$(idDiv).show();
 		}
-		
+
 		if( $(idTrigger) ){
-			if(!$(idTrigger).hasClassName('expandable'))	{
+			if( ! $(idTrigger).hasClassName('expandable') )	{
 				$(idTrigger).addClassName('expandable');
 			}
-			
-			if(!$(idTrigger).hasClassName('expanded'))	{
+
+			if( ! $(idTrigger).hasClassName('expanded') )	{
 				$(idTrigger).addClassName('expanded');
 			}
 		}
@@ -835,11 +825,10 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Load details of given task and append them to (have them shown inside) header of given task
 	 *
-	 * @todo	comment
-	 * @param	Integer idTask
-	 * @param	unknown_type tab
+	 *	@param	Integer	idTask
+	 *	@param	String	tab
 	 */
 	loadDetails: function(idTask, tab) {
 		var url		= Todoyu.getUrl('project', 'task');
@@ -861,11 +850,10 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
+	 * Save given task being expanded status
 	 *
-	 * @todo	comment
-	 * @param	Integer idTask
-	 * @param	unknown_type open
+	 *	@param	Integer	idTask
+	 *	@param	Boolean	open
 	 */
 	saveTaskOpen: function(idTask, open) {
 		var value = open ? 1 : 0;
@@ -874,6 +862,11 @@ Todoyu.Ext.project.Task = {
 
 
 
+	/**
+	 * Check whether given task is loaded and exists in DOM
+	 * 
+	 * 	@return	Boolean
+	 */
 	isLoaded: function(idTask) {
 		return Todoyu.exists('task-' + idTask);
 	},
@@ -881,18 +874,15 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
-	 *
-	 * @todo	comment
+	 * Edit project task
 	 */
 	Edit: {
 		ext: Todoyu.Ext.project,
 
 		/**
-		 * Enter description here...
+		 * Create DIVs (details, data) wrapping form (inside header) of given task and have task details be displayed. Div positions: Data before, details after header of given task.
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
+		 *	@param	Integer	idTask
 		 */
 		createFormWrapDivs: function(idTask) {
 			var idHeader	= 'task-' + idTask + '-header';
@@ -902,22 +892,22 @@ Todoyu.Ext.project.Task = {
 			if( ! Todoyu.exists(idDetails) ) {
 					// Create details div
 				var details = new Element('div', {
-					'id': idDetails,
-					'class': 'details edit'
+					'id':		idDetails,
+					'class':	'details edit'
 				});
 
 					// Create data div
 				var data = new Element('div', {
-					'id': idData,
-					'class': 'data'
+					'id':		idData,
+					'class':	'data'
 				});
 
 				details.insert({
-					'top': data
+					'top':	data
 				});
 
 				$(idHeader).insert({
-					'after': details
+					'after':	details
 				});
 			}
 
@@ -927,10 +917,9 @@ Todoyu.Ext.project.Task = {
 
 
 		/**
-		 * Enter description here...
+		 * Load task editing form.
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
+		 *	@param	Integer	idTask
 		 */
 		loadForm: function(idTask) {
 			var url 	= Todoyu.getUrl('project', 'task');
@@ -948,11 +937,11 @@ Todoyu.Ext.project.Task = {
 
 
 		/**
-		 * Enter description here...
+		 * Evoked after task editing form having been loaded: scrolls to given task, calls onTaskEdit hook.
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
-		 * @param	unknown_type response
+		 *	@todo	comment
+		 *	@param	Integer	idTask
+		 *	@param	Object	response
 		 */
 		onFormLoaded: function(idTask, response) {
 			this.ext.Task.scrollTo(idTask);
@@ -963,10 +952,9 @@ Todoyu.Ext.project.Task = {
 
 
 		/**
-		 * Enter description here...
+		 * Save edited task
 		 *
-		 * @todo	comment
-		 * @param	unknown_type form
+		 *	@param	unknown_type	form
 		 */
 		save: function(form) {
 			tinyMCE.triggerSave();
@@ -984,25 +972,30 @@ Todoyu.Ext.project.Task = {
 
 
 		/**
-		 * Enter description here...
+		 * Evoked after edited task having been saved. Handles display of success / failure message and refresh of saved task / failed form.
 		 *
-		 * @todo	comment
-		 * @param	unknown_type response
+		 *	@param	Object	response
 		 */
 		onSaved: function(response) {
 			var idTask		= response.getTodoyuHeader('idTask');
 			var idTaskOld	= response.getTodoyuHeader('idTaskOld');
 
+				// Save resulted in error?
 			if( response.hasTodoyuError() ) {
+					// Update task edit form with form remarks, display failure notification
 				this.updateFormDiv(idTask, response.responseText);
 				Todoyu.notifyError('[LLL:task.save.error]');
+
+					// Saving went ok?
 			} else {
+					// Update displayed task data, re-add context menu, notify of saving success 
 				this.ext.Task.update(idTaskOld, response.responseText);
 				this.ext.Task.addContextMenu(idTask);
 
 				Todoyu.Hook.exec('onTaskSaved', idTask);
 				Todoyu.notifySuccess('[LLL:task.save.success]');
-				
+
+					// Scroll to task and highlight it
 				this.ext.Task.scrollTo(idTask);
 				this.ext.Task.highlight.bind(this.ext.Task).delay(0.5, idTask);
 			}
@@ -1011,11 +1004,10 @@ Todoyu.Ext.project.Task = {
 
 
 		/**
-		 * Enter description here...
+		 * Update editing form of given task with given HTML
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
-		 * @param	unknown_type formHTML
+		 *	@param	Integer	idTask
+		 *	@param	String	formHTML
 		 */
 		updateFormDiv: function(idTask, formHTML) {
 			$('task-' + idTask + '-formdiv').update(formHTML);
@@ -1024,10 +1016,9 @@ Todoyu.Ext.project.Task = {
 
 
 		/**
-		 * Enter description here...
+		 * Cancel editing of given task. Refresh task's parent subtasks expand trigger, refresh the task.
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
+		 *	@param	Integer	idTask
 		 */
 		cancel: function(idTask) {
 			if(this.ext.Task.hasParentTask(idTask) && idTask == 0){
@@ -1039,17 +1030,15 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Enter description here...
-	 *
-	 * @todo	comment
+	 * Project task tab
 	 */
 	Tab: {
 
 		/**
-		 * Enter description here...
+		 * Show given tab of given task
 		 *
-		 * @param Integer idTask
-		 * @param unknown_type tabKey
+		 *	@param	Integer	idTask
+		 *	@param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 		 */
 		show: function(idTask, tabKey) {
 			var tabID = this.buildTabID(idTask, tabKey);
@@ -1067,11 +1056,10 @@ Todoyu.Ext.project.Task = {
 
 
 		/**
-		 * Enter description here...
+		 * Load given tab of given task 
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
-		 * @param	unknown_type tabKey
+		 *	@param	Integer	idTask
+		 *	@param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 		 */
 		load: function(idTask, tabKey) {
 			var url 	= Todoyu.getUrl('project', 'task');
@@ -1092,9 +1080,8 @@ Todoyu.Ext.project.Task = {
 		/**
 		 * Enter description here...
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
-		 * @param	unknown_type tabKey
+		 *	@param	Integer	idTask
+		 *	@param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 		 */
 		createTabContainer: function(idTask, tabKey) {
 			var tabContainer = 'task-' + idTask + '-tabcontent';
@@ -1113,9 +1100,8 @@ Todoyu.Ext.project.Task = {
 		/**
 		 * Enter description here...
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
-		 * @param	unknown_type tabKey
+		 *	@param	Integer	idTask
+		 *	@param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 		 */
 		buildTabID: function(idTask, tabKey) {
 			return 'task-' + idTask + '-tabcontent-' + tabKey;
@@ -1126,9 +1112,8 @@ Todoyu.Ext.project.Task = {
 		/**
 		 * Enter description here...
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
-		 * @param	unknown_type tabKey
+		 *	@param	Integer	idTask
+		 *	@param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 		 */
 		activate: function(idTask, tabKey) {
 			this.hideAll(idTask);
@@ -1141,9 +1126,8 @@ Todoyu.Ext.project.Task = {
 		/**
 		 * Enter description here...
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
-		 * @param	unknown_type tabKey
+		 *	@param	Integer	idTask
+		 *	@param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 		 */
 		saveSelection: function(idTask, tabKey) {
 			var url = Todoyu.getUrl('project', 'task');
@@ -1163,8 +1147,7 @@ Todoyu.Ext.project.Task = {
 		/**
 		 * Enter description here...
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
+		 *	@param	Integer	idTask
 		 */
 		hideAll: function(idTask) {
 			var tabDiv	= this.getContainer(idTask);
@@ -1178,9 +1161,8 @@ Todoyu.Ext.project.Task = {
 		/**
 		 * Enter description here...
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
-		 * @param	unknown_type activeTab
+		 *	@param	Integer	idTask
+		 *	@param	String	activeTab	(tabKey, e.g 'timetracking' / 'comment' / 'assets')
 		 */
 		setActiveHead: function(idTask, activeTab) {
 			var tabHeadList	= $('task-' + idTask + '-tabheads');
@@ -1198,9 +1180,8 @@ Todoyu.Ext.project.Task = {
 		/**
 		 * Enter description here...
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
-		 * @param	unknown_type tabKey
+		 *	@param	Integer	idTask
+		 *	@param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 		 */
 		setVisible: function(idTask, tabKey) {
 			$(this.buildTabID(idTask, tabKey)).show();
@@ -1211,8 +1192,7 @@ Todoyu.Ext.project.Task = {
 		/**
 		 * Enter description here...
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
+		 *	@param	Integer	idTask
 		 */
 		getContainer: function(idTask) {
 			return $('task-' + idTask + '-tabs');
@@ -1223,9 +1203,8 @@ Todoyu.Ext.project.Task = {
 		/**
 		 * Enter description here...
 		 *
-		 * @todo	comment
-		 * @param	Integer idTask
-		 * @param	unknown_type tabKey
+		 *	@param	Integer	idTask
+		 *	@param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 		 */
 		getHeadID: function(idTask, tabKey) {
 			return 'task-' + idTask + '-tabhead-' + tabKey;
@@ -1236,8 +1215,7 @@ Todoyu.Ext.project.Task = {
 		/**
 		 * Enter description here...
 		 *
-		 * @todo	comment
-		 * @param	Integer	idItem
+		 *	@param	Integer	idItem
 		 */
 		getKeyFromID: function(idItem) {
 			return idItem.split('-').last();
@@ -1248,9 +1226,8 @@ Todoyu.Ext.project.Task = {
 		/**
 		 * Enter description here...
 		 *
-		 * @todo	comment
-		 * @param	unknown_type event
-		 * @param	unknown_type tabKey
+		 *	@param	unknown_type	event
+		 *	@param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 		 */
 		onSelect: function(event, tabKey) {
 			var info = tabKey.split('-');

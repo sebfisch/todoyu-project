@@ -38,6 +38,7 @@ Todoyu.Ext.project.Container = {
 	},
 
 
+
 	/**
 	 *	Remove given container
 	 *
@@ -80,6 +81,5 @@ Todoyu.Ext.project.Container = {
 	updateStatus: function(idContainer, idStatus) {
 		this.ext.Task.updateStatus(idContainer, idStatus);
 	}
-
 
 };
