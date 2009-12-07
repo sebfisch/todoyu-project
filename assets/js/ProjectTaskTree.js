@@ -27,12 +27,12 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Backlink to project extension
 	 */
-	ext: Todoyu.Ext.project,
+	ext:			Todoyu.Ext.project,
 
 	/**
-	 * Maximal open tabs
+	 * Maximum allowed amount of simultaneous open tabs
 	 */
-	maxOpenTabs: 3,
+	maxOpenTabs:	3,
 
 
 

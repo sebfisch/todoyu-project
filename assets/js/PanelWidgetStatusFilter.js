@@ -27,19 +27,19 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	/**
 	 * Reference to extension js
 	 */
-	ext: Todoyu.Ext.project,
+	ext:	Todoyu.Ext.project,
 
 	list:	null,
-	
+
 	/**
 	 * PanelWidget ID
 	 */
-	key: 'statusfilter',
+	key:	'statusfilter',
 
 
 
 	/**
-	 * Initialization of the PanelWidget
+	 * Initialize the panelWidget: setup properties, install element observers
 	 */
 	init: function() {
 		this.list	= 'panelwidget-statusfilter-list';
@@ -50,7 +50,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 
 
 	/**
-	 * Install event observer for the PanelWidget
+	 * Install (selection change) event observer for the PanelWidget
 	 */
 	installObservers: function() {
 		this.getForm().observe('change', this.onSelectionChange.bind(this));

@@ -25,9 +25,9 @@
 Todoyu.Ext.project.Project = {
 
 	/**
-	 * Shortcut to the current extension
+	 * Ext shortcut
 	 */
-	ext: Todoyu.Ext.project,
+	ext:	Todoyu.Ext.project,
 
 
 

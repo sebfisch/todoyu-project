@@ -20,12 +20,20 @@
 
 Todoyu.Ext.project.PanelWidget.ProjectTree = {
 
-	ext: Todoyu.Ext.project,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:	Todoyu.Ext.project,
 
 	key:	'projecttree',
 
-	url: Todoyu.getUrl('project', 'panelwidgetprojecttree'),
+	url:	Todoyu.getUrl('project', 'panelwidgetprojecttree'),
 
+
+
+	/**
+	 * Initialize (filters of) projectTree panelWidget
+	 */
 	init: function() {
 		this.Filter.init();
 	},

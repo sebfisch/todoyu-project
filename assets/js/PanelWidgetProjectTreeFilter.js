@@ -20,17 +20,26 @@
 
 Todoyu.Ext.project.PanelWidget.ProjectTree.Filter = {
 
-	ext:	Todoyu.Ext.project,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:		Todoyu.Ext.project,
 
-	key:	'projecttree',
+	key:		'projecttree',
 
-	fieldObservers: {},
-	addObserver: null,
-	form: 'panelwidget-projecttree-filter-form',
-	checkInterval: 1.5,
+	fieldObservers:	{},
 
-	ext: Todoyu.Ext.project,
+	addObserver:	null,
 
+	form:			'panelwidget-projecttree-filter-form',
+
+	checkInterval:	1.5,
+
+
+
+	/**
+	 * Initialize projectTree filter: install observer, add removal-icons
+	 */
 	init: function() {
 		 this.installObserver();
 		 this.addRemoveIcons();

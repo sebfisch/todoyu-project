@@ -20,15 +20,18 @@
 
 Todoyu.Ext.project.QuickTask = {
 
-	ext: Todoyu.Ext.project,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:			Todoyu.Ext.project,
 
-	fieldStart: 'quicktask-0-field-start-tracking',
+	fieldStart:		'quicktask-0-field-start-tracking',
 
-	fieldDone: 'quicktask-0-field-task-done',
+	fieldDone:		'quicktask-0-field-task-done',
 
-	popupID: 'quicktask',
+	popupID:		'quicktask',
 
-	savedCallback: null,
+	savedCallback:	null,
 
 
 

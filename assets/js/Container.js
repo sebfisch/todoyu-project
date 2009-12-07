@@ -20,8 +20,18 @@
 
 Todoyu.Ext.project.Container = {
 
-	ext: Todoyu.Ext.project,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:	Todoyu.Ext.project,
 
+
+
+	/**
+	 * Evoke editing of given container (handled via task editing)
+	 * 
+	 *	@param	Integer	idContainer
+	 */
 	edit: function(idContainer) {
 		this.ext.Task.edit(idContainer);
 	},

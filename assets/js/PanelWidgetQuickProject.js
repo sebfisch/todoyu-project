@@ -20,7 +20,10 @@
 
 Todoyu.Ext.project.PanelWidget.QuickProject = {
 
-	ext: Todoyu.Ext.project,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:	Todoyu.Ext.project,
 
 
 

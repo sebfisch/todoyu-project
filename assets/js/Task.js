@@ -20,7 +20,10 @@
 
 Todoyu.Ext.project.Task = {
 
-	ext: Todoyu.Ext.project,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:	Todoyu.Ext.project,
 
 
 
@@ -888,7 +891,10 @@ Todoyu.Ext.project.Task = {
 	 * Edit project task
 	 */
 	Edit: {
-		ext: Todoyu.Ext.project,
+		/**
+	 	 *	Ext shortcut
+	 	 */
+		ext:	Todoyu.Ext.project,
 
 		/**
 		 * Create DIVs (details, data) wrapping form (inside header) of given task and have task details be displayed. Div positions: Data before, details after header of given task.

@@ -20,7 +20,10 @@
 
 Todoyu.Ext.project.TaskTree = {
 
-	ext: Todoyu.Ext.project,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:	Todoyu.Ext.project,
 
 
 
