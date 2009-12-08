@@ -217,7 +217,9 @@
 
 
 
-	/* General styles @todo Move to top CSS file */
+	/* General styles 
+	   @todo Move to top CSS file 
+	*/
 .type-dateinput input {
 	width:60px;
 }

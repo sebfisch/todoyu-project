@@ -524,17 +524,17 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Handled after completion of (request of) task being added to project. Adds context menu to new task and scrolls new task into view.
+	 * Adds context menu to new task and scrolls the task into view.
+	 * Called after completion of (request of) task being added to project.
 	 *
-	 * @todo	comment
-	 *	@param	unknown_type response
+	 *	@param	Object response
 	 */
 	onProjectTaskAdded: function(response) {
-			// Get task id from header
+			// Get task ID from header
 		var idTask = response.getTodoyuHeader('idTask');
 			// Add context menu to new task
 		this.addContextMenu(idTask);
-			// Scroll to new task
+			// Scroll to task
 		this.scrollTo(idTask);
 
 		Todoyu.Hook.exec('onTaskEdit', idTask);
@@ -954,9 +954,9 @@ Todoyu.Ext.project.Task = {
 
 
 		/**
-		 * Evoked after task editing form having been loaded: scrolls to given task, calls onTaskEdit hook.
+		 * Scrolls to given task, calls onTaskEdit hook.
+		 * Evoked after task editing form having been loaded.
 		 *
-		 *	@todo	comment
 		 *	@param	Integer	idTask
 		 *	@param	Object	response
 		 */
