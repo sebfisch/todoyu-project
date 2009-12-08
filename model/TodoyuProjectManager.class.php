@@ -128,9 +128,12 @@ class TodoyuProjectManager {
 		$idProject	= intval($data['id']);
 		unset($data['id']);
 
+			// Add new project if it not already exists
 		if( $idProject === 0 ) {
 			$idProject = self::addProject(array());
 		}
+
+		TodoyuDebug::printInFirebug($data['title'], 'title');
 
 		$projectUsers	= TodoyuArray::assure($data['projectusers']);
 
@@ -144,6 +147,10 @@ class TodoyuProjectManager {
 //		$data = self::saveProjectUsersFormData($data, $idProject);
 
 		self::updateProject($idProject, $data);
+
+		TodoyuDebug::printInFirebug(TodoyuDiv::isUTF8($data['title']), 'isUTF8');
+
+		TodoyuDebug::printLastQueryInFirebug();
 
 		return $idProject;
 	}

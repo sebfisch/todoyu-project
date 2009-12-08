@@ -1,6 +1,6 @@
 <h1 class="title headerLine contextmenuproject" id="project-{$id}-header">
 	<span class="first">{restrict 'project' 'project:details'}<a id="project-{$id}-toggler" class="toggler{if $details} expanded{/if}" onclick="Todoyu.Ext.project.Project.toggleDetails({$id})" href="javascript:void(0)"></a>{/restrict}</span>
-	<span class="title"><a id="project-{$id}-titlelabel" class="titleLabel" {restrict 'project' 'project:details'}onclick="Todoyu.Ext.project.Project.toggleDetails({$id})"{/restrict} href="javascript:void(0)" title="ID: {$id}">{htmlentities $fulltitle}</a></span>
+	<span class="title"><a id="project-{$id}-titlelabel" class="titleLabel" {restrict 'project' 'project:details'}onclick="Todoyu.Ext.project.Project.toggleDetails({$id})"{/restrict} href="javascript:void(0)" title="ID: {$id}">{$fulltitle}</a></span>
 	<span class="additionalStuff" id="project-{$id}-additionalStuff">
 	{restrict 'project'  'project:edit'}
 		<a onclick="Todoyu.Ext.project.Project.edit({$id})" class="editProject" title="{Label project.editproject}" href="javascript:void(0)"></a>

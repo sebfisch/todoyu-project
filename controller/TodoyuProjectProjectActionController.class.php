@@ -58,18 +58,19 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @return	String		Form content if form is invalid
 	 */
 	public function saveAction(array $params) {
-		$project	= $params['project'];
-		$idProject	= intval($project['id']);
+		$data		= $params['project'];
+		$idProject	= intval($data['id']);
 
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/project.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath, $idProject);
 
 			// Set form data
-		$form->setFormData($project);
+		$form->setFormData($data);
 
 		if( $form->isValid() ) {
 			$storageData= $form->getStorageData();
+
 				// Save project
 			$idProjectNew	= TodoyuProjectManager::saveProject($storageData);
 
