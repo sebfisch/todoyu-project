@@ -27,7 +27,7 @@
  */
 
 class TodoyuProjectProjecttasktreeActionController extends TodoyuActionController {
-	
+
 	/**
 	 * Action: project
 	 *
@@ -49,22 +49,23 @@ class TodoyuProjectProjecttasktreeActionController extends TodoyuActionControlle
 		$project = TodoyuProjectManager::getProject($idProject);
 		$tabLabel= TodoyuDiv::cropText($project->getCustomer()->getShortname() . ': ' . $project->getTitle(), 23, '..', false);
 
+
 			// Send project id and tab label as header
 		TodoyuHeader::sendTodoyuHeader('project', $idProject);
-		TodoyuHeader::sendTodoyuHeader('tablabel', htmlentities($tabLabel));
+		TodoyuHeader::sendTodoyuHeader('tablabel', $tabLabel);
 
 			// Render project details and tabtree in tab
 		return TodoyuProjectRenderer::renderTabbedProject($idProject, $idTask);
 	}
-	
-	
+
+
 	public function openprojectsAction(array $params) {
 		$openProjectIDs	= explode(',', $params['projects']);
 
 		TodoyuProjectPreferences::saveOpenProjectTabs($openProjectIDs);
 	}
-	
-	
+
+
 }
 
 ?>

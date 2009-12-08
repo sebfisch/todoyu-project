@@ -365,6 +365,8 @@ Todoyu.Ext.project.Project = {
 			} else {
 				this.ext.ProjectTaskTree.removeProject(idProjectOld);
 				this.ext.ProjectTaskTree.openProject(idProject);
+				
+				window.scrollTo(0,0);
 
 				Todoyu.Hook.exec('onProjectSaved', idProject);
 			}

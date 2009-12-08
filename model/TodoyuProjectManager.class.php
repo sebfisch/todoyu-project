@@ -133,8 +133,6 @@ class TodoyuProjectManager {
 			$idProject = self::addProject(array());
 		}
 
-		TodoyuDebug::printInFirebug($data['title'], 'title');
-
 		$projectUsers	= TodoyuArray::assure($data['projectusers']);
 
 			// Save project users
@@ -144,13 +142,7 @@ class TodoyuProjectManager {
 			// Call save hooks
 		$data = TodoyuFormHook::callSaveData($xmlPath, $data, $idProject);
 
-//		$data = self::saveProjectUsersFormData($data, $idProject);
-
 		self::updateProject($idProject, $data);
-
-		TodoyuDebug::printInFirebug(TodoyuDiv::isUTF8($data['title']), 'isUTF8');
-
-		TodoyuDebug::printLastQueryInFirebug();
 
 		return $idProject;
 	}
@@ -865,38 +857,18 @@ class TodoyuProjectManager {
 	 *
 	 *	@return	Array
 	 */
-	public function getOpenProjectSubmenuEntryTitles() {
+	public function getOpenProjectLabels() {
 		$entries		= array();
 
-		$projectsData	= self::getOpenProjectsSubmenuEntriesData();
-		foreach($projectsData as $idProject => $project) {
-			$entries[ $idProject ]	= $project['customer']['shortname'] . ': ' . $project['title'];
-		}
-
-		return $entries;
-	}
-
-
-
-	/**
-	 *	Get data (array) of the currently open projects
-	 *
-	 *	@return	Array
-	 */
-	public function getOpenProjectsSubmenuEntriesData() {
 		$openProjectIDs	= TodoyuProjectPreferences::getOpenProjectTabs();
 
-		$projectsData	= array();
 		foreach($openProjectIDs as $idProject) {
 			$project	= TodoyuProjectManager::getProject($idProject);
 
-			$data				= $project->getTemplateData();
-			$data['customer']	= $project->getCustomer();
-
-			$projectsData[$idProject]	= $data;
+			$entries[$idProject]	= $project->getCustomer()->getShortLabel() . ' - ' . $project->getTitle();
 		}
 
-		return $projectsData;
+		return $entries;
 	}
 
 }

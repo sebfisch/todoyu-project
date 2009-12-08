@@ -95,6 +95,7 @@
 	margin-top: -2px;
 	padding: 1px 3px;
 	background: url(../../../../core/assets/img/dottedline_ver.png) repeat-y 0 0;
+	cursor:default;
 }
 
 .task h3 span.additionalStuff span {

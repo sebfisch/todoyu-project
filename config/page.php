@@ -4,11 +4,10 @@
 if( TodoyuAuth::isLoggedIn() ) {
 	TodoyuFrontend::addMenuEntry('project', 'LLL:project.tab.label', '?ext=project', 20);
 
-	$projectEntries	= TodoyuProjectManager::getOpenProjectSubmenuEntryTitles();
-	$entryNum		= 30;
+	$projectEntries	= TodoyuProjectManager::getOpenProjectLabels();
+	$entryNum		= 1;
 	foreach($projectEntries as $idProject => $title) {
-		TodoyuFrontend::addSubmenuEntry('project', 'project', $title, '?ext=project&project=' . $idProject, $entryNum);
-		$entryNum++;
+		TodoyuFrontend::addSubmenuEntry('project', 'project' . $entryNum, $title, '?ext=project&project=' . $idProject, $entryNum++);
 	}
 }
 
