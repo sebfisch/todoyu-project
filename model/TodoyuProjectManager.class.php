@@ -504,7 +504,7 @@ class TodoyuProjectManager {
 
 		$info[]	= array(
 			'label'		=> 'LLL:project.attr.customer',
-			'value'		=> $project->getCustomer()->getName(),
+			'value'		=> $project->getCustomer()->getTitle(),
 			'position'	=> 20
 		);
 

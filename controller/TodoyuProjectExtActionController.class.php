@@ -70,10 +70,13 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 			TodoyuProjectPreferences::addNewOpenProjectTab($idProject);
 
 			$project= TodoyuProjectManager::getProject($idProject);
-			$title	= TodoyuLocale::getLabel('project.page.title') . ' - ' . $project->getTitle();
+			$title	= TodoyuLocale::getLabel('project.page.title') . ' - ' . $project->getFullTitle();
 		} else {
 			$title	= TodoyuLocale::getLabel('project.page.title.noSelected');
 		}
+
+
+		TodoyuDebug::printInFirebug($title);
 
 		TodoyuPage::setTitle($title);
 

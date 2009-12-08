@@ -335,7 +335,7 @@ class TodoyuTask extends TodoyuBaseObject {
 				$data['user_owner']		= $this->getUserArray('owner');
 				$data['worktype']		= $this->getWorktype();
 				$data['fulltitle'] 		= $this->getFullTitle();
-				$data['customer'] 		= $this->getProject()->getCustomerArray();
+				$data['customer'] 		= $this->getProject()->getCustomerData();
 
 			case 1:
 				$data['statuskey'] 		= $this->getStatusKey();

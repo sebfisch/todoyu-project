@@ -35,20 +35,6 @@ class TodoyuProject extends TodoyuBaseObject {
 	 */
 	public function __construct($idProject) {
 		parent::__construct($idProject, 'ext_project_project');
-
-		if( $idProject === 0 )	{
-			$this->initialize();
-		}
-	}
-
-
-
-	/**
-	 * set initial data of a (empty) project
-	 *
-	 */
-	protected function initialize()	{
-		$this->offsetSet('title', Label('LLL:project.newProject.tabLabel'));
 	}
 
 
@@ -59,9 +45,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getFullTitle() {
-		$customer	= $this->getCustomerArray();
-
-		return $customer['shortname'] . ' - ' . $this->getTitle();
+		return $this->getCustomer()->getTitle() . ' - ' . $this->getTitle();
 	}
 
 
@@ -80,7 +64,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	/**
 	 * Get customer object
 	 *
-	 * @return	Customer
+	 * @return	TodoyuCustomer
 	 */
 	public function getCustomer() {
 		return TodoyuCustomerManager::getCustomer($this->getCustomerID());
@@ -93,11 +77,11 @@ class TodoyuProject extends TodoyuBaseObject {
 	 *
 	 * @return	Array
 	 */
-	public function getCustomerArray() {
+	public function getCustomerData() {
 		if( $this->isInCache('customer') ) {
 			$customer	= $this->getCacheItem('customer');
 		} else {
-			$customer 	= TodoyuCustomerManager::getCustomerArray($this->getCustomerID());
+			$customer 	= TodoyuCustomerManager::getCustomerData($this->getCustomerID());
 			$this->addToCache('customer', $customer);
 		}
 
