@@ -428,7 +428,8 @@ class TodoyuProjectManager {
 		if( sizeof($projectIDs) > 0 ) {
 			$fields	= '	p.id,
 						p.title,
-						c.shortname as customer';
+						c.shortname as customer,
+						c.title as customerFull';
 			$table	= '	ext_project_project p,
 						ext_user_customer c';
 			$where	= '	p.id IN(' . $projectList . ') AND
@@ -451,7 +452,7 @@ class TodoyuProjectManager {
 				'htmlId'	=> 'projecttab-' . $project['id'],
 				'class'		=> 'projecttab',
 				'classKey'	=> $project['id'],
-				'label'		=> TodoyuDiv::cropText($project['customer'] . ': ' . $project['title'], 23, '..', false)
+				'label'		=> TodoyuDiv::cropText( ($project['customer'] ? $project['customer'] : TodoyuDiv::cropText($project['customerFull'], 10, '..', false ) ). ': ' . $project['title'], 23, '..', false)
 			);
 		}
 
