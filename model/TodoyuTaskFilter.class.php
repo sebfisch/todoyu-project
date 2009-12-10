@@ -391,8 +391,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 		} else {
 				// set up query parts array
 			$tables	= ('ext_project_task');
-
-			if( $negate )	{
+			
+			if( $negate === false)	{
 				$where	= 'ext_project_task.id_user_assigned != ' . intval($idUser);
 			} else {
 				$where	= 'ext_project_task.id_user_assigned = ' . intval($idUser);
@@ -484,7 +484,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 		if( sizeof($statuses) === 0 ) {
 			return false;
 		}
-
+		
 		$tables	= array('ext_project_task');
 		if( $negate )	{
 			$where	= 'ext_project_task.status NOT IN(' . implode(',', $statuses) . ')';
