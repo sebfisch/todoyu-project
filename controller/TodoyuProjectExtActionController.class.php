@@ -57,7 +57,6 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 		}
 
 
-
 			// Init page
 		TodoyuPage::init('ext/project/view/ext.tmpl');
 			// Add project assets
@@ -75,11 +74,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 			$title	= TodoyuLocale::getLabel('project.page.title.noSelected');
 		}
 
-
-		TodoyuDebug::printInFirebug($title);
-
 		TodoyuPage::setTitle($title);
-
 
 			// Render panel widgets and content
 		$panelWidgets		= TodoyuProjectRenderer::renderPanelWidgets($idProject, $idTask);
