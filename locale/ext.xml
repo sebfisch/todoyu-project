@@ -65,6 +65,8 @@
 		<label index="form.validation.dateBefore">Date must be before end</label>
 		<label index="form.validation.title">Please enter a project title</label>
 		<label index="noLabel.newProjectParticipant">New Project Participant</label>
+		<label index="save.error">Saving was not successfull</label>
+		<label index="save.success">Saving successfull</label>
 	</labels>
 	<labels lang="de">
 		<label index="ext.title">Projekt- und Aufgabenverwaltung</label>
@@ -131,5 +133,7 @@
 		<label index="form.validation.dateBefore">Datum muss vor dem End-Datum liegen</label>
 		<label index="form.validation.title">Bitte füllen Projekt-Titel angeben</label>
 		<label index="noLabel.newProjectParticipant">Neuer Projekt-Mitarbeiter</label>
+		<label index="save.error">Speichern war nicht erfolgreich</label>
+		<label index="save.success">Speichern war erfolgreich</label>
 	</labels>
 </locallang>

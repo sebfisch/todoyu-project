@@ -362,6 +362,7 @@ Todoyu.Ext.project.Project = {
 
 			if( error ) {
 				this.updateFormDiv(idProjectOld, response.responseText);
+				Todoyu.notifyError('[LLL:project.save.error]');
 			} else {
 				this.ext.ProjectTaskTree.removeProject(idProjectOld);
 				this.ext.ProjectTaskTree.openProject(idProject);
@@ -369,6 +370,7 @@ Todoyu.Ext.project.Project = {
 				window.scrollTo(0,0);
 
 				Todoyu.Hook.exec('onProjectSaved', idProject);
+				Todoyu.notifySuccess('[LLL:project.save.success]');
 			}
 		},
 

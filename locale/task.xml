@@ -86,6 +86,8 @@
 		<label index="error.title">Please enter a title for the task</label>
 		<label index="attr.user_assigned.error">This field is required</label>
 		<label index="attr.id_worktype.error">This field is required</label>
+		<label index="save.error">Saving was not successfull</label>
+		<label index="save.success">Saving successfull</label>
 	</labels>
 	<labels lang="de">
 		<label index="task">Aufgabe</label>
@@ -169,6 +171,7 @@
 		<label index="error.title">Bitte einen Aufgaben-Titel angeben</label>
 		<label index="attr.user_assigned.error">Dies ist ein Pflichtfeld</label>
 		<label index="attr.id_worktype.error">Dies ist ein Pflichtfeld</label>
-
+		<label index="save.error">Speichern war nicht erfolgreich</label>
+		<label index="save.success">Speichern war erfolgreich</label>
 	</labels>
 </locallang>
