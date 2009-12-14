@@ -2,7 +2,7 @@
 -- Table structure for table `ext_project_mm_project_user`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_project_mm_project_user` (
+CREATE TABLE `ext_project_mm_project_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_project` int(10) unsigned NOT NULL DEFAULT '0',
   `id_user` int(10) unsigned NOT NULL DEFAULT '0',
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `ext_project_mm_project_user` (
 -- Table structure for table `ext_project_project`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_project_project` (
+CREATE TABLE `ext_project_project` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `date_create` int(10) unsigned NOT NULL DEFAULT '0',
   `date_update` int(10) unsigned NOT NULL DEFAULT '0',
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `ext_project_project` (
 -- Table structure for table `ext_project_task`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_project_task` (
+CREATE TABLE `ext_project_task` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_create` int(11) NOT NULL DEFAULT '0',
   `date_update` int(11) NOT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `ext_project_task` (
 -- Table structure for table `ext_project_userrole`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_project_userrole` (
+CREATE TABLE `ext_project_userrole` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_create` int(10) NOT NULL,
   `id_user_create` smallint(5) NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `ext_project_userrole` (
 -- Table structure for table `ext_project_worktype`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_project_worktype` (
+CREATE TABLE `ext_project_worktype` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `date_update` int(11) NOT NULL,
   `id_user_create` smallint(5) unsigned NOT NULL,
