@@ -41,8 +41,8 @@ TodoyuLocale::register('panelwidget-quickproject', PATH_EXT_PROJECT . '/locale/p
 	// Request configurations
 require_once( PATH_EXT_PROJECT . '/config/constants.php' );
 require_once( PATH_EXT_PROJECT . '/config/extension.php' );
-require_once( PATH_EXT_PROJECT . '/config/filters.php' );
-require_once( PATH_EXT_PROJECT . '/config/search.php' );
+//require_once( PATH_EXT_PROJECT . '/config/filters.php' );
+//require_once( PATH_EXT_PROJECT . '/config/search.php' );
 require_once( PATH_EXT_PROJECT . '/config/panelwidgets.php' );
 require_once( PATH_EXT_PROJECT . '/config/hooks.php' );
 require_once( PATH_EXT_PROJECT . '/dwoo/plugins.php');

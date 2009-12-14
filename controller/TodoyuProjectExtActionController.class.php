@@ -34,6 +34,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function defaultAction(array $params) {
+		restrict('project', 'use');
 
 			// Set project tab
 		TodoyuFrontend::setActiveTab('project');

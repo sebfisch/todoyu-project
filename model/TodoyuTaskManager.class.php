@@ -614,7 +614,8 @@ class TodoyuTaskManager {
 	 */
 	public static function getTabs($idTask, $evalLabel = true) {
 		if( is_null(self::$tabs) ) {
-			self::$tabs = TodoyuArray::sortByLabel($GLOBALS['CONFIG']['EXT']['project']['task']['tabs']);
+			$tabs = TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['task']['tabs']);
+			self::$tabs = TodoyuArray::sortByLabel($tabs);
 		}
 
 		$tabs = self::$tabs;
@@ -1454,7 +1455,7 @@ class TodoyuTaskManager {
 		if( $task->isTask() ) {
 				// New task have no parent
 			if( $idTask === 0 ) {
-				$form->getField('id_parenttask')->remove();
+//				$form->getField('id_parenttask')->remove();
 				$form->addHiddenField('id_parenttask', 0);
 			}
 		}

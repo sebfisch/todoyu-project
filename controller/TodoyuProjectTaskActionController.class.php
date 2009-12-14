@@ -212,7 +212,6 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask		= intval($params['task']);
 
 			// Save task open
-		TodoyuPortalPreferences::saveTaskExpandedStatus($idTask, true);
 		TodoyuProjectPreferences::saveTaskExpandedStatus($idTask, true);
 
 			// Set task acknowledged
