@@ -238,6 +238,10 @@ span.taskTitleFixTaskSymbol {
 		color: #666666;
 		line-height: 18px;
 	}
+	
+	.tasks .task .details .properties dt {
+		clear:left;
+	}
 
 		/* task tabs */
 	#content .taskTabs .tabs {
