@@ -23,31 +23,4 @@
 TodoyuSearchManager::addSearchEngine('task', 'TodoyuTaskSearch::getResults', 'TodoyuTaskSearch::getSuggestions', 'task.search.label', 'task.search.mode.label', 10);
 TodoyuSearchManager::addSearchEngine('project', 'TodoyuProjectSearch::getResults', 'TodoyuProjectSearch::getSuggestions', 'project.search.label', 'project.search.mode.label', 20);
 
-
-//$CONFIG['EXT']['search']['engines']['task'] = array(
-//	'search'	=> 'TodoyuTaskSearch::getResults',
-//	'suggestion'=> 'TodoyuTaskSearch::getSuggestions',
-//	'label'		=> 'task.search.label'
-//);
-//
-//$CONFIG['EXT']['search']['engines']['project'] = array(
-//	'search'	=> 'TodoyuProjectSearch::getResults',
-//	'suggestion'=> 'TodoyuProjectSearch::getSuggestions',
-//	'label'		=> 'project.search.label'
-//);
-//
-//$CONFIG['EXT']['search']['modes']['task'] = array(
-//	'mode'		=> 'task',
-//	'class'		=> 'searchmode-task',
-//	'position'	=> 10,
-//	'label'		=> 'Task'
-//);
-//
-//$CONFIG['EXT']['search']['modes']['project'] = array(
-//	'mode'		=> 'project',
-//	'class'		=> 'searchmode-project',
-//	'position'	=> 20,
-//	'label'		=> 'Project'
-//);
-
 ?>

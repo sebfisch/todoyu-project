@@ -63,12 +63,14 @@ $CONFIG['EXT']['project']['STATUS']['TASK'] = array(
 );
 
 
+	// Add special form type "projectusers"
 $CONFIG['FORM']['TYPES']['projectusers'] = array(
 	'class'		=> 'TodoyuFormElement_ProjectUsers',
 	'template'	=> 'ext/project/view/formelement-projectusers.tmpl'
 );
 
 
+	// Add record infos
 TodoyuExtManager::addRecordConfig('project', 'userrole', array(
 	'label'	=> 'LLL:project.records.userrole',
 	'form'	=> 'ext/project/config/form/admin/userrole.xml',
