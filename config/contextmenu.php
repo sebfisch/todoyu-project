@@ -333,41 +333,17 @@ $CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_PLANNING . ')',
 				'class'		=> 'projectContextMenu taskStatusPlanning'
 			),
-			'open'	=> array(
-				'key'		=> 'status-open',
-				'label'		=> 'LLL:task.status.open',
-				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_OPEN . ')',
-				'class'		=> 'projectContextMenu taskStatusOpen'
-			),
 			'progress'	=> array(
 				'key'		=> 'status-progress',
 				'label'		=> 'LLL:task.status.progress',
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_PROGRESS . ')',
 				'class'		=> 'projectContextMenu taskStatusProgress'
 			),
-			'confirm'	=> array(
-				'key'		=> 'status-confirm',
-				'label'		=> 'LLL:task.status.confirm',
-				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_CONFIRM . ')',
-				'class'		=> 'projectContextMenu taskStatusConfirm'
-			),
 			'done'	=> array(
 				'key'		=> 'status-done',
 				'label'		=> 'LLL:task.status.done',
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_DONE . ')',
 				'class'		=> 'projectContextMenu taskStatusDone'
-			),
-			'accepted'	=> array(
-				'key'		=> 'status-accepted',
-				'label'		=> 'LLL:task.status.accepted',
-				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_ACCEPTED . ')',
-				'class'		=> 'projectContextMenu taskStatusAccepted'
-			),
-			'rejected'	=> array(
-				'key'		=> 'status-rejected',
-				'label'		=> 'LLL:task.status.rejected',
-				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_REJECTED . ')',
-				'class'		=> 'projectContextMenu taskStatusRejected'
 			),
 			'cleared'	=> array(
 				'key'		=> 'status-cleared',

@@ -44,12 +44,8 @@ TodoyuContextMenuManager::registerFunction('Project', 'TodoyuProjectManager::get
 	// @see	constants are defined in  constants.php
 $CONFIG['EXT']['project']['STATUS']['PROJECT'] = array(
 	STATUS_PLANNING		=> 'planning',
-	STATUS_OPEN			=> 'open',
 	STATUS_PROGRESS		=> 'progress',
-	STATUS_CONFIRM		=> 'confirm',
 	STATUS_DONE			=> 'done',
-	STATUS_ACCEPTED		=> 'accepted',
-	STATUS_REJECTED		=> 'rejected',
 	STATUS_CLEARED		=> 'cleared',
 	STATUS_WARRANTY		=> 'warranty'
 );
@@ -63,7 +59,6 @@ $CONFIG['EXT']['project']['STATUS']['TASK'] = array(
 	STATUS_ACCEPTED		=> 'accepted',
 	STATUS_REJECTED		=> 'rejected',
 	STATUS_CLEARED		=> 'cleared',
-	STATUS_WARRANTY		=> 'warranty',
 	STATUS_CUSTOMER		=> 'customer'
 );
 

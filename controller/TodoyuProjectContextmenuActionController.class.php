@@ -31,21 +31,26 @@ class TodoyuProjectContextmenuActionController extends TodoyuActionController {
 	 * Contextmenu for tasks (and containers)
 	 *
 	 * @param	Array		$params
-	 * @return	String
 	 */
 	public function taskAction(array $params) {
 		$idTask		= intval($params['task']);
 		$contextMenu= new TodoyuContextMenu('Task', $idTask);
 
-		return $contextMenu->printJSON();
+		$contextMenu->printJSON();
 	}
 
 
+
+	/**
+	 * Context menu for project
+	 *
+	 * @param	Array		$params
+	 */
 	public function projectAction(array $params) {
 		$idProject	= intval($params['project']);
 		$contextMenu= new TodoyuContextMenu('Project', $idProject);
 
-		return $contextMenu->printJSON();
+		$contextMenu->printJSON();
 	}
 
 }

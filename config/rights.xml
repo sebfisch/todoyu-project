@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rights>
-	
+
 	<section name="general">
 		<right name="use" />
-	</section>	
+	</section>
 
-	<section name="project">
+	<section name="project" require="use">
 		<right name="project:details" />
 		<right name="project:edit" />
 		<right name="project:add" />
@@ -14,55 +14,66 @@
 		<right name="project:addtask" />
 		<right name="project:addcontainer" />
 	</section>
-	
-	<section name="task">
+
+	<section name="task" require="use">
 		<right name="task:edit" />
 		<right name="task:addtask" />
 		<right name="task:addcontainer" />
 		<right name="task:status" />
 		<right name="task:delete" />
-		<right name="task:clone" />		
-		<right name="task:copy" />		
-		<right name="task:cut" />		
+		<right name="task:clone" />
+		<right name="task:copy" />
+		<right name="task:cut" />
 	</section>
-	
-	<section name="container">
+
+	<section name="container" require="use">
 		<right name="container:edit" />
 		<right name="container:addtask" />
 		<right name="container:addcontainer" />
 		<right name="container:delete" />
-		<right name="container:clone" />		
-		<right name="container:copy" />		
-		<right name="container:cut" />		
+		<right name="container:clone" />
+		<right name="container:copy" />
+		<right name="container:cut" />
 	</section>
-	
-	<section name="status">
-		<right name="status:1:see" />
-		<right name="status:2:see" />
-		<right name="status:3:see" />
-		<right name="status:4:see" />
-		<right name="status:5:see" />
-		<right name="status:6:see" />
-		<right name="status:7:see" />
-		<right name="status:8:see" />
-		<right name="status:9:see" />
-		<right name="status:10:see" />
-		<right name="status:1:changeto" />
-		<right name="status:2:changeto" />
-		<right name="status:3:changeto" />
-		<right name="status:4:changeto" />
-		<right name="status:5:changeto" />
-		<right name="status:6:changeto" />
-		<right name="status:7:changeto" />
-		<right name="status:8:changeto" />
-		<right name="status:9:changeto" />
-		<right name="status:10:changeto" />
+
+	<section name="taskstatus" require="use">
+		<right name="taskstatus:planning:see" />
+		<right name="taskstatus:open:see" />
+		<right name="taskstatus:progress:see" />
+		<right name="taskstatus:confirm:see" />
+		<right name="taskstatus:done:see" />
+		<right name="taskstatus:accepted:see" />
+		<right name="taskstatus:rejected:see" />
+		<right name="taskstatus:cleared:see" />
+		<right name="taskstatus:customer:see" />
+		<right name="taskstatus:planning:changeto" />
+		<right name="taskstatus:open:changeto" />
+		<right name="taskstatus:progress:changeto" />
+		<right name="taskstatus:confirm:changeto" />
+		<right name="taskstatus:done:changeto" />
+		<right name="taskstatus:accepted:changeto" />
+		<right name="taskstatus:rejected:changeto" />
+		<right name="taskstatus:cleared:changeto" />
+		<right name="taskstatus:customer:changeto" />
 	</section>
-	
-	<section name="panelwidgets">
+
+	<section name="projectstatus" require="use">
+		<right name="projectstatus:planning:see" />
+		<right name="projectstatus:progress:see" />
+		<right name="projectstatus:done:see" />
+		<right name="projectstatus:cleared:see" />
+		<right name="projectstatus:warranty:see" />
+		<right name="projectstatus:planning:changeto" />
+		<right name="projectstatus:progress:changeto" />
+		<right name="projectstatus:done:changeto" />
+		<right name="projectstatus:cleared:changeto" />
+		<right name="projectstatus:warranty:changeto" />
+	</section>
+
+	<section name="panelwidgets" require="use">
 		<right name="panelwidget:projectTree:use" />
 		<right name="panelwidget:statusFilter:use" />
 		<right name="panelwidget:quickProject:use" />
 	</section>
-	
+
 </rights>
