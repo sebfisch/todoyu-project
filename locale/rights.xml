@@ -12,7 +12,7 @@
 		<label index="right.project:addtask">Add task to project</label>
 		<label index="right.project:addcontainer">Add container to project</label>
 		<label index="section.task">Task</label>
-		<label index="right.task:edit">Edit Project</label>
+		<label index="right.task:edit">Edit Task</label>
 		<label index="right.task:addtask">Add Subtask</label>
 		<label index="right.task:addcontainer">Add Subcontainer</label>
 		<label index="right.task:status">Change Task Status</label>
@@ -74,7 +74,7 @@
 		<label index="right.project:addtask">Aufgabe zu Projekt hinzufügen</label>
 		<label index="right.project:addcontainer">Container zu Projekt hinzufügen</label>
 		<label index="section.task">Aufgaben</label>
-		<label index="right.task:edit">Projekt bearbeiten</label>
+		<label index="right.task:edit">Aufgabe bearbeiten</label>
 		<label index="right.task:addtask">Unter-Aufgabe hinzufügen</label>
 		<label index="right.task:addcontainer">Unter-Container hinzufügen</label>
 		<label index="right.task:status">Task Status ändern</label>
