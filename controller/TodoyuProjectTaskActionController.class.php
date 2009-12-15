@@ -128,7 +128,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask			= intval($data['id']);
 		$idParentTask	= intval($data['id_parenttask']);
 
-			// Create a cache record for the hooks
+			// Create a cache record for the buildform hooks
 		$task = new TodoyuTask(0);
 		$task->injectData($data);
 		TodoyuCache::addRecord($task);
@@ -150,17 +150,17 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			$storageData= $form->getStorageData();
 
 				// Save task
-			$idTaskReal	= TodoyuTaskManager::saveTask($storageData);
+			$idTaskNew	= TodoyuTaskManager::saveTask($storageData);
 
 				// Save task as open (and its parent)
-//			TodoyuProjectPreferences::saveTaskExpandedStatus($idTaskReal, true);
+//			TodoyuProjectPreferences::saveTaskExpandedStatus($idTaskNew, true);
 			TodoyuProjectPreferences::saveTaskExpandedStatus($idParentTask, true);
 
-			TodoyuHeader::sendTodoyuHeader('idTask', $idTaskReal);
+			TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
 			TodoyuHeader::sendTodoyuHeader('idTaskOld', $idTask);
 
-//			return TodoyuProjectRenderer::renderTask($idTaskReal, $idTaskReal);
-			return TodoyuProjectRenderer::renderTask($idTaskReal, 0);
+//			return TodoyuProjectRenderer::renderTask($idTaskNew, $idTaskReal);
+			return TodoyuProjectRenderer::renderTask($idTaskNew, 0);
 		} else {
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTask);
 			TodoyuHeader::sendTodoyuErrorHeader();

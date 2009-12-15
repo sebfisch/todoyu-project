@@ -132,10 +132,13 @@ class TodoyuTaskManager {
 		$idProject	= intval($data['id_project']);
 
 		if( $idTask === 0 ) {
-			$idTask = self::addTask($data);
+				// Create new task with necessary data
+			$firstData	= array(
+				'id_project'	=> intval($data['id_project']),
+				'id_parenttask'	=> intval($data['id_parenttask'])
+			);
 
-				// Set tasknumber
-//			$data['tasknumber']	= TodoyuProjectManager::getNextTaskNumber($idProject);
+			$idTask = self::addTask($firstData);
 		}
 
 			// Check for type
@@ -728,17 +731,19 @@ class TodoyuTaskManager {
 	 */
 	public static function getTaskInfos($idTask) {
 		$idTask		= intval($idTask);
-		$taskData	= array();
+		$data	= array();
 
-		$hookData	= TodoyuHookManager::callHook('project', 'taskdata', array($idTask));
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskdata', $data, array($idTask));
 
-		foreach($hookData as $hookTaskData) {
-			$taskData	= array_merge($taskData, $hookTaskData);
-		}
+//		$hookData	= TodoyuHookManager::callHook('project', 'taskdata', array($idTask));
+//
+//		foreach($hookData as $hookTaskData) {
+//			$taskData	= array_merge($taskData, $hookTaskData);
+//		}
 
-		$taskData = TodoyuArray::sortByLabel($taskData);
+		$data = TodoyuArray::sortByLabel($data, 'position');
 
-		return $taskData;
+		return $data;
 	}
 
 
