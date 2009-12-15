@@ -735,12 +735,6 @@ class TodoyuTaskManager {
 
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskdata', $data, array($idTask));
 
-//		$hookData	= TodoyuHookManager::callHook('project', 'taskdata', array($idTask));
-//
-//		foreach($hookData as $hookTaskData) {
-//			$taskData	= array_merge($taskData, $hookTaskData);
-//		}
-
 		$data = TodoyuArray::sortByLabel($data, 'position');
 
 		return $data;
@@ -774,27 +768,28 @@ class TodoyuTaskManager {
 	/**
 	 * Attributes for task data list
 	 *
+	 * @param	Array		$data
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function getTaskDataAttributes($idTask) {
-		$idTask	= intval($idTask);
-		$task	= TodoyuTaskManager::getTask($idTask);
-		$data	= $task->getTemplateData(2);
+	public static function getTaskDataAttributes(array $data, $idTask) {
+		$idTask		= intval($idTask);
+		$task		= TodoyuTaskManager::getTask($idTask);
+		$taskData	= $task->getTemplateData(2);
 
 		$info	= array();
 
 			// Date create
-		$info[]	= array(
+		$info['date_create']	= array(
 			'label'	=> 'LLL:task.attr.date_create',
-			'value'	=> TodoyuTime::format($data['date_create'], 'datetime'),
+			'value'	=> TodoyuTime::format($taskData['date_create'], 'datetime'),
 			'position'	=> 50
 		);
 
 			// User owner
-		$info[]	= array(
+		$info['user_owner']	= array(
 			'label'	=> 'LLL:task.attr.user_owner',
-			'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $data['user_owner']['lastname'] . ', ' . $data['user_owner']['firstname'] . '</a>',
+			'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $taskData['user_owner']['lastname'] . ', ' . $taskData['user_owner']['firstname'] . '</a>',
 			'position'	=> 90
 		);
 
@@ -802,67 +797,69 @@ class TodoyuTaskManager {
 		if( $task->isTask() ) {
 
 				// Status
-			$info[]	= array(
+			$info['status']	= array(
 				'label'		=> 'LLL:core.status',
-				'value'		=> $data['statuslabel'],
+				'value'		=> $taskData['statuslabel'],
 				'position'	=> 20
 			);
 
 				// Date start
-			$info[]	= array(
+			$info['date_start']	= array(
 				'label'	=> 'LLL:task.attr.date_start',
-				'value'	=> TodoyuTime::format( $data['date_start'], 'date'),
+				'value'	=> TodoyuTime::format( $taskData['date_start'], 'date'),
 				'position'	=> 60
 			);
 
 				// Date deadline
-			if( $data['date_deadline'] > 0 ) {
-				$formatDeadline	= date('s', $data['date_deadline']) === '00' ? 'date' : 'datetime';
-				$info[]	= array(
+			if( $taskData['date_deadline'] > 0 ) {
+				$formatDeadline	= date('s', $taskData['date_deadline']) === '00' ? 'date' : 'datetime';
+				$info['date_deadline']	= array(
 					'label'	=> 'LLL:task.attr.date_deadline',
-					'value'	=> TodoyuTime::format($data['date_deadline'], $formatDeadline),
+					'value'	=> TodoyuTime::format($taskData['date_deadline'], $formatDeadline),
 					'position'	=> 80
 				);
 			}
 
 				// Worktype
-			$info[] = array(
+			$info['worktype'] = array(
 				'label'		=> 'LLL:task.attr.worktype',
-				'value'		=> $data['worktype']['title'],// 'Internes / Administration',
+				'value'		=> $taskData['worktype']['title'],// 'Internes / Administration',
 				'position'	=> 10
 			);
 
 				// Estimated workload
-			$info[]	= array(
+			$info['esitmated_workload']	= array(
 				'label'	=> 'LLL:task.attr.esitmated_workload',
-				'value'	=> TodoyuTime::sec2hour($data['estimated_workload']),
+				'value'	=> TodoyuTime::sec2hour($taskData['estimated_workload']),
 				'position'	=> 30
 			);
 
 				// Estimated workload
-			$info[]	= array(
+			$info['is_estimatedworkload_public']	= array(
 				'label'		=> 'LLL:task.attr.is_estimatedworkload_public',
-				'value'		=> Label('task.attr.is_estimatedworkload_public.' . $data['is_estimatedworkload_public']),
+				'value'		=> Label('task.attr.is_estimatedworkload_public.' . $taskData['is_estimatedworkload_public']),
 				'position'	=> 31
 			);
 
 				// Date end (if set)
 			$formatEnd	= date('m', $data['date_end']) === '00' ? 'date' : 'datetime';
-			$info[]	= array(
+			$info['date_end']	= array(
 				'label'	=> 'LLL:task.attr.date_end',
-				'value'	=> TodoyuTime::format($data['date_end'], $formatEnd),
+				'value'	=> TodoyuTime::format($taskData['date_end'], $formatEnd),
 				'position'	=> 70
 			);
 
 				// User assigned
-			$info[]	= array(
+			$info['user_assigned']	= array(
 				'label'	=> 'LLL:task.attr.user_assigned',
-				'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $data['user_assigned']['lastname'] . ', ' . $data['user_assigned']['firstname'] . '</a>',
+				'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $taskData['user_assigned']['lastname'] . ', ' . $taskData['user_assigned']['firstname'] . '</a>',
 				'position'	=> 100
 			);
 		}
 
-		return $info;
+		$data	= array_merge($data, $info);
+
+		return $data;
 	}
 
 
