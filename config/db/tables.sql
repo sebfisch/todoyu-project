@@ -64,6 +64,7 @@ CREATE TABLE `ext_project_task` (
   `date_finish` int(10) unsigned NOT NULL,
   `tasknumber` int(11) DEFAULT '0',
   `status` tinyint(4) NOT NULL,
+  `id_worktype` smallint(6) NOT NULL DEFAULT '0',
   `estimated_workload` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `is_estimatedworkload_public` tinyint(1) NOT NULL,
   `is_acknowledged` tinyint(1) unsigned NOT NULL DEFAULT '0',
