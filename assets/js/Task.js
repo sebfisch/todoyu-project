@@ -403,7 +403,12 @@ Todoyu.Ext.project.Task = {
 	 */
 	onStatusUpdated: function(idTask, status, response) {
 		Todoyu.Hook.exec('taskStatusUpdated', idTask, status);
-		this.refresh(idTask);
+		
+		if( this.isDetailsLoaded(idTask) ) {
+			this.refresh(idTask);
+		} else {
+			this.setStatus(idTask, status);
+		}
 	},
 
 
@@ -416,9 +421,9 @@ Todoyu.Ext.project.Task = {
 	getStatus: function(idTask) {
 		var classNames 	= $('task-' + idTask + '-header').down('span.headLabel').classNames();
 		var statusClass	= classNames.grep(/.*Status(\d)/).first();
-		var statusKey	= statusClass.split('Status').last();
+		var statusIndex	= statusClass.split('Status').last();
 
-		return statusKey;
+		return statusIndex;
 	},
 
 
@@ -429,7 +434,11 @@ Todoyu.Ext.project.Task = {
 	 * 	@param	status
 	 */
 	setStatus: function(idTask, status) {
-		console.log('not implemented yet');
+		var element		= $('task-' + idTask + '-header').down('span.headLabel');
+		var oldStatus	= this.getStatus(idTask);
+		
+		element.replaceClassName('bcStatus' + oldStatus);
+		element.addClassName('bcStatus' + status);		
 	},
 
 

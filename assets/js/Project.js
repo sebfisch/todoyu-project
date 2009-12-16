@@ -260,14 +260,36 @@ Todoyu.Ext.project.Project = {
 		var url	= Todoyu.getUrl('project', 'project');
 		var options	= {
 			'parameters': {
-				'project':	idProject,
 				'action':	'setstatus',
+				'project':	idProject,
 				'status':	status
 			},
-			'onComplete':	this.refresh.bind(this, idProject)
+			'onComplete':	this.onStatusUpdated.bind(this, idProject, status)
 		};
 
 		Todoyu.send(url, options);
+	},
+	
+	onStatusUpdated: function(idProject, status, response) {
+		this.refresh(idProject);
+		this.setStatus(idProject, status);
+	},
+	
+	
+	getStatus: function(idProject) {
+		var classNames 	= $('project-' + idProject).down('div.projectstatus').classNames();
+		var statusClass	= classNames.grep(/bcStatus(\d)/).first();
+		var statusIndex	= statusClass.split('Status').last();
+
+		return statusIndex;
+	},
+	
+	setStatus: function(idProject, status) {
+		var statusBar	= $('project-' + idProject).down('div.projectstatus');
+		var oldStatus	= this.getStatus(idProject);
+		
+		statusBar.replaceClassName('bcStatus' + oldStatus);
+		statusBar.addClassName('bcStatus' + status);		
 	},
 
 
