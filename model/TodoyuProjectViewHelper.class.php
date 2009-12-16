@@ -76,12 +76,32 @@ class TodoyuProjectViewHelper {
 		$statuses	= TodoyuProjectStatusManager::getProjectStatuses();
 		$values		= $field->getValue();
 		$value		= intval($values[0]);
+		$options	= array();
 
 		foreach($statuses as $statusID => $statusKey)	{
-			if( allowed('project', 'status:' . $statusID . ':changeto') || $value == $statusID ) {
+			if( allowed('project', 'projectstatus:' . $statusID . ':changeto') || $value == $statusID ) {
 				$options[] = array(
 					'value'		=> $statusID,
 					'label'		=> TodoyuProjectStatusManager::getProjectStatusLabel($statusKey)
+				);
+			}
+		}
+
+		return $options;
+	}
+
+
+	public static function getTaskStatusOptions(TodoyuFormElement $field) {
+		$statuses	= TodoyuProjectStatusManager::getTaskStatuses();
+		$values		= $field->getValue();
+		$value		= intval($values[0]);
+		$options	= array();
+
+		foreach($statuses as $statusID => $statusKey)	{
+			if( allowed('project', 'taskstatus:' . $statusID . ':changeto') || $value == $statusID ) {
+				$options[] = array(
+					'value'		=> $statusID,
+					'label'		=> TodoyuProjectStatusManager::getTaskStatusLabel($statusKey)
 				);
 			}
 		}

@@ -188,9 +188,11 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'get' action method
+	 * Get task content
+	 * Render a full task to for refresh
 	 *
-	 *	@param	Array $params
+	 * @param	Array		$params
+	 * @return	String
 	 */
 	public function getAction(array $params) {
 		$idTask	= intval($params['task']);
@@ -203,10 +205,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'detail' action method
+	 * Get task detail content
 	 *
-	 *	@param	Array $params
-	 *	@return	String
+	 * @param	Array		$params
+	 * @return	String
 	 */
 	public function detailAction(array $params) {
 		$idTask		= intval($params['task']);

@@ -421,7 +421,6 @@ class TodoyuProjectRenderer extends TodoyuRenderer {
 		$idTask	= intval($idTask);
 
 		if( is_null(self::$expandedTaskIDs) ) {
-			//TodoyuProjectPreferences::get
 			self::$expandedTaskIDs = TodoyuProjectPreferences::getExpandedTasks();
 		}
 

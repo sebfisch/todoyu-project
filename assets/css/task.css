@@ -88,7 +88,7 @@
 	Additional stuff
    ---------------------- */
 
-.task h3 span.additionalStuff {
+#taskList .task h3 span.additionalStuff {
 	position: absolute;
 	height: 16px;
 	width: 65px;
@@ -98,7 +98,7 @@
 	cursor:default;
 }
 
-.task h3 span.additionalStuff span {
+#taskList .task h3 span.additionalStuff span {
 	float: left;
 	clear: none;
 	width: 16px;
@@ -107,11 +107,11 @@
 	margin-left: 3px;
 }
 
-.task .additionalStuff .taskcontainer {
+#taskList .task .additionalStuff .taskcontainer {
 	background: url('../img/icons.png') no-repeat 0 -87px;
 }
 
-.task .additionalStuff .isPublic {
+#taskList .task .additionalStuff .isPublic {
 	background: url('../img/icons.png') no-repeat 0 -206px;
 }
 

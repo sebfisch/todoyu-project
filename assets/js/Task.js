@@ -991,8 +991,6 @@ Todoyu.Ext.project.Task = {
 				},
 				onComplete: this.onSaved.bind(this)
 			});
-
-			return false;
 		},
 
 

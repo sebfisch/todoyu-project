@@ -68,7 +68,7 @@
 		<label index="js.removetask.question">Do you really want do delete this task?</label>
 		<label index="type.task">Task</label>
 		<label index="type.container">Container</label>
-		<label index="billable_time">Billable Time</label>
+		<label index="billableTime">Billable Time</label>
 		<label index="title.cloned">Copy of: %s</label>
 		<label index="worktype">Work Type</label>
 		<label index="esitmated_workload">Estimated Workload</label>
@@ -153,7 +153,7 @@
 		<label index="js.removetask.question">Wollen Sie diese Aufgabe wirklich löschen?</label>
 		<label index="type.task">Aufgabe</label>
 		<label index="type.container">Container</label>
-		<label index="billable_time">Verrechenbare Zeit</label>
+		<label index="billableTime">Verrechenbare Zeit</label>
 		<label index="title.cloned">Kopie von: %s</label>
 		<label index="worktype">Leistungsart</label>
 		<label index="esitmated_workload">Geschätzter Aufwand</label>
