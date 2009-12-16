@@ -6,7 +6,7 @@
 		<label index="attr.title">Task Title</label>
 		<label index="attr.worktype">Work Type</label>
 		<label index="attr.esitmated_workload">Estimated Workload</label>
-		<label index="attr.is_onblock">Work Frequency</label>
+		<label index="attr.ext_resources_is_onblock">Work Frequency</label>
 		<label index="attr.billingtype">Billing Type</label>
 		<label index="attr.date_create">Creation Date</label>
 		<label index="attr.date_start">Start Date</label>
@@ -95,7 +95,7 @@
 		<label index="attr.title">Aufgaben-Titel</label>
 		<label index="attr.worktype">Leistungsart</label>
 		<label index="attr.esitmated_workload">Geschätzter Aufwand</label>
-		<label index="attr.is_onblock">Block-Aufgabe</label>
+		<label index="attr.ext_resources_is_onblock">Block-Aufgabe</label>
 		<label index="attr.billingtype">Berechnungstyp</label>
 		<label index="attr.date_create">Erfassungs-Datum</label>
 		<label index="attr.date_start">Start-Datum</label>
