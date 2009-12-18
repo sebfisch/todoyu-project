@@ -13,7 +13,7 @@
 
 				<field type="textinput" name="title">
 					<label>core.title</label>
-					<required>1</required>
+					<required />
 				</field>
 
 				<field type="textinputAC" name="id_project">
@@ -26,7 +26,7 @@
 						</acListener>
 						<acLabelField>title</acLabelField>
 					</config>
-					<required>1</required>
+					<required />
 				</field>
 
 				<field type="RTE" name="description">
@@ -48,7 +48,7 @@
 						<label>title</label>
 						<value>id</value>
 					</source>
-					<required>1</required>
+					<required />
 				</field>
 
 				<field type="timeinput" name="workload_tracked">
@@ -70,16 +70,16 @@
 		</fieldset>
 
 		<fieldset name="buttons">
-				<legend>Actions</legend>
-				<class>buttons</class>
-				<elements>
-					<field type="saveButton" name="save">
-						<onclick>Todoyu.Ext.project.QuickTask.save(this.form)</onclick>
-					</field>
-					<field type="cancelButton" name="cancel">
-						<onclick>Todoyu.Ext.project.QuickTask.closePopup()</onclick>
-					</field>
-				</elements>
+			<legend>Actions</legend>
+			<class>buttons</class>
+			<elements>
+				<field type="saveButton" name="save">
+					<onclick>Todoyu.Ext.project.QuickTask.save(this.form)</onclick>
+				</field>
+				<field type="cancelButton" name="cancel">
+					<onclick>Todoyu.Ext.project.QuickTask.closePopup()</onclick>
+				</field>
+			</elements>
 		</fieldset>
 	</fieldsets>
 </form>

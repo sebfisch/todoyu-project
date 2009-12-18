@@ -16,7 +16,7 @@ class TodoyuProjectProjectformActionController extends TodoyuActionController {
 				$form	= TodoyuFormManager::getForm($xmlPath, $index);
 
 				// Load (/preset) form data
-				$formData	= array();
+				$formData	= $form->getFormData();
 				$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $index);
 
 					// Set form data
