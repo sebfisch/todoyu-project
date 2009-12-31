@@ -22,7 +22,7 @@
 /**
  * Handles the Datasource for filter-widgets which belong to a task
  *
- * @package todoyu
+ * @package Todoyu
  * @subpackage project
  *
  */
