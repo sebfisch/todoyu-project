@@ -40,52 +40,52 @@ class TodoyuProject extends TodoyuBaseObject {
 
 
 	/**
-	 * Get full project title with customer short name
+	 * Get full project title with company short name
 	 *
 	 * @return	String
 	 */
 	public function getFullTitle() {
-		return $this->getCustomer()->getTitle() . ' - ' . $this->getTitle();
+		return $this->getCompany()->getTitle() . ' - ' . $this->getTitle();
 	}
 
 
 
 	/**
-	 * Get customer ID
+	 * Get company ID
 	 *
 	 * @return	Integer
 	 */
-	public function getCustomerID() {
-		return intval($this->data['id_customer']);
+	public function getCompanyID() {
+		return intval($this->data['id_company']);
 	}
 
 
 
 	/**
-	 * Get customer object
+	 * Get company object
 	 *
-	 * @return	TodoyuCustomer
+	 * @return	TodoyuCompany
 	 */
-	public function getCustomer() {
-		return TodoyuCustomerManager::getCustomer($this->getCustomerID());
+	public function getCompany() {
+		return TodoyuCompanyManager::getCompany($this->getCompanyID());
 	}
 
 
 
 	/**
-	 * Get customer array
+	 * Get company array
 	 *
 	 * @return	Array
 	 */
-	public function getCustomerData() {
-		if( $this->isInCache('customer') ) {
-			$customer	= $this->getCacheItem('customer');
+	public function getCompanyData() {
+		if( $this->isInCache('company') ) {
+			$company	= $this->getCacheItem('company');
 		} else {
-			$customer 	= TodoyuCustomerManager::getCustomerData($this->getCustomerID());
-			$this->addToCache('customer', $customer);
+			$company 	= TodoyuCompanyManager::getCompanyData($this->getCompanyID());
+			$this->addToCache('company', $company);
 		}
 
-		return $customer;
+		return $company;
 	}
 
 

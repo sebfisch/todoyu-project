@@ -87,13 +87,13 @@
 							</validate>
 						</field>
 
-						<field type="textinputAC" name="id_customer">
-							<label>project.attr.customer</label>
+						<field type="textinputAC" name="id_company">
+							<label>project.attr.company</label>
 							<config>
 								<acListener>
 									<ext>project</ext>
 									<controller>project</controller>
-									<action>autocompleteCustomer</action>
+									<action>autocompleteCompany</action>
 								</acListener>
 								<acLabelFunc>TodoyuCustomerManager::getLabel</acLabelFunc>
 								<options>

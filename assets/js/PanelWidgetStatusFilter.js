@@ -73,6 +73,11 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	 *	@param	Event		event
 	 */
 	onSelectionChange: function(event) {
+			// If no status is selected, select all, because it will be handled this way anyway
+		if( ! this.isAnyStatusSelected() ) {
+			this.selectAll();
+		}
+		
 		this.onUpdate();
 	},
 
@@ -127,6 +132,17 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	isAnyStatusSelected: function() {
 		return this.getNumSelected() > 0;
 	},
+	
+	
+	
+	/**
+	 * Select all statuses
+	 */
+	selectAll: function() {
+		$(this.list).childElements().each(function(option){
+			option.selected = true;
+		});
+	},
 
 
 
@@ -135,7 +151,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	 */
 	savePreference: function() {
 		var pref	= this.getSelectedStatuses().join(',');
-		var action		= 'panelwidget' + this.key;
+		var action	= 'panelwidget' + this.key;
 
 		Todoyu.Pref.save('project', action, pref);
 	}

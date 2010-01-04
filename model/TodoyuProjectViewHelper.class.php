@@ -79,7 +79,7 @@ class TodoyuProjectViewHelper {
 		$options	= array();
 
 		foreach($statuses as $statusID => $statusKey)	{
-			if( allowed('project', 'projectstatus:' . $statusID . ':changeto') || $value == $statusID ) {
+			if( allowed('project', 'projectstatus:' . $statusKey . ':changeto') || $value == $statusID ) {
 				$options[] = array(
 					'value'		=> $statusID,
 					'label'		=> TodoyuProjectStatusManager::getProjectStatusLabel($statusKey)
@@ -98,7 +98,7 @@ class TodoyuProjectViewHelper {
 		$options	= array();
 
 		foreach($statuses as $statusID => $statusKey)	{
-			if( allowed('project', 'taskstatus:' . $statusID . ':changeto') || $value == $statusID ) {
+			if( allowed('project', 'taskstatus:' . $statusKey . ':changeto') || $value == $statusID ) {
 				$options[] = array(
 					'value'		=> $statusID,
 					'label'		=> TodoyuProjectStatusManager::getTaskStatusLabel($statusKey)

@@ -68,11 +68,11 @@ class TodoyuProjectSearch implements TodoyuSearchEngineIf {
 			$fields	= '	p.id,
 						p.title,
 						p.status,
-						c.title customer';
+						c.title company';
 			$table	= '	ext_project_project p,
-						ext_user_customer c';
+						ext_user_company c';
 			$where	= '	p.id IN(' . implode(',', $projectIDs) . ') AND
-						p.id_customer	= c.id';
+						p.id_company	= c.id';
 			$order	= '	p.date_create DESC';
 
 			$projects	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -81,7 +81,7 @@ class TodoyuProjectSearch implements TodoyuSearchEngineIf {
 			foreach($projects as $project) {
 				$suggestions[] = array(
 					'labelTitle'=> $project['id'] . ': ' . $project['title'],
-					'labelInfo'	=> $project['customer'] . ' | ' . $status[$project['status']],
+					'labelInfo'	=> $project['company'] . ' | ' . $status[$project['status']],
 					'title'		=> $project['id'] . ': ' . $project['title'],
 					'onclick'	=> 'location.href=\'?ext=project&amp;project=' . $project['id'] . '\''
 				);

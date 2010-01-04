@@ -339,7 +339,7 @@ Todoyu.Ext.project.Task = {
 	 *	@param	Integer		idTask
 	 */
 	hasSubtasks: function(idTask) {
-		return Todoyu.exists('task-' + idTask + '-subtasks') || $('task-' + idTask + '-subtasks-trigger').hasClassName('expandable');
+		return Todoyu.exists('task-' + idTask + '-subtasks') || ($('task-' + idTask + '-subtasks-trigger') && $('task-' + idTask + '-subtasks-trigger').hasClassName('expandable'));
 	},
 
 

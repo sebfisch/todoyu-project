@@ -26,13 +26,9 @@
  * @subpackage	Project
  */
 
-
-TodoyuRenderer::addAreaRenderer('project', 'content', 'TodoyuProjectRenderer::renderProjectView');
-
-//$CONFIG['EXT']['project']['renderer']['content'][] 	= 'TodoyuProjectRenderer::renderProjectView';
-$CONFIG['EXT']['project']['renderer']['panel'][]	= 'TodoyuProjectRenderer::renderPanelWidgets';
-
-
+	/**
+	 * @todo	Implement this with a hook
+	 */
 TodoyuRenderer::addAreaRenderer('project', 'projectinfo', 'TodoyuProjectRenderer::renderProjectAssignedUsers');
 
 TodoyuContextMenuManager::registerFunction('Task', 'TodoyuTaskManager::getContextMenuItems', 10);

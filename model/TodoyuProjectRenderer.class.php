@@ -26,7 +26,7 @@
  * @subpackage	Project
  */
 
-class TodoyuProjectRenderer extends TodoyuRenderer {
+class TodoyuProjectRenderer {
 
 	/**
 	 * Extension key

@@ -51,7 +51,7 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Get full task title (customer - project - task)
+	 * Get full task title (company - project - task)
 	 *
 	 * @return	String
 	 */
@@ -335,7 +335,7 @@ class TodoyuTask extends TodoyuBaseObject {
 				$data['user_owner']		= $this->getUserArray('owner');
 				$data['worktype']		= $this->getWorktype();
 				$data['fulltitle'] 		= $this->getFullTitle();
-				$data['customer'] 		= $this->getProject()->getCustomerData();
+				$data['company'] 		= $this->getProject()->getCompanyData();
 
 			case 1:
 				$data['statuskey'] 		= $this->getStatusKey();

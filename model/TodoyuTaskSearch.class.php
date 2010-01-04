@@ -93,12 +93,12 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 						t.tasknumber,
 						t.title,
 						p.title as project,
-						c.shortname as customer';
+						c.shortname as company';
 			$table	= '	ext_project_task t,
 						ext_project_project p,
-						ext_user_customer c';
+						ext_user_company c';
 			$where	= '	t.id_project = p.id AND
-						p.id_customer= c.id AND
+						p.id_company= c.id AND
 						t.id IN(' . implode(',', $taskIDs) . ')';
 			$order	= '	t.date_create DESC';
 
@@ -107,7 +107,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 			foreach($tasks as $task) {
 				$suggestions[] = array(
 					'labelTitle'=> $task['id_project'] . '.' . $task['tasknumber'] . ': ' . $task['title'],
-					'labelInfo'	=> $task['project'] . ', ' . $task['customer'],
+					'labelInfo'	=> $task['project'] . ', ' . $task['company'],
 					'title'		=> $task['id_project'] . '.' . $task['tasknumber'] . ': ' . $task['title'],
 					'onclick'	=> 'location.href=\'?ext=project&amp;project=' . $task['id_project'] . '&amp;task=' . $task['id'] . '#task-' . $task['id'] . '\'');
 			}

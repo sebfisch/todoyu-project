@@ -39,10 +39,9 @@ class TodoyuTaskViewHelper {
 
 		$users	= TodoyuUserManager::getInternalUsers();
 		$options= array(
-			0	=> array(
-				'disabled'	=> true,
+			array(
 				'label'		=> 'LLL:form.select.pleaseSelect',
-				'value'		=> 0,
+				'value'		=> 0
 			)
 		);
 
@@ -54,6 +53,11 @@ class TodoyuTaskViewHelper {
 		}
 
 		return $options;
+	}
+
+
+	public static function getTaskOwnerUserOptions(TodoyuFormElement $field) {
+		return self::getTaskAssignUserOptions($field);
 	}
 
 

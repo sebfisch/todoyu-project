@@ -36,13 +36,13 @@
 					</config>
 				</field>
 
-				<field type="textinputAC" name="customer">
+				<field type="textinputAC" name="company">
 					<label>panelwidget-projecttree.filter.customer</label>
 					<config>
 						<acListener>
 							<ext>project</ext>
 							<controller>project</controller>
-							<action>autocompleteCustomer</action>
+							<action>autocompleteCompany</action>
 						</acListener>
 						<acLabelFunc>TodoyuCustomerManager::getLabel</acLabelFunc>
 					</config>

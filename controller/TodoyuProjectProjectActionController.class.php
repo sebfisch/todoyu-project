@@ -105,14 +105,14 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'autocompleteCustomer' action method
+	 *	Get company autocomplete
 	 *
-	 *	@param	Array	$params
+	 *	@param	Array		$params
 	 *	@return	String
 	 */
-	public function autocompleteCustomerAction(array $params) {
+	public function autocompleteCompanyAction(array $params) {
 		$sword	= $params['sword'];
-		$results = TodoyuUserFilterDataSource::autocompleteCustomers($sword);
+		$results = TodoyuUserFilterDataSource::autocompleteCompanies($sword);
 
 		return TodoyuRenderer::renderAutocompleteList($results);
 	}

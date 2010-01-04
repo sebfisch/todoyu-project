@@ -51,8 +51,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 *
 	 * @return	Array
 	 */
-	public function getTaskIDs() {
-		$taskIDs = parent::getItemIDs(self::TABLE . '.sorting ASC', 100);
+	public function getTaskIDs($sorting = 'sorting', $limit = 100) {
+		$limit	= intval($limit);
+		$taskIDs= parent::getItemIDs($sorting, $limit);
 
 		return $taskIDs;
 	}
@@ -391,7 +392,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 		} else {
 				// set up query parts array
 			$tables	= ('ext_project_task');
-			
+
 			if( $negate === false)	{
 				$where	= 'ext_project_task.id_user_assigned != ' . intval($idUser);
 			} else {
@@ -449,7 +450,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 
 
 	/**
-	 * Public customer filter
+	 * Public filter
 	 *
 	 * @param	Integer	$value
 	 * @param	boolean	$negate
@@ -477,24 +478,26 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 * @param	Bool		$negate
 	 * @return	Array
 	 */
-	public static function Filter_status($statuses, $negate) {
-		$statuses	= explode(',', $statuses);
-		$statuses	= TodoyuArray::intval($statuses, true, true);
+	public static function Filter_status($statuses, $negate = false) {
+		$statuses	= TodoyuDiv::intExplode(',', $statuses, true, true);
 
+			// If no status selected, get all allowed
 		if( sizeof($statuses) === 0 ) {
-			return false;
+			$statuses = array_keys(TodoyuProjectStatusManager::getTaskStatuses());
 		}
-		
+
 		$tables	= array('ext_project_task');
+
 		if( $negate )	{
 			$where	= 'ext_project_task.status NOT IN(' . implode(',', $statuses) . ')';
 		} else {
 			$where	= 'ext_project_task.status IN(' . implode(',', $statuses) . ')';
 		}
 
-		return array(	'tables'	=> $tables,
-						'where'		=> $where
-					);
+		return array(
+			'tables'	=> $tables,
+			'where'		=> $where
+		);
 	}
 
 

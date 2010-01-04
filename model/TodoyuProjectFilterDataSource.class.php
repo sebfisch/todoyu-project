@@ -21,7 +21,7 @@
 
 /**
  * handles the datasource for the filter widgets
- * 
+ *
  * @package Todoyu
  * @subpackage project
  */
@@ -46,16 +46,16 @@ class TodoyuProjectFilterDataSource {
 		if( sizeof($projectIDs) > 0 ) {
 			$fields		= '	p.id,
 							p.title,
-							c.shortname as customer';
+							c.shortname as company';
 			$tables		= ' ext_project_project p,
-							ext_user_customer c';
-			$where		= ' p.id_customer = c.id AND
+							ext_user_company c';
+			$where		= ' p.id_company = c.id AND
 							p.id IN(' . implode(',', $projectIDs) . ')';
 
 			$projects	= Todoyu::db()->getArray($fields, $tables, $where);
 
 			foreach($projects as $project) {
-				$data[$project['id']] = $project['customer'] .' - ' . $project['title'];
+				$data[$project['id']] = $project['company'] .' - ' . $project['title'];
 			}
 		}
 

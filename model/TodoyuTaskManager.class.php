@@ -430,7 +430,7 @@ class TodoyuTaskManager {
 				$statuses = array_flip(TodoyuProjectStatusManager::getProjectStatuses());
 
 				foreach($allowed['status']['submenu'] as $key => $status) {
-					if( ! allowed('project', 'status:' . $statuses[$key] . ':changeto') ) {
+					if( ! allowed('project', 'taskstatus:' . $statuses[$key] . ':changeto') ) {
 						unset($allowed['status']['submenu'][$key]);
 					}
 				}

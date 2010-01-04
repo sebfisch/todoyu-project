@@ -342,16 +342,16 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 			'optgroup'	=> 'LLL:project.search.label',
 			'widget'	=> 'textinput',
 		),
-		'customer' => array(
-			'funcRef'	=> 'TodoyuProjectFilter::filter_customer',
-			'label'		=> 'LLL:projectFilter.project.customer',
+		'company' => array(
+			'funcRef'	=> 'TodoyuProjectFilter::filter_company',
+			'label'		=> 'LLL:projectFilter.project.company',
 			'optgroup'	=> 'LLL:project.search.label',
 			'widget'	=> 'textinput',
 			'wConf' => array(
 				'autocomplete'	=> true,
-				'FuncRef'		=> 'TodoyuUserFilterDataSource::autocompleteCustomers',
+				'FuncRef'		=> 'TodoyuUserFilterDataSource::autocompleteCompanies',
 				'FuncParams'	=> array(),
-				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getCustomerLabel'
+				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getCompanyLabel'
 			)
 		),
 		'projectleader' => array(

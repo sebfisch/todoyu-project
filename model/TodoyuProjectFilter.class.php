@@ -62,10 +62,10 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 	 */
 	public static function Filter_fulltext($searchWords, $negate = false) {
 		$searchWords	= TodoyuDiv::trimExplode(' ', $searchWords);
-		$searchInFields	= array('ext_project_project.title', 'ext_project_project.description', 'ext_user_customer.title', 'ext_user_customer.shortname');
+		$searchInFields	= array('ext_project_project.title', 'ext_project_project.description', 'ext_user_company.title', 'ext_user_company.shortname');
 
-		$tables	= array('ext_project_project', 'ext_user_customer');
-		$where	= 'ext_project_project.id_customer	= ext_user_customer.id';
+		$tables	= array('ext_project_project', 'ext_user_company');
+		$where	= 'ext_project_project.id_company	= ext_user_company.id';
 
 		$where .= ' AND ' . Todoyu::db()->buildLikeQuery($searchWords, $searchInFields);
 
@@ -130,21 +130,21 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 
 
 	/**
-	 * Filter projects by customer
+	 * Filter projects by company
 	 *
-	 * @param	Integer	$idCustomer
-	 * @param	Boolean	$negate
+	 * @param	Integer		$idCompany
+	 * @param	Bool		$negate
 	 * @return	Array
 	 */
-	public static function Filter_customer($idCustomer, $negate = false) {
-		$idCustomer	= intval($idCustomer);
+	public static function Filter_company($idCompany, $negate = false) {
+		$idCompany	= intval($idCompany);
 
-		if( $idCustomer === 0 ) {
+		if( $idCompany === 0 ) {
 			return false;
 		}
 
 		$tables	= array('ext_project_project');
-		$where	= 'ext_project_project.id_customer = ' . $idCustomer;
+		$where	= 'ext_project_project.id_company = ' . $idCompany;
 
 		return array(
 			'tables'=> $tables,

@@ -268,7 +268,6 @@ class TodoyuProjectManager {
 		);
 
 		$taskFilter	= new TodoyuTaskFilter($filters);
-
 		$taskIDs	= $taskFilter->getTaskIDs();
 
 		return $taskIDs;
@@ -354,7 +353,7 @@ class TodoyuProjectManager {
 			$allowed['status']['submenu'] = array();
 
 			foreach($ownItems['status']['submenu'] as $key => $status) {
-				if( allowed('project', 'status:' . $key . ':changeto') ) {
+				if( allowed('project', 'projectstatus:' . $key . ':changeto') ) {
 					$allowed['status']['submenu'][$key] = $status;
 				}
 			}
@@ -427,12 +426,12 @@ class TodoyuProjectManager {
 		if( sizeof($projectIDs) > 0 ) {
 			$fields	= '	p.id,
 						p.title,
-						c.shortname as customer,
-						c.title as customerFull';
+						c.shortname as companyShort,
+						c.title as companyFull';
 			$table	= '	ext_project_project p,
-						ext_user_customer c';
+						ext_user_company c';
 			$where	= '	p.id IN(' . $projectList . ') AND
-						(p.id_customer = 0 OR p.id_customer = c.id) AND
+						(p.id_company = 0 OR p.id_company = c.id) AND
 						p.deleted = 0';
 			$order	= 'FIELD(p.id, ' . $projectList . ')';
 			$limit	= 3;
@@ -446,12 +445,13 @@ class TodoyuProjectManager {
 		$tabs	= array();
 
 		foreach($projects as $project) {
+			$companyLabel	= trim($project['companyShort']) === '' ? TodoyuDiv::cropText($project['companyFull'], 10, '..', false) : $project['companyShort'];
 			$tabs[] = array(
 				'id'		=> $project['id'],
 				'htmlId'	=> 'projecttab-' . $project['id'],
 				'class'		=> 'projecttab',
 				'classKey'	=> $project['id'],
-				'label'		=> TodoyuDiv::cropText( ($project['customer'] ? $project['customer'] : TodoyuDiv::cropText($project['customerFull'], 10, '..', false ) ). ': ' . $project['title'], 23, '..', false)
+				'label'		=> TodoyuDiv::cropText($companyLabel. ': ' . $project['title'], 23, '..', false)
 			);
 		}
 
@@ -502,8 +502,8 @@ class TodoyuProjectManager {
 		);
 
 		$info[]	= array(
-			'label'		=> 'LLL:project.attr.customer',
-			'value'		=> $project->getCustomer()->getTitle(),
+			'label'		=> 'LLL:project.attr.company',
+			'value'		=> $project->getCompany()->getTitle(),
 			'position'	=> 20
 		);
 
@@ -555,8 +555,6 @@ class TodoyuProjectManager {
 	public static function getTaskTreeFilterStruct() {
 		$struct	= array();
 		$filters= self::getTaskTreeFilters();
-
-
 
 		foreach($filters as $filter => $value) {
 			$struct[] = array(
@@ -838,7 +836,7 @@ class TodoyuProjectManager {
 			'title'			=> TodoyuLocale::getLabel('project.newproject.title'),
 			'description'	=> '',
 			'status'		=> STATUS_PLANNING,
-			'id_customer'	=> 0,
+			'id_company'	=> 0,
 			'date_start'	=> NOW,
 			'date_end'		=> NOW + 3600*24*30,
 			'date_deadline'	=> NOW + 3600*24*30
@@ -865,7 +863,7 @@ class TodoyuProjectManager {
 		foreach($openProjectIDs as $idProject) {
 			$project	= TodoyuProjectManager::getProject($idProject);
 
-			$entries[$idProject]	= $project->getCustomer()->getShortLabel() . ' - ' . $project->getTitle();
+			$entries[$idProject]	= $project->getCompany()->getShortLabel() . ' - ' . $project->getTitle();
 		}
 
 		return $entries;

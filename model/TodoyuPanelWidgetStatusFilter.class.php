@@ -107,20 +107,7 @@ class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuP
 	 *	@return	Array
 	 */
 	private function getStatusesInfos() {
-		if (array_key_exists('statusesInfos', $this->config)) {
-			$statusInfos	= $this->config['statusesInfos'];
-		} else {
-			$statusInfos	= TodoyuProjectStatusManager::getProjectStatusInfos();
-		}
-
-			// Only get allowed status which the user can see
-		foreach($statusInfos as $index => $statusInfo) {
-			if( ! allowed('project', 'status:' . $statusInfo['index'] . ':see') ) {
-				unset($statusInfos[$index]);
-			}
-		}
-
-		return $statusInfos;
+		return TodoyuProjectStatusManager::getTaskStatusInfos();
 	}
 
 

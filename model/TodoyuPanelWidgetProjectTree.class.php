@@ -103,11 +103,11 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 		$projectFilter	= new TodoyuProjectFilter($this->activeFilters);
 
 			// Add extra table to search in and order by
-		$projectFilter->addExtraTable('ext_user_customer');
-		$projectFilter->addExtraWhere('ext_project_project.id_customer = ext_user_customer.id');
+		$projectFilter->addExtraTable('ext_user_company');
+		$projectFilter->addExtraWhere('ext_project_project.id_company = ext_user_company.id');
 
 			// Define output config
-		$order		= 'ext_user_customer.shortname, ext_project_project.title';
+		$order		= 'ext_user_company.shortname, ext_project_project.title';
 		$limit		= 20;
 
 			// Get matching project IDs
@@ -413,7 +413,7 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 		$options	= array();
 
 		foreach($statusInfos as $index => $statusInfo) {
-			if( allowed('project', 'status:' . $statusInfo['index'] . ':see') ) {
+			if( allowed('project', 'projectstatus:' . $statusInfo['key'] . ':see') ) {
 				$options[] = array(
 					'value'	=> $statusInfo['index'],
 					'label'	=> $statusInfo['label']

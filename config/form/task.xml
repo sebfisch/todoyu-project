@@ -92,13 +92,9 @@
 
 				<field type="select" name="id_user_owner">
 					<label>task.attr.user_owner</label>
-					<source type="sql">
-						<fields>id,lastname,firstname</fields>
-						<tables>ext_user_user</tables>
-						<where>type = 1 AND active = 1 AND deleted = 0</where>
-						<order>lastname,firstname</order>
-						<label>TodoyuProjectViewHelper::concatName</label>
-						<value>id</value>
+					<source type="function">
+						<function>TodoyuTaskViewHelper::getTaskOwnerUserOptions</function>
+						<lazyInit />
 					</source>
 				</field>
 

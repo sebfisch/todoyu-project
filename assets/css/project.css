@@ -182,8 +182,8 @@
 		width:150px;
 	}
 
-	#search-results ul.assignedUsersList .customer,
-	.project ul.assignedUsersList .customer {
+	#search-results ul.assignedUsersList .company,
+	.project ul.assignedUsersList .company {
 		width:150px;
 	}
 
@@ -217,8 +217,8 @@
 
 
 
-	/* General styles 
-	   @todo Move to top CSS file 
+	/* General styles
+	   @todo Move to top CSS file
 	*/
 .type-dateinput input {
 	width:60px;

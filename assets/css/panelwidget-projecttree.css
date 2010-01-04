@@ -213,7 +213,7 @@ ul.tree #filter-0 {
 
 
 
-/* ---------------- 
+/* ----------------
 	Projects:
    ---------------- */
 
@@ -258,7 +258,8 @@ ul.tree li.customers a.info {
 	background-image:url(../../../../core/assets/img/user/tree_user.png);
 }
 
-ul.tree li.status > ul > .expanded, ul.tree li.customers > ul > .expanded {
+ul.tree li.status > ul > .expanded,
+ul.tree li.customers > ul > .expanded {
 	background-color:#A5F685;
 }
 
@@ -270,7 +271,7 @@ ul.tree li.project a.info, ul.tree li.status a.info {
 ul.tree li.project .task-status-planing a.info, #tree_status_planing a.info {
 	background:url(../../../../core/assets/img/sprite-taskstati.png) no-repeat 0 0;
 }
-	
+
 ul.tree li.project .task-status-planing a.info:hover, #tree_status_planing a.info:hover {
 	background:url(../../../../core/assets/img/sprite-taskstati.png) no-repeat 0 -180px;
 }

@@ -27,7 +27,7 @@
 	font-weight: normal;
 }
 
-/* -------------------- 
+/* --------------------
 	Task header
    -------------------- */
 .task h3 a.expandable {
@@ -211,11 +211,11 @@ span.taskTitleFixTaskSymbol {
 	.tasks .task .details fieldset.right .fField {
 		width:56%;
 	}
-	
+
 	.tasks .task .details fieldset.right div.typeCheckbox .fLabel {
 		width:92%;
 	}
-	
+
 	.tasks .task .details fieldset.right div.typeCheckbox .fField {
 		width:2%;
 		margin-left:5px;
@@ -225,7 +225,7 @@ span.taskTitleFixTaskSymbol {
 		float: left;
 		width: 130px;
 	}
-	
+
 	.tasks .task .details .properties dd {
 		float: left;
 		width: 150px;
@@ -238,7 +238,7 @@ span.taskTitleFixTaskSymbol {
 		color: #666666;
 		line-height: 18px;
 	}
-	
+
 	.tasks .task .details .properties dt {
 		clear:left;
 	}
@@ -372,10 +372,6 @@ span.taskTitleFixTaskSymbol {
 .task-inline-edit .bottom {
 	float:left;
 	clear:both;
-}
-
-.calendaricon {
-	background:url('../img/icons.png') no-repeat 0 -180px;
 }
 
 #taskList,

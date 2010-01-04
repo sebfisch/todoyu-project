@@ -53,9 +53,9 @@ Todoyu.Ext.project.Project = {
 		this.Edit.createFormWrapDivs(idProject);
 		this.Edit.loadForm(idProject);
 	},
-	
-	
-	
+
+
+
 	/**
 	 *	Delete given project
 	 *
@@ -69,9 +69,9 @@ Todoyu.Ext.project.Project = {
 					'action':	'remove',
 					'project':	idProject
 				},
-				'onComplete': this.onRemoved.bind(this, idProject)			
+				'onComplete': this.onRemoved.bind(this, idProject)
 			};
-			
+
 			Todoyu.send(url, options);
 		}
 	},
@@ -81,7 +81,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Handle completion event after project having been deleted. Remove project from project task tree and remove project tab.
 	 *
-	 *	@param	Integer	idProjectRemoved  
+	 *	@param	Integer	idProjectRemoved
 	 */
 	onRemoved: function(idProjectRemoved) {
 		this.ext.ProjectTaskTree.removeProject(idProjectRemoved);
@@ -119,8 +119,8 @@ Todoyu.Ext.project.Project = {
 
 		this.saveDetailsExpanded(idProject, detailDiv.visible());
 	},
-	
-	
+
+
 	onDetailsToggled: function(idProject, response) {
 //		console.log('OnComplete erreicht');
 	},
@@ -269,13 +269,13 @@ Todoyu.Ext.project.Project = {
 
 		Todoyu.send(url, options);
 	},
-	
+
 	onStatusUpdated: function(idProject, status, response) {
 		this.refresh(idProject);
 		this.setStatus(idProject, status);
 	},
-	
-	
+
+
 	getStatus: function(idProject) {
 		var classNames 	= $('project-' + idProject).down('div.projectstatus').classNames();
 		var statusClass	= classNames.grep(/bcStatus(\d)/).first();
@@ -283,13 +283,13 @@ Todoyu.Ext.project.Project = {
 
 		return statusIndex;
 	},
-	
+
 	setStatus: function(idProject, status) {
 		var statusBar	= $('project-' + idProject).down('div.projectstatus');
 		var oldStatus	= this.getStatus(idProject);
-		
+
 		statusBar.replaceClassName('bcStatus' + oldStatus);
-		statusBar.addClassName('bcStatus' + status);		
+		statusBar.addClassName('bcStatus' + status);
 	},
 
 
@@ -388,7 +388,7 @@ Todoyu.Ext.project.Project = {
 			} else {
 				this.ext.ProjectTaskTree.removeProject(idProjectOld);
 				this.ext.ProjectTaskTree.openProject(idProject);
-				
+
 				window.scrollTo(0,0);
 
 				Todoyu.Hook.exec('onProjectSaved', idProject);
@@ -435,25 +435,6 @@ Todoyu.Ext.project.Project = {
 				}
 			}
 
-		},
-
-
-
-		/**
-		 * 
-		 * 	@param	Object	request
-		 * 	@return	Object
-		 */
-		onCustomerAutocomplete: function(request) {
-			/*
-			if( request.getTodoyuHeader('acElements') == 0 ) {
-				var list = Builder.build(request.responseText);
-				list.down('li').update('HHHH');
-				//request.responseText = Builder.
-			}
-			
-			return request;
-			*/
 		}
 	}
 };

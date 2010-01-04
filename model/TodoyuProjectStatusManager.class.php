@@ -72,7 +72,16 @@ class TodoyuProjectStatusManager {
 	 * @return	Array
 	 */
 	public static function getTaskStatuses() {
-		return $GLOBALS['CONFIG']['EXT']['project']['STATUS']['TASK'];
+		$statuses	= $GLOBALS['CONFIG']['EXT']['project']['STATUS']['TASK'];
+
+		foreach($statuses as $index => $statusKey) {
+				// Only get allowed status which the user can see
+			if( ! allowed('project', 'taskstatus:' . $statusKey . ':see') ) {
+				unset($statuses[$index]);
+			}
+		}
+
+		return $statuses;
 	}
 
 

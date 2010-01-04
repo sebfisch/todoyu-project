@@ -1,13 +1,13 @@
 <ul class="ulList assignedUsersList">
 	<li class="listItem listItemHeader">
 		<span class="name">{Label contact.contacttypes.person}</span>
-		<span class="customer">{Label contact.contacttypes.company}</span>
+		<span class="company">{Label contact.contacttypes.company}</span>
 		<span class="role">{Label project.user.role}</span>
 	</li>
 	{foreach $users user}
 	<li class="listItem {cycle values="odd,even"}">
 		<span class="name"><a href="javascript:void(0)" style="cursor:default">{$user.lastname}, {$user.firstname}</a></span>
-		<span class="customer">{$user.company[0].title}&nbsp;</span>
+		<span class="company">{$user.company[0].title}&nbsp;</span>
 		<span class="role">{Label $user.rolelabel true}</span>
 	</li>
 	{/foreach}
