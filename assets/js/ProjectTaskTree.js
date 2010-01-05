@@ -88,9 +88,9 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		}
 	},
 	
-	removeDummyTab: function() {
-		if( Todoyu.exists('projecttab-0') ) {
-			$('projecttab-0').remove();
+	removeNoSelectionTab: function() {
+		if( Todoyu.exists('projecttab-noselection') ) {
+			$('projecttab-noselection').remove();
 		}
 	},
 
@@ -179,12 +179,15 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 *	@param	Integer	idTab
 	 */
 	moveTabToFront: function(idTab) {
-		this.removeDummyTab();
+			// Remove no selection tab first
+		this.removeNoSelectionTab();
 			
+			// Get tab which will be in front
 		var tab = $('projecttab-' + idTab);
-
+			// Remove it from the DOM
 		tab.remove();
 
+			// Add the tab as first element
 		$('project-tabs').insert({
 			'top':	tab
 		});

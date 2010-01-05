@@ -95,9 +95,9 @@
 									<controller>project</controller>
 									<action>autocompleteCompany</action>
 								</acListener>
-								<acLabelFunc>TodoyuCustomerManager::getLabel</acLabelFunc>
+								<acLabelFunc>TodoyuCompanyManager::getLabel</acLabelFunc>
 								<options>
-									<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onCustomerAutocomplete</onCompleteCustom>
+									<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onCompleteCustom>
 								</options>
 							</config>
 							<required />

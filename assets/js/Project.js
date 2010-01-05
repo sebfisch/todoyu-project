@@ -435,6 +435,20 @@ Todoyu.Ext.project.Project = {
 				}
 			}
 
+		},
+		
+		
+		
+		/**
+		 * Handler when customer/company field is autocompleted
+		 * 
+		 * @param	Ajax.Response			response
+		 * @param	Todoyu.Autocompleter	autocompleter
+		 */
+		onCompanyAutocomplete: function(response, autocompleter) {			
+			if( response.getTodoyuHeader('acElements') == 0 ) {
+				Todoyu.notifyInfo('[LLL:project.ac.company.notFoundInfo]');
+			}					
 		}
 	}
 };

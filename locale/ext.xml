@@ -40,7 +40,7 @@
 		<label index="projectrole.projectsupervisor">Project-Supervisor</label>
 		<label index="search.label">Projects</label>
 		<label index="search.mode.label">Search Projects</label>
-		<label index="attr.customer">Customer</label>
+		<label index="attr.company">Customer</label>
 		<label index="attr.id">Project ID</label>
 		<label index="attr.status">Project Status</label>
 		<label index="attr.date_start">Startdate</label>
@@ -67,6 +67,7 @@
 		<label index="noLabel.newProjectParticipant">New Project Participant</label>
 		<label index="save.error">Saving was not successfull</label>
 		<label index="save.success">Saving successfull</label>
+		<label index="ac.company.notFoundInfo">No matching customer found! You can only select companies you have added in the contact module.</label>
 	</labels>
 	<labels lang="de">
 		<label index="ext.title">Projekt- und Aufgabenverwaltung</label>
@@ -108,7 +109,7 @@
 		<label index="projectrole.projectsupervisor">Projekt-Supervisor</label>
 		<label index="search.label">Projekte</label>
 		<label index="search.mode.label">Projekte suchen</label>
-		<label index="attr.customer">Kunde</label>
+		<label index="attr.company">Kunde</label>
 		<label index="attr.id">Projekt ID</label>
 		<label index="attr.status">Projekt Status</label>
 		<label index="attr.date_start">Start-Datum</label>
@@ -135,5 +136,6 @@
 		<label index="noLabel.newProjectParticipant">Neuer Projekt-Mitarbeiter</label>
 		<label index="save.error">Speichern war nicht erfolgreich</label>
 		<label index="save.success">Speichern war erfolgreich</label>
+		<label index="ac.company.notFoundInfo">Kein passender Kunde gefunden. Es können nur im Kontakt-Modul erfasste Firmen ausgewählt werden</label>
 	</labels>
 </locallang>

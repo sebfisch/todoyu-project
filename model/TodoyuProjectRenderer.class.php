@@ -656,10 +656,10 @@ class TodoyuProjectRenderer {
 		$active		= 0;
 		$tabs		= array(
 			array(
-				'id'		=> '0',
-				'htmlId'	=> 'projecttab-0',
+				'id'		=> 'noselection',
+				'htmlId'	=> 'projecttab-noselection',
 				'class'		=> 'projecttab',
-				'classKey'	=> '0',
+				'classKey'	=> 'noselection',
 				'label'		=> 'LLL:project.noproject.tab'
 			)
 		);
