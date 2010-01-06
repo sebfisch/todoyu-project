@@ -17,7 +17,7 @@
 		<label index="right.task:addcontainer">Add Subcontainer</label>
 		<label index="right.task:status">Change Task Status</label>
 		<label index="right.task:clone">Clone Task</label>
-		<label index="right.task:copy">Copy (and past) Task</label>
+		<label index="right.task:copy">Copy (and paste) Task</label>
 		<label index="right.task:cut">Cut (and paste) Task</label>
 		<label index="right.task:delete">Delete Task</label>
 		<label index="section.container">Container</label>
@@ -25,7 +25,7 @@
 		<label index="right.container:addtask">Add Subtask</label>
 		<label index="right.container:addcontainer">Add Subcontainer</label>
 		<label index="right.container:clone">Clone Container</label>
-		<label index="right.container:copy">Copy (and past) Container</label>
+		<label index="right.container:copy">Copy (and paste) Container</label>
 		<label index="right.container:cut">Cut (and paste) Container</label>
 		<label index="right.container:delete">Delete Container</label>
 		<label index="section.panelwidgets">Panel Widgets</label>

@@ -705,6 +705,26 @@ class TodoyuTaskManager {
 	}
 
 
+	/**
+	 * Get task owner
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Integer
+	 */
+	public static function getTaskOwner($idTask) {
+		$idTask	= intval($idTask);
+
+		$fields	= ' u.*';
+		$tables	= ' ext_project_task t,
+					ext_user_user u';
+		$where	= '	t.id		= ' . $idTask . ' AND
+					u.id		= t.id_user_owner';
+		$group	= '';
+		$order	= '';
+
+		return Todoyu::db()->getArray($fields, $tables, $where, $group, $order);
+	}
+
 
 
 	/**
