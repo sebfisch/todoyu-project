@@ -41,14 +41,16 @@ class TodoyuTaskViewHelper {
 		$options= array(
 			array(
 				'label'		=> 'LLL:form.select.pleaseSelect',
-				'value'		=> 0
+				'value'		=> 0,
+				'disabled'	=> true
 			)
 		);
 
 		foreach($users as $user) {
 			$options[] = array(
-				'label'	=> $user['lastname'] . ' ' . $user['firstname'],
-				'value'	=> $user['id']
+				'label'		=> $user['lastname'] . ' ' . $user['firstname'],
+				'value'		=> $user['id'],
+				'disabled'	=> false
 			);
 		}
 
@@ -56,6 +58,13 @@ class TodoyuTaskViewHelper {
 	}
 
 
+
+	/**
+	 * Get task owner user options (alias of getTaskAssignUserOptions)
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @return	Array
+	 */
 	public static function getTaskOwnerUserOptions(TodoyuFormElement $field) {
 		return self::getTaskAssignUserOptions($field);
 	}

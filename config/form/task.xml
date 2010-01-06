@@ -40,7 +40,7 @@
 		</fieldset>
 
 		<fieldset name="right">
-			<legend>Riht form column</legend>
+			<legend>Right form column</legend>
 			<class>right</class>
 			<elements>
 
