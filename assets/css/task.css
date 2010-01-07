@@ -70,7 +70,23 @@
 	margin-left:0;
 }
 
-.task h3 .headLabel a.title {
+.task h3 span.billableTime {
+	display:inline-block;
+	width:30px;
+	right: 130px;
+	top: 5px;
+	position: absolute;
+}
+
+.projecttasktree .task h3 span.taskNumber {
+	display:inline-block;
+	width:40px;
+	right: 70px;
+	top: 5px;
+	position: absolute;
+}
+
+.projecttasktree .task h3 .headLabel a.title {
 	display:block;
 	width:420px;
 	padding:2px 0;
@@ -115,24 +131,13 @@
 	background:url('../img/icons.png') no-repeat 0 -206px;
 }
 
-/* Info icons */
-.task .headLabel .infoIcons {
-	margin-right:4px;
-}
-
-.task .headLabel .infoIcons span {
-	width:16px;
-	height:16px;
-	margin-right:2px;
-}
-
-.task .infoIcons .notAcknowledged {
+.task .additionalStuff .notAcknowledged {
 	width:10px;
 	cursor:pointer;
 	background:url('../img/icons.png') no-repeat 0 -268px;
 }
 
-.task .infoIcons .timeover {
+.task .additionalStuff .timeover {
 	width:14px;
 	background:url('../img/icons.png') no-repeat 0 -328px;
 }
