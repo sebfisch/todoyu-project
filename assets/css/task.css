@@ -56,6 +56,7 @@
 	padding:4px 0 3px 17px;
 	border-left-width:8px;
 	border-left-style:solid;
+	min-height: 14px;
 }
 
 .task h3 .headLabel span {
