@@ -6,60 +6,60 @@
 }
 
 .task h3 {
-	display: block;
-	position: relative;
-	height: auto !important;
-	height: 1px;
-	padding: 4px 0 4px 0;
-	background: url(../../../../core/assets/img/dottedline_hor.png) repeat-x 0 bottom;
-	clear: both;
+	display:block;
+	position:relative;
+	height:auto !important;
+	height:1px;
+	padding:4px 0 4px 0;
+	background:url(../../../../core/assets/img/dottedline_hor.png) repeat-x 0 bottom;
+	clear:both;
 	cursor:pointer;
 }
 
 .tasks .expanded h3,
 .tasks .subtasks .expanded h3 {
-	background-color: #d3dabb; /* bcl03 */
-	font-weight: bold;
+	background-color:#d3dabb; /* bcl03 */
+	font-weight:bold;
 }
 
 .tasks .subtasks h3 {
-	background-color: transparent;
-	font-weight: normal;
+	background-color:transparent;
+	font-weight:normal;
 }
 
 /* --------------------
 	Task header
    -------------------- */
 .task h3 a.expandable {
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 10px;
-	height: 20px;
-	width: 15px;
-	background: url(../../../../core/assets/img/tree/icons.png) no-repeat 1px -23px;
-	z-index: 1;
+	display:block;
+	position:absolute;
+	top:0;
+	left:10px;
+	height:20px;
+	width:15px;
+	background:url(../../../../core/assets/img/tree/icons.png) no-repeat 1px -23px;
+	z-index:1;
 }
 
 .task h3 a.expanded {
-	height: 20px;
-	width: 35px;
-	background: url(../../../../core/assets/img/tree/icons.png) no-repeat 0 7px;
+	height:20px;
+	width:35px;
+	background:url(../../../../core/assets/img/tree/icons.png) no-repeat 0 7px;
 }
 
 .task h3 .headLabel {
-	display: block;
-	float: left;
-	height: auto !important;
-	height: 1px;
-	margin: -4px 0 -3px 0;
-	padding: 4px 0 3px 17px;
-	border-left-width: 8px;
-	border-left-style: solid;
+	display:block;
+	float:left;
+	height:auto !important;
+	height:1px;
+	margin:-4px 0 -3px 0;
+	padding:4px 0 3px 17px;
+	border-left-width:8px;
+	border-left-style:solid;
 }
 
 .task h3 .headLabel span {
-	margin: 0 0 0 8px;
+	margin:0 0 0 8px;
 }
 
 .task h3 .headLabel span.taskNumber {
@@ -67,19 +67,19 @@
 }
 
 .task h3 .headLabel span.taskDate {
-	margin-left: 0;
+	margin-left:0;
 }
 
 .task h3 .headLabel a.title {
-	display: block;
-	width: 420px;
-	padding: 2px 0;
-	margin-top: -2px;
+	display:block;
+	width:420px;
+	padding:2px 0;
+	margin-top:-2px;
 }
 
 .running h3 .headLabel span,
 .running h3 span.taskNumber {
-	font-weight: bold;
+	font-weight:bold;
 }
 
 
@@ -89,73 +89,73 @@
    ---------------------- */
 
 #taskList .task h3 span.additionalStuff {
-	position: absolute;
-	height: 16px;
-	width: 65px;
-	margin-top: -2px;
-	padding: 1px 3px;
-	background: url(../../../../core/assets/img/dottedline_ver.png) repeat-y 0 0;
+	position:absolute;
+	height:16px;
+	width:65px;
+	margin-top:-2px;
+	padding:1px 3px;
+	background:url(../../../../core/assets/img/dottedline_ver.png) repeat-y 0 0;
 	cursor:default;
 }
 
 #taskList .task h3 span.additionalStuff span {
-	float: left;
-	clear: none;
-	width: 16px;
-	height: 16px;
-	margin: 0;
-	margin-left: 3px;
+	float:left;
+	clear:none;
+	width:16px;
+	height:16px;
+	margin:0;
+	margin-left:3px;
 }
 
 #taskList .task .additionalStuff .taskcontainer {
-	background: url('../img/icons.png') no-repeat 0 -87px;
+	background:url('../img/icons.png') no-repeat 0 -87px;
 }
 
 #taskList .task .additionalStuff .isPublic {
-	background: url('../img/icons.png') no-repeat 0 -206px;
+	background:url('../img/icons.png') no-repeat 0 -206px;
 }
 
 /* Info icons */
 .task .headLabel .infoIcons {
-	margin-right: 4px;
+	margin-right:4px;
 }
 
 .task .headLabel .infoIcons span {
-	width: 16px;
-	height: 16px;
-	margin-right: 2px;
+	width:16px;
+	height:16px;
+	margin-right:2px;
 }
 
 .task .infoIcons .notAcknowledged {
-	width: 10px;
-	cursor: pointer;
-	background: url('../img/icons.png') no-repeat 0 -268px;
+	width:10px;
+	cursor:pointer;
+	background:url('../img/icons.png') no-repeat 0 -268px;
 }
 
 .task .infoIcons .timeover {
-	width: 14px;
-	background: url('../img/icons.png') no-repeat 0 -328px;
+	width:14px;
+	background:url('../img/icons.png') no-repeat 0 -328px;
 }
 
 /* Task header icons */
 
 #taskList h3 span.timewarning {
-	display: block;
-	position: absolute;
-	padding: 8px 0 8px 0;
-	background: url(../../../../core/assets/img/sprite-icons.png) no-repeat 0 -833px !important;
+	display:block;
+	position:absolute;
+	padding:8px 0 8px 0;
+	background:url(../../../../core/assets/img/sprite-icons.png) no-repeat 0 -833px !important;
 }
 
 #taskList h3 span.todoyurendertask_unacknowledgedtask {
-	display: block;
-	position: absolute;
-	padding: 2px 0 0 9px;
+	display:block;
+	position:absolute;
+	padding:2px 0 0 9px;
 }
 
 span.taskTitleFixTaskSymbol {
-	margin: 0 0 0 -12px;
-	width: 12px;
-	padding: 0;
+	margin:0 0 0 -12px;
+	width:12px;
+	padding:0;
 }
 
 
@@ -165,8 +165,8 @@ span.taskTitleFixTaskSymbol {
    ------------------ */
 
 .task .details {
-	border-left-width: 1px;
-	border-left-style: solid;
+	border-left-width:1px;
+	border-left-style:solid;
 }
 
 .task.container .details {
@@ -174,38 +174,38 @@ span.taskTitleFixTaskSymbol {
 }
 
 	.tasks .task .details .data {
-		padding: 5px 0;
+		padding:5px 0;
 	}
 
 		/* Description */
 	.tasks .task .details .left {
-		float: left;
-		width: 350px;
-		padding: 0 5px;
+		float:left;
+		width:350px;
+		padding:0 5px;
 	}
 
 	.tasks .task .details .description * {
-		line-height: 18px;
+		line-height:18px;
 	}
 
 	.tasks .task .details .description ul {
-		list-style-type: disc;
+		list-style-type:disc;
 	}
 
 	.tasks .task .details .description ul,
 	.tasks .task .details .description ol {
-		margin: 0.2em 0 0.2em 2em;
+		margin:0.2em 0 0.2em 2em;
 	}
 
 		/* properties */
 	.tasks .task .details .right {
-		float: right;
-		width: 285px;
+		float:right;
+		width:285px;
 	}
 
 	.tasks .task .details fieldset.right {
-		float: right;
-		width: 43%;
+		float:right;
+		width:43%;
 	}
 
 	.tasks .task .details fieldset.right .fField {
@@ -222,21 +222,31 @@ span.taskTitleFixTaskSymbol {
 	}
 
 	.tasks .task .details .properties dt {
-		float: left;
-		width: 130px;
+		float:left;
+		width:160px;
 	}
 
 	.tasks .task .details .properties dd {
-		float: left;
-		width: 150px;
-		padding-right: 3px;
+		float:left;
+		width:120px;
+		padding-right:3px;
 	}
 
 	.tasks .task .details .properties dt,
 	.tasks .task .details .properties dd,
 	.tasks .task .details .properties dd a {
-		color: #666666;
-		line-height: 18px;
+		color:#666;
+		line-height:15px;
+	}
+	
+	div.task div.details div div.right dl dt.even,
+	div.task div.details div div.right dl dd.even {
+		background-color:#f9f9f9;
+	}
+	
+	div.task div.details div div.right dl dt.sectionStart,
+	div.task div.details div div.right dl dd.sectionStart {
+		margin-top: 11px;
 	}
 
 	.tasks .task .details .properties dt {
@@ -245,50 +255,50 @@ span.taskTitleFixTaskSymbol {
 
 		/* task tabs */
 	#content .taskTabs .tabs {
-		top: 0;
-		left: 0px;
-		width: auto;
-		margin: 0 10px;
+		top:0;
+		left:0px;
+		width:auto;
+		margin:0 10px;
 	}
 
 	.task .taskTabs {
-		margin-top: 10px;
+		margin-top:10px;
 	}
 
 	.task .taskTabs .tabs li,
 	.task .taskTabs .tabs li p span.lt {
-		background-image: url(../../../../core/assets/img/colF_r13.png);
+		background-image:url(../../../../core/assets/img/colF_r13.png);
 	}
 
 	.task .taskTabs .tabs li {
-		background-color: #edf1e0;
+		background-color:#edf1e0;
 	}
 
 	.task .taskTabs .tabs li.active {
-		background-color: #e3eace;
+		background-color:#e3eace;
 	}
 
 	/* task tabs content */
 	.task .tabContent {
-		padding: 10px 0 5px 0;
-		background-color: #e3eace;
+		padding:10px 0 5px 0;
+		background-color:#e3eace;
 	}
 
 	.task .tabContent .tab {
-		margin: 0 15px;
+		margin:0 15px;
 		border:1px solid #E9ECE0;
 	}
 
 	.task .tabContent .toTop {
-		background: url('../img/icons.png') no-repeat 0 -357px;
-		padding: 0;
-		margin: 0 15px 0 0;
-		float: right;
+		background:url('../img/icons.png') no-repeat 0 -357px;
+		padding:0;
+		margin:0 15px 0 0;
+		float:right;
 	}
 
 	.task .tabContent .tabBlock {
 		position:relative;
-		background: #fff;
+		background:#fff;
 	}
 
 	.task .tabContent .tabBlock button.button {
@@ -303,39 +313,39 @@ span.taskTitleFixTaskSymbol {
 		top:0;
 		width:25px;
 		height:30px;
-		background: #D6DCC5 url(../../../../core/assets/img/toggle_tab.png) no-repeat 0px 100%;
+		background:#D6DCC5 url(../../../../core/assets/img/toggle_tab.png) no-repeat 0px 100%;
 	}
 
 #taskList .activeTabContent .taskOptionBlock {
-	position: relative;
-	padding: 5px;
-	margin: 0 20px 5px 20px;
-	border: 1px solid #0065a6;
-	background: #fff;
+	position:relative;
+	padding:5px;
+	margin:0 20px 5px 20px;
+	border:1px solid #0065a6;
+	background:#fff;
 }
 
 #taskList .activeTabContent {
-	padding: 10px 0 5px 0;
-	border-top: 1px solid #fff;
-	border-bottom: 1px solid #fff;
-	background: #d5dee5;
+	padding:10px 0 5px 0;
+	border-top:1px solid #fff;
+	border-bottom:1px solid #fff;
+	background:#d5dee5;
 }
 
 	#taskList.projectTaskList h3 span.billable-time {
-		right: 115px;
+		right:115px;
 	}
 
 	#taskList.projectTaskList h3 span.additionalStuff {
-		right: 0;
+		right:0;
 	}
 
 
 #inlineEditTask .innerBox { /* resource planning inline task editor */
 	margin-top:-20px;
-	border-top: 1px dotted #AAB1B7;
-	width: 892px;
-	padding: 0 12px 0 12px;
-	background-color: #F7F9FA;
+	border-top:1px dotted #AAB1B7;
+	width:892px;
+	padding:0 12px 0 12px;
+	background-color:#F7F9FA;
 }
 
 /* -----------------
@@ -344,13 +354,13 @@ span.taskTitleFixTaskSymbol {
 
 	/* container */
 .task.container h3 .headLabel {
-	border-left-color: #000 !important;
+	border-left-color:#000 !important;
 }
 
 	/* subtasks */
 .tasks .subtasks {
-	padding-left: 10px;
-	background: url(../../../../core/assets/img/content/hr_hor.png) repeat-x 0 bottom;
+	padding-left:10px;
+	background:url(../../../../core/assets/img/content/hr_hor.png) repeat-x 0 bottom;
 }
 
 .task-inline-edit .type-dateinput input {
@@ -376,39 +386,39 @@ span.taskTitleFixTaskSymbol {
 
 #taskList,
 #tasks {
-	z-index: 1;
+	z-index:1;
 }
 
 #taskList h1.headerProjTermine {
-	margin-top: 20px;
+	margin-top:20px;
 }
 
 /*
 #taskList h1 span.invoice_taskDate,
 #taskList h3 span.invoice_taskDate {
-	max-width: 80px;
-	width: 80px;
+	max-width:80px;
+	width:80px;
 }
 */
 /*
 #taskList h1 span.name,
 #taskList h3 span.name {
-	max-width: 90px;
-	width: 90px;
+	max-width:90px;
+	width:90px;
 }
 
 #taskList h1 span.invoice_name,
 #taskList h3 span.invoice_name {
-	max-width: 130px;
-	width: 130px;
+	max-width:130px;
+	width:130px;
 }
 
 .expanded #taskList h1 span.name,
 .expanded #taskList h3 span.name,
 .expanded #taskList h1 span.invoice_name,
 .expanded #taskList h3 span.invoice_name {
-	max-width: 150px;
-	width: 150px;
+	max-width:150px;
+	width:150px;
 }
 */
 /*
@@ -417,21 +427,21 @@ span.taskTitleFixTaskSymbol {
 #taskList h3 span.taskName /*,
 #taskList h1 span.invoice_taskName,
 #taskList h3 span.invoice_taskName */ {
-	width: 210px;
+	width:210px;
 }
 /*
 .expanded #taskList h1 span.taskName,
 .expanded #taskList h3 span.taskName,
 .expanded #taskList h1 span.invoice_taskName,
 .expanded #taskList h3 span.invoice_taskName {
-	max-width: 369px;
-	width: 369px;
+	max-width:369px;
+	width:369px;
 }
 
 #taskList h1 span.billable-time,
 #taskList h3 span.billable-time {
-	max-width: 48px;
-	width: 48px;
+	max-width:48px;
+	width:48px;
 }
 */
 
@@ -442,34 +452,34 @@ span.taskTitleFixTaskSymbol {
    ------------------ */
 
 .additionalStuff .isPublic{
-	background: url(../img/icons_dev.png) no-repeat 0 0;
+	background:url(../img/icons_dev.png) no-repeat 0 0;
 }
 
-	/* task header billing types: */
+	/* task header billing types:*/
 .billing_clarify, .billing_bug, .billing_addexpense, .billing_gratis {
-	width: 10px;
-	height: 16px;
+	width:10px;
+	height:16px;
 }
 
 .billing_clarify {
-	background: url(../../img/sprite-icons.png) no-repeat -60px -79px !important;
+	background:url(../../img/sprite-icons.png) no-repeat -60px -79px !important;
 }
 
 .billing_bug {
-	background: url(../../img/sprite-icons.png) no-repeat -62px -49px !important;
+	background:url(../../img/sprite-icons.png) no-repeat -62px -49px !important;
 }
 
 .billing_addexpense {
-	background: url(../../img/sprite-icons.png) no-repeat -62px -234px !important;
+	background:url(../../img/sprite-icons.png) no-repeat -62px -234px !important;
 }
 
 .billing_gratis {
-	background: url(../../img/sprite-icons.png) no-repeat -60px -16px !important;
+	background:url(../../img/sprite-icons.png) no-repeat -60px -16px !important;
 }
 
 .task-status-container h3 a,
 .task-status-container div.taskdetails {
 	border-left-color:#1E2022;
 	background-color:#FBFBF4;
-	/*background: url(../../../../core/assets/img/bgs/taskcontainer.png);*/
+	/*background:url(../../../../core/assets/img/bgs/taskcontainer.png);*/
 }
