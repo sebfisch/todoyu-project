@@ -333,7 +333,11 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 			'wConf'		=> array(
 			    'multiple'	=> true,
 			    'size'		=> 5,
-			    'FuncRef'	=> 'TodoyuTaskFilterDataSource::getStatusOptions'
+			    'FuncRef'	=> 'TodoyuTaskFilterDataSource::getStatusOptions',
+			    'negation'	=> array(
+			    		'labelTrue'		=> 'LLL:search.negation.default.true',
+			    		'labelFalse'	=> 'LLL:search.negation.default.false',
+			    )
 	  		)
 		),
 		'title' => array(
@@ -341,6 +345,12 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 			'label'		=> 'LLL:core.title',
 			'optgroup'	=> 'LLL:project.search.label',
 			'widget'	=> 'textinput',
+			'wConf'		=> array(
+				'negation'	=> array(
+			    		'labelTrue'		=> 'LLL:search.negation.default.true',
+			    		'labelFalse'	=> 'LLL:search.negation.default.false',
+			    )
+			)
 		),
 		'company' => array(
 			'funcRef'	=> 'TodoyuProjectFilter::filter_company',
@@ -351,7 +361,11 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 				'autocomplete'	=> true,
 				'FuncRef'		=> 'TodoyuUserFilterDataSource::autocompleteCompanies',
 				'FuncParams'	=> array(),
-				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getCompanyLabel'
+				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getCompanyLabel',
+				'negation'	=> array(
+			    		'labelTrue'		=> 'LLL:search.negation.default.true',
+			    		'labelFalse'	=> 'LLL:search.negation.default.false',
+			    )
 			)
 		),
 		'projectleader' => array(
@@ -363,7 +377,11 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 				'autocomplete'	=> true,
 				'FuncRef'		=> 'TodoyuUserFilterDataSource::autocompleteUsers',
 				'FuncParams'	=> array(),
-				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel'
+				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel',
+				'negation'	=> array(
+			    		'labelTrue'		=> 'LLL:search.negation.default.true',
+			    		'labelFalse'	=> 'LLL:search.negation.default.false',
+			    )
 			)
 		),
 		'projectsupervisor' => array(
@@ -375,7 +393,11 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 				'autocomplete'	=> true,
 				'FuncRef'		=> 'TodoyuUserFilterDataSource::autocompleteUsers',
 				'FuncParams'	=> array(),
-				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel'
+				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel',
+				'negation'	=> array(
+			    		'labelTrue'		=> 'LLL:search.negation.default.true',
+			    		'labelFalse'	=> 'LLL:search.negation.default.false',
+			    )
 			)
 		),
 		'fixproject' => array(

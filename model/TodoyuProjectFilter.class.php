@@ -119,7 +119,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 		$titleParts	= explode(' ', $title);
 
 		$tables	= array('ext_project_project');
-		$where	= Todoyu::db()->buildLikeQuery($titleParts, array('ext_project_project.title'));
+		$where	= Todoyu::db()->buildLikeQuery($titleParts, array('ext_project_project.title'), $negate);
 
 		return array(
 			'tables'=> $tables,
@@ -130,7 +130,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 
 
 	/**
-	 * Filter projects by company
+	 * Filter projects by (customer) company
 	 *
 	 * @param	Integer		$idCompany
 	 * @param	Bool		$negate
@@ -143,8 +143,10 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 			return false;
 		}
 
+		$compare	= $negate ? '!=' : '=' ;
+
 		$tables	= array('ext_project_project');
-		$where	= 'ext_project_project.id_company = ' . $idCompany;
+		$where	= 'ext_project_project.id_company ' . $compare . ' ' . $idCompany;
 
 		return array(
 			'tables'=> $tables,
@@ -168,8 +170,10 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 			return false;
 		}
 
+		$compare	= $negate ? 'NOT IN' : 'IN' ;
+
 		$tables	= array('ext_project_project');
-		$where	= '	ext_project_project.id IN (
+		$where	= '	ext_project_project.id ' . $compare . ' (
 						SELECT
 							ext_project_project.id
 						FROM
@@ -205,11 +209,17 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 			return false;
 		}
 
+		$compare	= $negate ? 'NOT IN' : 'IN' ;
+
 		$tables	= array('ext_project_project');
-		$where	= '	ext_project_project.id IN (SELECT ext_project_project.id FROM ext_project_project,ext_project_mm_project_user,ext_project_userrole WHERE ext_project_project.id 						= ext_project_mm_project_user.id_project AND
-					ext_project_mm_project_user.id_user			= ' . $idProjectsupervisor . ' AND
-					ext_project_mm_project_user.id_userrole	= ext_project_userrole.id AND
-					ext_project_userrole.rolekey					= \'projectsupervisor\')';
+		$where	= '	ext_project_project.id ' . $compare . '
+					(SELECT ext_project_project.id
+					 FROM ext_project_project,ext_project_mm_project_user,ext_project_userrole
+					 WHERE	ext_project_project.id	= ext_project_mm_project_user.id_project
+					 AND	ext_project_mm_project_user.id_user	= ' . $idProjectsupervisor . '
+					 AND	ext_project_mm_project_user.id_userrole	= ext_project_userrole.id
+					 AND	ext_project_userrole.rolekey = \'projectsupervisor\'
+					)';
 
 		return array(
 			'tables'=> $tables,
@@ -231,11 +241,11 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 
 		$value = $negate === true ? 0 : 1;
 
-		$where = ' is_fixed = '.intval($value);
+		$where = ' is_fixed = ' . intval($value);
 
 		return array(
-			'tables' => $tables,
-			'where' => $where
+			'tables'	=> $tables,
+			'where'		=> $where
 		);
 	}
 

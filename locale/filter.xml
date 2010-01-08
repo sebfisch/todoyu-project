@@ -30,7 +30,7 @@
 		<label index="task.dyndateinput.nextweek">Next Week</label>
 		<label index="task.dyndateinput.lastweek">Last Week</label>
 		<label index="project.fulltext">Title Fulltext</label>
-		<label index="project.customer">Customer Name</label>
+		<label index="project.company">Customer Name</label>
 		<label index="project.projectleader">Project Manager</label>
 		<label index="project.projectsupervisor">Project Supervisor</label>
 		<label index="project.fixproject">Is static Project?</label>
@@ -65,7 +65,7 @@
 		<label index="task.dyndateinput.nextweek">Nächste Woche</label>
 		<label index="task.dyndateinput.lastweek">Letzte Woche</label>
 		<label index="project.fulltext">Titel-Volltext</label>
-		<label index="project.customer">Kunden-Name</label>
+		<label index="project.company">Kunden-Name</label>
 		<label index="project.projectleader">Projektleiter</label>
 		<label index="project.projectsupervisor">Projekt Supervisor</label>
 		<label index="project.fixproject">Statisches Projekt?</label>
