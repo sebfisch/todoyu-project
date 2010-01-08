@@ -22,6 +22,15 @@
 						</acListener>
 						<acLabelFunc>TodoyuUserManager::getLabel</acLabelFunc>
 					</config>
+					<wizard>
+						<htmlClass>createNewUser</htmlClass>
+						<ext>contact</ext>
+						<controller>person</controller>
+						<action>addNewContactWizard</action>
+						<title>LLL:contact.contact.createnew</title>
+						<width>700</width>
+						<displayCondition></displayCondition>
+					</wizard>
 					<required>1</required>
 				</field>
 				<field type="select" name="id_userrole">
