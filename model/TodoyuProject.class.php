@@ -176,7 +176,7 @@ class TodoyuProject extends TodoyuBaseObject {
 
 		$table	= 'ext_project_mm_project_user';
 		$fields = '*';
-		$where	= 'id_project = '.$idProject;
+		$where	= 'id_project = ' . $idProject;
 
 		$result = Todoyu::db()->doSelect($fields, $table, $where);
 

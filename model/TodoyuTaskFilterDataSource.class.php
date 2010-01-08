@@ -41,8 +41,7 @@ class TodoyuTaskFilterDataSource {
 
 		if(count($result) > 0)	{
 			foreach($result as $task)	{
-
-				$data[$task['id']] = $task['id_project'].'.'.$task['tasknumber'].' - '.$task['title'];
+				$data[$task['id']] = $task['id_project'] . '.' . $task['tasknumber'] . ' - ' . $task['title'];
 			}
 		}
 
