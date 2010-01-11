@@ -3,19 +3,19 @@
    ------------------------------------- */
 .project .properties dt,
 .task .properties dt {
-	float: left;
+	float:left;
 	width:100px;
 }
 .project .properties dd,
 .task .properties dd {
-	float: left;
+	float:left;
 	width:180px;
 }
 
 #project-tabs {
 	width:100%;
 	overflow:hidden;
-	margin-top: -20px;
+	margin-top:-20px;
 }
 
 	/* Search */
@@ -47,16 +47,16 @@
 	
 
 .innerBox {
-	padding: 10px 0 32px 0;
-	/*background: url(../../../../core/assets/img/content/hr_ver.png) repeat-y 0 -167px;*/
+	padding:10px 0 32px 0;
+	/*background:url(../../../../core/assets/img/content/hr_ver.png) repeat-y 0 -167px;*/
 }
 
 
 div.taskDetails fieldset.left,
 div.projectDetails fieldset.left,
 div.projectEdit fieldset.left {
-	width: 60%;
-	float: left;
+	width:60%;
+	float:left;
 	margin-bottom:25px;
 }
 
@@ -66,23 +66,23 @@ div.projectDetails fieldset.left div.persons,
 div.projectDetails fieldset.left #costctrl,
 div.projectDetails fieldset.left #costctrl_total,
 div.projectDetails fieldset.left div.invoices {
-	padding: 0 20px;
+	padding:0 20px;
 }
 
 div.taskDetails fieldset.left div.comment .content {
-		overflow: hidden;
+		overflow:hidden;
 	}
 
 div.projectDetails fieldset.left div.invoices,
 div.projectDetails fieldset.left #costctrl_total,
 div.projectDetails fieldset.left #costctrl {
-	margin-top: 10px;
+	margin-top:10px;
 }
 
 div.taskDetails fieldset.right,
 div.projectDetails fieldset.right {
-	width: 39%;
-	float: right;
+	width:39%;
+	float:right;
 	margin-bottom:25px;
 }
 
@@ -91,27 +91,27 @@ div.projectDetails fieldset.right {
 
 .project-status-planning h1 a.projectTitle {
 		/* purple */
-	background: url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -72px;
+	background:url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -72px;
 }
 
 .project-status-inprogress h1 a.projectTitle {
 		/* orange */
-	background: url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -152px;
+	background:url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -152px;
 }
 
 .project-status-done h1 a.projectTitle {
 		/* green */
-	background: url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -193px;
+	background:url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -193px;
 }
 
 .project-status-cleared h1 a.projectTitle {
 		/* grey*/
-	background: url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -234px;
+	background:url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -234px;
 }
 
 .project-status-warranty h1 a.projectTitle {
 		/* blue*/
-	background: url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -426px;
+	background:url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -426px;
 }
 
 .project-status-planning div.projectdetails {

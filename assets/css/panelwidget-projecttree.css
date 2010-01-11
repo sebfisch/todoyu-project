@@ -12,7 +12,7 @@
 }
 
 #panelwidget-projecttree-filter-form {
-	background: url(../../../../core/assets/img/content/hr_hor.png) repeat-x scroll 0 bottom;
+	background:url(../../../../core/assets/img/content/hr_hor.png) repeat-x scroll 0 bottom;
 	padding-bottom:3px;
 	margin-bottom:5px;
 }
@@ -28,7 +28,7 @@
 
 #panelwidget-projecttree-filter-form .fField input,
 #panelwidget-projecttree-filter-form .fField select {
-	width: 90%;
+	width:90%;
 	float:left;
 }
 
@@ -48,27 +48,27 @@
 
 	/* planning: purple */
 #panelwidget-projecttree ul.tree li.projectPlanning > a.info {
-	border-left: 3px #7f007f solid;
+	border-left:3px #7f007f solid;
 }
 
 	/* progress: orange */
 #panelwidget-projecttree ul.tree li.projectProgress > a.info {
-	border-left: 3px #ffac00 solid;
+	border-left:3px #ffac00 solid;
 }
 
 	/* warranty: blue */
 #panelwidget-projecttree ul.tree li.projectWarranty > a.info {
-	border-left: 3px #2335e0 solid;
+	border-left:3px #2335e0 solid;
 }
 
 	/* done: green */
 #panelwidget-projecttree ul.tree li.projectDone > a.info {
-	border-left: 3px #77dc00  solid;
+	border-left:3px #77dc00  solid;
 }
 
 	/* cleared: grey*/
 #panelwidget-projecttree ul.tree li.projectCleared > a.info {
-	border-left: 3px grey solid;
+	border-left:3px grey solid;
 }
 
 ul.tree {
@@ -111,7 +111,6 @@ ul.tree li a.navigateSub {
 ul.tree li.expanded > a.navigateSub {
 	background-image:url(../../../../core/assets/img/tree/tree_collapse.png);
 }
-
 
 ul.tree li.project a.info {
 	background:url(../../../../core/assets/img/tree/sprite-tree.png) 3px -47px no-repeat;
@@ -183,10 +182,10 @@ ul.tree li.last > ul {
    ---------------- */
 
 #tree_projects input.projectsNameFilterVisible {
-	position: absolute;
-	top: 8px;
-	left: 100px;
-	width: 130px;
+	position:absolute;
+	top:8px;
+	left:100px;
+	width:130px;
 }
 
 /* tree - old todoyu css!!! */
@@ -243,7 +242,7 @@ body.projects #filter-0 input { /*search in projects*/
 }
 
 ul.tree li.project a.navigateMain {
-	background: url(../../../../core/assets/img/tree/sprite-tree.png) 0 -25px no-repeat;
+	background:url(../../../../core/assets/img/tree/sprite-tree.png) 0 -25px no-repeat;
 }
 
 ul.tree li.customers a.navigateMain {
@@ -290,7 +289,7 @@ ul.tree li.dragHover > ul > li {
 }
 
 ul.tree li.fixedproject a.info{
-	background: url(../../../../core/assets/img/tree/sprite-tree.png) no-repeat 2px 2px;
+	background:url(../../../../core/assets/img/tree/sprite-tree.png) no-repeat 2px 2px;
 }
 
 ul.tree li.planning li a.info,
@@ -298,5 +297,5 @@ ul.tree li.inprogress li a.info,
 ul.tree li.warranty li a.info,
 ul.tree li.done li a.info,
 ul.tree li.cleared li a.info {
-	border-left: none;
+	border-left:none;
 }

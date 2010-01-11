@@ -30,7 +30,7 @@
 
 #search-results h1 a.titlelabel,
 .project h1 a.titlelabel {
-	display: block;
+	display:block;
 	float:left;
 	clear:none;
 	width:550px;
@@ -44,37 +44,37 @@
 }
 
 .project h1 span.additionalStuff {
-	position: absolute;
-	top: 7px;
-	right: 0;
-	margin-right: 0;
+	position:absolute;
+	top:7px;
+	right:0;
+	margin-right:0;
 	padding-top:2px;
 }
 
 .project h1 span.additionalStuff a {
-	display: block;
-	float: left;
-	margin-right: 10px;
-	height: 16px;
-	width: 16px;
+	display:block;
+	float:left;
+	margin-right:10px;
+	height:16px;
+	width:16px;
 	background-image:url(../img/icons.png);
 	background-repeat:no-repeat;
 }
 
 .project h1 span.additionalStuff a.editProject {
-	background-position: 0 -30px;
+	background-position:0 -30px;
 }
 
 .project h1 span.additionalStuff a.addProject {
-	background-position: 0 -390px;
+	background-position:0 -390px;
 }
 
 .project h1 span.additionalStuff a.addTask {
-	background-position: 0 -60px;
+	background-position:0 -60px;
 }
 
 .project h1 span.additionalStuff a.addContainer {
-	background-position: 0 -150px;
+	background-position:0 -150px;
 }
 
 
@@ -141,8 +141,8 @@
 	/* details */
 #search-results .projectstatus,
 .project .projectstatus {
-	border-top-width: 5px;
-	border-top-style: solid;
+	border-top-width:5px;
+	border-top-style:solid;
 	margin-bottom:5px;
 }
 
@@ -204,7 +204,7 @@
 	Title
    ------------- */
 #taskList h1.projectTitle a.addComment {
-	background: url(../../../../core/assets/img/sprite-icons.png) no-repeat 0 -16px;
+	background:url(../../../../core/assets/img/sprite-icons.png) no-repeat 0 -16px;
 }
 
 #taskList h1.projectTitle span.projectprice {
@@ -212,7 +212,7 @@
 }
 
 #taskList h1.projectTitle span.additionalProjectStuff input {
-	position: static;
+	position:static;
 }
 
 

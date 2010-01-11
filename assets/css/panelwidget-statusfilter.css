@@ -3,25 +3,25 @@
 }
 
 #panelwidget-statusfilter .content {
-	padding: 2px 0 4px 3px;
+	padding:2px 0 4px 3px;
 }
 
 #panelwidget-statusfilter ul {
-	width: 250px;
+	width:250px;
 }
 
 #panelwidget-statusfilter li {
-	background-color: #fff;
-	cursor: pointer;
-	padding: 2px 5px;
+	background-color:#fff;
+	cursor:pointer;
+	padding:2px 5px;
 }
 
 #panelwidget-statusfilter li.odd {
-	background-color: #F3F4F8;
+	background-color:#F3F4F8;
 }
 
 #panelwidget-statusfilter-list option {
-	cursor: pointer;
+	cursor:pointer;
 	padding-left:22px;
 	margin-left:3px;
 	background-image:url('../img/panelwidget-statusfilter.png');
