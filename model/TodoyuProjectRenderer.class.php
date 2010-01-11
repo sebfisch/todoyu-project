@@ -312,7 +312,7 @@ class TodoyuProjectRenderer {
 			// Set rootline of the task, if a task is forced to be shown
 		self::$openRootline = $idTaskShow === 0 ? array() : TodoyuTaskManager::getTaskRootline($idTaskShow);
 
-			// Tree html buffer
+			// Tree HTML buffer
 		$treeHtml	= '';
 
 			// Render tasks (with their subtasks)
