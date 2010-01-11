@@ -606,7 +606,7 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 	 * @return unknown
 	 */
 	public static function isAllowed() {
-		return allowed('project', 'panelwidget:projectTree:use');
+		return allowed('project', 'panelwidgets:projectTree');
 	}
 
 }

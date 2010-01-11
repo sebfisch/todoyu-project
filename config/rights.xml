@@ -5,75 +5,75 @@
 		<right name="use" />
 	</section>
 
-	<section name="project" require="use">
-		<right name="project:details" />
-		<right name="project:edit" />
-		<right name="project:add" />
-		<right name="project:delete" />
-		<right name="project:status" />
-		<right name="project:addtask" />
-		<right name="project:addcontainer" />
+	<section name="project" require="general:use">
+		<right name="details" />
+		<right name="edit" />
+		<right name="add" />
+		<right name="delete" />
+		<right name="status" />
+		<right name="addtask" />
+		<right name="addcontainer" />
 	</section>
 
-	<section name="task" require="use">
-		<right name="task:edit" />
-		<right name="task:addtask" />
-		<right name="task:addcontainer" />
-		<right name="task:status" />
-		<right name="task:delete" />
-		<right name="task:clone" />
-		<right name="task:copy" />
-		<right name="task:cut" />
+	<section name="task" require="general:use">
+		<right name="edit" />
+		<right name="addtask" />
+		<right name="addcontainer" />
+		<right name="status" />
+		<right name="delete" />
+		<right name="clone" />
+		<right name="copy" />
+		<right name="cut" />
 	</section>
 
-	<section name="container" require="use">
-		<right name="container:edit" />
-		<right name="container:addtask" />
-		<right name="container:addcontainer" />
-		<right name="container:delete" />
-		<right name="container:clone" />
-		<right name="container:copy" />
-		<right name="container:cut" />
+	<section name="container" require="general:use">
+		<right name="edit" />
+		<right name="addtask" />
+		<right name="addcontainer" />
+		<right name="delete" />
+		<right name="clone" />
+		<right name="copy" />
+		<right name="cut" />
 	</section>
 
-	<section name="taskstatus" require="use">
-		<right name="taskstatus:planning:see" />
-		<right name="taskstatus:open:see" />
-		<right name="taskstatus:progress:see" />
-		<right name="taskstatus:confirm:see" />
-		<right name="taskstatus:done:see" />
-		<right name="taskstatus:accepted:see" />
-		<right name="taskstatus:rejected:see" />
-		<right name="taskstatus:cleared:see" />
-		<right name="taskstatus:customer:see" />
-		<right name="taskstatus:planning:changeto" />
-		<right name="taskstatus:open:changeto" />
-		<right name="taskstatus:progress:changeto" />
-		<right name="taskstatus:confirm:changeto" />
-		<right name="taskstatus:done:changeto" />
-		<right name="taskstatus:accepted:changeto" />
-		<right name="taskstatus:rejected:changeto" />
-		<right name="taskstatus:cleared:changeto" />
-		<right name="taskstatus:customer:changeto" />
+	<section name="taskstatus" require="general:use">
+		<right name="planning:see" />
+		<right name="open:see" />
+		<right name="progress:see" />
+		<right name="confirm:see" />
+		<right name="done:see" />
+		<right name="accepted:see" />
+		<right name="rejected:see" />
+		<right name="cleared:see" />
+		<right name="customer:see" />
+		<right name="planning:changeto" />
+		<right name="open:changeto" />
+		<right name="progress:changeto" />
+		<right name="confirm:changeto" />
+		<right name="done:changeto" />
+		<right name="accepted:changeto" />
+		<right name="rejected:changeto" />
+		<right name="cleared:changeto" />
+		<right name="customer:changeto" />
 	</section>
 
-	<section name="projectstatus" require="use">
-		<right name="projectstatus:planning:see" />
-		<right name="projectstatus:progress:see" />
-		<right name="projectstatus:done:see" />
-		<right name="projectstatus:cleared:see" />
-		<right name="projectstatus:warranty:see" />
-		<right name="projectstatus:planning:changeto" />
-		<right name="projectstatus:progress:changeto" />
-		<right name="projectstatus:done:changeto" />
-		<right name="projectstatus:cleared:changeto" />
-		<right name="projectstatus:warranty:changeto" />
+	<section name="projectstatus" require="general:use">
+		<right name="planning:see" />
+		<right name="progress:see" />
+		<right name="done:see" />
+		<right name="cleared:see" />
+		<right name="warranty:see" />
+		<right name="planning:changeto" />
+		<right name="progress:changeto" />
+		<right name="done:changeto" />
+		<right name="cleared:changeto" />
+		<right name="warranty:changeto" />
 	</section>
 
-	<section name="panelwidgets" require="use">
-		<right name="panelwidget:projectTree:use" />
-		<right name="panelwidget:statusFilter:use" />
-		<right name="panelwidget:quickProject:use" />
+	<section name="panelwidgets" require="general:use">
+		<right name="projectTree" />
+		<right name="statusFilter" />
+		<right name="quickProject" />
 	</section>
 
 </rights>
