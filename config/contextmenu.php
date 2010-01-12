@@ -160,6 +160,18 @@ $CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 				'label'		=> 'task.status.cleared',
 				'jsAction'	=> 'Todoyu.Ext.project.Task.updateStatus(#ID#, ' . STATUS_CLEARED . ')',
 				'class'		=> 'taskContextMenu taskStatusCleared'
+			),
+			'warranty'	=> array(
+				'key'		=> 'status-warranty',
+				'label'		=> 'task.status.warranty',
+				'jsAction'	=> 'Todoyu.Ext.project.Task.updateStatus(#ID#, ' . STATUS_WARRANTY . ')',
+				'class'		=> 'taskContextMenu taskStatusWarranty'
+			),
+			'customer'	=> array(
+				'key'		=> 'status-customer',
+				'label'		=> 'task.status.customer',
+				'jsAction'	=> 'Todoyu.Ext.project.Task.updateStatus(#ID#, ' . STATUS_CUSTOMER . ')',
+				'class'		=> 'taskContextMenu taskStatusCustomer'
 			)
 		)
 	)

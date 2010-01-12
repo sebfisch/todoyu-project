@@ -67,9 +67,9 @@ class TodoyuProjectViewHelper {
 
 
 	/**
-	 * Get status options
-	 * Only allowed "changeto" status and current are available
+	 * Get project status options. Only allowed "changeto" statuses and currently set one are available
 	 *
+	 * @param TodoyuFormElement	$field
 	 * @return	Array
 	 */
 	public static function getProjectStatusOptions(TodoyuFormElement $field) {
@@ -78,7 +78,7 @@ class TodoyuProjectViewHelper {
 		$value		= intval($values[0]);
 		$options	= array();
 
-		foreach($statuses as $statusID => $statusKey)	{
+		foreach($statuses as $statusID => $statusKey) {
 			if( allowed('project', 'projectstatus:' . $statusKey . ':changeto') || $value == $statusID ) {
 				$options[] = array(
 					'value'		=> $statusID,
@@ -91,6 +91,13 @@ class TodoyuProjectViewHelper {
 	}
 
 
+
+	/**
+	 * Get task status options
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @return	Array
+	 */
 	public static function getTaskStatusOptions(TodoyuFormElement $field) {
 		$statuses	= TodoyuProjectStatusManager::getTaskStatuses();
 		$values		= $field->getValue();
