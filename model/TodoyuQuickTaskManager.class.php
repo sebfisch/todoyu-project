@@ -33,7 +33,7 @@ class TodoyuQuickTaskManager {
 	 *
 	 * @return	String
 	 */
-	public function renderForm()	{
+	public static function renderForm()	{
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/quicktask.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath);

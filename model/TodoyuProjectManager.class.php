@@ -855,7 +855,7 @@ class TodoyuProjectManager {
 	 *
 	 *	@return	Array
 	 */
-	public function getOpenProjectLabels() {
+	public static function getOpenProjectLabels() {
 		$entries		= array();
 
 		$openProjectIDs	= TodoyuProjectPreferences::getOpenProjectTabs();
