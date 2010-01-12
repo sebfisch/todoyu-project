@@ -71,12 +71,14 @@ class TodoyuProjectStatusManager {
 	 *
 	 * @return	Array
 	 */
-	public static function getTaskStatuses() {
-		$statuses	= $GLOBALS['CONFIG']['EXT']['project']['STATUS']['TASK'];
+	public static function getTaskStatuses($check = 'see', $forceStatus = 0) {
+		$check		= $check === 'changeto' ? 'changeto' : 'see';
+		$forceStatus= intval($forceStatus);
+		$statuses	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['STATUS']['TASK']);
 
 		foreach($statuses as $index => $statusKey) {
 				// Only get allowed status which the user can see
-			if( ! allowed('project', 'taskstatus:' . $statusKey . ':see') ) {
+			if( ! allowed('project', 'taskstatus:' . $statusKey . ':' . $check) && $index !== $forceStatus ) {
 				unset($statuses[$index]);
 			}
 		}
@@ -174,8 +176,19 @@ class TodoyuProjectStatusManager {
 	 *
 	 * @return	Array
 	 */
-	public static function getProjectStatuses() {
-		return $GLOBALS['CONFIG']['EXT']['project']['STATUS']['PROJECT'];
+	public static function getProjectStatuses($check = 'see', $forceStatus = 0) {
+		$check		= $check === 'changeto' ? 'changeto' : 'see';
+		$forceStatus= intval($forceStatus);
+		$statuses	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['STATUS']['PROJECT']);
+
+		foreach($statuses as $index => $statusKey) {
+				// Only get allowed status which the user can see
+			if( ! allowed('project', 'projectstatus:' . $statusKey . ':' . $check) && $index !== $forceStatus) {
+				unset($statuses[$index]);
+			}
+		}
+
+		return $statuses;
 	}
 
 

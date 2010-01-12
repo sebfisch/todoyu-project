@@ -73,18 +73,16 @@ class TodoyuProjectViewHelper {
 	 * @return	Array
 	 */
 	public static function getProjectStatusOptions(TodoyuFormElement $field) {
-		$statuses	= TodoyuProjectStatusManager::getProjectStatuses();
 		$values		= $field->getValue();
-		$value		= intval($values[0]);
+		$idStatus	= intval($values[0]);
 		$options	= array();
+		$statuses	= TodoyuProjectStatusManager::getProjectStatuses('changeto', $idStatus);
 
 		foreach($statuses as $statusID => $statusKey) {
-			if( allowed('project', 'projectstatus:' . $statusKey . ':changeto') || $value == $statusID ) {
-				$options[] = array(
-					'value'		=> $statusID,
-					'label'		=> TodoyuProjectStatusManager::getProjectStatusLabel($statusKey)
-				);
-			}
+			$options[] = array(
+				'value'		=> $statusID,
+				'label'		=> TodoyuProjectStatusManager::getProjectStatusLabel($statusKey)
+			);
 		}
 
 		return $options;
@@ -99,18 +97,16 @@ class TodoyuProjectViewHelper {
 	 * @return	Array
 	 */
 	public static function getTaskStatusOptions(TodoyuFormElement $field) {
-		$statuses	= TodoyuProjectStatusManager::getTaskStatuses();
+		$statuses	= TodoyuProjectStatusManager::getTaskStatuses('changeto');
 		$values		= $field->getValue();
 		$value		= intval($values[0]);
 		$options	= array();
 
-		foreach($statuses as $statusID => $statusKey)	{
-			if( allowed('project', 'taskstatus:' . $statusKey . ':changeto') || $value == $statusID ) {
-				$options[] = array(
-					'value'		=> $statusID,
-					'label'		=> TodoyuProjectStatusManager::getTaskStatusLabel($statusKey)
-				);
-			}
+		foreach($statuses as $statusID => $statusKey)	{ {
+			$options[] = array(
+				'value'		=> $statusID,
+				'label'		=> TodoyuProjectStatusManager::getTaskStatusLabel($statusKey)
+			);
 		}
 
 		return $options;

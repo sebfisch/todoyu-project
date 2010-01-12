@@ -157,15 +157,17 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 			$project		= TodoyuProjectManager::getProject($idProject);
 			$isExpanded		= $this->isProjectExpanded($idProject);
 
-			$projectData = array(	'idProject'		=> $idProject,
-									'htmlId'		=> 'panelwidget-projecttree-project-' . $idProject,
-									'status'		=> 'project' . ucfirst($project->getStatusKey()),
-									'clickExpand'	=> 'Todoyu.Ext.project.PanelWidget.ProjectTree.toggleProjectTasks(' . $idProject . ')',
-									'clickDetail'	=> 'Todoyu.Ext.project.PanelWidget.ProjectTree.openProject(' . $idProject . ')',
-									'title'			=> 'Projekt ID: ' . $idProject,
-									'label'			=> $project->getFullTitle(),
-									'class'			=> 'project expandable',
-									'expandable'	=> true);
+			$projectData = array(
+				'idProject'		=> $idProject,
+				'htmlId'		=> 'panelwidget-projecttree-project-' . $idProject,
+				'status'		=> 'project' . ucfirst($project->getStatusKey()),
+				'clickExpand'	=> 'Todoyu.Ext.project.PanelWidget.ProjectTree.toggleProjectTasks(' . $idProject . ')',
+				'clickDetail'	=> 'Todoyu.Ext.project.PanelWidget.ProjectTree.openProject(' . $idProject . ')',
+				'title'			=> 'Projekt ID: ' . $idProject,
+				'label'			=> $project->getFullTitle(),
+				'class'			=> 'project expandable',
+				'expandable'	=> true
+			);
 
 			if( $isExpanded ) {
 				$projectData['subtasks'] = $this->renderTaskTree($idProject, 'project', true);

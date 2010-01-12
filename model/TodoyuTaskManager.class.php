@@ -427,10 +427,10 @@ class TodoyuTaskManager {
 			if( $task->isTask() && allowed('project', 'task:status') ) {
 				$allowed['status'] = $ownItems['status'];
 
-				$statuses = array_flip(TodoyuProjectStatusManager::getProjectStatuses());
+				$statuses = TodoyuProjectStatusManager::getTaskStatuses('changeto');
 
 				foreach($allowed['status']['submenu'] as $key => $status) {
-					if( ! allowed('project', 'taskstatus:' . $statuses[$key] . ':changeto') ) {
+					if( ! in_array($key, $statuses) ) {
 						unset($allowed['status']['submenu'][$key]);
 					}
 				}

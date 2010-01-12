@@ -483,7 +483,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 
 			// If no status selected, get all allowed
 		if( sizeof($statuses) === 0 ) {
-			$statuses = array_keys(TodoyuProjectStatusManager::getTaskStatuses());
+			$statuses = array_keys(TodoyuProjectStatusManager::getTaskStatuses('see'));
 		}
 
 		$tables	= array('ext_project_task');

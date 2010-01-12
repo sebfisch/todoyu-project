@@ -323,7 +323,7 @@ class TodoyuProjectManager {
 		$idProject	= intval($idProject);
 		$isExpanded	= TodoyuProjectPreferences::isProjectDetailsExpanded($idProject);
 
-		$ownItems	= $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Project'];
+		$ownItems	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Project']);
 		$allowed	= array();
 
 		$allowed[] = $ownItems['header'];
@@ -350,11 +350,11 @@ class TodoyuProjectManager {
 			// Status
 		if( allowed('project', 'project:status') ) {
 			$allowed['status'] = $ownItems['status'];
-			$allowed['status']['submenu'] = array();
+			$statuses = TodoyuProjectStatusManager::getProjectStatuses('changeto');
 
-			foreach($ownItems['status']['submenu'] as $key => $status) {
-				if( allowed('project', 'projectstatus:' . $key . ':changeto') ) {
-					$allowed['status']['submenu'][$key] = $status;
+			foreach($allowed['status']['submenu'] as $key => $status) {
+				if( ! in_array($key, $statuses) ) {
+					unset($allowed['status']['submenu'][$key]);
 				}
 			}
 		}
