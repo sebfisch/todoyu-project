@@ -818,6 +818,14 @@ class TodoyuTaskManager {
 				'className'	=> ''
 			);
 
+				// Public
+			$info['is_public']	= array(
+				'label'	=> 'LLL:task.attr.is_public',
+				'value'	=> Label('LLL:task.attr.is_public.' . ($taskData['is_public'] ? 'public' : 'private')),
+				'position'	=> 25,
+				'className'	=> ''
+			);
+
 				// Estimated workload
 			$info['esitmated_workload']	= array(
 				'label'	=> 'LLL:task.attr.esitmated_workload',
@@ -855,14 +863,15 @@ class TodoyuTaskManager {
 			);
 
 				// Date end (if set)
-			$formatEnd	= date('m', $data['date_end']) === '00' ? 'date' : 'datetime';
-			$info['date_end']	= array(
-				'label'	=> 'LLL:task.attr.date_end',
-				'value'	=> TodoyuTime::format($taskData['date_end'], $formatEnd),
-				'position'	=> 110,
-				'className'	=> ''
-			);
-
+			if( $taskData['date_end'] > 0 ) {
+				$formatEnd	= date('F', $data['date_end']) == 0 ? 'date' : 'datetime';
+				$info['date_end']	= array(
+					'label'	=> 'LLL:task.attr.date_end',
+					'value'	=> TodoyuTime::format($taskData['date_end'], $formatEnd),
+					'position'	=> 110,
+					'className'	=> ''
+				);
+			}
 				// Date deadline
 			if( $taskData['date_deadline'] > 0 ) {
 				$formatDeadline	= date('s', $taskData['date_deadline']) === '00' ? 'date' : 'datetime';
@@ -969,7 +978,7 @@ class TodoyuTaskManager {
 		if( $task->isPublic() ) {
 			$icons[] = array(
 				'class'	=> 'isPublic',
-				'label'	=> Label('LLL:task.attr.is_public')
+				'label'	=> Label('LLL:task.attr.is_public.public')
 			);
 		}
 

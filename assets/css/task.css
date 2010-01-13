@@ -105,7 +105,7 @@
 	Additional stuff
    ---------------------- */
 
-#taskList .task h3 span.additionalStuff {
+.taskList .task h3 span.additionalStuff {
 	position:absolute;
 	height:16px;
 	width:65px;
@@ -115,7 +115,7 @@
 	cursor:default;
 }
 
-#taskList .task h3 span.additionalStuff span {
+.taskList .task h3 span.additionalStuff span {
 	float:left;
 	clear:none;
 	width:16px;
@@ -124,21 +124,21 @@
 	margin-left:3px;
 }
 
-#taskList .task .additionalStuff .taskcontainer {
+.taskList .task .additionalStuff .taskcontainer {
 	background:url('../img/icons.png') no-repeat 0 -87px;
 }
 
-#taskList .task .additionalStuff .isPublic {
-	background:url('../img/icons.png') no-repeat 0 -206px;
+.taskList .task .additionalStuff .isPublic {
+	background:url('../img/icons.png') no-repeat 1px -206px;
 }
 
-.task .additionalStuff .notAcknowledged {
+.taskList .task .additionalStuff .notAcknowledged {
 	width:10px;
 	cursor:pointer;
 	background:url('../img/icons.png') no-repeat 0 -268px;
 }
 
-.task .additionalStuff .timeover {
+.taskList .task .additionalStuff .timeover {
 	width:14px;
 	background:url('../img/icons.png') no-repeat 0 -328px;
 }
@@ -457,11 +457,9 @@ span.taskTitleFixTaskSymbol {
 	Additional task icons
    ------------------ */
 
-.additionalStuff .isPublic{
-	background:url(../img/icons_dev.png) no-repeat 0 0;
-}
 
 	/* task header billing types:*/
+/*
 .billing_clarify, .billing_bug, .billing_addexpense, .billing_gratis {
 	width:10px;
 	height:16px;
@@ -482,7 +480,7 @@ span.taskTitleFixTaskSymbol {
 .billing_gratis {
 	background:url(../../img/sprite-icons.png) no-repeat -60px -16px !important;
 }
-
+*/
 .task-status-container h3 a,
 .task-status-container div.taskdetails {
 	border-left-color:#1E2022;

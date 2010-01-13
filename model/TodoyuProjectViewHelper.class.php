@@ -102,7 +102,7 @@ class TodoyuProjectViewHelper {
 		$value		= intval($values[0]);
 		$options	= array();
 
-		foreach($statuses as $statusID => $statusKey)	{ {
+		foreach($statuses as $statusID => $statusKey) {
 			$options[] = array(
 				'value'		=> $statusID,
 				'label'		=> TodoyuProjectStatusManager::getTaskStatusLabel($statusKey)

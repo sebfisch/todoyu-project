@@ -136,7 +136,7 @@
 				</field>
 
 				<field type="checkbox" name="is_public">
-					<label>task.attr.is_public</label>
+					<label>task.attr.is_public.public</label>
 				</field>
 
 			</elements>
