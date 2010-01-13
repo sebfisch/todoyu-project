@@ -54,7 +54,19 @@ class TodoyuQuickTaskManager {
 	 *	@return	Integer
 	 */
 	public static function save(array $formData) {
+			// Add empty task to have a task ID to work with
+		$firstData	= array(
+			'id_project'	=> intval($formData['id_project']),
+			'id_parenttask'	=> 0
+		);
+		$idTask		= TodoyuTaskManager::addTask($firstData);
+
+			// Call form hooks to save external data
+		$xmlPath	= 'ext/project/config/form/quicktask.xml';
+		$formData	= TodoyuFormHook::callSaveData($xmlPath, $formData, $idTask);
+
 		$data	= array(
+			'id'				=> $idTask,
 			'title'				=> $formData['title'],
 			'description'		=> $formData['description'],
 			'id_project'		=> $formData['id_project'],
@@ -84,35 +96,9 @@ class TodoyuQuickTaskManager {
 			// Save task to DB
 		$idTask = TodoyuTaskManager::saveTask($data);
 
-			// If already tracked workload: have it added to workload record of task in DB
-		if( intval($formData['workload_tracked']) > 0 ) {
-			self::addTrackedWorkload($idTask, $formData['workload_tracked']);
-		}
-
 		return $idTask;
 	}
 
-
-
-	/**
-	 * Add already tracked (seconds of) workload to workload record of given task.
-	 *
-	 *	@param	Integer	$idTask
-	 *	@param	Integer	$workload
-	 */
-	protected static function addTrackedWorkload($idTask, $workload) {
-		$idTask		= intval($idTask);
-		$workload	= intval($workload);
-
-		$data	= array(
-			'id_user'			=> TodoyuAuth::getUserID(),
-			'id_task'			=> $idTask,
-			'date_create'		=> NOW,
-			'workload_tracked'	=> $workload
-		);
-
-		TodoyuTimetrackingManager::saveWorkloadRecord($data);
-	}
 
 }
 

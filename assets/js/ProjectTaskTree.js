@@ -88,6 +88,11 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		}
 	},
 	
+	
+	
+	/**
+	 * Remove dummy tab which appears when no project is selected
+	 */
 	removeNoSelectionTab: function() {
 		if( Todoyu.exists('projecttab-noselection') ) {
 			$('projecttab-noselection').remove();
@@ -100,6 +105,13 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 *
 	 *	@param	Integer		idProject
 	 *	@param	Integer		idTask
+	 */
+	
+	/**
+	 * Show a project as listtree
+	 * 
+	 * @param	Integer		idProject
+	 * @param	Integer		idTask
 	 */
 	addNewProject: function(idProject, idTask) {
 		var url		= Todoyu.getUrl('project', 'projecttasktree');

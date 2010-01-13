@@ -44,16 +44,19 @@ Todoyu.Ext.project.PanelWidget.QuickProject = {
 	},
 
 
-
+	
 	/**
-	 * Handle task being added
+	 * Handler when quicktask has been saved
+	 * Update the tasklist, if task has been added to the active project
 	 * 
-	 *	@param	Integer	idTask
-	 * 	@param	Integer	idProject
-	 * 	@param	Boolean	started
-	 */	
+	 * @param	Integer		idTask
+	 * @param	Integer		idProject
+	 * @param	Bool		started
+	 */
 	onTaskAdded: function(idTask, idProject, started) {
-		
+		if( idProject == this.ext.ProjectTaskTree.getActiveProjectID() ) {
+			this.ext.TaskTree.update();
+		}
 	}
 	
 };

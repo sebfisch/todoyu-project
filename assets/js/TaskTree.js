@@ -92,6 +92,10 @@ Todoyu.Ext.project.TaskTree = {
 	 * 	param	String		filterValue
 	 */
 	update: function(idProject, filterName, filterValue) {
+		if( ! Object.isUndefined(idProject) ) {
+			idProject = this.ext.ProjectTaskTree.getActiveProjectID();
+		}		
+		
 		var url		= Todoyu.getUrl('project', 'tasktree');
 		var options	= {
 			'parameters': {
