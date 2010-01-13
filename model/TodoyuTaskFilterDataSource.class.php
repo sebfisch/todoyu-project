@@ -93,13 +93,15 @@ class TodoyuTaskFilterDataSource {
 	 */
 	public static function getStatusOptions(array $definitions)	{
 		$options	= array();
-		$statuses	= TodoyuProjectStatusManager::getProjectStatusInfos();
+		$statuses	= TodoyuProjectStatusManager::getTaskStatusInfos(); // getProjectStatusInfos();
+		$selected	= TodoyuDiv::intExplode(',', $definitions['value'], true, true);
 
-		foreach($statuses as $index => $status) {
-			$selected = TodoyuDiv::isInList($status['index'], $definitions['value']);
-			$options[$index] = array(	'label'	=> $status['label'],
-										'selected'	=> $selected
-										);
+		foreach($statuses as $status) {
+			$options[$status['index']] = array(
+				'label'		=> $status['label'],
+				'value'		=> $status['index'],
+				'selected'	=> in_array($status['index'], $selected)
+			);
 		}
 
 		$definitions['options'] = $options;

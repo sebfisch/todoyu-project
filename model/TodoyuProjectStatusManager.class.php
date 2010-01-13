@@ -111,8 +111,8 @@ class TodoyuProjectStatusManager {
 	 *
 	 * @return	Array
 	 */
-	public static function getTaskStatusInfos() {
-		$statuses	= self::getTaskStatuses();
+	public static function getTaskStatusInfos($check = 'see') {
+		$statuses	= self::getTaskStatuses($check);
 		$infos		= array();
 
 		foreach($statuses as $index => $statusKey) {
@@ -218,8 +218,8 @@ class TodoyuProjectStatusManager {
 	 *
 	 * @return	Array
 	 */
-	public static function getProjectStatusInfos() {
-		$statuses	= self::getProjectStatuses();
+	public static function getProjectStatusInfos($check = 'see') {
+		$statuses	= self::getProjectStatuses($check);
 		$infos		= array();
 
 		foreach($statuses as $index => $statusKey) {
