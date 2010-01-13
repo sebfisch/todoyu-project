@@ -128,7 +128,7 @@
 		<label index="contextmenu.add.task">Aufgabe hinzufügen</label>
 		<label index="contextmenu.add.container">Container hinzufügen</label>
 		<label index="userrole.attr.rolekey">Rollen-Schlüssel</label>
-		<label index="tasktree.losttasks">Aufgaben bei welchen die übergeordnete Aufgabe mit dem aktuellen Filter nicht angezeigt wird</label>
+		<label index="tasktree.losttasks">Passende Aufgaben deren übergeordnete Aufgabe nicht angezeigt wird</label>
 		<label index="records.userrole">Benutzer-Rollen</label>
 		<label index="records.worktype">Arbeits-Kategorie</label>
 		<label index="form.validation.dateBefore">Datum muss vor dem End-Datum liegen</label>

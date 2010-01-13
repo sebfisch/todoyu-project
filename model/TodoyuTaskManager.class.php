@@ -847,7 +847,7 @@ class TodoyuTaskManager {
 				// User assigned
 			$info['user_assigned']	= array(
 				'label'		=> 'LLL:task.attr.user_assigned',
-				'value'		=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $taskData['user_assigned']['lastname'] . ', ' . $taskData['user_assigned']['firstname'] . '</a>',
+				'value'		=> $taskData['user_assigned']['lastname'] . ' ' . $taskData['user_assigned']['firstname'],
 				'position'	=> 80,
 				'className'	=> 'sectionStart'
 			);
@@ -1722,6 +1722,31 @@ class TodoyuTaskManager {
 		$update['sorting'] = $after ? $taskRef['sorting'] + 1 : $taskRef['sorting'];
 
 		Todoyu::db()->updateRecord(self::TABLE, $idTaskMove, $update, $noQuote);
+	}
+
+
+
+	/**
+	 * Sort task IDs by a field in the database
+	 * This is useful if you have task IDs from severals sources (filters) and
+	 * they should all be sorted by one field
+	 *
+	 * @param	Array		$taskIDs		Task IDs to sort
+	 * @param	String		$order			Order statement
+	 * @return	Array
+	 */
+	public static function sortTaskIDs(array $taskIDs, $order) {
+		$taskIDs	= TodoyuArray::intval($taskIDs, true, true);
+
+		if( sizeof($taskIDs) === 0 ) {
+			return array();
+		}
+
+		$field	= 'id';
+		$table	= self::TABLE;
+		$where	= 'id IN(' . implode(',', $taskIDs) . ')';
+
+		return Todoyu::db()->getColumn($field, $table, $where, '', $order);
 	}
 
 }

@@ -618,7 +618,6 @@ class TodoyuProjectManager {
 			// Get all tasks which should be displayed, but were not (they are lost)
 		$matchingNotDisplayedTaskIDs = array_diff($matchingTaskIDs, $displayedTasks);
 
-
 			// Get an array for mapping between tasks and their parents
 		$field		= 'id_parenttask';
 		$table		= 'ext_project_task';
