@@ -183,8 +183,12 @@ Todoyu.Ext.project.Project = {
 			},
 			'onComplete': this.onAdded.bind(this)
 		};
+		var target	= 'projects';
+		
+			// Remove project form or dummy start screen
+		this.ext.ProjectTaskTree.removeProject(0);
 
-		Todoyu.send(url, options);
+		Todoyu.Ui.insert(target, url, options);
 	},
 
 
@@ -199,11 +203,7 @@ Todoyu.Ext.project.Project = {
 		var projectLabel= response.getHeader('Todoyu-projectLabel');
 
 		this.ext.ProjectTaskTree.addNewTabhead(idProject, projectLabel);
-
-		$('projects').insert(response.responseText);
-
 		this.ext.ProjectTaskTree.displayActiveProject(idProject);
-		//this.edit(idProject);
 	},
 
 
