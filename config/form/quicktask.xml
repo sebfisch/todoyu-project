@@ -51,15 +51,8 @@
 					<required />
 				</field>
 
-				<field type="checkbox" name="start_tracking">
-					<label>timetracking.start</label>
-					<default>1</default>
-					<onchange>Todoyu.Ext.project.QuickTask.preventStartDone('start', this)</onchange>
-				</field>
-
 				<field type="checkbox" name="task_done">
 					<label>task.taskDone</label>
-					<onchange>Todoyu.Ext.project.QuickTask.preventStartDone('done', this)</onchange>
 				</field>
 
 			</elements>

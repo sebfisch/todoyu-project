@@ -92,7 +92,7 @@ Todoyu.Ext.project.TaskTree = {
 	 * 	param	String		filterValue
 	 */
 	update: function(idProject, filterName, filterValue) {
-		if( ! Object.isUndefined(idProject) ) {
+		if( Object.isUndefined(idProject) ) {
 			idProject = this.ext.ProjectTaskTree.getActiveProjectID();
 		}		
 		

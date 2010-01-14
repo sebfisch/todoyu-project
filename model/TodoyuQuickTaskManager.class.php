@@ -53,45 +53,36 @@ class TodoyuQuickTaskManager {
 	 *	@param	Array	$formData
 	 *	@return	Integer
 	 */
-	public static function save(array $formData) {
+	public static function save(array $data) {
 			// Add empty task to have a task ID to work with
 		$firstData	= array(
-			'id_project'	=> intval($formData['id_project']),
+			'id_project'	=> intval($data['id_project']),
 			'id_parenttask'	=> 0
 		);
 		$idTask		= TodoyuTaskManager::addTask($firstData);
 
-			// Call form hooks to save external data
-		$xmlPath	= 'ext/project/config/form/quicktask.xml';
-		$formData	= TodoyuFormHook::callSaveData($xmlPath, $formData, $idTask);
-
-		$data	= array(
-			'id'				=> $idTask,
-			'title'				=> $formData['title'],
-			'description'		=> $formData['description'],
-			'id_project'		=> $formData['id_project'],
-			'id_worktype'		=> $formData['id_worktype'],
-			'status'			=> STATUS_OPEN,
-			'id_user_assigned'	=> TodoyuAuth::getUserID(),
-			'id_user_owner'		=> TodoyuAuth::getUserID(),
-			'date_start'		=> NOW,
-			'date_end'			=> NOW + TodoyuTime::SECONDS_WEEK,
-			'date_deadline'		=> NOW + TodoyuTime::SECONDS_WEEK,
-			'type'				=> TASK_TYPE_TASK,
-			'estimated_workload'=> TodoyuTime::SECONDS_HOUR
-		);
+			// Prepare data to save task
+		$data['id']					= $idTask;
+		$data['status']				= STATUS_OPEN;
+		$data['id_user_assigned']	= TodoyuAuth::getUserID();
+		$data['id_user_owner']		= TodoyuAuth::getUserID();
+		$data['date_start']			= NOW;
+		$data['date_end']			= NOW + TodoyuTime::SECONDS_WEEK;
+		$data['date_deadline']		= NOW + TodoyuTime::SECONDS_WEEK;
+		$data['type']				= TASK_TYPE_TASK;
+		$data['estimated_workload']	= TodoyuTime::SECONDS_HOUR;
 
 			// If task already done: set also date_end and date_finish
-		if( intval($formData['task_done']) === 1 ) {
+		if( intval($data['task_done']) === 1 ) {
 			$data['status'] 	= STATUS_DONE;
 			$data['date_end']	= NOW;
 			$data['date_finish']= NOW;
 		}
+		unset($data['task_done']);
 
-			// 'Start tracking' checked? set status accordingly
-		if( intval($formData['start_tracking']) === 1 ) {
-			$data['status'] = STATUS_PROGRESS;
-		}
+			// Call form hooks to save external data
+		$xmlPath	= 'ext/project/config/form/quicktask.xml';
+		$data		= TodoyuFormHook::callSaveData($xmlPath, $data, $idTask);
 
 			// Save task to DB
 		$idTask = TodoyuTaskManager::saveTask($data);
