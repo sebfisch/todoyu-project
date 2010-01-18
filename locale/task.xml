@@ -15,15 +15,15 @@
 		<label index="attr.user_assigned">Assigned to</label>
 		<label index="attr.user_owner">Task Owner</label>
 		<label index="attr.is_public">Task visibility</label>
-		<label index="attr.is_public.public">Task is public</label>
-		<label index="attr.is_public.private">Task is NOT public</label>
+		<label index="attr.is_public.public">Task is Public</label>
+		<label index="attr.is_public.private">Task is NOT Public</label>
 		<label index="attr.id_parenttask">Parenttask</label>
-		<label index="attr.is_estimatedworkload_public">Est. workload public visible</label>
-		<label index="attr.is_estimatedworkload_public.1">Is public</label>
-		<label index="attr.is_estimatedworkload_public.0">Not public</label>
+		<label index="attr.is_estimatedworkload_public">Est. Workload Public Visible</label>
+		<label index="attr.is_estimatedworkload_public.1">Is Public</label>
+		<label index="attr.is_estimatedworkload_public.0">Not Public</label>
 		<label index="attr.is_estimatedworkload_public.error">Please fill in the estimated workload for this task</label>
-		<label index="attr.notAcknowledged">Not acknowledged (NEW)</label>
-		<label index="attr.timeover">'Enddate or deadline exceeded'</label>
+		<label index="attr.notAcknowledged">Not Acknowledged (NEW)</label>
+		<label index="attr.timeover">'Enddate or Deadline Exceeded'</label>
 		<label index="attr.overtimed">Task overtimed</label>
 		<label index="search.label">Tasks</label>
 		<label index="search.mode.label">Search Tasks</label>
@@ -45,10 +45,10 @@
 		<label index="contextmenu.container.cut">Cut</label>
 		<label index="contextmenu.container.clone">Clone</label>
 		<label index="contextmenu.container.delete">Delete</label>
-		<label index="contextmenu.paste">Insert copied Task ...</label>
+		<label index="contextmenu.paste">Insert Copied Task ...</label>
 		<label index="contextmenu.paste.in">as Subtask</label>
-		<label index="contextmenu.paste.before">before this Task</label>
-		<label index="contextmenu.paste.after">after this Task</label>
+		<label index="contextmenu.paste.before">Before this Task</label>
+		<label index="contextmenu.paste.after">After this Task</label>
 		<label index="status.planning">Planning</label>
 		<label index="status.open">Open</label>
 		<label index="status.progress">In Progress</label>
@@ -86,8 +86,8 @@
 		<label index="description">Task Description</label>
 		<label index="attr.status">Status</label>
 		<label index="error.title">Please enter a title for the task</label>
-		<label index="attr.user_assigned.error">This field is required</label>
-		<label index="attr.id_worktype.error">This field is required</label>
+		<label index="attr.user_assigned.error">This Field is Required</label>
+		<label index="attr.id_worktype.error">This Field is Required</label>
 		<label index="save.error">Saving was not successfull</label>
 		<label index="save.success">Saving successfull</label>
 	</labels>
