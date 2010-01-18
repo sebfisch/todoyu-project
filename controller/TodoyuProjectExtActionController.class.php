@@ -79,9 +79,11 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 			// Render panel widgets and content
 		$panelWidgets		= TodoyuProjectRenderer::renderPanelWidgets($idProject, $idTask);
+		$projectTabs		= TodoyuProjectRenderer::renderProjectTabs($idProject);
 		$projectTaskTree	= TodoyuProjectRenderer::renderProjectView($idProject, $idTask, $taskTab);
 
 		TodoyuPage::set('panelWidgets', $panelWidgets);
+		TodoyuPage::set('projectTabs', $projectTabs);
 		TodoyuPage::set('taskTree', $projectTaskTree);
 
 			// Add JS onload functions

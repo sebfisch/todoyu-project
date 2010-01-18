@@ -137,7 +137,7 @@ class TodoyuProjectRenderer {
 		$tmpl	= 'ext/project/view/projecttasktrees.tmpl';
 		$data	= array(
 			'idProject'	=> $idProject,
-			'tabs'		=> self::renderProjectTabs($idProject),
+//			'tabs'		=> self::renderProjectTabs($idProject),
 			'project'	=> self::renderTabbedProject($idProject, $idTask, $tab),
 		);
 
