@@ -110,52 +110,7 @@ Todoyu.Ext.project = {
 	attachContextMenu: function() {
 		this.ContextMenuProject.attach();
 		this.ContextMenuTask.attach();
-	},
-
-
-
-	/**
-	 *	Toggle task details
-	 *
-	 *	@param	Integer	idTask
-	 */
-	toggleTaskDetails: function(idTask) {
-		var detail	= $('task-' + idTask + '-details');
-		var header	= $('task-' + idTask + '-header');
-		var url, options;
-
-			// If detail is not loaded yet, send a request
-		if( ! detail ) {
-			url		= Todoyu.getUrl('project', 'taskdetail');
-			options	= {
-				'parameters': {
-					'task':	idTask
-				},
-				'asynchronous': false,
-				'onComplete': function(response) {
-					header.insert({after: response.responseText});
-				}
-			};
-			Todoyu.send(url, options);
-			detail	= $('task-' + idTask + '-details');
-			detail.hide();
-		}
-
-			// If detail is currently visible, toggle will close it. Send request so save preference
-		if( detail.visible() ) {
-			url		= Todoyu.getUrl('project', 'preference');
-			options = {
-				'parameters': {
-					'action':	'collapse_tree_task',
-					'task':		idTask
-				}
-			};
-			Todoyu.send(url, options);
-		}
-
-		detail.toggle();
-	},
-	
+	},	
 	
 
 	/**
