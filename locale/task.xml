@@ -23,7 +23,7 @@
 		<label index="attr.is_estimatedworkload_public.0">Not Public</label>
 		<label index="attr.is_estimatedworkload_public.error">Please fill in the estimated workload for this task</label>
 		<label index="attr.notAcknowledged">Not Acknowledged (NEW)</label>
-		<label index="attr.timeover">'Enddate or Deadline Exceeded'</label>
+		<label index="attr.dateover">Enddate or Deadline Exceeded</label>
 		<label index="attr.overtimed">Task overtimed</label>
 		<label index="search.label">Tasks</label>
 		<label index="search.mode.label">Search Tasks</label>
@@ -114,7 +114,7 @@
 		<label index="attr.is_estimatedworkload_public.0">Nicht öffentlich</label>
 		<label index="attr.is_estimatedworkload_public.error">Bitte füllen Sie den gesschätzten Aufwand ein</label>
 		<label index="attr.notAcknowledged">Nicht bestätigt (Neu)</label>
-		<label index="attr.timeover">End-Datum oder Frist ist abgelaufen</label>
+		<label index="attr.dateover">End-Datum oder Frist ist abgelaufen</label>
 		<label index="attr.overtimed">Aufgabezeit überzogen</label>
 		<label index="search.label">Aufgaben</label>
 		<label index="search.mode.label">Aufgaben suchen</label>

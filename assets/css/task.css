@@ -102,20 +102,21 @@
 
 
 /* ----------------------
-	Additional stuff
+	Task Icons
    ---------------------- */
 
-.taskList .task h3 span.additionalStuff {
+.taskList .task h3 span.taskIcons {
 	position:absolute;
 	height:16px;
-	width:65px;
+	width:70px;
+	overflow:hidden;
 	margin-top:-2px;
 	padding:1px 3px;
 	background:url(../../../../core/assets/img/dottedline_ver.png) repeat-y 0 0;
 	cursor:default;
 }
 
-.taskList .task h3 span.additionalStuff span {
+.taskList .task h3 span.taskIcons span {
 	float:left;
 	clear:none;
 	width:16px;
@@ -124,44 +125,30 @@
 	margin-left:3px;
 }
 
-.taskList .task .additionalStuff .taskcontainer {
-	background:url('../img/icons.png') no-repeat 0 -87px;
+.taskList .task .taskIcons .taskcontainer {
+	background:url(../img/icons.png) no-repeat 0 -87px;
 }
 
-.taskList .task .additionalStuff .isPublic {
-	background:url('../img/icons.png') no-repeat 1px -206px;
+.taskList .task .taskIcons .isPublic {
+	background:url(../img/icons.png) no-repeat 1px -206px;
 }
 
-.taskList .task .additionalStuff .notAcknowledged {
+.taskList .task .taskIcons .notAcknowledged {
 	width:10px;
 	cursor:pointer;
-	background:url('../img/icons.png') no-repeat 0 -268px;
+	background:url(../img/icons.png) no-repeat 0 -266px;
 }
 
-.taskList .task .additionalStuff .timeover {
+.taskList .task .taskIcons .dateover {
 	width:14px;
-	background:url('../img/icons.png') no-repeat 0 -328px;
+	background:url(../img/icons.png) no-repeat 0 -328px;
 }
-
-/* Task header icons */
 
 #taskList h3 span.timewarning {
 	display:block;
 	position:absolute;
 	padding:8px 0 8px 0;
 	background:url(../../../../core/assets/img/sprite-icons.png) no-repeat 0 -833px !important;
-}
-
-#taskList h3 span.todoyurendertask_unacknowledgedtask {
-	display:block;
-	position:absolute;
-	padding:2px 0 0 9px;
-}
-
-span.taskTitleFixTaskSymbol {
-	margin:0 0 0 -12px;
-	width:12px;
-	padding:0;
 }
 
 
@@ -244,12 +231,12 @@ span.taskTitleFixTaskSymbol {
 		color:#666;
 		line-height:15px;
 	}
-	
+
 	div.task div.details div div.right dl dt.even,
 	div.task div.details div div.right dl dd.even {
 		background-color:#f9f9f9;
 	}
-	
+
 	div.task div.details div div.right dl dt.sectionStart,
 	div.task div.details div div.right dl dd.sectionStart {
 		margin-top: 11px;
@@ -341,7 +328,7 @@ span.taskTitleFixTaskSymbol {
 		right:115px;
 	}
 
-	#taskList.projectTaskList h3 span.additionalStuff {
+	#taskList.projectTaskList h3 span.taskIcons {
 		right:0;
 	}
 

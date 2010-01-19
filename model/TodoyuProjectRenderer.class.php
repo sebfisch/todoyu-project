@@ -488,8 +488,7 @@ class TodoyuProjectRenderer {
 			// Prepare data array for template
 		$data = array(
 			'task'				=> $taskData,
-			'additionalIcons'	=> TodoyuTaskManager::getAdditionalTaskIcons($idTask),
-			'infoIcons'			=> TodoyuTaskManager::getAllTaskInfoIcons($idTask),
+			'taskIcons'			=> TodoyuTaskManager::getAllTaskIcons($idTask),
 			'hasSubtasks'		=> TodoyuTaskManager::hasSubtasks($idTask),
 			'areSubtasksVisible'=> self::areSubtasksVisible($idTask),
 			'isExpanded'		=> $isExpanded

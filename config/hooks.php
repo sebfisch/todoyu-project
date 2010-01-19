@@ -21,8 +21,7 @@
 
 TodoyuHookManager::registerHook('project', 'taskdata', 			'TodoyuTaskManager::getTaskDataAttributes');
 TodoyuHookManager::registerHook('project', 'projectdata', 		'TodoyuProjectManager::getProjectDataAttributes');
-TodoyuHookManager::registerHook('project', 'additionalIcons',	'TodoyuTaskManager::getAdditionalProjectTaskIcons');
-TodoyuHookManager::registerHook('project', 'infoIcons', 		'TodoyuTaskManager::getProjectTaskInfoIcons');
+TodoyuHookManager::registerHook('project', 'taskIcons', 		'TodoyuTaskManager::getTaskIcons');
 TodoyuHookManager::registerHook('project', 'taskinfo',			'TodoyuTaskManager::addContainerInfoToTaskData');
 
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTaskManager::modifyFormfieldsForTask');

@@ -934,74 +934,18 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Get all icons for a task (provided by all installed extensions)
-	 *
-	 * @param	Integer		$idTask
-	 * @return	Array
-	 */
-	public static function getAdditionalTaskIcons($idTask) {
-		$idTask	= intval($idTask);
-		$icons	= array();
-
-		$temp	= TodoyuHookManager::callHook('project', 'additionalIcons', array($idTask));
-
-		foreach($temp as $hookIcons) {
-			$icons	= array_merge($icons, $hookIcons);
-		}
-
-		return $icons;
-	}
-
-
-
-	/**
-	 * Get additional task icons provided by the project extension
-	 * This functions is called by getAdditionalTaskIcons()
-	 *
-	 * @param	Integer		$idTask
-	 * @return	Array
-	 */
-	public static function getAdditionalProjectTaskIcons($idTask) {
-		$icons	= array();
-
-		$task	= self::getTask($idTask);
-
-			// Add container icon
-		if( $task->isContainer() ) {
-			$icons[] = array(
-				'class'	=> 'taskcontainer',
-				'label'	=> Label('LLL:task.type.container')
-			);
-		}
-
-			// Add is public icon
-		if( $task->isPublic() ) {
-			$icons[] = array(
-				'class'	=> 'isPublic',
-				'label'	=> Label('LLL:task.attr.is_public.public')
-			);
-		}
-
-		return $icons;
-	}
-
-
-
-	/**
 	 * Get all info icons
 	 *
 	 * @param	Integer	$idTask
 	 * @return	Array
 	 */
-	public static function getAllTaskInfoIcons($idTask) {
+	public static function getAllTaskIcons($idTask) {
 		$idTask	= intval($idTask);
 		$icons	= array();
 
-		$iconSets = TodoyuHookManager::callHook('project', 'infoIcons', array($idTask));
+		$icons	= TodoyuHookManager::callHookDataModifier('project', 'taskIcons', $icons, array($idTask));
 
-		foreach($iconSets as $hookIcons) {
-			$icons	= array_merge($icons, $hookIcons);
-		}
+		$icons	= TodoyuArray::sortByLabel($icons, 'position');
 
 		return $icons;
 	}
@@ -1011,34 +955,55 @@ class TodoyuTaskManager {
 	/**
 	 * Get project task info icons
 	 *
-	 * @param	Integer	$idTask
+	 * @param	Array		$icons
+	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function getProjectTaskInfoIcons($idTask) {
+	public static function getTaskIcons(array $icons, $idTask) {
 		$idTask	= intval($idTask);
 		$task	= self::getTask($idTask);
-
-		$icons	= array();
-
-			// Is acknowledged?
-		if( ! $task->isAcknowledged() ) {
-			$icons[]= array(
-				'id'		=> 'task-' . $idTask . '-notacknowledged',
-				'class'		=> 'notAcknowledged',
-				'label'		=> 'LLL:task.attr.notAcknowledged',
-				'onclick'	=> 'Todoyu.Ext.project.Task.setAcknowledged(' . $idTask . ')'
-			);
-		}
 
 			// Task-only infos (not relevant for containers)
 		if ( $task->isTask() ) {
 			if( $task->getDeadlineDate() < NOW || $task->getEndDate() < NOW ) {
-				$icons[]= array(
-					'id'		=> 'task-' . $idTask . '-timeover',
-					'class'		=> 'timeover',
-					'label'		=> 'LLL:task.attr.timeover'
+				$icons['dateover']= array(
+					'id'		=> 'task-' . $idTask . '-dateover',
+					'class'		=> 'dateover',
+					'label'		=> 'LLL:task.attr.dateover',
+					'position'	=> 10
 				);
 			}
+		}
+
+			// Add container icon
+		if( $task->isContainer() ) {
+			$icons['container'] = array(
+				'id'		=> 'task-' . $idTask . '-container',
+				'class'		=> 'taskcontainer',
+				'label'		=> 'LLL:task.type.container',
+				'position'	=> 10
+			);
+		}
+
+			// Add is public icon
+		if( $task->isPublic() ) {
+			$icons['public'] = array(
+				'id'		=> 'task-' . $idTask . '-public',
+				'class'		=> 'isPublic',
+				'label'		=> 'LLL:task.attr.is_public.public',
+				'position'	=> 80
+			);
+		}
+
+			// Is acknowledged?
+		if( ! $task->isAcknowledged() ) {
+			$icons['notacknowledged'] = array(
+				'id'		=> 'task-' . $idTask . '-notacknowledged',
+				'class'		=> 'notAcknowledged',
+				'label'		=> 'LLL:task.attr.notAcknowledged',
+				'onclick'	=> 'Todoyu.Ext.project.Task.setAcknowledged(' . $idTask . ')',
+				'position'	=> 100
+			);
 		}
 
 		return $icons;
