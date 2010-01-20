@@ -832,7 +832,7 @@ class TodoyuProjectManager {
 			'date_update'	=> NOW,
 			'id_user_create'=> TodoyuAuth::getUserID(),
 			'deleted'		=> 0,
-			'title'			=> TodoyuLocale::getLabel('project.newproject.title'),
+			'title'			=> TodoyuLanguage::getLabel('project.newproject.title'),
 			'description'	=> '',
 			'status'		=> STATUS_PLANNING,
 			'id_company'	=> 0,

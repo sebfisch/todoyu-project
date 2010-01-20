@@ -31,12 +31,12 @@ define('EXTID_PROJECT', 112);
 define('PATH_EXT_PROJECT', PATH_EXT . '/project');
 
 	// Register module locales
-TodoyuLocale::register('project', PATH_EXT_PROJECT . '/locale/ext.xml');
-TodoyuLocale::register('task', PATH_EXT_PROJECT . '/locale/task.xml');
-TodoyuLocale::register('projectFilter', PATH_EXT_PROJECT . '/locale/filter.xml');
-TodoyuLocale::register('panelwidget-projecttree', PATH_EXT_PROJECT . '/locale/panelwidget-projecttree.xml');
-TodoyuLocale::register('panelwidget-statusfilter', PATH_EXT_PROJECT . '/locale/panelwidget-statusfilter.xml');
-TodoyuLocale::register('panelwidget-quickproject', PATH_EXT_PROJECT . '/locale/panelwidget-quickproject.xml');
+TodoyuLanguage::register('project', PATH_EXT_PROJECT . '/locale/ext.xml');
+TodoyuLanguage::register('task', PATH_EXT_PROJECT . '/locale/task.xml');
+TodoyuLanguage::register('projectFilter', PATH_EXT_PROJECT . '/locale/filter.xml');
+TodoyuLanguage::register('panelwidget-projecttree', PATH_EXT_PROJECT . '/locale/panelwidget-projecttree.xml');
+TodoyuLanguage::register('panelwidget-statusfilter', PATH_EXT_PROJECT . '/locale/panelwidget-statusfilter.xml');
+TodoyuLanguage::register('panelwidget-quickproject', PATH_EXT_PROJECT . '/locale/panelwidget-quickproject.xml');
 
 	// Request configurations
 require_once( PATH_EXT_PROJECT . '/config/constants.php' );

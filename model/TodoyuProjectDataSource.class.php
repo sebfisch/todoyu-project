@@ -43,7 +43,7 @@ class TodoyuProjectDataSource {
 		$result = Todoyu::db()->doSelect($fields, $table, $where);
 
 		while($row = Todoyu::db()->fetchAssoc($result))	{
-			$row['title']	= TodoyuLocale::labelExists($row['title']) ? Label($row['title']) : $row['title'];
+			$row['title']	= TodoyuLanguage::labelExists($row['title']) ? Label($row['title']) : $row['title'];
 			$roles[] = $row;
 		}
 
