@@ -21,3 +21,14 @@
 	background-position:6px -444px;
 }
 
+/* -----------------
+	Search
+   ----------------- */
+   
+.searchmode-task {
+	background:url(../img/icons.png) no-repeat 3px 3px !important;
+}
+.searchmode-project {
+	background:url(../img/icons.png) no-repeat 3px -447px !important;
+}
+

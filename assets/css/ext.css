@@ -18,14 +18,6 @@
 	margin-top:-20px;
 }
 
-	/* Search */
-.searchmode-task {
-	background:url(../img/icons.png) no-repeat 3px 3px !important;
-}
-.searchmode-project {
-	background:url(../img/icons.png) no-repeat 3px -447px !important;
-}
-
 	/* No project selected */
 .noProjectSelected {
 	padding:10px;
