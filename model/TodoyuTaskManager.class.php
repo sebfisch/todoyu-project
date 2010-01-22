@@ -847,7 +847,7 @@ class TodoyuTaskManager {
 				// User assigned
 			$info['user_assigned']	= array(
 				'label'		=> 'LLL:task.attr.user_assigned',
-				'value'		=> $taskData['user_assigned']['lastname'] . ' ' . $taskData['user_assigned']['firstname'],
+				'value'		=> $taskData['user_assigned']['lastname'] . ', ' . $taskData['user_assigned']['firstname'],
 				'position'	=> 80,
 				'className'	=> 'sectionStart'
 			);

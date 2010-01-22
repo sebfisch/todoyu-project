@@ -28,6 +28,31 @@
 class TodoyuTaskViewHelper {
 
 	/**
+	 * Get options of all users somehow involved in a task
+	 *
+	 * @param	TodoyuFormElement $field
+	 * @return	Array
+	 */
+	public static function getTaskUsersOptions(TodoyuFormElement $field) {
+		$formData	= $field->getForm()->getFormData();
+		$idTask		= intval($formData['id_project']);
+
+		$options	= array();
+
+		$users	= TodoyuTaskManager::getTaskUsers($idTask);
+		foreach($users as $user) {
+			$options[] = array(
+				'value'	=> $user['id'],
+				'label'	=> TodoyuUserManager::getLabel($user['id'], false, true)
+			);
+		}
+
+		return $options;
+	}
+
+
+
+	/**
 	 * Get users to which a task can be assigned (this are only project users) as options array
 	 *
 	 * @param	TodoyuFormElement		$field
@@ -48,7 +73,7 @@ class TodoyuTaskViewHelper {
 
 		foreach($users as $user) {
 			$options[] = array(
-				'label'		=> $user['lastname'] . ' ' . $user['firstname'],
+				'label'		=> TodoyuUserManager::getLabel($user['id']),
 				'value'		=> $user['id'],
 				'disabled'	=> false
 			);
@@ -98,6 +123,30 @@ class TodoyuTaskViewHelper {
 
 		return $options;
 	}
+
+
+
+	/**
+	 * Get option of task owner as comment email receiver
+	 *
+	 * @param	Array		$formData
+	 * @return	Array
+	 */
+	public static function getOwnerEmailOption(TodoyuFormElement $field) {
+		$idTask		= intval($field->getForm()->getHiddenField('id_task'));
+		$taskOwner	= TodoyuTaskManager::getTaskOwner($idTask);
+
+		$option = array(
+			0 => array(
+				'value'		=> $taskOwner[0]['id'],
+				'label'		=> TodoyuUserManager::getLabel($taskOwner[0]['id'], true, true)
+			)
+		);
+
+		return $option;
+	}
+
+
 }
 
 ?>

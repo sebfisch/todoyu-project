@@ -30,6 +30,28 @@
 class TodoyuProjectViewHelper {
 
 	/**
+	 * Get options of project users
+	 *
+	 * @param	TodoyuFormElement	$formElement
+	 * @return	Array
+	 */
+	public static function getProjectUsersOptions(TodoyuFormElement $formElement) {
+		$users	= TodoyuProjectManager::getProjectUsers($idProject);
+		$options= array();
+
+		foreach($users as $user) {
+			$options[] = array(
+				'value'	=> $user['id'],
+				'label'	=> TodoyuUserManager::getLabel($user['id'])
+			);
+		}
+
+		return $options;
+	}
+
+
+
+	/**
 	 * Get label for projectuser record in project
 	 *
 	 * @param	TodoyuFormElement		$formElement		The form element
@@ -39,13 +61,11 @@ class TodoyuProjectViewHelper {
 	public static function getProjectUserLabel(TodoyuFormElement $formElement, array $data) {
 		$idUser		= intval($data['id_user']);
 		$idUserrole	= intval($data['id_userrole']);
+
 		$label		= '';
 
 		if( $idUser	!== 0 ) {
-			$user	= TodoyuUserManager::getUser($idUser);
-			$role	= TodoyuUserroleManager::getUserrole($idUserrole);
-
-			$label	= $user->getFullName() . ', ' . $role->getTitle();
+			$label	= TodoyuUserManager::getLabel($idUser, false, true, true, $idUserrole);
 		}
 
 		return $label;
