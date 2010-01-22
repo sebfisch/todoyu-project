@@ -2,6 +2,7 @@
 <form>
 	<attributes>
 		<attribute name="name">panelwidget-projecttree-filter</attribute>
+		<attribute name="onsubmit">return false;</attribute>
 	</attributes>
 	<fieldsets>
 		<fieldset name="filters">
