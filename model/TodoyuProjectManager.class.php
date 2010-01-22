@@ -688,6 +688,39 @@ class TodoyuProjectManager {
 
 
 	/**
+	 * Get role of given user in given project
+	 *
+	 * @param	Integer		$idUser
+	 * @param	Integer		$idProject
+	 * @return	Integer
+	 */
+	public static function getUserRoleLabel($idUser, $idProject) {
+		$idUser		= intval($idUser);
+		$idProject	= intval($idProject);
+
+		$fields	= '	u.*,
+					ur.id as id_userrole,
+					ur.rolekey as rolekey,
+					ur.title as rolelabel,
+					mmpu.comment';
+		$table	= '	ext_user_user u,
+					ext_project_userrole ur,
+					ext_project_mm_project_user mmpu';
+		$where	= '	mmpu.id_user	= u.id AND
+					mmpu.id_project	= ' . $idProject . ' AND
+					mmpu.id_userrole= ur.id AND
+					u.id= ' . $idUser;
+		$group	= '';
+		$order	= '';
+
+		$user	= Todoyu::db()->getArray($fields, $table, $where, $group, $order);
+
+		return $user[0]['rolelabel'];
+	}
+
+
+
+	/**
 	 * Remove all users from a project
 	 *
 	 * @param	Integer		$idProject

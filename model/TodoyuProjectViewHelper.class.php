@@ -60,12 +60,13 @@ class TodoyuProjectViewHelper {
 	 */
 	public static function getProjectUserLabel(TodoyuFormElement $formElement, array $data) {
 		$idUser		= intval($data['id_user']);
+		$idProject	= intval($data['id_project']);
 		$idUserrole	= intval($data['id_userrole']);
 
 		$label		= '';
 
 		if( $idUser	!== 0 ) {
-			$label	= TodoyuUserManager::getLabel($idUser, false, true, true, $idUserrole);
+			$label	= TodoyuUserRoleManager::getUserLabel($idUser, $idProject, $idUserrole);
 		}
 
 		return $label;

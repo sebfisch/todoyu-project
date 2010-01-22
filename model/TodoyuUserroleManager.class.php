@@ -37,9 +37,55 @@ class TodoyuUserroleManager {
 
 
 	/**
+	 * Get user label containing also the user's role label
+	 *
+	 * @param	Integer	$userID
+	 * @param	Integer $idProject
+	 * @param	Integer	$idUserrole
+	 * @return	String
+	 */
+	public static function getUserLabel($idUser, $idProject, $idUserrole = 0) {
+		$idUser		= intval($idUser);
+		$idProject	= intval($idProject);
+		$idUserrole	= intval($idUserrole);
+
+		$label	= TodoyuUserManager::getLabel($idUser);
+
+		if ( $idUserrole == 0 ) {
+			$label	.= ' - ' . TodoyuProjectManager::getUserRoleLabel($idUser, $idProject);
+		} else {
+			$label	.= ' - ' . self::getUserroleLabel($idUserrole);
+		}
+
+		return  $label;
+	}
+
+
+
+	/**
+	 * Get label of given userrole
+	 *
+	 * @param	Integer	$idUserrole
+	 * @return	String
+	 */
+	public static function getUserroleLabel($idUserrole) {
+		$idUserrole	= intval($idUserrole);
+		$label		= '';
+
+		if ( $idUserrole !== 0 ) {
+			$userrole	= self::getUserrole($idUserrole);
+			$label		= $userrole->getTitle();
+		}
+
+		return $label;
+	}
+
+
+
+	/**
 	 * Get user role
 	 *
-	 * @param	Integer		$idUserrole		Userrole ID
+	 * @param	Integer			$idUserrole		Userrole ID
 	 * @return	TodoyuUserrole
 	 */
 	public static function getUserrole($idUserrole) {
@@ -69,6 +115,8 @@ class TodoyuUserroleManager {
 	/**
 	 * Saves userrole record
 	 *
+	 * @param	Array	$data
+	 * @return	Integer	$idUserrole
 	 */
 	public static function saveUserrole(array $data) {
 		$idUserrole	= intval($data['id']);
@@ -86,6 +134,12 @@ class TodoyuUserroleManager {
 	}
 
 
+	/**
+	 * @todo	comment
+	 *
+	 * @param	Array		$data
+	 * @return	Integer		New record ID
+	 */
 	public static function addUserrole(array $data = array()) {
 		unset($data['id']);
 
@@ -96,6 +150,14 @@ class TodoyuUserroleManager {
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 *
+	 * @param	Integer		$idUserrole
+	 * @param	Array		$data
+	 * @return	Bool
+	 */
 	public static function updateUserrole($idUserrole, array $data) {
 		$idUserrole	= intval($idUserrole);
 

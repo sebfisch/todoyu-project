@@ -57,9 +57,11 @@ Todoyu.Ext.project = {
 	toggleTaskTree: function(idProject) {
 		this.TaskTree.toggle();
 
-		Todoyu.Helper.toggleImage(	'project-' + idProject + '-tasktreetoggle-image',
-									'assets/img/toggle_plus.png',
-									'assets/img/toggle_minus.png');
+		Todoyu.Helper.toggleImage(
+			'project-' + idProject + '-tasktreetoggle-image',
+			'assets/img/toggle_plus.png',
+			'assets/img/toggle_minus.png'
+		);
 	},
 
 
