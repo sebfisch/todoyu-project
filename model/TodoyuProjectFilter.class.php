@@ -61,7 +61,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 	 * @return	Array
 	 */
 	public static function Filter_fulltext($searchWords, $negate = false) {
-		$searchWords	= TodoyuDiv::trimExplode(' ', $searchWords);
+		$searchWords	= TodoyuArray::trimExplode(' ', $searchWords);
 		$searchInFields	= array('ext_project_project.title', 'ext_project_project.description', 'ext_user_company.title', 'ext_user_company.shortname');
 
 		$tables	= array('ext_project_project', 'ext_user_company');
@@ -85,7 +85,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 	 * @return	Array
 	 */
 	public static function Filter_status($value, $negate = false) {
-		$status		= is_array($value) ? TodoyuArray::intval($value, true, true) : TodoyuDiv::intExplode(',', $value, true, true);
+		$status		= is_array($value) ? TodoyuArray::intval($value, true, true) : TodoyuArray::intExplode(',', $value, true, true);
 		$queryParts	= false;
 
 		if( sizeof($status) > 0 ) {

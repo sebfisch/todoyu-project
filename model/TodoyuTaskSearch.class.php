@@ -149,7 +149,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 			list($project, $taskNumber) = explode('.', $sword);
 			$where = 'id_project = '.intval($project).' AND tasknumber = '.intval($taskNumber);
 		} else {
-			$searchWords = TodoyuDiv::trimExplode(' ', $sword, true);
+			$searchWords = TodoyuArray::trimExplode(' ', $sword, true);
 
 			$where = Todoyu::db()->buildLikeQuery($searchWords, $fields);
 		}

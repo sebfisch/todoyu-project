@@ -40,7 +40,7 @@ class TodoyuProjectFilterDataSource {
 	public static function autocompleteProjects($searchString, array $conf = array())	{
 		$data = array();
 
-		$keywords	= TodoyuDiv::trimExplode(' ', $searchString, true);
+		$keywords	= TodoyuArray::trimExplode(' ', $searchString, true);
 		$projectIDs	= TodoyuProjectSearch::searchProjects($keywords, array(), 30);
 
 		if( sizeof($projectIDs) > 0 ) {

@@ -73,7 +73,7 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 
 
 	public function panelwidgetstatusfilterAction(array $params) {
-		$selectedStatuses	= TodoyuDiv::intExplode(',', $params['value'], true, true);
+		$selectedStatuses	= TodoyuArray::intExplode(',', $params['value'], true, true);
 
 		TodoyuPanelWidgetStatusFilter::saveSelectedStatuses(AREA, $selectedStatuses);
 	}

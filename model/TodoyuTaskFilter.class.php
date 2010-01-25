@@ -479,7 +479,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 * @return	Array
 	 */
 	public static function Filter_status($statuses, $negate = false) {
-		$statuses	= TodoyuDiv::intExplode(',', $statuses, true, true);
+		$statuses	= TodoyuArray::intExplode(',', $statuses, true, true);
 
 			// If no status selected, get all allowed
 		if( sizeof($statuses) === 0 ) {
@@ -489,9 +489,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 		$tables	= array('ext_project_task');
 
 		if( $negate )	{
-			$where	= 'ext_project_task.status NOT IN(' . implode(',', $statuses) . ')';
+			$where	= '(ext_project_task.status NOT IN(' . implode(',', $statuses) . ') OR ext_project_task.type = ' . TASK_TYPE_CONTAINER . ')';
 		} else {
-			$where	= 'ext_project_task.status IN(' . implode(',', $statuses) . ')';
+			$where	= '(ext_project_task.status IN(' . implode(',', $statuses) . ') OR ext_project_task.type = ' . TASK_TYPE_CONTAINER . ')';
 		}
 
 		return array(

@@ -122,7 +122,7 @@ Todoyu.Ext.project.Project = {
 
 
 	onDetailsToggled: function(idProject, response) {
-//		console.log('OnComplete erreicht');
+//		Todoyu.log('OnComplete erreicht');
 	},
 
 
@@ -184,7 +184,7 @@ Todoyu.Ext.project.Project = {
 			'onComplete': this.onAdded.bind(this)
 		};
 		var target	= 'projects';
-		
+
 			// Remove project form or dummy start screen
 		this.ext.ProjectTaskTree.removeProject(0);
 
@@ -436,19 +436,19 @@ Todoyu.Ext.project.Project = {
 			}
 
 		},
-		
-		
-		
+
+
+
 		/**
 		 * Handler when customer/company field is autocompleted
-		 * 
+		 *
 		 * @param	Ajax.Response			response
 		 * @param	Todoyu.Autocompleter	autocompleter
 		 */
-		onCompanyAutocomplete: function(response, autocompleter) {			
+		onCompanyAutocomplete: function(response, autocompleter) {
 			if( response.getTodoyuHeader('acElements') == 0 ) {
 				Todoyu.notifyInfo('[LLL:project.ac.company.notFoundInfo]');
-			}					
+			}
 		}
 	}
 };

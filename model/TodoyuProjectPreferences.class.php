@@ -286,7 +286,7 @@ class TodoyuProjectPreferences {
 		if( $list === false || $list === '' ) {
 			$tabs = array();
 		} else {
-			$tabs = TodoyuDiv::intExplode(',', $list);
+			$tabs = TodoyuArray::intExplode(',', $list);
 		}
 
 		return $tabs;

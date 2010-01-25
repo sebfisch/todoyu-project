@@ -64,7 +64,7 @@ class TodoyuTaskManager {
 	 * @return	Array
 	 */
 	public static function getTaskData($idTask) {
-		return Todoyu::db()->getRecord(self::TABLE, $idTask);
+		return TodoyuRecordManager::getRecordData(self::TABLE, $idTask);
 	}
 
 
@@ -77,7 +77,7 @@ class TodoyuTaskManager {
 	 */
 	public static function getTaskIDByTaskNumber($fullTasknumber) {
 		$idTask	= 0;
-		$parts	= TodoyuDiv::intExplode('.', $fullTasknumber, true, true);
+		$parts	= TodoyuArray::intExplode('.', $fullTasknumber, true, true);
 
 		if( sizeof($parts) === 2 ) {
 			$field	= 'id';
@@ -1409,7 +1409,7 @@ class TodoyuTaskManager {
 			// Check for point (.)
 		if( strpos($fullTasknumber, '.') !== false ) {
 				// Split into project/tasknumber
-			$parts	= TodoyuDiv::intExplode('.', $fullTasknumber, true, true);
+			$parts	= TodoyuArray::intExplode('.', $fullTasknumber, true, true);
 
 				// If 2 valid integers found
 			if( sizeof($parts) === 2 ) {
