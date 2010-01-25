@@ -53,45 +53,39 @@ class TodoyuTaskViewHelper {
 
 
 	/**
-	 * Get users to which a task can be assigned (this are only project users) as options array
-	 *
-	 * @param	TodoyuFormElement		$field
-	 * @return	Array
-	 */
-	public static function getTaskAssignUserOptions(TodoyuFormElement $field) {
-		$formData	= $field->getForm()->getFormData();
-		$idProject	= intval($formData['id_project']);
-
-		$users	= TodoyuUserManager::getInternalUsers();
-		$options= array(
-			array(
-				'label'		=> 'LLL:form.select.pleaseSelect',
-				'value'		=> 0,
-				'disabled'	=> true
-			)
-		);
-
-		foreach($users as $user) {
-			$options[] = array(
-				'label'		=> TodoyuUserManager::getLabel($user['id']),
-				'value'		=> $user['id'],
-				'disabled'	=> false
-			);
-		}
-
-		return $options;
-	}
-
-
-
-	/**
-	 * Get task owner user options (alias of getTaskAssignUserOptions)
+	 * Get options array for task owner user selector
 	 *
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
 	public static function getTaskOwnerUserOptions(TodoyuFormElement $field) {
-		return self::getTaskAssignUserOptions($field);
+		return self::getUserAssignedGroupedOptions($field);
+	}
+
+
+
+	/**
+	 * Get options array for assigned user selector, options are grouped into: task members, project users, all staff users
+	 *
+	 * @param	Array		$formData
+	 * @return	Array
+	 */
+	public static function getUserAssignedGroupedOptions(TodoyuFormElement $field) {
+		$options	= array();
+
+			// TaskMember users
+		$groupLabel	= Label('comment.group.taskmembers');
+		$options[$groupLabel]	= self::getTaskUsersOptions($field);
+
+			// Get project users
+		$groupLabel	= Label('comment.group.projectmembers');
+		$options[$groupLabel]	= TodoyuProjectViewHelper::getProjectUsersOptions($field);
+
+			// Get staff users (employees of internal company)
+		$groupLabel	= Label('comment.group.employees');
+		$options[$groupLabel]	= TodoyuUserViewHelper::getInternalUsersOptions($field);
+
+		return $options;
 	}
 
 
