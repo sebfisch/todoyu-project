@@ -1,11 +1,9 @@
 <div class="left description">{cleanHtml $description}</div>
 <div class="right properties">
 	<dl>
-	{$iterate="odd"}
 	{foreach $data info}
-		<dt class="{$iterate} {$info.className}">{Label $info.label true}</dt>
-		<dd class="{$iterate}  {$info.className}">{$info.value}&#8203;</dd>
-		{if $iterate=="odd"}{$iterate="even"}{else}{$iterate="odd"}{/if}
+		<dt class="{cycle values="odd,evn"} {$info.className}">{Label $info.label true}</dt>
+		<dd class="{cycle values="odd,evn"} {$info.className}">{$info.value}&#8203;</dd>
 	{/foreach}
 	</dl>
 </div>
