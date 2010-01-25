@@ -22,8 +22,7 @@ CREATE TABLE `ext_project_project` (
   `id_fixedproject` smallint(5) unsigned NOT NULL DEFAULT '0',
   `id_rateset` smallint(5) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `company` (`id_company`),
-  FULLTEXT KEY `name_domain` (`title`,`ext_hosting_domain`)
+  KEY `company` (`id_company`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
