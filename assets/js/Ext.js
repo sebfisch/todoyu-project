@@ -129,7 +129,9 @@ Todoyu.Ext.project = {
 		var target	= 'project-0';
 
 			// Set tab label
-		$('projecttab-noselection-label').down('.labeltext', 0).update('[LLL:project.newproject.tab]');
+		$('projecttab-noselection').writeAttribute('id', 'projecttab-0');
+		$('projecttab-noselection-label').writeAttribute('id', 'projecttab-0-label');
+		$('projecttab-0-label').down('.labeltext', 0).update('[LLL:project.newproject.tab]');
 
 		Todoyu.Ui.update(target, url, options);
 	},

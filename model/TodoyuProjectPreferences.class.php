@@ -280,7 +280,7 @@ class TodoyuProjectPreferences {
 	 *
 	 * @return	Array		IDs of the projects which are displayed as tabs
 	 */
-	public static function getOpenProjectTabs() {
+	public static function getOpenProjectIDs() {
 		$list	= TodoyuPreferenceManager::getPreference(EXTID_PROJECT, 'projecttabs');
 
 		if( $list === false || $list === '' ) {
@@ -299,17 +299,30 @@ class TodoyuProjectPreferences {
 	 *
 	 * @param	Integer		$idProject
 	 */
-	public static function addNewOpenProjectTab($idProject) {
+	public static function addOpenProject($idProject) {
 		$idProject	= intval($idProject);
 
 			// Get currently tabbed projects
-		$projectIDs	= self::getOpenProjectTabs();
+		$projectIDs	= self::getOpenProjectIDs();
 
 			// Remove project from list if already in
 		$projectIDs	= TodoyuArray::removeByValue($projectIDs, array($idProject));
 
 			// Prepend the current one
 		array_unshift($projectIDs, $idProject);
+
+		self::saveOpenProjectTabs($projectIDs);
+	}
+
+
+	public static function removeOpenProject($idProject) {
+		$idProject	= intval($idProject);
+
+			// Get currently tabbed projects
+		$projectIDs	= self::getOpenProjectIDs();
+
+			// Remove project from list
+		$projectIDs	= TodoyuArray::removeByValue($projectIDs, array($idProject));
 
 		self::saveOpenProjectTabs($projectIDs);
 	}

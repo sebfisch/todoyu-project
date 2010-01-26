@@ -42,10 +42,10 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 *	@param	Event		event		Click event
 	 *	@param	String		tabKey		Key of clicked tab
 	 */
-	onTabSelect: function(event, tabKey) {
-		this.openProject(tabKey, 0);
+	onTabSelect: function(event, idProject) {
+		this.openProject(idProject, 0);
 		
-		this.moveTabToFront(tabKey);
+		this.moveTabToFront(idProject);
 	},
 
 
@@ -80,12 +80,31 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 *	@param	Integer		idProject
 	 */
 	removeProject: function(idProject) {
-		if ( $('project-' + idProject) ) {
-			$('project-' + idProject).remove();
-			if ( this.hasProjectTab(idProject) ) {
-				$('projecttab-' + idProject).remove();	
-			}
+		var id	= 'project-' + idProject;
+		
+		if ( Todoyu.exists(id) ) {
+			$(id).remove();
+			this.removeProjectTab(idProject);
 		}
+	},
+	
+	
+	removeProjectTab: function(idProject) {
+		var id	= 'projecttab-' + idProject;
+		
+		if( Todoyu.exists(id) ) {
+			$(id).remove();
+		}
+	},
+	
+	/**
+	 * Check whether given project is loaded (the resp. project tab exists)
+	 *
+	 *	@param	Integer	idProject
+	 *	@return	Boolean
+	 */
+	hasTab: function(idProject) {
+		return Todoyu.exists('projecttab-' + idProject);
 	},
 	
 	
@@ -140,7 +159,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 		this.insertTabContent(idProject, response.responseText);
 		
-		if( ! this.hasProjectTab(idProject) ) {
+		if( ! this.hasTab(idProject) ) {
 			this.addNewTabhead(idProject, label);
 		}
 
@@ -213,14 +232,35 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * Open (activate) first project tab
 	 */
 	openFirstTab: function() {
-		var allTabs = 	$$('li.projecttab');
-		if ( allTabs.length > 0 ) {
-			var idFirstTab = this.getFirstTab();
-			this.moveTabToFront(idFirstTab);
-			
-			var activeProjectID	= this.getActiveProjectID();
-			this.openProject(activeProjectID);
+		if( this.getNumTabs() > 0 ) {
+			var idProject = this.getActiveProjectID();
+			this.moveTabToFront(idProject);
+			this.openProject(idProject);
+		} else {
+			this.loadNoProjectSelectedView();
 		}
+	},
+	
+	
+	getNumTabs: function() {
+		return $('project-tabs').select('li').size();
+	},
+	
+	
+	loadNoProjectSelectedView: function() {
+		var url		= Todoyu.getUrl('project', 'project');
+		var options	= {
+			'parameters': {
+				'action':	'noProjectView'
+			},
+			'onComplete': this.onNoProjectSelectedViewLoaded.bind(this)
+		};
+		
+		Todoyu.Ui.updateContent(url, options);		
+	},
+	
+	onNoProjectSelectedViewLoaded: function(response) {
+		
 	},
 
 
@@ -315,21 +355,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 *	@return	Boolean
 	 */
 	isProjectActive: function(idProject) {
-		return $('project-tabs').select('li.active').first().readAttribute('id').split('-')[1] == idProject;
+		return $('project-tabs').select('li.active').first().readAttribute('id').split('-').last() == idProject;
 	},
-
-
-
-	/**
-	 * Check whether given project is loaded (the resp. project tab exists)
-	 *
-	 *	@param	Integer	idProject
-	 *	@return	Boolean
-	 */
-	hasProjectTab: function(idProject) {
-		return Todoyu.exists('projecttab-' + idProject);
-	},
-
 
 
 	/**
@@ -339,7 +366,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		this.openProjects = [];
 
 		$('project-tabs').childElements().each(function(tab) {
-			this.openProjects.push(tab.id.split('-')[1])
+			this.openProjects.push(tab.id.split('-').last())
 		}.bind(this));
 
 		var url		= Todoyu.getUrl('project', 'projecttasktree');
@@ -361,7 +388,21 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 *	@return	String
 	 */
 	getActiveProjectID: function() {
-		return $('project-tabs').select('li.active')[0].id.substr(11);
+		var activeTabs	= $('project-tabs').select('li.active');
+		
+		if( activeTabs.size() === 1 ) {
+			return activeTabs.first().split('-').last();
+		} else {
+			if( this.getNumTabs() > 0 ) {
+				return this.getTabs().first().id.split('-').last();
+			}
+		}
+		
+		return false;
+	},
+	
+	getTabs: function() {
+		return $('project-tabs').select('li');
 	},
 
 

@@ -67,7 +67,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 			// If a project is displayed
 		if( $idProject !== 0 ) {
 				// Prepend current project to list
-			TodoyuProjectPreferences::addNewOpenProjectTab($idProject);
+			TodoyuProjectPreferences::addOpenProject(idProject);
 
 			$project= TodoyuProjectManager::getProject($idProject);
 			$title	= TodoyuLanguage::getLabel('project.page.title') . ' - ' . $project->getFullTitle();
@@ -79,8 +79,8 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 			// Render panel widgets and content
 		$panelWidgets		= TodoyuProjectRenderer::renderPanelWidgets($idProject, $idTask);
-		$projectTabs		= TodoyuProjectRenderer::renderProjectTabs($idProject);
-		$projectTaskTree	= TodoyuProjectRenderer::renderProjectView($idProject, $idTask, $taskTab);
+		$projectTabs		= TodoyuProjectRenderer::renderProjectsTabs();
+		$projectTaskTree	= TodoyuProjectRenderer::renderProjectsContent($idProject, $idTask, $taskTab);
 
 		TodoyuPage::set('panelWidgets', $panelWidgets);
 		TodoyuPage::set('projectTabs', $projectTabs);

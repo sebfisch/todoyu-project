@@ -64,21 +64,14 @@ class TodoyuProjectRenderer {
 
 
 
+	public static function renderProjectsTabs() {
+		$openProjectIDs	= TodoyuProjectPreferences::getOpenProjectIDs();
 
-	/**
-	 * Render panel widget for project view
-	 *
-	 * @param	Integer		$idProject		Current active project
-	 * @param	Integer		$idTask			Fored task to be shown
-	 * @return	String
-	 */
-	public static function renderPanel($idProject, $idTask = 0) {
-		$idProject	= intval($idProject);
-		$idTask		= intval($idTask);
-
-		$params		= array($idProject, $idTask);
-
-		return TodoyuPanelWidgetManager::renderPanelWidgets('project', $params);
+		if( sizeof($openProjectIDs) === 0 ) {
+			return self::renderNoProjectSelectedTab();
+		} else {
+			return self::renderProjectTabs();
+		}
 	}
 
 
@@ -90,19 +83,20 @@ class TodoyuProjectRenderer {
 	 * @param	Integer		$idTask			Make sure this task is visible (tree open)
 	 * @return	String
 	 */
-	public static function renderProjectView($idProject, $idTask, $tab = null) {
+	public static function renderProjectsContent($idProject, $idTask, $tab = null) {
 		$idProject	= intval($idProject);
 		$idTask		= intval($idTask);
 		$content	= '';
 
 		if( $idProject === 0 ) {
-			$content= self::renderNoProjectSelectView();
+			$content= self::renderNoProjectSelectContent();
 		} else {
-			$content= self::renderSelectedProjectView($idProject, $idTask, $tab);
+			$content= self::renderSelectedProjectContent($idProject, $idTask, $tab);
 		}
 
 		return $content;
 	}
+
 
 
 
@@ -112,11 +106,9 @@ class TodoyuProjectRenderer {
 	 *
 	 * @return	String
 	 */
-	protected static function renderNoProjectSelectView() {
+	protected static function renderNoProjectSelectContent() {
 		$tmpl	= 'ext/project/view/project-noselected.tmpl';
-		$data	= array(
-			'tabs'		=> TodoyuProjectRenderer::renderNoProjectSelectedTab()
-		);
+		$data	= array();
 
 		return render($tmpl, $data);
 	}
@@ -130,7 +122,7 @@ class TodoyuProjectRenderer {
 	 * @param	Integer		$idTask
 	 * @return	String
 	 */
-	protected static function renderSelectedProjectView($idProject, $idTask = 0, $tab = null) {
+	protected static function renderSelectedProjectContent($idProject, $idTask = 0, $tab = null) {
 		$idProject	= intval($idProject);
 		$idTask		= intval($idTask);
 
@@ -167,6 +159,14 @@ class TodoyuProjectRenderer {
 		);
 
 		return render($tmpl, $data);
+	}
+
+
+	public static function renderNoProjectSelectedView() {
+		$tabs	= self::renderNoProjectSelectedTab();
+		$content= self::renderNoProjectSelectContent();
+
+		return TodoyuRenderer::renderContent($content, $tabs);
 	}
 
 

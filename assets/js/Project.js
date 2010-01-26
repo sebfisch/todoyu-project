@@ -83,9 +83,29 @@ Todoyu.Ext.project.Project = {
 	 *
 	 *	@param	Integer	idProjectRemoved
 	 */
-	onRemoved: function(idProjectRemoved) {
-		this.ext.ProjectTaskTree.removeProject(idProjectRemoved);
+	onRemoved: function(idProject) {
+		this.ext.ProjectTaskTree.removeProject(idProject);
 		this.ext.ProjectTaskTree.openFirstTab();
+		this.removeProjectSubnaviItem(idProject);
+	},
+	
+	
+	
+	/**
+	 * Remove a project from the subnavi of the projec tab
+	 * 
+	 * @param	Integer		idProject
+	 */
+	removeProjectSubnaviItem: function(idProject) {
+		var subnavi	= $('navi-main-list').down('li.itemProject').down('ul');
+		
+		if( ! Object.isUndefined(subnavi) ) {
+			var item	= subnavi.down('li.itemProject' + idProject);
+		
+			if( ! Object.isUndefined(item) ) {
+				item.remove();
+			}
+		}
 	},
 
 
@@ -187,6 +207,7 @@ Todoyu.Ext.project.Project = {
 
 			// Remove project form or dummy start screen
 		this.ext.ProjectTaskTree.removeProject(0);
+		this.ext.ProjectTaskTree.removeProject('noselection');
 
 		Todoyu.Ui.insert(target, url, options);
 	},
@@ -416,23 +437,25 @@ Todoyu.Ext.project.Project = {
 		 *	@param	Integer	idProject
 		 */
 		cancel: function(idProject) {
-			if(idProject > 0)	{
+			if( idProject == 0 ) {
+					// If the form of a new project is canceled
+				this.ext.ProjectTaskTree.removeProject(idProject);
+				var idProject = this.ext.ProjectTaskTree.getActiveProjectID();
+
+					// If there is a project
+				if( idProject !== false )	{
+					this.ext.ProjectTaskTree.openProject(idProject);
+					this.ext.ProjectTaskTree.moveTabToFront(idProject);
+				} else {
+						// No project-tab found? reload to show startup-wizard
+					Todoyu.goTo('project');
+				}				
+			} else {
+					// If the for of an existing project is canceled
 				this.ext.Project.showDetails(idProject);
 				this.ext.TaskTree.toggle(idProject);
 
 				this.ext.Project.refresh(idProject);
-			} else {
-				Todoyu.Ext.project.ProjectTaskTree.removeProject(idProject);
-				var newActiveProjectID = Todoyu.Ext.project.ProjectTaskTree.getFirstTab();
-
-				if(newActiveProjectID)	{
-					Todoyu.Ext.project.ProjectTaskTree.onTabSelect('', newActiveProjectID);
-				} else {
-					if ( $$('li.projecttab').length == 0 ) {
-							// No project-tab found? reload to show startup-wizard
-						Todoyu.goTo('project');
-					}
-				}
 			}
 
 		},

@@ -219,7 +219,7 @@ class TodoyuProjectManager {
 		$idProject	= TodoyuProjectPreferences::getActiveProject();
 
 		if( $idProject !== 0 && ! self::isProjectVisible($idProject) ) {
-			$open		= TodoyuProjectPreferences::getOpenProjectTabs();
+			$open		= TodoyuProjectPreferences::getOpenProjectIDs();
 			$open		= array_diff($open, array($idProject));
 			$idProject	= intval(array_shift($open));
 		}
@@ -419,7 +419,7 @@ class TodoyuProjectManager {
 	 * @return	Array
 	 */
 	public static function getOpenProjectTabs() {
-		$projectIDs	= TodoyuProjectPreferences::getOpenProjectTabs();
+		$projectIDs	= TodoyuProjectPreferences::getOpenProjectIDs();
 		$projectList= implode(',', $projectIDs);
 
 			// Get tab data
@@ -890,7 +890,7 @@ class TodoyuProjectManager {
 	public static function getOpenProjectLabels() {
 		$entries		= array();
 
-		$openProjectIDs	= TodoyuProjectPreferences::getOpenProjectTabs();
+		$openProjectIDs	= TodoyuProjectPreferences::getOpenProjectIDs();
 
 		foreach($openProjectIDs as $idProject) {
 			$project	= TodoyuProjectManager::getProject($idProject);
@@ -900,7 +900,6 @@ class TodoyuProjectManager {
 
 		return $entries;
 	}
-
 }
 
 ?>

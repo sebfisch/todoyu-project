@@ -60,7 +60,7 @@ class TodoyuProjectProjecttasktreeActionController extends TodoyuActionControlle
 
 
 	public function openprojectsAction(array $params) {
-		$openProjectIDs	= explode(',', $params['projects']);
+		$openProjectIDs	= TodoyuArray::intExplode(',', $params['projects'], true, true);
 
 		TodoyuProjectPreferences::saveOpenProjectTabs($openProjectIDs);
 	}

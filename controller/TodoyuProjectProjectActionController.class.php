@@ -159,6 +159,11 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 		$idProject	= intval($params['project']);
 
 		TodoyuProjectManager::deleteProject($idProject);
+		TodoyuProjectPreferences::removeOpenProject($idProject);
+	}
+
+	public function noProjectViewAction(array $params) {
+		return TodoyuProjectRenderer::renderNoProjectSelectedView();
 	}
 
 }
