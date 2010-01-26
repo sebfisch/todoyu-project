@@ -44,6 +44,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 		)
 	),
 	'widgets' => array(
+
 		/**
 		 * optgroup task
 		 */
@@ -171,6 +172,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 				'checked'	=> true
 			)
 		),
+
 		/**
 		 * optgroup timemanagement
 		 */
@@ -249,6 +251,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 			    )
 			)
 		),
+
 		/**
 		 * Optgroup project
 		 */
@@ -268,6 +271,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 			    )
 			)
 		),
+
 		/**
 		 * Optgroup filter
 		 */
@@ -368,6 +372,36 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 			    )
 			)
 		),
+
+
+
+
+
+
+//		'projectrole' => array(
+//			'funcRef'	=> 'TodoyuProjectFilter::filter_projectrole',
+//			'label'		=> 'LLL:projectFilter.project.projectrole',
+//			'optgroup'	=> 'LLL:project.search.label',
+//			'widget'	=> 'projectrole',
+//			'wConf' => array(
+//				'autocomplete'	=> true,
+//				'FuncRef'		=> 'TodoyuUserFilterDataSource::autocompleteUsers',
+//				'multiple'		=> true,
+//			    'size'			=> 5,
+////				'FuncParams'	=> array(),
+////				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel',
+//				'negation'		=> array(
+//			    	'labelTrue'		=> 'LLL:search.negation.default.true',
+//			    	'labelFalse'	=> 'LLL:search.negation.default.false',
+//			    )
+//			)
+//		),
+
+
+
+
+
+
 		'projectleader' => array(
 			'funcRef'	=> 'TodoyuProjectFilter::filter_projectleader',
 			'label'		=> 'LLL:projectFilter.project.projectleader',
@@ -400,6 +434,9 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 			    )
 			)
 		),
+
+
+
 		'fixproject' => array(
 			'funcRef'	=> 'TodoyuProjectFilter::filter_isfixed',
 			'label'		=> 'LLL:projectFilter.project.fixproject',

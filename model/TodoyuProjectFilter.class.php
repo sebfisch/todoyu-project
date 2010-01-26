@@ -156,6 +156,46 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 
 
 
+//	/**
+//	 * Filter projects by dynamic project role
+//	 *
+//	 * @param	Integer	$idProjectleader
+//	 * @param	Boolean	$negate
+//	 * @return	Array
+//	 */
+//	public static function Filter_projectrole($idUserrole, $negate = false) {
+//		$idUser	= intval(idUser);
+//		$idUserrole	= intval(idUserrole);
+//
+//		if( $idProjectleader === 0 ) {
+//			return false;
+//		}
+//
+////		$compare	= $negate ? 'NOT IN' : 'IN' ;
+////
+////		$tables	= array('ext_project_project');
+////		$where	= '	ext_project_project.id ' . $compare . ' (
+////						SELECT
+////							ext_project_project.id
+////						FROM
+////							ext_project_project,
+////							ext_project_mm_project_user,
+////							ext_project_userrole
+////						WHERE
+////							ext_project_project.id 					= ext_project_mm_project_user.id_project AND
+////							ext_project_mm_project_user.id_user		= ' . $idProjectleader . ' AND
+////							ext_project_mm_project_user.id_userrole	= ext_project_userrole.id AND
+////							ext_project_userrole.rolekey			= \'projectleader\'
+////					)';
+////
+////		return array(
+////			'tables'=> $tables,
+////			'where'	=> $where
+////		);
+//	}
+
+
+
 	/**
 	 * Filter projects by project leader
 	 *

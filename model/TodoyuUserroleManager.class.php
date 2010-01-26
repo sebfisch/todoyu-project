@@ -113,7 +113,7 @@ class TodoyuUserroleManager {
 
 
 	/**
-	 * Saves userrole record
+	 * Save userrole record
 	 *
 	 * @param	Array	$data
 	 * @return	Integer	$idUserrole
@@ -134,8 +134,9 @@ class TodoyuUserroleManager {
 	}
 
 
+
 	/**
-	 * @todo	comment
+	 * Store new userrole with given data in DB
 	 *
 	 * @param	Array		$data
 	 * @return	Integer		New record ID
@@ -152,7 +153,7 @@ class TodoyuUserroleManager {
 
 
 	/**
-	 * @todo	comment
+	 * Update userrole record with given data
 	 *
 	 * @param	Integer		$idUserrole
 	 * @param	Array		$data
