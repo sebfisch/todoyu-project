@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="name">panelwidget-projectlist</attribute>
+		<attribute name="onsubmit">return false</attribute>
+	</attributes>
+	<fieldsets>
+		<fieldset name="filters">
+			<legend>Project filters</legend>
+			<elements>
+
+				<field type="textinput" name="fulltext">
+					<label>panelwidget-projectlist.search</label>
+				</field>
+
+			</elements>
+		</fieldset>
+
+	</fieldsets>
+</form>

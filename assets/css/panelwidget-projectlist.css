@@ -1,0 +1,53 @@
+#panelwidget-projectlist .icon {
+	background:url(../img/panelwidget-projectlist.png) no-repeat 0 5px;
+}
+
+#panelwidget-projectlist .content {
+	display:inline-block;
+	width:100%;
+}
+
+
+
+/*
+ * Form
+ */
+#formElement-panelwidget-projectlist-field-fulltext-labelbox {
+	width:50px;
+}
+
+#formElement-panelwidget-projectlist-field-fulltext-inputbox {
+	width:190px;
+}
+
+/*
+ * List
+ */
+#panelwidget-projectlist-list {
+	display:inline-block;
+	width:95%;
+	padding:5px;
+	margin-top:5px;
+	border:1px dashed #CCC;
+}
+
+#panelwidget-projectlist-list li {
+	border-left-width:5px;
+	border-left-style:solid;
+	line-height:18px;
+	margin-bottom:1px;
+	overflow:hidden;
+}
+
+#panelwidget-projectlist-list li:hover {
+	background-color:#EEE;
+	
+}
+
+#panelwidget-projectlist-list li a {
+	display:block;
+	padding-left:25px;
+	background:url(../img/icons.png) no-repeat 4px -447px;
+	height:18px;
+	width:250px;
+}

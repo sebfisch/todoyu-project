@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="title">Task Status Filter</label>
+		<label index="title.task">Task Status Filter</label>
+		<label index="title.project">Project Status Filter</label>
 	</labels>
 	<labels lang="de">
-		<label index="title">Task Status-Filter</label>
-	</labels>	
+		<label index="title.task">Aufgaben Status-Filter</label>
+		<label index="title.project">Projekt Status-Filter</label>
+	</labels>
 </locallang>

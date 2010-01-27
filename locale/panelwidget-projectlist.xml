@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locallang>
+	<labels lang="en">
+		<label index="title">Projects</label>
+		<label index="search">Search</label>
+		<label index="list.empty">No matching Projects (for current filter)</label>
+	</labels>
+	<labels lang="de">
+		<label index="title">Projekte</label>
+		<label index="search">Suchen</label>
+		<label index="list.empty">Keine passenden Projekte gefunden (gefiltert)</label>
+	</labels>
+</locallang>

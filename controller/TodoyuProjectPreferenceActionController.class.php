@@ -72,10 +72,20 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 	}
 
 
-	public function panelwidgetstatusfilterAction(array $params) {
+	public function panelwidgettaskstatusfilterAction(array $params) {
 		$selectedStatuses	= TodoyuArray::intExplode(',', $params['value'], true, true);
 
-		TodoyuPanelWidgetStatusFilter::saveSelectedStatuses(AREA, $selectedStatuses);
+		$widget	= TodoyuPanelWidgetManager::getPanelWidget('TaskStatusFilter');
+
+		$widget->saveSelectedStatuses($selectedStatuses);
+	}
+
+	public function panelwidgetprojectstatusfilterAction(array $params) {
+		$selectedStatuses	= TodoyuArray::intExplode(',', $params['value'], true, true);
+
+		$widget	= TodoyuPanelWidgetManager::getPanelWidget('ProjectStatusFilter');
+
+		$widget->saveSelectedStatuses($selectedStatuses);
 	}
 
 

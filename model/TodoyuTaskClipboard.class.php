@@ -206,21 +206,36 @@ class TodoyuTaskClipboard {
 	public static function getTaskContextMenuItems($idTask, array $items) {
 		$idTask	= intval($idTask);
 
-			// Only show context menu in project area and if something is on the clipboard
-		if( AREA === EXTID_PROJECT && self::hasTask() ) {
-			$ownItems	= $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['TaskClipboard'];
-			$data		= self::getData();
-			$isSubtask	= TodoyuTaskManager::isSubtaskOf($idTask, $data['task'], true);
 
-				// Don't allow paste on itself or subtaks when: cut-mode or with-subtasks
-			if( $idTask == $data['task'] || $isSubtask ) {
-				if( $data['mode'] === 'cut' || $data['subtasks'] ) {
-					unset($ownItems['paste']);
+			// Only show context menu in project area and if something is on the clipboard
+		if( self::hasTask() ) {
+			$ownItems	= $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['TaskClipboard'];
+
+				// Paste is only available in project view
+			if( AREA === EXTID_PROJECT  ) {
+				$mergeItems	= $ownItems;
+				$data		= self::getData();
+				$isSubtask	= TodoyuTaskManager::isSubtaskOf($idTask, $data['task'], true);
+
+					// Don't allow paste on itself or subtaks when: cut-mode or with-subtasks
+				if( $idTask == $data['task'] || $isSubtask ) {
+					if( $data['mode'] === 'cut' || $data['subtasks'] ) {
+						$mergeItems = array();
+					}
 				}
 			}
 
-			$items	= array_merge_recursive($items, $ownItems);
+			if( sizeof($mergeItems) === 0 ) {
+				TodoyuDebug::printInFirebug('sdfasdf');
+				$mergeItems = $ownItems;
+				unset($mergeItems['paste']['submenu']);
+				$mergeItems['paste']['class'] .= ' disabled';
+				$mergeItems['paste']['jsAction'] = 'Todoyu.Ext.project.Task.pasteNotAllowed()';
+			}
+
+			$items	= array_merge_recursive($items, $mergeItems);
 		}
+
 
 		return $items;
 	}

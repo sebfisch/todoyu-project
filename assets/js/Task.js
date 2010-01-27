@@ -172,8 +172,10 @@ Todoyu.Ext.project.Task = {
 				});
 				this.ext.TaskTree.expandSubtasks(idTask);
 			} else {
-					// If no subtask container available, refresh task with its subtasks
+					// If no subtask container available, refresh task and load its subtask
 				this.refresh(idTask);
+					// Append subtasks
+				this.ext.TaskTree.loadSubtasks(idTask);
 			}
 		} else if( insertMode === 'before' ) {
 				// Insert task before current
@@ -193,6 +195,15 @@ Todoyu.Ext.project.Task = {
 			// Highlight the new pasted task
 		this.highlight(idTaskNew);
 		this.highlightSubtasks(idTaskNew);
+	},
+	
+	
+	
+	/**
+	 * Handler if user tries to paste on a positio which is not allowed
+	 */
+	pasteNotAllowed: function() {
+		alert("[LLL:task.pasteNotAllowed]");
 	},
 
 

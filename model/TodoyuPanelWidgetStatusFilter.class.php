@@ -25,34 +25,51 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
+abstract class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget {
 
 	/**
-	 * Preference name
+	 * Name of the preference
 	 *
+	 * @var	String
 	 */
-	const PREF = 'panelwidget-statusfilter';
+	protected $pref;
 
+	/**
+	 * Path to template
+	 *
+	 * @var	String
+	 */
+	protected $tmpl = 'ext/project/view/panelwidgets/panelwidget-statusfilter.tmpl';
 
 
 	/**
-	 * Initialize panel widget status filter
+	 * Constructor of status filter base
+	 * Pass all arguments to the wiget constructor
 	 *
-	 * @param	Array		$config
-	 * @param	Array		$params
-	 * @param	Integer		$idArea
+	 * @param	String		$ext		Extension key where the widget is located
+	 * @param	String		$id			Panel widget ID (class name without TodoyuPanelWidget)
+	 * @param	String		$title		Title of the panel widget
+	 * @param	Array		$config		Configuration array for the widget
+	 * @param	Array		$params		Custom parameters for current page request
+	 * @param	Integer		$idArea		Area ID
 	 */
-	public function __construct(array $config, array $params = array(), $idArea = 0) {
-
+	public function __construct($ext, $id, $title, array $config, array $params = array(), $idArea = 0) {
 			// construct PanelWidget (init basic configuration)
 		parent::__construct(
-			'project',								// ext key
-			'statusfilter',							// panel widget ID
-			'LLL:panelwidget-statusfilter.title',	// widget title text
-			$config,								// widget config array
-			$params,								// widget params
-			$idArea									// area ID
+			$ext,			// ext key
+			$id,			// panel widget ID
+			$title,			// widget title text
+			$config,		// widget config array
+			$params,		// widget params
+			$idArea			// area ID
 		);
+
+			// Add public and widget assets
+		TodoyuPage::addExtAssets('project');
+		TodoyuPage::addExtAssets('project', 'panelwidget-statusfilter');
+
+		$this->addHasIconClass();
+		$this->addClass('panelWidgetStatusFilter');
 	}
 
 
@@ -63,7 +80,7 @@ class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuP
 	 * @return	Array
 	 */
 	public function getSelectedStatusIDs() {
-		$statusIDs	= TodoyuProjectPreferences::getPref(self::PREF, 0, AREA);
+		$statusIDs	= TodoyuProjectPreferences::getPref($this->pref, 0, AREA);
 
 		if( $statusIDs === false ) {
 			$statusIDs = array();
@@ -82,17 +99,13 @@ class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuP
 	 * @return	String
 	 */
 	public function renderContent() {
-		$statusesInfos	= $this->getStatusesInfos();
-		$selected		= $this->getSelectedStatusIDs();
-
-		$tmpl 	= 'ext/project/view/panelwidgets/panelwidget-statusfilter.tmpl';
 		$data	= array(
 			'id'		=> $this->getID(),
-			'statuses'	=> $statusesInfos,
-			'selected'	=> $selected
+			'statuses'	=> $this->getStatusesInfos(),
+			'selected'	=> $this->getSelectedStatusIDs()
 		);
 
-		$content	= render($tmpl, $data);
+		$content	= render($this->tmpl, $data);
 
 		$this->setContent($content);
 
@@ -106,9 +119,7 @@ class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuP
 	 *
 	 *	@return	Array
 	 */
-	private function getStatusesInfos() {
-		return TodoyuProjectStatusManager::getTaskStatusInfos();
-	}
+	abstract protected function getStatusesInfos();
 
 
 
@@ -119,12 +130,6 @@ class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuP
 	 */
 	public function render() {
 		$this->renderContent();
-
-			// Add public and widget assets
-		TodoyuPage::addExtAssets('project');
-		TodoyuPage::addExtAssets('project', 'panelwidget-statusfilter');
-
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.PanelWidget.StatusFilter.init.bind(Todoyu.Ext.project.PanelWidget.StatusFilter)');
 
 		return parent::render();
 	}
@@ -137,22 +142,10 @@ class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget implements TodoyuP
 	 *	@param	Integer	$idArea
 	 *	@param	Array	$statusIDs
 	 */
-	public static function saveSelectedStatuses($idArea = 0, array $statusIDs) {
-		$idArea		= intval($idArea);
+	public function saveSelectedStatuses(array $statusIDs) {
 		$statuses	= implode(',', $statusIDs);
 
-		TodoyuProjectPreferences::savePref(self::PREF, $statuses, 0, true, $idArea);
-	}
-
-
-
-	/**
-	 *	Check allowance
-	 *
-	 *	@return	Boolean
-	 */
-	public static function isAllowed() {
-		return allowed('project', 'panelwidgets:statusFilter');
+		TodoyuProjectPreferences::savePref($this->pref, $statuses, 0, true, AREA);
 	}
 
 }

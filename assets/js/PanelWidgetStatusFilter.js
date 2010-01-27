@@ -22,7 +22,7 @@
  *	Panel widget: StatusFilter JS
  *
  */
-Todoyu.Ext.project.PanelWidget.StatusFilter = {
+Todoyu.Ext.project.PanelWidget.StatusFilter = Class.create({
 
 	/**
 	 * Reference to extension js
@@ -30,19 +30,16 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	ext:	Todoyu.Ext.project,
 
 	list:	null,
-
-	/**
-	 * PanelWidget ID
-	 */
-	key:	'statusfilter',
-
+	
+	handler: null,
 
 
 	/**
 	 * Initialize the panelWidget: setup properties, install element observers
 	 */
-	init: function() {
-		this.list	= 'panelwidget-statusfilter-list';
+	initialize: function(list, handlerFunction) {
+		this.list	= $(list);
+		this.handler= handlerFunction;
 		
 		this.installObservers();
 	},
@@ -52,19 +49,9 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 	/**
 	 * Install (selection change) event observer for the PanelWidget
 	 */
-	installObservers: function() {
-		this.getForm().observe('change', this.onSelectionChange.bind(this));
+	installObservers: function(handlerFunction) {
+		this.list.observe('change', this.onSelectionChange.bind(this));
 	},
-
-
-
-	/**
-	 * Get the PanelWidget form
-	 */
-	getForm: function() {
-		return $('panelwidget-' + this.key + '-list');
-	},
-
 
 
 	/**
@@ -78,19 +65,8 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 			this.selectAll();
 		}
 		
-		this.onUpdate();
+		this.handler(event);
 	},
-
-
-
-	/**
-	 * Handler when PanelWidget is updated
-	 */
-	onUpdate: function() {
-		Todoyu.PanelWidget.inform(this.key, this.getValue());
-		this.savePreference();
-	},
-
 
 
 	/**
@@ -155,4 +131,4 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = {
 
 		Todoyu.Pref.save('project', action, pref);
 	}
-};
+});

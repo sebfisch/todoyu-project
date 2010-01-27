@@ -391,7 +391,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		var activeTabs	= $('project-tabs').select('li.active');
 		
 		if( activeTabs.size() === 1 ) {
-			return activeTabs.first().split('-').last();
+			return activeTabs.first().id.split('-').last();
 		} else {
 			if( this.getNumTabs() > 0 ) {
 				return this.getTabs().first().id.split('-').last();

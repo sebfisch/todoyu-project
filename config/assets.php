@@ -138,6 +138,23 @@ $CONFIG['EXT']['project']['assets'] = array(
 		)
 	),
 
+			// assets of panel widgets
+	'panelwidget-projectlist' => array(
+		'js' => array(
+			array(
+				'file'		=> 'ext/project/assets/js/PanelWidgetProjectList.js',
+				'position'	=> 110
+			)
+		),
+		'css' => array(
+			array(
+				'file'		=> 'ext/project/assets/css/panelwidget-projectlist.css',
+				'media'		=> 'all',
+				'position'	=> 110
+			)
+		)
+	),
+
 	'panelwidget-statusfilter' => array(
 		'js' => array(
 			array(
@@ -148,6 +165,36 @@ $CONFIG['EXT']['project']['assets'] = array(
 		'css' => array(
 			array(
 				'file' => 'ext/project/assets/css/panelwidget-statusfilter.css',
+				'position' => 120,
+			)
+		)
+	),
+
+	'panelwidget-taskstatusfilter' => array(
+		'js' => array(
+			array(
+				'file' => 'ext/project/assets/js/PanelWidgetTaskStatusFilter.js',
+				'position' => 120,
+			)
+		),
+		'css' => array(
+			array(
+				'file' => 'ext/project/assets/css/panelwidget-taskstatusfilter.css',
+				'position' => 120,
+			)
+		)
+	),
+
+	'panelwidget-projectstatusfilter' => array(
+		'js' => array(
+			array(
+				'file' => 'ext/project/assets/js/PanelWidgetProjectStatusFilter.js',
+				'position' => 120,
+			)
+		),
+		'css' => array(
+			array(
+				'file' => 'ext/project/assets/css/panelwidget-projectstatusfilter.css',
 				'position' => 120,
 			)
 		)

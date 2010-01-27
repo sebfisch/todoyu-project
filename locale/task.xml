@@ -90,6 +90,7 @@
 		<label index="attr.id_worktype.error">This Field is Required</label>
 		<label index="save.error">Saving was not successfull</label>
 		<label index="save.success">Saving successfull</label>
+		<label index="pasteNotAllowed">You can't paste the task on this position!</label>
 	</labels>
 	<labels lang="de">
 		<label index="task">Aufgabe</label>
@@ -177,5 +178,6 @@
 		<label index="attr.id_worktype.error">Dies ist ein Pflichtfeld</label>
 		<label index="save.error">Speichern war nicht erfolgreich</label>
 		<label index="save.success">Speichern war erfolgreich</label>
+		<label index="pasteNotAllowed">Sie können den Task nicht an dieser Stelle einfügen!</label>
 	</labels>
 </locallang>

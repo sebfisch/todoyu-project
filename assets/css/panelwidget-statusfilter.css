@@ -1,30 +1,12 @@
-#panelwidget-statusfilter h1 div.icon {
-	background:url('../img/panelwidget-statusfilter.png') no-repeat 0 5px;
-}
-
-#panelwidget-statusfilter .content {
+.panelWidgetStatusFilter .content {
 	padding:2px 0 4px 3px;
 }
 
-#panelwidget-statusfilter ul {
-	width:250px;
-}
-
-#panelwidget-statusfilter li {
-	background-color:#fff;
+.panelWidgetStatusFilter select option {
 	cursor:pointer;
-	padding:2px 5px;
-}
-
-#panelwidget-statusfilter li.odd {
-	background-color:#F3F4F8;
-}
-
-#panelwidget-statusfilter-list option {
-	cursor:pointer;
-	padding-left:22px;
+	padding-left:22px !important;
 	margin-left:3px;
-	background-image:url('../img/panelwidget-statusfilter.png');
+	background-image:url(../img/panelwidget-statusfilter.png);
 }
 
 
@@ -33,41 +15,41 @@
 	Status icons
    ------------------ */
 
-#panelwidget-statusfilter .statusPlanning {
+.panelWidgetStatusFilter option.statusPlanning {
 	background-position:2px -28px;
 }
 
-#panelwidget-statusfilter .statusOpen {
+.panelWidgetStatusFilter option.statusOpen {
 	background-position:2px -118px;
 }
 
-#panelwidget-statusfilter .statusProgress {
+.panelWidgetStatusFilter option.statusProgress {
 	background-position:2px -148px;
 }
-#panelwidget-statusfilter .statusConfirm {
+.panelWidgetStatusFilter option.statusConfirm {
 	background-position:2px -58px;
 }
 
-#panelwidget-statusfilter .statusDone {
+.panelWidgetStatusFilter option.statusDone {
 	background-position:2px -178px;
 }
 
-#panelwidget-statusfilter .statusAccepted {
+.panelWidgetStatusFilter option.statusAccepted {
 	background-position:2px -267px;
 }
 
-#panelwidget-statusfilter .statusRejected {
+.panelWidgetStatusFilter option.statusRejected {
 	background-position:2px -88px;
 }
 
-#panelwidget-statusfilter .statusCleared {
+.panelWidgetStatusFilter option.statusCleared {
 	background-position:2px -208px;
 }
 
-#panelwidget-statusfilter .statusWarranty {
+.panelWidgetStatusFilter option.statusWarranty {
 	background-position:2px -238px;
 }
 
-#panelwidget-statusfilter .statusCustomer {
+.panelWidgetStatusFilter option.statusCustomer {
 	background-position:2px -2px;
 }

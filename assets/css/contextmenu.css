@@ -68,6 +68,10 @@
 #contextmenu .taskPaste {
 	background-position:3px -537px;
 }
+#contextmenu .taskPaste.disabled {
+	background-position:3px -657px;
+	color:#CCC;
+}
 
 #contextmenu .taskPasteIn {
 	background-position:3px -567px;

@@ -27,8 +27,10 @@
 
 
 	// add default panel widgets
-TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetProjectTree', 20);
-TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetStatusFilter', 30);
+//TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetProjectTree', 19);
+TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetProjectList', 20);
+TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetTaskStatusFilter', 30);
+TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetProjectStatusFilter', 21);
 TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetQuickProject', 25);
 
 ?>
