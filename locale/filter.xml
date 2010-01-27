@@ -21,6 +21,7 @@
 		<label index="task.startdateDyn">Startdate (Dynamic)</label>
 		<label index="task.enddate">Enddate</label>
 		<label index="task.enddateDyn">Enddate (Dynamic)</label>
+		<label index="task.finishdate">Finishdate</label>
 		<label index="task.dyndateinput.today">Today</label>
 		<label index="task.dyndateinput.tomorrow">Tomorrow</label>
 		<label index="task.dyndateinput.dayaftertomorrow">The day after tomorrow</label>
@@ -57,6 +58,7 @@
 		<label index="task.startdateDyn">Start-Datum (dynamisch)</label>
 		<label index="task.enddate">End-Datum</label>
 		<label index="task.enddateDyn">End-Datum (dynamisch)</label>
+		<label index="task.finishdate">Abschlussdatum</label>
 		<label index="task.dyndateinput.today">Heute</label>
 		<label index="task.dyndateinput.tomorrow">Morgen</label>
 		<label index="task.dyndateinput.dayaftertomorrow">Übermorgen</label>
