@@ -494,7 +494,6 @@ class TodoyuProjectRenderer {
 			'isExpanded'		=> $isExpanded
 		);
 
-
 			// Render details if task is expanded
 		if( $isExpanded ) {
 			if( ! is_null($tab) && $idTask === $idTaskShow ) {

@@ -49,16 +49,16 @@ Todoyu.Ext.project.Task = {
 		var withSubtasks = false;
 
 			// Ask to copy subtasks
-		if (this.hasSubtasks(idTask)) {
+		if ( this.hasSubtasks(idTask) ) {
 			withSubtasks = confirm('Auch Unteraufgaben mitkopieren?') ? 1 : 0;
 		}
 
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action': 'copy',
-				'task': idTask,
-				'subtasks': withSubtasks
+				'action':	'copy',
+				'task':		idTask,
+				'subtasks':	withSubtasks
 			},
 			'onComplete': this.onCopied.bind(this, idTask)
 		};
@@ -97,8 +97,8 @@ Todoyu.Ext.project.Task = {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action': 'cut',
-				'task': idTask
+				'action':	'cut',
+				'task':		idTask
 			},
 			'onComplete': this.onCut.bind(this, idTask)
 		};
@@ -133,9 +133,9 @@ Todoyu.Ext.project.Task = {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action': 'paste',
-				'task': idTask,
-				'mode': mode
+				'action':	'paste',
+				'task':		idTask,
+				'mode':		mode
 			},
 			'onComplete': this.onPasted.bind(this, idTask, mode)
 		}
@@ -206,7 +206,7 @@ Todoyu.Ext.project.Task = {
 		var withSubtasks = false;
 
 			// Ask to copy subtasks
-		if (this.hasSubtasks(idTask)) {
+		if ( this.hasSubtasks(idTask) ) {
 			withSubtasks = confirm('Auch Unteraufgaben klonen?') ? 1 : 0;
 		}
 
@@ -575,8 +575,8 @@ Todoyu.Ext.project.Task = {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action':		'addprojectcontainer',
-				'project':		idProject
+				'action':	'addprojectcontainer',
+				'project':	idProject
 			},
 			'onComplete': this.onProjectContainerAdded.bind(this)
 		};

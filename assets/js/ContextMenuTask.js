@@ -20,15 +20,14 @@
 
 /**
  * Context menu for tasks
- *
-*/
+ */
 
 Todoyu.Ext.project.ContextMenuTask = {
 
 
 
 	/**
-	 *	Attach task context menu
+	 * Attach task context menu
 	 */
 	attach: function() {
 		Todoyu.ContextMenu.attachMenuToClass('contextmenutask', this.load.bind(this));
@@ -37,7 +36,7 @@ Todoyu.Ext.project.ContextMenuTask = {
 
 
 	/**
-	 *	Detach task context menu
+	 * Detach task context menu
 	 */
 	detach: function() {
 		Todoyu.ContextMenu.detachAllMenus('contextmenutask');
@@ -46,7 +45,7 @@ Todoyu.Ext.project.ContextMenuTask = {
 
 
 	/**
-	 *	Reattach task context menu
+	 * Reattach task context menu
 	 */
 	reattach: function() {
 		this.detach();
@@ -56,9 +55,9 @@ Todoyu.Ext.project.ContextMenuTask = {
 
 
 	/**
-	 *	Load task context menu
+	 * Load task context menu
 	 *
-	 *	@param	Object	event
+	 * @param	Object	event
 	 */
 	load: function(event) {
 		var h3		= Event.findElement(event, 'h3');
@@ -81,11 +80,12 @@ Todoyu.Ext.project.ContextMenuTask = {
 
 
 	/**
-	 *	Attach task context menu to given element
+	 * Attach task context menu to given element
 	 *
-	 *	@param	String	element
+	 * @param	String	element
 	 */
 	attachToElement: function(element) {
 		Todoyu.ContextMenu.attachMenuToElement(element, this.load.bind(this));
 	}
+
 };
