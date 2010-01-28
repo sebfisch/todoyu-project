@@ -155,14 +155,14 @@
 	#search-results .properties dt,
 	.project .properties dt {
 		float:left;
-		width:90px;
+		width:110px;
 	}
 
 	#search-results .properties dd,
 	.project .properties dd {
 		float:left;
 		padding-right:3px;
-		width:210px;
+		width:190px;
 	}
 
 	/* assigned users */

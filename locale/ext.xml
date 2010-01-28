@@ -113,10 +113,10 @@
 		<label index="attr.company">Kunde</label>
 		<label index="attr.id">Projekt ID</label>
 		<label index="attr.status">Projekt Status</label>
-		<label index="attr.date_start">Start-Datum</label>
-		<label index="attr.date_end">Ende-Datum</label>
+		<label index="attr.date_start">Startdatum</label>
+		<label index="attr.date_end">Enddatum</label>
 		<label index="attr.date_finish">Abgeschlossen Datum</label>
-		<label index="attr.date_deadline">Frist</label>
+		<label index="attr.date_deadline">Fertigstellungsfrist</label>
 		<label index="attr.projectusers">Projekt Benutzer</label>
 		<label index="attr.projectusers.new">Projekt Benutzer</label>
 		<label index="attr.title">Projekt Titel</label>
