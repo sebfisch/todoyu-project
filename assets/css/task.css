@@ -306,7 +306,7 @@
 		top:0;
 		width:25px;
 		height:30px;
-		background:#D6DCC5 url(../../../../core/assets/img/toggle_tab.png) no-repeat 0px 100%;
+		background:#D6DCC5 url(../../../../core/assets/img/sprite-toggle.png) no-repeat 0 -65px;
 	}
 
 #taskList .activeTabContent .taskOptionBlock {
