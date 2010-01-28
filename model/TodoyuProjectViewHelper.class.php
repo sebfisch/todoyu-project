@@ -66,7 +66,7 @@ class TodoyuProjectViewHelper {
 		$label		= '';
 
 		if( $idUser	!== 0 ) {
-			$label	= TodoyuUserRoleManager::getUserLabel($idUser, $idProject, $idUserrole);
+			$label	= TodoyuUserroleManager::getUserLabel($idUser, $idProject, $idUserrole);
 		}
 
 		return $label;
