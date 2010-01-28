@@ -281,6 +281,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'optgroup'	=> 'LLL:core.filter',
 			'widget'	=> 'select',
 			'wConf'		=> array(
+				'multiple'	=> true,
 				'size'		=> 5,
 				'FuncRef'	=> 'TodoyuFiltersetManager::getFilterSetSelectionOptions'
 			)
@@ -301,7 +302,24 @@ $CONFIG['FILTERS']['TASK'] = array(
 				'LabelFuncRef' => 'TodoyuProjectFilterDataSource::getLabel',
 				'negation'	=> array(
 					'labelTrue'		=> 'LLL:search.negation.default.true',
-					'labelFalse'	=> 'LLL:search.negation.default.false',
+					'labelFalse'	=> 'LLL:search.negation.default.false'
+				)
+			)
+		),
+
+
+		'type' => array(
+			'funcRef'	=> 'TodoyuTaskFilter::Filter_type',
+			'label'		=> 'LLL:projectFilter.task.type',
+			'optgroup'	=> 'LLL:task.search.label',
+			'widget'	=> 'select',
+			'wConf' => array(
+				'multiple'	=> true,
+				'size'		=> 2,
+				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getTypeOptions',
+				'negation'	=> array(
+					'labelTrue'	=> 'LLL:search.negation.default.true',
+					'labelFalse'=> 'LLL:search.negation.default.false'
 				)
 			)
 		)

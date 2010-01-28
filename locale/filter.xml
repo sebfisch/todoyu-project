@@ -14,6 +14,7 @@
 		<label index="task.isPublic">Is public</label>
 		<label index="task.billingType">Billing Type</label>
 		<label index="task.fulltext">Fulltext</label>
+		<label index="task.type">Type</label>
 		<label index="task.timemanagement.label">Timemanagement</label>
 		<label index="task.deadline">Deadline</label>
 		<label index="task.deadlineDyn">Deadline (Dynamic)</label>
@@ -51,6 +52,7 @@
 		<label index="task.isPublic">Ist öffentlich</label>
 		<label index="task.billingType">Leistungsart</label>
 		<label index="task.fulltext">Volltext</label>
+		<label index="task.type">Typ</label>
 		<label index="task.timemanagement.label">Zeit-Management</label>
 		<label index="task.deadline">Frist</label>
 		<label index="task.deadlineDyn">Frist (dynamisch)</label>
@@ -72,5 +74,5 @@
 		<label index="project.projectleader">Projektleiter</label>
 		<label index="project.projectsupervisor">Projekt Supervisor</label>
 		<label index="project.fixproject">Statisches Projekt?</label>
-	</labels>	
+	</labels>
 </locallang>

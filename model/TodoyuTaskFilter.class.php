@@ -733,7 +733,10 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 		$where = '(		ext_project_task.' . $field . ' > ' . intval($timeStamps['start']) . '
 					AND	ext_project_task.' . $field . ' < ' . intval($timeStamps['end']) . ' )';
 
-		return array('tables' => $tables, 'where' => $where);
+		return array(
+			'tables'	=> $tables,
+			'where' 	=> $where
+		);
 	}
 
 
@@ -751,38 +754,31 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 		$tables = array('ext_project_task');
 		$where = 'ext_project_task.id != ' . $idTask;
 
-		return array('tables' => $tables, 'where' => $where);
+		return array(
+			'tables'	=> $tables,
+			'where' 	=> $where
+		);
 	}
 
 
 
 	/**
-	 * Filter task by field ext_projectbilling_type
+	 * Filter by type (task/container)
 	 *
-	 * @todo: move to the projectbilling module
-	 *
-	 * @param	String	$value	commaseparated
-	 * @param	Boolean	$negate
+	 * @param	Integer		$value
+	 * @param	Bool		$negate
 	 * @return	Array
 	 */
-	public static function Filter_billingType($value, $negate = false)	{
-		if( $value )	{
-			$value = explode(',', $value);
+	public static function Filter_type($value, $negate = false) {
+		$type		= intval($value);
+		$queryParts	= false;
 
-			$value = TodoyuArray::intval($value, true, true);
-			$value = implode(',', $value);
-
-			$tables = array('ext_project_task');
-
-			if( $negate )	{
-				$where = 'ext_project_task.ext_projectbilling_type NOT IN (' . $value . ')';
-			} else {
-				$where = 'ext_project_task.ext_projectbilling_type IN (' . $value . ')';
-			}
-
-
-			return array('tables' => $tables, 'where' => $where);
+		if( $type > 0 ) {
+			$queryParts['tables'] 	= array('ext_project_task');
+			$queryParts['where']	= 'ext_project_task.type ' . ($negate?'!=':'=') . $type;
 		}
+
+		return $queryParts;
 	}
 
 

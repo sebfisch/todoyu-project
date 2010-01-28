@@ -93,11 +93,11 @@ class TodoyuTaskFilterDataSource {
 	 */
 	public static function getStatusOptions(array $definitions)	{
 		$options	= array();
-		$statuses	= TodoyuProjectStatusManager::getTaskStatusInfos(); // getProjectStatusInfos();
+		$statuses	= TodoyuProjectStatusManager::getTaskStatusInfos();
 		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
 
 		foreach($statuses as $status) {
-			$options[$status['index']] = array(
+			$options[] = array(
 				'label'		=> $status['label'],
 				'value'		=> $status['index'],
 				'selected'	=> in_array($status['index'], $selected)
@@ -111,6 +111,30 @@ class TodoyuTaskFilterDataSource {
 
 
 
+
+	/**
+	 * Get task type options for filter widget
+	 *
+	 * @param	Array		$definitions
+	 * @return	Array
+	 */
+	public static function getTypeOptions(array $definitions) {
+		$definitions['options'] = array(
+			array(
+				'label'	=> Label('task.type.task'),
+				'value'	=> TASK_TYPE_TASK
+			),
+			array(
+				'label'	=> Label('task.type.container'),
+				'value'	=> TASK_TYPE_CONTAINER
+			)
+		);
+
+		return $definitions;
+	}
+
+
+
 	/**
 	 * Dynamic dateinput options
 	 *
@@ -118,21 +142,40 @@ class TodoyuTaskFilterDataSource {
 	 * @return	Array
 	 */
 	public static function getDynamicDateinput($definitions)	{
-		$optionsArray = array(
-			''					=> array('label' => Label('LLL:form.select.pleaseChoose')),
-			'today'				=> array('label' => Label('LLL:projectFilter.task.dyndateinput.today')),
-			'tomorrow'			=> array('label' => Label('LLL:projectFilter.task.dyndateinput.tomorrow')),
-			'dayaftertomorrow'	=> array('label' => Label('LLL:projectFilter.task.dyndateinput.dayaftertomorrow')),
-			'yesterday'			=> array('label' => Label('LLL:projectFilter.task.dyndateinput.yesterday')),
-			'daybeforeyesterday'=> array('label' => Label('LLL:projectFilter.task.dyndateinput.daybeforeyesterday')),
-			'currentweek'		=> array('label' => Label('LLL:projectFilter.task.dyndateinput.currentweek')),
-			'nextweek'			=> array('label' => Label('LLL:projectFilter.task.dyndateinput.nextweek')),
-			'lastweek'			=> array('label' => Label('LLL:projectFilter.task.dyndateinput.lastweek')),
+		$definitions['options'] = array(
+			array(
+				'label' => Label('projectFilter.task.dyndateinput.today'),
+				'value'	=> 'today'
+			),
+			array(
+				'label' => Label('projectFilter.task.dyndateinput.tomorrow'),
+				'value'	=> 'tomorrow'
+			),
+			array(
+				'label' => Label('projectFilter.task.dyndateinput.dayaftertomorrow'),
+				'value'	=> 'dayaftertomorrow'
+			),
+			array(
+				'label' => Label('LLL:projectFilter.task.dyndateinput.yesterday'),
+				'value'	=> 'yesterday'
+			),
+			array(
+				'label' => Label('LLL:projectFilter.task.dyndateinput.daybeforeyesterday'),
+				'value'	=> 'daybeforeyesterday'
+			),
+			array(
+				'label' => Label('LLL:projectFilter.task.dyndateinput.currentweek'),
+				'value'	=> 'currentweek'
+			),
+			array(
+				'label' => Label('LLL:projectFilter.task.dyndateinput.nextweek'),
+				'value'	=> 'nextweek'
+			),
+			array(
+				'label' => Label('LLL:projectFilter.task.dyndateinput.lastweek'),
+				'value'	=> 'lastweek'
+			)
 		);
-
-		$optionsArray[$definitions['value']]['selected'] = true;
-
-		$definitions['options'] = $optionsArray;
 
 		return $definitions;
 	}
