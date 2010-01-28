@@ -54,14 +54,14 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'optgroup'	=> 'LLL:task.search.label',
 			'widget'	=> 'select',
 			'wConf'		=> array(
-			    'multiple'	=> true,
-			    'size'		=> 5,
-			    'FuncRef'	=> 'TodoyuTaskFilterDataSource::getStatusOptions',
-			    'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.default.true',
-			    		'labelFalse'	=> 'LLL:search.negation.default.false',
-			    )
-	  		)
+				'multiple'	=> true,
+				'size'		=> 5,
+				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getStatusOptions',
+				'negation'	=> array(
+						'labelTrue'		=> 'LLL:search.negation.default.true',
+						'labelFalse'	=> 'LLL:search.negation.default.false',
+				)
+			)
 		),
 		'creator' => array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_userCreate',
@@ -74,9 +74,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 				'FuncParams'	=> array(),
 				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel',
 				'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.default.true',
-			    		'labelFalse'	=> 'LLL:search.negation.default.false',
-			    )
+					'labelTrue'		=> 'LLL:search.negation.default.true',
+					'labelFalse'	=> 'LLL:search.negation.default.false',
+				)
 			)
 		),
 		'currentUserIsUserCreate' => array(
@@ -84,9 +84,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'label'		=> 'LLL:projectFilter.task.currentUserIsUserCreate',
 			'optgroup'	=> 'LLL:task.search.label',
 			'widget'	=> 'checkbox',
-			'wConf'   => array(
-	      		'checked' => true
-	    	)
+			'wConf'	=> array(
+					'checked' => true
+			)
 		),
 		'userHasAcknowledged' => array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_acknowledged',
@@ -110,8 +110,8 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'optgroup'		=> 'LLL:task.search.label',
 			'widget'	=> 'checkbox',
 			'wConf'   => array(
-	      		'checked' => true
-	    	)
+				'checked' => true
+			)
 		),
 		'userIsAssigned' => array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_userAssigned',
@@ -124,9 +124,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 				'FuncParams'	=> array(),
 				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel',
 				'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.default.true',
-			    		'labelFalse'	=> 'LLL:search.negation.default.false',
-			    )
+						'labelTrue'		=> 'LLL:search.negation.default.true',
+						'labelFalse'	=> 'LLL:search.negation.default.false',
+				)
 			)
 		),
 		'currentUserIsAssigned' => array(
@@ -135,8 +135,8 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'optgroup'		=> 'LLL:task.search.label',
 			'widget'	=> 'checkbox',
 			'wConf'   => array(
-	      		'checked' => true
-	    	)
+				'checked' => true
+			)
 		),
 		'owner' => array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_owner',
@@ -149,9 +149,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 				'FuncParams'	=> array(),
 				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel',
 				'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.default.true',
-			    		'labelFalse'	=> 'LLL:search.negation.default.false',
-			    )
+						'labelTrue'		=> 'LLL:search.negation.default.true',
+						'labelFalse'	=> 'LLL:search.negation.default.false',
+				)
 			)
 		),
 		'currentUserIsOwner' => array(
@@ -159,9 +159,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'label'		=> 'LLL:projectFilter.task.currentUserIsOwner',
 			'optgroup'	=> 'LLL:task.search.label',
 			'widget'	=> 'checkbox',
-			'wConf'   => array(
-	      		'checked' => true
-	    	)
+			'wConf'	=> array(
+				'checked' => true
+			)
 		),
 		'isPublic'	=> array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_isPublic',
@@ -183,9 +183,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'dateinput',
 			'wConf'		=> array(
 				'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.datetime.true',
-			    		'labelFalse'	=> 'LLL:search.negation.datetime.false',
-			    )
+					'labelTrue'		=> 'LLL:search.negation.datetime.true',
+					'labelFalse'	=> 'LLL:search.negation.datetime.false',
+				)
 			)
 		),
 		'deadlineDyn'	=> array(
@@ -204,9 +204,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'dateinput',
 			'wConf'		=> array(
 				'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.datetime.true',
-			    		'labelFalse'	=> 'LLL:search.negation.datetime.false',
-			    )
+						'labelTrue'		=> 'LLL:search.negation.datetime.true',
+						'labelFalse'	=> 'LLL:search.negation.datetime.false',
+				)
 			)
 		),
 		'startdateDyn'	=> array(
@@ -215,7 +215,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'optgroup'	=> 'LLL:projectFilter.task.timemanagement.label',
 			'widget'	=> 'select',
 			'wConf'		=> array(
-			    'FuncRef'	=> 'TodoyuTaskFilterDataSource::getDynamicDateinput'
+				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getDynamicDateinput'
 			)
 		),
 		'enddate'		=> array(
@@ -225,9 +225,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'dateinput',
 			'wConf'		=> array(
 				'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.datetime.true',
-			    		'labelFalse'	=> 'LLL:search.negation.datetime.false',
-			    )
+					'labelTrue'		=> 'LLL:search.negation.datetime.true',
+					'labelFalse'	=> 'LLL:search.negation.datetime.false',
+				)
 			)
 		),
 		'enddateDyn'	=> array(
@@ -236,7 +236,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'optgroup'	=> 'LLL:projectFilter.task.timemanagement.label',
 			'widget'	=> 'select',
 			'wConf'		=> array(
-			    'FuncRef'	=> 'TodoyuTaskFilterDataSource::getDynamicDateinput'
+				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getDynamicDateinput'
 			)
 		),
 		'finishdate'	=> array(
@@ -246,9 +246,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'dateinput',
 			'wConf'		=> array(
 				'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.datetime.true',
-			    		'labelFalse'	=> 'LLL:search.negation.datetime.false',
-			    )
+						'labelTrue'		=> 'LLL:search.negation.datetime.true',
+						'labelFalse'	=> 'LLL:search.negation.datetime.false',
+				)
 			)
 		),
 
@@ -259,16 +259,16 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_project',
 			'label'		=> 'LLL:projectFilter.project',
 			'optgroup'	=> 'LLL:project.search.label',
-	    	'widget'	=> 'textinput',
+			'widget'	=> 'textinput',
 			'wConf' => array(
 				'autocomplete'	=> true,
 				'FuncRef'=> 'TodoyuProjectFilterDataSource::autocompleteProjects',
 				'FuncParams' => array(),
 				'LabelFuncRef' => 'TodoyuProjectFilterDataSource::getLabel',
 				'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.default.true',
-			    		'labelFalse'	=> 'LLL:search.negation.default.false',
-			    )
+					'labelTrue'		=> 'LLL:search.negation.default.true',
+					'labelFalse'	=> 'LLL:search.negation.default.false',
+				)
 			)
 		),
 
@@ -282,7 +282,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'select',
 			'wConf'		=> array(
 				'size'		=> 5,
-			    'FuncRef'	=> 'TodoyuFiltersetManager::getFilterSetSelectionOptions'
+				'FuncRef'	=> 'TodoyuFiltersetManager::getFilterSetSelectionOptions'
 			)
 		),
 
@@ -296,13 +296,13 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_fulltext',
 			'label'		=> 'LLL:projectFilter.task.fulltext',
 			'optgroup'	=> 'LLL:task.search.label',
-	    	'widget'	=> 'textinput',
+			'widget'	=> 'textinput',
 			'wConf' => array(
 				'LabelFuncRef' => 'TodoyuProjectFilterDataSource::getLabel',
 				'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.default.true',
-			    		'labelFalse'	=> 'LLL:search.negation.default.false',
-			    )
+					'labelTrue'		=> 'LLL:search.negation.default.true',
+					'labelFalse'	=> 'LLL:search.negation.default.false',
+				)
 			)
 		)
 	)
@@ -335,13 +335,13 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 			'optgroup'	=> 'LLL:project.search.label',
 			'widget'	=> 'select',
 			'wConf'		=> array(
-			    'multiple'	=> true,
-			    'size'		=> 5,
-			    'FuncRef'	=> 'TodoyuTaskFilterDataSource::getStatusOptions',
-			    'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.default.true',
-			    		'labelFalse'	=> 'LLL:search.negation.default.false',
-			    )
+				'multiple'	=> true,
+				'size'		=> 5,
+				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getStatusOptions',
+				'negation'	=> array(
+					'labelTrue'		=> 'LLL:search.negation.default.true',
+					'labelFalse'	=> 'LLL:search.negation.default.false',
+				)
 	  		)
 		),
 		'title' => array(
@@ -351,9 +351,9 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 			'widget'	=> 'textinput',
 			'wConf'		=> array(
 				'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.default.true',
-			    		'labelFalse'	=> 'LLL:search.negation.default.false',
-			    )
+					'labelTrue'		=> 'LLL:search.negation.default.true',
+					'labelFalse'	=> 'LLL:search.negation.default.false',
+				)
 			)
 		),
 		'company' => array(
@@ -367,9 +367,9 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 				'FuncParams'	=> array(),
 				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getCompanyLabel',
 				'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.default.true',
-			    		'labelFalse'	=> 'LLL:search.negation.default.false',
-			    )
+					'labelTrue'		=> 'LLL:search.negation.default.true',
+					'labelFalse'	=> 'LLL:search.negation.default.false',
+				)
 			)
 		),
 
@@ -413,9 +413,9 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 				'FuncParams'	=> array(),
 				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel',
 				'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.default.true',
-			    		'labelFalse'	=> 'LLL:search.negation.default.false',
-			    )
+						'labelTrue'		=> 'LLL:search.negation.default.true',
+						'labelFalse'	=> 'LLL:search.negation.default.false',
+				)
 			)
 		),
 		'projectsupervisor' => array(
@@ -429,9 +429,9 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 				'FuncParams'	=> array(),
 				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel',
 				'negation'	=> array(
-			    		'labelTrue'		=> 'LLL:search.negation.default.true',
-			    		'labelFalse'	=> 'LLL:search.negation.default.false',
-			    )
+						'labelTrue'		=> 'LLL:search.negation.default.true',
+						'labelFalse'	=> 'LLL:search.negation.default.false',
+				)
 			)
 		),
 

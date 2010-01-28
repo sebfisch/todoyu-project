@@ -1,7 +1,9 @@
-<select id="panelwidget-{$id}-list" name="statuses" multiple="multiple" />
-{foreach $statuses idStatus status}
-	<option value="{$status.index}" class="status{ucwords $status.key} {cycle values="odd,even"} {if in_array($status.index, $selected)}selected{/if}" {if in_array($status.index, $selected)}selected="selected"{/if}>
-		{Label $status.label true}
-	</option>
-{/foreach}
-</select>
+<span class="scrollbarHide overflowHidden displayBlock">
+	<select id="panelwidget-{$id}-list" name="statuses" multiple="multiple" />
+	{foreach $statuses idStatus status}
+		<option value="{$status.index}" class="status{ucwords $status.key} {cycle values="odd,even"} {if in_array($status.index, $selected)}selected{/if}" {if in_array($status.index, $selected)}selected="selected"{/if}>
+			{Label $status.label true}
+		</option>
+	{/foreach}
+	</select>
+</span>
