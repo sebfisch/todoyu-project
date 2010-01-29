@@ -391,7 +391,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 			$queryParts	= false;
 		} else {
 				// set up query parts array
-			$tables	= ('ext_project_task');
+			$tables	= array('ext_project_task');
 
 			if( $negate )	{
 				$where	= 'ext_project_task.id_user_assigned != ' . intval($idUser);
