@@ -676,11 +676,13 @@ class TodoyuProjectManager {
 
 		$users	= Todoyu::db()->getArray($fields, $table, $where, $group, $order);
 
+		TodoyuDebug::printInFirebug($users, 'users');
+		TodoyuDebug::printLastQueryInFirebug();
+
 			// Get company information
 		foreach($users as $index => $user) {
 			$users[$index]['company'] = TodoyuUserManager::getUserCompanyRecords($user['id']);
 		}
-
 
 		return $users;
 	}

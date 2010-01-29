@@ -36,6 +36,9 @@ class TodoyuProjectViewHelper {
 	 * @return	Array
 	 */
 	public static function getProjectUsersOptions(TodoyuFormElement $formElement) {
+		$formData	= $formElement->getForm()->getFormData();
+		$idProject	= intval($formData['id_project']);
+
 		$users	= TodoyuProjectManager::getProjectUsers($idProject);
 		$options= array();
 

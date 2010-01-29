@@ -81,6 +81,8 @@ class TodoyuTaskViewHelper {
 		$groupLabel	= Label('comment.group.projectmembers');
 		$options[$groupLabel]	= TodoyuProjectViewHelper::getProjectUsersOptions($field);
 
+		TodoyuDebug::printInFirebug($options[$groupLabel], 'project');
+
 			// Get staff users (employees of internal company)
 		$groupLabel	= Label('comment.group.employees');
 		$options[$groupLabel]	= TodoyuUserViewHelper::getInternalUsersOptions($field);

@@ -1468,7 +1468,7 @@ class TodoyuTaskManager {
 		if( $task->isTask() ) {
 				// New task have no parent
 			if( $idTask === 0 ) {
-//				$form->getField('id_parenttask')->remove();
+				$form->getField('id_parenttask')->remove();
 				$form->addHiddenField('id_parenttask', 0);
 			}
 		}
@@ -1504,6 +1504,7 @@ class TodoyuTaskManager {
 				// Remove
 			if( $idTask === 0 ) {
 				$form->getField('id_parenttask')->remove();
+				$form->addHiddenField('id_parenttask', 0);
 			}
 		}
 
