@@ -1,5 +1,5 @@
 /* --------------------------------------
-	Task and project properties 
+	Task and project properties
    ------------------------------------- */
 .project .properties dt,
 .task .properties dt {
@@ -31,12 +31,12 @@
 		font-size:14px;
 		cursor:pointer;
 	}
-	
+
 	.noProjectSelected p.message {
 		padding:10px;
 	}
 
-	
+
 
 .innerBox {
 	padding:10px 0 32px 0;
@@ -76,54 +76,4 @@ div.projectDetails fieldset.right {
 	width:39%;
 	float:right;
 	margin-bottom:25px;
-}
-
-
-/* project colors */
-
-.project-status-planning h1 a.projectTitle {
-		/* purple */
-	background:url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -72px;
-}
-
-.project-status-inprogress h1 a.projectTitle {
-		/* orange */
-	background:url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -152px;
-}
-
-.project-status-done h1 a.projectTitle {
-		/* green */
-	background:url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -193px;
-}
-
-.project-status-cleared h1 a.projectTitle {
-		/* grey*/
-	background:url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -234px;
-}
-
-.project-status-warranty h1 a.projectTitle {
-		/* blue*/
-	background:url(../../../../core/assets/img/sprite-content.png) no-repeat 0 -426px;
-}
-
-.project-status-planning div.projectdetails {
-	border-left-color:purple;
-}
-
-.project-status-inprogress div.projectdetails {
-		/* orange */
-	border-left-color:#ffac00;
-}
-
-.project-status-done div.projectdetails {
-		/* green */
-	border-left-color:#77dc00;
-}
-
-.project-status-cleared div.projectdetails {
-	border-left-color:grey;
-}
-
-.project-status-warranty div.projectdetails {
-	border-left-color:blue;
 }

@@ -200,23 +200,6 @@
 
 
 
-/* -------------
-	Title
-   ------------- */
-#taskList h1.projectTitle a.addComment {
-	background:url(../../../../core/assets/img/sprite-icons.png) no-repeat 0 -16px;
-}
-
-#taskList h1.projectTitle span.projectprice {
-
-}
-
-#taskList h1.projectTitle span.additionalProjectStuff input {
-	position:static;
-}
-
-
-
 	/* General styles
 	   @todo Move to top CSS file
 	*/
