@@ -135,8 +135,6 @@ Todoyu.Ext.project.Project = {
 			detailDiv.hide();
 		}
 
-		this.updateToggleIcon(idProject);
-
 		this.saveDetailsExpanded(idProject, detailDiv.visible());
 	},
 
@@ -155,17 +153,6 @@ Todoyu.Ext.project.Project = {
 	 */
 	saveDetailsExpanded: function(idProject, expanded) {
 		Todoyu.Pref.save('project', 'detailsexpanded', expanded ? 1 : 0, idProject, 0);
-	},
-
-
-
-	/**
-	 *	Update project toggle (expand / collapse) icon
-	 *
-	 *	@param	Integer	idProject
-	 */
-	updateToggleIcon: function(idProject) {
-		Todoyu.Ui.updateToggleIcon('project-', idProject);
 	},
 
 
