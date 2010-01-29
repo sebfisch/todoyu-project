@@ -142,6 +142,7 @@
 .project .projectstatus {
 	border-top-width:5px;
 	border-top-style:solid;
+	border-bottom:1px dotted #AAAAAA;
 }
 
 .project .description {

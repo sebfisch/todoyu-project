@@ -11,9 +11,10 @@
 	height:auto !important;
 	height:1px;
 	padding:4px 0 4px 0;
-	background:url(../../../../core/assets/img/dottedline_hor.png) repeat-x 0 bottom;
 	clear:both;
 	cursor:pointer;
+	border-bottom:1px dotted #AAAAAA;
+	background-color:transparent;
 }
 
 .tasks .expanded h3,
@@ -353,7 +354,6 @@
 	/* subtasks */
 .tasks .subtasks {
 	padding-left:10px;
-	background:url(../../../../core/assets/img/content/hr_hor.png) repeat-x 0 bottom;
 }
 
 .task-inline-edit .type-dateinput input {
