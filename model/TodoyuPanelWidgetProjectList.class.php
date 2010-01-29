@@ -118,7 +118,7 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 		$fulltext	= '';
 
 		foreach($filters as $filter) {
-			if( $filter['name'] === 'fulltext' ) {
+			if( $filter['filter'] === 'fulltext' ) {
 				$fulltext = $filter['value'];
 			}
 		}
@@ -139,6 +139,8 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 		$data	= array(
 			'fulltext'	=> self::getSearchText()
 		);
+
+		TodoyuDebug::printInFirebug($data, 'data');
 
 		$form->setFormData($data);
 		$form->setUseRecordID(false);
