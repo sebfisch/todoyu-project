@@ -98,7 +98,7 @@ Todoyu.Ext.project.QuickTask = {
 			var start		= response.getTodoyuHeader('start') == 1;
 
 			this.closePopup();
-			Todoyu.notifySuccess('[LLL:project.quicktask.saved]');
+			Todoyu.notifySuccess('[LLL:project.js.quicktask.saved]');
 
 			if( start ) {
 				var idTask= response.getTodoyuHeader('idTask');

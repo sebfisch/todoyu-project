@@ -69,6 +69,7 @@
 		<label index="save.success">Saving successfull</label>
 		<label index="ac.company.notFoundInfo">No matching customer found! You can only select companies you have added in the contact module.</label>
 		<label index="js.removeProject">Do you want to delete the whole project and all it's tasks?</label>
+		<label index="js.quicktask.saved">Quicktask has been saved</label>
 	</labels>
 	<labels lang="de">
 		<label index="ext.title">Projekt- und Aufgabenverwaltung</label>
@@ -139,5 +140,6 @@
 		<label index="save.success">Speichern war erfolgreich</label>
 		<label index="ac.company.notFoundInfo">Kein passender Kunde gefunden. Es können nur im Kontakt-Modul erfasste Firmen ausgewählt werden</label>
 		<label index="js.removeProject">Wollen Sie das gesammte Projekt und alle seine Aufgaben löschen?</label>
+		<label index="js.quicktask.saved">Aufgabe wurde gespeichert</label>
 	</labels>
 </locallang>
