@@ -669,15 +669,14 @@ class TodoyuProjectManager {
 					ext_project_mm_project_user mmpu';
 		$where	= '	mmpu.id_user	= u.id AND
 					mmpu.id_project	= ' . $idProject . ' AND
-					mmpu.id_userrole= ur.id';
+					mmpu.id_userrole= ur.id AND
+					u.deleted		= 0 AND
+					u.active		= 1';
 		$group	= '	mmpu.id';
 		$order	= '	u.lastname,
 					u.firstname';
 
 		$users	= Todoyu::db()->getArray($fields, $table, $where, $group, $order);
-
-		TodoyuDebug::printInFirebug($users, 'users');
-		TodoyuDebug::printLastQueryInFirebug();
 
 			// Get company information
 		foreach($users as $index => $user) {
