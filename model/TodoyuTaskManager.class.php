@@ -965,7 +965,7 @@ class TodoyuTaskManager {
 
 			// Task-only infos (not relevant for containers)
 		if ( $task->isTask() ) {
-			if( $task->getDeadlineDate() < NOW || $task->getEndDate() < NOW ) {
+			if( $task->getStatus() != STATUS_CLEARED && ($task->getDeadlineDate() < NOW || $task->getEndDate() < NOW) ) {
 				$icons['dateover']= array(
 					'id'		=> 'task-' . $idTask . '-dateover',
 					'class'		=> 'dateover',

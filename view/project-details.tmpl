@@ -14,10 +14,12 @@
 		<h4>{Label project.project.involved_persons}</h4>
 		<div class="content overflow">{$projectInfo}</div>
 	</div>
-{if $description}
-	<div class="description infoBox">
-		<h4>{Label core.description}</h4>
-		<div class="content overflow">{cleanHtml $description}</div>
-	</div>
-{/if}
+
+	{if $description}
+		<div class="description infoBox">
+			<h4>{Label core.description}</h4>
+			<div class="content overflow">{cleanHtml $description}</div>
+		</div>
+	{/if}
+
 </div>

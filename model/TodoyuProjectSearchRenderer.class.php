@@ -42,12 +42,16 @@ class TodoyuProjectSearchRenderer {
 		$idFilterset= intval($idFilterset);
 		$projectIDs	= TodoyuProjectManager::getProjectIDsByFilter($idFilterset, $conditions, $conjunction);
 		$content	= '';
+		$tmpl		= 'ext/project/view/project-search-list.tmpl';
+		$data		= array(
+			'projects'	=> array()
+		);
 
 		foreach($projectIDs as $idProject)	{
-			$content .= TodoyuProjectRenderer::renderProjectHeader($idProject);
+			$data['projects'][$idProject] = TodoyuProjectRenderer::renderProjectHeader($idProject);
 		}
 
-		return $content;
+		return render($tmpl, $data);
 	}
 
 }

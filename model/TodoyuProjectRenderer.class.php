@@ -201,6 +201,7 @@ class TodoyuProjectRenderer {
 	public static function renderProjectHeader($idProject, $withDetails = null) {
 		$idProject	= intval($idProject);
 		$project	= TodoyuProjectManager::getProject($idProject);
+		$tmpl		= 'ext/project/view/project-header.tmpl';
 		$data		= $project->getTemplateData();
 
 			// If not forced, check preference
@@ -212,7 +213,7 @@ class TodoyuProjectRenderer {
 			$data['details'] = self::renderProjectDetails($idProject);
 		}
 
-		return render('ext/project/view/project-header.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 
