@@ -226,7 +226,6 @@ class TodoyuTaskClipboard {
 			}
 
 			if( sizeof($mergeItems) === 0 ) {
-				TodoyuDebug::printInFirebug('sdfasdf');
 				$mergeItems = $ownItems;
 				unset($mergeItems['paste']['submenu']);
 				$mergeItems['paste']['class'] .= ' disabled';
