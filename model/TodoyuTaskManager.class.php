@@ -1500,6 +1500,11 @@ class TodoyuTaskManager {
 			$form->getField('id_user_assigned')->remove();
 //			$form->getField('id_user_owner')->remove();
 			$form->getField('status')->remove();
+
+				// Remove
+			if( $idTask === 0 ) {
+				$form->getField('id_parenttask')->remove();
+			}
 		}
 
 			// Call hooks to modify $form
