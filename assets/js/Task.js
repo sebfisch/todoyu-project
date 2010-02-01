@@ -196,9 +196,9 @@ Todoyu.Ext.project.Task = {
 		this.highlight(idTaskNew);
 		this.highlightSubtasks(idTaskNew);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Handler if user tries to paste on a positio which is not allowed
 	 */
@@ -241,7 +241,7 @@ Todoyu.Ext.project.Task = {
 	},
 
 
-	
+
 	/**
 	 * Handler when task was cloned
 	 * 
@@ -305,7 +305,6 @@ Todoyu.Ext.project.Task = {
 	onRemoved: function(idTask, response) {
 
 	},
-
 
 
 
@@ -833,9 +832,9 @@ Todoyu.Ext.project.Task = {
 	isDetailsLoaded: function(idTask) {
 		return Todoyu.exists('task-' + idTask + '-details');
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Check if details of a task are visible (loaded and displayed)
 	 * 
@@ -865,6 +864,7 @@ Todoyu.Ext.project.Task = {
 		}
 
 		this.Tab.show(idTask, tab);
+		
 	},
 
 
@@ -1130,7 +1130,36 @@ Todoyu.Ext.project.Task = {
 				this.ext.Task.checkAndRemoveTriggerFromParent(idTask);
 			}
 			this.ext.Task.refresh(idTask);
+		},
+
+
+
+		/**
+		 * Handler when parenttask field is autocompleted
+		 *
+		 * @param	Ajax.Response			response
+		 * @param	Todoyu.Autocompleter	autocompleter
+		 */
+		onParenttaskAutocomplete: function(response, autocompleter) {
+			if( response.getTodoyuHeader('acElements') == 0 ) {
+				Todoyu.notifyInfo('[LLL:task.ac.parenttask.notFoundInfo]');
+			}
+		},
+
+
+
+		/**
+		 * Handler when project field is autocompleted
+		 *
+		 * @param	Ajax.Response			response
+		 * @param	Todoyu.Autocompleter	autocompleter
+		 */
+		onProjectAutocomplete: function(response, autocompleter) {
+			if( response.getTodoyuHeader('acElements') == 0 ) {
+				Todoyu.notifyInfo('[LLL:task.ac.project.notFoundInfo]');
+			}
 		}
+
 	},
 
 
@@ -1178,30 +1207,41 @@ Todoyu.Ext.project.Task = {
 					'action':	'tabload',
 					'task':		idTask,
 					'tab':		tabKey
-				}
+				},
+				'oncomplete':	this.onloaded.bind(this, idTask, tabKey)
 			};
-			var tabDiv	= this.buildTabID(idTask, tabKey);
 
+			var tabDiv	= this.buildTabID(idTask, tabKey);
 			Todoyu.Ui.update(tabDiv, url, options);
 		},
 
 
 
+		onloaded: function(idTask, tabKey) {
+			this.activate.(idTask, tabKey);
+		},
+
+
+
 		/**
-		 * Create given tab container to given task.
+		 * Create tab container to given task.
 		 *
 		 * @param	Integer	idTask
 		 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 		 */
 		createTabContainer: function(idTask, tabKey) {
-			var tabContainer = 'task-' + idTask + '-tabcontent';
 				// Create elements
 			var loader	= new Element('img', {'src':'assets/img/ajax-loader.gif'});
 			var spacer	= new Element('p', {'style':'padding:50px;text-align:center'}).update(loader);
-			var tabDiv	= new Element('div', {
+
+			var tabDiv	= new Element(
+				'div', {
 					'id':		this.buildTabID(idTask, tabKey),
 					'class':	'tab'
-				}).update(spacer);
+				}
+			).update(spacer);
+
+			var tabContainer = 'task-' + idTask + '-tabcontent';
 			$(tabContainer).insert({'top': tabDiv});
 		},
 
@@ -1212,7 +1252,7 @@ Todoyu.Ext.project.Task = {
 		 *
 		 * @param	Integer	idTask
 		 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
-		 * 	@return	String
+		 * @return	String
 		 */
 		buildTabID: function(idTask, tabKey) {
 			return 'task-' + idTask + '-tabcontent-' + tabKey;

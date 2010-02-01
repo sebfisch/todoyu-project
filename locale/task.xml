@@ -91,6 +91,8 @@
 		<label index="save.error">Saving was not successfull</label>
 		<label index="save.success">Saving successfull</label>
 		<label index="pasteNotAllowed">You can't paste the task on this position!</label>
+		<label index="ac.parenttask.notFoundInfo">No task containing this text or tasknumber found.</label>
+		<label index="ac.project.notFoundInfo">No project containing this text in the title was found.</label>
 	</labels>
 	<labels lang="de">
 		<label index="task">Aufgabe</label>
@@ -179,5 +181,7 @@
 		<label index="save.error">Speichern war nicht erfolgreich</label>
 		<label index="save.success">Speichern war erfolgreich</label>
 		<label index="pasteNotAllowed">Sie können den Task nicht an dieser Stelle einfügen!</label>
+		<label index="ac.parenttask.notFoundInfo">Es wurde kein Task gefunden der diesen Text oder diese Tasknummer enthält.</label>
+		<label index="ac.project.notFoundInfo">Es wurde kein Project mit diesen Text im Titel gefunden.</label>
 	</labels>
 </locallang>

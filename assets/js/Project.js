@@ -32,8 +32,10 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
+	 * Get DOM element of header of project with given ID
 	 *
-	 *	@param {Object} idProject
+	 * @param	Integer		idProject
+	 * @return	DomElement
 	 */
 	getHeader: function(idProject) {
 		return $('project-' + idProject + '-header');
@@ -81,7 +83,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Handle completion event after project having been deleted. Remove project from project task tree and remove project tab.
 	 *
-	 *	@param	Integer	idProjectRemoved
+	 *	@param	Integer		idProject
 	 */
 	onRemoved: function(idProject) {
 		this.ext.ProjectTaskTree.removeProject(idProject);
@@ -111,9 +113,9 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Toggle display of project details
+	 * Toggle display of project details
 	 *
-	 *	@param	Integer	idProject
+	 * @param	Integer		idProject
 	 */
 	toggleDetails: function(idProject) {
 		var detailDiv	= $('project-' + idProject + '-details');
@@ -146,10 +148,10 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Save state of project details being expanded
+	 * Save state of project details being expanded
 	 *
-	 *	@param	Integer	idProject
-	 *	@param	Boolean	expanded
+	 * @param	Integer		idProject
+	 * @param	Boolean		expanded
 	 */
 	saveDetailsExpanded: function(idProject, expanded) {
 		Todoyu.Pref.save('project', 'detailsexpanded', expanded ? 1 : 0, idProject, 0);
@@ -158,9 +160,9 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Hide project details
+	 * Hide details of given project
 	 *
-	 *	@param	Integer	idProject
+	 * @param	Integer		idProject
 	 */
 	hideDetails: function(idProject) {
 		Todoyu.Ui.hide('project-' + idProject + '-details');
@@ -169,9 +171,9 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Show project details
+	 * Show project details
 	 *
-	 *	@param	Integer	idProject
+	 * @param	Integer		idProject
 	 */
 	showDetails: function(idProject) {
 		Todoyu.Ui.show('project-' + idProject + '-details');
@@ -180,7 +182,7 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Add project
+	 *	Evoke creation of new project and add it into the page view
 	 */
 	add: function() {
 		var url		= Todoyu.getUrl('project', 'project');
@@ -202,9 +204,9 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Custom event handler, being evoked after adding a new project
+	 * Custom event handler, being evoked after adding a new project
 	 *
-	 *	@param	unknown	response
+	 * @param	Ajax.Response		response
 	 */
 	onAdded: function(response) {
 		var idProject	= response.getHeader('Todoyu-idProject');
@@ -217,9 +219,9 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Add task to given project
+	 * Add task to given project
 	 *
-	 *	@param	Integer	idProject
+	 * @param	Integer		idProject
 	 */
 	addTask: function(idProject) {
 		this.ext.Task.addTaskToProject(idProject);
@@ -228,9 +230,9 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Add container to given project
+	 * Add new container to given project
 	 *
-	 *	@param	Integer	idProject
+	 * @param	Integer		idProject
 	 */
 	addContainer: function(idProject) {
 		this.ext.Task.addContainerToProject(idProject);
@@ -239,9 +241,9 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Refresh given project
+	 * Refresh given project display
 	 *
-	 *	@param	Integer	idProject
+	 * @param	Integer		idProject
 	 */
 	refresh: function(idProject) {
 		var url		= Todoyu.getUrl('project', 'project');
@@ -259,10 +261,10 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Change status of given project to given status
+	 * Change status of given project to given status
 	 *
-	 *	@param	Integer	idProject
-	 *	@param	Integer	status
+	 * @param	Integer		idProject
+	 * @param	Integer		status
 	 */
 	updateStatus: function(idProject, status) {
 		var url	= Todoyu.getUrl('project', 'project');
@@ -278,12 +280,28 @@ Todoyu.Ext.project.Project = {
 		Todoyu.send(url, options);
 	},
 
+
+
+	/**
+	 * Handler being called after project status update being done: refresh project display and set status
+	 * 
+	 * @param	Integer				idProject
+	 * @param	Integer				status
+	 * @param	Ajax.Response		response
+	 */
 	onStatusUpdated: function(idProject, status, response) {
 		this.refresh(idProject);
 		this.setStatus(idProject, status);
 	},
 
 
+
+	/**
+	 * Get current status of given project
+	 * 
+	 * @param	Integer		idProject
+	 * @param	Integer
+	 */
 	getStatus: function(idProject) {
 		var classNames 	= $('project-' + idProject).down('div.projectstatus').classNames();
 		var statusClass	= classNames.grep(/bcStatus(\d)/).first();
@@ -292,6 +310,14 @@ Todoyu.Ext.project.Project = {
 		return statusIndex;
 	},
 
+
+
+	/**
+	 * Set project status
+	 * 
+	 * @param	Integer		idProject
+	 * @param	Integer		status
+	 */
 	setStatus: function(idProject, status) {
 		var statusBar	= $('project-' + idProject).down('div.projectstatus');
 		var oldStatus	= this.getStatus(idProject);
@@ -383,7 +409,7 @@ Todoyu.Ext.project.Project = {
 		/**
 		 *	onSaved project custom event handler
 		 *
-		 *	@param	unknown	response
+		 *	@param	Ajax.Response		response
 		 */
 		onSaved: function(response){
 			var idProject	= response.getTodoyuHeader('idProject');
@@ -409,8 +435,8 @@ Todoyu.Ext.project.Project = {
 		/**
 		 *	Update form DIV
 		 *
-		 *	@param	Integer	idProject
-		 *	@param	String	formHTML
+		 *	@param	Integer		idProject
+		 *	@param	String		formHTML
 		 */
 		updateFormDiv: function(idProject, formHTML) {
 			$('project-' + idProject + '-data').update(formHTML);
@@ -436,7 +462,7 @@ Todoyu.Ext.project.Project = {
 				} else {
 						// No project-tab found? reload to show startup-wizard
 					Todoyu.goTo('project');
-				}				
+				}
 			} else {
 					// If the for of an existing project is canceled
 				this.ext.Project.showDetails(idProject);
@@ -459,6 +485,46 @@ Todoyu.Ext.project.Project = {
 			if( response.getTodoyuHeader('acElements') == 0 ) {
 				Todoyu.notifyInfo('[LLL:project.ac.company.notFoundInfo]');
 			}
+		},
+
+
+
+		/**
+		 * Handler when user field is autocompleted
+		 *
+		 * @param	Ajax.Response			response
+		 * @param	Todoyu.Autocompleter	autocompleter
+		 */
+		onUserAutocomplete: function(response, autocompleter) {
+			if( response.getTodoyuHeader('acElements') == 0 ) {
+				Todoyu.notifyInfo('[LLL:project.ac.user.notFoundInfo]');
+			}
+		},
+
+
+
+		/**
+		 * Handler when projectleader (user) field is autocompleted
+		 *
+		 * @param	Ajax.Response			response
+		 * @param	Todoyu.Autocompleter	autocompleter
+		 */
+		onProjectleaderAutocomplete: function(response, autocompleter) {
+			this.onUserAutocomplete(response, autocompleter);
+		},
+
+
+
+		/**
+		 * Handler when customer manager (user) field is autocompleted
+		 *
+		 * @param	Ajax.Response			response
+		 * @param	Todoyu.Autocompleter	autocompleter
+		 */
+		onCustomerManagerAutocomplete: function(response, autocompleter) {
+			this.onUserAutocomplete(response, autocompleter);
 		}
+	
 	}
+
 };

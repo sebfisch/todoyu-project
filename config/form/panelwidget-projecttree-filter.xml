@@ -34,6 +34,9 @@
 							<action>autocompleteuser</action>
 						</acListener>
 						<acLabelFunc>TodoyuUserManager::getLabel</acLabelFunc>
+						<options>
+							<onCompleteCustom>Todoyu.Ext.project.Edit.onProjectleaderAutocomplete</onCompleteCustom>
+						</options>
 					</config>
 				</field>
 
@@ -46,6 +49,9 @@
 							<action>autocompleteCompany</action>
 						</acListener>
 						<acLabelFunc>TodoyuCustomerManager::getLabel</acLabelFunc>
+						<options>
+							<onCompleteCustom>Todoyu.Ext.project.Edit.onCompanyAutocomplete</onCompleteCustom>
+						</options>
 					</config>
 				</field>
 

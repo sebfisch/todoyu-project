@@ -25,6 +25,9 @@
 							<action>autocompletion</action>
 						</acListener>
 						<acLabelField>title</acLabelField>
+						<options>
+							<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onProjectAutocomplete</onCompleteCustom>
+						</options>
 					</config>
 					<required />
 				</field>

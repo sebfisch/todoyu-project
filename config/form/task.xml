@@ -104,6 +104,9 @@
 							<minChars>1</minChars>
 						</acListener>
 						<acLabelFunc>TodoyuTaskManager::getAutocompleteLabel</acLabelFunc>
+						<options>
+							<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onParenttaskAutocomplete</onCompleteCustom>
+						</options>
 					</config>
 				</field>
 

@@ -852,8 +852,6 @@ class TodoyuTaskManager {
 				'className'	=> 'sectionStart'
 			);
 
-
-
 				// Date start
 			$info['date_start']	= array(
 				'label'	=> 'LLL:task.attr.date_start',
