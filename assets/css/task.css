@@ -261,15 +261,15 @@
 
 	.task .taskTabs .tabs li,
 	.task .taskTabs .tabs li p span.lt {
-		background-image:url(../../../../core/assets/img/colF_r13.png);
+		background-image:url(../../../../core/assets/img/colF_r13.png) !important;
 	}
 
 	.task .taskTabs .tabs li {
-		background-color:#edf1e0;
+		background-color:#edf1e0 !important;
 	}
 
 	.task .taskTabs .tabs li.active {
-		background-color:#e3eace;
+		background-color:#e3eace !important;
 	}
 
 	/* task tabs content */

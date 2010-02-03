@@ -140,8 +140,6 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 			'fulltext'	=> self::getSearchText()
 		);
 
-		TodoyuDebug::printInFirebug($data, 'data');
-
 		$form->setFormData($data);
 		$form->setUseRecordID(false);
 

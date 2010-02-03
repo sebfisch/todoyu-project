@@ -114,11 +114,6 @@
 			<legend>Uev</legend>
 			<class>users</class>
 			<elements>
-
-				<field type="expandAllButton" name="expandAll">
-					<fields>projectusers</fields>
-				</field>
-
 				<field type="databaseRelation" name="projectusers">
 					<label>project.attr.projectusers</label>
 					<foreignRecordConf>

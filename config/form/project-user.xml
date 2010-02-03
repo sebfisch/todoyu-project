@@ -22,7 +22,7 @@
 						</acListener>
 						<acLabelFunc>TodoyuUserManager::getLabel</acLabelFunc>
 						<options>
-							<onCompleteCustom>Todoyu.Ext.project.Edit.onUserAutocomplete</onCompleteCustom>
+							<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onUserAutocomplete</onCompleteCustom>
 						</options>
 					</config>
 					<wizard>
