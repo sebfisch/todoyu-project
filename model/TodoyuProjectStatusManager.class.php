@@ -116,11 +116,8 @@ class TodoyuProjectStatusManager {
 		$infos		= array();
 
 		foreach($statuses as $index => $statusKey) {
-			$infos[$index] = array(
-				'index'	=> $index,
-				'key'	=> $statusKey,
-				'label'	=> self::getTaskStatusLabel($statusKey)
-			);
+			$label	= self::getTaskStatusLabel($statusKey);
+			$infos[$index] = self::getStatusOption($index, $statusKey, $label);
 		}
 
 		return $infos;
@@ -223,16 +220,33 @@ class TodoyuProjectStatusManager {
 		$infos		= array();
 
 		foreach($statuses as $index => $statusKey) {
-			$infos[$index] = array(
-				'index'	=> $index,
-				'key'	=> $statusKey,
-				'label'	=> self::getProjectStatusLabel($statusKey)
-			);
+			$label	= self::getProjectStatusLabel($statusKey);
+			$infos[$index] = self::getStatusOption($index, $statusKey, $label);
 		}
 
 		return $infos;
 	}
 
+
+
+	/**
+	 * Get config array for one status option
+	 *
+	 * @param unknown_type $index
+	 * @param unknown_type $statusKey
+	 * @return	Array
+	 */
+	public static function getStatusOption($index, $statusKey, $label) {
+		$option = array(
+			'index'		=> $index,
+			'value'		=> $index,
+			'key'		=> $statusKey,
+			'classname'	=> 'status' . ucwords($statusKey),
+			'label'		=> $label
+		);
+
+		return $option;
+	}
 }
 
 ?>

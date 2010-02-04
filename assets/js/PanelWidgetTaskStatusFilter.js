@@ -41,16 +41,16 @@ Todoyu.Ext.project.PanelWidget.TaskStatusFilter = {
 	 * Initialize the panelWidget: setup properties, install element observers
 	 */
 	init: function() {
-		this.statusFilter = new Todoyu.Ext.project.PanelWidget.StatusFilter('panelwidget-taskstatusfilter-list', this.onSelectionChange.bind(this));
+		this.statusFilter = new Todoyu.Ext.project.PanelWidget.StatusFilter('panelwidget-taskstatusfilter-list', this.onSelectionChange.bind(this));																				 
 	},
 
 
 	/**
 	 * If user clicked on an li instead on the checkbox or the label
 	 *
-	 *	@param	Event		event
+	 * @param	Event		event
 	 */
-	onSelectionChange: function(event) {		
+	onSelectionChange: function(event) {	
 		this.onUpdate();
 	},
 

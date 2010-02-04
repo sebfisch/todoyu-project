@@ -143,7 +143,10 @@ Todoyu.Ext.project.PanelWidget.ProjectTree = {
 			element.addClassName('expanded');
 			this.sendOpen(type, idElement);
 		}
-		*/
+*/
+
+
+
 	},
 
 

@@ -115,6 +115,7 @@ Todoyu.Ext.project = {
 	},	
 	
 
+
 	/**
 	 *	Add the very first project
 	 */
@@ -170,4 +171,5 @@ Todoyu.Ext.project = {
 	savePref: function(preference, value, idItem, onComplete) {
 		Todoyu.Pref.save('project', preference, value, idItem, onComplete);
 	}
+
 };

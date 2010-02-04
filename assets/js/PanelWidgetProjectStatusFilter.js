@@ -53,7 +53,7 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = {
 	/**
 	 * If user clicked on an li instead on the checkbox or the label
 	 *
-	 *	@param	Event		event
+	 * @param	Event		event
 	 */
 	onSelectionChange: function(event) {		
 		this.onUpdate();

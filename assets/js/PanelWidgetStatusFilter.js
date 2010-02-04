@@ -25,13 +25,14 @@
 Todoyu.Ext.project.PanelWidget.StatusFilter = Class.create({
 
 	/**
-	 * Reference to extension js
+	 * Reference to extension JS
 	 */
 	ext:	Todoyu.Ext.project,
 
 	list:	null,
-	
+
 	handler: null,
+
 
 
 	/**
@@ -54,17 +55,18 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = Class.create({
 	},
 
 
+
 	/**
 	 * If user clicked on an li instead on the checkbox or the label
 	 *
-	 *	@param	Event		event
+	 * @param	Event		event
 	 */
 	onSelectionChange: function(event) {
 			// If no status is selected, select all, because it will be handled this way anyway
 		if( ! this.isAnyStatusSelected() ) {
 			this.selectAll();
 		}
-		
+
 		this.handler(event);
 	},
 
@@ -72,7 +74,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = Class.create({
 	/**
 	 * Get form value of the PanelWidget (selected statuses)
 	 *
-	 *	@return	Array
+	 * @return	Array
 	 */
 	getValue: function() {
 		return this.getSelectedStatuses();
@@ -83,7 +85,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = Class.create({
 	/**
 	 * Get selected statuses
 	 *
-	 *	@return Array
+	 * @return	Array
 	 */
 	getSelectedStatuses: function() {
 		return $F(this.list);
@@ -93,6 +95,8 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = Class.create({
 
 	/**
 	 * Get the number of selected statuses
+	 *
+	 * @return	Integer
 	 */
 	getNumSelected: function() {
 		return this.getValue().length;
@@ -101,16 +105,16 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = Class.create({
 
 
 	/**
-	 *	Check if any status' checkbox is checked
+	 * Check if any status' checkbox is checked
 	 *
-	 *	@return	Boolean
+	 * @return	Boolean
 	 */
 	isAnyStatusSelected: function() {
 		return this.getNumSelected() > 0;
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Select all statuses
 	 */
