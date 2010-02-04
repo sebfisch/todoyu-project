@@ -52,8 +52,11 @@ class TodoyuPanelWidgetProjectStatusFilter extends TodoyuPanelWidgetStatusFilter
 			// Add assets
 		TodoyuPage::addExtAssets('project', 'panelwidget-taskstatusfilter');
 
+			// Get selected status IDs
+		$filterJSON			= json_encode($this->getSelectedStatusIDs());
+
 			// Initialize javascript
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.PanelWidget.TaskStatusFilter.init.bind(Todoyu.Ext.project.PanelWidget.TaskStatusFilter)');
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.PanelWidget.ProjectStatusFilter.init.bind(Todoyu.Ext.project.PanelWidget.ProjectStatusFilter, ' . $filterJSON . ')');
 	}
 
 

@@ -39,9 +39,14 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = {
 
 	/**
 	 * Initialize the panelWidget: setup properties, install element observers
+	 * 
+	 * @param	Array		Selected Status IDs
 	 */
-	init: function() {
+	init: function(selectedStatusIDs) {
 		this.statusFilter = new Todoyu.Ext.project.PanelWidget.StatusFilter('panelwidget-projectstatusfilter-list', this.onSelectionChange.bind(this));
+		
+			// Inject the current filter status into the project list widget
+		this.ext.PanelWidget.ProjectList.applyFilter('status', selectedStatusIDs.join(','), false);
 	},
 
 

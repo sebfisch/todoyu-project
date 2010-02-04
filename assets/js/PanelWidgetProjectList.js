@@ -6,9 +6,15 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	
 	filters: {},
 	
+	
+	/**
+	 * Initialize panelwidget
+	 * 
+	 * @param	Object		filters		Filter hash. Because of JSON, an (empty) array means no data
+	 */
 	init: function(filters) {
+			// If filters are given as parameters, add them to internal storage
 		if( typeof(filters) === 'object' && ! Object.isArray(filters) ) {
-			console.log(filters);
 			$H(filters).each(function(pair){
 				this.applyFilter(pair.key, pair.value, false);
 			}, this);
@@ -17,6 +23,9 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 		this.observeFulltext();
 		this.observeProjects();
 		this.observeStatusSelector();
+		
+			// Add a hook for project saving
+		Todoyu.Hook.add('onProjectSaved', this.onProjectUpdated.bind(this));		
 	},
 	
 
@@ -88,6 +97,16 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	
 	onUpdated: function(response) {
 		this.observeProjects();
+	},
+	
+	isProjectListed: function(idProject) {
+		return Todoyu.exists('panelwidget-projectlist-project-' + idProject);
+	},
+	
+	onProjectUpdated: function(idProject) {
+		if( this.isProjectListed(idProject) ) {
+			this.update();
+		}
 	}
 	
 };

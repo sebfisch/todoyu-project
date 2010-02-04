@@ -56,6 +56,10 @@ $CONFIG['EXT']['project']['assets'] = array(
 				'position'	=> 101
 			),
 			array(
+				'file'		=> 'ext/project/assets/js/ProjectEdit.js',
+				'position'	=> 102
+			),
+			array(
 				'file'		=> 'ext/project/assets/js/Task.js',
 				'position'	=> 102
 			),
