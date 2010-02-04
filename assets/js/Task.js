@@ -1231,7 +1231,7 @@ Todoyu.Ext.project.Task = {
 		 */
 		createTabContainer: function(idTask, tabKey) {
 				// Create elements
-			var loader	= new Element('img', {'src':'assets/img/ajax-loader.gif'});
+			var loader	= new Element('img', {'src':'assets/img/ajax-loader.png'});
 			var spacer	= new Element('p', {'style':'padding:50px;text-align:center'}).update(loader);
 
 			var tabDiv	= new Element(
