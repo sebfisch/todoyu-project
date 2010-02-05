@@ -847,7 +847,7 @@ class TodoyuTaskManager {
 				// User assigned
 			$info['user_assigned']	= array(
 				'label'		=> 'LLL:task.attr.user_assigned',
-				'value'		=> $taskData['user_assigned']['lastname'] . ', ' . $taskData['user_assigned']['firstname'],
+				'value'		=> TodoyuUserManager::getLabel($taskData['user_assigned']['id']),
 				'position'	=> 80,
 				'className'	=> 'sectionStart'
 			);
@@ -887,8 +887,8 @@ class TodoyuTaskManager {
 
 			// User owner
 		$info['user_owner']	= array(
-			'label'	=> 'LLL:task.attr.user_owner',
-			'value'	=> '<a href="javascript:void(0)" onclick="alert(\'Quick user detail anzeigen\')" class="quickInfoLink">' . $taskData['user_owner']['lastname'] . ', ' . $taskData['user_owner']['firstname'] . '</a>',
+			'label'		=> 'LLL:task.attr.user_owner',
+			'value'		=> TodoyuUserManager::getLabel($taskData['user_owner']['id']),
 			'position'	=> 150,
 			'className'	=> 'sectionStart'
 		);
@@ -902,6 +902,8 @@ class TodoyuTaskManager {
 		);
 
 		$data	= array_merge($data, $info);
+
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskdataattributes', $data, array($idTask));
 
 		return $data;
 	}
