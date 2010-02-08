@@ -72,7 +72,7 @@ Todoyu.Ext.project.Task.Tab = {
 
 
 	onloaded: function(idTask, tabKey) {
-		this.activate.(idTask, tabKey);
+		this.activate(idTask, tabKey);
 	},
 
 
