@@ -44,7 +44,8 @@ class TodoyuProjectSearchRenderer {
 		$content	= '';
 		$tmpl		= 'ext/project/view/project-search-list.tmpl';
 		$data		= array(
-			'projects'	=> array()
+			'projects'	=> array(),
+			'javascript'=> 'Todoyu.Ext.project.Filter.onProjectSearchResultsUpdated()'
 		);
 
 		foreach($projectIDs as $idProject)	{

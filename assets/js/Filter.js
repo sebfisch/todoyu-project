@@ -2,6 +2,14 @@ Todoyu.Ext.project.Filter = {
 	
 	ext: Todoyu.Ext.project,
 	
+	onProjectSearchResultsUpdated: function() {
+		this.ext.ContextMenuProject.attach();
+	},
+	
+	onTaskSearchResultsUpdated: function() {
+		this.ext.ContextMenuTask.attach();
+	},
+	
 	onProjectroleUserAcSelect: function(name, textInput, listElement) {
 		$('widget-autocompleter-' + name + '-hidden').value = listElement.id;
 		

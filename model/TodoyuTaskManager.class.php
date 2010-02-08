@@ -374,8 +374,15 @@ class TodoyuTaskManager {
 			$type		= 'container';
 		}
 
+
+
 		if( $task->isTask() || $task->isContainer() ) {
 			$allowed['header']	= $ownItems['header'];
+
+				// Add project backlink if not in project area
+			if( AREA !== EXTID_PROJECT ) {
+				$allowed['showinproject'] = $ownItems['showinproject'];
+			}
 
 				// Edit
 			if( allowed('project', $type . ':edit') ) {
@@ -414,12 +421,12 @@ class TodoyuTaskManager {
 
 				// Add subtask
 			if( allowed('project',  $type . ':addtask') ) {
-				$allowed['add']['submenu']['task'] =$ownItems['add']['submenu']['task'];
+				$allowed['add']['submenu']['task'] = $ownItems['add']['submenu']['task'];
 			}
 
 				// Add subcontainer
 			if( allowed('project',  $type . ':addcontainer') ) {
-				$allowed['add']['submenu']['container'] =$ownItems['add']['submenu']['container'];
+				$allowed['add']['submenu']['container'] = $ownItems['add']['submenu']['container'];
 			}
 
 

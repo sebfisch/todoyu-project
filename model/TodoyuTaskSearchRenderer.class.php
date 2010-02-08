@@ -33,7 +33,7 @@ class TodoyuTaskSearchRenderer {
 		$idFilterset	= intval($idFilterset);
 
 		$taskIDs = TodoyuTaskManager::getTaskIDsByFilter($idFilterset, $conditions, $conjunction);
-		
+
 		return self::renderTaskList($taskIDs);
 	}
 
@@ -51,12 +51,13 @@ class TodoyuTaskSearchRenderer {
 		foreach($taskIDs as $idTask) {
 			$content .= TodoyuPortalRenderer::renderTask($idTask);
 		}
-		
+
 		$tmpl	= 'ext/portal/view/tasklist.tmpl';
 		$data	= array(
-			'tasks'	=> $content,
+			'tasks'		=> $content,
+			'javascript'=> 'Todoyu.Ext.project.Filter.onTaskSearchResultsUpdated()'
 		);
-		
+
 		return render($tmpl, $data);
 	}
 

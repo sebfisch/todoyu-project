@@ -41,6 +41,13 @@ $CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 		'class'		=> 'contextmenuHeader',
 		'position'	=> 0
 	),
+	'showinproject'	=> array(
+		'key'		=> 'showinproject',
+		'label'		=> 'task.contextmenu.showinproject',
+		'jsAction'	=> 'Todoyu.Ext.project.goToTaskInProject(#ID#)',
+		'class'		=> 'task-ctxmenu task-showinproject',
+		'position'	=> 10
+	),
 	'edit'	=> array(
 		'key'		=> 'edit',
 		'label'		=> 'task.contextmenu.edit',
@@ -193,6 +200,13 @@ $CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
 		'class'		=> 'contextmenuHeader',
 		'position'	=> 0
 	),
+	'showinproject'	=> array(
+		'key'		=> 'showinproject',
+		'label'		=> 'task.contextmenu.showinproject',
+		'jsAction'	=> 'Todoyu.Ext.project.goToTaskInProject(#ID#)',
+		'class'		=> 'task-ctxmenu task-showinproject',
+		'position'	=> 10
+	),
 	'edit'	=> array(
 		'key'		=> 'edit',
 		'label'		=> 'task.contextmenu.container.edit',
@@ -303,6 +317,13 @@ $CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 		'jsAction'	=> 'void(0)',
 		'class'		=> 'contextmenuHeader',
 		'position'	=> 0
+	),
+	'showinproject'	=> array(
+		'key'		=> 'showinproject',
+		'label'		=> 'project.contextmenu.showinproject',
+		'jsAction'	=> 'Todoyu.Ext.project.goToTaskInProject(#ID#)',
+		'class'		=> 'task-ctxmenu task-showinproject',
+		'position'	=> 10
 	),
 	'showdetails'	=> array(
 		'key'		=> 'showdetails',
