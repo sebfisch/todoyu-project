@@ -121,6 +121,18 @@ $CONFIG['EXT']['project']['assets'] = array(
 		)
 	),
 
+	'search' => array(
+		'js'	=> array(
+			array(
+				'file'		=> 'ext/project/assets/js/Filter.js',
+				'position'	=> 200
+			)
+		),
+		'css'	=> array(
+
+		)
+	),
+
 		// assets of panel widgets
 	'panelwidget-projecttree' => array(
 		'js' => array(
@@ -218,6 +230,7 @@ $CONFIG['EXT']['project']['assets'] = array(
 			)
 		)
 	)
+
 );
 
 ?>

@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-
 class TodoyuTaskFilter extends TodoyuFilterBase {
 
 	/**
@@ -101,7 +100,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function Filter_owner($idOwner, $negate) {
+	public static function Filter_ownerUser($idOwner, $negate = false) {
 		$idOwner	= intval($idOwner);
 
 		if( $idOwner === 0 ) {
@@ -134,10 +133,39 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	public static function Filter_currentUserIsOwner($value, $negate = false) {
 		$idUser		= userid();
 
-		$queryParts	= self::filter_owner($idUser, $negate);
+		return self::Filter_ownerUser($idUser, $negate);
+	}
+
+
+
+	/**
+	 * Filter condition: tasks of given owner
+	 *
+	 * @param	Array		$groupIDs		Selected groups
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public static function Filter_ownerGroups($groupIDs, $negate = false) {
+		$groupIDs	= TodoyuArray::intExplode(',', $groupIDs, true, true);
+		$queryParts	= false;
+
+		if( sizeof($groupIDs) > 0 ) {
+			$tables	= array(
+				'ext_project_task',
+				'ext_user_mm_user_group'
+			);
+			$where	= ' ext_project_task.id_user_owner = ext_user_mm_user_group.id_user AND
+						ext_user_mm_user_group.id_group IN(' . implode(',', $groupIDs) . ')';
+
+			$queryParts	= array(
+				'tables'=> $tables,
+				'where'	=> $where
+			);
+		}
 
 		return $queryParts;
 	}
+
 
 
 
@@ -179,8 +207,11 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 		$queryParts	= false;
 
 		if( $title !== '' ) {
-			$tables	= array('ext_project_task');
-			$where	= 'ext_project_task.title LIKE \'%' . Todoyu::db()->escape($title) . '%\'';
+			$tables	= array(
+				'ext_project_task'
+			);
+			$compare= $negate ? 'NOT LIKE' : 'LIKE';
+			$where	= 'ext_project_task.title ' . $compare . ' \'%' . Todoyu::db()->escape($title) . '%\'';
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -277,7 +308,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function Filter_userCreate($idUser, $negate = false) {
+	public static function Filter_creatorUser($idUser, $negate = false) {
 		$idUser	= intval($idUser);
 
 		if( $idUser === 0 ) {
@@ -300,6 +331,36 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	}
 
 
+	/**
+	 * Filter condition: Task created by an user which is member of one of the selected groups
+	 *
+	 * @param	Array		$groupIDs
+	 * @param	Bool		$negate
+	 * @return	Array		Or FALSE
+	 */
+	public static function Filter_creatorGroups($groupIDs, $negate = false) {
+		$groupIDs	= TodoyuArray::intExplode(',', $groupIDs, true, true);
+		$queryParts	= false;
+
+		if( sizeof($groupIDs) > 0 ) {
+			$tables	= array(
+				'ext_project_task',
+				'ext_user_mm_user_group'
+			);
+			$compare= $negate ? 'NOT IN' : 'IN';
+			$where	= ' ext_project_task.id_user_create = ext_user_mm_user_group.id_user AND
+						ext_user_mm_user_group.id_group ' . $compare . '(' . implode(',', $groupIDs) . ')';
+
+			$queryParts	= array(
+				'tables'=> $tables,
+				'where'	=> $where
+			);
+		}
+
+		return $queryParts;
+	}
+
+
 
 	/**
 	 * Filter condition: tasks created by current user
@@ -311,7 +372,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	public static function Filter_currentUserIsUserCreate($value, $negate = false) {
 		$idUser	= userid();
 
-		return self::Filter_userCreate($idUser, $negate);
+		return self::Filter_creatorUser($idUser, $negate);
 	}
 
 
@@ -347,43 +408,13 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 
 
 	/**
-	 * Filter condition: task assigned to user of given group?
-	 *
-	 * @param	Integer	$idGroup
-	 * @param	Boolean	$negate
-	 * @return	Array
-	 */
-	public static function Filter_userAssignedGroup($idGroup, $negate) {
-		$idGroup	= intval($idGroup);
-
-		if( $idGroup === 0 ) {
-				// no group given?
-			$queryParts	= false;
-		} else {
-				// set up query parts array
-			$tables	= array('ext_project_task', 'ext_user_mm_user_group');
-			$where	 = ' ext_project_task.id_user_assigned = ext_user_mm_user_group.id_user';
-			$where	.= ' AND ext_user_mm_user_group.id_group = ' . $idGroup;
-
-			$queryParts	= array(
-				'tables'=> $tables,
-				'where'	=> $where
-			);
-		}
-
-		return $queryParts;
-	}
-
-
-
-	/**
 	 * Filter condition: tasks assigned to User
 	 *
 	 * @param	Integer	$idUser
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function Filter_userAssigned($idUser, $negate) {
+	public static function Filter_assignedUser($idUser, $negate) {
 		$idUser	= intval($idUser);
 
 		if( $idUser === 0 ) {
@@ -412,15 +443,45 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 
 
 	/**
+	 * Filter condition: task assigned to user of given group?
+	 *
+	 * @param	Integer	$idGroup
+	 * @param	Boolean	$negate
+	 * @return	Array
+	 */
+	public static function Filter_assignedGroups($groupIDs, $negate = false) {
+		$groupIDs	= TodoyuArray::intExplode(',', $groupIDs, true, true);
+		$queryParts	= false;
+
+		if( sizeof($groupIDs) > 0 ) {
+			$tables	= array(
+				'ext_project_task',
+				'ext_user_mm_user_group'
+			);
+			$where	= ' ext_project_task.id_user_assigned = ext_user_mm_user_group.id_user AND
+						ext_user_mm_user_group.id_group IN(' . implode(',', $groupIDs) . ')';
+
+			$queryParts	= array(
+				'tables'=> $tables,
+				'where'	=> $where
+			);
+		}
+
+		return $queryParts;
+	}
+
+
+
+	/**
 	 * Filter condition: tasks assigned to current user
 	 *
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function Filter_currentUserIsAssigned($value = '', $negate) {
+	public static function Filter_currentUserIsAssigned($value = '', $negate = false) {
 		$idUser		= userid();
 
-		$queryParts	= self::Filter_userAssigned($idUser, $negate);
+		$queryParts	= self::Filter_assignedUser($idUser, $negate);
 
 		return $queryParts;
 	}
@@ -432,6 +493,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 *
 	 * @param	Array	$filter
 	 * @return	Array
+	 * @todo	Recheck this function
 	 */
 	public static function Filter_projectDescription(array $filter) {
 		$string	= Todoyu::db()->escape($filter['value']);
@@ -479,25 +541,24 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 * @return	Array
 	 */
 	public static function Filter_status($statuses, $negate = false) {
+		$queryParts	= false;
 		$statuses	= TodoyuArray::intExplode(',', $statuses, true, true);
 
-			// If no status selected, get all allowed
-		if( sizeof($statuses) === 0 ) {
-			$statuses = array_keys(TodoyuProjectStatusManager::getTaskStatuses('see'));
+		if( sizeof($statuses) > 0 ) {
+			$tables	= array(
+				'ext_project_task'
+			);
+			$compare= $negate ? 'NOT IN' : 'IN';
+			$where	= '(ext_project_task.status ' . $compare . '(' . implode(',', $statuses) . ') OR
+						ext_project_task.type = ' . TASK_TYPE_CONTAINER . ')';
+
+			$queryParts	= array(
+				'tables'=> $tables,
+				'where'	=> $where
+			);
 		}
 
-		$tables	= array('ext_project_task');
-
-		if( $negate )	{
-			$where	= '(ext_project_task.status NOT IN(' . implode(',', $statuses) . ') OR ext_project_task.type = ' . TASK_TYPE_CONTAINER . ')';
-		} else {
-			$where	= '(ext_project_task.status IN(' . implode(',', $statuses) . ') OR ext_project_task.type = ' . TASK_TYPE_CONTAINER . ')';
-		}
-
-		return array(
-			'tables'	=> $tables,
-			'where'		=> $where
-		);
+		return $queryParts;
 	}
 
 
@@ -509,18 +570,23 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function Filter_acknowledged($idUser, $negate) {
-		$tables	= array('ext_project_task');
+	public static function Filter_acknowledged($idUser, $negate = false) {
+		$queryParts	= false;
+		$idUser		= intval($idUser);
 
-		$value = ($negate === true) ? 0 : 1;
+		if( $idUser !== 0 ) {
+			$tables	= array(
+				'ext_project_task'
+			);
+			$check	= $negate ? 0 : 1;
+			$where	= '	ext_project_task.id_user_assigned	= ' . $idUser . ' AND
+						ext_project_task.is_acknowledged	= ' . $check;
 
-		$where	 = ' ext_project_task.id_user_assigned	= ' . intval($idUser);
-		$where	.= ' AND ext_project_task.is_acknowledged = ' . $value;
-
-		$queryParts	= array(
-			'tables'	=> $tables,
-			'where'		=> $where
-		);
+			$queryParts	= array(
+				'tables'=> $tables,
+				'where'	=> $where
+			);
+		}
 
 		return $queryParts;
 	}
@@ -563,31 +629,14 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	}
 
 	/**
-	 * Gets Task by requested deadline date
+	 * Filter condition: date_deadline
 	 *
-	 * negate true: from
-	 * negate false: to
-	 *
-	 * from is start-of-day and to is end-of-day
-	 *
-	 * @param	String	$value
-	 * @param	boolean	$negate
+	 * @param	String		$date
+	 * @param	Bool		$negate
 	 * @return	Array
 	 */
-	public static function Filter_deadline($value, $negate = false)	{
-		$queryParts	= false;
-		$value		= trim($value);
-
-		if( $value !== '' ) {
-			list($logic, $timestampToCheck) = self::getTimestampAndLogicForSimpleDateInputs($value, $negate);
-
-			$queryParts = array(
-				'tables'	=> array('ext_project_task'),
-				'where'		=> 'ext_project_task.date_deadline ' . $logic . ' ' . $timestampToCheck
-			);
-		}
-
-		return $queryParts;
+	public static function Filter_deadlinedate($date, $negate = false)	{
+		return self::makeFilter_date('date_deadline', $date, $negate);
 	}
 
 
@@ -599,7 +648,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 * @param	boolean	$negate
 	 * @return	Array
 	 */
-	public static function Filter_deadlineDyn($value, $negate)	{
+	public static function Filter_deadlinedateDyn($value, $negate)	{
 		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateinputTimestamps($value);
 
 		return self::Filter_dateDyn($timeStamps, 'date_deadline');
@@ -608,31 +657,14 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 
 
 	/**
-	 * Gets Task by requested start date
+	 * Filter condition: date_start
 	 *
-	 * negate true: from
-	 * negate false: to
-	 *
-	 * from is start-of-day and to is end-of-day
-	 *
-	 * @param	String	$value
-	 * @param	Boolean	$negate
+	 * @param	String		$date
+	 * @param	Bool		$negate
 	 * @return	Array
 	 */
-	public static function Filter_startdate($value, $negate)	{
-		$tables = array('ext_project_task');
-
-		list($logic, $timestampToCheck) = self::getTimestampAndLogicForSimpleDateInputs($value, $negate);
-
-		$tables = array('ext_project_task');
-		$where = 'ext_project_task.date_start ' . $logic . ' ' . $timestampToCheck;
-
-		$queryParts = array(
-			'tables'	=> $tables,
-			'where'		=> $where
-		);
-
-		return $queryParts;
+	public static function Filter_startdate($date, $negate = false)	{
+		return self::makeFilter_date('date_start', $date, $negate);
 	}
 
 
@@ -653,31 +685,14 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 
 
 	/**
-	 * Gets Task by requested end date
+	 * Filter condition: date_end
 	 *
-	 * negate true: from
-	 * negate false: to
-	 *
-	 * from is start-of-day and to is end-of-day
-	 *
-	 * @param	String	$value
-	 * @param	Boolean $negate
+	 * @param	String		$date
+	 * @param	Bool		$negate
 	 * @return	Array
 	 */
-	public static function Filter_enddate($value, $negate = false)	{
-		$tables = array('ext_project_task');
-
-		list($logic, $timestampToCheck) = self::getTimestampAndLogicForSimpleDateInputs($value, $negate);
-
-		$tables = array('ext_project_task');
-		$where = 'ext_project_task.date_end ' . $logic . ' ' . $timestampToCheck;
-
-		$queryParts = array(
-			'tables'	=> $tables,
-			'where'		=> $where
-		);
-
-		return $queryParts;
+	public static function Filter_enddate($date, $negate = false)	{
+		return self::makeFilter_date('date_end', $date, $negate);
 	}
 
 
@@ -698,26 +713,87 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 
 
 	/**
-	 * get finishdate
+	 * Filter condition: date_finish
 	 *
-	 * @param	Integer		$value
+	 * @param	String		$date
 	 * @param	Bool		$negate
+	 * @return	Array
 	 */
-	public static function Filter_finishdate($value, $negate)	{
-		$tables = array('ext_project_task');
-
-		list($logic, $timestampToCheck) = self::getTimestampAndLogicForSimpleDateInputs($value, $negate);
-
-		$tables = array('ext_project_task');
-		$where = 'ext_project_task.date_finish ' . $logic . ' ' . $timestampToCheck;
-
-		$queryParts = array(
-			'tables'	=> $tables,
-			'where'		=> $where
-		);
-
-		return $queryParts;
+	public static function Filter_finishdate($date, $negate)	{
+		return self::makeFilter_date('date_finish', $date, $negate);
 	}
+
+
+
+	/**
+	 * get the dynamic finish date
+	 *
+	 * @param	String	$value
+	 * @param	Boolean	$negate
+	 * @return	Array
+	 */
+	public static function Filter_finishdateDyn($value, $negate)	{
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateinputTimestamps($value);
+
+		return self::Filter_dateDyn($timeStamps, 'date_finish');
+	}
+
+
+
+	/**
+	 * Filter condition: date_update
+	 *
+	 * @param	String		$date
+	 * @param	Bool		$negate
+	 * @return	Array
+	 */
+	public static function Filter_editdate($date, $negate = false)	{
+		return self::makeFilter_date('date_update', $date, $negate);
+	}
+
+
+
+	/**
+	 * get the dynamic edit date
+	 *
+	 * @param	String	$value
+	 * @param	Boolean	$negate
+	 * @return	Array
+	 */
+	public static function Filter_editdateDyn($value, $negate)	{
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateinputTimestamps($value);
+
+		return self::Filter_dateDyn($timeStamps, 'date_update');
+	}
+
+
+	/**
+	 * Filter condition: date_create
+	 *
+	 * @param	String		$date
+	 * @param	Bool		$negate
+	 * @return	Array
+	 */
+	public static function Filter_createdate($date, $negate = false)	{
+		return self::makeFilter_date('date_create', $date, $negate);
+	}
+
+
+
+	/**
+	 * get the dynamic edit date
+	 *
+	 * @param	String	$value
+	 * @param	Boolean	$negate
+	 * @return	Array
+	 */
+	public static function Filter_createdateDyn($value, $negate)	{
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateinputTimestamps($value);
+
+		return self::Filter_dateDyn($timeStamps, 'date_update');
+	}
+
+
 
 
 
@@ -729,13 +805,15 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 	 * @return	Array
 	 */
 	protected static function Filter_dateDyn(array $timeStamps, $field)	{
-		$tables = array('ext_project_task');
-		$where = '(		ext_project_task.' . $field . ' > ' . intval($timeStamps['start']) . '
-					AND	ext_project_task.' . $field . ' < ' . intval($timeStamps['end']) . ' )';
+		$timeStamps	= TodoyuArray::intval($timeStamps);
+		$tables 	= array(
+			'ext_project_task'
+		);
+		$where 		= 'ext_project_task.' . $field . ' BETWEEN ' . $timeStamps['start'] . ' AND ' . $timeStamps['end'];
 
 		return array(
-			'tables'	=> $tables,
-			'where' 	=> $where
+			'tables'=> $tables,
+			'where' => $where
 		);
 	}
 
@@ -784,24 +862,117 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 
 
 	/**
-	 * Returns timestamp and logic for dateinput querys
+	 * Filter condition: Task has worktype
 	 *
-	 * @param	String	$value
-	 * @param	Boolean	$negate
+	 * @param	Array		$worktypeIDs
+	 * @param	Bool		$negate
 	 * @return	Array
 	 */
-	public static function getTimestampAndLogicForSimpleDateInputs($value, $negate = false)	{
-		$value = !is_numeric($value) ? TodoyuTime::parseDate($value) : $value;
+	public static function Filter_worktype($worktypeIDs, $negate = false) {
+		$queryParts	= false;
+		$worktypeIDs= TodoyuArray::intExplode(',', $worktypeIDs);
 
-		if( $negate )	{
-			$timestampToCheck = mktime(0, 0, 0, date('n', $value), date('d', $value), date('Y', $value));
-			$logic = '>=';
-		} else {
-			$timestampToCheck = mktime(23, 59, 59, date('n', $value), date('d', $value), date('Y', $value));
-			$logic = '<=';
+		if( sizeof($worktypeIDs) !== 0 ) {
+			$tables	= array(
+				'ext_project_task'
+			);
+			$compare= $negate ? 'NOT IN' : 'IN';
+			$where	= 'ext_project_task.id_worktype ' . $compare . '(' . implode(',', $worktypeIDs) . ')';
+
+			$queryParts	= array(
+				'tables'=> $tables,
+				'where'	=> $where
+			);
 		}
 
-		return array($logic, $timestampToCheck);
+		return $queryParts;
+	}
+
+
+
+	/**
+	 * Filter condition for projectrole
+	 * The value is a combination between the userroles and the selected user
+	 *
+	 * @param	String		$value		Format: USER:ROLE,ROLE,ROLE
+	 * @param	Bool		$negate
+	 * @return	Array
+	 */
+	public static function Filter_projectrole($value, $negate = false) {
+		$parts	= explode(':', $value);
+		$idUser	= intval($parts[0]);
+		$roles	= TodoyuArray::intExplode(',', $parts[1]);
+
+		$queryParts	= false;
+
+		if( $idUser !== 0 && sizeof($roles) > 0 ) {
+			$tables	= array(
+				'ext_project_task',
+				'ext_project_mm_project_user'
+			);
+			$compare= $negate ? 'NOT IN' : 'IN';
+			$where	= '	ext_project_task.id_project			= ext_project_mm_project_user.id_project AND
+						ext_project_mm_project_user.id_user	= ' . $idUser . ' AND
+						ext_project_mm_project_user.id_userrole ' . $compare . '(' . implode(',', $roles) . ')';
+
+			$queryParts	= array(
+				'tables'=> $tables,
+				'where'	=> $where
+			);
+		}
+
+		return $queryParts;
+	}
+
+
+
+	public static function makeFilter_date($field, $date, $negate = false) {
+		$queryParts	= false;
+		$timestamp	= TodoyuTime::parseDate($date);
+
+		TodoyuDebug::printInFirebug($date, 'date');
+
+		if( $timestamp !== 0 ) {
+			$info	= self::getTimeAndLogicForDate($timestamp, $negate);
+
+			$queryParts = array(
+				'tables'=> array(
+					'ext_project_task'
+				),
+				'where'	=> 'ext_project_task.' . $field . ' ' . $info['logic'] . ' ' . $info['timestamp']
+			);
+		}
+
+		TodoyuDebug::printInFirebug($queryParts);
+
+		return $queryParts;
+	}
+
+
+
+	/**
+	 * Returns timestamp and logic for dateinput querys
+	 *
+	 * @param	Integer		$timestamp
+	 * @param	Boolean		$negate
+	 * @return	Array		[timestamp,logic]
+	 */
+	public static function getTimeAndLogicForDate($timestamp, $negate = false)	{
+		$timestamp	= intval($timestamp);
+
+		if( $negate ) {
+			$info	= array(
+				'timestamp'	=> TodoyuTime::getStartOfDay($timestamp),
+				'logic'		=> '>='
+			);
+		} else {
+			$info	= array(
+				'timestamp'	=> TodoyuTime::getEndOfDay($timestamp),
+				'logic'		=> '<='
+			);
+		}
+
+		return $info;
 	}
 
 }

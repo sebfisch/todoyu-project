@@ -290,6 +290,42 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 	}
 
 
+
+	/**
+	 * Filter condition for projectrole
+	 * The value is a combination between the userroles and the selected user
+	 *
+	 * @param	String		$value		Format: USER:ROLE,ROLE,ROLE
+	 * @param	Bool		$negate
+	 * @return	Array
+	 */
+	public static function Filter_projectrole($value, $negate = false) {
+		$parts	= explode(':', $value);
+		$idUser	= intval($parts[0]);
+		$roles	= TodoyuArray::intExplode(',', $parts[1]);
+
+		$queryParts	= false;
+
+		if( $idUser !== 0 && sizeof($roles) > 0 ) {
+			$tables	= array(
+				'ext_project_project',
+				'ext_project_mm_project_user'
+			);
+			$compare= $negate ? 'NOT IN' : 'IN';
+			$where	= '	ext_project_project.id				= ext_project_mm_project_user.id_project AND
+						ext_project_mm_project_user.id_user	= ' . $idUser . ' AND
+						ext_project_mm_project_user.id_userrole ' . $compare . '(' . implode(',', $roles) . ')';
+
+			$queryParts	= array(
+				'tables'=> $tables,
+				'where'	=> $where
+			);
+		}
+
+		return $queryParts;
+	}
+
+
 }
 
 

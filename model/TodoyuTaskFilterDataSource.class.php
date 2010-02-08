@@ -100,7 +100,7 @@ class TodoyuTaskFilterDataSource {
 			$options[] = array(
 				'label'		=> $status['label'],
 				'value'		=> $status['index'],
-				'selected'	=> in_array($status['index'], $selected)
+				//'selected'	=> in_array($status['index'], $selected)
 			);
 		}
 
@@ -109,6 +109,49 @@ class TodoyuTaskFilterDataSource {
 		return $definitions;
 	}
 
+
+
+	/**
+	 * Get usergroups as options for widget
+	 *
+	 * @param	Array		$definitions
+	 * @return	Array
+	 */
+	public static function getUsergroupOptions(array $definitions) {
+		$options	= array();
+		$groups		= TodoyuUsergroupManager::getAllUsergroups();
+		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
+
+		foreach($groups as $group) {
+			$options[] = array(
+				'label'		=> $group['title'],
+				'value'		=> $group['id']
+			);
+		}
+
+		$definitions['options'] = $options;
+
+		return $definitions;
+	}
+
+
+
+	public static function getWorktypeOptions(array $definitions) {
+		$options	= array();
+		$worktypes	= TodoyuWorktypeManager::getAllWorktypes();
+		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
+
+		foreach($worktypes as $worktype) {
+			$options[] = array(
+				'label'		=> $worktype['title'],
+				'value'		=> $worktype['id']
+			);
+		}
+
+		$definitions['options'] = $options;
+
+		return $definitions;
+	}
 
 
 
