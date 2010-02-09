@@ -12,7 +12,7 @@
 }
 
 #panelwidget-projecttree-filter-form {
-	background:url(../../../../core/assets/img/content/hr_hor.png) repeat-x scroll 0 bottom;
+	background:url(../../../../core/assets/img/content/hr-hor.png) repeat-x scroll 0 bottom;
 	padding-bottom:3px;
 	margin-bottom:5px;
 }
@@ -77,11 +77,11 @@ ul.tree {
 
 ul.tree li {
 	position:relative;
-	background:url(../../../../core/assets/img/tree/tree_line_h.png) no-repeat 10px 9px;
+	background:url(../../../../core/assets/img/tree/tree-line-hor.png) no-repeat 10px 9px;
 }
 
 ul.tree li.last {
-	background:url(../../../../core/assets/img/tree/tree_last.png) no-repeat 8px 9px;
+	background:url(../../../../core/assets/img/tree/tree-last.png) no-repeat 8px 9px;
 }
 
 ul.tree li a {
@@ -105,11 +105,11 @@ ul.tree li a.navigateSub {
 	left:0;
 	width:16px;
 	height:20px;
-	background:url(../../../../core/assets/img/tree/tree_expand.png) no-repeat 50% 5px;
+	background:url(../../../../core/assets/img/tree/tree-expand.png) no-repeat 50% 5px;
 }
 
 ul.tree li.expanded > a.navigateSub {
-	background-image:url(../../../../core/assets/img/tree/tree_collapse.png);
+	background-image:url(../../../../core/assets/img/tree/tree-collapse.png);
 }
 
 ul.tree li.project a.info {
@@ -166,11 +166,11 @@ ul.tree li.project a.info {
 ul.tree li ul.subtree {
 	margin-left:19px;
 	margin-bottom:5px;
-	background:url(../../../../core/assets/img/tree/tree_line.png) repeat-y;
+	background:url(../../../../core/assets/img/tree/tree-line.png) repeat-y;
 }
 
 ul.tree li.last > ul {
-	background:#fff url(../../../../core/assets/img/tree/tree_line.png) repeat-y 4px 0;
+	background:#fff url(../../../../core/assets/img/tree/tree-line.png) repeat-y 4px 0;
 	/*margin-left:0;*/
 	padding-left:4px;
 }
