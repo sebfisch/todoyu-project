@@ -35,7 +35,7 @@ class TodoyuTaskViewHelper {
 	 */
 	public static function getTaskUsersOptions(TodoyuFormElement $field) {
 		$formData	= $field->getForm()->getFormData();
-		$idTask		= intval($formData['id_project']);
+		$idTask		= intval($formData['id']);
 
 		$options	= array();
 
