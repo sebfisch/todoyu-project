@@ -72,23 +72,31 @@
 	margin-left:0;
 }
 
-.task h3 span.billableTime {
+.task h3 div.taskHeadExtras {
 	display:inline-block;
-	width:30px;
-	right: 130px;
-	top: 5px;
 	position: absolute;
+	right: 135px;
+	width:100px;
+	top:2px;
+	text-align:right;
+	overflow:hidden;
+	border-right:1px dotted #CCC;
+	padding:3px;
 }
 
-.projecttasktree .task h3 span.taskNumber {
-	display:inline-block;
-	width:40px;
-	right: 70px;
-	top: 5px;
-	position: absolute;
+.task h3 div.taskHeadExtras div {
+	float:right;
 }
 
-.projecttasktree .task h3 .headLabel a.title {
+.task h3 div.taskNumber {
+	display:inline-block;
+	position: absolute;
+	top:5px;	
+	right:85px;
+	width:45px;	
+}
+
+.task h3 .headLabel a.title {
 	display:block;
 	width:420px;
 	padding:2px 0;
@@ -106,8 +114,9 @@
 	Task Icons
    ---------------------- */
 
-.taskList .task h3 span.taskIcons {
+.task h3 div.taskIcons {
 	position:absolute;
+	right:0;
 	height:16px;
 	width:70px;
 	overflow:hidden;
@@ -117,7 +126,8 @@
 	cursor:default;
 }
 
-.taskList .task h3 span.taskIcons span {
+
+.task h3 div.taskIcons span {
 	float:left;
 	clear:none;
 	width:16px;
@@ -126,21 +136,21 @@
 	margin-left:3px;
 }
 
-.taskList .task .taskIcons .taskcontainer {
+.task div.taskIcons .taskcontainer {
 	background:url(../img/icons.png) no-repeat 0 -87px;
 }
 
-.taskList .task .taskIcons .isPublic {
+.task div.taskIcons .isPublic {
 	background:url(../img/icons.png) no-repeat 1px -206px;
 }
 
-.taskList .task .taskIcons .notAcknowledged {
+.task div.taskIcons .notAcknowledged {
 	width:10px;
 	cursor:pointer;
 	background:url(../img/icons.png) no-repeat 0 -266px;
 }
 
-.taskList .task .taskIcons .dateover {
+.task div.taskIcons .dateover {
 	width:14px;
 	background:url(../img/icons.png) no-repeat 0 -328px;
 }
@@ -317,15 +327,6 @@
 	border-bottom:1px solid #fff;
 	background:#d5dee5;
 }
-
-	#taskList.projectTaskList h3 span.billable-time {
-		right:115px;
-	}
-
-	#taskList.projectTaskList h3 span.taskIcons {
-		right:0;
-	}
-
 
 #inlineEditTask .innerBox { /* resource planning inline task editor */
 	margin-top:-20px;

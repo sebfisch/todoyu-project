@@ -960,6 +960,26 @@ class TodoyuTaskManager {
 
 
 	/**
+	 * Get all task header extras
+	 * This extras will be displayed between the task label and the task number
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Array
+	 */
+	public static function getAllTaskHeaderExtras($idTask) {
+		$idTask	= intval($idTask);
+		$extras	= array();
+
+		$extras	= TodoyuHookManager::callHookDataModifier('project', 'taskHeaderExtras', $extras, array($idTask));
+
+		$extras	= TodoyuArray::sortByLabel($extras, 'position');
+
+		return $extras;
+	}
+
+
+
+	/**
 	 * Get project task info icons
 	 *
 	 * @param	Array		$icons

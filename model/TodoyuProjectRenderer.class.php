@@ -490,6 +490,7 @@ class TodoyuProjectRenderer {
 		$data = array(
 			'task'				=> $taskData,
 			'taskIcons'			=> TodoyuTaskManager::getAllTaskIcons($idTask),
+			'taskHeaderExtras'	=> TodoyuTaskManager::getAllTaskHeaderExtras($idTask),
 			'hasSubtasks'		=> TodoyuTaskManager::hasSubtasks($idTask),
 			'areSubtasksVisible'=> self::areSubtasksVisible($idTask),
 			'isExpanded'		=> $isExpanded
