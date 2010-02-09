@@ -145,13 +145,6 @@
 	background:url(../img/icons.png) no-repeat 0 -328px;
 }
 
-#taskList h3 span.timewarning {
-	display:block;
-	position:absolute;
-	padding:8px 0 8px 0;
-	background:url(../../../../core/assets/img/sprite-icons.png) no-repeat 0 -833px !important;
-}
-
 
 
 /* ------------------
@@ -443,31 +436,6 @@
 /* ------------------
 	Additional task icons
    ------------------ */
-
-
-	/* task header billing types:*/
-/*
-.billing_clarify, .billing_bug, .billing_addexpense, .billing_gratis {
-	width:10px;
-	height:16px;
-}
-
-.billing_clarify {
-	background:url(../../img/sprite-icons.png) no-repeat -60px -79px !important;
-}
-
-.billing_bug {
-	background:url(../../img/sprite-icons.png) no-repeat -62px -49px !important;
-}
-
-.billing_addexpense {
-	background:url(../../img/sprite-icons.png) no-repeat -62px -234px !important;
-}
-
-.billing_gratis {
-	background:url(../../img/sprite-icons.png) no-repeat -60px -16px !important;
-}
-*/
 .task-status-container h3 a,
 .task-status-container div.taskdetails {
 	border-left-color:#1E2022;
