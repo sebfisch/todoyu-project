@@ -54,7 +54,7 @@
 		<right name="accepted:changeto" />
 		<right name="rejected:changeto" />
 		<right name="cleared:changeto" />
-		<right name="customer:changeto" />
+		<!--<right name="customer:changeto" />-->
 	</section>
 
 	<section name="projectstatus" require="general:use">
