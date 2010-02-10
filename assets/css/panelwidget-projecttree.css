@@ -77,11 +77,11 @@ ul.tree {
 
 ul.tree li {
 	position:relative;
-	background:url(../../../../core/assets/img/tree/tree-line-hor.png) no-repeat 10px 9px;
+	background:url(../../../../core/assets/img/tree-line-hor.png) no-repeat 10px 9px;
 }
 
 ul.tree li.last {
-	background:url(../../../../core/assets/img/tree/tree-last.png) no-repeat 8px 9px;
+	background:url(../../../../core/assets/img/tree-last.png) no-repeat 8px 9px;
 }
 
 ul.tree li a {
@@ -105,15 +105,15 @@ ul.tree li a.navigateSub {
 	left:0;
 	width:16px;
 	height:20px;
-	background:url(../../../../core/assets/img/tree/tree-expand.png) no-repeat 50% 5px;
+	background:url(../../../../core/assets/img/tree-expand.png) no-repeat 50% 5px;
 }
 
 ul.tree li.expanded > a.navigateSub {
-	background-image:url(../../../../core/assets/img/tree/tree-collapse.png);
+	background-image:url(../../../../core/assets/img/tree-collapse.png);
 }
 
 ul.tree li.project a.info {
-	background:url(../../../../core/assets/img/tree/sprite-tree.png) 3px -47px no-repeat;
+	background:url(../../../../core/assets/img/tree-sprite.png) 3px -47px no-repeat;
 }
 
 
@@ -166,11 +166,11 @@ ul.tree li.project a.info {
 ul.tree li ul.subtree {
 	margin-left:19px;
 	margin-bottom:5px;
-	background:url(../../../../core/assets/img/tree/tree-line.png) repeat-y;
+	background:url(../../../../core/assets/img/tree-line.png) repeat-y;
 }
 
 ul.tree li.last > ul {
-	background:#fff url(../../../../core/assets/img/tree/tree-line.png) repeat-y 4px 0;
+	background:#fff url(../../../../core/assets/img/tree-line.png) repeat-y 4px 0;
 	/*margin-left:0;*/
 	padding-left:4px;
 }
@@ -242,7 +242,7 @@ body.projects #filter-0 input { /*search in projects*/
 }
 
 ul.tree li.project a.navigateMain {
-	background:url(../../../../core/assets/img/tree/sprite-tree.png) 0 -25px no-repeat;
+	background:url(../../../../core/assets/img/tree-sprite.png) 0 -25px no-repeat;
 }
 
 ul.tree li.customers a.navigateMain {
@@ -263,7 +263,7 @@ ul.tree li.customers > ul > .expanded {
 }
 
 ul.tree li.project a.info, ul.tree li.status a.info {
-	background-image:url(../../../../core/assets/img/tree/sprite-tree.png);
+	background-image:url(../../../../core/assets/img/tree-sprite.png);
 	background-repeat:no-repeat;background-position:2px -47px;
 }
 
@@ -289,7 +289,7 @@ ul.tree li.dragHover > ul > li {
 }
 
 ul.tree li.fixedproject a.info{
-	background:url(../../../../core/assets/img/tree/sprite-tree.png) no-repeat 2px 2px;
+	background:url(../../../../core/assets/img/tree-sprite.png) no-repeat 2px 2px;
 }
 
 ul.tree li.planning li a.info,
