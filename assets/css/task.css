@@ -60,16 +60,17 @@
 	min-height: 14px;
 }
 
-.task h3 .headLabel span {
-	margin:0 0 0 8px;
+.task h3 .headLabel div {
+	display:inline-block;
 }
 
-.task h3 .headLabel span.taskNumber {
-	cursor:default;
+.task h3 .headLabel .taskDate {
+	width:45px;
+	margin-right:3px;
 }
 
-.task h3 .headLabel span.taskDate {
-	margin-left:0;
+.task h3 .headLabel .projectName {
+
 }
 
 .task h3 div.taskHeadExtras {
@@ -86,6 +87,7 @@
 
 .task h3 div.taskHeadExtras div {
 	float:right;
+	cursor:default;
 }
 
 .task h3 div.taskNumber {
@@ -264,7 +266,7 @@
 
 	.task .taskTabs .tabs li,
 	.task .taskTabs .tabs li p span.lt {
-		background-image:url(../../../../core/assets/img/colF_r13.png) !important;
+		background-image:url(../../../../core/assets/img/rounded-box01.png) !important;
 	}
 
 	.task .taskTabs .tabs li {

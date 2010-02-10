@@ -3,12 +3,12 @@
 		<a id="task-{$task.id}-subtasks-trigger" onclick="Todoyu.Ext.project.TaskTree.toggleSubtasks({$task.id})" href="javascript:void(0)" class="{if $hasSubtasks}expandable{/if} {if $areSubtasksVisible}expanded{/if}"></a>
 
 		<div class="headLabel bcStatus{$task.status}" title="{$task.fulltitle}">
-			<span class="taskDate date" title="{Label core.deadline}: {date_format $task.date_deadline "%d.%m.%y"} / {Label core.start}: {date_format $task.date_start "%d.%m.%y"}">
+			<div class="taskDate date" title="{Label core.deadline}: {date_format $task.date_deadline "%d.%m.%y"} / {Label core.start}: {date_format $task.date_start "%d.%m.%y"}">
 				{date_format $task.date_deadline "%d.%m.%y"}
-			</span>
-			<span class="projectName" title="{Label task.task}: {htmlencode $task.title}  (ID: {$task.id})">
+			</div>
+			<div class="projectName" title="{Label task.task}: {htmlencode $task.title}  (ID: {$task.id})">
 				<a href="javascript:void(0)" onclick="Todoyu.Ext.project.Task.toggleDetails({$task.id})" class="title">{htmlencode $task.title|truncate:80}</a>
-			</span>
+			</div>
 		</div>
 
 		<div class="taskHeadExtras">

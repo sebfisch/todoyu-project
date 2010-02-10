@@ -148,12 +148,13 @@ class TodoyuProjectPreferences {
 
 			// Override selected tab
 		$forceTab	= self::getForcedTaskTab();
+
 		if( $forceTab !== false ) {
 			$prefTab = $forceTab;
 		} else {
 			$prefTab= self::getPref('task-tab', $idTask, $idArea);
 
-			if( $prefTab === false ) {
+			if( $prefTab === false || $prefTab === '' ) {
 				$prefTab = TodoyuTaskManager::getDefaultTab($idTask);
 			}
 		}

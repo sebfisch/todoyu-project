@@ -212,15 +212,20 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function detailAction(array $params) {
-		$idTask		= intval($params['task']);
+		$idTask	= intval($params['task']);
+		$tab	= trim($params['tab']);
 
 			// Save task open
 		TodoyuProjectPreferences::saveTaskExpandedStatus($idTask, true);
 
+		if( $tab !== '' ) {
+			TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tab);
+		}
+
 			// Set task acknowledged
 		TodoyuTaskManager::setTaskAcknowledged($idTask);
 
-		return TodoyuTaskRenderer::renderTaskDetail($idTask);
+		return TodoyuTaskRenderer::renderTaskDetail($idTask, $tab);
 	}
 
 

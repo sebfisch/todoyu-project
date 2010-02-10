@@ -33,14 +33,15 @@ Todoyu.Ext.project.Task.Tab = {
 	 * @param	Integer	idTask
 	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
-	show: function(idTask, tabKey) {
+	show: function(idTask, tabKey, onComplete) {
 		var tabID = this.buildTabID(idTask, tabKey);
 
 		if( ! Todoyu.exists(tabID) ) {
 			this.createTabContainer(idTask, tabKey);
-			this.load(idTask, tabKey);
+			this.load(idTask, tabKey, onComplete);
 		} else {
 			this.saveSelection(idTask, tabKey);
+			Todoyu.callIfExists(onComplete, idTask, tabKey);
 		}
 
 		this.activate(idTask, tabKey);
@@ -54,7 +55,7 @@ Todoyu.Ext.project.Task.Tab = {
 	 * @param	Integer	idTask
 	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
-	load: function(idTask, tabKey) {
+	load: function(idTask, tabKey, onComplete) {
 		var url 	= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
@@ -62,7 +63,7 @@ Todoyu.Ext.project.Task.Tab = {
 				'task':		idTask,
 				'tab':		tabKey
 			},
-			'oncomplete':	this.onloaded.bind(this, idTask, tabKey)
+			'onComplete':	this.onLoaded.bind(this, idTask, tabKey, onComplete)
 		};
 
 		var tabDiv	= this.buildTabID(idTask, tabKey);
@@ -70,9 +71,28 @@ Todoyu.Ext.project.Task.Tab = {
 	},
 
 
-
-	onloaded: function(idTask, tabKey) {
+	/**
+	 * Handler when tab is loaded
+	 * 
+	 * @param	Integer		idTask
+	 * @param	String		tabKey
+	 * @param	Function	onComplete callback
+	 */
+	onLoaded: function(idTask, tabKey, onComplete) {
 		this.activate(idTask, tabKey);
+		Todoyu.callIfExists(onComplete, idTask, tabKey);
+	},
+	
+	
+	
+	/**
+	 * Check if a tab of a task is already loaded
+	 * 
+	 * @param	Integer		idTask
+	 * @param	String		tabKey
+	 */
+	isLoaded: function(idTask, tabKey) {
+		return Todoyu.exists('task-' + idTask + '-tabcontent-' + tabKey);
 	},
 
 

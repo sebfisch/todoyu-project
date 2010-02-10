@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-
 class TodoyuTaskRenderer {
 
 	/**
@@ -35,7 +34,7 @@ class TodoyuTaskRenderer {
 	 * @param	String		$activeTab
 	 * @return	String
 	 */
-	public static function renderTaskDetail($idTask, $activeTab = null) {
+	public static function renderTaskDetail($idTask, $activeTab = '') {
 		$idTask	= intval($idTask);
 		$task	= TodoyuTaskManager::getTask($idTask);
 
@@ -144,9 +143,9 @@ class TodoyuTaskRenderer {
 	 * @param	Integer		$idTask
 	 * @return	String
 	 */
-	public static function renderTabs($idTask, $activeTab = null) {
+	public static function renderTabs($idTask, $activeTab = '') {
 		$idTask		= intval($idTask);
-		$activeTab	= is_null($activeTab) ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab ;
+		$activeTab	= trim($activeTab) === '' ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab ;
 
 		$tabHeads		= self::renderTabHeads($idTask, $activeTab);
 		$tabContents	= self::renderTabContent($idTask, $activeTab);
@@ -163,13 +162,13 @@ class TodoyuTaskRenderer {
 	 * @param	String		$activeTab
 	 * @return	String
 	 */
-	public static function renderTabHeads($idTask, $activeTab = null) {
+	public static function renderTabHeads($idTask, $activeTab = '') {
 		$idTask		= intval($idTask);
 		$listID		= 'task-' . $idTask . '-tabheads';
 		$class		= 'tabs taskTabheads';
 		$jsHandler	= 'Todoyu.Ext.project.Task.Tab.onSelect.bind(Todoyu.Ext.project.Task.Tab)';
 		$tabs		= TodoyuTaskManager::getTabs($idTask);
-		$activeTab	= is_null($activeTab) ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab;
+		$activeTab	= $activeTab === '' ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab;
 
 			// Add special fields for task tabs
 		foreach($tabs as $index => $tab) {
@@ -189,12 +188,12 @@ class TodoyuTaskRenderer {
 	 * @param	String		$activeTab
 	 * @return	String
 	 */
-	public static function renderTabContent($idTask, $activeTab = null) {
+	public static function renderTabContent($idTask, $activeTab = '') {
 		$idTask		= intval($idTask);
 
 		$tabsConfig	= TodoyuTaskManager::getTabs($idTask);
 		$tabContent	= '';
-		$activeTab	= is_null($activeTab) ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab;
+		$activeTab	= $activeTab === '' ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab;
 
 			// Only render active tab
 		foreach($tabsConfig as $tabConfig) {

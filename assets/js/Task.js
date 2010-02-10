@@ -856,15 +856,23 @@ Todoyu.Ext.project.Task = {
 	 * @param	Integer	idTask
 	 * @param	String	tab
 	 */
-	showDetails: function(idTask, tab) {
+	showDetails: function(idTask, tab, onComplete) {
 		if( this.isDetailsLoaded(idTask) ) {
-			$('task-' + idTask + '-details').show();
+			this.Tab.show(idTask, tab, onComplete);
 		} else {
-			this.loadDetails(idTask, tab, this.onDetailsShowed.bind(this));
+			var func = this.onDetailsShowed.bind(this);
+			
+			if( Object.isFunction(onComplete) ) {
+				func = func.wrap(
+					function(onComplete, callOriginal, idTask, tab, response) {
+						onComplete(idTask, tab, response);
+						callOriginal(idTask, tab, response);
+					}.bind(this, onComplete)				
+				);				
+			}		
+			
+			this.loadDetails(idTask, tab, func);
 		}
-
-		this.Tab.show(idTask, tab);
-		
 	},
 
 
@@ -878,6 +886,7 @@ Todoyu.Ext.project.Task = {
 	 */
 	onDetailsShowed: function(idTask, tab, response) {
 		this.refreshExpandedStyle(idTask);
+		this.Tab.show(idTask, tab);		
 	},
 
 
@@ -919,7 +928,8 @@ Todoyu.Ext.project.Task = {
 		var options	= {
 			'parameters': {
 				'action':	'detail',
-				'task':		idTask
+				'task':		idTask,
+				'tab':		tab
 			},
 			'onComplete': this.onDetailsLoaded.bind(this, idTask, tab, onComplete)
 		};
@@ -942,9 +952,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	Ajax.Response	response
 	 */
 	onDetailsLoaded: function(idTask, tab, onComplete, response) {
-		if( ! Object.isUndefined(onComplete) ) {
-			onComplete(idTask, tab, response);
-		}
+		Todoyu.callIfExists(onComplete, idTask, tab, response);
 	},
 
 
