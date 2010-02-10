@@ -430,7 +430,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	Integer		idTask
 	 */
 	getStatus: function(idTask) {
-		var classNames 	= $('task-' + idTask + '-header').down('span.headLabel').classNames();
+		var classNames 	= $('task-' + idTask + '-header').down('div.headLabel').classNames();
 		var statusClass	= classNames.grep(/.*Status(\d)/).first();
 		var statusIndex	= statusClass.split('Status').last();
 
@@ -445,7 +445,7 @@ Todoyu.Ext.project.Task = {
 	 * 	@param	status
 	 */
 	setStatus: function(idTask, status) {
-		var element		= $('task-' + idTask + '-header').down('span.headLabel');
+		var element		= $('task-' + idTask + '-header').down('div.headLabel');
 		var oldStatus	= this.getStatus(idTask);
 
 		element.replaceClassName('bcStatus' + oldStatus);
