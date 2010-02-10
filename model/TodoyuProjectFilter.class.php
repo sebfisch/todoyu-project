@@ -26,7 +26,7 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-class TodoyuProjectFilter extends TodoyuFilterBase {
+class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterface {
 
 	/**
 	 * Initialize project filter with active filters
@@ -47,8 +47,13 @@ class TodoyuProjectFilter extends TodoyuFilterBase {
 	 * @param	Bool		$showDeleted
 	 * @return	Array
 	 */
-	public function getProjectIDs($orderBy = '', $limit = '', $showDeleted = false) {
-		return parent::getItemIDs($orderBy, $limit, $showDeleted);
+	public function getProjectIDs($sorting = '', $limit = '') {
+		return parent::getItemIDs($sorting, $limit);
+	}
+
+
+	public function getItemIDs($sorting = '', $limit = 100) {
+		return $this->getProjectIDs($sorting, $limit);
 	}
 
 

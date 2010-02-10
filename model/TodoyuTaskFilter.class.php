@@ -25,7 +25,7 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-class TodoyuTaskFilter extends TodoyuFilterBase {
+class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface {
 
 	/**
 	 * Default table
@@ -55,6 +55,11 @@ class TodoyuTaskFilter extends TodoyuFilterBase {
 		$taskIDs= parent::getItemIDs($sorting, $limit);
 
 		return $taskIDs;
+	}
+
+
+	public function getItemIDs($sorting = 'sorting', $limit = 100) {
+		return $this->getTaskIDs($sorting, $limit);
 	}
 
 

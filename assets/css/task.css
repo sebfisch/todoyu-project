@@ -93,9 +93,9 @@
 .task h3 div.taskNumber {
 	display:inline-block;
 	position: absolute;
-	top:5px;	
+	top:5px;
 	right:85px;
-	width:45px;	
+	width:45px;
 }
 
 .task h3 .headLabel a.title {
@@ -124,7 +124,7 @@
 	overflow:hidden;
 	margin-top:-2px;
 	padding:1px 3px;
-	background:url(../../../../core/assets/img/dottedline_ver.png) repeat-y 0 0;
+	border-left:1px dotted #CCC;
 	cursor:default;
 }
 
