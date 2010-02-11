@@ -3,6 +3,7 @@
 	<labels lang="en">
 		<label index="general">General Settings</label>
 		<label index="general.use">Access to project module</label>
+		<label index="general.usearea">Use project area</label>
 		<label index="project">Project</label>
 		<label index="project.details">Show Project Details</label>
 		<label index="project.edit">Edit Project</label>
@@ -65,6 +66,7 @@
 	<labels lang="de">
 		<label index="general">Allgemeine Einstellungen</label>
 		<label index="general.use">Zugriff zu Projekt-Modul</label>
+		<label index="general.usearea">Projekt-Bereich Verwenden</label>
 		<label index="project">Projekt</label>
 		<label index="project.details">Zeige Projekt Details</label>
 		<label index="project.edit">Projekt bearbeiten</label>

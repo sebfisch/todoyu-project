@@ -3,9 +3,10 @@
 
 	<section name="general">
 		<right name="use" />
+		<right name="usearea" require="general:use" />
 	</section>
 
-	<section name="project" require="general:use">
+	<section name="project" require="general:usearea">
 		<right name="details" />
 		<right name="edit" />
 		<right name="add" />
@@ -26,7 +27,7 @@
 		<right name="cut" />
 	</section>
 
-	<section name="container" require="general:use">
+	<section name="container" require="general:usearea">
 		<right name="edit" />
 		<right name="addtask" />
 		<right name="addcontainer" />
@@ -57,7 +58,7 @@
 		<!--<right name="customer:changeto" />-->
 	</section>
 
-	<section name="projectstatus" require="general:use">
+	<section name="projectstatus" require="general:usearea">
 		<right name="planning:see" />
 		<right name="progress:see" />
 		<right name="done:see" />
