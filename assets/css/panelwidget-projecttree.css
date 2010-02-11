@@ -123,39 +123,39 @@ ul.tree li.project a.info {
    ----------------- */
 
 #panelwidget-projecttree .planning a.info {
-	background:url(../img/status.png) 2px 0 no-repeat;
+	background:url(../img/taskstatus.png) 2px 0 no-repeat;
 }
 
 #panelwidget-projecttree .open a.info {
-	background:url(../img/status.png) 2px -30px no-repeat;
+	background:url(../img/taskstatus.png) 2px -30px no-repeat;
 }
 
 #panelwidget-projecttree .progress a.info {
-	background:url(../img/status.png) 2px -60px no-repeat;
+	background:url(../img/taskstatus.png) 2px -60px no-repeat;
 }
 
 #panelwidget-projecttree .feedback a.info {
-	background:url(../img/status.png) 2px -210px no-repeat;
+	background:url(../img/taskstatus.png) 2px -210px no-repeat;
 }
 
 #panelwidget-projecttree .confirm a.info {
-	background:url(../img/status.png) 2px -90px no-repeat;
+	background:url(../img/taskstatus.png) 2px -90px no-repeat;
 }
 
 #panelwidget-projecttree .done a.info {
-	background:url(../img/status.png) 2px -120px no-repeat;
+	background:url(../img/taskstatus.png) 2px -120px no-repeat;
 }
 
 #panelwidget-projecttree .accepted a.info {
-	background:url(../img/status.png) 2px -270px no-repeat;
+	background:url(../img/taskstatus.png) 2px -270px no-repeat;
 }
 
 #panelwidget-projecttree .rejected a.info {
-	background:url(../img/status.png) 2px -150px no-repeat;
+	background:url(../img/taskstatus.png) 2px -150px no-repeat;
 }
 
 #panelwidget-projecttree .cleared a.info {
-	background:url(../img/status.png) 2px -180px no-repeat;
+	background:url(../img/taskstatus.png) 2px -180px no-repeat;
 }
 
 

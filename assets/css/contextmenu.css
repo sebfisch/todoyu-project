@@ -7,7 +7,7 @@
 }
 
 #contextmenu .projectDetails {
-	background-position:3px -448px;
+	background-position:3px -538px;
 }
 
 #contextmenu .projectStatus {
@@ -41,8 +41,21 @@
 	background-image:url(../img/contextmenu.png);
 }
 
+#contextmenu .status ul li a {
+	background-image:url(../img/projectstatus.png);
+}
+	#contextmenu .status ul li a.taskContextMenu {
+		background-image:url(../img/taskstatus.png) !important;
+	}
+/*	#contextmenu .status ul lia .projectContextMenu {
+		background-image:url(../img/projectstatus.png) !important;
+	}
+*/
+
+		
+
 #contextmenu .taskEdit {
-	background-position:3px -27px;
+	background-position:3px -28px;
 }
 
 #contextmenu .taskActions {
@@ -101,12 +114,12 @@
 	background-position:3px -117px;
 }
 
+/* ----------------------
+	Change task status icons
+   ---------------------- */
+
 #contextmenu .taskStatus {
 	background-position:3px 3px;
-}
-
-#contextmenu .status ul li a {
-	background-image:url(../img/status.png);
 }
 
 #contextmenu .taskStatusPlanning {
@@ -148,6 +161,58 @@
 #contextmenu .taskStatusAccepted {
 	background-position:4px -267px;
 }
+
+
+
+/* --------------------------------
+	Change project status icons
+   -------------------------------- */
+
+#contextmenu .projectStatus {
+	background-position:3px 3px;
+}
+
+#contextmenu .projectStatusPlanning {
+	background-position:4px 2px;
+}
+
+#contextmenu .projectStatusOpen {
+	background-position:4px -27px;
+}
+
+#contextmenu .projectStatusProgress {
+	background-position:4px -57px;
+}
+
+#contextmenu .projectStatusConfirm {
+	background-position:4px -87px;
+}
+
+#contextmenu .projectStatusDone {
+	background-position:4px -114px;
+}
+
+#contextmenu .projectStatusAccepted {
+	background-position:4px -117px;
+}
+
+#contextmenu .projectStatusRejected {
+	background-position:4px -147px;
+}
+
+#contextmenu .projectStatusCleared {
+	background-position:4px -174px;
+}
+
+#contextmenu .projectStatusWarranty {
+	background-position:4px -234px;
+}
+
+#contextmenu .projectStatusAccepted {
+	background-position:4px -267px;
+}
+
+
 
 /* ---------------------------
 	Container context menu

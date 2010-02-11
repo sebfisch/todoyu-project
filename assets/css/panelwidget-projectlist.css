@@ -40,14 +40,14 @@
 }
 
 #panelwidget-projectlist-list li:hover {
-	background-color:#EEE;
+	background-color:#eee;
 	
 }
 
 #panelwidget-projectlist-list li a {
 	display:block;
 	padding-left:25px;
-	background:url(../img/icons.png) no-repeat 4px -447px;
+	background:url(../img/icons.png) no-repeat 4px -449px;
 	height:18px;
 	width:250px;
 }

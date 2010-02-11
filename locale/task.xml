@@ -139,6 +139,10 @@
 		<label index="contextmenu.container.cut">Ausschneiden</label>
 		<label index="contextmenu.container.clone">Duplizieren</label>
 		<label index="contextmenu.container.delete">Löschen</label>
+		<label index="contextmenu.paste">Task-Kopie Einfügen...</label>
+		<label index="contextmenu.paste.in">Als Unteraufgabe</label>
+		<label index="contextmenu.paste.before">Vor dieser Aufgabe</label>
+		<label index="contextmenu.paste.after">Nach dieser Aufgabe</label>
 		<label index="status.planning">Planung</label>
 		<label index="status.open">Offen</label>
 		<label index="status.progress">In Bearbeitung</label>

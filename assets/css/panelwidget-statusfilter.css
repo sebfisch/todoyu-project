@@ -4,9 +4,9 @@
 
 .panelWidgetStatusFilter select option {
 	cursor:pointer;
-	padding-left:22px !important;
+	padding-left:26px !important;
 	margin-left:3px;
-	background-image:url(../img/panelwidget-statusfilter.png);
+	background-image:url(../img/status.png);
 }
 
 
@@ -16,22 +16,22 @@
    ------------------ */
 
 .panelWidgetStatusFilter option.statusPlanning {
-	background-position:2px -28px;
+	background-position:2px -1px;
 }
 
 .panelWidgetStatusFilter option.statusOpen {
-	background-position:2px -118px;
+	background-position:2px -31px;
 }
 
 .panelWidgetStatusFilter option.statusProgress {
-	background-position:2px -148px;
+	background-position:2px -60px;
 }
 .panelWidgetStatusFilter option.statusConfirm {
-	background-position:2px -58px;
+	background-position:2px -90px;
 }
 
 .panelWidgetStatusFilter option.statusDone {
-	background-position:2px -178px;
+	background-position:2px -120px;
 }
 
 .panelWidgetStatusFilter option.statusAccepted {
@@ -39,11 +39,11 @@
 }
 
 .panelWidgetStatusFilter option.statusRejected {
-	background-position:2px -88px;
+	background-position:2px -148px;
 }
 
 .panelWidgetStatusFilter option.statusCleared {
-	background-position:2px -208px;
+	background-position:2px -210px;
 }
 
 .panelWidgetStatusFilter option.statusWarranty {

@@ -283,19 +283,19 @@ $CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
 				'key'		=> 'status-progress',
 				'label'		=> 'task.status.progress',
 				'jsAction'	=> 'Todoyu.Ext.project.Container.updateStatus(#ID#, ' . STATUS_PROGRESS . ')',
-				'class'		=> 'taskContextMenu taskStatusProgress'
+				'class'		=> 'taskContextMenu projectStatusProgress'
 			),
 			'done'	=> array(
 				'key'		=> 'status-done',
 				'label'		=> 'task.status.done',
 				'jsAction'	=> 'Todoyu.Ext.project.Container.updateStatus(#ID#, ' . STATUS_DONE . ')',
-				'class'		=> 'taskContextMenu taskStatusDone'
+				'class'		=> 'taskContextMenu projectStatusDone'
 			),
 			'cleared'	=> array(
 				'key'		=> 'status-cleared',
 				'label'		=> 'task.status.cleared',
 				'jsAction'	=> 'Todoyu.Ext.project.Container.updateStatus(#ID#, ' . STATUS_CLEARED . ')',
-				'class'		=> 'taskContextMenu taskStatusCleared'
+				'class'		=> 'taskContextMenu projectStatusCleared'
 			)
 		)
 	)
@@ -364,31 +364,31 @@ $CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 				'key'		=> 'status-planning',
 				'label'		=> 'task.status.planning',
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_PLANNING . ')',
-				'class'		=> 'projectContextMenu taskStatusPlanning'
+				'class'		=> 'projectContextMenu projectStatusPlanning'
 			),
 			'progress'	=> array(
 				'key'		=> 'status-progress',
 				'label'		=> 'task.status.progress',
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_PROGRESS . ')',
-				'class'		=> 'projectContextMenu taskStatusProgress'
+				'class'		=> 'projectContextMenu projectStatusProgress'
 			),
 			'done'	=> array(
 				'key'		=> 'status-done',
 				'label'		=> 'task.status.done',
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_DONE . ')',
-				'class'		=> 'projectContextMenu taskStatusDone'
+				'class'		=> 'projectContextMenu projectStatusDone'
 			),
 			'cleared'	=> array(
 				'key'		=> 'status-cleared',
 				'label'		=> 'task.status.cleared',
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_CLEARED . ')',
-				'class'		=> 'projectContextMenu taskStatusCleared'
+				'class'		=> 'projectContextMenu projectStatusCleared'
 			),
 			'warranty'	=> array(
 				'key'		=> 'status-warranty',
 				'label'		=> 'task.status.warranty',
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_WARRANTY . ')',
-				'class'		=> 'projectContextMenu taskStatusWarranty'
+				'class'		=> 'projectContextMenu projectStatusWarranty'
 			)
 		)
 	),
