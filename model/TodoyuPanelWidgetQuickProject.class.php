@@ -28,11 +28,11 @@
 class TodoyuPanelWidgetQuickProject extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
 	/**
-	 *	Constructor
+	 * Constructor
 	 *
-	 *	@param	Array	$config
-	 *	@param	Array	$params
-	 *	@param	Integer	$idArea
+	 * @param	Array	$config
+	 * @param	Array	$params
+	 * @param	Integer	$idArea
 	 */
 	public function __construct(array $config, array $params = array(), $idArea = 0)	{
 		parent::__construct(
@@ -51,9 +51,9 @@ class TodoyuPanelWidgetQuickProject extends TodoyuPanelWidget implements TodoyuP
 
 
 	/**
-	 *	Render content
+	 * Render content
 	 *
-	 *	@return	String
+	 * @return	String
 	 */
 	public function renderContent()	{
 		$tmpl = 'ext/project/view/panelwidgets/panelwidget-quickproject.tmpl';
@@ -86,9 +86,9 @@ class TodoyuPanelWidgetQuickProject extends TodoyuPanelWidget implements TodoyuP
 
 
 	/**
-	 *	Check whether allowance given
+	 * Check whether allowance given
 	 *
-	 *	@return	Boolean
+	 * @return	Boolean
 	 */
 	public static function isAllowed() {
 		return allowed('project', 'panelwidgets:quickProject');

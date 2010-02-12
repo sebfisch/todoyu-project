@@ -3,10 +3,10 @@
 class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 	/**
-	 *	'add' action method
+	 * 'add' action method
 	 *
-	 *	@param	Array $params
-	 *	@return	String
+	 * @param	Array $params
+	 * @return	String
 	 */
 	public function addAction(array $params) {
 		$idProject	= intval($params['project']);
@@ -24,10 +24,10 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'addfirst' action method
+	 * 'addfirst' action method
 	 *
-	 *	@param	Array	$params
-	 *	@return	String
+	 * @param	Array	$params
+	 * @return	String
 	 */
 	public function addfirstAction(array $params) {
 		return TodoyuProjectRenderer::renderNewProjectEdit();
@@ -36,10 +36,10 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'edit' action method
+	 * 'edit' action method
 	 *
-	 *	@param	Array	$params
-	 *	@return	String
+	 * @param	Array	$params
+	 * @return	String
 	 */
 	public function editAction(array $params) {
 		$idProject	= intval($params['project']);
@@ -89,10 +89,10 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'details' action method
+	 * 'details' action method
 	 *
-	 *	@param	Array	$params
-	 *	@return String
+	 * @param	Array	$params
+	 * @return String
 	 */
 	public function detailsAction(array $params) {
 		restrict('project', 'project:details');
@@ -105,10 +105,10 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 *	Get company autocomplete
+	 * Get company autocomplete
 	 *
-	 *	@param	Array		$params
-	 *	@return	String
+	 * @param	Array		$params
+	 * @return	String
 	 */
 	public function autocompleteCompanyAction(array $params) {
 		$sword	= $params['sword'];
@@ -120,10 +120,10 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'autocmpletion' action method
+	 * 'autocmpletion' action method
 	 *
-	 *	@param	Array	$params
-	 *	@return	String
+	 * @param	Array	$params
+	 * @return	String
 	 */
 	public function autocompletionAction(array $params) {
 		$sword	= $params['sword'];
@@ -137,9 +137,9 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'setstatus' action method
+	 * 'setstatus' action method
 	 *
-	 *	@param	Array	$params
+	 * @param	Array	$params
 	 */
 	public function setstatusAction(array $params) {
 		$idProject	= intval($params['project']);
@@ -151,9 +151,9 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'remove' action method
+	 * 'remove' action method
 	 *
-	 *	@param	Array	$params
+	 * @param	Array	$params
 	 */
 	public function removeAction(array $params) {
 		$idProject	= intval($params['project']);
@@ -162,6 +162,12 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 		TodoyuProjectPreferences::removeOpenProject($idProject);
 	}
 
+
+
+	/**
+	 * @todo	comment
+	 * @param	Array		$params
+	 */
 	public function noProjectViewAction(array $params) {
 		return TodoyuProjectRenderer::renderNoProjectSelectedView();
 	}

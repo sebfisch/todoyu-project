@@ -50,8 +50,8 @@ class TodoyuQuickTaskManager {
 	/**
 	 * Adds mandatory task data to that received from quicktask form, saves new task to DB
 	 *
-	 *	@param	Array	$formData
-	 *	@return	Integer
+	 * @param	Array	$formData
+	 * @return	Integer
 	 */
 	public static function save(array $data) {
 			// Add empty task to have a task ID to work with

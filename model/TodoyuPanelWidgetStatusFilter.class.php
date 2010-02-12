@@ -115,9 +115,9 @@ abstract class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget {
 
 
 	/**
-	 *	Get panelwidget statuses infos
+	 * Get panelwidget statuses infos
 	 *
-	 *	@return	Array
+	 * @return	Array
 	 */
 	abstract protected function getStatusesInfos();
 
@@ -137,10 +137,10 @@ abstract class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget {
 
 
 	/**
-	 *	Store prefs of the status filter panel widget
+	 * Store prefs of the status filter panel widget
 	 *
-	 *	@param	Integer	$idArea
-	 *	@param	Array	$statusIDs
+	 * @param	Integer	$idArea
+	 * @param	Array	$statusIDs
 	 */
 	public function saveSelectedStatuses(array $statusIDs) {
 		$statuses	= implode(',', $statusIDs);

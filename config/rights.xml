@@ -6,7 +6,7 @@
 		<right name="usearea" require="general:use" />
 	</section>
 
-	<section name="project" require="general:usearea">
+	<section name="project" require="general:use">
 		<right name="details" />
 		<right name="edit" />
 		<right name="add" />
@@ -14,6 +14,7 @@
 		<right name="status" />
 		<right name="addtask" />
 		<right name="addcontainer" />
+		<right name="search" />
 	</section>
 
 	<section name="task" require="general:use">
@@ -25,9 +26,10 @@
 		<right name="clone" />
 		<right name="copy" />
 		<right name="cut" />
+		<right name="search" />
 	</section>
 
-	<section name="container" require="general:usearea">
+	<section name="container" require="general:use">
 		<right name="edit" />
 		<right name="addtask" />
 		<right name="addcontainer" />
@@ -58,7 +60,7 @@
 		<!--<right name="customer:changeto" />-->
 	</section>
 
-	<section name="projectstatus" require="general:usearea">
+	<section name="projectstatus" require="general:use">
 		<right name="planning:see" />
 		<right name="progress:see" />
 		<right name="done:see" />

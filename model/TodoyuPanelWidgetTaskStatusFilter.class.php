@@ -59,9 +59,9 @@ class TodoyuPanelWidgetTaskStatusFilter extends TodoyuPanelWidgetStatusFilter im
 
 
 	/**
-	 *	Get panelwidget statuses infos
+	 * Get panelwidget statuses infos
 	 *
-	 *	@return	Array
+	 * @return	Array
 	 */
 	protected function getStatusesInfos() {
 		return TodoyuProjectStatusManager::getTaskStatusInfos('see');
@@ -70,9 +70,9 @@ class TodoyuPanelWidgetTaskStatusFilter extends TodoyuPanelWidgetStatusFilter im
 
 
 	/**
-	 *	Check allowance
+	 * Check allowance
 	 *
-	 *	@return	Boolean
+	 * @return	Boolean
 	 */
 	public static function isAllowed() {
 		return allowed('project', 'panelwidgets:projectStatusFilter');

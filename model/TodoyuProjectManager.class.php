@@ -884,9 +884,9 @@ class TodoyuProjectManager {
 
 
 	/**
-	 *	Get data for submenu entries of currently open projects
+	 * Get data for submenu entries of currently open projects
 	 *
-	 *	@return	Array
+	 * @return	Array
 	 */
 	public static function getOpenProjectLabels() {
 		$entries		= array();

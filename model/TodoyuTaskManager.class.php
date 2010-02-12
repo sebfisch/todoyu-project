@@ -918,12 +918,12 @@ class TodoyuTaskManager {
 
 
 	/**
-	 *	Add container info to task data
+	 * Add container info to task data
 	 *
-	 *	@param	Array	$taskData
-	 *	@param	Integer	$idTask
-	 *	@param	Integer	$infoLevel
-	 *	@return	Array
+	 * @param	Array	$taskData
+	 * @param	Integer	$idTask
+	 * @param	Integer	$infoLevel
+	 * @return	Array
 	 */
 	public static function addContainerInfoToTaskData($taskData, $idTask, $infoLevel) {
 		$idTask		= intval($idTask);

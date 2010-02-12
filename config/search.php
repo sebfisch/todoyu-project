@@ -20,7 +20,12 @@
 ***************************************************************/
 
 
+if ( allowed('project', 'task:search') ) {
 TodoyuSearchManager::addSearchEngine('task', 'TodoyuTaskSearch::getResults', 'TodoyuTaskSearch::getSuggestions', 'task.search.label', 'task.search.mode.label', 10);
+}
+
+if ( allowed('project', 'project:search') ) {
 TodoyuSearchManager::addSearchEngine('project', 'TodoyuProjectSearch::getResults', 'TodoyuProjectSearch::getSuggestions', 'project.search.label', 'project.search.mode.label', 20);
+}
 
 ?>

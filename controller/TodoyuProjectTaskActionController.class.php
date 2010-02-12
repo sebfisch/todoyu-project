@@ -46,10 +46,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	Add a new container directly to the project
+	 * Add a new container directly to the project
 	 *
-	 *	@param	Array		$params
-	 *	@return	String		Container edit form
+	 * @param	Array		$params
+	 * @return	String		Container edit form
 	 */
 	public function addprojectcontainerAction(array $params) {
 		$idProject 	= intval($params['project']);
@@ -83,10 +83,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'addsubcontainer' action method
+	 * 'addsubcontainer' action method
 	 *
-	 *	@param	Array	$params
-	 *	@return	String
+	 * @param	Array	$params
+	 * @return	String
 	 */
 	public function addsubcontainerAction(array $params) {
 			// Parent for the new subtask
@@ -102,10 +102,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'edit'	action method
+	 * 'edit' action method
 	 *
-	 *	@param	Array	$params
-	 *	@return	String
+	 * @param	Array	$params
+	 * @return	String
 	 */
 	public function editAction(array $params) {
 		$idTask		= intval($params['task']);
@@ -172,9 +172,9 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'setstatus' action method
+	 * 'setstatus' action method
 	 *
-	 *	@param	Array	$params
+	 * @param	Array	$params
 	 */
 	public function setstatusAction(array $params) {
 		$idTask		= intval($params['task']);
@@ -279,10 +279,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	Clone a task and add it right behind the clone source
+	 * Clone a task and add it right behind the clone source
 	 *
-	 *	@param	Array 		$params
-	 *	@return	String		Cloned task html
+	 * @param	Array 		$params
+	 * @return	String		Cloned task html
 	 */
 	public function cloneAction(array $params) {
 		$idTask			= intval($params['task']);
@@ -298,9 +298,9 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'acknowledge' action method
+	 * 'acknowledge' action method
 	 *
-	 *	@param	Array	$params
+	 * @param	Array	$params
 	 */
 	public function acknowledgeAction(array $params) {
 		$idTask	= intval($params['task']);
@@ -311,9 +311,9 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'delete' action method
+	 * 'delete' action method
 	 *
-	 *	@param	Array	$params
+	 * @param	Array	$params
 	 */
 	public function deleteAction(array $params) {
 		$idTask		= intval($params['task']);
@@ -324,10 +324,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'autocompleteprojecttask' action method
+	 * 'autocompleteprojecttask' action method
 	 *
-	 *	@param	Array	$params
-	 *	@return	String
+	 * @param	Array	$params
+	 * @return	String
 	 */
 	public function autocompleteprojecttaskAction(array $params) {
 		$formName	= $params['formName'];
@@ -359,9 +359,9 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'tabload' action method
+	 * 'tabload' action method
 	 *
-	 *	@param	Array	$params
+	 * @param	Array	$params
 	 */
 	public function tabloadAction(array $params) {
 		$idTask		= intval($params['task']);
@@ -377,9 +377,9 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 *	'tabselected' action method
+	 * 'tabselected' action method
 	 *
-	 *	@param	Array	$params
+	 * @param	Array	$params
 	 */
 	public function tabselectedAction(array $params) {
 		$idTask		= intval($params['task']);

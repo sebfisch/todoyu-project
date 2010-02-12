@@ -26,6 +26,10 @@
  */
 class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 
+	/**
+	 * @todo	comment
+	 * @param	Array		$params
+	 */
 	public function detailsexpandedAction(array $params) {
 		$idProject	= intval($params['item']);
 		$expanded	= intval($params['value']) === 1;
@@ -47,6 +51,12 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 		TodoyuProjectPreferences::saveTaskExpandedStatus($idTask, $expanded);
 	}
 
+
+
+	/**
+	 * @todo	comment
+	 * @param	Array		$params
+	 */
 	public function panelwidgetprojecttreeexpandAction(array $params) {
 		$idItem	= intval($params['item']);
 		$info	= explode(':', $params['value']);
@@ -64,6 +74,11 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 * @param	Array		$params
+	 */
 	public function subtasksAction(array $params) {
 		$idTask	= intval($params['item']);
 		$isOpen	= intval($params['value']) === 1;
@@ -72,6 +87,11 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 * @param	Array		$params
+	 */
 	public function panelwidgettaskstatusfilterAction(array $params) {
 		$selectedStatuses	= TodoyuArray::intExplode(',', $params['value'], true, true);
 
@@ -80,6 +100,12 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 		$widget->saveSelectedStatuses($selectedStatuses);
 	}
 
+
+
+	/**
+	 * @todo	comment
+	 * @param	Array		$params
+	 */
 	public function panelwidgetprojectstatusfilterAction(array $params) {
 		$selectedStatuses	= TodoyuArray::intExplode(',', $params['value'], true, true);
 
@@ -91,9 +117,9 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 *	General panelWidget action, saves collapse status
+	 * General panelWidget action, saves collapse status
 	 *
-	 *	@param	Array	$params
+	 * @param	Array	$params
 	 */
 	public function pwidgetAction(array $params) {
 		$idWidget	= $params['item'];

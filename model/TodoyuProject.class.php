@@ -192,10 +192,10 @@ class TodoyuProject extends TodoyuBaseObject {
 
 
 	/**
-	 *	Get template data
+	 * Get template data
 	 *
-	 *	@param	Boolean	$loadForeignData
-	 *	@return	Array
+	 * @param	Boolean	$loadForeignData
+	 * @return	Array
 	 */
 	public function getTemplateData($loadForeignData = false) {
 		if( $loadForeignData ) {

@@ -24,8 +24,8 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 	/**
 	 * Get quicktask form rendered
 	 *
-	 *	@param	Array	$params
-	 *	@return	String
+	 * @param	Array	$params
+	 * @return	String
 	 */
 	public function popupAction(array $params) {
 		return TodoyuQuickTaskManager::renderForm();
@@ -36,8 +36,8 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 	/**
 	 * Save quick task
 	 *
-	 *	@param	Array	$params
-	 *	@return	String
+	 * @param	Array	$params
+	 * @return	String
 	 */
 	public function saveAction(array $params) {
 		$params['quicktask']['start_tracking'] = intval($params['quicktask']['start_tracking']);

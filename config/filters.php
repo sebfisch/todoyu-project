@@ -28,6 +28,7 @@
 
 $CONFIG['FILTERS']['TASK'] = array(
 	'key'		=> 'task',
+	'right'		=> 'project:task.searchable',
 	'config'	=> array(
 		'label'				=> 'LLL:task.search.label',
 		'position'			=> 10,
@@ -381,6 +382,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 
 $CONFIG['FILTERS']['PROJECT'] = array(
 	'key'		=> 'project',
+	'right'		=> 'project:project.searchable',
 	'config' 	=> array(
 		'label'				=> 'LLL:project.search.label',
 		'position'			=> 20,

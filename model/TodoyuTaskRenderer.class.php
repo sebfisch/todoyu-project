@@ -112,9 +112,9 @@ class TodoyuTaskRenderer {
 	 * Render edit form to edit a new task. This form is wraped by
 	 * the "detail" and "data" div as used in detail view
 	 *
-	 *	@param	Integer	$idProject
-	 *	@param	Integer	$idParentTask
-	 *	@return	String
+	 * @param	Integer	$idProject
+	 * @param	Integer	$idParentTask
+	 * @return	String
 	 */
 	public static function renderNewTaskEditForm($idProject, $idParentTask = 0) {
 		$idTask			= 0;
