@@ -27,6 +27,7 @@
 		<label index="attr.overtimed">Task overtimed</label>
 		<label index="search.label">Tasks</label>
 		<label index="search.mode.label">Search Tasks</label>
+		<label index="create.label">Task</label>
 		<label index="date.deadline.short">D</label>
 		<label index="contextmenu.showinproject">Show in Project</label>
 		<label index="contextmenu.edit">Edit Task</label>
@@ -121,6 +122,7 @@
 		<label index="attr.overtimed">Aufgabezeit überzogen</label>
 		<label index="search.label">Aufgaben</label>
 		<label index="search.mode.label">Aufgaben suchen</label>
+		<label index="create.label">Aufgabe</label>
 		<label index="date.deadline.short">F</label>
 		<label index="contextmenu.showinproject">Zeige in Projekt</label>
 		<label index="contextmenu.edit">Aufgabe bearbeiten</label>

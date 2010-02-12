@@ -39,6 +39,11 @@ TodoyuLanguage::register('panelwidget-projectlist', PATH_EXT_PROJECT . '/locale/
 TodoyuLanguage::register('panelwidget-statusfilter', PATH_EXT_PROJECT . '/locale/panelwidget-statusfilter.xml');
 TodoyuLanguage::register('panelwidget-quickproject', PATH_EXT_PROJECT . '/locale/panelwidget-quickproject.xml');
 
+	// Add quick creation types
+TodoyuCreateManager::addEngine('project', 'project.create.label', 10);
+TodoyuCreateManager::addEngine('task', 'task.create.label', 20);
+
+
 	// Request configurations
 require_once( PATH_EXT_PROJECT . '/config/constants.php' );
 require_once( PATH_EXT_PROJECT . '/config/extension.php' );
