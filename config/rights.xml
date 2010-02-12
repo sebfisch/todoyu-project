@@ -75,7 +75,10 @@
 
 	<section name="panelwidgets" require="general:use">
 		<right name="projectTree" />
+		<right name="projectList" />
 		<right name="statusFilter" />
+		<right name="projectStatusFilter" require="panelwidgets:statusFilter" />
+		<right name="taskStatusFilter" require="panelwidgets:statusFilter" />
 		<right name="quickProject" />
 	</section>
 

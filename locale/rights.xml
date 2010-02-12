@@ -31,10 +31,6 @@
 		<label index="container.copy">Copy (and paste) Container</label>
 		<label index="container.cut">Cut (and paste) Container</label>
 		<label index="container.delete">Delete Container</label>
-		<label index="panelwidgets">Panel Widgets</label>
-		<label index="panelwidgets.statusFilter">Panel Widget Status Filter</label>
-		<label index="panelwidgets.projectTree">Panel Widget Project Tree</label>
-		<label index="panelwidgets.quickProject">Panel Widget Quick Project</label>
 		<label index="taskstatus">Task Status</label>
 		<label index="taskstatus.planning:see">See Status: In planning</label>
 		<label index="taskstatus.open:see">See Status: Open</label>
@@ -64,6 +60,13 @@
 		<label index="projectstatus.done:changeto">Change Status To: Done</label>
 		<label index="projectstatus.cleared:changeto">Change Status To: Cleared</label>
 		<label index="projectstatus.warranty:changeto">Change Status To: In warranty</label>
+		<label index="panelwidgets">Panel Widgets</label>
+		<label index="panelwidgets.statusFilter">Status Filter Panel Widgets</label>
+		<label index="panelwidgets.projectStatusFilter">Panel Widget Project Status Filter</label>
+		<label index="panelwidgets.taskStatusFilter">Panel Widget Task Status Filter</label>
+		<label index="panelwidgets.projectTree">Panel Widget Project Tree</label>
+		<label index="panelwidgets.projectList">Panel Widget Project List</label>
+		<label index="panelwidgets.quickProject">Panel Widget Quick Project</label>
 	</labels>
 	<labels lang="de">
 		<label index="general">Allgemeine Einstellungen</label>
@@ -95,14 +98,6 @@
 		<label index="container.copy">Container kopieren (und einfügen)</label>
 		<label index="container.cut">Container ausschneiden (und einfügen)</label>
 		<label index="container.delete">Container löschen</label>
-		<label index="panelwidgets">Steuerelemente</label>
-		<label index="panelwidgets.statusFilter">Steuerelement Status Filter</label>
-		<label index="panelwidgets.projectTreee">Steuerelement Projekt-Baum</label>
-		<label index="panelwidgets.quickProject">Steuerelement Kurz-Projekt</label>
-		<label index="panelwidgets">Steuerelemente</label>
-		<label index="panelwidgets.statusFilter:use">Statusfilter-Element</label>
-		<label index="panelwidgets.projectTree:use">Projektbaum-Element</label>
-		<label index="panelwidgets.quickProject:use">Schnell-Project Element</label>
 		<label index="taskstatus">Task Status</label>
 		<label index="taskstatus.planning:see">Sieht Status: In Planung</label>
 		<label index="taskstatus.open:see">Sieht Status: Offen</label>
@@ -132,5 +127,16 @@
 		<label index="projectstatus.done:changeto">Status ändern in: Erledigt</label>
 		<label index="projectstatus.cleared:changeto">Status ändern in: Verrechnet</label>
 		<label index="projectstatus.warranty:changeto">Status ändern in: In Garantie</label>
+		<label index="panelwidgets">Steuerelemente</label>
+		<label index="panelwidgets.statusFilter">Steuerelement Status Filter</label>
+		<label index="panelwidgets.projectTreee">Steuerelement Projekt-Baum</label>
+		<label index="panelwidgets.quickProject">Steuerelement Kurz-Projekt</label>
+		<label index="panelwidgets">Steuerelemente</label>
+		<label index="panelwidgets.statusFilter:use">Statusfilter-Elemente</label>
+		<label index="panelwidgets.projectStatusFilter">Projectstatusfilter-Element</label>
+		<label index="panelwidgets.taskStatusFilter">Taskstatusfilter-Element</label>
+		<label index="panelwidgets.projectTree:use">Projektbaum-Element</label>
+		<label index="panelwidgets.projectList">Projectlisten-Element</label>
+		<label index="panelwidgets.quickProject:use">Schnell-Project Element</label>
 	</labels>
 </locallang>

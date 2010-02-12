@@ -28,9 +28,19 @@
 
 	// add default panel widgets
 //TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetProjectTree', 19);
-TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetProjectList', 20);
-TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetTaskStatusFilter', 30);
-TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetProjectStatusFilter', 21);
+
+if ( allowed('project', 'panelwidgets:projectList') ) {
+	TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetProjectList', 20);
+}
+
+if ( allowed('project', 'panelwidgets:taskStatusFilter') ) {
+	TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetTaskStatusFilter', 30);
+}
+
+if ( allowed('project', 'panelwidgets:projectStatusFilter') ) {
+	TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetProjectStatusFilter', 21);
+}
+
 TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetQuickProject', 25);
 
 ?>
