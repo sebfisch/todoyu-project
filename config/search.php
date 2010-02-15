@@ -21,11 +21,11 @@
 
 	// Add search engine types
 if ( allowed('project', 'task:search') ) {
-TodoyuSearchManager::addEngine('task', 'TodoyuTaskSearch::getResults', 'TodoyuTaskSearch::getSuggestions', 'task.search.label', 'task.search.mode.label', 10);
+	TodoyuSearchManager::addEngine('task', 'TodoyuTaskSearch::getResults', 'TodoyuTaskSearch::getSuggestions', 'task.search.label', 'task.search.mode.label', 10);
 }
 
 if ( allowed('project', 'project:search') ) {
-TodoyuSearchManager::addEngine('project', 'TodoyuProjectSearch::getResults', 'TodoyuProjectSearch::getSuggestions', 'project.search.label', 'project.search.mode.label', 20);
+	TodoyuSearchManager::addEngine('project', 'TodoyuProjectSearch::getResults', 'TodoyuProjectSearch::getSuggestions', 'project.search.label', 'project.search.mode.label', 20);
 }
 
 ?>
