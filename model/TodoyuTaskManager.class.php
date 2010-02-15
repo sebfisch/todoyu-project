@@ -699,7 +699,7 @@ class TodoyuTaskManager {
 		$idTask	= intval($idTask);
 
 		$fields	= ' u.*';
-		$tables	= ' ext_user_user u,
+		$tables	= ' ext_contact_person u,
 					ext_project_task t';
 		$where	= '	t.id				= ' . $idTask . ' AND
 					(t.id_user_create	= u.id OR
@@ -723,7 +723,7 @@ class TodoyuTaskManager {
 
 		$fields	= ' u.*';
 		$tables	= ' ext_project_task t,
-					ext_user_user u';
+					ext_contact_person u';
 		$where	= '	t.id		= ' . $idTask . ' AND
 					u.id		= t.id_user_owner';
 		$group	= '';
@@ -854,7 +854,7 @@ class TodoyuTaskManager {
 				// User assigned
 			$info['user_assigned']	= array(
 				'label'		=> 'LLL:task.attr.user_assigned',
-				'value'		=> TodoyuUserManager::getLabel($taskData['user_assigned']['id']),
+				'value'		=> TodoyuPersonManager::getLabel($taskData['user_assigned']['id']),
 				'position'	=> 80,
 				'className'	=> 'sectionStart'
 			);
@@ -895,7 +895,7 @@ class TodoyuTaskManager {
 			// User owner
 		$info['user_owner']	= array(
 			'label'		=> 'LLL:task.attr.user_owner',
-			'value'		=> TodoyuUserManager::getLabel($taskData['user_owner']['id']),
+			'value'		=> TodoyuPersonManager::getLabel($taskData['user_owner']['id']),
 			'position'	=> 150,
 			'className'	=> 'sectionStart'
 		);

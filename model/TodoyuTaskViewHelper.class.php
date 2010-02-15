@@ -43,7 +43,7 @@ class TodoyuTaskViewHelper {
 		foreach($users as $user) {
 			$options[] = array(
 				'value'	=> $user['id'],
-				'label'	=> TodoyuUserManager::getLabel($user['id'], false, true)
+				'label'	=> TodoyuPersonManager::getLabel($user['id'], false, true)
 			);
 		}
 
@@ -133,7 +133,7 @@ class TodoyuTaskViewHelper {
 		$option = array(
 			0 => array(
 				'value'		=> $taskOwner[0]['id'],
-				'label'		=> TodoyuUserManager::getLabel($taskOwner[0]['id'], true, true)
+				'label'		=> TodoyuPersonManager::getLabel($taskOwner[0]['id'], true, true)
 			)
 		);
 

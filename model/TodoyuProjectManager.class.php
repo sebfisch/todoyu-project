@@ -429,7 +429,7 @@ class TodoyuProjectManager {
 						c.shortname as companyShort,
 						c.title as companyFull';
 			$table	= '	ext_project_project p,
-						ext_user_company c';
+						ext_contact_company c';
 			$where	= '	p.id IN(' . $projectList . ') AND
 						(p.id_company = 0 OR p.id_company = c.id) AND
 						p.deleted = 0';
@@ -664,7 +664,7 @@ class TodoyuProjectManager {
 					ur.rolekey as rolekey,
 					ur.title as rolelabel,
 					mmpu.comment';
-		$table	= '	ext_user_user u,
+		$table	= '	ext_contact_person u,
 					ext_project_userrole ur,
 					ext_project_mm_project_user mmpu';
 		$where	= '	mmpu.id_user	= u.id AND
@@ -680,7 +680,7 @@ class TodoyuProjectManager {
 
 			// Get company information
 		foreach($users as $index => $user) {
-			$users[$index]['company'] = TodoyuUserManager::getUserCompanyRecords($user['id']);
+			$users[$index]['company'] = TodoyuPersonManager::getUserCompanyRecords($user['id']);
 		}
 
 		return $users;
@@ -704,7 +704,7 @@ class TodoyuProjectManager {
 					ur.rolekey as rolekey,
 					ur.title as rolelabel,
 					mmpu.comment';
-		$table	= '	ext_user_user u,
+		$table	= '	ext_contact_person u,
 					ext_project_userrole ur,
 					ext_project_mm_project_user mmpu';
 		$where	= '	mmpu.id_user	= u.id AND

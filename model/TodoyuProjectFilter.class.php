@@ -67,10 +67,10 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 */
 	public static function Filter_fulltext($searchWords, $negate = false) {
 		$searchWords	= TodoyuArray::trimExplode(' ', $searchWords);
-		$searchInFields	= array('ext_project_project.title', 'ext_project_project.description', 'ext_user_company.title', 'ext_user_company.shortname');
+		$searchInFields	= array('ext_project_project.title', 'ext_project_project.description', 'ext_contact_company.title', 'ext_contact_company.shortname');
 
-		$tables	= array('ext_project_project', 'ext_user_company');
-		$where	= 'ext_project_project.id_company	= ext_user_company.id';
+		$tables	= array('ext_project_project', 'ext_contact_company');
+		$where	= 'ext_project_project.id_company	= ext_contact_company.id';
 
 		$where .= ' AND ' . Todoyu::db()->buildLikeQuery($searchWords, $searchInFields);
 

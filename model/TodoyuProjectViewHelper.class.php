@@ -45,7 +45,7 @@ class TodoyuProjectViewHelper {
 		foreach($users as $user) {
 			$options[] = array(
 				'value'	=> $user['id'],
-				'label'	=> TodoyuUserManager::getLabel($user['id'])
+				'label'	=> TodoyuPersonManager::getLabel($user['id'])
 			);
 		}
 

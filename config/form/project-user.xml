@@ -20,7 +20,7 @@
 							<controller>autocomplete</controller>
 							<action>user</action>
 						</acListener>
-						<acLabelFunc>TodoyuUserManager::getLabel</acLabelFunc>
+						<acLabelFunc>TodoyuPersonManager::getLabel</acLabelFunc>
 						<options>
 							<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onUserAutocomplete</onCompleteCustom>
 						</options>

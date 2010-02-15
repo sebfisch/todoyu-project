@@ -96,7 +96,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 						c.shortname as company';
 			$table	= '	ext_project_task t,
 						ext_project_project p,
-						ext_user_company c';
+						ext_contact_company c';
 			$where	= '	t.id_project = p.id AND
 						p.id_company= c.id AND
 						t.id IN(' . implode(',', $taskIDs) . ')';

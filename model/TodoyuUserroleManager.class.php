@@ -49,7 +49,7 @@ class TodoyuUserroleManager {
 		$idProject	= intval($idProject);
 		$idUserrole	= intval($idUserrole);
 
-		$label	= TodoyuUserManager::getLabel($idUser);
+		$label	= TodoyuPersonManager::getLabel($idUser);
 
 		if ( $idUserrole == 0 ) {
 			$label	.= ' - ' . TodoyuProjectManager::getUserRoleLabel($idUser, $idProject);

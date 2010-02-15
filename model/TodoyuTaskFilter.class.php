@@ -157,10 +157,10 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		if( sizeof($groupIDs) > 0 ) {
 			$tables	= array(
 				'ext_project_task',
-				'ext_user_mm_user_group'
+				'ext_contact_mm_person_role'
 			);
-			$where	= ' ext_project_task.id_user_owner = ext_user_mm_user_group.id_user AND
-						ext_user_mm_user_group.id_group IN(' . implode(',', $groupIDs) . ')';
+			$where	= ' ext_project_task.id_user_owner = ext_contact_mm_person_role.id_user AND
+						ext_contact_mm_person_role.id_group IN(' . implode(',', $groupIDs) . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -350,11 +350,11 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		if( sizeof($groupIDs) > 0 ) {
 			$tables	= array(
 				'ext_project_task',
-				'ext_user_mm_user_group'
+				'ext_contact_mm_person_role'
 			);
 			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= ' ext_project_task.id_user_create = ext_user_mm_user_group.id_user AND
-						ext_user_mm_user_group.id_group ' . $compare . '(' . implode(',', $groupIDs) . ')';
+			$where	= ' ext_project_task.id_user_create = ext_contact_mm_person_role.id_user AND
+						ext_contact_mm_person_role.id_group ' . $compare . '(' . implode(',', $groupIDs) . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -397,9 +397,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 			$queryParts	= false;
 		} else {
 				// set up query parts
-			$tables	= array('ext_project_task', 'ext_user_mm_user_group');
-			$where	 = ' ext_project_task.id_user_create = ext_user_mm_user_group.id_user';
-			$where	.= ' AND ext_user_mm_user_group.id_group = ' . $idGroup;
+			$tables	= array('ext_project_task', 'ext_contact_mm_person_role');
+			$where	 = ' ext_project_task.id_user_create = ext_contact_mm_person_role.id_user';
+			$where	.= ' AND ext_contact_mm_person_role.id_group = ' . $idGroup;
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -461,10 +461,10 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		if( sizeof($groupIDs) > 0 ) {
 			$tables	= array(
 				'ext_project_task',
-				'ext_user_mm_user_group'
+				'ext_contact_mm_person_role'
 			);
-			$where	= ' ext_project_task.id_user_assigned = ext_user_mm_user_group.id_user AND
-						ext_user_mm_user_group.id_group IN(' . implode(',', $groupIDs) . ')';
+			$where	= ' ext_project_task.id_user_assigned = ext_contact_mm_person_role.id_user AND
+						ext_contact_mm_person_role.id_group IN(' . implode(',', $groupIDs) . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,

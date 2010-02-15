@@ -70,7 +70,7 @@ class TodoyuProjectSearch implements TodoyuSearchEngineIf {
 						p.status,
 						c.title company';
 			$table	= '	ext_project_project p,
-						ext_user_company c';
+						ext_contact_company c';
 			$where	= '	p.id IN(' . implode(',', $projectIDs) . ') AND
 						p.id_company	= c.id';
 			$order	= '	p.date_create DESC';

@@ -103,11 +103,11 @@ class TodoyuPanelWidgetProjectTree extends TodoyuPanelWidget implements TodoyuPa
 		$projectFilter	= new TodoyuProjectFilter($this->activeFilters);
 
 			// Add extra table to search in and order by
-		$projectFilter->addExtraTable('ext_user_company');
-		$projectFilter->addExtraWhere('ext_project_project.id_company = ext_user_company.id');
+		$projectFilter->addExtraTable('ext_contact_company');
+		$projectFilter->addExtraWhere('ext_project_project.id_company = ext_contact_company.id');
 
 			// Define output config
-		$order		= 'ext_user_company.shortname, ext_project_project.title';
+		$order		= 'ext_contact_company.shortname, ext_project_project.title';
 		$limit		= 20;
 
 			// Get matching project IDs

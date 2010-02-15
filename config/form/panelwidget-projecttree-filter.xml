@@ -33,7 +33,7 @@
 							<controller>panelwidgetprojecttree</controller>
 							<action>autocompleteuser</action>
 						</acListener>
-						<acLabelFunc>TodoyuUserManager::getLabel</acLabelFunc>
+						<acLabelFunc>TodoyuPersonManager::getLabel</acLabelFunc>
 						<options>
 							<onCompleteCustom>Todoyu.Ext.project.Edit.onProjectleaderAutocomplete</onCompleteCustom>
 						</options>
