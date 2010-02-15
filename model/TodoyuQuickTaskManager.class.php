@@ -64,8 +64,8 @@ class TodoyuQuickTaskManager {
 			// Prepare data to save task
 		$data['id']					= $idTask;
 		$data['status']				= STATUS_OPEN;
-		$data['id_user_assigned']	= TodoyuAuth::getUserID();
-		$data['id_user_owner']		= TodoyuAuth::getUserID();
+		$data['id_user_assigned']	= TodoyuAuth::getPersonID();
+		$data['id_user_owner']		= TodoyuAuth::getPersonID();
 		$data['date_start']			= NOW;
 		$data['date_end']			= NOW + TodoyuTime::SECONDS_WEEK;
 		$data['date_deadline']		= NOW + TodoyuTime::SECONDS_WEEK;

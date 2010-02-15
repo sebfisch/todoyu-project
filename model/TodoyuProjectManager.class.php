@@ -70,7 +70,7 @@ class TodoyuProjectManager {
 	 * @return	Integer		New project id
 	 */
 	public static function addProject(array $data) {
-		$data['id_user_create']	= userid();
+		$data['id_user_create']	= personid();
 		$data['date_create']	= NOW;
 		$data['date_update']	= NOW;
 
@@ -864,7 +864,7 @@ class TodoyuProjectManager {
 			'id'			=> 0,
 			'date_create'	=> NOW,
 			'date_update'	=> NOW,
-			'id_user_create'=> TodoyuAuth::getUserID(),
+			'id_user_create'=> TodoyuAuth::getPersonID(),
 			'deleted'		=> 0,
 			'title'			=> TodoyuLanguage::getLabel('project.newproject.title'),
 			'description'	=> '',

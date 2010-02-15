@@ -98,7 +98,7 @@ class TodoyuWorktypeManager {
 	public static function addWorktype(array $data = array()) {
 		unset($data['id']);
 
-		$data['id_user_create']	= userid();
+		$data['id_user_create']	= personid();
 		$data['date_create']	= NOW;
 
 		return Todoyu::db()->addRecord(self::TABLE, $data);

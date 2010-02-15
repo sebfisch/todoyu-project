@@ -136,7 +136,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_currentUserIsOwner($value, $negate = false) {
-		$idUser		= userid();
+		$idUser		= personid();
 
 		return self::Filter_ownerUser($idUser, $negate);
 	}
@@ -375,7 +375,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_currentUserIsUserCreate($value, $negate = false) {
-		$idUser	= userid();
+		$idUser	= personid();
 
 		return self::Filter_creatorUser($idUser, $negate);
 	}
@@ -484,7 +484,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_currentUserIsAssigned($value = '', $negate = false) {
-		$idUser		= userid();
+		$idUser		= personid();
 
 		$queryParts	= self::Filter_assignedUser($idUser, $negate);
 
@@ -605,7 +605,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_currentUserHasAcknowledged($value, $negate) {
-		$idUser		= TodoyuAuth::getUserID();
+		$idUser		= TodoyuAuth::getPersonID();
 		$queryParts	= self::filter_acknowledged($idUser, $negate);
 
 		return $queryParts;

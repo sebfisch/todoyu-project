@@ -86,7 +86,7 @@ class TodoyuUserroleManager {
 	 * Get user role
 	 *
 	 * @param	Integer			$idUserrole		Userrole ID
-	 * @return	TodoyuUserrole
+	 * @return	TodoyuRole
 	 */
 	public static function getUserrole($idUserrole) {
 		$idUserrole	= intval($idUserrole);
@@ -145,7 +145,7 @@ class TodoyuUserroleManager {
 		unset($data['id']);
 
 		$data['date_create']	= NOW;
-		$data['id_user_create']	= userid();
+		$data['id_user_create']	= personid();
 
 		return Todoyu::db()->addRecord(self::TABLE, $data);
 	}

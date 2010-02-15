@@ -192,7 +192,7 @@ class TodoyuTaskManager {
 		unset($data['id']);
 		$data['date_create']	= NOW;
 		$data['date_update']	= NOW;
-		$data['id_user_create']	= TodoyuAuth::getUserID();
+		$data['id_user_create']	= TodoyuAuth::getPersonID();
 
 			// Create task number
 		$idProject	= intval($data['id_project']);
@@ -296,7 +296,7 @@ class TodoyuTaskManager {
 	 */
 	public static function addContainer(array $data) {
 		$data['type']				= TASK_TYPE_CONTAINER;
-//		$data['id_user_assigned']	= userid();
+//		$data['id_user_assigned']	= personid();
 
 		return self::addTask($data);
 	}
@@ -1180,7 +1180,7 @@ class TodoyuTaskManager {
 		}
 
 			// Get data
-		$idUser		= TodoyuAuth::getUserID();
+		$idUser		= TodoyuAuth::getPersonID();
 		$taskNumber	= TodoyuProjectManager::getNextTaskNumber($idProject);
 
 			// Calculate dates based on project and container parents
