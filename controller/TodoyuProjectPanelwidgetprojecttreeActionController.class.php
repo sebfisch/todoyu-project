@@ -94,7 +94,7 @@ class TodoyuProjectPanelwidgetProjecttreeActionController extends TodoyuActionCo
 	 * @return	String
 	 */
 	public function autocompleteUserAction(array $params)	{
-		$results = TodoyuUserFilterDataSource::autocompleteUsers($params['sword']);
+		$results = TodoyuPersonFilterDataSource::autocompleteUsers($params['sword']);
 		return TodoyuRenderer::renderAutocompleteList($results);
 	}
 }

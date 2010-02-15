@@ -112,7 +112,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 */
 	public function autocompleteCompanyAction(array $params) {
 		$sword	= $params['sword'];
-		$results = TodoyuUserFilterDataSource::autocompleteCompanies($sword);
+		$results = TodoyuPersonFilterDataSource::autocompleteCompanies($sword);
 
 		return TodoyuRenderer::renderAutocompleteList($results);
 	}

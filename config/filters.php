@@ -69,9 +69,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'textinput',
 			'wConf' => array(
 				'autocomplete'	=> true,
-				'FuncRef'		=> 'TodoyuUserFilterDataSource::autocompleteUsers',
+				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompleteUsers',
 				'FuncParams'	=> array(),
-				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel',
+				'LabelFuncRef'	=> 'TodoyuPersonFilterDataSource::getLabel',
 				'negation'	=> 'default'
 			)
 		),
@@ -94,9 +94,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'textinput',
 			'wConf' => array(
 				'autocomplete'	=> true,
-				'FuncRef'		=> 'TodoyuUserFilterDataSource::autocompleteUsers',
+				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompleteUsers',
 				'FuncParams'	=> array(),
-				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel',
+				'LabelFuncRef'	=> 'TodoyuPersonFilterDataSource::getLabel',
 				'negation'	=> 'default'
 			)
 		),
@@ -119,9 +119,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'textinput',
 			'wConf' => array(
 				'autocomplete'	=> true,
-				'FuncRef'		=> 'TodoyuUserFilterDataSource::autocompleteUsers',
+				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompleteUsers',
 				'FuncParams'	=> array(),
-				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel',
+				'LabelFuncRef'	=> 'TodoyuPersonFilterDataSource::getLabel',
 				'negation'	=> 'default'
 			)
 		),
@@ -144,9 +144,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'textinput',
 			'wConf' => array(
 				'autocomplete'	=> true,
-				'FuncRef'		=> 'TodoyuUserFilterDataSource::autocompleteUsers',
+				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompleteUsers',
 				'FuncParams'	=> array(),
-				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getLabel',
+				'LabelFuncRef'	=> 'TodoyuPersonFilterDataSource::getLabel',
 				'negation'	=> 'default'
 			)
 		),
@@ -346,7 +346,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'projectrole',
 			'wConf' => array(
 				'autocomplete'	=> true,
-				'FuncRef'		=> 'TodoyuUserFilterDataSource::autocompleteUsers',
+				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompleteUsers',
 				'multiple'		=> true,
 			    'size'			=> 5,
 				'negation'		=> 'default'
@@ -430,9 +430,9 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 			'widget'	=> 'textinput',
 			'wConf' => array(
 				'autocomplete'	=> true,
-				'FuncRef'		=> 'TodoyuUserFilterDataSource::autocompleteCompanies',
+				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompleteCompanies',
 				'FuncParams'	=> array(),
-				'LabelFuncRef'	=> 'TodoyuUserFilterDataSource::getCompanyLabel',
+				'LabelFuncRef'	=> 'TodoyuPersonFilterDataSource::getCompanyLabel',
 				'negation'	=> 'default'
 			)
 		),
@@ -443,7 +443,7 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 			'widget'	=> 'projectrole',
 			'wConf' => array(
 				'autocomplete'	=> true,
-				'FuncRef'		=> 'TodoyuUserFilterDataSource::autocompleteUsers',
+				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompleteUsers',
 				'multiple'		=> true,
 			    'size'			=> 5,
 				'negation'		=> 'default'
