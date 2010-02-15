@@ -40,7 +40,7 @@
 		<label index="projectrole.projectsupervisor">Project-Supervisor</label>
 		<label index="search.label">Projects</label>
 		<label index="search.mode.label">Search Projects</label>
-		<label index="create.label">Project</label>
+		<label index="create.label">New Project</label>
 		<label index="attr.company">Customer</label>
 		<label index="attr.id">Project ID</label>
 		<label index="attr.status">Project Status</label>
@@ -114,7 +114,7 @@
 		<label index="projectrole.projectsupervisor">Projekt-Supervisor</label>
 		<label index="search.label">Projekte</label>
 		<label index="search.mode.label">Projekte suchen</label>
-		<label index="create.label">Projekt</label>
+		<label index="create.label">Neues Projekt</label>
 		<label index="attr.company">Kunde</label>
 		<label index="attr.id">Projekt ID</label>
 		<label index="attr.status">Projekt Status</label>

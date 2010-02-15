@@ -40,8 +40,8 @@ TodoyuLanguage::register('panelwidget-statusfilter', PATH_EXT_PROJECT . '/locale
 TodoyuLanguage::register('panelwidget-quickproject', PATH_EXT_PROJECT . '/locale/panelwidget-quickproject.xml');
 
 	// Add quick creation types
-TodoyuCreateManager::addEngine('project', 'project.create.label', 10);
-TodoyuCreateManager::addEngine('task', 'task.create.label', 20);
+TodoyuQuickCreateManager::addEngine('project', 'project.create.label', 10);
+TodoyuQuickCreateManager::addEngine('task', 'task.create.label', 20);
 
 
 	// Request configurations
