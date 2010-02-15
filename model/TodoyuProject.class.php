@@ -167,14 +167,14 @@ class TodoyuProject extends TodoyuBaseObject {
 
 
 	/**
-	 * loads data from ext_project_mm_project_user and injects them to the project data array
+	 * loads data from ext_project_mm_project_person and injects them to the project data array
 	 *
 	 * @return	Array
 	 */
 	private function loadProjectUserRecords()	{
 		$idProject = intval($this->get('id'));
 
-		$table	= 'ext_project_mm_project_user';
+		$table	= 'ext_project_mm_project_person';
 		$fields = '*';
 		$where	= 'id_project = ' . $idProject;
 

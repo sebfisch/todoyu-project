@@ -254,7 +254,7 @@ class TodoyuProjectRenderer {
 		$idProject	= intval($idProject);
 		$tmpl		= 'ext/project/view/project-assignedusers.tmpl';
 		$data		= array(
-			'users'	=> TodoyuProjectManager::getProjectUsers($idProject)
+			'users'	=> TodoyuProjectManager::getProjectPersons($idProject)
 		);
 
 		return render($tmpl, $data);

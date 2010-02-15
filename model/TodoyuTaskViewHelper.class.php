@@ -33,17 +33,17 @@ class TodoyuTaskViewHelper {
 	 * @param	TodoyuFormElement $field
 	 * @return	Array
 	 */
-	public static function getTaskUsersOptions(TodoyuFormElement $field) {
+	public static function getTaskPersonOptions(TodoyuFormElement $field) {
 		$formData	= $field->getForm()->getFormData();
 		$idTask		= intval($formData['id']);
 
 		$options	= array();
+		$persons	= TodoyuTaskManager::getTaskPersons($idTask);
 
-		$users	= TodoyuTaskManager::getTaskUsers($idTask);
-		foreach($users as $user) {
+		foreach($persons as $person) {
 			$options[] = array(
-				'value'	=> $user['id'],
-				'label'	=> TodoyuPersonManager::getLabel($user['id'], false, true)
+				'value'	=> $person['id'],
+				'label'	=> TodoyuPersonManager::getLabel($person['id'], false, true)
 			);
 		}
 
@@ -59,7 +59,7 @@ class TodoyuTaskViewHelper {
 	 * @return	Array
 	 */
 	public static function getTaskOwnerUserOptions(TodoyuFormElement $field) {
-		return self::getUserAssignedGroupedOptions($field);
+		return self::getPersonAssignedGroupedOptions($field);
 	}
 
 
@@ -70,16 +70,16 @@ class TodoyuTaskViewHelper {
 	 * @param	Array		$formData
 	 * @return	Array
 	 */
-	public static function getUserAssignedGroupedOptions(TodoyuFormElement $field) {
+	public static function getPersonAssignedGroupedOptions(TodoyuFormElement $field) {
 		$options	= array();
 
 			// TaskMember users
 		$groupLabel	= Label('comment.group.taskmembers');
-		$options[$groupLabel]	= self::getTaskUsersOptions($field);
+		$options[$groupLabel]	= self::getTaskPersonOptions($field);
 
 			// Get project users
 		$groupLabel	= Label('comment.group.projectmembers');
-		$options[$groupLabel]	= TodoyuProjectViewHelper::getProjectUsersOptions($field);
+		$options[$groupLabel]	= TodoyuProjectViewHelper::getProjectPersonOptions($field);
 
 			// Get staff users (employees of internal company)
 		$groupLabel	= Label('comment.group.employees');

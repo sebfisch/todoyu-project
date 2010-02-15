@@ -184,13 +184,13 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 ////							ext_project_project.id
 ////						FROM
 ////							ext_project_project,
-////							ext_project_mm_project_user,
-////							ext_project_userrole
+////							ext_project_mm_project_person,
+////							ext_project_role
 ////						WHERE
-////							ext_project_project.id 					= ext_project_mm_project_user.id_project AND
-////							ext_project_mm_project_user.id_user		= ' . $idProjectleader . ' AND
-////							ext_project_mm_project_user.id_userrole	= ext_project_userrole.id AND
-////							ext_project_userrole.rolekey			= \'projectleader\'
+////							ext_project_project.id 					= ext_project_mm_project_person.id_project AND
+////							ext_project_mm_project_person.id_person		= ' . $idProjectleader . ' AND
+////							ext_project_mm_project_person.id_personrole	= ext_project_role.id AND
+////							ext_project_role.rolekey			= \'projectleader\'
 ////					)';
 ////
 ////		return array(
@@ -223,13 +223,13 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 							ext_project_project.id
 						FROM
 							ext_project_project,
-							ext_project_mm_project_user,
-							ext_project_userrole
+							ext_project_mm_project_person,
+							ext_project_role
 						WHERE
-							ext_project_project.id 					= ext_project_mm_project_user.id_project AND
-							ext_project_mm_project_user.id_user		= ' . $idProjectleader . ' AND
-							ext_project_mm_project_user.id_userrole	= ext_project_userrole.id AND
-							ext_project_userrole.rolekey			= \'projectleader\'
+							ext_project_project.id 					= ext_project_mm_project_person.id_project AND
+							ext_project_mm_project_person.id_person	= ' . $idProjectleader . ' AND
+							ext_project_mm_project_person.id_role	= ext_project_role.id AND
+							ext_project_role.rolekey				= \'projectleader\'
 					)';
 
 		return array(
@@ -238,39 +238,6 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 		);
 	}
 
-
-
-	/**
-	 * Filter projects by project supervisor
-	 *
-	 * @param	Integer	$idProjectsupervisor
-	 * @param	Boolean	$negate
-	 * @return	Array
-	 */
-	public static function Filter_projectsupervisor($idProjectsupervisor, $negate = false) {
-		$idProjectsupervisor	= intval($idProjectsupervisor);
-
-		if( $idProjectsupervisor === 0 ) {
-			return false;
-		}
-
-		$compare	= $negate ? 'NOT IN' : 'IN' ;
-
-		$tables	= array('ext_project_project');
-		$where	= '	ext_project_project.id ' . $compare . '
-					(SELECT ext_project_project.id
-					 FROM ext_project_project,ext_project_mm_project_user,ext_project_userrole
-					 WHERE	ext_project_project.id	= ext_project_mm_project_user.id_project
-					 AND	ext_project_mm_project_user.id_user	= ' . $idProjectsupervisor . '
-					 AND	ext_project_mm_project_user.id_userrole	= ext_project_userrole.id
-					 AND	ext_project_userrole.rolekey = \'projectsupervisor\'
-					)';
-
-		return array(
-			'tables'=> $tables,
-			'where'	=> $where
-		);
-	}
 
 
 
@@ -305,21 +272,21 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @return	Array
 	 */
 	public static function Filter_projectrole($value, $negate = false) {
-		$parts	= explode(':', $value);
-		$idUser	= intval($parts[0]);
-		$roles	= TodoyuArray::intExplode(',', $parts[1]);
+		$parts		= explode(':', $value);
+		$idPerson	= intval($parts[0]);
+		$roles		= TodoyuArray::intExplode(',', $parts[1]);
 
 		$queryParts	= false;
 
-		if( $idUser !== 0 && sizeof($roles) > 0 ) {
+		if( $idPerson !== 0 && sizeof($roles) > 0 ) {
 			$tables	= array(
 				'ext_project_project',
-				'ext_project_mm_project_user'
+				'ext_project_mm_project_person'
 			);
 			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= '	ext_project_project.id				= ext_project_mm_project_user.id_project AND
-						ext_project_mm_project_user.id_user	= ' . $idUser . ' AND
-						ext_project_mm_project_user.id_userrole ' . $compare . '(' . implode(',', $roles) . ')';
+			$where	= '	ext_project_project.id				= ext_project_mm_project_person.id_project AND
+						ext_project_mm_project_person.id_person	= ' . $idPerson . ' AND
+						ext_project_mm_project_person.id_role ' . $compare . '(' . implode(',', $roles) . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,

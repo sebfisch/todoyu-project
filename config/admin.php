@@ -27,7 +27,7 @@ TodoyuExtManager::addRecordConfig('project', 'userrole', array(
 	'save'	=> 'TodoyuUserroleManager::saveUserrole',
 	'delete'=> 'TodoyuUserroleManager::deleteUserrole',
 	'object'=> 'TodoyuUserrole',
-	'table'	=> 'ext_project_userrole'
+	'table'	=> 'ext_project_role'
 ));
 
 TodoyuExtManager::addRecordConfig('project', 'worktype', array(

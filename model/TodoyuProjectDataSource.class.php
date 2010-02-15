@@ -37,7 +37,7 @@ class TodoyuProjectDataSource {
 		$roles	= array();
 
 		$fields	= '*';
-		$table	= 'ext_project_userrole';
+		$table	= 'ext_project_role';
 		$where	= 'deleted = 0';
 
 		$result = Todoyu::db()->doSelect($fields, $table, $where);

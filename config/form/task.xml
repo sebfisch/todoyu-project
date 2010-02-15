@@ -77,16 +77,16 @@
 						<lazyInit />
 					</source>
 				</field>
- 
- 				<field type="selectgrouped" name="id_user_assigned">
+
+ 				<field type="selectgrouped" name="id_person_assigned">
 					<label>task.attr.user_assigned</label>
 					<source type="function">
-						<function>TodoyuTaskViewHelper::getUserAssignedGroupedOptions</function>
+						<function>TodoyuTaskViewHelper::getPersonAssignedGroupedOptions</function>
 						<lazyInit/>
 					</source>
 				</field>
- 
-				<field type="selectgrouped" name="id_user_owner">
+
+				<field type="selectgrouped" name="id_person_owner">
 					<label>task.attr.user_owner</label>
 					<source type="function">
 						<function>TodoyuTaskViewHelper::getTaskOwnerUserOptions</function>

@@ -192,7 +192,7 @@ class TodoyuTaskManager {
 		unset($data['id']);
 		$data['date_create']	= NOW;
 		$data['date_update']	= NOW;
-		$data['id_user_create']	= TodoyuAuth::getPersonID();
+		$data['id_person_create']	= TodoyuAuth::getPersonID();
 
 			// Create task number
 		$idProject	= intval($data['id_project']);
@@ -296,7 +296,7 @@ class TodoyuTaskManager {
 	 */
 	public static function addContainer(array $data) {
 		$data['type']				= TASK_TYPE_CONTAINER;
-//		$data['id_user_assigned']	= personid();
+//		$data['id_person_assigned']	= personid();
 
 		return self::addTask($data);
 	}
@@ -695,18 +695,20 @@ class TodoyuTaskManager {
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function getTaskUsers($idTask) {
+	public static function getTaskPersons($idTask) {
 		$idTask	= intval($idTask);
 
-		$fields	= ' u.*';
-		$tables	= ' ext_contact_person u,
+		$fields	= ' p.*';
+		$tables	= ' ext_contact_person p,
 					ext_project_task t';
 		$where	= '	t.id				= ' . $idTask . ' AND
-					(t.id_user_create	= u.id OR
-					t.id_user_assigned	= u.id OR
-					t.id_user_owner		= u.id)';
-		$group	= 'u.id';
-		$order	= 'u.lastname, u.firstname';
+					(
+						t.id_person_create	= p.id OR
+						t.id_person_assigned= p.id OR
+						t.id_person_owner	= p.id
+					)';
+		$group	= 'p.id';
+		$order	= 'p.lastname, p.firstname';
 
 		return Todoyu::db()->getArray($fields, $tables, $where, $group, $order);
 	}
@@ -725,7 +727,7 @@ class TodoyuTaskManager {
 		$tables	= ' ext_project_task t,
 					ext_contact_person u';
 		$where	= '	t.id		= ' . $idTask . ' AND
-					u.id		= t.id_user_owner';
+					u.id		= t.id_person_owner';
 		$group	= '';
 		$order	= '';
 
@@ -1100,7 +1102,7 @@ class TodoyuTaskManager {
 	 * @param	Integer		$timesStart
 	 * @param	Intger		$timeEnd
 	 * @param	Array		$statusIDs
-	 * @param	Array		$userIDs		(id_user_assigned)
+	 * @param	Array		$userIDs		(id_person_assigned)
 	 * @param	String		$limit
 	 * @param	Boolean		$getContainers
 	 * @return	Array
@@ -1125,7 +1127,7 @@ class TodoyuTaskManager {
 
 			// Add user IDs
 		if( sizeof($userIDs) ) {
-			$where .= ' AND id_user_assigned IN(' . implode(',', $userIDs) . ')';
+			$where .= ' AND id_person_assigned IN(' . implode(',', $userIDs) . ')';
 		}
 
 		$order	= 'date_start';
@@ -1197,7 +1199,7 @@ class TodoyuTaskManager {
 			'estimated_workload'=> intval($GLOBALS['CONFIG']['EXT']['project']['Task']['defaultEstimatedWorkload']),
 			'id_project'		=> $idProject,
 			'id_parenttask'		=> $idParentTask,
-			'id_user_owner'		=> $idUser,
+			'id_person_owner'		=> $idUser,
 			'type'				=> $type,
 			'class'				=> ''
 		);
@@ -1524,8 +1526,8 @@ class TodoyuTaskManager {
 			$form->getField('date_start')->remove();
 			$form->getField('date_end')->remove();
 			$form->getField('date_deadline')->remove();
-			$form->getField('id_user_assigned')->remove();
-//			$form->getField('id_user_owner')->remove();
+			$form->getField('id_person_assigned')->remove();
+//			$form->getField('id_person_owner')->remove();
 			$form->getField('status')->remove();
 
 				// Remove

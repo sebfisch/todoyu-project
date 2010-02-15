@@ -12,7 +12,7 @@
 			<legend>Top</legend>
 			<class>top</class>
 			<elements>
-				<field type="textinputAC" name="id_user">
+				<field type="textinputAC" name="id_person">
 					<label>user.customer.attr.customer-user.person</label>
 					<config>
 						<acListener>
@@ -36,7 +36,7 @@
 					</wizard>
 					<required>1</required>
 				</field>
-				<field type="select" name="id_userrole">
+				<field type="select" name="id_personrole">
 					<label>project.user.role</label>
 					<source type="function">
 						<function>TodoyuProjectDataSource::getProjectUserRoleOptions</function>

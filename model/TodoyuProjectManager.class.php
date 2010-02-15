@@ -70,7 +70,7 @@ class TodoyuProjectManager {
 	 * @return	Integer		New project id
 	 */
 	public static function addProject(array $data) {
-		$data['id_user_create']	= personid();
+		$data['id_person_create']	= personid();
 		$data['date_create']	= NOW;
 		$data['date_update']	= NOW;
 
@@ -655,32 +655,32 @@ class TodoyuProjectManager {
 	 * @param	Integer		$idProject
 	 * @return	Array
 	 */
-	public static function getProjectUsers($idProject) {
+	public static function getProjectPersons($idProject) {
 		$idProject	= intval($idProject);
 
-			// Get project users
-		$fields	= '	u.*,
-					ur.id as id_userrole,
-					ur.rolekey as rolekey,
-					ur.title as rolelabel,
-					mmpu.comment';
-		$table	= '	ext_contact_person u,
-					ext_project_userrole ur,
-					ext_project_mm_project_user mmpu';
-		$where	= '	mmpu.id_user	= u.id AND
-					mmpu.id_project	= ' . $idProject . ' AND
-					mmpu.id_userrole= ur.id AND
-					u.deleted		= 0 AND
-					u.active		= 1';
-		$group	= '	mmpu.id';
-		$order	= '	u.lastname,
-					u.firstname';
+			// Get project persons
+		$fields	= '	p.*,
+					pr.id as id_personrole,
+					pr.rolekey as rolekey,
+					pr.title as rolelabel,
+					mmpp.comment';
+		$table	= '	ext_contact_person p,
+					ext_project_role pr,
+					ext_project_mm_project_person mmpp';
+		$where	= '	mmpp.id_person	= p.id AND
+					mmpp.id_project	= ' . $idProject . ' AND
+					mmpp.id_role	= pr.id AND
+					p.deleted		= 0 AND
+					p.active		= 1';
+		$group	= '	mmpp.id';
+		$order	= '	p.lastname,
+					p.firstname';
 
 		$users	= Todoyu::db()->getArray($fields, $table, $where, $group, $order);
 
 			// Get company information
 		foreach($users as $index => $user) {
-			$users[$index]['company'] = TodoyuPersonManager::getUserCompanyRecords($user['id']);
+			$users[$index]['company'] = TodoyuPersonManager::getPersonCompanyRecords($user['id']);
 		}
 
 		return $users;
@@ -699,18 +699,18 @@ class TodoyuProjectManager {
 		$idUser		= intval($idUser);
 		$idProject	= intval($idProject);
 
-		$fields	= '	u.*,
-					ur.id as id_userrole,
-					ur.rolekey as rolekey,
-					ur.title as rolelabel,
-					mmpu.comment';
-		$table	= '	ext_contact_person u,
-					ext_project_userrole ur,
-					ext_project_mm_project_user mmpu';
-		$where	= '	mmpu.id_user	= u.id AND
-					mmpu.id_project	= ' . $idProject . ' AND
-					mmpu.id_userrole= ur.id AND
-					u.id= ' . $idUser;
+		$fields	= '	p.*,
+					pr.id as id_personrole,
+					pr.rolekey as rolekey,
+					pr.title as rolelabel,
+					mmpp.comment';
+		$table	= '	ext_contact_person p,
+					ext_project_role pr,
+					ext_project_mm_project_person mmpp';
+		$where	= '	mmpp.id_person		= p.id AND
+					mmpp.id_project		= ' . $idProject . ' AND
+					mmpp.id_role		= pr.id AND
+					p.id				= ' . $idUser;
 		$group	= '';
 		$order	= '';
 
@@ -730,7 +730,7 @@ class TodoyuProjectManager {
 	public static function removeAllProjectUsers($idProject) {
 		$idProject	= intval($idProject);
 
-		$table	= 'ext_project_mm_project_user';
+		$table	= 'ext_project_mm_project_person';
 		$where	= '	id_project	= ' . $idProject;
 
 		return Todoyu::db()->doDelete($table, $where);
@@ -749,9 +749,9 @@ class TodoyuProjectManager {
 		$idProject	= intval($idProject);
 		$idUser		= intval($idUser);
 
-		$table	= 'ext_project_mm_project_user';
+		$table	= 'ext_project_mm_project_person';
 		$where	= '	id_project	= ' . $idProject . ' AND
-					id_user		= ' . $idUser;
+					id_person		= ' . $idUser;
 
 		return Todoyu::db()->doDelete($table, $where) !== 0;
 	}
@@ -767,16 +767,16 @@ class TodoyuProjectManager {
 	 * @param	String		$comment
 	 * @return	Integer		ID of new user record
 	 */
-	public static function addProjectUser($idProject, $idUser, $idUserrole, $comment = '') {
+	public static function addProjectUser($idProject, $idPerson, $idRole, $comment = '') {
 		$idProject	= intval($idProject);
-		$idUser		= intval($idUser);
-		$idUserrole	= intval($idUserrole);
+		$idPerson	= intval($idPerson);
+		$idRole		= intval($idRole);
 
-		$table	= 'ext_project_mm_project_user';
+		$table	= 'ext_project_mm_project_person';
 		$fields	= array(
 			'id_project'	=> $idProject,
-			'id_user'		=> $idUser,
-			'id_userrole'	=> $idUserrole,
+			'id_person'		=> $idPerson,
+			'id_role'		=> $idRole,
 			'comment'		=> $comment
 		);
 
@@ -797,7 +797,7 @@ class TodoyuProjectManager {
 		self::removeAllProjectUsers($idProject);
 
 		foreach($projectUserData as $projectUser) {
-			self::addProjectUser($idProject, $projectUser['id_user'], $projectUser['id_userrole'], $projectUser['comment']);
+			self::addProjectUser($idProject, $projectUser['id_person'], $projectUser['id_role'], $projectUser['comment']);
 		}
 	}
 
@@ -820,7 +820,7 @@ class TodoyuProjectManager {
 
 		if( is_array($projectUsers) ) {
 			foreach($projectUsers as $projectUser) {
-				$relationIDs[] = self::addProjectUser($idProject, $projectUser['id_user'], $projectUser['id_userrole'], $projectUser['comment']);
+				$relationIDs[] = self::addProjectUser($idProject, $projectUser['id_person'], $projectUser['id_role'], $projectUser['comment']);
 			}
 		}
 
@@ -864,7 +864,7 @@ class TodoyuProjectManager {
 			'id'			=> 0,
 			'date_create'	=> NOW,
 			'date_update'	=> NOW,
-			'id_user_create'=> TodoyuAuth::getPersonID(),
+			'id_person_create'=> TodoyuAuth::getPersonID(),
 			'deleted'		=> 0,
 			'title'			=> TodoyuLanguage::getLabel('project.newproject.title'),
 			'description'	=> '',

@@ -37,7 +37,7 @@ class TodoyuUserrole extends TodoyuBaseObject {
 	public function __construct($idUserrole) {
 		$idUserrole	= intval($idUserrole);
 
-		parent::__construct($idUserrole, 'ext_project_userrole');
+		parent::__construct($idUserrole, 'ext_project_role');
 	}
 
 

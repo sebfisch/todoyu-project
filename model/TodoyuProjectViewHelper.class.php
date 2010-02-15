@@ -35,17 +35,17 @@ class TodoyuProjectViewHelper {
 	 * @param	TodoyuFormElement	$formElement
 	 * @return	Array
 	 */
-	public static function getProjectUsersOptions(TodoyuFormElement $formElement) {
+	public static function getProjectPersonOptions(TodoyuFormElement $formElement) {
 		$formData	= $formElement->getForm()->getFormData();
 		$idProject	= intval($formData['id_project']);
 
-		$users	= TodoyuProjectManager::getProjectUsers($idProject);
+		$persons= TodoyuProjectManager::getProjectPersons($idProject);
 		$options= array();
 
-		foreach($users as $user) {
+		foreach($persons as $person) {
 			$options[] = array(
-				'value'	=> $user['id'],
-				'label'	=> TodoyuPersonManager::getLabel($user['id'])
+				'value'	=> $person['id'],
+				'label'	=> TodoyuPersonManager::getLabel($person['id'])
 			);
 		}
 
@@ -62,14 +62,14 @@ class TodoyuProjectViewHelper {
 	 * @return	String			Record label
 	 */
 	public static function getProjectUserLabel(TodoyuFormElement $formElement, array $data) {
-		$idUser		= intval($data['id_user']);
+		$idPerson	= intval($data['id_person']);
 		$idProject	= intval($data['id_project']);
-		$idUserrole	= intval($data['id_userrole']);
+		$idRole		= intval($data['id_role']);
 
 		$label		= '';
 
-		if( $idUser	!== 0 ) {
-			$label	= TodoyuUserroleManager::getUserLabel($idUser, $idProject, $idUserrole);
+		if( $idRole	!== 0 ) {
+			$label	= TodoyuUserroleManager::getUserLabel($idPerson, $idProject, $idRole);
 		}
 
 		return $label;

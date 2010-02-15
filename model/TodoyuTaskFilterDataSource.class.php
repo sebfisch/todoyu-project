@@ -119,7 +119,7 @@ class TodoyuTaskFilterDataSource {
 	 */
 	public static function getUsergroupOptions(array $definitions) {
 		$options	= array();
-		$groups		= TodoyuRoleManager::getAllUsergroups();
+		$groups		= TodoyuRoleManager::getAllRoles();
 		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
 
 		foreach($groups as $group) {

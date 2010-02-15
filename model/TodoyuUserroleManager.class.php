@@ -32,7 +32,7 @@ class TodoyuUserroleManager {
 	 * Managed table
 	 *
 	 */
-	const TABLE = 'ext_project_userrole';
+	const TABLE = 'ext_project_role';
 
 
 
@@ -145,7 +145,7 @@ class TodoyuUserroleManager {
 		unset($data['id']);
 
 		$data['date_create']	= NOW;
-		$data['id_user_create']	= personid();
+		$data['id_person_create']	= personid();
 
 		return Todoyu::db()->addRecord(self::TABLE, $data);
 	}
