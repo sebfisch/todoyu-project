@@ -2,8 +2,6 @@
 <form>
 	<attributes>
 		<attribute name="name">quicktask</attribute>
-		<attribute name="onsubmit">return false</attribute>
-		<attribute name="class">formQuicktask</attribute>
 	</attributes>
 
 	<fieldsets>

@@ -3,8 +3,6 @@
 	<attributes>
 		<attribute name="action">?ext=project&amp;controller=project</attribute>
 		<attribute name="name">project</attribute>
-		<attribute name="onsubmit">return false</attribute>
-		<attribute name="class">formProject</attribute>
 	</attributes>
 	<hiddenFields>
 		<field name="id" />
@@ -116,17 +114,17 @@
 			<elements>
 				<field type="databaseRelation" name="projectusers">
 					<label>project.attr.projectusers</label>
-					<foreignRecordConf>
-						<foreignformxml>ext/project/config/form/project-user.xml</foreignformxml>
-						<addSubformConfig>
+					<record>
+						<form>ext/project/config/form/project-user.xml</form>
+						<url>
 							<ext>project</ext>
 							<controller>projectform</controller>
-						</addSubformConfig>
+						</url>
 						<label type="function">
 							<function>TodoyuProjectViewHelper::getProjectUserLabel</function>
 							<noLabel>LLL:project.noLabel.newProjectParticipant</noLabel>
 						</label>
-					</foreignRecordConf>
+					</record>
 				</field>
 
 			</elements>

@@ -3,8 +3,6 @@
 	<attributes>
 		<attribute name="action">?ext=project&amp;controller=task</attribute>
 		<attribute name="name">task</attribute>
-		<attribute name="onsubmit">return false</attribute>
-		<attribute name="class">formTask</attribute>
 	</attributes>
 	<hiddenFields>
 		<field name="id" />
