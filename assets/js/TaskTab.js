@@ -26,6 +26,19 @@ Todoyu.Ext.project.Task.Tab = {
 	ext:	Todoyu.Ext.project,
 
 
+	/**
+	 * Handle onSelect event of tab: show affected tab which the event occured on
+	 *
+	 * @param	Object	event
+	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 */
+	onSelect: function(event, tabKey) {
+		var idParts	= event.findElement('li').id.split('-');
+
+		this.show(idParts[1], idParts[3]);
+	},
+
+
 
 	/**
 	 * Show given tab of given task
@@ -34,9 +47,9 @@ Todoyu.Ext.project.Task.Tab = {
 	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	show: function(idTask, tabKey, onComplete) {
-		var tabID = this.buildTabID(idTask, tabKey);
+		var tabContainer = this.buildTabID(idTask, tabKey);
 
-		if( ! Todoyu.exists(tabID) ) {
+		if( ! Todoyu.exists(tabContainer) ) {
 			this.createTabContainer(idTask, tabKey);
 			this.load(idTask, tabKey, onComplete);
 		} else {
@@ -73,7 +86,7 @@ Todoyu.Ext.project.Task.Tab = {
 
 	/**
 	 * Handler when tab is loaded
-	 * 
+	 *
 	 * @param	Integer		idTask
 	 * @param	String		tabKey
 	 * @param	Function	onComplete callback
@@ -82,12 +95,12 @@ Todoyu.Ext.project.Task.Tab = {
 		this.activate(idTask, tabKey);
 		Todoyu.callIfExists(onComplete, idTask, tabKey);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Check if a tab of a task is already loaded
-	 * 
+	 *
 	 * @param	Integer		idTask
 	 * @param	String		tabKey
 	 */
@@ -141,9 +154,9 @@ Todoyu.Ext.project.Task.Tab = {
 	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	activate: function(idTask, tabKey) {
-		this.hideAll(idTask);
-		this.setActiveHead(idTask, tabKey);
+		this.hideAll(idTask);		
 		this.setVisible(idTask, tabKey);
+		Todoyu.Tabs.setActive('task-' + idTask, tabKey);
 	},
 
 
@@ -175,30 +188,9 @@ Todoyu.Ext.project.Task.Tab = {
 	 * @param	Integer	idTask
 	 */
 	hideAll: function(idTask) {
-		var tabDiv	= this.getContainer(idTask);
-		var tabs	= tabDiv.select('.tab');
-
-		tabs.invoke('hide');
+		this.getContainer(idTask).select('.tab').invoke('hide');
 	},
 
-
-
-	/**
-	 * Set style of given tab of given task to active, deactivate the other tabs of that task
-	 *
-	 * @param	Integer	idTask
-	 * @param	String	activeTab	(tabKey, e.g 'timetracking' / 'comment' / 'assets')
-	 */
-	setActiveHead: function(idTask, activeTab) {
-		var tabHeadList	= $('task-' + idTask + '-tabheads');
-		var tabHeads	= tabHeadList.select('li');
-
-		tabHeads.each(function(tabHead) {
-			tabHead.removeClassName('active');
-		});
-
-		$(this.getHeadID(idTask, activeTab)).addClassName('active');
-	},
 
 
 
@@ -247,20 +239,6 @@ Todoyu.Ext.project.Task.Tab = {
 	 */
 	getKeyFromID: function(idItem) {
 		return idItem.split('-').last();
-	},
-
-
-
-	/**
-	 * Handle onSelect event of tab: show affected tab which the event occured on
-	 *
-	 * @param	Object	event
-	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
-	 */
-	onSelect: function(event, tabKey) {
-		var info = tabKey.split('-');
-
-		this.show(info[1], info[0]);
-	}	
+	}
 
 };

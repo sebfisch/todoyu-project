@@ -164,19 +164,18 @@ class TodoyuTaskRenderer {
 	 */
 	public static function renderTabHeads($idTask, $activeTab = '') {
 		$idTask		= intval($idTask);
-		$listID		= 'task-' . $idTask . '-tabheads';
-		$class		= 'tabs taskTabheads';
+		$name		= 'task-' . $idTask;
 		$jsHandler	= 'Todoyu.Ext.project.Task.Tab.onSelect.bind(Todoyu.Ext.project.Task.Tab)';
 		$tabs		= TodoyuTaskManager::getTabs($idTask);
 		$activeTab	= $activeTab === '' ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab;
 
 			// Add special fields for task tabs
 		foreach($tabs as $index => $tab) {
-			$tabs[$index]['htmlId'] 	= 'task-' . $idTask . '-tabhead-' . $tab['id'];
+			$tabs[$index]['htmlId'] 	= 'task-' . $idTask . '-tab-' . $tab['id'];
 			$tabs[$index]['classKey'] 	= $tab['id'] . '-' . $idTask;
 		}
 
-		return TodoyuTabheadRenderer::renderTabs($listID, $class, $jsHandler, $tabs, $activeTab);
+		return TodoyuTabheadRenderer::renderTabs($name, $tabs, $jsHandler, $activeTab, $class);
 	}
 
 

@@ -77,3 +77,17 @@ div.projectDetails fieldset.right {
 	float:right;
 	margin-bottom:25px;
 }
+
+
+
+/* --------------------------------------
+	Search tabs
+   ------------------------------------- */  
+#search-tab-task span.icon {
+	background:url(../img/icons.png) no-repeat 0px 6px;
+}
+
+#search-tab-project span.icon {
+	background:url(../img/icons.png) no-repeat 0 -350px;
+}
+

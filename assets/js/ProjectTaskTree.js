@@ -59,9 +59,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 *	@param	Integer		idProject
 	 *	@param	Integer		idTask
 	 */
-	openProject: function(idProject, idTask) {
-		idTask = Todoyu.Helper.intval(idTask);
-		
+	openProject: function(idProject, idTask) {		
 		if( this.isProjectLoaded(idProject) && (idTask === 0 || (idTask !== 0 && this.isTaskLoaded(idTask) ) ) ) {
 			this.displayActiveProject(idProject);
 			if( idTask !== 0 ) {
@@ -192,14 +190,10 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 *	@param	String	label
 	 */
 	addNewTabhead: function(idProject, label) {
-		if(typeof($('projecttab-'+idProject)) !== null)	{
-			var idTab	= 'projecttab-' + idProject;
-			var tabClass= 'tabkey-' + idProject + ' project' + idProject + ' projecttab item bcg05';
+		var tabClass= 'tabkey-' + idProject + ' project' + idProject + ' projecttab item bcg05';
+		var tab		= Todoyu.Tabs.build('project', idProject, tabClass, label, true);
 
-			var tab		= Todoyu.Tabs.build(idTab, tabClass, label, true);
-
-			$('project-tabs').insert({'top':tab});
-		}
+		$('project-tabs').insert({'top':tab});
 	},
 
 
@@ -214,7 +208,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		this.removeNoSelectionTab();
 			
 			// Get tab which will be in front
-		var tab = $('projecttab-' + idTab);
+		var tab = $('project-tab-' + idTab);
 			// Remove it from the DOM
 		tab.remove();
 
@@ -313,9 +307,11 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	displayActiveProject: function(idProject) {
 		$('projects').childElements().invoke('hide');
 		$('project-' + idProject).show();
+		
+		Todoyu.Tabs.setActive('project', idProject);
 
-		$('project-tabs').childElements().invoke('removeClassName', 'active');
-		$('projecttab-' + idProject).addClassName('active');
+		//$('project-tabs').childElements().invoke('removeClassName', 'active');
+		//$('projecttab-' + idProject).addClassName('active');
 
 		this.moveTabToFront(idProject);
 

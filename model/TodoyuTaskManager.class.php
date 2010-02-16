@@ -681,8 +681,8 @@ class TodoyuTaskManager {
 	public static function addTaskTab($idTab, $labelFunction, $contentFunction, $position = 100) {
 		$GLOBALS['CONFIG']['EXT']['project']['task']['tabs'][$idTab] = array(
 			'id'		=> $idTab,
-			'position'	=> intval($position),
 			'label'		=> $labelFunction,
+			'position'	=> intval($position),
 			'content'	=> $contentFunction
 		);
 	}

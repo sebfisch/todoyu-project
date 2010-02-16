@@ -633,13 +633,12 @@ class TodoyuProjectRenderer {
 	 * @return	String
 	 */
 	public static function renderProjectTabs() {
-		$listID		= 'project-tabs';
-		$class		= 'tabs';
+		$name		= 'project';
 		$jsHandler	= 'Todoyu.Ext.project.ProjectTaskTree.onTabSelect.bind(Todoyu.Ext.project.ProjectTaskTree)';
 		$tabs		= TodoyuProjectManager::getOpenProjectTabs();
 		$active		= TodoyuProjectManager::getActiveProjectID();
 
-		return TodoyuTabheadRenderer::renderTabs($listID, $class, $jsHandler, $tabs, $active);
+		return TodoyuTabheadRenderer::renderTabs($name, $tabs, $jsHandler, $active);
 	}
 
 
@@ -650,21 +649,17 @@ class TodoyuProjectRenderer {
 	 * @return	String
 	 */
 	public static function renderNoProjectSelectedTab() {
-		$listID		= 'project-tabs';
-		$class		= 'tabs';
+		$name		= 'project';
 		$jsHandler	= 'Prototype.emptyFunction';
 		$active		= 0;
 		$tabs		= array(
 			array(
 				'id'		=> 'noselection',
-				'htmlId'	=> 'projecttab-noselection',
-				'class'		=> 'projecttab',
-				'classKey'	=> 'noselection',
 				'label'		=> 'LLL:project.noproject.tab'
 			)
 		);
 
-		return TodoyuTabheadRenderer::renderTabs($listID, $class, $jsHandler, $tabs, $active);
+		return TodoyuTabheadRenderer::renderTabs($name, $tabs, $jsHandler, $active);
 	}
 
 }
