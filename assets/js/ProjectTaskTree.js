@@ -85,8 +85,9 @@ Todoyu.Ext.project.ProjectTaskTree = {
 			this.removeProjectTab(idProject);
 		}
 	},
-	
-	
+
+
+
 	removeProjectTab: function(idProject) {
 		var id	= 'projecttab-' + idProject;
 		
@@ -94,7 +95,9 @@ Todoyu.Ext.project.ProjectTaskTree = {
 			$(id).remove();
 		}
 	},
-	
+
+
+
 	/**
 	 * Check whether given project is loaded (the resp. project tab exists)
 	 *
@@ -104,9 +107,9 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	hasTab: function(idProject) {
 		return Todoyu.exists('projecttab-' + idProject);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Remove dummy tab which appears when no project is selected
 	 */
@@ -118,12 +121,6 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 
-	/**
-	 *
-	 *	@param	Integer		idProject
-	 *	@param	Integer		idTask
-	 */
-	
 	/**
 	 * Show a project as listtree
 	 * 
@@ -149,7 +146,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 *	OnProjectLoaded custom event handler
 	 *
-	 *	@param	unknown	response
+	 * @param	unknown		response
 	 */
 	onProjectLoaded: function(response) {
 		var idProject 	= response.getHeader('Todoyu-project');
@@ -173,8 +170,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Insert project tab content (task of project)
 	 *
-	 *	@param	Integer	idProject
-	 *	@param 	String	tabContent
+	 * @param	Integer	idProject
+	 * @param 	String	tabContent
 	 */
 	insertTabContent: function(idProject, tabContent) {
 		$('projects').insert(tabContent);
@@ -186,8 +183,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Add new tab head with given label to project tabs
 	 *
-	 *	@param	Integer	idProject
-	 *	@param	String	label
+	 * @param	Integer	idProject
+	 * @param	String	label
 	 */
 	addNewTabhead: function(idProject, label) {
 		var tabClass= 'tabkey-' + idProject + ' project' + idProject + ' projecttab item bcg05';
@@ -201,7 +198,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Move tab to front (place if leftmost)
 	 *
-	 *	@param	Integer	idTab
+	 * @param	Integer	idTab
 	 */
 	moveTabToFront: function(idTab) {
 			// Remove no selection tab first
@@ -234,13 +231,15 @@ Todoyu.Ext.project.ProjectTaskTree = {
 			this.loadNoProjectSelectedView();
 		}
 	},
-	
-	
+
+
+
 	getNumTabs: function() {
 		return $('project-tabs').select('li').size();
 	},
-	
-	
+
+
+
 	loadNoProjectSelectedView: function() {
 		var url		= Todoyu.getUrl('project', 'project');
 		var options	= {
@@ -252,7 +251,9 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		
 		Todoyu.Ui.updateContent(url, options);		
 	},
-	
+
+
+
 	onNoProjectSelectedViewLoaded: function(response) {
 		
 	},
@@ -302,7 +303,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Display (given) active project
 	 *
-	 *	@param	Integer		idProject
+	 * @param	Integer		idProject
 	 */
 	displayActiveProject: function(idProject) {
 		$('projects').childElements().invoke('hide');
@@ -323,7 +324,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Check whether given project is loaded (is displayed as content in one of the projects tabs)
 	 *
-	 *	@param	Integer	idProject
+	 *	@param	Integer		idProject
 	 *	@return	Boolean
 	 */
 	isProjectLoaded: function(idProject) {
@@ -335,8 +336,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Check whether given task is loaded
 	 * 
-	 *	@param	Integer	idTask
-	 * 	@return	Boolean
+	 * @param	Integer		idTask
+	 * @return	Boolean
 	 */
 	isTaskLoaded: function(idTask) {
 		return this.ext.Task.isLoaded(idTask);
@@ -347,12 +348,13 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Check whether given project is currently active (tab is activated)
 	 * 
-	 *	@param	Integer	idProject
-	 *	@return	Boolean
+	 * @param	Integer		idProject
+	 * @return	Boolean
 	 */
 	isProjectActive: function(idProject) {
 		return $('project-tabs').select('li.active').first().readAttribute('id').split('-').last() == idProject;
 	},
+
 
 
 	/**
@@ -396,7 +398,9 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		
 		return false;
 	},
-	
+
+
+
 	getTabs: function() {
 		return $('project-tabs').select('li');
 	},
@@ -414,7 +418,6 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		} else {
 			return false;
 		}
-
 	}
 
 };
