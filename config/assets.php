@@ -30,10 +30,10 @@
 
 
 $CONFIG['EXT']['project']['assets'] = array(
-		// default assets: loaded all over the installation always
+		// Default assets: loaded all over the installation always
 	'default' => array(
 		'js' => array(
-				// Adde quicktask wizard headlet
+				// Add quicktask wizard headlet
 			array(
 				'file'		=> 'ext/project/assets/js/Ext.js',
 				'position'	=> 80
@@ -73,7 +73,7 @@ $CONFIG['EXT']['project']['assets'] = array(
 	),
 
 
-		// public assets: basis assets for this extension
+		// Public assets: basic assets for this extension
 	'public' => array(
 		'js' => array(
 			array(
@@ -158,7 +158,7 @@ $CONFIG['EXT']['project']['assets'] = array(
 		)
 	),
 
-		// assets of panel widgets
+		// Assets of panel widgets
 	'panelwidget-projecttree' => array(
 		'js' => array(
 			array(
@@ -179,7 +179,7 @@ $CONFIG['EXT']['project']['assets'] = array(
 		)
 	),
 
-			// assets of panel widgets
+			// Assets of panel widgets
 	'panelwidget-projectlist' => array(
 		'js' => array(
 			array(

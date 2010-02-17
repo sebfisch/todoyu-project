@@ -67,9 +67,9 @@ Todoyu.Headlet.QuickCreate.Project = {
 //			this.ext.ProjectTaskTree.openProject(idProject);
 //			window.scrollTo(0,0);
 
-//			Todoyu.Hook.exec('onProjectSaved', idProject);
+			Todoyu.Hook.exec('onProjectSaved', idProject);
 			
-			Todoyu.Popup.close('quickcreate');		
+			Todoyu.Headlet.QuickCreate.closePopup();		
 			Todoyu.notifySuccess('[LLL:project.save.success]');
 		}
 	}
