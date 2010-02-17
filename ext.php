@@ -42,6 +42,9 @@ TodoyuLanguage::register('headlet-quicktask', PATH_EXT_PROJECT . '/locale/headle
 	// Add quick creation types
 TodoyuQuickCreateManager::addEngine('project', 'project', 'project.create.label', 10);
 TodoyuQuickCreateManager::addEngine('project', 'task', 'task.create.label', 20);
+	// Add area related primary engines
+TodoyuQuickCreateManager::addAreaEngine(EXTID_PROJECT, 'project', 'project', 'project.create.label', 10);
+TodoyuQuickCreateManager::addAreaEngine(EXTID_PROJECT, 'project', 'task', 'task.create.label', 20);
 
 
 	// Request configurations
