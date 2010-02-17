@@ -46,10 +46,12 @@ class TodoyuTaskManager {
 	/**
 	 * Get task quick create form object
 	 *
-	 * @param	TodoyuForm		$form		Task edit form object
-	 * @return	TodoyuForm					Moddified form object
+	 * @param	Integer		$idTask
+	 * @return	TodoyuForm				form object
 	 */
-	public static function getQuickCreateForm() {
+	public static function getQuickCreateForm($idTask = 0) {
+		$idTask	= intval($idTask);
+
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/task.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);

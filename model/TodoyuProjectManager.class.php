@@ -40,10 +40,12 @@ class TodoyuProjectManager {
 	 *
 	 * @return	TodoyuForm
 	 */
-	public static function getQuickCreateForm() {
+	public static function getQuickCreateForm($idProject = 0) {
+		$idProject	= intval($idProject);
+
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/project.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath);
+		$form		= TodoyuFormManager::getForm($xmlPath, $idProject);
 
 			// Adjust form to needs of quick creation wizard
 		$form->setAttribute('action', '?ext=project&amp;controller=quickcreateproject');
