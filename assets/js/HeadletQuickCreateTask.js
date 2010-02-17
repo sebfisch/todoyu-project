@@ -30,34 +30,43 @@ Todoyu.Headlet.QuickCreate.Task = {
 
 
 	/**
-	 * Save method
+	 * Save task
 	 *
-	 * @param	Element		form		Form element
+	 * @param	unknown_type	form
 	 */
 	save: function(form) {
+		tinyMCE.triggerSave();
+
 		$(form).request({
 			'parameters': {
 				'action':	'save'
 			},
-			'onComplete': this.onSaved.bind(this)
+			onComplete: this.onSaved.bind(this)
 		});
 	},
 
 
 
 	/**
-	 * If saved, close the creation wizard popup
+	 * Evoked after edited task having been saved. Handles display of success / failure message and refresh of saved task / failed form.
 	 *
-	 * @param	Object	response	Response, containing startdate of the event
+	 * @param	Object	response
 	 */
 	onSaved: function(response) {
-		var isError = response.getTodoyuHeader('error') == 1;
+		var idTask		= response.getTodoyuHeader('idTask');
+		var idTaskOld	= response.getTodoyuHeader('idTaskOld');
 
+			// Save resulted in error?
 		if( response.hasTodoyuError() ) {
-			Todoyu.Popup.setContent('quickcreate', response.responseText);
-			$('quickcreatetask-form').innerHTML.evalScripts();
+				// Update task edit form with form remarks, display failure notification
+			Todoyu.Headlet.QuickCreate.updateFormDiv(response.responseText);
+			Todoyu.notifyError('[LLL:task.save.error]');
 		} else {
-			Todoyu.Headlet.QuickCreate.closePopup();
+			// Saving went ok
+			Todoyu.Hook.exec('onTaskSaved', idTask);
+
+			Todoyu.Popup.close('quickcreate');
+			Todoyu.notifySuccess('[LLL:task.save.success]');
 		}
 	}
 

@@ -36,6 +36,27 @@ class TodoyuProjectManager {
 
 
 	/**
+	 * Get quick create project form object
+	 *
+	 * @return	TodoyuForm
+	 */
+	public static function getQuickCreateForm() {
+			// Construct form object
+		$xmlPath	= 'ext/project/config/form/project.xml';
+		$form		= TodoyuFormManager::getForm($xmlPath);
+
+			// Adjust form to needs of quick creation wizard
+		$form->setAttribute('action', '?ext=project&amp;controller=quickcreateproject');
+		$form->setAttribute('onsubmit', 'return false');
+		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Headlet.QuickCreate.Project.save(this.form)');
+		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
+
+		return $form;
+	}
+
+
+
+	/**
 	 * Get project
 	 *
 	 * @param	Integer		$idProject

@@ -97,13 +97,7 @@ class TodoyuTaskViewHelper {
 	 * @return	Array
 	 */
 	public static function getTaskWorktypeOptions(TodoyuFormElement $field) {
-		$options= array(
-			0	=> array(
-				'disabled'	=> true,
-				'label'		=> 'LLL:form.select.pleaseSelect',
-				'value'		=> 0,
-			)
-		);
+		$options= array();
 
 		$worktypes	= TodoyuWorktypeManager::getAllWorktypes();
 		foreach($worktypes as $num => $type) {

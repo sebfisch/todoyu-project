@@ -41,6 +41,4 @@ if ( allowed('project', 'panelwidgets:projectStatusFilter') ) {
 	TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetProjectStatusFilter', 21);
 }
 
-TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetQuickProject', 25);
-
 ?>

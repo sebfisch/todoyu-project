@@ -30,34 +30,47 @@ Todoyu.Headlet.QuickCreate.Project = {
 
 
 	/**
-	 * Save method
+	 *	Save project
 	 *
-	 * @param	Element		form		Form element
+	 *	@param	unknown	form
 	 */
-	save: function(form) {
+	save: function(form){
+		tinyMCE.triggerSave();
+
 		$(form).request({
 			'parameters': {
 				'action':	'save'
 			},
-			'onComplete': this.onSaved.bind(this)
+			onComplete: this.onSaved.bind(this)
 		});
+
+		return false;
 	},
 
 
 
 	/**
-	 * If saved, close the creation wizard popup
+	 *	onSaved project custom event handler
 	 *
-	 * @param	Object	response	Response, containing startdate of the event
+	 *	@param	Ajax.Response		response
 	 */
-	onSaved: function(response) {
-		var isError = response.getTodoyuHeader('error') == 1;
+	onSaved: function(response){
+		var idProject	= response.getTodoyuHeader('idProject');
+		var idProjectOld= response.getTodoyuHeader('idProjectOld');
+		var error		= response.hasTodoyuError();
 
-		if( response.hasTodoyuError() ) {
-			Todoyu.Popup.setContent('quickcreate', response.responseText);
-			$('quickcreateproject-form').innerHTML.evalScripts();
+		if( error ) {
+			Todoyu.Headlet.QuickCreate.updateFormDiv(response.responseText);
+			Todoyu.notifyError('[LLL:project.save.error]');
 		} else {
-			Todoyu.Headlet.QuickCreate.closePopup();
+//			this.ext.ProjectTaskTree.removeProject(idProjectOld);
+//			this.ext.ProjectTaskTree.openProject(idProject);
+//			window.scrollTo(0,0);
+
+//			Todoyu.Hook.exec('onProjectSaved', idProject);
+			
+			Todoyu.Popup.close('quickcreate');		
+			Todoyu.notifySuccess('[LLL:project.save.success]');
 		}
 	}
 

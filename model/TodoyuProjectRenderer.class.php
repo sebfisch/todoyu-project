@@ -278,20 +278,13 @@ class TodoyuProjectRenderer {
 	 * @param	Array		$params
 	 * @return	String
 	 */
-	public static function renderCreateQuickProject(array $params) {
-			// Construct form object
-		$xmlPath	= 'ext/project/config/form/project.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath);
+	public static function renderQuickCreateForm(array $params) {
+		$form	= TodoyuProjectManager::getQuickCreateForm();
 
 			// Preset (empty) form data
 		$formData	= $form->getFormData();
-		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, 0);
-
-			// Adjust form to needs of quick creation wizard
-		$form->setAttribute('name', 'quickproject');
-		$form->setAttribute('onsubmit', 'return false');
-		$form->setAttribute('class', 'formProject');
-		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
+		$formData	= TodoyuFormHook::callLoadData('ext/project/config/form/project.xml', $formData, 0);
+		$form->setFormData($formData);
 
 		return $form->render();
 	}

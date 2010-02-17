@@ -28,41 +28,36 @@ class TodoyuProjectQuickCreateProjectActionController extends TodoyuActionContro
 	 * @return	String
 	 */
 	public function popupAction(array $params) {
-
-		return TodoyuProjectRenderer::renderCreateQuickProject($params);
+		return TodoyuProjectRenderer::renderQuickCreateForm($params);
 	}
 
 
 
 	/**
-	 * Save quick project
+	 * Save project (new or edit)
 	 *
-	 * @param	Array	$params
-	 * @return	String
+	 * @param	Array		$params
+	 * @return	String		Form content if form is invalid
 	 */
 	public function saveAction(array $params) {
-		$params['quicktask']['start_tracking'] = intval($params['quicktask']['start_tracking']);
-		$formData	= $params['quickproject'];
+		$data		= $params['project'];
+		$idProject	= intval($data['id']);
 
-			// Construct form object
-		$xmlPath	= 'ext/project/config/form/project.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath);
+			// Get form object, call save hooks, set form data
+		$form	= TodoyuProjectManager::getQuickCreateForm();
+		$data	= TodoyuFormHook::callSaveData('ext/project/config/form/project.xml', $data, 0);
+		$form->setFormData($data);
 
-			// Set form data
-		$form->setFormData($formData);
+		if( $form->isValid() ) {
+			$storageData= $form->getStorageData();
 
-			// Valdiate, save workload record / re-render form
-		if( $form->isValid() )	{
-			$storageData	= $form->getStorageData();
+				// Save project
+			$idProjectNew	= TodoyuProjectManager::saveProject($storageData);
 
-			$idTask		= TodoyuQuickTaskManager::save($storageData);
-			$idProject	= intval($storageData['id_project']);
-			$start		= intval($storageData['start_tracking']) === 1;
-
-			TodoyuHeader::sendTodoyuHeader('idTask', $idTask);
-			TodoyuHeader::sendTodoyuHeader('idProject', $idProject);
-			TodoyuHeader::sendTodoyuHeader('start', $start);
+			TodoyuHeader::sendTodoyuHeader('idProject', $idProjectNew);
+			TodoyuHeader::sendTodoyuHeader('idProjectOld', $idProject);
 		} else {
+			TodoyuHeader::sendTodoyuHeader('idProjectOld', $idProject);
 			TodoyuHeader::sendTodoyuErrorHeader();
 
 			return $form->render();

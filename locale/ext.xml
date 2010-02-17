@@ -139,7 +139,7 @@
 		<label index="records.userrole">Benutzer-Rollen</label>
 		<label index="records.worktype">Arbeits-Kategorie</label>
 		<label index="form.validation.dateBefore">Datum muss vor dem End-Datum liegen</label>
-		<label index="form.validation.title">Bitte füllen Projekt-Titel angeben</label>
+		<label index="form.validation.title">Bitte Projekt-Titel angeben</label>
 		<label index="noLabel.newProjectParticipant">Neuer Projekt-Mitarbeiter</label>
 		<label index="save.error">Speichern war nicht erfolgreich</label>
 		<label index="save.success">Speichern war erfolgreich</label>

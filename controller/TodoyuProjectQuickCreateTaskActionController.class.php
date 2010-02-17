@@ -28,40 +28,48 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 	 * @return	String
 	 */
 	public function popupAction(array $params) {
-		return TodoyuQuickCreateTaskManager::renderForm();
+		return TodoyuTaskRenderer::renderQuickCreateForm();
 	}
 
 
 
 	/**
-	 * Save quick task
+	 * Save task
 	 *
-	 * @param	Array	$params
+	 * @param	Array		$params
 	 * @return	String
 	 */
 	public function saveAction(array $params) {
-		$params['quicktask']['start_tracking'] = intval($params['quicktask']['start_tracking']);
-		$formData	= $params['quicktask'];
+		$data			= $params['task'];
+		$idTask			= intval($data['id']);
+		$idProject		= intval($data['id_project']);
 
-			// Construct form object
-		$xmlPath	= 'ext/project/config/form/task.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath);
+			// Create a cache record for the buildform hooks
+		$task = new TodoyuTask(0);
+		$task->injectData($data);
+		TodoyuCache::addRecord($task);
 
-			// Set form data
-		$form->setFormData($formData);
+			// Get form object, call save hooks, set form data
+		$form	= TodoyuTaskManager::getQuickCreateForm();
+		$data	= TodoyuFormHook::callSaveData('ext/project/config/form/task.xml', $data, 0);
+		$form->setFormData($data);
 
-			// Valdiate, save workload record / re-render form
-		if( $form->isValid() )	{
-			$storageData	= $form->getStorageData();
+			// Check if form is valid
+		if( $form->isValid() ) {
+				// If form is valid, get form storage data and update task
+			$storageData= $form->getStorageData();
 
-			$idTask		= TodoyuQuickTaskManager::save($storageData);
-			$idProject	= intval($storageData['id_project']);
-			$start		= intval($storageData['start_tracking']) === 1;
+				// Save task
+			$idTaskNew	= TodoyuTaskManager::saveTask($storageData);
 
+			TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
+			TodoyuHeader::sendTodoyuHeader('idTaskOld', $idTask);
+			TodoyuHeader::sendTodoyuHeader('idProject', $idProject);
+
+		} else {
+				// Form data not valid
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTask);
 			TodoyuHeader::sendTodoyuHeader('idProject', $idProject);
-			TodoyuHeader::sendTodoyuHeader('start', $start);
-		} else {
 			TodoyuHeader::sendTodoyuErrorHeader();
 
 			return $form->render();

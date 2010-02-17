@@ -239,21 +239,6 @@ $CONFIG['EXT']['project']['assets'] = array(
 				'position' => 120,
 			)
 		)
-	),
-
-	'panelwidget-quickproject' => array (
-		'js' => array(
-			array(
-				'file' => 'ext/project/assets/js/PanelWidgetQuickProject.js',
-				'position' => 130,
-			)
-		),
-		'css' => array(
-			array(
-				'file' => 'ext/project/assets/css/panelwidget-quickproject.css',
-				'position' => 130,
-			)
-		)
 	)
 
 );

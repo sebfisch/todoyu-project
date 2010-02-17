@@ -44,6 +44,35 @@ class TodoyuTaskManager {
 
 
 	/**
+	 * Get task quick create form object
+	 *
+	 * @param	TodoyuForm		$form		Task edit form object
+	 * @return	TodoyuForm					Moddified form object
+	 */
+	public static function getQuickCreateForm() {
+			// Construct form object
+		$xmlPath	= 'ext/project/config/form/task.xml';
+		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
+
+			// Adjust for quick create
+		$form->getFieldset('right')->getField('id_parenttask')->remove();
+		$form->removeHiddenField('id_project');
+
+		$insertForm	= TodoyuFormManager::getForm('ext/project/config/form/field-id_project.xml');
+		$field		= $insertForm->getField('id_project');
+		$form->getFieldset('left')->addField('id_project', $field, 'after:title');
+
+		$form->setAttribute('action', '?ext=project&amp;controller=quickcreatetask');
+		$form->setAttribute('onsubmit', 'return false');
+		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Headlet.QuickCreate.Task.save(this.form)');
+		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
+
+		return $form;
+	}
+
+
+
+	/**
 	 * Get object of a task.
 	 *
 	 * @param	Integer		$idTask		Task ID
