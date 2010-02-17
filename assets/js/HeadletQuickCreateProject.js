@@ -55,19 +55,17 @@ Todoyu.Headlet.QuickCreate.Project = {
 	 *	@param	Ajax.Response		response
 	 */
 	onSaved: function(response){
-		var idProject	= response.getTodoyuHeader('idProject');
-		var idProjectOld= response.getTodoyuHeader('idProjectOld');
 		var error		= response.hasTodoyuError();
 
 		if( error ) {
 			Todoyu.Headlet.QuickCreate.updateFormDiv(response.responseText);
 			Todoyu.notifyError('[LLL:project.save.error]');
 		} else {
+			var idProject	= response.getTodoyuHeader('idProject');
+			Todoyu.Hook.exec('onProjectSaved', idProject);
 //			this.ext.ProjectTaskTree.removeProject(idProjectOld);
 //			this.ext.ProjectTaskTree.openProject(idProject);
 //			window.scrollTo(0,0);
-
-			Todoyu.Hook.exec('onProjectSaved', idProject);
 			
 			Todoyu.Headlet.QuickCreate.closePopup();		
 			Todoyu.notifySuccess('[LLL:project.save.success]');
