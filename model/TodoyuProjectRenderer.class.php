@@ -64,6 +64,11 @@ class TodoyuProjectRenderer {
 
 
 
+	/**
+	 * Render project tabs
+	 *
+	 * @return	String
+	 */
 	public static function renderProjectsTabs() {
 		$openProjectIDs	= TodoyuProjectPreferences::getOpenProjectIDs();
 
@@ -162,6 +167,11 @@ class TodoyuProjectRenderer {
 	}
 
 
+
+	/**
+	 *
+	 * @return	String
+	 */
 	public static function renderNoProjectSelectedView() {
 		$tabs	= self::renderNoProjectSelectedTab();
 		$content= self::renderNoProjectSelectContent();
@@ -258,6 +268,32 @@ class TodoyuProjectRenderer {
 		);
 
 		return render($tmpl, $data);
+	}
+
+
+
+	/**
+	 * Render project quick creation form
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public static function renderCreateQuickProject(array $params) {
+			// Construct form object
+		$xmlPath	= 'ext/project/config/form/project.xml';
+		$form		= TodoyuFormManager::getForm($xmlPath);
+
+			// Preset (empty) form data
+		$formData	= $form->getFormData();
+		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, 0);
+
+			// Adjust form to needs of quick creation wizard
+		$form->setAttribute('name', 'quickproject');
+		$form->setAttribute('onsubmit', 'return false');
+		$form->setAttribute('class', 'formProject');
+		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
+
+		return $form->render();
 	}
 
 

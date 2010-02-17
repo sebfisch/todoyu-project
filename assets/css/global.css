@@ -23,9 +23,25 @@
 
 
 
-/* -----------------
-	Create
-   ----------------- */
+/* ------------------------
+	Wizard popup styling
+   ------------------------ */
+
+#quickcreate.dialog.project div#quickcreate_top.dialog_title {
+	padding:0 0 0 22px;
+	background:url(../img/icons.png) no-repeat 0 -355px;
+}
+
+#quickcreate.dialog.task div#quickcreate_top.dialog_title {
+	padding:0 0 0 22px;
+	background:url(../img/icons.png) no-repeat 0 2px;
+}
+
+
+
+/* -----------------------------------------------
+	Quick create (headlet) mode selector entries
+   ----------------------------------------------- */
 
 .createmode-project {
 	background:url(../img/icons.png) no-repeat 3px -388px !important;

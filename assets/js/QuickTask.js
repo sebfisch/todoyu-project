@@ -49,7 +49,7 @@ Todoyu.Ext.project.QuickTask = {
 		};
 		this.savedCallback = callback;
 
-		Todoyu.Popup.openWindow(this.popupID, '[LLL:panelwidget-quicktask.title]', 450, 304, url, options);
+		Todoyu.Popup.openWindow(this.popupID, '[LLL:headlet-quicktask.title]', 520, url, options);
 	},
 
 

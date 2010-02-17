@@ -26,7 +26,7 @@
  * @package		Todoyu
  * @subpackage	QuickTask
  */
-class TodoyuQuickTaskManager {
+class TodoyuQuickCreateTaskManager {
 
 	/**
 	 * Render quicktask form
@@ -35,12 +35,18 @@ class TodoyuQuickTaskManager {
 	 */
 	public static function renderForm()	{
 			// Construct form object
-		$xmlPath	= 'ext/project/config/form/quicktask.xml';
+		$xmlPath	= 'ext/project/config/form/task.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath);
 
 			// Preset (empty) form data
 		$formData	= $form->getFormData();
 		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, 0);
+
+			// Adjust form to needs of quick creation wizard
+		$form->setAttribute('name', 'quicktask');
+		$form->setAttribute('onsubmit', 'return false');
+		$form->setAttribute('class', 'formTask');
+		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
 
 		return $form->render();
 	}
@@ -48,7 +54,7 @@ class TodoyuQuickTaskManager {
 
 
 	/**
-	 * Adds mandatory task data to that received from quicktask form, saves new task to DB
+	 * Adds mandatory task data to that received from quickcreatetask form, saves new task to DB
 	 *
 	 * @param	Array	$formData
 	 * @return	Integer
@@ -64,8 +70,8 @@ class TodoyuQuickTaskManager {
 			// Prepare data to save task
 		$data['id']					= $idTask;
 		$data['status']				= STATUS_OPEN;
-		$data['id_person_assigned']	= TodoyuAuth::getPersonID();
-		$data['id_person_owner']		= TodoyuAuth::getPersonID();
+		$data['id_user_assigned']	= TodoyuAuth::getUserID();
+		$data['id_user_owner']		= TodoyuAuth::getUserID();
 		$data['date_start']			= NOW;
 		$data['date_end']			= NOW + TodoyuTime::SECONDS_WEEK;
 		$data['date_deadline']		= NOW + TodoyuTime::SECONDS_WEEK;
@@ -81,7 +87,7 @@ class TodoyuQuickTaskManager {
 		unset($data['task_done']);
 
 			// Call form hooks to save external data
-		$xmlPath	= 'ext/project/config/form/quicktask.xml';
+		$xmlPath	= 'ext/project/config/form/task.xml';
 		$data		= TodoyuFormHook::callSaveData($xmlPath, $data, $idTask);
 
 			// Save task to DB

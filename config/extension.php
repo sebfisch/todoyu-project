@@ -26,6 +26,13 @@
  * @subpackage	Project
  */
 
+	// Register quicktask headlet
+if ( allowed('project', 'general:quicktaskheadlet') ) {
+	TodoyuHeadletManager::registerRight('TodoyuHeadletQuickTask', 10);
+}
+
+
+
 	/**
 	 * @todo	Implement this with a hook
 	 */

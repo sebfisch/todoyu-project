@@ -33,11 +33,40 @@ $CONFIG['EXT']['project']['assets'] = array(
 		// default assets: loaded all over the installation always
 	'default' => array(
 		'js' => array(
-
+				// Adde quicktask wizard headlet
+			array(
+				'file'		=> 'ext/project/assets/js/Ext.js',
+				'position'	=> 80
+			),
+			array(
+				'file'		=> 'ext/project/assets/js/Project.js',
+				'position'	=> 81
+			),
+			array(
+				'file'		=> 'ext/project/assets/js/QuickTask.js',
+				'position'	=> 109
+			),
+			array(
+				'file'		=> 'ext/project/assets/js/HeadletQuickTask.js',
+				'position'	=> 90
+			),
+				// Add creation engines to quick create headlet
+			array(
+				'file'		=> 'ext/project/assets/js/HeadletQuickCreateProject.js',
+				'position'	=> 100
+			),
+			array(
+				'file'		=> 'ext/project/assets/js/HeadletQuickCreateTask.js',
+				'position'	=> 100
+			),
 		),
 		'css' => array(
 			array(
 				'file'		=> 'ext/project/assets/css/global.css',
+				'position'	=> 100
+			),
+			array(
+				'file'		=> 'ext/project/assets/css/headlet-quicktask.css',
 				'position'	=> 100
 			)
 		)
@@ -47,14 +76,6 @@ $CONFIG['EXT']['project']['assets'] = array(
 		// public assets: basis assets for this extension
 	'public' => array(
 		'js' => array(
-			array(
-				'file'		=> 'ext/project/assets/js/Ext.js',
-				'position'	=> 100
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/Project.js',
-				'position'	=> 101
-			),
 			array(
 				'file'		=> 'ext/project/assets/js/ProjectEdit.js',
 				'position'	=> 102
@@ -94,10 +115,6 @@ $CONFIG['EXT']['project']['assets'] = array(
 			array(
 				'file'		=> 'ext/project/assets/js/TaskParentAc.js',
 				'position'	=> 108
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/QuickTask.js',
-				'position'	=> 109
 			),
 			array(
 				'file'		=> 'ext/project/assets/js/hooks.js',

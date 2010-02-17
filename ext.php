@@ -37,6 +37,7 @@ TodoyuLanguage::register('projectFilter', PATH_EXT_PROJECT . '/locale/filter.xml
 TodoyuLanguage::register('panelwidget-projecttree', PATH_EXT_PROJECT . '/locale/panelwidget-projecttree.xml');
 TodoyuLanguage::register('panelwidget-projectlist', PATH_EXT_PROJECT . '/locale/panelwidget-projectlist.xml');
 TodoyuLanguage::register('panelwidget-statusfilter', PATH_EXT_PROJECT . '/locale/panelwidget-statusfilter.xml');
+TodoyuLanguage::register('headlet-quicktask', PATH_EXT_PROJECT . '/locale/headlet-quicktask.xml');
 TodoyuLanguage::register('panelwidget-quickproject', PATH_EXT_PROJECT . '/locale/panelwidget-quickproject.xml');
 
 	// Add quick creation types
