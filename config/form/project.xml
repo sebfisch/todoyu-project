@@ -108,21 +108,21 @@
 		</fieldset>
 
 
-		<fieldset name="users">
-			<legend>Uev</legend>
-			<class>users</class>
+		<fieldset name="persons">
+			<legend>Project Persons</legend>
+			<class>persons</class>
 			<elements>
-				<field type="databaseRelation" name="projectusers">
-					<label>project.attr.projectusers</label>
+				<field type="databaseRelation" name="persons">
+					<label>project.attr.persons</label>
 					<record>
-						<form>ext/project/config/form/project-user.xml</form>
+						<form>ext/project/config/form/project-person.xml</form>
 						<url>
 							<ext>project</ext>
-							<controller>projectform</controller>
+							<controller>project</controller>
 						</url>
 						<label type="function">
-							<function>TodoyuProjectViewHelper::getProjectUserLabel</function>
-							<noLabel>LLL:project.noLabel.newProjectParticipant</noLabel>
+							<function>TodoyuProjectViewHelper::getProjectPersonLabel</function>
+							<noLabel>LLL:project.attr.persons.new</noLabel>
 						</label>
 					</record>
 				</field>

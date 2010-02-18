@@ -1,0 +1,14 @@
+<ul class="ulList assignedPersons">
+	<li class="listItem listItemHeader">
+		<span class="name">{Label contact.person}</span>
+		<span class="company">{Label contact.company}</span>
+		<span class="role">{Label project.attr.persons.role}</span>
+	</li>
+	{foreach $persons person}
+	<li class="listItem {cycle values="odd,even"} person">
+		{userLabel idPrefix="project_assigned" idUser=$person.id class="name"}
+		<span class="company">{$person.company[0].title}&nbsp;</span>
+		<span class="role">{Label $person.rolelabel true}</span>
+	</li>
+	{/foreach}
+</ul>

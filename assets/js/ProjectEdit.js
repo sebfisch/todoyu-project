@@ -193,9 +193,9 @@ Todoyu.Ext.project.Project.Edit = {
 	 * @param	Ajax.Response			response
 	 * @param	Todoyu.Autocompleter	autocompleter
 	 */
-	onUserAutocomplete: function(response, autocompleter) {
+	onPersonAutocomplete: function(response, autocompleter) {
 		if( response.getTodoyuHeader('acElements') == 0 ) {
-			Todoyu.notifyInfo('[LLL:project.ac.user.notFoundInfo]');
+			Todoyu.notifyInfo('[LLL:project.ac.person.notFoundInfo]');
 		}
 	},
 

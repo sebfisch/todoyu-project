@@ -161,32 +161,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	 *
 	 */
 	public function loadForeignData()	{
-		$this->data['projectusers'] = $this->loadProjectUserRecords();
-	}
-
-
-
-	/**
-	 * loads data from ext_project_mm_project_person and injects them to the project data array
-	 *
-	 * @return	Array
-	 */
-	private function loadProjectUserRecords()	{
-		$idProject = intval($this->get('id'));
-
-		$table	= 'ext_project_mm_project_person';
-		$fields = '*';
-		$where	= 'id_project = ' . $idProject;
-
-		$result = Todoyu::db()->doSelect($fields, $table, $where);
-
-		$projectUsers = array();
-
-		while($row = Todoyu::db()->fetchAssoc($result))	{
-			$projectUsers[] = $row;
-		}
-
-		return $projectUsers;
+		$this->data['persons'] = TodoyuProjectManager::getProjectPersons($this->id);
 	}
 
 

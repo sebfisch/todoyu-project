@@ -61,31 +61,14 @@ class TodoyuProjectViewHelper {
 	 * @param	Array			$data				Form data for the current record to be labeled
 	 * @return	String			Record label
 	 */
-	public static function getProjectUserLabel(TodoyuFormElement $formElement, array $data) {
-		$idPerson	= intval($data['id_person']);
-		$idProject	= intval($data['id_project']);
-		$idRole		= intval($data['id_role']);
+	public static function getProjectPersonLabel(TodoyuFormElement $formElement, array $data) {
+		$idPerson	= intval($data['id']);
 
-		$label		= '';
-
-		if( $idRole	!== 0 ) {
-			$label	= TodoyuUserroleManager::getUserLabel($idPerson, $idProject, $idRole);
+		if( $idPerson === 0 ) {
+			return TodoyuLanguage::getLabel('project.persons.new');
+		} else {
+			return $data['firstname'] . ' ' . $data['lastname'] . ' - ' . TodoyuDiv::getLabel($data['rolelabel']);
 		}
-
-		return $label;
-	}
-
-
-
-	/**
-	 * Callback function to concat name
-	 *
-	 * @param	TodoyuFormElement	$field
-	 * @param	Array				$data
-	 * @return	String
-	 */
-	public static function concatName(TodoyuFormElement $field, $data) {
-		return $data['lastname'] . ' ' . $data['firstname'];
 	}
 
 
@@ -117,6 +100,7 @@ class TodoyuProjectViewHelper {
 	/**
 	 * Get task status options
 	 *
+	 * @todo	Move to taskViewHelper
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
@@ -134,6 +118,26 @@ class TodoyuProjectViewHelper {
 		}
 
 		return $options;
+	}
+
+
+
+	/**
+	 * Get user project roles formatted as option array for the form
+	 *
+	 * @param	TodoyuFormElement	$field		Reference to current field
+	 * @return	Array
+	 */
+	public static function getProjectroleOptions(TodoyuFormElement $field) {
+		$roles	= TodoyuProjectroleManager::getProjectroles();
+		$reform	= array(
+			'id'	=> 'value',
+			'title'	=> 'label'
+		);
+
+		$roles	= TodoyuArray::reform($roles, $reform);
+
+		return $roles;
 	}
 
 }

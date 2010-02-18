@@ -151,16 +151,18 @@ class TodoyuProjectManager {
 		$idProject	= intval($data['id']);
 		unset($data['id']);
 
+		TodoyuDebug::printInFirebug($data, 'project');
+
 			// Add new project if it not already exists
 		if( $idProject === 0 ) {
 			$idProject = self::addProject(array());
 		}
 
-		$projectUsers	= TodoyuArray::assure($data['projectusers']);
+		$persons	= TodoyuArray::assure($data['persons']);
 
 			// Save project users
-		self::saveProjectUser($idProject, $projectUsers);
-		unset($data['projectusers']);
+		self::saveProjectPersons($idProject, $persons);
+		unset($data['persons']);
 
 			// Call save hooks
 		$data = TodoyuFormHook::callSaveData($xmlPath, $data, $idProject);
@@ -679,64 +681,95 @@ class TodoyuProjectManager {
 		$idProject	= intval($idProject);
 
 			// Get project persons
-		$fields	= '	p.*,
-					pr.id as id_personrole,
-					pr.rolekey as rolekey,
+		$fields	= '	pe.*,
+					pe.id as id_person,
+					pr.id as id_role,
+					pr.rolekey,
 					pr.title as rolelabel,
+					mmpp.id_project,
 					mmpp.comment';
-		$table	= '	ext_contact_person p,
+		$table	= '	ext_contact_person pe,
 					ext_project_role pr,
 					ext_project_mm_project_person mmpp';
-		$where	= '	mmpp.id_person	= p.id AND
+		$where	= '	mmpp.id_person	= pe.id AND
 					mmpp.id_project	= ' . $idProject . ' AND
 					mmpp.id_role	= pr.id AND
-					p.deleted		= 0 AND
-					p.active		= 1';
+					pe.deleted		= 0';
 		$group	= '	mmpp.id';
-		$order	= '	p.lastname,
-					p.firstname';
+		$order	= '	pe.lastname,
+					pe.firstname';
 
-		$users	= Todoyu::db()->getArray($fields, $table, $where, $group, $order);
+		$persons= Todoyu::db()->getArray($fields, $table, $where, $group, $order);
 
 			// Get company information
-		foreach($users as $index => $user) {
-			$users[$index]['company'] = TodoyuPersonManager::getPersonCompanyRecords($user['id']);
+		foreach($persons as $index => $person) {
+			$persons[$index]['company'] = TodoyuPersonManager::getPersonCompanyRecords($person['id']);
 		}
 
-		return $users;
+		return $persons;
+	}
+
+
+	/**
+	 * Get project person label (name + projectrole)
+	 *
+	 * @param	Integer		$idPerson
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idProjectrole$idProjectrole
+	 * @return	String
+	 */
+	public static function getProjectPersonLabel($idPerson, $idProject, $idProjectrole = 0) {
+		$idPerson		= intval($idPerson);
+		$idProject		= intval($idProject);
+		$idProjectrole	= intval($idProjectrole);
+
+		$label	= TodoyuPersonManager::getLabel($idPerson);
+
+		if ( $idProjectrole === 0 ) {
+			$label	.= ' - ' . self::getProjectroleLabel($idPerson, $idProject);
+		} else {
+			$label	.= ' - ' . TodoyuProjectroleManager::getLabel($idProjectrole);
+		}
+
+		return $label;
 	}
 
 
 
 	/**
-	 * Get role of given user in given project
+	 * Get role of person in project
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @param	Integer		$idProject
 	 * @return	Integer
 	 */
-	public static function getUserRoleLabel($idUser, $idProject) {
-		$idUser		= intval($idUser);
+	public static function getProjectroleLabel($idPerson, $idProject) {
+		return self::getProjectrole($idProject, $idPerson)->getTitle();
+	}
+
+
+
+	/**
+	 * Get projectrole of a user in a project
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idPerson
+	 * @return	TodoyuProjectrole
+	 */
+	public static function getProjectrole($idProject, $idPerson) {
+		$idPerson	= intval($idPerson);
 		$idProject	= intval($idProject);
 
-		$fields	= '	p.*,
-					pr.id as id_personrole,
-					pr.rolekey as rolekey,
-					pr.title as rolelabel,
-					mmpp.comment';
-		$table	= '	ext_contact_person p,
-					ext_project_role pr,
-					ext_project_mm_project_person mmpp';
-		$where	= '	mmpp.id_person		= p.id AND
-					mmpp.id_project		= ' . $idProject . ' AND
-					mmpp.id_role		= pr.id AND
-					p.id				= ' . $idUser;
-		$group	= '';
-		$order	= '';
+		$field		= '	pr.id';
+		$tables		= '	ext_project_role pr,
+						ext_project_mm_project_person mmpp';
+		$where		= '	mmpp.id_project	= ' . $idProject . ' AND
+						mmpp.id_person	= ' . $idPerson . ' AND
+						mmpp.id_role	= pr.id';
 
-		$user	= Todoyu::db()->getArray($fields, $table, $where, $group, $order);
+		$idProjectrole	= Todoyu::db()->getFieldValue($field, $tables, $where);
 
-		return $user[0]['rolelabel'];
+		return TodoyuProjectroleManager::getProjectrole($idProjectrole);
 	}
 
 
@@ -747,7 +780,7 @@ class TodoyuProjectManager {
 	 * @param	Integer		$idProject
 	 * @return	Integer		Number of removed users
 	 */
-	public static function removeAllProjectUsers($idProject) {
+	public static function removeAllProjectPersons($idProject) {
 		$idProject	= intval($idProject);
 
 		$table	= 'ext_project_mm_project_person';
@@ -787,7 +820,7 @@ class TodoyuProjectManager {
 	 * @param	String		$comment
 	 * @return	Integer		ID of new user record
 	 */
-	public static function addProjectUser($idProject, $idPerson, $idRole, $comment = '') {
+	public static function addPerson($idProject, $idPerson, $idRole, $comment = '') {
 		$idProject	= intval($idProject);
 		$idPerson	= intval($idPerson);
 		$idRole		= intval($idRole);
@@ -811,43 +844,14 @@ class TodoyuProjectManager {
 	 * @param	Integer		$idProject
 	 * @param	Array		$projectUserData
 	 */
-	public static function saveProjectUser($idProject, array $projectUserData) {
+	public static function saveProjectPersons($idProject, array $persons) {
 		$idProject	= intval($idProject);
 
-		self::removeAllProjectUsers($idProject);
+		self::removeAllProjectPersons($idProject);
 
-		foreach($projectUserData as $projectUser) {
-			self::addProjectUser($idProject, $projectUser['id_person'], $projectUser['id_role'], $projectUser['comment']);
+		foreach($persons as $person) {
+			self::addPerson($idProject, $person['id_person'], $person['id_role'], $person['comment']);
 		}
-	}
-
-
-
-	/**
-	 * Save project users form data
-	 *
-	 * @param	Array	$formData
-	 * @param	Integer	$idProject
-	 * @return	Array
-	 */
-	public static function saveProjectUsersFormData(array $formData, $idProject) {
-		$idProject		= intval($idProject);
-		$projectUsers	= $formData['projectusers'];
-		$relationIDs	= array();
-
-			// Remove all project users from database
-		self::removeAllProjectUsers($idProject);
-
-		if( is_array($projectUsers) ) {
-			foreach($projectUsers as $projectUser) {
-				$relationIDs[] = self::addProjectUser($idProject, $projectUser['id_person'], $projectUser['id_role'], $projectUser['comment']);
-			}
-		}
-
-			// Remove project user data from data array
-		unset($formData['projectusers']);
-
-		return $formData;
 	}
 
 

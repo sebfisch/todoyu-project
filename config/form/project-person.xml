@@ -12,21 +12,22 @@
 			<legend>Top</legend>
 			<class>top</class>
 			<elements>
+				
 				<field type="textinputAC" name="id_person">
-					<label>user.customer.attr.customer-user.person</label>
+					<label>contact.person</label>
 					<config>
 						<acListener>
 							<ext>project</ext>
 							<controller>autocomplete</controller>
-							<action>user</action>
+							<action>person</action>
 						</acListener>
 						<acLabelFunc>TodoyuPersonManager::getLabel</acLabelFunc>
 						<options>
-							<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onUserAutocomplete</onCompleteCustom>
+							<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onPersonAutocomplete</onCompleteCustom>
 						</options>
 					</config>
 					<wizard>
-						<htmlClass>createNewUser</htmlClass>
+						<htmlClass>createNewPerson</htmlClass>
 						<ext>contact</ext>
 						<controller>person</controller>
 						<action>addNewContactWizard</action>
@@ -34,17 +35,20 @@
 						<width>700</width>
 						<displayCondition></displayCondition>
 					</wizard>
-					<required>1</required>
+					<required />
 				</field>
-				<field type="select" name="id_personrole">
-					<label>project.user.role</label>
+				
+				<field type="select" name="id_role">
+					<label>project.attr.persons.role</label>
 					<source type="function">
-						<function>TodoyuProjectDataSource::getProjectUserRoleOptions</function>
+						<function>TodoyuProjectViewHelper::getProjectroleOptions</function>
 					</source>
 				</field>
+				
 				<field type="textinput" name="comment">
-					<label>project.user.comment</label>
+					<label>project.attr.persons.comment</label>
 				</field>
+				
 			</elements>
 		</fieldset>
 

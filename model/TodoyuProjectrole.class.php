@@ -20,20 +20,44 @@
 ***************************************************************/
 
 /**
- * Controller for project autocomplete
+ * Userrole
  *
  * @package		Todoyu
  * @subpackage	Project
  */
-class TodoyuProjectAutocompleteActionController extends TodoyuActionController {
 
-	public function personAction(array $params) {
-		$sword		= trim($params['sword']);
-		$config		= array();
-		$results	= TodoyuPersonFilterDataSource::autocompletePersons($sword, $config);
+class TodoyuUserrole extends TodoyuBaseObject {
 
-			// Render & display output
-		return TodoyuRenderer::renderAutocompleteList($results);
+
+	/**
+	 * Constructor
+	 *
+	 * @param	Intger	$idProjectrole
+	 */
+	public function __construct($idProjectrole) {
+		parent::__construct($idProjectrole, 'ext_project_role');
+	}
+
+
+
+	/**
+	 * Get key of projectrole
+	 *
+	 * @return	String
+	 */
+	public function getKey() {
+		return $this->get('rolekey');
+	}
+
+
+
+	/**
+	 * Get title of projectrole
+	 *
+	 * @return	String
+	 */
+	public function getTitle() {
+		return TodoyuDiv::getLabel($this->get('title'));
 	}
 
 }

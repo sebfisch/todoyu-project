@@ -36,7 +36,7 @@ if ( allowed('project', 'general:quicktaskheadlet') ) {
 	/**
 	 * @todo	Implement this with a hook
 	 */
-TodoyuRenderer::addAreaRenderer('project', 'projectinfo', 'TodoyuProjectRenderer::renderProjectAssignedUsers');
+TodoyuRenderer::addAreaRenderer('project', 'projectinfo', 'TodoyuProjectRenderer::renderProjectPersons');
 
 TodoyuContextMenuManager::registerFunction('Task', 'TodoyuTaskManager::getContextMenuItems', 10);
 

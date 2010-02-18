@@ -222,7 +222,7 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 
 
 	/**
-	 * Save active filters in user preferences
+	 * Save active filters in preferences
 	 *
 	 * @param	Array		$activeFilters
 	 * @param	Integer		$idArea

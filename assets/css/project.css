@@ -161,25 +161,28 @@
 		width:190px;
 	}
 
-	/* assigned users */
-	.project ul.assignedUsersList {
+	/* assigned persons */
+	.project ul.assignedPersons {
 		margin:0;
 	}
 
-	.project ul.assignedUsersList .name {
-		background:url('../../../user/assets/img/icons.png') no-repeat 0 4px;
+	.project ul.assignedPersons span.name {
 		padding-left:20px;
 	}
+	
+	.project ul.assignedPersons li.person span.name {
+		background:url(../../../contact/assets/img/icons.png) no-repeat 1px 2px;
+	}
 
-	.project ul.assignedUsersList .name {
+	.project ul.assignedPersons .name {
 		width:150px;
 	}
 
-	.project ul.assignedUsersList .company {
+	.project ul.assignedPersons .company {
 		width:150px;
 	}
 
-	.project ul.assignedUsersList .role {
+	.project ul.assignedPersons .role {
 		width:150px;
 	}
 

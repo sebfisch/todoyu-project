@@ -44,8 +44,6 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	public function editAction(array $params) {
 		$idProject	= intval($params['project']);
 
-//		TodoyuProjectPreferences::saveExpandedDetails($idProject, true);
-
 		return TodoyuProjectRenderer::renderProjectEditForm($idProject);
 	}
 
@@ -170,6 +168,28 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 */
 	public function noProjectViewAction(array $params) {
 		return TodoyuProjectRenderer::renderNoProjectSelectedView();
+	}
+
+
+
+	/**
+	 * Add a subform to the project form
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function addSubformAction(array $params) {
+		restrict('project', 'project:edit');
+
+		$xmlPath	= 'ext/project/config/form/project.xml';
+
+		$formName	= $params['form'];
+		$fieldName	= $params['field'];
+
+		$index		= intval($params['index']);
+		$idRecord	= intval($params['record']);
+
+		return TodoyuFormManager::renderSubformRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
 	}
 
 }

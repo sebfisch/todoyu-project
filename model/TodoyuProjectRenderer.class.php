@@ -260,12 +260,14 @@ class TodoyuProjectRenderer {
 	 * @param	Integer		$idProject
 	 * @return	String
 	 */
-	public static function renderProjectAssignedUsers($idProject) {
+	public static function renderProjectPersons($idProject) {
 		$idProject	= intval($idProject);
-		$tmpl		= 'ext/project/view/project-assignedusers.tmpl';
+		$tmpl		= 'ext/project/view/project-persons.tmpl';
 		$data		= array(
-			'users'	=> TodoyuProjectManager::getProjectPersons($idProject)
+			'persons'	=> TodoyuProjectManager::getProjectPersons($idProject)
 		);
+
+		TodoyuDebug::printInFirebug($data);
 
 		return render($tmpl, $data);
 	}
@@ -307,11 +309,13 @@ class TodoyuProjectRenderer {
 		$form		= TodoyuFormManager::getForm($xmlPath, $idProject);
 
 			// Load form data
-		$formData	= $project->getTemplateData(true);
-		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $idProject);
+		$data	= $project->getTemplateData(true);
+		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idProject);
 
-		$form->setFormData($formData);
+		$form->setFormData($data);
 		$form->setRecordID($idProject);
+
+		TodoyuDebug::printInFirebug($data);
 
 		return $form->render();
 	}
