@@ -54,7 +54,7 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 		$filterJSON	= json_encode(self::getFilters());
 
 			// Init widget JS (observers)
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.PanelWidget.ProjectList.init.bind(Todoyu.Ext.project.PanelWidget.ProjectList, ' . $filterJSON . ')');
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.PanelWidget.ProjectList.init.bind(Todoyu.Ext.project.PanelWidget.ProjectList, ' . $filterJSON . ')', 100);
 	}
 
 
@@ -222,7 +222,7 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 
 
 	/**
-	 * Save active filters in preferences
+
 	 *
 	 * @param	Array		$activeFilters
 	 * @param	Integer		$idArea
@@ -254,6 +254,5 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 	}
 
 }
-
 
 ?>
