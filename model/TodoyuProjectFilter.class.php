@@ -260,7 +260,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 
 	/**
-	 * Prepare user role filter widget: get available user roles for selector
+	 * Prepare projectrole filter widget: get available projectroles for selector
 	 *
 	 * @param	Array	$definitions
 	 * @return	Array

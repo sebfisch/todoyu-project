@@ -60,7 +60,7 @@
 		<label index="contextmenu.delete">Delete Project</label>
 		<label index="contextmenu.add.task">Add a new task</label>
 		<label index="contextmenu.add.container">Add a new container</label>
-		<label index="userrole.attr.rolekey">Role Keyword</label>
+		<label index="projectrole.attr.rolekey">Role Keyword</label>
 		<label index="tasktree.losttasks">Matching tasks which parent tasks are not displayed in the list</label>
 		<label index="records.projectrole">Projectroles</label>
 		<label index="records.worktype">Work Types</label>
@@ -122,11 +122,11 @@
 		<label index="attr.date_end">Enddatum</label>
 		<label index="attr.date_finish">Abgeschlossen Datum</label>
 		<label index="attr.date_deadline">Fertigstellungsfrist</label>
-		<label index="attr.projectusers">Projekt Benutzer</label>
-		<label index="attr.projectusers.new">Projekt Benutzer</label>
+		<label index="attr.projectpersons">Projekt Benutzer</label>
+		<label index="attr.projectpersons.new">Neuer Projektteilnehmer</label>
 		<label index="attr.title">Projekt Titel</label>
-		<label index="user.role">Projekt Rolle</label>
-		<label index="user.comment">Kommentar</label>
+		<label index="projectrole.role">Projekt Rolle</label>
+		<label index="projectrole.comment">Kommentar</label>
 		<label index="contextmenu.showinproject">Zeige als Projekt</label>
 		<label index="contextmenu.showdetails">Details anzeigen</label>
 		<label index="contextmenu.hidedetails">Verstecke Details</label>
@@ -134,7 +134,7 @@
 		<label index="contextmenu.delete">Projekt löschen</label>
 		<label index="contextmenu.add.task">Aufgabe hinzufügen</label>
 		<label index="contextmenu.add.container">Container hinzufügen</label>
-		<label index="userrole.attr.rolekey">Rollen-Schlüssel</label>
+		<label index="projectrole.attr.rolekey">Rollen-Schlüssel</label>
 		<label index="tasktree.losttasks">Passende Aufgaben deren übergeordnete Aufgabe nicht angezeigt wird</label>
 		<label index="records.projectrole">Benutzer-Rollen</label>
 		<label index="records.worktype">Arbeits-Kategorie</label>
@@ -146,6 +146,6 @@
 		<label index="ac.company.notFoundInfo">Kein passender Kunde gefunden. Es können nur im Kontakt-Modul erfasste Firmen ausgewählt werden</label>
 		<label index="js.removeProject">Wollen Sie das gesammte Projekt und alle seine Aufgaben löschen?</label>
 		<label index="js.quicktask.saved">Aufgabe wurde gespeichert</label>
-		<label index="ac.user.notFoundInfo">Es wurde keine Person gefunden deren Name die angegebenen Zeichen enthält.</label>
+		<label index="ac.person.notFoundInfo">Es wurde keine Person gefunden deren Name die angegebenen Zeichen enthält.</label>
 	</labels>
 </locallang>

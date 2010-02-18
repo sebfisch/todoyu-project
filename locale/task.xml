@@ -12,8 +12,8 @@
 		<label index="attr.date_start">Start Date</label>
 		<label index="attr.date_deadline">Customer Deadline</label>
 		<label index="attr.date_end">Internal Deadline</label>
-		<label index="attr.user_assigned">Assigned to</label>
-		<label index="attr.user_owner">Task Owner</label>
+		<label index="attr.person_assigned">Assigned to</label>
+		<label index="attr.person_owner">Task Owner</label>
 		<label index="attr.is_public">Task visibility</label>
 		<label index="attr.is_public.public">Task is Public</label>
 		<label index="attr.is_public.private">Task is NOT Public</label>
@@ -78,8 +78,8 @@
 		<label index="date_start">Date Start</label>
 		<label index="date_deadline">Customer Deadline</label>
 		<label index="date_end">Internal Deadline</label>
-		<label index="user_assigned">Assigned to</label>
-		<label index="user_owner">Task Owner</label>
+		<label index="person_assigned">Assigned to</label>
+		<label index="person_owner">Task Owner</label>
 		<label index="startTracking">Start Timetracking</label>
 		<label index="billing_type">Billing Type</label>
 		<label index="taskDone">Is Task done?</label>
@@ -87,7 +87,7 @@
 		<label index="description">Task Description</label>
 		<label index="attr.status">Status</label>
 		<label index="error.title">Please enter a title for the task</label>
-		<label index="attr.user_assigned.error">This Field is Required</label>
+		<label index="attr.person_assigned.error">This Field is Required</label>
 		<label index="attr.id_worktype.error">This Field is Required</label>
 		<label index="save.error">Saving was not successfull</label>
 		<label index="save.success">Saving successfull</label>
@@ -107,8 +107,8 @@
 		<label index="attr.date_start">Start-Datum</label>
 		<label index="attr.date_deadline">Kunden Frist</label>
 		<label index="attr.date_end">Interne Frist</label>
-		<label index="attr.user_assigned">Zugewiesen</label>
-		<label index="attr.user_owner">Aufgaben-Eigner</label>
+		<label index="attr.person_assigned">Zugewiesen</label>
+		<label index="attr.person_owner">Aufgaben-Eigner</label>
 		<label index="attr.is_public">Task Sichtbarkeit</label>
 		<label index="attr.is_public.public">Task ist öffentlich</label>
 		<label index="attr.is_public.private">Task ist NICHT öffentlich</label>
@@ -173,8 +173,8 @@
 		<label index="date_start">Start-Datum</label>
 		<label index="date_deadline">Kunden-Frist</label>
 		<label index="date_end">Interne Frist</label>
-		<label index="user_assigned">Zugewiesen</label>
-		<label index="user_owner">Aufgaben-Eigner</label>
+		<label index="person_assigned">Zugewiesen</label>
+		<label index="person_owner">Aufgaben-Eigner</label>
 		<label index="startTracking">Zeitaufzeichnung starten</label>
 		<label index="billing_type">Verrechnungs-Typ</label>
 		<label index="taskDone">Aufgabe erledigt?</label>
@@ -182,7 +182,7 @@
 		<label index="description">Aufgaben-Beschreibung</label>
 		<label index="attr.status">Status</label>
 		<label index="error.title">Bitte einen Aufgaben-Titel angeben</label>
-		<label index="attr.user_assigned.error">Dies ist ein Pflichtfeld</label>
+		<label index="attr.person_assigned.error">Dies ist ein Pflichtfeld</label>
 		<label index="attr.id_worktype.error">Dies ist ein Pflichtfeld</label>
 		<label index="save.error">Speichern war nicht erfolgreich</label>
 		<label index="save.success">Speichern war erfolgreich</label>

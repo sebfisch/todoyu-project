@@ -65,7 +65,7 @@ CREATE TABLE `ext_project_task` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Table structure for table `ext_project_userrole`
+-- Table structure for table `ext_project_role`
 --
 
 CREATE TABLE `ext_project_role` (
@@ -95,7 +95,7 @@ CREATE TABLE `ext_project_worktype` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Table structure for table `ext_project_mm_project_user`
+-- Table structure for table `ext_project_mm_project_person`
 --
 
 CREATE TABLE `ext_project_mm_project_person` (
