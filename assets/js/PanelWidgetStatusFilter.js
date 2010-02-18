@@ -57,7 +57,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = Class.create({
 
 
 	/**
-	 * If user clicked on an li instead on the checkbox or the label
+	 * If clicked on an li instead on the checkbox or the label
 	 *
 	 * @param	Event		event
 	 */

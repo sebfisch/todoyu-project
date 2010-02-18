@@ -99,13 +99,13 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter condition: tasks of given owner
+	 * Filter condition: tasks where person is owner
 	 *
-	 * @param	Integer	$idOwner
-	 * @param	Boolean	$negate
+	 * @param	Integer		$idOwner
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_ownerUser($idOwner, $negate = false) {
+	public static function Filter_ownerPerson($idOwner, $negate = false) {
 		$idOwner	= intval($idOwner);
 
 		if( $idOwner === 0 ) {
@@ -129,38 +129,23 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter to check if current user is to owner
-	 *
-	 * @param	String		$value
-	 * @param	Bool		$negate
-	 * @return	Array
-	 */
-	public static function Filter_currentUserIsOwner($value, $negate = false) {
-		$idUser		= personid();
-
-		return self::Filter_ownerUser($idUser, $negate);
-	}
-
-
-
-	/**
 	 * Filter condition: tasks of given owner
 	 *
-	 * @param	Array		$groupIDs		Selected groups
+	 * @param	Array		$roleIDs		Selected roles
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_ownerGroups($groupIDs, $negate = false) {
-		$groupIDs	= TodoyuArray::intExplode(',', $groupIDs, true, true);
+	public static function Filter_ownerRoles($roleIDs, $negate = false) {
+		$roleIDs	= TodoyuArray::intExplode(',', $roleIDs, true, true);
 		$queryParts	= false;
 
-		if( sizeof($groupIDs) > 0 ) {
+		if( sizeof($roleIDs) > 0 ) {
 			$tables	= array(
 				'ext_project_task',
 				'ext_contact_mm_person_role'
 			);
 			$where	= ' ext_project_task.id_person_owner = ext_contact_mm_person_role.id_person AND
-						ext_contact_mm_person_role.id_role IN(' . implode(',', $groupIDs) . ')';
+						ext_contact_mm_person_role.id_role IN(' . implode(',', $roleIDs) . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -170,7 +155,6 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 		return $queryParts;
 	}
-
 
 
 
@@ -307,24 +291,21 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter condition: tasks created by given user
+	 * Filter condition: tasks created by person
 	 *
-	 * @param	Integer	$idUser
-	 * @param	Boolean	$negate
+	 * @param	Integer		$idPerson
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_creatorUser($idUser, $negate = false) {
-		$idUser	= intval($idUser);
+	public static function Filter_creatorPerson($idPerson, $negate = false) {
+		$idPerson	= intval($idPerson);
+		$queryParts	= false;
 
-		if( $idUser === 0 ) {
-				// no user given?
-			$queryParts	= false;
-		} else {
-				// set up query parts array
+		if( $idPerson !== 0 ) {
 			$logic = ($negate === true) ? '!=':'=';
 
 			$tables	= array('ext_project_task');
-			$where	= 'ext_project_task.id_person_create ' . $logic . ' ' . $idUser;
+			$where	= 'ext_project_task.id_person_create ' . $logic . ' ' . $idPerson;
 
 			$queryParts = array(
 				'tables'=> $tables,
@@ -337,24 +318,24 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter condition: Task created by an user which is member of one of the selected groups
+	 * Filter condition: Task created by an person which is member of one of the selected roles
 	 *
-	 * @param	Array		$groupIDs
+	 * @param	Array		$roleIDs
 	 * @param	Bool		$negate
 	 * @return	Array		Or FALSE
 	 */
-	public static function Filter_creatorGroups($groupIDs, $negate = false) {
-		$groupIDs	= TodoyuArray::intExplode(',', $groupIDs, true, true);
+	public static function Filter_creatorRoles($roleIDs, $negate = false) {
+		$roleIDs	= TodoyuArray::intExplode(',', $roleIDs, true, true);
 		$queryParts	= false;
 
-		if( sizeof($groupIDs) > 0 ) {
+		if( sizeof($roleIDs) > 0 ) {
 			$tables	= array(
 				'ext_project_task',
 				'ext_contact_mm_person_role'
 			);
 			$compare= $negate ? 'NOT IN' : 'IN';
 			$where	= ' ext_project_task.id_person_create = ext_contact_mm_person_role.id_person AND
-						ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $groupIDs) . ')';
+						ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -368,73 +349,21 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter condition: tasks created by current user
+	 * Filter condition: tasks assigned to person
 	 *
-	 *
-	 * @param	Bool		$negate
+	 * @param	Integer		$idPerson
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_currentUserIsUserCreate($value, $negate = false) {
-		$idUser	= personid();
+	public static function Filter_assignedPerson($idPerson, $negate = false) {
+		$queryParts	= false;
+		$idPerson	= intval($idPerson);
 
-		return self::Filter_creatorUser($idUser, $negate);
-	}
-
-
-
-	/**
-	 * Filter condition: task creator belongs to given group?
-	 *
-	 * @param	Integer	$idGroup
-	 * @param	Boolean	$negate
-	 * @return	Array
-	 */
-	public static function Filter_userCreateGroup($idGroup, $negate) {
-		$idGroup	= intval($idGroup);
-
-		if( $idGroup === 0 ) {
-				// no group given?
-			$queryParts	= false;
-		} else {
-				// set up query parts
-			$tables	= array('ext_project_task', 'ext_contact_mm_person_role');
-			$where	 = ' ext_project_task.id_person_create = ext_contact_mm_person_role.id_person';
-			$where	.= ' AND ext_contact_mm_person_role.id_role = ' . $idGroup;
-
-			$queryParts	= array(
-				'tables'=> $tables,
-				'where'	=> $where
-			);
-		}
-
-		return $queryParts;
-	}
-
-
-
-	/**
-	 * Filter condition: tasks assigned to User
-	 *
-	 * @param	Integer	$idUser
-	 * @param	Boolean	$negate
-	 * @return	Array
-	 */
-	public static function Filter_assignedUser($idUser, $negate) {
-		$idUser	= intval($idUser);
-
-		if( $idUser === 0 ) {
-				// no user given?
-			$queryParts	= false;
-		} else {
+		if( $idPerson !== 0 ) {
 				// set up query parts array
 			$tables	= array('ext_project_task');
-
-			if( $negate )	{
-				$where	= 'ext_project_task.id_person_assigned != ' . intval($idUser);
-			} else {
-				$where	= 'ext_project_task.id_person_assigned = ' . intval($idUser);
-			}
-
+			$compare= $negate ? '!=' : '=';
+			$where	= 'ext_project_task.id_person_assigned ' . $compare . ' ' . intval($idPerson);
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -448,23 +377,24 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter condition: task assigned to user of given group?
+	 * Filter condition: task assigned to person of a role?
 	 *
-	 * @param	Integer	$idGroup
-	 * @param	Boolean	$negate
+	 * @param	Array		$roleIDs
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_assignedGroups($groupIDs, $negate = false) {
-		$groupIDs	= TodoyuArray::intExplode(',', $groupIDs, true, true);
+	public static function Filter_assignedRoles($roleIDs, $negate = false) {
+		$roleIDs	= TodoyuArray::intExplode(',', $roleIDs, true, true);
 		$queryParts	= false;
 
-		if( sizeof($groupIDs) > 0 ) {
+		if( sizeof($roleIDs) > 0 ) {
 			$tables	= array(
 				'ext_project_task',
 				'ext_contact_mm_person_role'
 			);
+			$compare= $negate ? 'NOT IN' : 'IN';
 			$where	= ' ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person AND
-						ext_contact_mm_person_role.id_role IN(' . implode(',', $groupIDs) . ')';
+						ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -478,15 +408,16 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter condition: tasks assigned to current user
+	 * Filter condition: tasks assigned to current person
 	 *
-	 * @param	Boolean	$negate
+	 * @param	String		$value
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_currentUserIsAssigned($value = '', $negate = false) {
-		$idUser		= personid();
+	public static function Filter_currentPersonAssigned($value = '', $negate = false) {
+		$idPerson	= personid();
 
-		$queryParts	= self::Filter_assignedUser($idUser, $negate);
+		$queryParts	= self::Filter_assignedPerson($idPerson, $negate);
 
 		return $queryParts;
 	}
@@ -569,22 +500,22 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter condition: Task acknowledged by given user?
+	 * Filter condition: Task acknowledged by person?
 	 *
-	 * @param	Integer	$idUser
-	 * @param	Boolean	$negate
+	 * @param	Integer		$idPerson
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_acknowledged($idUser, $negate = false) {
+	public static function Filter_acknowledged($idPerson, $negate = false) {
 		$queryParts	= false;
-		$idUser		= intval($idUser);
+		$idPerson	= intval($idPerson);
 
-		if( $idUser !== 0 ) {
+		if( $idPerson !== 0 ) {
 			$tables	= array(
 				'ext_project_task'
 			);
 			$check	= $negate ? 0 : 1;
-			$where	= '	ext_project_task.id_person_assigned	= ' . $idUser . ' AND
+			$where	= '	ext_project_task.id_person_assigned	= ' . $idPerson . ' AND
 						ext_project_task.is_acknowledged	= ' . $check;
 
 			$queryParts	= array(
@@ -599,14 +530,15 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter condition: task acknowledged by current user
+	 * Filter condition: task acknowledged by person
 	 *
-	 * @param	Boolean	$negate
+	 * @param	String		$value
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_currentUserHasAcknowledged($value, $negate) {
-		$idUser		= TodoyuAuth::getPersonID();
-		$queryParts	= self::filter_acknowledged($idUser, $negate);
+	public static function Filter_currentPersonHasAcknowledged($value, $negate) {
+		$idPerson	= personid();
+		$queryParts	= self::Filter_acknowledged($idPerson, $negate);
 
 		return $queryParts;
 	}
@@ -897,9 +829,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 	/**
 	 * Filter condition for projectrole
-	 * The value is a combination between the userroles and the selected user
+	 * The value is a combination between the projectrole and the person
 	 *
-	 * @param	String		$value		Format: USER:ROLE,ROLE,ROLE
+	 * @param	String		$value		Format: PERSON:ROLE,ROLE,ROLE
 	 * @param	Bool		$negate
 	 * @return	Array
 	 */

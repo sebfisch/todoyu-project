@@ -76,19 +76,19 @@ $CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'creatorGroups' => array(
-			'funcRef'	=> 'TodoyuTaskFilter::Filter_creatorGroups',
+			'funcRef'	=> 'TodoyuTaskFilter::Filter_creatorRoles',
 			'label'		=> 'LLL:projectFilter.task.creatorGroups',
 			'optgroup'	=> 'LLL:task.search.label',
 			'widget'	=> 'select',
 			'wConf'		=> array(
 				'multiple'	=> true,
 				'size'		=> 5,
-				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getUsergroupOptions',
+				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getProjectroleOptionDefinitions',
 				'negation'	=> 'default'
 			)
 		),
 		'assignedUser' => array(
-			'funcRef'	=> 'TodoyuTaskFilter::Filter_assignedUser',
+			'funcRef'	=> 'TodoyuTaskFilter::Filter_assignedPerson',
 			'label'		=> 'LLL:projectFilter.task.assignedUser',
 			'optgroup'	=> 'LLL:task.search.label',
 			'widget'	=> 'textinput',
@@ -101,14 +101,14 @@ $CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'assignedGroups' => array(
-			'funcRef'	=> 'TodoyuTaskFilter::Filter_assignedGroupsd',
+			'funcRef'	=> 'TodoyuTaskFilter::Filter_assignedRoles',
 			'label'		=> 'LLL:projectFilter.task.assignedGroups',
 			'optgroup'	=> 'LLL:task.search.label',
 			'widget'	=> 'select',
 			'wConf'		=> array(
 				'multiple'	=> true,
 				'size'		=> 5,
-				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getUsergroupOptions',
+				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getProjectroleOptionDefinitions',
 				'negation'	=> 'default'
 			)
 		),
@@ -126,14 +126,14 @@ $CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'ownerGroups' => array(
-			'funcRef'	=> 'TodoyuTaskFilter::Filter_ownerGroups',
+			'funcRef'	=> 'TodoyuTaskFilter::Filter_ownerRoles',
 			'label'		=> 'LLL:projectFilter.task.ownerGroups',
 			'optgroup'	=> 'LLL:task.search.label',
 			'widget'	=> 'select',
 			'wConf'		=> array(
 				'multiple'	=> true,
 				'size'		=> 5,
-				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getUsergroupOptions',
+				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getProjectroleOptionDefinitions',
 				'negation'	=> 'default'
 			)
 		),

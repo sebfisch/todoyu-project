@@ -19,11 +19,11 @@
 ***************************************************************/
 
 Todoyu.Ext.project.Filter = {
-	
+
 	ext: Todoyu.Ext.project,
 
 
-	
+
 	onProjectSearchResultsUpdated: function() {
 		this.ext.ContextMenuProject.attach();
 	},
@@ -36,9 +36,9 @@ Todoyu.Ext.project.Filter = {
 
 
 
-	onProjectroleUserAcSelect: function(name, textInput, listElement) {
+	onProjectrolePersonAcSelect: function(name, textInput, listElement) {
 		$('widget-autocompleter-' + name + '-hidden').value = listElement.id;
-		
+
 		Todoyu.Ext.project.Filter.updateProjectRoleConditionValue(name);
 	},
 
@@ -50,7 +50,7 @@ Todoyu.Ext.project.Filter = {
 
 
 
-	getProjectroleUser: function(name) {
+	getProjectrolePerson: function(name) {
 		return $F('widget-autocompleter-' + name + '-hidden');
 	},
 
@@ -63,11 +63,11 @@ Todoyu.Ext.project.Filter = {
 
 
 	updateProjectRoleConditionValue: function(name) {
-		var idUser 		= this.getProjectroleUser(name);
+		var idPerson	= this.getProjectrolePerson(name);
 		var projectRoles= this.getProjectroleRoles(name);
-		var value		= idUser + ':' + projectRoles.join(',');
+		var value		= idPerson + ':' + projectRoles.join(',');
 
 		Todoyu.Ext.search.Filter.updateConditionValue(name, value);
 	}
-	
+
 };

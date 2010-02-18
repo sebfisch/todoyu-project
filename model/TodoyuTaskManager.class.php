@@ -721,7 +721,7 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Get all users which are somehow connected with this task
+	 * Get all persons which are somehow connected with this task
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Array
@@ -884,10 +884,10 @@ class TodoyuTaskManager {
 
 
 
-				// User assigned
-			$info['user_assigned']	= array(
-				'label'		=> 'LLL:task.attr.user_assigned',
-				'value'		=> TodoyuPersonManager::getLabel($taskData['user_assigned']['id']),
+				// Person assigned
+			$info['person_assigned']	= array(
+				'label'		=> 'LLL:task.attr.person_assigned',
+				'value'		=> TodoyuPersonManager::getLabel($taskData['person_assigned']['id']),
 				'position'	=> 80,
 				'className'	=> 'sectionStart'
 			);
@@ -925,10 +925,10 @@ class TodoyuTaskManager {
 
 			// Attributes of tasks and containers
 
-			// User owner
-		$info['user_owner']	= array(
-			'label'		=> 'LLL:task.attr.user_owner',
-			'value'		=> TodoyuPersonManager::getLabel($taskData['user_owner']['id']),
+			// Person owner
+		$info['person_owner'] = array(
+			'label'		=> 'LLL:task.attr.person_owner',
+			'value'		=> TodoyuPersonManager::getLabel($taskData['person_owner']['id']),
 			'position'	=> 150,
 			'className'	=> 'sectionStart'
 		);
@@ -1127,22 +1127,22 @@ class TodoyuTaskManager {
 	/**
 	 * Get tasks in given timespan
 	 * If timestamp of start/end == 0: don't use it (there by this method can be used as well to query for tasks before / after a given timestamp)
-	 * If userIDs given:	limit to tasks assigned to given users
+	 * If personIDs given:	limit to tasks assigned to given persons
 	 * If statuses given:	limit to tasks with given statuses
 	 *
 	 * @param	Integer		$timesStart
 	 * @param	Intger		$timeEnd
 	 * @param	Array		$statusIDs
-	 * @param	Array		$userIDs		(id_person_assigned)
+	 * @param	Array		$personIDs		(id_person_assigned)
 	 * @param	String		$limit
 	 * @param	Boolean		$getContainers
 	 * @return	Array
 	 */
-	public static function getTasksInTimeSpan($timeStart = 0, $timeEnd = 0, array $statusIDs = array(), array $userIDs = array(), $limit = '', $getContainers = false) {
+	public static function getTasksInTimeSpan($timeStart = 0, $timeEnd = 0, array $statusIDs = array(), array $personIDs = array(), $limit = '', $getContainers = false) {
 		$timeStart	= intval($timeStart);
 		$timeEnd	= intval($timeEnd);
 		$statusIDs	= TodoyuArray::intval($statusIDs, true, true);
-		$userIDs	= TodoyuArray::intval($userIDs, true, true);
+		$personIDs	= TodoyuArray::intval($personIDs, true, true);
 
 		$fields	= '*';
 		$table	= self::TABLE;
@@ -1156,9 +1156,9 @@ class TodoyuTaskManager {
 			$where .= ' AND status IN(' . implode(',', $statusIDs) . ')';
 		}
 
-			// Add user IDs
-		if( sizeof($userIDs) ) {
-			$where .= ' AND id_person_assigned IN(' . implode(',', $userIDs) . ')';
+			// Add person IDs
+		if( sizeof($personIDs) ) {
+			$where .= ' AND id_person_assigned IN(' . implode(',', $personIDs) . ')';
 		}
 
 		$order	= 'date_start';
@@ -1213,7 +1213,7 @@ class TodoyuTaskManager {
 		}
 
 			// Get data
-		$idUser		= TodoyuAuth::getPersonID();
+		$idPerson	= TodoyuAuth::getPersonID();
 		$taskNumber	= TodoyuProjectManager::getNextTaskNumber($idProject);
 
 			// Calculate dates based on project and container parents
@@ -1230,7 +1230,7 @@ class TodoyuTaskManager {
 			'estimated_workload'=> intval($GLOBALS['CONFIG']['EXT']['project']['Task']['defaultEstimatedWorkload']),
 			'id_project'		=> $idProject,
 			'id_parenttask'		=> $idParentTask,
-			'id_person_owner'		=> $idUser,
+			'id_person_owner'	=> $idPerson,
 			'type'				=> $type,
 			'class'				=> ''
 		);

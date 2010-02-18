@@ -19,7 +19,7 @@
 ***************************************************************/
 
 Todoyu.Ext.project.Project.Edit = {
-	
+
 	ext: Todoyu.Ext.project,
 
 
@@ -188,7 +188,7 @@ Todoyu.Ext.project.Project.Edit = {
 
 
 	/**
-	 * Handler when user field is autocompleted
+	 * Handler when person field is autocompleted
 	 *
 	 * @param	Ajax.Response			response
 	 * @param	Todoyu.Autocompleter	autocompleter
@@ -202,25 +202,13 @@ Todoyu.Ext.project.Project.Edit = {
 
 
 	/**
-	 * Handler when projectleader (user) field is autocompleted
+	 * Handler when projectleader (person) field is autocompleted
 	 *
 	 * @param	Ajax.Response			response
 	 * @param	Todoyu.Autocompleter	autocompleter
 	 */
 	onProjectleaderAutocomplete: function(response, autocompleter) {
-		this.onUserAutocomplete(response, autocompleter);
-	},
-
-
-
-	/**
-	 * Handler when customer manager (user) field is autocompleted
-	 *
-	 * @param	Ajax.Response			response
-	 * @param	Todoyu.Autocompleter	autocompleter
-	 */
-	onCustomerManagerAutocomplete: function(response, autocompleter) {
-		this.onUserAutocomplete(response, autocompleter);
+		this.onPersonAutocomplete(response, autocompleter);
 	}
-		
+
 };

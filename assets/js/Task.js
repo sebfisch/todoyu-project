@@ -200,7 +200,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Handler if user tries to paste on a positio which is not allowed
+	 * Handler if user tries to paste on a position which is not allowed
 	 */
 	pasteNotAllowed: function() {
 		alert("[LLL:task.pasteNotAllowed]");
@@ -244,7 +244,7 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 * Handler when task was cloned
-	 * 
+	 *
 	 * @param	Integer			idSourceTask
 	 * @param	Ajax.Response	response
 	 */
@@ -263,9 +263,9 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Confirm whether user is sure, and evoke deletion of given task if
+	 * Delete a task
 	 *
-	 * @param	Integer idTask
+	 * @param	Integer		idTask
 	 */
 	remove: function(idTask) {
 		if( ! confirm('[LLL:task.js.removetask.question]') ) {
@@ -797,7 +797,7 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 * Handler when task details have been toggled
-	 * 
+	 *
 	 * @param	Integer			idTask
 	 * @param	String			tab
 	 * @param	Ajax.Response	response
@@ -810,7 +810,7 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 * Refresh the task style for class expanded
-	 * 
+	 *
 	 * @param	Integer		idTask
 	 */
 	refreshExpandedStyle: function(idTask) {
@@ -826,7 +826,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * 
+	 *
 	 * @param	Integer		idTask
 	 */
 	isDetailsLoaded: function(idTask) {
@@ -837,10 +837,10 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 * Check if details of a task are visible (loaded and displayed)
-	 * 
+	 *
 	 * @param	Integer		idTask
 	 * @return
-	 * 
+	 *
 	 */
 	isDetailsVisible: function(idTask) {
 		var details = 'task-' + idTask + '-details';
@@ -861,16 +861,16 @@ Todoyu.Ext.project.Task = {
 			this.Tab.show(idTask, tab, onComplete);
 		} else {
 			var func = this.onDetailsShowed.bind(this);
-			
+
 			if( Object.isFunction(onComplete) ) {
 				func = func.wrap(
 					function(onComplete, callOriginal, idTask, tab, response) {
 						onComplete(idTask, tab, response);
 						callOriginal(idTask, tab, response);
-					}.bind(this, onComplete)				
-				);				
-			}		
-			
+					}.bind(this, onComplete)
+				);
+			}
+
 			this.loadDetails(idTask, tab, func);
 		}
 	},
@@ -886,7 +886,7 @@ Todoyu.Ext.project.Task = {
 	 */
 	onDetailsShowed: function(idTask, tab, response) {
 		this.refreshExpandedStyle(idTask);
-		this.Tab.show(idTask, tab);		
+		this.Tab.show(idTask, tab);
 	},
 
 

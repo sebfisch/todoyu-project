@@ -79,8 +79,8 @@ $CONFIG['EXT']['project']['Task']['forceTab'] = false;
  * Add filterwidget type "projectrole"
  */
 $CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
-	'tmpl'			=> 'ext/search/view/filterwidgets/filterwidget-projectrole.tmpl',
-	'configFunc'	=> 'TodoyuFilterWidgetManager::prepareProjectrole'
+	'tmpl'			=> 'ext/project/view/filterwidget-projectrole.tmpl',
+	'configFunc'	=> 'TodoyuProjectFilter::prepareDataForProjectroleWidget'
 );
 
 

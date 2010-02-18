@@ -62,7 +62,7 @@
 		<label index="contextmenu.add.container">Add a new container</label>
 		<label index="userrole.attr.rolekey">Role Keyword</label>
 		<label index="tasktree.losttasks">Matching tasks which parent tasks are not displayed in the list</label>
-		<label index="records.userrole">User Roles</label>
+		<label index="records.projectrole">Projectroles</label>
 		<label index="records.worktype">Work Types</label>
 		<label index="form.validation.dateBefore">Date must be before end</label>
 		<label index="form.validation.title">Please enter a project title</label>
@@ -136,7 +136,7 @@
 		<label index="contextmenu.add.container">Container hinzufügen</label>
 		<label index="userrole.attr.rolekey">Rollen-Schlüssel</label>
 		<label index="tasktree.losttasks">Passende Aufgaben deren übergeordnete Aufgabe nicht angezeigt wird</label>
-		<label index="records.userrole">Benutzer-Rollen</label>
+		<label index="records.projectrole">Benutzer-Rollen</label>
 		<label index="records.worktype">Arbeits-Kategorie</label>
 		<label index="form.validation.dateBefore">Datum muss vor dem End-Datum liegen</label>
 		<label index="form.validation.title">Bitte Projekt-Titel angeben</label>

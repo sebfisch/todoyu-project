@@ -20,13 +20,13 @@
 ***************************************************************/
 
 /**
- * Userrole
+ * Role of a person in a project
  *
  * @package		Todoyu
  * @subpackage	Project
  */
 
-class TodoyuUserrole extends TodoyuBaseObject {
+class TodoyuProjectrole extends TodoyuBaseObject {
 
 
 	/**

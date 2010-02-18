@@ -112,24 +112,21 @@ class TodoyuTaskFilterDataSource {
 
 
 	/**
-	 * Get usergroups as options for widget
+	 * Get projectrole as options for widget
 	 *
 	 * @param	Array		$definitions
 	 * @return	Array
 	 */
-	public static function getUsergroupOptions(array $definitions) {
-		$options	= array();
-		$groups		= TodoyuRoleManager::getAllRoles();
-		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
+	public static function getProjectroleOptionDefinitions(array $definitions) {
+		$options		= array();
+		$projectroles	= TodoyuRoleManager::getAllRoles();
+		$selected		= TodoyuArray::intExplode(',', $definitions['value'], true, true);
+		$reform			= array(
+			'title'	=> 'label',
+			'id'	=> 'value'
+		);
 
-		foreach($groups as $group) {
-			$options[] = array(
-				'label'		=> $group['title'],
-				'value'		=> $group['id']
-			);
-		}
-
-		$definitions['options'] = $options;
+		$definitions['options'] = TodoyuArray::reform($projectroles, $reform);
 
 		return $definitions;
 	}

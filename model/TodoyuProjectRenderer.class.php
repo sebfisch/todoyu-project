@@ -255,7 +255,7 @@ class TodoyuProjectRenderer {
 
 
 	/**
-	 * Render project users for project info
+	 * Render project persons for project info
 	 *
 	 * @param	Integer		$idProject
 	 * @return	String
@@ -266,8 +266,6 @@ class TodoyuProjectRenderer {
 		$data		= array(
 			'persons'	=> TodoyuProjectManager::getProjectPersons($idProject)
 		);
-
-		TodoyuDebug::printInFirebug($data);
 
 		return render($tmpl, $data);
 	}

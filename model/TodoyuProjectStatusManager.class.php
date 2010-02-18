@@ -77,7 +77,7 @@ class TodoyuProjectStatusManager {
 		$statuses	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['STATUS']['TASK']);
 
 		foreach($statuses as $index => $statusKey) {
-				// Only get allowed status which the user can see
+				// Only get allowed status which the person can see
 			if( ! allowed('project', 'taskstatus:' . $statusKey . ':' . $check) && $index !== $forceStatus ) {
 				unset($statuses[$index]);
 			}
@@ -179,7 +179,7 @@ class TodoyuProjectStatusManager {
 		$statuses	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['STATUS']['PROJECT']);
 
 		foreach($statuses as $index => $statusKey) {
-				// Only get allowed status which the user can see
+				// Only get allowed status which the person can see
 			if( ! allowed('project', 'projectstatus:' . $statusKey . ':' . $check) && $index !== $forceStatus) {
 				unset($statuses[$index]);
 			}

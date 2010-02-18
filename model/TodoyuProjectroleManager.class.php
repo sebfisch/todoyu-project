@@ -37,9 +37,9 @@ class TodoyuProjectroleManager {
 
 
 	/**
-	 * Get user role
+	 * Get projectrole
 	 *
-	 * @param	Integer			$idUserrole		Userrole ID
+	 * @param	Integer		$idProjectrole
 	 * @return	TodoyuProjectrole
 	 */
 	public static function getProjectrole($idProjectrole) {
@@ -49,10 +49,10 @@ class TodoyuProjectroleManager {
 
 
 	/**
-	 * Save userrole record
+	 * Save projectrole
 	 *
-	 * @param	Array	$data
-	 * @return	Integer	$idUserrole
+	 * @param	Array		$data
+	 * @return	Integer		$idProjectrole
 	 */
 	public static function saveProjectrole(array $data) {
 		$idProjectrole	= intval($data['id']);
@@ -72,18 +72,13 @@ class TodoyuProjectroleManager {
 
 
 	/**
-	 * Store new userrole with given data in DB
+	 * Add new projectrole
 	 *
 	 * @param	Array		$data
-	 * @return	Integer		New record ID
+	 * @return	Integer		New projectrole ID
 	 */
 	public static function addProjectrole(array $data = array()) {
-		unset($data['id']);
-
-		$data['date_create']	= NOW;
-		$data['id_person_create']	= personid();
-
-		return Todoyu::db()->addRecord(self::TABLE, $data);
+		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
 
@@ -106,7 +101,7 @@ class TodoyuProjectroleManager {
 	/**
 	 * Sets deleted flag for current worktype
 	 *
-	 * @param	Integer	$idUserrole
+	 * @param	Integer		$idProjectrole
 	 */
 	public static function deleteProjectrole($idProjectrole) {
 		return TodoyuRecordManager::deleteRecord(self::TABLE, $idProjectrole);
@@ -114,9 +109,9 @@ class TodoyuProjectroleManager {
 
 
 	/**
-	 * Get label of given userrole
+	 * Get label of projectrole
 	 *
-	 * @param	Integer	$idUserrole
+	 * @param	Integer		$idProjectrole
 	 * @return	String
 	 */
 	public static function getLabel($idProjectrole) {
@@ -133,29 +128,32 @@ class TodoyuProjectroleManager {
 
 
 
-
-
-
-
-
 	/**
-	 * Get all visible userroles
+	 * Get all active projectroles
 	 *
 	 * @return	Array
 	 */
-	public static function getProjectroles() {
+	public static function getProjectroles($parse = true) {
 		$fields	= '*';
 		$table	= self::TABLE;
 		$where	= 'deleted = 0';
 		$order	= 'id';
 
-		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
+		$projectroles	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
+
+		if( $parse ) {
+			foreach($projectroles as $index => $projectrole) {
+				$projectroles[$index]['title'] = TodoyuDiv::getLabel($projectrole['title']);
+			}
+		}
+
+		return $projectroles;
 	}
 
 
 
 	/**
-	 * Get list of existing userrole records
+	 * Get list of existing projectrole records
 	 *
 	 * @param	Array	$params
 	 * @return	Array

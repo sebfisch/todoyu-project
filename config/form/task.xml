@@ -87,7 +87,7 @@
 				<field type="selectgrouped" name="id_person_owner">
 					<label>task.attr.user_owner</label>
 					<source type="function">
-						<function>TodoyuTaskViewHelper::getTaskOwnerUserOptions</function>
+						<function>TodoyuTaskViewHelper::getTaskOwnerOptions</function>
 						<lazyInit />
 					</source>
 				</field>

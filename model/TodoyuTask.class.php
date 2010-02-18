@@ -297,7 +297,7 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if the task has already been acknowledged by the assigned user
+	 * Check if the task has already been acknowledged by the assigned person
 	 *
 	 * @return	Bool
 	 */
@@ -316,6 +316,7 @@ class TodoyuTask extends TodoyuBaseObject {
 	/**
 	 * Get data for template rendering
 	 *
+	 * @todo	Use loadForeignData
 	 * @param	Integer		$infoLevel		Level of information (as higher the number, as more information are collected)
 	 * @return	Array
 	 */
@@ -330,9 +331,9 @@ class TodoyuTask extends TodoyuBaseObject {
 			case 3:
 			case 2:
 				$data['project']		= $this->getProjectArray();
-				$data['user_create']	= $this->getUserArray('create');
-				$data['user_assigned']	= $this->getUserArray('assigned');
-				$data['user_owner']		= $this->getUserArray('owner');
+				$data['person_create']	= $this->getPersonData('create');
+				$data['person_assigned']= $this->getPersonData('assigned');
+				$data['person_owner']	= $this->getPersonData('owner');
 				$data['worktype']		= $this->getWorktype();
 				$data['fulltitle'] 		= $this->getFullTitle();
 				$data['company'] 		= $this->getProject()->getCompanyData();

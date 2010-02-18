@@ -161,46 +161,6 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 
 
-//	/**
-//	 * Filter projects by dynamic project role
-//	 *
-//	 * @param	Integer	$idProjectleader
-//	 * @param	Boolean	$negate
-//	 * @return	Array
-//	 */
-//	public static function Filter_projectrole($idUserrole, $negate = false) {
-//		$idUser	= intval(idUser);
-//		$idUserrole	= intval(idUserrole);
-//
-//		if( $idProjectleader === 0 ) {
-//			return false;
-//		}
-//
-////		$compare	= $negate ? 'NOT IN' : 'IN' ;
-////
-////		$tables	= array('ext_project_project');
-////		$where	= '	ext_project_project.id ' . $compare . ' (
-////						SELECT
-////							ext_project_project.id
-////						FROM
-////							ext_project_project,
-////							ext_project_mm_project_person,
-////							ext_project_role
-////						WHERE
-////							ext_project_project.id 					= ext_project_mm_project_person.id_project AND
-////							ext_project_mm_project_person.id_person		= ' . $idProjectleader . ' AND
-////							ext_project_mm_project_person.id_personrole	= ext_project_role.id AND
-////							ext_project_role.rolekey			= \'projectleader\'
-////					)';
-////
-////		return array(
-////			'tables'=> $tables,
-////			'where'	=> $where
-////		);
-//	}
-
-
-
 	/**
 	 * Filter projects by project leader
 	 *
@@ -265,9 +225,9 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 	/**
 	 * Filter condition for projectrole
-	 * The value is a combination between the userroles and the selected user
+	 * The value is a combination between the projectroles and the selected person
 	 *
-	 * @param	String		$value		Format: USER:ROLE,ROLE,ROLE
+	 * @param	String		$value		Format: PERSON:ROLE,ROLE,ROLE
 	 * @param	Bool		$negate
 	 * @return	Array
 	 */
@@ -297,6 +257,38 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 		return $queryParts;
 	}
 
+
+
+	/**
+	 * Prepare user role filter widget: get available user roles for selector
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
+	public static function prepareDataForProjectroleWidget(array $definitions) {
+		$projectroles	= TodoyuProjectroleManager::getProjectroles(true);
+		$reform			= array(
+			'id'	=> 'value',
+			'title'	=> 'label'
+		);
+
+		$definitions['options']	= TodoyuArray::reform($projectroles, $reform);
+
+			// Prepare seperate values
+		$values	= explode(':', $definitions['value']);
+		$definitions['valuePerson'] 		= intval($values[0]);
+		$definitions['valuePersonLabel']	= TodoyuPersonManager::getLabel($values[0]);
+		$definitions['valueProjectroles']	= TodoyuArray::intExplode(',', $values[1], true, true);
+
+			// Add JS config
+		$definitions['specialConfig'] = json_encode(array(
+			'acOptions' => array(
+				'afterUpdateElement' => 'Todoyu.Ext.project.Filter.onProjectrolePersonAcSelect'
+			)
+		));
+
+		return $definitions;
+	}
 
 }
 

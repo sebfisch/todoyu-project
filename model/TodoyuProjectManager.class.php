@@ -151,8 +151,6 @@ class TodoyuProjectManager {
 		$idProject	= intval($data['id']);
 		unset($data['id']);
 
-		TodoyuDebug::printInFirebug($data, 'project');
-
 			// Add new project if it not already exists
 		if( $idProject === 0 ) {
 			$idProject = self::addProject(array());
@@ -160,7 +158,7 @@ class TodoyuProjectManager {
 
 		$persons	= TodoyuArray::assure($data['persons']);
 
-			// Save project users
+			// Save project persons
 		self::saveProjectPersons($idProject, $persons);
 		unset($data['persons']);
 
@@ -672,7 +670,7 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get users which are connected with the project
+	 * Get persons which are connected with the project
 	 *
 	 * @param	Integer		$idProject
 	 * @return	Array
@@ -750,7 +748,7 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get projectrole of a user in a project
+	 * Get projectrole of a person in a project
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idPerson
@@ -775,10 +773,10 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Remove all users from a project
+	 * Remove all persons from a project
 	 *
 	 * @param	Integer		$idProject
-	 * @return	Integer		Number of removed users
+	 * @return	Integer		Number of removed persons
 	 */
 	public static function removeAllProjectPersons($idProject) {
 		$idProject	= intval($idProject);
@@ -792,19 +790,19 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Remove a user from a project (as project member)
+	 * Remove a person from a project (as project member)
 	 *
 	 * @param	Integer		$idProject
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @return	Bool		Success
 	 */
-	public static function removeProjectUser($idProject, $idUser) {
+	public static function removeProjectPerson($idProject, $idPerson) {
 		$idProject	= intval($idProject);
-		$idUser		= intval($idUser);
+		$idPerson	= intval($idPerson);
 
 		$table	= 'ext_project_mm_project_person';
 		$where	= '	id_project	= ' . $idProject . ' AND
-					id_person		= ' . $idUser;
+					id_person	= ' . $idPerson;
 
 		return Todoyu::db()->doDelete($table, $where) !== 0;
 	}
@@ -812,26 +810,27 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Add project user
+	 * Add a person to project
 	 *
 	 * @param	Integer		$idProject
-	 * @param	Integer		$idUser
-	 * @param	Integer		$idUserrole
-	 * @param	String		$comment
-	 * @return	Integer		ID of new user record
+	 * @param	Integer		$idPerson
+	 * @param	Integer		$idProjectrole
+	 * @return	Integer		Link ID
 	 */
-	public static function addPerson($idProject, $idPerson, $idRole, $comment = '') {
-		$idProject	= intval($idProject);
-		$idPerson	= intval($idPerson);
-		$idRole		= intval($idRole);
+	public static function addPerson($idProject, $idPerson, $idProjectrole, array $extraData = array()) {
+		$idProject		= intval($idProject);
+		$idPerson		= intval($idPerson);
+		$idProjectrole	= intval($idProjectrole);
+
+		unset($extraData['id']);
 
 		$table	= 'ext_project_mm_project_person';
 		$fields	= array(
 			'id_project'	=> $idProject,
 			'id_person'		=> $idPerson,
-			'id_role'		=> $idRole,
-			'comment'		=> $comment
+			'id_role'		=> $idProjectrole
 		);
+		$fields	= array_merge($extraData, $fields);
 
 		return Todoyu::db()->addRecord($table, $fields);
 	}
@@ -839,10 +838,10 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Add project user to project
+	 * Save project person data and link the persons with the project
 	 *
 	 * @param	Integer		$idProject
-	 * @param	Array		$projectUserData
+	 * @param	Array		$persons
 	 */
 	public static function saveProjectPersons($idProject, array $persons) {
 		$idProject	= intval($idProject);
@@ -850,7 +849,7 @@ class TodoyuProjectManager {
 		self::removeAllProjectPersons($idProject);
 
 		foreach($persons as $person) {
-			self::addPerson($idProject, $person['id_person'], $person['id_role'], $person['comment']);
+			self::addPerson($idProject, $person['id_person'], $person['id_role'], $person);
 		}
 	}
 

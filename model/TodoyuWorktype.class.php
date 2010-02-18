@@ -43,13 +43,13 @@ class TodoyuWorktype extends TodoyuBaseObject {
 
 
 	/**
-	 * Get title of user role
+	 * Get title of worktype
 	 *
-	 * @param	Boolean	$parsed
+	 * @param	Boolean		$parsed
 	 * @return	String
 	 */
-	public function getTitle() {
-		return TodoyuDiv::getLabel($this->get('title'));
+	public function getTitle($parse = true) {
+		return $parse ? TodoyuDiv::getLabel($this->title) : $this->title;
 	}
 
 }

@@ -26,11 +26,10 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-
 class TodoyuProjectViewHelper {
 
 	/**
-	 * Get options of project users
+	 * Get options of project persons (assigned)
 	 *
 	 * @param	TodoyuFormElement	$formElement
 	 * @return	Array
@@ -55,7 +54,7 @@ class TodoyuProjectViewHelper {
 
 
 	/**
-	 * Get label for projectuser record in project
+	 * Get label for person in project
 	 *
 	 * @param	TodoyuFormElement		$formElement		The form element
 	 * @param	Array			$data				Form data for the current record to be labeled
@@ -123,9 +122,9 @@ class TodoyuProjectViewHelper {
 
 
 	/**
-	 * Get user project roles formatted as option array for the form
+	 * Get projectroles options
 	 *
-	 * @param	TodoyuFormElement	$field		Reference to current field
+	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
 	public static function getProjectroleOptions(TodoyuFormElement $field) {

@@ -20,13 +20,13 @@
 ***************************************************************/
 
 	// Add record infos
-TodoyuExtManager::addRecordConfig('project', 'userrole', array(
-	'label'	=> 'LLL:project.records.userrole',
+TodoyuExtManager::addRecordConfig('project', 'projectrole', array(
+	'label'	=> 'LLL:project.records.projectrole',
 	'form'	=> 'ext/project/config/form/admin/userrole.xml',
-	'list'	=> 'TodoyuUserroleManager::getRecords',
-	'save'	=> 'TodoyuUserroleManager::saveUserrole',
-	'delete'=> 'TodoyuUserroleManager::deleteUserrole',
-	'object'=> 'TodoyuUserrole',
+	'list'	=> 'TodoyuProjectroleManager::getRecords',
+	'save'	=> 'TodoyuProjectroleManager::saveUserrole',
+	'delete'=> 'TodoyuProjectroleManager::deleteUserrole',
+	'object'=> 'TodoyuProjectrole',
 	'table'	=> 'ext_project_role'
 ));
 

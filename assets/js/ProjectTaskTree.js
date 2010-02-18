@@ -358,7 +358,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 	/**
-	 * Save currently open projects in user prefs
+	 * Save currently open projects in prefs
 	 */
 	saveOpenProjects: function() {
 		this.openProjects = [];
