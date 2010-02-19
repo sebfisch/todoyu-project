@@ -56,4 +56,6 @@ require_once( PATH_EXT_PROJECT . '/config/panelwidgets.php' );
 require_once( PATH_EXT_PROJECT . '/config/hooks.php' );
 require_once( PATH_EXT_PROJECT . '/dwoo/plugins.php');
 
+
+
 ?>
