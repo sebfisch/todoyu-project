@@ -23,12 +23,12 @@
  *
  */
 Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = {
-	
+
 	/**
 	 * Reference to extension js
 	 */
 	ext:	Todoyu.Ext.project,
-	
+
 
 	/**
 	 * PanelWidget ID
@@ -39,12 +39,12 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = {
 
 	/**
 	 * Initialize the panelWidget: setup properties, install element observers
-	 * 
+	 *
 	 * @param	Array		Selected Status IDs
 	 */
 	init: function(selectedStatusIDs) {
 		this.statusFilter = new Todoyu.Ext.project.PanelWidget.StatusFilter('panelwidget-projectstatusfilter-list', this.onSelectionChange.bind(this));
-		
+
 			// Inject the current filter status into the project list widget
 		this.ext.PanelWidget.ProjectList.applyFilter('status', selectedStatusIDs.join(','), false);
 	},
@@ -55,7 +55,7 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = {
 	 *
 	 * @param	Event		event
 	 */
-	onSelectionChange: function(event) {		
+	onSelectionChange: function(event) {
 		this.onUpdate();
 	},
 
@@ -65,7 +65,7 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = {
 	 * Handler when PanelWidget is updated
 	 */
 	onUpdate: function() {
-		Todoyu.PanelWidget.inform(this.key, this.statusFilter.getValue());
+		Todoyu.PanelWidget.fire(this.key, this.statusFilter.getValue());
 		this.savePreference();
 	},
 

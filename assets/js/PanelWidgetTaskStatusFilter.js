@@ -23,12 +23,12 @@
  *
  */
 Todoyu.Ext.project.PanelWidget.TaskStatusFilter = {
-	
+
 	/**
 	 * Reference to extension js
 	 */
 	ext:	Todoyu.Ext.project,
-	
+
 
 	/**
 	 * PanelWidget ID
@@ -41,7 +41,7 @@ Todoyu.Ext.project.PanelWidget.TaskStatusFilter = {
 	 * Initialize the panelWidget: setup properties, install element observers
 	 */
 	init: function() {
-		this.statusFilter = new Todoyu.Ext.project.PanelWidget.StatusFilter('panelwidget-taskstatusfilter-list', this.onSelectionChange.bind(this));																				 
+		this.statusFilter = new Todoyu.Ext.project.PanelWidget.StatusFilter('panelwidget-taskstatusfilter-list', this.onSelectionChange.bind(this));
 	},
 
 
@@ -50,7 +50,7 @@ Todoyu.Ext.project.PanelWidget.TaskStatusFilter = {
 	 *
 	 * @param	Event		event
 	 */
-	onSelectionChange: function(event) {	
+	onSelectionChange: function(event) {
 		this.onUpdate();
 	},
 
@@ -60,7 +60,7 @@ Todoyu.Ext.project.PanelWidget.TaskStatusFilter = {
 	 * Handler when PanelWidget is updated
 	 */
 	onUpdate: function() {
-		Todoyu.PanelWidget.inform(this.key, this.statusFilter.getValue());
+		Todoyu.PanelWidget.fire(this.key, this.statusFilter.getValue());
 		this.savePreference();
 	},
 
