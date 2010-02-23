@@ -26,21 +26,11 @@
  * @subpackage	Project
  */
 
-
-
-
 	/**
 	 * Context menu configuration for task
 	 */
 
 $CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
-	'header'	=> array(
-		'key'		=> 'header',
-		'label'		=> 'TodoyuTaskManager::getContextMenuHeader',
-		'jsAction'	=> 'void(0)',
-		'class'		=> 'contextmenuHeader',
-		'position'	=> 0
-	),
 	'showinproject'	=> array(
 		'key'		=> 'showinproject',
 		'label'		=> 'task.contextmenu.showinproject',
@@ -193,13 +183,6 @@ $CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 	 */
 
 $CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
-	'header'	=> array(
-		'key'		=> 'header',
-		'label'		=> 'TodoyuTaskManager::getContextMenuHeader',
-		'jsAction'	=> 'void(0)',
-		'class'		=> 'contextmenuHeader',
-		'position'	=> 0
-	),
 	'showinproject'	=> array(
 		'key'		=> 'showinproject',
 		'label'		=> 'task.contextmenu.showinproject',
@@ -311,13 +294,6 @@ $CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
 	 */
 
 $CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
-	'header'	=> array(
-		'key'		=> 'header',
-		'label'		=> 'TodoyuProjectManager::getContextMenuHeader',
-		'jsAction'	=> 'void(0)',
-		'class'		=> 'contextmenuHeader',
-		'position'	=> 0
-	),
 	'showinproject'	=> array(
 		'key'		=> 'showinproject',
 		'label'		=> 'project.contextmenu.showinproject',
@@ -443,6 +419,5 @@ $CONFIG['EXT']['project']['ContextMenu']['TaskClipboard'] = array(
 		)
 	)
 );
-
 
 ?>

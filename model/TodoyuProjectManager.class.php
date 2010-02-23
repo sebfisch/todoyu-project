@@ -398,23 +398,6 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get context menu header
-	 *
-	 * @param	Integer	$idProject
-	 * @return	String
-	 */
-	public static function getContextMenuHeader($idProject) {
-		$idProject	= intval($idProject);
-		$project	= self::getProjectArray($idProject);
-
-		$header		= TodoyuDiv::cropText($project['title'], 27, '...', false);
-
-		return $header;
-	}
-
-
-
-	/**
 	 * Get next available task nunmber
 	 *
 	 * @param	Integer	$idProject

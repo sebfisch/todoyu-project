@@ -768,21 +768,6 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Get label for the contextmenu of a task
-	 *
-	 * @param	Integer		$idTask
-	 * @return	String
-	 */
-	public static function getContextMenuHeader($idTask) {
-
-		$task	= self::getTaskData($idTask);
-
-		return TodoyuDiv::cropText($task['title'], 24, '', false);
-	}
-
-
-
-	/**
 	 * Get all task data informations.
 	 * Information from all extensions are merged, labels are parsed and the list is sorted
 	 *
