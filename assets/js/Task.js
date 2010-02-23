@@ -200,7 +200,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Handler if user tries to paste on a position which is not allowed
+	 * Handler if person tries to paste on a position which is not allowed
 	 */
 	pasteNotAllowed: function() {
 		alert("[LLL:task.pasteNotAllowed]");
