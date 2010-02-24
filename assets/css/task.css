@@ -38,14 +38,14 @@
 	left:10px;
 	height:20px;
 	width:15px;
-	background:url(../../../../core/assets/img/tree/icons.png) no-repeat 1px -23px;
+	background:url(../../../../core/assets/img/tree-icons.png) no-repeat 1px -23px;
 	z-index:1;
 }
 
 .task h3 a.expanded {
 	height:20px;
 	width:35px;
-	background:url(../../../../core/assets/img/tree/icons.png) no-repeat 0 7px;
+	background:url(../../../../core/assets/img/tree-icons.png) no-repeat 0 7px;
 }
 
 .task h3 .headLabel {
@@ -67,6 +67,10 @@
 .task h3 .headLabel .taskDate {
 	width:45px;
 	margin-right:3px;
+}
+
+.task.container h3 .headLabel .taskDate {
+	display:none;
 }
 
 .task h3 .headLabel .projectName {

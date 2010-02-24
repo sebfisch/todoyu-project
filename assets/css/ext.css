@@ -79,6 +79,12 @@ div.projectDetails fieldset.right {
 }
 
 
+/* --------------------------------------
+	Project tree tabs
+   ------------------------------------- */ 
+#project-tabs li span.icon {
+	background:url(../img/icons.png) no-repeat 0 -445px;
+}
 
 /* --------------------------------------
 	Search tabs
