@@ -33,9 +33,9 @@ if ( allowed('project', 'general:quicktaskheadlet') ) {
 
 
 
-	/**
-	 * @todo	Implement this with a hook
-	 */
+/**
+ * @todo	Implement this with a hook
+ */
 TodoyuRenderer::addAreaRenderer('project', 'projectinfo', 'TodoyuProjectRenderer::renderProjectPersons');
 
 TodoyuContextMenuManager::registerFunction('Task', 'TodoyuTaskManager::getContextMenuItems', 10);
@@ -45,7 +45,7 @@ TodoyuContextMenuManager::registerFunction('Task', 'TodoyuTaskManager::removeEmp
 TodoyuContextMenuManager::registerFunction('Project', 'TodoyuProjectManager::getContextMenuItems', 10);
 
 
-	// @see	constants are defined in  constants.php
+
 $CONFIG['EXT']['project']['STATUS']['PROJECT'] = array(
 	STATUS_PLANNING		=> 'planning',
 	STATUS_PROGRESS		=> 'progress',
@@ -82,6 +82,5 @@ $CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
 	'tmpl'			=> 'ext/project/view/filterwidget-projectrole.tmpl',
 	'configFunc'	=> 'TodoyuProjectFilter::prepareDataForProjectroleWidget'
 );
-
 
 ?>

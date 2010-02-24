@@ -30,6 +30,13 @@
 class TodoyuProjectSearch implements TodoyuSearchEngineIf {
 
 	/**
+	 * Default table for database requests
+	 */
+	const TABLE = 'ext_project_project';
+
+
+
+	/**
 	 * Search project in fulltext mode. Return the ID of the matching projects
 	 *
 	 * @param	Array		$find		Keywords which have to be in the projects
@@ -40,7 +47,7 @@ class TodoyuProjectSearch implements TodoyuSearchEngineIf {
 	public static function searchProjects(array $find, array $ignore = array(), $limit = 200) {
 		$limit	= intval($limit);
 
-		$table	= 'ext_project_project';
+		$table	= self::TABLE;
 		$fields	= array('id', 'description', 'title');
 
 		return TodoyuSearch::searchTable($table, $fields, $find, $ignore, $limit);
@@ -69,7 +76,7 @@ class TodoyuProjectSearch implements TodoyuSearchEngineIf {
 						p.title,
 						p.status,
 						c.title company';
-			$table	= '	ext_project_project p,
+			$table	= self::TABLE . ' p,
 						ext_contact_company c';
 			$where	= '	p.id IN(' . implode(',', $projectIDs) . ') AND
 						p.id_company	= c.id';

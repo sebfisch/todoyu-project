@@ -39,7 +39,7 @@
 		<label index="projectrole.employee_ext">external Employee</label>
 		<label index="projectrole.projectsupervisor">Project-Supervisor</label>
 		<label index="search.label">Projects</label>
-		<label index="search.mode.label">Search Projects</label>
+		<label index="search.mode.label">Find Projects</label>
 		<label index="create.label">New Project</label>
 		<label index="attr.company">Customer</label>
 		<label index="attr.id">Project ID</label>
@@ -113,7 +113,7 @@
 		<label index="projectrole.employee_ext">Externer Mitarbeiter</label>
 		<label index="projectrole.projectsupervisor">Projekt-Supervisor</label>
 		<label index="search.label">Projekte</label>
-		<label index="search.mode.label">Projekte suchen</label>
+		<label index="search.mode.label">Projekte finden</label>
 		<label index="create.label">Neues Projekt</label>
 		<label index="attr.company">Kunde</label>
 		<label index="attr.id">Projekt ID</label>

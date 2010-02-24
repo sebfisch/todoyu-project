@@ -42,7 +42,7 @@ TodoyuLanguage::register('headlet-quicktask', PATH_EXT_PROJECT . '/locale/headle
 	// Add quick creation types
 TodoyuQuickCreateManager::addEngine('project', 'project', 'project.create.label', 10);
 TodoyuQuickCreateManager::addEngine('project', 'task', 'task.create.label', 20);
-	// Add area related primary engines
+	// Add area related primary creation engines
 TodoyuQuickCreateManager::addAreaEngine(EXTID_PROJECT, 'project', 'project', 'project.create.label', 10);
 TodoyuQuickCreateManager::addAreaEngine(EXTID_PROJECT, 'project', 'task', 'task.create.label', 20);
 
@@ -51,11 +51,8 @@ TodoyuQuickCreateManager::addAreaEngine(EXTID_PROJECT, 'project', 'task', 'task.
 require_once( PATH_EXT_PROJECT . '/config/constants.php' );
 require_once( PATH_EXT_PROJECT . '/config/extension.php' );
 //require_once( PATH_EXT_PROJECT . '/config/filters.php' );
-//require_once( PATH_EXT_PROJECT . '/config/search.php' );
 require_once( PATH_EXT_PROJECT . '/config/panelwidgets.php' );
 require_once( PATH_EXT_PROJECT . '/config/hooks.php' );
 require_once( PATH_EXT_PROJECT . '/dwoo/plugins.php');
-
-
 
 ?>

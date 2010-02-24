@@ -30,6 +30,14 @@
 class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 
 	/**
+	 * Default table for database requests
+	 *
+	 */
+	const TABLE = 'ext_project_task';
+
+
+
+	/**
 	 * Search task which match the keywords
 	 *
 	 * @param	Array		$find		Keywords which must be in the task
@@ -64,7 +72,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 //			}
 //		}
 
-		$table	= 'ext_project_task';
+		$table	= self::TABLE;
 		$fields	= array('id_project', 'tasknumber', 'description', 'title');
 
 		return TodoyuSearch::searchTable($table, $fields, $find, $ignore, $limit);
@@ -94,7 +102,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 						t.title,
 						p.title as project,
 						c.shortname as company';
-			$table	= '	ext_project_task t,
+			$table	= self::TABLE . ' t,
 						ext_project_project p,
 						ext_contact_company c';
 			$where	= '	t.id_project = p.id AND
@@ -143,7 +151,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 	 */
 	public static function searchTask($sword)	{
 		$fields	= array('id', 'title', 'description', 'id_project', 'tasknumber');
-		$table	= 'ext_project_task';
+		$table	= self::TABLE;
 
 		if( strstr($sword, '.') )	{
 			list($project, $taskNumber) = explode('.', $sword);

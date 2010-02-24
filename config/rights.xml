@@ -14,7 +14,6 @@
 		<right name="status" />
 		<right name="addtask" />
 		<right name="addcontainer" />
-		<right name="search" />
 	</section>
 
 	<section name="task" require="general:use">
@@ -26,7 +25,6 @@
 		<right name="clone" />
 		<right name="copy" />
 		<right name="cut" />
-		<right name="search" />
 	</section>
 
 	<section name="container" require="general:use">

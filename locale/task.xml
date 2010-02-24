@@ -26,7 +26,7 @@
 		<label index="attr.dateover">Enddate or Deadline Exceeded</label>
 		<label index="attr.overtimed">Task overtimed</label>
 		<label index="search.label">Tasks</label>
-		<label index="search.mode.label">Search Tasks</label>
+		<label index="search.mode.label">Find Tasks</label>
 		<label index="create.label">New Task</label>
 		<label index="date.deadline.short">D</label>
 		<label index="contextmenu.showinproject">Show in Project</label>
@@ -121,7 +121,7 @@
 		<label index="attr.dateover">End-Datum oder Frist ist abgelaufen</label>
 		<label index="attr.overtimed">Aufgabezeit überzogen</label>
 		<label index="search.label">Aufgaben</label>
-		<label index="search.mode.label">Aufgaben suchen</label>
+		<label index="search.mode.label">Aufgaben finden</label>
 		<label index="create.label">Neue Aufgabe</label>
 		<label index="date.deadline.short">F</label>
 		<label index="contextmenu.showinproject">Zeige in Projekt</label>
