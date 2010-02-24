@@ -28,7 +28,7 @@
 class TodoyuProjectContextmenuActionController extends TodoyuActionController {
 
 	/**
-	 * Contextmenu for tasks (and containers)
+	 * Get task (and container) related contextmenu as JSON
 	 *
 	 * @param	Array		$params
 	 */
@@ -42,7 +42,7 @@ class TodoyuProjectContextmenuActionController extends TodoyuActionController {
 
 
 	/**
-	 * Context menu for project
+	 * Get project related contextmenu as JSON
 	 *
 	 * @param	Array		$params
 	 */
