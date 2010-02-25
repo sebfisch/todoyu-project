@@ -21,12 +21,8 @@
 
 if ( allowed('project', 'general:use') ) {
 		// Add create engine types
-	TodoyuQuickCreateManager::addEngine('project', 'project', 'project.create.label', 10);
-	TodoyuQuickCreateManager::addEngine('project', 'task', 'task.create.label', 20);
-
-		// Add area related primary creation engines
-	TodoyuQuickCreateManager::addAreaEngine(EXTID_PROJECT, 'project', 'project', 'project.create.label', 10);
-	TodoyuQuickCreateManager::addAreaEngine(EXTID_PROJECT, 'project', 'task', 'task.create.label', 20);
+	TodoyuQuickCreateManager::addEngine('project', 'project', 'project.create.label', 10, EXTID_PROJECT);
+	TodoyuQuickCreateManager::addEngine('project', 'task', 'task.create.label', 20, EXTID_PORTAL);
 }
 
 ?>
