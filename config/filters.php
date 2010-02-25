@@ -75,9 +75,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 				'negation'	=> 'default'
 			)
 		),
-		'creatorGroups' => array(
+		'creatorRoles' => array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_creatorRoles',
-			'label'		=> 'LLL:projectFilter.task.creatorGroups',
+			'label'		=> 'LLL:projectFilter.task.creatorRoles',
 			'optgroup'	=> 'LLL:task.search.label',
 			'widget'	=> 'select',
 			'wConf'		=> array(
@@ -100,9 +100,9 @@ $CONFIG['FILTERS']['TASK'] = array(
 				'negation'	=> 'default'
 			)
 		),
-		'assignedGroups' => array(
+		'assignedRoles' => array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_assignedRoles',
-			'label'		=> 'LLL:projectFilter.task.assignedGroups',
+			'label'		=> 'LLL:projectFilter.task.assignedRoles',
 			'optgroup'	=> 'LLL:task.search.label',
 			'widget'	=> 'select',
 			'wConf'		=> array(
