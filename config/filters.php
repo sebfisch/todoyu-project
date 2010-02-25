@@ -410,7 +410,7 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 			'wConf'		=> array(
 				'multiple'	=> true,
 				'size'		=> 5,
-				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getStatusOptions',
+				'FuncRef'	=> 'TodoyuProjectFilterDataSource::getStatusOptions',
 				'negation'	=> 'default'
 	  		)
 		),
