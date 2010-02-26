@@ -1,3 +1,4 @@
+<div class="projectstatus bcStatus{$status}"></div>
 <h1 class="title headerLine contextmenuproject" id="project-{$id}-header">
 	<span class="title first">
 		<a id="project-{$id}-titlelabel" class="titleLabel" {restrict 'project' 'project:details'}onclick="Todoyu.Ext.project.Project.toggleDetails({$id})"{/restrict} href="javascript:void(0)" title="ID: {$id}">
@@ -6,7 +7,6 @@
 	</span>
 	<span class="rgt"><!-- right --></span>
 </h1>
-<div class="projectstatus bcStatus{$status}"></div>
 
 {restrict 'project' 'project:details'}
 <div id="project-{$id}-details"{if ! $details} style="display:none"{/if}>

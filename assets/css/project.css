@@ -139,10 +139,15 @@
    -------------- */
 
 	/* details */
+.project .headerLine {
+	background-position:0 -92px;
+}
+
 .project .projectstatus {
-	border-top-width:5px;
-	border-top-style:solid;
-	border-bottom:1px dotted #AAAAAA;
+	position:absolute;
+	height:27px;
+	border-left-width:8px;
+	border-left-style:solid;
 }
 
 .project .description {
@@ -169,7 +174,7 @@
 	.project ul.assignedPersons span.name {
 		padding-left:20px;
 	}
-	
+
 	.project ul.assignedPersons li.person span.name {
 		background:url(../../../contact/assets/img/icons.png) no-repeat 1px 2px;
 	}
@@ -191,8 +196,8 @@
 		list-style-position:inside;
 		list-style-type:square;
 	}
-	
-	
+
+
 /*
  * Project search modifications
  */
