@@ -448,12 +448,6 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 			    'size'			=> 5,
 				'negation'		=> 'default'
 			)
-		),
-		'fixproject' => array(
-			'funcRef'	=> 'TodoyuProjectFilter::filter_isfixed',
-			'label'		=> 'LLL:projectFilter.project.fixproject',
-			'optgroup'	=> 'LLL:project.search.label',
-			'widget'	=> 'checkbox',
 		)
 	)
 );

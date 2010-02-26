@@ -46,7 +46,6 @@
 		<label index="project.projectrole">Project Role</label>
 		<label index="project.projectleader">Project Manager</label>
 		<label index="project.projectsupervisor">Project Supervisor</label>
-		<label index="project.fixproject">Is static Project?</label>
 	</labels>
 	<labels lang="de">
 		<label index="project">Projekt</label>
@@ -93,6 +92,5 @@
 		<label index="project.company">Kunden-Name</label>
 		<label index="project.projectleader">Projektleiter</label>
 		<label index="project.projectsupervisor">Projekt Supervisor</label>
-		<label index="project.fixproject">Statisches Projekt?</label>
 	</labels>
 </locallang>

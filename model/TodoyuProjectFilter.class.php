@@ -200,29 +200,6 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 
 
-
-	/**
-	 * Filter projects by being fixed-projects
-	 *
-	 * @param	Boolean	$isFixed
-	 * @param	Boolean	$negate
-	 * @return	Array
-	 */
-	public static function Filter_isfixed($isFixed, $negate = false)	{
-		$tables = array('ext_project_project');
-
-		$value = $negate === true ? 0 : 1;
-
-		$where = ' is_fixed = ' . intval($value);
-
-		return array(
-			'tables'	=> $tables,
-			'where'		=> $where
-		);
-	}
-
-
-
 	/**
 	 * Filter condition for projectrole
 	 * The value is a combination between the projectroles and the selected person
