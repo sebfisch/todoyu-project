@@ -52,6 +52,14 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	}
 
 
+
+	/**
+	 * General items function for anonymous access
+	 *
+	 * @param	String		$sorting
+	 * @param	Integer		$limit
+	 * @return	Array
+	 */
 	public function getItemIDs($sorting = '', $limit = 100) {
 		return $this->getProjectIDs($sorting, $limit);
 	}

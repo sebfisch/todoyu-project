@@ -30,6 +30,14 @@
 class TodoyuTaskManager {
 
 	/**
+	 * Expanded tasks in project view
+	 *
+	 * @var	Array
+	 */
+	private static $expandedTaskIDs = null;
+
+
+	/**
 	 * Tablename
 	 */
 	const TABLE = 'ext_project_task';
@@ -408,8 +416,6 @@ class TodoyuTaskManager {
 
 
 		if( $task->isTask() || $task->isContainer() ) {
-			$allowed['header']	= $ownItems['header'];
-
 				// Add project backlink if not in project area
 			if( AREA !== EXTID_PROJECT ) {
 				$allowed['showinproject'] = $ownItems['showinproject'];
@@ -1495,6 +1501,24 @@ class TodoyuTaskManager {
 		}
 
 		return false;
+	}
+
+
+
+	/**
+	 * Check if a task is expanded
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Bool
+	 */
+	public static function isTaskExpanded($idTask) {
+		$idTask	= intval($idTask);
+
+		if( is_null(self::$expandedTaskIDs) ) {
+			self::$expandedTaskIDs = TodoyuProjectPreferences::getExpandedTasks();
+		}
+
+		return in_array($idTask, self::$expandedTaskIDs);
 	}
 
 

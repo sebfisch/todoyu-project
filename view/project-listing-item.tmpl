@@ -1,0 +1,19 @@
+<div id="project-{$project.id}" class="project">
+	<h3 id="project-{$project.id}-header" class="contextmenuproject" onclick="Todoyu.Ext.portal.Project.toggleDetails({$project.id})">
+
+		<div class="headLabel bcStatus{$project.status}" title="{$project.fulltitle}">
+			<div class="customer">
+				{$project.company.title}&nbsp;
+			</div>
+			<div class="projectName" title="{Label project.project}: {$task.project.title} (ID: {$task.project.id}) / {Label task.task}: {$task.title}">
+				{htmlencode $project.title|truncate:80}
+			</div>
+			<div class="projectNumber">
+				{$project.id}
+			</div>
+		</div>
+
+		<div class="clear"><!-- --></div>
+	</h3>
+	{$details}
+</div>

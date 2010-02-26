@@ -867,8 +867,6 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		$queryParts	= false;
 		$timestamp	= TodoyuTime::parseDate($date);
 
-		TodoyuDebug::printInFirebug($date, 'date');
-
 		if( $timestamp !== 0 ) {
 			$info	= self::getTimeAndLogicForDate($timestamp, $negate);
 
@@ -879,8 +877,6 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				'where'	=> 'ext_project_task.' . $field . ' ' . $info['logic'] . ' ' . $info['timestamp']
 			);
 		}
-
-		TodoyuDebug::printInFirebug($queryParts);
 
 		return $queryParts;
 	}

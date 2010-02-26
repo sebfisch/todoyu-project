@@ -35,13 +35,6 @@ class TodoyuProjectRenderer {
 	const EXTKEY = 'project';
 
 	/**
-	 * Expanded tasks in project view
-	 *
-	 * @var	Array
-	 */
-	private static $expandedTaskIDs = null;
-
-	/**
 	 * Visible subtasks in project view
 	 *
 	 * @var	Array
@@ -313,8 +306,6 @@ class TodoyuProjectRenderer {
 		$form->setFormData($data);
 		$form->setRecordID($idProject);
 
-		TodoyuDebug::printInFirebug($data);
-
 		return $form->render();
 	}
 
@@ -514,7 +505,7 @@ class TodoyuProjectRenderer {
 		self::$renderedTasks[] = $idTask;
 
 			// Get some task information
-		$isExpanded	= $idTask > 0 ? ( $idTask === $idTaskShow ? true : self::isTaskExpanded($idTask)) : false ;
+		$isExpanded	= $idTask > 0 ? ( $idTask === $idTaskShow ? true : TodoyuTaskManager::isTaskExpanded($idTask)) : false ;
 		$infoLevel	= $isExpanded ? 3 : 1;
 		$taskData	= TodoyuTaskManager::getTaskInfoArray($idTask, $infoLevel);
 
@@ -691,6 +682,52 @@ class TodoyuProjectRenderer {
 		);
 
 		return TodoyuTabheadRenderer::renderTabs($name, $tabs, $jsHandler, $active);
+	}
+
+
+	public static function renderProjectListing(array $projectIDs) {
+		$projectIDs		= TodoyuArray::intval($projectIDs, true, true);
+		$projectsHTML	= array();
+
+		foreach($projectIDs as $idProject) {
+			$projectsHTML[] = self::renderListingProject($idProject);
+		}
+
+		$tmpl	= 'ext/project/view/project-listing.tmpl';
+		$data	= array(
+			'projects'	=> $projectsHTML,
+			'javascript'=> 'Todoyu.Ext.project.ContextMenuProject.reattach();'
+		);
+
+		if( ! TodoyuRequest::isAjaxRequest() ) {
+			TodoyuHookManager::callHook('project', 'renderProjects');
+		}
+
+		return render($tmpl, $data);
+	}
+
+
+	public static function renderListingProject($idProject) {
+		$idProject	= intval($idProject);
+
+				// Get project information
+		$project	= TodoyuProjectManager::getProject($idProject);
+		$isExpanded	= TodoyuProjectPreferences::isProjectDetailsExpanded($idProject);
+
+
+			// Prepare data array for template
+		$tmpl	= 'ext/project/view/project-listing-item.tmpl';
+		$data 	= array(
+			'project'			=> $project->getTemplateData(false),
+			'isExpanded'		=> $isExpanded
+		);
+
+			// Render details if task is expanded
+		if( $isExpanded ) {
+			$data['details']= self::renderProjectDetails($idProject);
+		}
+
+		return render($tmpl, $data);
 	}
 
 }

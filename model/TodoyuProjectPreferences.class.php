@@ -201,9 +201,9 @@ class TodoyuProjectPreferences {
 
 		if( $idTask !== 0 ) {
 			if( $expanded ) {
-				self::savePref('tasktree-task-exp', $idTask);
+				self::savePref('task-expanded', $idTask);
 			} else {
-				self::deletePref('tasktree-task-exp', $idTask);
+				self::deletePref('task-expanded', $idTask);
 			}
 		}
 	}
@@ -216,7 +216,7 @@ class TodoyuProjectPreferences {
 	 * @return	Array
 	 */
 	public static function getExpandedTasks() {
-		$taskIDs = self::getPrefs('tasktree-task-exp');
+		$taskIDs = self::getPrefs('task-expanded');
 
 		if( $taskIDs === false ) {
 			$taskIDs = array();

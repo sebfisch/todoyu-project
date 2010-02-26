@@ -20,39 +20,41 @@
 ***************************************************************/
 
 /**
- * Project search renderer
+ * Project renderer for portal
  *
  * @package		Todoyu
  * @subpackage	Project
  */
-
-class TodoyuProjectSearchRenderer {
+class TodoyuProjectPortalRenderer {
 
 	/**
-	 * Render search result based on given filter conditions
-	 * This function is registered as typerenderer for the search panel
+	 * Get label of todo tab in portal
 	 *
-	 * @param	Integer		$idFilterset
-	 * @param	Bool		$useConditions
-	 * @param	Array		$filterConditions
-	 * @param	String		$conjunction
+	 * @param	Bool		$count
 	 * @return	String
 	 */
-	public static function renderSearchResults($idFilterset = 0, array $conditions = array(), $conjunction = 'AND')	{
-		$idFilterset= intval($idFilterset);
-		$projectIDs	= TodoyuProjectManager::getProjectIDsByFilter($idFilterset, $conditions, $conjunction);
-		$content	= '';
-		$tmpl		= 'ext/project/view/project-search-list.tmpl';
-		$data		= array(
-			'projects'	=> array(),
-			'javascript'=> 'Todoyu.Ext.project.Filter.onProjectSearchResultsUpdated()'
-		);
+	public static function getTodoTabLabel($count = true) {
+		$label		= TodoyuLanguage::getLabel('project.portal.tab.todos');
 
-		foreach($projectIDs as $idProject)	{
-			$data['projects'][$idProject] = TodoyuProjectRenderer::renderProjectHeader($idProject);
+		if( $count ) {
+			$numTasks	= TodoyuProjectPortalManager::getTodoCount();
+			$label		=  $label . ' (' . $numTasks . ')';
 		}
 
-		return render($tmpl, $data);
+		return $label;
+	}
+
+
+
+	/**
+	 * Get content of todo tab in portal
+	 *
+	 * @return	String
+	 */
+	public static function renderTodoTabContent(array $params = array()) {
+		$taskIDs= TodoyuProjectPortalManager::getTodoTaskIDs();
+
+		return TodoyuTaskRenderer::renderTaskListing($taskIDs);
 	}
 
 }

@@ -20,31 +20,37 @@
 ***************************************************************/
 
 /**
- *
+ * Project manager for portal
  *
  * @package		Todoyu
  * @subpackage	Project
  */
-class TodoyuProjectTabActionController extends TodoyuActionController {
+class TodoyuProjectPortalManager {
 
+	/**
+	 * Get task IDs for todo tab
+	 *
+	 * @return	Array
+	 */
+	public static function getTodoTaskIDs() {
+		$conditions	= $GLOBALS['CONFIG']['EXT']['project']['portalTodoTabFilters'];
+		$taskFilter	= new TodoyuTaskFilter($conditions);
+		$taskIDs	= $taskFilter->getTaskIDs();
 
-	public function loadAction(array $params) {
-		$idTask	= intval($params['task']);
-		$tabKey	= $params['tab'];
-
-		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tabKey, AREA);
-
-		$tabConf	= TodoyuTaskManager::getTabConfig($tabKey);
-		$funcRef	= $tabConf['content'];
-
-		return TodoyuDiv::callUserFunction($funcRef, $idTask);
+		return $taskIDs;
 	}
 
-	public function selectedAction(array $params) {
-		$idTask	= intval($params['task']);
-		$tabKey	= $params['tab'];
 
-		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tabKey, AREA);
+	/**
+	 * Get number of tasks for todo tabs
+	 *
+	 * @param	Array		$filtersetIDs		No needed, but standard
+	 * @return	Integer
+	 */
+	public static function getTodoCount(array $filtersetIDs = array()) {
+		$taskIDs	= self::getTodoTaskIDs();
+
+		return sizeof($taskIDs);
 	}
 
 }

@@ -28,6 +28,72 @@
 class TodoyuTaskRenderer {
 
 	/**
+	 * Render task for listing
+	 *
+	 * @param	Integer		$idTask
+	 * @return	String
+	 */
+	public static function renderListingTask($idTask) {
+		$idTask		= intval($idTask);
+
+				// Get some task information
+		$isExpanded	= TodoyuTaskManager::isTaskExpanded($idTask);
+		$taskData	= TodoyuTaskManager::getTaskInfoArray($idTask, 3);
+
+			// Prepare data array for template
+		$tmpl	= 'ext/project/view/task-listing-item.tmpl';
+		$data 	= array(
+			'task'				=> $taskData,
+			'isExpanded'		=> $isExpanded,
+			'subtasks'			=> '',
+			'taskIcons'			=> TodoyuTaskManager::getAllTaskIcons($idTask),
+		);
+
+			// Render details if task is expanded
+		if( $isExpanded ) {
+			$activeTab		= TodoyuProjectPreferences::getActiveTaskTab($idTask, AREA);
+			$data['details']= TodoyuTaskRenderer::renderTaskDetail($idTask, $activeTab);
+			$data['task']['class'] .= ' expanded';
+		}
+
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDataBeforeRendering', $data, array($idTask));
+
+		return render($tmpl, $data);
+	}
+
+
+
+	/**
+	 * Render task list
+	 *
+	 * @param	Array	$taskIDs
+	 * @return	String
+	 */
+	public static function renderTaskListing(array $taskIDs) {
+		$taskIDs	= TodoyuArray::intval($taskIDs, true, true);
+		$tasksHTML	= array();
+
+		foreach($taskIDs as $idTask) {
+			$tasksHTML[] = self::renderListingTask($idTask);
+		}
+
+		$tmpl	= 'ext/project/view/task-listing.tmpl';
+		$data	= array(
+			'tasks'		=> $tasksHTML
+		);
+
+		if( TodoyuRequest::isAjaxRequest() ) {
+			$data['javascript'] = 'Todoyu.Ext.project.ContextMenuTask.reattach();';
+		} else {
+			TodoyuHookManager::callHook('project', 'renderTasks');
+		}
+
+		return render($tmpl, $data);
+	}
+
+
+
+	/**
 	 * Render a task detail
 	 *
 	 * @param	Integer		$idTask

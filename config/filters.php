@@ -32,15 +32,11 @@ $CONFIG['FILTERS']['TASK'] = array(
 	'config'	=> array(
 		'label'				=> 'LLL:task.search.label',
 		'position'			=> 10,
-		'RenderFunction'	=> 'TodoyuTaskSearchRenderer::renderResults',
+		'resultsRenderer'	=> 'TodoyuTaskRenderer::renderTaskListing',
 		'class'				=> 'TodoyuTaskFilter',
 		'assets'			=> array(
 			array(
 				'ext'	=> 'project',
-				'type'	=> 'public'
-			),
-			array(
-				'ext'	=> 'portal',
 				'type'	=> 'public'
 			)
 		)
@@ -386,7 +382,7 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 	'config' 	=> array(
 		'label'				=> 'LLL:project.search.label',
 		'position'			=> 20,
-		'RenderFunction'	=> 'TodoyuProjectSearchRenderer::renderSearchResults',
+		'resultsRenderer'	=> 'TodoyuProjectRenderer::renderProjectListing',
 		'class'				=> 'TodoyuProjectFilter',
 		'assets'			=> array(
 			array(

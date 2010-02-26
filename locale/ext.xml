@@ -73,6 +73,7 @@
 		<label index="js.removeProject">Do you want to delete the whole project and all it's tasks?</label>
 		<label index="js.quicktask.saved">Quicktask has been saved</label>
 		<label index="ac.person.notFoundInfo">No person with a name containing the given text could be found.</label>
+		<label index="portal.tab.todos">To Dos</label>
 	</labels>
 	<labels lang="de">
 		<label index="ext.title">Projekt- und Aufgabenverwaltung</label>
@@ -147,5 +148,6 @@
 		<label index="js.removeProject">Wollen Sie das gesammte Projekt und alle seine Aufgaben löschen?</label>
 		<label index="js.quicktask.saved">Aufgabe wurde gespeichert</label>
 		<label index="ac.person.notFoundInfo">Es wurde keine Person gefunden deren Name die angegebenen Zeichen enthält.</label>
+		<label index="portal.tab.todos">Meine Aufgaben</label>
 	</labels>
 </locallang>

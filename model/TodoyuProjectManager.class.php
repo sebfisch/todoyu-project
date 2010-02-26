@@ -299,20 +299,6 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Check whether given task is expanded
-	 *
-	 * @param	Integer	$idTask
-	 * @return	Boolean
-	 */
-	public static function isTaskExpanded($idTask) {
-		$idTask	= intval($idTask);
-
-		return TodoyuPreferenceManager::isPreferenceSet(EXTID_PROJECT, 'expandedtask', $idTask);
-	}
-
-
-
-	/**
 	 * Set given task expanded
 	 *
 	 * @param	Integer	$idTask

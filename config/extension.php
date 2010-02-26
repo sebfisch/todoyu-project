@@ -83,4 +83,26 @@ $CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
 	'configFunc'	=> 'TodoyuProjectFilter::prepareDataForProjectroleWidget'
 );
 
+
+	// Add portal tab: 'todos'
+TodoyuPortalManager::addTab('todo', 'TodoyuProjectPortalRenderer::getTodoTabLabel', 'TodoyuProjectPortalRenderer::renderTodoTabContent', 20, array('project/public', 'project/portal'));
+
+
+
+/**
+ * Configuration for 'todo' tab
+ *
+ * @see	ext/project/config/filters.php	(all filter declarations)
+ */
+$CONFIG['EXT']['project']['portalTodoTabFilters'] = array(
+	array(
+		'filter'	=> 'currentPersonAssigned'
+	),
+	array(
+		'filter'	=> 'status',
+		'value'		=> STATUS_OPEN . ',' . STATUS_PROGRESS
+	)
+);
+
+
 ?>

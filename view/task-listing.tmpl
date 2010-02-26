@@ -1,0 +1,23 @@
+<div class="taskList portalTaskList">
+
+{* ---------- Header with column titles ---------- *}
+	<h1 class="headerLine">
+		<span class="first taskDate">{Label portal.tasktree.header.date}</span>
+		<span class="customer">{Label portal.tasktree.header.customer}</span>
+		<span class="projectName">{Label project.project} - {Label task.task}</span>
+		<span class="taskNumber">{Label portal.tasktree.header.tasknumber}</span>
+		<span class="rgt"><!-- right --></span>
+	</h1>
+
+{* ---------- The actual list of tasks ---------- *}
+	<div class="tasks" id="tasks">
+		{foreach $tasks taskHTML}
+			{$taskHTML}
+		{else}
+			<p class="contentMessage">{Label portal.selection.noTasksFound}</p>
+		{/foreach}
+	</div>
+</div>
+<script type="text/javascript">
+{$javascript}
+</script>
