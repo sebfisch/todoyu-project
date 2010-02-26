@@ -361,12 +361,12 @@ class TodoyuProjectManager {
 		}
 
 			// Edit
-		if( AREA === EXTID_PROJECT && allowed('project', 'project:edit') ) {
+		if( allowed('project', 'project:edit') ) {
 			$allowed['edit'] = $ownItems['edit'];
 		}
 
 			// Delete
-		if( AREA === EXTID_PROJECT && allowed('project', 'project:delete') ) {
+		if( allowed('project', 'project:delete') ) {
 			$allowed['delete'] = $ownItems['delete'];
 		}
 
@@ -383,12 +383,12 @@ class TodoyuProjectManager {
 		}
 
 			// Add task
-		if( AREA === EXTID_PROJECT && allowed('project', 'project:addtask') ) {
+		if( allowed('project', 'project:addtask') ) {
 			$allowed['addtask'] = $ownItems['addtask'];
 		}
 
 			// Add container
-		if( AREA === EXTID_PROJECT && allowed('project', 'project:addcontainer') ) {
+		if( allowed('project', 'project:addcontainer') ) {
 			$allowed['addcontainer'] = $ownItems['addcontainer'];
 		}
 

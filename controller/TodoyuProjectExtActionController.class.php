@@ -67,7 +67,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 			// If a project is displayed
 		if( $idProject !== 0 ) {
 				// Prepend current project to list
-			TodoyuProjectPreferences::addOpenProject(idProject);
+			TodoyuProjectPreferences::addOpenProject($idProject);
 
 			$project= TodoyuProjectManager::getProject($idProject);
 			$title	= TodoyuLanguage::getLabel('project.page.title') . ' - ' . $project->getFullTitle();
@@ -92,6 +92,57 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.ContextMenuProject.attach.bind(Todoyu.Ext.project.ContextMenuProject)', 100);
 
 		return TodoyuPage::render();
+	}
+	
+	
+	
+	/**
+	 * Controller to handle direct edit access. Calls the default action first to render the whole site.
+	 * After loading the site the js-edit method is called.
+	 * 
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function editAction(array $params)	{
+		restrict('project', 'general:edit');
+		
+		$idProject = intval($params['project']);
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.edit('.$idProject.')', 101);	
+		return $this->defaultAction($params);
+	}
+	
+	
+	
+	/**
+	 * Controller to handle direct add task access. Calls the default action first to render the whole site.
+	 * After loading the site the js-addTask method is called.
+	 * 
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function addtaskAction(array $params)	{
+		restrict('project', 'project:addtask');
+		
+		$idProject = intval($params['project']);
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addTask('.$idProject.')', 101);	
+		return $this->defaultAction($params);
+	}
+	
+	
+	
+	/**
+	 * Controller to handle direct add container access. Calls the default action first to render the whole site
+	 * After loading the site the js-addContainer method is called.
+	 * 
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function addcontainerAction(array $params)	{
+		restrict('project', 'project:addcontainer');
+		
+		$idProject = intval($params['project']);
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addContainer('.$idProject.')', 101);	
+		return $this->defaultAction($params);
 	}
 
 }
