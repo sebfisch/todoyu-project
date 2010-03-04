@@ -105,7 +105,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 *	@return	Boolean
 	 */
 	hasTab: function(idProject) {
-		return Todoyu.exists('projecttab-' + idProject);
+		return Todoyu.exists('project-tab-' + idProject);
 	},
 
 
@@ -366,7 +366,9 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		$('project-tabs').childElements().each(function(tab) {
 			this.openProjects.push(tab.id.split('-').last())
 		}.bind(this));
-
+		
+		this.openProjects = this.openProjects.uniq();
+		
 		var url		= Todoyu.getUrl('project', 'projecttasktree');
 		var options	= {
 			'parameters': {
