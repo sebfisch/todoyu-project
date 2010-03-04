@@ -213,7 +213,7 @@ Todoyu.Ext.project.Task.Tab = {
 	 * 	@return	Element
 	 */
 	getContainer: function(idTask) {
-		return $('task-' + idTask + '-tabs');
+		return $('task-' + idTask + '-tabcontainer');
 	},
 
 
