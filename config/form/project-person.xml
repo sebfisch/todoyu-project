@@ -28,6 +28,9 @@
 						<title>LLL:contact.contact.createnew</title>
 						<width>700</width>
 						<displayCondition></displayCondition>
+						<restrict>
+							<allow ext="contact" right="contact:modify"></allow>
+						</restrict>
 					</wizard>
 					<required />
 				</field>
