@@ -27,6 +27,11 @@
  */
 class TodoyuProjectAutocompleteActionController extends TodoyuActionController {
 
+
+	public function init(array $params) {
+		restrict('project', 'general:use');
+	}
+
 	public function personAction(array $params) {
 		$sword		= trim($params['sword']);
 		$config		= array();

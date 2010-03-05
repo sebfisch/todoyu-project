@@ -1,47 +1,46 @@
 <?php
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
 
+/**
+ * ActionController for project prefernces
+ * @package		Todoyu
+ * @subpackage	Project
+ */
 class TodoyuProjectProjectActionController extends TodoyuActionController {
 
-	/**
-	 * 'add' action method
-	 *
-	 * @param	Array $params
-	 * @return	String
-	 */
-	public function addAction(array $params) {
-		$idProject	= intval($params['project']);
 
-			// Send info headers for tab head
-		TodoyuHeader::sendTodoyuHeader('idProject', $idProject);
-		TodoyuHeader::sendTodoyuHeader('projectLabel', Label('LLL:project.newProject.tabLabel'));
-
-		return TodoyuProjectRenderer::renderNewProjectEdit();
-
-			// Send project html
-		return TodoyuProjectRenderer::renderTabbedProject($idProject, 0);
+	public function init(array $params) {
+		restrict('project', 'general:use');
 	}
 
 
-
 	/**
-	 * 'addfirst' action method
-	 *
-	 * @param	Array	$params
-	 * @return	String
-	 */
-	public function addfirstAction(array $params) {
-		return TodoyuProjectRenderer::renderNewProjectEdit();
-	}
-
-
-
-	/**
-	 * 'edit' action method
+	 * Edit project
 	 *
 	 * @param	Array	$params
 	 * @return	String
 	 */
 	public function editAction(array $params) {
+		restrict('project', 'project:modify');
+
 		$idProject	= intval($params['project']);
 
 		return TodoyuProjectRenderer::renderProjectEditForm($idProject);
@@ -56,6 +55,8 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @return	String		Form content if form is invalid
 	 */
 	public function saveAction(array $params) {
+		restrict('project', 'project:modify');
+
 		$data		= $params['project'];
 		$idProject	= intval($data['id']);
 
@@ -93,9 +94,11 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @return String
 	 */
 	public function detailsAction(array $params) {
-		restrict('project', 'project:details');
-
 		$idProject	= intval($params['project']);
+
+		if( ! allowed('project', 'project:seeAll') && ! TodoyuProjectManager::isPersonAssigned($idProject) ) {
+			deny('project', ':seeProject');
+		}
 
 		return TodoyuProjectRenderer::renderProjectDetails($idProject);
 	}
@@ -140,6 +143,8 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function setstatusAction(array $params) {
+		restrict('project', 'project:modify');
+
 		$idProject	= intval($params['project']);
 		$status		= intval($params['status']);
 
@@ -154,6 +159,8 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function removeAction(array $params) {
+		restrict('project', 'project:modify');
+
 		$idProject	= intval($params['project']);
 
 		TodoyuProjectManager::deleteProject($idProject);
@@ -179,7 +186,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function addSubformAction(array $params) {
-		restrict('project', 'project:edit');
+		restrict('project', 'project:modify');
 
 		$xmlPath	= 'ext/project/config/form/project.xml';
 

@@ -77,30 +77,6 @@ Todoyu.Ext.project = {
 
 
 	/**
-	 *	Show project tree of given project / task
-	 *
-	 *	@param	Integer	idProject
-	 *	@param	Integer	idTask
-	 */
-	showProjectTree: function(idProject, idTask) {
-		var url		= Todoyu.getUrl('project', 'projecttasktree');
-		var options = {
-			'parameters': {
-				'project':	idProject,
-				'task':		Todoyu.Helper.intval(idTask)
-			},
-			'onComplete': 	this.onTreeUpdate.bind(this)
-		};
-
-		this.ContextMenuTask.detach();
-		this.ContextMenuProject.detach();
-
-		Todoyu.Ui.updateContent(url, options);
-	},
-
-
-
-	/**
 	 *	Event handler: 'onTreeUpdate'
 	 *
 	 *	@param	unknown	response
@@ -122,40 +98,6 @@ Todoyu.Ext.project = {
 	attachContextMenu: function() {
 		this.ContextMenuProject.attach();
 		this.ContextMenuTask.attach();
-	},	
-	
-
-
-	/**
-	 *	Add the very first project
-	 */
-	addFirstProject: function() {
-		var url		= Todoyu.getUrl('project', 'project');
-		var options	= {
-			'parameters': {
-				'action':	'addfirst'
-			},
-			'onComplete': this.onFirstProjectAdded.bind(this)
-		};
-		var target	= 'project-0';
-
-			// Set tab label
-		$('projecttab-noselection').writeAttribute('id', 'projecttab-0');
-		$('projecttab-noselection-label').writeAttribute('id', 'projecttab-0-label');
-		$('projecttab-0-label').down('.labeltext', 0).update('[LLL:project.newproject.tab]');
-
-		Todoyu.Ui.update(target, url, options);
-	},
-
-
-
-	/**
-	 *	Custom event handler, being evoked after creation of the very first project
-	 *
-	 *	@param	unknown	response
-	 */
-	onFirstProjectAdded: function(response) {
-		
 	},
 
 
@@ -163,7 +105,7 @@ Todoyu.Ext.project = {
 	/**
 	 * Highlight the project tree
 	 */
-	highlightProjecttree: function() {		
+	highlightProjecttree: function() {
 		Effect.Shake('panelwidget-projecttree');
 		new Effect.Highlight('panelwidget-projecttree');
 	},

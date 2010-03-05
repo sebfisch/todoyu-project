@@ -19,10 +19,22 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Quickcreate project controller
+ *
+ * @package		Todoyu
+ * @subpackage	Project
+ */
 class TodoyuProjectQuickCreateProjectActionController extends TodoyuActionController {
 
+	public function init(array $params) {
+		restrict('project', 'project:modify');
+	}
+
+
+
 	/**
-	 * Get quickproject form rendered
+	 * Render project form
 	 *
 	 * @param	Array	$params
 	 * @return	String

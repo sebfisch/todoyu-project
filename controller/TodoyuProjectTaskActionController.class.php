@@ -27,6 +27,13 @@
  */
 class TodoyuProjectTaskActionController extends TodoyuActionController {
 
+
+	public function init(array $params) {
+		restrict('project', 'general:use');
+	}
+
+
+
 	/**
 	 * Add a new task directly to the project root
 	 *

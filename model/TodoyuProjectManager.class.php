@@ -268,6 +268,27 @@ class TodoyuProjectManager {
 
 
 	/**
+	 * Check if a person is assigned to a project
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idPerson
+	 * @return	Bool
+	 */
+	public static function isPersonAssigned($idProject, $idPerson = 0) {
+		$idProject	= intval($idProject);
+		$idPerson	= personid($idPerson);
+
+		$fields	= 'id';
+		$table	= 'ext_project_mm_project_person';
+		$where	= ' id_project	= ' . $idProject . ' AND
+					id_person	= ' . $idPerson;
+
+		return Todoyu::db()->hasResult($fields, $table, $where);
+	}
+
+
+
+	/**
 	 * Get root task IDs
 	 *
 	 * @param	Integer		$idProject
@@ -335,10 +356,8 @@ class TodoyuProjectManager {
 		$ownItems	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Project']);
 		$allowed	= array();
 
-		$allowed[] = $ownItems['header'];
-
 			// Show details
-		if( allowed('project', 'project:details') ) {
+		if( allowed('project', 'project:seeAll') || TodoyuProjectManager::isPersonAssigned($idProject) ) {
 			if( $isExpanded ) {
 				$allowed['hidedetails'] = $ownItems['hidedetails'];
 			} else {
@@ -346,18 +365,13 @@ class TodoyuProjectManager {
 			}
 		}
 
-			// Edit
-		if( allowed('project', 'project:edit') ) {
+
+			// Modify project
+		if( allowed('project', 'project:modify') ) {
+				// Edit
 			$allowed['edit'] = $ownItems['edit'];
-		}
 
-			// Delete
-		if( allowed('project', 'project:delete') ) {
-			$allowed['delete'] = $ownItems['delete'];
-		}
-
-			// Status
-		if( allowed('project', 'project:status') ) {
+				// Status
 			$allowed['status'] = $ownItems['status'];
 			$statuses = TodoyuProjectStatusManager::getProjectStatuses('changeto');
 
@@ -366,15 +380,16 @@ class TodoyuProjectManager {
 					unset($allowed['status']['submenu'][$key]);
 				}
 			}
+
+				// Delete
+			$allowed['delete'] = $ownItems['delete'];
 		}
 
-			// Add task
-		if( allowed('project', 'project:addtask') ) {
+
+		if( allowed('project', 'task:addInAllProjects') || (allowed('project', 'task:addInOwnProjects') && TodoyuProjectManager::isPersonAssigned($idProject)) ) {
+				// Add task
 			$allowed['addtask'] = $ownItems['addtask'];
-		}
-
-			// Add container
-		if( allowed('project', 'project:addcontainer') ) {
+				// Add container
 			$allowed['addcontainer'] = $ownItems['addcontainer'];
 		}
 

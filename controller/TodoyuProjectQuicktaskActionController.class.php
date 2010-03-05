@@ -19,6 +19,12 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Quicktask controller
+ *
+ * @package		Todoyu
+ * @subpackage	Project
+ */
 class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 
 	/**

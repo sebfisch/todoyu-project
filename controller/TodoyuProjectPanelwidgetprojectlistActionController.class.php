@@ -28,6 +28,17 @@
 class TodoyuProjectPanelwidgetProjectlistActionController extends TodoyuActionController {
 
 	/**
+	 * Check if use of project area is allowed
+	 *
+	 * @param	Array		$params
+	 */
+	public function init(array $params) {
+		restrict('project', 'general:area');
+	}
+
+
+
+	/**
 	 * Get project list for current filter
 	 *
 	 * @param	Array		$params

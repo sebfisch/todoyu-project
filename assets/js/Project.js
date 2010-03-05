@@ -27,7 +27,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Ext shortcut
 	 */
-	ext:	Todoyu.Ext.project,	
+	ext:	Todoyu.Ext.project,
 
 	/**
 	 * Get DOM element of header of project with given ID
@@ -47,8 +47,13 @@ Todoyu.Ext.project.Project = {
 	 *	@param Integer	idProject
 	 */
 	edit: function(idProject){
-		if(Todoyu.getArea() != 'project') Todoyu.goTo('project', 'ext', {'action': 'edit', 'project': idProject});
-		
+		if(Todoyu.getArea() != 'project') {
+			Todoyu.goTo('project', 'ext', {
+				'action': 'edit',
+				'project': idProject
+			});
+		} 
+
 		this.hideDetails(idProject);
 		this.ext.TaskTree.hide(idProject);
 
@@ -94,20 +99,20 @@ Todoyu.Ext.project.Project = {
 			$('project-'+idProject).fade();
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Remove a project from the subnavi of the projec tab
-	 * 
+	 *
 	 * @param	Integer		idProject
 	 */
 	removeProjectSubnaviItem: function(idProject) {
 		var subnavi	= $('navi-main-list').down('li.itemProject').down('ul');
-		
+
 		if( ! Object.isUndefined(subnavi) ) {
 			var item	= subnavi.down('li.itemProject' + idProject);
-		
+
 			if( ! Object.isUndefined(item) ) {
 				item.remove();
 			}
@@ -186,50 +191,13 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Evoke creation of new project and add it into the page view
-	 */
-	add: function() {
-		var url		= Todoyu.getUrl('project', 'project');
-		var options	= {
-			'parameters': {
-				'action':	'add'
-			},
-			'onComplete': this.onAdded.bind(this)
-		};
-		var target	= 'projects';
-
-			// Remove project form or dummy start screen
-		this.ext.ProjectTaskTree.removeProject(0);
-		this.ext.ProjectTaskTree.removeProject('noselection');
-
-		Todoyu.Ui.insert(target, url, options);
-	},
-
-
-
-	/**
-	 * Custom event handler, being evoked after adding a new project
-	 *
-	 * @param	Ajax.Response		response
-	 */
-	onAdded: function(response) {
-		var idProject	= response.getHeader('Todoyu-idProject');
-		var projectLabel= response.getHeader('Todoyu-projectLabel');
-
-		this.ext.ProjectTaskTree.addNewTabhead(idProject, projectLabel);
-		this.ext.ProjectTaskTree.displayActiveProject(idProject);
-	},
-
-
-
-	/**
 	 * Add task to given project
 	 *
 	 * @param	Integer		idProject
 	 */
 	addTask: function(idProject) {
 		if(Todoyu.getArea() != 'project') Todoyu.goTo('project', 'ext', {'action': 'addtask', 'project': idProject});
-		
+
 		this.ext.Task.addTaskToProject(idProject);
 	},
 
@@ -242,7 +210,7 @@ Todoyu.Ext.project.Project = {
 	 */
 	addContainer: function(idProject) {
 		if(Todoyu.getArea() != 'project') Todoyu.goTo('project', 'ext', {'action': 'addcontainer', 'project': idProject});
-		
+
 		this.ext.Task.addContainerToProject(idProject);
 	},
 
@@ -292,7 +260,7 @@ Todoyu.Ext.project.Project = {
 
 	/**
 	 * Handler being called after project status update being done: refresh project display and set status
-	 * 
+	 *
 	 * @param	Integer				idProject
 	 * @param	Integer				status
 	 * @param	Ajax.Response		response
@@ -306,7 +274,7 @@ Todoyu.Ext.project.Project = {
 
 	/**
 	 * Get current status of given project
-	 * 
+	 *
 	 * @param	Integer		idProject
 	 * @param	Integer
 	 */
@@ -322,7 +290,7 @@ Todoyu.Ext.project.Project = {
 
 	/**
 	 * Set project status
-	 * 
+	 *
 	 * @param	Integer		idProject
 	 * @param	Integer		status
 	 */

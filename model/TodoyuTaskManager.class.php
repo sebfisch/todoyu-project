@@ -407,10 +407,10 @@ class TodoyuTaskManager {
 
 		if( $task->isTask() ) {
 			$ownItems	=& $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Task'];
-			$type		= 'task';
+//			$type		= 'task';
 		} elseif( $task->isContainer() ) {
 			$ownItems	=& $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Container'];
-			$type		= 'container';
+//			$type		= 'container';
 		}
 
 
@@ -422,7 +422,7 @@ class TodoyuTaskManager {
 			}
 
 				// Edit
-			if( allowed('project', $type . ':edit') ) {
+			if( allowed('project', 'task:edit') ) {
 				$allowed['edit'] = $ownItems['edit'];
 			}
 
@@ -430,23 +430,21 @@ class TodoyuTaskManager {
 			$allowed['actions'] = $ownItems['actions'];
 			unset($allowed['actions']['submenu']);
 
-				// Add copy
-			if( allowed('project',  $type . ':copy') ) {
+
+			if( allowed('project',  'task:edit') ) {
+					// Add copy
 				$allowed['actions']['submenu']['copy'] = $ownItems['actions']['submenu']['copy'];
-			}
-
-				// Add cut
-			if( allowed('project',  $type . ':cut') ) {
+					// Add cut
 				$allowed['actions']['submenu']['cut'] = $ownItems['actions']['submenu']['cut'];
-			}
-
-				// Add clone
-			if( allowed('project',  $type . ':clone') ) {
+					// Add clone
 				$allowed['actions']['submenu']['clone'] = $ownItems['actions']['submenu']['clone'];
 			}
 
+			if( allowed('project', 'task:add'))
+
+
 				// Add delete
-			if( allowed('project',  $type . ':delete') ) {
+			if( allowed('project',  'task:delete') ) {
 				$allowed['actions']['submenu']['delete'] = $ownItems['actions']['submenu']['delete'];
 			}
 
@@ -1787,6 +1785,65 @@ class TodoyuTaskManager {
 		$where	= 'id IN(' . implode(',', $taskIDs) . ')';
 
 		return Todoyu::db()->getColumn($field, $table, $where, '', $order);
+	}
+
+
+
+	/**
+	 * Check if a person is assigned to a task as owner or assigned person
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Integer		$idPerson
+	 * @return	Bool
+	 */
+	public static function isPersonAssigned($idTask, $idPerson = 0) {
+		$idTask		= intval($idTask);
+		$idPerson	= personid($idPerson);
+
+		$fields	= 'id';
+		$table	= self::TABLE;
+		$where	= '	id					= ' . $idTask . ' AND
+					(
+						id_person_assigned	= ' . $idPerson . ' OR
+						id_person_owner		= ' . $idPerson . '
+					)';
+
+		return Todoyu::db()->hasResult($fields, $table, $where);
+	}
+
+
+	/**
+	 * Check if a person is assigned to the task's project
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Integer		$idPerson
+	 * @return	Bool
+	 */
+	public static function isPersonAssignedToProject($idTask, $idPerson = 0) {
+		$idTask		= intval($idTask);
+		$idPerson	= personid($idPerson);
+
+		$fields	= '	t.id';
+		$table	= 	self::TABLE . ' t,
+					ext_project_mm_project_person mm';
+		$where	= '	t.id					= ' . $idTask . ' AND
+					t.id_project			= mm.id_project AND
+					mm.id_person			= ' . $idPerson;
+
+		return Todoyu::db()->hasResult($fields, $table, $where);
+	}
+
+
+
+	/**
+	 * Check if a person is assigned to the task or the project
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Integer		$idPerson
+	 * @return	Bool
+	 */
+	public static function isPersonAssignedToTaskOrProject($idTask, $idPerson = 0) {
+		return self::isPersonAssigned($idTask, $idPerson) || self::isPersonAssignedToProject($idTask, $idPerson);
 	}
 
 }

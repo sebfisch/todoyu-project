@@ -19,12 +19,18 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Quickcreate task controller
+ *
+ * @package		Todoyu
+ * @subpackage	Project
+ */
 class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionController {
 
 	/**
-	 * Get quicktask form rendered
+	 * Render form
 	 *
-	 * @param	Array	$params
+	 * @param	Array		$params
 	 * @return	String
 	 */
 	public function popupAction(array $params) {

@@ -27,6 +27,12 @@
  */
 class TodoyuProjectExtActionController extends TodoyuActionController {
 
+	public function init(array $params) {
+		restrict('project', 'general:use');
+	}
+
+
+
 	/**
 	 * Default action
 	 *
@@ -34,11 +40,10 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function defaultAction(array $params) {
-		restrict('project', 'general:use');
+		restrict('project', 'general:area');
 
 			// Set project tab
 		TodoyuFrontend::setActiveTab('project');
-
 
 			// Get deeplink parameters
 		$idProject	= intval($params['project']);
@@ -55,6 +60,11 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 			$idProject = TodoyuProjectManager::getActiveProjectID();
 		} else {
 			TodoyuProjectPreferences::saveCurrentProject($idProject);
+		}
+
+			// Check access rights
+		if( ! allowed('project', 'project:seeAll') && ! TodoyuProjectManager::isPersonAssigned($idProject) ) {
+			TodoyuRightsManager::deny('project', ':seeProject');
 		}
 
 
@@ -93,55 +103,58 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 		return TodoyuPage::render();
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Controller to handle direct edit access. Calls the default action first to render the whole site.
 	 * After loading the site the js-edit method is called.
-	 * 
+	 *
 	 * @param	Array	$params
 	 * @return	String
 	 */
 	public function editAction(array $params)	{
-		restrict('project', 'general:edit');
-		
+		restrict('project', 'project:modify');
+
 		$idProject = intval($params['project']);
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.edit('.$idProject.')', 101);	
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.edit('.$idProject.')', 101);
+
 		return $this->defaultAction($params);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Controller to handle direct add task access. Calls the default action first to render the whole site.
 	 * After loading the site the js-addTask method is called.
-	 * 
+	 *
 	 * @param	Array	$params
 	 * @return	String
 	 */
 	public function addtaskAction(array $params)	{
-		restrict('project', 'project:addtask');
-		
+		//restrict('project', 'project:addtask');
+
 		$idProject = intval($params['project']);
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addTask('.$idProject.')', 101);	
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addTask('.$idProject.')', 101);
+
 		return $this->defaultAction($params);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Controller to handle direct add container access. Calls the default action first to render the whole site
 	 * After loading the site the js-addContainer method is called.
-	 * 
+	 *
 	 * @param	Array	$params
 	 * @return	String
 	 */
 	public function addcontainerAction(array $params)	{
-		restrict('project', 'project:addcontainer');
-		
+		//restrict('project', 'project:addcontainer');
+
 		$idProject = intval($params['project']);
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addContainer('.$idProject.')', 101);	
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addContainer('.$idProject.')', 101);
+
 		return $this->defaultAction($params);
 	}
 

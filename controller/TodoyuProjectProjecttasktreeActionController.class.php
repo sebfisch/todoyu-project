@@ -28,13 +28,20 @@
 
 class TodoyuProjectProjecttasktreeActionController extends TodoyuActionController {
 
+	public function init(array $params) {
+		restrict('project', 'general:area');
+	}
+
+
+
 	/**
-	 * Action: project
+	 * Add a project to the tasktree view
+	 * (Doesn't create a 'new' project, just adds an existing one to the tree)
 	 *
 	 * @param	Array		$params
 	 * @return	String
 	 */
-	public function projectAction(array $params) {
+	public function addprojectAction(array $params) {
 		$idProject	= intval($params['project']);
 		$idTask		= intval($params['task']);
 
@@ -59,12 +66,17 @@ class TodoyuProjectProjecttasktreeActionController extends TodoyuActionControlle
 	}
 
 
+
+	/**
+	 * Save currently open projects in tasktree
+	 *
+	 * @param	Array		$params
+	 */
 	public function openprojectsAction(array $params) {
 		$openProjectIDs	= TodoyuArray::intExplode(',', $params['projects'], true, true);
 
 		TodoyuProjectPreferences::saveOpenProjectTabs($openProjectIDs);
 	}
-
 
 }
 

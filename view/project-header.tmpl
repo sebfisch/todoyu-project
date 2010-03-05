@@ -1,15 +1,15 @@
 <div class="projectstatus bcStatus{$status}"></div>
 <h1 class="title headerLine contextmenuproject" id="project-{$id}-header">
 	<span class="title first">
-		<a id="project-{$id}-titlelabel" class="titleLabel" {restrict 'project' 'project:details'}onclick="Todoyu.Ext.project.Project.toggleDetails({$id})"{/restrict} href="javascript:void(0)" title="ID: {$id}">
+		<a id="project-{$id}-titlelabel" class="titleLabel" {if canSeeProjectDetails($id)}onclick="Todoyu.Ext.project.Project.toggleDetails({$id})"{/if} href="javascript:void(0)" title="ID: {$id}">
 			{$fulltitle}
 		</a>
 	</span>
 	<span class="rgt"><!-- right --></span>
 </h1>
 
-{restrict 'project' 'project:details'}
+{if canSeeProjectDetails($id)}
 <div id="project-{$id}-details"{if ! $details} style="display:none"{/if}>
 	{$details}
 </div>
-{/restrict}
+{/if}

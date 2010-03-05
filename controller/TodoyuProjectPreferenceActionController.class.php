@@ -26,6 +26,13 @@
  */
 class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 
+
+	public function init(array $params) {
+		restrict('project', 'general:use');
+	}
+
+
+
 	/**
 	 * @todo	comment
 	 * @param	Array		$params
