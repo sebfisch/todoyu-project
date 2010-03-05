@@ -283,21 +283,16 @@
 
 	/* task tabs content */
 	.task .tabContent {
-		padding:10px 0 5px 0;
+
 		background-color:#e3eace;
 	}
 
 	.task .tabContent .tab {
-		margin:0 15px;
+		margin:9px;
 		border:1px solid #E9ECE0;
 	}
 
-	.task .tabContent .toTop {
-		background:url('../img/icons.png') no-repeat 0 -357px;
-		padding:0;
-		margin:0 15px 0 0;
-		float:right;
-	}
+	
 
 	.task .tabContent .tabBlock {
 		position:relative;
