@@ -29,6 +29,28 @@
 class TodoyuProjectViewHelper {
 
 	/**
+	 * Get config array for one status option
+	 *
+	 * @param	Integer		$index
+	 * @param	String		$statusKey
+	 * @param	String		$label
+	 * @return	Array
+	 */
+	public static function getStatusOption($index, $statusKey, $label) {
+		$option = array(
+			'index'		=> $index,
+			'value'		=> $index,
+			'key'		=> $statusKey,
+			'class'		=> 'status' . ucwords($statusKey),
+			'label'		=> $label
+		);
+
+		return $option;
+	}
+
+
+
+	/**
 	 * Get options of project persons (assigned)
 	 *
 	 * @param	TodoyuFormElement	$formElement

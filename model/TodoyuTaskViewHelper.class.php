@@ -28,6 +28,20 @@
 class TodoyuTaskViewHelper {
 
 	/**
+	 * Get config array for one status option
+	 *
+	 * @param	Integer		$index
+	 * @param	String		$statusKey
+	 * @param	String		$label
+	 * @return	Array
+	 */
+	public static function getStatusOption($index, $statusKey, $label) {
+		return TodoyuProjectViewHelper::getStatusOption($index, $statusKey, $label);
+	}
+
+
+
+	/**
 	 * Get options of all persons somehow involved in a task
 	 *
 	 * @param	TodoyuFormElement $field
