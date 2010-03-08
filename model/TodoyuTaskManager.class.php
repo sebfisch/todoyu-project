@@ -463,6 +463,14 @@ class TodoyuTaskManager {
 				// Status
 			if( $task->isTask() && TodoyuProjectRights::canTaskEdit($idTask) ) {
 				$allowed['status'] = $ownItems['status'];
+
+				$statuses = TodoyuProjectStatusManager::getStatuses('changeto');
+
+				foreach($allowed['status']['submenu'] as $key => $status) {
+					if( ! in_array($key, $statuses) ) {
+						unset($allowed['status']['submenu'][$key]);
+					}
+				}
 			}
 
 		}

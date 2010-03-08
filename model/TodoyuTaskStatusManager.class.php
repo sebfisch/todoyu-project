@@ -20,31 +20,31 @@
 ***************************************************************/
 
 /**
- * Project status manager
- * Status access functions for task and project statuses
+ * Task status manager
+ * Status access functions for task statuses
  *
  * @package		Todoyu
  * @subpackage	Project
  */
 
-class TodoyuProjectStatusManager {
+class TodoyuTaskStatusManager {
 
 	/**
-	 * Get project status key by index
+	 * Get task status key by status index
 	 *
 	 * @param	Integer		$idStatus
-	 * @return	Array
+	 * @return	String
 	 */
 	public static function getStatusKey($idStatus) {
 		$idStatus	= intval($idStatus);
 
-		return $GLOBALS['CONFIG']['EXT']['project']['STATUS']['PROJECT'][$idStatus];
+		return $GLOBALS['CONFIG']['EXT']['project']['STATUS']['TASK'][$idStatus];
 	}
 
 
 
 	/**
-	 * Get project status label by index or key
+	 * Get task status label by index or key
 	 *
 	 * @param	Mixed		$status			Status index or key
 	 * @return	String
@@ -53,29 +53,31 @@ class TodoyuProjectStatusManager {
 		if( is_numeric($status) ) {
 			$idStatus	= intval($status);
 			$statusKey	= self::getStatusKey($idStatus);
-		} elseif ($status != '') {
-			$statusKey	= $status;
 		} else {
-			$statusKey	= 'undefined';
+			$statusKey	= $status;
 		}
 
-		return Label('project.status.' . $statusKey);
+		return Label('task.status.' . $statusKey);
 	}
 
 
 
 	/**
-	 * Get all project statuses
+	 * Get all task statuses
 	 *
+	 * @param	String		$check
+	 * @param	Integer		$forceStatus
 	 * @return	Array
 	 */
-	public static function getStatuses($forceStatus = 0) {
+	public static function getStatuses($check = 'see', $forceStatus = 0) {
+		$check		= ($check === 'changeto') ? 'changeto' : 'see';
 		$forceStatus= intval($forceStatus);
-		$statuses	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['STATUS']['PROJECT']);
+
+		$statuses	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['STATUS']['TASK']);
 
 		foreach($statuses as $index => $statusKey) {
 				// Only get allowed status which the person can see
-			if( ! allowed('project', 'projectstatus:' . $statusKey . ':see') && $index !== $forceStatus) {
+			if( ! allowed('project', 'taskstatus:' . $statusKey . ':' . $check) && $index !== $forceStatus ) {
 				unset($statuses[$index]);
 			}
 		}
@@ -86,7 +88,7 @@ class TodoyuProjectStatusManager {
 
 
 	/**
-	 * Get project status label arrays. The keys are the status indexes
+	 * Get task status label arrays. The keys are the status indexes
 	 *
 	 * @return	Array
 	 */
@@ -104,19 +106,20 @@ class TodoyuProjectStatusManager {
 
 
 	/**
-	 * Get project status infos.
+	 * Get task status infos.
 	 * The array index is the status index.
 	 * The keys are: index, key, label
 	 *
+	 * @param	String	$check
 	 * @return	Array
 	 */
-	public static function getStatusInfos() {
-		$statuses	= self::getStatuses();
+	public static function getStatusInfos($check = 'see') {
+		$statuses	= self::getStatuses($check);
 		$infos		= array();
 
 		foreach($statuses as $index => $statusKey) {
 			$label	= self::getStatusLabel($statusKey);
-			$infos[$index] = TodoyuProjectViewHelper::getStatusOption($index, $statusKey, $label);
+			$infos[$index] = TodoyuTaskViewHelper::getStatusOption($index, $statusKey, $label);
 		}
 
 		return $infos;

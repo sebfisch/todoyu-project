@@ -107,7 +107,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getStatusKey() {
-		return TodoyuProjectStatusManager::getProjectStatusKey($this->getStatus());
+		return TodoyuProjectStatusManager::getStatusKey($this->getStatus());
 	}
 
 
@@ -118,7 +118,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getStatusLabel() {
-		return TodoyuProjectStatusManager::getProjectStatusLabel($this->getStatus());
+		return TodoyuProjectStatusManager::getStatusLabel($this->getStatus());
 	}
 
 

@@ -77,9 +77,9 @@ class TodoyuProjectFilterDataSource {
 
 		return $definitions;
 	}
-	
-	
-	
+
+
+
 /**
 	 * Prepares the options of project-status for rendering in the widget.
 	 *
@@ -88,7 +88,7 @@ class TodoyuProjectFilterDataSource {
 	 */
 	public static function getStatusOptions(array $definitions)	{
 		$options	= array();
-		$statuses	= TodoyuProjectStatusManager::getProjectStatusInfos();
+		$statuses	= TodoyuProjectStatusManager::getStatusInfos();
 		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
 
 		foreach($statuses as $status) {

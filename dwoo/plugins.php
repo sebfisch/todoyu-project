@@ -44,7 +44,7 @@
 function Dwoo_Plugin_taskStatusLabel(Dwoo $dwoo, $idStatus) {
 	$idStatus	= intval($idStatus);
 
-	return TodoyuProjectStatusManager::getTaskStatusLabel($idStatus);
+	return TodoyuTaskStatusManager::getStatusLabel($idStatus);
 }
 
 
@@ -62,7 +62,7 @@ function Dwoo_Plugin_taskStatusLabel(Dwoo $dwoo, $idStatus) {
 function Dwoo_Plugin_taskStatusKey(Dwoo $dwoo, $idStatus) {
 	$idStatus	= intval($idStatus);
 
-	return TodoyuProjectStatusManager::getTaskStatusKey($idStatus);
+	return TodoyuTaskStatusManager::getStatusKey($idStatus);
 }
 
 
@@ -80,7 +80,7 @@ function Dwoo_Plugin_taskStatusKey(Dwoo $dwoo, $idStatus) {
 function Dwoo_Plugin_projectStatusLabel(Dwoo $dwoo, $idStatus) {
 	$idStatus	= intval($idStatus);
 
-	return TodoyuProjectStatusManager::getProjectStatusLabel($idStatus);
+	return TodoyuProjectStatusManager::getStatusLabel($idStatus);
 }
 
 
@@ -98,7 +98,7 @@ function Dwoo_Plugin_projectStatusLabel(Dwoo $dwoo, $idStatus) {
 function Dwoo_Plugin_projectStatusKey(Dwoo $dwoo, $idStatus) {
 	$idStatus	= intval($idStatus);
 
-	return TodoyuProjectStatusManager::getProjectStatusKey($idStatus);
+	return TodoyuProjectStatusManager::getStatusKey($idStatus);
 }
 
 

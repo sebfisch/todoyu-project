@@ -71,7 +71,7 @@
 				<field type="select" name="status">
 					<label>task.attr.status</label>
 					<source type="function">
-						<function>TodoyuProjectViewHelper::getTaskStatusOptions</function>
+						<function>TodoyuTaskViewHelper::getTaskStatusOptions</function>
 						<lazyInit />
 					</source>
 				</field>

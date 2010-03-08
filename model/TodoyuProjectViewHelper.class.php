@@ -104,37 +104,12 @@ class TodoyuProjectViewHelper {
 		$values		= $field->getValue();
 		$idStatus	= intval($values[0]);
 		$options	= array();
-		$statuses	= TodoyuProjectStatusManager::getProjectStatuses($idStatus);
+		$statuses	= TodoyuProjectStatusManager::getStatuses($idStatus);
 
 		foreach($statuses as $statusID => $statusKey) {
 			$options[] = array(
 				'value'		=> $statusID,
-				'label'		=> TodoyuProjectStatusManager::getProjectStatusLabel($statusKey)
-			);
-		}
-
-		return $options;
-	}
-
-
-
-	/**
-	 * Get task status options
-	 *
-	 * @todo	Move to taskViewHelper
-	 * @param	TodoyuFormElement	$field
-	 * @return	Array
-	 */
-	public static function getTaskStatusOptions(TodoyuFormElement $field) {
-		$statuses	= TodoyuProjectStatusManager::getTaskStatuses('changeto');
-		$values		= $field->getValue();
-		$value		= intval($values[0]);
-		$options	= array();
-
-		foreach($statuses as $statusID => $statusKey) {
-			$options[] = array(
-				'value'		=> $statusID,
-				'label'		=> TodoyuProjectStatusManager::getTaskStatusLabel($statusKey)
+				'label'		=> TodoyuProjectStatusManager::getStatusLabel($statusKey)
 			);
 		}
 

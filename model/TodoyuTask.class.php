@@ -107,7 +107,7 @@ class TodoyuTask extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getStatusKey() {
-		return TodoyuProjectStatusManager::getTaskStatusKey($this->getStatus());
+		return TodoyuTaskStatusManager::getStatusKey($this->getStatus());
 	}
 
 
@@ -118,7 +118,7 @@ class TodoyuTask extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getStatusLabel() {
-		return TodoyuProjectStatusManager::getTaskStatusLabel($this->getStatus());
+		return TodoyuTaskStatusManager::getStatusLabel($this->getStatus());
 	}
 
 

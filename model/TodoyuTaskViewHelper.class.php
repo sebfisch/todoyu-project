@@ -42,6 +42,30 @@ class TodoyuTaskViewHelper {
 
 
 	/**
+	 * Get task status options
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @return	Array
+	 */
+	public static function getTaskStatusOptions(TodoyuFormElement $field) {
+		$statuses	= TodoyuProjectStatusManager::getStatuses('changeto');
+		$values		= $field->getValue();
+		$value		= intval($values[0]);
+		$options	= array();
+
+		foreach($statuses as $statusID => $statusKey) {
+			$options[] = array(
+				'value'		=> $statusID,
+				'label'		=> TodoyuTaskStatusManager::getStatusLabel($statusKey)
+			);
+		}
+
+		return $options;
+	}
+
+
+
+	/**
 	 * Get options of all persons somehow involved in a task
 	 *
 	 * @param	TodoyuFormElement $field

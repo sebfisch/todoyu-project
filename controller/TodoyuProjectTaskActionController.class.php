@@ -202,7 +202,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	public function setstatusAction(array $params) {
 		$idTask		= intval($params['task']);
 		$idStatus	= intval($params['status']);
-		$statusKey	= TodoyuProjectStatusManager::getTaskStatusKey($idStatus);
+		$status		= TodoyuTaskStatusManager::getStatusKey($idStatus);
 
 		restrict('project', 'taskstatus:' . $statusKey . ':changeto');
 
