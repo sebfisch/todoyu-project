@@ -2,8 +2,8 @@
 <locallang>
 	<labels lang="en">
 		<label index="general">General Settings</label>
-		<label index="general.use">Allowed to use/see project module functionalities</label>
-		<label index="general.area">Use project area</label>
+		<label index="general.use">Use/see project module functionalities</label>
+		<label index="general.area">Access project area</label>
 		<label index="project">Project</label>
 		<label index="project.seeAll">Sees ALL projects</label>
 		<label index="project.modify">Can modify projects</label>
@@ -68,7 +68,7 @@
 		<label index="general.use">Projekt-Funktionalitäten Verwenden</label>
 		<label index="general.area">Projekt-Bereich Verwenden</label>
 		<label index="project">Projekt</label>
-		<label index="project.details">Zeige Projekt Details</label>
+		<label index="project.details">Projekt-Details anzeigen</label>
 		<label index="project.edit">Projekt bearbeiten</label>
 		<label index="project.delete">Projekt löschen</label>
 		<label index="project.status">Projekt Status ändern</label>
