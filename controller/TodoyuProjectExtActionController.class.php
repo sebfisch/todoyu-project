@@ -63,9 +63,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 		}
 
 			// Check access rights
-		if( ! allowed('project', 'project:seeAll') && ! TodoyuProjectManager::isPersonAssigned($idProject) ) {
-			TodoyuRightsManager::deny('project', ':seeProject');
-		}
+		TodoyuProjectRights::checkProjectSee($idProject);
 
 
 			// Init page

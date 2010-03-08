@@ -39,9 +39,9 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function editAction(array $params) {
-		restrict('project', 'project:modify');
-
 		$idProject	= intval($params['project']);
+
+		TodoyuProjectRights::checkProjectEdit($idProject);
 
 		return TodoyuProjectRenderer::renderProjectEditForm($idProject);
 	}
@@ -55,7 +55,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @return	String		Form content if form is invalid
 	 */
 	public function saveAction(array $params) {
-		restrict('project', 'project:modify');
+		TodoyuProjectRights::checkProjectEdit();
 
 		$data		= $params['project'];
 		$idProject	= intval($data['id']);
@@ -96,9 +96,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	public function detailsAction(array $params) {
 		$idProject	= intval($params['project']);
 
-		if( ! allowed('project', 'project:seeAll') && ! TodoyuProjectManager::isPersonAssigned($idProject) ) {
-			deny('project', ':seeProject');
-		}
+		TodoyuProjectRights::checkProjectSee($idProject);
 
 		return TodoyuProjectRenderer::renderProjectDetails($idProject);
 	}
@@ -143,7 +141,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function setstatusAction(array $params) {
-		restrict('project', 'project:modify');
+		TodoyuProjectRights::checkProjectEdit();
 
 		$idProject	= intval($params['project']);
 		$status		= intval($params['status']);
@@ -159,7 +157,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function removeAction(array $params) {
-		restrict('project', 'project:modify');
+		TodoyuProjectRights::checkProjectEdit();
 
 		$idProject	= intval($params['project']);
 
@@ -186,7 +184,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function addSubformAction(array $params) {
-		restrict('project', 'project:modify');
+		TodoyuProjectRights::checkProjectEdit();
 
 		$xmlPath	= 'ext/project/config/form/project.xml';
 

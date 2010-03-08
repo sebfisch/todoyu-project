@@ -7,15 +7,17 @@
 	</section>
 
 	<section name="project" require="general:use">
-		<right name="seeAll" />
-		<right name="modify" />
+		<right name="seeOwn" />
+		<right name="seeAll" require="project:seeOwn" />
+		<right name="editAndDelete" require="project:seeOwn" />
 	</section>
 
 	<section name="task" require="general:use">
+		<right name="seeAll" />
 		<right name="addInOwnProjects" />
 		<right name="addInAllProjects" require="task:addInOwnProjects" />
-		<right name="edit" />
-		<right name="delete" />
+		<right name="editAndDeleteInOwnProjects" />
+		<right name="editAndDeleteInAllProjects" require="task:editAndDeleteInOwnProjects" />
 		<right name="editDateStart" />
 		<right name="editDateEnd" />
 		<right name="editDateDeadline" />

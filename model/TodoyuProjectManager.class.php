@@ -357,7 +357,7 @@ class TodoyuProjectManager {
 		$allowed	= array();
 
 			// Show details
-		if( allowed('project', 'project:seeAll') || TodoyuProjectManager::isPersonAssigned($idProject) ) {
+		if( TodoyuProjectRights::canProjectSee($idProject) ) {
 			if( $isExpanded ) {
 				$allowed['hidedetails'] = $ownItems['hidedetails'];
 			} else {
@@ -367,7 +367,7 @@ class TodoyuProjectManager {
 
 
 			// Modify project
-		if( allowed('project', 'project:modify') ) {
+		if( TodoyuProjectRights::canProjectEdit($idProject) ) {
 				// Edit
 			$allowed['edit'] = $ownItems['edit'];
 

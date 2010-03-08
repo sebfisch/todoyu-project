@@ -45,6 +45,8 @@ class TodoyuProjectProjecttasktreeActionController extends TodoyuActionControlle
 		$idProject	= intval($params['project']);
 		$idTask		= intval($params['task']);
 
+		TodoyuProjectRights::checkProjectSee($idProject);
+
 			// Save currently active project
 		TodoyuProjectPreferences::saveCurrentProject($idProject);
 

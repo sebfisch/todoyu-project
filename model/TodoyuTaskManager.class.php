@@ -418,11 +418,13 @@ class TodoyuTaskManager {
 		if( $task->isTask() || $task->isContainer() ) {
 				// Add project backlink if not in project area
 			if( AREA !== EXTID_PROJECT ) {
-				$allowed['showinproject'] = $ownItems['showinproject'];
+				if( TodoyuProjectRights::canProjectSee($task->getProjectID()) ) {
+					$allowed['showinproject'] = $ownItems['showinproject'];
+				}
 			}
 
 				// Edit
-			if( allowed('project', 'task:edit') ) {
+			if( TodoyuProjectRights::canTaskEdit($idTask) ) {
 				$allowed['edit'] = $ownItems['edit'];
 			}
 
@@ -430,8 +432,7 @@ class TodoyuTaskManager {
 			$allowed['actions'] = $ownItems['actions'];
 			unset($allowed['actions']['submenu']);
 
-
-			if( allowed('project',  'task:edit') ) {
+			if( TodoyuProjectRights::canTaskEdit($idTask) ) {
 					// Add copy
 				$allowed['actions']['submenu']['copy'] = $ownItems['actions']['submenu']['copy'];
 					// Add cut
@@ -440,11 +441,9 @@ class TodoyuTaskManager {
 				$allowed['actions']['submenu']['clone'] = $ownItems['actions']['submenu']['clone'];
 			}
 
-			if( allowed('project', 'task:add'))
-
 
 				// Add delete
-			if( allowed('project',  'task:delete') ) {
+			if( TodoyuProjectRights::canTaskEdit($idTask) ) {
 				$allowed['actions']['submenu']['delete'] = $ownItems['actions']['submenu']['delete'];
 			}
 
@@ -454,19 +453,16 @@ class TodoyuTaskManager {
 			$allowed['add'] = $ownItems['add'];
 			unset($allowed['add']['submenu']);
 
-				// Add subtask
-			if( allowed('project',  $type . ':addtask') ) {
-				$allowed['add']['submenu']['task'] = $ownItems['add']['submenu']['task'];
-			}
 
-				// Add subcontainer
-			if( allowed('project',  $type . ':addcontainer') ) {
+			if( TodoyuProjectRights::canTaskAdd($idTask) ) {
+					// Add subtask
+				$allowed['add']['submenu']['task'] = $ownItems['add']['submenu']['task'];
+					// Add subcontainer
 				$allowed['add']['submenu']['container'] = $ownItems['add']['submenu']['container'];
 			}
 
-
 				// Status
-			if( $task->isTask() && allowed('project', 'task:edit') ) {
+			if( $task->isTask() && TodoyuProjectRights::canTaskEdit($idTask) ) {
 				$allowed['status'] = $ownItems['status'];
 
 				$statuses = TodoyuProjectStatusManager::getTaskStatuses('changeto');
