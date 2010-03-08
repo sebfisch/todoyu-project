@@ -407,13 +407,9 @@ class TodoyuTaskManager {
 
 		if( $task->isTask() ) {
 			$ownItems	=& $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Task'];
-//			$type		= 'task';
 		} elseif( $task->isContainer() ) {
 			$ownItems	=& $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Container'];
-//			$type		= 'container';
 		}
-
-
 
 		if( $task->isTask() || $task->isContainer() ) {
 				// Add project backlink if not in project area
@@ -432,17 +428,20 @@ class TodoyuTaskManager {
 			$allowed['actions'] = $ownItems['actions'];
 			unset($allowed['actions']['submenu']);
 
+				// Copy
+			$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
+
+				// Cut
 			if( TodoyuProjectRights::canTaskEdit($idTask) ) {
-					// Add copy
-				$allowed['actions']['submenu']['copy'] = $ownItems['actions']['submenu']['copy'];
-					// Add cut
-				$allowed['actions']['submenu']['cut'] = $ownItems['actions']['submenu']['cut'];
-					// Add clone
-				$allowed['actions']['submenu']['clone'] = $ownItems['actions']['submenu']['clone'];
+				$allowed['actions']['submenu']['cut']	= $ownItems['actions']['submenu']['cut'];
 			}
 
+				// Clone
+			if( TodoyuProjectRights::canTaskAdd($idTask) ) {
+				$allowed['actions']['submenu']['clone']	= $ownItems['actions']['submenu']['clone'];
+			}
 
-				// Add delete
+				// Delete
 			if( TodoyuProjectRights::canTaskEdit($idTask) ) {
 				$allowed['actions']['submenu']['delete'] = $ownItems['actions']['submenu']['delete'];
 			}
@@ -464,14 +463,6 @@ class TodoyuTaskManager {
 				// Status
 			if( $task->isTask() && TodoyuProjectRights::canTaskEdit($idTask) ) {
 				$allowed['status'] = $ownItems['status'];
-
-				$statuses = TodoyuProjectStatusManager::getTaskStatuses('changeto');
-
-				foreach($allowed['status']['submenu'] as $key => $status) {
-					if( ! in_array($key, $statuses) ) {
-						unset($allowed['status']['submenu'][$key]);
-					}
-				}
 			}
 
 		}

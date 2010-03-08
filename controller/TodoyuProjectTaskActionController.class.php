@@ -429,6 +429,24 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tabKey, AREA);
 	}
 
+
+
+	/**
+	 * Render subtasks
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function subtasksAction(array $params) {
+		$idTask		= intval($params['task']);
+		$idTaskShow	= intval($params['show']);
+
+			// Save open status
+		TodoyuProjectPreferences::saveSubtasksVisibility($idTask, true, AREA);
+
+		return TodoyuProjectRenderer::renderSubtasks($idTask, $idTaskShow);
+	}
+
 }
 
 ?>

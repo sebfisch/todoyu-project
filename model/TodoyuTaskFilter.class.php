@@ -44,6 +44,15 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	}
 
 
+	private function addRightsClauseFilter() {
+		if( ! allowed('project', 'task:seeAll') ) {
+			$this->activeFilters[] = array(
+				'filter'=> 'assignedPerson',
+				'value'	=> personid()
+			);
+		}
+	}
+
 
 	/**
 	 * Get task IDs which match to all filters
@@ -51,10 +60,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public function getTaskIDs($sorting = 'sorting', $limit = 100) {
-		$limit	= intval($limit);
-		$taskIDs= parent::getItemIDs($sorting, $limit);
+		$this->addRightsClauseFilter();
 
-		return $taskIDs;
+		return parent::getItemIDs($sorting, $limit);
 	}
 
 

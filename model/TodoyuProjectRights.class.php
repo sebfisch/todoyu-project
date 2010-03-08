@@ -33,9 +33,14 @@ class TodoyuProjectRights {
 
 	public static function canTaskEdit($idTask) {
 		$idTask		= intval($idTask);
+		$task		= TodoyuTaskManager::getTask($idTask);
 		$idProject	= TodoyuTaskManager::getProjectID($idTask);
+		$statusIDs	= array_keys(TodoyuProjectStatusManager::getTaskStatuses('edit'));
 
-		return self::canTaskEditInProject($idProject);
+		$canEditTask	= self::canTaskEditInProject($idProject);
+		$canEditStatus	= in_array($task->getStatus(), $statusIDs);
+
+		return $canEditTask && $canEditStatus;
 	}
 
 

@@ -72,7 +72,6 @@ class TodoyuProjectStatusManager {
 	 * @return	Array
 	 */
 	public static function getTaskStatuses($check = 'see', $forceStatus = 0) {
-		$check		= $check === 'changeto' ? 'changeto' : 'see';
 		$forceStatus= intval($forceStatus);
 		$statuses	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['STATUS']['TASK']);
 

@@ -87,7 +87,7 @@
 
 						<field type="textinputAC" name="id_company">
 							<restrict>
-								<allow ext="contact" right="contact:see" />
+								<allow ext="contact" right="general:use" />
 							</restrict>
 							<label>project.attr.company</label>
 							<config>
@@ -113,7 +113,7 @@
 
 		<fieldset name="persons">
 			<restrict>
-				<allow ext="contact" right="contact:see" />
+				<allow ext="contact" right="general:use" />
 			</restrict>
 			<legend>Project Persons</legend>
 			<class>persons</class>

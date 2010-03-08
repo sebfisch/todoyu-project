@@ -240,10 +240,10 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	Function	callback
 	 */
 	loadSubtasks: function(idTask, callback) {
-		var url		= Todoyu.getUrl('project', 'subtasks');
+		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
-				'action':	'load',
+				'action':	'subtasks',
 				'task':		idTask,
 				'show':		0
 			},

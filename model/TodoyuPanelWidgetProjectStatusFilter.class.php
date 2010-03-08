@@ -78,7 +78,7 @@ class TodoyuPanelWidgetProjectStatusFilter extends TodoyuPanelWidgetStatusFilter
 	 * @return	Boolean
 	 */
 	public static function isAllowed() {
-		return allowed('project', 'panelwidgets:projectStatusFilter');
+		return allowed('project', 'general:use');
 	}
 
 }

@@ -367,9 +367,11 @@ class TodoyuProjectRenderer {
 			self::$openRootline	= TodoyuTaskManager::getTaskRootline($idTaskShow);
 		}
 
-		$subtaskIDs	= self::getSubtaskIDs($idTask);
-		$data		= array('idTask' 		=> $idTask,
-							'subtaskHtml'	=> '');
+		$subtaskIDs	= TodoyuProjectManager::getSubtaskIDs($idTask);
+		$data		= array(
+			'idTask' 		=> $idTask,
+			'subtaskHtml'	=> ''
+		);
 
 			// Render all subtasks
 		foreach($subtaskIDs as $idSubtask) {
@@ -409,28 +411,7 @@ class TodoyuProjectRenderer {
 	}
 
 
-	/**
-	 * Get the subtasks of a task which match to all the filters
-	 *
-	 * @param	Integer		$idTask
-	 * @return	Array
-	 */
-	public static function getSubtaskIDs($idTask) {
-		$idTask		= intval($idTask);
 
-			// Get task filters
-		$filters	= TodoyuProjectManager::getTaskTreeFilterStruct();
-
-			// Add parent task filter
-		$filters[]	= array(
-			'filter'	=> 'parentTask',
-			'value'		=> $idTask
-		);
-
-		$taskFilter	= new TodoyuTaskFilter($filters);
-
-		return $taskFilter->getTaskIDs();
-	}
 
 
 

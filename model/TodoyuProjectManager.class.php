@@ -318,6 +318,30 @@ class TodoyuProjectManager {
 	}
 
 
+	/**
+	 * Get the subtasks of a task which match to all the filters
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Array
+	 */
+	public static function getSubtaskIDs($idTask) {
+		$idTask		= intval($idTask);
+
+			// Get task filters
+		$filters	= self::getTaskTreeFilterStruct();
+
+			// Add parent task filter
+		$filters[]	= array(
+			'filter'	=> 'parentTask',
+			'value'		=> $idTask
+		);
+
+		$taskFilter	= new TodoyuTaskFilter($filters);
+
+		return $taskFilter->getTaskIDs();
+	}
+
+
 
 	/**
 	 * Set given task expanded

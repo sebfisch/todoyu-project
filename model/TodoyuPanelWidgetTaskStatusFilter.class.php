@@ -75,7 +75,7 @@ class TodoyuPanelWidgetTaskStatusFilter extends TodoyuPanelWidgetStatusFilter im
 	 * @return	Boolean
 	 */
 	public static function isAllowed() {
-		return allowed('project', 'panelwidgets:taskStatusFilter');
+		return allowed('project', 'general:use');
 	}
 
 }

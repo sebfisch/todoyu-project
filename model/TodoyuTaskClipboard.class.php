@@ -212,7 +212,7 @@ class TodoyuTaskClipboard {
 			$ownItems	= $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['TaskClipboard'];
 
 				// Paste is only available in project view
-			if( AREA === EXTID_PROJECT  ) {
+			if( AREA === EXTID_PROJECT && TodoyuProjectRights::canTaskAdd($idTask) ) {
 				$mergeItems	= $ownItems;
 				$data		= self::getData();
 				$isSubtask	= TodoyuTaskManager::isSubtaskOf($idTask, $data['task'], true);
