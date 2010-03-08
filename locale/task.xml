@@ -5,7 +5,7 @@
 		<label index="tasks">Tasks</label>
 		<label index="attr.title">Task Title</label>
 		<label index="attr.worktype">Work Type</label>
-		<label index="attr.esitmated_workload">Estimated Workload</label>
+		<label index="attr.estimated_workload">Estimated Workload</label>
 		<label index="attr.ext_resources_is_onblock">Work Frequency</label>
 		<label index="attr.billingtype">Billing Type</label>
 		<label index="attr.date_create">Creation Date</label>
@@ -74,7 +74,7 @@
 		<label index="billableTime">Billable Time</label>
 		<label index="title.cloned">Copy of: %s</label>
 		<label index="worktype">Work Type</label>
-		<label index="esitmated_workload">Estimated Workload</label>
+		<label index="estimated_workload">Estimated Workload</label>
 		<label index="date_start">Date Start</label>
 		<label index="date_deadline">Customer Deadline</label>
 		<label index="date_end">Internal Deadline</label>
@@ -100,7 +100,7 @@
 		<label index="tasks">Aufgaben</label>
 		<label index="attr.title">Aufgaben-Titel</label>
 		<label index="attr.worktype">Leistungsart</label>
-		<label index="attr.esitmated_workload">Geschätzter Aufwand</label>
+		<label index="attr.estimated_workload">Geschätzter Aufwand</label>
 		<label index="attr.ext_resources_is_onblock">Block-Aufgabe</label>
 		<label index="attr.billingtype">Berechnungstyp</label>
 		<label index="attr.date_create">Erfassungs-Datum</label>
@@ -169,7 +169,7 @@
 		<label index="billableTime">Verrechenbare Zeit</label>
 		<label index="title.cloned">Kopie von: %s</label>
 		<label index="worktype">Leistungsart</label>
-		<label index="esitmated_workload">Geschätzter Aufwand</label>
+		<label index="estimated_workload">Geschätzter Aufwand</label>
 		<label index="date_start">Start-Datum</label>
 		<label index="date_deadline">Kunden-Frist</label>
 		<label index="date_end">Interne Frist</label>

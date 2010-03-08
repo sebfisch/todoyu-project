@@ -121,7 +121,7 @@
 				</field>
 
 				<field type="duration" name="estimated_workload">
-					<label>task.attr.esitmated_workload</label>
+					<label>task.attr.estimated_workload</label>
 					<validate>
 						<isNotZerotime msg="LLL:task.attr.estimated_workload.error"/>
 					</validate>
