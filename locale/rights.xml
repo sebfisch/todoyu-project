@@ -2,7 +2,7 @@
 <locallang>
 	<labels lang="en">
 		<label index="general">General Settings</label>
-		<label index="general.use">Access to project module</label>
+		<label index="general.use">Allowed to use/see project module functionalities</label>
 		<label index="general.area">Use project area</label>
 		<label index="project">Project</label>
 		<label index="project.seeAll">Sees ALL projects</label>
@@ -59,7 +59,7 @@
 	</labels>
 	<labels lang="de">
 		<label index="general">Allgemeine Einstellungen</label>
-		<label index="general.use">Zugriff zu Projekt-Modul</label>
+		<label index="general.use">Projekt-Funktionalitäten Verwenden</label>
 		<label index="general.area">Projekt-Bereich Verwenden</label>
 		<label index="project">Projekt</label>
 		<label index="project.details">Zeige Projekt Details</label>
