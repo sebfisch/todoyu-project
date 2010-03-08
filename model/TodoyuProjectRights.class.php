@@ -31,17 +31,20 @@ class TodoyuProjectRights {
 		TodoyuRightsManager::deny('project', $right);
 	}
 
+
+
 	public static function canTaskEdit($idTask) {
 		$idTask		= intval($idTask);
 		$task		= TodoyuTaskManager::getTask($idTask);
 		$idProject	= TodoyuTaskManager::getProjectID($idTask);
-		$statusIDs	= array_keys(TodoyuProjectStatusManager::getTaskStatuses('edit'));
+		$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('edit'));
 
 		$canEditTask	= self::canTaskEditInProject($idProject);
 		$canEditStatus	= in_array($task->getStatus(), $statusIDs);
 
 		return $canEditTask && $canEditStatus;
 	}
+
 
 
 	public static function canTaskEditInProject($idProject) {
@@ -53,6 +56,7 @@ class TodoyuProjectRights {
 			return allowed('project', 'task:editAndDeleteInAllProjects');
 		}
 	}
+
 
 
 	public static function canTaskAdd($idParentTask) {
@@ -73,6 +77,7 @@ class TodoyuProjectRights {
 	}
 
 
+
 	public static function canTaskSee($idTask) {
 		$idTask	= intval($idTask);
 
@@ -82,6 +87,7 @@ class TodoyuProjectRights {
 
 		return true;
 	}
+
 
 
 	public static function canProjectSee($idProject) {
@@ -97,6 +103,7 @@ class TodoyuProjectRights {
 
 		return false;
 	}
+
 
 
 	public static function canProjectEdit() {
@@ -115,6 +122,7 @@ class TodoyuProjectRights {
 			self::deny('task:edit');
 		}
 	}
+
 
 
 	public static function checkTaskEditInProject($idProject) {
@@ -150,6 +158,7 @@ class TodoyuProjectRights {
 	}
 
 
+
 	public static function checkTaskSee($idTask) {
 		if( ! self::canTaskSee($idTask) ) {
 			self::deny('task:see');
@@ -157,11 +166,13 @@ class TodoyuProjectRights {
 	}
 
 
+
 	public static function checkProjectSee($idProject) {
 		if( ! self::canProjectSee($idProject) ) {
 			self::deny('project:see');
 		}
 	}
+
 
 
 	public static function checkProjectEdit() {
