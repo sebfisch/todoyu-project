@@ -240,7 +240,7 @@ class TodoyuProjectStatusManager {
 			'index'		=> $index,
 			'value'		=> $index,
 			'key'		=> $statusKey,
-			'classname'	=> 'status' . ucwords($statusKey),
+			'class'		=> 'status' . ucwords($statusKey),
 			'label'		=> $label
 		);
 

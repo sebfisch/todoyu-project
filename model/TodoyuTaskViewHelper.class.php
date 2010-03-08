@@ -134,7 +134,6 @@ class TodoyuTaskViewHelper {
 		return $option;
 	}
 
-
 }
 
 ?>
