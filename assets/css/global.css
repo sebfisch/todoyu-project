@@ -63,3 +63,53 @@
 .searchmode-project {
 	background:url(../img/icons.png) no-repeat 3px -447px !important;
 }
+
+/* -----------------------------------------------
+	Search Listing of Projects
+   ----------------------------------------------- */
+.projects {
+	
+}
+.projectlist .headerLine .fulltitle{
+
+}
+
+.projectlist .headerLine .projectNumber{
+	float:right;
+	padding:0 10px;
+}
+
+
+.project h3 {
+	background-color:transparent;
+	border-bottom:1px dotted #AAAAAA;
+	clear:both;
+	cursor:pointer;
+	display:block;
+	height:14px !important;
+	padding:4px 0;
+	
+}
+
+
+.projects .project h3 .headLabel {
+	border-left-style:solid;
+	border-left-width:8px;
+	display:block;
+	float:left;
+	height:auto !important;
+	margin:-4px 0 -3px 0;
+	min-height:14px;
+	padding:4px 0 3px 17px;
+	
+}
+
+.projects .project h3 .projectName{
+	width:570px;
+	float:left;
+}
+
+.projects .project h3 .projectNumber {
+	padding:0 10px;
+	float:right;
+}
