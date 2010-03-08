@@ -82,7 +82,7 @@ class TodoyuProjectViewHelper {
 		$values		= $field->getValue();
 		$idStatus	= intval($values[0]);
 		$options	= array();
-		$statuses	= TodoyuProjectStatusManager::getProjectStatuses('changeto', $idStatus);
+		$statuses	= TodoyuProjectStatusManager::getProjectStatuses($idStatus);
 
 		foreach($statuses as $statusID => $statusKey) {
 			$options[] = array(

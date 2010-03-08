@@ -19,10 +19,15 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-if ( allowed('project', 'general:use') ) {
-		// Add create engine types
-	TodoyuQuickCreateManager::addEngine('project', 'project', 'project.create.label', 10, EXTID_PROJECT);
+
+	// Add create for task
+if( allowed('project', 'task:addInOwnProjects') ) {
 	TodoyuQuickCreateManager::addEngine('project', 'task', 'task.create.label', 20, EXTID_PORTAL);
+}
+
+	// Add create for project
+if( allowed('project', 'modify') ) {
+	TodoyuQuickCreateManager::addEngine('project', 'project', 'project.create.label', 10, EXTID_PROJECT);
 }
 
 ?>

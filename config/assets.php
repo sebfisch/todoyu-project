@@ -20,13 +20,11 @@
 ***************************************************************/
 
 /**
- * Assets (JS, CSS, SWF, etc.) requirements for project extension
+ * Assets (JS, CSS) requirements for project extension
  *
  * @package		Todoyu
  * @subpackage	Project
  */
-
-
 
 
 $CONFIG['EXT']['project']['assets'] = array(

@@ -40,6 +40,28 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 
 	/**
+	 * Add rights clause for projects
+	 *
+	 */
+	private function addRightsClauseFilter() {
+			// Add rights clause
+		$this->activeFilters[] = array(
+			'filter'	=> 'rights',
+			'value'		=> ''
+		);
+
+			// Add status filter
+		$statusKeys	= array_keys(TodoyuProjectStatusManager::getProjectStatuses());
+
+		$this->activeFilters[] = array(
+			'filter'	=> 'status',
+			'value'		=> implode(',', $statusKeys)
+		);
+	}
+
+
+
+	/**
 	 * Get IDs of the project which match to all the filters
 	 *
 	 * @param	String		$orderBy
@@ -48,6 +70,8 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @return	Array
 	 */
 	public function getProjectIDs($sorting = '', $limit = '') {
+		$this->addRightsClauseFilter();
+
 		return parent::getItemIDs($sorting, $limit);
 	}
 
@@ -62,6 +86,35 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 */
 	public function getItemIDs($sorting = '', $limit = 100) {
 		return $this->getProjectIDs($sorting, $limit);
+	}
+
+
+
+	/**
+	 * Project rights clause. Limit output by person rights
+	 * If person is not admin or can see all project, limit projects to assigned ones
+	 *
+	 * @param	String		$value			IGNORED
+	 * @param	Bool		$negate			IGNORED
+	 */
+	public static function Filter_rights($value, $negate = false) {
+		$queryParts	= false;
+
+		if( ! TodoyuAuth::isAdmin() && ! allowed('project', 'project:seeAll') ) {
+			$tables	= array(
+				'ext_project_project',
+				'ext_project_mm_project_person'
+			);
+			$where	= '	ext_project_project.id					= ext_project_mm_project_person.id_project AND
+						ext_project_mm_project_person.id_person	= ' . TodoyuAuth::getPersonID();
+
+			$queryParts	= array(
+				'tables'=> $tables,
+				'where'	=> $where
+			);
+		}
+
+		return $queryParts;
 	}
 
 

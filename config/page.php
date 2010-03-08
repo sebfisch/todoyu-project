@@ -20,7 +20,7 @@
 ***************************************************************/
 
 		// Add menu entry
-if( TodoyuAuth::isLoggedIn() && allowed('project', 'general:area') ) {
+if(  allowed('project', 'general:area') ) {
 	TodoyuFrontend::addMenuEntry('project', 'LLL:project.tab.label', '?ext=project', 20);
 
 	$projectEntries	= TodoyuProjectManager::getOpenProjectLabels();

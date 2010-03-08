@@ -373,7 +373,7 @@ class TodoyuProjectManager {
 
 				// Status
 			$allowed['status'] = $ownItems['status'];
-			$statuses = TodoyuProjectStatusManager::getProjectStatuses('changeto');
+			$statuses = TodoyuProjectStatusManager::getProjectStatuses();
 
 			foreach($allowed['status']['submenu'] as $key => $status) {
 				if( ! in_array($key, $statuses) ) {

@@ -27,7 +27,7 @@
  */
 
 	// Register quicktask headlet
-if ( allowed('project', 'general:quicktaskheadlet') ) {
+if ( allowed('project', 'task:addInOwnProjects') ) {
 //	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickTask', 10);
 }
 

@@ -466,7 +466,7 @@ class TodoyuTaskManager {
 
 
 				// Status
-			if( $task->isTask() && allowed('project', 'task:status') ) {
+			if( $task->isTask() && allowed('project', 'task:edit') ) {
 				$allowed['status'] = $ownItems['status'];
 
 				$statuses = TodoyuProjectStatusManager::getTaskStatuses('changeto');

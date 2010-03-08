@@ -173,14 +173,13 @@ class TodoyuProjectStatusManager {
 	 *
 	 * @return	Array
 	 */
-	public static function getProjectStatuses($check = 'see', $forceStatus = 0) {
-		$check		= $check === 'changeto' ? 'changeto' : 'see';
+	public static function getProjectStatuses($forceStatus = 0) {
 		$forceStatus= intval($forceStatus);
 		$statuses	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['STATUS']['PROJECT']);
 
 		foreach($statuses as $index => $statusKey) {
 				// Only get allowed status which the person can see
-			if( ! allowed('project', 'projectstatus:' . $statusKey . ':' . $check) && $index !== $forceStatus) {
+			if( ! allowed('project', 'projectstatus:' . $statusKey . ':see') && $index !== $forceStatus) {
 				unset($statuses[$index]);
 			}
 		}
@@ -215,8 +214,8 @@ class TodoyuProjectStatusManager {
 	 *
 	 * @return	Array
 	 */
-	public static function getProjectStatusInfos($check = 'see') {
-		$statuses	= self::getProjectStatuses($check);
+	public static function getProjectStatusInfos() {
+		$statuses	= self::getProjectStatuses();
 		$infos		= array();
 
 		foreach($statuses as $index => $statusKey) {

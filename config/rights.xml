@@ -12,10 +12,10 @@
 	</section>
 
 	<section name="task" require="general:use">
+		<right name="addInOwnProjects" />
+		<right name="addInAllProjects" require="task:addInOwnProjects" />
 		<right name="edit" />
 		<right name="delete" />
-		<right name="addInOwnProjects" />
-		<right name="addInAllProjects" />
 		<right name="editDateStart" />
 		<right name="editDateEnd" />
 		<right name="editDateDeadline" />
@@ -61,17 +61,6 @@
 		<right name="done:see" />
 		<right name="cleared:see" />
 		<right name="warranty:see" />
-		<right name="planning:changeto" />
-		<right name="progress:changeto" />
-		<right name="done:changeto" />
-		<right name="cleared:changeto" />
-		<right name="warranty:changeto" />
-	</section>
-
-	<section name="panelwidgets" require="general:use">
-		<right name="projectList" />
-		<right name="projectStatusFilter" />
-		<right name="taskStatusFilter" />
 	</section>
 
 </rights>
