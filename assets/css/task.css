@@ -292,16 +292,9 @@
 		border:1px solid #E9ECE0;
 	}
 
-	
-
 	.task .tabContent .tabBlock {
 		position:relative;
 		background:#fff;
-	}
-
-	.task .tabContent .tabBlock button.button {
-		margin:3px 0 0 3px;
-		float:left;
 	}
 
 	.task .tabContent .tabBlock .toggle {

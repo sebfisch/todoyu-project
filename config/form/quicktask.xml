@@ -63,12 +63,15 @@
 			<legend>Actions</legend>
 			<class>buttons</class>
 			<elements>
-				<field type="saveButton" name="save">
-					<onclick>Todoyu.Ext.project.QuickTask.save(this.form)</onclick>
-				</field>
+
 				<field type="cancelButton" name="cancel">
 					<onclick>Todoyu.Ext.project.QuickTask.closePopup()</onclick>
 				</field>
+
+				<field type="saveButton" name="save">
+					<onclick>Todoyu.Ext.project.QuickTask.save(this.form)</onclick>
+				</field>
+
 			</elements>
 		</fieldset>
 	</fieldsets>
