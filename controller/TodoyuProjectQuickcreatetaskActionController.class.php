@@ -27,6 +27,11 @@
  */
 class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionController {
 
+	public function init(array $params) {
+		restrict('project', 'general:use');
+	}
+
+
 	/**
 	 * Render form
 	 *

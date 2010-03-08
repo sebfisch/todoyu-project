@@ -27,7 +27,6 @@
  */
 class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
-
 	/**
 	 * Initialize projectTree PanelWidget
 	 *
@@ -250,7 +249,7 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 	 * @return unknown
 	 */
 	public static function isAllowed() {
-		return allowed('project', 'panelwidgets:projectList');
+		return allowed('project', 'general:use');
 	}
 
 }
