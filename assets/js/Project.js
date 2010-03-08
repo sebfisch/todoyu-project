@@ -196,7 +196,12 @@ Todoyu.Ext.project.Project = {
 	 * @param	Integer		idProject
 	 */
 	addTask: function(idProject) {
-		if(Todoyu.getArea() != 'project') Todoyu.goTo('project', 'ext', {'action': 'addtask', 'project': idProject});
+		if(Todoyu.getArea() != 'project') {
+			Todoyu.goTo('project', 'ext', {
+				'action': 'addtask',
+				'project': idProject
+			});
+		}
 
 		this.ext.Task.addTaskToProject(idProject);
 	},
@@ -209,7 +214,12 @@ Todoyu.Ext.project.Project = {
 	 * @param	Integer		idProject
 	 */
 	addContainer: function(idProject) {
-		if(Todoyu.getArea() != 'project') Todoyu.goTo('project', 'ext', {'action': 'addcontainer', 'project': idProject});
+		if(Todoyu.getArea() != 'project') {
+			Todoyu.goTo('project', 'ext', {
+				'action': 'addcontainer',
+				'project': idProject
+			});
+		}
 
 		this.ext.Task.addContainerToProject(idProject);
 	},

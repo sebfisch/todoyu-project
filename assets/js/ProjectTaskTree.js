@@ -364,7 +364,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		this.openProjects = [];
 
 		$('project-tabs').childElements().each(function(tab) {
-			this.openProjects.push(tab.id.split('-').last())
+			this.openProjects.push(tab.id.split('-').last());
 		}.bind(this));
 
 		this.openProjects = this.openProjects.uniq();

@@ -101,7 +101,7 @@ Todoyu.Ext.project.QuickTask = {
 			Todoyu.notifySuccess('[LLL:project.js.quicktask.saved]');
 
 			if( start ) {
-				var idTask= response.getTodoyuHeader('idTask');
+				idTask= response.getTodoyuHeader('idTask');
 				Todoyu.Ext.timetracking.Task.start(idTask);
 			}
 
