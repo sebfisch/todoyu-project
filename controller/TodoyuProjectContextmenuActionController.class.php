@@ -27,9 +27,16 @@
  */
 class TodoyuProjectContextmenuActionController extends TodoyuActionController {
 
+	/**
+	 * Initialize project context menu controller: restrict rights
+	 *
+	 * @param	Array	$params
+	 */
 	public function init(array $params) {
 		restrict('project', 'general:use');
 	}
+
+
 
 	/**
 	 * Get task (and container) related contextmenu as JSON

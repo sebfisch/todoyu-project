@@ -60,7 +60,7 @@ Todoyu.Ext.project.ContextMenuProject = {
 	 *	@param	Object	event
 	 */
 	load: function(event) {
-		var idProject	= event.findElement('h1').id.split('-')[1];
+		var idProject	= event.findElement('.contextmenuproject').id.split('-')[1];
 
 			// Prepare request parameters
 		var url		= Todoyu.getUrl('project', 'contextmenu');

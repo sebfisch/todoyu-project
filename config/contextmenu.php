@@ -298,7 +298,7 @@ $CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 		'key'		=> 'showinproject',
 		'label'		=> 'project.contextmenu.showinproject',
 		'jsAction'	=> 'Todoyu.Ext.project.goToTaskInProject(#ID#)',
-		'class'		=> 'task-ctxmenu task-showinproject',
+		'class'		=> 'projectContextMenu showInProject',
 		'position'	=> 10
 	),
 	'showdetails'	=> array(

@@ -53,7 +53,7 @@
 		<label index="attr.persons.new">New Project Person</label>
 		<label index="attr.persons.role">Project Role</label>
 		<label index="attr.persons.comment">Comment</label>
-		<label index="contextmenu.showinproject">Show As Project</label>
+		<label index="contextmenu.showinproject">Show in Project Area</label>
 		<label index="contextmenu.showdetails">Show Details</label>
 		<label index="contextmenu.hidedetails">Hide Details</label>
 		<label index="contextmenu.edit">Edit Project</label>
@@ -128,7 +128,7 @@
 		<label index="attr.title">Projekt Titel</label>
 		<label index="projectrole.role">Projekt Rolle</label>
 		<label index="projectrole.comment">Kommentar</label>
-		<label index="contextmenu.showinproject">Zeige als Projekt</label>
+		<label index="contextmenu.showinproject">Zeige in Projekt-Ansicht</label>
 		<label index="contextmenu.showdetails">Details anzeigen</label>
 		<label index="contextmenu.hidedetails">Verstecke Details</label>
 		<label index="contextmenu.edit">Projekt bearbeiten</label>

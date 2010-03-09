@@ -318,6 +318,7 @@ class TodoyuProjectManager {
 	}
 
 
+
 	/**
 	 * Get the subtasks of a task which match to all the filters
 	 *
@@ -380,6 +381,13 @@ class TodoyuProjectManager {
 		$ownItems	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Project']);
 		$allowed	= array();
 
+			// Show in project area
+		if( AREA !== EXTID_PROJECT ) {
+			if( TodoyuProjectRights::canProjectSee($idProject) ) {
+				$allowed['showinproject'] = $ownItems['showinproject'];
+			}
+		}
+
 			// Show details
 		if( TodoyuProjectRights::canProjectSee($idProject) ) {
 			if( $isExpanded ) {
@@ -388,7 +396,6 @@ class TodoyuProjectManager {
 				$allowed['showdetails'] = $ownItems['showdetails'];
 			}
 		}
-
 
 			// Modify project
 		if( TodoyuProjectRights::canProjectEdit($idProject) ) {
