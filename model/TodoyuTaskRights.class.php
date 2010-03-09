@@ -148,7 +148,7 @@ class TodoyuTaskRights {
 	 * @param unknown_type $idProject
 	 */
 	public static function restrictEditInProject($idProject) {
-		if( ! self::isEditAllowedInProject($idProject) ) {
+		if( ! self::isEditInProjectAllowed($idProject) ) {
 			self::deny('task:edit');
 		}
 	}
