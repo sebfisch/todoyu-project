@@ -73,12 +73,15 @@ class TodoyuPanelWidgetProjectStatusFilter extends TodoyuPanelWidgetStatusFilter
 
 
 	/**
-	 * Check allowance
+	 * Check if panelwidget is allowed
+	 * Allowed if project area allowed and more than one status visible
 	 *
 	 * @return	Boolean
 	 */
 	public static function isAllowed() {
-		return allowed('project', 'general:use');
+		$statuses	= TodoyuProjectStatusManager::getStatuses();
+
+		return allowed('project', 'general:use') && sizeof($statuses) > 1;
 	}
 
 }
