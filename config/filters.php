@@ -34,6 +34,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 		'position'			=> 10,
 		'resultsRenderer'	=> 'TodoyuTaskRenderer::renderTaskListing',
 		'class'				=> 'TodoyuTaskFilter',
+		'require'			=> 'project.general:use',
 		'assets'			=> array(
 			array(
 				'ext'	=> 'project',
@@ -384,6 +385,7 @@ $CONFIG['FILTERS']['PROJECT'] = array(
 		'position'			=> 20,
 		'resultsRenderer'	=> 'TodoyuProjectRenderer::renderProjectListing',
 		'class'				=> 'TodoyuProjectFilter',
+		'require'			=> 'project.general:use',
 		'assets'			=> array(
 			array(
 				'ext'	=> 'project',
