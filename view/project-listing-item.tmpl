@@ -1,5 +1,5 @@
 <div id="project-{$project.id}" class="project">
-	<h3 id="project-{$project.id}-header" class="contextmenuproject" onclick="Todoyu.Ext.portal.Project.toggleDetails({$project.id})">
+	<h3 id="project-{$project.id}-header" class="contextmenuproject" onclick="Todoyu.Ext.project.Project.toggleDetails({$project.id})">
 		<span class="headLabel bcStatus{$project.status}">&nbsp;</span>
 		<span class="projectName">
 			{htmlencode $project.fulltitle|truncate:111}
