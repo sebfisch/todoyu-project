@@ -383,7 +383,7 @@ class TodoyuProjectManager {
 
 			// Show in project area
 		if( AREA !== EXTID_PROJECT ) {
-			if( TodoyuProjectRights::canProjectSee($idProject) ) {
+			if( TodoyuProjectRights::isSeeAllowed($idProject) ) {
 				$allowed['showinproject'] = $ownItems['showinproject'];
 			}
 		}
