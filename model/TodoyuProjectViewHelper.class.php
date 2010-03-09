@@ -136,6 +136,35 @@ class TodoyuProjectViewHelper {
 		return $roles;
 	}
 
+
+
+	/**
+	 * Get options for all projectroles
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @return	Array
+	 */
+	public static function getExtConfProjectRoles(TodoyuFormElement $field) {
+		$roles	= TodoyuProjectroleManager::getProjectroles(true);
+		$reform	= array(
+			'title'	=> 'label',
+			'id'	=> 'value'
+		);
+
+		return TodoyuArray::reform($roles, $reform);
+	}
+
+
+	public static function getExtConfWorktypes(TodoyuFormElement $field) {
+		$worktypes	= TodoyuWorktypeManager::getAllWorktypes();
+		$reform	= array(
+			'title'	=> 'label',
+			'id'	=> 'value'
+		);
+
+		return TodoyuArray::reform($worktypes, $reform);
+	}
+
 }
 
 ?>

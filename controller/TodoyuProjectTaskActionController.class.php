@@ -27,7 +27,12 @@
  */
 class TodoyuProjectTaskActionController extends TodoyuActionController {
 
-
+	/**
+	 * Initalize controller
+	 * Check if project extension allowed
+	 *
+	 * @param	Array		$params
+	 */
 	public function init(array $params) {
 		restrict('project', 'general:use');
 	}
@@ -43,7 +48,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	public function addprojecttaskAction(array $params) {
 		$idProject 	= intval($params['project']);
 
-		TodoyuProjectRights::checkTaskAddToProject($idProject);
+		TodoyuTaskRights::restrictAddToProject($idProject);
 
 			// Send task id for js
 		TodoyuHeader::sendTodoyuHeader('idTask', 0);
@@ -63,7 +68,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	public function addprojectcontainerAction(array $params) {
 		$idProject 	= intval($params['project']);
 
-		TodoyuProjectRights::checkTaskAddToProject($idProject);
+		TodoyuTaskRights::restrictAddToProject($idProject);
 
 			// Send task id for js
 		TodoyuHeader::sendTodoyuHeader('idContainer', 0);
@@ -84,7 +89,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			// Parent for the new subtask
 		$idParentTask	= intval($params['task']);
 
-		TodoyuProjectRights::checkTaskAdd($idParentTask);
+		TodoyuTaskRights::restrictAdd($idParentTask);
 
 			// Send task id for js
 		TodoyuHeader::sendTodoyuHeader('idTask', 0);
@@ -105,7 +110,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			// Parent for the new subtask
 		$idParentTask	= intval($params['task']);
 
-		TodoyuProjectRights::checkTaskAdd($idParentTask);
+		TodoyuTaskRights::restrictAdd($idParentTask);
 
 			// Send task id for js
 		TodoyuHeader::sendTodoyuHeader('idContainer', 0);
@@ -125,7 +130,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	public function editAction(array $params) {
 		$idTask		= intval($params['task']);
 
-		TodoyuProjectRights::checkTaskEdit($idTask);
+		TodoyuTaskRights::restrictEdit($idTask);
 
 		return TodoyuTaskRenderer::renderTaskEditForm($idTask);
 	}
@@ -146,9 +151,9 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 			// Check rights
 		if( $idTask === 0 ) {
-			TodoyuProjectRights::checkTaskAddToProject($idProject);
+			TodoyuTaskRights::restrictAddToProject($idProject);
 		} else {
-			TodoyuProjectRights::checkTaskEditInProject($idProject);
+			TodoyuTaskRights::restrictEditInProject($idProject);
 		}
 
 			// Create a cache record for the buildform hooks
@@ -221,7 +226,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	public function getAction(array $params) {
 		$idTask	= intval($params['task']);
 
-		TodoyuProjectRights::checkTaskSee($idTask);
+		TodoyuTaskRights::restrictSee($idTask);
 
 		if( TodoyuTaskManager::isTaskVisible($idTask) ) {
 			return TodoyuProjectRenderer::renderTask($idTask, 0, true);
@@ -240,7 +245,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask	= intval($params['task']);
 		$tab	= trim($params['tab']);
 
-		TodoyuProjectRights::checkTaskSee($idTask);
+		TodoyuTaskRights::restrictSee($idTask);
 
 
 			// Save task open
@@ -268,7 +273,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask			= intval($params['task']);
 		$withSubtasks	= intval($params['subtasks']) === 1;
 
-		TodoyuProjectRights::checkTaskSee($idTask);
+		TodoyuTaskRights::restrictSee($idTask);
 
 		TodoyuTaskClipboard::addTaskCopy($idTask, $withSubtasks);
 	}
@@ -284,7 +289,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	public function cutAction(array $params) {
 		$idTask			= intval($params['task']);
 
-		TodoyuProjectRights::checkTaskEdit($idTask);
+		TodoyuTaskRights::restrictEdit($idTask);
 
 		TodoyuTaskClipboard::addTaskCut($idTask);
 	}
@@ -301,7 +306,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask	= intval($params['task']);
 		$mode	= $params['mode'];
 
-		TodoyuProjectRights::checkTaskAdd($idTask);
+		TodoyuTaskRights::restrictAdd($idTask);
 
 		$idTaskNew = TodoyuTaskClipboard::pasteTask($idTask, $mode);
 
@@ -322,8 +327,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask			= intval($params['task']);
 		$withSubtasks	= intval($params['subtasks']) === 1;
 
-		TodoyuProjectRights::checkTaskSee($idTask);
-		TodoyuProjectRights::checkTaskAdd($idTask);
+		TodoyuTaskRights::restrictSee($idTask);
+		TodoyuTaskRights::restrictAdd($idTask);
 
 		$idTaskNew		= TodoyuTaskManager::cloneTask($idTask, $withSubtasks);
 
@@ -355,7 +360,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	public function deleteAction(array $params) {
 		$idTask		= intval($params['task']);
 
-		TodoyuProjectRights::checkTaskEdit($idTask);
+		TodoyuTaskRights::restrictEdit($idTask);
 
 		TodoyuTaskManager::deleteTask($idTask, true);
 	}
@@ -406,7 +411,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask		= intval($params['task']);
 		$tabKey		= $params['tab'];
 
-		TodoyuProjectRights::checkTaskSee($idTask);
+		TodoyuTaskRights::restrictSee($idTask);
 
 		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tabKey, AREA);
 

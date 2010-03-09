@@ -50,7 +50,6 @@ CREATE TABLE `ext_project_task` (
   `status` tinyint(4) NOT NULL,
   `id_worktype` smallint(6) NOT NULL DEFAULT '0',
   `estimated_workload` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `is_estimatedworkload_public` tinyint(1) NOT NULL,
   `is_acknowledged` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `offered_accesslevel` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `is_offered` tinyint(1) unsigned NOT NULL DEFAULT '0',

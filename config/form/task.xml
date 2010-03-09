@@ -44,6 +44,9 @@
 
 				<field type="datetimeinput" name="date_start">
 					<label>task.date_start</label>
+					<restrict>
+						<allow ext="project" right="task:editDateStart" />
+					</restrict>
 					<required/>
 				</field>
 
@@ -55,6 +58,9 @@
 							<allowEmpty />
 						</dateNotBefore>
 					</validate>
+					<restrict>
+						<allow ext="project" right="task:editDateEnd" />
+					</restrict>
 				</field>
 
 				<field type="datetimeinput" name="date_deadline">
@@ -65,6 +71,9 @@
 							<allowEmpty />
 						</dateNotBefore>
 					</validate>
+					<restrict>
+						<allow ext="project" right="task:editDeadline" />
+					</restrict>
 					<required/>
 				</field>
 
@@ -82,6 +91,9 @@
 						<function>TodoyuTaskViewHelper::getPersonAssignedGroupedOptions</function>
 						<lazyInit/>
 					</source>
+					<restrict>
+						<allow ext="project" right="task:editPersonAssigned" />
+					</restrict>
 				</field>
 
 				<field type="selectgrouped" name="id_person_owner">
@@ -90,6 +102,9 @@
 						<function>TodoyuTaskViewHelper::getTaskOwnerOptions</function>
 						<lazyInit />
 					</source>
+					<restrict>
+						<allow ext="project" right="task:editPersonOwner" />
+					</restrict>
 				</field>
 
 				<field type="textinputAC" name="id_parenttask">
@@ -117,6 +132,9 @@
 					<validate>
 						<isNotZero msg="LLL:task.attr.id_worktype.error"/>
 					</validate>
+					<restrict>
+						<allow ext="project" right="task:editWorktype" />
+					</restrict>
 					<required/>
 				</field>
 
@@ -125,15 +143,17 @@
 					<validate>
 						<isNotZerotime msg="LLL:task.attr.estimated_workload.error"/>
 					</validate>
+					<restrict>
+						<allow ext="project" right="task:editEstimatedWorkload" />
+					</restrict>
 					<required/>
-				</field>
-
-				<field type="checkbox" name="is_estimatedworkload_public">
-					<label>task.attr.is_estimatedworkload_public</label>
 				</field>
 
 				<field type="checkbox" name="is_public">
 					<label>task.attr.is_public.public</label>
+					<restrict>
+						<allow ext="project" right="task:editIsPublic" />
+					</restrict>
 				</field>
 
 			</elements>

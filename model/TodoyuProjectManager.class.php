@@ -389,7 +389,7 @@ class TodoyuProjectManager {
 		}
 
 			// Show details
-		if( TodoyuProjectRights::canProjectSee($idProject) ) {
+		if( TodoyuProjectRights::isSeeAllowed($idProject) ) {
 			if( $isExpanded ) {
 				$allowed['hidedetails'] = $ownItems['hidedetails'];
 			} else {
@@ -398,7 +398,7 @@ class TodoyuProjectManager {
 		}
 
 			// Modify project
-		if( TodoyuProjectRights::canProjectEdit($idProject) ) {
+		if( TodoyuProjectRights::isEditAllowed($idProject) ) {
 				// Edit
 			$allowed['edit'] = $ownItems['edit'];
 
@@ -783,6 +783,67 @@ class TodoyuProjectManager {
 		$idProjectrole	= Todoyu::db()->getFieldValue($field, $tables, $where);
 
 		return TodoyuProjectroleManager::getProjectrole($idProjectrole);
+	}
+
+
+
+	/**
+	 * Get all roles which are used in a project
+	 *
+	 * @param	Integer		$idProject
+	 * @return	Array
+	 */
+	public static function getProjectRoles($idProject) {
+		$fields	= '	DISTINCT pr.*';
+		$table	= '	ext_project_mm_project_person mm,
+					ext_project_role pr';
+		$where	= '	mm.id_project	= ' . $idProject . ' AND
+					mm.id_role		= pr.id AND
+					pr.deleted		= 0';
+
+		return Todoyu::db()->getArray($fields, $table, $where);
+	}
+
+
+
+	/**
+	 * Get person with a specific role in project
+	 * If no person has this role, FALSE is returned
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idRole
+	 * @return	TodoyuPerson	Or FALSE if not found
+	 */
+	public static function getRolePerson($idProject, $idRole) {
+		$idPerson	= self::getRolePersonID($idProject, $idRole);
+
+		if( $idPerson !== 0 ) {
+			return TodoyuPersonManager::getPerson($idPerson);
+		} else {
+			return false;
+		}
+	}
+
+
+
+	/**
+	 * Get ID of the person with a specific role in project
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idRole
+	 * @return	Integer
+	 */
+	public static function getRolePersonID($idProject, $idRole) {
+		$idProject	= intval($idProject);
+		$idRole		= intval($idRole);
+
+		$field	= 'id_person';
+		$table	= '	ext_project_mm_project_person';
+		$where	= '	id_project	= ' . $idProject . ' AND
+					id_role		= ' . $idRole;
+		$limit	= 1;
+
+		return intval(Todoyu::db()->getFieldValue($field, $table, $where, '', '', $limit));
 	}
 
 

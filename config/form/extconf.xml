@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="name">config</attribute>
+	</attributes>
+	<fieldsets>
+
+		<fieldset name="taskDefaults">
+
+			<elements>
+
+				<field type="select" name="id_role_assigned">
+					<label>project.extconf.taskDefaults.assignedRoles</label>
+					<source type="function">
+						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
+					</source>
+				</field>
+				
+				<field type="select" name="id_role_owner">
+					<label>project.extconf.taskDefaults.ownerRoles</label>
+					<source type="function">
+						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
+					</source>
+				</field>
+				
+				<field type="select" name="id_worktype">
+					<label>project.extconf.taskDefaults.worktype</label>
+					<source type="function">
+						<function>TodoyuProjectViewHelper::getExtConfWorktypes</function>
+					</source>
+				</field>
+				
+				<field type="timeinput" name="estimated_workload">
+					<label>project.extconf.taskDefaults.estimated_workload</label>
+				</field>
+
+			</elements>
+
+		</fieldset>
+
+	</fieldsets>
+</form>

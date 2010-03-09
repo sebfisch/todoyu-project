@@ -41,7 +41,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	public function editAction(array $params) {
 		$idProject	= intval($params['project']);
 
-		TodoyuProjectRights::checkProjectEdit($idProject);
+		TodoyuProjectRights::restrictEdit($idProject);
 
 		return TodoyuProjectRenderer::renderProjectEditForm($idProject);
 	}
@@ -55,7 +55,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @return	String		Form content if form is invalid
 	 */
 	public function saveAction(array $params) {
-		TodoyuProjectRights::checkProjectEdit();
+		TodoyuProjectRights::restrictEdit();
 
 		$data		= $params['project'];
 		$idProject	= intval($data['id']);
@@ -96,7 +96,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	public function detailsAction(array $params) {
 		$idProject	= intval($params['project']);
 
-		TodoyuProjectRights::checkProjectSee($idProject);
+		TodoyuProjectRights::restrictSee($idProject);
 
 		return TodoyuProjectRenderer::renderProjectDetails($idProject);
 	}
@@ -141,7 +141,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function setstatusAction(array $params) {
-		TodoyuProjectRights::checkProjectEdit();
+		TodoyuProjectRights::restrictEdit();
 
 		$idProject	= intval($params['project']);
 		$status		= intval($params['status']);
@@ -157,7 +157,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function removeAction(array $params) {
-		TodoyuProjectRights::checkProjectEdit();
+		TodoyuProjectRights::restrictEdit();
 
 		$idProject	= intval($params['project']);
 
@@ -184,7 +184,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function addSubformAction(array $params) {
-		TodoyuProjectRights::checkProjectEdit();
+		TodoyuProjectRights::restrictEdit();
 
 		$xmlPath	= 'ext/project/config/form/project.xml';
 

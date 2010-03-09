@@ -48,10 +48,10 @@ class TodoyuTaskViewHelper {
 	 * @return	Array
 	 */
 	public static function getTaskStatusOptions(TodoyuFormElement $field) {
-		$statuses	= TodoyuProjectStatusManager::getStatuses('changeto');
-		$values		= $field->getValue();
-		$value		= intval($values[0]);
-		$options	= array();
+		$values			= $field->getValue();
+		$currentStatus	= intval($values[0]);
+		$statuses		= TodoyuTaskStatusManager::getStatuses('changeto', $currentStatus);
+		$options		= array();
 
 		foreach($statuses as $statusID => $statusKey) {
 			$options[] = array(

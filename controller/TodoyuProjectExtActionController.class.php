@@ -63,7 +63,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 		}
 
 			// Check access rights
-		TodoyuProjectRights::checkProjectSee($idProject);
+		TodoyuProjectRights::restrictSee($idProject);
 
 
 			// Init page

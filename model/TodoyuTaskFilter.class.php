@@ -45,11 +45,15 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	private function addRightsClauseFilter() {
+			// Limit to current person
 		if( ! allowed('project', 'task:seeAll') ) {
-			$this->activeFilters[] = array(
-				'filter'=> 'assignedPerson',
-				'value'	=> personid()
-			);
+			$this->addExtraFilter('assignedPerson', personid());
+		}
+
+			// Limit to selected status
+		if( ! TodoyuAuth::isAdmin() ) {
+			$statuses	= implode(',', array_keys(TodoyuTaskStatusManager::getStatuses('see')));
+			$this->addExtraFilter('status', $statuses);
 		}
 	}
 
@@ -66,6 +70,14 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	}
 
 
+
+	/**
+	 * General access to the result items
+	 *
+	 * @param	String		$sorting
+	 * @param	Integer		$limit
+	 * @return	Array
+	 */
 	public function getItemIDs($sorting = 'sorting', $limit = 100) {
 		return $this->getTaskIDs($sorting, $limit);
 	}

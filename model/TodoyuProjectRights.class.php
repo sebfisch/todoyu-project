@@ -27,76 +27,33 @@
  */
 class TodoyuProjectRights {
 
+	/**
+	 * Deny access
+	 * Shortcut for project
+	 *
+	 * @param	String		$right		Denied right
+	 */
 	private static function deny($right) {
 		TodoyuRightsManager::deny('project', $right);
 	}
 
 
 
-	public static function canTaskEdit($idTask) {
-		$idTask		= intval($idTask);
-		$task		= TodoyuTaskManager::getTask($idTask);
-		$idProject	= TodoyuTaskManager::getProjectID($idTask);
-		$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('edit'));
-
-		$canEditTask	= self::canTaskEditInProject($idProject);
-		$canEditStatus	= in_array($task->getStatus(), $statusIDs);
-
-		return $canEditTask && $canEditStatus;
-	}
-
-
-
-	public static function canTaskEditInProject($idProject) {
+	/**
+	 * Check if person can see the project
+	 *
+	 * @param	Integer		$idProject
+	 * @return	Bool
+	 */
+	public static function isSeeAllowed($idProject) {
 		$idProject	= intval($idProject);
 
-		if( TodoyuProjectManager::isPersonAssigned($idProject) ) {
-			return allowed('project', 'task:editAndDeleteInOwnProjects');
-		} else {
-			return allowed('project', 'task:editAndDeleteInAllProjects');
-		}
-	}
-
-
-
-	public static function canTaskAdd($idParentTask) {
-		$idParentTask	= intval($idParentTask);
-		$idProject		= TodoyuTaskManager::getProjectID($idParentTask);
-
-		return self::canTaskAddInProject($idProject);
-	}
-
-	public static function canTaskAddInProject($idProject) {
-		$idProject	= intval($idProject);
-
-		if( TodoyuProjectManager::isPersonAssigned($idProject) ) {
-			return allowed('project', 'task:addInOwnProjects');
-		} else {
-			return allowed('project', 'task:addInAllProjects');
-		}
-	}
-
-
-
-	public static function canTaskSee($idTask) {
-		$idTask	= intval($idTask);
-
-		if( ! TodoyuTaskManager::isPersonAssigned($idTask) ) {
-			return allowed('project', 'task:seeAll');
-		}
-
-		return true;
-	}
-
-
-
-	public static function canProjectSee($idProject) {
-		$idProject	= intval($idProject);
-
+			// See all projects
 		if( allowed('project', 'project:seeAll') ) {
 			return true;
 		}
 
+			// See own projects and is project member
 		if( allowed('project', 'project:seeOwn') ) {
 			return TodoyuProjectManager::isPersonAssigned($idProject);
 		}
@@ -106,77 +63,36 @@ class TodoyuProjectRights {
 
 
 
-	public static function canProjectEdit() {
+	/**
+	 * Check if person can edit the project
+	 *
+	 * @return	Bool
+	 */
+	public static function isEditAllowed() {
 		return allowed('project', 'project:editAndDelete');
 	}
 
 
 
 	/**
-	 * Check if a person can edit a task
-	 *
-	 * @param	Integer		$idTask
-	 */
-	public static function checkTaskEdit($idTask) {
-		if( ! self::canTaskEdit($idTask) ) {
-			self::deny('task:edit');
-		}
-	}
-
-
-
-	public static function checkTaskEditInProject($idProject) {
-		if( ! self::canTaskEditInProject($idProject) ) {
-			self::deny('task:edit');
-		}
-	}
-
-
-
-	/**
-	 * Check if a person can add a subtask
-	 *
-	 * @param	Integer		$idParentTask
-	 */
-	public static function checkTaskAdd($idParentTask) {
-		if( ! self::canTaskAdd($idParentTask) ) {
-			self::deny('task:add');
-		}
-	}
-
-
-
-	/**
-	 * Check if a person can add a task to a project
+	 * Restrict access to person which are allowed to see the project
 	 *
 	 * @param	Integer		$idProject
 	 */
-	public static function checkTaskAddToProject($idProject) {
-		if( ! self::canTaskAddInProject($idProject) ) {
-			self::deny('task:add');
-		}
-	}
-
-
-
-	public static function checkTaskSee($idTask) {
-		if( ! self::canTaskSee($idTask) ) {
-			self::deny('task:see');
-		}
-	}
-
-
-
-	public static function checkProjectSee($idProject) {
-		if( ! self::canProjectSee($idProject) ) {
+	public static function restrictSee($idProject) {
+		if( ! self::isSeeAllowed($idProject) ) {
 			self::deny('project:see');
 		}
 	}
 
 
 
-	public static function checkProjectEdit() {
-		if( ! self::canProjectEdit() ) {
+	/**
+	 * Restrict access to person which are allowed to edit projects
+	 *
+	 */
+	public static function restrictEdit() {
+		if( ! self::isEditAllowed() ) {
 			self::deny('project:edit');
 		}
 	}

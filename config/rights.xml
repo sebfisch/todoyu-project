@@ -20,9 +20,9 @@
 		<right name="editAndDeleteInAllProjects" require="task:editAndDeleteInOwnProjects" />
 		<right name="editDateStart" />
 		<right name="editDateEnd" />
-		<right name="editDateDeadline" />
-		<right name="editAssign" />
-		<right name="editOwner" />
+		<right name="editDeadline" />
+		<right name="editPersonAssigned" />
+		<right name="editPersonOwner" />
 		<right name="editWorktype" />
 		<right name="editEstimatedWorkload" />
 		<right name="editIsPublic" />

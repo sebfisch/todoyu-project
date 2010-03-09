@@ -74,6 +74,10 @@
 		<label index="js.quicktask.saved">Quicktask has been saved</label>
 		<label index="ac.person.notFoundInfo">No person with a name containing the given text could be found.</label>
 		<label index="portal.tab.todos">To Dos</label>
+		<label index="extconf.taskDefaults.assignedRoles">Default role for task assigned person</label>
+		<label index="extconf.taskDefaults.ownerRoles">Default role for task owner</label>
+		<label index="extconf.taskDefaults.worktype">Default worktype</label>
+		<label index="extconf.taskDefaults.estimated_workload">Default estimated workload</label>
 	</labels>
 	<labels lang="de">
 		<label index="ext.title">Projekt- und Aufgabenverwaltung</label>

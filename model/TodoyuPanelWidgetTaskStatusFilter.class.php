@@ -64,7 +64,7 @@ class TodoyuPanelWidgetTaskStatusFilter extends TodoyuPanelWidgetStatusFilter im
 	 * @return	Array
 	 */
 	protected function getStatusesInfos() {
-		return TodoyuProjectStatusManager::getStatusInfos('see');
+		return TodoyuTaskStatusManager::getStatusInfos('see');
 	}
 
 

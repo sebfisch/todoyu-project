@@ -185,6 +185,7 @@ class TodoyuTaskManager {
 			$data['type'] = TASK_TYPE_TASK;
 		}
 
+			// Set finish date if done or accepted
 		if( $data['status'] == STATUS_DONE || $data['status'] == STATUS_ACCEPTED ) {
 			$data['date_finish'] = NOW;
 		}
@@ -228,11 +229,6 @@ class TodoyuTaskManager {
 	 * @return	Integer
 	 */
 	public static function addTask(array $data = array()) {
-		unset($data['id']);
-		$data['date_create']	= NOW;
-		$data['date_update']	= NOW;
-		$data['id_person_create']	= TodoyuAuth::getPersonID();
-
 			// Create task number
 		$idProject	= intval($data['id_project']);
 		$data['tasknumber'] = TodoyuProjectManager::getNextTaskNumber($idProject);
@@ -241,7 +237,71 @@ class TodoyuTaskManager {
 		$idParent	= intval($data['id_parenttask']);
 		$data['sorting']	= self::getNextSortingPosition($idProject, $idParent);
 
-		return Todoyu::db()->addRecord(self::TABLE, $data);
+		$data	= self::setDefaultValuesForNotAllowedFields($data);
+
+		return TodoyuRecordManager::addRecord(self::TABLE, $data);
+	}
+
+
+	/**
+	 * Set default task values if missing
+	 * Person may not be allowed to enter the values, so we use the defaults from extConf
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
+	private static function setDefaultValuesForNotAllowedFields(array $data) {
+		$extConf	= TodoyuExtConfManager::getExtConf('project');
+
+		if( ! isset($data['date_start']) ) {
+			$data['date_start'] = 0;
+		}
+		if( ! isset($data['date_end']) ) {
+			$data['date_end'] = 0;
+		}
+		if( ! isset($data['date_deadline']) ) {
+			$data['date_deadline'] = 0;
+		}
+
+			// Get assigned person from default
+		if( ! isset($data['id_person_assigned']) ) {
+			$idRole		= intval($extConf['id_role_assigned']);
+			$idProject	= intval($data['id_project']);
+
+			if( $idRole !== 0 && $idProject !== 0 ) {
+				$idPerson	= TodoyuProjectManager::getRolePersonID($idProject, $idRole);
+
+				if( $idPerson !== 0 ) {
+					$data['id_person_assigned'] = $idPerson;
+				}
+			}
+		}
+
+			// Get owner person from default
+		if( ! isset($data['id_person_owner']) ) {
+			$idRole		= intval($extConf['id_role_owner']);
+			$idProject	= intval($data['id_project']);
+
+			if( $idRole !== 0 && $idProject !== 0 ) {
+				$idPerson	= TodoyuProjectManager::getRolePersonID($idProject, $idRole);
+
+				if( $idPerson !== 0 ) {
+					$data['id_person_owner'] = $idPerson;
+				}
+			}
+		}
+
+			// Get worktype from default
+		if( ! isset($data['id_worktype']) ) {
+			$data['id_worktype'] = intval($extConf['id_worktype']);
+		}
+
+			// Get workload from default
+		if( ! isset($data['estimated_workload']) ) {
+			$data['estimated_workload'] = intval($extConf['estimated_workload']);
+		}
+
+		return $data;
 	}
 
 
@@ -414,13 +474,13 @@ class TodoyuTaskManager {
 		if( $task->isTask() || $task->isContainer() ) {
 				// Add project backlink if not in project area
 			if( AREA !== EXTID_PROJECT ) {
-				if( TodoyuProjectRights::canProjectSee($task->getProjectID()) ) {
+				if( TodoyuProjectRights::isSeeAllowed($task->getProjectID()) ) {
 					$allowed['showinproject'] = $ownItems['showinproject'];
 				}
 			}
 
 				// Edit
-			if( TodoyuProjectRights::canTaskEdit($idTask) ) {
+			if( TodoyuTaskRights::isEditAllowed($idTask) ) {
 				$allowed['edit'] = $ownItems['edit'];
 			}
 
@@ -432,17 +492,17 @@ class TodoyuTaskManager {
 			$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
 
 				// Cut
-			if( TodoyuProjectRights::canTaskEdit($idTask) ) {
+			if( TodoyuTaskRights::isEditAllowed($idTask) ) {
 				$allowed['actions']['submenu']['cut']	= $ownItems['actions']['submenu']['cut'];
 			}
 
 				// Clone
-			if( TodoyuProjectRights::canTaskAdd($idTask) ) {
+			if( TodoyuTaskRights::isAddAllowed($idTask) ) {
 				$allowed['actions']['submenu']['clone']	= $ownItems['actions']['submenu']['clone'];
 			}
 
 				// Delete
-			if( TodoyuProjectRights::canTaskEdit($idTask) ) {
+			if( TodoyuTaskRights::isEditAllowed($idTask) ) {
 				$allowed['actions']['submenu']['delete'] = $ownItems['actions']['submenu']['delete'];
 			}
 
@@ -453,7 +513,7 @@ class TodoyuTaskManager {
 			unset($allowed['add']['submenu']);
 
 
-			if( TodoyuProjectRights::canTaskAdd($idTask) ) {
+			if( TodoyuTaskRights::isAddAllowed($idTask) ) {
 					// Add subtask
 				$allowed['add']['submenu']['task'] = $ownItems['add']['submenu']['task'];
 					// Add subcontainer
@@ -461,10 +521,10 @@ class TodoyuTaskManager {
 			}
 
 				// Status
-			if( $task->isTask() && TodoyuProjectRights::canTaskEdit($idTask) ) {
+			if( $task->isTask() && TodoyuTaskRights::isEditAllowed($idTask) ) {
 				$allowed['status'] = $ownItems['status'];
 
-				$statuses = TodoyuProjectStatusManager::getStatuses('changeto');
+				$statuses = TodoyuTaskStatusManager::getStatuses('changeto');
 
 				foreach($allowed['status']['submenu'] as $key => $status) {
 					if( ! in_array($key, $statuses) ) {
