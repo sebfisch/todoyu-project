@@ -3,7 +3,7 @@
 
 		<div class="headLabel bcStatus{$task.status}" title="{$task.fulltitle}">
 			<div class="taskDate date" title="{Label core.deadline}: {date_format $task.date_deadline "%d.%m.%y"} / {Label core.start}: {date_format $task.date_start "%d.%m.%y"}">
-			{dateFormat $track.date_deadline D2M2Y2}&nbsp;
+				{dateFormat $task.date_deadline D2M2Y2}&nbsp;
 			</div>
 			<div class="customer">
 				{if $task.company.shortname}{$task.company.shortname}{else}{$task.company.title}{/if}&nbsp;
