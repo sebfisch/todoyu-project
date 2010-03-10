@@ -952,7 +952,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	Ajax.Response	response
 	 */
 	onDetailsLoaded: function(idTask, tab, onComplete, response) {
-		Todoyu.callIfExists(onComplete, idTask, tab, response);
+		Todoyu.callIfExists(onComplete, this, idTask, tab, response);
 	},
 
 

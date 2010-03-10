@@ -43,12 +43,12 @@
 	Quick create (headlet) mode selector entries
    ----------------------------------------------- */
 
-.createmode-project {
-	background:url(../img/icons.png) no-repeat 10px -388px !important;
+#headlet-quickcreate-menu li.itemProject {
+	background:url(../img/icons.png) no-repeat 10px -388px;
 }
 
-.createmode-task {
-	background:url(../img/icons.png) no-repeat 10px -58px !important;
+#headlet-quickcreate-menu li.itemTask {
+	background:url(../img/icons.png) no-repeat 10px -58px;
 }
 
 

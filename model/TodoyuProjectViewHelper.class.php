@@ -60,7 +60,7 @@ class TodoyuProjectViewHelper {
 		$formData	= $formElement->getForm()->getFormData();
 		$idProject	= intval($formData['id_project']);
 
-		$persons= TodoyuProjectManager::getProjectPersons($idProject);
+		$persons= TodoyuProjectManager::getProjectPersons($idProject, true);
 		$options= array();
 
 		foreach($persons as $person) {

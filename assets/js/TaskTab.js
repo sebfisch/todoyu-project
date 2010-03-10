@@ -54,7 +54,7 @@ Todoyu.Ext.project.Task.Tab = {
 			this.load(idTask, tabKey, onComplete);
 		} else {
 			this.saveSelection(idTask, tabKey);
-			Todoyu.callIfExists(onComplete, idTask, tabKey);
+			Todoyu.callIfExists(onComplete, this, idTask, tabKey);
 		}
 
 		this.activate(idTask, tabKey);
@@ -93,7 +93,7 @@ Todoyu.Ext.project.Task.Tab = {
 	 */
 	onLoaded: function(idTask, tabKey, onComplete) {
 		this.activate(idTask, tabKey);
-		Todoyu.callIfExists(onComplete, idTask, tabKey);
+		Todoyu.callIfExists(onComplete, this, idTask, tabKey);
 	},
 
 
@@ -154,7 +154,7 @@ Todoyu.Ext.project.Task.Tab = {
 	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	activate: function(idTask, tabKey) {
-		this.hideAll(idTask);		
+		this.hideAll(idTask);
 		this.setVisible(idTask, tabKey);
 		Todoyu.Tabs.setActive('task-' + idTask, tabKey);
 	},

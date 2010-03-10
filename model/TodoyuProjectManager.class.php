@@ -67,7 +67,7 @@ class TodoyuProjectManager {
 	public static function getProject($idProject) {
 		$idProject	= intval($idProject);
 
-		return TodoyuCache::getRecord('TodoyuProject', $idProject);
+		return TodoyuRecordManager::getRecord('TodoyuProject', $idProject);
 	}
 
 
@@ -690,17 +690,16 @@ class TodoyuProjectManager {
 	 * @param	Integer		$idProject
 	 * @return	Array
 	 */
-	public static function getProjectPersons($idProject) {
+	public static function getProjectPersons($idProject, $personUnique = false) {
 		$idProject	= intval($idProject);
 
 			// Get project persons
 		$fields	= '	pe.*,
+					mmpp.*,
 					pe.id as id_person,
-					pr.id as id_role,
 					pr.rolekey,
 					pr.title as rolelabel,
-					mmpp.id_project,
-					mmpp.comment';
+					pe.id as id';			// Force person id as id field (instead of the mm id)
 		$table	= '	ext_contact_person pe,
 					ext_project_role pr,
 					ext_project_mm_project_person mmpp';
@@ -711,6 +710,16 @@ class TodoyuProjectManager {
 		$group	= '	mmpp.id';
 		$order	= '	pe.lastname,
 					pe.firstname';
+
+			// Add public check for external person
+		if( ! Todoyu::person()->isInternal() ) {
+			$where .= ' AND mmpp.is_public = 1';
+		}
+
+			// If persons should be unique, group by id (we don't care about the projectroles)
+		if( $personUnique === true ) {
+			$group	= 'pe.id';
+		}
 
 		$persons= Todoyu::db()->getArray($fields, $table, $where, $group, $order);
 
@@ -891,6 +900,7 @@ class TodoyuProjectManager {
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idPerson
 	 * @param	Integer		$idProjectrole
+	 * @param	Array		$extraData
 	 * @return	Integer		Link ID
 	 */
 	public static function addPerson($idProject, $idPerson, $idProjectrole, array $extraData = array()) {
@@ -899,6 +909,9 @@ class TodoyuProjectManager {
 		$idProjectrole	= intval($idProjectrole);
 
 		unset($extraData['id']);
+		unset($extraData['id_project']);
+		unset($extraData['id_role']);
+		unset($extraData['id_person']);
 
 		$table	= 'ext_project_mm_project_person';
 		$fields	= array(

@@ -99,6 +99,7 @@ CREATE TABLE `ext_project_mm_project_person` (
   `id_person` smallint(5) unsigned NOT NULL,
   `id_role` smallint(5) unsigned NOT NULL,
   `comment` tinytext NOT NULL,
+  `is_public` tinyint( 1 ) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `project` (`id_project`),
   KEY `person` (`id_person`)

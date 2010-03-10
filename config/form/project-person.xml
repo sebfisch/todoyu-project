@@ -46,6 +46,10 @@
 					<label>project.attr.persons.comment</label>
 				</field>
 				
+				<field type="checkbox" name="is_public">
+					<label>project.attr.persons.is_public</label>
+				</field>
+				
 			</elements>
 		</fieldset>
 

@@ -44,7 +44,7 @@ class TodoyuWorktypeManager {
 	public static function getWorktype($idWorktype) {
 		$idWorktype	= intval($idWorktype);
 
-		return TodoyuCache::getRecord('TodoyuWorktype', $idWorktype);
+		return TodoyuRecordManager::getRecord('TodoyuWorktype', $idWorktype);
 	}
 
 

@@ -804,6 +804,7 @@ class TodoyuTaskManager {
 	}
 
 
+
 	/**
 	 * Get task owner
 	 *
@@ -1124,8 +1125,8 @@ class TodoyuTaskManager {
 	public static function removeTaskFromCache($idTask) {
 		$idTask	= intval($idTask);
 
-		TodoyuCache::removeRecord('TodoyuTask', $idTask);
-		TodoyuCache::removeRecordQuery(self::TABLE, $idTask);
+		TodoyuRecordManager::removeRecordCache('TodoyuTask', $idTask);
+		TodoyuRecordManager::removeRecordQueryCache(self::TABLE, $idTask);
 	}
 
 
@@ -1468,7 +1469,7 @@ class TodoyuTaskManager {
 		$defaultData= self::getDefaultTaskData($idParentTask, $idProject, $type);
 
 			// Store task with default data in cache
-		$idCache	= TodoyuCache::makeClassKey('TodoyuTask', 0);
+		$idCache	= TodoyuRecordManager::makeClassKey('TodoyuTask', 0);
 		$task		= new TodoyuTask(0);
 		$task->injectData($defaultData);
 		TodoyuCache::set($idCache, $task);

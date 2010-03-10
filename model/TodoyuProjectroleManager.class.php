@@ -43,7 +43,7 @@ class TodoyuProjectroleManager {
 	 * @return	TodoyuProjectrole
 	 */
 	public static function getProjectrole($idProjectrole) {
-		return TodoyuCache::getRecord('TodoyuProjectrole', $idProjectrole);
+		return TodoyuRecordManager::getRecord('TodoyuProjectrole', $idProjectrole);
 	}
 
 

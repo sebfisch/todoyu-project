@@ -159,7 +159,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			// Create a cache record for the buildform hooks
 		$task = new TodoyuTask(0);
 		$task->injectData($data);
-		TodoyuCache::addRecord($task);
+		$cacheKey	= TodoyuRecordManager::makeClassKey('TodoyuTask', 0);
+		TodoyuCache::set($cacheKey, $task);
 
 			// Initialize form for validation
 		$xmlPath	= 'ext/project/config/form/task.xml';

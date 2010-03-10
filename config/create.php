@@ -22,12 +22,12 @@
 
 	// Add create for task
 if( allowed('project', 'task:addInOwnProjects') ) {
-	TodoyuQuickCreateManager::addEngine('project', 'task', 'task.create.label', 20, EXTID_PORTAL);
+	TodoyuQuickCreateManager::addEngine('project', 'task', 'task.create.label', 20, array('portal'));
 }
 
 	// Add create for project
-if( allowed('project', 'modify') ) {
-	TodoyuQuickCreateManager::addEngine('project', 'project', 'project.create.label', 10, EXTID_PROJECT);
+if( allowed('project', 'editAndDelete') ) {
+	TodoyuQuickCreateManager::addEngine('project', 'project', 'project.create.label', 10, array('project'));
 }
 
 ?>
