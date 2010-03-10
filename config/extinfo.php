@@ -25,12 +25,12 @@
 
 
 $CONFIG['EXT']['project']['info'] = array(
-	'title'			=> 'Project and task management',
-	'description' 	=> 'Basic project and task management',
+	'title'			=> 'Project and Task Management',
+	'description' 	=> 'Basic Project and Task Management',
 	'author' 		=> array(
-		'name'		=> 'Todoyu Core Team',
+		'name'		=> 'todoyu Core Developer Team',
 		'email'		=> 'team@todoyu.com',
-		'company'	=> 'Snowflake Productions, Zürich'
+		'company'	=> 'snowflake productions GmbH, Zurich'
 	),
 	'state' 		=> 'beta',
 	'version' 		=> '0.2.0',
