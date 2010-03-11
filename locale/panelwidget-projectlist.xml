@@ -3,7 +3,7 @@
 	<labels lang="en">
 		<label index="title">Projects</label>
 		<label index="search">Search</label>
-		<label index="list.empty">No matching Projects (for current filter)</label>
+		<label index="list.empty">No Matching Projects (For Current Filter Selection)</label>
 	</labels>
 	<labels lang="de">
 		<label index="title">Projekte</label>

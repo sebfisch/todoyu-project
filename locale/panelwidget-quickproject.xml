@@ -2,8 +2,8 @@
 <locallang>
 	<labels lang="en">
 		<label index="title">Create Project</label>
-		<label index="addProject">Add new Project</label>
-		<label index="addTask">Add new task</label>
+		<label index="addProject">Add New Project</label>
+		<label index="addTask">Add New Task</label>
 	</labels>
 	<labels lang="de">
 		<label index="title">Projekt erfassen</label>
