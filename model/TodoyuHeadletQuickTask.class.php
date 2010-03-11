@@ -27,14 +27,15 @@
  * @subpackage	Core
  */
 
-class TodoyuHeadletQuickTask extends TodoyuHeadlet {
+class TodoyuHeadletQuickTask extends TodoyuHeadletTypeButton {
 
 	/**
 	 * Initialize headlets
 	 *
 	 */
 	protected function init() {
-		$this->setTemplate('ext/project/view/headlet-quicktask.tmpl');
+			// Set javascript object which handles events
+		$this->setJsHeadlet('Todoyu.Ext.project.Headlet.QuickTask');
 	}
 
 

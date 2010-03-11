@@ -26,12 +26,6 @@
  * @subpackage	Project
  */
 
-	// Register quicktask headlet
-if ( allowed('project', 'task:addInOwnProjects') ) {
-//	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickTask', 10);
-}
-
-
 
 /**
  * @todo	Implement this with a hook

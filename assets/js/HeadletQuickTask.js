@@ -18,12 +18,22 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-Todoyu.Headlet.QuickTask = {
+Todoyu.Ext.project.Headlet.QuickTask = {
 
 	/**
 	 *	Ext shortcut
 	 */
 	ext:	Todoyu.Ext.project,
+	
+	
+	init: function() {
+		
+	},
+	
+	
+	onButtonClick: function(event) {
+		this.add();
+	},
 
 
 
@@ -31,7 +41,7 @@ Todoyu.Headlet.QuickTask = {
 	 * Add quicktask
 	 */
 	add: function() {
-		Todoyu.Ext.project.QuickTask.openPopup(this.onTaskAdded.bind(this));
+		this.ext.QuickTask.openPopup(this.onTaskAdded.bind(this));
 	},
 
 

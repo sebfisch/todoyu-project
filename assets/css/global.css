@@ -43,11 +43,11 @@
 	Quick create (headlet) mode selector entries
    ----------------------------------------------- */
 
-#headlet-quickcreate-menu li.itemProject {
+#headlet-quickcreate-menu li.itemProjectProject {
 	background:url(../img/icons.png) no-repeat 10px -388px;
 }
 
-#headlet-quickcreate-menu li.itemTask {
+#headlet-quickcreate-menu li.itemProjectTask {
 	background:url(../img/icons.png) no-repeat 10px -58px;
 }
 

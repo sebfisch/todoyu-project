@@ -50,13 +50,25 @@ $CONFIG['EXT']['project']['assets'] = array(
 			),
 				// Add creation engines to quick create headlet
 			array(
-				'file'		=> 'ext/project/assets/js/HeadletQuickCreateProject.js',
+				'file'		=> 'ext/project/assets/js/QuickCreateProject.js',
 				'position'	=> 100
 			),
 			array(
-				'file'		=> 'ext/project/assets/js/HeadletQuickCreateTask.js',
+				'file'		=> 'ext/project/assets/js/QuickCreateTask.js',
 				'position'	=> 100
 			),
+			array(
+				'file'		=> 'ext/project/assets/js/ProjectEdit.js',
+				'position'	=> 102
+			),
+			array(
+				'file'		=> 'ext/project/assets/js/Task.js',
+				'position'	=> 102
+			),
+			array(
+				'file'		=> 'ext/project/assets/js/TaskEdit.js',
+				'position'	=> 102
+			)
 		),
 		'css' => array(
 			array(
@@ -74,18 +86,6 @@ $CONFIG['EXT']['project']['assets'] = array(
 		// Public assets: basic assets for this extension
 	'public' => array(
 		'js' => array(
-			array(
-				'file'		=> 'ext/project/assets/js/ProjectEdit.js',
-				'position'	=> 102
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/Task.js',
-				'position'	=> 102
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/TaskEdit.js',
-				'position'	=> 102
-			),
 			array(
 				'file'		=> 'ext/project/assets/js/TaskTab.js',
 				'position'	=> 102

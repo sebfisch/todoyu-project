@@ -18,7 +18,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-Todoyu.Headlet.QuickCreate.Task = {
+Todoyu.Ext.project.QuickCreateProject = {
 
 	/**
 	 * Evoked upon opening of event quick create wizard popup
@@ -30,11 +30,11 @@ Todoyu.Headlet.QuickCreate.Task = {
 
 
 	/**
-	 * Save task
+	 *	Save project
 	 *
-	 * @param	unknown_type	form
+	 *	@param	unknown	form
 	 */
-	save: function(form) {
+	save: function(form){
 		tinyMCE.triggerSave();
 
 		$(form).request({
@@ -43,30 +43,29 @@ Todoyu.Headlet.QuickCreate.Task = {
 			},
 			onComplete: this.onSaved.bind(this)
 		});
+
+		return false;
 	},
 
 
 
 	/**
-	 * Evoked after edited task having been saved. Handles display of success / failure message and refresh of saved task / failed form.
+	 *	onSaved project custom event handler
 	 *
-	 * @param	Object	response
+	 *	@param	Ajax.Response		response
 	 */
-	onSaved: function(response) {
-		var idTask		= response.getTodoyuHeader('idTask');
-		var idTaskOld	= response.getTodoyuHeader('idTaskOld');
+	onSaved: function(response){
+		var error		= response.hasTodoyuError();
 
-			// Save resulted in error?
-		if( response.hasTodoyuError() ) {
-				// Update task edit form with form remarks, display failure notification
-			Todoyu.Headlet.QuickCreate.updateFormDiv(response.responseText);
-			Todoyu.notifyError('[LLL:task.save.error]');
+		if( error ) {
+			Todoyu.Headlet.QuickCreate.updatePopupContent(response.responseText);
+			Todoyu.notifyError('[LLL:project.save.error]');
 		} else {
-			// Saving went ok
-			Todoyu.Hook.exec('onTaskSaved', idTask);
+			var idProject	= response.getTodoyuHeader('idProject');
+			Todoyu.Hook.exec('onProjectCreated', idProject);
 
-			Todoyu.Popup.close('quickcreate');
-			Todoyu.notifySuccess('[LLL:task.save.success]');
+			Todoyu.Headlet.QuickCreate.closePopup();
+			Todoyu.notifySuccess('[LLL:project.save.success]');
 		}
 	}
 

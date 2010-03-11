@@ -74,7 +74,7 @@ class TodoyuTaskManager {
 
 		$form->setAttribute('action', '?ext=project&amp;controller=quickcreatetask');
 		$form->setAttribute('onsubmit', 'return false');
-		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Headlet.QuickCreate.Task.save(this.form)');
+		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateTask.save(this.form)');
 		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
 
 		return $form;
