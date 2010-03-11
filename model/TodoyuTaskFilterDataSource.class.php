@@ -292,31 +292,6 @@ class TodoyuTaskFilterDataSource {
 		return array('start' => $start, 'end' => $end);
 	}
 
-
-
-	/**
-	 * Gets task billing types
-	 *
-	 * @todo move to the projectbilling module
-	 *
-	 * @param	Array	$definitions
-	 * @return	Array
-	 */
-	public static function getTaskBillingTypes($definitions)	{
-		$optionsArray = array();
-		$result = Todoyu::db()->doSelect('id,title', 'ext_projectbilling_type', 'deleted = 0');
-
-		while($option = Todoyu::db()->fetchAssoc($result))	{
-			$optionsArray[$option['id']] = array(
-				'label'		=> Label($option['label']),
-				'selected'	=> TodoyuDiv::isInList($option['id'], $definitions['value'])
-			);
-		}
-
-		$definitions['options'] = $optionsArray;
-
-		return $definitions;
-	}
 }
 
 ?>
