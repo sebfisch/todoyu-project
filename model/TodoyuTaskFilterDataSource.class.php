@@ -133,6 +133,12 @@ class TodoyuTaskFilterDataSource {
 
 
 
+	/**
+	 * Get options config array of worktypes
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
 	public static function getWorktypeOptions(array $definitions) {
 		$options	= array();
 		$worktypes	= TodoyuWorktypeManager::getAllWorktypes();
@@ -289,7 +295,7 @@ class TodoyuTaskFilterDataSource {
 
 
 	/**
-	 * gets the task billing types
+	 * Gets task billing types
 	 *
 	 * @todo move to the projectbilling module
 	 *
@@ -301,9 +307,10 @@ class TodoyuTaskFilterDataSource {
 		$result = Todoyu::db()->doSelect('id,title', 'ext_projectbilling_type', 'deleted = 0');
 
 		while($option = Todoyu::db()->fetchAssoc($result))	{
-			$optionsArray[$option['id']] = array('label' => Label($option['label']),
-												 'selected' => TodoyuDiv::isInList($option['id'], $definitions['value'])
-												 );
+			$optionsArray[$option['id']] = array(
+				'label'		=> Label($option['label']),
+				'selected'	=> TodoyuDiv::isInList($option['id'], $definitions['value'])
+			);
 		}
 
 		$definitions['options'] = $optionsArray;
