@@ -43,12 +43,12 @@
 	Quick create (headlet) mode selector entries
    ----------------------------------------------- */
 
-#headlet-quickcreate-content a.itemProjectProject {
-	background:url(../img/icons.png) no-repeat 4px -388px;
+#headlet-quickcreate-content li.itemProjectProject a {
+	background:url(../img/icons.png) no-repeat 5px -388px;
 }
 
-#headlet-quickcreate-content a.itemProjectTask {
-	background:url(../img/icons.png) no-repeat 4px -58px;
+#headlet-quickcreate-content li.itemProjectTask a {
+	background:url(../img/icons.png) no-repeat 5px -58px;
 }
 
 
@@ -57,10 +57,10 @@
 	Search
    ----------------- */
 
-.searchmode-task {
+#headlet-quicksearch-modes li.searchmode-task a {
 	background:url(../img/icons.png) no-repeat 3px 3px !important;
 }
-.searchmode-project {
+#headlet-quicksearch-modes li.searchmode-project a {
 	background:url(../img/icons.png) no-repeat 3px -447px !important;
 }
 
