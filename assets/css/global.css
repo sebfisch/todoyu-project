@@ -56,11 +56,12 @@
 /* -----------------
 	Search
    ----------------- */
-
-#headlet-quicksearch-modes li.searchmode-task a {
+#headlet-quicksearch-content form.searchmodeTask a.mode,
+#headlet-quicksearch-content li.searchmodeTask a {
 	background:url(../img/icons.png) no-repeat 3px 3px !important;
 }
-#headlet-quicksearch-modes li.searchmode-project a {
+#headlet-quicksearch-content form.searchmodeProject a.mode,
+#headlet-quicksearch-content li.searchmodeProject a {
 	background:url(../img/icons.png) no-repeat 3px -447px !important;
 }
 
