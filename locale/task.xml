@@ -99,7 +99,7 @@
 		<label index="tasks">Aufgaben</label>
 		<label index="attr.title">Aufgaben-Titel</label>
 		<label index="attr.worktype">Leistungsart</label>
-		<label index="attr.estimated_workload">Geschätzter Aufwand</label>
+		<label index="attr.estimated_workload">Aufwand geschätzt</label>
 		<label index="attr.ext_resources_is_onblock">Block-Aufgabe</label>
 		<label index="attr.billingtype">Berechnungstyp</label>
 		<label index="attr.date_create">Erfassungs-Datum</label>
