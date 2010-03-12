@@ -39,14 +39,13 @@ class TodoyuHeadletQuickTask extends TodoyuHeadletTypeButton {
 	}
 
 
-
 	/**
-	 * Render headlet
+	 * Get headlet label
 	 *
 	 * @return	String
 	 */
-	public function render() {
-		return parent::render();
+	public function getLabel() {
+		return 'Task erstellen';
 	}
 
 }
