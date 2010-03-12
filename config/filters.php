@@ -54,7 +54,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'select',
 			'wConf'		=> array(
 				'multiple'	=> true,
-				'size'		=> 5,
+				'size'		=> 8,
 				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getStatusOptions',
 				'negation'	=> 'default'
 			)

@@ -93,7 +93,7 @@ class TodoyuTaskFilterDataSource {
 	 */
 	public static function getStatusOptions(array $definitions)	{
 		$options	= array();
-		$statuses	= TodoyuProjectStatusManager::getStatusInfos();
+		$statuses	= TodoyuTaskStatusManager::getStatusInfos();
 		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
 
 		foreach($statuses as $status) {

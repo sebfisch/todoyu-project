@@ -476,7 +476,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 */
 	public static function Filter_isPublic($value, $negate = false)	{
 		$tables 	= array('ext_project_task');
-		$isPublic	= $negate ? 1 : 0;
+		$isPublic	= $negate ? 0 : 1;
 		$where		= 'ext_project_task.is_public = ' . $isPublic;
 
 		$queryParts	= array(
