@@ -80,8 +80,8 @@ class TodoyuTaskStatusManager {
 				unset($statuses[$index]);
 			}
 		}
-
-		return $statuses;
+		
+		return sizeof($statuses) > 0 ? $statuses : array(999 => 0);
 	}
 
 
