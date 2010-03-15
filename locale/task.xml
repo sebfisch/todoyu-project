@@ -12,6 +12,7 @@
 		<label index="attr.date_start">Start Date</label>
 		<label index="attr.date_deadline">Customer Deadline</label>
 		<label index="attr.date_end">Internal Deadline</label>
+		<label index="attr.person_create">Created by</label>
 		<label index="attr.person_assigned">Assigned to</label>
 		<label index="attr.person_owner">Task Owner</label>
 		<label index="attr.is_public">Task Visibility</label>
@@ -107,6 +108,7 @@
 		<label index="attr.date_deadline">Kunden Frist</label>
 		<label index="attr.date_end">Interne Frist</label>
 		<label index="attr.person_assigned">Zugewiesen</label>
+		<label index="attr.person_create">Erfasst von</label>
 		<label index="attr.person_owner">Aufgaben-Eigner</label>
 		<label index="attr.is_public">Task Sichtbarkeit</label>
 		<label index="attr.is_public.public">Task ist öffentlich</label>

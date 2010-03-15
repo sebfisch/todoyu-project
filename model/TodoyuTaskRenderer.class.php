@@ -94,7 +94,7 @@ class TodoyuTaskRenderer {
 
 
 	/**
-	 * Render a task detail
+	 * Render details of given task
 	 *
 	 * @param	Integer		$idTask
 	 * @param	String		$activeTab

@@ -968,12 +968,25 @@ class TodoyuTaskManager {
 			// Attributes of tasks and containers
 
 			// Person owner
+		$idTaskOwner	= $taskData['person_owner']['id'];
+		$idTaskCreator	= $taskData['id_person_create'];
+
 		$info['person_owner'] = array(
 			'label'		=> 'LLL:task.attr.person_owner',
-			'value'		=> TodoyuPersonManager::getLabel($taskData['person_owner']['id']),
+			'value'		=> TodoyuPersonManager::getLabel($idTaskOwner),
 			'position'	=> 150,
 			'className'	=> 'sectionStart'
 		);
+
+			// Task creator: Different person owns / created task? have both displayed
+		if ( $idTaskOwner !== $idTaskCreator ) {
+			$info['person_create'] = array(
+				'label'		=> 'LLL:task.attr.person_create',
+				'value'		=> TodoyuPersonManager::getLabel($idTaskCreator),
+				'position'	=> 151,
+				'className'	=> ''
+			);
+		}
 
 					// Date create
 		$info['date_create']	= array(
