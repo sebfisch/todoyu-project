@@ -317,7 +317,7 @@ class TodoyuTask extends TodoyuBaseObject {
 	 * Get data for template rendering
 	 *
 	 * @todo	Use loadForeignData
-	 * @param	Integer		$infoLevel		Level of information (as higher the number, as more information are collected)
+	 * @param	Integer		$infoLevel		Level of information (the higher the number, the more information is collected)
 	 * @return	Array
 	 */
 	public function getTemplateData($infoLevel = 0) {
@@ -351,6 +351,5 @@ class TodoyuTask extends TodoyuBaseObject {
 	}
 
 }
-
 
 ?>
