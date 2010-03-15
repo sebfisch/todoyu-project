@@ -93,11 +93,7 @@ class TodoyuProjectManager {
 	 * @return	Integer		New project id
 	 */
 	public static function addProject(array $data) {
-		$data['id_person_create']	= personid();
-		$data['date_create']	= NOW;
-		$data['date_update']	= NOW;
-
-		return Todoyu::db()->addRecord(self::TABLE, $data);
+		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
 
@@ -110,12 +106,7 @@ class TodoyuProjectManager {
 	 * @return	Bool
 	 */
 	public static function updateProject($idProject, array $data) {
-		$idProject	= intval($idProject);
-		unset($data['id']);
-
-		$data['date_update']	= NOW;
-
-		return Todoyu::db()->updateRecord(self::TABLE, $idProject, $data) === 1;
+		return TodoyuRecordManager::updateRecord(self::TABLE, $idProject, $data);
 	}
 
 

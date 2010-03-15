@@ -212,12 +212,9 @@ class TodoyuTaskManager {
 	public static function updateTask($idTask, array $data) {
 		$idTask	= intval($idTask);
 
-		unset($data['id']);
-		$data['date_update']	= NOW;
-
 		self::removeTaskFromCache($idTask);
 
-		return Todoyu::db()->updateRecord(self::TABLE, $idTask, $data) === 1;
+		return TodoyuRecordManager::updateRecord(self::TABLE, $idTask, $data);
 	}
 
 
@@ -1815,7 +1812,7 @@ class TodoyuTaskManager {
 			// Update moved task
 		$update['sorting'] = $after ? $taskRef['sorting'] + 1 : $taskRef['sorting'];
 
-		Todoyu::db()->updateRecord(self::TABLE, $idTaskMove, $update, $noQuote);
+		TodoyuRecordManager::updateRecord(self::TABLE, $idTaskMove, $update, $noQuote);
 	}
 
 

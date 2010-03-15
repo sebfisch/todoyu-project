@@ -96,12 +96,7 @@ class TodoyuWorktypeManager {
 	 * @return	Integer
 	 */
 	public static function addWorktype(array $data = array()) {
-		unset($data['id']);
-
-		$data['id_person_create']	= personid();
-		$data['date_create']	= NOW;
-
-		return Todoyu::db()->addRecord(self::TABLE, $data);
+		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
 
@@ -114,10 +109,7 @@ class TodoyuWorktypeManager {
 	 * @return	Bool
 	 */
 	public static function updateWorktype($idWorktype, array $data) {
-		$idWorktype	= intval($idWorktype);
-		unset($data['id']);
-
-		return Todoyu::db()->updateRecord(self::TABLE, $idWorktype, $data);
+		return TodoyuRecordManager::updateRecord(self::TABLE, $idWorktype, $data);
 	}
 
 
