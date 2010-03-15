@@ -82,7 +82,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @param	Integer		$limit
 	 * @return	Array
 	 */
-	public function getItemIDs($sorting = '', $limit = 100) {
+	public function getItemIDs($sorting = '', $limit = '') {
 		return $this->getProjectIDs($sorting, $limit);
 	}
 

@@ -66,9 +66,10 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 	private function getProjectIDs() {
 		$filters	= self::getFilters();
 		$filter		= new TodoyuProjectFilter($filters);
+		$limit		= intval($GLOBALS['CONFIG']['EXT']['project']['panelWidgetProjectListing']['maxProjects']);
 
 			// Get matching project IDs
-		$projectIDs	= $filter->getProjectIDs();
+		$projectIDs	= $filter->getProjectIDs('', $limit);
 
 		return $projectIDs;
 	}
@@ -95,9 +96,8 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 						ext_project_project.id IN(' . implode(',', $projectIDs) . ')';
 			$order	= ' ext_contact_company.shortname,
 						ext_project_project.title';
-			$limit	= 100;
 
-			$projects	= Todoyu::db()->getArray($fields, $tables, $where, '', $order, $limit);
+			$projects	= Todoyu::db()->getArray($fields, $tables, $where, '', $order);
 		} else {
 			$projects	= array();
 		}

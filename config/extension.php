@@ -98,5 +98,8 @@ $CONFIG['EXT']['project']['portalTodoTabFilters'] = array(
 	)
 );
 
+	// Max projects in project listig widget
+$CONFIG['EXT']['project']['panelWidgetProjectListing']['maxProjects']	= 30;
+
 
 ?>
