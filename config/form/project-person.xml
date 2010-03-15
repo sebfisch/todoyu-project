@@ -2,7 +2,7 @@
 <form>
 	<fieldsets>
 
-		<fieldset>
+		<fieldset name="projectmembers">
 			<legend>Top</legend>
 			<class>top</class>
 			<elements>
@@ -40,6 +40,7 @@
 					<source type="function">
 						<function>TodoyuProjectViewHelper::getProjectroleOptions</function>
 					</source>
+					<required />
 				</field>
 				
 				<field type="textinput" name="comment">

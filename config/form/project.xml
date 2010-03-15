@@ -50,6 +50,7 @@
 							<source type="function">
 								<function>TodoyuProjectViewHelper::getProjectStatusOptions</function>
 							</source>
+							<noPleaseSelect />
 						</field>
 
 						<field type="dateinput" name="date_start">
@@ -80,8 +81,8 @@
 							<validate>
 								<dateAfter>
 									<field>date_start</field>
+									<allowEmpty />
 								</dateAfter>
-								<isNotEmpty/>
 							</validate>
 						</field>
 

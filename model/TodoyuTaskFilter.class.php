@@ -44,6 +44,11 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	}
 
 
+
+	/**
+	 * Add rights clause to limit view to the persons rights
+	 *
+	 */
 	private function addRightsClauseFilter() {
 			// Limit to current person
 		if( ! allowed('project', 'task:seeAll') ) {
@@ -58,12 +63,15 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	}
 
 
+
 	/**
 	 * Get task IDs which match to all filters
 	 *
+	 * @param	String		$sorting		Force sorting column
+	 * @param	Integer		$limit			Limit result items
 	 * @return	Array
 	 */
-	public function getTaskIDs($sorting = 'sorting', $limit = 100) {
+	public function getTaskIDs($sorting = 'sorting', $limit = '') {
 		$this->addRightsClauseFilter();
 
 		return parent::getItemIDs($sorting, $limit);
@@ -78,7 +86,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Integer		$limit
 	 * @return	Array
 	 */
-	public function getItemIDs($sorting = 'sorting', $limit = 100) {
+	public function getItemIDs($sorting = 'sorting', $limit = 300) {
 		return $this->getTaskIDs($sorting, $limit);
 	}
 

@@ -430,9 +430,14 @@ Todoyu.Ext.project.Task = {
 	 * @param	Integer		idTask
 	 */
 	getStatus: function(idTask) {
-		var classNames 	= $('task-' + idTask + '-header').down('.headLabel').classNames();
-		var statusClass	= classNames.grep(/.*Status(\d)/).first();
-		var statusIndex	= statusClass.split('Status').last();
+		var htmlID		= 'task-' + idTask + '-header';
+		var statusIndex	= 0;
+		
+		if (Todoyu.exists(htmlID)) {
+			var classNames 	= $(htmlID).down('.headLabel').classNames();
+			var statusClass	= classNames.grep(/.*Status(\d)/).first();
+			statusIndex		= statusClass.split('Status').last();
+		}
 
 		return statusIndex;
 	},
@@ -445,11 +450,15 @@ Todoyu.Ext.project.Task = {
 	 * 	@param	status
 	 */
 	setStatus: function(idTask, status) {
-		var headLabel	= $('task-' + idTask + '-header').down('.headLabel');
-		var oldStatus	= this.getStatus(idTask);
-
-		headLabel.replaceClassName('bcStatus' + oldStatus);
-		headLabel.addClassName('bcStatus' + status);
+		var htmlID		= 'task-' + idTask + '-header';
+		
+		if( Todoyu.exists(htmlID) ) {
+			var headLabel	= $(htmlID).down('.headLabel');
+			var oldStatus	= this.getStatus(idTask);
+	
+			headLabel.replaceClassName('bcStatus' + oldStatus);
+			headLabel.addClassName('bcStatus' + status);
+		}
 	},
 
 
