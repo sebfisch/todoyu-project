@@ -133,11 +133,13 @@ class TodoyuTaskRenderer {
 			// Get task object
 		$task	= TodoyuTaskManager::getTask($idTask);
 
+		$tmpl	= 'ext/project/view/task-data.tmpl';
+
 			// Get task template data
 		$data			= $task->getTemplateData(0);
 		$data['data']	= TodoyuTaskManager::getTaskInfos($idTask);
 
-		return render('ext/project/view/task-data.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 
@@ -182,12 +184,13 @@ class TodoyuTaskRenderer {
 		$form->setFormData($data);
 
 			// Render
+		$tmpl	= 'ext/project/view/task-edit.tmpl';
 		$data	= array(
 			'idTask'	=> $idTask,
 			'formhtml'	=> $form->render()
 		);
 
-		return render('ext/project/view/task-edit.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 

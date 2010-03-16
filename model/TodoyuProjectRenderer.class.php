@@ -231,6 +231,8 @@ class TodoyuProjectRenderer {
 		$idProject	= intval($idProject);
 		$project	= TodoyuProjectManager::getProject($idProject);
 
+		$tmpl		= 'ext/project/view/project-details.tmpl';
+
 		$data		= $project->getTemplateData();
 
 			// Render information provided by several extensions
@@ -242,7 +244,7 @@ class TodoyuProjectRenderer {
 			// Call hook to modify the collected project data
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'projectDataBeforeRendering', $data, array($idProject));
 
-		return render('ext/project/view/project-details.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 
@@ -362,6 +364,8 @@ class TodoyuProjectRenderer {
 		$idTask		= intval($idTask);
 		$idTaskShow	= intval($idTaskShow);
 
+		$tmpl	= 'ext/project/view/subtasks.tmpl';
+
 			// Load open rootline if neccessary
 		if( $idTaskShow > 0 && sizeof(self::$openRootline) === 0 ) {
 			self::$openRootline	= TodoyuTaskManager::getTaskRootline($idTaskShow);
@@ -378,7 +382,7 @@ class TodoyuProjectRenderer {
 			$data['subtaskHtml'] .= TodoyuProjectRenderer::renderTask($idSubtask, $idTaskShow);
 		}
 
-		return render('ext/project/view/subtasks.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 
@@ -394,6 +398,8 @@ class TodoyuProjectRenderer {
 		$idProject	= intval($idProject);
 		$idTask		= intval($idTask);
 
+		$tmpl	= 'ext/project/view/losttasks.tmpl';
+
 			// Get lost task IDs
 		$lostTaskIDs	= TodoyuProjectManager::getLostTaskInTaskTree($idProject, self::$renderedTasks);
 		$lostTaskHtml	= '';
@@ -407,7 +413,7 @@ class TodoyuProjectRenderer {
 			'numTasks'	=> sizeof($lostTaskIDs)
 		);
 
-		return render('ext/project/view/losttasks.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 
@@ -589,10 +595,9 @@ class TodoyuProjectRenderer {
 
 		$tmpl	= 'ext/project/view/project-header.tmpl';
 		$data	= $project->getTemplateData();
-
 		$data['details'] = $wrapedForm;
 
-		$newProjectEditContent = render('ext/project/view/project-header.tmpl', $data);
+		$newProjectEditContent = render($tmpl, $data);
 
 			// Wrap project
 		$tmpl	= 'ext/project/view/project-wrap.tmpl';
