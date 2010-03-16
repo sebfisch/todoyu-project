@@ -713,8 +713,6 @@ class TodoyuProjectManager {
 
 		$persons= Todoyu::db()->getArray($fields, $table, $where, $group, $order);
 
-		TodoyuDebug::printLastQueryInFirebug();
-
 			// Get company information
 		foreach($persons as $index => $person) {
 			$persons[$index]['company'] = TodoyuPersonManager::getPersonCompanyRecords($person['id']);

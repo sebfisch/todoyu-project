@@ -1664,8 +1664,6 @@ class TodoyuTaskManager {
 			// Add new task (with old data)
 		$idTaskNew	= self::addTask($data);
 
-//		TodoyuDebug::printLastQueryInFirebug('copy task');
-
 			// Call data modifier hook, so other extensions can change data if they want
 		$hookData	= array(
 			'idTask'	=> $idTask,
