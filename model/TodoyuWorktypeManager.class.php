@@ -28,8 +28,7 @@
 class TodoyuWorktypeManager {
 
 	/**
-	 * Managed table
-	 *
+	 * Default table for database requests
 	 */
 	const TABLE = 'ext_project_worktype';
 

@@ -36,9 +36,8 @@ class TodoyuTaskManager {
 	 */
 	private static $expandedTaskIDs = null;
 
-
 	/**
-	 * Tablename
+	 * Default ext table for database requests
 	 */
 	const TABLE = 'ext_project_task';
 

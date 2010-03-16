@@ -28,10 +28,10 @@
 class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface {
 
 	/**
-	 * Default table
-	 *
+	 * Default table for database requests
 	 */
 	const TABLE = 'ext_project_task';
+
 
 
 	/**
@@ -808,7 +808,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	/**
 	 * Filter by type (task/container)
 	 *
-	 * @param	Integer		$value
+	 * @param	Integer		$value			both: 0, TASK_TYPE_TASK: 1 / TASK_TYPE_CONTAINER: 2
 	 * @param	Bool		$negate
 	 * @return	Array
 	 */
@@ -818,7 +818,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 		if( $type > 0 ) {
 			$queryParts['tables'] 	= array('ext_project_task');
-			$queryParts['where']	= 'ext_project_task.type ' . ($negate?'!=':'=') . $type;
+			$queryParts['where']	= 'ext_project_task.type ' . ( $negate ? '!=' : '=' ) . $type;
 		}
 
 		return $queryParts;
