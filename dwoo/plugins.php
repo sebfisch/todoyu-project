@@ -102,6 +102,17 @@ function Dwoo_Plugin_projectStatusKey(Dwoo $dwoo, $idStatus) {
 }
 
 
+
+/**
+ * Check right of current person to see given project
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo 		$dwoo
+ * @param	Integer		$idProject
+ * @return	Boolean
+ */
 function Dwoo_Plugin_canSeeProjectDetails(Dwoo $dwoo, $idProject) {
 	return  allowed('project', 'project:seeAll') || TodoyuProjectManager::isPersonAssigned($idProject);
 }
