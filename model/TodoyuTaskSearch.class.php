@@ -113,7 +113,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 
 			foreach($tasks as $task) {
 				$suggestions[] = array(
-					'labelTitle'=> $task['id_project'] . '.' . $task['tasknumber'] . ': ' . $task['title'],
+					'labelTitle'=> $task['id_project'] . '.' . $task['tasknumber'] . ': ' . htmlentities($task['title']),
 					'labelInfo'	=> $task['project'] . ', ' . $task['company'],
 					'title'		=> $task['id_project'] . '.' . $task['tasknumber'] . ': ' . $task['title'],
 					'onclick'	=> 'location.href=\'?ext=project&amp;project=' . $task['id_project'] . '&amp;task=' . $task['id'] . '#task-' . $task['id'] . '\'');

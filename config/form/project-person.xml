@@ -6,7 +6,7 @@
 			<legend>Top</legend>
 			<class>top</class>
 			<elements>
-				
+
 				<field type="textinputAC" name="id_person">
 					<label>contact.person</label>
 					<config>
@@ -25,7 +25,7 @@
 						<ext>contact</ext>
 						<controller>person</controller>
 						<action>addNewContactWizard</action>
-						<title>LLL:contact.contact.createnew</title>
+						<title>LLL:contact.create.person.label</title>
 						<width>700</width>
 						<displayCondition></displayCondition>
 						<restrict>
@@ -34,7 +34,7 @@
 					</wizard>
 					<required />
 				</field>
-				
+
 				<field type="select" name="id_role">
 					<label>project.attr.persons.role</label>
 					<source type="function">
@@ -42,15 +42,15 @@
 					</source>
 					<required />
 				</field>
-				
+
 				<field type="textinput" name="comment">
 					<label>project.attr.persons.comment</label>
 				</field>
-				
+
 				<field type="checkbox" name="is_public">
 					<label>project.attr.persons.is_public</label>
 				</field>
-				
+
 			</elements>
 		</fieldset>
 

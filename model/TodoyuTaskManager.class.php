@@ -915,16 +915,6 @@ class TodoyuTaskManager {
 				'className'	=> 'sectionStart'
 			);
 
-				// Estimated workload
-			$info['is_estimatedworkload_public']	= array(
-				'label'		=> 'LLL:task.attr.is_estimatedworkload_public',
-				'value'		=> Label('task.attr.is_estimatedworkload_public.' . $taskData['is_estimatedworkload_public']),
-				'position'	=> 35,
-				'className'	=> ''
-			);
-
-
-
 				// Person assigned
 			$info['person_assigned']	= array(
 				'label'		=> 'LLL:task.attr.person_assigned',
@@ -1625,7 +1615,6 @@ class TodoyuTaskManager {
 		if( $task->isContainer() ) {
 			$form->getField('id_worktype')->remove();
 			$form->getField('estimated_workload')->remove();
-			$form->getField('is_estimatedworkload_public')->remove();
 			$form->getField('date_start')->remove();
 			$form->getField('date_end')->remove();
 			$form->getField('date_deadline')->remove();

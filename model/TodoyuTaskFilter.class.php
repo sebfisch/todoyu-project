@@ -253,20 +253,24 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		$queryParts	= false;
 
 		if( $value !== '' ) {
-			$tables	= array('ext_project_task');
-			$wheres	= array();
+			$tables	= array(
+				'ext_project_task'
+			);
+			$keyword= Todoyu::db()->escape($value);
+			$where	= '	ext_project_task.description 	LIKE \'%' . $keyword . '%\' OR
+						ext_project_task.title 			LIKE \'%' . $keyword . '%\'';
 
-			$wheres[] = 'ext_project_task.description 	LIKE \'%' . Todoyu::db()->escape($value) . '%\'';
-			$wheres[] = 'ext_project_task.title 		LIKE \'%' . Todoyu::db()->escape($value) . '%\'';
-
-			$taskNumber	= intval($value);
-			if( $taskNumber !== 0 ) {
-				$wheres[] = 'ext_project_task.tasknumber = ' . $taskNumber;
+			if( strpos($value, '.') !== false ) {
+				list($project, $task) = TodoyuArray::intExplode('.', $value);
+				$where	.= ' OR (
+								ext_project_task.id_project = ' . $project . ' AND
+								ext_project_task.tasknumber = ' . $task .
+							')';
 			}
 
 			$queryParts	= array(
 				'tables'=> $tables,
-				'where'	=> implode(' AND ', $wheres)
+				'where'	=> $where
 			);
 		}
 
