@@ -37,7 +37,10 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
      */
     protected $object;
 
-    protected $idTestTask;
+    /**
+     * @var Array
+     */
+    private $array;
 
 
     /**
@@ -46,11 +49,15 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp() {
     		// Get ID of some task
-    	$where	= 'deleted = 0 AND type = ' . TASK_TYPE_TASK;
-    	$this->idTestTask	= Todoyu::db()->getFieldValue('id', 'ext_project_task', $where, '', '', '0,1', 'id');
+    	$where		= 'deleted = 0 AND type = ' . TASK_TYPE_TASK;
+    	$idTestTask	= Todoyu::db()->getFieldValue('id', 'ext_project_task', $where, '', '', '0,1', 'id');
+
+    	$this->array	= array(
+    		'id'	=> $idTestTask
+    	);
 
     		// Construct
-		$this->object = new TodoyuTask($this->idTestTask);
+		$this->object = new TodoyuTask($idTestTask);
 	}
 
 
@@ -69,7 +76,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
      */
 	public function testConstructor() {
 			// Test successfull constructor
-		$task = new TodoyuTask($this->idTestTask);
+		$idTask	= TodoyuArray::getColumn($this->array, 'id');
+
+		$task = new TodoyuTask($idTask);
 		$this->assertNotNull($task, 'constructor test');
 
 			// Test construction with task ID (0)
