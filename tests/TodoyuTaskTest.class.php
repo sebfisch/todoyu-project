@@ -32,48 +32,48 @@
  */
 class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 {
-    /**
-     * @var TodoyuPortalManager
-     */
-    protected $object;
+	/**
+	 * @var TodoyuPortalManager
+	 */
+	protected $object;
 
-    /**
-     * @var Array
-     */
-    private $array;
+	/**
+	 * @var Array
+	 */
+	private $array;
 
 
-    /**
-     * Sets up the fixture, for example, opens a network connection.
-     * This method is called before a test is executed.
-     */
-    protected function setUp() {
-    		// Get ID of some task
-    	$where		= 'deleted = 0 AND type = ' . TASK_TYPE_TASK;
-    	$idTestTask	= Todoyu::db()->getFieldValue('id', 'ext_project_task', $where, '', '', '0,1', 'id');
+	/**
+	 * Sets up the fixture, for example, opens a network connection.
+	 * This method is called before a test is executed.
+	 */
+	protected function setUp() {
+			// Get ID of some task
+		$where		= 'deleted = 0 AND type = ' . TASK_TYPE_TASK;
+		$idTestTask	= Todoyu::db()->getFieldValue('id', 'ext_project_task', $where, '', '', '0,1', 'id');
 
-    	$this->array	= array(
-    		'id'	=> $idTestTask
-    	);
+		$this->array	= array(
+			'id'	=> $idTestTask
+		);
 
-    		// Construct
+			// Construct
 		$this->object = new TodoyuTask($idTestTask);
 	}
 
 
 
-    /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
-     */
-    protected function tearDown() {
+	/**
+	 * Tears down the fixture, for example, closes a network connection.
+	 * This method is called after a test is executed.
+	 */
+	protected function tearDown() {
 
-    }
+	}
 
 
-    /**
-     *	Test TodoyuTask::__construct
-     */
+	/**
+	 *	Test TodoyuTask::__construct
+	 */
 	public function testConstructor() {
 			// Test successfull constructor
 		$idTask	= TodoyuArray::getColumn($this->array, 'id');
@@ -123,9 +123,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetTaskNumber($full = true) {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -135,9 +135,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testHasStatus() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -147,9 +147,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetStatus() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -159,9 +159,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetStatusKey() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -171,9 +171,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetStatusLabel() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -183,9 +183,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testHasParentTask() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -195,9 +195,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testHasSubtasks() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -207,9 +207,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetParentTask() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -219,9 +219,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetParentTaskID() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -231,9 +231,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetProjectID() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -243,9 +243,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetProjectArray() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -255,9 +255,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetProject() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -267,9 +267,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetWorktype() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -279,9 +279,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetType() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -291,9 +291,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetStartDate() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -303,9 +303,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetEndDate() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -315,9 +315,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetDeadlineDate() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -328,9 +328,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testIsContainer() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -340,9 +340,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testIsTask() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -352,9 +352,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testIsPublic() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -364,9 +364,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testIsAcknowledged() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -376,9 +376,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testLoadForeignData() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -388,9 +388,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetTemplateData() {
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 }
