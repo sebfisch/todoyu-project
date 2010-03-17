@@ -473,10 +473,10 @@ class TodoyuProjectManager {
 		$tabs	= array();
 
 		foreach($projects as $project) {
-			$companyLabel	= trim($project['companyShort']) === '' ? TodoyuDiv::cropText($project['companyFull'], 10, '..', false) : $project['companyShort'];
+			$companyLabel	= trim($project['companyShort']) === '' ? TodoyuString::crop($project['companyFull'], 10, '..', false) : $project['companyShort'];
 			$tabs[] = array(
 				'id'		=> $project['id'],
-				'label'		=> TodoyuDiv::cropText($companyLabel. ': ' . $project['title'], 23, '..', false)
+				'label'		=> TodoyuString::crop($companyLabel. ': ' . $project['title'], 23, '..', false)
 			);
 		}
 
@@ -491,7 +491,6 @@ class TodoyuProjectManager {
 	 * @param	Integer		$idProject
 	 * @return	Array
 	 */
-
 	public static function getProjectDataArray($idProject) {
 		$idProject	= intval($idProject);
 		$data		= array();
