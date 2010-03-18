@@ -68,9 +68,6 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 			// Init page
 		TodoyuPage::init('ext/project/view/ext.tmpl');
-			// Add project assets
-		TodoyuPage::addExtAssets('project', 'public');
-
 
 			// If a project is displayed
 		if( $idProject !== 0 ) {

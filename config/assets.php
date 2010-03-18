@@ -28,217 +28,146 @@
 
 
 $CONFIG['EXT']['project']['assets'] = array(
-		// Default assets: loaded all over the installation always
-	'default' => array(
-		'js' => array(
-				// Add quicktask wizard headlet
-			array(
-				'file'		=> 'ext/project/assets/js/Ext.js',
-				'position'	=> 80
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/Project.js',
-				'position'	=> 81
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/QuickTask.js',
-				'position'	=> 109
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/HeadletQuickTask.js',
-				'position'	=> 90
-			),
-				// Add creation engines to quick create headlet
-			array(
-				'file'		=> 'ext/project/assets/js/QuickCreateProject.js',
-				'position'	=> 100
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/QuickCreateTask.js',
-				'position'	=> 100
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/ProjectEdit.js',
-				'position'	=> 102
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/Task.js',
-				'position'	=> 102
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/TaskEdit.js',
-				'position'	=> 102
-			)
+	'js' => array(
+			// Add quicktask wizard headlet
+		array(
+			'file'		=> 'ext/project/assets/js/Ext.js',
+			'position'	=> 80
 		),
-		'css' => array(
-			array(
-				'file'		=> 'ext/project/assets/css/global.css',
-				'position'	=> 100
-			),
-			array(
-				'file'		=> 'ext/project/assets/css/headlet-quicktask.css',
-				'position'	=> 100
-			)
+		array(
+			'file'		=> 'ext/project/assets/js/Project.js',
+			'position'	=> 81
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/QuickTask.js',
+			'position'	=> 109
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/HeadletQuickTask.js',
+			'position'	=> 90
+		),
+			// Add creation engines to quick create headlet
+		array(
+			'file'		=> 'ext/project/assets/js/QuickCreateProject.js',
+			'position'	=> 100
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/QuickCreateTask.js',
+			'position'	=> 100
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/ProjectEdit.js',
+			'position'	=> 102
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/Task.js',
+			'position'	=> 102
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/TaskEdit.js',
+			'position'	=> 102
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/TaskTab.js',
+			'position'	=> 102
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/Container.js',
+			'position'	=> 103
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/TaskTree.js',
+			'position'	=> 104
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/ContextMenuTask.js',
+			'position'	=> 105
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/ContextMenuProject.js',
+			'position'	=> 106
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/ProjectTaskTree.js',
+			'position'	=> 107
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/TaskParentAc.js',
+			'position'	=> 108
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/hooks.js',
+			'position'	=> 1000
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/Filter.js',
+			'position'	=> 200
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/PanelWidgetProjectList.js',
+			'position'	=> 110
+		),
+		array(
+			'file' => 'ext/project/assets/js/PanelWidgetStatusFilter.js',
+			'position' => 120,
+		),
+		array(
+			'file' => 'ext/project/assets/js/PanelWidgetTaskStatusFilter.js',
+			'position' => 120,
+		),
+		array(
+			'file' => 'ext/project/assets/js/PanelWidgetProjectStatusFilter.js',
+			'position' => 120,
 		)
 	),
-
-
-		// Public assets: basic assets for this extension
-	'public' => array(
-		'js' => array(
-			array(
-				'file'		=> 'ext/project/assets/js/TaskTab.js',
-				'position'	=> 102
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/Container.js',
-				'position'	=> 103
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/TaskTree.js',
-				'position'	=> 104
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/ContextMenuTask.js',
-				'position'	=> 105
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/ContextMenuProject.js',
-				'position'	=> 106
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/ProjectTaskTree.js',
-				'position'	=> 107
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/TaskParentAc.js',
-				'position'	=> 108
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/hooks.js',
-				'position'	=> 1000
-			)
+	'css' => array(
+		array(
+			'file'		=> 'ext/project/assets/css/global.css',
+			'position'	=> 100
 		),
-		'css' => array(
-			array(
-				'file'		=> 'ext/project/assets/css/ext.css',
-				'media'		=> 'all',
-				'position'	=> 100
-			),
-			array(
-				'file'		=> 'ext/project/assets/css/task.css',
-				'position'	=> 101
-			),
-			array(
-				'file'		=> 'ext/project/assets/css/project.css',
-				'position'	=> 102
-			),
-			array(
-				'file'		=> 'ext/project/assets/css/contextmenu.css',
-				'position'	=> 103
-			),
-			array(
-				'file'		=> 'ext/project/assets/css/taskparent-ac.css',
-				'position'	=> 104
-			)
-		)
-	),
-
-	'search' => array(
-		'js'	=> array(
-			array(
-				'file'		=> 'ext/project/assets/js/Filter.js',
-				'position'	=> 200
-			)
+		array(
+			'file'		=> 'ext/project/assets/css/headlet-quicktask.css',
+			'position'	=> 100
 		),
-		'css'	=> array(
-
-		)
-	),
-
-		// Assets of panel widgets
-	'panelwidget-projecttree' => array(
-		'js' => array(
-			array(
-				'file'		=> 'ext/project/assets/js/PanelWidgetProjectTree.js',
-				'position'	=> 110
-			),
-			array(
-				'file'		=> 'ext/project/assets/js/PanelWidgetProjectTreeFilter.js',
-				'position'	=> 111
-			)
+		array(
+			'file'		=> 'ext/project/assets/css/ext.css',
+			'media'		=> 'all',
+			'position'	=> 100
 		),
-		'css' => array(
-			array(
-				'file'		=> 'ext/project/assets/css/panelwidget-projecttree.css',
-				'media'		=> 'all',
-				'position'	=> 110
-			)
-		)
-	),
-
-			// Assets of panel widgets
-	'panelwidget-projectlist' => array(
-		'js' => array(
-			array(
-				'file'		=> 'ext/project/assets/js/PanelWidgetProjectList.js',
-				'position'	=> 110
-			)
+		array(
+			'file'		=> 'ext/project/assets/css/task.css',
+			'position'	=> 101
 		),
-		'css' => array(
-			array(
-				'file'		=> 'ext/project/assets/css/panelwidget-projectlist.css',
-				'media'		=> 'all',
-				'position'	=> 110
-			)
-		)
-	),
-
-	'panelwidget-statusfilter' => array(
-		'js' => array(
-			array(
-				'file' => 'ext/project/assets/js/PanelWidgetStatusFilter.js',
-				'position' => 120,
-			)
+		array(
+			'file'		=> 'ext/project/assets/css/project.css',
+			'position'	=> 102
 		),
-		'css' => array(
-			array(
-				'file' => 'ext/project/assets/css/panelwidget-statusfilter.css',
-				'position' => 120,
-			)
-		)
-	),
-
-	'panelwidget-taskstatusfilter' => array(
-		'js' => array(
-			array(
-				'file' => 'ext/project/assets/js/PanelWidgetTaskStatusFilter.js',
-				'position' => 120,
-			)
+		array(
+			'file'		=> 'ext/project/assets/css/contextmenu.css',
+			'position'	=> 103
 		),
-		'css' => array(
-			array(
-				'file' => 'ext/project/assets/css/panelwidget-taskstatusfilter.css',
-				'position' => 120,
-			)
-		)
-	),
-
-	'panelwidget-projectstatusfilter' => array(
-		'js' => array(
-			array(
-				'file' => 'ext/project/assets/js/PanelWidgetProjectStatusFilter.js',
-				'position' => 120,
-			)
+		array(
+			'file'		=> 'ext/project/assets/css/taskparent-ac.css',
+			'position'	=> 104
 		),
-		'css' => array(
-			array(
-				'file' => 'ext/project/assets/css/panelwidget-projectstatusfilter.css',
-				'position' => 120,
-			)
+		array(
+			'file'		=> 'ext/project/assets/css/panelwidget-projectlist.css',
+			'media'		=> 'all',
+			'position'	=> 110
+		),
+		array(
+			'file' => 'ext/project/assets/css/panelwidget-statusfilter.css',
+			'position' => 120,
+		),
+		array(
+			'file' => 'ext/project/assets/css/panelwidget-taskstatusfilter.css',
+			'position' => 120,
+		),
+		array(
+			'file' => 'ext/project/assets/css/panelwidget-projectstatusfilter.css',
+			'position' => 120,
 		)
 	)
-
 );
 
 ?>

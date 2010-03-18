@@ -49,9 +49,6 @@ class TodoyuPanelWidgetProjectStatusFilter extends TodoyuPanelWidgetStatusFilter
 			// Define preference
 		$this->pref	= 'panelwidget-projectstatusfilter';
 
-			// Add assets
-		TodoyuPage::addExtAssets('project', 'panelwidget-taskstatusfilter');
-
 			// Get selected status IDs
 		$filterJSON			= json_encode($this->getSelectedStatusIDs());
 

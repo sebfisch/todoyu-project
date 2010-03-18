@@ -64,10 +64,6 @@ abstract class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget {
 			$idArea			// area ID
 		);
 
-			// Add public and widget assets
-		TodoyuPage::addExtAssets('project');
-		TodoyuPage::addExtAssets('project', 'panelwidget-statusfilter');
-
 		$this->addHasIconClass();
 		$this->addClass('panelWidgetStatusFilter');
 	}

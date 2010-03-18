@@ -47,9 +47,6 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 			$idArea									// area ID
 		);
 
-					// Add widget assets
-		TodoyuPage::addExtAssets('project', 'panelwidget-projectlist');
-
 		$filterJSON	= json_encode(self::getFilters());
 
 			// Init widget JS (observers)
