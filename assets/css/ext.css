@@ -1,3 +1,7 @@
+h1.extIconProject .title {
+	background:url('../img/exticon.png') no-repeat 0 5px;
+}
+
 /* --------------------------------------
 	Task and project properties
    ------------------------------------- */  
