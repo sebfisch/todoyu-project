@@ -145,7 +145,7 @@
 		<label index="projectrole.attr.rolekey">Rollen-Schlüssel</label>
 		<label index="tasktree.losttasks">Passende Aufgaben deren übergeordnete Aufgabe nicht angezeigt wird</label>
 		<label index="records.projectrole">Benutzer-Rollen</label>
-		<label index="records.worktype">Arbeits-Kategorie</label>
+		<label index="records.worktype">Arbeits-Typ</label>
 		<label index="form.validation.dateBefore">Datum muss vor dem End-Datum liegen</label>
 		<label index="form.validation.title">Bitte Projekt-Titel angeben</label>
 		<label index="noLabel.newProjectParticipant">Neuer Projekt-Mitarbeiter</label>
@@ -156,5 +156,9 @@
 		<label index="js.quicktask.saved">Aufgabe wurde gespeichert</label>
 		<label index="ac.person.notFoundInfo">Es wurde keine Person gefunden deren Name die angegebenen Zeichen enthält.</label>
 		<label index="portal.tab.todos">Meine Aufgaben</label>
+		<label index="extconf.taskDefaults.assignedRoles">Vorausgewählte Rolle der zugewiesenen Person einer Aufgabe</label>
+		<label index="extconf.taskDefaults.ownerRoles">Vorausgewählte Rolle für Aufgaben-Eigner</label>
+		<label index="extconf.taskDefaults.worktype">Vorausgewählter Arbeits-Typ</label>
+		<label index="extconf.taskDefaults.estimated_workload">Vorgabe für geschätzten Aufwand</label>
 	</labels>
 </locallang>
