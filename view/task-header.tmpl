@@ -7,7 +7,7 @@
 				{dateFormat $task.date_deadline D2M2Y2}
 			</div>
 			<div class="projectName" title="{Label task.task}: {htmlencode $task.title}  (ID: {$task.id})">
-				<a href="javascript:void(0)" onclick="Todoyu.Ext.project.Task.toggleDetails({$task.id})" class="title">{htmlencode $task.title|truncate:80}</a>
+				<a href="javascript:void(0)" onclick="Todoyu.Ext.project.Task.toggleDetails({$task.id})" class="title">{htmlencode(truncate($task.title 70 break=true))}</a>
 			</div>
 		</div>
 

@@ -148,10 +148,10 @@ Todoyu.Ext.project.Project.Edit = {
 	 *	@param	Integer	idProject
 	 */
 	cancel: function(idProject) {
-		if( idProject == 0 ) {
+		if( idProject === 0 ) {
 				// If the form of a new project is canceled
 			this.ext.ProjectTaskTree.removeProject(idProject);
-			var idProject = this.ext.ProjectTaskTree.getActiveProjectID();
+			idProject = this.ext.ProjectTaskTree.getActiveProjectID();
 
 				// If there is a project
 			if( idProject !== false )	{
@@ -180,7 +180,7 @@ Todoyu.Ext.project.Project.Edit = {
 	 * @param	Todoyu.Autocompleter	autocompleter
 	 */
 	onCompanyAutocomplete: function(response, autocompleter) {
-		if( response.getTodoyuHeader('acElements') == 0 ) {
+		if( response.getTodoyuHeader('acElements') === '0' ) {
 			Todoyu.notifyInfo('[LLL:project.ac.company.notFoundInfo]');
 		}
 	},
@@ -194,7 +194,7 @@ Todoyu.Ext.project.Project.Edit = {
 	 * @param	Todoyu.Autocompleter	autocompleter
 	 */
 	onPersonAutocomplete: function(response, autocompleter) {
-		if( response.getTodoyuHeader('acElements') == 0 ) {
+		if( response.getTodoyuHeader('acElements') === '0' ) {
 			Todoyu.notifyInfo('[LLL:project.ac.person.notFoundInfo]');
 		}
 	},

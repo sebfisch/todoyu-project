@@ -49,6 +49,7 @@
 						<label>title</label>
 						<value>id</value>
 					</source>
+					<noPleaseSelect />
 					<required />
 				</field>
 

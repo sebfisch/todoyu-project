@@ -95,6 +95,7 @@
 					<restrict>
 						<allow ext="project" right="task:editPersonAssigned" />
 					</restrict>
+					<noPleaseSelect />
 				</field>
 
 				<field type="selectgrouped" name="id_person_owner">
@@ -106,6 +107,7 @@
 					<restrict>
 						<allow ext="project" right="task:editPersonOwner" />
 					</restrict>
+					<noPleaseSelect />
 				</field>
 
 				<field type="textinputAC" name="id_parenttask">
