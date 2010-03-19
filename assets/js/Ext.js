@@ -34,7 +34,9 @@ Todoyu.Ext.project = {
 	 */
 	init: function() {
 			// Add project creation hooks
-		Todoyu.Hook.add('onProjectCreated', this.Project.Edit.onCreated.bind(this.ProjectEdit));
+		Todoyu.Hook.add('onProjectCreated', this.Project.Edit.onProjectCreated.bind(this.Project.Edit));
+
+		this.Portal.init();
 	},
 
 

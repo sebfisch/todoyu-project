@@ -5,6 +5,7 @@
 		<label index="general.use">Use/See Project Module Functionalities</label>
 		<label index="general.area">Access Project Area</label>
 		<label index="project">Project</label>
+		<label index="project.add">Add projects</label>
 		<label index="project.seeOwn">See OWN projects</label>
 		<label index="project.seeAll">See ALL projects</label>
 		<label index="project.editAndDelete">Can Edit And Delete Projects</label>
@@ -68,6 +69,7 @@
 		<label index="general.use">Projekt-Funktionalitäten verwenden</label>
 		<label index="general.area">Projekt-Bereich verwenden</label>
 		<label index="project">Projekt</label>
+		<label index="project.add">Projekte erstellen</label>
 		<label index="project.seeOwn">Sieht eigene Projekte</label>
 		<label index="project.seeAll">Sieht alle Projekte</label>
 		<label index="project.editAndDelete">Kann Projekte bearbeiten und löschen</label>

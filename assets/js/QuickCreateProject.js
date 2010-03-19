@@ -63,6 +63,7 @@ Todoyu.Ext.project.QuickCreateProject = {
 		} else {
 			var idProject	= response.getTodoyuHeader('idProject');
 			Todoyu.Hook.exec('onProjectCreated', idProject);
+			Todoyu.Hook.exec('onProjectSaved', idProject);
 
 			Todoyu.Headlet.QuickCreate.closePopup();
 			Todoyu.notifySuccess('[LLL:project.save.success]');

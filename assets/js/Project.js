@@ -98,6 +98,8 @@ Todoyu.Ext.project.Project = {
 		} else {
 			$('project-'+idProject).fade();
 		}
+		
+		Todoyu.Hook.exec('onProjectDeleted', idProject);
 	},
 
 

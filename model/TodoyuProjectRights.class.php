@@ -75,6 +75,17 @@ class TodoyuProjectRights {
 
 
 	/**
+	 * Check if person can add new projects
+	 *
+	 * @return	Bool
+	 */
+	public static function isAddAllowed() {
+		return allowed('project', 'project:add');
+	}
+
+
+
+	/**
 	 * Restrict access to person which are allowed to see the project
 	 *
 	 * @param	Integer		$idProject
@@ -94,6 +105,18 @@ class TodoyuProjectRights {
 	public static function restrictEdit() {
 		if( ! self::isEditAllowed() ) {
 			self::deny('project:edit');
+		}
+	}
+
+
+
+	/**
+	 * Restrict access to person which are allowed to add projects
+	 *
+	 */
+	public static function restrictAdd() {
+		if( ! self::isAddAllowed() ) {
+			self::deny('project:add');
 		}
 	}
 }

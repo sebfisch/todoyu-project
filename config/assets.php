@@ -118,6 +118,10 @@ $CONFIG['EXT']['project']['assets'] = array(
 		array(
 			'file' => 'ext/project/assets/js/PanelWidgetProjectStatusFilter.js',
 			'position' => 120,
+		),
+		array(
+			'file' => 'ext/project/assets/js/Portal.js',
+			'position' => 120,
 		)
 	),
 	'css' => array(

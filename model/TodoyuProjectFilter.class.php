@@ -52,7 +52,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 			// Add status filter
 		if( ! TodoyuAuth::isAdmin() ) {
-			$statuses	= implode(',', array_keys(TodoyuProjectStatusManager::getStatuses('see')));
+			$statuses	= implode(',', array_keys(TodoyuProjectStatusManager::getStatuses()));
 			$this->addExtraFilter('status', $statuses);
 		}
 	}

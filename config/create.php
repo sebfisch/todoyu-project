@@ -26,7 +26,7 @@ if( allowed('project', 'task:addInOwnProjects') ) {
 }
 
 	// Add create for project
-if( allowed('project', 'editAndDelete') ) {
+if( allowed('project', 'project:add') ) {
 	TodoyuQuickCreateManager::addEngine('project', 'project', 'project.create.label', 10, array('project'));
 }
 

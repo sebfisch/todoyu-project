@@ -89,7 +89,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 	removeProjectTab: function(idProject) {
-		var id	= 'projecttab-' + idProject;
+		var id	= 'project-tab-' + idProject;
 
 		if( Todoyu.exists(id) ) {
 			$(id).remove();

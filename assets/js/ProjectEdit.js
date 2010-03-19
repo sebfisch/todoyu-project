@@ -95,11 +95,12 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * On created handler
 	 */
-	onCreated: function(idProject) {
-		idProject	= Todoyu.Helper.intval(idProject);
-
-		Todoyu.Ext.project.ProjectTaskTree.openProject(idProject);
-		window.scrollTo(0,0);
+	onProjectCreated: function(idProject) {
+		if( Todoyu.getArea() === 'project' ) {
+			this.ext.ProjectTaskTree.openProject(idProject);
+			
+			Todoyu.Ui.scrollToTop();
+		}		
 	},
 
 
@@ -120,8 +121,8 @@ Todoyu.Ext.project.Project.Edit = {
 		} else {
 			this.ext.ProjectTaskTree.removeProject(idProjectOld);
 			this.ext.ProjectTaskTree.openProject(idProject);
-
-			window.scrollTo(0,0);
+			
+			Todoyu.Ui.scrollToTop();
 
 			Todoyu.Hook.exec('onProjectSaved', idProject);
 			Todoyu.notifySuccess('[LLL:project.save.success]');

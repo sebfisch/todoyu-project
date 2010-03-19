@@ -30,7 +30,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 	/**
 	 * Initialize panelwidget
-	 * 
+	 *
 	 * @param	Object		filters		Filter hash. Because of JSON, an (empty) array means no data
 	 */
 	init: function(filters) {
@@ -39,13 +39,13 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 			$H(filters).each(function(pair){
 				this.applyFilter(pair.key, pair.value, false);
 			}, this);
-		}	
+		}
 
 		this.observeFulltext();
 		this.observeProjects();
 		this.observeStatusSelector();
 
-		this.addHooks();		
+		this.addHooks();
 	},
 
 
@@ -54,12 +54,12 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	 * Add various JS hooks
 	 */
 	addHooks: function() {
-			// Add a hook for project creation
-		Todoyu.Hook.add('onProjectCreated', this.update.bind(this));
-		
-			// Add a hook for project saving
-		Todoyu.Hook.add('onProjectSaved', this.onProjectUpdated.bind(this));		
-		
+			// Project save
+		Todoyu.Hook.add('onProjectSaved', this.onProjectSaved.bind(this));
+			// Project create
+		Todoyu.Hook.add('onProjectCreated', this.onProjectCreated.bind(this));
+			// Add delete
+		Todoyu.Hook.add('onProjectDeleted', this.onProjectDeleted.bind(this));
 	},
 
 
@@ -83,7 +83,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Install status selection observer 
+	 * Install status selection observer
 	 */
 	observeStatusSelector: function() {
 		Todoyu.PanelWidget.observe('projectstatusfilter', this.onStatusFilterUpdate.bind(this));
@@ -93,26 +93,26 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 	/**
 	 * Keyup event handler for fulltext
-	 * 
+	 *
 	 * @param	Object		event
 	 */
 	onFulltextKeyup: function(event) {
-		this.clearTimeout();		
-		this.applyFilter('fulltext', this.getFulltext());		
-		
-		this.startTimeout();		
+		this.clearTimeout();
+		this.applyFilter('fulltext', this.getFulltext());
+
+		this.startTimeout();
 	},
 
 
 
 	/**
 	 * Click event handler for project
-	 * 
+	 *
 	 * @param	Object		event
 	 */
 	onProjectClick: function(event) {
-		var idProject = event.findElement('li').id.split('-').last();	
-		
+		var idProject = event.findElement('li').id.split('-').last();
+
 		this.ext.ProjectTaskTree.openProject(idProject);
 	},
 
@@ -120,7 +120,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 	/**
 	 * Update handler for status filter
-	 * 
+	 *
 	 * @param	String	widgetkey
 	 * @param	Array	statuses
 	 */
@@ -158,8 +158,8 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	applyFilter: function(name, value, update) {
-		this.filters[name] = value;		
-		
+		this.filters[name] = value;
+
 		if( update === true ) {
 			this.clearTimeout();
 			this.update();
@@ -178,7 +178,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 			'onComplete':	this.onUpdated.bind(this)
 		};
 		var target	= 'panelwidget-projectlist-list';
-		
+
 		Todoyu.Ui.replace(target, url, options);
 	},
 
@@ -196,10 +196,16 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 
-	onProjectUpdated: function(idProject) {
-		if( this.isProjectListed(idProject) ) {
-			this.update();
-		}
+	onProjectSaved: function(idProject) {
+		this.update();
+	},
+
+	onProjectCreated: function(idProject) {
+		this.update();
+	},
+
+	onProjectDeleted: function(idProject) {
+		this.update();
 	}
 
 };

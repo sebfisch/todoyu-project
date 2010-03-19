@@ -7,6 +7,7 @@
 	</section>
 
 	<section name="project" require="general:use">
+		<right name="add" />
 		<right name="seeOwn" />
 		<right name="seeAll" require="project:seeOwn" />
 		<right name="editAndDelete" require="project:seeOwn" />

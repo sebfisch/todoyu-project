@@ -55,10 +55,16 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @return	String		Form content if form is invalid
 	 */
 	public function saveAction(array $params) {
-		TodoyuProjectRights::restrictEdit();
-
 		$data		= $params['project'];
 		$idProject	= intval($data['id']);
+
+			// Check rights
+		if( $idProject === 0 ) {
+			TodoyuProjectRights::restrictAdd();
+		} else {
+			TodoyuProjectRights::restrictEdit();
+		}
+
 
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/project.xml';
