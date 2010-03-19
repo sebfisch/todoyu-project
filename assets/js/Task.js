@@ -158,9 +158,20 @@ Todoyu.Ext.project.Task = {
 
 			// If task was cut, remove old element
 		if( clipboardMode === 'cut' ) {
-			if( Todoyu.exists('task-' + idTaskNew) ) {
-				$('task-' + idTaskNew).remove();
+			if( Todoyu.exists('task-' + idTaskNew + '-subtasks') ) {
+				$('task-' + idTaskNew + '-subtasks').remove();
 			}
+			if( Todoyu.exists('task-' + idTaskNew) ) {
+				if( this.isSubtask(idTaskNew) ) {
+					var idParent	= this.getParentTaskID(idTaskNew);
+
+					$('task-' + idTaskNew).remove();
+
+					this.checkAndRemoveTriggerFromTask(idParent);			
+				} else {
+					$('task-' + idTaskNew).remove();
+				}
+			}			
 		}
 
 			// Insert as subtask of the current task
@@ -363,8 +374,31 @@ Todoyu.Ext.project.Task = {
 	hasParentTask: function(idTask){
 		return $('task-'+idTask).up().hasClassName('subtasks');
 	},
-
-
+	
+	
+	getParentTaskID: function(idTask) {
+		var idParent	= false;
+		
+		if( Todoyu.exists('task-' + idTask) ) {
+			var subTaskContainer	= $('task-'+idTask).up('.subtasks');
+			
+			if( subTaskContainer !== undefined ) {
+				idParent	= subTaskContainer.id.split('-')[1];
+			}			
+		}
+		
+		return idParent;	
+	},
+	
+	
+	isSubtask: function(idTask) {
+		if( Todoyu.exists('task-' + idTask) ) {
+			return $('task-' + idTask).up('.subtasks') !== undefined;
+		}
+		
+		return false;
+	},
+	
 
 	/**
 	 * Remove expand-trigger from parent of give task if its the only sub task
@@ -374,10 +408,15 @@ Todoyu.Ext.project.Task = {
 	checkAndRemoveTriggerFromParent: function(idTask)	{
 		var idArray = $('task-'+idTask).up().id.split('-');
 		var idParentTask = idArray[1];
-
+		
+		this.checkAndRemoveTriggerFromTask(idParentTask);
+	},
+	
+	
+	checkAndRemoveTriggerFromTask: function(idTask) {
 			// Is this the only sub task? remove expandability
-		if( ! ($('task-' + idParentTask + '-subtasks').select('div.task').size() > 1) )	{
-			$('task-' + idParentTask + '-subtasks-trigger').removeClassName('expandable');
+		if( $('task-' + idTask + '-subtasks').select('div.task').size() < 1 ) {
+			$('task-' + idTask + '-subtasks-trigger').removeClassName('expandable');
 		}
 	},
 

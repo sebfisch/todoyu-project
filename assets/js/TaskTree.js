@@ -150,8 +150,8 @@ Todoyu.Ext.project.TaskTree = {
 	getProjectID: function() {
 		return this.ext.ProjectTaskTree.getActiveProjectID();
 	},
-
-
+	
+	
 
 	/**
 	 * Toggle display of sub tasks and save resulting display state of given given task inside the task tree(, load sub tasks if toggled to be shown and not loaded yet)
