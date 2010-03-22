@@ -44,7 +44,7 @@ class TodoyuTaskRights {
 	 * Check if person has edit rights and if person can edit a status
 	 *
 	 * @param	Integer		$idTask
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isEditAllowed($idTask) {
 		$idTask		= intval($idTask);
@@ -64,7 +64,7 @@ class TodoyuTaskRights {
 	 * Check if person can edit tasks in this project
 	 *
 	 * @param	Integer		$idProject
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isEditInProjectAllowed($idProject) {
 		$idProject	= intval($idProject);
@@ -82,7 +82,7 @@ class TodoyuTaskRights {
 	 * Check if person can add a new task under the parent task
 	 *
 	 * @param	Integer		$idParentTask
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isAddAllowed($idParentTask) {
 		$idParentTask	= intval($idParentTask);
@@ -97,7 +97,7 @@ class TodoyuTaskRights {
 	 * Check if a person can add a new task in this project
 	 *
 	 * @param	Integer		$idProject
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isAddInProjectAllowed($idProject) {
 		$idProject	= intval($idProject);
@@ -115,7 +115,7 @@ class TodoyuTaskRights {
 	 * Check if a person can see the task
 	 *
 	 * @param	Integer		$idTask
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isSeeAllowed($idTask) {
 		$idTask	= intval($idTask);
@@ -130,7 +130,7 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Restrict access to person which are allowed to add tasks in the project if this task
+	 * Restrict access to persons who are allowed to add tasks in the project if this task
 	 *
 	 * @param	Integer		$idTask
 	 */
@@ -143,9 +143,9 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Restrict access to person which are allowed to edit tasks in the project
+	 * Restrict access to persons who are allowed to edit tasks in the project
 	 *
-	 * @param unknown_type $idProject
+	 * @param	Integer		$idProject
 	 */
 	public static function restrictEditInProject($idProject) {
 		if( ! self::isEditInProjectAllowed($idProject) ) {
@@ -156,7 +156,7 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Restrict access to person which are allowed to add tasks in the project of this task
+	 * Restrict access to persons who are allowed to add tasks in the project of this task
 	 *
 	 * @param	Integer		$idParentTask
 	 */
@@ -169,7 +169,7 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Restrict access to person which are allowed to add tasks in the project
+	 * Restrict access to persons who are allowed to add tasks in the project
 	 *
 	 * @param	Integer		$idProject
 	 */
@@ -181,7 +181,7 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Restrict access to person which are allowed to see the task
+	 * Restrict access to persons who are allowed to see the task
 	 *
 	 * @param	Integer		$idTask
 	 */
@@ -192,6 +192,4 @@ class TodoyuTaskRights {
 	}
 
 }
-
-
 ?>

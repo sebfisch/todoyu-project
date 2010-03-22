@@ -43,7 +43,7 @@ class TodoyuProjectRights {
 	 * Check if person can see the project
 	 *
 	 * @param	Integer		$idProject
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isSeeAllowed($idProject) {
 		$idProject	= intval($idProject);
@@ -66,7 +66,7 @@ class TodoyuProjectRights {
 	/**
 	 * Check if person can edit the project
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isEditAllowed() {
 		return allowed('project', 'project:editAndDelete');
@@ -77,7 +77,7 @@ class TodoyuProjectRights {
 	/**
 	 * Check if person can add new projects
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isAddAllowed() {
 		return allowed('project', 'project:add');
@@ -86,7 +86,7 @@ class TodoyuProjectRights {
 
 
 	/**
-	 * Restrict access to person which are allowed to see the project
+	 * Restrict access to persons who are allowed to see the project
 	 *
 	 * @param	Integer		$idProject
 	 */
@@ -99,8 +99,7 @@ class TodoyuProjectRights {
 
 
 	/**
-	 * Restrict access to person which are allowed to edit projects
-	 *
+	 * Restrict access to persons who are allowed to edit projects
 	 */
 	public static function restrictEdit() {
 		if( ! self::isEditAllowed() ) {
@@ -111,8 +110,7 @@ class TodoyuProjectRights {
 
 
 	/**
-	 * Restrict access to person which are allowed to add projects
-	 *
+	 * Restrict access to persons who are allowed to add projects
 	 */
 	public static function restrictAdd() {
 		if( ! self::isAddAllowed() ) {
