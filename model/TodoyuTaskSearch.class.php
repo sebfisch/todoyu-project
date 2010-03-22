@@ -56,21 +56,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 			}
 		}
 
-//
-//			// Handle task number
-//		foreach($find as $index => $keyword) {
-//				// if there is a point in the keyword, it could be a tasknumber
-//			if( strpos($keyword, '.') !== false ) {
-//					// Remove the concatinated value
-//				unset($find[$index]);
-//					// Split the parts and add them to the find array
-//				$parts = explode('.', $keyword);
-//				foreach($parts as $part) {
-//					$find[] = $part;
-//				}
-//			}
-//		}
-
+			// Task fulltext search
 		$table	= self::TABLE;
 		$fields	= array('id_project', 'tasknumber', 'description', 'title');
 
@@ -111,12 +97,16 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 
 			$tasks	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
 
+				// Assemble found task suggestions
 			foreach($tasks as $task) {
-				$suggestions[] = array(
-					'labelTitle'=> $task['id_project'] . '.' . $task['tasknumber'] . ': ' . htmlentities($task['title']),
-					'labelInfo'	=> $task['project'] . ', ' . $task['company'],
-					'title'		=> $task['id_project'] . '.' . $task['tasknumber'] . ': ' . $task['title'],
-					'onclick'	=> 'location.href=\'?ext=project&amp;project=' . $task['id_project'] . '&amp;task=' . $task['id'] . '#task-' . $task['id'] . '\'');
+				if ( TodoyuTaskRights::isSeeAllowed($task['id']) ) {
+					$suggestions[] = array(
+						'labelTitle'=> $task['id_project'] . '.' . $task['tasknumber'] . ': ' . htmlentities($task['title']),
+						'labelInfo'	=> $task['project'] . ', ' . $task['company'],
+						'title'		=> $task['id_project'] . '.' . $task['tasknumber'] . ': ' . $task['title'],
+						'onclick'	=> 'location.href=\'?ext=project&amp;project=' . $task['id_project'] . '&amp;task=' . $task['id'] . '#task-' . $task['id'] . '\''
+					);
+				}
 			}
 		}
 
