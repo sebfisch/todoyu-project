@@ -11,6 +11,7 @@
 		<label index="project.editAndDelete">Can Edit And Delete Projects</label>
 		<label index="task">Task</label>
 		<label index="task.seeAll">See Tasks Of Other Persons</label>
+		<label index="task.addViaQuickCreateHeadlet">Use task quick creation headlet</label>
 		<label index="task.addInOwnProjects">Add Task In Own Projects</label>
 		<label index="task.addInAllProjects">Add Task In All Projects</label>
 		<label index="task.editAndDeleteInOwnProjects">Edit And Delete Task In Own Projects</label>
@@ -75,6 +76,7 @@
 		<label index="project.editAndDelete">Kann Projekte bearbeiten und löschen</label>
 		<label index="task">Aufgaben</label>
 		<label index="task.seeAll">Sieht auch Aufgaben anderer Personen</label>
+		<label index="task.addViaQuickCreateHeadlet">Aufgaben Schnell-Erzeugungswerkzeug verwenden</label>
 		<label index="task.addInOwnProjects">Aufgaben in eigenen Projekten hinzufügen</label>
 		<label index="task.addInAllProjects">Aufgaben in allen Projekten hinzufügen</label>
 		<label index="task.editAndDeleteInOwnProjects">Aufgaben in eigenen Projekten bearbeiten/löschen</label>

@@ -31,9 +31,4 @@ if(  allowed('project', 'general:area') ) {
 	}
 }
 
-	// Register quicktask headlet
-if ( allowed('project', 'task:addInOwnProjects') ) {
-	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickTask', 55);
-}
-
 ?>
