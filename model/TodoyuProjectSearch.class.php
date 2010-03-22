@@ -85,13 +85,16 @@ class TodoyuProjectSearch implements TodoyuSearchEngineIf {
 			$projects	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
 			$status		= TodoyuProjectStatusManager::getStatusLabels();
 
+				// Assemble project suggestions array
 			foreach($projects as $project) {
-				$suggestions[] = array(
-					'labelTitle'=> $project['id'] . ': ' . $project['title'],
-					'labelInfo'	=> $project['company'] . ' | ' . $status[$project['status']],
-					'title'		=> $project['id'] . ': ' . $project['title'],
-					'onclick'	=> 'location.href=\'?ext=project&amp;project=' . $project['id'] . '\''
-				);
+				if ( TodoyuProjectRights::isSeeAllowed($project['id']) ) {
+					$suggestions[] = array(
+						'labelTitle'=> $project['id'] . ': ' . $project['title'],
+						'labelInfo'	=> $project['company'] . ' | ' . $status[$project['status']],
+						'title'		=> $project['id'] . ': ' . $project['title'],
+						'onclick'	=> 'location.href=\'?ext=project&amp;project=' . $project['id'] . '\''
+					);
+				}
 			}
 		}
 
