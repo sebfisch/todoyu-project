@@ -76,11 +76,11 @@ class TodoyuTaskStatusManager {
 
 		foreach($statuses as $index => $statusKey) {
 				// Only get allowed status which the person can see
-			if( ! allowed('project', 'taskstatus:' . $statusKey . ':' . $check) && $index !== $forceStatus ) {
+			if( $index !== $forceStatus && ! TodoyuTaskRights::hasStatusRight($statusKey, $check) ) {
 				unset($statuses[$index]);
 			}
 		}
-		
+
 		return sizeof($statuses) > 0 ? $statuses : array(999 => 0);
 	}
 

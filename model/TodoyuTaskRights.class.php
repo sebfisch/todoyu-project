@@ -119,12 +119,25 @@ class TodoyuTaskRights {
 	 */
 	public static function isSeeAllowed($idTask) {
 		$idTask	= intval($idTask);
+		$task	= TodoyuTaskManager::getTask($idTask);
+		$status	= $task->getStatusKey();
 
+			// Check status
+		if( ! self::hasStatusRight($status, 'see') ) {
+			return false;
+		}
+
+			// Check view rights with assignment
 		if( ! TodoyuTaskManager::isPersonAssigned($idTask) ) {
 			return allowed('project', 'task:seeAll');
 		}
 
 		return true;
+	}
+
+
+	public static function hasStatusRight($status, $type = 'see') {
+		return allowed('project', 'taskstatus:' . $status . ':' . $type);
 	}
 
 
