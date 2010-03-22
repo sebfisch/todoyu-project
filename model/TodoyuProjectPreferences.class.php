@@ -136,12 +136,10 @@ class TodoyuProjectPreferences {
 	 * Get the key of the currently active tab (default if none is selected)
 	 *
 	 * @param	Integer		$idTask
-	 * @param	Integer		$idArea
 	 * @return	String
 	 */
-	public static function getActiveTaskTab($idTask, $idArea = null) {
+	public static function getActiveTaskTab($idTask) {
 		$idTask	= intval($idTask);
-		$idArea	= is_null($idArea) ? AREA : intval($idArea);
 
 			// Override selected tab
 		$forceTab	= self::getForcedTaskTab();
@@ -149,7 +147,7 @@ class TodoyuProjectPreferences {
 		if( $forceTab !== false ) {
 			$prefTab = $forceTab;
 		} else {
-			$prefTab= self::getPref('task-tab', $idTask, $idArea);
+			$prefTab= self::getPref('task-tab', $idTask);
 
 			if( $prefTab === false || $prefTab === '' ) {
 				$prefTab = TodoyuTaskManager::getDefaultTab($idTask);
@@ -164,15 +162,13 @@ class TodoyuProjectPreferences {
 	/**
 	 * Save active tab in task
 	 *
-	 * @param	Integer	$idTask
-	 * @param	String	$tabKey
-	 * @param	Integer	$idArea
+	 * @param	Integer		$idTask
+	 * @param	String		$tab
 	 */
-	public static function saveActiveTaskTab($idTask, $tabKey, $idArea = null) {
+	public static function saveActiveTaskTab($idTask, $tab) {
 		$idTask	= intval($idTask);
-		$idArea	= is_null($idArea) ? AREA : intval($idArea);
 
-		self::savePref('task-tab', $tabKey, $idTask, true, $idArea);
+		self::savePref('task-tab', $tab, $idTask, true);
 	}
 
 

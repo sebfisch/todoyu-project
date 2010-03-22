@@ -404,21 +404,18 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * 'tabload' action method
+	 * Load task tab
 	 *
 	 * @param	Array	$params
 	 */
 	public function tabloadAction(array $params) {
 		$idTask		= intval($params['task']);
-		$tabKey		= $params['tab'];
+		$tab		= $params['tab'];
 
 		TodoyuTaskRights::restrictSee($idTask);
+		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tab);
 
-		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tabKey, AREA);
-
-		$tabConf	= TodoyuTaskManager::getTabConfig($tabKey);
-
-		return TodoyuDiv::callUserFunction($tabConf['content'], $idTask);
+		return TodoyuTaskRenderer::renderTabContent($idTask, $tab);
 	}
 
 
@@ -432,7 +429,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask		= intval($params['task']);
 		$tabKey		= $params['tab'];
 
-		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tabKey, AREA);
+		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tabKey);
 	}
 
 

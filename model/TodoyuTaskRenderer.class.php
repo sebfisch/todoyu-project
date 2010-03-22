@@ -51,7 +51,7 @@ class TodoyuTaskRenderer {
 
 			// Render details if task is expanded
 		if( $isExpanded ) {
-			$activeTab		= TodoyuProjectPreferences::getActiveTaskTab($idTask, AREA);
+			$activeTab		= TodoyuProjectPreferences::getActiveTaskTab($idTask);
 			$data['details']= TodoyuTaskRenderer::renderTaskDetail($idTask, $activeTab);
 			$data['task']['class'] .= ' expanded';
 		}
@@ -235,9 +235,25 @@ class TodoyuTaskRenderer {
 		$activeTab	= trim($activeTab) === '' ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab ;
 
 		$tabHeads		= self::renderTabHeads($idTask, $activeTab);
-		$tabContents	= self::renderTabContent($idTask, $activeTab);
+		$tabContents	= self::renderTabsContent($idTask, $activeTab);
 
 		return $tabHeads . $tabContents;
+	}
+
+
+
+	/**
+	 * Render content of a task tab
+	 *
+	 * @param	Integer		$idTask
+	 * @param	String		$tab
+	 * @return	String
+	 */
+	public static function renderTabContent($idTask, $tab) {
+		$idTask		= intval($idTask);
+		$tabConfig	= TodoyuTaskManager::getTabConfig($tab);
+
+		return TodoyuDiv::callUserFunction($tabConfig['content'], $idTask);
 	}
 
 
@@ -268,13 +284,13 @@ class TodoyuTaskRenderer {
 
 
 	/**
-	 * Render the active tab content of a task
+	 * Render tab container with the content tab of the active task
 	 *
 	 * @param	Integer		$idTask
 	 * @param	String		$activeTab
 	 * @return	String
 	 */
-	public static function renderTabContent($idTask, $activeTab = '') {
+	public static function renderTabsContent($idTask, $activeTab = '') {
 		$idTask		= intval($idTask);
 
 		$tabsConfig	= TodoyuTaskManager::getTabs($idTask);
