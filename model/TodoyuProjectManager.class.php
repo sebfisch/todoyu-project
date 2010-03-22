@@ -994,9 +994,7 @@ class TodoyuProjectManager {
 
 		$openProjectIDs	= TodoyuProjectPreferences::getOpenProjectIDs();
 		foreach($openProjectIDs as $idProject) {
-			if (	 allowed('project', 'project:seeAll')
-				|| ( allowed('project', 'project:seeOwn') && self::isPersonAssigned($idProject) )
-			) {
+			if ( TodoyuProjectRights::isSeeAllowed($idProject) ) {
 				$project	= TodoyuProjectManager::getProject($idProject);
 				$entries[$idProject]	= $project->getCompany()->getShortLabel() . ' - ' . $project->getTitle();
 			}
