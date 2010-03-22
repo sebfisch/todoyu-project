@@ -993,11 +993,13 @@ class TodoyuProjectManager {
 		$entries		= array();
 
 		$openProjectIDs	= TodoyuProjectPreferences::getOpenProjectIDs();
-
 		foreach($openProjectIDs as $idProject) {
-			$project	= TodoyuProjectManager::getProject($idProject);
-
-			$entries[$idProject]	= $project->getCompany()->getShortLabel() . ' - ' . $project->getTitle();
+			if (	 allowed('project', 'project:seeAll')
+				|| ( allowed('project', 'project:seeOwn') && self::isPersonAssigned($idProject) )
+			) {
+				$project	= TodoyuProjectManager::getProject($idProject);
+				$entries[$idProject]	= $project->getCompany()->getShortLabel() . ' - ' . $project->getTitle();
+			}
 		}
 
 		return $entries;
