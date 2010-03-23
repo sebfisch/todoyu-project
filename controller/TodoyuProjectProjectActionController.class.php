@@ -26,10 +26,15 @@
  */
 class TodoyuProjectProjectActionController extends TodoyuActionController {
 
-
+	/**
+	 * Initialite controller: restrict access
+	 *
+	 * @param	Array	$params
+	 */
 	public function init(array $params) {
 		restrict('project', 'general:use');
 	}
+
 
 
 	/**
@@ -65,7 +70,6 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 			TodoyuProjectRights::restrictEdit();
 		}
 
-
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/project.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath, $idProject);
@@ -97,7 +101,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * 'details' action method
 	 *
 	 * @param	Array	$params
-	 * @return String
+	 * @return	String
 	 */
 	public function detailsAction(array $params) {
 		$idProject	= intval($params['project']);
