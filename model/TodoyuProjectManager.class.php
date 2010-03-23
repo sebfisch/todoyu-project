@@ -224,20 +224,15 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get the ID of the currently selected project
+	 * Get a project which is available for the person
 	 *
 	 * @return	Integer
 	 */
-	public static function getActiveProjectID() {
-		$idProject	= TodoyuProjectPreferences::getActiveProject();
+	public static function getAvailableProjectForPerson() {
+		$filter		= new TodoyuProjectFilter();
+		$projectIDs	= $filter->getProjectIDs('date_create DESC', 1);
 
-		if( $idProject !== 0 && ! self::isProjectVisible($idProject) ) {
-			$open		= TodoyuProjectPreferences::getOpenProjectIDs();
-			$open		= array_diff($open, array($idProject));
-			$idProject	= intval(array_shift($open));
-		}
-
-		return $idProject;
+		return intval($projectIDs[0]);
 	}
 
 
@@ -473,7 +468,7 @@ class TodoyuProjectManager {
 		$tabs	= array();
 
 		foreach($projects as $project) {
-			$companyLabel	= trim($project['companyShort']) === '' ? TodoyuString::crop($project['companyFull'], 10, '..', false) : $project['companyShort'];
+			$companyLabel	= trim($project['companyShort']) === '' ? TodoyuString::crop($project['companyFull'], 8, '..', false) : $project['companyShort'];
 			$tabs[] = array(
 				'id'		=> $project['id'],
 				'label'		=> TodoyuString::crop($companyLabel. ': ' . $project['title'], 23, '..', false)
@@ -683,12 +678,11 @@ class TodoyuProjectManager {
 		$idProject	= intval($idProject);
 
 			// Get project persons
-		$fields	= '	pe.*,
-					mmpp.*,
+		$fields	= '	mmpp.*,
+					pe.*,
 					pe.id as id_person,
 					pr.rolekey,
-					pr.title as rolelabel,
-					pe.id as id';			// Force person id as id field (instead of the mm id)
+					pr.title as rolelabel';
 		$table	= '	ext_contact_person pe,
 					ext_project_role pr,
 					ext_project_mm_project_person mmpp';
@@ -702,7 +696,10 @@ class TodoyuProjectManager {
 
 			// Add public check for external person
 		if( ! Todoyu::person()->isInternal() ) {
-			$where .= ' AND mmpp.is_public = 1';
+			$where .= ' AND (
+							mmpp.is_public 	= 1 OR
+							mmpp.id_person	= ' . personid() . '
+						)';
 		}
 
 			// If persons should be unique, group by id (we don't care about the projectroles)

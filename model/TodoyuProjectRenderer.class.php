@@ -212,7 +212,7 @@ class TodoyuProjectRenderer {
 			$withDetails = TodoyuProjectPreferences::isProjectDetailsExpanded($idProject);
 		}
 
-		if( $withDetails === true && allowed('project', 'project:details') ) {
+		if( $withDetails === true ) {
 			$data['details'] = self::renderProjectDetails($idProject);
 		}
 
@@ -235,11 +235,10 @@ class TodoyuProjectRenderer {
 
 		$data		= $project->getTemplateData();
 
-			// Render information provided by several extensions
-		$data['projectInfo']= TodoyuRenderer::renderArea('project', 'projectinfo', array($idProject));
+		$data['assignedPersons']	= TodoyuProjectRenderer::renderProjectPersons($idProject);
 
 			// Get project data for info listing
-		$data['data']		= TodoyuProjectManager::getProjectDataArray($idProject);
+		$data['properties']		= TodoyuProjectManager::getProjectDataArray($idProject);
 
 			// Call hook to modify the collected project data
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'projectDataBeforeRendering', $data, array($idProject));
@@ -644,7 +643,7 @@ class TodoyuProjectRenderer {
 		$name		= 'project';
 		$jsHandler	= 'Todoyu.Ext.project.ProjectTaskTree.onTabSelect.bind(Todoyu.Ext.project.ProjectTaskTree)';
 		$tabs		= TodoyuProjectManager::getOpenProjectTabs();
-		$active		= TodoyuProjectManager::getActiveProjectID();
+		$active		= TodoyuProjectPreferences::getActiveProject();
 
 		return TodoyuTabheadRenderer::renderTabs($name, $tabs, $jsHandler, $active);
 	}

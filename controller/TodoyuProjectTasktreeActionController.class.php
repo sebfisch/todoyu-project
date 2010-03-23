@@ -27,9 +27,16 @@
  */
 class TodoyuProjectTasktreeActionController extends TodoyuActionController {
 
+	/**
+	 * Initialize controller, check rights
+	 *
+	 * @param	Array		$params
+	 */
 	public function init(array $params) {
 		restrict('project', 'general:area');
 	}
+
+
 
 	/**
 	 * Update tasktree in project view

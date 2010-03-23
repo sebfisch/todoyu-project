@@ -1,25 +1,27 @@
 <div id="project-{$id}-data" class="data">
-	<div class="properties infoBox">
-		<h4>{Label project.project.properties}</h4>
+	
+	<div class="infoBox properties">
+		<h4>{Label project.properties}</h4>
 		<div class="content overflow">
 			<dl>
-			{foreach $data info}
+			{foreach $properties info}
 				<dt>{Label $info.label true}</dt>
 				<dd>{$info.value}</dd>
 			{/foreach}
 			</dl>
 		</div>
 	</div>
+	
 	<div class="infoBox">
-		<h4>{Label project.project.involved_persons}</h4>
-		<div class="content overflow">{$projectInfo}</div>
+		<h4>{Label project.attr.persons}</h4>
+		<div class="content overflow">{$assignedPersons}</div>
 	</div>
 
-	{if $description}
-		<div class="description infoBox">
-			<h4>{Label core.description}</h4>
-			<div class="content overflow">{cleanHtml $description}</div>
-		</div>
-	{/if}
+	<div class="infoBox description">
+		<h4>{Label core.description}</h4>
+		<div class="content overflow">{cleanHtml $description}</div>
+	</div>
+	
+	{* Here we add dynamic elements later *}
 
 </div>

@@ -57,13 +57,18 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 			// Get project if not set by parameter or save the given one in preferences
 		if( $idProject === 0 ) {
-			$idProject = TodoyuProjectManager::getActiveProjectID();
-		} else {
-			TodoyuProjectPreferences::saveCurrentProject($idProject);
+			$idProject	= TodoyuProjectPreferences::getActiveProject();
 		}
 
-			// Check access rights
-		TodoyuProjectRights::restrictSee($idProject);
+			// If no project found yet, try to find one the person can see
+		if( $idProject === 0 ) {
+			$idProject	= TodoyuProjectManager::getAvailableProjectForPerson();
+		}
+
+			// Check access rights (if project selected)
+		if( $idProject !== 0 ) {
+			TodoyuProjectRights::restrictSee($idProject);
+		}
 
 
 			// Init page

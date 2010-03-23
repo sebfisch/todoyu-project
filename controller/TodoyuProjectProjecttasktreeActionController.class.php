@@ -48,7 +48,7 @@ class TodoyuProjectProjecttasktreeActionController extends TodoyuActionControlle
 		TodoyuProjectRights::restrictSee($idProject);
 
 			// Save currently active project
-		TodoyuProjectPreferences::saveCurrentProject($idProject);
+		TodoyuProjectPreferences::addOpenProject($idProject);
 
 			// Send some information headers
 		if( $idTask > 0 ) {
@@ -56,7 +56,7 @@ class TodoyuProjectProjecttasktreeActionController extends TodoyuActionControlle
 		}
 
 		$project = TodoyuProjectManager::getProject($idProject);
-		$tabLabel= TodoyuString::crop($project->getCompany()->getShortname() . ': ' . $project->getTitle(), 23, '..', false);
+		$tabLabel= TodoyuString::crop($project->getCompany()->getShortLabel() . ': ' . $project->getTitle(), 23, '..', false);
 
 
 			// Send project id and tab label as header

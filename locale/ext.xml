@@ -28,9 +28,6 @@
 		<label index="status.warranty">In Warranty</label>
 		<label index="status.customer">Customer</label>
 		<label index="status.undefined">Undefined</label>
-		<label index="project.properties">Properties</label>
-		<label index="project.involved_persons">Involved Persons</label>
-		<label index="project.cancel">Cancel Editing</label>
 		<label index="project.save">Save Project</label>
 		<label index="newProject.tabLabel">New Project</label>
 		<label index="projectrole.projectleader">Project Manager</label>
@@ -53,6 +50,7 @@
 		<label index="attr.persons.new">New Project Person</label>
 		<label index="attr.persons.role">Project Role</label>
 		<label index="attr.persons.comment">Comment</label>
+		<label index="properties">Properties</label>
 		<label index="contextmenu.showinproject">Show In Project Area</label>
 		<label index="attr.persons.is_public">Project Member Is Visible For Externals</label>
 		<label index="contextmenu.showinproject">Show In Project Area</label>
@@ -109,9 +107,6 @@
 		<label index="status.warranty">In Garantie</label>
 		<label index="status.customer">Kunde</label>
 		<label index="status.undefined">Undefiniert</label>
-		<label index="project.properties">Eigenschaften</label>
-		<label index="project.involved_persons">Involvierte Personen</label>
-		<label index="project.cancel">Bearbeiten abbrechen</label>
 		<label index="project.save">Projekt speichern</label>
 		<label index="newProject.tabLabel">Neues Projekt</label>
 		<label index="projectrole.projectleader">Projektleiter</label>
@@ -135,6 +130,7 @@
 		<label index="attr.persons.role">Projektrole</label>
 		<label index="attr.persons.comment">Kommentar</label>
 		<label index="attr.persons.is_public">Projektbeteiligter ist für Externe sichtbar</label>
+		<label index="properties">Eigenschaften</label>
 		<label index="contextmenu.showinproject">Zeige in Projekt-Ansicht</label>
 		<label index="contextmenu.showdetails">Details anzeigen</label>
 		<label index="contextmenu.hidedetails">Verstecke Details</label>

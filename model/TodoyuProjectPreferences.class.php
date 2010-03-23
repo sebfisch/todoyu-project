@@ -87,14 +87,6 @@ class TodoyuProjectPreferences {
 
 
 
-	/**
-	 * Get active project ID
-	 *
-	 * @return	Integer
-	 */
-	public static function getActiveProject() {
-		return intval(self::getPref('project'));
-	}
 
 
 
@@ -169,19 +161,6 @@ class TodoyuProjectPreferences {
 		$idTask	= intval($idTask);
 
 		self::savePref('task-tab', $tab, $idTask, true);
-	}
-
-
-
-	/**
-	 * Save currently active project
-	 *
-	 * @param	Integer		$idProject
-	 */
-	public static function saveCurrentProject($idProject) {
-		$idProject	= intval($idProject);
-
-		TodoyuPreferenceManager::savePreference(EXTID_PROJECT, 'project', $idProject, 0, true);
 	}
 
 
@@ -309,6 +288,12 @@ class TodoyuProjectPreferences {
 	}
 
 
+
+	/**
+	 * Remove a project from open list
+	 *
+	 * @param	Integer		$idProject
+	 */
 	public static function removeOpenProject($idProject) {
 		$idProject	= intval($idProject);
 
@@ -324,12 +309,14 @@ class TodoyuProjectPreferences {
 
 
 	/**
-	 * Get visibility status
+	 * Get active project ID
 	 *
-	 * @param	Integer	$idProject
+	 * @return	Integer
 	 */
-	public static function getVisibleStatuses($idProject) {
-		$idProject	= intval($idProject);
+	public static function getActiveProject() {
+		$openProjects	= self::getOpenProjectIDs();
+
+		return intval($openProjects[0]);
 	}
 
 

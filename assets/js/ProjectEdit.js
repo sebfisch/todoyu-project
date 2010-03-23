@@ -113,9 +113,8 @@ Todoyu.Ext.project.Project.Edit = {
 	onSaved: function(response){
 		var idProject	= response.getTodoyuHeader('idProject');
 		var idProjectOld= response.getTodoyuHeader('idProjectOld');
-		var error		= response.hasTodoyuError();
 
-		if( error ) {
+		if( response.hasTodoyuError() ) {
 			this.updateFormDiv(idProjectOld, response.responseText);
 			Todoyu.notifyError('[LLL:project.save.error]');
 		} else {
