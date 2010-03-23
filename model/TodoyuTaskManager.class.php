@@ -1846,9 +1846,10 @@ class TodoyuTaskManager {
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Integer		$idPerson
+	 * @param	Bool		$checkCreator		Creator is an assigned person too
 	 * @return	Bool
 	 */
-	public static function isPersonAssigned($idTask, $idPerson = 0) {
+	public static function isPersonAssigned($idTask, $idPerson = 0, $checkCreator = false) {
 		$idTask		= intval($idTask);
 		$idPerson	= personid($idPerson);
 
@@ -1857,8 +1858,14 @@ class TodoyuTaskManager {
 		$where	= '	id					= ' . $idTask . ' AND
 					(
 						id_person_assigned	= ' . $idPerson . ' OR
-						id_person_owner		= ' . $idPerson . '
-					)';
+						id_person_owner		= ' . $idPerson;
+
+			// Add creator field check
+		if( $checkCreator ) {
+			$where .= ' OR id_person_create = ' . $idPerson;
+		}
+
+		$where .= ')';
 
 		return Todoyu::db()->hasResult($fields, $table, $where);
 	}
