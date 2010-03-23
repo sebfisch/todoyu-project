@@ -121,6 +121,7 @@
 			<elements>
 				<field type="databaseRelation" name="persons">
 					<label>project.attr.persons</label>
+					<addLabel>project.attr.persons.new</addLabel>
 					<record>
 						<form>ext/project/config/form/project-person.xml</form>
 						<url>
