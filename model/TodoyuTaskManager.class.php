@@ -249,6 +249,7 @@ class TodoyuTaskManager {
 	private static function setDefaultValuesForNotAllowedFields(array $data) {
 		$extConf	= TodoyuExtConfManager::getExtConf('project');
 
+			// Set dates to 0
 		if( ! isset($data['date_start']) ) {
 			$data['date_start'] = 0;
 		}
@@ -258,6 +259,12 @@ class TodoyuTaskManager {
 		if( ! isset($data['date_deadline']) ) {
 			$data['date_deadline'] = 0;
 		}
+
+			// Set status to "planning"
+		if( ! isset($data['status']) ) {
+			$data['status']	= STATUS_PLANNING;
+		}
+
 
 			// Get assigned person from default
 		if( ! isset($data['id_person_assigned']) ) {
@@ -517,7 +524,7 @@ class TodoyuTaskManager {
 			}
 
 				// Status
-			if( $task->isTask() && TodoyuTaskRights::isEditAllowed($idTask) ) {
+			if( $task->isTask() && allowed('project', 'task:editStatus') && TodoyuTaskRights::isEditAllowed($idTask) ) {
 				$allowed['status'] = $ownItems['status'];
 
 				$statuses = TodoyuTaskStatusManager::getStatuses('changeto');

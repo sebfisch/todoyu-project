@@ -50,7 +50,7 @@ Todoyu.Ext.project.Task = {
 
 			// Ask to copy subtasks
 		if ( this.hasSubtasks(idTask) ) {
-			withSubtasks = confirm('Auch Unteraufgaben mitkopieren?') ? 1 : 0;
+			withSubtasks = confirm('[LLL:task.copySubtasks]?') ? 1 : 0;
 		}
 
 		var url		= Todoyu.getUrl('project', 'task');
@@ -167,11 +167,11 @@ Todoyu.Ext.project.Task = {
 
 					$('task-' + idTaskNew).remove();
 
-					this.checkAndRemoveTriggerFromTask(idParent);			
+					this.checkAndRemoveTriggerFromTask(idParent);
 				} else {
 					$('task-' + idTaskNew).remove();
 				}
-			}			
+			}
 		}
 
 			// Insert as subtask of the current task
@@ -374,31 +374,31 @@ Todoyu.Ext.project.Task = {
 	hasParentTask: function(idTask){
 		return $('task-'+idTask).up().hasClassName('subtasks');
 	},
-	
-	
+
+
 	getParentTaskID: function(idTask) {
 		var idParent	= false;
-		
+
 		if( Todoyu.exists('task-' + idTask) ) {
 			var subTaskContainer	= $('task-'+idTask).up('.subtasks');
-			
+
 			if( subTaskContainer !== undefined ) {
 				idParent	= subTaskContainer.id.split('-')[1];
-			}			
+			}
 		}
-		
-		return idParent;	
+
+		return idParent;
 	},
-	
-	
+
+
 	isSubtask: function(idTask) {
 		if( Todoyu.exists('task-' + idTask) ) {
 			return $('task-' + idTask).up('.subtasks') !== undefined;
 		}
-		
+
 		return false;
 	},
-	
+
 
 	/**
 	 * Remove expand-trigger from parent of give task if its the only sub task
@@ -408,11 +408,11 @@ Todoyu.Ext.project.Task = {
 	checkAndRemoveTriggerFromParent: function(idTask)	{
 		var idArray = $('task-'+idTask).up().id.split('-');
 		var idParentTask = idArray[1];
-		
+
 		this.checkAndRemoveTriggerFromTask(idParentTask);
 	},
-	
-	
+
+
 	checkAndRemoveTriggerFromTask: function(idTask) {
 			// Is this the only sub task? remove expandability
 		if( $('task-' + idTask + '-subtasks').select('div.task').size() < 1 ) {
@@ -471,7 +471,7 @@ Todoyu.Ext.project.Task = {
 	getStatus: function(idTask) {
 		var htmlID		= 'task-' + idTask + '-header';
 		var statusIndex	= 0;
-		
+
 		if (Todoyu.exists(htmlID)) {
 			var classNames 	= $(htmlID).down('.headLabel').classNames();
 			var statusClass	= classNames.grep(/.*Status(\d)/).first();
@@ -490,11 +490,11 @@ Todoyu.Ext.project.Task = {
 	 */
 	setStatus: function(idTask, status) {
 		var htmlID		= 'task-' + idTask + '-header';
-		
+
 		if( Todoyu.exists(htmlID) ) {
 			var headLabel	= $(htmlID).down('.headLabel');
 			var oldStatus	= this.getStatus(idTask);
-	
+
 			headLabel.replaceClassName('bcStatus' + oldStatus);
 			headLabel.addClassName('bcStatus' + status);
 		}

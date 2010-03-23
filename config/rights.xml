@@ -20,6 +20,7 @@
 		<right name="addInAllProjects" require="task:addInOwnProjects" />
 		<right name="editAndDeleteInOwnProjects" />
 		<right name="editAndDeleteInAllProjects" require="task:editAndDeleteInOwnProjects" />
+		<right name="editStatus" />
 		<right name="editDateStart" />
 		<right name="editDateEnd" />
 		<right name="editDeadline" />
@@ -40,14 +41,14 @@
 		<right name="rejected:see" />
 		<right name="cleared:see" />
 		<right name="customer:see" />
-		<right name="planning:changeto" />
-		<right name="open:changeto" />
-		<right name="progress:changeto" />
-		<right name="confirm:changeto" />
-		<right name="done:changeto" />
-		<right name="accepted:changeto" />
-		<right name="rejected:changeto" />
-		<right name="cleared:changeto" />
+		<right name="planning:changeto" require="task:editStatus" />
+		<right name="open:changeto" require="task:editStatus" />
+		<right name="progress:changeto" require="task:editStatus" />
+		<right name="confirm:changeto" require="task:editStatus" />
+		<right name="done:changeto" require="task:editStatus" />
+		<right name="accepted:changeto" require="task:editStatus" />
+		<right name="rejected:changeto" require="task:editStatus" />
+		<right name="cleared:changeto" require="task:editStatus" />
 		<right name="planning:edit" />
 		<right name="open:edit" />
 		<right name="progress:edit" />

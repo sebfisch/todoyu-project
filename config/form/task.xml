@@ -84,6 +84,9 @@
 						<lazyInit />
 					</source>
 					<noPleaseSelect />
+					<restrict>
+						<allow ext="project" right="task:editStatus" />
+					</restrict>
 				</field>
 
  				<field type="selectgrouped" name="id_person_assigned">
