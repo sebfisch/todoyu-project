@@ -19,7 +19,6 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-
 /**
  * Task Manager
  *
@@ -1640,20 +1639,31 @@ class TodoyuTaskManager {
 		$idTask	= intval($idTask);
 		$task	= self::getTask($idTask);
 
-			// Remove field which are not needed in the container
+			// Remove fields which are not needed in containers
 		if( $task->isContainer() ) {
-			$form->getField('id_worktype')->remove();
-			$form->getField('estimated_workload')->remove();
-			$form->getField('date_start')->remove();
-			$form->getField('date_end')->remove();
-			$form->getField('date_deadline')->remove();
-			$form->getField('id_person_assigned')->remove();
-//			$form->getField('id_person_owner')->remove();
-			$form->getField('status')->remove();
+			$formFields			= $form->getFieldnames();
+				// Ensure the fields to be removed do still exist
+			$fieldsToBeRemoved	= array_intersect($formFields, array(
+					'id_worktype',
+					'estimated_workload',
+					'date_start',
+					'date_end',
+					'date_deadline',
+					'id_person_assigned',
+//					'id_person_owner',
+					'status'
+				)
+			);
+
+			foreach( $fieldsToBeRemoved as $fieldname ) {
+				$form->getField($fieldname)->remove();
+			}
 
 				// Remove
 			if( $idTask === 0 ) {
-				$form->getField('id_parenttask')->remove();
+				if ( in_array('id_parenttask', $formFields) ) {
+					$form->getField('id_parenttask')->remove();
+				}
 				$form->addHiddenField('id_parenttask', 0);
 			}
 		}
