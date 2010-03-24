@@ -202,6 +202,19 @@ class TodoyuProjectViewHelper {
 		return $options;
 	}
 
+
+
+	/**
+	 * Get status options
+	 *
+	 * @param	TodoyuFormElement		$field
+	 * @return	Array
+	 */
+
+	public static function getExtConfStatuses(TodoyuFormElement $field) {
+		return TodoyuTaskStatusManager::getStatusInfos('see');
+	}
+
 }
 
 ?>

@@ -12,7 +12,7 @@
 				<field type="select" name="status">
 					<label>project.extconf.taskDefaults.status</label>
 					<source type="function">
-						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
+						<function>TodoyuProjectViewHelper::getExtConfStatuses</function>
 					</source>
 				</field>
 
