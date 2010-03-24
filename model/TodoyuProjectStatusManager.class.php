@@ -38,7 +38,7 @@ class TodoyuProjectStatusManager {
 	public static function getStatusKey($idStatus) {
 		$idStatus	= intval($idStatus);
 
-		return $GLOBALS['CONFIG']['EXT']['project']['STATUS']['PROJECT'][$idStatus];
+		return Todoyu::$CONFIG['EXT']['project']['STATUS']['PROJECT'][$idStatus];
 	}
 
 
@@ -72,7 +72,7 @@ class TodoyuProjectStatusManager {
 	public static function getStatuses($forceStatus = 0) {
 		$forceStatus= intval($forceStatus);
 
-		$statuses	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['STATUS']['PROJECT']);
+		$statuses	= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['STATUS']['PROJECT']);
 
 		foreach($statuses as $index => $statusKey) {
 				// Only get allowed status which the person can see

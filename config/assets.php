@@ -27,7 +27,7 @@
  */
 
 
-$CONFIG['EXT']['project']['assets'] = array(
+Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 	'js' => array(
 			// Add quicktask wizard headlet
 		array(

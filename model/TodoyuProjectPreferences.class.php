@@ -327,7 +327,7 @@ class TodoyuProjectPreferences {
 	 * @param	String		$tab
 	 */
 	public static function setForcedTaskTab($tab) {
-		$GLOBALS['CONFIG']['EXT']['project']['Task']['forceTab'] = $tab;
+		Todoyu::$CONFIG['EXT']['project']['Task']['forceTab'] = $tab;
 	}
 
 
@@ -338,7 +338,7 @@ class TodoyuProjectPreferences {
 	 * @return	String		Or FALSE
 	 */
 	public static function getForcedTaskTab() {
-		return $GLOBALS['CONFIG']['EXT']['project']['Task']['forceTab'];
+		return Todoyu::$CONFIG['EXT']['project']['Task']['forceTab'];
 	}
 
 }

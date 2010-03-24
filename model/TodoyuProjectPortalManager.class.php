@@ -33,7 +33,7 @@ class TodoyuProjectPortalManager {
 	 * @return	Array
 	 */
 	public static function getTodoTaskIDs() {
-		$conditions	= $GLOBALS['CONFIG']['EXT']['project']['portalTodoTabFilters'];
+		$conditions	= Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters'];
 		$taskFilter	= new TodoyuTaskFilter($conditions);
 		$taskIDs	= $taskFilter->getTaskIDs();
 

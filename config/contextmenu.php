@@ -30,7 +30,7 @@
 	 * Context menu configuration for task
 	 */
 
-$CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
+Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 	'showinproject'	=> array(
 		'key'		=> 'showinproject',
 		'label'		=> 'task.contextmenu.showinproject',
@@ -182,7 +182,7 @@ $CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 	 * Context menu configuration for container
 	 */
 
-$CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
+Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
 	'showinproject'	=> array(
 		'key'		=> 'showinproject',
 		'label'		=> 'task.contextmenu.showinproject',
@@ -293,7 +293,7 @@ $CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
 	 * Context menu configuration for project
 	 */
 
-$CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
+Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 	'showinproject'	=> array(
 		'key'		=> 'showinproject',
 		'label'		=> 'project.contextmenu.showinproject',
@@ -390,7 +390,7 @@ $CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 	 * Context menu configuration task clipboard functions
 	 */
 
-$CONFIG['EXT']['project']['ContextMenu']['TaskClipboard'] = array(
+Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboard'] = array(
 	'paste'	=> array(
 		'key'		=> 'paste',
 		'label'		=> 'task.contextmenu.paste',

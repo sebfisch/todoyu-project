@@ -8,6 +8,13 @@
 		<fieldset name="taskDefaults">
 
 			<elements>
+				
+				<field type="select" name="status">
+					<label>project.extconf.taskDefaults.status</label>
+					<source type="function">
+						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
+					</source>
+				</field>
 
 				<field type="select" name="id_role_assigned">
 					<label>project.extconf.taskDefaults.assignedRoles</label>

@@ -24,7 +24,7 @@
  */
 
 
-$CONFIG['EXT']['project']['info'] = array(
+Todoyu::$CONFIG['EXT']['project']['info'] = array(
 	'title'			=> 'Project and Task Management',
 	'description' 	=> 'Basic Project and Task Management',
 	'author' 		=> array(

@@ -363,7 +363,7 @@ class TodoyuProjectManager {
 		$idProject	= intval($idProject);
 		$isExpanded	= TodoyuProjectPreferences::isProjectDetailsExpanded($idProject);
 
-		$ownItems	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Project']);
+		$ownItems	= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project']);
 		$allowed	= array();
 
 			// Show in project area

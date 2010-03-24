@@ -63,7 +63,7 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 	private function getProjectIDs() {
 		$filters	= self::getFilters();
 		$filter		= new TodoyuProjectFilter($filters);
-		$limit		= intval($GLOBALS['CONFIG']['EXT']['project']['panelWidgetProjectListing']['maxProjects']);
+		$limit		= intval(Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectListing']['maxProjects']);
 
 			// Get matching project IDs
 		$projectIDs	= $filter->getProjectIDs('', $limit);

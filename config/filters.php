@@ -26,7 +26,7 @@
  * @subpackage	Project
  */
 
-$CONFIG['FILTERS']['TASK'] = array(
+Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 	'key'		=> 'task',
 	'right'		=> 'project:task.searchable',
 	'config'	=> array(
@@ -377,7 +377,7 @@ $CONFIG['FILTERS']['TASK'] = array(
 );
 
 
-$CONFIG['FILTERS']['PROJECT'] = array(
+Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 	'key'		=> 'project',
 	'right'		=> 'project:project.searchable',
 	'config' 	=> array(

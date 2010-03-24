@@ -35,7 +35,7 @@ TodoyuContextMenuManager::registerFunction('Project', 'TodoyuProjectManager::get
 
 
 
-$CONFIG['EXT']['project']['STATUS']['PROJECT'] = array(
+Todoyu::$CONFIG['EXT']['project']['STATUS']['PROJECT'] = array(
 	STATUS_PLANNING		=> 'planning',
 	STATUS_PROGRESS		=> 'progress',
 	STATUS_DONE			=> 'done',
@@ -43,7 +43,7 @@ $CONFIG['EXT']['project']['STATUS']['PROJECT'] = array(
 	STATUS_WARRANTY		=> 'warranty'
 );
 
-$CONFIG['EXT']['project']['STATUS']['TASK'] = array(
+Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK'] = array(
 	STATUS_PLANNING		=> 'planning',
 	STATUS_OPEN			=> 'open',
 	STATUS_PROGRESS		=> 'progress',
@@ -56,18 +56,18 @@ $CONFIG['EXT']['project']['STATUS']['TASK'] = array(
 );
 
 
-$CONFIG['EXT']['project']['Task']['defaultEstimatedWorkload'] = 0;
+Todoyu::$CONFIG['EXT']['project']['Task']['defaultEstimatedWorkload'] = 0;
 
 /**
  * Temporary tab force for all tasks
  * Don't set it here!
  */
-$CONFIG['EXT']['project']['Task']['forceTab'] = false;
+Todoyu::$CONFIG['EXT']['project']['Task']['forceTab'] = false;
 
 /**
  * Add filterwidget type "projectrole"
  */
-$CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
+Todoyu::$CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
 	'tmpl'			=> 'ext/project/view/filterwidget-projectrole.tmpl',
 	'configFunc'	=> 'TodoyuProjectFilter::prepareDataForProjectroleWidget'
 );
@@ -83,7 +83,7 @@ TodoyuPortalManager::addTab('todo', 'TodoyuProjectPortalRenderer::getTodoTabLabe
  *
  * @see	ext/project/config/filters.php	(all filter declarations)
  */
-$CONFIG['EXT']['project']['portalTodoTabFilters'] = array(
+Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters'] = array(
 	array(
 		'filter'	=> 'currentPersonAssigned'
 	),
@@ -94,7 +94,7 @@ $CONFIG['EXT']['project']['portalTodoTabFilters'] = array(
 );
 
 	// Max projects in project listig widget
-$CONFIG['EXT']['project']['panelWidgetProjectListing']['maxProjects']	= 30;
+Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectListing']['maxProjects']	= 30;
 
 
 ?>

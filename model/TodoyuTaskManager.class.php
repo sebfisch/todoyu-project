@@ -469,9 +469,9 @@ class TodoyuTaskManager {
 		$type	= '';
 
 		if( $task->isTask() ) {
-			$ownItems	=& $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Task'];
+			$ownItems	=& Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'];
 		} elseif( $task->isContainer() ) {
-			$ownItems	=& $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['Container'];
+			$ownItems	=& Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Container'];
 		}
 
 		if( $task->isTask() || $task->isContainer() ) {
@@ -717,7 +717,7 @@ class TodoyuTaskManager {
 	 */
 	public static function getTabs($idTask, $evalLabel = true) {
 		if( is_null(self::$tabs) ) {
-			$tabs = TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['project']['task']['tabs']);
+			$tabs = TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['task']['tabs']);
 			self::$tabs = TodoyuArray::sortByLabel($tabs);
 		}
 
@@ -742,7 +742,7 @@ class TodoyuTaskManager {
 	 * @return	Array
 	 */
 	public static function getTabConfig($tabKey) {
-		return $GLOBALS['CONFIG']['EXT']['project']['task']['tabs'][$tabKey];
+		return Todoyu::$CONFIG['EXT']['project']['task']['tabs'][$tabKey];
 	}
 
 
@@ -772,7 +772,7 @@ class TodoyuTaskManager {
 	 * @param	Integer		$position
 	 */
 	public static function addTaskTab($idTab, $labelFunction, $contentFunction, $position = 100) {
-		$GLOBALS['CONFIG']['EXT']['project']['task']['tabs'][$idTab] = array(
+		Todoyu::$CONFIG['EXT']['project']['task']['tabs'][$idTab] = array(
 			'id'		=> $idTab,
 			'label'		=> $labelFunction,
 			'position'	=> intval($position),
@@ -1278,7 +1278,7 @@ class TodoyuTaskManager {
 			'title'				=> '',
 			'tasknumber'		=> $taskNumber,
 			'status'			=> STATUS_OPEN,
-			'estimated_workload'=> intval($GLOBALS['CONFIG']['EXT']['project']['Task']['defaultEstimatedWorkload']),
+			'estimated_workload'=> intval(Todoyu::$CONFIG['EXT']['project']['Task']['defaultEstimatedWorkload']),
 			'id_project'		=> $idProject,
 			'id_parenttask'		=> $idParentTask,
 			'id_person_owner'	=> $idPerson,

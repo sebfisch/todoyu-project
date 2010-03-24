@@ -209,7 +209,7 @@ class TodoyuTaskClipboard {
 
 			// Only show context menu in project area and if something is on the clipboard
 		if( self::hasTask() ) {
-			$ownItems	= $GLOBALS['CONFIG']['EXT']['project']['ContextMenu']['TaskClipboard'];
+			$ownItems	= Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboard'];
 
 				// Paste is only available in project view
 			if( AREA === EXTID_PROJECT && TodoyuTaskRights::isAddAllowed($idTask) ) {

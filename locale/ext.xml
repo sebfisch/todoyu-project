@@ -74,6 +74,7 @@
 		<label index="js.quicktask.saved">Quicktask Has Been Saved</label>
 		<label index="ac.person.notFoundInfo">No Matching Person Could Be Found</label>
 		<label index="portal.tab.todos">To Dos</label>
+		<label index="extconf.taskDefaults.status">Default Task Status</label>
 		<label index="extconf.taskDefaults.assignedRoles">Default Role For Task Assigned Person</label>
 		<label index="extconf.taskDefaults.ownerRoles">Default Role For Task Owner</label>
 		<label index="extconf.taskDefaults.worktype">Default Worktype</label>
@@ -152,6 +153,7 @@
 		<label index="js.quicktask.saved">Aufgabe wurde gespeichert</label>
 		<label index="ac.person.notFoundInfo">Es wurde keine Person gefunden deren Name die angegebenen Zeichen enthält.</label>
 		<label index="portal.tab.todos">Meine Aufgaben</label>
+		<label index="extconf.taskDefaults.status">Vorausgewählter Status</label>
 		<label index="extconf.taskDefaults.assignedRoles">Vorausgewählte Rolle der zugewiesenen Person einer Aufgabe</label>
 		<label index="extconf.taskDefaults.ownerRoles">Vorausgewählte Rolle für Aufgaben-Eigner</label>
 		<label index="extconf.taskDefaults.worktype">Vorausgewählter Arbeits-Typ</label>
