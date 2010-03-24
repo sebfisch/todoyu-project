@@ -260,9 +260,18 @@ class TodoyuTaskManager {
 			$data['date_deadline'] = 0;
 		}
 
-			// Set status to "planning"
+			// Set status
 		if( ! isset($data['status']) ) {
-			$data['status']	= STATUS_PLANNING;
+			$extConfStatus	= intval($extConf['status']);
+			$defaultStatus	= intval(Todoyu::$CONFIG['EXT']['project']['taskDefaults']['status']);
+			$data['status']	= $extConfStatus === 0 ? $defaultStatus : $extConfStatus;
+		}
+
+			// Set is_public flag
+		if( ! isset($data['is_public']) ) {
+			if( ! Todoyu::person()->isInternal() ) {
+				$data['is_public']	= 1;
+			}
 		}
 
 
@@ -303,6 +312,9 @@ class TodoyuTaskManager {
 		if( ! isset($data['estimated_workload']) ) {
 			$data['estimated_workload'] = intval($extConf['estimated_workload']);
 		}
+
+
+		TodoyuDebug::printInFirebug($data, 'data');
 
 		return $data;
 	}
@@ -1277,7 +1289,7 @@ class TodoyuTaskManager {
 			'id'				=> 0,
 			'title'				=> '',
 			'tasknumber'		=> $taskNumber,
-			'status'			=> STATUS_OPEN,
+			'status'			=> intval(Todoyu::$CONFIG['EXT']['project']['taskDefaults']['status']),
 			'estimated_workload'=> intval(Todoyu::$CONFIG['EXT']['project']['Task']['defaultEstimatedWorkload']),
 			'id_project'		=> $idProject,
 			'id_parenttask'		=> $idParentTask,

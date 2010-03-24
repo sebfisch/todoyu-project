@@ -315,8 +315,16 @@ class TodoyuProjectPreferences {
 	 */
 	public static function getActiveProject() {
 		$openProjects	= self::getOpenProjectIDs();
+		$idProject		= 0;
 
-		return intval($openProjects[0]);
+		foreach($openProjects as $idOpenProject) {
+			if( TodoyuProjectRights::isSeeAllowed($idOpenProject) ) {
+				$idProject	= $idOpenProject;
+				break;
+			}
+		}
+
+		return $idProject;
 	}
 
 

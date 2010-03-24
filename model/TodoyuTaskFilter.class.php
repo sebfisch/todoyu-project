@@ -60,6 +60,11 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 			$statuses	= implode(',', array_keys(TodoyuTaskStatusManager::getStatuses('see')));
 			$this->addExtraFilter('status', $statuses);
 		}
+
+			// Add public filter for all externals (not internal)
+		if( ! Todoyu::person()->isInternal() ) {
+			$this->addExtraFilter('isPublic', 1);
+		}
 	}
 
 

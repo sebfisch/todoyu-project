@@ -65,6 +65,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 			$idProject	= TodoyuProjectManager::getAvailableProjectForPerson();
 		}
 
+
 			// Check access rights (if project selected)
 		if( $idProject !== 0 ) {
 			TodoyuProjectRights::restrictSee($idProject);
