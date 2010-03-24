@@ -20,15 +20,15 @@
 		<right name="addInAllProjects" require="task:addInOwnProjects" />
 		<right name="editAndDeleteInOwnProjects" />
 		<right name="editAndDeleteInAllProjects" require="task:editAndDeleteInOwnProjects" />
-		<right name="editStatus" />
-		<right name="editDateStart" />
-		<right name="editDateEnd" />
-		<right name="editDeadline" />
-		<right name="editPersonAssigned" />
-		<right name="editPersonOwner" />
-		<right name="editWorktype" />
-		<right name="editEstimatedWorkload" />
-		<right name="editIsPublic" />
+		<right name="editStatus" require="task:editAndDeleteInOwnProjects" />
+		<right name="editDateStart" require="task:editAndDeleteInOwnProjects" />
+		<right name="editDateEnd" require="task:editAndDeleteInOwnProjects" />
+		<right name="editDeadline" require="task:editAndDeleteInOwnProjects" />
+		<right name="editPersonAssigned" require="task:editAndDeleteInOwnProjects" />
+		<right name="editPersonOwner" require="task:editAndDeleteInOwnProjects" />
+		<right name="editWorktype" require="task:editAndDeleteInOwnProjects" />
+		<right name="editEstimatedWorkload" require="task:editAndDeleteInOwnProjects" />
+		<right name="editIsPublic" require="task:editAndDeleteInOwnProjects" />
 	</section>
 
 	<section name="taskstatus" require="general:use">
@@ -60,7 +60,7 @@
 		<right name="customer:edit" />
 	</section>
 
-	<section name="projectstatus" require="general:use">
+	<section name="projectstatus" require="project:seeOwn">
 		<right name="planning:see" />
 		<right name="progress:see" />
 		<right name="done:see" />
