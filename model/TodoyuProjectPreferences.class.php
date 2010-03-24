@@ -254,15 +254,16 @@ class TodoyuProjectPreferences {
 	 * @return	Array		IDs of the projects which are displayed as tabs
 	 */
 	public static function getOpenProjectIDs() {
-		$list	= TodoyuPreferenceManager::getPreference(EXTID_PROJECT, 'projecttabs');
+		$list		= self::getPref('projecttabs');
+		$projectIDs	= TodoyuArray::intExplode(',', $list, true, true);
 
-		if( $list === false || $list === '' ) {
-			$tabs = array();
-		} else {
-			$tabs = TodoyuArray::intExplode(',', $list);
+		foreach($projectIDs as $index => $idProject) {
+			if( ! TodoyuProjectRights::isSeeAllowed($idProject) ) {
+				unset($projectIDs[$index]);
+			}
 		}
 
-		return $tabs;
+		return $projectIDs;
 	}
 
 

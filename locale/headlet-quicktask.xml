@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="button.title">Create Quicktask</label>
+		<label index="label">Create Quicktask</label>
 	</labels>
 	<labels lang="de">
-		<label index="button.title">Schnellaufgabe erfassen</label>
+		<label index="label">Schnellaufgabe erfassen</label>
 	</labels>
 </locallang>

@@ -45,7 +45,7 @@ class TodoyuHeadletQuickTask extends TodoyuHeadletTypeButton {
 	 * @return	String
 	 */
 	public function getLabel() {
-		return 'Task erstellen';
+		return Label('headlet-quicktask.label');
 	}
 
 }

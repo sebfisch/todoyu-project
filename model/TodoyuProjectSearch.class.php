@@ -87,7 +87,7 @@ class TodoyuProjectSearch implements TodoyuSearchEngineIf {
 
 				// Assemble project suggestions array
 			foreach($projects as $project) {
-				if ( TodoyuProjectRights::isSeeAllowed($project['id']) ) {
+				if( TodoyuProjectRights::isSeeAllowed($project['id']) ) {
 					$suggestions[] = array(
 						'labelTitle'=> $project['id'] . ': ' . htmlentities($project['title'], null, 'utf-8'),
 						'labelInfo'	=> $project['company'] . ' | ' . $status[$project['status']],

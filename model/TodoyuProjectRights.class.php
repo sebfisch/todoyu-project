@@ -47,6 +47,13 @@ class TodoyuProjectRights {
 	 */
 	public static function isSeeAllowed($idProject) {
 		$idProject	= intval($idProject);
+		$project	= TodoyuProjectManager::getProject($idProject);
+		$status		= $project->getStatus();
+
+			// Check if project has allowed status
+		if( ! self::isStatusAllowed($status) ) {
+			return false;
+		}
 
 			// See all projects
 		if( allowed('project', 'project:seeAll') ) {
@@ -81,6 +88,22 @@ class TodoyuProjectRights {
 	 */
 	public static function isAddAllowed() {
 		return allowed('project', 'project:add');
+	}
+
+
+
+
+	/**
+	 * Check if a project status is allowed
+	 *
+	 * @param	Integer		$status
+	 * @return	Bool
+	 */
+	public static function isStatusAllowed($status) {
+		$allowedStatuses	= array_keys(TodoyuProjectStatusManager::getStatuses());
+
+			// Check if project has allowed status
+		return in_array($status, $allowedStatuses);
 	}
 
 
