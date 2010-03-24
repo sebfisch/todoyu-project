@@ -1,83 +1,9 @@
 /* --------------
 	Header
    -------------- */
-#projects {
-
+#projects h1.headerLine {
+	cursor: pointer;
 }
-
-/*
-.project h1 {
-	border-left-width:8px;
-	border-left-style:solid;
-	padding-left:10px;
-}
-*/
-
-#search-results h1 .toggler,
-.project h1 .toggler {
-	display:block;
-	float:left;
-	clear:none;
-	width:15px;
-	height:20px;
-	background:url('../../../../core/assets/img/tree-icons.png') no-repeat 0px -81px;
-}
-
-#search-results h1 a.expanded,
-.project h1 a.expanded {
-	background-position:0 -51px !important;
-}
-
-#search-results h1 a.titlelabel,
-.project h1 a.titlelabel {
-	display:block;
-	float:left;
-	clear:none;
-	width:550px;
-	margin-top:-5px;
-	padding:5px;
-}
-
-#search-results h1 span.first,
-.project h1 span.first {
-	padding-left:10px;
-}
-
-.project h1 span.additionalStuff {
-	position:absolute;
-	top:7px;
-	right:0;
-	margin-right:0;
-	padding-top:2px;
-}
-
-.project h1 span.additionalStuff a {
-	display:block;
-	float:left;
-	margin-right:10px;
-	height:16px;
-	width:16px;
-	background-image:url(../img/icons.png);
-	background-repeat:no-repeat;
-}
-
-.project h1 span.additionalStuff a.editProject {
-	background-position:0 -30px;
-}
-
-.project h1 span.additionalStuff a.addProject {
-	background-position:0 -390px;
-}
-
-.project h1 span.additionalStuff a.addTask {
-	background-position:0 -60px;
-}
-
-.project h1 span.additionalStuff a.addContainer {
-	background-position:0 -150px;
-}
-
-
 
 /* ----------------
 	Tasktree

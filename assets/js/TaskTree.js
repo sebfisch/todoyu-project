@@ -150,15 +150,20 @@ Todoyu.Ext.project.TaskTree = {
 	getProjectID: function() {
 		return this.ext.ProjectTaskTree.getActiveProjectID();
 	},
-	
-	
+
+
 
 	/**
 	 * Toggle display of sub tasks and save resulting display state of given given task inside the task tree(, load sub tasks if toggled to be shown and not loaded yet)
 	 *
+	 * @param Event		event
 	 * @param Integer	idTask
 	 */
-	toggleSubtasks: function(idTask) {
+	toggleSubtasks: function(event, idTask) {
+		if( event ) {
+			Todoyu.Ui.stopEventBubbling(event);
+		}
+
 			// Load subtasks if they are not already loaded
 		if( ! this.areSubtasksLoaded(idTask) ) {
 			this.loadSubtasks(idTask, this.onSubtasksToggled.bind(this));
@@ -192,7 +197,7 @@ Todoyu.Ext.project.TaskTree = {
 	 */
 	expandSubtasks: function(idTask) {
 		if( ! this.areSubtasksVisible(idTask) ) {
-			this.toggleSubtasks(idTask);
+			this.toggleSubtasks(false, idTask);
 		}
 	},
 

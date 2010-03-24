@@ -1,13 +1,13 @@
 <div id="task-{$task.id}" class="task {$task.class} {if $isExpanded}expanded{/if}" >
-	<h3 id="task-{$task.id}-header" class="contextmenutask" name="task-{$task.id}">
-		<a id="task-{$task.id}-subtasks-trigger" onclick="Todoyu.Ext.project.TaskTree.toggleSubtasks({$task.id})" href="javascript:void(0)" class="{if $hasSubtasks}expandable{/if} {if $areSubtasksVisible}expanded{/if}"></a>
+	<h3 id="task-{$task.id}-header" class="contextmenutask" name="task-{$task.id}" onclick="Todoyu.Ext.project.Task.toggleDetails({$task.id})">
+		<a id="task-{$task.id}-subtasks-trigger" onclick="Todoyu.Ext.project.TaskTree.toggleSubtasks(event, {$task.id})" href="javascript:void(0)" class="{if $hasSubtasks}expandable{/if} {if $areSubtasksVisible}expanded{/if}"></a>
 
 		<div class="headLabel bcStatus{$task.status}" title="{$task.fulltitle}">
 			<div class="taskDate date" title="{Label core.deadline}: {dateFormat $task.date_deadline D2M2Y2} / {Label core.start}: {dateFormat $task.date_start D2M2Y2}">
 				{dateFormat $task.date_deadline D2M2Y2}
 			</div>
 			<div class="projectName" title="{Label task.task}: {htmlencode $task.title}  (ID: {$task.id})">
-				<a href="javascript:void(0)" onclick="Todoyu.Ext.project.Task.toggleDetails({$task.id})" class="title">{htmlencode(truncate($task.title 70 break=true))}</a>
+				{htmlencode(truncate($task.title 70 break=true))}
 			</div>
 		</div>
 
