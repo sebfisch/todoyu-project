@@ -471,11 +471,13 @@ class TodoyuProjectManager {
 		$tabs	= array();
 
 		foreach($projects as $project) {
-			$companyLabel	= trim($project['companyShort']) === '' ? TodoyuString::crop($project['companyFull'], 8, '..', false) : $project['companyShort'];
-			$tabs[] = array(
-				'id'		=> $project['id'],
-				'label'		=> TodoyuString::crop($companyLabel. ': ' . $project['title'], 23, '..', false)
-			);
+			if ( TodoyuProjectRights::isSeeAllowed($project['id']) ) {
+				$companyLabel	= trim($project['companyShort']) === '' ? TodoyuString::crop($project['companyFull'], 8, '..', false) : $project['companyShort'];
+				$tabs[] = array(
+					'id'		=> $project['id'],
+					'label'		=> TodoyuString::crop($companyLabel. ': ' . $project['title'], 23, '..', false)
+				);
+			}
 		}
 
 		return $tabs;

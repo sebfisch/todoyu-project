@@ -58,7 +58,7 @@ class TodoyuProjectRenderer {
 
 
 	/**
-	 * Render project tabs
+	 * Render sub tabs of (recently viewed) projects in projects area
 	 *
 	 * @return	String
 	 */
