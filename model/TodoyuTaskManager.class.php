@@ -1134,7 +1134,7 @@ class TodoyuTaskManager {
 				'id'		=> 'task-' . $idTask . '-notacknowledged',
 				'class'		=> 'notAcknowledged',
 				'label'		=> 'LLL:task.attr.notAcknowledged',
-				'onclick'	=> 'Todoyu.Ext.project.Task.setAcknowledged(' . $idTask . ')',
+				'onclick'	=> 'Todoyu.Ext.project.Task.setAcknowledged(event, ' . $idTask . ')',
 				'position'	=> 100
 			);
 		}
