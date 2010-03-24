@@ -29,6 +29,12 @@ if(  allowed('project', 'general:area') ) {
 	foreach($projectEntries as $idProject => $title) {
 		TodoyuFrontend::addSubmenuEntry('project', 'project' . $idProject, $title, '?ext=project&project=' . $idProject, $entryNum++);
 	}
+
+
+		// Register quicktask headlet
+	if( allowed('project', 'task:addViaQuickCreateHeadlet') ) {
+		TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickTask', 55);
+	}
 }
 
 ?>

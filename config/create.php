@@ -19,11 +19,6 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-	// Register quicktask headlet
-if ( allowed('project', 'task:addViaQuickCreateHeadlet') ) {
-	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickTask', 55);
-}
-
 	// Add create for task
 if( allowed('project', 'task:addInOwnProjects') ) {
 	TodoyuQuickCreateManager::addEngine('project', 'task', 'task.create.label', 20, array('portal'));
