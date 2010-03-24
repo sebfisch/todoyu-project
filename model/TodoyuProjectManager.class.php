@@ -723,6 +723,7 @@ class TodoyuProjectManager {
 	}
 
 
+
 	/**
 	 * Get project person label (name + projectrole)
 	 *
