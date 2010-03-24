@@ -27,6 +27,9 @@
 							<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onProjectAutocomplete</onCompleteCustom>
 						</options>
 					</config>
+					<restrict>
+						<allow ext="project" right="task:addInAllProjects" />
+					</restrict>
 					<required />
 				</field>
 
@@ -41,16 +44,17 @@
 
 				<field type="select" name="id_worktype">
 					<label>task.attr.worktype</label>
-					<source type="sql">
-						<fields>id,title</fields>
-						<tables>ext_project_worktype</tables>
-						<where>deleted = 0</where>
-						<order>title</order>
-						<label>title</label>
-						<value>id</value>
+					<source type="function">
+						<function>TodoyuTaskViewHelper::getTaskWorktypeOptions</function>
+						<lazyInit />
 					</source>
-					<noPleaseSelect />
-					<required />
+					<validate>
+						<isNotZero msg="LLL:task.attr.id_worktype.error"/>
+					</validate>
+					<restrict>
+						<allow ext="project" right="task:editWorktype" />
+					</restrict>
+					<required/>
 				</field>
 
 				<field type="checkbox" name="task_done">

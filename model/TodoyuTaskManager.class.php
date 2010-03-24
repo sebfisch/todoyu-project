@@ -64,17 +64,27 @@ class TodoyuTaskManager {
 		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
 
 			// Adjust for quick create
-		$form->getFieldset('right')->getField('id_parenttask')->remove();
+		$form->removeField('id_parenttask', true);
 		$form->removeHiddenField('id_project');
 
-		$insertForm	= TodoyuFormManager::getForm('ext/project/config/form/field-id_project.xml');
-		$field		= $insertForm->getField('id_project');
+			// Load form with extra field data
+		$xmlPathInsert	= 'ext/project/config/form/field-id_project.xml';
+		$insertForm		= TodoyuFormManager::getForm($xmlPathInsert);
+
+			// If person can add tasks in all project, show autocomplete field, else only a select element
+		if( allowed('project', 'task:addInAllProjects') ) {
+			$field	= $insertForm->getField('id_project_ac');
+		} else {
+			$field	= $insertForm->getField('id_project_select');
+		}
+
+			// Add field to form
 		$form->getFieldset('left')->addField('id_project', $field, 'after:title');
 
+			// Change form action and button functions
 		$form->setAttribute('action', '?ext=project&amp;controller=quickcreatetask');
-		$form->setAttribute('onsubmit', 'return false');
-		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateTask.save(this.form)');
-		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
+		$form->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateTask.save(this.form)');
+		$form->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
 
 		return $form;
 	}

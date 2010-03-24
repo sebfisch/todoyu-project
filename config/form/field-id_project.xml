@@ -5,7 +5,8 @@
 		<fieldset name="main">
 			<legend>Select project</legend>
 			<elements>
-				<field type="textinputAC" name="id_project">
+				
+				<field type="textinputAC" name="id_project_ac">
 					<label>project.project</label>
 					<config>
 						<acListener>
@@ -20,6 +21,16 @@
 					</config>
 					<required />
 				</field>
+				
+				<field type="select" name="id_project_select">
+					<label>project.project</label>
+					<source type="function">
+						<function>TodoyuProjectViewHelper::getAvailableProjectOptions</function>
+					</source>
+					<noPleaseSelect />
+					<required />
+				</field>
+				
 			</elements>
 		</fieldset>
 	</fieldsets>
