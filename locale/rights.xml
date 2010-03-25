@@ -126,7 +126,7 @@
 		<label index="taskstatus.rejected:edit">Bearbeiten: Zurückgewiesen</label>
 		<label index="taskstatus.cleared:edit">Bearbeiten: Verrechnet</label>
 		<label index="taskstatus.customer:edit">Bearbeiten: Kundenanfrage</label>
-		<label index="projectstatus">Project Status</label>
+		<label index="projectstatus">Projekt Status</label>
 		<label index="projectstatus.planning:see">Sehen: In Planung</label>
 		<label index="projectstatus.progress:see">Sehen: In Bearbeitung</label>
 		<label index="projectstatus.done:see">Sehen: Erledigt</label>
@@ -138,10 +138,10 @@
 		<label index="panelwidgets.quickProject">Steuerelement Kurz-Projekt</label>
 		<label index="panelwidgets">Steuerelemente</label>
 		<label index="panelwidgets.statusFilter:use">Statusfilter-Elemente</label>
-		<label index="panelwidgets.projectStatusFilter">Projectstatusfilter-Element</label>
-		<label index="panelwidgets.taskStatusFilter">Taskstatusfilter-Element</label>
+		<label index="panelwidgets.projectStatusFilter">Projektstatusfilter-Element</label>
+		<label index="panelwidgets.taskStatusFilter">Aufgabenstatusfilter-Element</label>
 		<label index="panelwidgets.projectTree:use">Projektbaum-Element</label>
-		<label index="panelwidgets.projectList">Projectlisten-Element</label>
-		<label index="panelwidgets.quickProject:use">Schnell-Project Element</label>
+		<label index="panelwidgets.projectList">Projektlisten-Element</label>
+		<label index="panelwidgets.quickProject:use">Schnell-Projekt Element</label>
 	</labels>
 </locallang>

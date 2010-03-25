@@ -24,8 +24,6 @@
 		<label index="task.startdateDyn">Startdate (Dynamic)</label>
 		<label index="task.enddate">Enddate</label>
 		<label index="task.enddateDyn">Enddate (Dynamic)</label>
-		<label index="task.finishdate">Finishdate</label>
-		<label index="task.finishdateDyn">Finish Date (Dynamic)</label>
 		<label index="task.editdate">Last Edited</label>
 		<label index="task.editdateDyn">Last Edited (Dynamic)</label>
 		<label index="task.createdate">Created</label>
@@ -68,8 +66,6 @@
 		<label index="task.startdateDyn">Start-Datum (dynamisch)</label>
 		<label index="task.enddate">End-Datum</label>
 		<label index="task.enddateDyn">End-Datum (dynamisch)</label>
-		<label index="task.finishdate">Abschlussdatum</label>
-		<label index="task.finishdateDyn">Abschlussdatum (dynamisch)</label>
 		<label index="task.editdate">Zuletzt bearbeitet</label>
 		<label index="task.editdateDyn">Zuletzt bearbeitet (dynamisch)</label>
 		<label index="task.createdate">Erstellt</label>

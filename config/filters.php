@@ -263,24 +263,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getDynamicDateinput'
 			)
 		),
-		'finishdate'	=> array(
-			'funcRef'	=> 'TodoyuTaskFilter::Filter_finishdate',
-			'label'		=> 'LLL:projectFilter.task.finishdate',
-			'optgroup'	=> 'LLL:projectFilter.task.timemanagement.label',
-			'widget'	=> 'dateinput',
-			'wConf'		=> array(
-				'negation'	=> 'datetime'
-			)
-		),
-		'finishdateDyn'	=> array(
-			'funcRef'	=> 'TodoyuTaskFilter::Filter_finishdateDyn',
-			'label'		=> 'LLL:projectFilter.task.finishdateDyn',
-			'optgroup'	=> 'LLL:projectFilter.task.timemanagement.label',
-			'widget'	=> 'select',
-			'wConf'		=> array(
-				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getDynamicDateinput'
-			)
-		),
 		'editdate' => array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_editdate',
 			'label'		=> 'LLL:projectFilter.task.editdate',

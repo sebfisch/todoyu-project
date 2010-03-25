@@ -90,7 +90,7 @@
 		<label index="attr.person_assigned.error">This Field Is Required</label>
 		<label index="attr.id_worktype.error">This Field is Required</label>
 		<label index="save.error">Saving Was Not Successfull</label>
-		<label index="save.success">Saving Successfull</label>
+		<label index="save.success">Saving Was Successfull</label>
 		<label index="pasteNotAllowed">You can't paste the task on this position!</label>
 		<label index="ac.parenttask.notFoundInfo">No task containing this text or tasknumber found.</label>
 		<label index="ac.project.notFoundInfo">No project containing this text in the title was found.</label>
@@ -190,7 +190,7 @@
 		<label index="save.success">Speichern war erfolgreich</label>
 		<label index="pasteNotAllowed">Sie können den Task nicht an dieser Stelle einfügen!</label>
 		<label index="ac.parenttask.notFoundInfo">Es wurde kein Task gefunden der diesen Text oder diese Tasknummer enthält.</label>
-		<label index="ac.project.notFoundInfo">Es wurde kein Project mit diesen Text im Titel gefunden.</label>
+		<label index="ac.project.notFoundInfo">Es wurde kein Projekt mit diesen Text im Titel gefunden.</label>
 		<label index="copySubtasks">Auch Unteraufgaben mitkopieren?</label>
 	</labels>
 </locallang>

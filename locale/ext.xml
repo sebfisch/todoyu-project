@@ -67,7 +67,7 @@
 		<label index="form.validation.title">Please Enter A Project Title</label>
 		<label index="noLabel.newProjectParticipant">New Project Participant</label>
 		<label index="save.error">Saving Was Not Successful</label>
-		<label index="save.success">Saving Successful</label>
+		<label index="save.success">Saving Was Successful</label>
 		<label index="ac.company.notFoundInfo">No matching customer found! You can only select companies you have added in the contact module.</label>
 		<label index="js.removeProject">Do you want to delete the whole project and all of it's tasks?</label>
 		<label index="js.quicktask.saved">Quicktask Has Been Saved</label>
@@ -87,7 +87,7 @@
 		<label index="projects">Projekte</label>
 		<label index="page.title.noSelected">Projekte - Wählen Sie ein Projekt</label>
 		<label index="noproject.message">Sie haben kein Projekt ausgewählt</label>
-		<label index="noproject.option.select">Wählen Sie aus dem Projektbaum</label>
+		<label index="noproject.option.select">Wählen Sie ein Projekt aus dem Projektbaum</label>
 		<label index="noproject.option.create">Ein neues Projekt erfassen</label>
 		<label index="noproject.tab">Kein Projekt ausgewählt</label>
 		<label index="newproject.tab">Ein neues Projekt erfassen</label>
