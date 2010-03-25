@@ -101,20 +101,6 @@ class TodoyuProjectSearch implements TodoyuSearchEngineIf {
 		return $suggestions;
 	}
 
-
-
-	/**
-	 * Get results
-	 *
-	 * @param	Array	$find
-	 * @param	Array	$ignore
-	 * @param	Integer	$limit
-	 */
-	public static function getResults(array $find, array $ignore = array(), $limit = 20) {
-
-	}
-
-
 }
 
 ?>

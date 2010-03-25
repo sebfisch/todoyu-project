@@ -116,19 +116,6 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 
 
 	/**
-	 * Get task search results
-	 *
-	 * @param	Array	$find
-	 * @param	Array	$ignore
-	 * @param	String	$limit
-	 */
-	public static function getResults(array $find, array $ignore = array(), $limit = 20) {
-
-	}
-
-
-
-	/**
 	 * Search task by title, description, project and tasknumber
 	 *
 	 * if there is a . in the sword explode it and search by id_project (1st param of explode) and tasknumber (2nd param of explode)
