@@ -307,7 +307,12 @@ class TodoyuProjectRenderer {
 		$form->setFormData($data);
 		$form->setRecordID($idProject);
 
-		return $form->render();
+		$tmpl	= 'ext/project/view/project-edit.tmpl';
+		$data	= array(
+			'formhtml'	=> $form->render()
+		);
+
+		return render($tmpl, $data);
 	}
 
 
