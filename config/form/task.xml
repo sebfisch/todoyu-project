@@ -28,7 +28,7 @@
 					<label>core.description</label>
 					<tinymce>
 						<theme>simple</theme>
-						<width>350px</width>
+						<width>330px</width>
 						<height>200px</height>
 					</tinymce>
 					<required />

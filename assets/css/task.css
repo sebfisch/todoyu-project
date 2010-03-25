@@ -191,7 +191,7 @@
 		/* Description */
 	.tasks .task .details .left {
 		float:left;
-		width:335px;
+		width:330px;
 		padding:0 10px 0 24px;
 	}
 
@@ -224,12 +224,12 @@
 	}
 
 	.tasks .task .details fieldset.right div.typeCheckbox .fLabel {
-		width:92%;
+		width:90%;
 	}
 
 	.tasks .task .details fieldset.right div.typeCheckbox .fField {
 		width:2%;
-		margin-left:5px;
+		margin-left:0;
 	}
 
 	.tasks .task .details .properties dt {

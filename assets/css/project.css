@@ -23,6 +23,18 @@
 }
 
 	/* edit */
+.project .edit {
+	padding: 5px 0;
+}
+
+.project .edit .fLabel {
+	width: 25%;
+}
+
+.project .edit .fField {
+	width: 70%;
+}
+
 .project .edit .formLabel {
 	width:150px;
 	text-align:left;
@@ -35,12 +47,12 @@
 .project .edit fieldset.basic {
 	float:left;
 	padding: 0 10px 0 24px;
-	width:355px;
+	width:330px;
 }
 
 .project .edit fieldset.data {
 	float:right;
-	width:225px;
+	width:43%;
 }
 
 .project .edit fieldset.basic .formField {
@@ -60,7 +72,9 @@
 	width:150px;
 }
 
-
+.projects .fieldnameIspublic {
+	width: 70%;
+}
 
 /* --------------
 	Project
@@ -124,6 +138,17 @@
 		list-style-type:square;
 	}
 
+	/* project persons */
+	
+	.project .fieldnameIspublic {
+		width: 70%;
+	}
+	.project .fieldnameIspublic .fField {
+		width: 2%;
+	}
+	.project .fieldnameIspublic .fLabel {
+		width: 94.5% !important;
+	}
 
 /*
  * Project search modifications
