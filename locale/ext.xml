@@ -7,8 +7,8 @@
 		<label index="project">Project</label>
 		<label index="projects">Projects</label>
 		<label index="page.title.noSelected">Projects - Select Your Project</label>
-		<label index="noproject.message">You Have Not Selected Any Project</label>
-		<label index="noproject.option.select">Select One From The Project Tree</label>
+		<label index="noproject.message">You have not selected any project yet</label>
+		<label index="noproject.option.select">Select one from the project tree</label>
 		<label index="noproject.option.create">Create A New Project</label>
 		<label index="noproject.tab">No Project Selected</label>
 		<label index="newproject.tab">Create A New Project</label>
@@ -42,8 +42,8 @@
 		<label index="attr.id">Project ID</label>
 		<label index="attr.title">Project Title</label>
 		<label index="attr.status">Project Status</label>
-		<label index="attr.date_start">Startdate</label>
-		<label index="attr.date_end">End Date</label>
+		<label index="attr.date_start">Start Date</label>
+		<label index="attr.date_end">End Date (internal)</label>
 		<label index="attr.date_finish">Finish Date</label>
 		<label index="attr.date_deadline">Deadline</label>
 		<label index="attr.persons">Assigned Persons</label>
@@ -123,8 +123,8 @@
 		<label index="attr.title">Projekt Titel</label>
 		<label index="attr.status">Projekt Status</label>
 		<label index="attr.date_start">Startdatum</label>
-		<label index="attr.date_end">Enddatum</label>
-		<label index="attr.date_finish">Abgeschlossen Datum</label>
+		<label index="attr.date_end">Internes Enddatum</label>
+		<label index="attr.date_finish">Deadline</label>
 		<label index="attr.date_deadline">Fertigstellungsfrist</label>
 		<label index="attr.persons">Beteiligte Personen</label>
 		<label index="attr.persons.new">Neue Person</label>
