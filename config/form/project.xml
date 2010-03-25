@@ -16,7 +16,7 @@
 
 				<fieldset name="basic">
 					<legend>Main project data</legend>
-					<class>basic</class>
+					<class>basic noneFloatingInput</class>
 					<elements>
 
 						<field type="textinput" name="title">
@@ -31,7 +31,7 @@
 							<label>core.description</label>
 							<tinymce>
 								<theme>simple</theme>
-								<width>330px</width>
+								<width>350px</width>
 								<height>200px</height>
 							</tinymce>
 							<required/>

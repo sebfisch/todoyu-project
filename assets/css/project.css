@@ -34,11 +34,13 @@
 
 .project .edit fieldset.basic {
 	float:left;
-	width:450px;
+	padding: 0 10px 0 24px;
+	width:355px;
 }
 
-.project .edit fieldset.basic .formLabel {
-	width:80px;
+.project .edit fieldset.data {
+	float:right;
+	width:225px;
 }
 
 .project .edit fieldset.basic .formField {
@@ -88,7 +90,6 @@
 
 	.project .properties dd {
 		float:left;
-		padding-right:3px;
 		width:190px;
 	}
 

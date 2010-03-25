@@ -82,7 +82,6 @@ div.projectDetails fieldset.right {
 	margin-bottom:25px;
 }
 
-
 /* --------------------------------------
 	Project tree tabs
    ------------------------------------- */ 
@@ -100,4 +99,3 @@ div.projectDetails fieldset.right {
 #search-tab-project span.icon {
 	background:url(../img/icons.png) no-repeat 0 -350px;
 }
-

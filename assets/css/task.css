@@ -49,8 +49,7 @@
 }
 
 .task h3 .headLabel {
-	display:block;
-	float:left;
+	display:inline-block;
 	height:auto !important;
 	height:1px;
 	margin:-4px 0 -4px 0;
@@ -60,7 +59,7 @@
 	min-height: 14px;
 }
 
-.task h3 .headLabel div {
+.task h3 .headLabel span {
 	display:inline-block;
 }
 
@@ -68,14 +67,27 @@
 	width:45px;
 }
 
+.task h3 .headLabel .projectName {
+	margin-left: 5px;
+}
+
+/* begin of styles only for container element */
 .task.container h3 .headLabel .taskDate {
 	display:none;
 }
+.task.container h3 .headLabel .projectName {
+	margin-left: 50px;
+}
 
-.task h3 div.taskHeadExtras {
+.task.container .details {
+	border-bottom: 1px dotted #AAAAAA;
+}
+/* end of styles only for container element */
+
+.task h3 span.taskHeadExtras {
 	display:inline-block;
 	position: absolute;
-	right: 135px;
+	right: 145px;
 	width:100px;
 	top:2px;
 	text-align:right;
@@ -84,16 +96,16 @@
 	padding:3px;
 }
 
-.task h3 div.taskHeadExtras div {
+.task h3 span.taskHeadExtras span {
 	float:right;
 	cursor:default;
 }
 
-.task h3 div.taskNumber {
+.task h3 span.taskNumber {
 	display:inline-block;
 	position: absolute;
 	top:5px;
-	right:85px;
+	right:93px;
 	width:45px;
 }
 
@@ -169,6 +181,7 @@
 
 .task.container .details {
 	border-color:#000 !important;
+	border-bottom-color: #AAAAAA !important;
 }
 
 	.tasks .task .details .data {
