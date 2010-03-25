@@ -1,29 +1,26 @@
 <div id="task-{$task.id}" class="task status{ucfirst $task.statuskey} {$task.class}">
 	<h3 id="task-{$task.id}-header" class="contextmenutask" name="task-{$task.id}" onclick="Todoyu.Ext.project.Task.toggleDetails({$task.id})">
 
-		<div class="headLabel bcStatus{$task.status}" title="{$task.fulltitle}">
-			<div class="taskDate date" title="{Label core.deadline}: {dateFormat $task.date_deadline "D2M2Y2"} / {Label core.start}: {dateFormat $task.date_start "D2M2Y2"}">
+		<span class="headLabel bcStatus{$task.status}" title="{$task.fulltitle}">
+			<span class="taskDate date" title="{Label core.deadline}: {dateFormat $task.date_deadline "D2M2Y2"} / {Label core.start}: {dateFormat $task.date_start "D2M2Y2"}">
 				{dateFormat $task.date_deadline D2M2Y2}&nbsp;
-			</div>
-			<div class="customer">
+			</span>
+			<span class="customer">
 				{if $task.company.shortname}{$task.company.shortname}{else}{$task.company.title}{/if}&nbsp;
-			</div>
-			<div class="projectName" title="{Label project.project}: {$task.project.title} (ID: {$task.project.id}) / {Label task.task}: {$task.title}">
+			</span>
+			<span class="projectName" title="{Label project.project}: {$task.project.title} (ID: {$task.project.id}) / {Label task.task}: {$task.title}">
 				{htmlencode $task.project.title|truncate:45} - {htmlencode $task.title|truncate:45}
-			</div>
-		</div>
+			</span>
+		</span>
 
-		<div class="taskNumber" title="{Label portal.tasktree.header.tasknumber}: {$task.id_project}.{$task.tasknumber}">
+		<span class="taskNumber" title="{Label portal.tasktree.header.tasknumber}: {$task.id_project}.{$task.tasknumber}">
 			{$task.id_project}.{$task.tasknumber}
-		</div>
-
-		<div class="taskIcons">
+		</span>
+		<span class="taskIcons">
 			{foreach $taskIcons taskIcon}
 				<span id="{$taskIcon.id}" class="{$taskIcon.class}" title="{Label $taskIcon.label true}" {if $taskIcon.onclick}onclick="{$taskIcon.onclick}"{/if}></span>
 			{/foreach}
-		</div>
-
-		<div class="clear"><!-- --></div>
+		</span>
 	</h3>
 	{$details}
 </div>

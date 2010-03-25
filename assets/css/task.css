@@ -53,8 +53,8 @@
 	float:left;
 	height:auto !important;
 	height:1px;
-	margin:-4px 0 -3px 0;
-	padding:4px 0 3px 17px;
+	margin:-4px 0 -4px 0;
+	padding:4px 0 4px 17px;
 	border-left-width:8px;
 	border-left-style:solid;
 	min-height: 14px;
@@ -66,15 +66,10 @@
 
 .task h3 .headLabel .taskDate {
 	width:45px;
-	margin-right:3px;
 }
 
 .task.container h3 .headLabel .taskDate {
 	display:none;
-}
-
-.task h3 .headLabel .projectName {
-
 }
 
 .task h3 div.taskHeadExtras {
@@ -120,7 +115,7 @@
 	Task Icons
    ---------------------- */
 
-.task h3 div.taskIcons {
+.task span.taskIcons {
 	position:absolute;
 	right:0;
 	height:16px;
@@ -133,7 +128,7 @@
 }
 
 
-.task h3 div.taskIcons span {
+.task span.taskIcons span {
 	float:left;
 	clear:none;
 	width:16px;
@@ -142,21 +137,21 @@
 	margin-left:3px;
 }
 
-.task div.taskIcons .taskcontainer {
+.task span.taskIcons .taskcontainer {
 	background:url(../img/icons.png) no-repeat 0 -87px;
 }
 
-.task div.taskIcons .isPublic {
+.task span.taskIcons .isPublic {
 	background:url(../img/icons.png) no-repeat 1px -206px;
 }
 
-.task div.taskIcons .notAcknowledged {
+.task span.taskIcons .notAcknowledged {
 	width:10px;
 	cursor:pointer;
 	background:url(../img/icons.png) no-repeat 0 -266px;
 }
 
-.task div.taskIcons .dateover {
+.task span.taskIcons .dateover {
 	width:14px;
 	background:url(../img/icons.png) no-repeat 0 -328px;
 }
@@ -183,8 +178,8 @@
 		/* Description */
 	.tasks .task .details .left {
 		float:left;
-		width:340px;
-		padding:0 5px;
+		width:335px;
+		padding:0 10px 0 24px;
 	}
 
 	.tasks .task .details .description * {
@@ -203,7 +198,7 @@
 		/* properties */
 	.tasks .task .details .right {
 		float:right;
-		width:285px;
+		width:290px;
 	}
 
 	.tasks .task .details fieldset.right {
@@ -226,13 +221,14 @@
 
 	.tasks .task .details .properties dt {
 		float:left;
-		width:160px;
+		width:148px;
 	}
 
 	.tasks .task .details .properties dd {
 		float:left;
-		width:120px;
-		padding-right:3px;
+		width:130px;
+		margin-left: 5px;
+		margin-right: 5px;
 	}
 
 	.tasks .task .details .properties dt,
@@ -373,60 +369,6 @@
 #taskList h1.headerProjTermine {
 	margin-top:20px;
 }
-
-/*
-#taskList h1 span.invoice_taskDate,
-#taskList h3 span.invoice_taskDate {
-	max-width:80px;
-	width:80px;
-}
-*/
-/*
-#taskList h1 span.name,
-#taskList h3 span.name {
-	max-width:90px;
-	width:90px;
-}
-
-#taskList h1 span.invoice_name,
-#taskList h3 span.invoice_name {
-	max-width:130px;
-	width:130px;
-}
-
-.expanded #taskList h1 span.name,
-.expanded #taskList h3 span.name,
-.expanded #taskList h1 span.invoice_name,
-.expanded #taskList h3 span.invoice_name {
-	max-width:150px;
-	width:150px;
-}
-*/
-/*
-#taskList h1 span.taskName,
-*/
-#taskList h3 span.taskName /*,
-#taskList h1 span.invoice_taskName,
-#taskList h3 span.invoice_taskName */ {
-	width:210px;
-}
-/*
-.expanded #taskList h1 span.taskName,
-.expanded #taskList h3 span.taskName,
-.expanded #taskList h1 span.invoice_taskName,
-.expanded #taskList h3 span.invoice_taskName {
-	max-width:369px;
-	width:369px;
-}
-
-#taskList h1 span.billable-time,
-#taskList h3 span.billable-time {
-	max-width:48px;
-	width:48px;
-}
-*/
-
-
 
 /* ------------------
 	Additional task icons
