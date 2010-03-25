@@ -101,7 +101,8 @@ Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectListing']['maxProjects']	= 
  */
 Todoyu::$CONFIG['EXT']['project']['taskDefaults'] = array(
 	'estimatedWorkload'		=> 0,
-	'status'				=> STATUS_PLANNING
+	'status'				=> STATUS_PLANNING,
+	'statusQuickTask'		=> STATUS_OPEN
 );
 
 ?>

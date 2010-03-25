@@ -63,7 +63,7 @@ class TodoyuQuickTaskManager {
 
 			// Prepare data to save task
 		$data['id']					= $idTask;
-		$data['status']				= STATUS_OPEN;
+		$data['status']				= intval(Todoyu::$CONFIG['EXT']['project']['taskDefaults']['statusQuickTask']);
 		$data['id_person_assigned']	= TodoyuAuth::getPersonID();
 		$data['id_person_owner']		= TodoyuAuth::getPersonID();
 		$data['date_start']			= NOW;
