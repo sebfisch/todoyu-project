@@ -687,34 +687,6 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter condition: date_finish
-	 *
-	 * @param	String		$date
-	 * @param	Bool		$negate
-	 * @return	Array
-	 */
-	public static function Filter_finishdate($date, $negate)	{
-		return self::makeFilter_date('date_finish', $date, $negate);
-	}
-
-
-
-	/**
-	 * get the dynamic finish date
-	 *
-	 * @param	String	$value
-	 * @param	Boolean	$negate
-	 * @return	Array
-	 */
-	public static function Filter_finishdateDyn($value, $negate)	{
-		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateinputTimestamps($value);
-
-		return self::Filter_dateDyn($timeStamps, 'date_finish');
-	}
-
-
-
-	/**
 	 * Filter condition: date_update
 	 *
 	 * @param	String		$date

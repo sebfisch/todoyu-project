@@ -72,11 +72,10 @@ class TodoyuQuickTaskManager {
 		$data['type']				= TASK_TYPE_TASK;
 		$data['estimated_workload']	= TodoyuTime::SECONDS_HOUR;
 
-			// If task already done: set also date_end and date_finish
+			// If task already done: set also date_end
 		if( intval($data['task_done']) === 1 ) {
 			$data['status'] 	= STATUS_DONE;
 			$data['date_end']	= NOW;
-			$data['date_finish']= NOW;
 		}
 		unset($data['task_done']);
 

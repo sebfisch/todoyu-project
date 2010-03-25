@@ -43,8 +43,7 @@
 		<label index="attr.title">Project Title</label>
 		<label index="attr.status">Project Status</label>
 		<label index="attr.date_start">Start Date</label>
-		<label index="attr.date_end">End Date (internal)</label>
-		<label index="attr.date_finish">Finish Date</label>
+		<label index="attr.date_end">End Date</label>
 		<label index="attr.date_deadline">Internal Deadline</label>
 		<label index="attr.persons">Assigned Persons</label>
 		<label index="attr.persons.new">New Project Person</label>
@@ -123,8 +122,7 @@
 		<label index="attr.title">Projekt Titel</label>
 		<label index="attr.status">Projekt Status</label>
 		<label index="attr.date_start">Startdatum</label>
-		<label index="attr.date_end">Internes Enddatum</label>
-		<label index="attr.date_finish">Deadline</label>
+		<label index="attr.date_end">Enddatum</label>
 		<label index="attr.date_deadline">Interne Frist</label>
 		<label index="attr.persons">Beteiligte Personen</label>
 		<label index="attr.persons.new">Neue Person</label>
