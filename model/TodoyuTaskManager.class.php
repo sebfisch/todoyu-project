@@ -747,7 +747,7 @@ class TodoyuTaskManager {
 		if( $evalLabel ) {
 			foreach($tabs as $index => $tab) {
 				$labelFunc	= $tab['label'];
-				$tabs[$index]['label'] = TodoyuDiv::callUserFunction($labelFunc, $idTask);
+				$tabs[$index]['label'] = TodoyuFunction::callUserFunction($labelFunc, $idTask);
 			}
 		}
 

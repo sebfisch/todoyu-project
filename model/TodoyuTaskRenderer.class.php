@@ -253,7 +253,7 @@ class TodoyuTaskRenderer {
 		$idTask		= intval($idTask);
 		$tabConfig	= TodoyuTaskManager::getTabConfig($tab);
 
-		return TodoyuDiv::callUserFunction($tabConfig['content'], $idTask);
+		return TodoyuFunction::callUserFunction($tabConfig['content'], $idTask);
 	}
 
 
@@ -300,7 +300,7 @@ class TodoyuTaskRenderer {
 			// Only render active tab
 		foreach($tabsConfig as $tabConfig) {
 			if( $tabConfig['id'] == $activeTab ) {
-				$tabContent	= TodoyuDiv::callUserFunction($tabConfig['content'], $idTask);
+				$tabContent	= TodoyuFunction::callUserFunction($tabConfig['content'], $idTask);
 				break;
 			}
 		}

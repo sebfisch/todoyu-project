@@ -49,7 +49,7 @@ class TodoyuWorktype extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getTitle($parse = true) {
-		return $parse ? TodoyuDiv::getLabel($this->title) : $this->title;
+		return $parse ? TodoyuString::getLabel($this->title) : $this->title;
 	}
 
 }
