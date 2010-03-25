@@ -16,7 +16,7 @@
 
 				<fieldset name="basic">
 					<legend>Main project data</legend>
-					<class>basic noneFloatingInput</class>
+					<class>basic left noneFloatingInput</class>
 					<elements>
 
 						<field type="textinput" name="title">
@@ -42,7 +42,7 @@
 
 				<fieldset name="data">
 					<legend>Project data</legend>
-					<class>data</class>
+					<class>data right</class>
 					<elements>
 
 						<field type="select" name="status">
