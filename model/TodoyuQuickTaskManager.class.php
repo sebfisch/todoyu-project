@@ -41,6 +41,25 @@ class TodoyuQuickTaskManager {
 		$formData	= $form->getFormData();
 		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, 0);
 
+
+			// Remove normal project field
+		$form->removeField('id_project', true);
+
+				// Load form with extra field data
+		$xmlPathInsert	= 'ext/project/config/form/field-id_project.xml';
+		$insertForm		= TodoyuFormManager::getForm($xmlPathInsert);
+
+			// If person can add tasks in all project, show autocomplete field, else only a select element
+		if( allowed('project', 'task:addInAllProjects') ) {
+			TodoyuDebug::printInFirebug('test');
+			$field	= $insertForm->getField('id_project_ac');
+		} else {
+			$field	= $insertForm->getField('id_project_select');
+		}
+			// Add field to form
+		$form->getFieldset('main')->addField('id_project', $field, 'after:title');
+
+
 		return $form->render();
 	}
 

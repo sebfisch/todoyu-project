@@ -15,22 +15,7 @@
 				</field>
 
 				<field type="textinputAC" name="id_project">
-					<label>project.project</label>
-					<config>
-						<acListener>
-							<ext>project</ext>
-							<controller>project</controller>
-							<action>autocompletion</action>
-						</acListener>
-						<acLabelField>title</acLabelField>
-						<options>
-							<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onProjectAutocomplete</onCompleteCustom>
-						</options>
-					</config>
-					<restrict>
-						<allow ext="project" right="task:addInAllProjects" />
-					</restrict>
-					<required />
+					<dummy>this field will be replaced</dummy>
 				</field>
 
 				<field type="RTE" name="description">
