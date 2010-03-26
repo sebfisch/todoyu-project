@@ -111,6 +111,20 @@ class TodoyuTaskRights {
 
 
 	/**
+	 * Check if quick-add of tasks is allowed
+	 * Needs at least one project where he can add tasks
+	 *
+	 * @return	Bool
+	 */
+	public static function isQuickAddAllowed() {
+		$projectIDs	= TodoyuProjectManager::getProjectIDsForTaskAdd();
+
+		return sizeof($projectIDs) > 0;
+	}
+
+
+
+	/**
 	 * Check if a person can see the task
 	 *
 	 * @param	Integer		$idTask
