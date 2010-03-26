@@ -31,7 +31,7 @@
 							<label>core.description</label>
 							<tinymce>
 								<theme>simple</theme>
-								<width>330px</width>
+								<width>100%</width>
 								<height>250px</height>
 							</tinymce>
 							<required/>
