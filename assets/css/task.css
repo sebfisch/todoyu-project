@@ -220,16 +220,15 @@
 	}
 
 	.tasks .task .details fieldset.right .fField {
-		width:56%;
+		
 	}
 
 	.tasks .task .details fieldset.right div.typeCheckbox .fLabel {
-		width:90%;
+		
 	}
 
 	.tasks .task .details fieldset.right div.typeCheckbox .fField {
-		width:2%;
-		margin-left:0;
+		
 	}
 
 	.tasks .task .details .properties dt {
