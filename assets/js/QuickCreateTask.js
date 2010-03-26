@@ -31,7 +31,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 	/**
 	 * Save task
 	 *
-	 * @param	unknown_type	form
+	 * @param	String		form
 	 */
 	save: function(form) {
 		tinyMCE.triggerSave();

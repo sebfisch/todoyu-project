@@ -437,8 +437,8 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Change status of given task to given status, in DB and visual
 	 *
-	 * @param	Integer			idTask
-	 * @param	unknown_type 	status
+	 * @param	Integer		idTask
+	 * @param	Integer	 	status
 	 */
 	updateStatus: function(idTask, status) {
 		var url	= Todoyu.getUrl('project', 'task');
