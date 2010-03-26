@@ -192,7 +192,7 @@
 	.tasks .task .details .left {
 		float:left;
 		width:330px;
-		padding:0 10px 0 24px;
+		padding:0 0 0 24px;
 	}
 
 	.tasks .task .details .description * {

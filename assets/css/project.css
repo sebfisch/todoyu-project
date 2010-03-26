@@ -2,7 +2,7 @@
 	Header
    -------------- */
 #projects h1.headerLine {
-	cursor:pointer;
+	cursor: pointer;
 }
 
 /* ----------------
@@ -22,69 +22,69 @@
 	font-size:14px;
 }
 
-	/* edit */
-.project .edit {
-	padding:5px 0;
+	/* data edit */
+.project .data {
+	padding: 5px 0;
 }
 
-.project .edit .fLabel {
-	width:25%;
+.project .data .fLabel {
+	width: 30%;
 }
 
-.project .edit .fField {
-	width:70%;
+.project .data .fField {
+	width: 70%;
 }
 
-.project .edit .formLabel {
+.project .data .formLabel {
 	width:150px;
 	text-align:left;
 }
 
-.project .edit .formField {
+.project .data .formField {
 	width:520px;
 }
 
-.project .edit fieldset.basic {
+.project .data fieldset.basic {
 	float:left;
-	padding:0 10px 0 24px;
+	padding: 0 10px 0 24px;
 	width:330px;
 }
 
-.project .edit fieldset.data,
-.project .edit fieldset.persons {
+.project .data fieldset.data,
+.project .data fieldset.persons {
 	float:right;
 	width:43%;
 }
 
-.project .edit fieldset.basic {
-	position:absolute;
+.project .data fieldset.basic {
+	position: absolute;
 }
 
 
-.project .edit fieldset.persons {
-	margin-top:20px;
-	min-height:200px;
+.project .data fieldset.persons {
+	margin-top: 20px;
+	min-height: 200px;
 }
 
-.project .edit fieldset.basic .formField {
+.project .data fieldset.basic .formField {
 	width:360px;
 }
 
-.project .edit fieldset.dates {
+.project .data fieldset.dates {
 	float:left;
 	width:230px;
 }
 
-.project .edit fieldset.dates .formLabel {
+.project .data fieldset.dates .formLabel {
 	width:60px;
 }
 
-.project .edit fieldset.dates .formField {
+.project .data fieldset.dates .formField {
 	width:150px;
 }
 
 .projects .fieldnameIspublic {
-	width:70%;
+	width: 70%;
 }
 
 /* --------------
@@ -150,61 +150,59 @@
 	}
 
 	/* project persons */
-	.project .persons .fLabel {
-		width:100%;
-		text-align:left;
-	}
-
-	.project .persons .fLabel .fLabel {
-		position:static !important;
-	}
-
-	.project .persons .fField {
-		width:100%;
-	}
-
-	.project .persons .fField .button {
-	}
 	
-	.project .persons .fField .fField {
-		width:70%;
-	}
-
 	.project .persons .fieldnamePersons {
-		border-top:1px dotted #CCCCCC;
-		padding:5px 0;
+		border-top: 1px dotted #CCCCCC;
+		padding: 5px 0;
 	}
 	
-	.project .persons .fieldnamePersons .inputbox {
-		width:100%;
+	.project .persons .fieldnamePersons > .fField {
+		width: 100%;
 	}
 	
-	.project .persons .fieldnamePersons .inputbox button {
-		float:right;
+	.project .persons .fieldnamePersons > .fLabel {
+		width: auto;
+		top: 10px;
+		left: 0;
+		right: auto;
+		position: absolute;
 	}
 	
-	.project .persons .fieldnamePersons .labelbox {
-		position:absolute;
-		margin-top:5px;
-		width:auto;
-		text-align:left;
+	.project .persons .fieldnamePersons .foreignRecordsActionControll {
+		text-align: right;
+		padding-bottom: 5px;
 	}
 	
-	.project .persons .fieldnameIspublic {
-		width:70%;
+	.project .persons .fieldnamePersons .foreignRecordsActionControll button {
 	}
-	.project .persons .fieldnameIspublic .fField {
-		width:2%;
+	
+	.project .persons .fieldnamePersons .databaseRelation {
+		width: 100%;
+		padding-top: 5px;
 	}
-	.project .persons .fieldnameIspublic .fLabel {
-		width:90% !important;
+	
+	.project .persons .fieldnamePersons .databaseRelation .fLabel {
+		width: 30%;
 	}
-
+	
+	.project .persons .fieldnamePersons .databaseRelation .fField,
+	.project .persons .fieldnamePersons .databaseRelation .typeCheckbox .fLabel {
+		width: 70%;
+	}
+	
 /*
  * Project search modifications
  */
 #todoyu-search .project .additionalStuff {
 	display:none;
+}
+
+
+	/* General styles
+	   @todo Move to top CSS file
+	*/
+.type-dateinput input {
+	width:60px;
 }
 
 .projectedit {
@@ -239,54 +237,4 @@
 
 .projectedit .fieldset-clear-bottom {
 	clear:both;
-}
-
-
-/* styles for lighbox creates */
-#quickcreate.task .dialog_content,
-#quickcreate.project .dialog_content {
-	padding:10px 0 0 0;
-}
-
-#quickcreate.task .left,
-#quickcreate.project .left {
-	float:left;
-	padding:0 10px 0 24px;
-	width:330px;
-}
-
-#quickcreate.task .left .fLabel,
-#quickcreate.project .left .fLabel {
-	text-align:left;
-	width:100%;
-	display:block;
-}
-
-#quickcreate.task .right,
-#quickcreate.project .right {
-	float:right;
-	width:43%;
-}
-
-#quickcreate.task .left .typeCheckbox .fLabel,
-#quickcreate.project .left .typeCheckbox .fLabel {
-	width:90%;
-}
-
-#quickcreate.task .left .typeCheckbox .fField,
-#quickcreate.project .left .typeCheckbox .fField {
-	width:2%;
-	margin:0;
-	padding:0;
-}
-
-#quickcreate.project .basic {
-	position:absolute;
-}
-
-#quickcreate.project .persons {
-	width:43%;
-	float:right;
-	margin-top:20px;
-	min-height:200px;
 }
