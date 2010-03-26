@@ -7,7 +7,7 @@
 			<class>top</class>
 			<elements>
 
-				<field type="textinputAC" name="id_person">
+				<field type="textinputAC" name="id">
 					<label>contact.person</label>
 					<config>
 						<acListener>

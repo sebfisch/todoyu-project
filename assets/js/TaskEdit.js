@@ -164,10 +164,15 @@ Todoyu.Ext.project.Task.Edit = {
 	 * @param	Integer	idTask
 	 */
 	cancel: function(idTask) {
-		if(this.ext.Task.hasParentTask(idTask) && idTask == 0){
+		if( this.ext.Task.hasParentTask(idTask) && idTask == 0) {
 			this.ext.Task.checkAndRemoveTriggerFromParent(idTask);
 		}
-		this.ext.Task.refresh(idTask);
+		
+		if( idTask == 0 ) {
+			$('task-' + idTask).remove();
+		} else {
+			this.ext.Task.refresh(idTask);
+		}
 	},
 
 

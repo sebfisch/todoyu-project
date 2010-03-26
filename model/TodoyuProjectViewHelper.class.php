@@ -87,6 +87,12 @@ class TodoyuProjectViewHelper {
 		if( $idPerson === 0 ) {
 			return TodoyuLanguage::getLabel('project.persons.new');
 		} else {
+			if( ! isset($data['firstname']) ) {
+				$person	= TodoyuPersonManager::getPerson($idPerson);
+
+				$data	= $person->getTemplateData(true);
+			}
+
 			return $data['firstname'] . ' ' . $data['lastname'] . ' - ' . TodoyuString::getLabel($data['rolelabel']);
 		}
 	}

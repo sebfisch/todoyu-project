@@ -929,7 +929,7 @@ class TodoyuProjectManager {
 		self::removeAllProjectPersons($idProject);
 
 		foreach($persons as $person) {
-			self::addPerson($idProject, $person['id_person'], $person['id_role'], $person);
+			self::addPerson($idProject, $person['id'], $person['id_role'], $person);
 		}
 	}
 

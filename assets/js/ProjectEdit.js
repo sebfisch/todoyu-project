@@ -166,6 +166,7 @@ Todoyu.Ext.project.Project.Edit = {
 			this.ext.TaskTree.toggle(idProject);
 
 			this.ext.Project.refresh(idProject);
+			Todoyu.Ui.scrollToTop();
 		}
 
 	},
