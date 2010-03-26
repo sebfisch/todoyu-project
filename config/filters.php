@@ -291,7 +291,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 		),
 		'createdateDyn' => array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_createdateDyn',
-			'label'		=> 'LLL:projectFilter.task.editdateDyn',
+			'label'		=> 'LLL:projectFilter.task.createdateDyn',
 			'optgroup'	=> 'LLL:projectFilter.task.timemanagement.label',
 			'widget'	=> 'dateinput',
 			'wConf'		=> array(
