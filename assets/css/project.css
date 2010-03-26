@@ -2,7 +2,7 @@
 	Header
    -------------- */
 #projects h1.headerLine {
-	cursor: pointer;
+	cursor:pointer;
 }
 
 /* ----------------
@@ -24,15 +24,15 @@
 
 	/* edit */
 .project .edit {
-	padding: 5px 0;
+	padding:5px 0;
 }
 
 .project .edit .fLabel {
-	width: 25%;
+	width:25%;
 }
 
 .project .edit .fField {
-	width: 70%;
+	width:70%;
 }
 
 .project .edit .formLabel {
@@ -46,7 +46,7 @@
 
 .project .edit fieldset.basic {
 	float:left;
-	padding: 0 10px 0 24px;
+	padding:0 10px 0 24px;
 	width:330px;
 }
 
@@ -57,13 +57,13 @@
 }
 
 .project .edit fieldset.basic {
-	position: absolute;
+	position:absolute;
 }
 
 
 .project .edit fieldset.persons {
-	margin-top: 20px;
-	min-height: 200px;
+	margin-top:20px;
+	min-height:200px;
 }
 
 .project .edit fieldset.basic .formField {
@@ -84,7 +84,7 @@
 }
 
 .projects .fieldnameIspublic {
-	width: 70%;
+	width:70%;
 }
 
 /* --------------
@@ -151,53 +151,53 @@
 
 	/* project persons */
 	.project .persons .fLabel {
-		width: 100%;
-		text-align: left;
+		width:100%;
+		text-align:left;
 	}
 
 	.project .persons .fLabel .fLabel {
-		position: static !important;
+		position:static !important;
 	}
 
 	.project .persons .fField {
-		width: 100%;
+		width:100%;
 	}
 
 	.project .persons .fField .button {
 	}
 	
 	.project .persons .fField .fField {
-		width: 70%;
+		width:70%;
 	}
 
 	.project .persons .fieldnamePersons {
-		border-top: 1px dotted #CCCCCC;
-		padding: 5px 0;
+		border-top:1px dotted #CCCCCC;
+		padding:5px 0;
 	}
 	
 	.project .persons .fieldnamePersons .inputbox {
-		width: 100%;
+		width:100%;
 	}
 	
 	.project .persons .fieldnamePersons .inputbox button {
-		float: right;
+		float:right;
 	}
 	
 	.project .persons .fieldnamePersons .labelbox {
-		position: absolute;
-		margin-top: 5px;
-		width: auto;
-		text-align: left;
+		position:absolute;
+		margin-top:5px;
+		width:auto;
+		text-align:left;
 	}
 	
 	.project .persons .fieldnameIspublic {
-		width: 70%;
+		width:70%;
 	}
 	.project .persons .fieldnameIspublic .fField {
-		width: 2%;
+		width:2%;
 	}
 	.project .persons .fieldnameIspublic .fLabel {
-		width: 90% !important;
+		width:90% !important;
 	}
 
 /*
@@ -205,14 +205,6 @@
  */
 #todoyu-search .project .additionalStuff {
 	display:none;
-}
-
-
-	/* General styles
-	   @todo Move to top CSS file
-	*/
-.type-dateinput input {
-	width:60px;
 }
 
 .projectedit {
@@ -253,48 +245,48 @@
 /* styles for lighbox creates */
 #quickcreate.task .dialog_content,
 #quickcreate.project .dialog_content {
-	padding: 10px 0 0 0;
+	padding:10px 0 0 0;
 }
 
 #quickcreate.task .left,
 #quickcreate.project .left {
-	float: left;
-	padding: 0 10px 0 24px;
-	width: 330px;
+	float:left;
+	padding:0 10px 0 24px;
+	width:330px;
 }
 
 #quickcreate.task .left .fLabel,
 #quickcreate.project .left .fLabel {
-	text-align: left;
-	width: 100%;
-	display: block;
+	text-align:left;
+	width:100%;
+	display:block;
 }
 
 #quickcreate.task .right,
 #quickcreate.project .right {
-	float: right;
-	width: 43%;
+	float:right;
+	width:43%;
 }
 
 #quickcreate.task .left .typeCheckbox .fLabel,
 #quickcreate.project .left .typeCheckbox .fLabel {
-	width: 90%;
+	width:90%;
 }
 
 #quickcreate.task .left .typeCheckbox .fField,
 #quickcreate.project .left .typeCheckbox .fField {
-	width: 2%;
-	margin: 0;
-	padding: 0;
+	width:2%;
+	margin:0;
+	padding:0;
 }
 
 #quickcreate.project .basic {
-	position: absolute;
+	position:absolute;
 }
 
 #quickcreate.project .persons {
-	width: 43%;
-	float: right;
-	margin-top: 20px;
-	min-height: 200px;
+	width:43%;
+	float:right;
+	margin-top:20px;
+	min-height:200px;
 }
