@@ -32,7 +32,7 @@
 							<tinymce>
 								<theme>simple</theme>
 								<width>330px</width>
-								<height>200px</height>
+								<height>250px</height>
 							</tinymce>
 							<required/>
 						</field>
