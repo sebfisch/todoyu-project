@@ -2,8 +2,10 @@
 <locallang>
 	<labels lang="en">
 		<label index="label">Create Quicktask</label>
+		<label index="title">Create Quicktask</label>
 	</labels>
 	<labels lang="de">
 		<label index="label">Schnellaufgabe erfassen</label>
+		<label index="title">Schnellaufgabe erfassen</label>
 	</labels>
 </locallang>
