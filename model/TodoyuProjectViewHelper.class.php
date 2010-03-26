@@ -173,24 +173,11 @@ class TodoyuProjectViewHelper {
 	 * @return unknown
 	 */
 	public static function getAvailableProjectOptions(TodoyuFormElement $field) {
-			// If person can't event add tasks in own projects, there is no need to get the visible projects
-		if( ! allowed('project', 'task:addInOwnProjects') ) {
-			return array();
-		}
-
-			// Get visible projects
-		$filter		= new TodoyuProjectFilter();
-		$projectIDs	= $filter->getProjectIDs();
+		$projectIDs	= TodoyuProjectManager::getProjectIDsForTaskAdd();
 		$options	= array();
 
 		foreach($projectIDs as $idProject) {
 			$project	= TodoyuProjectManager::getProject($idProject);
-
-			if( ! allowed('project', 'task:addInAllProjects') ) {
-				if( ! $project->isCurrentPersonAssigned() ) {
-					continue;
-				}
-			}
 
 			$options[]	= array(
 				'value'	=> $idProject,

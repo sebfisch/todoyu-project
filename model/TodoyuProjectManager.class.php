@@ -1004,6 +1004,31 @@ class TodoyuProjectManager {
 
 		return $entries;
 	}
+
+
+
+	public static function getProjectIDsForTaskAdd() {
+			// If person can't event add tasks in own projects, there is no need to get the visible projects
+		if( ! allowed('project', 'task:addInOwnProjects') ) {
+			return array();
+		}
+
+			// Get visible projects
+		$filter		= new TodoyuProjectFilter();
+		$projectIDs	= $filter->getProjectIDs();
+
+		foreach($projectIDs as $index => $idProject) {
+			$project	= TodoyuProjectManager::getProject($idProject);
+
+			if( ! allowed('project', 'task:addInAllProjects') ) {
+				if( ! $project->isCurrentPersonAssigned() ) {
+					unset($projectIDs[$index]);
+				}
+			}
+		}
+
+		return $projectIDs;
+	}
 }
 
 ?>

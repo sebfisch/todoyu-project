@@ -55,9 +55,8 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 		$params['quicktask']['start_tracking'] = intval($params['quicktask']['start_tracking']);
 		$formData	= $params['quicktask'];
 
-			// Construct form object
-		$xmlPath	= 'ext/project/config/form/quicktask.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath);
+			// Get form object
+		$form		= TodoyuQuickTaskManager::getQuickTaksForm();
 
 			// Set form data
 		$form->setFormData($formData);

@@ -33,21 +33,30 @@ class TodoyuQuickTaskManager {
 	 * @return	String
 	 */
 	public static function renderForm()	{
+		$form	= self::getQuickTaksForm();
+
+		return $form->render();
+	}
+
+
+
+	/**
+	 * Get quicktask form which is customized for current user
+	 *
+	 * @return	TodoyuForm
+	 */
+	public static function getQuickTaksForm() {
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/quicktask.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath);
 
 			// Preset (empty) form data
-		$formData	= $form->getFormData();
-		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, 0);
-
-
-			// Remove normal project field
-		$form->removeField('id_project', true);
+		$formData	= TodoyuFormHook::callLoadData($xmlPath, array());
 
 				// Load form with extra field data
 		$xmlPathInsert	= 'ext/project/config/form/field-id_project.xml';
 		$insertForm		= TodoyuFormManager::getForm($xmlPathInsert);
+
 
 			// If person can add tasks in all project, show autocomplete field, else only a select element
 		if( allowed('project', 'task:addInAllProjects') ) {
@@ -56,11 +65,14 @@ class TodoyuQuickTaskManager {
 		} else {
 			$field	= $insertForm->getField('id_project_select');
 		}
-			// Add field to form
+
+			// Remove normal project field
+		$form->removeField('id_project', true);
+
+			// Add custom project field
 		$form->getFieldset('main')->addField('id_project', $field, 'after:title');
 
-
-		return $form->render();
+		return $form;
 	}
 
 

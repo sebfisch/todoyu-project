@@ -47,6 +47,20 @@ class TodoyuHeadletQuickTask extends TodoyuHeadletTypeButton {
 		return Label('headlet-quicktask.label');
 	}
 
+
+
+	/**
+	 * Check if there are project where the user can add the task to
+	 * If no projects available, hide widget
+	 *
+	 * @return	Bool
+	 */
+	public function isEmpty() {
+		$projectIDs	= TodoyuProjectManager::getProjectIDsForTaskAdd();
+
+		return sizeof($projectIDs) === 0;
+	}
+
 }
 
 ?>
