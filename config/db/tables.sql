@@ -20,8 +20,7 @@ CREATE TABLE `ext_project_project` (
   `is_fixed` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `id_fixedproject` smallint(5) unsigned NOT NULL DEFAULT '0',
   `id_rateset` smallint(5) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `company2` (`id_company`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 --
