@@ -80,6 +80,7 @@
 		<label index="task.dyndateinput.lastweek">Letzte Woche</label>
 		<label index="project.fulltext">Titel-Volltext</label>
 		<label index="project.company">Kunden-Name</label>
+		<label index="project.projectrole">Projekt Rolle</label>
 		<label index="project.projectleader">Projektleiter</label>
 		<label index="project.projectsupervisor">Projekt Supervisor</label>
 	</labels>
