@@ -50,7 +50,7 @@ class TodoyuProjectRights {
 		$status		= $project->getStatus();
 
 			// Check if project has allowed status
-		if( ! self::isStatusAllowed($status) ) {
+		if( ! self::isStatusAllowed($status) && ! TodoyuAuth::isAdmin() ) {
 			return false;
 		}
 
