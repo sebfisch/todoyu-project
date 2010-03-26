@@ -331,7 +331,6 @@ class TodoyuProjectRenderer {
 			// Initialize tree in javascript if not a ajax refresh
 		if( ! TodoyuRequest::isAjaxRequest() ) {
 			TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.TaskTree.init.bind(Todoyu.Ext.project.TaskTree)', 100);
-			TodoyuHookManager::callHook('project', 'renderTasks');
 		}
 
 			// Get root tasks in project

@@ -81,11 +81,8 @@ class TodoyuTaskRenderer {
 			'tasks'		=> $tasksHTML
 		);
 
-		if( TodoyuRequest::isAjaxRequest() ) {
-			$data['javascript'] = 'Todoyu.Ext.project.ContextMenuTask.reattach();';
-		} else {
-			TodoyuHookManager::callHook('project', 'renderTasks');
-		}
+			// Add contextmenu init scripts
+		$data['javascript'] = 'Todoyu.Ext.project.ContextMenuTask.reattach();';
 
 		return render($tmpl, $data);
 	}
