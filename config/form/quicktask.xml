@@ -25,6 +25,7 @@
 						<width>100%</width>
 						<height>80px</height>
 					</tinymce>
+					<required />
 				</field>
 
 				<field type="select" name="id_worktype">
