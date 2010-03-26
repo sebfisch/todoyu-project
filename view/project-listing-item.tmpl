@@ -9,7 +9,7 @@
 		</span>
 	</h3>
 
-{if canSeeProjectDetails($project.id)}
+{if isAllowedSeeProjectDetails($project.id)}
 	<div id="project-{$project.id}-details"{if ! $details} style="display:none"{/if}>
 		{$details}
 	</div>

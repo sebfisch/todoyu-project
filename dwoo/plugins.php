@@ -112,7 +112,7 @@ function Dwoo_Plugin_projectStatusKey(Dwoo $dwoo, $idStatus) {
  * @param	Integer		$idProject
  * @return	Boolean
  */
-function Dwoo_Plugin_canSeeProjectDetails(Dwoo $dwoo, $idProject) {
+function Dwoo_Plugin_isAllowedSeeProjectDetails(Dwoo $dwoo, $idProject) {
 	return  allowed('project', 'project:seeAll') || TodoyuProjectManager::isPersonAssigned($idProject);
 }
 
