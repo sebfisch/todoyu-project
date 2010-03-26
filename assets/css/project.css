@@ -63,7 +63,7 @@
 
 .project .data fieldset.persons {
 	margin-top: 20px;
-	min-height: 200px;
+	min-height: 165px;
 }
 
 .project .data fieldset.basic .formField {
@@ -173,17 +173,11 @@
 		font-weight: bold;
 	}
 	
-	.project .persons .fieldnamePersons .foreignRecordsActionControll {
-		text-align: right;
-		padding-bottom: 5px;
-	}
-	
 	.project .persons .fieldnamePersons .foreignRecordsActionControll button {
 	}
 	
 	.project .persons .fieldnamePersons .databaseRelation {
 		width: 100%;
-		padding-top: 5px;
 	}
 	
 	.project .persons .fieldnamePersons .databaseRelation .fLabel {
