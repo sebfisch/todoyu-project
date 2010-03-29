@@ -34,29 +34,6 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get quick create project form object
-	 *
-	 * @return	TodoyuForm
-	 */
-	public static function getQuickCreateForm($idProject = 0) {
-		$idProject	= intval($idProject);
-
-			// Construct form object
-		$xmlPath	= 'ext/project/config/form/project.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath, $idProject);
-
-			// Adjust form to needs of quick creation wizard
-		$form->setAttribute('action', '?ext=project&amp;controller=quickcreateproject');
-		$form->setAttribute('onsubmit', 'return false');
-		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateProject.save(this.form)');
-		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
-
-		return $form;
-	}
-
-
-
-	/**
 	 * Get project
 	 *
 	 * @param	Integer		$idProject
@@ -80,6 +57,19 @@ class TodoyuProjectManager {
 		$idProject	= intval($idProject);
 
 		return Todoyu::db()->getRecord(self::TABLE, $idProject);
+	}
+
+
+
+	/**
+	 * Get project label
+	 * With short company name prefixed
+	 *
+	 * @param	Integer		$idProject
+	 * @return	String
+	 */
+	public static function getLabel($idProject) {
+		return self::getProject($idProject)->getFullTitle(true);
 	}
 
 
@@ -1007,6 +997,11 @@ class TodoyuProjectManager {
 
 
 
+	/**
+	 * Get project IDs where user can add tasks
+	 *
+	 * @return	Array
+	 */
 	public static function getProjectIDsForTaskAdd() {
 			// If person can't event add tasks in own projects, there is no need to get the visible projects
 		if( ! allowed('project', 'task:addInOwnProjects') ) {
@@ -1029,6 +1024,31 @@ class TodoyuProjectManager {
 
 		return $projectIDs;
 	}
+
+
+
+
+	/**
+	 * Get quick create project form object
+	 *
+	 * @return	TodoyuForm
+	 */
+	public static function getQuickCreateForm($idProject = 0) {
+		$idProject	= intval($idProject);
+
+			// Construct form object
+		$xmlPath	= 'ext/project/config/form/project.xml';
+		$form		= TodoyuFormManager::getForm($xmlPath, $idProject);
+
+			// Adjust form to needs of quick creation wizard
+		$form->setAttribute('action', '?ext=project&amp;controller=quickcreateproject');
+		$form->setAttribute('onsubmit', 'return false');
+		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateProject.save(this.form)');
+		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
+
+		return $form;
+	}
+
 }
 
 ?>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
-	
+
 	<fieldsets>
 		<fieldset name="main">
 			<legend>Select project</legend>
 			<elements>
-				
+
 				<field type="textinputAC" name="id_project_ac">
 					<label>project.project</label>
 					<config>
@@ -15,13 +15,14 @@
 							<action>autocompletion</action>
 						</acListener>
 						<acLabelField>title</acLabelField>
+						<acLabelFunc>TodoyuProjectManager::getLabel</acLabelFunc>
 						<options>
 							<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onProjectAutocomplete</onCompleteCustom>
 						</options>
 					</config>
 					<required />
 				</field>
-				
+
 				<field type="select" name="id_project_select">
 					<label>project.project</label>
 					<source type="function">
@@ -30,7 +31,7 @@
 					<noPleaseSelect />
 					<required />
 				</field>
-				
+
 			</elements>
 		</fieldset>
 	</fieldsets>

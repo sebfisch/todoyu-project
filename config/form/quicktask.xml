@@ -34,6 +34,7 @@
 						<function>TodoyuTaskViewHelper::getTaskWorktypeOptions</function>
 						<lazyInit />
 					</source>
+					<noPleaseSelect />
 					<validate>
 						<isNotZero msg="LLL:task.attr.id_worktype.error"/>
 					</validate>

@@ -40,7 +40,6 @@
 					<source type="function">
 						<function>TodoyuProjectViewHelper::getProjectroleOptions</function>
 					</source>
-					<noPleaseSelect />
 					<required />
 				</field>
 

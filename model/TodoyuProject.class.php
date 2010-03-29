@@ -43,8 +43,10 @@ class TodoyuProject extends TodoyuBaseObject {
 	 *
 	 * @return	String
 	 */
-	public function getFullTitle() {
-		return $this->getCompany()->getTitle() . ' - ' . $this->getTitle();
+	public function getFullTitle($companyShort = false) {
+		$company	= $companyShort ? $this->getCompany()->getShortLabel() : $this->getCompany()->getTitle();
+
+		return $company . ' - ' . $this->getTitle();
 	}
 
 
