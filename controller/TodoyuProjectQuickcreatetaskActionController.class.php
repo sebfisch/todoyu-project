@@ -76,7 +76,6 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
 			TodoyuHeader::sendTodoyuHeader('idTaskOld', $idTask);
 			TodoyuHeader::sendTodoyuHeader('idProject', $idProject);
-
 		} else {
 				// Form data not valid
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTask);

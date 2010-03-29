@@ -32,14 +32,25 @@ Todoyu.Ext.project = {
 	 * Initialization
 	 */
 	init: function() {
-			// Add project creation hooks
-		Todoyu.Hook.add('onProjectCreated', this.Project.Edit.onProjectCreated.bind(this.Project.Edit));
+		this.registerHooks();
 
 		this.Portal.init();
 	},
 
 
+	
+	/**
+	 * Register callbacks to JS hooks
+	 */
+	registerHooks: function() {
+			// Add project creation hooks
+		Todoyu.Hook.add('onProjectCreated', this.Project.Edit.onProjectCreated.bind(this.Project.Edit));
+		
+//		Todoyu.Hook.add('onTaskSaved', this.Task.onProjectTaskAdded(response);
+	},
 
+	
+	
 	/**
 	 *	To be called from other areas (e.g portal) to jump to a specific task within its project,
 	 *	to be shown inside the project area

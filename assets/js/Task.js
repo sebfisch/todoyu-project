@@ -313,7 +313,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	Ajax.Response	response
 	 */
 	onRemoved: function(idTask, response) {
-
+		Todoyu.Hook.exec('taskremoved', idTask);
 	},
 
 
@@ -425,8 +425,13 @@ Todoyu.Ext.project.Task = {
 	},
 
 
+
+	/**
+	 * Is this the only sub task? remove expandability
+	 * 
+	 * @param	Integer		
+	 */
 	checkAndRemoveTriggerFromTask: function(idTask) {
-			// Is this the only sub task? remove expandability
 		if( $('task-' + idTask + '-subtasks').select('div.task').size() < 1 ) {
 			$('task-' + idTask + '-subtasks-trigger').removeClassName('expandable');
 		}

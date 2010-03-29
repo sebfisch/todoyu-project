@@ -28,6 +28,8 @@ Todoyu.Ext.project.Project = {
 	 */
 	ext:	Todoyu.Ext.project,
 
+
+
 	/**
 	 * Get DOM element of header of project with given ID
 	 *
@@ -151,6 +153,10 @@ Todoyu.Ext.project.Project = {
 	},
 
 
+
+	/**
+	 * @todo	check: used? remove? comment
+	 */
 	onDetailsToggled: function(idProject, response) {
 //		Todoyu.log('OnComplete erreicht');
 	},

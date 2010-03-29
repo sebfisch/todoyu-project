@@ -52,6 +52,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 	 * @param	Object	response
 	 */
 	onSaved: function(response) {
+		var idProject	= response.getTodoyuHeader('idProject');
 		var idTask		= response.getTodoyuHeader('idTask');
 		var idTaskOld	= response.getTodoyuHeader('idTaskOld');
 
@@ -61,8 +62,16 @@ Todoyu.Ext.project.QuickCreateTask = {
 			Todoyu.Headlet.QuickCreate.updatePopupContent(response.responseText);
 			Todoyu.notifyError('[LLL:task.save.error]');
 		} else {
-			// Saving went ok
+				// Saving went ok
 			Todoyu.Hook.exec('onTaskSaved', idTask);
+ 
+			if ( Todoyu.getArea() == 'project' ) {
+					// Task tree of project which the new task belongs to is displayed?
+				if( idProject == Todoyu.Ext.project.ProjectTaskTree.getActiveProjectID() ) {
+						// Refresh
+					Todoyu.Ext.project.TaskTree.update();
+				}
+			}
 
 			Todoyu.Popup.close('quickcreate');
 			Todoyu.notifySuccess('[LLL:task.save.success]');

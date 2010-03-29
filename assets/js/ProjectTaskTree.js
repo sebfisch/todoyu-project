@@ -87,6 +87,11 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 
+	/**
+	 * Remove sub tab of given project
+	 * 
+	 * @param	Integer		idProject
+	 */
 	removeProjectTab: function(idProject) {
 		var id	= 'project-tab-' + idProject;
 
@@ -233,12 +238,20 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 
+	/**
+	 * Get amount of sub tabs shown
+	 * 
+	 * @return	Integer
+	 */
 	getNumTabs: function() {
 		return $('project-tabs').select('li').size();
 	},
 
 
 
+	/**
+	 * Load initial view (first load, so there's no project selected yet)
+	 */
 	loadNoProjectSelectedView: function() {
 		var url		= Todoyu.getUrl('project', 'project');
 		var options	= {
@@ -253,6 +266,11 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 
+	/**
+	 * @todo	check, implement or remove
+	 * 
+	 * @param	Object	response
+	 */
 	onNoProjectSelectedViewLoaded: function(response) {
 
 	},
@@ -262,17 +280,16 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Highlight the front tab
 	 *
-	 *	@param	String		idTab
+	 * @todo	check, remove?
+	 * @param	String		idTab
 	 */
 	highlightTab: function(idTab) {
-		/*
-		var label = $('projecttab-' + idTab).select('.labeltext').first();
-
-		Effect.Shake(label, {
-			'distance': 5,
-			'duration': 0.3
-		});
-		*/
+//		var label = $('projecttab-' + idTab).select('.labeltext').first();
+//
+//		Effect.Shake(label, {
+//			'distance': 5,
+//			'duration': 0.3
+//		});
 	},
 
 
@@ -310,8 +327,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 		Todoyu.Tabs.setActive('project', idProject);
 
-		//$('project-tabs').childElements().invoke('removeClassName', 'active');
-		//$('projecttab-' + idProject).addClassName('active');
+//		$('project-tabs').childElements().invoke('removeClassName', 'active');
+//		$('projecttab-' + idProject).addClassName('active');
 
 		this.moveTabToFront(idProject);
 
@@ -402,6 +419,11 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 
+	/**
+	 * Get current tab items (DOM elements)
+	 * 
+	 * @return	Array
+	 */
 	getTabs: function() {
 		return $('project-tabs').select('li');
 	},

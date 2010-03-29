@@ -54,8 +54,10 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	 * @param	Bool		started
 	 */
 	onTaskAdded: function(idTask, idProject, started) {
-		if( idProject == this.ext.ProjectTaskTree.getActiveProjectID() ) {
-			this.ext.TaskTree.update();
+		if ( Todoyu.getArea() == 'project' ) {
+			if( idProject == this.ext.ProjectTaskTree.getActiveProjectID() ) {
+				this.ext.TaskTree.update();
+			}
 		}
 	}
 	
