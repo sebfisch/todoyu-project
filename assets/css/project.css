@@ -83,8 +83,9 @@
 	width:150px;
 }
 
-.projects .fieldnameIspublic {
+.project .fieldnameIspublic .fLabel {
 	width: 70%;
+	text-align: left;
 }
 
 /* --------------
