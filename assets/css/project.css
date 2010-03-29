@@ -35,10 +35,21 @@
 	width: 70%;
 }
 
-.project .data .formLabel {
-	width:150px;
-	text-align:left;
+.project .data .fField {
+	width: 70%;
 }
+
+
+.project .typeCheckbox .fLabel,
+.project .typeCheckbox .fField {
+	width: 70%;
+}
+
+.project .commentform .fLabel,
+.project .commentform .fField {
+	width: 60%;
+}
+
 
 .project .data .formField {
 	width:520px;
@@ -81,11 +92,6 @@
 
 .project .data fieldset.dates .formField {
 	width:150px;
-}
-
-.project .fieldnameIspublic .fLabel {
-	width: 70%;
-	text-align: left;
 }
 
 /* --------------
