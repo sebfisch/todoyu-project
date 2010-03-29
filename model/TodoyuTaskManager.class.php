@@ -567,7 +567,7 @@ class TodoyuTaskManager {
 		}
 
 			// Remove add if empty
-		if( ! is_array($items['add']['submenu']) ) {
+		if( ! is_array($items['add']['submenu']) || sizeof($items['add']['submenu']) === 0 ) {
 			unset($items['add']);
 		}
 
