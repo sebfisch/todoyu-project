@@ -206,6 +206,7 @@ class TodoyuTaskRights {
 	}
 
 
+
 	/**
 	 * Restrict access to persons who are allowed to see the task
 	 *
