@@ -241,7 +241,7 @@ Todoyu.Ext.project.Task = {
 			'onComplete': this.onCloned.bind(this, idTask)
 		};
 
-		if( this.hasSubtasks(idTask) ) {
+		if( this.hasSubtasks(idTask) && this.hasSubtaskContainer(idTask) ) {
 			var target	= 'task-' + idTask + '-subtasks';
 		} else {
 			var target	= 'task-' + idTask;
@@ -362,6 +362,17 @@ Todoyu.Ext.project.Task = {
 	 */
 	hasSubtasks: function(idTask) {
 		return Todoyu.exists('task-' + idTask + '-subtasks') || ($('task-' + idTask + '-subtasks-trigger') && $('task-' + idTask + '-subtasks-trigger').hasClassName('expandable'));
+	},
+	
+	
+	
+	/**
+	 * Check if subtask container is in DOM
+	 * 
+	 * @param	Integer		idTask
+	 */
+	hasSubtaskContainer: function(idTask) {
+		return Todoyu.exists('task-' + idTask + '-subtasks');
 	},
 
 
