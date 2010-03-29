@@ -280,7 +280,7 @@
 
 	/* task tabs content */
 	.task .tabContent {
-
+		margin-left: 10px;
 		background-color:#e3eace;
 	}
 
@@ -303,7 +303,7 @@
 		height:30px;
 		background:#D6DCC5 url(../../../../core/assets/img/toggle.png) no-repeat 0 -65px;
 	}
-
+	
 #taskList .activeTabContent .taskOptionBlock {
 	position:relative;
 	padding:5px;
