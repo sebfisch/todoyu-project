@@ -72,9 +72,10 @@
 }
 
 /* begin of styles only for container element */
-.task.container h3 .headLabel .taskDate {
+/*.task.container h3 .headLabel .taskDate {
 	display:none;
 }
+*/
 .task.container h3 .headLabel .projectName {
 	margin-left: 50px;
 }
