@@ -502,7 +502,9 @@ class TodoyuTaskManager {
 			unset($allowed['actions']['submenu']);
 
 				// Copy
-			$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
+			if ( allowed('project', 'task:addInOwnProjects') ) {
+				$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
+			}
 
 				// Cut
 			if( TodoyuTaskRights::isEditAllowed($idTask) ) {
@@ -525,7 +527,6 @@ class TodoyuTaskManager {
 			$allowed['add'] = $ownItems['add'];
 			unset($allowed['add']['submenu']);
 
-
 			if( TodoyuTaskRights::isAddAllowed($idTask) ) {
 					// Add subtask
 				$allowed['add']['submenu']['task'] = $ownItems['add']['submenu']['task'];
@@ -545,7 +546,6 @@ class TodoyuTaskManager {
 					}
 				}
 			}
-
 		}
 
 		return array_merge_recursive($items, $allowed);

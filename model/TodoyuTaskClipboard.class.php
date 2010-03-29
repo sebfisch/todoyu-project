@@ -170,7 +170,6 @@ class TodoyuTaskClipboard {
 			$idParentTask = $currentTask['id_parenttask'];
 		}
 
-
 		$taskParent		= TodoyuTaskManager::getTaskData($idParentTask);
 
 		if( $dataClipboard['mode'] === 'copy' ) {
@@ -205,7 +204,6 @@ class TodoyuTaskClipboard {
 	public static function getTaskContextMenuItems($idTask, array $items) {
 		$idTask	= intval($idTask);
 
-
 			// Only show context menu in project area and if something is on the clipboard
 		if( self::hasTask() ) {
 			$ownItems	= Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboard'];
@@ -233,7 +231,6 @@ class TodoyuTaskClipboard {
 
 			$items	= array_merge_recursive($items, $mergeItems);
 		}
-
 
 		return $items;
 	}
