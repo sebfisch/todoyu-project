@@ -61,8 +61,6 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 			// Set form data
 		$form->setFormData($formData);
 
-		TodoyuDebug::printInFirebug($formData, 'data');
-
 			// Valdiate, save workload record / re-render form
 		if( $form->isValid() )	{
 			$storageData	= $form->getStorageData();

@@ -60,7 +60,6 @@ class TodoyuQuickTaskManager {
 
 			// If person can add tasks in all project, show autocomplete field, else only a select element
 		if( allowed('project', 'task:addInAllProjects') ) {
-			TodoyuDebug::printInFirebug('test');
 			$field	= $insertForm->getField('id_project_ac');
 		} else {
 			$field	= $insertForm->getField('id_project_select');

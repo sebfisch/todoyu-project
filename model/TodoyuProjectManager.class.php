@@ -288,8 +288,7 @@ class TodoyuProjectManager {
 		$taskFilter	= new TodoyuTaskFilter($filters);
 		$taskIDs	= $taskFilter->getTaskIDs();
 
-
-		TodoyuDebug::printLastQueryInFirebug();
+//		TodoyuDebug::printLastQueryInFirebug();
 
 		return $taskIDs;
 	}

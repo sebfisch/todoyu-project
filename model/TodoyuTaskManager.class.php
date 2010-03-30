@@ -316,9 +316,6 @@ class TodoyuTaskManager {
 			$data['estimated_workload'] = intval($extConf['estimated_workload']);
 		}
 
-
-		TodoyuDebug::printInFirebug($data, 'data');
-
 		return $data;
 	}
 
