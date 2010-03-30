@@ -174,6 +174,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	 */
 	public function loadForeignData()	{
 		$this->data['persons'] = TodoyuProjectManager::getProjectPersons($this->id);
+		$this->data['company'] = $this->getCompanyData();
 	}
 
 
