@@ -8,6 +8,7 @@
 		<label index="projects">Projects</label>
 		<label index="page.title.noSelected">Projects - Select Your Project</label>
 		<label index="noproject.message">You have not selected any project yet</label>
+		<label index="noproject.info">Please use the create button at the top of the page</label>
 		<label index="noproject.option.select">Select one from the project tree</label>
 		<label index="noproject.option.create">Create A New Project</label>
 		<label index="noproject.tab">No Project Selected</label>
@@ -87,6 +88,7 @@
 		<label index="projects">Projekte</label>
 		<label index="page.title.noSelected">Projekte - Wählen Sie ein Projekt</label>
 		<label index="noproject.message">Sie haben kein Projekt ausgewählt</label>
+		<label index="noproject.info">Bitte benutzen Sie den "Erstellen"-Knopf oben auf der Seite</label>
 		<label index="noproject.option.select">Wählen Sie ein Projekt aus dem Projektbaum</label>
 		<label index="noproject.option.create">Ein neues Projekt erfassen</label>
 		<label index="noproject.tab">Kein Projekt ausgewählt</label>

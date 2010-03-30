@@ -46,15 +46,24 @@ class TodoyuTaskRights {
 	 * @return	Boolean
 	 */
 	public static function isEditAllowed($idTask) {
+		if( TodoyuAuth::isAdmin() ) {
+			return true;
+		}
+
 		$idTask		= intval($idTask);
 		$task		= TodoyuTaskManager::getTask($idTask);
+
+		if( $task->isTask() ) {
+			$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('edit'));
+
+			if( ! in_array($task->getStatus(), $statusIDs) ) {
+				return false;
+			}
+		}
+
 		$idProject	= TodoyuTaskManager::getProjectID($idTask);
-		$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('edit'));
 
-		$editAllowed	= self::isEditInProjectAllowed($idProject);
-		$statusAllowed	= in_array($task->getStatus(), $statusIDs);
-
-		return $editAllowed && $statusAllowed;
+		return self::isEditInProjectAllowed($idProject);
 	}
 
 
@@ -131,8 +140,18 @@ class TodoyuTaskRights {
 	 * @return	Boolean
 	 */
 	public static function isSeeAllowed($idTask) {
+		if( TodoyuAuth::isAdmin() ) {
+			return true;
+		}
+
 		$idTask	= intval($idTask);
 		$task	= TodoyuTaskManager::getTask($idTask);
+
+			// If container, check if person can see the project
+		if( $task->isContainer() ) {
+			return TodoyuProjectRights::isSeeAllowed($task->getProjectID());
+		}
+
 		$status	= $task->getStatusKey();
 
 			// Check status
@@ -149,6 +168,14 @@ class TodoyuTaskRights {
 	}
 
 
+
+	/**
+	 * Check if person can see a taskstatus
+	 *
+	 * @param	String		$status
+	 * @param	String		$type
+	 * @return	Bool
+	 */
 	public static function hasStatusRight($status, $type = 'see') {
 		return allowed('project', 'taskstatus:' . $status . ':' . $type);
 	}
