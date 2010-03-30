@@ -76,9 +76,6 @@
 	display:none;
 }
 */
-.task.container h3 .headLabel .projectName {
-	margin-left: 50px;
-}
 
 .task.container .details {
 	border-bottom: 1px dotted #AAAAAA;
