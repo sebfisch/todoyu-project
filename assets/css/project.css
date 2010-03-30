@@ -2,7 +2,7 @@
 	Header
    -------------- */
 #projects h1.headerLine {
-	cursor: pointer;
+	cursor:pointer;
 }
 
 /* ----------------
@@ -24,30 +24,30 @@
 
 	/* data edit */
 .project .data {
-	padding: 5px 0;
+	padding:5px 0;
 }
 
 .project .data .fLabel {
-	width: 30%;
+	width:30%;
 }
 
 .project .data .fField {
-	width: 70%;
+	width:70%;
 }
 
 .project .data .fField {
-	width: 70%;
+	width:70%;
 }
 
 
 .project .typeCheckbox .fLabel,
 .project .typeCheckbox .fField {
-	width: 70%;
+	width:70%;
 }
 
 .project .commentform .fLabel,
 .project .commentform .fField {
-	width: 60%;
+	width:60%;
 }
 
 
@@ -57,7 +57,7 @@
 
 .project .data fieldset.basic {
 	float:left;
-	padding: 0 10px 0 24px;
+	padding:0 10px 0 24px;
 	width:330px;
 }
 
@@ -68,13 +68,13 @@
 }
 
 .project .data fieldset.basic {
-	position: absolute;
+	position:absolute;
 }
 
 
 .project .data fieldset.persons {
-	margin-top: 20px;
-	min-height: 165px;
+	margin-top:20px;
+	min-height:165px;
 }
 
 .project .data fieldset.basic .formField {
@@ -159,41 +159,41 @@
 	/* project persons */
 	
 	.project .persons .fieldnamePersons {
-		border-top: 1px dotted #CCCCCC;
-		padding: 5px 0;
+		border-top:1px dotted #CCCCCC;
+		padding:5px 0;
 	}
 	
 	.project .persons .fieldnamePersons > .fField {
-		width: 100%;
+		width:100%;
 	}
 	
 	.project .persons .fieldnamePersons > .fLabel {
-		width: 100%;
-		position: static;
-		text-align: left;
-		margin-bottom: 5px;
-		padding-bottom: 5px;
-		border-bottom: 1px dotted #CCCCCC;
+		width:100%;
+		position:static;
+		text-align:left;
+		margin-bottom:5px;
+		padding-bottom:5px;
+		border-bottom:1px dotted #cccccc;
 	}
 	
 	.project .persons .fieldnamePersons > .fLabel label {
-		font-weight: bold;
+		font-weight:bold;
 	}
 	
 	.project .persons .fieldnamePersons .foreignRecordsActionControll button {
 	}
 	
 	.project .persons .fieldnamePersons .databaseRelation {
-		width: 100%;
+		width:100%;
 	}
 	
 	.project .persons .fieldnamePersons .databaseRelation .fLabel {
-		width: 30%;
+		width:30%;
 	}
 	
 	.project .persons .fieldnamePersons .databaseRelation .fField,
 	.project .persons .fieldnamePersons .databaseRelation .typeCheckbox .fLabel {
-		width: 70%;
+		width:70%;
 	}
 	
 /*

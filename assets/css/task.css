@@ -56,7 +56,7 @@
 	padding:4px 0 4px 17px;
 	border-left-width:8px;
 	border-left-style:solid;
-	min-height: 14px;
+	min-height:14px;
 }
 
 .task h3 .headLabel span {
@@ -68,7 +68,7 @@
 }
 
 .task h3 .headLabel .projectName {
-	margin-left: 5px;
+	margin-left:5px;
 }
 
 /* begin of styles only for container element */
@@ -78,14 +78,14 @@
 */
 
 .task.container .details {
-	border-bottom: 1px dotted #AAAAAA;
+	border-bottom:1px dotted #AAAAAA;
 }
 /* end of styles only for container element */
 
 .task h3 span.taskHeadExtras {
 	display:inline-block;
-	position: absolute;
-	right: 145px;
+	position:absolute;
+	right:145px;
 	width:100px;
 	top:2px;
 	text-align:right;
@@ -101,7 +101,7 @@
 
 .task h3 span.taskNumber {
 	display:inline-block;
-	position: absolute;
+	position:absolute;
 	top:5px;
 	right:93px;
 	width:45px;
@@ -179,7 +179,7 @@
 
 .task.container .details {
 	border-color:#000 !important;
-	border-bottom-color: #AAAAAA !important;
+	border-bottom-color:#AAAAAA !important;
 }
 
 	.tasks .task .details .data {
@@ -226,8 +226,8 @@
 	.tasks .task .details .properties dd {
 		float:left;
 		width:130px;
-		margin-left: 5px;
-		margin-right: 5px;
+		margin-left:5px;
+		margin-right:5px;
 	}
 
 	.tasks .task .details .properties dt,
@@ -244,7 +244,7 @@
 
 	div.task div.details div div.right dl dt.sectionStart,
 	div.task div.details div div.right dl dd.sectionStart {
-		margin-top: 11px;
+		margin-top:11px;
 	}
 
 	.tasks .task .details .properties dt {
@@ -278,7 +278,7 @@
 
 	/* task tabs content */
 	.task .tabContent {
-		margin-left: 10px;
+		margin-left:10px;
 		background-color:#e3eace;
 	}
 

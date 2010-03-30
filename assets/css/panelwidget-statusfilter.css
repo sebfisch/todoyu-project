@@ -5,8 +5,8 @@
 .panelWidgetStatusFilter select option {
 	cursor:pointer;
 	padding-left:26px !important;
-	padding-top: 4px !important;
-	height: 16px !important;
+	padding-top:4px !important;
+	height:16px !important;
 	background-image:url(../img/status.png);
 }
 
