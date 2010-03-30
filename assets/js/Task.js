@@ -49,7 +49,7 @@ Todoyu.Ext.project.Task = {
 
 			// Ask to copy subtasks
 		if ( this.hasSubtasks(idTask) ) {
-			withSubtasks = confirm('[LLL:task.copySubtasks]?') ? 1 : 0;
+			withSubtasks = confirm('[LLL:task.copySubtasks]') ? 1 : 0;
 		}
 
 		var url		= Todoyu.getUrl('project', 'task');
@@ -363,12 +363,12 @@ Todoyu.Ext.project.Task = {
 	hasSubtasks: function(idTask) {
 		return Todoyu.exists('task-' + idTask + '-subtasks') || ($('task-' + idTask + '-subtasks-trigger') && $('task-' + idTask + '-subtasks-trigger').hasClassName('expandable'));
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Check if subtask container is in DOM
-	 * 
+	 *
 	 * @param	Integer		idTask
 	 */
 	hasSubtaskContainer: function(idTask) {
@@ -390,7 +390,7 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 * Get ID of parent task of given task
-	 * 
+	 *
 	 * @return	Integer
 	 */
 	getParentTaskID: function(idTask) {
@@ -411,7 +411,7 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 * Check whether given task is a sub task
-	 * 
+	 *
 	 * @return	Boolean
 	 */
 	isSubtask: function(idTask) {
@@ -439,8 +439,8 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 * Is this the only sub task? remove expandability
-	 * 
-	 * @param	Integer		
+	 *
+	 * @param	Integer
 	 */
 	checkAndRemoveTriggerFromTask: function(idTask) {
 		if( $('task-' + idTask + '-subtasks').select('div.task').size() < 1 ) {
