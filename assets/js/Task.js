@@ -137,7 +137,7 @@ Todoyu.Ext.project.Task = {
 				'mode':		mode
 			},
 			'onComplete': this.onPasted.bind(this, idTask, mode)
-		}
+		};
 
 		Todoyu.send(url, options);
 	},
@@ -918,7 +918,7 @@ Todoyu.Ext.project.Task = {
 	 * Check if details of a task are visible (loaded and displayed)
 	 *
 	 * @param	Integer		idTask
-	 * @return
+	 * @return	Boolean
 	 *
 	 */
 	isDetailsVisible: function(idTask) {

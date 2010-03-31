@@ -293,14 +293,13 @@ Todoyu.Ext.project.Project = {
 	 * Get current status of given project
 	 *
 	 * @param	Integer		idProject
-	 * @param	Integer
+	 * @param	Integer		status index
 	 */
 	getStatus: function(idProject) {
 		var classNames 	= $('project-' + idProject).down('div.projectstatus').classNames();
 		var statusClass	= classNames.grep(/bcStatus(\d)/).first();
-		var statusIndex	= statusClass.split('Status').last();
 
-		return statusIndex;
+		return statusClass.split('Status').last();
 	},
 
 

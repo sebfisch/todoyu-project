@@ -140,7 +140,7 @@ Todoyu.Ext.project.QuickTask = {
 	 *	@param	Element	input
 	 */
 	disableCheckboxTaskDone: function(input)	{
-		if(input.getValue() == 1)	{
+		if( input.getValue() == 1 )	{
 			$(this.fieldDone).disabled = true;
 		} else {
 			$(this.fieldDone).disabled = false;
@@ -155,7 +155,7 @@ Todoyu.Ext.project.QuickTask = {
 	 *	@param	Element	input
 	 */
 	disableCheckboxStartWorkload: function(input)	{
-		if(input.getValue() == 1)	{
+		if( input.getValue() == 1 )	{
 			$(this.fieldStart).disabled = true;
 		} else {
 			$(this.fieldStart).disabled = false;
