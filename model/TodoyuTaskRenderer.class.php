@@ -274,7 +274,7 @@ class TodoyuTaskRenderer {
 			$tabs[$index]['classKey'] 	= $tab['id'] . '-' . $idTask;
 		}
 
-		return TodoyuTabheadRenderer::renderTabs($name, $tabs, $jsHandler, $activeTab, $class);
+		return TodoyuTabheadRenderer::renderTabs($name, $tabs, $jsHandler, $activeTab);
 	}
 
 

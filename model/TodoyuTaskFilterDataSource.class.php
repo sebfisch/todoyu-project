@@ -234,10 +234,10 @@ class TodoyuTaskFilterDataSource {
 	 * @return	Array
 	 */
 	public static function getDynamicDateinputTimestamps($value)	{
-		$currentDayOfWeek = date('w', $date) == 0 ? 7:date('w');
+		$currentDayOfWeek = date('w') == 0 ? 7 : date('w');
 
-		$dayBeginn = 1-$currentDayOfWeek;
-		$dayEnd	   = 7-$currentDayOfWeek;
+		$dayBeginn	= 1 - $currentDayOfWeek;
+		$dayEnd		= 7 - $currentDayOfWeek;
 
 		$individualStartSummand = 0;
 		$individualEndSummand = 0;
