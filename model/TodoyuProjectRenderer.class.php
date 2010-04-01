@@ -328,7 +328,7 @@ class TodoyuProjectRenderer {
 		$idProject	= intval($idProject);
 		$idTaskShow	= intval($idTaskShow);
 
-			// Initialize tree in javascript if not a ajax refresh
+			// Initialize tree in javaScript if not a ajax refresh
 		if( ! TodoyuRequest::isAjaxRequest() ) {
 			TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.TaskTree.init.bind(Todoyu.Ext.project.TaskTree)', 100);
 		}
@@ -342,7 +342,7 @@ class TodoyuProjectRenderer {
 			// Tree HTML buffer
 		$treeHtml	= '';
 
-			// Render tasks (with their subtasks)
+			// Render tasks (with their sub tasks)
 		foreach( $rootTaskIDs as $idTask ) {
 			$treeHtml .= self::renderTask($idTask, $idTaskShow, false, $tab);
 		}
