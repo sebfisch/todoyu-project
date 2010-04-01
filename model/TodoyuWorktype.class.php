@@ -31,7 +31,7 @@ class TodoyuWorktype extends TodoyuBaseObject {
 	/**
 	 * Constructor
 	 *
-	 * @param	Intger	$idWorktype
+	 * @param	Integer	$idWorktype
 	 */
 	public function __construct($idWorktype) {
 		$idWorktype	= intval($idWorktype);

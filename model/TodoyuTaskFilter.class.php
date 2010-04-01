@@ -194,7 +194,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * Filter for tasknumber
 	 *
 	 * @param	String		$value
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_tasknumber($value, $negate = false) {

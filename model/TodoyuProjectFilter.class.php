@@ -196,7 +196,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * Filter projects by (customer) company
 	 *
 	 * @param	Integer		$idCompany
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_company($idCompany, $negate = false) {
@@ -263,7 +263,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * The value is a combination between the projectroles and the selected person
 	 *
 	 * @param	String		$value		Format: PERSON:ROLE,ROLE,ROLE
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_projectrole($value, $negate = false) {

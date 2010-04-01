@@ -29,7 +29,7 @@ class TodoyuProjectPortalRenderer {
 	/**
 	 * Get label of todo tab in portal
 	 *
-	 * @param	Bool		$count
+	 * @param	Boolean		$count
 	 * @return	String
 	 */
 	public static function getTodoTabLabel($count = true) {

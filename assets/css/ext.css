@@ -93,7 +93,7 @@ div.projectDetails fieldset.right {
 	Search tabs
    ------------------------------------- */  
 #search-tab-task span.icon {
-	background:url(../img/icons.png) no-repeat 0px 6px;
+	background:url(../img/icons.png) no-repeat 0 6px;
 }
 
 #search-tab-project span.icon {

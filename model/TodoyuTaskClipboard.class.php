@@ -31,7 +31,7 @@ class TodoyuTaskClipboard {
 	 *
 	 * @param	Integer		$idTask				Task to hold on clipboard
 	 * @param 	String		$mode				Clipboard mode
-	 * @param	Bool		$withSubtasks		Copy subtasks
+	 * @param	Boolean		$withSubtasks		Copy subtasks
 	 */
 	public static function addTask($idTask, $mode = 'copy', $withSubtasks = true) {
 		$idTask	= intval($idTask);

@@ -230,7 +230,7 @@ class TodoyuProjectManager {
 	 * Check if a project is visible (available and not deleted)
 	 *
 	 * @param	Integer		$idProject
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isProjectVisible($idProject) {
 		$idProject	= intval($idProject);
@@ -246,7 +246,7 @@ class TodoyuProjectManager {
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idPerson
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isPersonAssigned($idProject, $idPerson = 0) {
 		$idProject	= intval($idProject);

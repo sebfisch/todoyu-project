@@ -125,7 +125,7 @@ class TodoyuTask extends TodoyuBaseObject {
 	/**
 	 * Check if tasks has a parent task (or is in project root)
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function hasParentTask() {
 		return $this->id_parenttask > 0;
@@ -276,7 +276,7 @@ class TodoyuTask extends TodoyuBaseObject {
 	/**
 	 * Check if the task is a normal task (no container or something else)
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function isTask() {
 		return $this->getType() == TASK_TYPE_TASK;
@@ -298,7 +298,7 @@ class TodoyuTask extends TodoyuBaseObject {
 	/**
 	 * Check if the task has already been acknowledged by the assigned person
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function isAcknowledged() {
 		return $this->get('is_acknowledged') == 1;

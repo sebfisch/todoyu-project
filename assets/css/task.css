@@ -254,7 +254,7 @@
 		/* task tabs */
 	#content .taskTabs .tabs {
 		top:0;
-		left:0px;
+		left:0;
 		width:auto;
 		margin:0 10px;
 	}

@@ -123,7 +123,7 @@ class TodoyuTaskRights {
 	 * Check if quick-add of tasks is allowed
 	 * Needs at least one project where he can add tasks
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isQuickAddAllowed() {
 		$projectIDs	= TodoyuProjectManager::getProjectIDsForTaskAdd();
@@ -174,7 +174,7 @@ class TodoyuTaskRights {
 	 *
 	 * @param	String		$status
 	 * @param	String		$type
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function hasStatusRight($status, $type = 'see') {
 		return allowed('project', 'taskstatus:' . $status . ':' . $type);

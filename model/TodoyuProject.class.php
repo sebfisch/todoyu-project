@@ -160,7 +160,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	/**
 	 * Check if current person is assigned to this project
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function isCurrentPersonAssigned() {
 		return TodoyuProjectManager::isPersonAssigned($this->id);

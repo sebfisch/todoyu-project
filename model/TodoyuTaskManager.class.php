@@ -209,7 +209,7 @@ class TodoyuTaskManager {
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Array		$data
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function updateTask($idTask, array $data) {
 		$idTask	= intval($idTask);

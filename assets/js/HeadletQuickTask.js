@@ -51,7 +51,7 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	 * 
 	 * @param	Integer		idTask
 	 * @param	Integer		idProject
-	 * @param	Bool		started
+	 * @param	Boolean		started
 	 */
 	onTaskAdded: function(idTask, idProject, started) {
 		if ( Todoyu.getArea() == 'project' ) {
