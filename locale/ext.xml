@@ -128,7 +128,7 @@
 		<label index="attr.date_deadline">Interne Frist</label>
 		<label index="attr.persons">Beteiligte Personen</label>
 		<label index="attr.persons.new">Neue Person</label>
-		<label index="attr.persons.role">Projektrole</label>
+		<label index="attr.persons.role">Projektrolle</label>
 		<label index="attr.persons.comment">Kommentar</label>
 		<label index="attr.persons.is_public">Projektbeteiligter ist für Externe sichtbar</label>
 		<label index="properties">Eigenschaften</label>
