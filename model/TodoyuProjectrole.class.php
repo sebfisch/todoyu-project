@@ -30,7 +30,7 @@ class TodoyuProjectrole extends TodoyuBaseObject {
 	/**
 	 * Constructor
 	 *
-	 * @param	Intger	$idProjectrole
+	 * @param	Integer	$idProjectrole
 	 */
 	public function __construct($idProjectrole) {
 		parent::__construct($idProjectrole, 'ext_project_role');

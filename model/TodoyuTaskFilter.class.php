@@ -246,10 +246,10 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Task fulltext filter. Searches in tasknumber, title, description
+	 * Task fulltext filter. Searches in task number, title, description
 	 *
 	 * @param	String		$value
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_fulltext($value, $negate = false) {
@@ -284,10 +284,10 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Search tasks which match the value in the title or the tasknumber
+	 * Search tasks which match the value in the title or the task number
 	 *
 	 * @param	String		$value
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_tasknumberortitle($value, $negate = false) {
@@ -297,7 +297,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 		$whereParts	= array();
 
-			// If tasknumber was numeric and bigger than zero, check the tasknumber
+			// If task number was numeric and bigger than zero, check the task number
 		if( strpos($taskNumber, '.') === false && intval($taskNumber) > 0 ) {
 			$taskNumber	= intval($value);
 			$whereParts[] = 'ext_project_task.tasknumber = ' . $taskNumber;
@@ -357,7 +357,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * Filter condition: Task created by an person which is member of one of the selected roles
 	 *
 	 * @param	Array		$roleIDs
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array		Or FALSE
 	 */
 	public static function Filter_creatorRoles($roleIDs, $negate = false) {
@@ -509,7 +509,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * Filter condition: Task status in given stati list?
 	 *
 	 * @param	Array		$status
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_status($statuses, $negate = false) {
@@ -582,10 +582,10 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Get only tasks whichs parent matches to the value
+	 * Get only tasks whose parent matches to the value
 	 *
 	 * @param	Integer		$idTask
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_parentTask($idTask, $negate = false) {
@@ -605,7 +605,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * Filter condition: date_deadline
 	 *
 	 * @param	String		$date
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_deadlinedate($date, $negate = false)	{
@@ -633,7 +633,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * Filter condition: date_start
 	 *
 	 * @param	String		$date
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_startdate($date, $negate = false)	{
@@ -661,7 +661,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * Filter condition: date_end
 	 *
 	 * @param	String		$date
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_enddate($date, $negate = false)	{
@@ -689,7 +689,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * Filter condition: date_update
 	 *
 	 * @param	String		$date
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_editdate($date, $negate = false)	{
@@ -716,7 +716,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * Filter condition: date_create
 	 *
 	 * @param	String		$date
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_createdate($date, $negate = false)	{
@@ -789,7 +789,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * Filter by type (task/container)
 	 *
 	 * @param	Integer		$value			both: 0, TASK_TYPE_TASK: 1 / TASK_TYPE_CONTAINER: 2
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_type($value, $negate = false) {
@@ -810,7 +810,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * Filter condition: Task has worktype
 	 *
 	 * @param	Array		$worktypeIDs
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_worktype($worktypeIDs, $negate = false) {
@@ -836,11 +836,11 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter condition for projectrole
-	 * The value is a combination between the projectrole and the person
+	 * Filter condition for project role
+	 * The value is a combination between the project role and the person
 	 *
 	 * @param	String		$value		Format: PERSON:ROLE,ROLE,ROLE
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_projectrole($value, $negate = false) {

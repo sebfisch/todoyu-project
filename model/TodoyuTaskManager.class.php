@@ -673,14 +673,14 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Check if a task is a subtask of a task.
+	 * Check if a task is a sub task of a task.
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Integer		$idParent
-	 * @param	Bool		$checkDeep		TRUE: check all levels, FALSE: check only direct childs
-	 * @return	Bool
+	 * @param	Boolean		$checkDeep		TRUE: check all levels, FALSE: check only direct childs
+	 * @return	Boolean
 	 */
-	public static function isSubtaskOf($idTask, $idParent, $checkDeep = false) {
+	public static function isSubTaskOf($idTask, $idParent, $checkDeep = false) {
 		$idTask		= intval($idTask);
 		$idParent	= intval($idParent);
 
@@ -699,7 +699,7 @@ class TodoyuTaskManager {
 	 * Check if task has a parent
 	 *
 	 * @param	Integer		$idTask
-	 * @return 	Bool
+	 * @return 	Boolean
 	 */
 	public static function hasParentTask($idTask) {
 		$idTask	= intval($idTask);
@@ -719,7 +719,7 @@ class TodoyuTaskManager {
 	 * Get task tabs config array (labels parsed)
 	 *
 	 * @param	Integer		$idTask
-	 * @param	Bool		$evalLabel		If true, all labels with a function reference will be parsed
+	 * @param	Boolean		$evalLabel		If true, all labels with a function reference will be parsed
 	 * @return	Array
 	 */
 	public static function getTabs($idTask, $evalLabel = true) {
@@ -1189,7 +1189,7 @@ class TodoyuTaskManager {
 	 * If statuses given:	limit to tasks with given statuses
 	 *
 	 * @param	Integer		$timesStart
-	 * @param	Intger		$timeEnd
+	 * @param	Integer		$timeEnd
 	 * @param	Array		$statusIDs
 	 * @param	Array		$personIDs		(id_person_assigned)
 	 * @param	String		$limit
@@ -1231,7 +1231,7 @@ class TodoyuTaskManager {
 	 * Use task filter to find the matching tasks by filter conditions or filterset
 	 *
 	 * @param	Integer		$idFilterset
-	 * @param	Bool		$useConditions
+	 * @param	Boolean		$useConditions
 	 * @param	Array		$filterConditions
 	 * @param	String		$conjunction
 	 * @return	Array
@@ -1318,7 +1318,7 @@ class TodoyuTaskManager {
 	 *
 	 * @param	Integer		$idTask			Task ID to check upwards from
 	 * @param	Integer		$idProject		Used for project range check, if task ID is 0
-	 * @param	Bool		$checkSelf		Check element itself for container
+	 * @param	Boolean		$checkSelf		Check element itself for container
 	 * @return	Array		[start,end]
 	 */
 	public static function getParentDateRanges($idTask, $idProject = 0, $checkSelf = false) {
@@ -1518,7 +1518,7 @@ class TodoyuTaskManager {
 	 * If $mustExist is set, also a database request will check if this task exists
 	 *
 	 * @param	Integer		$fullTasknumber			Identifier with project id and tasknumber
-	 * @param	Bool		$mustExist				TRUE = Has to be in database
+	 * @param	Boolean		$mustExist				TRUE = Has to be in database
 	 * @return
 	 */
 	public static function isTasknumber($fullTasknumber, $mustExist = false) {
@@ -1667,7 +1667,7 @@ class TodoyuTaskManager {
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Integer		$idParent
-	 * @param	Bool		$withSubtasks
+	 * @param	Boolean		$withSubtasks
 	 * @param	Integer		$idProject
 	 * @return	Integer
 	 */
@@ -1871,7 +1871,7 @@ class TodoyuTaskManager {
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Integer		$idPerson
-	 * @param	Bool		$checkCreator		Creator is an assigned person too
+	 * @param	Boolean		$checkCreator		Creator is an assigned person too
 	 * @return	Bool
 	 */
 	public static function isPersonAssigned($idTask, $idPerson = 0, $checkCreator = false) {

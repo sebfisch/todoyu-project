@@ -171,7 +171,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		if( $form->isValid() ) {
 				// Set parenttask open status
 			if( $idParentTask !== 0 ) {
-				TodoyuProjectPreferences::saveSubtasksVisibility($idParentTask, true);
+				TodoyuProjectPreferences::saveSubTasksVisibility($idParentTask, true);
 			}
 
 				// If form is valid, get form storage data and update task
@@ -450,7 +450,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTaskShow	= intval($params['show']);
 
 			// Save open status
-		TodoyuProjectPreferences::saveSubtasksVisibility($idTask, true, AREA);
+		TodoyuProjectPreferences::saveSubTasksVisibility($idTask, true, AREA);
 
 		return TodoyuProjectRenderer::renderSubtasks($idTask, $idTaskShow);
 	}

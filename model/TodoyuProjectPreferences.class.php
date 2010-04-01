@@ -33,7 +33,7 @@ class TodoyuProjectPreferences {
 	 * @param	String		$preference
 	 * @param	String		$value
 	 * @param	Integer		$idItem
-	 * @param	Bool		$unique
+	 * @param	Boolean		$unique
 	 * @param	Integer		$idPerson
 	 */
 	public static function savePref($preference, $value, $idItem = 0, $unique = false, $idArea = 0, $idPerson = 0) {
@@ -86,17 +86,14 @@ class TodoyuProjectPreferences {
 
 
 
-
-
-
 	/**
 	 * Save visibility of the subtasks of a task
 	 *
 	 * @param	Integer		$idTask
-	 * @param	Bool		$isVisible
+	 * @param	Boolean		$isVisible
 	 * @param	Integer		$idArea
 	 */
-	public static function saveSubtasksVisibility($idTask, $isVisible = true, $idArea = 0) {
+	public static function saveSubTasksVisibility($idTask, $isVisible = true, $idArea = 0) {
 		$idTask	= intval($idTask);
 		$idArea	= intval($idArea);
 
@@ -115,7 +112,7 @@ class TodoyuProjectPreferences {
 	 * @param	Integer $idArea
 	 * @return	Array
 	 */
-	public static function getVisibleSubtasks($idArea = 0) {
+	public static function getVisibleSubTasks($idArea = 0) {
 		$idArea	= intval($idArea);
 
 		return self::getPrefs('tasktree-subtasks', 0, $idArea);
@@ -168,7 +165,7 @@ class TodoyuProjectPreferences {
 	 * Save expanded task status
 	 *
 	 * @param	Integer		$idTask			Task ID
-	 * @param	Bool		$expanded		Is task now expanded?
+	 * @param	Boolean		$expanded		Is task now expanded?
 	 */
 	public static function saveTaskExpandedStatus($idTask, $expanded = true) {
 		$idTask	= intval($idTask);

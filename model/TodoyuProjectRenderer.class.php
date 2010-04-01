@@ -469,7 +469,7 @@ class TodoyuProjectRenderer {
 		}
 
 		if( is_null(self::$visibleSubtaskIDs) ) {
-			self::$visibleSubtaskIDs = TodoyuProjectPreferences::getVisibleSubtasks(EXTID_PROJECT);
+			self::$visibleSubtaskIDs = TodoyuProjectPreferences::getVisibleSubTasks(EXTID_PROJECT);
 		}
 
 		return in_array($idTask, self::$visibleSubtaskIDs);
@@ -482,7 +482,7 @@ class TodoyuProjectRenderer {
 	 *
 	 * @param	Integer		$idTask				ID of the task to render
 	 * @param	Integer		$idTaskShow			ID of the task which is forced to be shown (if its a subtask of the rendered task)
-	 * @param	Bool		$withoutSubtasks	Don't render subtasks
+	 * @param	Boolean		$withoutSubtasks	Don't render subtasks
 	 * @return	String		Rendered task HTML for project task tree view
 	 */
 	public static function renderTask($idTask, $idTaskShow = 0, $withoutSubtasks = false, $tab = null) {

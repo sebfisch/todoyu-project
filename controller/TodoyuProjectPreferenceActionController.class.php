@@ -60,36 +60,15 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 * @todo	comment
-	 * @param	Array		$params
-	 */
-	public function panelwidgetprojecttreeexpandAction(array $params) {
-		$idItem	= intval($params['item']);
-		$info	= explode(':', $params['value']);
-		$type	= $info[0];
-		$expand	= intval($info[1]) === 1;
-
-		switch($type) {
-			case 'project':
-				PanelWidget_ProjectTree::saveProjectExpanded($idItem, AREA, $expand);
-				break;
-			case 'task':
-				PanelWidget_ProjectTree::saveTaskExpanded($idItem, AREA, $expand);
-				break;
-		}
-	}
-
-
-
-	/**
-	 * @todo	comment
+	 * Save opened sub tasks pref
+	 * 
 	 * @param	Array		$params
 	 */
 	public function subtasksAction(array $params) {
 		$idTask	= intval($params['item']);
 		$isOpen	= intval($params['value']) === 1;
 
-		TodoyuProjectPreferences::saveSubtasksVisibility($idTask, $isOpen, AREA);
+		TodoyuProjectPreferences::saveSubTasksVisibility($idTask, $isOpen, AREA);
 	}
 
 

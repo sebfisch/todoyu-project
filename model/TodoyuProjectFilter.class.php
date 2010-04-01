@@ -63,7 +63,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 *
 	 * @param	String		$orderBy
 	 * @param	String		$limit
-	 * @param	Bool		$showDeleted
+	 * @param	Boolean		$showDeleted
 	 * @return	Array
 	 */
 	public function getProjectIDs($sorting = '', $limit = '') {
@@ -92,7 +92,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * If person is not admin or can see all project, limit projects to assigned ones
 	 *
 	 * @param	String		$value			IGNORED
-	 * @param	Bool		$negate			IGNORED
+	 * @param	Boolean		$negate			IGNORED
 	 */
 	public static function Filter_rights($value, $negate = false) {
 		$queryParts	= false;

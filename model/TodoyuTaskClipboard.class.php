@@ -131,7 +131,7 @@ class TodoyuTaskClipboard {
 	 * Add task for copy mode
 	 *
 	 * @param	Integer		$idTask
-	 * @param	Bool		$widthSubtasks
+	 * @param	Boolean		$widthSubtasks
 	 */
 	public static function addTaskCopy($idTask, $widthSubtasks = true) {
 		self::addTask($idTask, 'copy', $widthSubtasks);
@@ -212,7 +212,7 @@ class TodoyuTaskClipboard {
 			if( AREA === EXTID_PROJECT && TodoyuTaskRights::isAddAllowed($idTask) ) {
 				$mergeItems	= $ownItems;
 				$data		= self::getData();
-				$isSubtask	= TodoyuTaskManager::isSubtaskOf($idTask, $data['task'], true);
+				$isSubtask	= TodoyuTaskManager::isSubTaskOf($idTask, $data['task'], true);
 
 					// Don't allow paste on itself or subtaks when: cut-mode or with-subtasks
 				if( $idTask == $data['task'] || $isSubtask ) {

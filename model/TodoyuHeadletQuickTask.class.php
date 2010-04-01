@@ -33,7 +33,7 @@ class TodoyuHeadletQuickTask extends TodoyuHeadletTypeButton {
 	 *
 	 */
 	protected function init() {
-			// Set javascript object which handles events
+			// Set javaScript object which handles events
 		$this->setJsHeadlet('Todoyu.Ext.project.Headlet.QuickTask');
 	}
 
@@ -53,7 +53,7 @@ class TodoyuHeadletQuickTask extends TodoyuHeadletTypeButton {
 	 * Check if there are project where the user can add the task to
 	 * If no projects available, hide widget
 	 *
-	 * @return	Boolean
+	 * @return Boolean
 	 */
 	public function isEmpty() {
 		$projectIDs	= TodoyuProjectManager::getProjectIDsForTaskAdd();

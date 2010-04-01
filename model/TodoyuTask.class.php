@@ -61,10 +61,10 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Get tasknumber of the task.
-	 * The tasknumber is a combination of the project ID and an incrementing tasknumber per project
+	 * Get task number of the task.
+	 * The task number is a combination of the project ID and an incrementing task number per project
 	 *
-	 * @param	Bool		$full		True: project ID + tasknumber (concatinated with a dot), FALSE: Only tasknumber
+	 * @param	Boolean		$full		True: project ID + task number (concatinated with a dot), FALSE: Only task number
 	 * @return	String
 	 */
 	public function getTaskNumber($full = true) {
