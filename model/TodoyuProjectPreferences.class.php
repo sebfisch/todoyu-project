@@ -87,7 +87,7 @@ class TodoyuProjectPreferences {
 
 
 	/**
-	 * Save visibility of the subtasks of a task
+	 * Save visibility of the sub tasks of a task
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Boolean		$isVisible

@@ -163,7 +163,7 @@ Todoyu.Ext.project.TaskTree = {
 			Todoyu.Ui.stopEventBubbling(event);
 		}
 
-			// Load subtasks if they are not already loaded
+			// Load sub tasks if they are not already loaded
 		if( ! this.areSubtasksLoaded(idTask) ) {
 			this.loadSubtasks(idTask, this.onSubtasksToggled.bind(this));
 		} else {
@@ -179,9 +179,10 @@ Todoyu.Ext.project.TaskTree = {
 
 
 	/**
-	 * Handler when subtasks are toggled
-	 * @param {Object} idTask
-	 * @param {Object} response
+	 * Handler when sub tasks are toggled
+	 *
+	 * @param   Object  idTask
+	 * @param   Object  response
 	 */
 	onSubtasksToggled: function(idTask) {
 
@@ -190,7 +191,7 @@ Todoyu.Ext.project.TaskTree = {
 
 
 	/**
-	 * Expand subtasks of given task in task tree
+	 * Expand sub tasks of given task in task tree
 	 *
 	 * @param	Integer	idTask
 	 */
@@ -261,7 +262,7 @@ Todoyu.Ext.project.TaskTree = {
 
 
 	/**
-	 * Handler when subtasks are loaded
+	 * Handler when sub tasks are loaded
 	 *
 	 * @param	Integer			idTask
 	 * @param	Function		callback

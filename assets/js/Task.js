@@ -40,14 +40,14 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Copy a task (and subtasks) to clipboard
+	 * Copy a task (and sub tasks) to clipboard
 	 *
 	 * @param	Integer		idTask
 	 */
 	copy: function(idTask) {
 		var withSubtasks = false;
 
-			// Ask to copy subtasks
+			// Ask to copy sub tasks
 		if ( this.hasSubtasks(idTask) ) {
 			withSubtasks = confirm('[LLL:task.copySubtasks]') ? 1 : 0;
 		}
@@ -67,7 +67,7 @@ Todoyu.Ext.project.Task = {
 			// Highlight copied task
 		this.highlight(idTask);
 
-			// Highlight subtasks if selected to copy
+			// Highlight sub tasks if selected to copy
 		if( withSubtasks ) {
 			this.highlightSubtasks(idTask);
 		}
@@ -173,18 +173,18 @@ Todoyu.Ext.project.Task = {
 			}
 		}
 
-			// Insert as subtask of the current task
+			// Insert as sub task of the current task
 		if( insertMode === 'in' ) {
-				// If subtask container already exists, add it
+				// If sub task container already exists, add it
 			if( Todoyu.exists('task-' + idTask + '-subtasks') ) {
 				$('task-' + idTask + '-subtasks').insert({
 					'bottom': response.responseText
 				});
 				this.ext.TaskTree.expandSubtasks(idTask);
 			} else {
-					// If no subtask container available, refresh task and load its subtask
+					// If no sub task container available, refresh task and load its sub task
 				this.refresh(idTask);
-					// Append subtasks
+					// Append sub tasks
 				this.ext.TaskTree.loadSubtasks(idTask);
 			}
 		} else if( insertMode === 'before' ) {
@@ -226,7 +226,7 @@ Todoyu.Ext.project.Task = {
 	clone: function(idTask) {
 		var withSubtasks = false;
 
-			// Ask to copy subtasks
+			// Ask to copy sub tasks
 		if ( this.hasSubtasks(idTask) ) {
 			withSubtasks = confirm('Auch Unteraufgaben klonen?') ? 1 : 0;
 		}
@@ -343,7 +343,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Highlight subtask container of a task
+	 * Highlight sub task container of a task
 	 *
 	 * @param	Integer		idTask
 	 */
@@ -356,7 +356,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Check if a task has subtasks
+	 * Check if a task has sub tasks
 	 * @param	Integer		idTask
 	 * @return	Boolean
 	 */
@@ -367,7 +367,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Check if subtask container is in DOM
+	 * Check if sub task container is in DOM
 	 *
 	 * @param	Integer		idTask
 	 */
@@ -688,7 +688,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Evoke adding of sub task to given task. Ensures existence of subtasks display DOM-element in parent task, so the sub tasks can be shown.
+	 * Evoke adding of sub task to given task. Ensures existence of sub tasks display DOM-element in parent task, so the sub tasks can be shown.
 	 *
 	 * @param	Integer		idTask
 	 */
@@ -713,7 +713,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Evoked upon completion of request having added a sub task to given parent task. Adds context menu to new task, ensures subtasks (including the new one) of given task are shown, scrolls new task into view.
+	 * Evoked upon completion of request having added a sub task to given parent task. Adds context menu to new task, ensures sub tasks (including the new one) of given task are shown, scrolls new task into view.
 	 *
 	 * @param	Integer		idParentTask
 	 * @param	Object		response
@@ -730,7 +730,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Adds DOM-element to show subtasks of (and in) given task in.
+	 * Adds DOM-element to show sub tasks of (and in) given task in.
 	 *
 	 * @param	Integer		idTask
 	 */
@@ -751,7 +751,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Evokes adding of container under given task, ensures given task has a subtasks display element
+	 * Evokes adding of container under given task, ensures given task has a sub tasks display element
 	 *
 	 * @param	Integer		idTask
 	 */
@@ -776,7 +776,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Evoked after completion of request adding sub container to given task. Attaches context menu to container, activates display of subtasks of task (including the new container), scrolls container into focus.
+	 * Evoked after completion of request adding sub container to given task. Attaches context menu to container, activates display of sub tasks of task (including the new container), scrolls container into focus.
 	 *
 	 * @param	Integer		idParentTask
 	 * @param	Object		response

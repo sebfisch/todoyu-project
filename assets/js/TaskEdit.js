@@ -159,7 +159,7 @@ Todoyu.Ext.project.Task.Edit = {
 
 
 	/**
-	 * Cancel editing of given task. Refresh task's parent subtasks expand trigger, refresh the task.
+	 * Cancel editing of given task. Refresh task's parent sub tasks expand trigger, refresh the task.
 	 *
 	 * @param	Integer	idTask
 	 */

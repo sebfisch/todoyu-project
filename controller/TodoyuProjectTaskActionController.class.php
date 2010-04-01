@@ -79,13 +79,13 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * Add a subtask to a task
+	 * Add a sub task to a task
 	 *
 	 * @param	Array		$params
 	 * @return	String
 	 */
 	public function addsubtaskAction(array $params) {
-			// Parent for the new subtask
+			// Parent for the new sub task
 		$idParentTask	= intval($params['task']);
 
 		TodoyuTaskRights::restrictAdd($idParentTask);
@@ -106,7 +106,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function addsubcontainerAction(array $params) {
-			// Parent for the new subtask
+			// Parent for the new sub task
 		$idParentTask	= intval($params['task']);
 
 		TodoyuTaskRights::restrictAdd($idParentTask);
@@ -270,7 +270,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * Copy a task (and subtasks)
+	 * Copy a task (and sub tasks)
 	 * Add to clipboard, the copy action happens when pasting
 	 *
 	 * @param	Array		$params
@@ -287,7 +287,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * Cut a task and subtasks
+	 * Cut a task and sub tasks
 	 * Add to clipboard, the copy action happens when pasting
 	 *
 	 * @param	Array		$params
@@ -440,7 +440,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * Render subtasks
+	 * Render sub tasks
 	 *
 	 * @param	Array		$params
 	 * @return	String
@@ -452,7 +452,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			// Save open status
 		TodoyuProjectPreferences::saveSubTasksVisibility($idTask, true, AREA);
 
-		return TodoyuProjectRenderer::renderSubtasks($idTask, $idTaskShow);
+		return TodoyuProjectRenderer::renderSubTasks($idTask, $idTaskShow);
 	}
 
 }

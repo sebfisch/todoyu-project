@@ -20,7 +20,7 @@
 
 /**
  * Quicktask headlet
- * Shows ajax loading icon if a request is active
+ * Shows AJAX loading icon if a request is active
  *
  * @package		Todoyu
  * @subpackage	Core

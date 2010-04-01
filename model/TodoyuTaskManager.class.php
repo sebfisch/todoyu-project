@@ -322,7 +322,7 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Get next sorting position for a new task. For every subtask, sorting starts new
+	 * Get next sorting position for a new task. For every sub task, sorting starts new
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idParentTask
@@ -356,7 +356,7 @@ class TodoyuTaskManager {
 	 *
 	 * @param	Integer		$idTask
 	 */
-	public static function deleteTask($idTask, $deleteSubtasks = true) {
+	public static function deleteTask($idTask, $deleteSubTasks = true) {
 		$data	= array(
 			'deleted'		=> 1,
 			'date_update'	=> NOW
@@ -364,12 +364,12 @@ class TodoyuTaskManager {
 
 		self::updateTask($idTask, $data);
 
-			// Delete all subtasks
-		if( $deleteSubtasks ) {
-			$allSubtaskIDs	= self::getAllSubtaskIDs($idTask);
+			// Delete all sub tasks
+		if( $deleteSubTasks ) {
+			$allSubTaskIDs	= self::getAllSubTaskIDs($idTask);
 
-			if( sizeof($allSubtaskIDs) > 0 ) {
-				$where	= 'id IN(' . implode(',', $allSubtaskIDs) . ')';
+			if( sizeof($allSubTaskIDs) > 0 ) {
+				$where	= 'id IN(' . implode(',', $allSubTaskIDs) . ')';
 				$update	= array(
 					'deleted'		=> 1,
 					'date_update'	=> NOW
@@ -520,14 +520,14 @@ class TodoyuTaskManager {
 
 
 
-				// Add (with submenu)
+				// Add (with sub menu)
 			$allowed['add'] = $ownItems['add'];
 			unset($allowed['add']['submenu']);
 
 			if( TodoyuTaskRights::isAddAllowed($idTask) ) {
-					// Add subtask
+					// Add sub task
 				$allowed['add']['submenu']['task'] = $ownItems['add']['submenu']['task'];
-					// Add subcontainer
+					// Add sub container
 				$allowed['add']['submenu']['container'] = $ownItems['add']['submenu']['container'];
 			}
 
@@ -579,12 +579,12 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Get the IDs of all subtasks of a task
+	 * Get the IDs of all sub tasks of a task
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function getSubtaskIDs($idTask) {
+	public static function getSubTaskIDs($idTask) {
 		$idTask	= intval($idTask);
 
 		$field	= 'id';
@@ -598,13 +598,13 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Get ALL subtasks of a task (the whole tree, instead only the direct childs)
+	 * Get ALL sub tasks of a task (the whole tree, instead only the direct children)
 	 * Get also sub-sub-...-tasks
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function getAllSubtaskIDs($idTask) {
+	public static function getAllSubTaskIDs($idTask) {
 		$idTask		= intval($idTask);
 		$subtasks	= array();
 
@@ -631,12 +631,12 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Get subtasks (as data array) of given task
+	 * Get sub tasks (as data array) of given task
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function getSubtasks($idTask) {
+	public static function getSubTasks($idTask) {
 		$idTask	= intval($idTask);
 
 		if( $idTask === 0 )	{
@@ -657,15 +657,15 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Check if a task has subtasks
+	 * Check if a task has sub tasks
 	 *
 	 * @param	Integer		$idTask
-	 * @return	Bool
+	 * @return	Boolean
 	 */
-	public static function hasSubtasks($idTask) {
+	public static function hasSubTasks($idTask) {
 		$idTask	= intval($idTask);
 
-		$subtaskIDs	= self::getSubtaskIDs($idTask);
+		$subtaskIDs	= self::getSubTaskIDs($idTask);
 
 		return sizeof($subtaskIDs) > 0 ;
 	}
@@ -685,9 +685,9 @@ class TodoyuTaskManager {
 		$idParent	= intval($idParent);
 
 		if( $checkDeep ) {
-			$subtasks	= self::getAllSubtaskIDs($idParent);
+			$subtasks	= self::getAllSubTaskIDs($idParent);
 		} else {
-			$subtasks	= self::getSubtaskIDs($idParent);
+			$subtasks	= self::getSubTaskIDs($idParent);
 		}
 
 		return in_array($idTask, $subtasks);
@@ -1667,16 +1667,16 @@ class TodoyuTaskManager {
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Integer		$idParent
-	 * @param	Boolean		$withSubtasks
+	 * @param	Boolean		$withSubTasks
 	 * @param	Integer		$idProject
 	 * @return	Integer
 	 */
-	public static function copyTask($idTask, $idParent, $withSubtasks = true, $idProject = 0) {
+	public static function copyTask($idTask, $idParent, $withSubTasks = true, $idProject = 0) {
 		$idTask		= intval($idTask);
 		$idParent	= intval($idParent);
 		$idProject	= intval($idProject);
 
-			// Get orginal task data
+			// Get original task data
 		$data		= self::getTaskData($idTask);
 
 			// Set new project id if given
@@ -1700,18 +1700,18 @@ class TodoyuTaskManager {
 
 			// Set status
 		$data['status']		= STATUS_OPEN;
-			// Remove old tasknumber
+			// Remove old task number
 		unset($data['tasknumber']);
 
 			// Update task data
 		self::updateTask($idTaskNew, $data);
 
-			// Copy subtasks if enabled
-		if( $withSubtasks && $idTask !== $idParent ) {
-			$subtaskIDs = self::getSubtaskIDs($idTask);
+			// Copy sub tasks if enabled
+		if( $withSubTasks && $idTask !== $idParent ) {
+			$subTaskIDs = self::getSubTaskIDs($idTask);
 
-			foreach($subtaskIDs as $idSubtask) {
-				$idSubtaskNew = self::copyTask($idSubtask, $idTaskNew, true, $idProject);
+			foreach($subTaskIDs as $idSubTask) {
+				$idSubTaskNew = self::copyTask($idSubTask, $idTaskNew, true, $idProject);
 			}
 		}
 
@@ -1745,7 +1745,7 @@ class TodoyuTaskManager {
 			$update['id_project'] = $idProject;
 		}
 
-			// If project changed, generate a new tasknumber
+			// If project changed, generate a new task number
 		if( $taskData['id_project'] != $parentData['id_project'] ) {
 			$update['tasknumber']	= TodoyuProjectManager::getNextTaskNumber($parentData['id_project']);
 		}
@@ -1753,17 +1753,17 @@ class TodoyuTaskManager {
 			// Update the moved task
 		self::updateTask($idTask, $update);
 
-			// If project changed, update also all subtasks with new project ID and generate new tasknumber
+			// If project changed, update also all sub tasks with new project ID and generate new task number
 		if( $taskData['id_project'] != $parentData['id_project'] ) {
-			$allSubtaskIDs	= self::getAllSubtaskIDs($idTask);
+			$allSubTaskIDs	= self::getAllSubTaskIDs($idTask);
 
-			foreach($allSubtaskIDs as $idSubtask) {
+			foreach($allSubTaskIDs as $idSubTask) {
 				$subUpdate	= array(
 					'id_project'	=> $parentData['id_project'],
 					'tasknumber'	=> TodoyuProjectManager::getNextTaskNumber($parentData['id_project'])
 				);
 
-				Todoyu::db()->updateRecord(self::TABLE, $idSubtask, $subUpdate);
+				Todoyu::db()->updateRecord(self::TABLE, $idSubTask, $subUpdate);
 			}
 		}
 
@@ -1778,11 +1778,11 @@ class TodoyuTaskManager {
 	 * @param 	Integer		$idTask
 	 * @return	Integer
 	 */
-	public static function cloneTask($idTask, $withSubtasks = true) {
+	public static function cloneTask($idTask, $withSubTasks = true) {
 		$idTask		= intval($idTask);
 		$taskData	= TodoyuTaskManager::getTaskData($idTask);
 
-		$idNewTask	= self::copyTask($idTask, $taskData['id_parenttask'], $withSubtasks, $taskData['id_project']);
+		$idNewTask	= self::copyTask($idTask, $taskData['id_parenttask'], $withSubTasks, $taskData['id_project']);
 
 		TodoyuTaskManager::changeTaskOrder($idNewTask, $idTask, 'after');
 

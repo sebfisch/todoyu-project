@@ -296,12 +296,12 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get the subtasks of a task which match to all the filters
+	 * Get the sub tasks of a task which match to all the filters
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function getSubtaskIDs($idTask) {
+	public static function getSubTaskIDs($idTask) {
 		$idTask		= intval($idTask);
 
 			// Get task filters
@@ -605,7 +605,7 @@ class TodoyuProjectManager {
 
 	/**
 	 * Get the tasks which should be displayed the current filter settings, but aren't because
-	 * parent task doesn't match to the filter and is not displayed with all its subtasks
+	 * parent task doesn't match to the filter and is not displayed with all its sub tasks
 	 *
 	 * @param	Integer		$idProject			Project ID
 	 * @param	Array		$displayedTasks		Tasks which have been rendered
@@ -644,7 +644,7 @@ class TodoyuProjectManager {
 			$idParent	= $parentMap[$matchingNotDisplayedTaskID];
 
 				// Check all parents, if one of them does not match this current filter (and ist
-				// not displayed with all its subtasks, add the not display task to the lost list
+				// not displayed with all its sub tasks, add the not display task to the lost list
 			while($idParent != 0) {
 					// If parent doesn't match to the filter
 				if( ! in_array($idParent, $matchingTaskIDs) ) {
@@ -963,8 +963,8 @@ class TodoyuProjectManager {
 			'status'		=> STATUS_PLANNING,
 			'id_company'	=> 0,
 			'date_start'	=> NOW,
-			'date_end'		=> NOW + 3600*24*30,
-			'date_deadline'	=> NOW + 3600*24*30
+			'date_end'		=> NOW + 3600 * 24 * 30,
+			'date_deadline'	=> NOW + 3600 * 24 * 30
 		);
 
 			// Call hook to modify default task data

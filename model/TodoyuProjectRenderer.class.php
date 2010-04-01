@@ -34,11 +34,11 @@ class TodoyuProjectRenderer {
 	const EXTKEY = 'project';
 
 	/**
-	 * Visible subtasks in project view
+	 * Visible sub tasks in project view
 	 *
 	 * @var	Array
 	 */
-	private static $visibleSubtaskIDs = null;
+	private static $visibleSubTaskIDs = null;
 
 	/**
 	 * Rootline of a task which is forced to be open
@@ -328,7 +328,7 @@ class TodoyuProjectRenderer {
 		$idProject	= intval($idProject);
 		$idTaskShow	= intval($idTaskShow);
 
-			// Initialize tree in javaScript if not a ajax refresh
+			// Initialize tree in javaScript if not a AJAX refresh
 		if( ! TodoyuRequest::isAjaxRequest() ) {
 			TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.TaskTree.init.bind(Todoyu.Ext.project.TaskTree)', 100);
 		}
@@ -362,26 +362,26 @@ class TodoyuProjectRenderer {
 	 * @param	Integer		$idTaskShow		Task to show (all parent subtrees will be rendered to show this task)
 	 * @return	String
 	 */
-	public static function renderSubtasks($idTask, $idTaskShow = 0) {
+	public static function renderSubTasks($idTask, $idTaskShow = 0) {
 		$idTask		= intval($idTask);
 		$idTaskShow	= intval($idTaskShow);
 
 		$tmpl	= 'ext/project/view/subtasks.tmpl';
 
-			// Load open rootline if neccessary
+			// Load open rootline if necessary
 		if( $idTaskShow > 0 && sizeof(self::$openRootline) === 0 ) {
 			self::$openRootline	= TodoyuTaskManager::getTaskRootline($idTaskShow);
 		}
 
-		$subtaskIDs	= TodoyuProjectManager::getSubtaskIDs($idTask);
+		$subTaskIDs	= TodoyuProjectManager::getSubTaskIDs($idTask);
 		$data		= array(
 			'idTask' 		=> $idTask,
 			'subtaskHtml'	=> ''
 		);
 
-			// Render all subtasks
-		foreach($subtaskIDs as $idSubtask) {
-			$data['subtaskHtml'] .= TodoyuProjectRenderer::renderTask($idSubtask, $idTaskShow);
+			// Render all sub tasks
+		foreach($subTaskIDs as $idSubTask) {
+			$data['subtaskHtml'] .= TodoyuProjectRenderer::renderTask($idSubTask, $idTaskShow);
 		}
 
 		return render($tmpl, $data);
@@ -461,18 +461,18 @@ class TodoyuProjectRenderer {
 	 * @param	Integer		$idTask
 	 * @return	Bool
 	 */
-	public static function areSubtasksVisible($idTask) {
+	public static function areSubTasksVisible($idTask) {
 		$idTask	= intval($idTask);
 
 		if( in_array($idTask, self::$openRootline) ) {
 			return true;
 		}
 
-		if( is_null(self::$visibleSubtaskIDs) ) {
-			self::$visibleSubtaskIDs = TodoyuProjectPreferences::getVisibleSubTasks(EXTID_PROJECT);
+		if( is_null(self::$visibleSubTaskIDs) ) {
+			self::$visibleSubTaskIDs = TodoyuProjectPreferences::getVisibleSubTasks(EXTID_PROJECT);
 		}
 
-		return in_array($idTask, self::$visibleSubtaskIDs);
+		return in_array($idTask, self::$visibleSubTaskIDs);
 	}
 
 
@@ -481,11 +481,11 @@ class TodoyuProjectRenderer {
 	 * Render task for project task tree view
 	 *
 	 * @param	Integer		$idTask				ID of the task to render
-	 * @param	Integer		$idTaskShow			ID of the task which is forced to be shown (if its a subtask of the rendered task)
-	 * @param	Boolean		$withoutSubtasks	Don't render subtasks
+	 * @param	Integer		$idTaskShow			ID of the task which is forced to be shown (if its a sub task of the rendered task)
+	 * @param	Boolean		$withoutSubTasks	Don't render sub tasks
 	 * @return	String		Rendered task HTML for project task tree view
 	 */
-	public static function renderTask($idTask, $idTaskShow = 0, $withoutSubtasks = false, $tab = null) {
+	public static function renderTask($idTask, $idTaskShow = 0, $withoutSubTasks = false, $tab = null) {
 		$idTask		= intval($idTask);
 		$idTaskShow = intval($idTaskShow);
 		$task		= TodoyuTaskManager::getTask($idTask);
@@ -503,8 +503,8 @@ class TodoyuProjectRenderer {
 			'task'				=> $taskData,
 			'taskIcons'			=> TodoyuTaskManager::getAllTaskIcons($idTask),
 			'taskHeaderExtras'	=> TodoyuTaskManager::getAllTaskHeaderExtras($idTask),
-			'hasSubtasks'		=> TodoyuTaskManager::hasSubtasks($idTask),
-			'areSubtasksVisible'=> self::areSubtasksVisible($idTask),
+			'hasSubtasks'		=> TodoyuTaskManager::hasSubTasks($idTask),
+			'areSubtasksVisible'=> self::areSubTasksVisible($idTask),
 			'isExpanded'		=> $isExpanded
 		);
 
@@ -519,9 +519,9 @@ class TodoyuProjectRenderer {
 			$data['details']= TodoyuTaskRenderer::renderTaskDetail($idTask, $activeTab);
 		}
 
-			// Render subtasks
-		if( $withoutSubtasks === false && $data['hasSubtasks'] && $data['areSubtasksVisible'] ) {
-			$data['subtasks'] = self::renderSubtasks($idTask, $idTaskShow);
+			// Render sub tasks
+		if( $withoutSubTasks === false && $data['hasSubtasks'] && $data['areSubtasksVisible'] ) {
+			$data['subtasks'] = self::renderSubTasks($idTask, $idTaskShow);
 		}
 
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDataBeforeRendering', $data, array($idTask));

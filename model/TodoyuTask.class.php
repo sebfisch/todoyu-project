@@ -134,12 +134,12 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if the task has subtasks
+	 * Check if the task has sub tasks
 	 *
 	 * @return	Bool
 	 */
 	public function hasSubtasks() {
-		return TodoyuTaskManager::hasSubtasks($this->getID());
+		return TodoyuTaskManager::hasSubTasks($this->getID());
 	}
 
 

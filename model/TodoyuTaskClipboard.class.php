@@ -31,7 +31,7 @@ class TodoyuTaskClipboard {
 	 *
 	 * @param	Integer		$idTask				Task to hold on clipboard
 	 * @param 	String		$mode				Clipboard mode
-	 * @param	Boolean		$withSubtasks		Copy subtasks
+	 * @param	Boolean		$withSubtasks		Copy sub tasks
 	 */
 	public static function addTask($idTask, $mode = 'copy', $withSubtasks = true) {
 		$idTask	= intval($idTask);
@@ -47,7 +47,7 @@ class TodoyuTaskClipboard {
 
 
 	/**
-	 * Get clipboard data (task, mode, subtasks)
+	 * Get clipboard data (task, mode, sub tasks)
 	 *
 	 * @return	Array
 	 */
@@ -131,10 +131,10 @@ class TodoyuTaskClipboard {
 	 * Add task for copy mode
 	 *
 	 * @param	Integer		$idTask
-	 * @param	Boolean		$widthSubtasks
+	 * @param	Boolean		$widthSubTasks
 	 */
-	public static function addTaskCopy($idTask, $widthSubtasks = true) {
-		self::addTask($idTask, 'copy', $widthSubtasks);
+	public static function addTaskCopy($idTask, $widthSubTasks = true) {
+		self::addTask($idTask, 'copy', $widthSubTasks);
 	}
 
 
@@ -212,10 +212,10 @@ class TodoyuTaskClipboard {
 			if( AREA === EXTID_PROJECT && TodoyuTaskRights::isAddAllowed($idTask) ) {
 				$mergeItems	= $ownItems;
 				$data		= self::getData();
-				$isSubtask	= TodoyuTaskManager::isSubTaskOf($idTask, $data['task'], true);
+				$isSubTask	= TodoyuTaskManager::isSubTaskOf($idTask, $data['task'], true);
 
-					// Don't allow paste on itself or subtaks when: cut-mode or with-subtasks
-				if( $idTask == $data['task'] || $isSubtask ) {
+					// Don't allow paste on itself or sub tasks when: cut mode or with sub tasks
+				if( $idTask == $data['task'] || $isSubTask ) {
 					if( $data['mode'] === 'cut' || $data['subtasks'] ) {
 						$mergeItems = array();
 					}
