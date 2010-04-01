@@ -27,9 +27,9 @@
 						<action>addNewContactWizard</action>
 						<title>LLL:contact.create.person.label</title>
 						<width>700</width>
-						<displayCondition></displayCondition>
+						<displayCondition />
 						<restrict>
-							<allow ext="contact" right="contact:modify"></allow>
+							<allow ext="contact" right="contact:modify" />
 						</restrict>
 					</wizard>
 					<required />
