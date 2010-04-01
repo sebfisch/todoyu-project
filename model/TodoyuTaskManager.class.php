@@ -905,7 +905,7 @@ class TodoyuTaskManager {
 				'className'	=> ''
 			);
 
-				// Worktype
+				// Work type
 			$info['worktype'] = array(
 				'label'		=> 'LLL:task.attr.worktype',
 				'value'		=> $taskData['worktype']['title'],// 'Internes / Administration',
@@ -975,7 +975,7 @@ class TodoyuTaskManager {
 		$idTaskCreator	= $taskData['id_person_create'];
 
 		$info['person_owner'] = array(
-			'label'		=> 'LLL:task.attr.person_owner',
+			'label'		=> $taskData['type'] === TASK_TYPE_TASK ? 'LLL:task.attr.person_owner' : 'LLL:task.container.attr.person_owner',
 			'value'		=> TodoyuPersonManager::getLabel($idTaskOwner),
 			'position'	=> 150,
 			'className'	=> 'sectionStart'
