@@ -188,7 +188,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			TodoyuHeader::sendTodoyuHeader('idTaskOld', $idTask);
 
 //			return TodoyuProjectRenderer::renderTask($idTaskNew, $idTaskReal);
-			return TodoyuProjectRenderer::renderTask($idTaskNew, 0);
+		
+			return $params['area'] == 'portal' ? TodoyuTaskRenderer::renderListingTask($idTaskNew) : TodoyuProjectRenderer::renderTask($idTaskNew, 0);
 		} else {
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTask);
 			TodoyuHeader::sendTodoyuErrorHeader();
