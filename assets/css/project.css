@@ -42,14 +42,8 @@
 
 .project .typeCheckbox .fLabel,
 .project .typeCheckbox .fField {
-	width:70%;
-}
-
-.project .commentform .fLabel,
-.project .commentform .fField {
 	width:60%;
 }
-
 
 .project .data .formField {
 	width:520px;
