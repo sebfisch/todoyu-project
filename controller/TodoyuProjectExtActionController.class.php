@@ -73,16 +73,17 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 			// Init page
 		TodoyuPage::init('ext/project/view/ext.tmpl');
-
+		
 			// If a project is displayed
-		if( $idProject !== 0 ) {
+		if( $idProject !== 0 && !TodoyuProjectManager::getProject($idProject)->isDeleted()) {
 				// Prepend current project to list
 			TodoyuProjectPreferences::addOpenProject($idProject);
 
 			$project= TodoyuProjectManager::getProject($idProject);
 			$title	= TodoyuLanguage::getLabel('project.page.title') . ' - ' . $project->getFullTitle();
 		} else {
-			$title	= TodoyuLanguage::getLabel('project.page.title.noSelected');
+			$title		= TodoyuLanguage::getLabel('project.page.title.noSelected');
+			$idProject	= 0;
 		}
 
 		TodoyuPage::setTitle($title);

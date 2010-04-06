@@ -154,6 +154,17 @@ class TodoyuProject extends TodoyuBaseObject {
 	public function getDeadlineDate() {
 		return $this->get('date_deadline');
 	}
+	
+	
+	
+	/**
+	 * checks if the Project is deleted
+	 * 
+	 * @return	boolean
+	 */
+	public function isDeleted()	{
+		return $this->get('deleted') == 1;
+	}
 
 
 
