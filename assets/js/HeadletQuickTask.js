@@ -26,7 +26,7 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	
 	
 	init: function() {
-		
+		Todoyu.Hook.add('QuickTaskSaved', this.onQuickTaskSaved.bind(this));
 	},
 	
 	
@@ -40,7 +40,7 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	 * Add quicktask
 	 */
 	add: function() {
-		this.ext.QuickTask.openPopup(this.onTaskAdded.bind(this));
+		this.ext.QuickTask.openPopup();
 	},
 
 
@@ -53,7 +53,7 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	 * @param	Integer		idProject
 	 * @param	Boolean		started
 	 */
-	onTaskAdded: function(idTask, idProject, started) {
+	onQuickTaskSaved: function(idTask, idProject, response) {
 		if ( Todoyu.getArea() == 'project' ) {
 			if( idProject == this.ext.ProjectTaskTree.getActiveProjectID() ) {
 				this.ext.TaskTree.update();

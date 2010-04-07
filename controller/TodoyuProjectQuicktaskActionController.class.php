@@ -67,11 +67,12 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 
 			$idTask		= TodoyuQuickTaskManager::save($storageData);
 			$idProject	= intval($storageData['id_project']);
-			$start		= intval($storageData['start_tracking']) === 1;
 
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTask);
 			TodoyuHeader::sendTodoyuHeader('idProject', $idProject);
-			TodoyuHeader::sendTodoyuHeader('start', $start);
+
+				// Call hook when quicktask is saved
+			TodoyuHookManager::callHook('project', 'QuickTaskSaved', array($idTask, $idProject, $storageData));
 		} else {
 			TodoyuHeader::sendTodoyuErrorHeader();
 

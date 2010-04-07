@@ -53,7 +53,7 @@ class TodoyuQuickTaskManager {
 			// Preset (empty) form data
 		$formData	= TodoyuFormHook::callLoadData($xmlPath, array());
 
-				// Load form with extra field data
+			// Load form with extra field data
 		$xmlPathInsert	= 'ext/project/config/form/field-id_project.xml';
 		$insertForm		= TodoyuFormManager::getForm($xmlPathInsert);
 
