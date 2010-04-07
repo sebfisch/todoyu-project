@@ -586,21 +586,18 @@ class TodoyuTaskManager {
 	 */
 	public static function getSubTaskIDs($idTask) {
 		$idTask	= intval($idTask);
-
-		$field	= 'id';
-		$table	= self::TABLE;
-		$where	= '	id_parenttask 	= ' . $idTask . ' AND
-					deleted 		= 0';
-
-		$subTaskIDs	=	Todoyu::db()->getColumn($field, $table, $where);
 		
-		foreach($subTaskIDs as $key => $idSubTask)	{
-			if(!TodoyuTaskRights::isSeeAllowed($idSubTask))	{
-				unset($subTaskIDs[$key]);
-			}
-		}
+		$filters	= TodoyuProjectManager::getTaskTreeFilterStruct();
 		
-		return $subTaskIDs;
+		$filters[]	= array(
+			'filter'=> 'parentTask',
+			'value'	=> $idTask
+		);
+
+		$taskFilter	= new TodoyuTaskFilter($filters);
+		$taskIDs	= $taskFilter->getTaskIDs();
+
+		return $taskIDs;		
 	}
 
 
