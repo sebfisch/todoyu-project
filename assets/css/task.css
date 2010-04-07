@@ -290,8 +290,9 @@
 	.task .tabContent .tabBlock {
 		position:relative;
 		background:#fff;
+		padding: 5px;
 	}
-
+	
 	.task .tabContent .tabBlock .toggle {
 		display:block;
 		position:absolute;
