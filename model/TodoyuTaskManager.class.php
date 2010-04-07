@@ -1108,8 +1108,8 @@ class TodoyuTaskManager {
 			);
 		}
 
-			// Add is public icon
-		if( $task->isPublic() ) {
+			// Add public icon for internals
+		if( $task->isPublic() && Todoyu::person()->isInternal() ) {
 			$icons['public'] = array(
 				'id'		=> 'task-' . $idTask . '-public',
 				'class'		=> 'isPublic',
