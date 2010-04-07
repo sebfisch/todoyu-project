@@ -592,7 +592,15 @@ class TodoyuTaskManager {
 		$where	= '	id_parenttask 	= ' . $idTask . ' AND
 					deleted 		= 0';
 
-		return Todoyu::db()->getColumn($field, $table, $where);
+		$subTaskIDs	=	Todoyu::db()->getColumn($field, $table, $where);
+		
+		foreach($subTaskIDs as $key => $idSubTask)	{
+			if(!TodoyuTaskRights::isSeeAllowed($idSubTask))	{
+				unset($subTaskIDs[$key]);
+			}
+		}
+		
+		return $subTaskIDs;
 	}
 
 
