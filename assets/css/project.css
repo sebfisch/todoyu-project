@@ -35,14 +35,14 @@
 	width:70%;
 }
 
-.project .data .fField {
+.project .typeCheckbox .fLabel,
+.project .typeCheckbox .fField {
 	width:70%;
 }
 
-
-.project .typeCheckbox .fLabel,
-.project .typeCheckbox .fField {
-	width:60%;
+.project .tabContent .typeCheckbox .fLabel,
+.project .tabContent .typeCheckbox .fField {
+	width: 60%;
 }
 
 .project .data .formField {
