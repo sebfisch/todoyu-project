@@ -979,12 +979,14 @@ class TodoyuTaskManager {
 		$idTaskOwner	= $taskData['person_owner']['id'];
 		$idTaskCreator	= $taskData['id_person_create'];
 
-		$info['person_owner'] = array(
-			'label'		=> intval($taskData['type']) === TASK_TYPE_TASK ? 'LLL:task.attr.person_owner' : 'LLL:task.container.attr.person_owner',
-			'value'		=> TodoyuPersonManager::getLabel($idTaskOwner),
-			'position'	=> 150,
-			'className'	=> 'sectionStart'
-		);
+		if ( ! empty($idTaskOwner) ) {
+			$info['person_owner'] = array(
+				'label'		=> intval($taskData['type']) === TASK_TYPE_TASK ? 'LLL:task.attr.person_owner' : 'LLL:task.container.attr.person_owner',
+				'value'		=> TodoyuPersonManager::getLabel($idTaskOwner),
+				'position'	=> 150,
+				'className'	=> 'sectionStart'
+			);
+		}
 
 			// Task creator: Different person owns / created task? have both displayed
 		if ( $idTaskOwner !== $idTaskCreator ) {
