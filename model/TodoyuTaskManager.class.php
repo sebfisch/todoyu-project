@@ -911,12 +911,14 @@ class TodoyuTaskManager {
 			);
 
 				// Work type
-			$info['worktype'] = array(
-				'label'		=> 'LLL:task.attr.worktype',
-				'value'		=> $taskData['worktype']['title'],// 'Internes / Administration',
-				'position'	=> 20,
-				'className'	=> ''
-			);
+			if ( ! empty($taskData['worktype']) ) {
+				$info['worktype'] = array(
+					'label'		=> 'LLL:task.attr.worktype',
+					'value'		=> $taskData['worktype']['title'],// 'Internes / Administration',
+					'position'	=> 20,
+					'className'	=> ''
+				);
+			}
 
 				// Public
 			$info['is_public']	= array(
@@ -927,28 +929,34 @@ class TodoyuTaskManager {
 			);
 
 				// Estimated workload
-			$info['estimated_workload']	= array(
-				'label'	=> 'LLL:task.attr.estimated_workload',
-				'value'	=> TodoyuTime::sec2hour($taskData['estimated_workload']),
-				'position'	=> 30,
-				'className'	=> 'sectionStart'
-			);
+			if ( $info['estimated_workload'] > 0 ) {
+				$info['estimated_workload']	= array(
+					'label'	=> 'LLL:task.attr.estimated_workload',
+					'value'	=> TodoyuTime::sec2hour($taskData['estimated_workload']),
+					'position'	=> 30,
+					'className'	=> 'sectionStart'
+				);
+			}
 
 				// Person assigned
-			$info['person_assigned']	= array(
-				'label'		=> 'LLL:task.attr.person_assigned',
-				'value'		=> TodoyuPersonManager::getLabel($taskData['person_assigned']['id']),
-				'position'	=> 80,
-				'className'	=> 'sectionStart'
-			);
+			if ( ! empty($taskData['person_assigned']['id']) ) {
+				$info['person_assigned']	= array(
+					'label'		=> 'LLL:task.attr.person_assigned',
+					'value'		=> TodoyuPersonManager::getLabel($taskData['person_assigned']['id']),
+					'position'	=> 80,
+					'className'	=> 'sectionStart'
+				);
+			}
 
 				// Date start
-			$info['date_start']	= array(
-				'label'	=> 'LLL:task.attr.date_start',
-				'value'	=> TodoyuTime::format( $taskData['date_start'], 'date'),
-				'position'	=> 100,
-				'className'	=> 'sectionStart'
-			);
+			if ( $taskData['date_start'] > 0 ) {
+				$info['date_start']	= array(
+					'label'		=> 'LLL:task.attr.date_start',
+					'value'		=> TodoyuTime::format( $taskData['date_start'], 'date'),
+					'position'	=> 100,
+					'className'	=> 'sectionStart'
+				);
+			}
 
 				// Date end (if set)
 			if( $taskData['date_end'] > 0 ) {
@@ -1088,8 +1096,9 @@ class TodoyuTaskManager {
 		$idTask	= intval($idTask);
 		$task	= self::getTask($idTask);
 
-			// Task-only infos (not relevant for containers)
+			// Task-only information (not relevant for containers)
 		if ( $task->isTask() ) {
+				// 'dateover': end date or deadline passed
 			if( $task->getStatus() != STATUS_CLEARED && ($task->getDeadlineDate() < NOW || $task->getEndDate() < NOW) ) {
 				$icons['dateover']= array(
 					'id'		=> 'task-' . $idTask . '-dateover',
