@@ -61,7 +61,7 @@
 		<label index="contextmenu.add.task">Add A New Task</label>
 		<label index="contextmenu.add.container">Add A New Container</label>
 		<label index="projectrole.attr.rolekey">Role Keyword</label>
-		<label index="tasktree.losttasks">Matching tasks which parent tasks are not displayed in the list.</label>
+		<label index="tasktree.losttasks">Tasks with inapplicable parents / status</label>
 		<label index="records.projectrole">Project Roles</label>
 		<label index="records.worktype">Work Types</label>
 		<label index="form.validation.dateBefore">Date Must Be Before End Date</label>
@@ -140,7 +140,7 @@
 		<label index="contextmenu.add.task">Aufgabe hinzufügen</label>
 		<label index="contextmenu.add.container">Container hinzufügen</label>
 		<label index="projectrole.attr.rolekey">Rollen-Schlüssel</label>
-		<label index="tasktree.losttasks">Passende Aufgaben deren übergeordnete Aufgabe nicht angezeigt wird</label>
+		<label index="tasktree.losttasks">Aufgaben mit unzutreffenden übergeordneten Aufgaben / Status</label>
 		<label index="records.projectrole">Benutzer-Rollen</label>
 		<label index="records.worktype">Arbeits-Typ</label>
 		<label index="form.validation.dateBefore">Datum muss vor dem End-Datum liegen</label>

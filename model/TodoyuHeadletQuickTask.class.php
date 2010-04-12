@@ -57,7 +57,7 @@ class TodoyuHeadletQuickTask extends TodoyuHeadletTypeButton {
 	 */
 	public function isEmpty() {
 		$projectIDs	= TodoyuProjectManager::getProjectIDsForTaskAdd();
-
+		
 		return sizeof($projectIDs) === 0;
 	}
 

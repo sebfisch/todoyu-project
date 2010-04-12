@@ -33,7 +33,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 
 	/**
-	 * Default action
+	 * Default action: render project module page
 	 *
 	 * @param	Array		$params
 	 * @return	String
@@ -64,18 +64,16 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 			$idProject	= TodoyuProjectManager::getAvailableProjectForPerson();
 		}
 
-
 			// Check access rights (if project selected)
 		if( $idProject !== 0 ) {
 			TodoyuProjectRights::restrictSee($idProject);
 		}
 
-
 			// Init page
 		TodoyuPage::init('ext/project/view/ext.tmpl');
 		
 			// If a project is displayed
-		if( $idProject !== 0 && !TodoyuProjectManager::getProject($idProject)->isDeleted()) {
+		if( $idProject !== 0 && !TodoyuProjectManager::getProject($idProject)->isDeleted() ) {
 				// Prepend current project to list
 			TodoyuProjectPreferences::addOpenProject($idProject);
 

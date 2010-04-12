@@ -662,6 +662,20 @@ class TodoyuProjectManager {
 
 
 	/**
+	 * Has a task been requested for display within the URL and does not fit to current filter? get it's ID
+	 *
+	 * @param	Array		$displayedTasks
+	 * @return	Integer
+	 */
+	public static function getLostRequestedTaskID(array $displayedTasks) {
+		$idRequestedTask	= intval(TodoyuRequest::getParam('task'));
+
+		return ( ! in_array($idRequestedTask, $displayedTasks) ) ? $idRequestedTask : 0;
+	}
+
+
+
+	/**
 	 * Get persons which are connected with the project
 	 *
 	 * @param	Integer		$idProject

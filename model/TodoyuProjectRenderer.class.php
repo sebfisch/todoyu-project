@@ -404,6 +404,13 @@ class TodoyuProjectRenderer {
 
 			// Get lost task IDs
 		$lostTaskIDs	= TodoyuProjectManager::getLostTaskInTaskTree($idProject, self::$renderedTasks);
+
+			// Get task requested in URL which doesn't fit the current filter
+		$requestedTaskID	= TodoyuProjectManager::getLostRequestedTaskID(self::$renderedTasks);
+		if ( $requestedTaskID !== 0 ) {
+			$lostTaskIDs	[]= $requestedTaskID;
+		}
+
 		$lostTaskHtml	= '';
 
 		foreach($lostTaskIDs as $idTask) {
@@ -417,9 +424,6 @@ class TodoyuProjectRenderer {
 
 		return render($tmpl, $data);
 	}
-
-
-
 
 
 
@@ -719,6 +723,5 @@ class TodoyuProjectRenderer {
 	}
 
 }
-
 
 ?>
