@@ -271,7 +271,8 @@
 	.task .taskTabs .tabs li {
 		background-color:#edf1e0 !important;
 	}
-
+	
+	.task .taskTabs .tabs li:hover,
 	.task .taskTabs .tabs li.active {
 		background-color:#e3eace !important;
 	}
