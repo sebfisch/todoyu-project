@@ -327,8 +327,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 		Todoyu.Tabs.setActive('project', idProject);
 
-//		$('project-tabs').childElements().invoke('removeClassName', 'active');
-//		$('projecttab-' + idProject).addClassName('active');
+		var title	= this.getActiveProjectTitle().replace(':', ' - ');
+		Todoyu.Ui.setTitle( 'LLL:project.page.title - ' + title );
 
 		this.moveTabToFront(idProject);
 
@@ -415,6 +415,29 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		}
 
 		return false;
+	},
+
+
+
+	/**
+	 * Get title of project shown in currently activated project tab
+	 *
+	 * @return  String
+	 */
+	getActiveProjectTitle: function() {
+		var activeTab	= $('project-tabs').select('li.active span.labeltext');
+		var title		= '';
+
+		if( activeTab.size() === 1 ) {
+			title = activeTab.first().innerHTML;
+		} else {
+			if( this.getNumTabs() > 0 ) {
+//	@todo	check: needed? working?
+				title = this.getTabs().first().innerHTML;
+			}
+		}
+
+		return title;
 	},
 
 
