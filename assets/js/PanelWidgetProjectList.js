@@ -64,7 +64,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Install fulltext observer
+	 * Install keyup event observer on fulltext search input field
 	 */
 	observeFulltext: function() {
 		$('panelwidget-projectlist-field-fulltext').observe('keyup', this.onFulltextKeyup.bindAsEventListener(this));
@@ -73,7 +73,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Install project observer
+	 * Install click event observer on items of projects list 
 	 */
 	observeProjects: function() {
 		$('panelwidget-projectlist-list').observe('click', this.onProjectClick.bindAsEventListener(this));
@@ -91,7 +91,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Keyup event handler for fulltext
+	 * Handler for keyup events of fulltext search input field
 	 *
 	 * @param	Object		event
 	 */
@@ -156,6 +156,13 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 
+	/**
+	 * Apply filter to project list panelwidget
+	 *
+	 * @param   String      name
+	 * @param   String      value
+	 * @param   Boolean     update
+	 */
 	applyFilter: function(name, value, update) {
 		this.filters[name] = value;
 
@@ -167,6 +174,9 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 
+	/**
+	 * Refresh project list panelwidget
+	 */
 	update: function() {
 		var url		= Todoyu.getUrl('project', 'panelwidgetprojectlist');
 		var options	= {
@@ -183,26 +193,56 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 
+	/**
+	 * Handler to be evoked after refresh of project list panelwidget
+	 *
+	 * @param   Object  response
+	 */
 	onUpdated: function(response) {
 		this.observeProjects();
 	},
 
 
 
+	/**
+	 * Check wether given project is listed in panewidget's project list
+	 *
+	 * @param   Integer     idProject
+	 * @return  Boolean
+	 */
 	isProjectListed: function(idProject) {
 		return Todoyu.exists('panelwidget-projectlist-project-' + idProject);
 	},
 
 
 
+	/**
+	 * Handler being evoked after saving of projects: updates the project list panel widget
+	 *
+	 * @param   Integer     idProject
+	 */
 	onProjectSaved: function(idProject) {
 		this.update();
 	},
 
+
+
+	/**
+	 * Handler being evoked after creation of new projects: updates the project list panel widget
+	 * 
+	 * @param   Integer     idProject
+	 */
 	onProjectCreated: function(idProject) {
 		this.update();
 	},
 
+
+
+	/**
+	 * Handler being evoked after deletion projects: updates the project list panel widget
+	 *
+	 * @param   Integer     idProject
+	 */
 	onProjectDeleted: function(idProject) {
 		this.update();
 	}
