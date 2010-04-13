@@ -10,4 +10,9 @@
 		<label index="search">Suchen</label>
 		<label index="list.empty">Keine passenden Projekte gefunden (gefiltert)</label>
 	</labels>
+	<labels lang="pt">
+		<label index="title">Projetos</label>
+		<label index="search">Pesquisar</label>
+		<label index="list.empty">Projetos não encontrados (Para a Atual Seleção de Filtros)</label>
+	</labels>
 </locallang>

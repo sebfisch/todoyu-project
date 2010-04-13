@@ -10,4 +10,9 @@
 		<label index="addProject">Neues Projekt erfassen</label>
 		<label index="addTask">Neue Aufgabe erfassen</label>
 	</labels>
+	<labels lang="pt">
+		<label index="title">Criar Projeto</label>
+		<label index="addProject">Adicionar Novo Projeto</label>
+		<label index="addTask">Adicionar Nova Tarefa</label>
+	</labels>
 </locallang>

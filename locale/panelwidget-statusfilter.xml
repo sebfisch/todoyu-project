@@ -8,4 +8,8 @@
 		<label index="title.task">Aufgaben Status-Filter</label>
 		<label index="title.project">Projekt Status-Filter</label>
 	</labels>
+	<labels lang="pt">
+		<label index="title.task">Filtro para Status de Tarefa</label>
+		<label index="title.project">Filtro de Status de Projeto</label>
+	</labels>
 </locallang>

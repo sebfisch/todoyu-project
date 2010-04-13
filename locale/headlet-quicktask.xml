@@ -8,4 +8,8 @@
 		<label index="label">Schnellaufgabe erfassen</label>
 		<label index="title">Schnellaufgabe erfassen</label>
 	</labels>
+	<labels lang="pt">
+		<label index="label">Criar uma Quicktask</label>
+		<label index="title">Criar uma Quicktask</label>
+	</labels>
 </locallang>

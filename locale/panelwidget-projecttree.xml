@@ -19,5 +19,15 @@
 		<label index="filter.projectleader">Projektleiter</label>
 		<label index="filter.customer">Kunde</label>
 		<label index="list.empty">Keine Projekte gefunden</label>
+	</labels>
+	<labels lang="pt">
+		<label index="title">Projetos</label>
+		<label index="filter.remove">Excluir Filtros</label>
+		<label index="filter.addFilter">Adicionar</label>
+		<label index="filter.addNewFilter">Adicionar um Novo Filtro</label>
+		<label index="filter.fulltext">Texto</label>
+		<label index="filter.projectleader">Gerente de Projeto</label>
+		<label index="filter.customer">Cliente</label>
+		<label index="list.empty">Projeto Não Encontrado</label>
 	</labels>	
 </locallang>
