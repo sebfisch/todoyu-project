@@ -279,8 +279,8 @@
 
 	/* task tabs content */
 	.task .tabContent {
-		margin-left:10px;
 		background-color:#e3eace;
+		border-bottom: 1px dotted #aaa;
 	}
 
 	.task .tabContent .tab {
