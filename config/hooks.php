@@ -25,7 +25,8 @@ TodoyuHookManager::registerHook('project', 'taskinfo',			'TodoyuTaskManager::add
 
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTaskManager::modifyFormfieldsForTask');
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTaskManager::modifyFormfieldsForContainer');
-TodoyuFormHook::registerLoadData('ext/project/config/form/quicktask.xml', 'TodoyuTaskManager::hookLoadQuickTaskFormData');
+TodoyuFormHook::registerLoadData('ext/project/config/form/quicktask.xml', 'TodoyuTaskManager::hookLoadTaskFormData');
+TodoyuFormHook::registerLoadData('ext/project/config/form/task.xml', 'TodoyuTaskManager::hookLoadTaskFormData');
 
 
 ?>

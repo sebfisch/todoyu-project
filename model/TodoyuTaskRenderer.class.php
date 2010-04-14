@@ -147,12 +147,7 @@ class TodoyuTaskRenderer {
 	 */
 	public static function renderQuickCreateForm() {
 		$form	= TodoyuTaskManager::getQuickCreateForm();
-
-			// Preset (empty) form data
-		$formData	= $form->getFormData();
-		$formData	= TodoyuFormHook::callLoadData('ext/project/config/form/task.xml', $formData, 0);
-		$form->setFormData($formData);
-
+		
 		return $form->render();
 	}
 

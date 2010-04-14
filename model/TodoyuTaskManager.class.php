@@ -84,6 +84,10 @@ class TodoyuTaskManager {
 		$form->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateTask.save(this.form)');
 		$form->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
 
+
+		$data	= TodoyuFormHook::callLoadData($xmlPath, array(), 0, array('form'=>$form));
+		$form->setFormData($data);
+		
 		return $form;
 	}
 
@@ -1287,7 +1291,7 @@ class TodoyuTaskManager {
 		}
 
 			// Get data
-		$idPerson	= TodoyuAuth::getPersonID();
+		$idPerson	= personid();
 		$taskNumber	= TodoyuProjectManager::getNextTaskNumber($idProject);
 
 			// Calculate dates based on project and container parents
@@ -1308,7 +1312,7 @@ class TodoyuTaskManager {
 			'type'				=> $type,
 			'class'				=> ''
 		);
-
+		
 			// Set type specific information
 		switch($type) {
 			case TASK_TYPE_TASK:
@@ -1948,19 +1952,29 @@ class TodoyuTaskManager {
 
 
 
-	public static function hookLoadQuickTaskFormData(array $data, $idRecord, array $params = array()) {
+	/**
+	 * Load task data for quicktask
+	 *
+	 * @param	Array		$data
+	 * @param	Integer		$idRecord
+	 * @param	Array		$params
+	 * @return	Array
+	 */
+	public static function hookLoadTaskFormData(array $data, $idRecord, array $params = array()) {
 		if( AREA === EXTID_PROJECT ) {
 				// Set project ID
 			if( intval($data['id_project']) === 0 ) {
 				$data['id_project']	= TodoyuProjectPreferences::getActiveProject();
 			}
 		}
-		
-		TodoyuDebug::printInFireBug($data);
-		
+
+			// Set owner for quickcreate tasks
+		if( strtolower(CONTROLLER) === 'quickcreatetask' ) {
+			$data['id_person_owner'] = personid();
+		}
+				
 		return $data;
 	}
-
 }
 
 ?>
