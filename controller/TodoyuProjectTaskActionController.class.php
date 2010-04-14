@@ -372,42 +372,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		TodoyuTaskManager::deleteTask($idTask, true);
 	}
 
-
-
-	/**
-	 * 'autocompleteprojecttask' action method
-	 *
-	 * @param	Array	$params
-	 * @return	String
-	 */
-	public function autocompleteprojecttaskAction(array $params) {
-		$formName	= $params['formName'];
-		$sword		= trim($params['sword']);
-		$formData	= $params[$formName];
-		$idProject	= intval($formData['id_project']);
-		$idTask		= intval($formData['id']);
-
-		$filters	= array(
-			array(
-				'filter'=> 'tasknumberortitle',
-				'value'	=> $sword
-			),
-			array(
-				'filter'=> 'nottask',
-				'value'	=> $idTask
-			),
-			array(
-				'filter'=> 'project',
-				'value'	=> $idProject
-			)
-		);
-
-		$tasks	= TodoyuTaskFilterDataSource::getTaskAutocompleteListByFilter($filters);
-
-		return TodoyuRenderer::renderAutocompleteList($tasks);
-	}
-
-
+	
 
 	/**
 	 * Load task tab

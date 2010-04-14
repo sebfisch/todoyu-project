@@ -112,39 +112,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 		return TodoyuProjectRenderer::renderProjectDetails($idProject);
 	}
 
-
-
-	/**
-	 * Get company autocomplete
-	 *
-	 * @param	Array		$params
-	 * @return	String
-	 */
-	public function autocompleteCompanyAction(array $params) {
-		$sword	= $params['sword'];
-		$results = TodoyuPersonFilterDataSource::autocompleteCompanies($sword);
-
-		return TodoyuRenderer::renderAutocompleteList($results);
-	}
-
-
-
-	/**
-	 * 'autocmpletion' action method
-	 *
-	 * @param	Array	$params
-	 * @return	String
-	 */
-	public function autocompletionAction(array $params) {
-		$sword	= $params['sword'];
-		$config	= array();
-
-		$data	= TodoyuProjectFilterDataSource::autocompleteProjects($sword, $config);
-
-		return TodoyuRenderer::renderAutocompleteList($data);
-	}
-
-
+	
 
 	/**
 	 * 'setstatus' action method

@@ -94,8 +94,8 @@
 							<config>
 								<acListener>
 									<ext>project</ext>
-									<controller>project</controller>
-									<action>autocompleteCompany</action>
+									<controller>autocomplete</controller>
+									<action>company</action>
 								</acListener>
 								<acLabelFunc>TodoyuCompanyManager::getLabel</acLabelFunc>
 								<options>

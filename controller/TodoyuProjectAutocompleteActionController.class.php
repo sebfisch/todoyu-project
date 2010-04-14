@@ -26,11 +26,23 @@
  */
 class TodoyuProjectAutocompleteActionController extends TodoyuActionController {
 
-
+	/**
+	 * Check controller access
+	 *
+	 * @param	Array		$params
+	 */
 	public function init(array $params) {
 		restrict('project', 'general:use');
 	}
 
+
+
+	/**
+	 * Autocomplete persons for project
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function personAction(array $params) {
 		$sword		= trim($params['sword']);
 		$config		= array();
@@ -39,6 +51,74 @@ class TodoyuProjectAutocompleteActionController extends TodoyuActionController {
 			// Render & display output
 		return TodoyuRenderer::renderAutocompleteList($results);
 	}
+
+
+
+	/**
+	 * Get task autocomplete list for new parent tasks
+	 * Parent tasks have to be in the same project
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function projecttaskAction(array $params) {
+		$formName	= $params['formName'];
+		$sword		= trim($params['sword']);
+		$idProject	= intval($params[$formName]['id_project']);
+		$idTask		= intval($params[$formName]['id']);
+
+		$filters	= array(
+			array(
+				'filter'=> 'tasknumberortitle',
+				'value'	=> $sword
+			),
+			array(
+				'filter'=> 'nottask',
+				'value'	=> $idTask
+			),
+			array(
+				'filter'=> 'project',
+				'value'	=> $idProject
+			)
+		);
+
+		$tasks	= TodoyuTaskFilterDataSource::getTaskAutocompleteListByFilter($filters);
+
+		return TodoyuRenderer::renderAutocompleteList($tasks);
+	}
+
+	
+
+	/**
+	 * Get company autocomplete list
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function companyAction(array $params) {
+		$sword	= $params['sword'];
+		$results = TodoyuPersonFilterDataSource::autocompleteCompanies($sword);
+
+		return TodoyuRenderer::renderAutocompleteList($results);
+	}
+
+
+
+	/**
+	 * Get project autocomplete list
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function projectAction(array $params) {
+		$sword	= $params['sword'];
+		$config	= array();
+
+		$data	= TodoyuProjectFilterDataSource::autocompleteProjects($sword, $config);
+
+		return TodoyuRenderer::renderAutocompleteList($data);
+	}
+
 
 }
 

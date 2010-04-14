@@ -11,11 +11,11 @@
 					<config>
 						<acListener>
 							<ext>project</ext>
-							<controller>project</controller>
-							<action>autocompletion</action>
+							<controller>autocomplete</controller>
+							<action>project</action>
 						</acListener>
 						<acLabelField>title</acLabelField>
-						<acLabelFunc>TodoyuProjectManager::getLabel</acLabelFunc>
+						<acLabelFunc>TodoyuProjectViewHelper::getQuicktaskAutocompleteLabel</acLabelFunc>
 						<options>
 							<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onProjectAutocomplete</onCompleteCustom>
 						</options>

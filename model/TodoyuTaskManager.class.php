@@ -1130,7 +1130,7 @@ class TodoyuTaskManager {
 		}
 
 			// Is acknowledged?
-		if( ! $task->isAcknowledged() ) {
+		if( $task->isTask() && ! $task->isAcknowledged() ) {
 			$icons['notacknowledged'] = array(
 				'id'		=> 'task-' . $idTask . '-notacknowledged',
 				'class'		=> 'notAcknowledged',
@@ -1944,6 +1944,21 @@ class TodoyuTaskManager {
 	 */
 	public static function isPersonAssignedToTaskOrProject($idTask, $idPerson = 0) {
 		return self::isPersonAssigned($idTask, $idPerson) || self::isPersonAssignedToProject($idTask, $idPerson);
+	}
+
+
+
+	public static function hookLoadQuickTaskFormData(array $data, $idRecord, array $params = array()) {
+		if( AREA === EXTID_PROJECT ) {
+				// Set project ID
+			if( intval($data['id_project']) === 0 ) {
+				$data['id_project']	= TodoyuProjectPreferences::getActiveProject();
+			}
+		}
+		
+		TodoyuDebug::printInFireBug($data);
+		
+		return $data;
 	}
 
 }

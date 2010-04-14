@@ -207,6 +207,19 @@ class TodoyuProjectViewHelper {
 		return TodoyuTaskStatusManager::getStatusInfos('see');
 	}
 
+
+	public static function getQuicktaskAutocompleteLabel($idProject) {
+		$idProject	= intval($idProject);
+		$label		= '';
+
+		if( $idProject > 0 ) {
+			$label	= TodoyuProjectManager::getLabel($idProject);
+		}
+
+		return $label;
+	}
+
+
 }
 
 ?>

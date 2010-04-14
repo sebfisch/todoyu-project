@@ -50,9 +50,6 @@ class TodoyuQuickTaskManager {
 		$xmlPath	= 'ext/project/config/form/quicktask.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath);
 
-			// Preset (empty) form data
-		$formData	= TodoyuFormHook::callLoadData($xmlPath, array());
-
 			// Load form with extra field data
 		$xmlPathInsert	= 'ext/project/config/form/field-id_project.xml';
 		$insertForm		= TodoyuFormManager::getForm($xmlPathInsert);
@@ -70,6 +67,11 @@ class TodoyuQuickTaskManager {
 
 			// Add custom project field
 		$form->getFieldset('main')->addField('id_project', $field, 'after:title');
+
+			// Load formdata by hooks (default is empty)
+		$formData	= TodoyuFormHook::callLoadData($xmlPath, array());
+		
+		$form->setFormData($formData);
 
 		return $form;
 	}
