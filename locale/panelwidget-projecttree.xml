@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="title">Projects</label>
 		<label index="filter.remove">Remove Filter</label>
 		<label index="filter.addFilter">Add</label>
@@ -10,7 +10,7 @@
 		<label index="filter.customer">Customer</label>
 		<label index="list.empty">No Matching Projects</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="title">Projekte</label>
 		<label index="filter.remove">Filter löschen</label>
 		<label index="filter.addFilter">Anfügen</label>
@@ -20,7 +20,7 @@
 		<label index="filter.customer">Kunde</label>
 		<label index="list.empty">Keine Projekte gefunden</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="title">Projetos</label>
 		<label index="filter.remove">Excluir Filtros</label>
 		<label index="filter.addFilter">Adicionar</label>

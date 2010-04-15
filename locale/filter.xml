@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="project">Project</label>
 		<label index="task.acknowledged">Acknowledged</label>
 		<label index="task.assignedPerson">Assigned To Person</label>
@@ -42,7 +42,7 @@
 		<label index="project.projectleader">Project Manager</label>
 		<label index="project.projectsupervisor">Project Supervisor</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="project">Projekt</label>
 		<label index="task.acknowledged">Aufgabe gesehen</label>
 		<label index="task.assignedPerson">Zugewiesen an Person</label>
@@ -84,7 +84,7 @@
 		<label index="project.projectleader">Projektleiter</label>
 		<label index="project.projectsupervisor">Projekt Supervisor</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="project">Projeto</label>
 		<label index="task.acknowledged">Aceito</label>
 		<label index="task.assignedPerson">Associado A</label>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="title">Create Project</label>
 		<label index="addProject">Add New Project</label>
 		<label index="addTask">Add New Task</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="title">Projekt erfassen</label>
 		<label index="addProject">Neues Projekt erfassen</label>
 		<label index="addTask">Neue Aufgabe erfassen</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="title">Criar Projeto</label>
 		<label index="addProject">Adicionar Novo Projeto</label>
 		<label index="addTask">Adicionar Nova Tarefa</label>

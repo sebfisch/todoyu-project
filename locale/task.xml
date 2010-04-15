@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="task">Task</label>
 		<label index="tasks">Tasks</label>
 		<label index="attr.title">Task Title</label>
@@ -97,7 +97,7 @@
 		<label index="ac.project.notFoundInfo">No project containing this text in the title was found.</label>
 		<label index="copySubtasks">Copy all Subtasks?</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="task">Aufgabe</label>
 		<label index="tasks">Aufgaben</label>
 		<label index="attr.title">Aufgaben-Titel</label>
@@ -195,7 +195,7 @@
 		<label index="ac.project.notFoundInfo">Es wurde kein Projekt mit diesen Text im Titel gefunden.</label>
 		<label index="copySubtasks">Auch Unteraufgaben mitkopieren?</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="task">Tarefas</label>
 		<label index="tasks">Tarefas</label>
 		<label index="attr.title">Título da Tarefa</label>

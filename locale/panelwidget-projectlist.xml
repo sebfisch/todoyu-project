@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="title">Projects</label>
 		<label index="search">Search</label>
 		<label index="list.empty">No Matching Projects (For Current Filter Selection)</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="title">Projekte</label>
 		<label index="search">Suchen</label>
 		<label index="list.empty">Keine passenden Projekte gefunden (gefiltert)</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="title">Projetos</label>
 		<label index="search">Pesquisar</label>
 		<label index="list.empty">Projetos não encontrados (Para a Atual Seleção de Filtros)</label>

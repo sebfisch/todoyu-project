@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="ext.title">Project And Task Management</label>
 		<label index="page.title">Projects</label>
 		<label index="tab.label">Projects</label>
@@ -80,7 +80,7 @@
 		<label index="extconf.taskDefaults.worktype">Default Worktype</label>
 		<label index="extconf.taskDefaults.estimated_workload">Default Estimated Workload</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="ext.title">Projekt- und Aufgabenverwaltung</label>
 		<label index="page.title">Projekte</label>
 		<label index="tab.label">Projekte</label>
@@ -159,7 +159,7 @@
 		<label index="extconf.taskDefaults.worktype">Vorausgewählter Arbeits-Typ</label>
 		<label index="extconf.taskDefaults.estimated_workload">Vorgabe für geschätzten Aufwand</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="ext.title">Projetos e Gestão de Tarefas</label>
 		<label index="page.title">Projetos</label>
 		<label index="tab.label">Projetos</label>

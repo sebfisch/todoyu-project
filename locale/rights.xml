@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="general">General Settings</label>
 		<label index="general.use">Use/See Project Module Functionalities</label>
 		<label index="general.area">Access Project Area</label>
@@ -66,7 +66,7 @@
 		<label index="panelwidgets.projectList">Panel Widget Project List</label>
 		<label index="panelwidgets.quickProject">Panel Widget Quick Project</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="general">Allgemeine Einstellungen</label>
 		<label index="general.use">Projekt-Funktionalitäten verwenden</label>
 		<label index="general.area">Projekt-Bereich verwenden</label>
@@ -144,7 +144,7 @@
 		<label index="panelwidgets.projectList">Projektlisten-Element</label>
 		<label index="panelwidgets.quickProject:use">Schnell-Projekt Element</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="general">Configurações Gerais</label>
 		<label index="general.use">Utilizar/Exibir Funcionalidades de Módulo do Projeto</label>
 		<label index="general.area">Acessar Aéra de Projeto</label>
