@@ -82,7 +82,7 @@ class TodoyuTaskRenderer {
 		);
 
 			// Add contextmenu init scripts
-		$data['javascript'] = 'Todoyu.Ext.project.ContextMenuTask.reattach();';
+		$data['javascript'] = 'Todoyu.Ext.project.ContextMenuTask.attach();';
 
 		return render($tmpl, $data);
 	}

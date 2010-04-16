@@ -688,7 +688,7 @@ class TodoyuProjectRenderer {
 		$tmpl	= 'ext/project/view/project-listing.tmpl';
 		$data	= array(
 			'projects'	=> $projectsHTML,
-			'javascript'=> 'Todoyu.Ext.project.ContextMenuProject.reattach();'
+			'javascript'=> 'Todoyu.Ext.project.ContextMenuProject.attach();'
 		);
 
 		if( ! TodoyuRequest::isAjaxRequest() ) {
