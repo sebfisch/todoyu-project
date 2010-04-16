@@ -39,10 +39,9 @@ TodoyuLanguage::register('panelwidget-statusfilter', PATH_EXT_PROJECT . '/locale
 TodoyuLanguage::register('headlet-quicktask', PATH_EXT_PROJECT . '/locale/headlet-quicktask.xml');
 
 	// Request configurations
+	// @notice	Auto-loaded configs if available: admin, assets, create, contextmenu, extinfo, filters, form, page, panelwidgets, rights, search
 require_once( PATH_EXT_PROJECT . '/config/constants.php' );
 require_once( PATH_EXT_PROJECT . '/config/extension.php' );
-//require_once( PATH_EXT_PROJECT . '/config/filters.php' );
-require_once( PATH_EXT_PROJECT . '/config/panelwidgets.php' );
 require_once( PATH_EXT_PROJECT . '/config/hooks.php' );
 require_once( PATH_EXT_PROJECT . '/dwoo/plugins.php');
 
