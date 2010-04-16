@@ -103,7 +103,7 @@ Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters'] = array(
 Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectListing']['maxProjects']	= 30;
 
 /**
- * Default 'task defaults'. Will be overriden with extconf values of set
+ * Default 'task defaults'. Will be overridden with extconf values of set
  */
 Todoyu::$CONFIG['EXT']['project']['taskDefaults'] = array(
 	'estimatedWorkload'		=> 0,
