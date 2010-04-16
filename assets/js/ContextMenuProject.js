@@ -24,12 +24,11 @@
 
 Todoyu.Ext.project.ContextMenuProject = {
 
-
 	/**
 	 *	Attach project context menu
 	 */
 	attach: function() {
-		Todoyu.ContextMenu.attachMenuToClass('contextmenuproject', this.load.bind(this));
+		Todoyu.ContextMenu.attach('project', '.contextmenuproject', this.getID.bind(this));
 	},
 
 
@@ -38,51 +37,12 @@ Todoyu.Ext.project.ContextMenuProject = {
 	 *	Detach project context menu
 	 */
 	detach: function() {
-		Todoyu.ContextMenu.detachAllMenus('contextmenuproject');
+		Todoyu.ContextMenu.detach('.contextmenuproject');
 	},
 
 
-
-	/**
-	 *	Reattach (refresh by removing and reattaching) project context menu
-	 */
-	reattach: function() {
-		this.detach();
-		this.attach();
-	},
-
-
-
-	/**
-	 *	Load project context menu
-	 *
-	 *	@param	Object	event
-	 */
-	load: function(event) {
-		var idProject	= event.findElement('.contextmenuproject').id.split('-')[1];
-
-			// Prepare request parameters
-		var url		= Todoyu.getUrl('project', 'contextmenu');
-		var options	= {
-			'parameters': {
-				'action':	'project',
-				'project':	idProject
-			}
-		};
-
-		Todoyu.ContextMenu.showMenu(url, options, event);
-
-		return false;
-	},
-
-
-
-	/**
-	 *	Attach project context menu to given element
-	 *
-	 *	@param	String	element
-	 */
-	attachToElement: function(element) {
-		Todoyu.ContextMenu.attachMenuToElement($(element), this.load.bind(this));
+	
+	getID: function(element, event) {
+		return element.id.split('-')[1];
 	}
 };

@@ -116,7 +116,9 @@
 					<config>
 						<acName>projecttask</acName>
 						<acLabel>TodoyuTaskManager::getAutocompleteLabel</acLabel>
-						<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onParenttaskAutocomplete</onCompleteCustom>
+						<options>
+							<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onParenttaskAutocomplete</onCompleteCustom>
+						</options>
 					</config>
 				</field>
 

@@ -165,8 +165,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		this.removeSurplusProject();
 		this.displayActiveProject(idProject);
 
-		this.ext.ContextMenuTask.reattach();
-		this.ext.ContextMenuProject.reattach();
+		this.ext.ContextMenuTask.attach();
+		this.ext.ContextMenuProject.attach();
 	},
 
 

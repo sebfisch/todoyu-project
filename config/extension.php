@@ -33,11 +33,11 @@ TodoyuAutocompleter::addAutocompleter('projecttask', 'TodoyuTaskViewHelper::getP
 TodoyuAutocompleter::addAutocompleter('project', 'TodoyuProjectFilterDataSource::autocompleteProjects', array('project', 'general:use'));
 
 
-TodoyuContextMenuManager::registerFunction('Task', 'TodoyuTaskManager::getContextMenuItems', 10);
+TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskManager::getContextMenuItems', 10);
 
-TodoyuContextMenuManager::registerFunction('Task', 'TodoyuTaskClipboard::getTaskContextMenuItems', 100);
-TodoyuContextMenuManager::registerFunction('Task', 'TodoyuTaskManager::removeEmptyContextMenuParents', 100000);
-TodoyuContextMenuManager::registerFunction('Project', 'TodoyuProjectManager::getContextMenuItems', 10);
+TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskClipboard::getTaskContextMenuItems', 100);
+TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskManager::removeEmptyContextMenuParents', 100000);
+TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectManager::getContextMenuItems', 10);
 
 
 

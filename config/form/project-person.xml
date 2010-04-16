@@ -12,7 +12,9 @@
 					<config>
 						<acName>projectperson</acName>
 						<acLabel>TodoyuPersonManager::getLabel</acLabel>
-						<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onPersonAutocomplete</onCompleteCustom>
+						<options>
+							<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onPersonAutocomplete</onCompleteCustom>
+						</options>
 					</config>
 					<wizard>
 						<htmlClass>createNewPerson</htmlClass>

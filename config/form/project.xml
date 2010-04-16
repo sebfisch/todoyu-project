@@ -94,7 +94,9 @@
 							<config>
 								<acName>company</acName>
 								<acLabel>TodoyuCompanyManager::getLabel</acLabel>
-								<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onCompleteCustom>
+								<options>
+									<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onCompleteCustom>
+								</options>
 							</config>
 							<required />
 						</field>

@@ -269,7 +269,7 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	Ajax.Response	response
 	 */
 	onSubtasksLoaded: function(idTask, callback, response) {
-		Todoyu.Ext.project.ContextMenuTask.reattach();
+		Todoyu.Ext.project.ContextMenuTask.attach();
 
 		if( typeof callback === 'function' ) {
 			callback(idTask, response);
@@ -295,7 +295,7 @@ Todoyu.Ext.project.TaskTree = {
 	 *
 	 */
 	addContextMenu: function() {
-		Todoyu.Ext.project.ContextMenuTask.reattach();
+		Todoyu.Ext.project.ContextMenuTask.attach();
 	}
 
 };

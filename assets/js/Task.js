@@ -203,7 +203,7 @@ Todoyu.Ext.project.Task = {
 		}
 
 			// Attach context menu to all tasks (so the pasted ones get one too)
-		this.ext.ContextMenuTask.reattach();
+		this.ext.ContextMenuTask.attach();
 			// Highlight the new pasted task
 		this.highlight(idTaskNew);
 		this.highlightSubtasks(idTaskNew);
@@ -799,7 +799,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	Integer	idTask
 	 */
 	addContextMenu: function(idTask) {
-		this.ext.ContextMenuTask.attachToElement('task-' + idTask + '-header');
+		this.ext.ContextMenuTask.attach();
 	},
 
 

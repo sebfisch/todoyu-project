@@ -11,7 +11,9 @@
 					<config>						
 						<acName>project</acName>
 						<acLabel>TodoyuProjectViewHelper::getQuicktaskAutocompleteLabel</acLabel>
-						<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onProjectAutocomplete</onCompleteCustom>
+						<options>
+							<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onProjectAutocomplete</onCompleteCustom>
+						</options>
 					</config>
 					<required />
 				</field>
