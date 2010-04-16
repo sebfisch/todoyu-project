@@ -549,8 +549,6 @@ Todoyu.Ext.project.Task = {
 		};
 
 		if( Todoyu.exists(target) ) {
-				// Detach menu
-			this.removeContextMenu(idTask);
 				// Update task
 			Todoyu.Ui.replace(target, url, options);
 		}
@@ -577,8 +575,6 @@ Todoyu.Ext.project.Task = {
 	 * @param	String		taskHtml
 	 */
 	update: function(idTask, taskHtml) {
-		this.removeContextMenu(idTask);
-
 		$('task-' + idTask).replace(taskHtml);
 
 		this.addContextMenu(idTask);
@@ -802,18 +798,7 @@ Todoyu.Ext.project.Task = {
 		this.ext.ContextMenuTask.attach();
 	},
 
-
-
-	/**
-	 * Remove context menu from given task
-	 *
-	 * @param	Integer		idTask
-	 */
-	removeContextMenu: function(idTask) {
-		Todoyu.ContextMenu.detachMenuFromElement('task-' + idTask + '-header');
-	},
-
-
+	
 
 	/**
 	 * Set given task being acknowledged
