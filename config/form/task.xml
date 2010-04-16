@@ -114,16 +114,9 @@
 				<field type="textinputAC" name="id_parenttask">
 					<label>task.attr.id_parenttask</label>
 					<config>
-						<acListener>
-							<ext>project</ext>
-							<controller>autocomplete</controller>
-							<action>projecttask</action>
-							<minChars>1</minChars>
-						</acListener>
-						<acLabelFunc>TodoyuTaskManager::getAutocompleteLabel</acLabelFunc>
-						<options>
-							<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onParenttaskAutocomplete</onCompleteCustom>
-						</options>
+						<acName>projecttask</acName>
+						<acLabel>TodoyuTaskManager::getAutocompleteLabel</acLabel>
+						<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onParenttaskAutocomplete</onCompleteCustom>
 					</config>
 				</field>
 

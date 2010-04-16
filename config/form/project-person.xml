@@ -10,15 +10,9 @@
 				<field type="textinputAC" name="id">
 					<label>contact.person</label>
 					<config>
-						<acListener>
-							<ext>project</ext>
-							<controller>autocomplete</controller>
-							<action>person</action>
-						</acListener>
-						<acLabelFunc>TodoyuPersonManager::getLabel</acLabelFunc>
-						<options>
-							<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onPersonAutocomplete</onCompleteCustom>
-						</options>
+						<acName>projectperson</acName>
+						<acLabel>TodoyuPersonManager::getLabel</acLabel>
+						<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onPersonAutocomplete</onCompleteCustom>
 					</config>
 					<wizard>
 						<htmlClass>createNewPerson</htmlClass>

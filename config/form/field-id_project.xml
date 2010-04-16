@@ -8,17 +8,10 @@
 
 				<field type="textinputAC" name="id_project_ac">
 					<label>project.project</label>
-					<config>
-						<acListener>
-							<ext>project</ext>
-							<controller>autocomplete</controller>
-							<action>project</action>
-						</acListener>
-						<acLabelField>title</acLabelField>
-						<acLabelFunc>TodoyuProjectViewHelper::getQuicktaskAutocompleteLabel</acLabelFunc>
-						<options>
-							<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onProjectAutocomplete</onCompleteCustom>
-						</options>
+					<config>						
+						<acName>project</acName>
+						<acLabel>TodoyuProjectViewHelper::getQuicktaskAutocompleteLabel</acLabel>
+						<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onProjectAutocomplete</onCompleteCustom>
 					</config>
 					<required />
 				</field>

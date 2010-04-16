@@ -92,15 +92,9 @@
 							</restrict>
 							<label>project.attr.company</label>
 							<config>
-								<acListener>
-									<ext>project</ext>
-									<controller>autocomplete</controller>
-									<action>company</action>
-								</acListener>
-								<acLabelFunc>TodoyuCompanyManager::getLabel</acLabelFunc>
-								<options>
-									<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onCompleteCustom>
-								</options>
+								<acName>company</acName>
+								<acLabel>TodoyuCompanyManager::getLabel</acLabel>
+								<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onCompleteCustom>
 							</config>
 							<required />
 						</field>

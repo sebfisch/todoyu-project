@@ -171,6 +171,30 @@ class TodoyuTaskViewHelper {
 		return $option;
 	}
 
+
+
+	public static function getProjecttaskAutocomplete($input, array $formData, $name = '') {
+		$idProject	= intval($formData['id_project']);
+		$idTask		= intval($formData['id']);
+
+		$filters	= array(
+			array(
+				'filter'=> 'tasknumberortitle',
+				'value'	=> $input
+			),
+			array(
+				'filter'=> 'nottask',
+				'value'	=> $idTask
+			),
+			array(
+				'filter'=> 'project',
+				'value'	=> $idProject
+			)
+		);
+		
+		return TodoyuTaskFilterDataSource::getTaskAutocompleteListByFilter($filters);
+	}
+
 }
 
 ?>
