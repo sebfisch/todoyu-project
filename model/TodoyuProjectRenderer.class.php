@@ -28,7 +28,6 @@ class TodoyuProjectRenderer {
 
 	/**
 	 * Extension key
-	 *
 	 */
 	const EXTKEY = 'project';
 
@@ -288,7 +287,6 @@ class TodoyuProjectRenderer {
 	 *
 	 * @param	Integer		$idProject
 	 * @return	String
-	 *
 	 */
 	public static function renderProjectEditForm($idProject) {
 		$idProject	= intval($idProject);

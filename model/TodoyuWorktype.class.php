@@ -26,7 +26,6 @@
  */
 class TodoyuWorktype extends TodoyuBaseObject {
 
-
 	/**
 	 * Constructor
 	 *

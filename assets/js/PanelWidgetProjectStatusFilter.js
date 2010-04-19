@@ -39,7 +39,7 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = {
 	/**
 	 * Initialize the panelWidget: setup properties, install element observers
 	 *
-	 * @param	Array		Selected Status IDs
+	 * @param	{Array}		Selected Status IDs
 	 */
 	init: function(selectedStatusIDs) {
 		this.statusFilter = new Todoyu.Ext.project.PanelWidget.StatusFilter('panelwidget-projectstatusfilter-list', this.onSelectionChange.bind(this));
@@ -52,7 +52,7 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = {
 	/**
 	 * If clicked on an li instead on the checkbox or the label
 	 *
-	 * @param	Event		event
+	 * @param	{Event}		event
 	 */
 	onSelectionChange: function(event) {
 		this.onUpdate();

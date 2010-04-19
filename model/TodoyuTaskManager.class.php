@@ -245,6 +245,7 @@ class TodoyuTaskManager {
 	}
 
 
+
 	/**
 	 * Set default task values if missing
 	 * Person may not be allowed to enter the values, so we use the defaults from extConf
@@ -1913,6 +1914,7 @@ class TodoyuTaskManager {
 
 		return Todoyu::db()->hasResult($fields, $table, $where);
 	}
+
 
 
 	/**

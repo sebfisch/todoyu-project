@@ -20,7 +20,7 @@
 Todoyu.Ext.project.Container = {
 
 	/**
-	 *	Ext shortcut
+	 * Ext shortcut
 	 */
 	ext:	Todoyu.Ext.project,
 
@@ -29,7 +29,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Evoke editing of given container (handled via task editing)
 	 * 
-	 *	@param	Integer	idContainer
+	 * @param	{Integer}	idContainer
 	 */
 	edit: function(idContainer) {
 		this.ext.Task.edit(idContainer);
@@ -38,9 +38,9 @@ Todoyu.Ext.project.Container = {
 
 
 	/**
-	 *	Clone container
+	 * Clone container
 	 *
-	 *	@param	Integer	idContainer
+	 * @param	{Integer}	idContainer
 	 */
 	clone: function(idContainer) {
 		this.ext.Task.clone(idContainer);
@@ -49,9 +49,9 @@ Todoyu.Ext.project.Container = {
 	
 	
 	/**
-	 *	Copy container
+	 * Copy container
 	 *
-	 *	@param	Integer	idContainer
+	 * @param	{Integer}	idContainer
 	 */
 	cut: function(idContainer) {
 		this.ext.Task.cut(idContainer);
@@ -60,9 +60,9 @@ Todoyu.Ext.project.Container = {
 	
 	
 	/**
-	 *	Copy container
+	 * Copy container
 	 *
-	 *	@param	Integer	idContainer
+	 * @param	{Integer}	idContainer
 	 */
 	copy: function(idContainer) {
 		this.ext.Task.copy(idContainer);
@@ -71,9 +71,9 @@ Todoyu.Ext.project.Container = {
 	
 
 	/**
-	 *	Remove given container
+	 * Remove given container
 	 *
-	 *	@param	Integer	idContainer
+	 * @param	{Integer}	idContainer
 	 */
 	remove: function(idContainer) {
 		this.ext.Task.remove(idContainer);
@@ -82,9 +82,9 @@ Todoyu.Ext.project.Container = {
 
 
 	/**
-	 *	Add sub task to container
+	 * Add sub task to container
 	 *
-	 *	@param	Integer	idContainer
+	 * @param	{Integer}	idContainer
 	 */
 	addSubTask: function(idContainer) {
 		this.ext.Task.addSubTask(idContainer);
@@ -93,9 +93,9 @@ Todoyu.Ext.project.Container = {
 
 
 	/**
-	 *	Add sub container to given container
+	 * Add sub container to given container
 	 *
-	 *	@param	Integer	idContainer
+	 * @param	{Integer}	idContainer
 	 */
 	addSubContainer: function(idContainer) {
 		this.ext.Task.addSubContainer(idContainer);
@@ -104,10 +104,10 @@ Todoyu.Ext.project.Container = {
 
 
 	/**
-	 *	Update status of given container
+	 * Update status of given container
 	 *
-	 *	@param	Integer	idContainer
-	 *	@param	String	idStatus
+	 * @param	{Integer}	idContainer
+	 * @param	{String}	idStatus
 	 */
 	updateStatus: function(idContainer, idStatus) {
 		this.ext.Task.updateStatus(idContainer, idStatus);

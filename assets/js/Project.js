@@ -33,7 +33,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Get DOM element of header of project with given ID
 	 *
-	 * @param	Integer		idProject
+	 * @param	{Integer}		idProject
 	 * @return	DomElement
 	 */
 	getHeader: function(idProject) {
@@ -43,9 +43,9 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Edit given project
+	 * Edit given project
 	 *
-	 *	@param Integer	idProject
+	 * @param {Integer} idProject
 	 */
 	edit: function(idProject){
 		if(Todoyu.getArea() != 'project') {
@@ -65,9 +65,9 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *	Delete given project
+	 * Delete given project
 	 *
-	 *	@param	Integer	idProject
+	 * @param   {Integer}	idProject
 	 */
 	remove: function(idProject) {
 		if( confirm('[LLL:project.js.removeProject]') ) {
@@ -89,7 +89,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Handle completion event after project having been deleted. Remove project from project task tree and remove project tab.
 	 *
-	 *	@param	Integer		idProject
+	 * @param	{Integer}		idProject
 	 */
 	onRemoved: function(idProject) {
 		if(Todoyu.getArea() == 'project')	{
@@ -108,7 +108,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Remove a project from the subnavi of the projec tab
 	 *
-	 * @param	Integer		idProject
+	 * @param	{Integer}		idProject
 	 */
 	removeProjectSubnaviItem: function(idProject) {
 		var subnavi	= $('navi-main-list').down('li.itemProject').down('ul');
@@ -127,7 +127,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Toggle display of project details
 	 *
-	 * @param	Integer		idProject
+	 * @param	{Integer}		idProject
 	 */
 	toggleDetails: function(idProject) {
 		var detailDiv	= $('project-' + idProject + '-details');
@@ -166,8 +166,8 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Save state of project details being expanded
 	 *
-	 * @param	Integer		idProject
-	 * @param	Boolean		expanded
+	 * @param	{Integer}		idProject
+	 * @param	{Boolean}		expanded
 	 */
 	saveDetailsExpanded: function(idProject, expanded) {
 		Todoyu.Pref.save('project', 'detailsexpanded', expanded ? 1 : 0, idProject, 0);
@@ -178,7 +178,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Hide details of given project
 	 *
-	 * @param	Integer		idProject
+	 * @param	{Integer}		idProject
 	 */
 	hideDetails: function(idProject) {
 		Todoyu.Ui.hide('project-' + idProject + '-details');
@@ -189,7 +189,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Show project details
 	 *
-	 * @param	Integer		idProject
+	 * @param	{Integer}		idProject
 	 */
 	showDetails: function(idProject) {
 		Todoyu.Ui.show('project-' + idProject + '-details');
@@ -200,7 +200,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Add task to given project
 	 *
-	 * @param	Integer		idProject
+	 * @param	{Integer}		idProject
 	 */
 	addTask: function(idProject) {
 		if(Todoyu.getArea() != 'project') {
@@ -218,7 +218,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Add new container to given project
 	 *
-	 * @param	Integer		idProject
+	 * @param	{Integer}		idProject
 	 */
 	addContainer: function(idProject) {
 		if(Todoyu.getArea() != 'project') {
@@ -236,7 +236,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Refresh given project display
 	 *
-	 * @param	Integer		idProject
+	 * @param	{Integer}		idProject
 	 */
 	refresh: function(idProject) {
 		var url		= Todoyu.getUrl('project', 'project');
@@ -256,8 +256,8 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Change status of given project to given status
 	 *
-	 * @param	Integer		idProject
-	 * @param	Integer		status
+	 * @param	{Integer}		idProject
+	 * @param	{Integer}		status
 	 */
 	updateStatus: function(idProject, status) {
 		var url	= Todoyu.getUrl('project', 'project');
@@ -278,9 +278,9 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Handler being called after project status update being done: refresh project display and set status
 	 *
-	 * @param	Integer				idProject
-	 * @param	Integer				status
-	 * @param	Ajax.Response		response
+	 * @param	{Integer}				idProject
+	 * @param	{Integer}				status
+	 * @param	{Ajax.Response}		response
 	 */
 	onStatusUpdated: function(idProject, status, response) {
 		this.refresh(idProject);
@@ -292,8 +292,8 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Get current status of given project
 	 *
-	 * @param	Integer		idProject
-	 * @param	Integer		status index
+	 * @param	{Integer}		idProject
+	 * @param	{Integer}		status index
 	 */
 	getStatus: function(idProject) {
 		var classNames 	= $('project-' + idProject).down('div.projectstatus').classNames();
@@ -307,8 +307,8 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Set project status
 	 *
-	 * @param	Integer		idProject
-	 * @param	Integer		status
+	 * @param	{Integer}		idProject
+	 * @param	{Integer}		status
 	 */
 	setStatus: function(idProject, status) {
 		var statusBar	= $('project-' + idProject).down('div.projectstatus');

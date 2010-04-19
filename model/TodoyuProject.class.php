@@ -26,7 +26,6 @@
  */
 class TodoyuProject extends TodoyuBaseObject {
 
-
 	/**
 	 * Initialize project
 	 *
@@ -181,7 +180,6 @@ class TodoyuProject extends TodoyuBaseObject {
 
 	/**
 	 * loads foreign data of a project
-	 *
 	 */
 	public function loadForeignData()	{
 		$this->data['persons'] = TodoyuProjectManager::getProjectPersons($this->id);

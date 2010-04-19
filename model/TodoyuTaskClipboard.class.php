@@ -82,6 +82,7 @@ class TodoyuTaskClipboard {
 	}
 
 
+
 	/**
 	 * Get current task ID in clipboard
 	 *
@@ -119,7 +120,6 @@ class TodoyuTaskClipboard {
 
 	/**
 	 * Clear clipboard (remove current task)
-	 *
 	 */
 	public static function clear() {
 		TodoyuClipboard::remove('task');

@@ -20,7 +20,7 @@
 Todoyu.Ext.project.TaskTree = {
 
 	/**
-	 *	Ext shortcut
+	 * Ext shortcut
 	 */
 	ext:	Todoyu.Ext.project,
 
@@ -47,7 +47,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Get tree's DOM element ID
 	 *
-	 * @param	Integer	idProject
+	 * @param	{Integer}	idProject
 	 */
 	tree: function(idProject) {
 		return $('project-' + idProject + '-tasks');
@@ -71,7 +71,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Hide task tree of given project
 	 *
-	 * @param	Integer	idProject
+	 * @param	{Integer}	idProject
 	 */
 	hide: function(idProject) {
 		var taskTree = this.tree(idProject);
@@ -86,8 +86,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Update task tree with a new filter configuration
 	 *
-	 * @param	Integer		idProject
-	 * @param	String		filterName
+	 * @param	{Integer}		idProject
+	 * @param	{String}		filterName
 	 * 	param	String		filterValue
 	 */
 	update: function(idProject, filterName, filterValue) {
@@ -118,7 +118,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Evoked after task tree updating has been completed. Adds the context menu.
 	 *
-	 * @param	Object	response
+	 * @param	{Object}	response
 	 */
 	onUpdated: function(response) {
 		this.addContextMenu();
@@ -129,8 +129,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Evoked upon update of status filter: evokes update of given project's tree
 	 *
-	 * @param	String	widgetName
-	 * @param	Array	params
+	 * @param	{String}	widgetName
+	 * @param	{Array}	params
 	 */
 	onStatusFilterUpdate: function(widgetName, params) {
 		var idProject 	= this.getProjectID();
@@ -144,7 +144,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Get ID of currently active task tree project
 	 *
-	 * @return	Integer
+	 * @return	{Integer}
 	 */
 	getProjectID: function() {
 		return this.ext.ProjectTaskTree.getActiveProjectID();
@@ -155,8 +155,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Toggle display of sub tasks and save resulting display state of given given task inside the task tree(, load sub tasks if toggled to be shown and not loaded yet)
 	 *
-	 * @param Event		event
-	 * @param Integer	idTask
+	 * @param {Event}		event
+	 * @param {Integer}		idTask
 	 */
 	toggleSubtasks: function(event, idTask) {
 		if( event ) {
@@ -181,8 +181,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Handler when sub tasks are toggled
 	 *
-	 * @param   Object  idTask
-	 * @param   Object  response
+	 * @param   {Object}	idTask
+	 * @param   {Object}	response
 	 */
 	onSubtasksToggled: function(idTask) {
 
@@ -193,7 +193,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Expand sub tasks of given task in task tree
 	 *
-	 * @param	Integer	idTask
+	 * @param	{Integer}	idTask
 	 */
 	expandSubtasks: function(idTask) {
 		if( ! this.areSubtasksVisible(idTask) ) {
@@ -206,7 +206,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Toggle expand-option icon of given task
 	 *
-	 * @param	Integer idTask
+	 * @param	{Integer}	idTask
 	 */
 	toggleSubtaskTriggerIcon: function(idTask) {
 		$('task-' + idTask + '-subtasks-trigger').toggleClassName('expanded');
@@ -217,8 +217,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Check whether sub tasks of given task are loaded (DOM elements exist)
 	 *
-	 * @param	Integer	idTask
-	 * @return	Boolean
+	 * @param	{Integer}	idTask
+	 * @return	{Boolean}
 	 */
 	areSubtasksLoaded: function(idTask) {
 		return Todoyu.exists('task-' + idTask + '-subtasks');
@@ -229,8 +229,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Check whether sub tasks of given task are set visible currently
 	 *
-	 * @param	Integer idTask
-	 * @return	Boolean
+	 * @param	{Integer} idTask
+	 * @return	{Boolean}
 	 */
 	areSubtasksVisible: function(idTask) {
 		return $('task-' + idTask + '-subtasks').visible();
@@ -241,8 +241,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Load subtasks
 	 *
-	 * @param	Integer		idTask
-	 * @param	Function	callback
+	 * @param	{Integer}		idTask
+	 * @param	{Function}	callback
 	 */
 	loadSubtasks: function(idTask, callback) {
 		var url		= Todoyu.getUrl('project', 'task');
@@ -264,9 +264,9 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Handler when sub tasks are loaded
 	 *
-	 * @param	Integer			idTask
-	 * @param	Function		callback
-	 * @param	Ajax.Response	response
+	 * @param	{Integer}			idTask
+	 * @param	{Function}		callback
+	 * @param	{Ajax.Response}	response
 	 */
 	onSubtasksLoaded: function(idTask, callback, response) {
 		Todoyu.Ext.project.ContextMenuTask.attach();
@@ -281,8 +281,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Save task tree sub tasks being opened status pref
 	 *
-	 * @param	Integer	idTask
-	 * @param	Boolean	isOpen
+	 * @param	{Integer}	idTask
+	 * @param	{Boolean}	isOpen
 	 */
 	saveSubtaskOpenStatus: function(idTask, isOpen) {
 		Todoyu.Pref.save('project', 'subtasks', isOpen?1:0, idTask);
@@ -292,7 +292,6 @@ Todoyu.Ext.project.TaskTree = {
 
 	/**
 	 * Evoke (Re-)Adding of task tree (tasks') context menu
-	 *
 	 */
 	addContextMenu: function() {
 		Todoyu.Ext.project.ContextMenuTask.attach();

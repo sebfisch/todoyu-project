@@ -29,9 +29,9 @@ Todoyu.Ext.project.QuickCreateProject = {
 
 
 	/**
-	 *	Save project
+	 * Save project
 	 *
-	 *	@param	unknown	form
+	 * @param	unknown	form
 	 */
 	save: function(form){
 		tinyMCE.triggerSave();
@@ -49,9 +49,9 @@ Todoyu.Ext.project.QuickCreateProject = {
 
 
 	/**
-	 *	onSaved project custom event handler
+	 * onSaved project custom event handler
 	 *
-	 *	@param	Ajax.Response		response
+	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response){
 		var error		= response.hasTodoyuError();

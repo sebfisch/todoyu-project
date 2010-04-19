@@ -58,7 +58,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = Class.create({
 	/**
 	 * If clicked on an li instead on the checkbox or the label
 	 *
-	 * @param	Event		event
+	 * @param	{Event}		event
 	 */
 	onSelectionChange: function(event) {
 			// If no status is selected, select all, because it will be handled this way anyway
@@ -95,7 +95,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = Class.create({
 	/**
 	 * Get the number of selected statuses
 	 *
-	 * @return	Integer
+	 * @return	{Integer}
 	 */
 	getNumSelected: function() {
 		return this.getValue().length;
@@ -106,7 +106,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = Class.create({
 	/**
 	 * Check if any status' checkbox is checked
 	 *
-	 * @return	Boolean
+	 * @return	{Boolean}
 	 */
 	isAnyStatusSelected: function() {
 		return this.getNumSelected() > 0;

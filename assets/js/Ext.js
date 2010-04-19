@@ -52,11 +52,11 @@ Todoyu.Ext.project = {
 	
 	
 	/**
-	 *	To be called from other areas (e.g portal) to jump to a specific task within its project,
+	 * To be called from other areas (e.g portal) to jump to a specific task within its project,
 	 *	to be shown inside the project area
 	 *
-	 *	@param	Integer	idTask
-	 *	@param	Integer	idProject
+	 * @param	{Integer}	idTask
+	 * @param	{Integer}	idProject
 	 */
 	goToTaskInProject: function(idTask, idProject) {
 		var params = {
@@ -72,9 +72,9 @@ Todoyu.Ext.project = {
 
 
 	/**
-	 *	Toggle task tree of given project
+	 * Toggle task tree of given project
 	 *
-	 *	@param	Integer	idProject
+	 * @param	{Integer}	idProject
 	 */
 	toggleTaskTree: function(idProject) {
 		this.TaskTree.toggle();
@@ -89,9 +89,9 @@ Todoyu.Ext.project = {
 
 
 	/**
-	 *	Event handler: 'onTreeUpdate'
+	 * Event handler: 'onTreeUpdate'
 	 *
-	 *	@param	unknown	response
+	 * @param	unknown	response
 	 */
 	onTreeUpdate: function(response) {
 		this.ContextMenuTask.attach.bindAsEventListener(this.ContextMenuTask)();
@@ -105,7 +105,7 @@ Todoyu.Ext.project = {
 
 
 	/**
-	 *	Attach project context menu
+	 * Attach project context menu
 	 */
 	attachContextMenu: function() {
 		this.ContextMenuProject.attach();
@@ -125,12 +125,12 @@ Todoyu.Ext.project = {
 
 
 	/**
-	 *	Save project pref
+	 * Save project pref
 	 *
-	 *	@param	String	preference
-	 *	@param	String	value
-	 *	@param	Integer	idItem
-	 *	@param	String	onComplete
+	 * @param	{String}	preference
+	 * @param	{String}	value
+	 * @param	{Integer}	idItem
+	 * @param	{String}	onComplete
 	 */
 	savePref: function(preference, value, idItem, onComplete) {
 		Todoyu.Pref.save('project', preference, value, idItem, onComplete);

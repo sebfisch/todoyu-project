@@ -31,6 +31,7 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 	}
 
 
+
 	/**
 	 * Render form
 	 *

@@ -20,7 +20,7 @@
 Todoyu.Ext.project.QuickTask = {
 
 	/**
-	 *	Ext shortcut
+	 * Ext shortcut
 	 */
 	ext:			Todoyu.Ext.project,
 
@@ -57,7 +57,7 @@ Todoyu.Ext.project.QuickTask = {
 	 * Handler when Popup is loaded
 	 * Call hook to inform other extensions
 	 * 
-	 * @param	Ajax.Response		response
+	 * @param	{Ajax.Response}		response
 	 */
 	onPopupLoaded: function(response) {
 		Todoyu.Hook.exec('QuickTaskOpen', response);
@@ -68,7 +68,7 @@ Todoyu.Ext.project.QuickTask = {
 	/**
 	 * Save (quick-) task
 	 *
-	 *	@param	String	form
+	 * @param	{String}	form
 	 */
 	save: function(form)	{
 		tinyMCE.triggerSave();
@@ -88,8 +88,8 @@ Todoyu.Ext.project.QuickTask = {
 	/**
 	 * Evoked upon completion of saving a quicktask
 	 * 
-	 * 	@param	String	form
-	 * 	@param	Object	response
+	 * @param	{String}	form
+	 * @param	{Object}	response
 	 */
 	onSaved: function(form, response) {
 		if( response.hasTodoyuError() ) {

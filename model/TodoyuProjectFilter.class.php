@@ -40,7 +40,6 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 	/**
 	 * Add rights clause for projects
-	 *
 	 */
 	private function addRightsClauseFilter() {
 			// Add rights clause
@@ -326,6 +325,5 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	}
 
 }
-
 
 ?>

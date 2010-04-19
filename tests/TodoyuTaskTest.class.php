@@ -70,6 +70,7 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 	}
 
 
+
 	/**
 	 *	Test TodoyuTask::__construct
 	 */

@@ -24,9 +24,9 @@ Todoyu.Ext.project.Project.Edit = {
 
 
 	/**
-	 *	Create form wrap DIVs
+	 * Create form wrap DIVs
 	 *
-	 *	@param	Integer	idProject
+	 * @param	{Integer}	idProject
 	 */
 	createFormWrapDivs: function(idProject) {
 		var idDetails	= 'project-' + idProject + '-details';
@@ -52,9 +52,9 @@ Todoyu.Ext.project.Project.Edit = {
 
 
 	/**
-	 *	Load project form
+	 * Load project form
 	 *
-	 *	@param	Integer	idProject
+	 * @param	{Integer}	idProject
 	 */
 	loadForm: function(idProject) {
 		var url 	= Todoyu.getUrl('project', 'project');
@@ -72,9 +72,9 @@ Todoyu.Ext.project.Project.Edit = {
 
 
 	/**
-	 *	Save project
+	 * Save project
 	 *
-	 *	@param	unknown	form
+	 * @param	unknown	form
 	 */
 	save: function(form){
 		tinyMCE.triggerSave();
@@ -105,9 +105,9 @@ Todoyu.Ext.project.Project.Edit = {
 
 
 	/**
-	 *	onSaved project custom event handler
+	 * onSaved project custom event handler
 	 *
-	 *	@param	Ajax.Response		response
+	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response){
 		var idProject	= response.getTodoyuHeader('idProject');
@@ -130,10 +130,10 @@ Todoyu.Ext.project.Project.Edit = {
 
 
 	/**
-	 *	Update form DIV
+	 * Update form DIV
 	 *
-	 *	@param	Integer		idProject
-	 *	@param	String		formHTML
+	 * @param	{Integer}		idProject
+	 * @param	{String}		formHTML
 	 */
 	updateFormDiv: function(idProject, formHTML) {
 		$('project-' + idProject + '-data').update(formHTML);
@@ -144,7 +144,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Cancel project editing / creation
 	 *
-	 *	@param	Integer	idProject
+	 * @param	{Integer}	idProject
 	 */
 	cancel: function(idProject) {
 		if( idProject === 0 ) {
@@ -176,8 +176,8 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Handler when customer/company field is autocompleted
 	 *
-	 * @param	Ajax.Response			response
-	 * @param	Todoyu.Autocompleter	autocompleter
+	 * @param	{Ajax.Response}			response
+	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onCompanyAutocomplete: function(response, autocompleter) {
 		if( response.getTodoyuHeader('acElements') === '0' ) {
@@ -190,8 +190,8 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Handler when person field is autocompleted
 	 *
-	 * @param	Ajax.Response			response
-	 * @param	Todoyu.Autocompleter	autocompleter
+	 * @param	{Ajax.Response}			response
+	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onPersonAutocomplete: function(response, autocompleter) {
 		if( response.getTodoyuHeader('acElements') === '0' ) {
@@ -204,8 +204,8 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Handler when projectleader (person) field is autocompleted
 	 *
-	 * @param	Ajax.Response			response
-	 * @param	Todoyu.Autocompleter	autocompleter
+	 * @param	{Ajax.Response}			response
+	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onProjectleaderAutocomplete: function(response, autocompleter) {
 		this.onPersonAutocomplete(response, autocompleter);

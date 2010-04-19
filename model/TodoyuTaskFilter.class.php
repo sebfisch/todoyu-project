@@ -46,7 +46,6 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 	/**
 	 * Add rights clause to limit view to the persons rights
-	 *
 	 */
 	private function addRightsClauseFilter() {
 			// Limit to current person
@@ -351,6 +350,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 		return $queryParts;
 	}
+
 
 
 	/**
@@ -710,6 +710,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 		return self::Filter_dateDyn($timeStamps, 'date_update');
 	}
+
 
 
 	/**

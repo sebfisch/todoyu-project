@@ -36,10 +36,10 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 	/**
-	 *	OnTabSelect custom event handler
+	 * OnTabSelect custom event handler
 	 *
-	 *	@param	Event		event		Click event
-	 *	@param	String		tabKey		Key of clicked tab
+	 * @param	{Event}		event		Click event
+	 * @param	{String}		tabKey		Key of clicked tab
 	 */
 	onTabSelect: function(event, idProject) {
 		this.openProject(idProject, 0);
@@ -55,8 +55,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 *  - Add or activate tab
 	 *  - Hide other project
 	 *
-	 *	@param	Integer		idProject
-	 *	@param	Integer		idTask
+	 * @param	{Integer}		idProject
+	 * @param	{Integer}		idTask
 	 */
 	openProject: function(idProject, idTask) {
 		if( this.isProjectLoaded(idProject) && (idTask === 0 || (idTask !== 0 && this.isTaskLoaded(idTask) ) ) ) {
@@ -74,7 +74,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Remove a project (tab and tree)
 	 *
-	 *	@param	Integer		idProject
+	 * @param	{Integer}		idProject
 	 */
 	removeProject: function(idProject) {
 		var id	= 'project-' + idProject;
@@ -90,7 +90,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Remove sub tab of given project
 	 * 
-	 * @param	Integer		idProject
+	 * @param	{Integer}		idProject
 	 */
 	removeProjectTab: function(idProject) {
 		var id	= 'project-tab-' + idProject;
@@ -105,8 +105,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Check whether given project is loaded (the resp. project tab exists)
 	 *
-	 *	@param	Integer	idProject
-	 *	@return	Boolean
+	 * @param	{Integer}	idProject
+	 * @return	{Boolean}
 	 */
 	hasTab: function(idProject) {
 		return Todoyu.exists('project-tab-' + idProject);
@@ -128,8 +128,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Show a project as listtree
 	 *
-	 * @param	Integer		idProject
-	 * @param	Integer		idTask
+	 * @param	{Integer}		idProject
+	 * @param	{Integer}		idTask
 	 */
 	addNewProject: function(idProject, idTask) {
 		var url		= Todoyu.getUrl('project', 'projecttasktree');
@@ -148,7 +148,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 	/**
-	 *	OnProjectLoaded custom event handler
+	 * OnProjectLoaded custom event handler
 	 *
 	 * @param	unknown		response
 	 */
@@ -174,7 +174,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Insert project tab content (task of project)
 	 *
-	 * @param	Integer	idProject
+	 * @param	{Integer}	idProject
 	 * @param 	String	tabContent
 	 */
 	insertTabContent: function(idProject, tabContent) {
@@ -187,8 +187,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Add new tab head with given label to project tabs
 	 *
-	 * @param	Integer	idProject
-	 * @param	String	label
+	 * @param	{Integer}	idProject
+	 * @param	{String}	label
 	 */
 	addNewTabhead: function(idProject, label) {
 		var tabClass= 'tabkey-' + idProject + ' project' + idProject + ' projecttab item bcg05';
@@ -202,7 +202,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Move tab to front (place if leftmost)
 	 *
-	 * @param	Integer	idTab
+	 * @param	{Integer}	idTab
 	 */
 	moveTabToFront: function(idTab) {
 			// Remove no selection tab first
@@ -241,7 +241,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Get amount of sub tabs shown
 	 * 
-	 * @return	Integer
+	 * @return	{Integer}
 	 */
 	getNumTabs: function() {
 		return $('project-tabs').select('li').size();
@@ -269,7 +269,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * @todo	check, implement or remove
 	 * 
-	 * @param	Object	response
+	 * @param	{Object}	response
 	 */
 	onNoProjectSelectedViewLoaded: function(response) {
 
@@ -281,7 +281,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * Highlight the front tab
 	 *
 	 * @todo	check, remove?
-	 * @param	String		idTab
+	 * @param	{String}		idTab
 	 */
 	highlightTab: function(idTab) {
 //		var label = $('projecttab-' + idTab).select('.labeltext').first();
@@ -319,7 +319,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Display (given) active project
 	 *
-	 * @param	Integer		idProject
+	 * @param	{Integer}		idProject
 	 */
 	displayActiveProject: function(idProject) {
 		$('projects').childElements().invoke('hide');
@@ -340,8 +340,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Check whether given project is loaded (is displayed as content in one of the projects tabs)
 	 *
-	 *	@param	Integer		idProject
-	 *	@return	Boolean
+	 * @param	{Integer}		idProject
+	 * @return	{Boolean}
 	 */
 	isProjectLoaded: function(idProject) {
 		return Todoyu.exists('project-' + idProject);
@@ -352,8 +352,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Check whether given task is loaded
 	 *
-	 * @param	Integer		idTask
-	 * @return	Boolean
+	 * @param	{Integer}		idTask
+	 * @return	{Boolean}
 	 */
 	isTaskLoaded: function(idTask) {
 		return this.ext.Task.isLoaded(idTask);
@@ -364,8 +364,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Check whether given project is currently active (tab is activated)
 	 *
-	 * @param	Integer		idProject
-	 * @return	Boolean
+	 * @param	{Integer}		idProject
+	 * @return	{Boolean}
 	 */
 	isProjectActive: function(idProject) {
 		return $('project-tabs').select('li.active').first().readAttribute('id').split('-').last() == idProject;
@@ -401,7 +401,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Get ID of active project (project shown in currently activated project tab)
 	 *
-	 *	@return	String
+	 * @return	String
 	 */
 	getActiveProjectID: function() {
 		var activeTabs	= $('project-tabs').select('li.active');
@@ -456,7 +456,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * Get first (leftmost) of the project tabs
 	 *
-	 *	@return	Mixed
+	 * @return	{Mixed}
 	 */
 	getFirstTab: function()	{
 		if ( $('project-tabs') && $('project-tabs').select('li').length > 0 ) {

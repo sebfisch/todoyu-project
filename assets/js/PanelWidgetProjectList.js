@@ -30,7 +30,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Initialize panelwidget
 	 *
-	 * @param	Object		filters		Filter hash. Because of JSON, an (empty) array means no data
+	 * @param	{Object}		filters		Filter hash. Because of JSON, an (empty) array means no data
 	 */
 	init: function(filters) {
 			// If filters are given as parameters, add them to internal storage
@@ -93,7 +93,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler for keyup events of fulltext search input field
 	 *
-	 * @param	Object		event
+	 * @param	{Object}		event
 	 */
 	onFulltextKeyup: function(event) {
 		this.clearTimeout();
@@ -107,7 +107,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Click event handler for project
 	 *
-	 * @param	Object		event
+	 * @param	{Object}		event
 	 */
 	onProjectClick: function(event) {
 		var idProject = event.findElement('li').id.split('-').last();
@@ -120,8 +120,8 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Update handler for status filter
 	 *
-	 * @param	String	widgetkey
-	 * @param	Array	statuses
+	 * @param	{String}	widgetkey
+	 * @param	{Array}	statuses
 	 */
 	onStatusFilterUpdate: function(widgetkey, statuses) {
 		this.applyFilter('status', statuses, true);
@@ -159,9 +159,9 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Apply filter to project list panelwidget
 	 *
-	 * @param   String      name
-	 * @param   String      value
-	 * @param   Boolean     update
+	 * @param   {String}      name
+	 * @param   {String}      value
+	 * @param   {Boolean}     update
 	 */
 	applyFilter: function(name, value, update) {
 		this.filters[name] = value;
@@ -196,7 +196,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler to be evoked after refresh of project list panelwidget
 	 *
-	 * @param   Object  response
+	 * @param   {Object}  response
 	 */
 	onUpdated: function(response) {
 		this.observeProjects();
@@ -207,8 +207,8 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Check wether given project is listed in panewidget's project list
 	 *
-	 * @param   Integer     idProject
-	 * @return  Boolean
+	 * @param   {Integer}     idProject
+	 * @return  {Boolean}
 	 */
 	isProjectListed: function(idProject) {
 		return Todoyu.exists('panelwidget-projectlist-project-' + idProject);
@@ -219,7 +219,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler being evoked after saving of projects: updates the project list panel widget
 	 *
-	 * @param   Integer     idProject
+	 * @param   {Integer}     idProject
 	 */
 	onProjectSaved: function(idProject) {
 		this.update();
@@ -230,7 +230,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler being evoked after creation of new projects: updates the project list panel widget
 	 * 
-	 * @param   Integer     idProject
+	 * @param   {Integer}     idProject
 	 */
 	onProjectCreated: function(idProject) {
 		this.update();
@@ -241,7 +241,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler being evoked after deletion projects: updates the project list panel widget
 	 *
-	 * @param   Integer     idProject
+	 * @param   {Integer}     idProject
 	 */
 	onProjectDeleted: function(idProject) {
 		this.update();

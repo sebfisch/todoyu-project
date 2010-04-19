@@ -105,6 +105,7 @@ class TodoyuProjectroleManager {
 	}
 
 
+
 	/**
 	 * Get label of projectrole
 	 *

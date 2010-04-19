@@ -40,6 +40,7 @@ class TodoyuProjectPortalManager {
 	}
 
 
+
 	/**
 	 * Get number of tasks for todo tabs
 	 *

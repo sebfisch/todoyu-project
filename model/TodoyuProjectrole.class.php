@@ -26,7 +26,6 @@
  */
 class TodoyuProjectrole extends TodoyuBaseObject {
 
-
 	/**
 	 * Constructor
 	 *

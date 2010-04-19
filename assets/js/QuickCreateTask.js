@@ -31,7 +31,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 	/**
 	 * Save task
 	 *
-	 * @param	String		form
+	 * @param	{String}		form
 	 */
 	save: function(form) {
 		tinyMCE.triggerSave();
@@ -49,7 +49,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 	/**
 	 * Evoked after edited task having been saved. Handles display of success / failure message and refresh of saved task / failed form.
 	 *
-	 * @param	Object	response
+	 * @param	{Object}	response
 	 */
 	onSaved: function(response) {
 		var idProject	= response.getTodoyuHeader('idProject');

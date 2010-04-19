@@ -28,8 +28,8 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Handle onSelect event of tab: show affected tab which the event occured on
 	 *
-	 * @param	Object	event
-	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{Object}	event
+	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	onSelect: function(event, tabKey) {
 		var idParts	= event.findElement('li').id.split('-');
@@ -42,8 +42,8 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Show given tab of given task
 	 *
-	 * @param	Integer	idTask
-	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{Integer}	idTask
+	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	show: function(idTask, tabKey, onComplete) {
 		var tabContainer = this.buildTabID(idTask, tabKey);
@@ -64,8 +64,8 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Load given tab of given task
 	 *
-	 * @param	Integer	idTask
-	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{Integer}	idTask
+	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	load: function(idTask, tabKey, onComplete) {
 		var url 	= Todoyu.getUrl('project', 'task');
@@ -86,9 +86,9 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Handler when tab is loaded
 	 *
-	 * @param	Integer		idTask
-	 * @param	String		tabKey
-	 * @param	Function	onComplete callback
+	 * @param	{Integer}		idTask
+	 * @param	{String}		tabKey
+	 * @param	{Function}	onComplete callback
 	 */
 	onLoaded: function(idTask, tabKey, onComplete) {
 		this.activate(idTask, tabKey);
@@ -100,8 +100,8 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Check if a tab of a task is already loaded
 	 *
-	 * @param	Integer		idTask
-	 * @param	String		tabKey
+	 * @param	{Integer}		idTask
+	 * @param	{String}		tabKey
 	 */
 	isLoaded: function(idTask, tabKey) {
 		return Todoyu.exists('task-' + idTask + '-tabcontent-' + tabKey);
@@ -112,8 +112,8 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Create tab container to given task.
 	 *
-	 * @param	Integer	idTask
-	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{Integer}	idTask
+	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	createTabContainer: function(idTask, tabKey) {
 			// Create elements
@@ -136,9 +136,9 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Render element ID of given tab of given task
 	 *
-	 * @param	Integer	idTask
-	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
-	 * @return	String
+	 * @param	{Integer}	idTask
+	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @return	{String}
 	 */
 	buildTabID: function(idTask, tabKey) {
 		return 'task-' + idTask + '-tabcontent-' + tabKey;
@@ -149,8 +149,8 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Activate given tab of given task: hide other tabs, activate tab head, set tab content visible
 	 *
-	 * @param	Integer	idTask
-	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{Integer}	idTask
+	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	activate: function(idTask, tabKey) {
 		this.hideAll(idTask);
@@ -163,8 +163,8 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Save given task's selected (given) tab
 	 *
-	 * @param	Integer	idTask
-	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{Integer}	idTask
+	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	saveSelection: function(idTask, tabKey) {
 		var url = Todoyu.getUrl('project', 'task');
@@ -184,7 +184,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Hide all tabs of given task
 	 *
-	 * @param	Integer	idTask
+	 * @param	{Integer}	idTask
 	 */
 	hideAll: function(idTask) {
 		this.getContainer(idTask).select('.tab').invoke('hide');
@@ -196,8 +196,8 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Set given tab of given task visible
 	 *
-	 * @param	Integer	idTask
-	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{Integer}	idTask
+	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	setVisible: function(idTask, tabKey) {
 		$(this.buildTabID(idTask, tabKey)).show();
@@ -208,7 +208,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Get tabs container element of given task
 	 *
-	 * @param	Integer	idTask
+	 * @param	{Integer}	idTask
 	 * 	@return	Element
 	 */
 	getContainer: function(idTask) {
@@ -220,8 +220,8 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Get tab head ID of given tab of given task
 	 *
-	 * @param	Integer	idTask
-	 * @param	String	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{Integer}	idTask
+	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 * 	@return	String
 	 */
 	getHeadID: function(idTask, tabKey) {
@@ -233,7 +233,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Extract tabKey (e.g 'timetracking' / 'comment' / 'assets') out of item ID
 	 *
-	 * @param	Integer	idItem
+	 * @param	{Integer}	idItem
 	 * 	@return	String
 	 */
 	getKeyFromID: function(idItem) {
