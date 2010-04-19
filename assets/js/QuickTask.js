@@ -29,7 +29,6 @@ Todoyu.Ext.project.QuickTask = {
 
 	/**
 	 * Toggle quick task popup
-	 * 
 	 */
 	openPopup: function() {
 		var url		= Todoyu.getUrl('project', 'quicktask');

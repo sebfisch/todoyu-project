@@ -24,7 +24,6 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-
 class TodoyuWorktype extends TodoyuBaseObject {
 
 

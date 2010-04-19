@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-
 class TodoyuProjectSearch implements TodoyuSearchEngineIf {
 
 	/**
