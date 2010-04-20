@@ -2,7 +2,12 @@
 <form>
 	<attributes>
 		<attribute name="name">quicktask</attribute>
+		<attribute name="action">?ext=project&amp;controller=quicktask</attribute>
 	</attributes>
+
+	<hiddenFields>
+		<field name="action" noWrap="true" value="save" />
+	</hiddenFields>
 
 	<fieldsets>
 		<fieldset name="main">

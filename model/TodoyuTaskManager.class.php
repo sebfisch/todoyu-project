@@ -953,7 +953,7 @@ class TodoyuTaskManager {
 			}
 
 				// Date start
-			if ( $taskData['date_start'] > 0 ) {
+			if ( $taskData['date_start'] > 0 && Todoyu::person()->isInternal() ) {
 				$info['date_start']	= array(
 					'label'		=> 'LLL:task.attr.date_start',
 					'value'		=> TodoyuTime::format( $taskData['date_start'], 'date'),
@@ -962,8 +962,8 @@ class TodoyuTaskManager {
 				);
 			}
 
-				// Date end (if set)
-			if( $taskData['date_end'] > 0 ) {
+				// Date end (if set) (internal deadline)
+			if( $taskData['date_end'] > 0 && Todoyu::person()->isInternal() ) {
 				$formatEnd	= date('F', $data['date_end']) == 0 ? 'date' : 'datetime';
 				$info['date_end']	= array(
 					'label'	=> 'LLL:task.attr.date_end',
@@ -1717,8 +1717,17 @@ class TodoyuTaskManager {
 		);
 		$data		= TodoyuHookManager::callHookDataModifier('project', 'taskcopy', $data, $hookData);
 
-			// Set status
-		$data['status']		= STATUS_OPEN;
+			// Set status. Check for edit right and use default status as fallback
+		$extConf		= TodoyuExtConfManager::getExtConf('project');
+		$defaultStatus	= intval($extConf['status']);
+		if(  allowed('project', 'task:editStatus') ) {
+			$data['status']		= STATUS_OPEN;
+		} elseif($defaultStatus !== 0 ) {
+			$data['status']		= $defaultStatus;
+		} else{
+			$data['status']		= STATUS_PLANNING;
+		}
+
 			// Remove old task number
 		unset($data['tasknumber']);
 

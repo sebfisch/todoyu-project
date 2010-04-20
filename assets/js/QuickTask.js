@@ -94,6 +94,7 @@ Todoyu.Ext.project.QuickTask = {
 	onSaved: function(form, response) {
 		if( response.hasTodoyuError() ) {
 			$(form).replace(response.responseText);
+			Todoyu.Hook.exec('QuickTaskOpen', response);
 		} else {
 			var idTask		= response.getTodoyuHeader('idTask');
 			var idProject	= response.getTodoyuHeader('idProject');
