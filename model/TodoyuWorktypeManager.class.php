@@ -78,6 +78,7 @@ class TodoyuWorktypeManager {
 			$idWorktype = self::addWorktype();
 		}
 
+			// Call hooked save data functions
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idWorktype);
 
 		self::updateWorktype($idWorktype, $data);

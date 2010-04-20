@@ -195,7 +195,7 @@ class TodoyuTaskManager {
 			$data['type'] = TASK_TYPE_TASK;
 		}
 
-			// Call save data handler
+			// Call hooked save data functions
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idTask);
 
 		self::updateTask($idTask, $data);

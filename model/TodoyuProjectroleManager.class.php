@@ -59,6 +59,7 @@ class TodoyuProjectroleManager {
 			$idProjectrole = self::addProjectrole();
 		}
 
+			// Call hooked save data functions
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idProjectrole);
 
 		self::updateProjectrole($idProjectrole, $data);
