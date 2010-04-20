@@ -26,6 +26,11 @@
  */
 class TodoyuProjectQuickCreateProjectActionController extends TodoyuActionController {
 
+	/**
+	 * Initialize action controller (restrict rights)
+	 *
+	 * @param	Array	$params
+	 */
 	public function init(array $params) {
 		TodoyuProjectRights::restrictAdd();
 	}

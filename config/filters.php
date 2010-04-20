@@ -223,7 +223,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			'optgroup'	=> 'LLL:projectFilter.task.timemanagement.label',
 			'widget'	=> 'select',
 			'wConf'		=> array(
-			    'FuncRef'	=> 'TodoyuTaskFilterDataSource::getDynamicDateinput'
+				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getDynamicDateinput'
 			)
 		),
 		'startdate'		=> array(
@@ -326,7 +326,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 				'autocomplete'	=> true,
 				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompletePersons',
 				'multiple'		=> true,
-			    'size'			=> 5,
+				'size'			=> 5,
 				'negation'		=> 'default'
 			)
 		),
@@ -424,7 +424,7 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 				'autocomplete'	=> true,
 				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompletePersons',
 				'multiple'		=> true,
-			    'size'			=> 5,
+				'size'			=> 5,
 				'negation'		=> 'default'
 			)
 		)

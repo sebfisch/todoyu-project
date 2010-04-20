@@ -1040,7 +1040,6 @@ class TodoyuProjectManager {
 
 
 
-
 	/**
 	 * Get quick create project form object
 	 *

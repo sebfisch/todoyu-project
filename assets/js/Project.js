@@ -67,7 +67,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Delete given project
 	 *
-	 * @param   {Integer}	idProject
+	 * @param	{Integer}	idProject
 	 */
 	remove: function(idProject) {
 		if( confirm('[LLL:project.js.removeProject]') ) {

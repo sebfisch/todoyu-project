@@ -1201,7 +1201,6 @@ class TodoyuTaskManager {
 
 
 
-
 	/**
 	 * Get tasks in given timespan
 	 * If timestamp of start/end == 0: don't use it (there by this method can be used as well to query for tasks before / after a given timestamp)

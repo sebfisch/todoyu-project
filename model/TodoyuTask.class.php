@@ -260,7 +260,6 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 
-
 	/**
 	 * Check if the task is a container
 	 *

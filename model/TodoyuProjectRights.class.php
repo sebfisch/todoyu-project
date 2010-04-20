@@ -91,7 +91,6 @@ class TodoyuProjectRights {
 
 
 
-
 	/**
 	 * Check if a project status is allowed
 	 *

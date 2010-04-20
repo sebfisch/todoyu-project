@@ -181,8 +181,8 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Handler when sub tasks are toggled
 	 *
-	 * @param   {Object}	idTask
-	 * @param   {Object}	response
+	 * @param	{Object}	idTask
+	 * @param	{Object}	response
 	 */
 	onSubtasksToggled: function(idTask) {
 

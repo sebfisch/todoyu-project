@@ -94,7 +94,6 @@ class TodoyuProjectRenderer {
 
 
 
-
 	/**
 	 * Render project view where no project is selected yet.
 	 * Instead of the tree, there will be an infobox with options
