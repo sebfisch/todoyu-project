@@ -154,7 +154,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 */
 	onProjectLoaded: function(response) {
 		var idProject 	= response.getHeader('Todoyu-project');
-		var label		= response.getHeader('Todoyu-tablabel');
+			// Label is JSON encoded to use its character encoding
+		var label		= response.getHeader('Todoyu-tablabel').evalJSON();
 
 		this.insertTabContent(idProject, response.responseText);
 
