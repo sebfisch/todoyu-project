@@ -118,8 +118,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * Remove dummy tab which appears when no project is selected
 	 */
 	removeNoSelectionTab: function() {
-		if( Todoyu.exists('projecttab-noselection') ) {
-			$('projecttab-noselection').remove();
+		if( Todoyu.exists('project-tab-noselection') ) {
+			$('project-tab-noselection').remove();
 		}
 	},
 
