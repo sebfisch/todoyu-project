@@ -25,22 +25,21 @@
  * @subpackage	Project
  */
 
-/**
- * Add autocompleters
- */
+
+ 	// Add autocompleters
 TodoyuAutocompleter::addAutocompleter('projectperson', 'TodoyuPersonFilterDataSource::autocompletePersons', array('project', 'general:use'));
 TodoyuAutocompleter::addAutocompleter('projecttask', 'TodoyuTaskViewHelper::getProjecttaskAutocomplete', array('project', 'general:use'));
 TodoyuAutocompleter::addAutocompleter('project', 'TodoyuProjectFilterDataSource::autocompleteProjects', array('project', 'general:use'));
 
-
+	// Add context menu handlers
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskManager::getContextMenuItems', 10);
-
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskClipboard::getTaskContextMenuItems', 100);
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskManager::removeEmptyContextMenuParents', 100000);
 TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectManager::getContextMenuItems', 10);
 
 
 
+	// Declare project and task status
 Todoyu::$CONFIG['EXT']['project']['STATUS']['PROJECT'] = array(
 	STATUS_PLANNING		=> 'planning',
 	STATUS_PROGRESS		=> 'progress',
@@ -71,7 +70,7 @@ Todoyu::$CONFIG['EXT']['project']['Task']['defaultEstimatedWorkload'] = 0;
 Todoyu::$CONFIG['EXT']['project']['Task']['forceTab'] = false;
 
 /**
- * Add filterwidget type "projectrole"
+ * Add filter widget type "projectrole"
  */
 Todoyu::$CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
 	'tmpl'			=> 'ext/project/view/filterwidget-projectrole.tmpl',
@@ -99,7 +98,7 @@ Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters'] = array(
 	)
 );
 
-	// Max projects in project listig widget
+	// Maximum projects in project listing widget
 Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectListing']['maxProjects']	= 30;
 
 /**
