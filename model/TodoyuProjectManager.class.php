@@ -183,12 +183,9 @@ class TodoyuProjectManager {
 	 */
 	public static function getTasks($idProject, $orderBy = 'date_create') {
 		$idProject	= intval($idProject);
+		$where		= 'id_project = ' . $idProject;
 
-		$fields	= '*';
-		$table	= TodoyuTaskManager::TABLE;
-		$where	= 'id_project = ' . $idProject;
-
-		return Todoyu::db()->getArray($fields, $table, $where, '', $orderBy);
+		return TodoyuRecordManager::getAllRecords(TodoyuTaskManager::TABLE, $where, '');
 	}
 
 

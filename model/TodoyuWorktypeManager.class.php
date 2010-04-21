@@ -48,17 +48,12 @@ class TodoyuWorktypeManager {
 
 
 	/**
-	 * Get all worktypes
+	 * Get all work types
 	 *
 	 * @return	Array
 	 */
 	public static function getAllWorktypes() {
-		$fields	= '*';
-		$table	= self::TABLE;
-		$where	= 'deleted = 0';
-		$order	= 'title';
-
-		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
+		return TodoyuRecordManager::getAllRecords(self::TABLE);
 	}
 
 

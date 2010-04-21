@@ -128,19 +128,18 @@ class TodoyuProjectroleManager {
 
 
 	/**
-	 * Get all active projectroles
+	 * Get all active projectroles, optionally parse to render title labels
 	 *
+	 * @param	Boolean	$parse
 	 * @return	Array
 	 */
 	public static function getProjectroles($parse = true) {
-		$fields	= '*';
-		$table	= self::TABLE;
 		$where	= 'deleted = 0';
 		$order	= 'id';
 
-		$projectroles	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
+		$projectroles	= TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
 
-		if( $parse ) {
+		if( $parse === true ) {
 			foreach($projectroles as $index => $projectrole) {
 				$projectroles[$index]['title'] = TodoyuString::getLabel($projectrole['title']);
 			}

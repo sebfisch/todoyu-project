@@ -153,13 +153,13 @@ class TodoyuTaskManager {
 	 * @param	Array	$taskIDs
 	 * @return	Array
 	 */
-	public static function getTasks(array $taskIDs, $orderBy = 'id') {
+	public static function getTasks(array $taskIDs, $order = 'id') {
 		$taskIDs= TodoyuArray::intval($taskIDs, true, true);
 		$tasks	= array();
 
 		if( sizeof($taskIDs) > 0 ) {
 			$where	= 'id IN(' . implode(',', $taskIDs) . ')';
-			$tasks	= Todoyu::db()->getArray('*', self::TABLE, $where, '', $orderBy);
+			$tasks	= TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
 		}
 
 		return $tasks;
@@ -652,15 +652,10 @@ class TodoyuTaskManager {
 			return array();
 		}
 
-		$field	= '*';
-		$table	= self::TABLE;
-		$where	= '	id_parenttask	= ' . $idTask . ' AND
-					deleted	= 0';
-		$groupBy= '';
+		$where	= '	id_parenttask	= ' . $idTask . ' AND deleted	= 0';
 		$orderBy= 'date_create';
-		$limit	= '';
 
-		return Todoyu::db()->getArray($field, $table, $where, $groupBy, $orderBy, $limit);
+		return TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
 	}
 
 
@@ -1452,12 +1447,10 @@ class TodoyuTaskManager {
 		$rootline	= self::getTaskRootline($idTask);
 		$list		= implode(',', $rootline);
 
-		$fields	= '*';
-		$table	= self::TABLE;
 		$where	= 'id IN(' . $list . ')';
 		$order	= 'FIND_IN_SET(id, \'' . $list . '\')';
 
-		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
+		return TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
 	}
 
 
