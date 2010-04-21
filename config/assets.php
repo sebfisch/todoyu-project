@@ -25,7 +25,6 @@
  * @subpackage	Project
  */
 
-
 Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 	'js' => array(
 			// Add quicktask wizard headlet

@@ -22,7 +22,6 @@
  * Various project extension info data
  */
 
-
 Todoyu::$CONFIG['EXT']['project']['info'] = array(
 	'title'			=> 'Project and Task Management',
 	'description' 	=> 'Basic Project and Task Management',
@@ -40,6 +39,5 @@ Todoyu::$CONFIG['EXT']['project']['info'] = array(
 		'conflicts' => array()
 	)
 );
-
 
 ?>

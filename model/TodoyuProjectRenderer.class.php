@@ -424,10 +424,10 @@ class TodoyuProjectRenderer {
 
 
 	/**
-	 * Check if task is expanded
+	 * Check whether task is expanded
 	 *
 	 * @param	Integer		$idTask
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	private static function isTaskExpanded($idTask) {
 		$idTask	= intval($idTask);
@@ -442,10 +442,10 @@ class TodoyuProjectRenderer {
 
 
 	/**
-	 * Check if project is expanded
+	 * Check whether project is expanded
 	 *
 	 * @param	Integer		$idProject
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	private static function isProjectExpanded($idProject) {
 		$idProject	= intval($idProject);
@@ -456,10 +456,10 @@ class TodoyuProjectRenderer {
 
 
 	/**
-	 * Check if subtasks are visible
+	 * Check whether sub tasks are visible
 	 *
 	 * @param	Integer		$idTask
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function areSubTasksVisible($idTask) {
 		$idTask	= intval($idTask);

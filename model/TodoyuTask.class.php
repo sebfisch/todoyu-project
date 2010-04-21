@@ -77,10 +77,10 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if task has status
+	 * Check whether task has status
 	 *
 	 * @param	Integer		$idStatus
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function hasStatus($idStatus) {
 		return $this->getStatus() === intval($idStatus);
@@ -122,7 +122,7 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if tasks has a parent task (or is in project root)
+	 * Check whether tasks has a parent task (or is in project root)
 	 *
 	 * @return	Boolean
 	 */
@@ -133,9 +133,9 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if the task has sub tasks
+	 * Check whether the task has sub tasks
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function hasSubtasks() {
 		return TodoyuTaskManager::hasSubTasks($this->getID());
@@ -261,7 +261,7 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if the task is a container
+	 * Check whether the task is a container
 	 *
 	 * @return	String
 	 */
@@ -272,7 +272,7 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if the task is a normal task (no container or something else)
+	 * Check whether the task is a normal task (no container or something else)
 	 *
 	 * @return	Boolean
 	 */
@@ -283,9 +283,9 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if the task is marked as internal
+	 * Check whether the task is marked as internal
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function isPublic() {
 		return $this->get('is_public') == 1;
@@ -294,7 +294,7 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if the task has already been acknowledged by the assigned person
+	 * Check whether the task has already been acknowledged by the assigned person
 	 *
 	 * @return	Boolean
 	 */

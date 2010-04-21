@@ -27,7 +27,7 @@
 class TodoyuProjectPanelwidgetProjectlistActionController extends TodoyuActionController {
 
 	/**
-	 * Check if use of project area is allowed
+	 * Check whether use of project area is allowed
 	 *
 	 * @param	Array		$params
 	 */

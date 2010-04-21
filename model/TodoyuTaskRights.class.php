@@ -39,8 +39,8 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Check if person can edit a task
-	 * Check if person has edit rights and if person can edit a status
+	 * Check whether person can edit a task
+	 * Check whether person has edit rights and if person can edit a status
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Boolean
@@ -69,7 +69,7 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Check if person can edit tasks in this project
+	 * Check whether person can edit tasks in this project
 	 *
 	 * @param	Integer		$idProject
 	 * @return	Boolean
@@ -87,7 +87,7 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Check if person can add a new task under the parent task
+	 * Check whether person can add a new task under the parent task
 	 *
 	 * @param	Integer		$idParentTask
 	 * @return	Boolean
@@ -102,7 +102,7 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Check if a person can add a new task in this project
+	 * Check whether a person can add a new task in this project
 	 *
 	 * @param	Integer		$idProject
 	 * @return	Boolean
@@ -120,7 +120,7 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Check if quick-add of tasks is allowed
+	 * Check whether quick-add of tasks is allowed
 	 * Needs at least one project where he can add tasks
 	 *
 	 * @return	Boolean
@@ -134,7 +134,7 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Check if a person can see the task
+	 * Check whether a person can see the task
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Boolean
@@ -170,7 +170,7 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Check if person can see a taskstatus
+	 * Check whether person can see a taskstatus
 	 *
 	 * @param	String		$status
 	 * @param	String		$type

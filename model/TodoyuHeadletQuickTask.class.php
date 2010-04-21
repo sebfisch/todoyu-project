@@ -49,7 +49,7 @@ class TodoyuHeadletQuickTask extends TodoyuHeadletTypeButton {
 
 
 	/**
-	 * Check if there are project where the user can add the task to
+	 * Check whether there are project where the user can add the task to
 	 * If no projects available, hide widget
 	 *
 	 * @return Boolean

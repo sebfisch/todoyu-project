@@ -28,7 +28,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 	/**
 	 * Initialize controller
-	 * Check if project extension allowed
+	 * Check whether project extension allowed
 	 *
 	 * @param	Array		$params
 	 */

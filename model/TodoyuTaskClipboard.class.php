@@ -60,9 +60,9 @@ class TodoyuTaskClipboard {
 
 
 	/**
-	 * Check if a task is in clipboard
+	 * Check whether a task is in clipboard
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function hasTask() {
 		return TodoyuClipboard::has('task');
@@ -97,9 +97,9 @@ class TodoyuTaskClipboard {
 
 
 	/**
-	 * Check if clipboard is in copy mode
+	 * Check whether clipboard is in copy mode
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isInCopyMode() {
 		return self::getCurrentMode() === 'copy';
@@ -108,9 +108,9 @@ class TodoyuTaskClipboard {
 
 
 	/**
-	 * Check if clipboard is in cut mode
+	 * Check whether clipboard is in cut mode
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isInCutMode() {
 		return self::getCurrentMode() === 'cut';

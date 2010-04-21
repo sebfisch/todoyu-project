@@ -39,7 +39,7 @@ class TodoyuProjectRights {
 
 
 	/**
-	 * Check if person can see the project
+	 * Check whether person can see the project
 	 *
 	 * @param	Integer		$idProject
 	 * @return	Boolean
@@ -70,7 +70,7 @@ class TodoyuProjectRights {
 
 
 	/**
-	 * Check if person can edit the project
+	 * Check whether person can edit the project
 	 *
 	 * @return	Boolean
 	 */
@@ -81,7 +81,7 @@ class TodoyuProjectRights {
 
 
 	/**
-	 * Check if person can add new projects
+	 * Check whether person can add new projects
 	 *
 	 * @return	Boolean
 	 */
@@ -92,10 +92,10 @@ class TodoyuProjectRights {
 
 
 	/**
-	 * Check if a project status is allowed
+	 * Check whether a project status is allowed
 	 *
 	 * @param	Integer		$status
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isStatusAllowed($status) {
 		$allowedStatuses	= array_keys(TodoyuProjectStatusManager::getStatuses());

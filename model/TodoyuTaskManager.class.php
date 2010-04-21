@@ -661,7 +661,7 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Check if a task has sub tasks
+	 * Check whether a task has sub tasks
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Boolean
@@ -677,7 +677,7 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Check if a task is a sub task of a task.
+	 * Check whether a task is a sub task of a task.
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Integer		$idParent
@@ -700,7 +700,7 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Check if task has a parent
+	 * Check whether task has a parent
 	 *
 	 * @param	Integer		$idTask
 	 * @return 	Boolean
@@ -1503,10 +1503,10 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Check if a task exists
+	 * Check whether a task exists
 	 *
 	 * @param	Integer		$idTask
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isTask($idTask) {
 		$idTask	= intval($idTask);
@@ -1525,7 +1525,7 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Check if a tasknumber is valid
+	 * Check whether a tasknumber is valid
 	 * $mustExist is not set (default), only the format is checked.
 	 * If $mustExist is set, also a database request will check if this task exists
 	 *
@@ -1563,10 +1563,10 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Check if a task is visible (available for rendering)
+	 * Check whether a task is visible (available for rendering)
 	 *
 	 * @param	Integer		$idTask
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isTaskVisible($idTask) {
 		$idTask	= intval($idTask);
@@ -1585,10 +1585,10 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Check if a task is expanded
+	 * Check whether a task is expanded
 	 *
 	 * @param	Integer		$idTask
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isTaskExpanded($idTask) {
 		$idTask	= intval($idTask);
@@ -1631,7 +1631,7 @@ class TodoyuTaskManager {
 	 *
 	 * @param	TodoyuForm	$form			Task edit form object
 	 * @param	Integer		$idTask			Task ID
-	 * @return	TodoyuForm	Moddified form object
+	 * @return	TodoyuForm	Modified form object
 	 */
 	public static function modifyFormfieldsForContainer(TodoyuForm $form, $idTask) {
 		$idTask	= intval($idTask);
@@ -1715,7 +1715,7 @@ class TodoyuTaskManager {
 		$defaultStatus	= intval($extConf['status']);
 		if(  allowed('project', 'task:editStatus') ) {
 			$data['status']		= STATUS_OPEN;
-		} elseif($defaultStatus !== 0 ) {
+		} elseif( $defaultStatus !== 0 ) {
 			$data['status']		= $defaultStatus;
 		} else{
 			$data['status']		= STATUS_PLANNING;
@@ -1848,7 +1848,7 @@ class TodoyuTaskManager {
 			$update['sorting']	= 'sorting+1';
 		}
 
-			// Limits for updateing other tasks
+			// Limits for updating other tasks
 		$where .= ' AND sorting > ' . $min . ' AND
 						sorting < ' . $max;
 
@@ -1888,12 +1888,12 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Check if a person is assigned to a task as owner or assigned person
+	 * Check whether a person is assigned to a task as owner or assigned person
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Integer		$idPerson
 	 * @param	Boolean		$checkCreator		Creator is an assigned person too
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isPersonAssigned($idTask, $idPerson = 0, $checkCreator = false) {
 		$idTask		= intval($idTask);
@@ -1919,11 +1919,11 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Check if a person is assigned to the task's project
+	 * Check whether a person is assigned to the task's project
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Integer		$idPerson
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isPersonAssignedToProject($idTask, $idPerson = 0) {
 		$idTask		= intval($idTask);
@@ -1942,11 +1942,11 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Check if a person is assigned to the task or the project
+	 * Check whether a person is assigned to the task or the project
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Integer		$idPerson
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isPersonAssignedToTaskOrProject($idTask, $idPerson = 0) {
 		return self::isPersonAssigned($idTask, $idPerson) || self::isPersonAssignedToProject($idTask, $idPerson);

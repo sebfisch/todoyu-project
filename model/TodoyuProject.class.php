@@ -168,7 +168,7 @@ class TodoyuProject extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if current person is assigned to this project
+	 * Check whether current person is assigned to this project
 	 *
 	 * @return	Boolean
 	 */

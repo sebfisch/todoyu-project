@@ -30,7 +30,7 @@ if(  allowed('project', 'general:area') ) {
 	}
 
 
-		// Register quicktask headlet
+		// Register quick task headlet
 	if( allowed('project', 'task:addViaQuickCreateHeadlet') ) {
 		TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickTask', 55);
 	}

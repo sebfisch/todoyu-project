@@ -82,11 +82,11 @@ class TodoyuProjectroleManager {
 
 
 	/**
-	 * Update projectrole record with given data
+	 * Update project role record with given data
 	 *
 	 * @param	Integer		$idProjectrole
 	 * @param	Array		$data
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function updateProjectrole($idProjectrole, array $data) {
 		$idProjectrole	= intval($idProjectrole);

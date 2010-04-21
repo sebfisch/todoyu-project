@@ -91,7 +91,7 @@ class TodoyuProjectManager {
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Array		$data
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function updateProject($idProject, array $data) {
 		return TodoyuRecordManager::updateRecord(self::TABLE, $idProject, $data);
@@ -155,7 +155,7 @@ class TodoyuProjectManager {
 	 * Delete a project (set deleted flag)
 	 *
 	 * @param	Integer		$idProject
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function deleteProject($idProject) {
 		$idProject	= intval($idProject);
@@ -224,7 +224,7 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Check if a project is visible (available and not deleted)
+	 * Check whether a project is visible (available and not deleted)
 	 *
 	 * @param	Integer		$idProject
 	 * @return	Boolean
@@ -239,7 +239,7 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Check if a person is assigned to a project
+	 * Check whether a person is assigned to a project
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idPerson

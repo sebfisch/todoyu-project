@@ -96,11 +96,11 @@ class TodoyuWorktypeManager {
 
 
 	/**
-	 * Update worktype record
+	 * Update work type record
 	 *
 	 * @param	Integer		$idWorktype
 	 * @param	Array		$data
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function updateWorktype($idWorktype, array $data) {
 		return TodoyuRecordManager::updateRecord(self::TABLE, $idWorktype, $data);

@@ -69,7 +69,7 @@ class TodoyuPanelWidgetProjectStatusFilter extends TodoyuPanelWidgetStatusFilter
 
 
 	/**
-	 * Check if panelwidget is allowed
+	 * Check whether panelwidget is allowed
 	 * Allowed if project area allowed and more than one status visible
 	 *
 	 * @return	Boolean
