@@ -938,7 +938,7 @@ class TodoyuTaskManager {
 			}
 
 				// Person assigned
-			if ( ! empty($taskData['person_assigned']['id']) ) {
+			if ( ! empty($taskData['person_assigned']['id']) && Todoyu::person()->isInternal() ) {
 				$info['person_assigned']	= array(
 					'label'		=> 'LLL:task.attr.person_assigned',
 					'value'		=> TodoyuPersonManager::getLabel($taskData['person_assigned']['id']),

@@ -150,7 +150,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * OnProjectLoaded custom event handler
 	 *
-	 * @param	unknown		response
+	 * @param	{Ajax.Response}		response
 	 */
 	onProjectLoaded: function(response) {
 		var idProject 	= response.getHeader('Todoyu-project');
@@ -176,7 +176,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * Insert project tab content (task of project)
 	 *
 	 * @param	{Integer}	idProject
-	 * @param 	String	tabContent
+	 * @param 	{String}	tabContent
 	 */
 	insertTabContent: function(idProject, tabContent) {
 		$('projects').insert(tabContent);
