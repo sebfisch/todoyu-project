@@ -528,11 +528,13 @@ class TodoyuProjectManager {
 			'position'	=> 32
 		);
 
-		$info[]	= array(
-			'label'		=> 'LLL:project.attr.date_deadline',
-			'value'		=> TodoyuTime::format($project->getDeadlineDate(), 'D2MlongY4'),
-			'position'	=> 34
-		);
+		if( $project->getDeadlineDate() > 0 && Todoyu::person()->isInternal() ) {
+			$info[]	= array(
+				'label'		=> 'LLL:project.attr.date_deadline',
+				'value'		=> TodoyuTime::format($project->getDeadlineDate(), 'D2MlongY4'),
+				'position'	=> 34
+			);
+		}
 
 		return $info;
 	}

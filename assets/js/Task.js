@@ -677,7 +677,7 @@ Todoyu.Ext.project.Task = {
 	 */
 	onProjectContainerAdded: function(response) {
 			// Get task id from header
-		var idContainer = response.getHeader('Todoyu-idContainer');
+		var idContainer = response.getTodoyuHeader('idContainer');
 
 		this.addContextMenu(idContainer);
 		this.scrollTo(idContainer);
