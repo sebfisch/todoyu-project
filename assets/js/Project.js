@@ -221,14 +221,14 @@ Todoyu.Ext.project.Project = {
 	 * @param	{Integer}		idProject
 	 */
 	addContainer: function(idProject) {
-		if(Todoyu.getArea() != 'project') {
+		if( Todoyu.getArea() === 'project' ) {
+			this.ext.Task.addContainerToProject(idProject);
+		} else {
 			Todoyu.goTo('project', 'ext', {
 				'action': 'addcontainer',
 				'project': idProject
 			});
 		}
-
-		this.ext.Task.addContainerToProject(idProject);
 	},
 
 

@@ -194,7 +194,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'select',
 			'wConf' => array(
 				'multiple'	=> true,
-				'size'		=> 2,
 				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getWorktypeOptions',
 				'negation'	=> 'default'
 			)

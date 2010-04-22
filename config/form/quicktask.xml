@@ -19,7 +19,7 @@
 					<required />
 				</field>
 
-				<field type="textinputAC" name="id_project">
+				<field type="textinput" name="id_project">
 					<dummy>this field will be replaced</dummy>
 				</field>
 
