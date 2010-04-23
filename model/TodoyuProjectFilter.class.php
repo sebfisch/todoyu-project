@@ -308,7 +308,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 		$definitions['options']	= TodoyuArray::reform($projectroles, $reform);
 
-			// Prepare seperate values
+			// Prepare separate values
 		$values	= explode(':', $definitions['value']);
 		$definitions['valuePerson'] 		= intval($values[0]);
 		$definitions['valuePersonLabel']	= TodoyuPersonManager::getLabel($values[0]);
