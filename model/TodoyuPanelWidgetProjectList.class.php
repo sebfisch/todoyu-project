@@ -42,7 +42,7 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 			'projectlist',							// panel widget ID
 			'LLL:panelwidget-projecttree.title',	// widget title text
 			$config,								// widget config array
-			$params,								// widget params
+			$params,								// widget parameters
 			$idArea									// area ID
 		);
 
@@ -62,7 +62,7 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 	private function getProjectIDs() {
 		$filters	= self::getFilters();
 		$filter		= new TodoyuProjectFilter($filters);
-		$limit		= intval(Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectListing']['maxProjects']);
+		$limit		= intval(Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectList']['maxProjects']);
 
 			// Get matching project IDs
 		$projectIDs	= $filter->getProjectIDs('', $limit);

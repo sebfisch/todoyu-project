@@ -99,7 +99,7 @@ Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters'] = array(
 );
 
 	// Maximum projects in project listing widget
-Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectListing']['maxProjects']	= 30;
+Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectList']['maxProjects']	= 30;
 
 /**
  * Default 'task defaults'. Will be overridden with extconf values of set
