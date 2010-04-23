@@ -243,7 +243,7 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 
 
 	/**
-	 * Check whether panelwidget is allowed
+	 * Check panelWidget access permission
 	 *
 	 * @return	Boolean
 	 */

@@ -58,7 +58,7 @@ class TodoyuPanelWidgetProjectStatusFilter extends TodoyuPanelWidgetStatusFilter
 
 
 	/**
-	 * Get panelwidget statuses infos
+	 * Get panelWidget statuses infos
 	 *
 	 * @return	Array
 	 */
@@ -69,7 +69,7 @@ class TodoyuPanelWidgetProjectStatusFilter extends TodoyuPanelWidgetStatusFilter
 
 
 	/**
-	 * Check whether panelwidget is allowed
+	 * Check panelWidget access permission
 	 * Allowed if project area allowed and more than one status visible
 	 *
 	 * @return	Boolean
