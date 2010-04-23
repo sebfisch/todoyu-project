@@ -180,7 +180,6 @@ Todoyu.Ext.project.Task = {
 				$('task-' + idTask + '-subtasks').insert({
 					'bottom': response.responseText
 				});
-				console.log("in if");
 				this.ext.TaskTree.expandSubtasks(idTask);
 			} else {
 					// If no sub task container available, refresh task and load its sub task
