@@ -280,7 +280,7 @@
 	/* task tabs content */
 	.task .tabContent {
 		background-color:#e3eace;
-		border-bottom: 1px dotted #aaa;
+		border-bottom:1px dotted #aaa;
 	}
 
 	.task .tabContent .tab {
@@ -291,7 +291,7 @@
 	.task .tabContent .tabBlock {
 		position:relative;
 		background:#fff;
-		padding: 5px;
+		padding:5px;
 	}
 	
 	.task .tabContent .tabBlock .toggle {

@@ -19,6 +19,11 @@
 
 Todoyu.Ext.project.Filter = {
 
+	/**
+	 * Extension backlink
+	 *
+	 * @var	{Object}	ext
+	 */
 	ext: Todoyu.Ext.project,
 
 

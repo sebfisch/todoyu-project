@@ -36,7 +36,7 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 	 */
 	public function __construct(array $config, array $params = array(), $idArea = 0) {
 
-			// construct PanelWidget (init basic configuration)
+			// Construct PanelWidget (init basic configuration)
 		parent::__construct(
 			'project',								// ext key
 			'projectlist',							// panel widget ID
@@ -137,6 +137,9 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 
 		$form->setFormData($data);
 		$form->setUseRecordID(false);
+
+			// Modify form name to refer projectBilling project list 
+		$form->setName('panelwidget-projectbillingprojectlist');
 
 		return $form->render();
 	}

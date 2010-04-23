@@ -107,7 +107,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 	/**
 	 * Controller to handle direct edit access. Calls the default action first to render the whole site.
-	 * After loading the site the js-edit method is called.
+	 * After loading the site the JS-edit method is called.
 	 *
 	 * @param	Array	$params
 	 * @return	String
@@ -125,7 +125,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 	/**
 	 * Controller to handle direct add task access. Calls the default action first to render the whole site.
-	 * After loading the site the js-addTask method is called.
+	 * After loading the site the JS-addTask method is called.
 	 *
 	 * @param	Array	$params
 	 * @return	String
@@ -143,7 +143,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 	/**
 	 * Controller to handle direct add container access. Calls the default action first to render the whole site
-	 * After loading the site the js-addContainer method is called.
+	 * After loading the site the JS-addContainer method is called.
 	 *
 	 * @param	Array	$params
 	 * @return	String

@@ -59,7 +59,7 @@ abstract class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget {
 			$id,			// panel widget ID
 			$title,			// widget title text
 			$config,		// widget config array
-			$params,		// widget params
+			$params,		// widget parameters
 			$idArea			// area ID
 		);
 
@@ -110,7 +110,7 @@ abstract class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget {
 
 
 	/**
-	 * Get panelwidget statuses infos
+	 * Get panelWidget statuses infos
 	 *
 	 * @return	Array
 	 */

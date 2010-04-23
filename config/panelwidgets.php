@@ -22,13 +22,13 @@
  * Configure panel widgets to be shown in project area
  */
 
-	// Panelwidget Projectlist
+	// PanelWidget Projectlist
 TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetProjectList', 20);
 
-	// Panelwidget Status Filter for Projects
+	// PanelWidget Status Filter for Projects
 TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetProjectStatusFilter', 21);
 
-	// Panelwidget Status Filter for Tasks
+	// PanelWidget Status Filter for Tasks
 TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuPanelWidgetTaskStatusFilter', 30);
 
 ?>

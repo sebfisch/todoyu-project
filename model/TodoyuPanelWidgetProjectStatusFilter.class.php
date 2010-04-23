@@ -37,12 +37,12 @@ class TodoyuPanelWidgetProjectStatusFilter extends TodoyuPanelWidgetStatusFilter
 
 			// construct PanelWidget (init basic configuration)
 		parent::__construct(
-			'project',								// ext key
-			'projectstatusfilter',					// panel widget ID
+			'project',										// ext key
+			'projectstatusfilter',							// panel widget ID
 			'LLL:panelwidget-statusfilter.title.project',	// widget title text
-			$config,								// widget config array
-			$params,								// widget params
-			$idArea									// area ID
+			$config,										// widget config array
+			$params,										// widget parameters
+			$idArea											// area ID
 		);
 
 			// Define preference

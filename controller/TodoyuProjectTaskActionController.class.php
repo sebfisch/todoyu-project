@@ -49,7 +49,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuTaskRights::restrictAddToProject($idProject);
 
-			// Send task id for js
+			// Send task id for JS
 		TodoyuHeader::sendTodoyuHeader('idTask', 0);
 
 			// Send task with form in details part
@@ -69,7 +69,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuTaskRights::restrictAddToProject($idProject);
 
-			// Send task id for js
+			// Send task id for JS
 		TodoyuHeader::sendTodoyuHeader('idContainer', 0);
 
 			// Send task with form in details part
@@ -90,7 +90,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuTaskRights::restrictAdd($idParentTask);
 
-			// Send task id for js
+			// Send task id for JS
 		TodoyuHeader::sendTodoyuHeader('idTask', 0);
 
 			// Send task with form in details part
@@ -111,7 +111,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuTaskRights::restrictAdd($idParentTask);
 
-			// Send task id for js
+			// Send task id for JS
 		TodoyuHeader::sendTodoyuHeader('idContainer', 0);
 
 			// Send task with form in details part
@@ -328,7 +328,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * Clone a task and add it right behind the clone source
 	 *
 	 * @param	Array 		$params
-	 * @return	String		Cloned task html
+	 * @return	String		Cloned task HTML
 	 */
 	public function cloneAction(array $params) {
 		$idTask			= intval($params['task']);

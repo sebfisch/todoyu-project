@@ -1,7 +1,9 @@
 <ul id="panelwidget-{$id}-list">
 	{foreach $projects project}
 		<li id="panelwidget-{$id}-project-{$project.id}" class="bcStatus{$project.status}">
-			<a href="javascript:void(0)" title="ID: {$project.id}">{if $project.companyShort}{$project.companyShort}{else}{truncate $project.company 40}{/if} - {$project.title}</a>
+			<a href="javascript:void(0)" title="ID: {$project.id}">
+			    {if $project.companyShort}{$project.companyShort}{else}{truncate $project.company 40}{/if} - {$project.title}
+			</a>
 		</li>
 	{else}
 		{Label panelwidget-projectlist.list.empty}

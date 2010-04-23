@@ -25,6 +25,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 	/**
 	 * Backlink to project extension
+	 *
+	 * @var	{Object}	ext
 	 */
 	ext:			Todoyu.Ext.project,
 

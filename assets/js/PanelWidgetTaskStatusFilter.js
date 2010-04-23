@@ -19,12 +19,13 @@
 
 /**
  *	Panel widget: StatusFilter JS
- *
  */
 Todoyu.Ext.project.PanelWidget.TaskStatusFilter = {
 
 	/**
-	 * Reference to extension js
+	 * Reference to extension JS
+	 *
+	 * @var	{Object}	ext
 	 */
 	ext:	Todoyu.Ext.project,
 

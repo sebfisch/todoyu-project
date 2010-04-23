@@ -19,6 +19,11 @@
 
 Todoyu.Ext.project.PanelWidget.ProjectList = {
 
+	/**
+	 * Extension backlink
+	 *
+	 * @var	{Object}	ext
+	 */
 	ext: Todoyu.Ext.project,
 
 	fulltextTimeout: null,
@@ -28,7 +33,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Initialize panelwidget
+	 * Initialize panelWidget
 	 *
 	 * @param	{Object}		filters		Filter hash. Because of JSON, an (empty) array means no data
 	 */

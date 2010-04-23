@@ -21,6 +21,8 @@ Todoyu.Ext.project.Task.Edit = {
 
 	/**
  	 *	Ext shortcut
+	 *
+	 * @var	{Object}	ext
  	 */
 	ext:	Todoyu.Ext.project,
 

@@ -25,6 +25,8 @@ Todoyu.Ext.project.Project = {
 
 	/**
 	 * Ext shortcut
+	 *
+	 * @var	{Object}	ext
 	 */
 	ext:	Todoyu.Ext.project,
 

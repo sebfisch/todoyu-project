@@ -40,7 +40,7 @@ class TodoyuPanelWidgetTaskStatusFilter extends TodoyuPanelWidgetStatusFilter im
 			'taskstatusfilter',							// panel widget ID
 			'LLL:panelwidget-statusfilter.title.task',	// widget title text
 			$config,									// widget config array
-			$params,									// widget params
+			$params,									// widget parameters
 			$idArea										// area ID
 		);
 

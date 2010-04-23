@@ -1,5 +1,10 @@
 Todoyu.Ext.project.Portal = {
 
+	/**
+	 * Extension backlink
+	 *
+	 * @var	{Object}	ext
+	 */
 	ext: Todoyu.Ext.project,
 
 	init: function() {

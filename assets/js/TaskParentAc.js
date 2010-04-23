@@ -19,6 +19,11 @@
 
 Todoyu.Ext.project.TaskParentAC = {
 
+	/**
+	 * Extension backlink
+	 *
+	 * @var	{Object}	ext
+	 */
 	ext: Todoyu.Ext.project,
 
 	field:			null,

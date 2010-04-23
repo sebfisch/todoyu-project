@@ -21,6 +21,8 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 
 	/**
 	 * Ext shortcut
+	 *
+	 * @var	{Object}	ext
 	 */
 	ext:	Todoyu.Ext.project,
 	
