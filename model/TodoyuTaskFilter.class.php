@@ -245,7 +245,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Task fulltext filter. Searches in task number, title, description
+	 * Task full-text filter. Searches in task number, title, description
 	 *
 	 * @param	String		$value
 	 * @param	Boolean		$negate

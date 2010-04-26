@@ -104,7 +104,7 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 
 
 	/**
-	 * Get value of the fulltext filter
+	 * Get value of the full-text filter
 	 *
 	 * @return	String
 	 */

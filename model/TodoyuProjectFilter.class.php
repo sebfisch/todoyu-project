@@ -116,7 +116,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 
 	/**
-	 * Filter search words fulltext, optionally negated
+	 * Filter search words full-text, optionally negated
 	 *
 	 * @param	String	$searchWords
 	 * @param	Boolean	$negate

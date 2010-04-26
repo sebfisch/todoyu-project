@@ -69,7 +69,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Install keyup event observer on fulltext search input field
+	 * Install keyup event observer on full-text search input field
 	 */
 	observeFulltext: function() {
 		$('panelwidget-projectlist-field-fulltext').observe('keyup', this.onFulltextKeyup.bindAsEventListener(this));
@@ -96,7 +96,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Handler for keyup events of fulltext search input field
+	 * Handler for keyup events of full-text search input field
 	 *
 	 * @param	{Object}		event
 	 */
@@ -135,7 +135,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Clear (fulltext) timeout
+	 * Clear (full-text) timeout
 	 */
 	clearTimeout: function() {
 		clearTimeout(this.fulltextTimeout);
@@ -144,7 +144,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Install fulltext timeout
+	 * Install full-text timeout
 	 */
 	startTimeout: function() {
 		this.fulltextTimeout = this.update.bind(this).delay(0.3);
@@ -153,7 +153,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Get fulltext input field value
+	 * Get full-text input field value
 	 */
 	getFulltext: function() {
 		return $F('panelwidget-projectlist-field-fulltext');

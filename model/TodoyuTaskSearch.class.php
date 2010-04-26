@@ -54,7 +54,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 			}
 		}
 
-			// Task fulltext search
+			// Task full-text search
 		$table	= self::TABLE;
 		$fields	= array('id_project', 'tasknumber', 'description', 'title');
 
