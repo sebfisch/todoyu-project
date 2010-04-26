@@ -102,7 +102,8 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 						'labelTitle'=> $task['id_project'] . '.' . $task['tasknumber'] . ': ' . htmlentities($task['title'], null, 'utf-8'),
 						'labelInfo'	=> $task['project'] . ', ' . $task['company'],
 						'title'		=> $task['id_project'] . '.' . $task['tasknumber'] . ': ' . $task['title'],
-						'onclick'	=> 'location.href=\'?ext=project&amp;project=' . $task['id_project'] . '&amp;task=' . $task['id'] . '#task-' . $task['id'] . '\''
+//						'onclick'	=> 'location.href=\'?ext=project&amp;project=' . $task['id_project'] . '&amp;task=' . $task['id'] . '#task-' . $task['id'] . '\''
+						'onclick'	=> 'Todoyu.goToHashURL(\'?ext=project&amp;project=' . $task['id_project'] . '&amp;task=' . $task['id'] . '\', \'task-' . $task['id'] . '\')'
 					);
 				}
 			}
