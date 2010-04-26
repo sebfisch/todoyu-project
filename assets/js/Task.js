@@ -577,6 +577,7 @@ Todoyu.Ext.project.Task = {
 	 */
 	update: function(idTask, taskHtml) {
 		$('task-' + idTask).replace(taskHtml);
+		$('task-' + idTask + '-subtasks').remove();
 
 		this.addContextMenu(idTask);
 	},
