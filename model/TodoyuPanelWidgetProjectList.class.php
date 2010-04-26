@@ -138,9 +138,6 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 		$form->setFormData($data);
 		$form->setUseRecordID(false);
 
-			// Modify form name to refer projectBilling project list 
-		//$form->setName('panelwidget-projectbillingprojectlist');
-
 		return $form->render();
 	}
 

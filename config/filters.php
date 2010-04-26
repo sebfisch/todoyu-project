@@ -44,7 +44,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 	'widgets' => array(
 
 		/**
-		 * optgroup task
+		 * OptGroup task
 		 */
 		'status' => array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_status',
@@ -205,7 +205,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 
 
 		/**
-		 * optgroup timemanagement
+		 * OptGroup time management
 		 */
 		'deadlinedate'		=> array(
 			'funcRef' 	=> 'TodoyuTaskFilter::Filter_deadlinedate',
@@ -301,7 +301,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 
 
 		/**
-		 * Optgroup project
+		 * OptGroup project
 		 */
 		'project' => array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_project',
@@ -333,7 +333,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 
 
 		/**
-		 * Optgroup filter
+		 * OptGroup filter
 		 */
 		'filterSet' => array(
 			'funcRef'	=> 'TodoyuFiltersetManager::Filter_filterSet',
