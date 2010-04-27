@@ -31,7 +31,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Create form wrap DIVs
 	 *
-	 * @param	{Integer}	idProject
+	 * @param	{Number}	idProject
 	 */
 	createFormWrapDivs: function(idProject) {
 		var idDetails	= 'project-' + idProject + '-details';
@@ -59,7 +59,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Load project form
 	 *
-	 * @param	{Integer}	idProject
+	 * @param	{Number}	idProject
 	 */
 	loadForm: function(idProject) {
 		var url 	= Todoyu.getUrl('project', 'project');
@@ -137,7 +137,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Update form DIV
 	 *
-	 * @param	{Integer}		idProject
+	 * @param	{Number}		idProject
 	 * @param	{String}		formHTML
 	 */
 	updateFormDiv: function(idProject, formHTML) {
@@ -149,7 +149,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Cancel project editing / creation
 	 *
-	 * @param	{Integer}	idProject
+	 * @param	{Number}	idProject
 	 */
 	cancel: function(idProject) {
 		if( idProject === 0 ) {

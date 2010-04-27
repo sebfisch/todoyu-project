@@ -31,7 +31,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Evoke editing of given container (handled via task editing)
 	 * 
-	 * @param	{Integer}	idContainer
+	 * @param	{Number}	idContainer
 	 */
 	edit: function(idContainer) {
 		this.ext.Task.edit(idContainer);
@@ -42,7 +42,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Clone container
 	 *
-	 * @param	{Integer}	idContainer
+	 * @param	{Number}	idContainer
 	 */
 	clone: function(idContainer) {
 		this.ext.Task.clone(idContainer);
@@ -53,7 +53,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Copy container
 	 *
-	 * @param	{Integer}	idContainer
+	 * @param	{Number}	idContainer
 	 */
 	cut: function(idContainer) {
 		this.ext.Task.cut(idContainer);
@@ -64,7 +64,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Copy container
 	 *
-	 * @param	{Integer}	idContainer
+	 * @param	{Number}	idContainer
 	 */
 	copy: function(idContainer) {
 		this.ext.Task.copy(idContainer);
@@ -75,7 +75,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Remove given container
 	 *
-	 * @param	{Integer}	idContainer
+	 * @param	{Number}	idContainer
 	 */
 	remove: function(idContainer) {
 		this.ext.Task.remove(idContainer);
@@ -86,7 +86,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Add sub task to container
 	 *
-	 * @param	{Integer}	idContainer
+	 * @param	{Number}	idContainer
 	 */
 	addSubTask: function(idContainer) {
 		this.ext.Task.addSubTask(idContainer);
@@ -97,7 +97,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Add sub container to given container
 	 *
-	 * @param	{Integer}	idContainer
+	 * @param	{Number}	idContainer
 	 */
 	addSubContainer: function(idContainer) {
 		this.ext.Task.addSubContainer(idContainer);
@@ -108,7 +108,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Update status of given container
 	 *
-	 * @param	{Integer}	idContainer
+	 * @param	{Number}	idContainer
 	 * @param	{String}	idStatus
 	 */
 	updateStatus: function(idContainer, idStatus) {

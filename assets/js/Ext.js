@@ -56,8 +56,8 @@ Todoyu.Ext.project = {
 	 * To be called from other areas (e.g portal) to jump to a specific task within its project,
 	 *	to be shown inside the project area
 	 *
-	 * @param	{Integer}	idTask
-	 * @param	{Integer}	idProject
+	 * @param	{Number}	idTask
+	 * @param	{Number}	idProject
 	 */
 	goToTaskInProject: function(idTask, idProject) {
 		var params = {
@@ -75,7 +75,7 @@ Todoyu.Ext.project = {
 	/**
 	 * Toggle task tree of given project
 	 *
-	 * @param	{Integer}	idProject
+	 * @param	{Number}	idProject
 	 */
 	toggleTaskTree: function(idProject) {
 		this.TaskTree.toggle();
@@ -130,7 +130,7 @@ Todoyu.Ext.project = {
 	 *
 	 * @param	{String}	preference
 	 * @param	{String}	value
-	 * @param	{Integer}	idItem
+	 * @param	{Number}	idItem
 	 * @param	{String}	onComplete
 	 */
 	savePref: function(preference, value, idItem, onComplete) {

@@ -51,8 +51,8 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	 * Handler when quicktask has been saved
 	 * Update the tasklist, if task has been added to the active project
 	 * 
-	 * @param	{Integer}		idTask
-	 * @param	{Integer}		idProject
+	 * @param	{Number}		idTask
+	 * @param	{Number}		idProject
 	 * @param	{Boolean}		started
 	 */
 	onQuickTaskSaved: function(idTask, idProject, response) {

@@ -31,7 +31,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Load and display editing form of given task
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	edit: function(idTask) {
 		this.Edit.createFormWrapDivs(idTask);
@@ -44,7 +44,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Copy a task (and sub tasks) to clipboard
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	copy: function(idTask) {
 		var withSubtasks = false;
@@ -80,7 +80,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when copied to clipboard
 	 *
-	 * @param	{Integer}				idTask
+	 * @param	{Number}				idTask
 	 * @param	{Ajax.Response}		response
 	 */
 	onCopied: function(idTask, response) {
@@ -92,7 +92,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Cut task (to clipboard)
 	 *
-	 * @param	{Integer}			idTask
+	 * @param	{Number}			idTask
 	 */
 	cut: function(idTask) {
 		var url		= Todoyu.getUrl('project', 'task');
@@ -115,7 +115,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when task is cut
 	 *
-	 * @param	{Integer}				idTask
+	 * @param	{Number}				idTask
 	 * @param	{Ajax.Response}		response
 	 */
 	onCut: function(idTask, response) {
@@ -127,7 +127,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Paste task
 	 *
-	 * @param	{Integer}		idTask		Task where to paste
+	 * @param	{Number}		idTask		Task where to paste
 	 * @param	{String}		mode		Insert mode (in,after,before)
 	 */
 	paste: function(idTask, mode) {
@@ -149,7 +149,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when task is pasted
 	 *
-	 * @param	{Integer}			idTask
+	 * @param	{Number}			idTask
 	 * @param	{String}			insertMode
 	 * @param	{Ajax.Response}	response
 	 */
@@ -224,7 +224,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Clone given task (open new task creation form with attributes of task filled-in, title renamed to 'copy of..')
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	clone: function(idTask) {
 		var withSubtasks = false;
@@ -258,7 +258,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when task was cloned
 	 *
-	 * @param	{Integer}				idSourceTask
+	 * @param	{Number}				idSourceTask
 	 * @param	{Ajax.Response}		response
 	 */
 	onCloned: function(idSourceTask, response) {
@@ -278,7 +278,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Delete a task
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	remove: function(idTask) {
 		if( ! confirm('[LLL:task.js.removetask.question]') ) {
@@ -312,7 +312,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when task removed
 	 *
-	 * @param	{Integer}			idTask
+	 * @param	{Number}			idTask
 	 * @param	{Ajax.Response}	response
 	 */
 	onRemoved: function(idTask, response) {
@@ -324,7 +324,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Scoll to given task
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	scrollTo: function(idTask) {
 		$('task-' + idTask).scrollToElement();
@@ -335,7 +335,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Highlight a task
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	highlight: function(idTask) {
 		if( Todoyu.exists('task-' + idTask) ) {
@@ -348,7 +348,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Highlight sub task container of a task
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	highlightSubtasks: function(idTask) {
 		if( Todoyu.exists('task-' + idTask + '-subtasks') ) {
@@ -360,7 +360,7 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 * Check if a task has sub tasks
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 * @return	{Boolean}
 	 */
 	hasSubtasks: function(idTask) {
@@ -372,7 +372,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Check if sub task container is in DOM
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	hasSubtaskContainer: function(idTask) {
 		return Todoyu.exists('task-' + idTask + '-subtasks');
@@ -383,7 +383,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * check if task has a parent task
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	hasParentTask: function(idTask){
 		return $('task-'+idTask).up().hasClassName('subtasks');
@@ -394,7 +394,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Get ID of parent task of given task
 	 *
-	 * @return	{Integer}
+	 * @return	{Number}
 	 */
 	getParentTaskID: function(idTask) {
 		var idParent	= false;
@@ -429,7 +429,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Remove expand-trigger from parent of give task if its the only sub task
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	checkAndRemoveTriggerFromParent: function(idTask)	{
 		var idArray = $('task-'+idTask).up().id.split('-');
@@ -443,7 +443,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Is this the only sub task? remove expandability
 	 *
-	 * @param	{Integer}
+	 * @param	{Number}
 	 */
 	checkAndRemoveTriggerFromTask: function(idTask) {
 		if( $('task-' + idTask + '-subtasks').select('div.task').size() < 1 ) {
@@ -456,8 +456,8 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Change status of given task to given status, in DB and visual
 	 *
-	 * @param	{Integer}		idTask
-	 * @param	{Integer}	 	status
+	 * @param	{Number}		idTask
+	 * @param	{Number}	 	status
 	 */
 	updateStatus: function(idTask, status) {
 		var url	= Todoyu.getUrl('project', 'task');
@@ -478,8 +478,8 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when status has been updated
 	 *
-	 * @param	{Integer}				idTask
-	 * @param	{Integer}				status
+	 * @param	{Number}				idTask
+	 * @param	{Number}				status
 	 * @param	Ajax.response		response
 	 */
 	onStatusUpdated: function(idTask, status, response) {
@@ -497,7 +497,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Get status key of the task
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	getStatus: function(idTask) {
 		var htmlID		= 'task-' + idTask + '-header';
@@ -516,7 +516,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Set status of given task
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 * @param	status
 	 */
 	setStatus: function(idTask, status) {
@@ -536,7 +536,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Refresh a task if loaded
 	 *
-	 * @param	{Integer}			idTask
+	 * @param	{Number}			idTask
 	 */
 	refresh: function(idTask) {
 		var target	= 'task-' + idTask;
@@ -560,7 +560,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when task has been refreshed
 	 *
-	 * @param	{Integer}				idTask
+	 * @param	{Number}				idTask
 	 * @param	{Ajax.Response}		response
 	 */
 	onRefreshed: function(idTask, response) {
@@ -572,7 +572,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Update (reload) given task
 	 *
-	 * @param	{Integer} 	idTask
+	 * @param	{Number} 	idTask
 	 * @param	{String}		taskHtml
 	 */
 	update: function(idTask, taskHtml) {
@@ -598,7 +598,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Evoke adding of a task to given project.
 	 *
-	 * @param	{Integer} 	idProject
+	 * @param	{Number} 	idProject
 	 */
 	addTaskToProject: function(idProject) {
 		this.removeNewTaskContainer();
@@ -642,7 +642,7 @@ Todoyu.Ext.project.Task = {
 	 * Focus title field in task edit form
 	 *
 	 * @hooked	onTaskEdit
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	focusTitleField: function(idTask) {
 		$('task-' + idTask + '-field-title').focus();
@@ -653,7 +653,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Evoke adding of new container to given project
 	 *
-	 * @param	{Integer} idProject
+	 * @param	{Number} idProject
 	 */
 	addContainerToProject: function(idProject) {
 		this.removeNewTaskContainer();
@@ -690,7 +690,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Evoke adding of sub task to given task. Ensures existence of sub tasks display DOM-element in parent task, so the sub tasks can be shown.
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	addSubTask: function(idTask) {
 		var url		= Todoyu.getUrl('project', 'task');
@@ -715,7 +715,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Evoked upon completion of request having added a sub task to given parent task. Adds context menu to new task, ensures sub tasks (including the new one) of given task are shown, scrolls new task into view.
 	 *
-	 * @param	{Integer}		idParentTask
+	 * @param	{Number}		idParentTask
 	 * @param	{Object}		response
 	 */
 	onSubTaskAdded: function(idParentTask, response) {
@@ -732,7 +732,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Adds DOM-element to show sub tasks of (and in) given task in.
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	createSubTaskContainer: function(idTask) {
 		var idSubtaskContainer	= 'task-' + idTask + '-subtasks';
@@ -753,7 +753,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Evokes adding of container under given task, ensures given task has a sub tasks display element
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	addSubContainer: function(idTask) {
 		var url		= Todoyu.getUrl('project', 'task');
@@ -778,7 +778,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Evoked after completion of request adding sub container to given task. Attaches context menu to container, activates display of sub tasks of task (including the new container), scrolls container into focus.
 	 *
-	 * @param	{Integer}		idParentTask
+	 * @param	{Number}		idParentTask
 	 * @param	{Object}		response
 	 */
 	onSubContainerAdded: function(idParentTask, response) {
@@ -794,7 +794,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Attach context menu to given task
 	 *
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 */
 	addContextMenu: function(idTask) {
 		this.ext.ContextMenuTask.attach();
@@ -806,7 +806,7 @@ Todoyu.Ext.project.Task = {
 	 * Set given task being acknowledged
 	 *
 	 * @param	{Event}		event
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	setAcknowledged: function(event, idTask) {
 		Todoyu.Ui.stopEventBubbling(event);
@@ -829,7 +829,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Fade out 'acknowledged' icon of given task
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	fadeAcknowledgeIcon: function(idTask) {
 		var idElement = 'task-' + idTask + '-notacknowledged';
@@ -843,7 +843,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Toggle visibility of details of given task, if not shown currently and not loaded yet: load details and show them.
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	toggleDetails: function(idTask) {
 			// If detail is loaded yet, send only a preference request
@@ -866,7 +866,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when task details have been toggled
 	 *
-	 * @param	{Integer}				idTask
+	 * @param	{Number}				idTask
 	 * @param	{String}				tab
 	 * @param	{Ajax.Response}		response
 	 */
@@ -879,7 +879,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Refresh the task style for class expanded
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	refreshExpandedStyle: function(idTask) {
 		var task = $('task-' + idTask);
@@ -895,7 +895,7 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	isDetailsLoaded: function(idTask) {
 		return Todoyu.exists('task-' + idTask + '-details');
@@ -906,7 +906,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Check if details of a task are visible (loaded and displayed)
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 * @return	{Boolean}
 	 */
 	isDetailsVisible: function(idTask) {
@@ -920,7 +920,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Show details of given task, if not loaded yet: load them
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 * @param	{String}		tab
 	 */
 	showDetails: function(idTask, tab, onComplete) {
@@ -947,7 +947,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when task details are showed
 	 *
-	 * @param	{Integer}				idTask
+	 * @param	{Number}				idTask
 	 * @param	{String}				tab
 	 * @param	{Ajax.Response}		response
 	 */
@@ -961,7 +961,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Show sub tasks of given task.
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	showSubtasks: function(idTask) {
 		var idDiv		= 'task-' + idTask + '-subtasks';
@@ -987,7 +987,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Load details of given task and append them to (have them shown inside) header of given task
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 * @param	{String}		tab
 	 */
 	loadDetails: function(idTask, tab, onComplete) {
@@ -1013,7 +1013,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when details are loaded
 	 *
-	 * @param	{Integer}				idTask
+	 * @param	{Number}				idTask
 	 * @param	{String}				tab
 	 * @param	{Function}			onComplete
 	 * @param	{Ajax.Response}		response
@@ -1027,7 +1027,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Save given task being expanded status
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 * @param	{Boolean}		open
 	 */
 	saveTaskOpen: function(idTask, open) {

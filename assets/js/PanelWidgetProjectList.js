@@ -212,7 +212,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Check wether given project is listed in panewidget's project list
 	 *
-	 * @param	{Integer}		idProject
+	 * @param	{Number}		idProject
 	 * @return  {Boolean}
 	 */
 	isProjectListed: function(idProject) {
@@ -224,7 +224,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler being evoked after saving of projects: updates the project list panel widget
 	 *
-	 * @param	{Integer}		idProject
+	 * @param	{Number}		idProject
 	 */
 	onProjectSaved: function(idProject) {
 		this.update();
@@ -235,7 +235,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler being evoked after creation of new projects: updates the project list panel widget
 	 * 
-	 * @param	{Integer}		idProject
+	 * @param	{Number}		idProject
 	 */
 	onProjectCreated: function(idProject) {
 		this.update();
@@ -246,7 +246,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler being evoked after deletion projects: updates the project list panel widget
 	 *
-	 * @param	{Integer}		idProject
+	 * @param	{Number}		idProject
 	 */
 	onProjectDeleted: function(idProject) {
 		this.update();

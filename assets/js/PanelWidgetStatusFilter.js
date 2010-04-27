@@ -96,7 +96,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = Class.create({
 	/**
 	 * Get the number of selected statuses
 	 *
-	 * @return	{Integer}
+	 * @return	{Number}
 	 */
 	getNumSelected: function() {
 		return this.getValue().length;

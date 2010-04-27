@@ -29,7 +29,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Create DIVs (details, data) wrapping form (inside header) of given task and have task details be displayed. Div positions: Data before, details after header of given task.
 	 *
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 */
 	createFormWrapDivs: function(idTask) {
 		var idHeader	= 'task-' + idTask + '-header';
@@ -66,7 +66,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Load task editing form.
 	 *
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 */
 	loadForm: function(idTask) {
 		var url 	= Todoyu.getUrl('project', 'task');
@@ -87,7 +87,7 @@ Todoyu.Ext.project.Task.Edit = {
 	 * Scrolls to given task, calls onTaskEdit hook.
 	 * Evoked after task editing form having been loaded.
 	 *
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 * @param	{Object}	response
 	 */
 	onFormLoaded: function(idTask, response) {
@@ -152,7 +152,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Update editing form of given task with given HTML
 	 *
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 * @param	{String}	formHTML
 	 */
 	updateFormDiv: function(idTask, formHTML) {
@@ -164,7 +164,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Cancel editing of given task. Refresh task's parent sub tasks expand trigger, refresh the task.
 	 *
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 */
 	cancel: function(idTask) {
 		if( this.ext.Task.hasParentTask(idTask) && idTask == 0) {
