@@ -23,6 +23,8 @@ CREATE TABLE `ext_project_project` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `ext_project_task`
 --
@@ -56,6 +58,8 @@ CREATE TABLE `ext_project_task` (
   KEY `assigned_to` (`id_person_assigned`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `ext_project_role`
 --
@@ -71,6 +75,8 @@ CREATE TABLE `ext_project_role` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `ext_project_worktype`
 --
@@ -85,6 +91,8 @@ CREATE TABLE `ext_project_worktype` (
   `type` tinyint(2) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `ext_project_mm_project_person`
