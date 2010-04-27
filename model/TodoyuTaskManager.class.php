@@ -918,17 +918,9 @@ class TodoyuTaskManager {
 					'className'	=> ''
 				);
 			}
-
-				// Public
-			$info['is_public']	= array(
-				'label'	=> 'LLL:task.attr.is_public',
-				'value'	=> Label('LLL:task.attr.is_public.' . ($taskData['is_public'] ? 'public' : 'private')),
-				'position'	=> 25,
-				'className'	=> ''
-			);
-
+			
 				// Estimated workload
-			if ( $info['estimated_workload'] > 0 ) {
+			if ( $taskData['estimated_workload'] > 0 ) {
 				$info['estimated_workload']	= array(
 					'label'	=> 'LLL:task.attr.estimated_workload',
 					'value'	=> TodoyuTime::sec2hour($taskData['estimated_workload']),
@@ -938,7 +930,7 @@ class TodoyuTaskManager {
 			}
 
 				// Person assigned
-			if ( ! empty($taskData['person_assigned']['id']) && Todoyu::person()->isInternal() ) {
+			if ( intval($taskData['person_assigned']['id']) !== 0 && Todoyu::person()->isInternal() ) {
 				$info['person_assigned']	= array(
 					'label'		=> 'LLL:task.attr.person_assigned',
 					'value'		=> TodoyuPersonManager::getLabel($taskData['person_assigned']['id']),
@@ -983,23 +975,23 @@ class TodoyuTaskManager {
 			// Attributes of tasks and containers
 
 			// Person owner
-		$idTaskOwner	= $taskData['person_owner']['id'];
-		$idTaskCreator	= $taskData['id_person_create'];
+		$idPersonOwner	= intval($taskData['person_owner']['id']);
+		$idPersonCreator= intval($taskData['id_person_create']);
 
-		if ( ! empty($idTaskOwner) ) {
+		if( $idPersonOwner !== 0 ) {
 			$info['person_owner'] = array(
-				'label'		=> intval($taskData['type']) === TASK_TYPE_TASK ? 'LLL:task.attr.person_owner' : 'LLL:task.container.attr.person_owner',
-				'value'		=> TodoyuPersonManager::getLabel($idTaskOwner),
+				'label'		=> $task->isContainer() ? 'LLL:task.container.attr.person_owner' : 'LLL:task.attr.person_owner',
+				'value'		=> TodoyuPersonManager::getLabel($idPersonOwner),
 				'position'	=> 150,
 				'className'	=> 'sectionStart'
 			);
 		}
 
 			// Task creator: Different person owns / created task? have both displayed
-		if ( $idTaskOwner !== $idTaskCreator ) {
+		if( $idPersonCreator !== 0 && $idPersonOwner !== $idPersonCreator ) {
 			$info['person_create'] = array(
 				'label'		=> 'LLL:task.attr.person_create',
-				'value'		=> TodoyuPersonManager::getLabel($idTaskCreator),
+				'value'		=> TodoyuPersonManager::getLabel($idPersonCreator),
 				'position'	=> 151,
 				'className'	=> ''
 			);
@@ -1010,6 +1002,15 @@ class TodoyuTaskManager {
 			'label'	=> 'LLL:task.attr.date_create',
 			'value'	=> TodoyuTime::format($taskData['date_create'], 'datetime'),
 			'position'	=> 160,
+			'className'	=> ''
+		);
+
+
+			// Public
+		$info['is_public']	= array(
+			'label'	=> $task->isContainer() ? 'LLL:task.container.attr.is_public' : 'LLL:task.attr.is_public',
+			'value'	=> Label('LLL:task.attr.is_public.' . ($taskData['is_public'] ? 'public' : 'private')),
+			'position'	=> 25,
 			'className'	=> ''
 		);
 
@@ -1025,9 +1026,9 @@ class TodoyuTaskManager {
 	/**
 	 * Add container info to task data
 	 *
-	 * @param	Array	$taskData
-	 * @param	Integer	$idTask
-	 * @param	Integer	$infoLevel
+	 * @param	Array		$taskData
+	 * @param	Integer		$idTask
+	 * @param	Integer		$infoLevel
 	 * @return	Array
 	 */
 	public static function addContainerInfoToTaskData($taskData, $idTask, $infoLevel) {
