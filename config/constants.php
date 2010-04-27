@@ -41,7 +41,7 @@ define('STATUS_CUSTOMER', 	10);
 define('TASK_TYPE_TASK',		1);
 define('TASK_TYPE_CONTAINER',	2);
 
-	// Tasknumber format
+	// Task number format
 define('TASKNUMBER_FORMAT', '/(\d){1,}\.(\d){1,}/')
 
 

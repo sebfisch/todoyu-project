@@ -68,7 +68,7 @@ class TodoyuQuickTaskManager {
 			// Add custom project field
 		$form->getFieldset('main')->addField('id_project', $field, 'after:title');
 
-			// Load formdata by hooks (default is empty)
+			// Load form data by hooks (default is empty)
 		$formData	= TodoyuFormHook::callLoadData($xmlPath, array());
 		
 		$form->setFormData($formData);

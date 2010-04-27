@@ -45,7 +45,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 	public static function searchTasks(array $find, array $ignore = array(), $limit = 200) {
 		$limit	= intval($limit);
 
-			// If keyword is a tasknumber, directly get the task
+			// If keyword is a task number, directly get the task
 		if( sizeof($find) === 1 ) {
 			if( TodoyuTaskManager::isTasknumber($find[0], true) ) {
 				$idTask	= TodoyuTaskManager::getTaskIDByTaskNumber($find[0]);
@@ -115,9 +115,9 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 
 
 	/**
-	 * Search task by title, description, project and tasknumber
+	 * Search task by title, description, project and task number
 	 *
-	 * if there is a . in the sword explode it and search by id_project (1st param of explode) and tasknumber (2nd param of explode)
+	 * if there is a . in the sword explode it and search by id_project (1st parameter of explode) and task number (2nd parameter of explode)
 	 *
 	 * else create a normal like search
 	 *

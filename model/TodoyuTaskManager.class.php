@@ -121,7 +121,7 @@ class TodoyuTaskManager {
 	/**
 	 * Get task ID by full task number
 	 *
-	 * @param	String		$fullTasknumber			Tasknumber divided by point (.)
+	 * @param	String		$fullTasknumber			Task number separated by point (.)
 	 * @return	Integer		0 if task not found
 	 */
 	public static function getTaskIDByTaskNumber($fullTasknumber) {
@@ -1526,12 +1526,11 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Check whether a tasknumber is valid
+	 * Check whether a task number is valid
 	 * $mustExist is not set (default), only the format is checked.
 	 * If $mustExist is set, also a database request will check if this task exists
 	 *
-	 * @param	Integer		$fullTasknumber			Identifier with project id and tasknumber
-	 * @param	Boolean		$mustExist				TRUE = Has to be in database
+	 * @param	Integer		$fullTasknumber			Identifier with project id and task number	 * @param	Boolean		$mustExist				TRUE = Has to be in database
 	 * @return
 	 */
 	public static function isTasknumber($fullTasknumber, $mustExist = false) {
@@ -1539,7 +1538,7 @@ class TodoyuTaskManager {
 
 			// Check for point (.)
 		if( strpos($fullTasknumber, '.') !== false ) {
-				// Split into project/tasknumber
+				// Split into project / task number
 			$parts	= TodoyuArray::intExplode('.', $fullTasknumber, true, true);
 
 				// If 2 valid integers found

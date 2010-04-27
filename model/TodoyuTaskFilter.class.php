@@ -190,7 +190,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter for tasknumber
+	 * Filter for task number
 	 *
 	 * @param	String		$value
 	 * @param	Boolean		$negate
@@ -893,7 +893,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Returns timestamp and logic for dateinput querys
+	 * Returns timestamp and logic for dateinput queries
 	 *
 	 * @param	Integer		$timestamp
 	 * @param	Boolean		$negate
