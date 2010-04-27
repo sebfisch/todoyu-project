@@ -21,7 +21,15 @@
 		<h4>{Label core.description}</h4>
 		<div class="content overflow">{cleanHtml $description}</div>
 	</div>
-	
-	{* Here we add dynamic elements later *}
+
+	{* ---------- Dynamic added elements ----------- *}
+	{if $dynamicElements}
+		{foreach $dynamicElements element}
+	<div class="{$element.class}">
+		<h4>{$element.title}</h4>
+		<div class="content overflow">{$element.content}</div>
+	</div>
+		{/foreach}
+	{/if}
 
 </div>
