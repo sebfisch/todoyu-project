@@ -615,9 +615,16 @@ Todoyu.Ext.project.Task = {
 			'onComplete': this.onProjectTaskAdded.bind(this)
 		};
 
-		var target	= 'project-' + idProject + '-tasks';
+			// If losttasks are display, add before losttasks, else just add at the bottom of the list
+		if( Todoyu.exists('project-' + idProject + '-losttasks') ) {
+			var target	= 'project-' + idProject + '-losttasks';
+			options.insertion = 'before';
+		} else {
+			var target	= 'project-' + idProject + '-tasks';
+			options.insertion = 'bottom';
+		}
 
-		Todoyu.Ui.insert(target, url, options);
+		Todoyu.Ui.update(target, url, options);
 	},
 
 

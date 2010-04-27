@@ -418,7 +418,8 @@ class TodoyuProjectRenderer {
 
 		$data	= array(
 			'losttasks' => $lostTaskHtml,
-			'numTasks'	=> sizeof($lostTaskIDs)
+			'numTasks'	=> sizeof($lostTaskIDs),
+			'idProject'	=> $idProject
 		);
 
 		return render($tmpl, $data);
