@@ -573,11 +573,14 @@ Todoyu.Ext.project.Task = {
 	 * Update (reload) given task
 	 *
 	 * @param	{Number} 	idTask
-	 * @param	{String}		taskHtml
+	 * @param	{String}	taskHtml
 	 */
 	update: function(idTask, taskHtml) {
+		if( Todoyu.exists('task-' + idTask + '-subtasks') ) {
+			$('task-' + idTask + '-subtasks').remove();
+		}
+
 		$('task-' + idTask).replace(taskHtml);
-		$('task-' + idTask + '-subtasks').remove();
 
 		this.addContextMenu(idTask);
 	},
