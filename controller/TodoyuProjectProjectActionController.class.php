@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * ActionController for project prefernces
+ * ActionController for project preferences
  * @package		Todoyu
  * @subpackage	Project
  */
