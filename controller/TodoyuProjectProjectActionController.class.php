@@ -26,7 +26,7 @@
 class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 	/**
-	 * Initialite controller: restrict access
+	 * Initiate controller: restrict access
 	 *
 	 * @param	Array	$params
 	 */
@@ -157,7 +157,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 * Add a subform to the project form
+	 * Add a sub form to the project form
 	 *
 	 * @param	Array		$params
 	 * @return	String
