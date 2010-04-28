@@ -45,7 +45,7 @@
 		<label index="attr.status">Project Status</label>
 		<label index="attr.date_start">Start Date</label>
 		<label index="attr.date_end">End Date</label>
-		<label index="attr.date_deadline">Internal Deadline</label>
+		<label index="attr.date_deadline">Customer Deadline</label>
 		<label index="attr.persons">Assigned Persons</label>
 		<label index="attr.persons.new">New Project Person</label>
 		<label index="attr.persons.role">Project Role</label>
@@ -125,7 +125,7 @@
 		<label index="attr.status">Projekt Status</label>
 		<label index="attr.date_start">Startdatum</label>
 		<label index="attr.date_end">Enddatum</label>
-		<label index="attr.date_deadline">Interne Frist</label>
+		<label index="attr.date_deadline">Kundenfrist</label>
 		<label index="attr.persons">Beteiligte Personen</label>
 		<label index="attr.persons.new">Neue Person</label>
 		<label index="attr.persons.role">Projektrolle</label>
@@ -204,7 +204,7 @@
 		<label index="attr.status">Status do Projeto</label>
 		<label index="attr.date_start">Data de Início</label>
 		<label index="attr.date_end">Data de Término</label>
-		<label index="attr.date_deadline">Prazo Final Interno</label>
+		<label index="attr.date_deadline">Cliente Prazo Final</label>
 		<label index="attr.persons">Pessoal Alocado</label>
 		<label index="attr.persons.new">Novo Integrante</label>
 		<label index="attr.persons.role">Grupo de Projeto</label>

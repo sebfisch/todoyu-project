@@ -342,12 +342,12 @@ class TodoyuProjectRenderer {
 		$treeHtml	= '';
 
 			// Render tasks (with their sub tasks)
-		foreach( $rootTaskIDs as $idTask ) {
+		foreach($rootTaskIDs as $idTask) {
 			$treeHtml .= self::renderTask($idTask, $idTaskShow, false, $tab);
 		}
 
 			// Add a list of lost task (this task should be display, but their parent doesn't match the current filter)
-		$treeHtml .= self::renderLostTasks($idProject, $idTask);
+		$treeHtml .= self::renderLostTasks($idProject, $idTaskShow);
 
 		return $treeHtml;
 	}
@@ -391,29 +391,32 @@ class TodoyuProjectRenderer {
 	/**
 	 * Render (list of) lost tasks
 	 *
-	 * @param	Integer	$idProject
-	 * @param	Integer	$idTask
-	 * @return	String	HTML
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idTaskShow
+	 * @return	String		HTML
 	 */
-	public static function renderLostTasks($idProject, $idTask) {
+	public static function renderLostTasks($idProject, $idTaskShow) {
 		$idProject	= intval($idProject);
-		$idTask		= intval($idTask);
+		$idTaskShow	= intval($idTaskShow);
 
 		$tmpl	= 'ext/project/view/losttasks.tmpl';
-
+		
 			// Get lost task IDs
 		$lostTaskIDs	= TodoyuProjectManager::getLostTaskInTaskTree($idProject, self::$renderedTasks);
 
-			// Get task requested in URL which doesn't fit the current filter
-		$requestedTaskID	= TodoyuProjectManager::getLostRequestedTaskID(self::$renderedTasks);
-		if ( $requestedTaskID !== 0 ) {
-			$lostTaskIDs	[]= $requestedTaskID;
+			// If forced task is set, but not rendered, add to lost task if allowed
+		if( $idTaskShow !== 0 ) {
+			if( ! in_array($idTaskShow, self::$renderedTasks) ) {
+				if( TodoyuTaskRights::isSeeAllowed($idTaskShow) ) {
+					$lostTaskIDs[] = $idTaskShow;
+				}
+			}
 		}
 
 		$lostTaskHtml	= '';
 
-		foreach($lostTaskIDs as $idTask) {
-			$lostTaskHtml .= self::renderTask($idTask, 0, true);
+		foreach($lostTaskIDs as $idLostTask) {
+			$lostTaskHtml .= self::renderTask($idLostTask, 0, true);
 		}
 
 		$data	= array(
