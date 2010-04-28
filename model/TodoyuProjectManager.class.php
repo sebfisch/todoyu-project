@@ -730,7 +730,7 @@ class TodoyuProjectManager {
 	 *
 	 * @param	Integer		$idPerson
 	 * @param	Integer		$idProject
-	 * @param	Integer		$idProjectrole$idProjectrole
+	 * @param	Integer		$idProjectrole
 	 * @return	String
 	 */
 	public static function getProjectPersonLabel($idPerson, $idProject, $idProjectrole = 0) {
@@ -814,7 +814,7 @@ class TodoyuProjectManager {
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idRole
-	 * @return	TodoyuPerson	Or FALSE if not found
+	 * @return	TodoyuPerson				Or FALSE if not found
 	 */
 	public static function getRolePerson($idProject, $idRole) {
 		$idPerson	= self::getRolePersonID($idProject, $idRole);
