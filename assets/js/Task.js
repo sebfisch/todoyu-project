@@ -615,7 +615,7 @@ Todoyu.Ext.project.Task = {
 			'onComplete': this.onProjectTaskAdded.bind(this)
 		};
 
-			// If losttasks are display, add before losttasks, else just add at the bottom of the list
+			// If losttasks are displayed, add before losttasks, else just add at the bottom of the list
 		if( Todoyu.exists('project-' + idProject + '-losttasks') ) {
 			var target	= 'project-' + idProject + '-losttasks';
 			options.insertion = 'before';
