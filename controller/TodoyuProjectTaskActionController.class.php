@@ -236,7 +236,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 				return TodoyuTaskRenderer::renderListingTask($idTask);
 			}
 		} else {
-			Todoyu::log('Tried to get task data of a not visible task', LOG_LEVEL_SECURITY, $idTask);
+			Todoyu::log('Tried to get task data of a not visible task', TodoyuLogger::LEVEL_SECURITY, $idTask);
 		}
 	}
 
