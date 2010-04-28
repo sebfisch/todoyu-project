@@ -60,7 +60,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Toggle display of task tree of given project
 	 *
-	 * @param	unknown_type idProject
+	 * @param	{Number}	 idProject
 	 */
 	toggle: function(idProject) {
 		if ( this.tree(idProject) ) {

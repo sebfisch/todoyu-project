@@ -79,7 +79,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Save project
 	 *
-	 * @param	unknown	form
+	 * @param	{Element}	form
 	 */
 	save: function(form){
 		tinyMCE.triggerSave();

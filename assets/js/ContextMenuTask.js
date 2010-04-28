@@ -41,7 +41,7 @@ Todoyu.Ext.project.ContextMenuTask = {
 	/**
 	 * Parse ID out of a task element
 	 *
-	 * @param	{DomElement}	element		The observed DOM element
+	 * @param	{Element}	element		The observed DOM element
 	 * @param	{Event}		event		The click event
 	 * @return	Task ID
 	 */

@@ -92,7 +92,7 @@ Todoyu.Ext.project = {
 	/**
 	 * Event handler: 'onTreeUpdate'
 	 *
-	 * @param	unknown	response
+	 * @param	{Ajax.Response}		response
 	 */
 	onTreeUpdate: function(response) {
 		this.ContextMenuTask.attach.bindAsEventListener(this.ContextMenuTask)();

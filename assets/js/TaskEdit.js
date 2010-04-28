@@ -101,7 +101,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Save edited task
 	 *
-	 * @param	unknown_type	form
+	 * @param	{Element}	form
 	 */
 	save: function(form) {
 		tinyMCE.triggerSave();
