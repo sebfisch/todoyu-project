@@ -15,11 +15,6 @@ CREATE TABLE `ext_project_project` (
   `description` mediumtext NOT NULL,
   `status` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `id_company` int(10) unsigned NOT NULL DEFAULT '0',
-  `fixedcosts` float unsigned NOT NULL DEFAULT '0',
-  `is_fixedcosts_paid` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `is_fixed` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `id_fixedproject` int(10) unsigned NOT NULL DEFAULT '0',
-  `id_rateset` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
@@ -36,7 +31,7 @@ CREATE TABLE `ext_project_task` (
   `id_person_create` int(10) unsigned NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `type` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `id_project` int(10) NOT NULL DEFAULT '0',
+  `id_project` int(10) unsigned NOT NULL DEFAULT '0',
   `id_parenttask` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
