@@ -115,9 +115,12 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	 * @param	{Object}		event
 	 */
 	onProjectClick: function(event) {
-		var idProject = event.findElement('li').id.split('-').last();
+		var listElement = event.findElement('li');
 
-		this.ext.ProjectTaskTree.openProject(idProject);
+		if ( Object.isElement(listElement) ) {
+			var idProject = listElement.id.split('-').last();
+			this.ext.ProjectTaskTree.openProject(idProject);
+		}
 	},
 
 
