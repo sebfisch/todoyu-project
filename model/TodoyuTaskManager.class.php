@@ -288,7 +288,8 @@ class TodoyuTaskManager {
 			$idProject	= intval($data['id_project']);
 
 			if( $idRole !== 0 && $idProject !== 0 ) {
-				$idPerson	= TodoyuProjectManager::getRolePersonID($idProject, $idRole);
+				$personIDs	= TodoyuProjectManager::getRolePersonIDs($idProject, $idRole);
+				$idPerson	= intval($personIDs[0]);
 
 				if( $idPerson !== 0 ) {
 					$data['id_person_assigned'] = $idPerson;
@@ -302,7 +303,8 @@ class TodoyuTaskManager {
 			$idProject	= intval($data['id_project']);
 
 			if( $idRole !== 0 && $idProject !== 0 ) {
-				$idPerson	= TodoyuProjectManager::getRolePersonID($idProject, $idRole);
+				$personIDs	= TodoyuProjectManager::getRolePersonIDs($idProject, $idRole);
+				$idPerson	= intval($personIDs[0]);
 
 				if( $idPerson !== 0 ) {
 					$data['id_person_owner'] = $idPerson;

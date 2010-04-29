@@ -795,7 +795,7 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get person with a specific role in project
+	 * Get first person with a specific role in project
 	 * If no person has this role, FALSE is returned
 	 *
 	 * @param	Integer		$idProject
@@ -803,7 +803,8 @@ class TodoyuProjectManager {
 	 * @return	TodoyuPerson				Or FALSE if not found
 	 */
 	public static function getRolePerson($idProject, $idRole) {
-		$idPerson	= self::getRolePersonID($idProject, $idRole);
+		$personIDs	= self::getRolePersonIDs($idProject, $idRole);
+		$idPerson	= intval($personIDs[0]);
 
 		if( $idPerson !== 0 ) {
 			return TodoyuPersonManager::getPerson($idPerson);
@@ -815,13 +816,34 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get ID of the person with a specific role in project
+	 * Get IDs of all persons with the given roles in the given project
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Array		$roleIDs
+	 * @return	Array
+	 */
+	public static function getRolesPersonIDs($idProject, array $roleIDs = array()) {
+		$idProject	= intval($idProject);
+
+		$field	= 'id_role,id_person';
+		$table	= '	ext_project_mm_project_person';
+		$where	= '	id_project	= ' . $idProject .
+				  ( sizeof($roleIDs) > 0 ? ' AND id_role IN (' . TodoyuArray::intImplode($roleIDs) . ')' : '');
+
+		return Todoyu::db()->getArray($field, $table, $where);
+	}
+
+
+
+	/**
+	 * Get IDs of all persons with the given role in the given project
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idRole
-	 * @return	Integer
+	 * @param	Boolean		$onlyFirstPerson
+	 * @return	Array
 	 */
-	public static function getRolePersonID($idProject, $idRole) {
+	public static function getRolePersonIDs($idProject, $idRole) {
 		$idProject	= intval($idProject);
 		$idRole		= intval($idRole);
 
@@ -829,9 +851,10 @@ class TodoyuProjectManager {
 		$table	= '	ext_project_mm_project_person';
 		$where	= '	id_project	= ' . $idProject . ' AND
 					id_role		= ' . $idRole;
-		$limit	= 1;
 
-		return intval(Todoyu::db()->getFieldValue($field, $table, $where, '', '', $limit));
+		$personIDs	= TodoyuArray::flatten(Todoyu::db()->getArray($field, $table, $where));
+
+		return $personIDs;
 	}
 
 
