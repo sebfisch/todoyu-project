@@ -825,12 +825,19 @@ class TodoyuProjectManager {
 	public static function getRolesPersonIDs($idProject, array $roleIDs = array()) {
 		$idProject	= intval($idProject);
 
-		$field	= 'id_role,id_person';
-		$table	= '	ext_project_mm_project_person';
-		$where	= '	id_project	= ' . $idProject .
-				  ( sizeof($roleIDs) > 0 ? ' AND id_role IN (' . TodoyuArray::intImplode($roleIDs) . ')' : '');
+		if ( sizeof($roleIDs) > 0 ) {
+			$field	= 'id_role,id_person';
+			$table	= '	ext_project_mm_project_person';
+			$where	= '	id_project	= ' . $idProject .
+				  	  ' AND id_role IN (' . TodoyuArray::intImplode($roleIDs) . ')';
 
-		return Todoyu::db()->getArray($field, $table, $where);
+			$rolesPersonsIDs	= Todoyu::db()->getArray($field, $table, $where);
+		} else {
+				// No roles given? there can be no persons assigned to
+			$rolesPersonsIDs	= array();
+		}
+
+		return $rolesPersonsIDs;
 	}
 
 
