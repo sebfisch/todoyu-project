@@ -486,8 +486,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	/**
 	 * Public filter
 	 *
-	 * @param	Integer	$value
-	 * @param	boolean	$negate
+	 * @param	Integer		$value
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_isPublic($value, $negate = false)	{
