@@ -101,8 +101,8 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 				'ext_project_project',
 				'ext_project_mm_project_person'
 			);
-			$where	= '	ext_project_project.id					= ext_project_mm_project_person.id_project AND
-						ext_project_mm_project_person.id_person	= ' . TodoyuAuth::getPersonID();
+			$where	= '		ext_project_project.id					= ext_project_mm_project_person.id_project
+						ADN ext_project_mm_project_person.id_person	= ' . TodoyuAuth::getPersonID();
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -243,10 +243,10 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 							ext_project_mm_project_person,
 							ext_project_role
 						WHERE
-							ext_project_project.id 					= ext_project_mm_project_person.id_project AND
-							ext_project_mm_project_person.id_person	= ' . $idProjectleader . ' AND
-							ext_project_mm_project_person.id_role	= ext_project_role.id AND
-							ext_project_role.rolekey				= \'projectleader\'
+								ext_project_project.id 					= ext_project_mm_project_person.id_project
+							AND ext_project_mm_project_person.id_person	= ' . $idProjectleader .
+						 '  AND	ext_project_mm_project_person.id_role	= ext_project_role.id
+							AND	ext_project_role.rolekey				= \'projectleader\'
 					)';
 
 		return array(
@@ -278,9 +278,9 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 				'ext_project_mm_project_person'
 			);
 			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= '	ext_project_project.id				= ext_project_mm_project_person.id_project AND
-						ext_project_mm_project_person.id_person	= ' . $idPerson . ' AND
-						ext_project_mm_project_person.id_role ' . $compare . '(' . implode(',', $roles) . ')';
+			$where	= '		ext_project_project.id				= ext_project_mm_project_person.id_project
+						AND ext_project_mm_project_person.id_person	= ' . $idPerson .
+					  ' AND	ext_project_mm_project_person.id_role ' . $compare . '(' . implode(',', $roles) . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,

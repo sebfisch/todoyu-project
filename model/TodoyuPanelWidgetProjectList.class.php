@@ -88,8 +88,8 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 						ext_contact_company.title as company';
 			$tables	= '	ext_project_project,
 						ext_contact_company';
-			$where	= '	ext_project_project.id_company	= ext_contact_company.id  AND
-						ext_project_project.id IN(' . implode(',', $projectIDs) . ')';
+			$where	= '		ext_project_project.id_company	= ext_contact_company.id
+						AND	ext_project_project.id IN(' . implode(',', $projectIDs) . ')';
 			$order	= ' ext_contact_company.shortname,
 						ext_project_project.title';
 

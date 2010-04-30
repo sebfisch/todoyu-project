@@ -131,8 +131,8 @@ class TodoyuTaskManager {
 		if( sizeof($parts) === 2 ) {
 			$field	= 'id';
 			$table	= self::TABLE;
-			$where	= '	id_project	= ' . $parts[0] . ' AND
-						tasknumber	= ' . $parts[1];
+			$where	= '		id_project	= ' . $parts[0] .
+					  ' AND	tasknumber	= ' . $parts[1];
 			$limit	= 1;
 
 			$foundID= Todoyu::db()->getFieldValue($field, $table, $where, '', '', $limit);
@@ -621,8 +621,8 @@ class TodoyuTaskManager {
 
 		$field	= 'id';
 		$table	= self::TABLE;
-		$whereF	= '	id_parenttask IN(%s) AND
-					deleted	= 0';
+		$whereF	= '		id_parenttask IN(%s) 
+					AND	deleted	= 0';
 
 		$where	= sprintf($whereF, $idTask);
 
@@ -807,11 +807,11 @@ class TodoyuTaskManager {
 		$fields	= ' p.*';
 		$tables	= ' ext_contact_person p,
 					ext_project_task t';
-		$where	= '	t.id				= ' . $idTask . ' AND
-					(
-						t.id_person_create	= p.id OR
-						t.id_person_assigned= p.id OR
-						t.id_person_owner	= p.id
+		$where	= '	t.id				= ' . $idTask . '
+					AND	(
+							t.id_person_create	= p.id
+						OR	t.id_person_assigned= p.id
+						OR	t.id_person_owner	= p.id
 					)';
 		$group	= 'p.id';
 		$order	= 'p.lastname, p.firstname';
@@ -833,8 +833,8 @@ class TodoyuTaskManager {
 		$fields	= ' u.*';
 		$tables	= ' ext_project_task t,
 					ext_contact_person u';
-		$where	= '	t.id		= ' . $idTask . ' AND
-					u.id		= t.id_person_owner';
+		$where	= '		t.id	= ' . $idTask .
+				  ' AND	u.id	= t.id_person_owner';
 		$group	= '';
 		$order	= '';
 
@@ -1831,8 +1831,8 @@ class TodoyuTaskManager {
 			// Update parameters
 		$update	= array();
 		$table	= self::TABLE;
-		$where	= '	id_project		= ' . $taskMove['id_project'] . ' AND
-					id_parenttask	= ' . $taskRef['id_parenttask'];
+		$where	= '		id_project		= ' . $taskMove['id_project'] .
+				  ' AND	id_parenttask	= ' . $taskRef['id_parenttask'];
 		$noQuote= array('sorting');
 
 			// Move other task which are between the move and the ref task
@@ -1903,10 +1903,10 @@ class TodoyuTaskManager {
 
 		$fields	= 'id';
 		$table	= self::TABLE;
-		$where	= '	id					= ' . $idTask . ' AND
-					(
-						id_person_assigned	= ' . $idPerson . ' OR
-						id_person_owner		= ' . $idPerson;
+		$where	= '	id					= ' . $idTask .
+				  ' AND (
+							 id_person_assigned	= ' . $idPerson .
+						' OR id_person_owner	= ' . $idPerson;
 
 			// Add creator field check
 		if( $checkCreator ) {
@@ -1934,9 +1934,9 @@ class TodoyuTaskManager {
 		$fields	= '	t.id';
 		$table	= 	self::TABLE . ' t,
 					ext_project_mm_project_person mm';
-		$where	= '	t.id					= ' . $idTask . ' AND
-					t.id_project			= mm.id_project AND
-					mm.id_person			= ' . $idPerson;
+		$where	= '		t.id			= ' . $idTask .
+				  ' AND	t.id_project	= mm.id_project
+				  	AND	mm.id_person	= ' . $idPerson;
 
 		return Todoyu::db()->hasResult($fields, $table, $where);
 	}

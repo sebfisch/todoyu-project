@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Filter configuration for project extension
+ * Filter configurations for project extension
  *
  * @package		Todoyu
  * @subpackage	Project

@@ -251,8 +251,8 @@ class TodoyuProjectManager {
 
 		$fields	= 'id';
 		$table	= 'ext_project_mm_project_person';
-		$where	= ' id_project	= ' . $idProject . ' AND
-					id_person	= ' . $idPerson;
+		$where	= '		id_project	= ' . $idProject .
+				  ' AND	id_person	= ' . $idPerson;
 
 		return Todoyu::db()->hasResult($fields, $table, $where);
 	}
@@ -441,9 +441,9 @@ class TodoyuProjectManager {
 						c.title as companyFull';
 			$table	= '	ext_project_project p,
 						ext_contact_company c';
-			$where	= '	p.id IN(' . $projectList . ') AND
-						(p.id_company = 0 OR p.id_company = c.id) AND
-						p.deleted = 0';
+			$where	= '		p.id IN(' . $projectList . ')
+						AND	(p.id_company = 0 OR p.id_company = c.id)
+						AND	p.deleted = 0';
 			$order	= 'FIELD(p.id, ' . $projectList . ')';
 			$limit	= 3;
 
@@ -678,10 +678,10 @@ class TodoyuProjectManager {
 		$table	= '	ext_contact_person pe,
 					ext_project_role pr,
 					ext_project_mm_project_person mmpp';
-		$where	= '	mmpp.id_person	= pe.id AND
-					mmpp.id_project	= ' . $idProject . ' AND
-					mmpp.id_role	= pr.id AND
-					pe.deleted		= 0';
+		$where	= '		mmpp.id_person	= pe.id
+					AND mmpp.id_project	= ' . $idProject .
+				  ' AND	mmpp.id_role	= pr.id
+				    AND	pe.deleted		= 0';
 		$group	= '	mmpp.id';
 		$order	= '	pe.lastname,
 					pe.firstname';
@@ -764,9 +764,9 @@ class TodoyuProjectManager {
 		$field		= '	pr.id';
 		$tables		= '	ext_project_role pr,
 						ext_project_mm_project_person mmpp';
-		$where		= '	mmpp.id_project	= ' . $idProject . ' AND
-						mmpp.id_person	= ' . $idPerson . ' AND
-						mmpp.id_role	= pr.id';
+		$where		= '		mmpp.id_project	= ' . $idProject .
+					  ' AND	mmpp.id_person	= ' . $idPerson .
+					  ' AND	mmpp.id_role	= pr.id';
 
 		$idProjectrole	= Todoyu::db()->getFieldValue($field, $tables, $where);
 
@@ -785,9 +785,9 @@ class TodoyuProjectManager {
 		$fields	= '	DISTINCT pr.*';
 		$table	= '	ext_project_mm_project_person mm,
 					ext_project_role pr';
-		$where	= '	mm.id_project	= ' . $idProject . ' AND
-					mm.id_role		= pr.id AND
-					pr.deleted		= 0';
+		$where	= '		mm.id_project	= ' . $idProject .
+				  ' AND	mm.id_role		= pr.id
+				  	AND	pr.deleted		= 0';
 
 		return Todoyu::db()->getArray($fields, $table, $where);
 	}
@@ -856,8 +856,8 @@ class TodoyuProjectManager {
 
 		$field	= 'id_person';
 		$table	= '	ext_project_mm_project_person';
-		$where	= '	id_project	= ' . $idProject . ' AND
-					id_role		= ' . $idRole;
+		$where	= '		id_project	= ' . $idProject .
+				  ' AND	id_role		= ' . $idRole;
 
 		$personIDs	= TodoyuArray::flatten(Todoyu::db()->getArray($field, $table, $where));
 

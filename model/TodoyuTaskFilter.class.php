@@ -175,8 +175,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				'ext_project_task',
 				'ext_contact_mm_person_role'
 			);
-			$where	= ' ext_project_task.id_person_owner = ext_contact_mm_person_role.id_person AND
-						ext_contact_mm_person_role.id_role IN(' . implode(',', $roleIDs) . ')';
+			$where	= ' 	ext_project_task.id_person_owner = ext_contact_mm_person_role.id_person
+						AND ext_contact_mm_person_role.id_role IN(' . implode(',', $roleIDs) . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -260,14 +260,14 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				'ext_project_task'
 			);
 			$keyword= Todoyu::db()->escape($value);
-			$where	= '	ext_project_task.description 	LIKE \'%' . $keyword . '%\' OR
-						ext_project_task.title 			LIKE \'%' . $keyword . '%\'';
+			$where	= '	   ext_project_task.description 	LIKE \'%' . $keyword . '%\' 
+						OR ext_project_task.title 			LIKE \'%' . $keyword . '%\'';
 
 			if( strpos($value, '.') !== false ) {
 				list($project, $task) = TodoyuArray::intExplode('.', $value);
 				$where	.= ' OR (
-								ext_project_task.id_project = ' . $project . ' AND
-								ext_project_task.tasknumber = ' . $task .
+									  ext_project_task.id_project = ' . $project .
+							 	' AND ext_project_task.tasknumber = ' . $task .
 							')';
 			}
 
@@ -302,7 +302,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 			$whereParts[] = 'ext_project_task.tasknumber = ' . $taskNumber;
 		} else if( strpos($taskNumber, '.') !== false )	{
 			list($project, $task) = explode('.', $taskNumber);
-			$whereParts[] = '(ext_project_task.id_project = '.intval($project).' AND ext_project_task.tasknumber = '.intval($task).')';
+			$whereParts[] = '(ext_project_task.id_project = ' . intval($project) . ' AND ext_project_task.tasknumber = ' . intval($task) . ')';
 		}
 
 			// If value was not empty, check matches in the title
@@ -370,8 +370,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				'ext_contact_mm_person_role'
 			);
 			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= ' ext_project_task.id_person_create = ext_contact_mm_person_role.id_person AND
-						ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
+			$where	= '		ext_project_task.id_person_create = ext_contact_mm_person_role.id_person
+						AND ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -429,8 +429,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				'ext_contact_mm_person_role'
 			);
 			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= ' ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person AND
-						ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
+			$where	= '		ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person 
+						AND ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -470,8 +470,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	public static function Filter_projectDescription(array $filter) {
 		$string	= Todoyu::db()->escape($filter['value']);
 
-		$where	 = ' ext_project_project.description LIKE \'%' . $string . '%\'';
-		$where	.= ' AND ext_project_task.id_project = ext_project_project.id';
+		$where	 = '	 ext_project_project.description LIKE \'%' . $string . '%\'' .
+				   ' AND ext_project_task.id_project = ext_project_project.id';
 
 		$queryParts	= array(
 			'where'		=> $where,
@@ -521,8 +521,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				'ext_project_task'
 			);
 			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= '(ext_project_task.status ' . $compare . '(' . implode(',', $statuses) . ') OR
-						ext_project_task.type = ' . TASK_TYPE_CONTAINER . ')';
+			$where	= '(   ext_project_task.status ' . $compare . '(' . implode(',', $statuses) . ')
+						OR ext_project_task.type = ' . TASK_TYPE_CONTAINER . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -551,8 +551,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				'ext_project_task'
 			);
 			$check	= $negate ? 0 : 1;
-			$where	= '	ext_project_task.id_person_assigned	= ' . $idPerson . ' AND
-						ext_project_task.is_acknowledged	= ' . $check;
+			$where	= '		ext_project_task.id_person_assigned	= ' . $idPerson .
+					  ' AND	ext_project_task.is_acknowledged	= ' . $check;
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -560,7 +560,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 			);
 		}
 
-		return $queryParts;
+		return $queryParts; 
 	}
 
 
@@ -755,7 +755,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		$tables 	= array(
 			'ext_project_task'
 		);
-		$where 		= 'ext_project_task.' . $field . ' BETWEEN ' . $timeStamps['start'] . ' AND ' . $timeStamps['end'];
+		$where 	= 'ext_project_task.' . $field . ' BETWEEN ' . $timeStamps['start'] . ' AND ' . $timeStamps['end'];
 
 		return array(
 			'tables'=> $tables,
@@ -857,9 +857,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				'ext_project_mm_project_person'
 			);
 			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= '	ext_project_task.id_project			= ext_project_mm_project_person.id_project AND
-						ext_project_mm_project_person.id_person	= ' . $idPerson . ' AND
-						ext_project_mm_project_person.id_role ' . $compare . '(' . implode(',', $roles) . ')';
+			$where	= '		ext_project_task.id_project			= ext_project_mm_project_person.id_project 
+						AND ext_project_mm_project_person.id_person	= ' . $idPerson .
+					  ' AND ext_project_mm_project_person.id_role ' . $compare . '(' . implode(',', $roles) . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,

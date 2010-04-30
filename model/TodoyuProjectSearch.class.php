@@ -76,8 +76,8 @@ class TodoyuProjectSearch implements TodoyuSearchEngineIf {
 						c.title company';
 			$table	= self::TABLE . ' p,
 						ext_contact_company c';
-			$where	= '	p.id IN(' . implode(',', $projectIDs) . ') AND
-						p.id_company	= c.id';
+			$where	= '		p.id IN(' . implode(',', $projectIDs) . ')
+						AND	p.id_company	= c.id';
 			$order	= '	p.date_create DESC';
 
 			$projects	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
