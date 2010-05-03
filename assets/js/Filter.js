@@ -40,32 +40,76 @@ Todoyu.Ext.project.Filter = {
 
 
 
+	/**
+	 * Handler when a person is selection with the AC
+	 *
+	 * @param	{String}		name
+	 * @param	{Element}		textInput
+	 * @param	{Element}		listElement
+	 */
 	onProjectrolePersonAcSelect: function(name, textInput, listElement) {
 		$('widget-autocompleter-' + name + '-hidden').value = listElement.id;
 
-		Todoyu.Ext.project.Filter.updateProjectRoleConditionValue(name);
+		this.updateProjectRoleConditionValue(name);
 	},
 
 
 
+	/**
+	 * Handler when the projectrole selection changed
+	 *
+	 * @param	{String}	name
+	 */
 	onProjectroleRoleChange: function(name) {
-		Todoyu.Ext.project.Filter.updateProjectRoleConditionValue(name);
+		this.updateProjectRoleConditionValue(name);
 	},
 
 
 
+	/**
+	 * Handler when person changes. Only send update request if person field is
+	 * empty and the AC handler doesn't send the request
+	 *
+	 * @param	{String}	name
+	 */
+	onProjectrolePersonChange: function(name) {
+		if( $F('widget-autocompleter-' + name) === '' ) {
+			$('widget-autocompleter-' + name + '-hidden').value = 0;
+			this.updateProjectRoleConditionValue(name);
+		}
+	},
+
+
+
+	/**
+	 * Get selected person
+	 *
+	 * @param	{String}	name
+	 * @return	{Integer}
+	 */
 	getProjectrolePerson: function(name) {
 		return $F('widget-autocompleter-' + name + '-hidden');
 	},
 
 
 
+	/**
+	 * Get selected project roles
+	 * @param	{Array}		name
+	 */
 	getProjectroleRoles: function(name) {
 		return $F('filterwidget-select-' + name);
 	},
 
 
 
+	/**
+	 * Update the condition for projectrole selector
+	 * Concatenate the person and the roles to get a simple string value
+	 * Format: idPerson:idRole,IdRole,idRole
+	 *
+	 * @param	{String}	name
+	 */
 	updateProjectRoleConditionValue: function(name) {
 		var idPerson	= this.getProjectrolePerson(name);
 		var projectRoles= this.getProjectroleRoles(name);
