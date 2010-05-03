@@ -159,7 +159,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	/**
 	 * checks if the Project is deleted
 	 * 
-	 * @return	boolean
+	 * @return	Boolean
 	 */
 	public function isDeleted()	{
 		return $this->get('deleted') == 1;
@@ -191,7 +191,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	/**
 	 * Get template data
 	 *
-	 * @param	Boolean	$loadForeignData
+	 * @param	Boolean		$loadForeignData
 	 * @return	Array
 	 */
 	public function getTemplateData($loadForeignData = false) {
