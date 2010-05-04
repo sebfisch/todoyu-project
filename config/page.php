@@ -33,9 +33,6 @@ if(  allowed('project', 'general:area') ) {
 	if( allowed('project', 'task:addViaQuickCreateHeadlet') ) {
 		TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickTask', 55);
 	}
-
-		// Add portal tab: 'todos'
-	TodoyuPortalManager::addTab('todo', 'TodoyuProjectPortalRenderer::getTodoTabLabel', 'TodoyuProjectPortalRenderer::renderTodoTabContent', 20);
 }
 
 ?>

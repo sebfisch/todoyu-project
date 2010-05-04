@@ -105,4 +105,9 @@ Todoyu::$CONFIG['EXT']['project']['taskDefaults'] = array(
 	'statusQuickTask'		=> STATUS_OPEN
 );
 
+
+// Add portal tab: 'todos'
+TodoyuPortalManager::addTab('todo', 'TodoyuProjectPortalRenderer::getTodoTabLabel', 'TodoyuProjectPortalRenderer::renderTodoTabContent', 20);
+
+
 ?>
