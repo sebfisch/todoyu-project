@@ -250,7 +250,9 @@ Todoyu.Ext.project.Project = {
 		};
 		var target	= 'project-' + idProject + '-details';
 
-		Todoyu.Ui.update(target, url, options);
+		if( Todoyu.exists(target) ) {
+			Todoyu.Ui.update(target, url, options);
+		}
 	},
 
 
@@ -294,12 +296,13 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Get current status of given project
 	 *
-	 * @param	{Number}		idProject
-	 * @param	{Number}		status index
+	 * @param	{Number}	idProject
 	 */
 	getStatus: function(idProject) {
-		var classNames 	= $('project-' + idProject).down('div.projectstatus').classNames();
-		var statusClass	= classNames.grep(/bcStatus(\d)/).first();
+		var project		= $('project-' + idProject);
+		var statusBar	= project.down('div.projectstatus') || project.down('span.headLabel');
+
+		var statusClass	= statusBar.classNames().grep(/bcStatus(\d)/).first();
 
 		return statusClass.split('Status').last();
 	},
@@ -313,11 +316,12 @@ Todoyu.Ext.project.Project = {
 	 * @param	{Number}		status
 	 */
 	setStatus: function(idProject, status) {
-		var statusBar	= $('project-' + idProject).down('div.projectstatus');
+		var project		= $('project-' + idProject);
+		var statusBar	= project.down('div.projectstatus') || project.down('span.headLabel');
+
 		var oldStatus	= this.getStatus(idProject);
 
-		statusBar.replaceClassName('bcStatus' + oldStatus);
-		statusBar.addClassName('bcStatus' + status);
+		statusBar.replaceClassName('bcStatus' + oldStatus, 'bcStatus' + status);
 	}
 
 };

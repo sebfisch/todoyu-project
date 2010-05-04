@@ -78,11 +78,6 @@ Todoyu::$CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
 );
 
 
-	// Add portal tab: 'todos'
-TodoyuPortalManager::addTab('todo', 'TodoyuProjectPortalRenderer::getTodoTabLabel', 'TodoyuProjectPortalRenderer::renderTodoTabContent', 20, array('project/public', 'project/portal'));
-
-
-
 /**
  * Configuration for 'todo' tab
  *
