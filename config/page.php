@@ -35,4 +35,9 @@ if(  allowed('project', 'general:area') ) {
 	}
 }
 
+if( allowed('portal', 'general:use') ) {
+		// Add portal tab: 'todos'
+	TodoyuPortalManager::addTab('todo', 'TodoyuProjectPortalRenderer::getTodoTabLabel', 'TodoyuProjectPortalRenderer::renderTodoTabContent', 20);
+}
+
 ?>
