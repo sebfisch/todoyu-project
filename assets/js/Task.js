@@ -485,11 +485,20 @@ Todoyu.Ext.project.Task = {
 	onStatusUpdated: function(idTask, status, response) {
 		Todoyu.Hook.exec('taskStatusUpdated', idTask, status);
 
-		if( this.isDetailsLoaded(idTask) ) {
-			this.refresh(idTask);
+		var statusNotAllowed	= response.getTodoyuHeader('statusNotAllowed') == 1;
+
+		if( statusNotAllowed ) {
+			Todoyu.notifyInfo('[LLL:task.statusNotVisible]');
+			Effect.BlindUp('task-' + idTask, {
+				'duration': 0.7
+			});
 		} else {
-			this.setStatus(idTask, status);
-		}
+			if( this.isDetailsLoaded(idTask) ) {
+				this.refresh(idTask);
+			} else {
+				this.setStatus(idTask, status);
+			}
+		}		
 	},
 
 

@@ -797,7 +797,7 @@ class TodoyuTaskManager {
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function getTaskPersons($idTask) {
+	public static function getTaskPersons($idTask, $withAccount = false) {
 		$idTask	= intval($idTask);
 
 		$fields	= ' p.*';
@@ -811,6 +811,11 @@ class TodoyuTaskManager {
 					)';
 		$group	= 'p.id';
 		$order	= 'p.lastname, p.firstname';
+
+			// Add check for active account
+		if( $withAccount ) {
+			$where .= ' AND p.active = 1';
+		}		
 
 		return Todoyu::db()->getArray($fields, $tables, $where, $group, $order);
 	}

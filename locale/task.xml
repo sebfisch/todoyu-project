@@ -97,6 +97,7 @@
 		<label index="ac.parenttask.notFoundInfo">No task containing this text or task number found.</label>
 		<label index="ac.project.notFoundInfo">No project containing this text in the title was found.</label>
 		<label index="copySubtasks">Copy all subtasks?</label>
+		<label index="statusNotVisible">With the new status, the task is no longer visible for you</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="task">Aufgabe</label>

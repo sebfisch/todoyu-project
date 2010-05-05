@@ -201,7 +201,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * 'setstatus' action method
+	 * Update task status
 	 *
 	 * @param	Array	$params
 	 */
@@ -213,6 +213,11 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		restrict('project', 'taskstatus:' . $status . ':changeto');
 
 		TodoyuTaskManager::updateTaskStatus($idTask, $idStatus);
+
+			// If new status is not visible for the user, send info header
+		if( ! allowed('project', 'taskstatus:' . $status . ':see') ) {
+			TodoyuHeader::sendTodoyuHeader('statusNotAllowed', 1);	
+		}
 	}
 
 

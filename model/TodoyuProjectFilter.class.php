@@ -102,7 +102,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 				'ext_project_mm_project_person'
 			);
 			$where	= '		ext_project_project.id					= ext_project_mm_project_person.id_project
-						ADN ext_project_mm_project_person.id_person	= ' . TodoyuAuth::getPersonID();
+						AND ext_project_mm_project_person.id_person	= ' . TodoyuAuth::getPersonID();
 
 			$queryParts	= array(
 				'tables'=> $tables,

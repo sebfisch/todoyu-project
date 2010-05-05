@@ -666,7 +666,7 @@ class TodoyuProjectManager {
 	 * @param	Integer		$idProject
 	 * @return	Array
 	 */
-	public static function getProjectPersons($idProject, $personUnique = false) {
+	public static function getProjectPersons($idProject, $personUnique = false, $withAccount = false) {
 		$idProject	= intval($idProject);
 
 			// Get project persons
@@ -698,6 +698,12 @@ class TodoyuProjectManager {
 		if( $personUnique === true ) {
 			$group	= 'pe.id';
 		}
+
+			// Limit to persons with active todoyu account
+		if( $withAccount === true ) {
+			$where .= ' AND pe.active = 1';
+		}
+
 
 		$persons= Todoyu::db()->getArray($fields, $table, $where, $group, $order);
 
