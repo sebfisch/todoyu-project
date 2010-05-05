@@ -37,11 +37,11 @@ Todoyu.Ext.project.Project.Edit = {
 		var idDetails	= 'project-' + idProject + '-details';
 		var idData		= 'project-' + idProject + '-data';
 
+			// Create data DIV above project details DIV element
 		if( ! Todoyu.exists(idData) ) {
-				// Create data div
 			var data = new Element('div', {
-				'id': idData,
-				'class': 'data edit'
+				'id':		idData,
+				'class':	'data edit'
 			});
 
 			$(idDetails).insert({
@@ -49,8 +49,8 @@ Todoyu.Ext.project.Project.Edit = {
 			});
 		}
 
+			// Set data DIV visually to 'editing'-style, display it
 		$(idData).addClassName('edit');
-
 		$(idDetails).show();
 	},
 
@@ -67,11 +67,23 @@ Todoyu.Ext.project.Project.Edit = {
 			'parameters': {
 				'action':	'edit',
 				'project':	idProject
-			}
+			},
+			onComplete: this.onFormLoaded.bind(this, idProject)
 		};
 		var target	= 'project-' + idProject + '-data';
 
 		Todoyu.Ui.update(target, url, options);
+	},
+
+
+
+	/**
+	 * Form has been loaded
+	 *
+	 * @param	{Number}	idProject
+	 */
+	onFormLoaded: function(idProject) {
+		Todoyu.Hook.exec('onProjectFormLoaded', idProject);
 	},
 
 
@@ -98,6 +110,8 @@ Todoyu.Ext.project.Project.Edit = {
 
 	/**
 	 * On created handler
+	 *
+	 * @param	{Number}	idProject
 	 */
 	onProjectCreated: function(idProject) {
 		if( Todoyu.getArea() === 'project' ) {
