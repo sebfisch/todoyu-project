@@ -280,8 +280,9 @@ Todoyu.Ext.project.Task = {
 	 *
 	 * @param	{Number}		idTask
 	 */
-	remove: function(idTask) {
-		if( ! confirm('[LLL:task.js.removetask.question]') ) {
+	remove: function(idTask, container) {
+		var confirmLabel	= container === true ? '[LLL:task.js.removecontainer.question]' : '[LLL:task.js.removetask.question]';
+		if( ! confirm(confirmLabel) ) {
 			return;
 		}
 

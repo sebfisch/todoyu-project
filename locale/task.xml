@@ -71,6 +71,7 @@
 		<label index="new.Task.defaultTitle">New Task</label>
 		<label index="new.Container.defaultTitle">New Container</label>
 		<label index="js.removetask.question">Do you really want do delete this task?</label>
+		<label index="js.removecontainer.question">Do you really want do delete this container?</label>
 		<label index="type.task">Task</label>
 		<label index="type.container">Container</label>
 		<label index="billableTime">Billable Time</label>
@@ -170,6 +171,7 @@
 		<label index="new.Task.defaultTitle">Neue Aufgabe</label>
 		<label index="new.Container.defaultTitle">Neuer Container</label>
 		<label index="js.removetask.question">Wollen Sie diese Aufgabe wirklich löschen?</label>
+		<label index="js.removecontainer.question">Wollen Sie diesen Container wirklich löschen?</label>
 		<label index="type.task">Aufgabe</label>
 		<label index="type.container">Container</label>
 		<label index="billableTime">Verrechenbare Zeit</label>
@@ -266,6 +268,7 @@
 		<label index="new.Task.defaultTitle">Nova Tarefa</label>
 		<label index="new.Container.defaultTitle">Nova Pasta</label>
 		<label index="js.removetask.question">Deseja realmente excluir esta tarefa?</label>
+		<label index="js.removecontainer.question">Deseja realmente excluir esta pasta?</label>
 		<label index="type.task">Tarefa</label>
 		<label index="type.container">Pasta</label>
 		<label index="billableTime">Hora Remunerada</label>

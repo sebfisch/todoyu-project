@@ -78,7 +78,7 @@ Todoyu.Ext.project.Container = {
 	 * @param	{Number}	idContainer
 	 */
 	remove: function(idContainer) {
-		this.ext.Task.remove(idContainer);
+		this.ext.Task.remove(idContainer, true);
 	},
 
 
