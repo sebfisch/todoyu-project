@@ -35,6 +35,15 @@
 	width:70%;
 }
 
+.project .infoBoxOuter {
+	padding: 6px;
+	background-color: #eee;
+}
+
+.statusPlanning .data .content {
+	background-color: white;
+}
+
 .project .typeCheckbox .fLabel,
 .project .typeCheckbox .fField {
 	width:70%;
