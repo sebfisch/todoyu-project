@@ -162,6 +162,10 @@ class TodoyuTaskClipboard {
 		$currentTask	= TodoyuTaskManager::getTaskData($idCurrentTask);
 		$dataClipboard	= self::getData();
 
+		TodoyuDebug::printInFireBug($idCurrentTask, '$idCurrentTask');
+		TodoyuDebug::printInFireBug($currentTask, '$currentTask');
+		TodoyuDebug::printInFireBug($dataClipboard, '$dataClipboard');
+
 
 			// In: Current is parent, After/Before: Currents parent is the parent
 		if( $insertMode === 'in' ) {
@@ -169,14 +173,22 @@ class TodoyuTaskClipboard {
 		} else {
 			$idParentTask = $currentTask['id_parenttask'];
 		}
+		
+		TodoyuDebug::printInFireBug($idParentTask, 'parent');
 
-		$taskParent		= TodoyuTaskManager::getTaskData($idParentTask);
+		//$taskParent		= TodoyuTaskManager::getTaskData($idParentTask);
+
+	//	TodoyuDebug::printInFireBug($task);
 
 		if( $dataClipboard['mode'] === 'copy' ) {
 			$idNewTask = TodoyuTaskManager::copyTask($dataClipboard['task'], $idParentTask, $dataClipboard['subtasks'], $currentTask['id_project']);
 		} elseif( $dataClipboard['mode'] === 'cut' ) {
 			$idNewTask = TodoyuTaskManager::moveTask($dataClipboard['task'], $idParentTask, $currentTask['id_project']);
 		}
+
+
+		TodoyuDebug::printInFireBug($idNewTask, '$idNewTask');
+
 
 			// Clear clipboard
 		self::clear();

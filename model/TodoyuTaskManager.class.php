@@ -1750,41 +1750,39 @@ class TodoyuTaskManager {
 	 *
 	 * @param	Integer		$idTask				Task to move
 	 * @param	Integer		$idParentTask		New parent task
+	 * @param	Integer		$idProject
+	 * @return	Integer
 	 */
 	public static function moveTask($idTask, $idParentTask, $idProject = 0) {
 		$idTask			= intval($idTask);
 		$idParentTask	= intval($idParentTask);
 		$idProject		= intval($idProject);
 		$taskData		= self::getTaskData($idTask);
-		$parentData		= self::getTaskData($idParentTask);
+		$parentData		= $idParentTask === 0 ? false : self::getTaskData($idParentTask);
+		$idNewProject	= $idParentTask === 0 ? $idProject : intval($parentData['id_project']);
 
 			// Basic update
 		$update		= array(
-			'id_parenttask'	=> $idParentTask
+			'id_parenttask'	=> $idParentTask,
+			'id_project'	=> $idNewProject
 		);
 
-		if( $idParentTask !== 0 ) {
-			$update['id_project'] = $parentData['id_project'];
-		} else {
-			$update['id_project'] = $idProject;
-		}
-
 			// If project changed, generate a new task number
-		if( $taskData['id_project'] != $parentData['id_project'] ) {
-			$update['tasknumber']	= TodoyuProjectManager::getNextTaskNumber($parentData['id_project']);
+		if( $taskData['id_project'] != $idNewProject ) {
+			$update['tasknumber']	= TodoyuProjectManager::getNextTaskNumber($idNewProject);
 		}
 
 			// Update the moved task
 		self::updateTask($idTask, $update);
 
 			// If project changed, update also all sub tasks with new project ID and generate new task number
-		if( $taskData['id_project'] != $parentData['id_project'] ) {
+		if( $taskData['id_project'] != $idNewProject ) {
 			$allSubTaskIDs	= self::getAllSubTaskIDs($idTask);
 
 			foreach($allSubTaskIDs as $idSubTask) {
 				$subUpdate	= array(
-					'id_project'	=> $parentData['id_project'],
-					'tasknumber'	=> TodoyuProjectManager::getNextTaskNumber($parentData['id_project'])
+					'id_project'	=> $idNewProject,
+					'tasknumber'	=> TodoyuProjectManager::getNextTaskNumber($idNewProject)
 				);
 
 				Todoyu::db()->updateRecord(self::TABLE, $idSubTask, $subUpdate);
