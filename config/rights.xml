@@ -15,8 +15,8 @@
 
 	<section name="task" require="general:use">
 		<right name="seeAll" />
-		<right name="addViaQuickCreateHeadlet" require="task:addInOwnProjects" />
 		<right name="addInOwnProjects" />
+		<right name="addViaQuickCreateHeadlet" require="task:addInOwnProjects" />
 		<right name="addInAllProjects" require="project:seeAll,task:addInOwnProjects" />
 		<right name="editAndDeleteInOwnProjects" />
 		<right name="editAndDeleteInAllProjects" require="project:seeAll,task:editAndDeleteInOwnProjects" />
