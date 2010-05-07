@@ -1133,7 +1133,7 @@ class TodoyuTaskManager {
 		}
 
 			// Is acknowledged?
-		if( $task->isTask() && ! $task->isAcknowledged() ) {
+		if( $task->isTask() && ! $task->isAcknowledged() && $task->id_person_assigned == personid() ) {
 			$icons['notacknowledged'] = array(
 				'id'		=> 'task-' . $idTask . '-notacknowledged',
 				'class'		=> 'notAcknowledged',
@@ -1170,12 +1170,14 @@ class TodoyuTaskManager {
 	 */
 	public static function setTaskAcknowledged($idTask) {
 		$idTask	= intval($idTask);
-
-		$update	= array(
-			'is_acknowledged' => 1
-		);
-
-		self::updateTask($idTask, $update);
+		
+		if( self::getTask( $idTask )->id_person_assigned == personid() )	{
+			$update	= array(
+				'is_acknowledged' => 1
+			);
+			
+			self::updateTask($idTask, $update);
+		}
 	}
 
 
