@@ -88,10 +88,21 @@ class TodoyuTaskClipboard {
 	 *
 	 * @return	Integer
 	 */
-	public static function getCurrentTask() {
+	public static function getCurrentTaskID() {
 		$data	= self::getData();
 
 		return intval($data['task']);
+	}
+
+
+
+	/**
+	 * Get current task
+	 *
+	 * @return		TodoyuTask
+	 */
+	public static function getCurrentTask() {
+		return TodoyuTaskManager::getTask(self::getCurrentTaskID());
 	}
 
 
@@ -209,25 +220,32 @@ class TodoyuTaskClipboard {
 	/**
 	 * Add contextmenu to paste tasks
 	 *
-	 * @param	Integer		$idTask
+	 * @param	Integer		$idTaskContextmenu
 	 * @param	Array		$items
 	 * @return	Array
 	 */
-	public static function getTaskContextMenuItems($idTask, array $items) {
-		$idTask	= intval($idTask);
+	public static function getTaskContextMenuItems($idTaskContextmenu, array $items) {
+		
 
 			// Only show context menu in project area and if something is on the clipboard
 		if( self::hasTask() ) {
+			$data		= self::getData();
 			$ownItems	= Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboard'];
+			$currentTask= self::getCurrentTask();
+
+				// Change labels for containers
+			if( $currentTask->isContainer() ) {
+				$ownItems['paste']['label'] .= '.container';
+			}
 
 				// Paste is only available in project view
-			if( AREA === EXTID_PROJECT && TodoyuTaskRights::isAddAllowed($idTask) ) {
+			if( AREA === EXTID_PROJECT && TodoyuTaskRights::isAddAllowed($idTaskContextmenu) ) {
 				$mergeItems	= $ownItems;
-				$data		= self::getData();
-				$isSubTask	= TodoyuTaskManager::isSubTaskOf($idTask, $data['task'], true);
+
+				$isSubTask	= TodoyuTaskManager::isSubTaskOf($idTaskContextmenu, $data['task'], true);
 
 					// Don't allow paste on itself or sub tasks when: cut mode or with sub tasks
-				if( $idTask == $data['task'] || $isSubTask ) {
+				if( $idTaskContextmenu == $data['task'] || $isSubTask ) {
 					if( $data['mode'] === 'cut' || $data['subtasks'] ) {
 						$mergeItems = array();
 					}

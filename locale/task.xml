@@ -50,6 +50,7 @@
 		<label index="contextmenu.container.clone">Clone</label>
 		<label index="contextmenu.container.delete">Delete</label>
 		<label index="contextmenu.paste">Insert Copied Task ...</label>
+		<label index="contextmenu.paste.container">Insert Copied Cont. ...</label>
 		<label index="contextmenu.paste.in">As Subtask</label>
 		<label index="contextmenu.paste.before">Before This Task</label>
 		<label index="contextmenu.paste.after">After This Task</label>
@@ -149,6 +150,7 @@
 		<label index="contextmenu.container.clone">Duplizieren</label>
 		<label index="contextmenu.container.delete">Löschen</label>
 		<label index="contextmenu.paste">Task-Kopie Einfügen...</label>
+		<label index="contextmenu.paste.container">Container-Kopie Einf...</label>
 		<label index="contextmenu.paste.in">Als Unteraufgabe</label>
 		<label index="contextmenu.paste.before">Vor dieser Aufgabe</label>
 		<label index="contextmenu.paste.after">Nach dieser Aufgabe</label>
@@ -247,6 +249,7 @@
 		<label index="contextmenu.container.clone">Clonar</label>
 		<label index="contextmenu.container.delete">Excluir</label>
 		<label index="contextmenu.paste">Inserir Cópia de Tarefa ...</label>
+		<label index="contextmenu.paste.container">Inserir Cópia de Cont...</label>
 		<label index="contextmenu.paste.in">Como Subtarefa</label>
 		<label index="contextmenu.paste.before">Antes desta tarefa</label>
 		<label index="contextmenu.paste.after">Após esta tarefa</label>
