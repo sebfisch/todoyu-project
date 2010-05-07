@@ -1294,11 +1294,6 @@ class TodoyuTaskManager {
 		$idPerson	= personid();
 		$taskNumber	= TodoyuProjectManager::getNextTaskNumber($idProject);
 
-			// Calculate dates based on project and container parents
-		$range		= self::getParentDateRanges($idParentTask, $idProject, true);
-		$dateStart	= $range['start'] < NOW ? NOW : $range['start'];
-		$dateEnd	= $range['end'] < NOW ? NOW : $range['end'];
-
 			// Set default data
 		$defaultData	= array(
 			'id'				=> 0,
@@ -1977,6 +1972,12 @@ class TodoyuTaskManager {
 		if( strtolower(CONTROLLER) === 'quickcreatetask' ) {
 			$data['id_person_owner'] = personid();
 		}
+
+			// Status
+		$extConf	= TodoyuExtConfManager::getExtConf('project');
+		if( ! isset($data['status']) ) {
+			$data['status'] = intval($extConf['status']);
+		}			
 				
 		return $data;
 	}
