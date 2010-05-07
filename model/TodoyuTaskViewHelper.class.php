@@ -189,6 +189,11 @@ class TodoyuTaskViewHelper {
 			array(
 				'filter'=> 'project',
 				'value'	=> $idProject
+			),
+			array(
+				'filter'=> 'subtask',
+				'value'	=> $idTask,
+				'negate'=> true
 			)
 		);
 		

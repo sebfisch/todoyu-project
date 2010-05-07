@@ -632,7 +632,7 @@ class TodoyuProjectManager {
 			// Get an array for mapping between tasks and their parents
 		$field		= 'id_parenttask';
 		$table		= 'ext_project_task';
-		$where		= 'id_project = ' . $idProject; // IN(' . implode(',', $matchingNotDisplayedTaskIDs) . ')';
+		$where		= 'id_project = ' . $idProject; // . ' AND id IN(' . implode(',', $matchingNotDisplayedTaskIDs) . ')';
 		$index		= 'id';
 		$parentMap	= Todoyu::db()->getColumn($field, $table, $where, '', '', '', '', $index);
 
@@ -642,9 +642,15 @@ class TodoyuProjectManager {
 				// Start with the parent of the not displayed task
 			$idParent	= $parentMap[$matchingNotDisplayedTaskID];
 
+				// Memorize already checked parent. If there is in any case a recursion (should not happen),
+				// this check will prevent a deadlock
+			$checkedParents	= array();
+
 				// Check all parents, if one of them does not match this current filter (and ist
 				// not displayed with all its sub tasks, add the not display task to the lost list
-			while($idParent != 0) {
+			while( $idParent != 0 && ! in_array($idParent, $checkedParents)) {
+				$checkedParents[] = $idParent;
+				
 					// If parent doesn't match to the filter
 				if( ! in_array($idParent, $matchingTaskIDs) ) {
 						// Add task to lost list and stop checking its

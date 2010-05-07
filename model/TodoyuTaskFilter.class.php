@@ -873,6 +873,36 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
+	 * Filter condition for all subtasks (recursive)
+	 *
+	 * @param	Integer		$value			idTask
+	 * @param	Boolean		$negate
+	 * @return	Array|Boolean
+	 */
+	public static function Filter_subtask($value, $negate = false) {
+		$idTask		= intval($value);
+		$queryParts	= false;
+
+		if( $idTask !== 0 ) {
+			$subtasks	= TodoyuTaskManager::getAllSubTaskIDs($idTask);
+			$tables		= array(
+				'ext_project_task'
+			);
+			$compare= $negate ? 'NOT IN' : 'IN';
+			$where	= 'ext_project_task.id ' . $compare . '(' . implode(',', $subtasks) . ')';
+
+			$queryParts	= array(
+				'tables'=> $tables,
+				'where'	=> $where
+			);
+		}
+
+		return $queryParts;
+	}
+
+
+
+	/**
 	 * @todo	comment
 	 *
 	 * @param	String		$field
