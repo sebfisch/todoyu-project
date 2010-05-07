@@ -4,11 +4,11 @@
 		<label index="title">Projects</label>
 		<label index="filter.remove">Remove Filter</label>
 		<label index="filter.addFilter">Add</label>
-		<label index="filter.addNewFilter">Add A New Filter</label>
+		<label index="filter.addNewFilter">Add a new filter</label>
 		<label index="filter.fulltext">Full-Text</label>
 		<label index="filter.projectleader">Project Manager</label>
 		<label index="filter.customer">Customer</label>
-		<label index="list.empty">No matching projects</label>
+		<label index="list.empty">No Projects Found</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="title">Projekte</label>
