@@ -289,6 +289,8 @@ Todoyu.Ext.project.Project = {
 	onStatusUpdated: function(idProject, status, response) {
 		this.refresh(idProject);
 		this.setStatus(idProject, status);
+
+		Todoyu.Hook.exec('onProjectSaved', idProject);
 	},
 
 

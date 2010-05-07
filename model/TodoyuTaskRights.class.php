@@ -143,7 +143,7 @@ class TodoyuTaskRights {
 		if( TodoyuAuth::isAdmin() ) {
 			return true;
 		}
-
+		
 		$idTask	= intval($idTask);
 		$task	= TodoyuTaskManager::getTask($idTask);
 
@@ -151,9 +151,9 @@ class TodoyuTaskRights {
 		if( $task->isContainer() ) {
 			return TodoyuProjectRights::isSeeAllowed($task->getProjectID());
 		}
-
+		
 		$status	= $task->getStatusKey();
-
+		
 			// Check status
 		if( ! self::hasStatusRight($status, 'see') ) {
 			return false;
