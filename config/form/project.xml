@@ -98,7 +98,7 @@
 									<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onCompleteCustom>
 								</options>
 							</config>
-							<required />
+							<required label="LLL:project.form.validation.company" />
 						</field>
 
 					</elements>

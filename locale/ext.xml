@@ -66,6 +66,7 @@
 		<label index="records.worktype">Work Types</label>
 		<label index="form.validation.dateBefore">Date must be set before end date</label>
 		<label index="form.validation.title">Please enter a project title</label>
+		<label index="form.validation.company">A customer is required for a project</label>
 		<label index="noLabel.newProjectParticipant">New project participant</label>
 		<label index="save.error">Saving was not successful</label>
 		<label index="save.success">Saving was successful</label>
@@ -145,6 +146,7 @@
 		<label index="records.worktype">Arbeits-Typ</label>
 		<label index="form.validation.dateBefore">Datum muss vor dem End-Datum liegen</label>
 		<label index="form.validation.title">Bitte Projekt-Titel angeben</label>
+		<label index="form.validation.company">Ein Kunde ist zwingend für ein Projekt</label>
 		<label index="noLabel.newProjectParticipant">Neuer Projekt-Mitarbeiter</label>
 		<label index="save.error">Speichern war nicht erfolgreich</label>
 		<label index="save.success">Speichern war erfolgreich</label>
@@ -225,6 +227,7 @@
 		<label index="records.worktype">Tipos de Serviços</label>
 		<label index="form.validation.dateBefore">Data Deve ser Anterior ao Término</label>
 		<label index="form.validation.title">Entre com o título do projeto</label>
+		<label index="form.validation.company">Um cliente é necessária para um projeto</label>
 		<label index="noLabel.newProjectParticipant">Novo Participante do Projeto</label>
 		<label index="save.error">Não foi possível salvar</label>
 		<label index="save.success">Salvo</label>
