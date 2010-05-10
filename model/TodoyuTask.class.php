@@ -304,6 +304,17 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 
+	/**
+	 * Check if current person is assigned to this task
+	 *
+	 * @return	Boolean
+	 */
+	public function isCurrentPersonAssigned() {
+		return TodoyuAuth::getPersonID() === intval($this->get('id_person_assigned'));
+	}
+
+
+
 	protected function loadForeignData() {
 
 	}
