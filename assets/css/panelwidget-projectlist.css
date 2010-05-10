@@ -1,5 +1,5 @@
-#panelwidget-projectlist .icon {
-	background:url(../img/panelwidget-projectlist.png) no-repeat 0 5px;
+#panelwidget-projectlist h1 span.title {
+	background:url(../img/panelwidget-projectlist.png) no-repeat 4px 4px;
 }
 
 #panelwidget-projectlist .content {

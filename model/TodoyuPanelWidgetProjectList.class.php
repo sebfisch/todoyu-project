@@ -46,6 +46,8 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 			$idArea									// area ID
 		);
 
+		$this->addHasIconClass();
+
 		$filterJSON	= json_encode(self::getFilters());
 
 			// Init widget JS (observers)
