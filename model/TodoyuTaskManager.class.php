@@ -117,12 +117,12 @@ class TodoyuTaskManager {
 	/**
 	 * Get task ID by full task number
 	 *
-	 * @param	String		$fullTasknumber			Task number separated by point (.)
+	 * @param	String		$fullTaskNumber			Task number separated by point (.)
 	 * @return	Integer		0 if task not found
 	 */
-	public static function getTaskIDByTaskNumber($fullTasknumber) {
+	public static function getTaskIDByTaskNumber($fullTaskNumber) {
 		$idTask	= 0;
-		$parts	= TodoyuArray::intExplode('.', $fullTasknumber, true, true);
+		$parts	= TodoyuArray::intExplode('.', $fullTaskNumber, true, true);
 
 		if( sizeof($parts) === 2 ) {
 			$field	= 'id';
@@ -484,7 +484,7 @@ class TodoyuTaskManager {
 		}
 
 		if( $task->isTask() || $task->isContainer() ) {
-				// Add project backlink if not in project area
+				// Add project back-link if not in project area
 			if( AREA !== EXTID_PROJECT ) {
 				if( TodoyuProjectRights::isSeeAllowed($task->getProjectID()) ) {
 					$allowed['showinproject'] = $ownItems['showinproject'];
@@ -496,7 +496,7 @@ class TodoyuTaskManager {
 				$allowed['edit'] = $ownItems['edit'];
 			}
 
-				// Actions (with submenu)
+				// Actions (with sub menu)
 			$allowed['actions'] = $ownItems['actions'];
 			unset($allowed['actions']['submenu']);
 
