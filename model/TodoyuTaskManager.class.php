@@ -429,6 +429,8 @@ class TodoyuTaskManager {
 		$data = array(
 			'status' => intval($newStatus)
 		);
+		
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'onTaskStatusChanged', $data, array('idTask' => $idTask));
 
 		self::updateTask($idTask, $data);
 	}
