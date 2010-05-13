@@ -27,7 +27,7 @@
 class TodoyuTaskFilterDataSource {
 
 	/**
-	 * Autocompleter function to search for taskss
+	 * AutoCompleter function to search for tasks
 	 *
 	 * @param	String	$search
 	 * @param	Array	$config
@@ -49,7 +49,7 @@ class TodoyuTaskFilterDataSource {
 
 
 	/**
-	 * Get autocomplete list by task filters
+	 * Get autoComplete suggestions list by task filters
 	 *
 	 * @param	Array		$filters
 	 * @return	Array
@@ -60,7 +60,7 @@ class TodoyuTaskFilterDataSource {
 		$taskIDs	= $taskFilter->getTaskIDs();
 
 		if( sizeof($taskIDs) > 0 ) {
-			// Get task details
+				// Get task details
 			$fields	= 'id, title, id_project, tasknumber';
 			$table	= 'ext_project_task';
 			$where	= 'id IN(' . implode(',', $taskIDs) . ')';
@@ -83,7 +83,7 @@ class TodoyuTaskFilterDataSource {
 
 
 	/**
-	 * Prepares the options of task-status for rendering in the widget.
+	 * Prepare options of task-status for rendering in widget.
 	 *
 	 * @param	Array	$definitions
 	 * @return	Array
@@ -91,13 +91,14 @@ class TodoyuTaskFilterDataSource {
 	public static function getStatusOptions(array $definitions)	{
 		$options	= array();
 		$statuses	= TodoyuTaskStatusManager::getStatusInfos();
-		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
+//		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
+		// @todo	check - needed?
 
 		foreach($statuses as $status) {
 			$options[] = array(
 				'label'		=> $status['label'],
 				'value'		=> $status['index'],
-				//'selected'	=> in_array($status['index'], $selected)
+//				'selected'	=> in_array($status['index'], $selected)
 			);
 		}
 
@@ -109,15 +110,15 @@ class TodoyuTaskFilterDataSource {
 
 
 	/**
-	 * Get projectrole as options for widget
+	 * Get projectRole as options for widget
 	 *
 	 * @param	Array		$definitions
 	 * @return	Array
 	 */
 	public static function getProjectroleOptionDefinitions(array $definitions) {
-		$options		= array();
 		$projectroles	= TodoyuRoleManager::getAllRoles();
-		$selected		= TodoyuArray::intExplode(',', $definitions['value'], true, true);
+//		$selected		= TodoyuArray::intExplode(',', $definitions['value'], true, true);
+//		@todo	- check selection needed?
 		$reform			= array(
 			'title'	=> 'label',
 			'id'	=> 'value'
@@ -131,20 +132,22 @@ class TodoyuTaskFilterDataSource {
 
 
 	/**
-	 * Get options config array of worktypes
+	 * Get options config array of workTypes
 	 *
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
 	public static function getWorktypeOptions(array $definitions) {
 		$options	= array();
-		$worktypes	= TodoyuWorktypeManager::getAllWorktypes();
-		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
+		$workTypes	= TodoyuWorktypeManager::getAllWorktypes();
 
-		foreach($worktypes as $worktype) {
+//		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
+//		@todo check - selection needed? it's currently unused 
+
+		foreach($workTypes as $workType) {
 			$options[] = array(
-				'label'		=> $worktype['title'],
-				'value'		=> $worktype['id']
+				'label'		=> $workType['title'],
+				'value'		=> $workType['id']
 			);
 		}
 
@@ -179,7 +182,7 @@ class TodoyuTaskFilterDataSource {
 
 
 	/**
-	 * Dynamic dateinput options
+	 * Dynamic dateInput options
 	 *
 	 * @param	Array	$definitions
 	 * @return	Array
@@ -226,7 +229,7 @@ class TodoyuTaskFilterDataSource {
 
 
 	/**
-	 * calculates the timestamps by dynamic type
+	 * Calculates timestamps by dynamic type
 	 *
 	 * @param	String	$value
 	 * @return	Array
@@ -234,7 +237,7 @@ class TodoyuTaskFilterDataSource {
 	public static function getDynamicDateinputTimestamps($value)	{
 		$currentDayOfWeek = date('w') == 0 ? 7 : date('w');
 
-		$dayBeginn	= 1 - $currentDayOfWeek;
+		$dayBegin	= 1 - $currentDayOfWeek;
 		$dayEnd		= 7 - $currentDayOfWeek;
 
 		$individualStartSummand = 0;
@@ -259,19 +262,19 @@ class TodoyuTaskFilterDataSource {
 				break;
 
 			case 'currentweek':
-				$individualStartSummand = $dayBeginn;
+				$individualStartSummand = $dayBegin;
 				$individualEndSummand	= $dayEnd;
 				break;
 
 			case 'nextweek':
-				$individualStartSummand = $dayBeginn;
+				$individualStartSummand = $dayBegin;
 				$individualEndSummand	= $dayEnd;
 
 				$generalDaySummand = 7;
 				break;
 
 			case 'lastweek':
-				$individualStartSummand = $dayBeginn;
+				$individualStartSummand = $dayBegin;
 				$individualEndSummand	= $dayEnd;
 
 				$generalDaySummand = -7;
@@ -279,14 +282,17 @@ class TodoyuTaskFilterDataSource {
 
 			case 'todoay':
 			default:
-				// do nothing
+					// Do nothing
 				break;
 		}
 
-		$start	= mktime(0, 0, 0, date('n'), (date('j')+$individualStartSummand)+$generalDaySummand, date('Y'));
-		$end	= mktime(23, 59, 59, date('n'), (date('j')+$individualEndSummand)+$generalDaySummand, date('Y'));
+		$start	= mktime(0, 0, 0, date('n'), (date('j') + $individualStartSummand) + $generalDaySummand, date('Y'));
+		$end	= mktime(23, 59, 59, date('n'), (date('j') + $individualEndSummand) + $generalDaySummand, date('Y'));
 
-		return array('start' => $start, 'end' => $end);
+ 		return array(
+			'start' => $start,
+			'end' => $end
+		);
 	}
 
 }
