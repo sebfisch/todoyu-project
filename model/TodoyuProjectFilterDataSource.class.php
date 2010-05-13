@@ -21,8 +21,8 @@
 /**
  * handles the datasource for the filter widgets
  *
- * @package Todoyu
- * @subpackage project
+ * @package		Todoyu
+ * @subpackage	project
  */
 class TodoyuProjectFilterDataSource {
 

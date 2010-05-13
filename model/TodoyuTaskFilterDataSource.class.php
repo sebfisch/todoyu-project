@@ -21,8 +21,8 @@
 /**
  * Handles the Datasource for filter-widgets which belong to a task
  *
- * @package Todoyu
- * @subpackage project
+ * @package		Todoyu
+ * @subpackage	project
  */
 class TodoyuTaskFilterDataSource {
 
