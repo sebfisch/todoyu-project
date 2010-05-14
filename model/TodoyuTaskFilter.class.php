@@ -497,23 +497,23 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	/**
 	 * Filter condition: Task status in given stati list?
 	 *
-	 * @param	Array		$status
+	 * @param	String		$statusList
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_status($statuses, $negate = false) {
+	public static function Filter_status($statusList, $negate = false) {
 		$queryParts	= false;
-		$statuses	= TodoyuArray::intExplode(',', $statuses, true, true);
+		$statusList	= TodoyuArray::intExplode(',', $statusList, true, true);
 
-		if( sizeof($statuses) > 0 ) {
+		if( sizeof($statusList) > 0 ) {
 			$tables	= array(self::TABLE);
 			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= '(   ext_project_task.status ' . $compare . '(' . implode(',', $statuses) . ')
+			$where	= '(   ext_project_task.status ' . $compare . '(' . implode(',', $statusList) . ')
 						OR ext_project_task.type = ' . TASK_TYPE_CONTAINER . ')';
 
 			$queryParts	= array(
-				'tables'=> $tables,
-				'where'	=> $where
+				'tables'	=> $tables,
+				'where'		=> $where
 			);
 		}
 
@@ -574,9 +574,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_parentTask($idTask, $negate = false) {
-		$compare= $negate ? '!=' : '=';
 		$tables	= array(self::TABLE);
-		$where	= 'ext_project_task.id_parenttask ' . $compare . ' ' . intval($idTask);
+		$where	= 'ext_project_task.id_parenttask ' . ( $negate ? '!=' : '=' ) . ' ' . intval($idTask);
 
 		$queryParts	= array(
 			'tables'	=> $tables,
@@ -741,8 +740,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		$where 	= 'ext_project_task.' . $field . ' BETWEEN ' . $timeStamps['start'] . ' AND ' . $timeStamps['end'];
 
 		return array(
-			'tables'=> $tables,
-			'where' => $where
+			'tables'	=> $tables,
+			'where' 	=> $where
 		);
 	}
 
@@ -793,20 +792,20 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter condition: Task has worktype
+	 * Filter condition: Task has workType
 	 *
-	 * @param	Array		$worktypeIDs
+	 * @param	Array		$workTypeIDs
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_worktype($worktypeIDs, $negate = false) {
+	public static function Filter_worktype($workTypeIDs, $negate = false) {
 		$queryParts	= false;
-		$worktypeIDs= TodoyuArray::intExplode(',', $worktypeIDs);
+		$workTypeIDs= TodoyuArray::intExplode(',', $workTypeIDs);
 
-		if( sizeof($worktypeIDs) !== 0 ) {
+		if( sizeof($workTypeIDs) !== 0 ) {
 			$tables	= array(self::TABLE);
 			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= 'ext_project_task.id_worktype ' . $compare . '(' . implode(',', $worktypeIDs) . ')';
+			$where	= 'ext_project_task.id_worktype ' . $compare . '(' . implode(',', $workTypeIDs) . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -839,14 +838,14 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				self::TABLE,
 				'ext_project_mm_project_person'
 			);
-			$compare= $negate ? 'NOT IN' : 'IN';
+
 			$where	= '		ext_project_task.id_project			= ext_project_mm_project_person.id_project 
 						AND ext_project_mm_project_person.id_person	= ' . $idPerson .
-					  ' AND ext_project_mm_project_person.id_role ' . $compare . '(' . implode(',', $roles) . ')';
+					  ' AND ext_project_mm_project_person.id_role ' . ( $negate ? 'NOT IN' : 'IN' ) . '(' . implode(',', $roles) . ')';
 
 			$queryParts	= array(
-				'tables'=> $tables,
-				'where'	=> $where
+				'tables'	=> $tables,
+				'where'		=> $where
 			);
 		}
 
@@ -867,14 +866,13 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		$queryParts	= false;
 
 		if( $idTask !== 0 ) {
-			$subtasks	= TodoyuTaskManager::getAllSubTaskIDs($idTask);
+			$subTasks	= TodoyuTaskManager::getAllSubTaskIDs($idTask);
 			$tables		= array(self::TABLE);
-			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= 'ext_project_task.id ' . $compare . '(' . implode(',', $subtasks) . ')';
-
+			$where	= 'ext_project_task.id ' . ( $negate ? 'NOT IN' : 'IN' ) . '(' . implode(',', $subTasks) . ')';
+			
 			$queryParts	= array(
-				'tables'=> $tables,
-				'where'	=> $where
+				'tables'	=> $tables,
+				'where'		=> $where
 			);
 		}
 
