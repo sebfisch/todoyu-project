@@ -95,7 +95,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 		TodoyuPage::set('projectTabs', $projectTabs);
 		TodoyuPage::set('taskTree', $projectTaskTree);
 
-			// Add JS onload functions
+			// Add JS onLoad functions
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.init.bind(Todoyu.Ext.project)', 100);
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.ContextMenuTask.attach.bind(Todoyu.Ext.project.ContextMenuTask)', 100);
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.ContextMenuProject.attach.bind(Todoyu.Ext.project.ContextMenuProject)', 100);

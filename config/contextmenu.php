@@ -28,7 +28,6 @@
 	/**
 	 * Context menu configuration for task
 	 */
-
 Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 	'showinproject'	=> array(
 		'key'		=> 'showinproject',
@@ -180,7 +179,6 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 	/**
 	 * Context menu configuration for container
 	 */
-
 Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
 	'showinproject'	=> array(
 		'key'		=> 'showinproject',
@@ -291,7 +289,6 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
 	/**
 	 * Context menu configuration for project
 	 */
-
 Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 	'showinproject'	=> array(
 		'key'		=> 'showinproject',
@@ -388,7 +385,6 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 	/**
 	 * Context menu configuration task clipboard functions
 	 */
-
 Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboard'] = array(
 	'paste'	=> array(
 		'key'		=> 'paste',
