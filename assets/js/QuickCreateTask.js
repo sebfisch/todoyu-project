@@ -34,7 +34,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 	 * @param	{String}		form
 	 */
 	save: function(form) {
-		tinyMCE.triggerSave();
+		Todoyu.Ui.closeRTE(form);
 
 		$(form).request({
 			'parameters': {

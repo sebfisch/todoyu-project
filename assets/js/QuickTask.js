@@ -72,8 +72,8 @@ Todoyu.Ext.project.QuickTask = {
 	 *
 	 * @param	{String}	form
 	 */
-	save: function(form)	{
-		tinyMCE.triggerSave();
+	save: function(form) {
+		Todoyu.Ui.closeRTE(form);
 
 		$(form).request({
 			'parameters': {

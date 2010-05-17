@@ -94,12 +94,7 @@ Todoyu.Ext.project.Project.Edit = {
 	 * @param	{Element}	form
 	 */
 	save: function(form){
-		tinyMCE.triggerSave();
-		
-		$(form).select('textarea.RTE').each(function(rte){
-			tinyMCE.execCommand('mceRemoveControl', false, rte.id);
-		});
-
+		Todoyu.Ui.closeRTE(form);
 
 		$(form).request({
 			'parameters': {
