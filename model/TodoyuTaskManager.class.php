@@ -64,7 +64,7 @@ class TodoyuTaskManager {
 		$xmlPathInsert	= 'ext/project/config/form/field-id_project.xml';
 		$insertForm		= TodoyuFormManager::getForm($xmlPathInsert);
 
-			// If person can add tasks in all project, show autocomplete field, else only a select element
+			// If person can add tasks in all project, show auto-completion field, else only a select element
 		if( allowed('project', 'task:addInAllProjects') ) {
 			$field	= $insertForm->getField('id_project_ac');
 		} else {
@@ -308,7 +308,7 @@ class TodoyuTaskManager {
 			}
 		}
 
-			// Get worktype from default
+			// Get work type from default
 		if( ! isset($data['id_worktype']) ) {
 			$data['id_worktype'] = intval($extConf['id_worktype']);
 		}
@@ -334,13 +334,13 @@ class TodoyuTaskManager {
 		$idProject		= intval($idProject);
 		$idParentTask	= intval($idParentTask);
 
-		$field		= 'MAX(sorting) as sorting';
-		$table		= self::TABLE;
-		$where		= '	id_project		= ' . $idProject . ' AND
-						id_parenttask	= ' . $idParentTask;
-		$group		= 'sorting';
-		$order		= 'sorting DESC';
-		$limit		= 1;
+		$field	= 'MAX(sorting) as sorting';
+		$table	= self::TABLE;
+		$where	= '		id_project		= ' . $idProject
+				. ' AND	id_parenttask	= ' . $idParentTask;
+		$group	= 'sorting';
+		$order	= 'sorting DESC';
+		$limit	= 1;
 
 		$maxSorting	= Todoyu::db()->getFieldValue($field, $table, $where, $group, $order, $limit, 'sorting'); // getRecordByQuery($fields, $table, $where, $group);
 
@@ -357,6 +357,7 @@ class TodoyuTaskManager {
 	 * Delete a task
 	 *
 	 * @param	Integer		$idTask
+	 * @param	Boolean		$deleteSubTasks
 	 */
 	public static function deleteTask($idTask, $deleteSubTasks = true) {
 		$data	= array(
@@ -444,11 +445,9 @@ class TodoyuTaskManager {
 	 * @return	Integer
 	 */
 	public static function getProjectID($idTask) {
-		$field	= 'id_project';
-		$table	= self::TABLE;
-		$where	= 'id = ' . intval($idTask);
+		$idTask	= intval($idTask);
 
-		return intval(Todoyu::db()->getFieldValue($field, $table, $where));
+		return self::getTask($idTask)->id_project;
 	}
 
 
@@ -477,7 +476,7 @@ class TodoyuTaskManager {
 		$idTask	= intval($idTask);
 		$task	= TodoyuTaskManager::getTask($idTask);
 		$allowed= array();
-		$type	= '';
+//		$type	= '';
 
 		if( $task->isTask() ) {
 			$ownItems	=& Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'];
@@ -555,7 +554,7 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Remove empty parent menues if they have no submenu entries
+	 * Remove empty parent menus if they have no sub entries
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Array		$items
@@ -615,7 +614,7 @@ class TodoyuTaskManager {
 	 */
 	public static function getAllSubTaskIDs($idTask) {
 		$idTask		= intval($idTask);
-		$subtasks	= array();
+		$subTasks	= array();
 
 		$field	= 'id';
 		$table	= self::TABLE;
@@ -627,14 +626,14 @@ class TodoyuTaskManager {
 		$newTasks	= Todoyu::db()->getColumn($field, $table, $where);
 
 		while( sizeof($newTasks) > 0 ) {
-			$subtasks = array_merge($subtasks, $newTasks);
+			$subTasks = array_merge($subTasks, $newTasks);
 
 			$where = sprintf($whereF, implode(',', $newTasks));
 
 			$newTasks = Todoyu::db()->getColumn($field, $table, $where);
 		}
 
-		return $subtasks;
+		return $subTasks;
 	}
 
 
@@ -653,7 +652,7 @@ class TodoyuTaskManager {
 		}
 
 		$where	= '	id_parenttask	= ' . $idTask . ' AND deleted	= 0';
-		$orderBy= 'date_create';
+		$order	= 'date_create';
 
 		return TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
 	}
@@ -669,9 +668,9 @@ class TodoyuTaskManager {
 	public static function hasSubTasks($idTask) {
 		$idTask	= intval($idTask);
 
-		$subtaskIDs	= self::getSubTaskIDs($idTask);
+		$subTaskIDs	= self::getSubTaskIDs($idTask);
 
-		return sizeof($subtaskIDs) > 0 ;
+		return sizeof($subTaskIDs) > 0 ;
 	}
 
 
@@ -689,12 +688,12 @@ class TodoyuTaskManager {
 		$idParent	= intval($idParent);
 
 		if( $checkDeep ) {
-			$subtasks	= self::getAllSubTaskIDs($idParent);
+			$subTasks	= self::getAllSubTaskIDs($idParent);
 		} else {
-			$subtasks	= self::getSubTaskIDs($idParent);
+			$subTasks	= self::getSubTaskIDs($idParent);
 		}
 
-		return in_array($idTask, $subtasks);
+		return in_array($idTask, $subTasks);
 	}
 
 
@@ -1185,7 +1184,7 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Get task autocompletion label
+	 * Get task auto-completion label
 	 *
 	 * @param	Integer	$idTask
 	 * @return	String
@@ -1252,17 +1251,17 @@ class TodoyuTaskManager {
 	/**
 	 * Use task filter to find the matching tasks by filter conditions or filterset
 	 *
-	 * @param	Integer		$idFilterset
+	 * @param	Integer		$idFilterSet
 	 * @param	Boolean		$useConditions
 	 * @param	Array		$filterConditions
 	 * @param	String		$conjunction
 	 * @return	Array
 	 */
-	public static function getTaskIDsByFilter($idFilterset = 0, array $conditions = array(), $conjunction = 'AND')	{
-		$idFilterset	= intval($idFilterset);
+	public static function getTaskIDsByFilter($idFilterSet = 0, array $conditions = array(), $conjunction = 'AND') {
+		$idFilterSet	= intval($idFilterSet);
 
-		if( $idFilterset !== 0 ) {
-			$conditions = TodoyuFilterConditionManager::getFilterSetConditions($idFilterset);
+		if( $idFilterSet !== 0 ) {
+			$conditions = TodoyuFilterConditionManager::getFilterSetConditions($idFilterSet);
 		} else {
 			$conditions = TodoyuFilterConditionManager::buildFilterConditionArray($conditions);
 		}
@@ -1344,16 +1343,16 @@ class TodoyuTaskManager {
 		$range		= false;
 
 		if( $idTask > 0 ) {
-			$rootlineTasks	= self::getRootlineTasks($idTask);
+			$rootLineTasks	= self::getRootlineTasks($idTask);
 
 
 			if( $checkSelf !== true ) {
 					// Remove element itself
-				array_shift($rootlineTasks);
+				array_shift($rootLineTasks);
 			}
 
 				// Check all parent elements if there is a container and use its dates for the range
-			foreach($rootlineTasks as $task) {
+			foreach($rootLineTasks as $task) {
 				if( $task['type'] == TASK_TYPE_CONTAINER ) {
 					$range	= array(
 						'start'	=> $task['date_start'],
@@ -1406,7 +1405,7 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Get the rootline of a task (all parent task IDs)
+	 * Get the root line of a task (all parent task IDs)
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Array
@@ -1414,25 +1413,25 @@ class TodoyuTaskManager {
 	public static function getTaskRootline($idTask) {
 		$idTask		= intval($idTask);
 
-			// Check if already cached
+			// Check whether already cached
 		$idCache	= 'rootline:' . $idTask;
 
 		if( TodoyuCache::isIn($idCache) ) {
-			$rootline	= TodoyuCache::get($idCache);
+			$rootLine	= TodoyuCache::get($idCache);
 		} else {
 			$idParent	= self::getParentTaskID($idTask);
 
-			$rootline	= array($idTask);
+			$rootLine	= array($idTask);
 
 			while( $idParent !== 0 ) {
-				$rootline[] = $idParent;
+				$rootLine[] = $idParent;
 				$idParent = self::getParentTaskID($idParent);
 			}
 
-			TodoyuCache::set($idCache, $rootline);
+			TodoyuCache::set($idCache, $rootLine);
 		}
 
-		return $rootline;
+		return $rootLine;
 	}
 
 
@@ -1447,8 +1446,8 @@ class TodoyuTaskManager {
 	public static function getRootlineTasks($idTask) {
 		$idTask	= intval($idTask);
 
-		$rootline	= self::getTaskRootline($idTask);
-		$list		= implode(',', $rootline);
+		$rootLine	= self::getTaskRootline($idTask);
+		$list		= implode(',', $rootLine);
 
 		$where	= 'id IN(' . $list . ')';
 		$order	= 'FIND_IN_SET(id, \'' . $list . '\')';
@@ -1532,23 +1531,23 @@ class TodoyuTaskManager {
 	 * $mustExist is not set (default), only the format is checked.
 	 * If $mustExist is set, also a database request will check if this task exists
 	 *
-	 * @param	Integer		$fullTasknumber			Identifier with project id and task number	 * @param	Boolean		$mustExist				TRUE = Has to be in database
+	 * @param	Integer		$fullTaskNumber			Identifier with project id and task number	 * @param	Boolean		$mustExist				TRUE = Has to be in database
 	 * @return
 	 */
-	public static function isTasknumber($fullTasknumber, $mustExist = false) {
+	public static function isTasknumber($fullTaskNumber, $mustExist = false) {
 		$valid	= false;
 
 			// Check for point (.)
-		if( strpos($fullTasknumber, '.') !== false ) {
+		if( strpos($fullTaskNumber, '.') !== false ) {
 				// Split into project / task number
-			$parts	= TodoyuArray::intExplode('.', $fullTasknumber, true, true);
+			$parts	= TodoyuArray::intExplode('.', $fullTaskNumber, true, true);
 
 				// If 2 valid integers found
 			if( sizeof($parts) === 2 ) {
 					// Database check required?
 				if( $mustExist ) {
 						// Get task ID for validation
-					$idTask	= self::getTaskIDByTaskNumber($fullTasknumber);
+					$idTask	= self::getTaskIDByTaskNumber($fullTaskNumber);
 					if( $idTask !== 0 ) {
 						$valid = true;
 					}
@@ -1616,7 +1615,7 @@ class TodoyuTaskManager {
 		$task	= self::getTask($idTask);
 
 		if( $task->isTask() ) {
-				// New task have no parent
+				// New task has no parent?
 			if( $idTask === 0 ) {
 				$form->getField('id_parenttask')->remove();
 				$form->addHiddenField('id_parenttask', 0);
@@ -1655,8 +1654,8 @@ class TodoyuTaskManager {
 				)
 			);
 
-			foreach( $fieldsToBeRemoved as $fieldname ) {
-				$form->getField($fieldname)->remove();
+			foreach( $fieldsToBeRemoved as $fieldName ) {
+				$form->getField($fieldName)->remove();
 			}
 
 				// Remove
@@ -1703,7 +1702,7 @@ class TodoyuTaskManager {
 			// Add new task (with old data)
 		$idTaskNew	= self::addTask($data);
 
-			// Call data modifier hook, so other extensions can change data if they want
+			// Call data modifier hook, so other extensions can modify data if needed
 		$hookData	= array(
 			'idTask'	=> $idTask,
 			'idTaskNew'	=> $idTaskNew,
@@ -1712,7 +1711,7 @@ class TodoyuTaskManager {
 		);
 		$data		= TodoyuHookManager::callHookDataModifier('project', 'taskcopy', $data, $hookData);
 
-			// Set status. Check for edit right and use default status as fallback
+			// Set status. Check for editing right and use default status as fallback
 		$extConf		= TodoyuExtConfManager::getExtConf('project');
 		$defaultStatus	= intval($extConf['status']);
 		if(  allowed('project', 'task:editStatus') ) {
@@ -1794,7 +1793,7 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Clone a task
+	 * Clone given task
 	 *
 	 * @param 	Integer		$idTask
 	 * @return	Integer
@@ -1837,7 +1836,7 @@ class TodoyuTaskManager {
 			// Adjust the reference sorting position
 		$refSort= $after ? $taskRef['sorting'] + 1 : $taskRef['sorting'] - 1;
 
-			// If task get a higher postion
+			// If task get a higher position
 		if( $taskMove['sorting'] < $taskRef['sorting'] ) {
 			$min	= $taskMove['sorting'];
 			$max	= $refSort;

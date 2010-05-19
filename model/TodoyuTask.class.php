@@ -122,7 +122,7 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Check whether tasks has a parent task (or is in project root)
+	 * Check whether task has a parent task (or is in project root)
 	 *
 	 * @return	Boolean
 	 */
