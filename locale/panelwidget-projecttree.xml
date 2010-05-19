@@ -29,5 +29,15 @@
 		<label index="filter.projectleader">Gerente de Projeto</label>
 		<label index="filter.customer">Cliente</label>
 		<label index="list.empty">Projeto Não Encontrado</label>
-	</labels>	
+	</labels>
+	<labels lang="ru_RU">
+		<label index="title">Проекты</label>
+		<label index="filter.remove">Удалить фильтр</label>
+		<label index="filter.addFilter">Добавить</label>
+		<label index="filter.addNewFilter">Добавить новый фильтр</label>
+		<label index="filter.fulltext">Весь текст</label>
+		<label index="filter.projectleader">Лидер проекта</label>
+		<label index="filter.customer">Клиент</label>
+		<label index="list.empty">Проекты не найдены</label>
+	</labels>
 </locallang>

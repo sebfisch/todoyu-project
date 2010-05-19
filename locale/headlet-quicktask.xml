@@ -12,4 +12,8 @@
 		<label index="label">Criar uma Quicktask</label>
 		<label index="title">Criar uma Quicktask</label>
 	</labels>
+	<labels lang="ru_RU">
+		<label index="label">Создать быструю задачу</label>
+		<label index="title">Создать быструю задачу</label>
+	</labels>
 </locallang>

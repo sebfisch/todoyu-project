@@ -12,4 +12,8 @@
 		<label index="title.task">Filtro para Status de Tarefa</label>
 		<label index="title.project">Filtro de Status de Projeto</label>
 	</labels>
+	<labels lang="ru_RU">
+		<label index="title.task">Фильтр статуса задач</label>
+		<label index="title.project">Фильтр статуса проекта</label>
+	</labels>
 </locallang>

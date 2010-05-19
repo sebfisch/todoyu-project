@@ -15,4 +15,9 @@
 		<label index="search">Pesquisar</label>
 		<label index="list.empty">Projetos não encontrados (Para a Atual Seleção de Filtros)</label>
 	</labels>
+	<labels lang="ru_RU">
+		<label index="title">Проекты</label>
+		<label index="search">Поиск</label>
+		<label index="list.empty">Проекты не найдены (для этого набора фильтров)</label>
+	</labels>
 </locallang>
