@@ -174,7 +174,7 @@ class TodoyuTaskManager {
 	public static function saveTask(array $data) {
 		$xmlPath	= 'ext/project/config/form/task.xml';
 		$idTask		= intval($data['id']);
-		$idProject	= intval($data['id_project']);
+//		$idProject	= intval($data['id_project']);
 
 		if( $idTask === 0 ) {
 				// Create new task with necessary data
@@ -447,7 +447,7 @@ class TodoyuTaskManager {
 	public static function getProjectID($idTask) {
 		$idTask	= intval($idTask);
 
-		return self::getTask($idTask)->id_project;
+		return self::getTask($idTask)->getProjectID();
 	}
 
 
@@ -1733,7 +1733,7 @@ class TodoyuTaskManager {
 			$subTaskIDs = self::getSubTaskIDs($idTask);
 
 			foreach($subTaskIDs as $idSubTask) {
-				$idSubTaskNew = self::copyTask($idSubTask, $idTaskNew, true, $idProject);
+				self::copyTask($idSubTask, $idTaskNew, true, $idProject);
 			}
 		}
 
