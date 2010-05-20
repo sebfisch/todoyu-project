@@ -323,7 +323,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Scoll to given task
+	 * Scroll to given task
 	 *
 	 * @param	{Number}		idTask
 	 */
@@ -580,7 +580,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Update (reload) given task
+	 * Update given task with given content
 	 *
 	 * @param	{Number} 	idTask
 	 * @param	{String}	taskHtml
