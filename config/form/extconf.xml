@@ -6,39 +6,72 @@
 	<fieldsets>
 
 		<fieldset name="taskDefaults">
-
+			
 			<elements>
+
+				<field type="textinput" name="title">
+					<label>task.attr.title</label>
+				</field>
+
+				<field type="RTE" name="description">
+					<label>core.description</label>
+				</field>
+
+				<field type="select" name="date_start">
+					<label>task.attr.date_start</label>
+					<source type="function">
+						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
+					</source>
+				</field>
+
+				<field type="select" name="date_end">
+					<label>task.attr.date_end</label>
+					<source type="function">
+						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
+					</source>
+				</field>
+
+				<field type="select" name="date_deadline">
+					<label>task.attr.date_deadline</label>
+					<source type="function">
+						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
+					</source>
+				</field>
 				
 				<field type="select" name="status">
-					<label>project.extconf.taskDefaults.status</label>
+					<label>task.attr.status</label>
 					<source type="function">
-						<function>TodoyuProjectViewHelper::getExtConfStatuses</function>
+						<function>TodoyuProjectExtConfViewHelper::getDefaultValueStatusOptions</function>
 					</source>
 				</field>
 
-				<field type="select" name="id_role_assigned">
-					<label>project.extconf.taskDefaults.assignedRoles</label>
-					<source type="function">
-						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
-					</source>
-				</field>
-				
-				<field type="select" name="id_role_owner">
-					<label>project.extconf.taskDefaults.ownerRoles</label>
-					<source type="function">
-						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
-					</source>
-				</field>
-				
 				<field type="select" name="id_worktype">
-					<label>project.extconf.taskDefaults.worktype</label>
+					<label>task.attr.worktype</label>
 					<source type="function">
 						<function>TodoyuProjectViewHelper::getExtConfWorktypes</function>
 					</source>
 				</field>
 				
 				<field type="timeinput" name="estimated_workload">
-					<label>project.extconf.taskDefaults.estimated_workload</label>
+					<label>task.attr.estimated_workload</label>
+				</field>
+
+				<field type="checkbox" name="is_public">
+					<label>task.attr.is_public</label>
+				</field>
+
+				<field type="select" name="person_assigned_role">
+					<label>task.default.person_assigned_role</label>
+					<source type="function">
+						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
+					</source>
+				</field>
+
+				<field type="select" name="person_owner_role">
+					<label>task.default.person_owner_role</label>
+					<source type="function">
+						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
+					</source>
 				</field>
 
 			</elements>

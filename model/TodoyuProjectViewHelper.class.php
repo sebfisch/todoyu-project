@@ -195,19 +195,6 @@ class TodoyuProjectViewHelper {
 	}
 
 
-
-	/**
-	 * Get status options
-	 *
-	 * @param	TodoyuFormElement		$field
-	 * @return	Array
-	 */
-
-	public static function getExtConfStatuses(TodoyuFormElement $field) {
-		return TodoyuTaskStatusManager::getStatusInfos('see');
-	}
-
-
 	public static function getQuicktaskAutocompleteLabel($idProject) {
 		$idProject	= intval($idProject);
 		$label		= '';

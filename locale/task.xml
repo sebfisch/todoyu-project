@@ -76,7 +76,6 @@
 		<label index="type.task">Task</label>
 		<label index="type.container">Container</label>
 		<label index="billableTime">Billable Time</label>
-		<label index="title.cloned">Copy Of: %s</label>
 		<label index="worktype">Work Type</label>
 		<label index="estimated_workload">Estimated Workload</label>
 		<label index="date_start">Start Date </label>
@@ -100,6 +99,14 @@
 		<label index="ac.project.notFoundInfo">No project of this title name was found.</label>
 		<label index="copySubtasks">Copy All Subtasks?</label>
 		<label index="statusNotVisible">With the new status, the task is no longer visible for you.</label>
+		<label index="default.date.date_0">Create date</label>
+		<label index="default.date.date_1">Create date + 1 day</label>
+		<label index="default.date.date_2">Create date + 2 days</label>
+		<label index="default.date.date_3">Create date + 3 days</label>
+		<label index="default.date.date_7">Create date + 1 week</label>
+		<label index="default.date.date_14">Create date + 2 weeks</label>
+		<label index="default.person_assigned_role">Assign person of role if not selectable</label>
+		<label index="default.person_owner_role">Owned by person of role if not selectable</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="task">Aufgabe</label>
@@ -177,7 +184,6 @@
 		<label index="type.task">Aufgabe</label>
 		<label index="type.container">Container</label>
 		<label index="billableTime">Verrechenbare Zeit</label>
-		<label index="title.cloned">Kopie von: %s</label>
 		<label index="worktype">Leistungsart</label>
 		<label index="estimated_workload">Geschätzter Aufwand</label>
 		<label index="date_start">Start-Datum</label>
@@ -275,7 +281,6 @@
 		<label index="type.task">Tarefa</label>
 		<label index="type.container">Pasta</label>
 		<label index="billableTime">Hora Remunerada</label>
-		<label index="title.cloned">Cópia De: %s</label>
 		<label index="worktype">Tipo de Serviço</label>
 		<label index="estimated_workload">Carga de Trabalho Estimada</label>
 		<label index="date_start">Data de Início</label>
@@ -375,7 +380,6 @@
 		<label index="type.task">Задача</label>
 		<label index="type.container">Контейнер</label>
 		<label index="billableTime">Оплачиваемое время</label>
-		<label index="title.cloned">Копия: %s</label>
 		<label index="worktype">Тип работы</label>
 		<label index="estimated_workload">Ожидаемая загрузка</label>
 		<label index="date_start">Время начала </label>

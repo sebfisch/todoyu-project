@@ -49,12 +49,10 @@ class TodoyuTaskManager {
 	 * @param	Integer		$idTask
 	 * @return	TodoyuForm				form object
 	 */
-	public static function getQuickCreateForm($idTask = 0) {
-		$idTask	= intval($idTask);
-
+	public static function getQuickCreateForm() {
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/task.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
+		$form		= TodoyuFormManager::getForm($xmlPath);
 
 			// Adjust for quick create
 		$form->removeField('id_parenttask', true);
@@ -79,8 +77,10 @@ class TodoyuTaskManager {
 		$form->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateTask.save(this.form)');
 		$form->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
 
+			// Load task default data
+		$data	= self::getTaskDefaultData();
 
-		$data	= TodoyuFormHook::callLoadData($xmlPath, array(), 0, array('form'=>$form));
+		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, 0, array('form'=>$form));
 		$form->setFormData($data);
 		
 		return $form;
@@ -238,87 +238,6 @@ class TodoyuTaskManager {
 		$data	= self::setDefaultValuesForNotAllowedFields($data);
 
 		return TodoyuRecordManager::addRecord(self::TABLE, $data);
-	}
-
-
-
-	/**
-	 * Set default task values if missing
-	 * Person may not be allowed to enter the values, so we use the defaults from extConf
-	 *
-	 * @param	Array		$data
-	 * @return	Array
-	 */
-	private static function setDefaultValuesForNotAllowedFields(array $data) {
-		$extConf	= TodoyuExtConfManager::getExtConf('project');
-
-			// Set dates to 0
-		if( ! isset($data['date_start']) ) {
-			$data['date_start'] = 0;
-		}
-		if( ! isset($data['date_end']) ) {
-			$data['date_end'] = 0;
-		}
-		if( ! isset($data['date_deadline']) ) {
-			$data['date_deadline'] = 0;
-		}
-
-			// Set status
-		if( ! isset($data['status']) ) {
-			$extConfStatus	= intval($extConf['status']);
-			$defaultStatus	= intval(Todoyu::$CONFIG['EXT']['project']['taskDefaults']['status']);
-			$data['status']	= $extConfStatus === 0 ? $defaultStatus : $extConfStatus;
-		}
-
-			// Set is_public flag
-		if( ! isset($data['is_public']) ) {
-			if( ! Todoyu::person()->isInternal() ) {
-				$data['is_public']	= 1;
-			}
-		}
-
-
-			// Get assigned person from default
-		if( ! isset($data['id_person_assigned']) ) {
-			$idRole		= intval($extConf['id_role_assigned']);
-			$idProject	= intval($data['id_project']);
-
-			if( $idRole !== 0 && $idProject !== 0 ) {
-				$personIDs	= TodoyuProjectManager::getRolePersonIDs($idProject, $idRole);
-				$idPerson	= intval($personIDs[0]);
-
-				if( $idPerson !== 0 ) {
-					$data['id_person_assigned'] = $idPerson;
-				}
-			}
-		}
-
-			// Get owner person from default
-		if( ! isset($data['id_person_owner']) ) {
-			$idRole		= intval($extConf['id_role_owner']);
-			$idProject	= intval($data['id_project']);
-
-			if( $idRole !== 0 && $idProject !== 0 ) {
-				$personIDs	= TodoyuProjectManager::getRolePersonIDs($idProject, $idRole);
-				$idPerson	= intval($personIDs[0]);
-
-				if( $idPerson !== 0 ) {
-					$data['id_person_owner'] = $idPerson;
-				}
-			}
-		}
-
-			// Get work type from default
-		if( ! isset($data['id_worktype']) ) {
-			$data['id_worktype'] = intval($extConf['id_worktype']);
-		}
-
-			// Get workload from default
-		if( ! isset($data['estimated_workload']) ) {
-			$data['estimated_workload'] = intval($extConf['estimated_workload']);
-		}
-
-		return $data;
 	}
 
 
@@ -1281,7 +1200,7 @@ class TodoyuTaskManager {
 	 * @param	Integer		$type
 	 * @return	Array
 	 */
-	public static function getDefaultTaskData($idParentTask, $idProject = 0, $type = TASK_TYPE_TASK) {
+	public static function getTaskDefaultData($idParentTask = 0, $idProject = 0, $type = TASK_TYPE_TASK) {
 		$idParentTask	= intval($idParentTask);
 		$idProject		= intval($idProject);
 		$type			= intval($type);
@@ -1291,40 +1210,170 @@ class TodoyuTaskManager {
 			$idProject	= self::getProjectID($idParentTask);
 		}
 
-			// Get data
-		$idPerson	= personid();
-		$taskNumber	= TodoyuProjectManager::getNextTaskNumber($idProject);
+			// Get extension config
+		$extConf	= TodoyuExtConfManager::getExtConf('project');
+		
+		TodoyuDebug::printInFireBug($extConf, 'extconf');
 
 			// Set default data
-		$defaultData	= array(
+		$data	= array(
 			'id'				=> 0,
-			'title'				=> '',
-			'tasknumber'		=> $taskNumber,
-			'status'			=> intval(Todoyu::$CONFIG['EXT']['project']['taskDefaults']['status']),
-			'estimated_workload'=> intval(Todoyu::$CONFIG['EXT']['project']['Task']['defaultEstimatedWorkload']),
+			'tasknumber'		=> 0,
+			'title'				=> trim($extConf['title']),
 			'id_project'		=> $idProject,
+			'description'		=> trim($extConf['description']),
+			'date_start'		=> self::getDateFromExtConfDefault($extConf['date_start']),
+			'date_end'			=> self::getDateFromExtConfDefault($extConf['date_end']),
+			'date_deadline'		=> self::getDateFromExtConfDefault($extConf['date_deadline']),
+			'status'			=> intval($extConf['status']),
+			'id_person_assigned'=> 0,
+			'id_person_owner'	=> personid(),
+			'estimated_workload'=> intval($extConf['estimated_workload']),
+			'is_public'			=> intval($extConf['is_public']),
 			'id_parenttask'		=> $idParentTask,
-			'id_person_owner'	=> $idPerson,
-			'type'				=> $type,
-			'class'				=> ''
+			'type'				=> $type
 		);
-		
-			// Set type specific information
-		switch($type) {
-			case TASK_TYPE_TASK:
-				//$defaultData['title']	= Label('task.new.Task.defaultTitle');
-			break;
-
-			case TASK_TYPE_CONTAINER:
-				//$defaultData['title'] = Label('task.new.Container.defaultTitle');
-				$defaultData['class'] .= ' container';
-			break;
-		}
 
 			// Call hook to modify default task data
-		$defaultData	= TodoyuHookManager::callHookDataModifier('project', 'taskDefaultData', $defaultData, array($idParentTask, $idProject));
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDefaultData', $data);
 
-		return $defaultData;
+		return $data;
+	}
+
+
+
+	/**
+	 * Create a new task with default values and ID 0
+	 * After we have done this, we can access this template task by ID 0 over normal mechanism
+	 *
+	 * @param	Integer			$idParentTask		ID of the parent task (if it has one)
+	 * @param	Integer			$idProject			ID of the project. If task is in the root, there will be no parent task, so you have to give the project ID
+	 * @param	Integer			$type				Type of the new task
+	 */
+	public static function createNewTaskWithDefaultsInCache($idParentTask, $idProject = 0, $type = TASK_TYPE_TASK) {
+		$idParentTask	= intval($idParentTask);
+		$idProject		= intval($idProject);
+		$type			= intval($type);
+
+			// Default task data
+		$defaultData= self::getTaskDefaultData($idParentTask, $idProject, $type);
+
+			// Store task with default data in cache
+		$key	= TodoyuRecordManager::makeClassKey('TodoyuTask', 0);
+		$task	= new TodoyuTask(0);
+		$task->injectData($defaultData);
+		TodoyuCache::set($key, $task);
+	}
+
+
+
+	/**
+	 * Set default task values if missing
+	 * Person may not be allowed to enter the values, so we use the defaults from extConf
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
+	private static function setDefaultValuesForNotAllowedFields(array $data) {
+		$extConf	= TodoyuExtConfManager::getExtConf('project');
+		$original	= $data;
+
+			// Set dates to 0
+		if( ! isset($data['date_start']) ) {
+			$data['date_start'] = self::getDateFromExtConfDefault($extConf['date_start']);
+		}
+		if( ! isset($data['date_end']) ) {
+			$data['date_end'] = self::getDateFromExtConfDefault($extConf['date_end']);;
+		}
+		if( ! isset($data['date_deadline']) ) {
+			$data['date_deadline'] = self::getDateFromExtConfDefault($extConf['date_deadline']);;
+		}
+
+			// Set status
+		if( ! isset($data['status']) ) {
+			$extConfStatus	= intval($extConf['status']);
+			$defaultStatus	= intval(Todoyu::$CONFIG['EXT']['project']['taskDefaults']['status']);
+			$data['status']	= $extConfStatus === 0 ? $defaultStatus : $extConfStatus;
+		}
+
+			// Set is_public flag
+		if( ! isset($data['is_public']) ) {
+			$extConfPublic	= intval($extConf['is_public']);
+
+			if( $extConfPublic === 1 || Todoyu::person()->isExternal() ) {
+				$data['is_public']	= 1;
+			}
+		}
+
+
+			// Get assigned person from default
+		if( ! isset($data['id_person_assigned']) ) {
+			$idRole		= intval($extConf['person_assigned_role']);
+			$idProject	= intval($data['id_project']);
+
+			if( $idRole !== 0 && $idProject !== 0 ) {
+				$personIDs	= TodoyuProjectManager::getRolePersonIDs($idProject, $idRole);
+				$idPerson	= intval($personIDs[0]);
+
+				if( $idPerson !== 0 ) {
+					$data['id_person_assigned'] = $idPerson;
+				}
+			}
+		}
+
+			// Get owner person from default
+		if( ! isset($data['id_person_owner']) ) {
+			$idRole		= intval($extConf['person_owner_role']);
+			$idProject	= intval($data['id_project']);
+
+			if( $idRole !== 0 && $idProject !== 0 ) {
+				$personIDs	= TodoyuProjectManager::getRolePersonIDs($idProject, $idRole);
+				$idPerson	= intval($personIDs[0]);
+
+				if( $idPerson !== 0 ) {
+					$data['id_person_owner'] = $idPerson;
+				}
+			}
+		}
+
+			// Get work type from default
+		if( ! isset($data['id_worktype']) ) {
+			$data['id_worktype'] = intval($extConf['id_worktype']);
+		}
+
+			// Get workload from default
+		if( ! isset($data['estimated_workload']) ) {
+			$data['estimated_workload'] = intval($extConf['estimated_workload']);
+		}
+
+			// Call hook to allow other extensions to set default values
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'defaultsForNotAllowedTaskFields', $data, array('savedData'=>$original));
+
+		return $data;
+	}
+
+
+
+	/**
+	 * Get a date based on the extconf value set for this type
+	 *
+	 * @param	Integer		$type		Number of days of the date in the future from now
+	 * @return	Integer		Timestamp
+	 */
+	private static function getDateFromExtConfDefault($type) {
+		$type	= intval($type);
+		$date	= 0;
+
+		if( $type === 0 ) {
+			$date	= 0;
+		} elseif( $type === -1 ) {
+			$date	= TodoyuTime::getStartOfDay();
+		} else {
+			$time	= NOW + TodoyuTime::SECONDS_DAY * $type;
+			$date	= TodoyuTime::getStartOfDay($time);
+		}
+		
+		return $date;
 	}
 
 
@@ -1475,31 +1524,6 @@ class TodoyuTaskManager {
 		} else {
 			return false;
 		}
-	}
-
-
-
-	/**
-	 * Create a new task with default values and ID 0
-	 * After we have done this, we can access this template task by ID 0 over normal mechanism
-	 *
-	 * @param	Integer			$idParentTask		ID of the parent task (if it has one)
-	 * @param	Integer			$idProject			ID of the project. If task is in the root, there will be no parent task, so you have to give the project ID
-	 * @param	Integer			$type				Type of the new task
-	 */
-	public static function createNewTaskWithDefaultsInCache($idParentTask, $idProject = 0, $type = TASK_TYPE_TASK) {
-		$idParentTask	= intval($idParentTask);
-		$idProject		= intval($idProject);
-		$type			= intval($type);
-
-			// Default task data
-		$defaultData= self::getDefaultTaskData($idParentTask, $idProject, $type);
-
-			// Store task with default data in cache
-		$idCache	= TodoyuRecordManager::makeClassKey('TodoyuTask', 0);
-		$task		= new TodoyuTask(0);
-		$task->injectData($defaultData);
-		TodoyuCache::set($idCache, $task);
 	}
 
 

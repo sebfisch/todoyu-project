@@ -61,7 +61,6 @@ Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK'] = array(
 );
 
 
-Todoyu::$CONFIG['EXT']['project']['Task']['defaultEstimatedWorkload'] = 0;
 
 /**
  * Temporary tab force for all tasks
@@ -100,9 +99,8 @@ Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectList']['maxProjects']	= 30;
  * Default 'task defaults'. Will be overridden with extconf values of set
  */
 Todoyu::$CONFIG['EXT']['project']['taskDefaults'] = array(
-	'estimatedWorkload'		=> 0,
-	'status'				=> STATUS_PLANNING,
-	'statusQuickTask'		=> STATUS_OPEN
+	'status'			=> STATUS_PLANNING,
+	'statusQuickTask'	=> STATUS_OPEN
 );
 
 ?>
