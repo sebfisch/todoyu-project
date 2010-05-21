@@ -65,6 +65,7 @@ Todoyu.Ext.project.PanelWidget.StatusFilter = Class.create({
 			// If no status is selected, select all, because it will be handled this way anyway
 		if( ! this.isAnyStatusSelected() ) {
 			this.selectAll();
+//  @todo	change handling to allow aritrary fallbacks
 		}
 
 		this.handler(event);
