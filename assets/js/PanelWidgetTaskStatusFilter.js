@@ -20,7 +20,7 @@
 /**
  *	Panel widget: StatusFilter JS
  */
-Todoyu.Ext.project.PanelWidget.TaskStatusFilter = {
+Todoyu.Ext.project.PanelWidget.TaskStatusFilter = Class.create(Todoyu.PanelWidgetStatusSelector, {
 
 	/**
 	 * Reference to extension JS
@@ -36,32 +36,25 @@ Todoyu.Ext.project.PanelWidget.TaskStatusFilter = {
 	key:	'taskstatusfilter',
 
 
-
 	/**
-	 * Initialize the panelWidget: setup properties, install element observers
-	 */
-	init: function() {
-		this.statusFilter = new Todoyu.Ext.project.PanelWidget.StatusFilter('panelwidget-taskstatusfilter-list', this.onSelectionChange.bind(this));
-	},
-
-
-	/**
-	 * If clicked on an li instead on the checkbox or the label
+	 * Initialize object
 	 *
-	 * @param	{Event}		event
+	 * @param	Function		$super		Original constructur function
 	 */
-	onSelectionChange: function(event) {
-		this.onUpdate();
+	initialize: function($super) {
+		$super('panelwidget-taskstatusfilter-list');
 	},
 
 
 
 	/**
-	 * Handler when PanelWidget is updated
+	 * Handler when selection is changed
 	 */
-	onUpdate: function() {
-		Todoyu.PanelWidget.fire(this.key, this.statusFilter.getValue());
+	onChange: function(event) {
+		this.fireUpdate(this.key);
 		this.savePreference();
+
+		return true;
 	},
 
 
@@ -70,10 +63,10 @@ Todoyu.Ext.project.PanelWidget.TaskStatusFilter = {
 	 * Save the current selected statuses as preference
 	 */
 	savePreference: function() {
-		var pref	= this.statusFilter.getSelectedStatuses().join(',');
+		var pref	= this.getSelectedStatuses().join(',');
 		var action	= 'panelwidget' + this.key;
 
 		Todoyu.Pref.save('project', action, pref);
 	}
 
-};
+});

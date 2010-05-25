@@ -20,7 +20,7 @@
 /**
  *	Panel widget: StatusFilter JS
  */
-Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = {
+Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = Class.create(Todoyu.PanelWidgetStatusSelector, {
 
 	/**
 	 * Reference to extension namespace
@@ -40,10 +40,11 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = {
 	/**
 	 * Initialize the panelWidget: setup properties, install element observers
 	 *
+	 * @param	{Function}	Parent constructor
 	 * @param	{Array}		Selected Status IDs
 	 */
-	init: function(selectedStatusIDs) {
-		this.statusFilter = new Todoyu.Ext.project.PanelWidget.StatusFilter('panelwidget-projectstatusfilter-list', this.onSelectionChange.bind(this));
+	initialize: function($super, selectedStatusIDs) {
+		$super('panelwidget-projectstatusfilter-list');
 
 			// Inject the current filter status into the project list widget
 		this.ext.PanelWidget.ProjectList.applyFilter('status', selectedStatusIDs.join(','), false);
@@ -51,22 +52,15 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = {
 
 
 	/**
-	 * If clicked on an li instead on the checkbox or the label
+	 * Handler when selection is changed
 	 *
 	 * @param	{Event}		event
 	 */
-	onSelectionChange: function(event) {
-		this.onUpdate();
-	},
-
-
-
-	/**
-	 * Handler when PanelWidget is updated
-	 */
-	onUpdate: function() {
-		Todoyu.PanelWidget.fire(this.key, this.statusFilter.getValue());
+	onChange: function(event) {
+		this.fireUpdate(this.key);
 		this.savePreference();
+
+		return true;
 	},
 
 
@@ -75,10 +69,10 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = {
 	 * Save the current selected statuses as preference
 	 */
 	savePreference: function() {
-		var pref	= this.statusFilter.getSelectedStatuses().join(',');
+		var pref	= this.getSelectedStatuses().join(',');
 		var action	= 'panelwidget' + this.key;
 
 		Todoyu.Pref.save('project', action, pref);
 	}
 
-};
+});
