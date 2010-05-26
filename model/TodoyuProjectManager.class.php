@@ -121,7 +121,6 @@ class TodoyuProjectManager {
 	/**
 	 * Save a project (add or update)
 	 *
-	 * @param	Integer		$idProject
 	 * @param	Array		$data
 	 * @return	Integer		Project ID
 	 */
@@ -285,8 +284,6 @@ class TodoyuProjectManager {
 		$taskFilter	= new TodoyuTaskFilter($filters);
 		$taskIDs	= $taskFilter->getTaskIDs();
 
-//		TodoyuDebug::printLastQueryInFirebug();
-
 		return $taskIDs;
 	}
 
@@ -345,6 +342,7 @@ class TodoyuProjectManager {
 	 * Get context menu items
 	 *
 	 * @param	Integer	$idProject
+	 * @param	Array	$items
 	 * @return	Array
 	 */
 	public static function getContextMenuItems($idProject, array $items) {
@@ -403,9 +401,9 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get next available task nunmber
+	 * Get next available task number
 	 *
-	 * @param	Integer	$idProject
+	 * @param	Integer		$idProject
 	 * @return	Integer
 	 */
 	public static function getNextTaskNumber($idProject) {
@@ -670,6 +668,8 @@ class TodoyuProjectManager {
 	 * Get persons which are connected with the project
 	 *
 	 * @param	Integer		$idProject
+	 * @param	Boolean		$personUnique
+	 * @param	Boolean		$withAccount
 	 * @return	Array
 	 */
 	public static function getProjectPersons($idProject, $personUnique = false, $withAccount = false) {
@@ -700,7 +700,7 @@ class TodoyuProjectManager {
 						)';
 		}
 
-			// If persons should be unique, group by id (we don't care about the projectroles)
+			// If persons should be unique, group by id (we don't care about the project roles)
 		if( $personUnique === true ) {
 			$group	= 'pe.id';
 		}
@@ -724,24 +724,24 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get project person label (name + projectrole)
+	 * Get project person label (name + project role)
 	 *
 	 * @param	Integer		$idPerson
 	 * @param	Integer		$idProject
-	 * @param	Integer		$idProjectrole
+	 * @param	Integer		$idProjectRole
 	 * @return	String
 	 */
-	public static function getProjectPersonLabel($idPerson, $idProject, $idProjectrole = 0) {
+	public static function getProjectPersonLabel($idPerson, $idProject, $idProjectRole = 0) {
 		$idPerson		= intval($idPerson);
 		$idProject		= intval($idProject);
-		$idProjectrole	= intval($idProjectrole);
+		$idProjectRole	= intval($idProjectRole);
 
 		$label	= TodoyuPersonManager::getLabel($idPerson);
 
-		if ( $idProjectrole === 0 ) {
+		if ( $idProjectRole === 0 ) {
 			$label	.= ' - ' . self::getProjectroleLabel($idPerson, $idProject);
 		} else {
-			$label	.= ' - ' . TodoyuProjectroleManager::getLabel($idProjectrole);
+			$label	.= ' - ' . TodoyuProjectroleManager::getLabel($idProjectRole);
 		}
 
 		return $label;
@@ -763,7 +763,7 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get projectrole of a person in a project
+	 * Get project role of a person in a project
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idPerson
@@ -780,9 +780,9 @@ class TodoyuProjectManager {
 					  ' AND	mmpp.id_person	= ' . $idPerson .
 					  ' AND	mmpp.id_role	= pr.id';
 
-		$idProjectrole	= Todoyu::db()->getFieldValue($field, $tables, $where);
+		$idProjectRole	= Todoyu::db()->getFieldValue($field, $tables, $where);
 
-		return TodoyuProjectroleManager::getProjectrole($idProjectrole);
+		return TodoyuProjectroleManager::getProjectrole($idProjectRole);
 	}
 
 
@@ -920,14 +920,14 @@ class TodoyuProjectManager {
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idPerson
-	 * @param	Integer		$idProjectrole
+	 * @param	Integer		$idProjectRole
 	 * @param	Array		$extraData
 	 * @return	Integer		Link ID
 	 */
-	public static function addPerson($idProject, $idPerson, $idProjectrole, array $extraData = array()) {
+	public static function addPerson($idProject, $idPerson, $idProjectRole, array $extraData = array()) {
 		$idProject		= intval($idProject);
 		$idPerson		= intval($idPerson);
-		$idProjectrole	= intval($idProjectrole);
+		$idProjectRole	= intval($idProjectRole);
 
 		unset($extraData['id']);
 		unset($extraData['id_project']);
@@ -938,7 +938,7 @@ class TodoyuProjectManager {
 		$fields	= array(
 			'id_project'	=> $idProject,
 			'id_person'		=> $idPerson,
-			'id_role'		=> $idProjectrole
+			'id_role'		=> $idProjectRole
 		);
 		$fields	= array_merge($extraData, $fields);
 
@@ -969,13 +969,15 @@ class TodoyuProjectManager {
 	 * Get project ID array by filter
 	 *
 	 * @param	Integer	$filterSetID
+	 * @param	Array	$filterConditions
+	 * @param	String	$conjunction
 	 * @return	Array
 	 */
-	public static function getProjectIDsByFilter($idFilterset = 0, array $filterConditions = array(), $conjunction = 'AND')	{
-		$idFilterset = intval($idFilterset);
+	public static function getProjectIDsByFilter($idFilterSet = 0, array $filterConditions = array(), $conjunction = 'AND')	{
+		$idFilterSet = intval($idFilterSet);
 
-		if( $idFilterset !== 0 ) {
-			$conditions = TodoyuFilterConditionManager::getFilterSetConditions($idFilterset, false);
+		if( $idFilterSet !== 0 ) {
+			$conditions = TodoyuFilterConditionManager::getFilterSetConditions($idFilterSet, false);
 		} else {
 			$conditions = TodoyuFilterConditionManager::buildFilterConditionArray($filterConditions);
 		}
@@ -994,18 +996,18 @@ class TodoyuProjectManager {
 	 */
 	public static function getDefaultProjectData() {
 		$defaultData	= array(
-			'id'			=> 0,
-			'date_create'	=> NOW,
-			'date_update'	=> NOW,
-			'id_person_create'=> TodoyuAuth::getPersonID(),
-			'deleted'		=> 0,
-			'title'			=> TodoyuLanguage::getLabel('project.newproject.title'),
-			'description'	=> '',
-			'status'		=> STATUS_PLANNING,
-			'id_company'	=> 0,
-			'date_start'	=> NOW,
-			'date_end'		=> NOW + 3600 * 24 * 30,
-			'date_deadline'	=> NOW + 3600 * 24 * 30
+			'id'				=> 0,
+			'date_create'		=> NOW,
+			'date_update'		=> NOW,
+			'id_person_create'	=> TodoyuAuth::getPersonID(),
+			'deleted'			=> 0,
+			'title'				=> TodoyuLanguage::getLabel('project.newproject.title'),
+			'description'		=> '',
+			'status'			=> STATUS_PLANNING,
+			'id_company'		=> 0,
+			'date_start'		=> NOW,
+			'date_end'			=> NOW + 3600 * 24 * 30,
+			'date_deadline'		=> NOW + 3600 * 24 * 30
 		);
 
 			// Call hook to modify default task data
@@ -1017,7 +1019,7 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get data for submenu entries of currently open projects
+	 * Get data for sub menu entries of currently open projects
 	 *
 	 * @return	Array
 	 */
@@ -1070,6 +1072,7 @@ class TodoyuProjectManager {
 	/**
 	 * Get quick create project form object
 	 *
+	 * @param	Integer		$idProject
 	 * @return	TodoyuForm
 	 */
 	public static function getQuickCreateForm($idProject = 0) {
