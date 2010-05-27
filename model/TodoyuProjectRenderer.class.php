@@ -195,7 +195,9 @@ class TodoyuProjectRenderer {
 		$idProject	= intval($idProject);
 		$project	= TodoyuProjectManager::getProject($idProject);
 		$tmpl		= 'ext/project/view/project-header.tmpl';
-		$data		= $project->getTemplateData();
+
+		$data	= $project->getTemplateData();
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'renderProjectHeader', $data);
 
 			// If not forced, check preference
 		if( is_null($withDetails) ) {

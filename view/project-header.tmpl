@@ -3,6 +3,13 @@
 	<span id="project-{$id}-titlelabel" class="title titleLabel first" title="ID: {$id}">
 		{$fulltitle}
 	</span>
+
+	<span class="projectIcons">
+		{foreach $projectIcons projectIcon}
+			<span id="{$projectIcon.id}" class="{$projectIcon.class}" title="{Label $projectIcon.label true}" {if $projetIcon.onclick}onclick="{$projectIcon.onclick}"{/if}></span>
+		{/foreach}
+	</span>
+
 	<span class="rgt"><!-- right --></span>
 </h1>
 

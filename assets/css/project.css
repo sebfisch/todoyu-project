@@ -5,6 +5,10 @@
 	cursor:pointer;
 }
 
+h1.headerLine span.projectIcons {
+	float:right;
+}
+
 /* ----------------
 	Tasktree
    ---------------- */
