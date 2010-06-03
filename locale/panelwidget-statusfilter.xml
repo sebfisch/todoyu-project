@@ -16,4 +16,8 @@
 		<label index="title.task">Фильтр статуса задач</label>
 		<label index="title.project">Фильтр статуса проекта</label>
 	</labels>
+	<labels lang="nl_NL">
+		<label index="title.task">Filter voor taakstatus</label>
+		<label index="title.project">Filter voor projectstatus</label>
+	</labels>
 </locallang>
