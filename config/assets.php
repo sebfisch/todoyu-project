@@ -106,10 +106,6 @@ Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 			'position'	=> 110
 		),
 		array(
-			'file' => 'ext/project/assets/js/PanelWidgetStatusFilter.js',
-			'position' => 120,
-		),
-		array(
 			'file' => 'ext/project/assets/js/PanelWidgetTaskStatusFilter.js',
 			'position' => 120,
 		),
