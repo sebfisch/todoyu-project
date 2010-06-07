@@ -16,10 +16,11 @@
 	<section name="task" require="general:use">
 		<right name="seeAll" />
 		<right name="addInOwnProjects" />
-		<right name="addViaQuickCreateHeadlet" require="task:addInOwnProjects" />
 		<right name="addInAllProjects" require="project:seeAll,task:addInOwnProjects" />
+		<right name="addViaQuickCreateHeadlet" require="task:addInOwnProjects" />
 		<right name="editAndDeleteInOwnProjects" />
 		<right name="editAndDeleteInAllProjects" require="project:seeAll,task:editAndDeleteInOwnProjects" />
+		<right name="editAndDeleteOwnTasks" />
 		<right name="editStatus" require="task:editAndDeleteInOwnProjects" />
 		<right name="editDateStart" require="task:editAndDeleteInOwnProjects" />
 		<right name="editDateEnd" require="task:editAndDeleteInOwnProjects" />

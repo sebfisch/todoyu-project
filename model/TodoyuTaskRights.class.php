@@ -54,6 +54,10 @@ class TodoyuTaskRights {
 		$task		= TodoyuTaskManager::getTask($idTask);
 
 		if( $task->isTask() ) {
+			if( allowed('project', 'task:editAndDeleteOwnTasks') ) {
+				return true;
+			}			
+
 			$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('edit'));
 
 			if( ! in_array($task->getStatus(), $statusIDs) ) {

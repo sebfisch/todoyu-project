@@ -16,6 +16,7 @@
 		<label index="task.addInAllProjects">Add task in all projects</label>
 		<label index="task.editAndDeleteInOwnProjects">Edit and delete task in own projects</label>
 		<label index="task.editAndDeleteInAllProjects">Edit and delete task in all projects</label>
+		<label index="task.editAndDeleteOwnTasks">Edit and delete own tasks</label>
 		<label index="task.editStatus">Edit Status</label>
 		<label index="task.editDateStart">Edit Start Date</label>
 		<label index="task.editDateEnd">Edit End Date</label>
@@ -82,6 +83,7 @@
 		<label index="task.addInAllProjects">Aufgaben in allen Projekten hinzufügen</label>
 		<label index="task.editAndDeleteInOwnProjects">Aufgaben in eigenen Projekten bearbeiten/löschen</label>
 		<label index="task.editAndDeleteInAllProjects">Aufgaben in allen Projekten bearbeiten/löschen</label>
+		<label index="task.editAndDeleteOwnTasks">Selbst erstellte Aufgaben bearbeiten</label>
 		<label index="task.editStatus">Status bearbeiten</label>
 		<label index="task.editDateStart">Startdatum bearbeiten</label>
 		<label index="task.editDateEnd">Enddatum bearbeiten</label>

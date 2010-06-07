@@ -7,11 +7,8 @@
 		<label index="project">Project</label>
 		<label index="projects">Projects</label>
 		<label index="page.title.noSelected">Projects - select your project</label>
-		<label index="noproject.message">You have not selected any project yet</label>
-		<label index="noproject.info">Please use the create button at the top</label>
-		<label index="noproject.option.select">Select one from the project tree</label>
-		<label index="noproject.option.create">Create a new project</label>
-		<label index="noproject.tab">No Project Selected</label>
+		<label index="noproject.message">Currently, you have no access to any project. Either you are no assigned to any project yet or have no rights to see the current state. Please inform your contact person about this problem.</label>
+		<label index="noproject.tab">No Projects Available</label>
 		<label index="newproject.tab">Create a new project</label>
 		<label index="newproject.title">New Project</label>
 		<label index="addcontainer">Add Container</label>
@@ -88,11 +85,8 @@
 		<label index="project">Projekt</label>
 		<label index="projects">Projekte</label>
 		<label index="page.title.noSelected">Projekte - Wählen Sie ein Projekt</label>
-		<label index="noproject.message">Sie haben kein Projekt ausgewählt</label>
-		<label index="noproject.info">Bitte benutzen Sie den "Erstellen"-Knopf oben auf der Seite</label>
-		<label index="noproject.option.select">Wählen Sie ein Projekt aus dem Projektbaum</label>
-		<label index="noproject.option.create">Ein neues Projekt erfassen</label>
-		<label index="noproject.tab">Kein Projekt ausgewählt</label>
+		<label index="noproject.message">Sie haben zur Zeit keinen Zugriff auf ein Projekt. Entweder sind Sie keinem Projekt zugeteilt oder Sie haben nicht die erforderlichen Rechte, um den aktuellen Status des Projektes zu sehen. Informieren Sie bitte Ihre Kontaktperson über diesen Zustand.</label>
+		<label index="noproject.tab">Keine Projekte verfügbar</label>
 		<label index="newproject.tab">Ein neues Projekt erfassen</label>
 		<label index="newproject.title">Neues Projekt</label>
 		<label index="addcontainer">Container hinzufügen</label>
@@ -169,9 +163,6 @@
 		<label index="projects">Projetos</label>
 		<label index="page.title.noSelected">Projetos - Selecione seu projeto</label>
 		<label index="noproject.message">Nenhum projeto selecionado</label>
-		<label index="noproject.info">Utilize o botão de criar no topo da página</label>
-		<label index="noproject.option.select">Selecione um projeto da listagem</label>
-		<label index="noproject.option.create">Criar um novo projeto</label>
 		<label index="noproject.tab">Nenhum Projeto Selecionado</label>
 		<label index="newproject.tab">Criar um novo projeto</label>
 		<label index="newproject.title">Novo Projeto</label>
@@ -250,9 +241,6 @@
 		<label index="projects">Проекты</label>
 		<label index="page.title.noSelected">Проекты - выберите ваш проект</label>
 		<label index="noproject.message">Вы ещё не выбрали ни одного проекта</label>
-		<label index="noproject.info">Пожалуйста, используйте кнопку "Создать" сверху</label>
-		<label index="noproject.option.select">Выберите проект из дерева</label>
-		<label index="noproject.option.create">Создать новый проект</label>
 		<label index="noproject.tab">Не выбран ни один проект</label>
 		<label index="newproject.tab">Создать новый проект</label>
 		<label index="newproject.title">Новый проект</label>
@@ -331,9 +319,6 @@
 		<label index="projects">Projecten</label>
 		<label index="page.title.noSelected">Projecten - kies uw project</label>
 		<label index="noproject.message">U heeft nog geen project gekozen</label>
-		<label index="noproject.info">Gebruik a.u.g. de knop 'Project aanmaken' bovenaan</label>
-		<label index="noproject.option.select">Kies er een uit de projectboom</label>
-		<label index="noproject.option.create">Een nieuw project aanmaken</label>
 		<label index="noproject.tab">Geen project gekozen</label>
 		<label index="newproject.tab">Een nieuw project aanmaken</label>
 		<label index="newproject.title">Nieuw project</label>
@@ -411,9 +396,6 @@
 		<label index="projects">Projekty</label>
 		<label index="page.title.noSelected">Projekty - zvolte projekt</label>
 		<label index="noproject.message">Není zvolen žádný projekt</label>
-		<label index="noproject.info">Použijte tlačítko Vytvořit projekt</label>
-		<label index="noproject.option.select">Zvolte projekt ze stromu projektů</label>
-		<label index="noproject.option.create">Vytvořit projekt</label>
 		<label index="noproject.tab">Nebyl zvolen projekt</label>
 		<label index="newproject.tab">Vytvořit nový projekt</label>
 		<label index="newproject.title">Nový projekt</label>
