@@ -20,4 +20,8 @@
 		<label index="label">Sneltaak aanmaken</label>
 		<label index="title">Sneltaak aanmaken</label>
 	</labels>
+	<labels lang="cs_CZ">
+		<label index="label">Vytvořit rychlý úkol</label>
+		<label index="title">Vytvořit rychlý úkol</label>
+	</labels>
 </locallang>

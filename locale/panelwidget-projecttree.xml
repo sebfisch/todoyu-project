@@ -50,4 +50,14 @@
 		<label index="filter.customer">Klant</label>
 		<label index="list.empty">Geen projecten gevonden</label>
 	</labels>
+	<labels lang="cs_CZ">
+		<label index="title">Projekty</label>
+		<label index="filter.remove">Odstranit filtr</label>
+		<label index="filter.addFilter">Přidat</label>
+		<label index="filter.addNewFilter">Přidat nový filtr</label>
+		<label index="filter.fulltext">Fulltext</label>
+		<label index="filter.projectleader">Vedoucí projektu</label>
+		<label index="filter.customer">Zákazník</label>
+		<label index="list.empty">Žádné projekty nebyly nalezeny</label>
+	</labels>
 </locallang>

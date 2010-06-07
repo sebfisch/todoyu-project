@@ -25,4 +25,9 @@
 		<label index="search">Zoeken</label>
 		<label index="list.empty">Geen projecten gevonden (voor deze filterselectie)</label>
 	</labels>
+	<labels lang="cs_CZ">
+		<label index="title">Projekty</label>
+		<label index="search">Vyhledat</label>
+		<label index="list.empty">Žáden projekt nebyl nalezen (pro vybraný filtr)</label>
+	</labels>
 </locallang>
