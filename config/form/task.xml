@@ -42,7 +42,7 @@
 			<class>right</class>
 			<elements>
 
-				<field type="datetimeinput" name="date_start">
+				<field type="datetime" name="date_start">
 					<label>task.date_start</label>
 					<restrict>
 						<allow ext="project" right="task:editDateStart" />
@@ -50,7 +50,7 @@
 					<required/>
 				</field>
 
-				<field type="datetimeinput" name="date_end">
+				<field type="datetime" name="date_end">
 					<label>task.date_end</label>
 					<validate>
 						<dateNotBefore>
@@ -63,7 +63,7 @@
 					</restrict>
 				</field>
 
-				<field type="datetimeinput" name="date_deadline">
+				<field type="datetime" name="date_deadline">
 					<label>task.date_deadline</label>
 					<validate>
 						<dateNotBefore msg="Deadline date has to be after startdate">

@@ -182,43 +182,43 @@ class TodoyuTaskFilterDataSource {
 
 
 	/**
-	 * Dynamic dateInput options
+	 * Dynamic date options
 	 *
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public static function getDynamicDateinput($definitions)	{
+	public static function getDynamicDateOptions($definitions)	{
 		$definitions['options'] = array(
 			array(
-				'label' => Label('projectFilter.task.dyndateinput.today'),
+				'label' => Label('projectFilter.task.dyndate.today'),
 				'value'	=> 'today'
 			),
 			array(
-				'label' => Label('projectFilter.task.dyndateinput.tomorrow'),
+				'label' => Label('projectFilter.task.dyndate.tomorrow'),
 				'value'	=> 'tomorrow'
 			),
 			array(
-				'label' => Label('projectFilter.task.dyndateinput.dayaftertomorrow'),
+				'label' => Label('projectFilter.task.dyndate.dayaftertomorrow'),
 				'value'	=> 'dayaftertomorrow'
 			),
 			array(
-				'label' => Label('LLL:projectFilter.task.dyndateinput.yesterday'),
+				'label' => Label('LLL:projectFilter.task.dyndate.yesterday'),
 				'value'	=> 'yesterday'
 			),
 			array(
-				'label' => Label('LLL:projectFilter.task.dyndateinput.daybeforeyesterday'),
+				'label' => Label('LLL:projectFilter.task.dyndate.daybeforeyesterday'),
 				'value'	=> 'daybeforeyesterday'
 			),
 			array(
-				'label' => Label('LLL:projectFilter.task.dyndateinput.currentweek'),
+				'label' => Label('LLL:projectFilter.task.dyndate.currentweek'),
 				'value'	=> 'currentweek'
 			),
 			array(
-				'label' => Label('LLL:projectFilter.task.dyndateinput.nextweek'),
+				'label' => Label('LLL:projectFilter.task.dyndate.nextweek'),
 				'value'	=> 'nextweek'
 			),
 			array(
-				'label' => Label('LLL:projectFilter.task.dyndateinput.lastweek'),
+				'label' => Label('LLL:projectFilter.task.dyndate.lastweek'),
 				'value'	=> 'lastweek'
 			)
 		);
@@ -234,7 +234,7 @@ class TodoyuTaskFilterDataSource {
 	 * @param	String	$value
 	 * @return	Array
 	 */
-	public static function getDynamicDateinputTimestamps($value)	{
+	public static function getDynamicDateTimestamps($value)	{
 		$currentDayOfWeek = date('w') == 0 ? 7 : date('w');
 
 		$dayBegin	= 1 - $currentDayOfWeek;

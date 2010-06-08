@@ -214,7 +214,7 @@ h1.headerLine span.projectIcons {
 	/* General styles
 	   @todo Move to top CSS file
 	*/
-.type-dateinput input {
+.type-date input {
 	width:60px;
 }
 

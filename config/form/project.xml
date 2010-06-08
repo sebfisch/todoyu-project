@@ -53,7 +53,7 @@
 							<noPleaseSelect />
 						</field>
 
-						<field type="dateinput" name="date_start">
+						<field type="date" name="date_start">
 							<label>project.attr.date_start</label>
 							<validate>
 								<dateBefore>
@@ -65,7 +65,7 @@
 							<required />
 						</field>
 
-						<field type="dateinput" name="date_end">
+						<field type="date" name="date_end">
 							<label>project.attr.date_end</label>
 							<validate>
 								<dateAfter>
@@ -76,7 +76,7 @@
 							<required />
 						</field>
 
-						<field type="dateinput" name="date_deadline">
+						<field type="date" name="date_deadline">
 							<label>project.attr.date_deadline</label>
 							<validate>
 								<dateAfter>

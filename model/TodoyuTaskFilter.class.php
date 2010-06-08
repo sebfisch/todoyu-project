@@ -608,7 +608,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_deadlinedateDyn($value, $negate)	{
-		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateinputTimestamps($value);
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
 
 		return self::Filter_dateDyn($timeStamps, 'date_deadline');
 	}
@@ -636,7 +636,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_startdateDyn($value, $negate)	{
-		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateinputTimestamps($value);
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
 
 		return self::Filter_dateDyn($timeStamps, 'date_start');
 	}
@@ -664,7 +664,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_enddateDyn($value, $negate)	{
-		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateinputTimestamps($value);
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
 
 		return self::Filter_dateDyn($timeStamps, 'date_end');
 	}
@@ -692,7 +692,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_editdateDyn($value, $negate)	{
-		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateinputTimestamps($value);
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
 
 		return self::Filter_dateDyn($timeStamps, 'date_update');
 	}
@@ -720,7 +720,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_createdateDyn($value, $negate)	{
-		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateinputTimestamps($value);
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
 
 		return self::Filter_dateDyn($timeStamps, 'date_update');
 	}
