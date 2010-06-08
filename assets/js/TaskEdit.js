@@ -104,6 +104,8 @@ Todoyu.Ext.project.Task.Edit = {
 	 * @param	{Element}	form
 	 */
 	save: function(form) {
+		tinyMCE.triggerSave();
+		
 		$(form).request({
 			'parameters': {
 				'action':	'save',
