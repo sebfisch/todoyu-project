@@ -104,14 +104,12 @@ Todoyu.Ext.project.Task.Edit = {
 	 * @param	{Element}	form
 	 */
 	save: function(form) {
-		Todoyu.Ui.closeRTE(form);
-
 		$(form).request({
 			'parameters': {
 				'action':	'save',
 				'area':		Todoyu.getArea()
 			},
-			onComplete: this.onSaved.bind(this)
+			onComplete: this.onSaved.bind(this, form)
 		});
 	},
 
@@ -122,9 +120,11 @@ Todoyu.Ext.project.Task.Edit = {
 	 *
 	 * @param	{Object}	response
 	 */
-	onSaved: function(response) {
+	onSaved: function(form, response) {
 		var idTask		= response.getTodoyuHeader('idTask');
 		var idTaskOld	= response.getTodoyuHeader('idTaskOld');
+
+		Todoyu.Ui.closeRTE(form);
 
 			// Save resulted in error?
 		if( response.hasTodoyuError() ) {
