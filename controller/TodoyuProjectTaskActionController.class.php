@@ -152,7 +152,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		if( $idTask === 0 ) {
 			TodoyuTaskRights::restrictAddToProject($idProject);
 		} else {
-			TodoyuTaskRights::restrictEditInProject($idProject);
+			TodoyuTaskRights::restrictEdit($idTask);
+//			TodoyuTaskRights::restrictEditInProject($idProject);
 		}
 
 			// Create a cache record for the buildform hooks

@@ -50,15 +50,15 @@
 		<right name="accepted:changeto" require="task:editStatus" />
 		<right name="rejected:changeto" require="task:editStatus" />
 		<right name="cleared:changeto" require="task:editStatus" />
-		<right name="planning:edit" require="task:editAndDeleteInOwnProjects" />
-		<right name="open:edit" require="task:editAndDeleteInOwnProjects" />
-		<right name="progress:edit" require="task:editAndDeleteInOwnProjects" />
-		<right name="confirm:edit"  require="task:editAndDeleteInOwnProjects" />
-		<right name="done:edit"  require="task:editAndDeleteInOwnProjects" />
-		<right name="accepted:edit" require="task:editAndDeleteInOwnProjects" />
-		<right name="rejected:edit"  require="task:editAndDeleteInOwnProjects" />
-		<right name="cleared:edit"  require="task:editAndDeleteInOwnProjects" />
-		<right name="customer:edit"  require="task:editAndDeleteInOwnProjects" />
+		<right name="planning:edit" />
+		<right name="open:edit"  />
+		<right name="progress:edit" />
+		<right name="confirm:edit" />
+		<right name="done:edit" />
+		<right name="accepted:edit" />
+		<right name="rejected:edit" />
+		<right name="cleared:edit" />
+		<right name="customer:edit" />
 	</section>
 
 	<section name="projectstatus" require="project:seeOwn">
