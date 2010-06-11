@@ -231,10 +231,14 @@ class TodoyuTaskFilterDataSource {
 	/**
 	 * Calculates timestamps by dynamic type
 	 *
-	 * @param	String	$value
+	 * @param	String	$dateRangeKey
 	 * @return	Array
 	 */
-	public static function getDynamicDateTimestamps($value)	{
+	public static function getDynamicDateTimestamps($dateRangeKey)	{
+		$todayStart	= TodoyuTime::getStartOfDay();
+		$todayEnd	= TodoyuTime::getEndOfDay();
+
+
 		$currentDayOfWeek = date('w') == 0 ? 7 : date('w');
 
 		$dayBegin	= 1 - $currentDayOfWeek;
@@ -244,47 +248,69 @@ class TodoyuTaskFilterDataSource {
 		$individualEndSummand = 0;
 		$generalDaySummand = 0;
 
-		switch($value)	{
+		switch($dateRangeKey)	{
 			case 'tomorrow':
+				$dateStart	= $todayStart + TodoyuTime::SECONDS_DAY;
+				$dateEnd	= $todayEnd + TodoyuTime::SECONDS_DAY;
 				$generalDaySummand = 1;
 				break;
 
 			case 'dayaftertomorrow':
+				$dateStart	= $todayStart + TodoyuTime::SECONDS_DAY * 2;
+				$dateEnd	= $todayEnd + TodoyuTime::SECONDS_DAY * 2;
 				$generalDaySummand = 2;
 				break;
 
 			case 'yesterday':
+				$dateStart	= $todayStart - TodoyuTime::SECONDS_DAY;
+				$dateEnd	= $todayEnd - TodoyuTime::SECONDS_DAY;
 				$generalDaySummand = -1;
 				break;
 
 			case 'daybeforeyesterday':
+				$dateStart	= $todayStart - TodoyuTime::SECONDS_DAY * 2;
+				$dateEnd	= $todayEnd - TodoyuTime::SECONDS_DAY * 2;
 				$generalDaySummand = -2;
 				break;
 
 			case 'currentweek':
+				$weekRange	= TodoyuTime::getWeekRange(NOW);
+				$dateStart	= $weekRange['start'];
+				$dateEnd	= $weekRange['end'];
 				$individualStartSummand = $dayBegin;
 				$individualEndSummand	= $dayEnd;
 				break;
 
 			case 'nextweek':
+				$weekRange	= TodoyuTime::getWeekRange(NOW + TodoyuTime::SECONDS_WEEK);
+				$dateStart	= $weekRange['start'];
+				$dateEnd	= $weekRange['end'];
 				$individualStartSummand = $dayBegin;
 				$individualEndSummand	= $dayEnd;
-
 				$generalDaySummand = 7;
 				break;
 
 			case 'lastweek':
+				$weekRange	= TodoyuTime::getWeekRange(NOW - TodoyuTime::SECONDS_WEEK);
+				$dateStart	= $weekRange['start'];
+				$dateEnd	= $weekRange['end'];
 				$individualStartSummand = $dayBegin;
 				$individualEndSummand	= $dayEnd;
-
 				$generalDaySummand = -7;
 				break;
 
 			case 'todoay':
 			default:
+				$dateStart	= $todayStart;
+				$dateEnd	= $todayEnd;
 					// Do nothing
 				break;
 		}
+
+		return array(
+			'start'	=> $dateStart,
+			'end'	=> $dateEnd
+		);
 
 		$start	= mktime(0, 0, 0, date('n'), (date('j') + $individualStartSummand) + $generalDaySummand, date('Y'));
 		$end	= mktime(23, 59, 59, date('n'), (date('j') + $individualEndSummand) + $generalDaySummand, date('Y'));

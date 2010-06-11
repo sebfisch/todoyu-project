@@ -692,9 +692,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_editdateDyn($value, $negate)	{
-		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
+		$rangeTimestamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
 
-		return self::Filter_dateDyn($timeStamps, 'date_update');
+		return self::Filter_dateDyn($rangeTimestamps, 'date_update');
 	}
 
 
@@ -730,14 +730,16 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	/**
 	 * Get the dynamic date
 	 *
-	 * @param	Array		$timeStamps
+	 * @param	Array		$dateRange
 	 * @param	String		$field
 	 * @return	Array
 	 */
-	protected static function Filter_dateDyn(array $timeStamps, $field)	{
-		$timeStamps	= TodoyuArray::intval($timeStamps);
+	protected static function Filter_dateDyn(array $dateRange, $field)	{
+		$dateStart	= intval($dateRange['start']);
+		$dateEnd	= intval($dateRange['end']);
+
 		$tables 	= array(self::TABLE);
-		$where 	= 'ext_project_task.' . $field . ' BETWEEN ' . $timeStamps['start'] . ' AND ' . $timeStamps['end'];
+		$where 		= 'ext_project_task.' . $field . ' BETWEEN ' . $dateStart . ' AND ' . $dateEnd;
 
 		return array(
 			'tables'	=> $tables,
