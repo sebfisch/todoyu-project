@@ -9,8 +9,10 @@ h1.headerLine span.projectIcons {
 	float:right;
 }
 
+
+
 /* ----------------
-	Tasktree
+	Task tree
    ---------------- */
 
 	/* lost tasks */
@@ -26,7 +28,7 @@ h1.headerLine span.projectIcons {
 	font-size:14px;
 }
 
-	/* data edit */
+	/* Data edit */
 .project .data {
 	padding:5px 0;
 }
@@ -101,11 +103,13 @@ h1.headerLine span.projectIcons {
 	width:150px;
 }
 
+
+
 /* --------------
 	Project
    -------------- */
 
-	/* details */
+	/* Details */
 .project .headerLine {
 	background-position:0 -92px;
 }
@@ -121,7 +125,7 @@ h1.headerLine span.projectIcons {
 	margin-bottom:10px;
 }
 
-		/* properties */
+		/* Properties */
 	.project .properties dt {
 		float:left;
 		width:110px;
@@ -132,7 +136,7 @@ h1.headerLine span.projectIcons {
 		width:190px;
 	}
 
-	/* assigned persons */
+	/* Assigned persons */
 	.project ul.assignedPersons {
 		margin:0;
 	}
@@ -157,16 +161,16 @@ h1.headerLine span.projectIcons {
 		width:150px;
 	}
 
-	/* description */
+	/* Description */
 	.project .description ul {
 		list-style-position:inside;
 		list-style-type:square;
 	}
 
-	/* project persons */
+	/* Project persons */
 	
 	.project .persons .fieldnamePersons {
-		border-top:1px dotted #CCCCCC;
+		border-top:1px dotted #ccc;
 		padding:5px 0;
 	}
 	
@@ -180,14 +184,14 @@ h1.headerLine span.projectIcons {
 		text-align:left;
 		margin-bottom:5px;
 		padding-bottom:5px;
-		border-bottom:1px dotted #cccccc;
+		border-bottom:1px dotted #ccc;
 	}
 	
 	.project .persons .fieldnamePersons > .fLabel label {
 		font-weight:bold;
 	}
 	
-	.project .persons .fieldnamePersons .foreignRecordsActionControll button {
+	.project .persons .fieldnamePersons .foreignRecordsActionControl button {
 	}
 	
 	.project .persons .fieldnamePersons .databaseRelation {
@@ -239,7 +243,7 @@ h1.headerLine span.projectIcons {
 .projectedit .dates {
 	float:left;
 	width:30%;
-	background-color:#FF0000;
+	background-color:#ff0000;
 }
 
 .projectedit .bottom {
