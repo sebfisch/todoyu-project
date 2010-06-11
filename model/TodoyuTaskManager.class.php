@@ -1213,8 +1213,6 @@ class TodoyuTaskManager {
 			// Get extension config
 		$extConf	= TodoyuExtConfManager::getExtConf('project');
 		
-		TodoyuDebug::printInFireBug($extConf, 'extconf');
-
 			// Set default data
 		$data	= array(
 			'id'				=> 0,
