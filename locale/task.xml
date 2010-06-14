@@ -49,7 +49,7 @@
 		<label index="contextmenu.container.cut">Cut</label>
 		<label index="contextmenu.container.clone">Clone</label>
 		<label index="contextmenu.container.delete">Delete</label>
-		<label index="contextmenu.paste">Insert Copied Task ...</label>
+		<label index="contextmenu.paste">Insert (Copied) Task ...</label>
 		<label index="contextmenu.paste.container">Insert Copied Cont. ...</label>
 		<label index="contextmenu.paste.in">As Subtask</label>
 		<label index="contextmenu.paste.before">Before This Task</label>

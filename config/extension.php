@@ -36,6 +36,7 @@ TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskManager::getContextMenu
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskClipboard::getTaskContextMenuItems', 100);
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskManager::removeEmptyContextMenuParents', 100000);
 TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectManager::getContextMenuItems', 10);
+TodoyuContextMenuManager::addFunction('Project', 'TodoyuTaskClipboard::getProjectContextMenuItems', 100);
 
 
 

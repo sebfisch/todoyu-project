@@ -324,6 +324,56 @@ Todoyu.Ext.project.Project = {
 		var oldStatus	= this.getStatus(idProject);
 
 		statusBar.replaceClassName('bcStatus' + oldStatus, 'bcStatus' + status);
+	},
+
+
+
+	/**
+	 * Paste a task in a project
+	 *
+	 * @function	{pasteTask}
+	 * @param		{Number}		idProject
+	 */
+	pasteTask: function(idProject) {
+		var url		= Todoyu.getUrl('project', 'project');
+		var options	= {
+			'parameters': {
+				'action':	'pasteInProject',
+				'project':	idProject
+			},
+			'onComplete': this.onTaskPasted.bind(this, idProject)
+		};
+
+		Todoyu.send(url, options);
+	},
+
+
+	/**
+	 * Handler when task pasted in a project
+	 *
+	 * @function	{onTaskPasted}
+	 * @param		{Number}			idProject
+	 * @param		{Ajax.Response}		response
+	 */
+	onTaskPasted: function(idProject, response) {
+		var idTaskNew		= response.getTodoyuHeader('idTask');
+		var clipboardMode	= response.getTodoyuHeader('clipboardMode');
+
+
+			// If task was cut, remove old element
+		if( clipboardMode === 'cut' ) {
+			this.ext.Task.removeTaskElement(idTaskNew);
+		}
+
+		$('project-' + idProject + '-tasks').insert({
+			'bottom': response.responseText
+		});
+		
+			// Attach context menu to all tasks (so the pasted ones get one too)
+		this.ext.ContextMenuTask.attach();
+			// Highlight the new pasted task
+		this.ext.Task.highlight(idTaskNew);
+		this.ext.Task.highlightSubtasks(idTaskNew);
 	}
 
 };

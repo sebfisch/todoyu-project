@@ -176,6 +176,19 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 		return TodoyuFormManager::renderSubformRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
 	}
 
+
+	public function pasteInProjectAction(array $params) {
+		$idProject	= intval($params['project']);
+
+		TodoyuTaskRights::restrictAddToProject($idProject);
+
+		$idTaskNew = TodoyuTaskClipboard::pastTaskInProject($idProject);
+
+		TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
+
+		return TodoyuProjectRenderer::renderTask($idTaskNew);
+	}
+
 }
 
 ?>

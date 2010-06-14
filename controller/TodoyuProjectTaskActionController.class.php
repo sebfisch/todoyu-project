@@ -288,7 +288,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuTaskRights::restrictSee($idTask);
 
-		TodoyuTaskClipboard::addTaskCopy($idTask, $withSubtasks);
+		TodoyuTaskClipboard::addTaskForCopy($idTask, $withSubtasks);
 	}
 
 
@@ -304,7 +304,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuTaskRights::restrictEdit($idTask);
 
-		TodoyuTaskClipboard::addTaskCut($idTask);
+		TodoyuTaskClipboard::addTaskForCut($idTask);
 	}
 
 

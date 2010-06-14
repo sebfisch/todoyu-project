@@ -415,4 +415,14 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboard'] = array(
 	)
 );
 
+Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboardProject'] = array(
+	'paste'	=> array(
+		'key'		=> 'paste',
+		'label'		=> 'task.contextmenu.paste',
+		'jsAction'	=> 'Todoyu.Ext.project.Project.pasteTask(#ID#)',
+		'class'		=> 'projectContextMenu taskPaste',
+		'position'	=> 35
+	)
+);
+
 ?>

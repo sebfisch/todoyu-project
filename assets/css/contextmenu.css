@@ -4,11 +4,13 @@
 	e.g. "Show inside project"-option for tasks and projects
 	in listview in "foreign" areas (e.g. portal, search)
 	--------------------------------------------------------*/
-a.task-showinproject,
-a.projectContextMenu.showInProject {
-	background-image:url('../img/contextmenu.png') !important;
-	background-position:3px -689px !important;
-}
+/*a.task-showinproject,*/
+/*a.projectContextMenu.showInProject {*/
+	/*background-image:url('../img/contextmenu.png') !important;*/
+	/*background-position:3px -689px !important;*/
+/*}*/
+
+
 
 
 
@@ -17,32 +19,40 @@ a.projectContextMenu.showInProject {
    -------------------------- */
 
 #contextmenu .projectContextMenu {
-	background-image:url('../img/icons.png');
+	background-image:url('../img/contextmenu.png');
+}
+
+#contextmenu .taskContextMenu.showInProject
+#contextmenu .projectContextMenu.showInProject {
+	background-position:3px -689px;
 }
 
 #contextmenu .projectDetails {
-	background-position:3px -538px;
+	background-position:3px -718px;
 }
 
 #contextmenu .projectStatus {
-	background-image:url('../img/contextmenu.png');
 	background-position:3px 3px;
 }
 
 #contextmenu .projectEdit {
-	background-position:3px -27px;
+	background-position:3px -748px;
 }
 
 #contextmenu .projectDelete {
-	background-position:3px -477px;
+	background-position:3px -778px;
 }
 
 #contextmenu .projectAddTask {
-	background-position:3px -57px;
+	background-position:3px -85px;
 }
 
 #contextmenu .projectAddContainer {
-	background-position:3px -147px;
+	background-position:3px -115px;
+}
+
+#contextmenu .projectContextMenu.taskPaste {
+	background-position:3px -808px;
 }
 
 
@@ -90,7 +100,7 @@ a.projectContextMenu.showInProject {
 	background-position:3px -57px;
 }
 
-#contextmenu .taskPaste {
+#contextmenu .taskContextMenu.taskPaste {
 	background-position:3px -537px;
 }
 #contextmenu .taskPaste.disabled {

@@ -75,7 +75,7 @@ class TodoyuTaskClipboard {
 	 *
 	 * @return	String
 	 */
-	public static function getCurrentMode() {
+	public static function getMode() {
 		$data	= self::getData();
 
 		return $data['mode'];
@@ -88,7 +88,7 @@ class TodoyuTaskClipboard {
 	 *
 	 * @return	Integer
 	 */
-	public static function getCurrentTaskID() {
+	public static function getClipboardTaskID() {
 		$data	= self::getData();
 
 		return intval($data['task']);
@@ -101,8 +101,8 @@ class TodoyuTaskClipboard {
 	 *
 	 * @return		TodoyuTask
 	 */
-	public static function getCurrentTask() {
-		return TodoyuTaskManager::getTask(self::getCurrentTaskID());
+	public static function getClipboardTask() {
+		return TodoyuTaskManager::getTask(self::getClipboardTaskID());
 	}
 
 
@@ -113,7 +113,7 @@ class TodoyuTaskClipboard {
 	 * @return	Boolean
 	 */
 	public static function isInCopyMode() {
-		return self::getCurrentMode() === 'copy';
+		return self::getMode() === 'copy';
 	}
 
 
@@ -124,7 +124,7 @@ class TodoyuTaskClipboard {
 	 * @return	Boolean
 	 */
 	public static function isInCutMode() {
-		return self::getCurrentMode() === 'cut';
+		return self::getMode() === 'cut';
 	}
 
 
@@ -144,7 +144,7 @@ class TodoyuTaskClipboard {
 	 * @param	Integer		$idTask
 	 * @param	Boolean		$widthSubTasks
 	 */
-	public static function addTaskCopy($idTask, $widthSubTasks = true) {
+	public static function addTaskForCopy($idTask, $widthSubTasks = true) {
 		self::addTask($idTask, 'copy', $widthSubTasks);
 	}
 
@@ -155,7 +155,7 @@ class TodoyuTaskClipboard {
 	 *
 	 * @param	Integer		$idTask
 	 */
-	public static function addTaskCut($idTask) {
+	public static function addTaskForCut($idTask) {
 		self::addTask($idTask, 'cut', true);
 	}
 
@@ -164,38 +164,61 @@ class TodoyuTaskClipboard {
 	/**
 	 * Paste current task in clipboard
 	 *
-	 * @param	Integer		$idCurrentTask		New parent task
+	 * @param	Integer		$idWorkingTask		New parent task
 	 * @param	String		$insertMode		Insert mode (before,in,after)
 	 * @return	Integer		New task ID (or old if only moved)
 	 */
-	public static function pasteTask($idCurrentTask = 0, $insertMode = 'in') {
-		$idCurrentTask	= intval($idCurrentTask);
-		$currentTask	= TodoyuTaskManager::getTaskData($idCurrentTask);
+	public static function pasteTask($idWorkingTask = 0, $insertMode = 'in') {
+		$idWorkingTask	= intval($idWorkingTask);
+		$workingTask	= TodoyuTaskManager::getTaskData($idWorkingTask);
 		$dataClipboard	= self::getData();
 
-			// In: Current is parent, After/Before: Currents parent is the parent
+			// In: Working task is parent, After/Before: Working tasks parent is the parent
 		if( $insertMode === 'in' ) {
-			$idParentTask = $idCurrentTask;
+			$idParentTask = $idWorkingTask;
 		} else {
-			$idParentTask = $currentTask['id_parenttask'];
+			$idParentTask = $workingTask['id_parenttask'];
 		}
-		
+
+			// Copy or move the task
 		if( $dataClipboard['mode'] === 'copy' ) {
-			$idNewTask = TodoyuTaskManager::copyTask($dataClipboard['task'], $idParentTask, $dataClipboard['subtasks'], $currentTask['id_project']);
+			$idNewTask = TodoyuTaskManager::copyTask($dataClipboard['task'], $idParentTask, $dataClipboard['subtasks'], $workingTask['id_project']);
 		} elseif( $dataClipboard['mode'] === 'cut' ) {
-			$idNewTask = TodoyuTaskManager::moveTask($dataClipboard['task'], $idParentTask, $currentTask['id_project']);
+			$idNewTask = TodoyuTaskManager::moveTask($dataClipboard['task'], $idParentTask, $workingTask['id_project']);
 		}
 
 
 			// Clear clipboard
 		self::clear();
 
-			// Fix order
+			// Reorder tasks
 		if( $insertMode === 'after' || $insertMode === 'before' ) {
-			TodoyuTaskManager::changeTaskOrder($idNewTask, $idCurrentTask, $insertMode);
+			TodoyuTaskManager::changeTaskOrder($idNewTask, $idWorkingTask, $insertMode);
 		}
 
-			// Send current mo
+			// Send active clipboard mode for cleanup in javascript
+		TodoyuHeader::sendTodoyuHeader('clipboardMode', $dataClipboard['mode']);
+
+		return $idNewTask;
+	}
+
+
+	public static function pastTaskInProject($idProject) {
+		$idProject		= intval($idProject);
+		$project		= TodoyuProjectManager::getProject($idProject);
+		$dataClipboard	= self::getData();
+
+			// Copy or move the task
+		if( $dataClipboard['mode'] === 'copy' ) {
+			$idNewTask = TodoyuTaskManager::copyTask($dataClipboard['task'], 0, $dataClipboard['subtasks'], $idProject);
+		} elseif( $dataClipboard['mode'] === 'cut' ) {
+			$idNewTask = TodoyuTaskManager::moveTask($dataClipboard['task'], 0, $idProject);
+		}
+
+			// Clear clipboard
+		self::clear();
+
+			// Send active clipboard mode for cleanup in javascript
 		TodoyuHeader::sendTodoyuHeader('clipboardMode', $dataClipboard['mode']);
 
 		return $idNewTask;
@@ -211,16 +234,14 @@ class TodoyuTaskClipboard {
 	 * @return	Array
 	 */
 	public static function getTaskContextMenuItems($idTaskContextmenu, array $items) {
-		
-
 			// Only show context menu in project area and if something is on the clipboard
 		if( self::hasTask() ) {
-			$data		= self::getData();
-			$ownItems	= Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboard'];
-			$currentTask= self::getCurrentTask();
+			$data			= self::getData();
+			$ownItems		= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboard']);
+			$clipboardTask	= self::getClipboardTask();
 
 				// Change labels for containers
-			if( $currentTask->isContainer() ) {
+			if( $clipboardTask->isContainer() ) {
 				$ownItems['paste']['label'] .= '.container';
 			}
 
@@ -246,6 +267,30 @@ class TodoyuTaskClipboard {
 			}
 
 			$items	= array_merge_recursive($items, $mergeItems);
+		}
+
+		return $items;
+	}
+
+
+	public static function getProjectContextMenuItems($idProjectContextmenu, array $items) {
+		$idProjectContextmenu	= intval($idProjectContextmenu);
+		
+			// Only show context menu in project area and if something is on the clipboard
+		if( self::hasTask() ) {
+			$data			= self::getData();
+			$ownItems		= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboardProject']);
+			$clipboardTask	= self::getClipboardTask();
+
+				// Change labels for containers
+			if( $clipboardTask->isContainer() ) {
+				$ownItems['paste']['label'] .= '.container';
+			}
+
+				// Paste is only available in project view
+			if( AREA === EXTID_PROJECT && TodoyuTaskRights::isAddInProjectAllowed($idProjectContextmenu) ) {
+				$items	= array_merge_recursive($items, $ownItems);
+			}
 		}
 
 		return $items;

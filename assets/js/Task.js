@@ -159,20 +159,7 @@ Todoyu.Ext.project.Task = {
 
 			// If task was cut, remove old element
 		if( clipboardMode === 'cut' ) {
-			if( Todoyu.exists('task-' + idTaskNew + '-subtasks') ) {
-				$('task-' + idTaskNew + '-subtasks').remove();
-			}
-			if( Todoyu.exists('task-' + idTaskNew) ) {
-				if( this.isSubtask(idTaskNew) ) {
-					var idParent	= this.getParentTaskID(idTaskNew);
-
-					$('task-' + idTaskNew).remove();
-
-					this.checkAndRemoveTriggerFromTask(idParent);
-				} else {
-					$('task-' + idTaskNew).remove();
-				}
-			}
+			this.removeTaskElement(idTaskNew);
 		}
 
 			// Insert as sub task of the current task
@@ -188,7 +175,6 @@ Todoyu.Ext.project.Task = {
 				this.refresh(idTask);
 					// Append sub tasks
 				this.ext.TaskTree.loadSubtasks(idTask, this.ext.TaskTree.toggleSubtaskTriggerIcon.bind(this, idTask));
-				
 			}
 		} else if( insertMode === 'before' ) {
 				// Insert task before current
@@ -318,6 +304,24 @@ Todoyu.Ext.project.Task = {
 	 */
 	onRemoved: function(idTask, response) {
 		Todoyu.Hook.exec('taskremoved', idTask);
+	},
+
+
+	removeTaskElement: function(idTask) {
+		if( Todoyu.exists('task-' + idTask + '-subtasks') ) {
+			$('task-' + idTask + '-subtasks').remove();
+		}
+		if( Todoyu.exists('task-' + idTask) ) {
+			if( this.isSubtask(idTask) ) {
+				var idParent	= this.getParentTaskID(idTask);
+
+				$('task-' + idTask).remove();
+
+				this.checkAndRemoveTriggerFromTask(idParent);
+			} else {
+				$('task-' + idTask).remove();
+			}
+		}
 	},
 
 
