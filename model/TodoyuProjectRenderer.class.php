@@ -536,7 +536,7 @@ class TodoyuProjectRenderer {
 
 
 	/**
-	 * Render a new task in edit modus
+	 * Render a new task in edit mode
 	 *
 	 *
 	 * @param	Integer	$idParentTask
@@ -582,7 +582,7 @@ class TodoyuProjectRenderer {
 
 
 	/**
-	 * Render edit view for a new project (form)
+	 * Render editing view for a new project (form)
 	 *
 	 * @return	String
 	 */
@@ -617,7 +617,7 @@ class TodoyuProjectRenderer {
 
 
 	/**
-	 * Render form for new project (wraped by data div)
+	 * Render form for new project (wrapped by data DIV)
 	 *
 	 * @return	String
 	 */
@@ -640,8 +640,7 @@ class TodoyuProjectRenderer {
 
 
 	/**
-	 * Render tabs over the project tasktree
-	 * The last 4 used projects are rendered as tabheads
+	 * Render tabs over the project taskTree. TabHeads for the 4 latest used projects are rendered. 
 	 *
 	 * @return	String
 	 */
@@ -657,7 +656,7 @@ class TodoyuProjectRenderer {
 
 
 	/**
-	 * Render dummy tab if no project is selected
+	 * Render dummy tab (if no project is selected)
 	 *
 	 * @return	String
 	 */
@@ -676,6 +675,13 @@ class TodoyuProjectRenderer {
 	}
 
 
+
+	/**
+	 * Render
+	 *
+	 * @param	Array	$projectIDs
+	 * @return	String
+	 */
 	public static function renderProjectListing(array $projectIDs) {
 		$projectIDs		= TodoyuArray::intval($projectIDs, true, true);
 		$projectsHTML	= array();
