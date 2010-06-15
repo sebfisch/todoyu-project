@@ -24,4 +24,8 @@
 		<label index="label">Vytvořit rychlý úkol</label>
 		<label index="title">Vytvořit rychlý úkol</label>
 	</labels>
+	<labels lang="ja_JP">
+		<label index="label">クイックタスクの作成</label>
+		<label index="title">クイックタスクの作成</label>
+	</labels>
 </locallang>

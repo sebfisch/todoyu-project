@@ -24,4 +24,8 @@
 		<label index="title.task">Filtr stavu úkolů</label>
 		<label index="title.project">Filtr stavu projektů</label>
 	</labels>
+	<labels lang="ja_JP">
+		<label index="title.task">タスク状態のフィルタ</label>
+		<label index="title.project">プロジェクト状態のフィルタ</label>
+	</labels>
 </locallang>
