@@ -27,7 +27,7 @@
 class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
 	/**
-	 * Initialize projectTree PanelWidget
+	 * Initialize project list PanelWidget
 	 *
 	 * @param	Array		$config
 	 * @param	Array		$params
@@ -40,7 +40,7 @@ class TodoyuPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPa
 		parent::__construct(
 			'project',								// ext key
 			'projectlist',							// panel widget ID
-			'LLL:panelwidget-projecttree.title',	// widget title text
+			'LLL:panelwidget-projectlist.title',	// widget title text
 			$config,								// widget config array
 			$params,								// widget parameters
 			$idArea									// area ID

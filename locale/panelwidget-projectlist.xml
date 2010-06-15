@@ -3,7 +3,7 @@
 	<labels lang="en_GB">
 		<label index="title">Projects</label>
 		<label index="search">Search</label>
-		<label index="list.empty">No projects found (for this filter selection)<</label>
+		<label index="list.empty">No projects found (for this filter selection)</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="title">Projekte</label>
@@ -30,7 +30,7 @@
 		<label index="search">Vyhledat</label>
 		<label index="list.empty">Žáden projekt nebyl nalezen (pro vybraný filtr)</label>
 	</labels>
-		<labels lang="ja_JP">
+	<labels lang="ja_JP">
 		<label index="title">プロジェクト</label>
 		<label index="search">検索</label>
 		<label index="list.empty">(選択されたフィルタには) プロジェクトはありません</label>

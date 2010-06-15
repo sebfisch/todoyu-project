@@ -63,7 +63,6 @@
 		<label index="panelwidgets.statusFilter">Status filter panel widgets</label>
 		<label index="panelwidgets.projectStatusFilter">Panel widget project status filter</label>
 		<label index="panelwidgets.taskStatusFilter">Panel widget task status filter</label>
-		<label index="panelwidgets.projectTree">Panel widget project tree</label>
 		<label index="panelwidgets.projectList">Panel widget project list</label>
 		<label index="panelwidgets.quickProject">Panel widget quick project</label>
 	</labels>
@@ -136,13 +135,11 @@
 		<label index="projectstatus.warranty:see">Sehen: In Garantie</label>
 		<label index="panelwidgets">Steuerelemente</label>
 		<label index="panelwidgets.statusFilter">Steuerelement Status Filter</label>
-		<label index="panelwidgets.projectTreee">Steuerelement Projekt-Baum</label>
 		<label index="panelwidgets.quickProject">Steuerelement Kurz-Projekt</label>
 		<label index="panelwidgets">Steuerelemente</label>
 		<label index="panelwidgets.statusFilter:use">Statusfilter-Elemente</label>
 		<label index="panelwidgets.projectStatusFilter">Projektstatusfilter-Element</label>
 		<label index="panelwidgets.taskStatusFilter">Aufgabenstatusfilter-Element</label>
-		<label index="panelwidgets.projectTree:use">Projektbaum-Element</label>
 		<label index="panelwidgets.projectList">Projektlisten-Element</label>
 		<label index="panelwidgets.quickProject:use">Schnell-Projekt Element</label>
 	</labels>
@@ -208,7 +205,6 @@
 		<label index="panelwidgets.statusFilter">Widgets de Status do Filtro de Painel</label>
 		<label index="panelwidgets.projectStatusFilter">Widget de Status do Filtro de Painel</label>
 		<label index="panelwidgets.taskStatusFilter">Widget de Status do Filtro do Painel de Tarefas</label>
-		<label index="panelwidgets.projectTree">Widget da Árvore do Painel de Projetos</label>
 		<label index="panelwidgets.projectList">Widget do Painel da Lista de Projetos</label>
 		<label index="panelwidgets.quickProject">Widget do Painel de Projetos Quick</label>
 	</labels>
@@ -274,7 +270,6 @@
 		<label index="panelwidgets.statusFilter">Элемент панели для фильтров статуса</label>
 		<label index="panelwidgets.projectStatusFilter">Элемент панели фильтра статуса проекта</label>
 		<label index="panelwidgets.taskStatusFilter">Элемент панели фильтра статуса задачи</label>
-		<label index="panelwidgets.projectTree">Элемент панели дерева проектов</label>
 		<label index="panelwidgets.projectList">Элемент панели списка проектов</label>
 		<label index="panelwidgets.quickProject">Элемент панели быстрый проект</label>
 	</labels>
@@ -340,7 +335,6 @@
 		<label index="panelwidgets.statusFilter">Elementen voor filteren van status</label>
 		<label index="panelwidgets.projectStatusFilter">Element voor filteren van project status</label>
 		<label index="panelwidgets.taskStatusFilter">Element voor filterern van taak status</label>
-		<label index="panelwidgets.projectTree">Element voor projectboom</label>
 		<label index="panelwidgets.projectList">Element voor projectlijst</label>
 		<label index="panelwidgets.quickProject">Element voor snelproject</label>
 	</labels>
@@ -406,7 +400,6 @@
 		<label index="panelwidgets.statusFilter">Status filter panel widgets</label>
 		<label index="panelwidgets.projectStatusFilter">Panel widget project status filter</label>
 		<label index="panelwidgets.taskStatusFilter">Panel widget task status filter</label>
-		<label index="panelwidgets.projectTree">Panel widget project tree</label>
 		<label index="panelwidgets.projectList">Panel widget project list</label>
 		<label index="panelwidgets.quickProject">Panel widget quick project</label>
 	</labels>
@@ -472,7 +465,6 @@
 		<label index="panelwidgets.statusFilter">状態フィルタのパネル部品</label>
 		<label index="panelwidgets.projectStatusFilter">パネル部品 プロジェクト状態フィルタ</label>
 		<label index="panelwidgets.taskStatusFilter">パネル部品 タスク状態フィルタ</label>
-		<label index="panelwidgets.projectTree">パネル部品 プロジェクトツリー</label>
 		<label index="panelwidgets.projectList">パネル部品 プロジェクトリスト</label>
 		<label index="panelwidgets.quickProject">パネル部品 クイックプロジェクト</label>
 	</labels>

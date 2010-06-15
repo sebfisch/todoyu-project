@@ -113,17 +113,7 @@ Todoyu.Ext.project = {
 		this.ContextMenuTask.attach();
 	},
 
-
-
-	/**
-	 * Highlight the project tree
-	 */
-	highlightProjecttree: function() {
-		Effect.Shake('panelwidget-projecttree');
-		new Effect.Highlight('panelwidget-projecttree');
-	},
-
-
+	
 
 	/**
 	 * Save project pref
