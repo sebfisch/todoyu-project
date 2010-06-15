@@ -55,7 +55,7 @@ class TodoyuTaskStatusManager {
 			$statusKey	= $status;
 		}
 
-		return Label('task.status.' . $statusKey);
+		return TodoyuLanguage::getLabel('task.status.' . $statusKey);
 	}
 
 
