@@ -81,7 +81,7 @@ class TodoyuTaskRenderer {
 			'tasks'		=> $tasksHTML
 		);
 
-			// Add contextmenu init scripts
+			// Add context menu init scripts
 		$data['javascript'] = 'Todoyu.Ext.project.ContextMenuTask.attach();';
 
 		return render($tmpl, $data);
