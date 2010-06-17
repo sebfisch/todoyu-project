@@ -771,7 +771,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter by type (task/container)
+	 * Filter by type (task / container)
 	 *
 	 * @param	Integer		$value		both: 0, TASK_TYPE_TASK: 1 / TASK_TYPE_CONTAINER: 2
 	 * @param	Boolean		$negate
@@ -892,46 +892,10 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Boolean
 	 */
 	public static function makeFilter_date($field, $date, $negate = false) {
-		$queryParts	= false;
-		$timestamp	= TodoyuTime::parseDate($date);
+		$tables	= array(self::TABLE);
+		$field	= 'ext_project_task.' . $field;
 
-		if( $timestamp !== 0 ) {
-			$info	= self::getTimeAndLogicForDate($timestamp, $negate);
-
-			$queryParts = array(
-				'tables'=> array(self::TABLE),
-				'where'	=> 'ext_project_task.' . $field . ' ' . $info['logic'] . ' ' . $info['timestamp']
-			);
-		}
-
-		return $queryParts;
-	}
-
-
-
-	/**
-	 * Return timestamp and conjunction logic for date-input queries
-	 *
-	 * @param	Integer		$timestamp
-	 * @param	Boolean		$negate
-	 * @return	Array		[timestamp,logic]
-	 */
-	public static function getTimeAndLogicForDate($timestamp, $negate = false)	{
-		$timestamp	= intval($timestamp);
-
-		if( $negate ) {
-			$info	= array(
-				'timestamp'	=> TodoyuTime::getStartOfDay($timestamp),
-				'logic'		=> '>='
-			);
-		} else {
-			$info	= array(
-				'timestamp'	=> TodoyuTime::getEndOfDay($timestamp),
-				'logic'		=> '<='
-			);
-		}
-
-		return $info;
+		return TodoyuFilterHelper::getDateFilterQueryparts($tables, $field, $date, $negate);
 	}
 
 }
