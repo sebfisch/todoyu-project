@@ -78,8 +78,6 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 			// Search matching projects
 		$taskIDs	= self::searchTasks($find, $ignore, $limit);
 
-		TodoyuDebug::printLastQueryInFirebug();
-
 		if( sizeof($taskIDs) > 0 ) {
 			$fields	= '	t.id,
 						t.id_project,
