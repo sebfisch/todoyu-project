@@ -197,7 +197,7 @@ class TodoyuTask extends TodoyuBaseObject {
 	/**
 	 * Get project object
 	 *
-	 * @return	Project
+	 * @return	TodoyuProject
 	 */
 	public function getProject() {
 		return TodoyuProjectManager::getProject($this->getProjectID());
@@ -211,7 +211,12 @@ class TodoyuTask extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getWorktype() {
-		return Todoyu::db()->getRecord('ext_project_worktype', $this->id_worktype);
+		return TodoyuRecordManager::getRecordData('ext_project_worktype', $this->getWorktypeID());
+	}
+	
+	
+	public function getWorktypeID() {
+		return intval($this->data['id_worktype']);
 	}
 
 

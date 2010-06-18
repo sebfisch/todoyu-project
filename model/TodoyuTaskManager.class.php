@@ -95,8 +95,6 @@ class TodoyuTaskManager {
 	 * @return	TodoyuTask
 	 */
 	public static function getTask($idTask) {
-		$idTask	= intval($idTask);
-
 		return TodoyuRecordManager::getRecord('TodoyuTask', $idTask);
 	}
 
