@@ -310,10 +310,10 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'textinput',
 			'wConf' => array(
 				'autocomplete'	=> true,
-				'FuncRef'=> 'TodoyuProjectFilterDataSource::autocompleteProjects',
-				'FuncParams' => array(),
-				'LabelFuncRef' => 'TodoyuProjectFilterDataSource::getLabel',
-				'negation'	=> 'default'
+				'FuncRef'		=> 'TodoyuProjectFilterDataSource::autocompleteProjects',
+				'FuncParams'	=> array(),
+				'LabelFuncRef'	=> 'TodoyuProjectFilterDataSource::getLabel',
+				'negation'		=> 'default'
 			)
 		),
 		'projectrole' => array(
@@ -411,7 +411,7 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompleteCompanies',
 				'FuncParams'	=> array(),
 				'LabelFuncRef'	=> 'TodoyuPersonFilterDataSource::getCompanyLabel',
-				'negation'	=> 'default'
+				'negation'		=> 'default'
 			)
 		),
 		'projectrole' => array(
