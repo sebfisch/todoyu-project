@@ -870,8 +870,9 @@ class TodoyuProjectManager {
 		$table	= '	ext_project_mm_project_person';
 		$where	= '		id_project	= ' . $idProject .
 				  ' AND	id_role		= ' . $idRole;
+		$order	= 'id';
 
-		$personIDs	= TodoyuArray::flatten(Todoyu::db()->getArray($field, $table, $where));
+		$personIDs	= TodoyuArray::flatten(Todoyu::db()->getArray($field, $table, $where, '', $order));
 
 		return $personIDs;
 	}
