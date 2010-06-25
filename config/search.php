@@ -18,7 +18,13 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-	// Add search engine types
+/**
+ * Add project search engine types: tasks, projects
+ *
+ * @package		Todoyu
+ * @subpackage	Project
+ */
+
 if ( allowed('project', 'general:use') ) {
 	TodoyuSearchManager::addEngine('task', 'TodoyuTaskSearch::getSuggestions', 'task.search.label', 'task.search.mode.label', 10);
 }
