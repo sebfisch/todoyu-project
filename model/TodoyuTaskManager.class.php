@@ -2006,12 +2006,12 @@ class TodoyuTaskManager {
 
 
 	public static function freeze($idTask) {
-		return TodoyuFreeze::freezeObject('TodoyuTask', $idTask);
+		return TodoyuFreezeManager::freezeObject('TodoyuTask', $idTask);
 	}
 
 
 	public static function unfreeze($idTask) {
-		return TodoyuFreeze::unfreezeElement('TodoyuTask', $idTask);
+		return TodoyuFreezeManager::unfreezeElement('TodoyuTask', $idTask);
 	}
 }
 
