@@ -2002,6 +2002,17 @@ class TodoyuTaskManager {
 				
 		return $data;
 	}
+
+
+
+	public static function freeze($idTask) {
+		return TodoyuFreeze::freezeObject('TodoyuTask', $idTask);
+	}
+
+
+	public static function unfreeze($idTask) {
+		return TodoyuFreeze::unfreezeElement('TodoyuTask', $idTask);
+	}
 }
 
 ?>
