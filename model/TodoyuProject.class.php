@@ -179,11 +179,63 @@ class TodoyuProject extends TodoyuBaseObject {
 
 
 	/**
-	 * loads foreign data of a project
+	 * Load foreign data of a project
 	 */
 	public function loadForeignData()	{
 		$this->data['persons'] = TodoyuProjectManager::getProjectPersons($this->id);
 		$this->data['company'] = $this->getCompanyData();
+	}
+
+
+
+	/**
+	 * Get project persons
+	 *
+	 * @return	Array
+	 */
+	public function getPersons() {
+		if ( ! array_key_exists('persons', $this->data) ) {
+			$this->loadForeignData();
+		}
+
+		return $this->data['persons'];
+	}
+
+
+
+	/**
+	 * Get ID of role of given (or currently logged-in) person in project
+	 *
+	 * @param	Integer				$idPerson
+	 * @return	TodoyuProjectRole				0 if no role defined for person
+	 */
+	public function getPersonRoleID($idPerson = 0) {
+		$idPerson	= ( $idPerson === 0 ) ? personid() : intval($idPerson);
+		$idRole		= 0;
+
+		$persons	= $this->getPersons();
+		foreach($persons as $person) {
+			if ( $person['id'] == $idPerson ) {
+				$idRole	= $person['id_role'];
+				break;
+			}
+		}
+
+		return $idRole;
+	}
+
+
+
+	/**
+	 * Get role of given (or currently logged-in) person in project
+	 *
+	 * @param	Integer				$idPerson
+	 * @return	TodoyuProjectRole
+	 */
+	public function getPersonRole($idPerson = 0) {
+		$idRole		= $this->getPersonRoleID($idPerson);
+
+		return TodoyuProjectroleManager::getProjectrole($idRole);
 	}
 
 
