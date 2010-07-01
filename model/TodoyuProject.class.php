@@ -246,7 +246,34 @@ class TodoyuProject extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isLocked() {
-		return $this->get('is_locked') == 0;
+		return $this->get('is_locked') == 1;
+	}
+
+
+
+	/**
+	 * Check whether a project has locked tasks
+	 *
+	 * @return	Boolean
+	 */
+	public function hasLockedTasks() {
+		$field	= 'id';
+		$table	= 'ext_project_task';
+		$where	= '		id_project	= ' . $this->getID()
+				. ' AND is_locked	= 1';
+
+		return Todoyu::db()->hasResult($field, $table, $where);
+	}
+
+	
+
+	/**
+	 * Check whether this project is editable
+	 *
+	 * @return	Boolean
+	 */
+	public function isEditable() {
+		return TodoyuProjectRights::isEditAllowed() && $this->isLocked() === false;
 	}
 
 

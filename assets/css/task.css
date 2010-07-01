@@ -137,6 +137,15 @@
 	cursor:default;
 }
 
+.task span.taskIcons:hover {
+	height:auto;
+	background-color:#FFF;
+	border:1px dotted #CCC;
+	margin-top:-3px;
+	margin-right:-1px;
+	z-index:1000;
+}
+
 
 .task span.taskIcons span {
 	float:left;

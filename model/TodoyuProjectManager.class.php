@@ -347,6 +347,7 @@ class TodoyuProjectManager {
 	 */
 	public static function getContextMenuItems($idProject, array $items) {
 		$idProject	= intval($idProject);
+		$project	= self::getProject($idProject);
 		$isExpanded	= TodoyuProjectPreferences::isProjectDetailsExpanded($idProject);
 
 		$ownItems	= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project']);
@@ -369,7 +370,7 @@ class TodoyuProjectManager {
 		}
 
 			// Modify project
-		if( TodoyuProjectRights::isEditAllowed($idProject) ) {
+		if( $project->isEditable() ) {
 				// Edit
 			$allowed['edit'] = $ownItems['edit'];
 
@@ -383,17 +384,21 @@ class TodoyuProjectManager {
 				}
 			}
 
-				// Delete
-			$allowed['delete'] = $ownItems['delete'];
+			if( ! $project->hasLockedTasks() ) {
+					// Delete
+				$allowed['delete'] = $ownItems['delete'];
+			}
 		}
 
-
-		if( allowed('project', 'task:addInAllProjects') || (allowed('project', 'task:addInOwnProjects') && TodoyuProjectManager::isPersonAssigned($idProject)) ) {
-				// Add task
-			$allowed['addtask'] = $ownItems['addtask'];
-				// Add container
-			$allowed['addcontainer'] = $ownItems['addcontainer'];
-		}
+			// Only add elements to project, if it is not locked
+		if( ! $project->isLocked() ) {
+			if( allowed('project', 'task:addInAllProjects') || (allowed('project', 'task:addInOwnProjects') && TodoyuProjectManager::isPersonAssigned($idProject)) ) {
+					// Add task
+				$allowed['addtask'] = $ownItems['addtask'];
+					// Add container
+				$allowed['addcontainer'] = $ownItems['addcontainer'];
+			}
+		}		
 
 		return array_merge_recursive($items, $allowed);
 	}
