@@ -141,7 +141,7 @@
 .task span.taskIcons span {
 	float:left;
 	clear:none;
-	width:16px;
+	width:14px;
 	height:16px;
 	margin:0;
 	margin-left:3px;
@@ -164,6 +164,11 @@
 .task span.taskIcons .dateover {
 	width:14px;
 	background:url(../img/icons.png) no-repeat 0 -328px;
+}
+
+.task span.taskIcons .locked {
+	width:14px;
+	background:url(../img/icons.png) no-repeat 0 -480px;
 }
 
 

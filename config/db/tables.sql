@@ -15,6 +15,7 @@ CREATE TABLE `ext_project_project` (
 	`description` mediumtext NOT NULL,
 	`status` tinyint(3) unsigned NOT NULL DEFAULT '0',
 	`id_company` int(10) unsigned NOT NULL DEFAULT '0',
+	`is_locked` tinyint(1) unsigned NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
@@ -46,6 +47,7 @@ CREATE TABLE `ext_project_task` (
 	`estimated_workload` mediumint(8) unsigned NOT NULL DEFAULT '0',
 	`is_acknowledged` tinyint(1) unsigned NOT NULL DEFAULT '0',
 	`is_public` tinyint(1) unsigned NOT NULL DEFAULT '0',
+	`is_locked` tinyint(1) unsigned NOT NULL DEFAULT '0',
 	`sorting` int(10) unsigned NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `parenttask` (`id_parenttask`),

@@ -241,6 +241,17 @@ class TodoyuProject extends TodoyuBaseObject {
 
 
 	/**
+	 * Check whether project is locked
+	 *
+	 * @return	Boolean
+	 */
+	public function isLocked() {
+		return $this->get('is_locked') == 0;
+	}
+
+
+
+	/**
 	 * Get template data
 	 *
 	 * @param	Boolean		$loadForeignData

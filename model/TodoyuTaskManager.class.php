@@ -354,6 +354,39 @@ class TodoyuTaskManager {
 	}
 
 
+	/**
+	 * Update status of multiple tasks
+	 *
+	 * @param	Array		$taskIDs
+	 * @param	Integer		$status
+	 */
+	public static function updateTaskStatuses(array $taskIDs, $status) {
+		$update	= array(
+			'status'	=> intval($status)
+		);
+
+		self::updateTasks($taskIDs, $update);
+	}
+
+
+
+	/**
+	 * Update multiple tasks
+	 *
+	 * @param	Array		$taskIDs
+	 * @param	Array		$fieldValues
+	 */
+	public static function updateTasks(array $taskIDs, array $fieldValues) {
+		$taskIDs= TodoyuArray::intval($taskIDs);
+
+		if( sizeof($taskIDs) > 0 ) {
+			$where	= 'id IN(' . implode(',', $taskIDs) . ')';
+
+			Todoyu::db()->doUpdate(self::TABLE, $where, $fieldValues);
+		}
+	}
+
+
 
 	/**
 	 * Get the project ID of a task
@@ -410,7 +443,8 @@ class TodoyuTaskManager {
 			}
 
 				// Edit
-			if( TodoyuTaskRights::isEditAllowed($idTask) ) {
+			if( $task->isEditable() ) {
+				TodoyuDebug::printInFireBug('ja');
 				$allowed['edit'] = $ownItems['edit'];
 			}
 
@@ -424,7 +458,7 @@ class TodoyuTaskManager {
 			}
 
 				// Cut
-			if( TodoyuTaskRights::isEditAllowed($idTask) ) {
+			if( $task->isEditable() ) {
 				$allowed['actions']['submenu']['cut']	= $ownItems['actions']['submenu']['cut'];
 			}
 
@@ -434,7 +468,7 @@ class TodoyuTaskManager {
 			}
 
 				// Delete
-			if( TodoyuTaskRights::isEditAllowed($idTask) ) {
+			if( $task->isEditable() ) {
 				$allowed['actions']['submenu']['delete'] = $ownItems['actions']['submenu']['delete'];
 			}
 
@@ -452,7 +486,7 @@ class TodoyuTaskManager {
 			}
 
 				// Status
-			if( $task->isTask() && allowed('project', 'task:editStatus') && TodoyuTaskRights::isEditAllowed($idTask) ) {
+			if( $task->isTask() && allowed('project', 'task:editStatus') && $task->isEditable() ) {
 				$allowed['status'] = $ownItems['status'];
 
 				$statuses = TodoyuTaskStatusManager::getStatuses('changeto');
@@ -1058,6 +1092,16 @@ class TodoyuTaskManager {
 				'label'		=> 'LLL:task.attr.notAcknowledged',
 				'onclick'	=> 'Todoyu.Ext.project.Task.setAcknowledged(event, ' . $idTask . ')',
 				'position'	=> 100
+			);
+		}
+
+			// Locked (not editable)
+		if( $task->isLocked() ) {
+			$icons['locked'] = array(
+				'id'		=> 'task-' . $idTask . '-locked',
+				'class'		=> 'locked',
+				'label'		=> 'LLL:task.attr.locked',
+				'position'	=> 150
 			);
 		}
 
@@ -2004,14 +2048,57 @@ class TodoyuTaskManager {
 	}
 
 
-
+	/**
+	 * Freeze a task
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Integer
+	 */
 	public static function freeze($idTask) {
 		return TodoyuFreezeManager::freezeObject('TodoyuTask', $idTask);
 	}
 
 
+
+	/**
+	 * Unfreeze a task
+	 *
+	 * @param	Integer			$idTask
+	 * @return	Boolean|TodoyuTask
+	 */
 	public static function unfreeze($idTask) {
 		return TodoyuFreezeManager::unfreezeElement('TodoyuTask', $idTask);
+	}
+
+
+
+	/**
+	 * Lock a task
+	 *
+	 * @param	Integer		$idTask
+	 */
+	public static function lockTask($idTask) {
+		$idTask	= intval($idTask);
+		$update	= array(
+			'is_locked'	=> 1
+		);
+
+		TodoyuRecordManager::updateRecord(self::TABLE, $idTask, $update);
+	}
+
+
+
+	/**
+	 * Lock multiple tasks
+	 *
+	 * @param	Array	$taskIDs
+	 */
+	public static function lockTasks(array $taskIDs) {
+		$update	= array(
+			'is_locked'	=> 1
+		);
+
+		self::updateTasks($taskIDs, $update);
 	}
 }
 

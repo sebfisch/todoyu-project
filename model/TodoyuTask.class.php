@@ -320,6 +320,31 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 
+	/**
+	 * Check whether the task can be edited
+	 * Check if task is not locked any user has edit rights
+	 *
+	 * @return	Boolean
+	 */
+	public function isEditable() {
+		$allowed	= TodoyuTaskRights::isEditAllowed($this->getID());
+		
+		return $allowed && $this->isLocked() === false;
+	}
+
+
+
+	/**
+	 * Check whether a task is locked
+	 *
+	 * @return	Boolean
+	 */
+	public function isLocked() {
+		return $this->get('is_locked') == 1;
+	}
+
+
+
 	protected function loadForeignData() {
 
 	}

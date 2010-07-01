@@ -1092,6 +1092,41 @@ class TodoyuProjectManager {
 		return $form;
 	}
 
+
+
+	/**
+	 * Lock project
+	 *
+	 * @param	Integer		$idProject
+	 */
+	public static function lockProject($idProject) {
+		$idProject	= intval($idProject);
+		$update		= array(
+			'is_locked'	=> 1
+		);
+
+		self::updateProject($idProject, $update);		
+	}
+
+	
+
+	/**
+	 * Lock all tasks of a project
+	 *
+	 * @param	Integer		$idProject
+	 */
+	public static function lockAllTasks($idProject) {
+		$idProject	= intval($idProject);
+
+		$table	= 'ext_project_task';
+		$update	= array(
+			'is_locked'	=> 1
+		);
+		$where	= 'id_project = ' . $idProject;
+
+		Todoyu::db()->doUpdate($table, $where, $update);
+	}
+
 }
 
 ?>
