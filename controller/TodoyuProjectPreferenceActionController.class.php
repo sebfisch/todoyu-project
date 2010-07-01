@@ -80,7 +80,7 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 	public function panelwidgettaskstatusfilterAction(array $params) {
 		$selectedStatuses	= TodoyuArray::intExplode(',', $params['value'], true, true);
 
-		$widget	= TodoyuPanelWidgetManager::getPanelWidget('TaskStatusFilter');
+		$widget	= TodoyuPanelWidgetManager::getPanelWidget('StatusFilterTask');
 
 		$widget->saveSelectedStatuses($selectedStatuses);
 	}
@@ -94,7 +94,7 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 	public function panelwidgetprojectstatusfilterAction(array $params) {
 		$selectedStatuses	= TodoyuArray::intExplode(',', $params['value'], true, true);
 
-		$widget	= TodoyuPanelWidgetManager::getPanelWidget('ProjectStatusFilter');
+		$widget	= TodoyuPanelWidgetManager::getPanelWidget('StatusFilterProject');
 
 		$widget->saveSelectedStatuses($selectedStatuses);
 	}

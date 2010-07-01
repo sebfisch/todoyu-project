@@ -113,6 +113,9 @@ class TodoyuProjectManager {
 			'status'	=> $status
 		);
 
+			// Call project status change hooks
+		TodoyuHookManager::callHook('project', 'changeprojectstatus', array($idProject,$status));
+
 		self::updateProject($idProject, $data);
 	}
 
