@@ -85,6 +85,22 @@ function Dwoo_Plugin_projectStatusLabel(Dwoo $dwoo, $idStatus) {
 
 
 /**
+ * Get label of given project role 
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo	$dwoo
+ * @param	Integer	$idProjectrole
+ * @return	String
+ */
+function Dwoo_Plugin_projectRoleLabel(Dwoo $dwoo, $idProjectrole) {
+	return TodoyuProjectroleManager::getLabel($idProjectrole);
+}
+
+
+
+/**
  * Get project status key
  *
  * @package		Todoyu
