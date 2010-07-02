@@ -124,7 +124,7 @@ class TodoyuProjectViewHelper {
 
 
 	/**
-	 * Get projectroles options
+	 * Get projectRoles options
 	 *
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
@@ -144,7 +144,7 @@ class TodoyuProjectViewHelper {
 
 
 	/**
-	 * Get options for all projectroles
+	 * Get options for all projectRoles
 	 *
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
@@ -160,6 +160,13 @@ class TodoyuProjectViewHelper {
 	}
 
 
+
+	/**
+	 * Get work types from extension configuration 
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @return	Array
+	 */
 	public static function getExtConfWorktypes(TodoyuFormElement $field) {
 		$worktypes	= TodoyuWorktypeManager::getAllWorktypes();
 		$reform	= array(
@@ -173,10 +180,10 @@ class TodoyuProjectViewHelper {
 
 
 	/**
-	 * Get project which are available for the person to  as options
+	 * Get projects which are available for the person to  as options
 	 *
-	 * @param TodoyuFormElement $field
-	 * @return unknown
+	 * @param	TodoyuFormElement	$field
+	 * @return	Array
 	 */
 	public static function getAvailableProjectOptions(TodoyuFormElement $field) {
 		$projectIDs	= TodoyuProjectManager::getProjectIDsForTaskAdd();
@@ -195,6 +202,13 @@ class TodoyuProjectViewHelper {
 	}
 
 
+
+	/**
+	 * Get project label for quickTask autoCompleter suggestion
+	 *
+	 * @param	Integer		$idProject
+	 * @return	String
+	 */
 	public static function getQuicktaskAutocompleteLabel($idProject) {
 		$idProject	= intval($idProject);
 		$label		= '';
@@ -205,7 +219,6 @@ class TodoyuProjectViewHelper {
 
 		return $label;
 	}
-
 
 }
 
