@@ -246,7 +246,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isLocked() {
-		return $this->get('is_locked') == 1;
+		return TodoyuLockManager::isLocked('ext_project_project', $this->getID());
 	}
 
 
@@ -257,12 +257,14 @@ class TodoyuProject extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function hasLockedTasks() {
-		$field	= 'id';
-		$table	= 'ext_project_task';
-		$where	= '		id_project	= ' . $this->getID()
-				. ' AND is_locked	= 1';
-
-		return Todoyu::db()->hasResult($field, $table, $where);
+		$field	= '	t.id';
+		$tables	= '	system_lock sl,
+					ext_project_task t';
+		$where	= '		t.id_project= ' . $this->getID()
+				. ' AND	t.id		= sl.id_record'
+				. ' AND sl.table	= \'ext_project_task\'';
+		
+		return Todoyu::db()->hasResult($field, $tables, $where);
 	}
 
 	

@@ -340,7 +340,7 @@ class TodoyuTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isLocked() {
-		return $this->get('is_locked') == 1;
+		return TodoyuLockManager::isLocked('ext_project_task', $this->getID());
 	}
 
 

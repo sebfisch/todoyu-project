@@ -2077,13 +2077,19 @@ class TodoyuTaskManager {
 	 *
 	 * @param	Integer		$idTask
 	 */
-	public static function lockTask($idTask) {
-		$idTask	= intval($idTask);
-		$update	= array(
-			'is_locked'	=> 1
-		);
+	public static function lockTask($idTask, $ext = EXTID_PROJECT) {
+		TodoyuLockManager::lock($ext, 'ext_project_task', $idTask);
+	}
 
-		TodoyuRecordManager::updateRecord(self::TABLE, $idTask, $update);
+
+
+	/**
+	 * Unlock a task
+	 *
+	 * @param	Integer		$idTask
+	 */
+	public static function unlockTask($idTask, $ext = EXTID_PROJECT) {
+		TodoyuLockManager::unlock($ext, 'ext_project_task', $idTask);
 	}
 
 
@@ -2093,12 +2099,23 @@ class TodoyuTaskManager {
 	 *
 	 * @param	Array	$taskIDs
 	 */
-	public static function lockTasks(array $taskIDs) {
-		$update	= array(
-			'is_locked'	=> 1
-		);
+	public static function lockTasks(array $taskIDs, $ext = EXTID_PROJECT) {
+		foreach($taskIDs as $idTask) {
+			self::lockTask($idTask, $ext);
+		}
+	}
 
-		self::updateTasks($taskIDs, $update);
+
+
+	/**
+	 * Unlock multiple tasks
+	 *
+	 * @param	Array		$taskIDs
+	 */
+	public static function unlockTasks(array $taskIDs, $ext = EXTID_PROJECT) {
+		foreach($taskIDs as $idTask) {
+			self::unlockTask($idTask, $ext);
+		}
 	}
 }
 

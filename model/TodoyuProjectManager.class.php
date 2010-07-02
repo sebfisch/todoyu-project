@@ -1107,13 +1107,20 @@ class TodoyuProjectManager {
 	 *
 	 * @param	Integer		$idProject
 	 */
-	public static function lockProject($idProject) {
-		$idProject	= intval($idProject);
-		$update		= array(
-			'is_locked'	=> 1
-		);
+	public static function lockProject($idProject, $ext = EXTID_PROJECT) {
+		TodoyuLockManager::lock($ext, 'ext_project_project', $idProject);
+	}
 
-		self::updateProject($idProject, $update);		
+
+
+	/**
+	 * Unlock a project
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Integer		$ext
+	 */
+	public static function unlockProject($idProject, $ext = EXTID_PROJECT) {
+		TodoyuLockManager::unlock($ext, 'ext_project_project', $idProject);
 	}
 
 	
@@ -1123,16 +1130,14 @@ class TodoyuProjectManager {
 	 *
 	 * @param	Integer		$idProject
 	 */
-	public static function lockAllTasks($idProject) {
+	public static function lockAllTasks($idProject, $ext = EXTID_PROJECT) {
 		$idProject	= intval($idProject);
 
-		$table	= 'ext_project_task';
-		$update	= array(
-			'is_locked'	=> 1
-		);
-		$where	= 'id_project = ' . $idProject;
+		$taskIDs	= self::getTaskIDs($idProject);
 
-		Todoyu::db()->doUpdate($table, $where, $update);
+		foreach($taskIDs as $idTask) {
+			TodoyuTaskManager::lockTask($idTask, $ext);
+		}
 	}
 
 }
