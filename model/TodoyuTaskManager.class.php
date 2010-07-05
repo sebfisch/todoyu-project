@@ -444,7 +444,6 @@ class TodoyuTaskManager {
 
 				// Edit
 			if( $task->isEditable() ) {
-				TodoyuDebug::printInFireBug('ja');
 				$allowed['edit'] = $ownItems['edit'];
 			}
 

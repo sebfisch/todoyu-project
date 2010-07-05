@@ -166,6 +166,8 @@ Todoyu.Ext.project.Project.Edit = {
 	 * @param	{Number}	idProject
 	 */
 	cancel: function(idProject) {
+		Todoyu.Ui.closeRTE('project-' + idProject + '-form');
+
 		if( idProject === 0 ) {
 				// If the form of a new project is canceled
 			this.ext.ProjectTaskTree.removeProject(idProject);

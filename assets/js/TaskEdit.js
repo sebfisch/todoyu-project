@@ -172,6 +172,8 @@ Todoyu.Ext.project.Task.Edit = {
 		if( this.ext.Task.hasParentTask(idTask) && idTask == 0) {
 			this.ext.Task.checkAndRemoveTriggerFromParent(idTask);
 		}
+
+		Todoyu.Ui.closeRTE('task-' + idTask + '-form');
 		
 		if( idTask == 0 ) {
 			$('task-' + idTask).remove();
