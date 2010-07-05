@@ -123,18 +123,25 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @return	Array
 	 */
 	public static function Filter_fulltext($searchWords, $negate = false) {
-		$searchWords	= TodoyuArray::trimExplode(' ', $searchWords);
-		$searchInFields	= array('ext_project_project.title', 'ext_project_project.description', 'ext_contact_company.title', 'ext_contact_company.shortname');
+		$searchWords= trim($searchWords);
+		$searchWords= TodoyuArray::trimExplode(' ', $searchWords);
+		$queryParts	= false;
 
-		$tables	= array('ext_project_project', 'ext_contact_company');
-		$where	= 'ext_project_project.id_company	= ext_contact_company.id';
+		if( sizeof($searchWords) > 0 ) {
+			$searchInFields	= array('ext_project_project.title', 'ext_project_project.description', 'ext_contact_company.title', 'ext_contact_company.shortname');
 
-		$where .= ' AND ' . Todoyu::db()->buildLikeQuery($searchWords, $searchInFields);
+			$tables	= array('ext_project_project', 'ext_contact_company');
+			$where	= 'ext_project_project.id_company	= ext_contact_company.id';
 
-		return array(
-			'tables'	=> $tables,
-			'where'		=> $where
-		);
+			$where .= ' AND ' . Todoyu::db()->buildLikeQuery($searchWords, $searchInFields);
+
+			$queryParts = array(
+				'tables'	=> $tables,
+				'where'		=> $where
+			);
+		}
+
+		return $queryParts;
 	}
 
 
