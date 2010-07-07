@@ -6,7 +6,7 @@
 			<legend>Select project</legend>
 			<elements>
 
-				<field type="textinputAC" name="id_project_ac">
+				<field type="textAC" name="id_project_ac">
 					<label>project.project</label>
 					<config>						
 						<acName>project</acName>

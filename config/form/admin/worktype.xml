@@ -10,7 +10,7 @@
 			<legend>Main worktype Fields</legend>
 			<elements>
 
-				<field type="textinput" name="title">
+				<field type="text" name="title">
 					<label>core.title</label>
 					<required />
 				</field>

@@ -9,7 +9,7 @@
 			<legend>Project filters</legend>
 			<elements>
 
-				<field type="textinput" name="fulltext">
+				<field type="text" name="fulltext">
 					<label>panelwidget-projectlist.search</label>
 				</field>
 

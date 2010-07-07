@@ -134,19 +134,13 @@ class TodoyuTaskViewHelper {
 	 * @return	Array
 	 */
 	public static function getTaskWorktypeOptions(TodoyuFormElement $field) {
-		$options= array();
-
 		$worktypes	= TodoyuWorktypeManager::getAllWorktypes();
-		foreach($worktypes as $num => $type) {
-			if ($type['deleted'] == 0) {
-				$options[] = array(
-					'label'	=> $type['title'],
-					'value'	=> $type['id']
-				);
-			}
-		}
+		$reform		= array(
+			'title'	=> 'label',
+			'id'	=> 'value'
+		);
 
-		return $options;
+		return TodoyuArray::reform($worktypes, $reform);
 	}
 
 

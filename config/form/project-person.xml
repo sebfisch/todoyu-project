@@ -7,7 +7,7 @@
 			<class>top</class>
 			<elements>
 
-				<field type="textinputAC" name="id">
+				<field type="textAC" name="id">
 					<label>contact.person</label>
 					<config>
 						<acName>projectperson</acName>
@@ -39,7 +39,7 @@
 					<required />
 				</field>
 
-				<field type="textinput" name="comment">
+				<field type="text" name="comment">
 					<label>project.attr.persons.comment</label>
 				</field>
 
