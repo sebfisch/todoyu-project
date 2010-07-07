@@ -156,7 +156,7 @@ class TodoyuTaskViewHelper {
 		$taskOwner	= TodoyuTaskManager::getTaskOwner($idTask);
 
 		$option = array(
-			0 => array(
+			array(
 				'value'		=> $taskOwner[0]['id'],
 				'label'		=> TodoyuPersonManager::getLabel($taskOwner[0]['id'], true, true)
 			)
