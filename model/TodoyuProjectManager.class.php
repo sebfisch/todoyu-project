@@ -542,6 +542,9 @@ class TodoyuProjectManager {
 			);
 		}
 
+//		print_r($info);
+//		exit();
+		
 		return $info;
 	}
 
