@@ -51,7 +51,7 @@ class TodoyuPanelWidgetStatusFilterProject extends TodoyuPanelWidgetStatusFilter
 		$filterJSON			= json_encode($this->getSelectedStatusIDs());
 
 			// Initialize javaScript
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.PanelWidget.ProjectStatusFilterInstance = new Todoyu.Ext.project.PanelWidget.ProjectStatusFilter(' . $filterJSON . ')', 100);
+		TodoyuPage::addJsOnloadedFunction('function(){Todoyu.Ext.project.PanelWidget.ProjectStatusFilterInstance = new Todoyu.Ext.project.PanelWidget.ProjectStatusFilter(' . $filterJSON . ')}', 100);
 	}
 
 
