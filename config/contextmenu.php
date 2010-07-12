@@ -33,7 +33,7 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 		'key'		=> 'showinproject',
 		'label'		=> 'task.contextmenu.showinproject',
 		'jsAction'	=> 'Todoyu.Ext.project.goToTaskInProject(#ID#)',
-		'class'		=> 'task-ctxmenu task-showinproject',
+		'class'		=> 'taskContextMenu task-showinproject',
 		'position'	=> 10
 	),
 	'edit'	=> array(
@@ -184,7 +184,7 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
 		'key'		=> 'showinproject',
 		'label'		=> 'task.contextmenu.showinproject',
 		'jsAction'	=> 'Todoyu.Ext.project.goToTaskInProject(#ID#)',
-		'class'		=> 'task-ctxmenu task-showinproject',
+		'class'		=> 'taskContextMenu task-showinproject',
 		'position'	=> 10
 	),
 	'edit'	=> array(

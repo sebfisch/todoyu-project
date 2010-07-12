@@ -25,7 +25,6 @@
 		<label index="attr.is_estimatedworkload_public.error">Please fill in the estimated workload for this task</label>
 		<label index="attr.notAcknowledged">Not Acknowledged (New)</label>
 		<label index="attr.dateover">End date or deadline exceeded</label>
-		<label index="attr.overtimed">Task Overbooked</label>
 		<label index="container.attr.person_owner">Container Owner</label>
 		<label index="container.attr.is_public">Container Visibility</label>
 		<label index="search.label">Tasks</label>
@@ -123,7 +122,7 @@
 		<label index="attr.person_assigned">Zugewiesen</label>
 		<label index="attr.person_create">Erfasst von</label>
 		<label index="attr.person_owner">Aufgaben-Eigner</label>
-		<label index="attr.is_public">Task Sichtbarkeit</label>
+		<label index="attr.is_public">Aufgaben Sichtbarkeit</label>
 		<label index="attr.is_public.public">Task ist öffentlich</label>
 		<label index="attr.is_public.private">Task ist NICHT öffentlich</label>
 		<label index="attr.id_parenttask">Übergeordnete Aufg.</label>
@@ -133,7 +132,6 @@
 		<label index="attr.is_estimatedworkload_public.error">Bitte füllen Sie den gesschätzten Aufwand ein</label>
 		<label index="attr.notAcknowledged">Nicht bestätigt (Neu)</label>
 		<label index="attr.dateover">End-Datum oder Frist ist abgelaufen</label>
-		<label index="attr.overtimed">Aufgabezeit überzogen</label>
 		<label index="container.attr.person_owner">Container-Eigner</label>
 		<label index="search.label">Aufgaben</label>
 		<label index="search.mode.label">Aufgaben finden</label>
@@ -232,7 +230,6 @@
 		<label index="attr.is_estimatedworkload_public.error">Favor entrar com a estimativa de horas de trabalho para esta tarefa</label>
 		<label index="attr.notAcknowledged">Recusado (Novo)</label>
 		<label index="attr.dateover">Data de Término ou Prazo Final Excedido</label>
-		<label index="attr.overtimed">Tarefa Overbooked</label>
 		<label index="search.label">Tarefas</label>
 		<label index="search.mode.label">Pesquisar Tarefas</label>
 		<label index="create.label">Nova Tarefa</label>
@@ -329,7 +326,6 @@
 		<label index="attr.is_estimatedworkload_public.error">Пожалуйста, заполните ожидаемую загрузку</label>
 		<label index="attr.notAcknowledged">Не подтверждено (новое)</label>
 		<label index="attr.dateover">Превышены срок или конечная дата</label>
-		<label index="attr.overtimed">Задача перегружена</label>
 		<label index="container.attr.person_owner">Владелец контейнера</label>
 		<label index="container.attr.is_public">Видимость контейнера</label>
 		<label index="search.label">Задачи</label>
@@ -429,7 +425,6 @@
 		<label index="attr.is_estimatedworkload_public.error">Vul a.u.b. de geschatte hoeveelheid werk in voor deze taak</label>
 		<label index="attr.notAcknowledged">Niet bevestigd (Nieuw)</label>
 		<label index="attr.dateover">Einddatum of deadline overschreden</label>
-		<label index="attr.overtimed">Taak is overboekt</label>
 		<label index="container.attr.person_owner">Eigenaar container</label>
 		<label index="container.attr.is_public">Zichtbaarheid van container</label>
 		<label index="search.label">Taken</label>
@@ -530,7 +525,6 @@
 		<label index="attr.is_estimatedworkload_public.error">Odhadněte časovou náročnost úkolu</label>
 		<label index="attr.notAcknowledged">Nepotvrzený (nový)</label>
 		<label index="attr.dateover">Datum konce nebo termín překročen</label>
-		<label index="attr.overtimed">Úkol Overbooked</label>
 		<label index="container.attr.person_owner">Vlastník</label>
 		<label index="container.attr.is_public">Viditelnost</label>
 		<label index="search.label">Úkoly</label>
@@ -631,7 +625,6 @@
 		<label index="attr.is_estimatedworkload_public.error">このタスクの作業見積を入力してください</label>
 		<label index="attr.notAcknowledged">未承認 (新規)</label>
 		<label index="attr.dateover">終了日および締切日の超過</label>
-		<label index="attr.overtimed">タスクの衝突</label>
 		<label index="container.attr.person_owner">コンテナ所有者</label>
 		<label index="container.attr.is_public">コンテナの公開</label>
 		<label index="search.label">タスク</label>

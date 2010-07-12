@@ -118,19 +118,14 @@ Todoyu.Ext.project.Task.Tab = {
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	createTabContainer: function(idTask, tabKey) {
-			// Create elements
-		var loader	= new Element('img', {'src':'assets/img/ajax-loader.png'});
-		var spacer	= new Element('p', {'style':'padding:50px;text-align:center'}).update(loader);
-
-		var tabDiv	= new Element(
-			'div', {
-				'id':		this.buildTabID(idTask, tabKey),
-				'class':	'tab'
-			}
-		).update(spacer);
-
-		var tabContainer = 'task-' + idTask + '-tabcontent';
-		$(tabContainer).insert({'top': tabDiv});
+		$('task-' + idTask + '-tabcontent').insert({
+			'top': new Element(
+				'div', {
+					'id':		this.buildTabID(idTask, tabKey),
+					'class':	'tab'
+				}
+			)
+		});
 	},
 
 

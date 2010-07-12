@@ -74,7 +74,11 @@
 /*	#contextmenu .status ul lia .projectContextMenu {
 		background-image:url(../img/projectstatus.png) !important;
 	}
-*/		
+*/
+
+#contextmenu .task-showinproject {
+	background-position:3px -718px;
+}
 
 #contextmenu .taskEdit {
 	background-position:3px -28px;

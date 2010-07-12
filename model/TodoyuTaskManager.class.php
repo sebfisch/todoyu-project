@@ -1270,9 +1270,10 @@ class TodoyuTaskManager {
 			'estimated_workload'=> intval($extConf['estimated_workload']),
 			'is_public'			=> intval($extConf['is_public']),
 			'id_parenttask'		=> $idParentTask,
-			'type'				=> $type
+			'type'				=> $type,
+			'id_worktype'		=> intval($extConf['id_worktype'])
 		);
-
+		
 			// Call hook to modify default task data
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDefaultData', $data);
 
