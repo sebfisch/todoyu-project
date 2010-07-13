@@ -435,7 +435,6 @@ Todoyu.Ext.project.ProjectTaskTree = {
 			title = activeTab.first().innerHTML;
 		} else {
 			if( this.getNumTabs() > 0 ) {
-//	@todo	check: needed? working?
 				title = this.getTabs().first().innerHTML;
 			}
 		}

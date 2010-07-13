@@ -699,7 +699,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Evoked after container having been added to project. Add context menu and scroll to the new container.
 	 *
-	 * @param	{Object}		response
+	 * @param	{Ajax.Response}		response
 	 */
 	onProjectContainerAdded: function(response) {
 			// Get task id from header
@@ -740,7 +740,7 @@ Todoyu.Ext.project.Task = {
 	 * Evoked upon completion of request having added a sub task to given parent task. Adds context menu to new task, ensures sub tasks (including the new one) of given task are shown, scrolls new task into view.
 	 *
 	 * @param	{Number}		idParentTask
-	 * @param	{Object}		response
+	 * @param	{Ajax.Response}		response
 	 */
 	onSubTaskAdded: function(idParentTask, response) {
 		var idTask = response.getHeader('Todoyu-idTask');
@@ -803,7 +803,7 @@ Todoyu.Ext.project.Task = {
 	 * Evoked after completion of request adding sub container to given task. Attaches context menu to container, activates display of sub tasks of task (including the new container), scrolls container into focus.
 	 *
 	 * @param	{Number}		idParentTask
-	 * @param	{Object}		response
+	 * @param	{Ajax.Response}		response
 	 */
 	onSubContainerAdded: function(idParentTask, response) {
 		var idContainer = response.getHeader('Todoyu-idContainer');
