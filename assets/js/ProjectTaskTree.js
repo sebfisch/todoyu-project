@@ -40,12 +40,11 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * OnTabSelect custom event handler
 	 *
-	 * @param	{Event}		event		Click event
-	 * @param	{String}		tabKey		Key of clicked tab
+	 * @param	{Event}		event			click event
+	 * @param	{Number}	idProject		key of clicked tab
 	 */
 	onTabSelect: function(event, idProject) {
 		this.openProject(idProject, 0);
-
 		this.moveTabToFront(idProject);
 	},
 

@@ -40,8 +40,8 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = Class.create(Todoyu.PanelWi
 	/**
 	 * Initialize the panelWidget: setup properties, install element observers
 	 *
-	 * @param	{Function}	Parent constructor
-	 * @param	{Array}		Selected Status IDs
+	 * @param	{Function}	parent constructor
+	 * @param	{Array}		selected status IDs
 	 */
 	initialize: function($super, selectedStatusIDs) {
 		$super('panelwidget-projectstatusfilter-list');

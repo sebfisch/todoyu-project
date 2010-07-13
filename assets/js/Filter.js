@@ -85,7 +85,7 @@ Todoyu.Ext.project.Filter = {
 	 * Get selected person
 	 *
 	 * @param	{String}	name
-	 * @return	{Integer}
+	 * @return	{Number}
 	 */
 	getProjectrolePerson: function(name) {
 		return $F('widget-autocompleter-' + name + '-hidden');

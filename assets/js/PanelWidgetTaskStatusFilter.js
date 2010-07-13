@@ -39,7 +39,7 @@ Todoyu.Ext.project.PanelWidget.TaskStatusFilter = Class.create(Todoyu.PanelWidge
 	/**
 	 * Initialize object
 	 *
-	 * @param	Function		$super		Original constructor function
+	 * @param	{Function}		$super		Original constructor function
 	 */
 	initialize: function($super) {
 		$super('panelwidget-taskstatusfilter-list');

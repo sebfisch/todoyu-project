@@ -48,12 +48,11 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 
 	
 	/**
-	 * Handler when quicktask has been saved
-	 * Update the tasklist, if task has been added to the active project
+	 * Handler when quick task has been saved: Update the task list, if task has been added to the active project
 	 * 
-	 * @param	{Number}		idTask
-	 * @param	{Number}		idProject
-	 * @param	{Boolean}		started
+	 * @param	{Number}			idTask
+	 * @param	{Number}			idProject
+	 * @param	{Ajax.Response}		response
 	 */
 	onQuickTaskSaved: function(idTask, idProject, response) {
 		if ( Todoyu.getArea() == 'project' ) {
@@ -62,5 +61,5 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 			}
 		}
 	}
-	
+
 };

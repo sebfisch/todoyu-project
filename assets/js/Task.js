@@ -213,28 +213,19 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Number}		idTask
 	 */
 	clone: function(idTask) {
-		var withSubtasks = false;
-
-			// Ask to copy sub tasks
-		if ( this.hasSubtasks(idTask) ) {
-			withSubtasks = confirm('Auch Unteraufgaben klonen?') ? 1 : 0;
-		}
+			// Has sub tasks? ask whether to include them in copy
+		var copySubTasks	= ( this.hasSubtasks(idTask) ) ? (confirm('[LLL:project.]') ? 1 : 0) : false;
 
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			'parameters': {
 				'action':	'clone',
 				'task':		idTask,
-				'subtasks': withSubtasks
+				'subtasks':	copySubTasks
 			},
 			'onComplete': this.onCloned.bind(this, idTask)
 		};
-
-		if( this.hasSubtasks(idTask) && this.hasSubtaskContainer(idTask) ) {
-			var target	= 'task-' + idTask + '-subtasks';
-		} else {
-			var target	= 'task-' + idTask;
-		}
+		var target	= 'task-' + idTask + ( this.hasSubTasksAndContainer(idTask) ) ? '-subtasks' : '';
 
 		Todoyu.Ui.append(target, url, options);
 	},
@@ -381,6 +372,17 @@ Todoyu.Ext.project.Task = {
 	 */
 	hasSubtaskContainer: function(idTask) {
 		return Todoyu.exists('task-' + idTask + '-subtasks');
+	},
+
+
+
+	/**
+	 * Check whether given task has sub tasks and a sub task container
+	 *
+	 * @param	{Number}	idTask
+	 */
+	hasSubTasksAndContainer: function(idTask) {
+		return this.hasSubtasks(idTask) && this.hasSubtaskContainer(idTask);
 	},
 
 
@@ -629,12 +631,13 @@ Todoyu.Ext.project.Task = {
 			'onComplete': this.onProjectTaskAdded.bind(this)
 		};
 
-			// If losttasks are displayed, add before losttasks, else just add at the bottom of the list
+			// Lost tasks are displayed? => add before lost tasks / else: add at bottom of list
+		var target;
 		if( Todoyu.exists('project-' + idProject + '-losttasks') ) {
-			var target	= 'project-' + idProject + '-losttasks';
+			target	= 'project-' + idProject + '-losttasks';
 			options.insertion = 'before';
 		} else {
-			var target	= 'project-' + idProject + '-tasks';
+			target	= 'project-' + idProject + '-tasks';
 			options.insertion = 'bottom';
 		}
 

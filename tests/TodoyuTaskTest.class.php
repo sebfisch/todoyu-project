@@ -72,10 +72,10 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 
 
 	/**
-	 *	Test TodoyuTask::__construct
+	 * Test TodoyuTask::__construct
 	 */
 	public function testConstructor() {
-			// Test successfull constructor
+			// Test successful constructor
 		$idTask	= TodoyuArray::getColumn($this->array, 'id');
 
 		$task = new TodoyuTask($idTask);
