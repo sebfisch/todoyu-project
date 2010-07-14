@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Render class Todoyufor task elements
+ * Render class for task elements
  *
  * @package		Todoyu
  * @subpackage	Project
