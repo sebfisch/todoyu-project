@@ -113,9 +113,12 @@ Todoyu.Ext.project.Filter = {
 	updateProjectRoleConditionValue: function(name) {
 		var idPerson	= this.getProjectrolePerson(name);
 		var projectRoles= this.getProjectroleRoles(name);
-		var value		= idPerson + ':' + projectRoles.join(',');
 
-		Todoyu.Ext.search.Filter.updateConditionValue(name, value);
+		if(projectRoles != null)	{
+			var value		= idPerson + ':' + projectRoles.join(',');
+
+			Todoyu.Ext.search.Filter.updateConditionValue(name, value);
+		}
 	}
 
 };
