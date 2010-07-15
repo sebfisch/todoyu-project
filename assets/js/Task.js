@@ -214,7 +214,7 @@ Todoyu.Ext.project.Task = {
 	 */
 	clone: function(idTask) {
 			// Has sub tasks? ask whether to include them in copy
-		var copySubTasks	= ( this.hasSubtasks(idTask) ) ? (confirm('[LLL:project.]') ? 1 : 0) : false;
+		var copySubTasks	= ( this.hasSubtasks(idTask) ) ? (confirm('[LLL:task.cloneSubtasks.confirm]') ? 1 : 0) : false;
 
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
@@ -225,7 +225,12 @@ Todoyu.Ext.project.Task = {
 			},
 			'onComplete': this.onCloned.bind(this, idTask)
 		};
-		var target	= 'task-' + idTask + ( this.hasSubTasksAndContainer(idTask) ) ? '-subtasks' : '';
+		var target	= 'task-' + idTask;
+
+			// If task has already subtasks, add the form after the subtasks
+		if( this.hasSubTasksAndContainer(idTask) ) {
+			target += '-subtasks';
+		}
 
 		Todoyu.Ui.append(target, url, options);
 	},
