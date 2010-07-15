@@ -6,9 +6,7 @@
 	<fieldsets>
 
 		<fieldset name="taskDefaults">
-			
 			<elements>
-
 				<field type="text" name="title">
 					<label>task.attr.title</label>
 				</field>
@@ -78,8 +76,6 @@
 				</field>
 
 			</elements>
-
 		</fieldset>
-
 	</fieldsets>
 </form>
