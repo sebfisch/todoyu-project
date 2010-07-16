@@ -94,6 +94,10 @@ class TodoyuProjectManager {
 	 * @return	Boolean
 	 */
 	public static function updateProject($idProject, array $data) {
+		$idProject	=	intval($idProject);
+		
+		TodoyuRecordManager::removeRecordCache('TodoyuProject', $idProject);
+
 		return TodoyuRecordManager::updateRecord(self::TABLE, $idProject, $data);
 	}
 
