@@ -120,10 +120,6 @@ Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 	),
 	'css' => array(
 		array(
-			'file'		=> 'ext/project/assets/css/global.css',
-			'position'	=> 100
-		),
-		array(
 			'file'		=> 'ext/project/assets/css/headlet-quicktask.css',
 			'position'	=> 100
 		),
