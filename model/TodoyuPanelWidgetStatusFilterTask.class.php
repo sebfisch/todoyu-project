@@ -54,7 +54,7 @@ class TodoyuPanelWidgetStatusFilterTask extends TodoyuPanelWidgetStatusFilter im
 
 
 	/**
-	 * Get panelwidget statuses infos
+	 * Get array of statuses (which the current person has the right to see) in listing of panel widget 
 	 *
 	 * @return	Array
 	 */

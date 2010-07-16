@@ -49,6 +49,9 @@ Todoyu.Ext.project.PanelWidget.TaskStatusFilter = Class.create(Todoyu.PanelWidge
 
 	/**
 	 * Handler when selection is changed
+	 *
+	 * @param	{Object}	event
+	 * @return	{Boolean}
 	 */
 	onChange: function(event) {
 		this.fireUpdate(this.key);
