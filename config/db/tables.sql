@@ -82,8 +82,7 @@ CREATE TABLE `ext_project_worktype` (
 	`date_update` int(11) NOT NULL,
 	`id_person_create` int(10) unsigned NOT NULL,
 	`deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
-	`title` varchar(64) NOT NULL,
-	`type` tinyint(2) unsigned NOT NULL,
+	`title` varchar(64) NOT NULL
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 

@@ -208,13 +208,19 @@ class TodoyuTask extends TodoyuBaseObject {
 	/**
 	 * Get worktype record
 	 *
-	 * @return	Array
+	 * @return	TodoyuWorktype
 	 */
 	public function getWorktype() {
-		return TodoyuRecordManager::getRecordData('ext_project_worktype', $this->getWorktypeID());
+		return TodoyuWorktypeManager::getWorktype($this->getWorktypeID());
 	}
-	
-	
+
+
+
+	/**
+	 * Get worktype ID
+	 *
+	 * @return	Integer
+	 */
 	public function getWorktypeID() {
 		return intval($this->data['id_worktype']);
 	}
@@ -372,7 +378,7 @@ class TodoyuTask extends TodoyuBaseObject {
 				$data['person_create']	= $this->getPersonData('create');
 				$data['person_assigned']= $this->getPersonData('assigned');
 				$data['person_owner']	= $this->getPersonData('owner');
-				$data['worktype']		= $this->getWorktype();
+				$data['worktype']		= $this->getWorktype()->getTemplateData();
 				$data['fulltitle'] 		= $this->getFullTitle();
 				$data['company'] 		= $this->getProject()->getCompanyData();
 
