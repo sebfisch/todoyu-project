@@ -186,10 +186,7 @@ class TodoyuTask extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getProjectArray() {
-		$idProject	= $this->getProjectID();
-		$table		= 'ext_project_project';
-
-		return Todoyu::db()->getRecord($table, $idProject);
+		return TodoyuProjectManager::getProjectArray($this->getProjectID());
 	}
 
 
@@ -346,7 +343,7 @@ class TodoyuTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isLocked() {
-		return TodoyuLockManager::isLocked('ext_project_task', $this->getID());
+		return TodoyuTaskManager::isLocked($this->getID());
 	}
 
 
@@ -374,13 +371,13 @@ class TodoyuTask extends TodoyuBaseObject {
 			case 4:
 			case 3:
 			case 2:
-				$data['project']		= $this->getProjectArray();
+				$data['project']		= $this->getProject()->getTemplateData();
 				$data['person_create']	= $this->getPersonData('create');
 				$data['person_assigned']= $this->getPersonData('assigned');
 				$data['person_owner']	= $this->getPersonData('owner');
 				$data['worktype']		= $this->getWorktype()->getTemplateData();
 				$data['fulltitle'] 		= $this->getFullTitle();
-				$data['company'] 		= $this->getProject()->getCompanyData();
+				$data['company'] 		= $this->getProject()->getCompany()->getTemplateData();
 
 			case 1:
 				$data['statuskey'] 		= $this->getStatusKey();
@@ -388,6 +385,7 @@ class TodoyuTask extends TodoyuBaseObject {
 
 			case 0:
 				$data['is_container']	= $this->isContainer();
+				$data['is_locked']		= $this->isLocked();
 
 		}
 

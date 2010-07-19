@@ -153,7 +153,6 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			TodoyuTaskRights::restrictAddToProject($idProject);
 		} else {
 			TodoyuTaskRights::restrictEdit($idTask);
-//			TodoyuTaskRights::restrictEditInProject($idProject);
 		}
 
 			// Create a cache record for the buildform hooks
@@ -188,9 +187,11 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
 			TodoyuHeader::sendTodoyuHeader('idTaskOld', $idTask);
 
-//			return TodoyuProjectRenderer::renderTask($idTaskNew, $idTaskReal);
-		
-			return $params['area'] == 'portal' ? TodoyuTaskRenderer::renderListingTask($idTaskNew) : TodoyuProjectRenderer::renderTask($idTaskNew, 0);
+			if( AREA === EXTID_PROJECT ) {
+				return TodoyuProjectRenderer::renderTask($idTaskNew);
+			} else {
+				return TodoyuTaskRenderer::renderListingTask($idTaskNew);
+			}
 		} else {
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTask);
 			TodoyuHeader::sendTodoyuErrorHeader();

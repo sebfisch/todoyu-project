@@ -826,8 +826,8 @@ class TodoyuTaskManager {
 	public static function getTaskInfoArray($idTask, $infoLevel = 0) {
 		$idTask		= intval($idTask);
 		$infoLevel	= intval($infoLevel);
+		$task		= self::getTask($idTask);
 
-		$task	= self::getTask($idTask);
 		$data	= $task->getTemplateData($infoLevel);
 
 			// Call hooks to add extra data (filled in in the data array)
@@ -2116,6 +2116,18 @@ class TodoyuTaskManager {
 		foreach($taskIDs as $idTask) {
 			self::unlockTask($idTask, $ext);
 		}
+	}
+
+
+
+	/**
+	 * Check whether task is locked
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Boolean
+	 */
+	public static function isLocked($idTask) {
+		return TodoyuLockManager::isLocked('ext_project_task', $idTask);
 	}
 }
 

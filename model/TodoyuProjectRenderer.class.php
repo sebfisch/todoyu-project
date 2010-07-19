@@ -491,7 +491,6 @@ class TodoyuProjectRenderer {
 	public static function renderTask($idTask, $idTaskShow = 0, $withoutSubTasks = false, $tab = null) {
 		$idTask		= intval($idTask);
 		$idTaskShow = intval($idTaskShow);
-		$task		= TodoyuTaskManager::getTask($idTask);
 
 			// Register which tasks have been rendered
 		self::$renderedTasks[] = $idTask;
