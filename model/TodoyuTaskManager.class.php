@@ -2145,7 +2145,11 @@ class TodoyuTaskManager {
 	public static function isContainerLocked($idContainer) {
 		$allSubtaskIDs	= self::getAllSubTaskIDs($idContainer);
 
-		return TodoyuLockManager::areLocked('ext_project_task', $allSubtaskIDs);
+		if( sizeof($allSubtaskIDs) === 0 ) {
+			return false;
+		} else {
+			return TodoyuLockManager::areLocked('ext_project_task', $allSubtaskIDs);
+		}
 	}
 }
 
