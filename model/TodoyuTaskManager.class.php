@@ -425,6 +425,7 @@ class TodoyuTaskManager {
 	public static function getContextMenuItems($idTask, array $items) {
 		$idTask	= intval($idTask);
 		$task	= TodoyuTaskManager::getTask($idTask);
+		$project= $task->getProject();
 		$allowed= array();
 //		$type	= '';
 
@@ -462,7 +463,7 @@ class TodoyuTaskManager {
 			}
 
 				// Clone
-			if( TodoyuTaskRights::isAddAllowed($idTask) ) {
+			if( !$task->isLocked() && TodoyuTaskRights::isAddAllowed($idTask) ) {
 				$allowed['actions']['submenu']['clone']	= $ownItems['actions']['submenu']['clone'];
 			}
 
@@ -477,7 +478,7 @@ class TodoyuTaskManager {
 			$allowed['add'] = $ownItems['add'];
 			unset($allowed['add']['submenu']);
 
-			if( TodoyuTaskRights::isAddAllowed($idTask) ) {
+			if( !$project->isLocked() && TodoyuTaskRights::isAddAllowed($idTask) ) {
 					// Add sub task
 				$allowed['add']['submenu']['task'] = $ownItems['add']['submenu']['task'];
 					// Add sub container
