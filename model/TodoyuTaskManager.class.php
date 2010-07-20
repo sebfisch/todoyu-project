@@ -1763,6 +1763,9 @@ class TodoyuTaskManager {
 			// Set new parent (needed for sorting)
 		$data['id_parenttask']	= $idParent;
 
+			// Call data modifier hook for task data
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskcopydata', $data, array($idTask, $idParent, $withSubTasks, $idProject));
+
 			// Add new task (with old data)
 		$idTaskNew	= self::addTask($data);
 
@@ -2128,6 +2131,21 @@ class TodoyuTaskManager {
 	 */
 	public static function isLocked($idTask) {
 		return TodoyuLockManager::isLocked('ext_project_task', $idTask);
+	}
+
+
+
+	/**
+	 * Check if a container is locked
+	 * A container is not locked directly, but if a subtask is locked, the container is locked too
+	 *
+	 * @param	Integer		$idContainer
+	 * @return	Boolean
+	 */
+	public static function isContainerLocked($idContainer) {
+		$allSubtaskIDs	= self::getAllSubTaskIDs($idContainer);
+
+		return TodoyuLockManager::areLocked('ext_project_task', $allSubtaskIDs);
 	}
 }
 

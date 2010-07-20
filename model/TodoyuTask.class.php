@@ -343,7 +343,13 @@ class TodoyuTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isLocked() {
-		return TodoyuTaskManager::isLocked($this->getID());
+		if( $this->isTask() ) {
+			return TodoyuTaskManager::isLocked($this->getID());
+		} elseif( $this->isContainer() ) {
+			return TodoyuTaskManager::isContainerLocked($this->getID());
+		} else {
+			return false;
+		}
 	}
 
 
