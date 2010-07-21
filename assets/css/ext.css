@@ -83,13 +83,16 @@
 
 .project h3 {
 	background-color:transparent;
-	border-bottom:1px dotted #AAAAAA;
+	border-bottom:1px dotted #aaa;
 	clear:both;
 	cursor:pointer;
 	display:block;
 	height:14px !important;
 	padding:4px 0;
 
+}
+.project .expanded h3 {
+	border-bottom: none;
 }
 
 

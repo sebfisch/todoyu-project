@@ -16,10 +16,10 @@
 	border-bottom:1px dotted #AAAAAA;
 	background-color:transparent;
 }
-
 .tasks .expanded h3,
 .tasks .subtasks .expanded h3 {
 	background-color:#e3eace;
+	border-bottom: none;
 	font-weight:bold;
 }
 
