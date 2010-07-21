@@ -21,7 +21,7 @@
 		<span class="taskNumber" title="{Label portal.tasktree.header.tasknumber}: {$task.id_project}.{$task.tasknumber}">
 			{$task.id_project}.{$task.tasknumber}
 		</span>
-		<span class="taskIcons">
+		<span class="taskIcons{if sizeof($taskIcons) > 1} taskIconsOverflow{/if}">
 			{foreach $taskIcons taskIcon}
 				<span id="{$taskIcon.id}" class="{$taskIcon.class}" title="{Label $taskIcon.label true}" {if $taskIcon.onclick}onclick="{$taskIcon.onclick}"{/if}></span>
 			{/foreach}

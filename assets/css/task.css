@@ -129,21 +129,27 @@
 	position:absolute;
 	right:0;
 	height:16px;
-	width:70px;
+	width:75px;
 	overflow:hidden;
 	margin-top:-2px;
 	padding:1px 3px;
 	border-left:1px dotted #CCC;
-	cursor:default;
 }
 
-.task span.taskIcons:hover {
-	height:auto;
+.task span.taskIconsOverflow {
+	background:url(../img/icons.png) no-repeat right -527px;
+}
+
+.task span.taskIconsOverflow:hover {
+	width:auto;
+	position: absolute;
 	background-color:#FFF;
-	border:1px dotted #CCC;
-	margin-top:-3px;
-	margin-right:-1px;
 	z-index:1000;
+	background: white;
+}
+
+.expanded span.taskIconsOverflow:hover {
+	background: #E3EACE;
 }
 
 
