@@ -402,15 +402,15 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 			)
 		),
 		'company' => array(
-			'funcRef'	=> 'TodoyuProjectFilter::filter_company',
+			'funcRef'	=> 'TodoyuProjectFilter::Filter_company',
 			'label'		=> 'LLL:projectFilter.project.company',
 			'optgroup'	=> 'LLL:project.search.label',
 			'widget'	=> 'text',
 			'wConf' => array(
 				'autocomplete'	=> true,
-				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompleteCompanies',
+				'FuncRef'		=> 'TodoyuCompanyFilterDataSource::autocompleteCompanies',
 				'FuncParams'	=> array(),
-				'LabelFuncRef'	=> 'TodoyuPersonFilterDataSource::getCompanyLabel',
+				'LabelFuncRef'	=> 'TodoyuCompanyFilterDataSource::getCompanyLabel',
 				'negation'		=> 'default'
 			)
 		),
