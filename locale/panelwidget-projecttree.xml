@@ -50,6 +50,16 @@
 		<label index="filter.customer">Klant</label>
 		<label index="list.empty">Geen projecten gevonden</label>
 	</labels>
+	<labels lang="rs_SR">
+		<label index="title">Projekte</label>
+		<label index="filter.remove">Filter löschen</label>
+		<label index="filter.addFilter">Anfügen</label>
+		<label index="filter.addNewFilter">Neuen Filter erstellen</label>
+		<label index="filter.fulltext">Volltext</label>
+		<label index="filter.projectleader">Projektleiter</label>
+		<label index="filter.customer">Kunde</label>
+		<label index="list.empty">Keine Projekte gefunden</label>
+	</labels>
 	<labels lang="cs_CZ">
 		<label index="title">Projekty</label>
 		<label index="filter.remove">Odstranit filtr</label>

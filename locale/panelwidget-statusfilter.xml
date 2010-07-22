@@ -20,6 +20,10 @@
 		<label index="title.task">Filter voor taakstatus</label>
 		<label index="title.project">Filter voor projectstatus</label>
 	</labels>
+	<labels lang="rs_SR">
+		<label index="title.task">Aufgaben Status-Filter</label>
+		<label index="title.project">Projekt Status-Filter</label>
+	</labels>
 	<labels lang="cs_CZ">
 		<label index="title.task">Filtr stavu úkolů</label>
 		<label index="title.project">Filtr stavu projektů</label>
