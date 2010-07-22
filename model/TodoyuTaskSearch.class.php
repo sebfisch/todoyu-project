@@ -100,7 +100,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 
 				// Assemble found task suggestions
 			foreach($tasks as $task) {
-				if ( TodoyuTaskRights::isSeeAllowed($task['id']) ) {
+				if( TodoyuTaskRights::isSeeAllowed($task['id']) ) {
 					$suggestions[] = array(
 						'labelTitle'=> $task['id_project'] . '.' . $task['tasknumber'] . ': ' . htmlentities($task['title'], ENT_QUOTES, 'UTF-8'),
 						'labelInfo'	=> $task['project'] . ', ' . $task['company'],

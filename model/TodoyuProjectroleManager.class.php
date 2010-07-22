@@ -117,7 +117,7 @@ class TodoyuProjectroleManager {
 		$idProjectrole	= intval($idProjectrole);
 		$label			= '';
 
-		if ( $idProjectrole !== 0 ) {
+		if( $idProjectrole !== 0 ) {
 			$projectrole= self::getProjectrole($idProjectrole);
 			$label		= $projectrole->getTitle();
 		}

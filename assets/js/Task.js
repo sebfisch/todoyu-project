@@ -50,7 +50,7 @@ Todoyu.Ext.project.Task = {
 		var withSubtasks = false;
 
 			// Ask to copy sub tasks
-		if ( this.hasSubtasks(idTask) ) {
+		if( this.hasSubtasks(idTask) ) {
 			withSubtasks = confirm('[LLL:task.copySubtasks]') ? 1 : 0;
 		}
 
@@ -524,7 +524,7 @@ Todoyu.Ext.project.Task = {
 		var htmlID		= 'task-' + idTask + '-header';
 		var statusIndex	= 0;
 
-		if (Todoyu.exists(htmlID)) {
+		if(Todoyu.exists(htmlID)) {
 			var classNames 	= $(htmlID).down('.headLabel').classNames();
 			var statusClass	= classNames.grep(/.*Status(\d)/).first();
 			statusIndex		= statusClass.split('Status').last();

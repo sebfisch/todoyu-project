@@ -65,7 +65,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 				// Saving went ok
 			Todoyu.Hook.exec('onTaskSaved', idTask);
  
-			if ( Todoyu.getArea() == 'project' ) {
+			if( Todoyu.getArea() == 'project' ) {
 					// Task tree of project which the new task belongs to is displayed?
 				if( idProject == Todoyu.Ext.project.ProjectTaskTree.getActiveProjectID() ) {
 						// Refresh

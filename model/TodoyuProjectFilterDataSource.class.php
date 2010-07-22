@@ -51,7 +51,7 @@ class TodoyuProjectFilterDataSource {
 			$projects	= Todoyu::db()->getArray($fields, $tables, $where);
 
 			foreach($projects as $project) {
-				if ( TodoyuProjectRights::isSeeAllowed($project['id']) ) {
+				if( TodoyuProjectRights::isSeeAllowed($project['id']) ) {
 					$data[$project['id']] = $project['company'] .' - ' . $project['title'];
 				}
 			}

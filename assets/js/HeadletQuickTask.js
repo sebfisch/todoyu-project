@@ -55,7 +55,7 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onQuickTaskSaved: function(idTask, idProject, response) {
-		if ( Todoyu.getArea() == 'project' ) {
+		if( Todoyu.getArea() == 'project' ) {
 			if( idProject == this.ext.ProjectTaskTree.getActiveProjectID() ) {
 				this.ext.TaskTree.update();
 			}

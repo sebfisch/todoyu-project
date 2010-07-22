@@ -80,7 +80,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	removeProject: function(idProject) {
 		var id	= 'project-' + idProject;
 
-		if ( Todoyu.exists(id) ) {
+		if( Todoyu.exists(id) ) {
 			$(id).remove();
 			this.removeProjectTab(idProject);
 		}
@@ -460,7 +460,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * @return	{Mixed}
 	 */
 	getFirstTab: function()	{
-		if ( $('project-tabs') && $('project-tabs').select('li').length > 0 ) {
+		if( $('project-tabs') && $('project-tabs').select('li').length > 0 ) {
 			return $('project-tabs').select('li')[0].id.substr(11);
 		} else {
 			return false;

@@ -25,11 +25,11 @@
  * @subpackage	Project
  */
 
-if ( allowed('project', 'general:use') ) {
+if( allowed('project', 'general:use') ) {
 	TodoyuSearchManager::addEngine('task', 'TodoyuTaskSearch::getSuggestions', 'task.search.label', 'task.search.mode.label', 10);
 }
 
-if ( allowed('project', 'general:use') ) {
+if( allowed('project', 'general:use') ) {
 	TodoyuSearchManager::addEngine('project', 'TodoyuProjectSearch::getSuggestions', 'project.search.label', 'project.search.mode.label', 20);
 }
 

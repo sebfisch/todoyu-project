@@ -194,7 +194,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getPersons() {
-		if ( ! array_key_exists('persons', $this->data) ) {
+		if( ! array_key_exists('persons', $this->data) ) {
 			$this->loadForeignData();
 		}
 
@@ -215,7 +215,7 @@ class TodoyuProject extends TodoyuBaseObject {
 
 		$persons	= $this->getPersons();
 		foreach($persons as $person) {
-			if ( $person['id'] == $idPerson ) {
+			if( $person['id'] == $idPerson ) {
 				$idRole	= $person['id_role'];
 				break;
 			}

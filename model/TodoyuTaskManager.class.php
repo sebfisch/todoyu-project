@@ -453,7 +453,7 @@ class TodoyuTaskManager {
 			unset($allowed['actions']['submenu']);
 
 				// Copy
-			if ( allowed('project', 'task:addInOwnProjects') ) {
+			if( allowed('project', 'task:addInOwnProjects') ) {
 				$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
 			}
 
@@ -862,7 +862,7 @@ class TodoyuTaskManager {
 			);
 
 				// Work type
-			if ( ! empty($taskData['worktype']) ) {
+			if( ! empty($taskData['worktype']) ) {
 				$info['worktype'] = array(
 					'label'		=> 'LLL:task.attr.worktype',
 					'value'		=> $taskData['worktype']['title'],// 'Internes / Administration',
@@ -872,7 +872,7 @@ class TodoyuTaskManager {
 			}
 			
 				// Estimated workload
-			if ( $taskData['estimated_workload'] > 0 ) {
+			if( $taskData['estimated_workload'] > 0 ) {
 				$info['estimated_workload']	= array(
 					'label'	=> 'LLL:task.attr.estimated_workload',
 					'value'	=> TodoyuTime::sec2hour($taskData['estimated_workload']),
@@ -882,7 +882,7 @@ class TodoyuTaskManager {
 			}
 
 				// Person assigned
-			if ( intval($taskData['person_assigned']['id']) !== 0 && Todoyu::person()->isInternal() ) {
+			if( intval($taskData['person_assigned']['id']) !== 0 && Todoyu::person()->isInternal() ) {
 				$info['person_assigned']	= array(
 					'label'		=> 'LLL:task.attr.person_assigned',
 					'value'		=> TodoyuPersonManager::getLabel($taskData['person_assigned']['id']),
@@ -892,7 +892,7 @@ class TodoyuTaskManager {
 			}
 
 				// Date start
-			if ( $taskData['date_start'] > 0 && Todoyu::person()->isInternal() ) {
+			if( $taskData['date_start'] > 0 && Todoyu::person()->isInternal() ) {
 				$info['date_start']	= array(
 					'label'		=> 'LLL:task.attr.date_start',
 					'value'		=> TodoyuTime::format( $taskData['date_start'], 'date'),
@@ -1049,7 +1049,7 @@ class TodoyuTaskManager {
 		$task	= self::getTask($idTask);
 
 			// Task-only information (not relevant for containers)
-		if ( $task->isTask() ) {
+		if( $task->isTask() ) {
 				// 'dateover': end date or deadline passed
 			if( $task->getStatus() != STATUS_CLEARED && ($task->getDeadlineDate() < NOW || $task->getEndDate() < NOW) ) {
 				$icons['dateover']= array(
@@ -1722,7 +1722,7 @@ class TodoyuTaskManager {
 
 				// Remove
 			if( $idTask === 0 ) {
-				if ( in_array('id_parenttask', $formFields) ) {
+				if( in_array('id_parenttask', $formFields) ) {
 					$form->getField('id_parenttask')->remove();
 				}
 				$form->addHiddenField('id_parenttask', 0);

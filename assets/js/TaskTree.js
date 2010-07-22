@@ -63,7 +63,7 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	{Number}	 idProject
 	 */
 	toggle: function(idProject) {
-		if ( this.tree(idProject) ) {
+		if( this.tree(idProject) ) {
 			this.tree(idProject).toggle();
 		}
 	},
@@ -78,7 +78,7 @@ Todoyu.Ext.project.TaskTree = {
 	hide: function(idProject) {
 		var taskTree = this.tree(idProject);
 
-		if (taskTree) {
+		if(taskTree) {
 			taskTree.hide();
 		}
 	},

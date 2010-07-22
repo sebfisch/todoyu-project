@@ -466,7 +466,7 @@ class TodoyuProjectManager {
 		$tabs	= array();
 
 		foreach($projects as $project) {
-			if ( TodoyuProjectRights::isSeeAllowed($project['id']) ) {
+			if( TodoyuProjectRights::isSeeAllowed($project['id']) ) {
 				$companyLabel	= trim($project['companyShort']) === '' ? TodoyuString::crop($project['companyFull'], 8, '..', false) : $project['companyShort'];
 				$tabs[] = array(
 					'id'		=> $project['id'],
@@ -753,7 +753,7 @@ class TodoyuProjectManager {
 
 		$label	= TodoyuPersonManager::getLabel($idPerson);
 
-		if ( $idProjectRole === 0 ) {
+		if( $idProjectRole === 0 ) {
 			$label	.= ' - ' . self::getProjectroleLabel($idPerson, $idProject);
 		} else {
 			$label	.= ' - ' . TodoyuProjectroleManager::getLabel($idProjectRole);
@@ -852,7 +852,7 @@ class TodoyuProjectManager {
 	public static function getRolesPersonIDs($idProject, array $roleIDs = array()) {
 		$idProject	= intval($idProject);
 
-		if ( sizeof($roleIDs) > 0 ) {
+		if( sizeof($roleIDs) > 0 ) {
 			$field	= 'id_role,id_person';
 			$table	= '	ext_project_mm_project_person';
 			$where	= '	id_project	= ' . $idProject .
@@ -1044,7 +1044,7 @@ class TodoyuProjectManager {
 
 		$openProjectIDs	= TodoyuProjectPreferences::getOpenProjectIDs();
 		foreach($openProjectIDs as $idProject) {
-			if ( TodoyuProjectRights::isSeeAllowed($idProject) ) {
+			if( TodoyuProjectRights::isSeeAllowed($idProject) ) {
 				$project	= TodoyuProjectManager::getProject($idProject);
 				$entries[$idProject]	= $project->getCompany()->getShortLabel() . ' - ' . $project->getTitle();
 			}
