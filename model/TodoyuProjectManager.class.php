@@ -661,7 +661,7 @@ class TodoyuProjectManager {
 
 				// Check all parents, if one of them does not match this current filter (and ist
 				// not displayed with all its sub tasks, add the not display task to the lost list
-			while( $idParent != 0 && ! in_array($idParent, $checkedParents)) {
+			while( $idParent != 0 && ! in_array($idParent, $checkedParents) ) {
 				$checkedParents[] = $idParent;
 				
 					// If parent doesn't match to the filter
