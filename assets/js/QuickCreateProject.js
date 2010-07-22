@@ -23,7 +23,7 @@ Todoyu.Ext.project.QuickCreateProject = {
 	 * Evoked upon opening of event quick create wizard popup
 	 */
 	onPopupOpened: function() {
-
+		Todoyu.Hook.exec('onProjectFormLoaded', 0);
 	},
 
 
