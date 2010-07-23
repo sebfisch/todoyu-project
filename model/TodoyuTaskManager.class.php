@@ -50,6 +50,9 @@ class TodoyuTaskManager {
 	 * @return	TodoyuForm				form object
 	 */
 	public static function getQuickCreateForm() {
+		// create empty record of type task cache first. so hooks know what kind of task it is
+		self::createNewTaskWithDefaultsInCache(0, 0, TASK_TYPE_TASK);
+
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/task.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath);
@@ -1274,7 +1277,7 @@ class TodoyuTaskManager {
 
 			// Call hook to modify default task data
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDefaultData', $data);
-
+		
 		return $data;
 	}
 
