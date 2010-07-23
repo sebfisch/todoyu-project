@@ -22,7 +22,7 @@
 	background-image:url('../img/contextmenu.png');
 }
 
-#contextmenu .taskContextMenu.showInProject
+#contextmenu .taskContextMenu.showInProject,
 #contextmenu .projectContextMenu.showInProject {
 	background-position:3px -689px;
 }
