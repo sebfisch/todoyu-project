@@ -275,7 +275,7 @@ class TodoyuTaskClipboard {
 
 	public static function getProjectContextMenuItems($idProjectContextmenu, array $items) {
 		$idProjectContextmenu	= intval($idProjectContextmenu);
-		
+
 			// Only show context menu in project area and if something is on the clipboard
 		if( self::hasTask() ) {
 			$data			= self::getData();

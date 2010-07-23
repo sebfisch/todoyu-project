@@ -190,7 +190,7 @@ class TodoyuTaskViewHelper {
 				'negate'=> true
 			)
 		);
-		
+
 		return TodoyuTaskFilterDataSource::getTaskAutocompleteListByFilter($filters);
 	}
 

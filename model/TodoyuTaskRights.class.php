@@ -66,7 +66,7 @@ class TodoyuTaskRights {
 			if( allowed('project', 'task:editAndDeleteOwnTasks') ) {
 				return true;
 			}
-		}			
+		}
 
 		$idProject	= TodoyuTaskManager::getProjectID($idTask);
 
@@ -150,7 +150,7 @@ class TodoyuTaskRights {
 		if( TodoyuAuth::isAdmin() ) {
 			return true;
 		}
-		
+
 		$idTask	= intval($idTask);
 		$task	= TodoyuTaskManager::getTask($idTask);
 
@@ -162,7 +162,7 @@ class TodoyuTaskRights {
 		}
 
 		$status	= $task->getStatusKey();
-		
+
 			// Check status
 		if( ! self::hasStatusRight($status, 'see') ) {
 			return false;

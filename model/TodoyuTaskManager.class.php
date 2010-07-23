@@ -82,7 +82,7 @@ class TodoyuTaskManager {
 
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, 0, array('form'=>$form));
 		$form->setFormData($data);
-		
+
 		return $form;
 	}
 
@@ -347,7 +347,7 @@ class TodoyuTaskManager {
 		$data = array(
 			'status' => intval($newStatus)
 		);
-		
+
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'onTaskStatusChanged', $data, array('idTask' => $idTask));
 
 		self::updateTask($idTask, $data);
@@ -540,9 +540,9 @@ class TodoyuTaskManager {
 	 */
 	public static function getSubTaskIDs($idTask) {
 		$idTask	= intval($idTask);
-		
+
 		$filters	= TodoyuProjectManager::getTaskTreeFilterStruct();
-		
+
 		$filters[]	= array(
 			'filter'=> 'parentTask',
 			'value'	=> $idTask
@@ -551,7 +551,7 @@ class TodoyuTaskManager {
 		$taskFilter	= new TodoyuTaskFilter($filters);
 		$taskIDs	= $taskFilter->getTaskIDs();
 
-		return $taskIDs;		
+		return $taskIDs;
 	}
 
 
@@ -764,7 +764,7 @@ class TodoyuTaskManager {
 			// Add check for active account
 		if( $withAccount ) {
 			$where .= ' AND p.active = 1';
-		}		
+		}
 
 		return Todoyu::db()->getArray($fields, $tables, $where, $group, $order);
 	}
@@ -870,7 +870,7 @@ class TodoyuTaskManager {
 					'className'	=> ''
 				);
 			}
-			
+
 				// Estimated workload
 			if( $taskData['estimated_workload'] > 0 ) {
 				$info['estimated_workload']	= array(
@@ -1129,12 +1129,12 @@ class TodoyuTaskManager {
 	 */
 	public static function setTaskAcknowledged($idTask) {
 		$idTask	= intval($idTask);
-		
+
 		if( self::getTask($idTask)->isCurrentPersonAssigned() )	{
 			$update	= array(
 				'is_acknowledged' => 1
 			);
-			
+
 			self::updateTask($idTask, $update);
 		}
 	}
@@ -1251,7 +1251,7 @@ class TodoyuTaskManager {
 
 			// Get extension config
 		$extConf	= TodoyuExtConfManager::getExtConf('project');
-		
+
 			// Set default data
 		$data	= array(
 			'id'				=> 0,
@@ -1271,7 +1271,7 @@ class TodoyuTaskManager {
 			'type'				=> $type,
 			'id_worktype'		=> intval($extConf['id_worktype'])
 		);
-		
+
 			// Call hook to modify default task data
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDefaultData', $data);
 
@@ -1410,7 +1410,7 @@ class TodoyuTaskManager {
 			$time	= NOW + TodoyuTime::SECONDS_DAY * $type;
 			$date	= TodoyuTime::getStartOfDay($time);
 		}
-		
+
 		return $date;
 	}
 
@@ -2043,8 +2043,8 @@ class TodoyuTaskManager {
 		$extConf	= TodoyuExtConfManager::getExtConf('project');
 		if( ! isset($data['status']) ) {
 			$data['status'] = intval($extConf['status']);
-		}			
-				
+		}
+
 		return $data;
 	}
 

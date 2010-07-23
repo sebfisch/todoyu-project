@@ -8,7 +8,7 @@
 
 				<field type="textAC" name="id_project_ac">
 					<label>project.project</label>
-					<config>						
+					<config>
 						<acName>project</acName>
 						<acLabel>TodoyuProjectViewHelper::getQuicktaskAutocompleteLabel</acLabel>
 						<options>

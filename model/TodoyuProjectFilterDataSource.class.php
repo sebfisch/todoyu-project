@@ -93,7 +93,6 @@ class TodoyuProjectFilterDataSource {
 			$options[] = array(
 				'label'		=> $status['label'],
 				'value'		=> $status['index'],
-				//'selected'	=> in_array($status['index'], $selected)
 			);
 		}
 

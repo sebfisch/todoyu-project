@@ -38,7 +38,7 @@
 					</source>
 					<required/>
 				</field>
-				
+
 				<field type="select" name="status">
 					<label>task.attr.status</label>
 					<source type="function">
@@ -52,7 +52,7 @@
 						<function>TodoyuProjectViewHelper::getExtConfWorktypes</function>
 					</source>
 				</field>
-				
+
 				<field type="time" name="estimated_workload">
 					<label>task.attr.estimated_workload</label>
 				</field>

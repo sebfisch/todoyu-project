@@ -58,7 +58,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 		if( $idProject === 0 ) {
 			$idProject	= TodoyuProjectPreferences::getActiveProject();
 		}
-		
+
 			// If no project found yet, try to find one the person can see
 		if( $idProject === 0 ) {
 			$idProject	= TodoyuProjectManager::getAvailableProjectForPerson();
@@ -71,7 +71,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 			// Init page
 		TodoyuPage::init('ext/project/view/ext.tmpl');
-		
+
 			// If a project is displayed
 		if( $idProject !== 0 && !TodoyuProjectManager::getProject($idProject)->isDeleted() ) {
 				// Prepend current project to list

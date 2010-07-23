@@ -218,7 +218,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 			// If new status is not visible for the user, send info header
 		if( ! allowed('project', 'taskstatus:' . $status . ':see') ) {
-			TodoyuHeader::sendTodoyuHeader('statusNotAllowed', 1);	
+			TodoyuHeader::sendTodoyuHeader('statusNotAllowed', 1);
 		}
 	}
 
@@ -379,7 +379,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		TodoyuTaskManager::deleteTask($idTask, true);
 	}
 
-	
+
 
 	/**
 	 * Load task tab

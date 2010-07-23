@@ -147,7 +147,7 @@ class TodoyuTaskRenderer {
 	 */
 	public static function renderQuickCreateForm() {
 		$form	= TodoyuTaskManager::getQuickCreateForm();
-		
+
 		return $form->render();
 	}
 

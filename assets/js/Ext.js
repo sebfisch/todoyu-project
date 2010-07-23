@@ -39,19 +39,19 @@ Todoyu.Ext.project = {
 	},
 
 
-	
+
 	/**
 	 * Register callbacks to JS hooks
 	 */
 	registerHooks: function() {
 			// Add project creation hooks
 		Todoyu.Hook.add('onProjectCreated', this.Project.Edit.onProjectCreated.bind(this.Project.Edit));
-		
+
 //		Todoyu.Hook.add('onTaskSaved', this.Task.onProjectTaskAdded(response);
 	},
 
-	
-	
+
+
 	/**
 	 * To be called from other areas (e.g portal) to jump to a specific task within its project,
 	 *	to be shown inside the project area
@@ -113,7 +113,7 @@ Todoyu.Ext.project = {
 		this.ContextMenuTask.attach();
 	},
 
-	
+
 
 	/**
 	 * Save project pref

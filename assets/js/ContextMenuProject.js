@@ -41,7 +41,13 @@ Todoyu.Ext.project.ContextMenuProject = {
 	},
 
 
-	
+
+	/**
+	 * Get ID of project the context menu refers to
+	 *
+	 * @param	{Element}	element
+	 * @param	{Object}	event
+	 */
 	getID: function(element, event) {
 		return element.id.split('-')[1];
 	}

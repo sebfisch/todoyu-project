@@ -105,7 +105,7 @@ Todoyu.Ext.project.Task.Edit = {
 	 */
 	save: function(form) {
 		tinyMCE.triggerSave();
-		
+
 		$(form).request({
 			'parameters': {
 				'action':	'save',
@@ -174,7 +174,7 @@ Todoyu.Ext.project.Task.Edit = {
 		}
 
 		Todoyu.Ui.closeRTE('task-' + idTask + '-form');
-		
+
 		if( idTask == 0 ) {
 			$('task-' + idTask).remove();
 		} else {

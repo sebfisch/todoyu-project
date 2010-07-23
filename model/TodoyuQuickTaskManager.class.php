@@ -70,7 +70,7 @@ class TodoyuQuickTaskManager {
 
 			// Load form data by hooks (default is empty)
 		$formData	= TodoyuFormHook::callLoadData($xmlPath, array());
-		
+
 		$form->setFormData($formData);
 
 		return $form;

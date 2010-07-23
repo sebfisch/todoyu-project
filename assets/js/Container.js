@@ -48,8 +48,8 @@ Todoyu.Ext.project.Container = {
 		this.ext.Task.clone(idContainer);
 	},
 
-	
-	
+
+
 	/**
 	 * Copy container
 	 *
@@ -58,9 +58,9 @@ Todoyu.Ext.project.Container = {
 	cut: function(idContainer) {
 		this.ext.Task.cut(idContainer);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Copy container
 	 *
@@ -70,7 +70,7 @@ Todoyu.Ext.project.Container = {
 		this.ext.Task.copy(idContainer);
 	},
 
-	
+
 
 	/**
 	 * Remove given container

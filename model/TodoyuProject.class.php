@@ -153,9 +153,9 @@ class TodoyuProject extends TodoyuBaseObject {
 	public function getDeadlineDate() {
 		return $this->get('date_deadline');
 	}
-	
-	
-	
+
+
+
 	/**
 	 * checks if the Project is deleted
 	 * 
@@ -263,11 +263,11 @@ class TodoyuProject extends TodoyuBaseObject {
 		$where	= '		t.id_project= ' . $this->getID()
 				. ' AND	t.id		= sl.id_record'
 				. ' AND sl.table	= \'ext_project_task\'';
-		
+
 		return Todoyu::db()->hasResult($field, $tables, $where);
 	}
 
-	
+
 
 	/**
 	 * Check whether this project is editable

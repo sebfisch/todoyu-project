@@ -47,16 +47,16 @@ Todoyu.Ext.project.QuickTask = {
 
 
 	/**
-	 * Close quicktask wizard popup
-	 */	
+	 * Close quicktask wizard popUp
+	 */
 	closePopup: function() {
 		Todoyu.Popup.close(this.popupID);
-	},	
-	
-	
-	
+	},
+
+
+
 	/**
-	 * Handler when Popup is loaded
+	 * Handler when PopUp is loaded
 	 * Call hook to inform other extensions
 	 * 
 	 * @param	{Ajax.Response}		response
@@ -103,7 +103,7 @@ Todoyu.Ext.project.QuickTask = {
 
 			this.closePopup();
 			Todoyu.notifySuccess('[LLL:project.js.quicktask.saved]');
-			
+
 				// Call hook with saved data
 			Todoyu.Hook.exec('QuickTaskSaved', idTask, idProject, response);
 		}

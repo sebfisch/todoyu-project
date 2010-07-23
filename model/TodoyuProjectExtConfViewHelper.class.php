@@ -60,7 +60,7 @@ class TodoyuProjectExtConfViewHelper {
 	public static function getDefaultValueStatusOptions(TodoyuFormElement $field) {
 		return TodoyuTaskStatusManager::getStatusInfos('see');
 	}
-	
+
 }
 
 ?>

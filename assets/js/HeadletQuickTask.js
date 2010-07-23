@@ -25,13 +25,22 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	 * @var	{Object}	ext
 	 */
 	ext:	Todoyu.Ext.project,
-	
-	
+
+
+	/**
+	 * Initialize quicktask headlet
+	 */
 	init: function() {
 		Todoyu.Hook.add('QuickTaskSaved', this.onQuickTaskSaved.bind(this));
 	},
-	
-	
+
+
+
+	/**
+	 * Handle button click: evoke add quicktask
+	 *
+	 * @param	{Object}	event
+	 */
 	onButtonClick: function(event) {
 		this.add();
 	},
@@ -46,7 +55,7 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	},
 
 
-	
+
 	/**
 	 * Handler when quick task has been saved: Update the task list, if task has been added to the active project
 	 * 

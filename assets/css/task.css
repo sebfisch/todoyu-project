@@ -291,7 +291,7 @@
 	.task .taskTabs .tabs li {
 		background-color:#edf1e0 !important;
 	}
-	
+
 	.task .taskTabs .tabs li:hover,
 	.task .taskTabs .tabs li.active {
 		background-color:#e3eace !important;
@@ -313,7 +313,7 @@
 		background:#fff;
 		padding:5px;
 	}
-	
+
 	.task .tabContent .tabBlock .toggle {
 		display:block;
 		position:absolute;
@@ -323,7 +323,7 @@
 		height:30px;
 		background:#D6DCC5 url(../../../../core/assets/img/toggle.png) no-repeat 0 -65px;
 	}
-	
+
 #taskList .activeTabContent .taskOptionBlock {
 	position:relative;
 	padding:5px;

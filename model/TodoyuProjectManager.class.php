@@ -95,7 +95,7 @@ class TodoyuProjectManager {
 	 */
 	public static function updateProject($idProject, array $data) {
 		$idProject	=	intval($idProject);
-		
+
 		TodoyuRecordManager::removeRecordCache('TodoyuProject', $idProject);
 
 		return TodoyuRecordManager::updateRecord(self::TABLE, $idProject, $data);
@@ -405,7 +405,7 @@ class TodoyuProjectManager {
 					// Add container
 				$allowed['addcontainer'] = $ownItems['addcontainer'];
 			}
-		}		
+		}
 
 		return array_merge_recursive($items, $allowed);
 	}
@@ -548,7 +548,7 @@ class TodoyuProjectManager {
 
 //		print_r($info);
 //		exit();
-		
+
 		return $info;
 	}
 
@@ -663,7 +663,7 @@ class TodoyuProjectManager {
 				// not displayed with all its sub tasks, add the not display task to the lost list
 			while( $idParent != 0 && ! in_array($idParent, $checkedParents) ) {
 				$checkedParents[] = $idParent;
-				
+
 					// If parent doesn't match to the filter
 				if( ! in_array($idParent, $matchingTaskIDs) ) {
 						// Add task to lost list and stop checking its
@@ -676,7 +676,7 @@ class TodoyuProjectManager {
 
 		return $lostTasks;
 	}
-	
+
 
 
 	/**
@@ -1130,7 +1130,7 @@ class TodoyuProjectManager {
 		TodoyuLockManager::unlock($ext, 'ext_project_project', $idProject);
 	}
 
-	
+
 
 	/**
 	 * Lock all tasks of a project

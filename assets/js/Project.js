@@ -101,7 +101,7 @@ Todoyu.Ext.project.Project = {
 		} else {
 			$('project-'+idProject).fade();
 		}
-		
+
 		Todoyu.Hook.exec('onProjectDeleted', idProject);
 	},
 
@@ -368,7 +368,7 @@ Todoyu.Ext.project.Project = {
 		$('project-' + idProject + '-tasks').insert({
 			'bottom': response.responseText
 		});
-		
+
 			// Attach context menu to all tasks (so the pasted ones get one too)
 		this.ext.ContextMenuTask.attach();
 			// Highlight the new pasted task

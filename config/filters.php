@@ -143,7 +143,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompletePersons',
 				'FuncParams'	=> array(),
 				'LabelFuncRef'	=> 'TodoyuPersonFilterDataSource::getLabel',
-				'negation'	=> 'default'
+				'negation'		=> 'default'
 			)
 		),
 		'isPublic'	=> array(
@@ -161,8 +161,8 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			'optgroup'	=> 'LLL:task.search.label',
 			'widget'	=> 'text',
 			'wConf' => array(
-				'LabelFuncRef' => 'TodoyuProjectFilterDataSource::getLabel',
-				'negation'	=> 'default'
+				'LabelFuncRef'	=> 'TodoyuProjectFilterDataSource::getLabel',
+				'negation'		=> 'default'
 			)
 		),
 		'fulltext' => array(
@@ -171,8 +171,8 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			'optgroup'	=> 'LLL:task.search.label',
 			'widget'	=> 'text',
 			'wConf' => array(
-				'LabelFuncRef' => 'TodoyuProjectFilterDataSource::getLabel',
-				'negation'	=> 'default'
+				'LabelFuncRef'	=> 'TodoyuProjectFilterDataSource::getLabel',
+				'negation'		=> 'default'
 			)
 		),
 		'type' => array(

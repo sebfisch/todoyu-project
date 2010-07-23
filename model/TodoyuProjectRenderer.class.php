@@ -396,7 +396,7 @@ class TodoyuProjectRenderer {
 		$idTaskShow	= intval($idTaskShow);
 
 		$tmpl	= 'ext/project/view/losttasks.tmpl';
-		
+
 			// Get lost task IDs
 		$lostTaskIDs	= TodoyuProjectManager::getLostTaskInTaskTree($idProject, self::$renderedTasks);
 

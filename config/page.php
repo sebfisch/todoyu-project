@@ -23,7 +23,7 @@ if(  allowed('project', 'general:area') ) {
 	TodoyuFrontend::addMenuEntry('project', 'LLL:project.tab.label', '?ext=project', 20);
 
 	$projectEntries	= TodoyuProjectManager::getOpenProjectLabels();
-	
+
 	$entryNum		= 0;
 	foreach($projectEntries as $idProject => $title) {
 		TodoyuFrontend::addSubmenuEntry('project', 'project' . $idProject, $title, '?ext=project&project=' . $idProject, $entryNum++);

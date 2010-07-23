@@ -29,7 +29,7 @@ Todoyu.Ext.project.TaskParentAC = {
 	field:			null,
 	url:			null,
 	acContainer:	null,
-	
+
 	acOptions: {
 		'paramName': 'query'
 	},

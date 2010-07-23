@@ -116,9 +116,9 @@ Todoyu.Ext.project.Project.Edit = {
 	onProjectCreated: function(idProject) {
 		if( Todoyu.getArea() === 'project' ) {
 			this.ext.ProjectTaskTree.openProject(idProject);
-			
+
 			Todoyu.Ui.scrollToTop();
-		}		
+		}
 	},
 
 
@@ -138,7 +138,7 @@ Todoyu.Ext.project.Project.Edit = {
 		} else {
 			this.ext.ProjectTaskTree.removeProject(idProjectOld);
 			this.ext.ProjectTaskTree.openProject(idProject);
-			
+
 			Todoyu.Ui.scrollToTop();
 
 			Todoyu.Hook.exec('onProjectSaved', idProject);

@@ -168,16 +168,16 @@ h1.headerLine span.projectIcons {
 	}
 
 	/* Project persons */
-	
+
 	.project .persons .fieldnamePersons {
 		border-top:1px dotted #ccc;
 		padding:5px 0;
 	}
-	
+
 	.project .persons .fieldnamePersons > .fField {
 		width:100%;
 	}
-	
+
 	.project .persons .fieldnamePersons > .fLabel {
 		width:100%;
 		position:static;
@@ -186,34 +186,33 @@ h1.headerLine span.projectIcons {
 		padding-bottom:5px;
 		border-bottom:1px dotted #ccc;
 	}
-	
+
 	.project .persons .fieldnamePersons > .fLabel label {
 		font-weight:bold;
 	}
-	
+
 	.project .persons .fieldnamePersons .foreignRecordsActionControl button {
 	}
-	
+
 	.project .persons .fieldnamePersons .databaseRelation {
 		width:100%;
 	}
-	
+
 	.project .persons .fieldnamePersons .databaseRelation .fLabel {
 		width:30%;
 	}
-	
+
 	.project .persons .fieldnamePersons .databaseRelation .fField,
 	.project .persons .fieldnamePersons .databaseRelation .typeCheckbox .fLabel {
 		width:70%;
 	}
-	
-/*
- * Project search modifications
- */
+
+/* -------------------------------
+	Project search modifications
+   ------------------------------- */
 #todoyu-search .project .additionalStuff {
 	display:none;
 }
-
 
 	/* General styles
 	   @todo Move to top CSS file

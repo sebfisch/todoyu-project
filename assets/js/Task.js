@@ -510,7 +510,7 @@ Todoyu.Ext.project.Task = {
 			} else {
 				this.setStatus(idTask, status);
 			}
-		}		
+		}
 	},
 
 
@@ -832,7 +832,7 @@ Todoyu.Ext.project.Task = {
 		this.ext.ContextMenuTask.attach();
 	},
 
-	
+
 
 	/**
 	 * Set given task being acknowledged

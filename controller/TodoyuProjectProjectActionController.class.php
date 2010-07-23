@@ -112,7 +112,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 		return TodoyuProjectRenderer::renderProjectDetails($idProject);
 	}
 
-	
+
 
 	/**
 	 * 'setstatus' action method
@@ -173,7 +173,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 		$index		= intval($params['index']);
 		$idRecord	= intval($params['record']);
 
-		return TodoyuFormManager::renderSubformRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
+		return TodoyuFormManager::renderSubFormRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
 	}
 
 
