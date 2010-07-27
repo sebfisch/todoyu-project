@@ -30,10 +30,12 @@ Todoyu.Ext.project.PanelWidget.TaskStatusFilter = Class.create(Todoyu.PanelWidge
 	ext:	Todoyu.Ext.project,
 
 
+
 	/**
 	 * PanelWidget ID
 	 */
 	key:	'taskstatusfilter',
+
 
 
 	/**
