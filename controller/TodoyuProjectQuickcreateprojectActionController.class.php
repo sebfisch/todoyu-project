@@ -61,7 +61,7 @@ class TodoyuProjectQuickCreateProjectActionController extends TodoyuActionContro
 
 			// Get form object, call save hooks, set form data
 		$form	= TodoyuProjectManager::getQuickCreateForm();
-		$data	= TodoyuFormHook::callSaveData('ext/project/config/form/project.xml', $data, 0);
+
 		$form->setFormData($data);
 
 		if( $form->isValid() ) {
