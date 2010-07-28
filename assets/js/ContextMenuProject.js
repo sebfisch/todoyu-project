@@ -51,4 +51,5 @@ Todoyu.Ext.project.ContextMenuProject = {
 	getID: function(element, event) {
 		return element.id.split('-')[1];
 	}
+
 };
