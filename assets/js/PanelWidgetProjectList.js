@@ -128,10 +128,10 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Update handler for status filter
 	 *
-	 * @param	{String}	widgetkey
+	 * @param	{String}	widgetKey
 	 * @param	{Array}	statuses
 	 */
-	onStatusFilterUpdate: function(widgetkey, statuses) {
+	onStatusFilterUpdate: function(widgetKey, statuses) {
 		this.applyFilter('status', statuses, true);
 	},
 
@@ -183,7 +183,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Refresh project list panelwidget
+	 * Refresh project list panelWidget
 	 */
 	update: function() {
 		var url		= Todoyu.getUrl('project', 'panelwidgetprojectlist');
@@ -202,7 +202,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Handler to be evoked after refresh of project list panelwidget
+	 * Handler to be evoked after refresh of project list panelWidget
 	 *
 	 * @param	{Object}  response
 	 */
@@ -213,7 +213,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Check wether given project is listed in panewidget's project list
+	 * Check whether given project is listed in panelWidget's project list
 	 *
 	 * @param	{Number}		idProject
 	 * @return  {Boolean}
