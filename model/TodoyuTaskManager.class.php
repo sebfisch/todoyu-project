@@ -1170,33 +1170,51 @@ class TodoyuTaskManager {
 	 * If personIDs given:	limit to tasks assigned to given persons
 	 * If statuses given:	limit to tasks with given statuses
 	 *
-	 * @param	Integer		$timesStart
-	 * @param	Integer		$timeEnd
+	 * @param	Integer		$start
+	 * @param	Integer		$end
 	 * @param	Array		$statusIDs
 	 * @param	Array		$personIDs		(id_person_assigned)
 	 * @param	String		$limit
 	 * @param	Boolean		$getContainers
 	 * @return	Array
 	 */
-	public static function getTasksInTimeSpan($timeStart = 0, $timeEnd = 0, array $statusIDs = array(), array $personIDs = array(), $limit = '', $getContainers = false) {
-		$timeStart	= intval($timeStart);
-		$timeEnd	= intval($timeEnd);
+	public static function getTasksInTimeSpan($start = 0, $end = 0, array $statusIDs = array(), array $personIDs = array(), $limit = '', $getContainers = false) {
+		$start		= intval($start);
+		$end		= intval($end);
 		$statusIDs	= TodoyuArray::intval($statusIDs, true, true);
 		$personIDs	= TodoyuArray::intval($personIDs, true, true);
 
 		$fields	= '*';
 		$table	= self::TABLE;
+		$where	=  ' deleted = 0 ';
 
-		$where	=  ' deleted 	= 0 ' . ($getContainers ? '' : ' AND type = 1 ');
-//		$where	.= ($timeStart	> 0	? (' AND date_start	>= ' . $timeStart .	' AND date_end >= ' . $timeStart) : '');
-		$where	.= ($timeEnd	> 0	? (' AND date_end 	<= ' . $timeEnd .	' AND date_start <= ' . $timeEnd) : '');
+		if ( $getContainers !== true ) {
+			$where	.= ' AND type = 1 ';
+		}
 
-			// Add status IDs
+			// Start and end given: task must intersect with span defined by them 
+		if ( $start > 0 && $end > 0 ) {
+			$where	.= ' AND ( date_start <= ' . $end . ' AND date_end >= ' . $start . ' )';
+		} else {
+				// Only start or end given
+				// Start and end of task must be (at or) after given starting time
+			if ( $start > 0 ) {
+				$where	.= ' AND date_start  >= ' . $start;
+				$where	.= ' AND date_end    >= ' . $start;
+			}
+				// Start and end of task must be (at or) before given ending time
+			if ( $end	> 0 ) {
+				$where	.= ' AND date_end    <= ' . $end;
+				$where	.= ' AND date_start  <= ' . $end;
+			}
+		}
+
+			// Filter by status IDs
 		if( count($statusIDs) > 0 ) {
 			$where .= ' AND status IN(' . implode(',', $statusIDs) . ')';
 		}
 
-			// Add person IDs
+			// Filter by assigned person IDs
 		if( sizeof($personIDs) ) {
 			$where .= ' AND id_person_assigned IN(' . implode(',', $personIDs) . ')';
 		}
