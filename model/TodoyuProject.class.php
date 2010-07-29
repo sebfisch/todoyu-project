@@ -64,7 +64,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	/**
 	 * Get company object
 	 *
-	 * @return	TodoyuCompany
+	 * @return	 TodoyuCompany
 	 */
 	public function getCompany() {
 		return TodoyuCompanyManager::getCompany($this->getCompanyID());
