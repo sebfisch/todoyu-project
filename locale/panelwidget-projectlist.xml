@@ -20,6 +20,11 @@
 		<label index="search">Поиск</label>
 		<label index="list.empty">Проекты не найдены (для этого набора фильтров)</label>
 	</labels>
+	<labels lang="fr_FR">
+		<label index="title">Projets</label>
+		<label index="search">Recherche</label>
+		<label index="list.empty">Aucun projet trouvé (pour cette sélection de filtre)</label>
+	</labels>
 	<labels lang="nl_NL">
 		<label index="title">Projecten</label>
 		<label index="search">Zoeken</label>

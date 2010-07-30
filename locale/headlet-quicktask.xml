@@ -16,6 +16,10 @@
 		<label index="label">Создать быструю задачу</label>
 		<label index="title">Создать быструю задачу</label>
 	</labels>
+	<labels lang="fr_FR">
+		<label index="label">Création rapide de tâche</label>
+		<label index="title">Création rapide de tâche</label>
+	</labels>
 	<labels lang="nl_NL">
 		<label index="label">Sneltaak aanmaken</label>
 		<label index="title">Sneltaak aanmaken</label>
