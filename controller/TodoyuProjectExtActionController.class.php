@@ -44,7 +44,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 			// Set project tab
 		TodoyuFrontend::setActiveTab('project');
 
-			// Get deeplink parameters
+			// Get deepLink parameters
 		$idProject	= intval($params['project']);
 		$idTask		= intval($params['task']);
 		$taskTab	= $params['tab'];

@@ -261,7 +261,6 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuTaskRights::restrictSee($idTask);
 
-
 			// Save task open
 		TodoyuProjectPreferences::saveTaskExpandedStatus($idTask, true);
 

@@ -73,7 +73,9 @@ class TodoyuTaskRenderer {
 		$tasksHTML	= array();
 
 		foreach($taskIDs as $idTask) {
-			$tasksHTML[] = self::renderListingTask($idTask);
+			if ( TodoyuTaskRights::isSeeAllowed($idTask) ) {
+				$tasksHTML[] = self::renderListingTask($idTask);
+			}
 		}
 
 		$tmpl	= 'ext/project/view/task-listing.tmpl';
