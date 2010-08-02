@@ -354,6 +354,9 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 
+	/**
+	 * @todo	Check: implement?
+	 */
 	protected function loadForeignData() {
 
 	}
