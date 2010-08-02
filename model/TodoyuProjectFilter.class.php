@@ -128,11 +128,19 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 		$queryParts	= false;
 
 		if( sizeof($searchWords) > 0 ) {
-			$searchInFields	= array('ext_project_project.title', 'ext_project_project.description', 'ext_contact_company.title', 'ext_contact_company.shortname');
+			$searchInFields	= array(
+				'ext_project_project.id',
+				'ext_project_project.title',
+				'ext_project_project.description',
+				'ext_contact_company.title',
+				'ext_contact_company.shortname'
+			);
 
-			$tables	= array('ext_project_project', 'ext_contact_company');
+			$tables	= array(
+				'ext_project_project',
+				'ext_contact_company'
+			);
 			$where	= 'ext_project_project.id_company	= ext_contact_company.id';
-
 			$where .= ' AND ' . Todoyu::db()->buildLikeQuery($searchWords, $searchInFields);
 
 			$queryParts = array(
