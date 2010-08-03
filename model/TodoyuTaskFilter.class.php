@@ -869,13 +869,16 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 		if( $idTask !== 0 ) {
 			$subTasks	= TodoyuTaskManager::getAllSubTaskIDs($idTask);
-			$tables		= array(self::TABLE);
-			$where	= 'ext_project_task.id ' . ( $negate ? 'NOT IN' : 'IN' ) . '(' . implode(',', $subTasks) . ')';
 
-			$queryParts	= array(
-				'tables'	=> $tables,
-				'where'		=> $where
-			);
+			if( sizeof($subTasks) > 0 ) {
+				$tables		= array(self::TABLE);
+				$where	= 'ext_project_task.id ' . ( $negate ? 'NOT IN' : 'IN' ) . '(' . implode(',', $subTasks) . ')';
+
+				$queryParts	= array(
+					'tables'	=> $tables,
+					'where'		=> $where
+				);
+			}			
 		}
 
 		return $queryParts;
