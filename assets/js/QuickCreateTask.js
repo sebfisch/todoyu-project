@@ -63,7 +63,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 			Todoyu.notifyError('[LLL:task.save.error]');
 		} else {
 				// Saving went ok
-			Todoyu.Hook.exec('onTaskSaved', idTask);
+			Todoyu.Hook.exec('taskSaved', idTask);
  
 			if( Todoyu.getArea() == 'project' ) {
 					// Task tree of project which the new task belongs to is displayed?

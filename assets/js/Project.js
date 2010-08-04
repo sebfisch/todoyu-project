@@ -97,22 +97,22 @@ Todoyu.Ext.project.Project = {
 		if(Todoyu.getArea() == 'project')	{
 			this.ext.ProjectTaskTree.removeProject(idProject);
 			this.ext.ProjectTaskTree.openFirstTab();
-			this.removeProjectSubnaviItem(idProject);
+			this.removeProjectSubNaviItem(idProject);
 		} else {
 			$('project-'+idProject).fade();
 		}
 
-		Todoyu.Hook.exec('onProjectDeleted', idProject);
+		Todoyu.Hook.exec('projectDeleted', idProject);
 	},
 
 
 
 	/**
-	 * Remove a project from the subnavi of the projec tab
+	 * Remove a project from the project tab (dropdown menu) sub navigation
 	 *
-	 * @param	{Number}		idProject
+	 * @param	{Number}	idProject
 	 */
-	removeProjectSubnaviItem: function(idProject) {
+	removeProjectSubNaviItem: function(idProject) {
 		var subnavi	= $('navi-main-list').down('li.itemProject').down('ul');
 
 		if( ! Object.isUndefined(subnavi) ) {
@@ -129,7 +129,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Toggle display of project details
 	 *
-	 * @param	{Number}		idProject
+	 * @param	{Number}	idProject
 	 */
 	toggleDetails: function(idProject) {
 		var detailDiv	= $('project-' + idProject + '-details');
@@ -168,8 +168,8 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Save state of project details being expanded
 	 *
-	 * @param	{Number}		idProject
-	 * @param	{Boolean}		expanded
+	 * @param	{Number}	idProject
+	 * @param	{Boolean}	expanded
 	 */
 	saveDetailsExpanded: function(idProject, expanded) {
 		Todoyu.Pref.save('project', 'detailsexpanded', expanded ? 1 : 0, idProject, 0);
@@ -180,7 +180,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Hide details of given project
 	 *
-	 * @param	{Number}		idProject
+	 * @param	{Number}	idProject
 	 */
 	hideDetails: function(idProject) {
 		Todoyu.Ui.hide('project-' + idProject + '-details');
@@ -191,7 +191,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Show project details
 	 *
-	 * @param	{Number}		idProject
+	 * @param	{Number}	idProject
 	 */
 	showDetails: function(idProject) {
 		Todoyu.Ui.show('project-' + idProject + '-details');
@@ -290,7 +290,7 @@ Todoyu.Ext.project.Project = {
 		this.refresh(idProject);
 		this.setStatus(idProject, status);
 
-		Todoyu.Hook.exec('onProjectSaved', idProject);
+		Todoyu.Hook.exec('projectSaved', idProject);
 	},
 
 

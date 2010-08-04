@@ -17,4 +17,4 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-Todoyu.Hook.add('onTaskEdit', Todoyu.Ext.project.Task.focusTitleField.bind(Todoyu.Ext.project.Task));
+Todoyu.Hook.add('taskEdit', Todoyu.Ext.project.Task.focusTitleField.bind(Todoyu.Ext.project.Task));

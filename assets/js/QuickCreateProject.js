@@ -23,7 +23,7 @@ Todoyu.Ext.project.QuickCreateProject = {
 	 * Evoked upon opening of event quick create wizard popup
 	 */
 	onPopupOpened: function() {
-		Todoyu.Hook.exec('onProjectFormLoaded', 0);
+		Todoyu.Hook.exec('projectFormLoaded', 0);
 	},
 
 
@@ -49,20 +49,20 @@ Todoyu.Ext.project.QuickCreateProject = {
 
 
 	/**
-	 * onSaved project custom event handler
+	 * onSaved project handler - evoked after project has been created / saved
 	 *
 	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response){
-		var error		= response.hasTodoyuError();
+		var error	= response.hasTodoyuError();
 
 		if( error ) {
 			Todoyu.Headlet.QuickCreate.updatePopupContent(response.responseText);
 			Todoyu.notifyError('[LLL:project.save.error]');
 		} else {
 			var idProject	= response.getTodoyuHeader('idProject');
-			Todoyu.Hook.exec('onProjectCreated', idProject);
-			Todoyu.Hook.exec('onProjectSaved', idProject);
+			Todoyu.Hook.exec('projectCreated', idProject);
+			Todoyu.Hook.exec('projectSaved', idProject);
 
 			Todoyu.Headlet.QuickCreate.closePopup();
 			Todoyu.notifySuccess('[LLL:project.save.success]');

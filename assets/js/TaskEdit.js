@@ -93,7 +93,7 @@ Todoyu.Ext.project.Task.Edit = {
 	onFormLoaded: function(idTask, response) {
 		this.ext.Task.scrollTo(idTask);
 
-		Todoyu.Hook.exec('onTaskEdit', idTask);
+		Todoyu.Hook.exec('taskEdit', idTask);
 	},
 
 
@@ -140,7 +140,7 @@ Todoyu.Ext.project.Task.Edit = {
 			this.ext.Task.update(idTaskOld, response.responseText);
 			this.ext.Task.addContextMenu(idTask);
 
-			Todoyu.Hook.exec('onTaskSaved', idTask);
+			Todoyu.Hook.exec('taskSaved', idTask);
 			Todoyu.notifySuccess('[LLL:task.save.success]');
 
 				// Scroll to task and highlight it

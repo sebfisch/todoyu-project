@@ -665,7 +665,7 @@ Todoyu.Ext.project.Task = {
 			// Scroll to task
 		this.scrollTo(idTask);
 
-		Todoyu.Hook.exec('onTaskEdit', idTask);
+		Todoyu.Hook.exec('taskEdit', idTask);
 	},
 
 

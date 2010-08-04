@@ -59,11 +59,11 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	 */
 	addHooks: function() {
 			// Project save
-		Todoyu.Hook.add('onProjectSaved', this.onProjectSaved.bind(this));
+		Todoyu.Hook.add('projectSaved', this.onProjectSaved.bind(this));
 			// Project create
-		Todoyu.Hook.add('onProjectCreated', this.onProjectCreated.bind(this));
+		Todoyu.Hook.add('projectCreated', this.onProjectCreated.bind(this));
 			// Add delete
-		Todoyu.Hook.add('onProjectDeleted', this.onProjectDeleted.bind(this));
+		Todoyu.Hook.add('projectDeleted', this.onProjectDeleted.bind(this));
 	},
 
 
@@ -247,7 +247,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Handler being evoked after deletion projects: updates the project list panel widget
+	 * Handler being evoked after deleting projects: updates the project list panel widget
 	 *
 	 * @param	{Number}		idProject
 	 */

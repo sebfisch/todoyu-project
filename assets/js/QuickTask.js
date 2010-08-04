@@ -64,7 +64,7 @@ Todoyu.Ext.project.QuickTask = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onPopupLoaded: function(response) {
-		Todoyu.Hook.exec('QuickTaskOpen', response);
+		Todoyu.Hook.exec('quickTaskOpen', response);
 	},
 
 
@@ -98,7 +98,7 @@ Todoyu.Ext.project.QuickTask = {
 	onSaved: function(form, response) {
 		if( response.hasTodoyuError() ) {
 			$(form).replace(response.responseText);
-			Todoyu.Hook.exec('QuickTaskOpen', response);
+			Todoyu.Hook.exec('quickTaskOpen', response);
 		} else {
 			var idTask		= response.getTodoyuHeader('idTask');
 			var idProject	= response.getTodoyuHeader('idProject');
@@ -107,7 +107,7 @@ Todoyu.Ext.project.QuickTask = {
 			Todoyu.notifySuccess('[LLL:project.js.quicktask.saved]');
 
 				// Call hook with saved data
-			Todoyu.Hook.exec('QuickTaskSaved', idTask, idProject, response);
+			Todoyu.Hook.exec('quickTaskSaved', idTask, idProject, response);
 		}
 	}
 
