@@ -20,7 +20,7 @@
 Todoyu.Ext.project.QuickCreateTask = {
 
 	/**
-	 * Evoked upon opening of event quick create wizard popup
+	 * Evoked upon opening of event quick create wizard popUp
 	 */
 	onPopupOpened: function() {
 

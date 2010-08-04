@@ -30,7 +30,9 @@ Todoyu.Ext.project.QuickTask = {
 
 
 	/**
-	 * Toggle quick task popup
+	 * Toggle quick task popUp
+	 *
+	 * @todo	check - used? to be removed?!
 	 */
 	openPopup: function() {
 		var url		= Todoyu.getUrl('project', 'quicktask');

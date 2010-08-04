@@ -50,7 +50,7 @@ class TodoyuTaskManager {
 	 * @return	TodoyuForm				form object
 	 */
 	public static function getQuickCreateForm() {
-		// create empty record of type task cache first. so hooks know what kind of task it is
+			// Create empty record of type task cache first. so hooks know what kind of task it is
 		self::createNewTaskWithDefaultsInCache(0, 0, TASK_TYPE_TASK);
 
 			// Construct form object
@@ -2048,14 +2048,14 @@ class TodoyuTaskManager {
 	 * @return	Array
 	 */
 	public static function hookLoadTaskFormData(array $data, $idRecord, array $params = array()) {
-		if( AREA === EXTID_PROJECT ) {
+		if( TodoyuRequest::getArea() === 'project' ) {
 				// Set project ID
 			if( intval($data['id_project']) === 0 ) {
 				$data['id_project']	= TodoyuProjectPreferences::getActiveProject();
 			}
 		}
 
-			// Set owner for quickcreate tasks
+			// Set owner for quickCreate tasks
 		if( strtolower(CONTROLLER) === 'quickcreatetask' ) {
 			$data['id_person_owner'] = personid();
 		}
