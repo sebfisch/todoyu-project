@@ -1,0 +1,63 @@
+Project Extension - Hooks
+==========================
+
+1. JavaScript Hooks
+-------------------
+	1.1. Project
+		projectDeleted
+		@param	{Number} idProject
+		Evoked after project has been deleted. (DB record deleted, project elements removed from DOM)
+
+		projectSaved
+	 	@param	{Number} idProject
+	 	Evoked after project saved. (DB record updated, project elements updated in DOM)
+
+	 	projectFormLoaded
+	 	@param	{Number} idProject
+	 	Evoked after project (creation / editing) form loaded and displayed.
+
+		projectCreated
+		@param	{Number} idProject
+		Evoked after new project has been created. (DB record created, DOM updated)
+
+
+
+	1.2. Task
+		taskSaved
+		@param	{Number} idTask
+		Evoked after task has been saved. (DB record updated, DOM updated)
+
+		taskcloned
+		@param	{Number} idSourceTask
+		@param	{Number} idTask
+		Evoked after task has been cloned.
+
+		taskremoved
+		@param	{Number} idTask
+		Evoked after task has been deleted.
+
+		taskStatusUpdated
+		@param	{Number} idTask
+		@param	{Number} status
+		Evoked after task status has been updated.
+
+		taskEdit
+		@param	{Number} idTask
+		Evoked when opening task for editing.
+
+		taskSaved
+		@param	{Number} idTask
+		Evoked after saving task.
+
+
+
+	1.2.1. quickTask
+		quickTaskOpen
+		@param	{Ajax.Response} response
+		Evoked after opening quick task creation form.
+
+		quickTaskSaved
+		@param	{Number} 		idTask
+		@param	{Number} 		idProject
+		@param	{Ajax.Response} response
+		Evoked after quicktask has been saved and quick creation popUp closed.
