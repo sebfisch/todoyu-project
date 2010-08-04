@@ -1,9 +1,7 @@
 /* ------------
 	Task
    ----------- */
-
-.task {
-}
+.task { }
 
 .task h3 {
 	display:block;
@@ -124,7 +122,6 @@
 /* ----------------------
 	Task Icons
    ---------------------- */
-
 .task span.taskIcons {
 	position:absolute;
 	right:0;
@@ -191,7 +188,6 @@
 /* ------------------
 	Task details
    ------------------ */
-
 .task .details {
 	border-left-width:1px;
 	border-left-style:solid;

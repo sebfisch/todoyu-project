@@ -15,9 +15,8 @@
 
 
 /* --------------------------
-	Project contextmenu
+	Project context menu
    -------------------------- */
-
 #contextmenu .projectContextMenu {
 	background-image:url('../img/contextmenu.png');
 }
@@ -58,7 +57,7 @@
 
 
 /* ---------------------------
-	Task contextmenu
+	Task context menu
    ---------------------------  */
 
 #contextmenu .taskContextMenu {
@@ -140,10 +139,11 @@
 	background-position:3px -117px;
 }
 
-/* ----------------------
-	Change task status icons
-   ---------------------- */
 
+
+/* --------------------------------
+	Change task status icons
+   -------------------------------- */
 #contextmenu .taskStatus {
 	background-position:3px 3px;
 }
@@ -193,7 +193,6 @@
 /* --------------------------------
 	Change project status icons
    -------------------------------- */
-
 #contextmenu .projectStatus {
 	background-position:3px 3px;
 }
@@ -243,7 +242,6 @@
 /* ---------------------------
 	Container context menu
    --------------------------- */
-
 #contextmenu .containerEdit {
 	background-position:3px -207px;
 }
