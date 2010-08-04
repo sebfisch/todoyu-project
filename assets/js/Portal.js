@@ -28,8 +28,8 @@ Todoyu.Ext.project.Portal = {
 
 	init: function() {
 		if( Todoyu.getArea() === 'portal' ) {
-			Todoyu.Hook.add('projectCreated', this.onProjectCreate.bind(this));
-			Todoyu.Hook.add('projectSaved', this.onProjectSaved.bind(this));
+			Todoyu.Hook.add('project.project.created', this.onProjectCreate.bind(this));
+			Todoyu.Hook.add('project.project.saved', this.onProjectSaved.bind(this));
 		}
 	},
 

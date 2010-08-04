@@ -45,9 +45,9 @@ Todoyu.Ext.project = {
 	 */
 	registerHooks: function() {
 			// Add project creation hooks
-		Todoyu.Hook.add('projectCreated', this.Project.Edit.onProjectCreated.bind(this.Project.Edit));
+		Todoyu.Hook.add('project.project.created', this.Project.Edit.onProjectCreated.bind(this.Project.Edit));
 
-//		Todoyu.Hook.add('taskSaved', this.Task.onProjectTaskAdded(response);
+//		Todoyu.Hook.add('project.task.saved', this.Task.onProjectTaskAdded(response);
 	},
 
 

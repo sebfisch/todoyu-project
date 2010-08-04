@@ -83,7 +83,7 @@ Todoyu.Ext.project.Project.Edit = {
 	 * @param	{Number}	idProject
 	 */
 	onFormLoaded: function(idProject) {
-		Todoyu.Hook.exec('projectFormLoaded', idProject);
+		Todoyu.Hook.exec('project.project.formLoaded', idProject);
 	},
 
 
@@ -141,7 +141,7 @@ Todoyu.Ext.project.Project.Edit = {
 
 			Todoyu.Ui.scrollToTop();
 
-			Todoyu.Hook.exec('projectSaved', idProject);
+			Todoyu.Hook.exec('project.project.saved', idProject);
 			Todoyu.notifySuccess('[LLL:project.save.success]');
 		}
 	},

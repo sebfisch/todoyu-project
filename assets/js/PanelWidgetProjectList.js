@@ -59,11 +59,11 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	 */
 	addHooks: function() {
 			// Project save
-		Todoyu.Hook.add('projectSaved', this.onProjectSaved.bind(this));
+		Todoyu.Hook.add('project.project.saved', this.onProjectSaved.bind(this));
 			// Project create
-		Todoyu.Hook.add('projectCreated', this.onProjectCreated.bind(this));
+		Todoyu.Hook.add('project.project.created', this.onProjectCreated.bind(this));
 			// Add delete
-		Todoyu.Hook.add('projectDeleted', this.onProjectDeleted.bind(this));
+		Todoyu.Hook.add('project.project.removed', this.onProjectDeleted.bind(this));
 	},
 
 

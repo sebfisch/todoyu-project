@@ -102,7 +102,7 @@ Todoyu.Ext.project.Project = {
 			$('project-'+idProject).fade();
 		}
 
-		Todoyu.Hook.exec('projectDeleted', idProject);
+		Todoyu.Hook.exec('project.project.removed', idProject);
 	},
 
 
@@ -290,7 +290,7 @@ Todoyu.Ext.project.Project = {
 		this.refresh(idProject);
 		this.setStatus(idProject, status);
 
-		Todoyu.Hook.exec('projectSaved', idProject);
+		Todoyu.Hook.exec('project.project.saved', idProject);
 	},
 
 

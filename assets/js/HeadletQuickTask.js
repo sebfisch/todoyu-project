@@ -31,7 +31,7 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	 * Initialize quicktask headlet
 	 */
 	init: function() {
-		Todoyu.Hook.add('QuickTaskSaved', this.onQuickTaskSaved.bind(this));
+		Todoyu.Hook.add('project.quickTask.saved', this.onQuickTaskSaved.bind(this));
 	},
 
 

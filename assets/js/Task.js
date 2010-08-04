@@ -252,7 +252,7 @@ Todoyu.Ext.project.Task = {
 		this.highlight(idTask);
 		this.highlightSubtasks(idTask);
 
-		Todoyu.Hook.exec('taskcloned', idSourceTask, idTask);
+		Todoyu.Hook.exec('project.task.cloned', idSourceTask, idTask);
 	},
 
 
@@ -299,7 +299,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Ajax.Response}	response
 	 */
 	onRemoved: function(idTask, response) {
-		Todoyu.Hook.exec('taskremoved', idTask);
+		Todoyu.Hook.exec('project.task.removed', idTask);
 	},
 
 
@@ -495,7 +495,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	Ajax.response		response
 	 */
 	onStatusUpdated: function(idTask, status, response) {
-		Todoyu.Hook.exec('taskStatusUpdated', idTask, status);
+		Todoyu.Hook.exec('project.task.statusUpdated', idTask, status);
 
 		var statusNotAllowed	= response.getTodoyuHeader('statusNotAllowed') == 1;
 
@@ -665,7 +665,7 @@ Todoyu.Ext.project.Task = {
 			// Scroll to task
 		this.scrollTo(idTask);
 
-		Todoyu.Hook.exec('taskEdit', idTask);
+		Todoyu.Hook.exec('project.task.formLoaded', idTask);
 	},
 
 

@@ -20,10 +20,10 @@
 Todoyu.Ext.project.QuickCreateProject = {
 
 	/**
-	 * Evoked upon opening of event quick create wizard popup
+	 * Evoked upon opening of event quick create wizard popUp
 	 */
 	onPopupOpened: function() {
-		Todoyu.Hook.exec('projectFormLoaded', 0);
+		Todoyu.Hook.exec('project.project.formLoaded', 0);
 	},
 
 
@@ -61,8 +61,8 @@ Todoyu.Ext.project.QuickCreateProject = {
 			Todoyu.notifyError('[LLL:project.save.error]');
 		} else {
 			var idProject	= response.getTodoyuHeader('idProject');
-			Todoyu.Hook.exec('projectCreated', idProject);
-			Todoyu.Hook.exec('projectSaved', idProject);
+			Todoyu.Hook.exec('project.project.created', idProject);
+			Todoyu.Hook.exec('project.project.saved', idProject);
 
 			Todoyu.Headlet.QuickCreate.closePopup();
 			Todoyu.notifySuccess('[LLL:project.save.success]');
