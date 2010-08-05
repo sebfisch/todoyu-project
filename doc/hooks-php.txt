@@ -1,2 +1,105 @@
 Project Extension - PHP Hooks
-====================================
+=============================
+
+
+
+1.	Event Hooks		Evoked via TodoyuHookManager::callHook($ext, $name, Array $params)
+---------------
+	projectData
+	@param Integer	$idProject
+	Evoked when getting project data for rendering of project details.
+
+	changeProjectStatus
+	@param Integer	$idProject
+	@param Integer	$status
+	Evoked prior to change of project status
+
+	projectDetailsDynamicElements
+	@param	Integer	$idProject
+	Evoked after render data array has been prepared / before calling dwoo to  render the project details
+
+	renderProjects
+	@param	Integer	$idProject
+	Evoked after render data has been prepared / before calling dwoo to render project listing item.
+
+	QuickTaskSaved
+	@param Integer $idTask
+	@param Integer $idProject
+	@param $storageData
+	Evoked when quick task saving has succeeded (form data validated and new task record has been created).
+
+
+
+2. Event Data Modification
+--------------------------
+   Evoked via TodoyuHookManager::callHookDataModifier($ext, $name, $dataVar, (Array $additionalParams) )
+
+	projectDefaultData
+	Evoked after ProjectManager has set up project basic default data array.
+
+	renderProjectHeader
+	Evoked during rendering of project header, after template data has been fetched / before calling dwoo to render the project header.
+
+	projectDataBeforeRendering
+	@param	 Integer	$idProject
+	Evoked after render data array has been set up / before calling dwoo to render the project details.
+
+	taskData
+	@param	Integer		$idTask
+	Evoked when fetching task infos merged from all extensions.
+
+	taskDataBeforeRendering
+	@param	Integer		$idTask
+	Evoked (from multiple contexts: task header / task listing item / new task in edit mode) before calling dwoo to render.
+
+	onTaskStatusChanged
+	@param	Integer		$idTask
+	Evoked before updating task record in DB with given (in modification data array) task status.
+
+	taskInfo
+	@param	Integer		$idTask
+	@param	Integer		$infoLevel
+	Evoked during getting of task info-array. Merges data from extensions into task info-array; evoked after having fetched templateData of task as basic info.
+
+	taskDataAttributes
+	@param	Integer		$idTask
+	Evoked after TaskManager has gotten task data attributes to be modified via hooked callbacks than.
+
+	taskIcons
+	@param	Integer		$idTask
+	Evoked when getting icons array of tasks.
+
+	taskHeaderExtras
+	@param	Integer		$idTask
+	Evoked when getting task header extras array, extras array is being sorted by label after evokation of this hook.
+
+	taskDefaultData
+	Evoked after TaskManager has set up the array of Task data default values, so it can yet be modified/ extended.
+
+	defaultsForNotAllowedTaskFields
+	@param	'idTask'	=> $idTask			---> todo: check!
+	Evoked after TaskManager has set default values for task attributes which are disallowed for editing (e.g. customers should not set deadlines or assign tasks to users).
+
+	modifyFormfieldsForContainer
+	@param	'idTask'	=> $idTask			---> todo: check!
+	Evoked after TaskManager has finished modification of task attributes for containers.
+
+	taskCopyData
+	@param	Integer		$idTask
+	@param	Integer		$idParent
+	@param	Boolean		$withSubTasks
+	@param	Integer		$idProject
+	Evoked before creating copy of a task, can be used to mutate the original task data to be altered in the copy.
+
+	taskCopy
+	@param	'idTask'	=> $idTask			---> todo: check!
+	@param	'idTaskNew'	=> $idTaskNew
+	@param	'idParent'	=> $idParent
+	@param	'idProject'	=> $idProject
+	Evoked after record to contain copy of another task has already been created, can be used to mutate the original record and/or the copy as both records IDs are given.
+
+
+
+3. Form Hooks (Build Form, Load Data, Save Data)
+------------------------------------------------
+	@see	all forms in ext/project/config/form
