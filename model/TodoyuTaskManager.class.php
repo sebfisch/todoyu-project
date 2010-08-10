@@ -1693,7 +1693,7 @@ class TodoyuTaskManager {
 	 * @param	Integer			$idTask
 	 * @return	TodoyuForm
 	 */
-	public static function modifyFormfieldsForTask(TodoyuForm $form, $idTask) {
+	public static function hookModifyFormfieldsForTask(TodoyuForm $form, $idTask) {
 		$idTask	= intval($idTask);
 		$task	= self::getTask($idTask);
 
@@ -1717,7 +1717,7 @@ class TodoyuTaskManager {
 	 * @param	Integer		$idTask			Task ID
 	 * @return	TodoyuForm	Modified form object
 	 */
-	public static function modifyFormfieldsForContainer(TodoyuForm $form, $idTask) {
+	public static function hookModifyFormfieldsForContainer(TodoyuForm $form, $idTask) {
 		$idTask	= intval($idTask);
 		$task	= self::getTask($idTask);
 
