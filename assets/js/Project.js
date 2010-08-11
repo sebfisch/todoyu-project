@@ -99,7 +99,7 @@ Todoyu.Ext.project.Project = {
 			this.ext.ProjectTaskTree.openFirstTab();
 			this.removeProjectSubNaviItem(idProject);
 		} else {
-			$('project-'+idProject).fade();
+			$('project-' + idProject).fade();
 		}
 
 		Todoyu.Hook.exec('project.project.removed', idProject);

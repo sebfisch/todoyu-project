@@ -398,7 +398,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Number}		idTask
 	 */
 	hasParentTask: function(idTask){
-		return $('task-'+idTask).up().hasClassName('subtasks');
+		return $('task-' + idTask).up().hasClassName('subtasks');
 	},
 
 
@@ -412,7 +412,7 @@ Todoyu.Ext.project.Task = {
 		var idParent	= false;
 
 		if( Todoyu.exists('task-' + idTask) ) {
-			var subTaskContainer	= $('task-'+idTask).up('.subtasks');
+			var subTaskContainer	= $('task-' + idTask).up('.subtasks');
 
 			if( subTaskContainer !== undefined ) {
 				idParent	= subTaskContainer.id.split('-')[1];
@@ -444,7 +444,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Number}		idTask
 	 */
 	checkAndRemoveTriggerFromParent: function(idTask)	{
-		var idArray = $('task-'+idTask).up().id.split('-');
+		var idArray = $('task-' + idTask).up().id.split('-');
 		var idParentTask = idArray[1];
 
 		this.checkAndRemoveTriggerFromTask(idParentTask);
