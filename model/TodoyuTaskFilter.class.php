@@ -780,14 +780,15 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	public static function Filter_type($value, $negate = false) {
 		$type		= intval($value);
 		$queryParts	= false;
-
+		
 		if( $type > 0 ) {
+			$compare	= $negate ? '!=' : '=';
 			$queryParts = array(
 				'tables' 	=> array('ext_project_task'),
-				'where'		=> 'ext_project_task.type ' . ( $negate ? '!=' : '=' ) . $type
+				'where'		=> 'ext_project_task.type ' . $compare . $type
 			);
 		}
-
+		
 		return $queryParts;
 	}
 
