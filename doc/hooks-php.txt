@@ -28,6 +28,10 @@ Project Extension - PHP Hooks
 	@param $storageData
 	Evoked when quick task saving has succeeded (form data validated and new task record has been created).
 
+	project.delete
+	@param	Integer	$idProject
+	Evoked when project has been deleted
+
 
 
 2. Event Data Modification

@@ -73,24 +73,6 @@ class TodoyuProject extends TodoyuBaseObject {
 
 
 	/**
-	 * Get company array
-	 *
-	 * @return	Array
-	 */
-	public function getCompanyData() {
-		if( $this->isInCache('company') ) {
-			$company	= $this->getCacheItem('company');
-		} else {
-			$company 	= TodoyuCompanyManager::getCompanyData($this->getCompanyID());
-			$this->addToCache('company', $company);
-		}
-
-		return $company;
-	}
-
-
-
-	/**
 	 * Get project status ID
 	 *
 	 * @return	Integer
@@ -158,7 +140,7 @@ class TodoyuProject extends TodoyuBaseObject {
 
 	/**
 	 * checks if the Project is deleted
-	 * 
+	 *
 	 * @return	Boolean
 	 */
 	public function isDeleted()	{
@@ -182,8 +164,8 @@ class TodoyuProject extends TodoyuBaseObject {
 	 * Load foreign data of a project
 	 */
 	public function loadForeignData()	{
-		$this->data['persons'] = TodoyuProjectManager::getProjectPersons($this->id);
-		$this->data['company'] = $this->getCompanyData();
+		$this->data['persons'] = $this->getPersons();
+		$this->data['company'] = $this->getCompany()->getTemplateData(false);
 	}
 
 
@@ -194,11 +176,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getPersons() {
-		if( ! array_key_exists('persons', $this->data) ) {
-			$this->loadForeignData();
-		}
-
-		return $this->data['persons'];
+		return TodoyuProjectManager::getProjectPersons($this->getID());
 	}
 
 

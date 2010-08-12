@@ -176,6 +176,9 @@ class TodoyuProjectManager {
 
 			// Delete all tasks of project
 		TodoyuTaskManager::deleteProjectTasks($idProject);
+
+			// Call delete project hook
+		TodoyuHookManager::callHook('project', 'project.delete', array($idProject));
 	}
 
 
