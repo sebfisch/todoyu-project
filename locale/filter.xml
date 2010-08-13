@@ -41,6 +41,9 @@
 		<label index="project.projectrole">Project Role</label>
 		<label index="project.projectleader">Project Manager</label>
 		<label index="project.projectsupervisor">Project Supervisor</label>
+		<label index="project.date_start">Project Starting Date</label>
+		<label index="project.date_end">Project End Date</label>
+		<label index="project.deadline">Project Deadline</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="project">Projekt</label>
@@ -83,6 +86,9 @@
 		<label index="project.projectrole">Projekt Rolle</label>
 		<label index="project.projectleader">Projektleiter</label>
 		<label index="project.projectsupervisor">Projekt Supervisor</label>
+		<label index="project.date_start">Projekt Startdatum</label>
+		<label index="project.date_end">Projekt Enddatum</label>
+		<label index="project.deadline">Projekt Kundenfrist</label>
 	</labels>
 	<labels lang="pt_BR">
 		<label index="project">Projeto</label>

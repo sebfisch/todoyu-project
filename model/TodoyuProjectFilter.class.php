@@ -28,6 +28,13 @@
 class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterface {
 
 	/**
+	 * @var	String		Default table for database requests
+	 */
+	const TABLE = 'ext_project_project';
+
+
+
+	/**
 	 * Initialize project filter with active filters
 	 *
 	 * @param	Array		$activeFilters
@@ -339,6 +346,60 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 		return $definitions;
 	}
 
+
+	/**
+	 * Filter condition: date_start
+	 *
+	 * @param	String		$date
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public static function Filter_startdate($date, $negate = false)	{
+		return self::makeFilter_date('date_start', $date, $negate);
+	}
+
+
+
+	/**
+	 * Filter condition: date_end
+	 *
+	 * @param	String		$date
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public static function Filter_enddate($date, $negate = false)	{
+		return self::makeFilter_date('date_end', $date, $negate);
+	}
+
+
+
+	/**
+	 * Filter condition: deadline
+	 *
+	 * @param	String		$date
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public static function Filter_deadline($date, $negate = false)	{
+		return self::makeFilter_date('deadline', $date, $negate);
+	}
+
+
+
+	/**
+	 * Prepare date based filter widget for given field
+	 *
+	 * @param	String		$field
+	 * @param	Integer		$date
+	 * @param	Boolean		$negate
+	 * @return	Boolean
+	 */
+	public static function makeFilter_date($field, $date, $negate = false) {
+		$tables	= array(self::TABLE);
+		$field	= self::TABLE . '.' . $field;
+
+		return TodoyuFilterHelper::getDateFilterQueryparts($tables, $field, $date, $negate);
+	}
 }
 
 ?>

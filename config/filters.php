@@ -357,6 +357,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 );
 
 
+
 Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 	'key'		=> 'project',
 	'right'		=> 'project:project.searchable',
@@ -374,6 +375,15 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 		)
 	),
 	'widgets' => array(
+		'title' => array(
+			'funcRef'	=> 'TodoyuProjectFilter::filter_title',
+			'label'		=> 'LLL:core.title',
+			'optgroup'	=> 'LLL:project.search.label',
+			'widget'	=> 'text',
+			'wConf'		=> array(
+				'negation'	=> 'default'
+			)
+		),
 		'fulltext' => array(
 			'funcRef'	=> 'TodoyuProjectFilter::filter_fulltext',
 			'label'		=> 'LLL:projectFilter.project.fulltext',
@@ -392,15 +402,6 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 				'negation'	=> 'default'
 	  		)
 		),
-		'title' => array(
-			'funcRef'	=> 'TodoyuProjectFilter::filter_title',
-			'label'		=> 'LLL:core.title',
-			'optgroup'	=> 'LLL:project.search.label',
-			'widget'	=> 'text',
-			'wConf'		=> array(
-				'negation'	=> 'default'
-			)
-		),
 		'company' => array(
 			'funcRef'	=> 'TodoyuProjectFilter::Filter_company',
 			'label'		=> 'LLL:projectFilter.project.company',
@@ -412,6 +413,33 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 				'FuncParams'	=> array(),
 				'LabelFuncRef'	=> 'TodoyuCompanyFilterDataSource::getCompanyLabel',
 				'negation'		=> 'default'
+			)
+		),
+		'startdate' => array(
+			'funcRef'	=> 'TodoyuProjectFilter::Filter_startdate',
+			'label'		=> 'LLL:projectFilter.project.date_start',
+			'optgroup'	=> 'LLL:project.search.label',
+			'widget'	=> 'date',
+			'wConf'		=> array(
+				'negation'	=> 'datetime'
+			)
+		),
+		'enddate' => array(
+			'funcRef'	=> 'TodoyuProjectFilter::Filter_enddate',
+			'label'		=> 'LLL:projectFilter.project.date_end',
+			'optgroup'	=> 'LLL:project.search.label',
+			'widget'	=> 'date',
+			'wConf'		=> array(
+				'negation'	=> 'datetime'
+			)
+		),
+		'deadline' => array(
+			'funcRef'	=> 'TodoyuProjectFilter::Filter_deadline',
+			'label'		=> 'LLL:projectFilter.project.deadline',
+			'optgroup'	=> 'LLL:project.search.label',
+			'widget'	=> 'date',
+			'wConf'		=> array(
+				'negation'	=> 'datetime'
 			)
 		),
 		'projectrole' => array(
@@ -426,7 +454,7 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 				'size'			=> 5,
 				'negation'		=> 'default'
 			)
-		)
+		),
 	)
 );
 ?>
