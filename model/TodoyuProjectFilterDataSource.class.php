@@ -101,6 +101,53 @@ class TodoyuProjectFilterDataSource {
 		return $definitions;
 	}
 
+
+
+	/**
+	 * Dynamic date options
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
+	public static function getDynamicDateOptions($definitions)	{
+		$definitions['options'] = array(
+			array(
+				'label' => Label('projectFilter.project.dyndate.today'),
+				'value'	=> 'today'
+			),
+			array(
+				'label' => Label('projectFilter.project.dyndate.tomorrow'),
+				'value'	=> 'tomorrow'
+			),
+			array(
+				'label' => Label('projectFilter.project.dyndate.dayaftertomorrow'),
+				'value'	=> 'dayaftertomorrow'
+			),
+			array(
+				'label' => Label('LLL:projectFilter.project.dyndate.yesterday'),
+				'value'	=> 'yesterday'
+			),
+			array(
+				'label' => Label('LLL:projectFilter.project.dyndate.daybeforeyesterday'),
+				'value'	=> 'daybeforeyesterday'
+			),
+			array(
+				'label' => Label('LLL:projectFilter.project.dyndate.currentweek'),
+				'value'	=> 'currentweek'
+			),
+			array(
+				'label' => Label('LLL:projectFilter.project.dyndate.nextweek'),
+				'value'	=> 'nextweek'
+			),
+			array(
+				'label' => Label('LLL:projectFilter.project.dyndate.lastweek'),
+				'value'	=> 'lastweek'
+			)
+		);
+
+		return $definitions;
+	}
+
 }
 
 ?>

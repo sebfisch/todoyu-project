@@ -387,6 +387,84 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 
 	/**
+	 * Filter condition: date_create
+	 *
+	 * @param	String		$date
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public static function Filter_createdate($date, $negate = false)	{
+		return self::makeFilter_date('date_create', $date, $negate);
+	}
+
+
+
+	/**
+	 * get the dynamic create date
+	 *
+	 * @param	String		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public static function Filter_createdateDyn($value, $negate)	{
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
+
+		return self::Filter_dateDyn($timeStamps, 'date_create');
+	}
+
+
+
+	/**
+	 * Filter condition: date_update
+	 *
+	 * @param	String		$date
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public static function Filter_editdate($date, $negate = false)	{
+		return self::makeFilter_date('date_update', $date, $negate);
+	}
+
+
+
+	/**
+	 * get the dynamic edit date
+	 *
+	 * @param	String		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public static function Filter_editdateDyn($value, $negate)	{
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
+
+		return self::Filter_dateDyn($timeStamps, 'date_update');
+	}
+
+
+
+	/**
+	 * Get the dynamic date
+	 *
+	 * @param	Array		$dateRange
+	 * @param	String		$field
+	 * @return	Array
+	 */
+	protected static function Filter_dateDyn(array $dateRange, $field)	{
+		$dateStart	= intval($dateRange['start']);
+		$dateEnd	= intval($dateRange['end']);
+
+		$tables 	= array(self::TABLE);
+		$where 		= 'ext_project_project.' . $field . ' BETWEEN ' . $dateStart . ' AND ' . $dateEnd;
+
+		return array(
+			'tables'	=> $tables,
+			'where' 	=> $where
+		);
+	}
+
+
+
+	/**
 	 * Prepare date based filter widget for given field
 	 *
 	 * @param	String		$field
