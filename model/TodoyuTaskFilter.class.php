@@ -713,7 +713,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * get the dynamic edit date
+	 * Get the dynamic creation date (date_create)
 	 *
 	 * @param	String		$value
 	 * @param	Boolean		$negate
@@ -722,7 +722,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	public static function Filter_createdateDyn($value, $negate)	{
 		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
 
-		return self::Filter_dateDyn($timeStamps, 'date_update');
+		return self::Filter_dateDyn($timeStamps, 'date_create');
 	}
 
 
