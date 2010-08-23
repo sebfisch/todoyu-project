@@ -77,9 +77,9 @@ class TodoyuProjectViewHelper {
 	/**
 	 * Get label for person in project
 	 *
-	 * @param	TodoyuFormElement		$formElement		The form element
-	 * @param	Array			$data				Form data for the current record to be labeled
-	 * @return	String			Record label
+	 * @param	TodoyuFormElement	$formElement		The form element
+	 * @param	Array				$data				Form data for the current record to be labeled
+	 * @return	String				Record label
 	 */
 	public static function getProjectPersonLabel(TodoyuFormElement $formElement, array $data) {
 		$idPerson	= intval($data['id']);
@@ -87,13 +87,11 @@ class TodoyuProjectViewHelper {
 		if( $idPerson === 0 ) {
 			return TodoyuLanguage::getLabel('project.persons.new');
 		} else {
-			if( ! isset($data['firstname']) ) {
-				$person	= TodoyuPersonManager::getPerson($idPerson);
+			$idRole		= intval($data['id_role']);
+			$projectData= $formElement->getForm()->getFormData();
+			$idProject	= intval($projectData['id']);
 
-				$data	= $person->getTemplateData(true);
-			}
-
-			return $data['firstname'] . ' ' . $data['lastname'] . ' - ' . TodoyuString::getLabel($data['rolelabel']);
+			return TodoyuProjectManager::getProjectPersonLabel($idPerson, $idProject, $idRole);
 		}
 	}
 
@@ -162,7 +160,7 @@ class TodoyuProjectViewHelper {
 
 
 	/**
-	 * Get work types from extension configuration 
+	 * Get work types from extension configuration
 	 *
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
