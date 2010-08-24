@@ -125,8 +125,8 @@
 		<label index="attr.person_create">Erfasst von</label>
 		<label index="attr.person_owner">Aufgaben-Eigner</label>
 		<label index="attr.is_public">Aufgaben Sichtbarkeit</label>
-		<label index="attr.is_public.public">Task ist öffentlich</label>
-		<label index="attr.is_public.private">Task ist NICHT öffentlich</label>
+		<label index="attr.is_public.public">Aufgabe ist öffentlich</label>
+		<label index="attr.is_public.private">Aufgabe ist NICHT öffentlich</label>
 		<label index="attr.id_parenttask">Übergeordnete Aufg.</label>
 		<label index="attr.is_estimatedworkload_public">Aufwand öffentlich</label>
 		<label index="attr.is_estimatedworkload_public.1">Ist öffentlich</label>
@@ -157,7 +157,7 @@
 		<label index="contextmenu.container.cut">Ausschneiden</label>
 		<label index="contextmenu.container.clone">Duplizieren</label>
 		<label index="contextmenu.container.delete">Löschen</label>
-		<label index="contextmenu.paste">Task-Kopie Einfügen...</label>
+		<label index="contextmenu.paste">Aufgaben-Kopie Einfügen...</label>
 		<label index="contextmenu.paste.container">Container-Kopie Einf...</label>
 		<label index="contextmenu.paste.in">Als Unteraufgabe</label>
 		<label index="contextmenu.paste.before">Vor dieser Aufgabe</label>
@@ -204,8 +204,8 @@
 		<label index="attr.id_worktype.error">Dies ist ein Pflichtfeld</label>
 		<label index="save.error">Speichern war nicht erfolgreich</label>
 		<label index="save.success">Speichern war erfolgreich</label>
-		<label index="pasteNotAllowed">Sie können den Task nicht an dieser Stelle einfügen!</label>
-		<label index="ac.parenttask.notFoundInfo">Es wurde kein Task gefunden der diesen Text oder diese Tasknummer enthält.</label>
+		<label index="pasteNotAllowed">Sie können die Aufgabe nicht an dieser Stelle einfügen!</label>
+		<label index="ac.parenttask.notFoundInfo">Es wurde keine Aufgabe gefunden die diesen Text oder diese Tasknummer enthält.</label>
 		<label index="ac.project.notFoundInfo">Es wurde kein Projekt mit diesen Text im Titel gefunden.</label>
 		<label index="copySubtasks">Auch Unteraufgaben mitkopieren?</label>
 	</labels>
