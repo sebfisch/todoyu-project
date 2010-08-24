@@ -34,9 +34,8 @@ class TodoyuProjectPortalManager {
 	public static function getTodoTaskIDs() {
 		$conditions	= Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters'];
 		$taskFilter	= new TodoyuTaskFilter($conditions);
-		$taskIDs	= $taskFilter->getTaskIDs('date_start');
 
-		return $taskIDs;
+		return $taskFilter->getTaskIDs('ext_project_task.date_start');
 	}
 
 
@@ -44,7 +43,7 @@ class TodoyuProjectPortalManager {
 	/**
 	 * Get number of tasks for todo tabs
 	 *
-	 * @param	Array		$filtersetIDs		No needed, but standard
+	 * @param	Array		$filtersetIDs		Not needed, but standard
 	 * @return	Integer
 	 */
 	public static function getTodoCount(array $filtersetIDs = array()) {
