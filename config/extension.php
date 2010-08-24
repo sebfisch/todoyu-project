@@ -86,6 +86,10 @@ Todoyu::$CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
  */
 Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters'] = array(
 	array(
+		'filter'	=> 'type',
+		'value'		=> TASK_TYPE_TASK
+	),
+	array(
 		'filter'	=> 'currentPersonAssigned'
 	),
 	array(
