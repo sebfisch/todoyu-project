@@ -77,7 +77,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	public function getTaskIDs($sorting = 'sorting', $limit = '') {
 		$this->addRightsClauseFilter();
 
-		return parent::getItemIDs($sorting, $limit);
+		return parent::getItemIDs($sorting, $limit, false);
 	}
 
 
