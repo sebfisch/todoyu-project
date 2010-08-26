@@ -541,7 +541,7 @@ class TodoyuProjectManager {
 			'position'	=> 32
 		);
 
-		if( $project->getDeadlineDate() > 0 && Todoyu::person()->isInternal() ) {
+		if( $project->getDeadlineDate() > 0 && (Todoyu::person()->isInternal() || Todoyu::person()->isAdmin()) ) {
 			$info[]	= array(
 				'label'		=> 'LLL:project.attr.date_deadline',
 				'value'		=> TodoyuTime::format($project->getDeadlineDate(), 'D2MlongY4'),
@@ -711,7 +711,7 @@ class TodoyuProjectManager {
 					pe.firstname';
 
 			// Add public check for external person
-		if( ! Todoyu::person()->isInternal() ) {
+		if( ! Todoyu::person()->isInternal() && ! Todoyu::person()->isAdmin() ) {
 			$where .= ' AND (
 							mmpp.is_public 	= 1 OR
 							mmpp.id_person	= ' . personid() . '

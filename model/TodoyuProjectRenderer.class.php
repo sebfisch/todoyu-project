@@ -235,7 +235,7 @@ class TodoyuProjectRenderer {
 			// Call hook to modify the collected project data
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'projectDataBeforeRendering', $data, array($idProject));
 
-			// Get dynamicly added details elements 
+			// Get dynamicly added details elements
 		$data['dynamicElements']	= TodoyuHookManager::callHook('project', 'projectDetailsDynamicElements', array($idProject));
 
 		return render($tmpl, $data);
@@ -643,7 +643,7 @@ class TodoyuProjectRenderer {
 
 
 	/**
-	 * Render tabs over the project taskTree. TabHeads for the 4 latest used projects are rendered. 
+	 * Render tabs over the project taskTree. TabHeads for the 4 latest used projects are rendered.
 	 *
 	 * @return	String
 	 */

@@ -57,12 +57,12 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		if( ! TodoyuAuth::isAdmin() ) {
 			$statuses	= implode(',', array_keys(TodoyuTaskStatusManager::getStatuses('see')));
 			$this->addExtraFilter('status', $statuses);
-		}
 
-			// Add public filter for all externals (not internal)
-		if( ! Todoyu::person()->isInternal() ) {
-			$this->addExtraFilter('isPublic', 1);
-		}
+				// Add public filter for all externals (not internal)
+			if( ! Todoyu::person()->isInternal() ) {
+				$this->addExtraFilter('isPublic', 1);
+			}
+		}	
 	}
 
 
@@ -248,7 +248,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		if( $value !== '' ) {
 			$tables	= array(self::TABLE);
 			$keyword= Todoyu::db()->escape($value);
-			$where	= '	   ext_project_task.description 	LIKE \'%' . $keyword . '%\' 
+			$where	= '	   ext_project_task.description 	LIKE \'%' . $keyword . '%\'
 						OR ext_project_task.title 			LIKE \'%' . $keyword . '%\'';
 
 			if( strpos($value, '.') !== false ) {
@@ -417,7 +417,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				'ext_contact_mm_person_role'
 			);
 			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= '		ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person 
+			$where	= '		ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person
 						AND ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
 
 			$queryParts	= array(
@@ -545,7 +545,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 			);
 		}
 
-		return $queryParts; 
+		return $queryParts;
 	}
 
 
@@ -842,7 +842,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				'ext_project_mm_project_person'
 			);
 
-			$where	= '		ext_project_task.id_project			= ext_project_mm_project_person.id_project 
+			$where	= '		ext_project_task.id_project			= ext_project_mm_project_person.id_project
 						AND ext_project_mm_project_person.id_person	= ' . $idPerson .
 					  ' AND ext_project_mm_project_person.id_role ' . ( $negate ? 'NOT IN' : 'IN' ) . '(' . implode(',', $roles) . ')';
 
@@ -879,7 +879,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 					'tables'	=> $tables,
 					'where'		=> $where
 				);
-			}			
+			}
 		}
 
 		return $queryParts;
