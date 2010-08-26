@@ -11,7 +11,7 @@
 	padding:4px 0 4px 0;
 	clear:both;
 	cursor:pointer;
-	border-bottom:1px dotted #AAAAAA;
+	border-bottom:1px dotted #aaa;
 	background-color:transparent;
 }
 .tasks .expanded h3,
@@ -245,6 +245,18 @@
 		margin-left:5px;
 		margin-right:5px;
 	}
+
+		.task dd.unread {
+			background:url(../img/icons.png) no-repeat 0px -268px;
+			padding-left:12px;
+			width:118px !important;
+		}
+
+		.task dd.acknowledged {
+			background:url(../img/icons.png) no-repeat 0px -538px;
+			padding-left:12px;
+			width:118px !important;
+		}
 
 	.tasks .task .details .properties dt,
 	.tasks .task .details .properties dd,

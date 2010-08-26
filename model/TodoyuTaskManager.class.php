@@ -920,7 +920,7 @@ class TodoyuTaskManager {
 					'label'		=> 'LLL:task.attr.person_assigned',
 					'value'		=> TodoyuPersonManager::getLabel($taskData['person_assigned']['id']),
 					'position'	=> 80,
-					'className'	=> 'sectionStart'
+					'className'	=> 'sectionStart ' . ( $taskData['is_acknowledged'] === '1' ? 'acknowledged' : 'unread')
 				);
 			}
 
