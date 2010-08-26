@@ -46,7 +46,6 @@ class TodoyuTaskManager {
 	/**
 	 * Get task quick create form object
 	 *
-	 * @param	Integer		$idTask
 	 * @return	TodoyuForm				form object
 	 */
 	public static function getQuickCreateForm() {
@@ -148,6 +147,7 @@ class TodoyuTaskManager {
 	 * Get a number of tasks as array
 	 *
 	 * @param	Array	$taskIDs
+	 * @param	String	$order
 	 * @return	Array
 	 */
 	public static function getTasks(array $taskIDs, $order = 'id') {
@@ -168,7 +168,6 @@ class TodoyuTaskManager {
 	 * Save a task. If a task number is given, the task will be updated, else
 	 * a new task will be created
 	 *
-	 * @param	Integer		$idTask
 	 * @param	Array		$data
 	 * @return	Integer
 	 */
@@ -423,6 +422,7 @@ class TodoyuTaskManager {
 	 * Get the context menu items for a task
 	 *
 	 * @param	Integer		$idTask
+	 * @param	Array		$items
 	 * @return	Array		Config array for context menu
 	 */
 	public static function getContextMenuItems($idTask, array $items) {
@@ -670,6 +670,38 @@ class TodoyuTaskManager {
 
 
 	/**
+	 * Check whether ending date of given task is in the past
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Boolean
+	 */
+	public static function isEnddateExceeded($idTask) {
+		$idTask	= intval($idTask);
+
+		$endDate= self::getTask($idTask)->getEndDate();
+
+		return $endDate < NOW;
+	}
+
+
+
+	/**
+	 * Check whether deadline of given task is in the past
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Boolean
+	 */
+	public static function isDeadlineExceeded($idTask) {
+		$idTask	= intval($idTask);
+		
+		$deadline= self::getTask($idTask)->getDeadlineDate();
+
+		return $deadline < NOW;
+	}
+
+
+
+	/**
 	 * Get task tabs config array (labels parsed)
 	 *
 	 * @param	Integer		$idTask
@@ -729,7 +761,6 @@ class TodoyuTaskManager {
 	 * @param	String		$idTab					Tab identifier
 	 * @param	String		$labelFunction			Function which renders the label or just a label string
 	 * @param	String		$contentFunction		Function which renders the content
-	 * @param	String		$icon
 	 * @param	Integer		$position
 	 */
 	public static function addTaskTab($idTab, $labelFunction, $contentFunction, $position = 100) {
@@ -747,6 +778,7 @@ class TodoyuTaskManager {
 	 * Get all persons which are somehow connected with this task
 	 *
 	 * @param	Integer		$idTask
+	 * @param	Boolean		$withAccount
 	 * @return	Array
 	 */
 	public static function getTaskPersons($idTask, $withAccount = false) {
@@ -778,7 +810,7 @@ class TodoyuTaskManager {
 	 * Get task owner
 	 *
 	 * @param	Integer		$idTask
-	 * @return	Integer
+	 * @return	Array
 	 */
 	public static function getTaskOwner($idTask) {
 		$idTask	= intval($idTask);
@@ -788,10 +820,8 @@ class TodoyuTaskManager {
 					ext_contact_person u';
 		$where	= '		t.id	= ' . $idTask .
 				  ' AND	u.id	= t.id_person_owner';
-		$group	= '';
-		$order	= '';
 
-		return Todoyu::db()->getArray($fields, $tables, $where, $group, $order);
+		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
 
 
@@ -822,7 +852,7 @@ class TodoyuTaskManager {
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Integer		$infoLevel
-	 * @return unknown
+	 * @return	Array
 	 */
 	public static function getTaskInfoArray($idTask, $infoLevel = 0) {
 		$idTask		= intval($idTask);
@@ -911,7 +941,7 @@ class TodoyuTaskManager {
 					'label'	=> 'LLL:task.attr.date_end',
 					'value'	=> TodoyuTime::format($taskData['date_end'], $formatEnd),
 					'position'	=> 110,
-					'className'	=> ''
+					'className'	=> TodoyuTaskManager::isEnddateExceeded($idTask) ? 'red' : ''
 				);
 			}
 				// Date deadline
@@ -921,10 +951,9 @@ class TodoyuTaskManager {
 					'label'	=> 'LLL:task.attr.date_deadline',
 					'value'	=> TodoyuTime::format($taskData['date_deadline'], $formatDeadline),
 					'position'	=> 120,
-					'className'	=> ''
+					'className'	=> TodoyuTaskManager::isDeadlineExceeded($idTask) ? 'red' : ''
 				);
 			}
-
 		}
 
 			// Attributes of tasks and containers
@@ -1004,7 +1033,7 @@ class TodoyuTaskManager {
 	/**
 	 * Get all info icons
 	 *
-	 * @param	Integer	$idTask
+	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
 	public static function getAllTaskIcons($idTask) {
@@ -1231,8 +1260,7 @@ class TodoyuTaskManager {
 	 * Use task filter to find the matching tasks by filter conditions or filterset
 	 *
 	 * @param	Integer		$idFilterSet
-	 * @param	Boolean		$useConditions
-	 * @param	Array		$filterConditions
+	 * @param	Array		$conditions
 	 * @param	String		$conjunction
 	 * @return	Array
 	 */
@@ -1417,7 +1445,7 @@ class TodoyuTaskManager {
 	 * Get a date based on the extconf value set for this type
 	 *
 	 * @param	Integer		$type		Number of days of the date in the future from now
-	 * @return	Integer		Timestamp
+	 * @return	Integer		timestamp
 	 */
 	private static function getDateFromExtConfDefault($type) {
 		$type	= intval($type);
@@ -1614,7 +1642,8 @@ class TodoyuTaskManager {
 	 * $mustExist is not set (default), only the format is checked.
 	 * If $mustExist is set, also a database request will check if this task exists
 	 *
-	 * @param	Integer		$fullTaskNumber			Identifier with project id and task number	 * @param	Boolean		$mustExist				TRUE = Has to be in database
+	 * @param	Integer		$fullTaskNumber			Identifier with project id and task number
+	 * @param	Boolean		$mustExist				TRUE = Has to be in database
 	 * @return
 	 */
 	public static function isTasknumber($fullTaskNumber, $mustExist = false) {
@@ -1882,6 +1911,7 @@ class TodoyuTaskManager {
 	 * Clone given task
 	 *
 	 * @param 	Integer		$idTask
+	 * @param 	Boolean		$withSubTasks
 	 * @return	Integer
 	 */
 	public static function cloneTask($idTask, $withSubTasks = true) {
@@ -2085,7 +2115,7 @@ class TodoyuTaskManager {
 	/**
 	 * Unfreeze a task
 	 *
-	 * @param	Integer			$idTask
+	 * @param	Integer					$idTask
 	 * @return	Boolean|TodoyuTask
 	 */
 	public static function unfreeze($idTask) {
@@ -2098,6 +2128,7 @@ class TodoyuTaskManager {
 	 * Lock a task
 	 *
 	 * @param	Integer		$idTask
+	 * @param	Integer		$ext		ext ID
 	 */
 	public static function lockTask($idTask, $ext = EXTID_PROJECT) {
 		TodoyuLockManager::lock($ext, 'ext_project_task', $idTask);
@@ -2109,6 +2140,7 @@ class TodoyuTaskManager {
 	 * Unlock a task
 	 *
 	 * @param	Integer		$idTask
+	 * @param	Integer		$ext		ext ID
 	 */
 	public static function unlockTask($idTask, $ext = EXTID_PROJECT) {
 		TodoyuLockManager::unlock($ext, 'ext_project_task', $idTask);
@@ -2119,7 +2151,8 @@ class TodoyuTaskManager {
 	/**
 	 * Lock multiple tasks
 	 *
-	 * @param	Array	$taskIDs
+	 * @param	Array		$taskIDs
+	 * @param	Integer		$ext		ext ID
 	 */
 	public static function lockTasks(array $taskIDs, $ext = EXTID_PROJECT) {
 		foreach($taskIDs as $idTask) {
@@ -2133,6 +2166,7 @@ class TodoyuTaskManager {
 	 * Unlock multiple tasks
 	 *
 	 * @param	Array		$taskIDs
+	 * @param	Integer		$ext		ext ID
 	 */
 	public static function unlockTasks(array $taskIDs, $ext = EXTID_PROJECT) {
 		foreach($taskIDs as $idTask) {
