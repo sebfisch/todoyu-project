@@ -35,7 +35,7 @@ class TodoyuProjectPortalManager {
 		$conditions	= Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters'];
 		$taskFilter	= new TodoyuTaskFilter($conditions);
 
-		return $taskFilter->getTaskIDs('ext_project_task.date_start');
+		return $taskFilter->getTaskIDs('ext_project_task.date_deadline');
 	}
 
 
