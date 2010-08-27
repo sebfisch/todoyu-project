@@ -877,7 +877,6 @@ class TodoyuProjectManager {
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idRole
-	 * @param	Boolean		$onlyFirstPerson
 	 * @return	Array
 	 */
 	public static function getRolePersonIDs($idProject, $idRole) {
