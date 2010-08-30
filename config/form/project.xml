@@ -70,10 +70,9 @@
 							<validate>
 								<dateAfter>
 									<field>date_start</field>
+									<allowEmpty />
 								</dateAfter>
-								<isNotEmpty/>
 							</validate>
-							<required />
 						</field>
 
 						<field type="date" name="date_deadline">
