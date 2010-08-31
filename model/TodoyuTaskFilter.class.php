@@ -62,7 +62,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 			if( ! Todoyu::person()->isInternal() ) {
 				$this->addExtraFilter('isPublic', 1);
 			}
-		}	
+		}
 	}
 
 
@@ -102,24 +102,23 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function Filter_project($idProject, $negate) {
+	public static function Filter_project($idProject, $negate = false) {
 		$idProject	= intval($idProject);
+		$queryParts	= false;
 
-		if( $idProject === 0 ) {
-				// No project given?
-			$queryArray	= false;
-		} else {
+		if( $idProject > 0 ) {
 				// Set up query parts array
 			$tables	= array(self::TABLE);
-			$where	= 'ext_project_task.id_project ' . ( $negate ? '!= ' : '= ' ) . $idProject;
+			$compare= $negate ? '!= ' : '= ';
+			$where	= 'ext_project_task.id_project ' . $compare . $idProject;
 
-			$queryArray	= array(
+			$queryParts	= array(
 				'tables'	=> $tables,
 				'where'		=> $where
 			);
 		}
 
-		return $queryArray;
+		return $queryParts;
 	}
 
 
