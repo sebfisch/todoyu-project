@@ -89,7 +89,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Integer		$limit
 	 * @return	Array
 	 */
-	public function getItemIDs($sorting = 'sorting', $limit = 300) {
+	public function getItemIDs($sorting = 'sorting', $limit = 200) {
 		return $this->getTaskIDs($sorting, $limit);
 	}
 
