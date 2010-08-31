@@ -28,5 +28,4 @@ TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTas
 TodoyuFormHook::registerLoadData('ext/project/config/form/quicktask.xml', 'TodoyuTaskManager::hookLoadTaskFormData');
 TodoyuFormHook::registerLoadData('ext/project/config/form/task.xml', 'TodoyuTaskManager::hookLoadTaskFormData');
 
-
 ?>
