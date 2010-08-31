@@ -56,10 +56,9 @@
 						<field type="date" name="date_start">
 							<label>project.attr.date_start</label>
 							<validate>
-								<dateBefore>
+								<dateNotAfter>
 									<field>date_end</field>
-								</dateBefore>
-								<isNotEmpty/>
+								</dateNotAfter>
 							</validate>
 							<class>myClass</class>
 							<required />
