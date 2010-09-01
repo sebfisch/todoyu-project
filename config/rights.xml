@@ -21,7 +21,7 @@
 		<right name="editAndDeleteInOwnProjects" />
 		<right name="editAndDeleteInAllProjects" require="project:seeAll,task:editAndDeleteInOwnProjects" />
 		<right name="editAndDeleteOwnTasks" />
-		<right name="editStatus" require="task:editAndDeleteInOwnProjects" />
+		<right name="editStatus" />
 		<right name="editDateStart" require="task:editAndDeleteInOwnProjects" />
 		<right name="editDateEnd" require="task:editAndDeleteInOwnProjects" />
 		<right name="editDeadline" require="task:editAndDeleteInOwnProjects" />
