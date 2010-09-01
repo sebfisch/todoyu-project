@@ -205,6 +205,54 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 
 
 		/**
+		 * OptGroup project
+		 */
+		'project' => array(
+			'funcRef'	=> 'TodoyuTaskFilter::Filter_project',
+			'label'		=> 'LLL:projectFilter.project',
+			'optgroup'	=> 'LLL:project.search.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'autocomplete'	=> true,
+				'FuncRef'		=> 'TodoyuProjectFilterDataSource::autocompleteProjects',
+				'FuncParams'	=> array(),
+				'LabelFuncRef'	=> 'TodoyuProjectFilterDataSource::getLabel',
+				'negation'		=> 'default'
+			)
+		),
+		'projectrole' => array(
+			'funcRef'	=> 'TodoyuTaskFilter::Filter_projectrole',
+			'label'		=> 'LLL:projectFilter.project.projectrole',
+			'optgroup'	=> 'LLL:project.search.label',
+			'widget'	=> 'projectrole',
+			'wConf' => array(
+				'autocomplete'	=> true,
+				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompletePersons',
+				'multiple'		=> true,
+				'size'			=> 5,
+				'negation'		=> 'default'
+			)
+		),
+		'customer'  => array(
+			'funcRef'	=> 'TodoyuTaskFilter::Filter_company',
+			'label'		=> 'LLL:projectFilter.project.company',
+			'optgroup'	=> 'LLL:project.search.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'autocomplete'	=> true,
+				'FuncRef'		=> 'TodoyuCompanyFilterDataSource::autocompleteCompanies',
+				'FuncParams'	=> array(),
+				'LabelFuncRef'	=> 'TodoyuCompanyFilterDataSource::getCompanyLabel',
+				'negation'		=> 'default'
+			)
+		),
+
+
+
+
+
+
+		/**
 		 * OptGroup time management
 		 */
 		'deadlinedate'		=> array(
@@ -295,38 +343,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'select',
 			'wConf'		=> array(
 				'FuncRef'	=> 'TodoyuTaskFilterDataSource::getDynamicDateOptions'
-			)
-		),
-
-
-
-		/**
-		 * OptGroup project
-		 */
-		'project' => array(
-			'funcRef'	=> 'TodoyuTaskFilter::Filter_project',
-			'label'		=> 'LLL:projectFilter.project',
-			'optgroup'	=> 'LLL:project.search.label',
-			'widget'	=> 'text',
-			'wConf' => array(
-				'autocomplete'	=> true,
-				'FuncRef'		=> 'TodoyuProjectFilterDataSource::autocompleteProjects',
-				'FuncParams'	=> array(),
-				'LabelFuncRef'	=> 'TodoyuProjectFilterDataSource::getLabel',
-				'negation'		=> 'default'
-			)
-		),
-		'projectrole' => array(
-			'funcRef'	=> 'TodoyuTaskFilter::Filter_projectrole',
-			'label'		=> 'LLL:projectFilter.project.projectrole',
-			'optgroup'	=> 'LLL:project.search.label',
-			'widget'	=> 'projectrole',
-			'wConf' => array(
-				'autocomplete'	=> true,
-				'FuncRef'		=> 'TodoyuPersonFilterDataSource::autocompletePersons',
-				'multiple'		=> true,
-				'size'			=> 5,
-				'negation'		=> 'default'
 			)
 		),
 

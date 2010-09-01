@@ -124,6 +124,36 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
+	 * Filter condition: tasks of projects of given customer
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public static function Filter_company($idCompany, $negate = false) {
+		$idCompany	= intval($idCompany);
+
+		if( $idCompany === 0 ) {
+			return false;
+		}
+
+		$compare	= $negate ? '!=' : '=' ;
+
+		$tables	= array(self::TABLE, 'ext_project_project');
+		$where	=
+			'ext_project_project.id_company ' . $compare . ' ' . $idCompany
+		. ' AND ext_project_task.id_project = ext_project_project.id'
+		;
+
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where
+		);
+	}
+
+
+
+	/**
 	 * Filter condition: tasks where person is owner
 	 *
 	 * @param	Integer		$idOwner
