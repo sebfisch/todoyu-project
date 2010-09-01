@@ -351,7 +351,7 @@ class TodoyuTaskManager {
 		);
 
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'onTaskStatusChanged', $data, array('idTask' => $idTask));
-	
+
 		self::updateTask($idTask, $data);
 	}
 
@@ -476,7 +476,6 @@ class TodoyuTaskManager {
 			}
 
 
-
 				// Add (with sub menu)
 			$allowed['add'] = $ownItems['add'];
 			unset($allowed['add']['submenu']);
@@ -488,8 +487,9 @@ class TodoyuTaskManager {
 				$allowed['add']['submenu']['container'] = $ownItems['add']['submenu']['container'];
 			}
 
+
 				// Status
-			if( $task->isTask() && allowed('project', 'task:editStatus') && $task->isEditable() ) {
+			if( $task->isTask() && allowed('project', 'task:editStatus') && TodoyuTaskRights::isStatusChangeAllowed($idTask) ) {
 				$allowed['status'] = $ownItems['status'];
 
 				$statuses = TodoyuTaskStatusManager::getStatuses('changeto');
@@ -572,7 +572,7 @@ class TodoyuTaskManager {
 
 		$field	= 'id';
 		$table	= self::TABLE;
-		$whereF	= '		id_parenttask IN(%s) 
+		$whereF	= '		id_parenttask IN(%s)
 					AND	deleted	= 0';
 
 		$where	= sprintf($whereF, $idTask);
@@ -693,7 +693,7 @@ class TodoyuTaskManager {
 	 */
 	public static function isDeadlineExceeded($idTask) {
 		$idTask	= intval($idTask);
-		
+
 		$deadline= self::getTask($idTask)->getDeadlineDate();
 
 		return $deadline < NOW;
@@ -1221,7 +1221,7 @@ class TodoyuTaskManager {
 			$where	.= ' AND type = 1 ';
 		}
 
-			// Start and end given: task must intersect with span defined by them 
+			// Start and end given: task must intersect with span defined by them
 		if ( $start > 0 && $end > 0 ) {
 			$where	.= ' AND ( date_start <= ' . $end . ' AND date_end >= ' . $start . ' )';
 		} else {
@@ -1323,7 +1323,7 @@ class TodoyuTaskManager {
 
 			// Call hook to modify default task data
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDefaultData', $data);
-		
+
 		return $data;
 	}
 

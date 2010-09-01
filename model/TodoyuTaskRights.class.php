@@ -54,9 +54,7 @@ class TodoyuTaskRights {
 		$task		= TodoyuTaskManager::getTask($idTask);
 
 		if( $task->isTask() ) {
-			$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('edit'));
-
-			if( ! in_array($task->getStatus(), $statusIDs) ) {
+			if( ! self::isStatusChangeAllowed($idTask) ) {
 				return false;
 			}
 		}
@@ -71,6 +69,23 @@ class TodoyuTaskRights {
 		$idProject	= TodoyuTaskManager::getProjectID($idTask);
 
 		return self::isEditInProjectAllowed($idProject);
+	}
+
+
+
+	/**
+	 * Check whether a status change of a task is allowed
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Boolean
+	 */
+	public static function isStatusChangeAllowed($idTask) {
+		$idTask		= intval($idTask);
+		$task		= TodoyuTaskManager::getTask($idTask);
+
+		$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('changeto'));
+
+		return in_array($task->getStatus(), $statusIDs);
 	}
 
 
