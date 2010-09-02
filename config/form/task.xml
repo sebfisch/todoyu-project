@@ -31,7 +31,6 @@
 						<width>100%</width>
 						<height>200px</height>
 					</tinymce>
-					<required />
 				</field>
 
 			</elements>
