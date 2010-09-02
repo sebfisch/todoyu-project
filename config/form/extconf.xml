@@ -6,62 +6,63 @@
 	<fieldsets>
 
 		<fieldset name="taskDefaults">
-			<elements>
+			<elements>				
 				<field type="text" name="title">
-					<label>task.attr.title</label>
+					<label>project.extconf.taskDefaults.title</label>
 				</field>
 
 				<field type="RTE" name="description">
-					<label>core.description</label>
+					<label>project.extconf.taskDefaults.description</label>
 				</field>
 
 				<field type="select" name="date_start">
-					<label>task.attr.date_start</label>
+					<label>project.extconf.taskDefaults.date_start</label>
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
 					</source>
-					<required/>
+					<!--<required/>-->
 				</field>
 
 				<field type="select" name="date_end">
-					<label>task.attr.date_end</label>
+					<label>project.extconf.taskDefaults.date_end</label>
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
 					</source>
-					<required/>
+					<!--<required/>-->
 				</field>
 
 				<field type="select" name="date_deadline">
-					<label>task.attr.date_deadline</label>
+					<label>project.extconf.taskDefaults.date_deadline</label>
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
 					</source>
-					<required/>
+					<!--<required/>-->
 				</field>
 
 				<field type="select" name="status">
-					<label>task.attr.status</label>
+					<label>project.extconf.taskDefaults.status</label>
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueStatusOptions</function>
 					</source>
 				</field>
 
 				<field type="select" name="id_worktype">
-					<label>task.attr.worktype</label>
+					<label>project.extconf.taskDefaults.worktype</label>
 					<source type="function">
 						<function>TodoyuProjectViewHelper::getExtConfWorktypes</function>
 					</source>
 				</field>
 
 				<field type="time" name="estimated_workload">
-					<label>task.attr.estimated_workload</label>
+					<label>project.extconf.taskDefaults.estimated_workload</label>
 				</field>
 
 				<field type="checkbox" name="is_public">
-					<label>task.attr.is_public</label>
+					<label>project.extconf.taskDefaults.is_public</label>
 				</field>
 
 				<field type="select" name="person_assigned_role">
+					<label>project.extconf.taskDefaults.person_assigned_role</label>
 					<label>task.default.person_assigned_role</label>
 					<source type="function">
 						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
@@ -69,7 +70,7 @@
 				</field>
 
 				<field type="select" name="person_owner_role">
-					<label>task.default.person_owner_role</label>
+					<label>project.extconf.taskDefaults.person_owner_role</label>
 					<source type="function">
 						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
 					</source>

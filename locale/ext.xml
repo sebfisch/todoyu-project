@@ -72,11 +72,19 @@
 		<label index="js.quicktask.saved">Quicktask has been saved</label>
 		<label index="ac.person.notFoundInfo">No person of this name was found</label>
 		<label index="portal.tab.todos">To Do's</label>
+		<label index="extconf.taskDefaults.title">Default Task Title</label>
+		<label index="extconf.taskDefaults.description">Default Task Description</label>
+		<label index="extconf.taskDefaults.date_start">Default task start date</label>
+		<label index="extconf.taskDefaults.date_end">Default task internal deadline</label>
+		<label index="extconf.taskDefaults.date_deadline">Default task customer deadline</label>
 		<label index="extconf.taskDefaults.status">Default Task Status</label>
 		<label index="extconf.taskDefaults.assignedRoles">Default role for task assigned person</label>
 		<label index="extconf.taskDefaults.ownerRoles">Default role for task owner</label>
-		<label index="extconf.taskDefaults.worktype">Default Work Type</label>
-		<label index="extconf.taskDefaults.estimated_workload">Default Estimated Workload</label>
+		<label index="extconf.taskDefaults.worktype">Default task work type</label>
+		<label index="extconf.taskDefaults.estimated_workload">Default task estimated workload</label>
+		<label index="extconf.taskDefaults.is_public">Default Task Visibility</label>
+		<label index="extconf.taskDefaults.person_assigned_role">Assign person of role if not selectable</label>
+		<label index="extconf.taskDefaults.person_owner_role">Owned by person of role if not selectable</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="ext.title">Projekt- und Aufgabenverwaltung</label>
