@@ -93,7 +93,7 @@ Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters'] = array(
 	),
 	array(
 		'filter'	=> 'status',
-		'value'		=> STATUS_OPEN . ',' . STATUS_PROGRESS
+		'value'		=> STATUS_OPEN . ',' . STATUS_PROGRESS . ',' . STATUS_CONFIRM
 	)
 );
 
