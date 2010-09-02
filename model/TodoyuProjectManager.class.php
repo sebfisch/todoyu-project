@@ -219,6 +219,19 @@ class TodoyuProjectManager {
 
 
 	/**
+	 * Get all IDs of the projects which are available for the user
+	 *
+	 * @return	Array
+	 */
+	public static function getAvailableProjectsForPerson() {
+		$filter		= new TodoyuProjectFilter();
+
+		 return $filter->getProjectIDs('date_create DESC');
+	}
+
+
+
+	/**
 	 * Get a project which is available for the person
 	 *
 	 * @return	Integer

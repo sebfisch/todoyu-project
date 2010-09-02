@@ -83,7 +83,7 @@ class TodoyuTaskRights {
 		$idTask		= intval($idTask);
 		$task		= TodoyuTaskManager::getTask($idTask);
 
-		$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('changeto'));
+		$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('changefrom'));
 
 		return in_array($task->getStatus(), $statusIDs);
 	}

@@ -35,14 +35,13 @@ define('STATUS_ACCEPTED', 	6);
 define('STATUS_REJECTED', 	7);
 define('STATUS_CLEARED', 	8);
 define('STATUS_WARRANTY', 	9);
-define('STATUS_CUSTOMER', 	10);
 
 	// Basic task types
 define('TASK_TYPE_TASK',		1);
 define('TASK_TYPE_CONTAINER',	2);
 
 	// Task number format
-define('TASKNUMBER_FORMAT', '/(\d){1,}\.(\d){1,}/')
+define('TASKNUMBER_FORMAT', '/(\d)+\.(\d)+/')
 
 
 ?>

@@ -63,7 +63,6 @@
 		<label index="status.rejected">Rejected</label>
 		<label index="status.cleared">Cleared</label>
 		<label index="status.warranty">In Warranty</label>
-		<label index="status.customer">Customer</label>
 		<label index="cloneSubtasks.confirm">Clone Also Subtasks?</label>
 		<label index="new.Task.defaultTitle">New Task</label>
 		<label index="new.Container.defaultTitle">New Container</label>
@@ -171,7 +170,6 @@
 		<label index="status.rejected">Zurückgewiesen</label>
 		<label index="status.cleared">Verrechnet</label>
 		<label index="status.warranty">In Garantie</label>
-		<label index="status.customer">Kunde</label>
 		<label index="cloneSubtasks.confirm">Unter-Aufgaben auch klonen?</label>
 		<label index="link.to_task_top">Um zur Aufgabe zu gelangen, starten</label>
 		<label index="new.Task.defaultTitle">Neue Aufgabe</label>
@@ -269,7 +267,6 @@
 		<label index="status.rejected">Recusado</label>
 		<label index="status.cleared">Concluído</label>
 		<label index="status.warranty">Em Garantia</label>
-		<label index="status.customer">Cliente</label>
 		<label index="cloneSubtasks.confirm">Clonar Subtarefas Também?</label>
 		<label index="newTask.empty">Nova Tarefa</label>
 		<label index="newContainer.empty">Nova Pasta</label>
@@ -367,7 +364,6 @@
 		<label index="status.rejected">Отклонено</label>
 		<label index="status.cleared">Очищено</label>
 		<label index="status.warranty">В гарантии</label>
-		<label index="status.customer">Клиент</label>
 		<label index="cloneSubtasks.confirm">Склонировать подзадачи?</label>
 		<label index="newTask.empty">Новая задача</label>
 		<label index="newContainer.empty">Новый контейнер</label>
@@ -466,7 +462,6 @@
 		<label index="status.rejected">Rejetée</label>
 		<label index="status.cleared">Effacée</label>
 		<label index="status.warranty">Sous garantie</label>
-		<label index="status.customer">Client</label>
 		<label index="cloneSubtasks.confirm">Dupliquer également les sous-tâches?</label>
 		<label index="new.Task.defaultTitle">Nouvelle tâche</label>
 		<label index="new.Container.defaultTitle">Nouveau conteneur</label>
@@ -574,7 +569,6 @@
 		<label index="status.rejected">Afgewezen</label>
 		<label index="status.cleared">Vrijgegeven</label>
 		<label index="status.warranty">Onder garantie</label>
-		<label index="status.customer">Klant</label>
 		<label index="cloneSubtasks.confirm">Subtaken ook dupliceren?</label>
 		<label index="newTask.empty">Nieuwe taak</label>
 		<label index="newContainer.empty">Nieuwe container</label>
@@ -674,7 +668,6 @@
 		<label index="status.rejected">Odmítnut</label>
 		<label index="status.cleared">Zaúčtován</label>
 		<label index="status.warranty">V záruce</label>
-		<label index="status.customer">Zákazník</label>
 		<label index="cloneSubtasks.confirm">Klonovat také podúkoly?</label>
 		<label index="newTask.empty">Nový úkol</label>
 		<label index="newContainer.empty">Nová složka</label>
@@ -774,7 +767,6 @@
 		<label index="status.rejected">Zurückgewiesen</label>
 		<label index="status.cleared">Verrechnet</label>
 		<label index="status.warranty">In Garantie</label>
-		<label index="status.customer">Kunde</label>
 		<label index="cloneSubtasks.confirm">Unter-Aufgaben auch klonen?</label>
 		<label index="link.to_task_top">Um zur Aufgabe zu gelangen, starten</label>
 		<label index="new.Task.defaultTitle">Neue Aufgabe</label>
@@ -874,7 +866,6 @@
 		<label index="status.rejected">却下済</label>
 		<label index="status.cleared">クリア済み</label>
 		<label index="status.warranty">保証期間中</label>
-		<label index="status.customer">顧客</label>
 		<label index="cloneSubtasks.confirm">サブタスクも複製しますか？</label>
 		<label index="newTask.empty">新規タスク</label>
 		<label index="newContainer.empty">新規コンテナ</label>

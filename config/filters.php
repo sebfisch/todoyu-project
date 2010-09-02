@@ -33,7 +33,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 		'position'			=> 10,
 		'resultsRenderer'	=> 'TodoyuTaskRenderer::renderTaskListing',
 		'class'				=> 'TodoyuTaskFilter',
-		'defaultSorting'	=> 'date_deadline',
+		'defaultSorting'	=> 'ext_project_task.date_deadline',
 		'require'			=> 'project.general:use',
 		'assets'			=> array(
 			array(

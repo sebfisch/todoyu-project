@@ -58,8 +58,7 @@ Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK'] = array(
 	STATUS_DONE			=> 'done',
 	STATUS_ACCEPTED		=> 'accepted',
 	STATUS_REJECTED		=> 'rejected',
-	STATUS_CLEARED		=> 'cleared',
-//	STATUS_CUSTOMER		=> 'customer'
+	STATUS_CLEARED		=> 'cleared'
 );
 
 

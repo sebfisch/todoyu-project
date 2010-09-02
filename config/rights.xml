@@ -41,7 +41,6 @@
 		<right name="accepted:see" />
 		<right name="rejected:see" />
 		<right name="cleared:see" />
-		<right name="customer:see" />
 		<right name="planning:changeto" require="task:editStatus" />
 		<right name="open:changeto" require="task:editStatus" />
 		<right name="progress:changeto" require="task:editStatus" />
@@ -50,6 +49,14 @@
 		<right name="accepted:changeto" require="task:editStatus" />
 		<right name="rejected:changeto" require="task:editStatus" />
 		<right name="cleared:changeto" require="task:editStatus" />
+		<right name="planning:changefrom" />
+		<right name="open:changefrom"  />
+		<right name="progress:changefrom" />
+		<right name="confirm:changefrom" />
+		<right name="done:changefrom" />
+		<right name="accepted:changefrom" />
+		<right name="rejected:changefrom" />
+		<right name="cleared:changefrom" />
 		<right name="planning:edit" />
 		<right name="open:edit"  />
 		<right name="progress:edit" />
@@ -58,7 +65,14 @@
 		<right name="accepted:edit" />
 		<right name="rejected:edit" />
 		<right name="cleared:edit" />
-		<right name="customer:edit" />
+		<right name="planning:create" />
+		<right name="open:create"  />
+		<right name="progress:create" />
+		<right name="confirm:create" />
+		<right name="done:create" />
+		<right name="accepted:create" />
+		<right name="rejected:create" />
+		<right name="cleared:create" />
 	</section>
 
 	<section name="projectstatus" require="project:seeOwn">

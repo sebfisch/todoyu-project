@@ -49,7 +49,15 @@ class TodoyuTaskViewHelper {
 	public static function getTaskStatusOptions(TodoyuFormElement $field) {
 		$values			= $field->getValue();
 		$currentStatus	= intval($values[0]);
-		$statuses		= TodoyuTaskStatusManager::getStatuses('changeto', $currentStatus);
+		$idTask			= $field->getForm()->getRecordID();
+
+		if( $idTask === 0 ) {
+			$type	= 'create';
+		} else {
+			$type	= 'changeto';
+		}
+
+		$statuses		= TodoyuTaskStatusManager::getStatuses($type, $currentStatus);
 		$options		= array();
 
 		foreach($statuses as $statusID => $statusKey) {

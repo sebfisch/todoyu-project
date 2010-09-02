@@ -24,7 +24,6 @@
 		<label index="status.rejected">Rejected</label>
 		<label index="status.cleared">Cleared</label>
 		<label index="status.warranty">In Warranty</label>
-		<label index="status.customer">Customer</label>
 		<label index="status.undefined">Undefined</label>
 		<label index="project.save">Save Project</label>
 		<label index="newProject.tabLabel">New Project</label>
@@ -110,7 +109,6 @@
 		<label index="status.rejected">Zurückgewiesen</label>
 		<label index="status.cleared">Abgerechnet</label>
 		<label index="status.warranty">In Garantie</label>
-		<label index="status.customer">Kunde</label>
 		<label index="status.undefined">Undefiniert</label>
 		<label index="project.save">Projekt speichern</label>
 		<label index="newProject.tabLabel">Neues Projekt</label>
@@ -187,7 +185,6 @@
 		<label index="status.rejected">Recusado</label>
 		<label index="status.cleared">Liberado</label>
 		<label index="status.warranty">Em Garantia</label>
-		<label index="status.customer">Cliente</label>
 		<label index="status.undefined">Indefinido</label>
 		<label index="project.save">Salvar Projeto</label>
 		<label index="newProject.tabLabel">Novo Projeto</label>
@@ -265,7 +262,6 @@
 		<label index="status.rejected">Отклонён</label>
 		<label index="status.cleared">Очищен</label>
 		<label index="status.warranty">В гарантии</label>
-		<label index="status.customer">Клиент</label>
 		<label index="status.undefined">Неопределено</label>
 		<label index="project.save">Сохранить проект</label>
 		<label index="newProject.tabLabel">Новый проект</label>
@@ -343,7 +339,6 @@
 		<label index="status.rejected">Rejeté</label>
 		<label index="status.cleared">Effacé</label>
 		<label index="status.warranty">Sous garantie</label>
-		<label index="status.customer">Client</label>
 		<label index="status.undefined">Indéfini</label>
 		<label index="project.save">Enregistrer le projet</label>
 		<label index="newProject.tabLabel">Nouveau projet</label>
@@ -421,7 +416,6 @@
 		<label index="status.rejected">Afgewezen</label>
 		<label index="status.cleared">Vrijgegeven</label>
 		<label index="status.warranty">Onder garantie</label>
-		<label index="status.customer">Klant</label>
 		<label index="status.undefined">Ongedefinieerd</label>
 		<label index="project.save">Project opslaan</label>
 		<label index="newProject.tabLabel">Nieuw project</label>
@@ -498,7 +492,6 @@
 		<label index="status.rejected">Odmítnut</label>
 		<label index="status.cleared">Zůčtován</label>
 		<label index="status.warranty">V záruce</label>
-		<label index="status.customer">Zákazník</label>
 		<label index="status.undefined">Nedefinováno</label>
 		<label index="project.save">Uložit projekt</label>
 		<label index="newProject.tabLabel">Nový projekt</label>
@@ -576,7 +569,6 @@
 		<label index="status.rejected">Одбијено</label>
 		<label index="status.cleared">Обрачунато</label>
 		<label index="status.warranty">Под гаранцијом</label>
-		<label index="status.customer">Клијент</label>
 		<label index="status.undefined">Неодлучно</label>
 		<label index="project.save">Сачувај пројекат</label>
 		<label index="newProject.tabLabel">Нови пројекат</label>
@@ -656,7 +648,6 @@
 		<label index="status.rejected">却下</label>
 		<label index="status.cleared">クリア済</label>
 		<label index="status.warranty">保証期間内</label>
-		<label index="status.customer">顧客</label>
 		<label index="status.undefined">未定義</label>
 		<label index="project.save">プロジェクトの保存</label>
 		<label index="newProject.tabLabel">新規プロジェクト</label>

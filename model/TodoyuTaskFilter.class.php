@@ -58,6 +58,11 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 			$statuses	= implode(',', array_keys(TodoyuTaskStatusManager::getStatuses('see')));
 			$this->addExtraFilter('status', $statuses);
 
+				// Limit to tasks which are in available projects
+			if( ! allowed('project', 'project:seeAll') ) {
+				$this->addExtraFilter('availableprojects', 0);
+			}
+
 				// Add public filter for all externals (not internal)
 			if( ! Todoyu::person()->isInternal() ) {
 				$this->addExtraFilter('isPublic', 1);
@@ -115,6 +120,30 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 			$queryParts	= array(
 				'tables'	=> $tables,
 				'where'		=> $where
+			);
+		}
+
+		return $queryParts;
+	}
+
+
+
+	public static function Filter_availableprojects($value, $negate = false) {
+		$availableProjects	= TodoyuProjectManager::getAvailableProjectsForPerson();
+		$queryParts			= array();
+
+		if( sizeof($availableProjects) > 0 ) {
+			$queryParts	= array(
+				'tables'	=> array(
+					'ext_project_project'
+				),
+				'where'		=> 'ext_project_task.id_project IN(' . implode(',', $availableProjects) . ')'
+			);
+
+		} else {
+			$queryParts	= array(
+				'tables'	=> array(),
+				'where'		=> 'AND 0'
 			);
 		}
 
@@ -545,6 +574,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				'where'		=> $where
 			);
 		}
+
+//		TodoyuDebug::printInFireBug($queryParts, '$queryParts');
 
 		return $queryParts;
 	}

@@ -35,7 +35,6 @@
 		<label index="taskstatus.accepted:see">See Status: Accepted</label>
 		<label index="taskstatus.rejected:see">See Status: Rejected</label>
 		<label index="taskstatus.cleared:see">See Status: Cleared</label>
-		<label index="taskstatus.customer:see">See Status: Customer Request</label>
 		<label index="taskstatus.planning:changeto">Change Status To: In Planning</label>
 		<label index="taskstatus.open:changeto">Change Status To: Open</label>
 		<label index="taskstatus.progress:changeto">Change Status To: In Progress</label>
@@ -44,6 +43,14 @@
 		<label index="taskstatus.accepted:changeto">Change Status To: Accepted</label>
 		<label index="taskstatus.rejected:changeto">Change Status To: Rejected</label>
 		<label index="taskstatus.cleared:changeto">Change Status To: Cleared</label>
+		<label index="taskstatus.planning:changefrom">Change Status From: In Planning</label>
+		<label index="taskstatus.open:changefrom">Change Status From: Open</label>
+		<label index="taskstatus.progress:changefrom">Change Status From: In Progress</label>
+		<label index="taskstatus.confirm:changefrom">Change Status From: To Confirm</label>
+		<label index="taskstatus.done:changefrom">Change Status From: Done</label>
+		<label index="taskstatus.accepted:changefrom">Change Status From: Accepted</label>
+		<label index="taskstatus.rejected:changefrom">Change Status From: Rejected</label>
+		<label index="taskstatus.cleared:changefrom">Change Status From: Cleared</label>
 		<label index="taskstatus.planning:edit">Edit Status: In Planning</label>
 		<label index="taskstatus.open:edit">Edit Status: Open</label>
 		<label index="taskstatus.progress:edit">Edit Status: In Progress</label>
@@ -52,7 +59,14 @@
 		<label index="taskstatus.accepted:edit">Edit Status: Accepted</label>
 		<label index="taskstatus.rejected:edit">Edit Status: Rejected</label>
 		<label index="taskstatus.cleared:edit">Edit Status: Cleared</label>
-		<label index="taskstatus.customer:edit">Edit Status: Customer Request</label>
+		<label index="taskstatus.planning:create">Create Status: In Planning</label>
+		<label index="taskstatus.open:create">Create Status: Open</label>
+		<label index="taskstatus.progress:create">Create Status: In Progress</label>
+		<label index="taskstatus.confirm:create">Create Status: To Confirm</label>
+		<label index="taskstatus.done:create">Create Status: Done</label>
+		<label index="taskstatus.accepted:create">Create Status: Accepted</label>
+		<label index="taskstatus.rejected:create">Create Status: Rejected</label>
+		<label index="taskstatus.cleared:create">Create Status: Cleared</label>
 		<label index="projectstatus">Project Status</label>
 		<label index="projectstatus.planning:see">See Status: In Planning</label>
 		<label index="projectstatus.progress:see">See Status: In Progress</label>
@@ -109,7 +123,6 @@
 		<label index="taskstatus.accepted:see">Sehen: Abgenommen</label>
 		<label index="taskstatus.rejected:see">Sehen: Zurückgewiesen</label>
 		<label index="taskstatus.cleared:see">Sehen: Verrechnet</label>
-		<label index="taskstatus.customer:see">Sehen: Kundenanfrage</label>
 		<label index="taskstatus.planning:changeto">Ändern in: In Planung</label>
 		<label index="taskstatus.open:changeto">Ändern in: Offen</label>
 		<label index="taskstatus.progress:changeto">Ändern in: In Bearbeitung</label>
@@ -126,7 +139,6 @@
 		<label index="taskstatus.accepted:edit">Bearbeiten: Abgenommen</label>
 		<label index="taskstatus.rejected:edit">Bearbeiten: Zurückgewiesen</label>
 		<label index="taskstatus.cleared:edit">Bearbeiten: Verrechnet</label>
-		<label index="taskstatus.customer:edit">Bearbeiten: Kundenanfrage</label>
 		<label index="projectstatus">Projekt Status</label>
 		<label index="projectstatus.planning:see">Sehen: In Planung</label>
 		<label index="projectstatus.progress:see">Sehen: In Bearbeitung</label>
@@ -177,7 +189,6 @@
 		<label index="taskstatus.accepted:see">Exibir Status: Aceito</label>
 		<label index="taskstatus.rejected:see">Exibir Status: Recusado</label>
 		<label index="taskstatus.cleared:see">Exibir Status: Ok</label>
-		<label index="taskstatus.customer:see">Exibir Status: Solicitação de Cliente</label>
 		<label index="taskstatus.planning:changeto">Alterar Status Para: Em Planejamento</label>
 		<label index="taskstatus.open:changeto">Alterar Status Para: Em Aberto</label>
 		<label index="taskstatus.progress:changeto">Alterar Status Para: Em Progresso</label>
@@ -194,7 +205,6 @@
 		<label index="taskstatus.accepted:edit">Editar Status: Aceito</label>
 		<label index="taskstatus.rejected:edit">Editar Status: Recusado</label>
 		<label index="taskstatus.cleared:edit">Editar Status: Ok</label>
-		<label index="taskstatus.customer:edit">Editar Status: Solicitação de Cliente</label>
 		<label index="projectstatus">Status do Projeto</label>
 		<label index="projectstatus.planning:see">Exibir Status: Em Planegamento</label>
 		<label index="projectstatus.progress:see">Exibir Status: Em Progresso</label>
@@ -242,7 +252,6 @@
 		<label index="taskstatus.accepted:see">Показать статус: принято</label>
 		<label index="taskstatus.rejected:see">Показать статус: отклонено</label>
 		<label index="taskstatus.cleared:see">Показать статус: очищено</label>
-		<label index="taskstatus.customer:see">Показать статус: запрос клиента</label>
 		<label index="taskstatus.planning:changeto">Изменить статус на: планирование</label>
 		<label index="taskstatus.open:changeto">Изменить статус на: открыто</label>
 		<label index="taskstatus.progress:changeto">Изменить статус на: в процессе</label>
@@ -259,7 +268,6 @@
 		<label index="taskstatus.accepted:edit">Изменить статус: принято</label>
 		<label index="taskstatus.rejected:edit">Изменить статус: отклонено</label>
 		<label index="taskstatus.cleared:edit">Изменить статус: очищено</label>
-		<label index="taskstatus.customer:edit">Изменить статус: запрос клиента</label>
 		<label index="projectstatus">Статус проекта</label>
 		<label index="projectstatus.planning:see">Показать статус: планирование</label>
 		<label index="projectstatus.progress:see">Показать статус: в процессе</label>
@@ -308,7 +316,6 @@
 		<label index="taskstatus.accepted:see">Voir le statut: Accepté</label>
 		<label index="taskstatus.rejected:see">Voir le statut: Rejeté</label>
 		<label index="taskstatus.cleared:see">Voir le statut: Effacé</label>
-		<label index="taskstatus.customer:see">Voir le statut: Requête du client</label>
 		<label index="taskstatus.planning:changeto">Changer le statut à: Planifié</label>
 		<label index="taskstatus.open:changeto">Changer le statut à: Ouvert</label>
 		<label index="taskstatus.progress:changeto">Changer le statut à: En cours de réalisation</label>
@@ -325,7 +332,6 @@
 		<label index="taskstatus.accepted:edit">Modifier le statut: Accepté</label>
 		<label index="taskstatus.rejected:edit">Modifier le statut: Rejeté</label>
 		<label index="taskstatus.cleared:edit">Modifier le statut: Effacé</label>
-		<label index="taskstatus.customer:edit">Modifier le statut: Requête du client</label>
 		<label index="projectstatus">Statut du projet</label>
 		<label index="projectstatus.planning:see">Voir le statut: Planifié</label>
 		<label index="projectstatus.progress:see">Voir le statut: En cours de réalisation</label>
@@ -373,7 +379,6 @@
 		<label index="taskstatus.accepted:see">Status weergeven: Geaccepteerd</label>
 		<label index="taskstatus.rejected:see">Status weergeven: Afgewezen</label>
 		<label index="taskstatus.cleared:see">Status weergeven: Vrijgegeven</label>
-		<label index="taskstatus.customer:see">Status weergeven: Klantverzoek</label>
 		<label index="taskstatus.planning:changeto">Status wijzigen in: In planning</label>
 		<label index="taskstatus.open:changeto">Status wijzigen in: Open</label>
 		<label index="taskstatus.progress:changeto">Status wijzigen in: In ontwikkeling</label>
@@ -390,7 +395,6 @@
 		<label index="taskstatus.accepted:edit">Status bewerken: Geaccepteerd</label>
 		<label index="taskstatus.rejected:edit">Status bewerken: Afgewezen</label>
 		<label index="taskstatus.cleared:edit">Status bewerken: Vrijgegeven</label>
-		<label index="taskstatus.customer:edit">Status bewerken: Klantverzoek</label>
 		<label index="projectstatus">Projectstatus</label>
 		<label index="projectstatus.planning:see">Status weergeven: In Planning</label>
 		<label index="projectstatus.progress:see">Status weergeven: In ontwikkeling</label>
@@ -438,7 +442,6 @@
 		<label index="taskstatus.accepted:see">Vidět stav: Odsouhlašen</label>
 		<label index="taskstatus.rejected:see">Vidět stav: Odmítnut</label>
 		<label index="taskstatus.cleared:see">Vidět stav: Zaúčtován</label>
-		<label index="taskstatus.customer:see">Vidět stav: Požadavek zákazníka</label>
 		<label index="taskstatus.planning:changeto">Změnit stav na: Plánuje se</label>
 		<label index="taskstatus.Otevřen:changeto">Změnit stav na: Otevřen</label>
 		<label index="taskstatus.progress:changeto">Změnit stav na: Rozpracováno</label>
@@ -455,7 +458,6 @@
 		<label index="taskstatus.Odsouhlašen:edit">Upravit stav: Odsouhlašen</label>
 		<label index="taskstatus.Odmítnut:edit">Upravit stav: Odmítnut</label>
 		<label index="taskstatus.Zaúčtován:edit">Upravit stav: Zaúčtován</label>
-		<label index="taskstatus.customer:edit">Upravit stav: Požadavek zákazníka</label>
 		<label index="projectstatus">Stav projektu</label>
 		<label index="projectstatus.planning:see">Vidět stav: Plánuje se</label>
 		<label index="projectstatus.progress:see">Vidět stav: Rozpracováno</label>
@@ -512,7 +514,6 @@
 		<label index="taskstatus.accepted:see">Sehen: Abgenommen</label>
 		<label index="taskstatus.rejected:see">Sehen: Zurückgewiesen</label>
 		<label index="taskstatus.cleared:see">Sehen: Verrechnet</label>
-		<label index="taskstatus.customer:see">Sehen: Kundenanfrage</label>
 		<label index="taskstatus.planning:changeto">Ändern in: In Planung</label>
 		<label index="taskstatus.open:changeto">Ändern in: Offen</label>
 		<label index="taskstatus.progress:changeto">Ändern in: In Bearbeitung</label>
@@ -529,7 +530,6 @@
 		<label index="taskstatus.accepted:edit">Bearbeiten: Abgenommen</label>
 		<label index="taskstatus.rejected:edit">Bearbeiten: Zurückgewiesen</label>
 		<label index="taskstatus.cleared:edit">Bearbeiten: Verrechnet</label>
-		<label index="taskstatus.customer:edit">Bearbeiten: Kundenanfrage</label>
 		<label index="projectstatus">Projekt Status</label>
 		<label index="projectstatus.planning:see">Sehen: In Planung</label>
 		<label index="projectstatus.progress:see">Sehen: In Bearbeitung</label>
@@ -580,7 +580,6 @@
 		<label index="taskstatus.accepted:see">状態の表示: 受領済</label>
 		<label index="taskstatus.rejected:see">状態の表示: 却下済</label>
 		<label index="taskstatus.cleared:see">状態の表示: クリア済み</label>
-		<label index="taskstatus.customer:see">状態の表示: 顧客の要求</label>
 		<label index="taskstatus.planning:changeto">状態の変更: 計画中</label>
 		<label index="taskstatus.open:changeto">状態の変更: 開く</label>
 		<label index="taskstatus.progress:changeto">状態の変更: 処理中</label>
@@ -597,7 +596,6 @@
 		<label index="taskstatus.accepted:edit">状態の編集: 受領済</label>
 		<label index="taskstatus.rejected:edit">状態の編集: 却下済</label>
 		<label index="taskstatus.cleared:edit">状態の編集: クリア済み</label>
-		<label index="taskstatus.customer:edit">状態の編集: 顧客の要求</label>
 		<label index="projectstatus">プロジェクトの状態</label>
 		<label index="projectstatus.planning:see">状態の表示: 計画中</label>
 		<label index="projectstatus.progress:see">状態の表示: 処理中</label>

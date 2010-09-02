@@ -90,15 +90,12 @@ class TodoyuTaskFilterDataSource {
 	 */
 	public static function getStatusOptions(array $definitions)	{
 		$options	= array();
-		$statuses	= TodoyuTaskStatusManager::getStatusInfos();
-//		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
-		// @todo	check - needed?
+		$statuses	= TodoyuTaskStatusManager::getStatusInfos('see');
 
 		foreach($statuses as $status) {
 			$options[] = array(
 				'label'		=> $status['label'],
-				'value'		=> $status['index'],
-//				'selected'	=> in_array($status['index'], $selected)
+				'value'		=> $status['index']
 			);
 		}
 
@@ -142,7 +139,7 @@ class TodoyuTaskFilterDataSource {
 		$workTypes	= TodoyuWorktypeManager::getAllWorktypes();
 
 //		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
-//		@todo check - selection needed? it's currently unused 
+//		@todo check - selection needed? it's currently unused
 
 		foreach($workTypes as $workType) {
 			$options[] = array(
