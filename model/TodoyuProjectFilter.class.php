@@ -50,15 +50,13 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 */
 	private function addRightsClauseFilter() {
 			// Add rights clause
-		$this->activeFilters[] = array(
-			'filter'	=> 'rights',
-			'value'		=> ''
-		);
+		$this->addRightsFilter('rights', '');
+
 
 			// Add status filter
 		if( ! TodoyuAuth::isAdmin() ) {
 			$statuses	= implode(',', array_keys(TodoyuProjectStatusManager::getStatuses()));
-			$this->addExtraFilter('status', $statuses);
+			$this->addRightsFilter('status', $statuses);
 		}
 	}
 

@@ -50,22 +50,22 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	private function addRightsClauseFilter() {
 			// Limit to current person
 		if( ! allowed('project', 'task:seeAll') ) {
-			$this->addExtraFilter('assignedPerson', personid());
+			$this->addRightsFilter('assignedPerson', personid());
 		}
 
 			// Limit to selected status
 		if( ! TodoyuAuth::isAdmin() ) {
 			$statuses	= implode(',', array_keys(TodoyuTaskStatusManager::getStatuses('see')));
-			$this->addExtraFilter('status', $statuses);
+			$this->addRightsFilter('status', $statuses);
 
 				// Limit to tasks which are in available projects
 			if( ! allowed('project', 'project:seeAll') ) {
-				$this->addExtraFilter('availableprojects', 0);
+				$this->addRightsFilter('availableprojects', 0);
 			}
 
 				// Add public filter for all externals (not internal)
 			if( ! Todoyu::person()->isInternal() ) {
-				$this->addExtraFilter('isPublic', 1);
+				$this->addRightsFilter('isPublic', 1);
 			}
 		}
 	}
