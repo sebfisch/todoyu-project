@@ -205,7 +205,8 @@
 		/* Description */
 	.tasks .task .details .left {
 		float:left;
-		width:330px;
+		width: 330px;
+		max-width: 45%;
 		padding:0 0 0 24px;
 	}
 
