@@ -27,7 +27,6 @@
 
 Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 	'js' => array(
-			// Add quicktask wizard headlet
 		array(
 			'file'		=> 'ext/project/assets/js/Ext.js',
 			'position'	=> 80

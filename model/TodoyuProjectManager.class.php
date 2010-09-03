@@ -1082,7 +1082,23 @@ class TodoyuProjectManager {
 		}
 
 			// Get visible projects
-		$filter		= new TodoyuProjectFilter();
+		$activeFilters	= array(
+			'status'	=> array(
+				'filter'	=> 'status',
+				'value'		=> array(
+//					STATUS_ACCEPTED,
+//					STATUS_CLEARED,
+					STATUS_CONFIRM,
+//					STATUS_DONE,
+					STATUS_OPEN,
+					STATUS_PLANNING,
+					STATUS_PROGRESS,
+					STATUS_REJECTED,
+//					STATUS_WARRANTY
+				)
+			)
+		);
+		$filter		= new TodoyuProjectFilter($activeFilters);
 		$projectIDs	= $filter->getProjectIDs();
 
 		foreach($projectIDs as $index => $idProject) {
