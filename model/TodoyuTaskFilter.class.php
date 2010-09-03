@@ -170,8 +170,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 		$tables	= array(self::TABLE, 'ext_project_project');
 		$where	=
-			'ext_project_project.id_company ' . $compare . ' ' . $idCompany
-		. ' AND ext_project_task.id_project = ext_project_project.id'
+			  '		ext_project_project.id_company ' . $compare . ' ' . $idCompany
+			. ' AND ext_project_task.id_project		= ext_project_project.id'
 		;
 
 		return array(
@@ -196,7 +196,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		if( $idOwner !== 0 ) {
 				// Set up query parts array
 			$tables	= array(self::TABLE);
-			$where	= 'ext_project_task.id_person_owner ' . ( $negate === true ? '!= ' : '= ' ) . $idOwner;
+			$compare= $negate === true ? '!= ' : '= ';
+			$where	= 'ext_project_task.id_person_owner ' . $compare . $idOwner;
 
 			$queryArray	= array(
 				'tables'	=> $tables,
