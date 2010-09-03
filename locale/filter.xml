@@ -76,12 +76,12 @@
 		<label index="task.type">Typ</label>
 		<label index="task.worktype">Leistungsart</label>
 		<label index="task.timemanagement.label">Zeit-Management</label>
-		<label index="task.deadlinedate">Frist</label>
-		<label index="task.deadlinedateDyn">Frist (dynamisch)</label>
+		<label index="task.deadlinedate">Kunden-Frist</label>
+		<label index="task.deadlinedateDyn">Kunden-Frist (dynamisch)</label>
 		<label index="task.startdate">Start-Datum</label>
 		<label index="task.startdateDyn">Start-Datum (dynamisch)</label>
-		<label index="task.enddate">End-Datum</label>
-		<label index="task.enddateDyn">End-Datum (dynamisch)</label>
+		<label index="task.enddate">Interne Frist</label>
+		<label index="task.enddateDyn">Interne Frist (dynamisch)</label>
 		<label index="task.editdate">Zuletzt bearbeitet</label>
 		<label index="task.editdateDyn">Zuletzt bearbeitet (dynamisch)</label>
 		<label index="task.createdate">Erstellt</label>

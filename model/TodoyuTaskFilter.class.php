@@ -684,9 +684,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_deadlinedateDyn($value, $negate)	{
-		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value, $negate);
 
-		return self::Filter_dateDyn($timeStamps, 'date_deadline');
+		return self::Filter_dateDyn($timeStamps, 'date_deadline', $negate);
 	}
 
 
@@ -712,9 +712,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_startdateDyn($value, $negate)	{
-		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value, $negate);
 
-		return self::Filter_dateDyn($timeStamps, 'date_start');
+		return self::Filter_dateDyn($timeStamps, 'date_start', $negate);
 	}
 
 
@@ -740,9 +740,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_enddateDyn($value, $negate)	{
-		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value, $negate);
 
-		return self::Filter_dateDyn($timeStamps, 'date_end');
+		return self::Filter_dateDyn($timeStamps, 'date_end', $negate);
 	}
 
 
@@ -768,9 +768,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_editdateDyn($value, $negate)	{
-		$rangeTimestamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
+		$rangeTimestamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value, $negate);
 
-		return self::Filter_dateDyn($rangeTimestamps, 'date_update');
+		return self::Filter_dateDyn($rangeTimestamps, 'date_update', $negate);
 	}
 
 
@@ -796,9 +796,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_createdateDyn($value, $negate)	{
-		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value);
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value, $negate);
 
-		return self::Filter_dateDyn($timeStamps, 'date_create');
+		return self::Filter_dateDyn($timeStamps, 'date_create', $negate);
 	}
 
 
@@ -810,13 +810,13 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	String		$field
 	 * @return	Array
 	 */
-	protected static function Filter_dateDyn(array $dateRange, $field)	{
-		$dateStart	= intval($dateRange['start']);
-		$dateEnd	= intval($dateRange['end']);
+	protected static function Filter_dateDyn($date, $field, $negation = false)	{
+		$date	=	intval($date);
+		$compare	= $negation ? '>=' : '<=';
 
 		$tables 	= array(self::TABLE);
-		$where 		= 'ext_project_task.' . $field . ' BETWEEN ' . $dateStart . ' AND ' . $dateEnd;
-
+		$where 		= 'ext_project_task.' . $field . ' ' . $compare . ' ' . $date;
+		TodoyuDebug::printInFirebug($where);
 		return array(
 			'tables'	=> $tables,
 			'where' 	=> $where

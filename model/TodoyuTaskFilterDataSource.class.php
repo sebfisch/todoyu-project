@@ -231,60 +231,51 @@ class TodoyuTaskFilterDataSource {
 	 * @param	String	$dateRangeKey
 	 * @return	Array
 	 */
-	public static function getDynamicDateTimestamps($dateRangeKey)	{
+	public static function getDynamicDateTimestamps($dateRangeKey, $negate = false)	{
 		$todayStart	= TodoyuTime::getStartOfDay();
 		$todayEnd	= TodoyuTime::getEndOfDay();
+		$date		= $negate ? $todayStart : $todayEnd;
+
 
 		switch($dateRangeKey)	{
 			case 'tomorrow':
-				$dateStart	= $todayStart + TodoyuTime::SECONDS_DAY;
-				$dateEnd	= $todayEnd + TodoyuTime::SECONDS_DAY;
+				$date += TodoyuTime::SECONDS_DAY;
 				break;
 
 			case 'dayaftertomorrow':
-				$dateStart	= $todayStart + TodoyuTime::SECONDS_DAY * 2;
-				$dateEnd	= $todayEnd + TodoyuTime::SECONDS_DAY * 2;
+				$date += TodoyuTime::SECONDS_DAY * 2;
+
 				break;
 
 			case 'yesterday':
-				$dateStart	= $todayStart - TodoyuTime::SECONDS_DAY;
-				$dateEnd	= $todayEnd - TodoyuTime::SECONDS_DAY;
+				$date -= TodoyuTime::SECONDS_DAY;
 				break;
 
 			case 'daybeforeyesterday':
-				$dateStart	= $todayStart - TodoyuTime::SECONDS_DAY * 2;
-				$dateEnd	= $todayEnd - TodoyuTime::SECONDS_DAY * 2;
+				$date -= TodoyuTime::SECONDS_DAY * 2;
 				break;
 
 			case 'currentweek':
 				$weekRange	= TodoyuTime::getWeekRange(NOW);
-				$dateStart	= $weekRange['start'];
-				$dateEnd	= $weekRange['end'];
+				$date		= $negate ? $weekRange['start'] : $weekRange['end'];
 				break;
 
 			case 'nextweek':
 				$weekRange	= TodoyuTime::getWeekRange(NOW + TodoyuTime::SECONDS_WEEK);
-				$dateStart	= $weekRange['start'];
-				$dateEnd	= $weekRange['end'];
+				$date		= $negate ? $weekRange['start'] : $weekRange['end'];
 				break;
 
 			case 'lastweek':
 				$weekRange	= TodoyuTime::getWeekRange(NOW - TodoyuTime::SECONDS_WEEK);
-				$dateStart	= $weekRange['start'];
-				$dateEnd	= $weekRange['end'];
+				$date		= $negate ? $weekRange['start'] : $weekRange['end'];
 				break;
 
 			case 'todoay':
 			default:
-				$dateStart	= $todayStart;
-				$dateEnd	= $todayEnd;
 				break;
 		}
 
-		return array(
-			'start'	=> $dateStart,
-			'end'	=> $dateEnd
-		);
+		return $date;
 	}
 
 }
