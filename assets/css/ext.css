@@ -144,7 +144,8 @@ h1.extIconProject .title {
 
 .project ul,
 .task ul {
-	padding-left: 5px;
+	padding-left:5px;
+	padding-bottom:5px;
 }
 
 #project-tabs {
