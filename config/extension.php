@@ -83,7 +83,7 @@ Todoyu::$CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
  *
  * @see	ext/project/config/filters.php	(all filter declarations)
  */
-Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters'] = array(
+Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters']['assigned'] = array(
 	array(
 		'filter'	=> 'type',
 		'value'		=> TASK_TYPE_TASK
@@ -96,6 +96,21 @@ Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters'] = array(
 		'value'		=> STATUS_OPEN . ',' . STATUS_PROGRESS
 	)
 );
+
+Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters']['owner'] = array(
+	array(
+		'filter'	=> 'type',
+		'value'		=> TASK_TYPE_TASK
+	),
+	array(
+		'filter'	=> 'currentPersonOwner'
+	),
+	array(
+		'filter'	=> 'status',
+		'value'		=> STATUS_CONFIRM
+	)
+);
+
 
 	// Maximum projects in project listing widget
 Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectList']['maxProjects']	= 30;

@@ -210,6 +210,22 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
+	 * Filter condition: tasks where current person is owner
+	 *
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public static function Filter_currentPersonOwner($negate = false)	{
+		$idPerson	= personid();
+
+		$queryParts	= self::Filter_ownerPerson($idPerson, $negate);
+
+		return $queryParts;
+	}
+
+
+
+	/**
 	 * Filter condition: tasks of given owner
 	 *
 	 * @param	Array		$roleIDs		Selected roles
@@ -960,6 +976,19 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		$field	= 'ext_project_task.' . $field;
 
 		return TodoyuFilterHelper::getDateFilterQueryparts($tables, $field, $date, $negate);
+	}
+
+
+
+	/**
+	 * Alias Method for TodoyuFiltersetManager::Filter_filterObject for TaskFilter
+	 *
+	 * @param  $value
+	 * @param bool $negate
+	 * @return bool
+	 */
+	public static function Filter_filterObject(array $value, $negate = false)	{
+		return TodoyuFiltersetManager::Filter_filterObject($value, $negate);
 	}
 
 }
