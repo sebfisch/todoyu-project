@@ -294,20 +294,19 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 		if( $idPerson !== 0 && sizeof($roles) > 0 ) {
 			$tables	= array(
-				'ext_project_project',
-				'ext_project_mm_project_person'
+				'ext_project_project'
 			);
-			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= '		ext_project_project.id				= ext_project_mm_project_person.id_project
+			$compare	= $negate ? 'NOT IN' : 'IN';
+			$where	=	' ext_project_project.id ' . $compare . ' (SELECT ext_project_project.id FROM ext_project_project, ext_project_mm_project_person WHERE ext_project_project.id	= ext_project_mm_project_person.id_project
 						AND ext_project_mm_project_person.id_person	= ' . $idPerson .
-					  ' AND	ext_project_mm_project_person.id_role ' . $compare . '(' . implode(',', $roles) . ')';
+					  ' AND	ext_project_mm_project_person.id_role IN (' . implode(',', $roles) . ') GROUP BY ext_project_project.id)';
 
 			$queryParts	= array(
 				'tables'=> $tables,
 				'where'	=> $where
 			);
 		}
-
+		TodoyuDebug::printInFirebug($where);
 		return $queryParts;
 	}
 
