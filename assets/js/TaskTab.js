@@ -95,6 +95,8 @@ Todoyu.Ext.project.Task.Tab = {
 	onLoaded: function(idTask, tabKey, onComplete) {
 		this.activate(idTask, tabKey);
 		Todoyu.callIfExists(onComplete, this, idTask, tabKey);
+
+		Todoyu.Hook.exec('project.taskTab.onLoaded', idTask);
 	},
 
 

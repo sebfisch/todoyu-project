@@ -161,6 +161,8 @@ Todoyu.Ext.project.Project = {
 	 */
 	onDetailsToggled: function(idProject, response) {
 //		Todoyu.log('OnComplete erreicht');
+
+		Todoyu.Hook.exec('project.project.detailsToggled', idProject);
 	},
 
 

@@ -1,6 +1,14 @@
 Project Extension - JavaScript Hooks
 ====================================
 1. Project
+	project.taskTree.activeProjectDisplayed
+	@param	{Number} idProject
+	Evoked after project has been loaded and display in project area/ project tab toggled.
+
+	project.project.detailsToggled
+	@param	{Number} idProject
+	Evoked after project details display has been toggled.
+
 	project.project.formLoaded
 	@param	{Number} idProject
 	Evoked after project (creation / editing) form loaded and displayed.
@@ -8,6 +16,10 @@ Project Extension - JavaScript Hooks
 	project.project.created
 	@param	{Number} idProject
 	Evoked after new project has been created. (DB record created, DOM updated)
+
+	project.project.loaded
+	@param	{Number} idProject
+	Evoked after project loaed. (elements updated in DOM)
 
 	project.project.saved
 	@param	{Number} idProject
@@ -20,6 +32,22 @@ Project Extension - JavaScript Hooks
 
 
 2. Task
+	project.task.detailsToggled
+	@param	{Number} idProject
+	Evoked after task details display has been toggled.
+
+	project.task.subtaskAdded
+	@param	{Number} idContainer
+	Evoked after new sub task has been added.
+
+	project.task.containerAdded
+	@param	{Number} idContainer
+	Evoked after new container has been added.
+
+	project.task.subContainerAdded
+	@param	{Number} idContainer
+	Evoked after new sub container has been added.
+
 	project.task.formLoaded
 	@param	{Number} idTask
 	Evoked when opening task for editing.
@@ -41,6 +69,11 @@ Project Extension - JavaScript Hooks
 	@param	{Number} idTask
 	@param	{Number} status
 	Evoked after task status has been updated.
+
+	project.taskTab.onLoaded
+	@param	{Number} idTask
+	@param	{Number} status
+	Evoked after task tab (and content) has been loaded/updated.
 
 
 

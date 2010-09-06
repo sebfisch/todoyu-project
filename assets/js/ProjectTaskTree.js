@@ -169,6 +169,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 		this.ext.ContextMenuTask.attach();
 		this.ext.ContextMenuProject.attach();
+
+		Todoyu.Hook.exec('project.project.loaded', idProject);
 	},
 
 
@@ -335,6 +337,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		this.moveTabToFront(idProject);
 
 		this.saveOpenProjects();
+
+		Todoyu.Hook.exec('project.taskTree.activeProjectDisplayed', idProject);
 	},
 
 

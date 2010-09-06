@@ -715,6 +715,8 @@ Todoyu.Ext.project.Task = {
 
 		this.addContextMenu(idContainer);
 		this.scrollTo(idContainer);
+
+		Todoyu.Hook.exec('project.task.containerAdded', idTask);
 	},
 
 
@@ -757,6 +759,8 @@ Todoyu.Ext.project.Task = {
 
 		this.addContextMenu(idTask);
 		this.scrollTo(idTask);
+
+		Todoyu.Hook.exec('project.task.subtaskAdded', idTask);
 	},
 
 
@@ -819,6 +823,8 @@ Todoyu.Ext.project.Task = {
 		this.addContextMenu(idContainer);
 		this.showSubtasks(idParentTask);
 		this.scrollTo(idContainer);
+
+		Todoyu.Hook.exec('project.task.subContainerAdded', idContainer);
 	},
 
 
@@ -904,6 +910,8 @@ Todoyu.Ext.project.Task = {
 	 */
 	onDetailsToggled: function(idTask, tab, response) {
 		this.refreshExpandedStyle(idTask);
+
+		Todoyu.Hook.exec('project.task.detailsToggled', idTask);
 	},
 
 
