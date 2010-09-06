@@ -107,6 +107,7 @@
 	top:5px;
 	right:93px;
 	width:45px;
+	cursor: text;
 }
 
 .task h3 .headLabel a.title {
