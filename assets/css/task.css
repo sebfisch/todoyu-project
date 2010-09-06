@@ -16,13 +16,13 @@
 }
 .tasks .expanded h3,
 .tasks .subtasks .expanded h3 {
-	background-color:#f3f3f3;
+	background-color:#f2f2d2;
 	border-bottom: none;
 	font-weight:bold;
 }
-.tasks .expanded.running h3,
-.tasks .subtasks .expanded.running h3 {
-	background-color:#e3eace;
+.tasks .running h3,
+.tasks .subtasks .running h3 {
+	background-color:#f3f3f3;
 }
 
 .tasks .subtasks h3 {
@@ -104,7 +104,7 @@
 .task h3 span.taskNumber {
 	display:inline-block;
 	position:absolute;
-	top:5px;
+	top:4px;
 	right:93px;
 	width:45px;
 	cursor: text;
