@@ -142,8 +142,8 @@ h1.extIconProject .title {
 	width:180px;
 }
 
-.project ul,
-.task ul {
+.project .data ul,
+.task .data ul {
 	padding-left:5px;
 	padding-bottom:5px;
 }
