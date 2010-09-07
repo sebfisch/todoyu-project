@@ -269,6 +269,28 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
+	 * Get estimated workload
+	 *
+	 * @return	Integer
+	 */
+	public function getEstimatedWorkload() {
+		return intval($this->get('estimated_workload'));
+	}
+
+
+
+	/**
+	 * Check whether the task has an estimated workload
+	 *
+	 * @return	Boolean
+	 */
+	public function hasEstimatedWorkload() {
+		return $this->getEstimatedWorkload() > 0;
+	}
+
+	
+
+	/**
 	 * Check whether the task is a container
 	 *
 	 * @return	String

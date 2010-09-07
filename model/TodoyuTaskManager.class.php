@@ -905,10 +905,10 @@ class TodoyuTaskManager {
 			}
 
 				// Estimated workload
-			if( $taskData['estimated_workload'] > 0 ) {
+			if( $task->hasEstimatedWorkload() ) {
 				$info['estimated_workload']	= array(
 					'label'	=> 'LLL:task.attr.estimated_workload',
-					'value'	=> TodoyuTime::sec2hour($taskData['estimated_workload']),
+					'value'	=> TodoyuTime::sec2hour($task->getEstimatedWorkload()),
 					'position'	=> 30,
 					'className'	=> 'sectionStart'
 				);
