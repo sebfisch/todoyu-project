@@ -132,11 +132,6 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		$availableProjects	= TodoyuProjectManager::getAvailableProjectsForPerson();
 		$queryParts			= array();
 
-
-//		TodoyuDebug::printLastQueryInFirebug();
-//
-//		TodoyuDebug::printInFireBug($availableProjects);
-
 		if( sizeof($availableProjects) > 0 ) {
 			$queryParts	= array(
 				'tables'	=> array(

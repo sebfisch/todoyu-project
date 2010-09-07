@@ -41,6 +41,8 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 */
 	public function __construct(array $activeFilters = array(), $conjunction = 'AND') {
 		parent::__construct('PROJECT', 'ext_project_project', $activeFilters, $conjunction);
+
+		$this->addRightsClauseFilter();
 	}
 
 
@@ -71,8 +73,6 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @return	Array
 	 */
 	public function getProjectIDs($sorting = '', $limit = '') {
-		$this->addRightsClauseFilter();
-
 		return parent::getItemIDs($sorting, $limit);
 	}
 
