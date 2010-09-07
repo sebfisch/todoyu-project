@@ -296,17 +296,24 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 			$tables	= array(
 				'ext_project_project'
 			);
+			$subQuery	= '	SELECT
+								id_project
+							FROM
+								ext_project_mm_project_person
+							WHERE
+								id_person	= ' . $idPerson .
+					  		' AND	id_role IN (' . implode(',', $roles) . ')
+					  		GROUP BY
+					  			id_project';
 			$compare	= $negate ? 'NOT IN' : 'IN';
-			$where	=	' ext_project_project.id ' . $compare . ' (SELECT ext_project_project.id FROM ext_project_project, ext_project_mm_project_person WHERE ext_project_project.id	= ext_project_mm_project_person.id_project
-						AND ext_project_mm_project_person.id_person	= ' . $idPerson .
-					  ' AND	ext_project_mm_project_person.id_role IN (' . implode(',', $roles) . ') GROUP BY ext_project_project.id)';
+			$where		= ' ext_project_project.id ' . $compare . ' (' . $subQuery . ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,
 				'where'	=> $where
 			);
 		}
-		TodoyuDebug::printInFirebug($where);
+
 		return $queryParts;
 	}
 

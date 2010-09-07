@@ -132,6 +132,11 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		$availableProjects	= TodoyuProjectManager::getAvailableProjectsForPerson();
 		$queryParts			= array();
 
+
+//		TodoyuDebug::printLastQueryInFirebug();
+//
+//		TodoyuDebug::printInFireBug($availableProjects);
+
 		if( sizeof($availableProjects) > 0 ) {
 			$queryParts	= array(
 				'tables'	=> array(
@@ -143,7 +148,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		} else {
 			$queryParts	= array(
 				'tables'	=> array(),
-				'where'		=> 'AND 0'
+				'where'		=> '0'
 			);
 		}
 
