@@ -224,7 +224,6 @@ class TodoyuProjectRenderer {
 		$project	= TodoyuProjectManager::getProject($idProject);
 
 		$tmpl		= 'ext/project/view/project-details.tmpl';
-
 		$data		= $project->getTemplateData();
 
 		$data['assignedPersons']	= TodoyuProjectRenderer::renderProjectPersons($idProject);
