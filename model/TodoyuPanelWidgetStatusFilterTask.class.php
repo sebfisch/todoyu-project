@@ -65,7 +65,7 @@ class TodoyuPanelWidgetStatusFilterTask extends TodoyuPanelWidgetStatusFilter im
 
 
 	/**
-	 * Check allowance
+	 * Check general allowance of widget: access to project extension and seeing at least one task status allowed
 	 *
 	 * @return	Boolean
 	 */
