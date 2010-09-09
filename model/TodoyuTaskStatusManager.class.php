@@ -120,6 +120,8 @@ class TodoyuTaskStatusManager {
 			$infos[$index] = TodoyuTaskViewHelper::getStatusOption($index, $statusKey, $label);
 		}
 
+		$infos	= TodoyuHookManager::callHookDataModifier('project', 'taskStatusInfos', $infos);
+
 		return $infos;
 	}
 
