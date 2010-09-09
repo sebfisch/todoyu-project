@@ -97,6 +97,7 @@
 					<restrict>
 						<allow ext="project" right="task:editPersonAssigned" />
 					</restrict>
+					 <required />
 				</field>
 
 				<field type="selectgrouped" name="id_person_owner">
