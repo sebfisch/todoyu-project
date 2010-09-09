@@ -885,51 +885,12 @@ class TodoyuTaskManager {
 
 			// Attributes which are only for tasks (not relevant for containers)
 		if( $task->isTask() ) {
-
-				// Status
-			$info['status']	= array(
-				'label'		=> 'LLL:core.status',
-				'value'		=> $taskData['statuslabel'],
-				'position'	=> 10,
-				'className'	=> ''
-			);
-
-				// Work type
-			if( ! empty($taskData['worktype']) ) {
-				$info['worktype'] = array(
-					'label'		=> 'LLL:task.attr.worktype',
-					'value'		=> $taskData['worktype']['title'],// 'Internes / Administration',
-					'position'	=> 20,
-					'className'	=> ''
-				);
-			}
-
-				// Estimated workload
-			if( $task->hasEstimatedWorkload() ) {
-				$info['estimated_workload']	= array(
-					'label'	=> 'LLL:task.attr.estimated_workload',
-					'value'	=> TodoyuTime::sec2hour($task->getEstimatedWorkload()),
-					'position'	=> 30,
-					'className'	=> 'sectionStart'
-				);
-			}
-
-				// Person assigned
-			if( intval($taskData['person_assigned']['id']) !== 0 && Todoyu::person()->isInternal() ) {
-				$info['person_assigned']	= array(
-					'label'		=> 'LLL:task.attr.person_assigned',
-					'value'		=> TodoyuPersonManager::getLabel($taskData['person_assigned']['id']),
-					'position'	=> 80,
-					'className'	=> 'sectionStart ' . ( $taskData['is_acknowledged'] === '1' ? 'acknowledged' : 'unread')
-				);
-			}
-
 				// Date start
 			if( $taskData['date_start'] > 0 && Todoyu::person()->isInternal() ) {
 				$info['date_start']	= array(
 					'label'		=> 'LLL:task.attr.date_start',
 					'value'		=> TodoyuTime::format( $taskData['date_start'], 'date'),
-					'position'	=> 100,
+					'position'	=> 10,
 					'className'	=> 'sectionStart'
 				);
 			}
@@ -940,7 +901,7 @@ class TodoyuTaskManager {
 				$info['date_end']	= array(
 					'label'	=> 'LLL:task.attr.date_end',
 					'value'	=> TodoyuTime::format($taskData['date_end'], $formatEnd),
-					'position'	=> 110,
+					'position'	=> 20,
 					'className'	=> TodoyuTaskManager::isEnddateExceeded($idTask) ? 'red' : ''
 				);
 			}
@@ -950,8 +911,46 @@ class TodoyuTaskManager {
 				$info['date_deadline']	= array(
 					'label'	=> 'LLL:task.attr.date_deadline',
 					'value'	=> TodoyuTime::format($taskData['date_deadline'], $formatDeadline),
-					'position'	=> 120,
+					'position'	=> 30,
 					'className'	=> TodoyuTaskManager::isDeadlineExceeded($idTask) ? 'red' : ''
+				);
+			}
+
+				// Status
+			$info['status']	= array(
+				'label'		=> 'LLL:core.status',
+				'value'		=> $taskData['statuslabel'],
+				'position'	=> 50,
+				'className'	=> ''
+			);
+
+				// Person assigned
+			if( intval($taskData['person_assigned']['id']) !== 0 && Todoyu::person()->isInternal() ) {
+				$info['person_assigned']	= array(
+					'label'		=> 'LLL:task.attr.person_assigned',
+					'value'		=> TodoyuPersonManager::getLabel($taskData['person_assigned']['id']),
+					'position'	=> 60,
+					'className'	=> 'sectionStart ' . ( $taskData['is_acknowledged'] === '1' ? 'acknowledged' : 'unread')
+				);
+			}
+
+				// Work type
+			if( ! empty($taskData['worktype']) ) {
+				$info['worktype'] = array(
+					'label'		=> 'LLL:task.attr.worktype',
+					'value'		=> $taskData['worktype']['title'],// 'Internes / Administration',
+					'position'	=> 90,
+					'className'	=> ''
+				);
+			}
+			
+				// Estimated workload
+			if( $task->hasEstimatedWorkload() ) {
+				$info['estimated_workload']	= array(
+					'label'	=> 'LLL:task.attr.estimated_workload',
+					'value'	=> TodoyuTime::sec2hour($task->getEstimatedWorkload()),
+					'position'	=> 100,
+					'className'	=> 'sectionStart'
 				);
 			}
 		}
@@ -966,7 +965,7 @@ class TodoyuTaskManager {
 			$info['person_owner'] = array(
 				'label'		=> $task->isContainer() ? 'LLL:task.container.attr.person_owner' : 'LLL:task.attr.person_owner',
 				'value'		=> TodoyuPersonManager::getLabel($idPersonOwner),
-				'position'	=> 150,
+				'position'	=> 70,
 				'className'	=> 'sectionStart'
 			);
 		}
@@ -976,25 +975,24 @@ class TodoyuTaskManager {
 			$info['person_create'] = array(
 				'label'		=> 'LLL:task.attr.person_create',
 				'value'		=> TodoyuPersonManager::getLabel($idPersonCreator),
-				'position'	=> 151,
+				'position'	=> 65,
 				'className'	=> ''
 			);
 		}
-
-					// Date create
-		$info['date_create']	= array(
-			'label'	=> 'LLL:task.attr.date_create',
-			'value'	=> TodoyuTime::format($taskData['date_create'], 'datetime'),
-			'position'	=> 160,
-			'className'	=> ''
-		);
-
 
 			// Public
 		$info['is_public']	= array(
 			'label'	=> $task->isContainer() ? 'LLL:task.container.attr.is_public' : 'LLL:task.attr.is_public',
 			'value'	=> Label('LLL:task.attr.is_public.' . ($taskData['is_public'] ? 'public' : 'private')),
-			'position'	=> 25,
+			'position'	=> 110,
+			'className'	=> ''
+		);
+
+			// Date create
+		$info['date_create']	= array(
+			'label'	=> 'LLL:task.attr.date_create',
+			'value'	=> TodoyuTime::format($taskData['date_create'], 'datetime'),
+			'position'	=> 190,
 			'className'	=> ''
 		);
 
