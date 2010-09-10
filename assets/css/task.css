@@ -228,6 +228,9 @@
 		margin:0.2em 0 0.2em 2em;
 	}
 
+	.task .details .description a {
+		text-decoration:underline !important;
+	}
 		/* properties */
 	.tasks .task .details .right {
 		float:right;

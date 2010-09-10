@@ -1,10 +1,14 @@
-<div class="left description">{cleanHtml $description}</div>
+<div class="left description">
+	{substituteUrlsByHperlinks TodoyuHtmlFilter::clean($description)}
+</div>
 <div class="right properties">
 	<dl>
 	{foreach $data info}
 		{$info.wrap.0}
 		<dt class="{$info.className}">{Label $info.label true}</dt>
-		<dd {if $info.id}id="{$info.id}" {/if}class="{$info.className}">{$info.value}&#8203;</dd>
+		<dd {if $info.id}id="{$info.id}" {/if}class="{$info.className}">
+			{$info.value}&#8203;
+		</dd>
 		{$info.wrap.1}
 	{/foreach}
 	</dl>
