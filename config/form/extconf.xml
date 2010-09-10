@@ -63,7 +63,7 @@
 
 				<field type="select" name="person_assigned_role">
 					<label>project.extconf.taskDefaults.person_assigned_role</label>
-					<label>task.default.person_assigned_role</label>
+					
 					<source type="function">
 						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
 					</source>

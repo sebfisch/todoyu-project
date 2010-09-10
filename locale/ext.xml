@@ -158,6 +158,7 @@
 		<label index="extconf.taskDefaults.status">Vorausgewählter Status</label>
 		<label index="extconf.taskDefaults.assignedRoles">Vorausgewählte Rolle der zugewiesenen Person einer Aufgabe</label>
 		<label index="extconf.taskDefaults.ownerRoles">Vorausgewählte Rolle für Aufgaben-Eigner</label>
+		<label index="extconf.taskDefaults.person_assigned_role">Assign person of role if not selectable</label>
 		<label index="extconf.taskDefaults.worktype">Vorausgewählter Arbeits-Typ</label>
 		<label index="extconf.taskDefaults.estimated_workload">Vorgabe für geschätzten Aufwand</label>
 	</labels>
