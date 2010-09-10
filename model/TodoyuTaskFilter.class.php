@@ -323,8 +323,10 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		if( $value !== '' ) {
 			$tables	= array(self::TABLE);
 			$keyword= Todoyu::db()->escape($value);
-			$where	= '	   ext_project_task.description 	LIKE \'%' . $keyword . '%\'
-						OR ext_project_task.title 			LIKE \'%' . $keyword . '%\'';
+			$where	= '(
+						( 		ext_project_task.description 	LIKE \'%' . $keyword . '%\'
+							OR	ext_project_task.title 			LIKE \'%' . $keyword . '%\'
+						)';
 
 			if( strpos($value, '.') !== false ) {
 				list($project, $task) = TodoyuArray::intExplode('.', $value);
@@ -333,6 +335,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 							 	' AND ext_project_task.tasknumber = ' . $task .
 							')';
 			}
+
+			$where	 .= ')';
 
 			$queryParts	= array(
 				'tables'=> $tables,
