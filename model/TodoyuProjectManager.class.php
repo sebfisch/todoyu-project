@@ -69,7 +69,7 @@ class TodoyuProjectManager {
 	 * @return	String
 	 */
 	public static function getLabel($idProject) {
-		return self::getProject($idProject)->getFullTitle(true);
+		return $idProject > 0 ? self::getProject($idProject)->getFullTitle(true) : '';
 	}
 
 
