@@ -148,6 +148,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idParentTask	= intval($data['id_parenttask']);
 		$idProject		= intval($data['id_project']);
 
+		TodoyuDebug::printInFireBug($params, '$params');
+
 			// Check rights
 		if( $idTask === 0 ) {
 			TodoyuTaskRights::restrictAddToProject($idProject);
@@ -156,10 +158,11 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		}
 
 			// Create a cache record for the buildform hooks
-		$task = new TodoyuTask(0);
-		$task->injectData($data);
-		$cacheKey	= TodoyuRecordManager::makeClassKey('TodoyuTask', 0);
-		TodoyuCache::set($cacheKey, $task);
+			// @todo can we delete this code part?
+//		$task = new TodoyuTask(0);
+//		$task->injectData($data);
+//		$cacheKey	= TodoyuRecordManager::makeClassKey('TodoyuTask', 0);
+//		TodoyuCache::set($cacheKey, $task);
 
 			// Initialize form for validation
 		$xmlPath	= 'ext/project/config/form/task.xml';
@@ -177,6 +180,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 				// If form is valid, get form storage data and update task
 			$storageData= $form->getStorageData();
 
+			TodoyuDebug::printInFireBug($storageData, '$storageData');
+
 				// Save task
 			$idTaskNew	= TodoyuTaskManager::saveTask($storageData);
 
@@ -186,6 +191,9 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
 			TodoyuHeader::sendTodoyuHeader('idTaskOld', $idTask);
+
+			$tableData = TodoyuRecordManager::getRecordData('ext_project_task', $idTaskNew);
+			TodoyuDebug::printInFireBug($tableData, '$tableData');
 
 			if( AREA === EXTID_PROJECT ) {
 				return TodoyuProjectRenderer::renderTask($idTaskNew);
