@@ -148,8 +148,6 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idParentTask	= intval($data['id_parenttask']);
 		$idProject		= intval($data['id_project']);
 
-		TodoyuDebug::printInFireBug($params, '$params');
-
 			// Check rights
 		if( $idTask === 0 ) {
 			TodoyuTaskRights::restrictAddToProject($idProject);
@@ -157,12 +155,12 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			TodoyuTaskRights::restrictEdit($idTask);
 		}
 
-			// Create a cache record for the buildform hooks
-			// @todo can we delete this code part?
-//		$task = new TodoyuTask(0);
-//		$task->injectData($data);
-//		$cacheKey	= TodoyuRecordManager::makeClassKey('TodoyuTask', 0);
-//		TodoyuCache::set($cacheKey, $task);
+			// Create temp record in cache to keep all data. Necessary to save contains valid
+		$task = new TodoyuTask(0);
+		$task->injectData($data);
+		$cacheKey	= TodoyuRecordManager::makeClassKey('TodoyuTask', 0);
+		TodoyuCache::set($cacheKey, $task);
+		
 
 			// Initialize form for validation
 		$xmlPath	= 'ext/project/config/form/task.xml';
