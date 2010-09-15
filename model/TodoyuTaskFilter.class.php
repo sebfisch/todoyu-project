@@ -130,20 +130,19 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 	public static function Filter_availableprojects($value, $negate = false) {
 		$availableProjects	= TodoyuProjectManager::getAvailableProjectsForPerson();
-		$queryParts			= array();
 
 		if( sizeof($availableProjects) > 0 ) {
 			$queryParts	= array(
 				'tables'	=> array(
 					'ext_project_project'
 				),
-				'where'		=> 'ext_project_task.id_project IN(' . implode(',', $availableProjects) . ')'
+				'where'	=> 'ext_project_task.id_project IN(' . implode(',', $availableProjects) . ')'
 			);
 
 		} else {
+				// Add negative where. Will definitely cause an empty result
 			$queryParts	= array(
-				'tables'	=> array(),
-				'where'		=> '0'
+				'where'	=> '0'
 			);
 		}
 
@@ -161,23 +160,27 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 */
 	public static function Filter_company($idCompany, $negate = false) {
 		$idCompany	= intval($idCompany);
+		$queryParts	= false;
 
-		if( $idCompany === 0 ) {
-			return false;
+		if( $idCompany > 0 ) {
+			$compare	= $negate ? '!=' : '=' ;
+
+			$tables	= array(
+				'ext_project_project'
+			);
+			$where	= 'ext_project_project.id_company ' . $compare . ' ' . $idCompany;
+			$join	= array(
+				'ext_project_task.id_project = ext_project_project.id'
+			);
+
+			return array(
+				'tables'=> $tables,
+				'where'	=> $where,
+				'join'	=> $join
+			);
 		}
 
-		$compare	= $negate ? '!=' : '=' ;
-
-		$tables	= array(self::TABLE, 'ext_project_project');
-		$where	=
-			  '		ext_project_project.id_company ' . $compare . ' ' . $idCompany
-			. ' AND ext_project_task.id_project		= ext_project_project.id'
-		;
-
-		return array(
-			'tables'=> $tables,
-			'where'	=> $where
-		);
+		return $queryParts;
 	}
 
 
@@ -242,12 +245,15 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				self::TABLE,
 				'ext_contact_mm_person_role'
 			);
-			$where	= ' 	ext_project_task.id_person_owner = ext_contact_mm_person_role.id_person
-						AND ext_contact_mm_person_role.id_role IN(' . implode(',', $roleIDs) . ')';
+			$where	= 'ext_contact_mm_person_role.id_role IN(' . implode(',', $roleIDs) . ')';
+			$join	= array(
+				'ext_project_task.id_person_owner = ext_contact_mm_person_role.id_person'
+			);
 
 			$queryParts	= array(
 				'tables'=> $tables,
-				'where'	=> $where
+				'where'	=> $where,
+				'join'	=> $join
 			);
 		}
 
@@ -378,11 +384,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		}
 
 		if( sizeof($whereParts) > 0 ) {
-			$tables	= array(self::TABLE);
 			$where	= '(' . implode(' OR ', $whereParts) . ')';
 
 			$queryParts	= array(
-				'tables'=> $tables,
 				'where'	=> $where
 			);
 		}
@@ -437,12 +441,15 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 				'ext_contact_mm_person_role'
 			);
 			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= '		ext_project_task.id_person_create = ext_contact_mm_person_role.id_person
-						AND ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
+			$where	= 'ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
+			$join	= array(
+				'ext_project_task.id_person_create = ext_contact_mm_person_role.id_person'
+			);
 
 			$queryParts	= array(
 				'tables'=> $tables,
-				'where'	=> $where
+				'where'	=> $where,
+				'join'	=> $join
 			);
 		}
 
@@ -464,12 +471,10 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 		if( $idPerson !== 0 ) {
 				// Set up query parts array
-			$tables	= array(self::TABLE);
 			$compare= $negate ? '!=' : '=';
 			$where	= 'ext_project_task.id_person_assigned ' . $compare . ' ' . intval($idPerson);
 
 			$queryParts	= array(
-				'tables'=> $tables,
 				'where'	=> $where
 			);
 		}
@@ -492,16 +497,18 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 		if( sizeof($roleIDs) > 0 ) {
 			$tables	= array(
-				self::TABLE,
 				'ext_contact_mm_person_role'
 			);
 			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= '		ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person
-						AND ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
+			$where	= 'ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
+			$join	= array(
+				'ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person'
+			);
 
 			$queryParts	= array(
 				'tables'=> $tables,
-				'where'	=> $where
+				'where'	=> $where,
+				'join'	=> $join
 			);
 		}
 
@@ -534,17 +541,28 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 * @todo	Recheck this function
 	 */
-	public static function Filter_projectDescription(array $filter) {
-		$tables	= array('ext_project_project');
+	public static function Filter_projectDescription($value = '', $negate = false) {
+		$queryParts	= false;
 
-		$string	= Todoyu::db()->escape($filter['value']);
-		$where	=  '	 ext_project_project.description LIKE \'%' . $string . '%\'' .
-				   ' AND ext_project_task.id_project = ext_project_project.id';
+		$string	= trim($value);
 
-		$queryParts	= array(
-			'where'		=> $where,
-			'tables'	=> $tables
-		);
+		if( strlen($string) ) {
+			$string	= Todoyu::db()->escape($string);
+
+			$tables	= array(
+				'ext_project_project'
+			);
+			$where	=  'ext_project_project.description LIKE \'%' . $string . '%\'';
+			$join	= array(
+				'ext_project_task.id_project = ext_project_project.id'
+			);
+
+			$queryParts	= array(
+				'where'	=> $where,
+				'tables'=> $tables,
+				'join'	=> $join
+			);
+		}
 
 		return $queryParts;
 	}
@@ -596,8 +614,6 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 			);
 		}
 
-//		TodoyuDebug::printInFireBug($queryParts, '$queryParts');
-
 		return $queryParts;
 	}
 
@@ -615,13 +631,11 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		$idPerson	= intval($idPerson);
 
 		if( $idPerson !== 0 ) {
-			$tables	= array(self::TABLE);
 			$check	= $negate ? 0 : 1;
 			$where	= '		ext_project_task.id_person_assigned	= ' . $idPerson .
 					  ' AND	ext_project_task.is_acknowledged	= ' . $check;
 
 			$queryParts	= array(
-				'tables'=> $tables,
 				'where'	=> $where
 			);
 		}
@@ -655,11 +669,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	public static function Filter_parentTask($idTask, $negate = false) {
-		$tables	= array(self::TABLE);
 		$where	= 'ext_project_task.id_parenttask ' . ( $negate ? '!=' : '=' ) . ' ' . intval($idTask);
 
 		$queryParts	= array(
-			'tables'	=> $tables,
 			'where'		=> $where
 		);
 
@@ -819,11 +831,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		$date	=	intval($date);
 		$compare	= $negation ? '>=' : '<=';
 
-		$tables 	= array(self::TABLE);
 		$where 		= 'ext_project_task.' . $field . ' ' . $compare . ' ' . $date;
 		TodoyuDebug::printInFirebug($where);
 		return array(
-			'tables'	=> $tables,
 			'where' 	=> $where
 		);
 	}
@@ -840,11 +850,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	public static function Filter_nottask($value, $negate = false) {
 		$idTask	= intval($value);
 
-		$tables = array(self::TABLE);
 		$where = 'ext_project_task.id != ' . $idTask;
 
 		return array(
-			'tables'	=> $tables,
 			'where' 	=> $where
 		);
 	}
@@ -865,7 +873,6 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		if( $type > 0 ) {
 			$compare	= $negate ? '!=' : '=';
 			$queryParts = array(
-				'tables' 	=> array('ext_project_task'),
 				'where'		=> 'ext_project_task.type ' . $compare . $type
 			);
 		}
@@ -887,12 +894,10 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		$workTypeIDs= TodoyuArray::intExplode(',', $workTypeIDs);
 
 		if( sizeof($workTypeIDs) !== 0 ) {
-			$tables	= array(self::TABLE);
 			$compare= $negate ? 'NOT IN' : 'IN';
 			$where	= 'ext_project_task.id_worktype ' . $compare . '(' . implode(',', $workTypeIDs) . ')';
 
 			$queryParts	= array(
-				'tables'=> $tables,
 				'where'	=> $where
 			);
 		}
@@ -919,17 +924,19 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 		if( $idPerson !== 0 && sizeof($roles) > 0 ) {
 			$tables	= array(
-				self::TABLE,
 				'ext_project_mm_project_person'
 			);
-
-			$where	= '		ext_project_task.id_project			= ext_project_mm_project_person.id_project
-						AND ext_project_mm_project_person.id_person	= ' . $idPerson .
-					  ' AND ext_project_mm_project_person.id_role ' . ( $negate ? 'NOT IN' : 'IN' ) . '(' . implode(',', $roles) . ')';
+			$compare= $negate ? 'NOT IN' : 'IN';
+			$where	= '		ext_project_mm_project_person.id_person	= ' . $idPerson .
+					  ' AND ext_project_mm_project_person.id_role ' . $compare . '(' . implode(',', $roles) . ')';
+			$join	= array(
+				'ext_project_task.id_project = ext_project_mm_project_person.id_project'
+			);
 
 			$queryParts	= array(
-				'tables'	=> $tables,
-				'where'		=> $where
+				'tables'=> $tables,
+				'where'	=> $where,
+				'join'	=> $join
 			);
 		}
 
@@ -953,11 +960,10 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 			$subTasks	= TodoyuTaskManager::getAllSubTaskIDs($idTask);
 
 			if( sizeof($subTasks) > 0 ) {
-				$tables		= array(self::TABLE);
-				$where	= 'ext_project_task.id ' . ( $negate ? 'NOT IN' : 'IN' ) . '(' . implode(',', $subTasks) . ')';
+				$compare= $negate ? 'NOT IN' : 'IN';
+				$where	= 'ext_project_task.id ' . $compare . '(' . implode(',', $subTasks) . ')';
 
 				$queryParts	= array(
-					'tables'	=> $tables,
 					'where'		=> $where
 				);
 			}

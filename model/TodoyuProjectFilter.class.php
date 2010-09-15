@@ -54,7 +54,6 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 			// Add rights clause
 		$this->addRightsFilter('rights', '');
 
-
 			// Add status filter
 		if( ! TodoyuAuth::isAdmin() ) {
 			$statuses	= implode(',', array_keys(TodoyuProjectStatusManager::getStatuses()));
@@ -103,15 +102,17 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 		if( ! TodoyuAuth::isAdmin() && ! allowed('project', 'project:seeAll') ) {
 			$tables	= array(
-				'ext_project_project',
 				'ext_project_mm_project_person'
 			);
-			$where	= '		ext_project_project.id					= ext_project_mm_project_person.id_project
-						AND ext_project_mm_project_person.id_person	= ' . TodoyuAuth::getPersonID();
+			$where	= 'ext_project_mm_project_person.id_person	= ' . TodoyuAuth::getPersonID();
+			$join	= array(
+				'ext_project_project.id	= ext_project_mm_project_person.id_project'
+			);
 
 			$queryParts	= array(
 				'tables'=> $tables,
-				'where'	=> $where
+				'where'	=> $where,
+				'join'	=> $join
 			);
 		}
 
@@ -142,15 +143,17 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 			);
 
 			$tables	= array(
-				'ext_project_project',
 				'ext_contact_company'
 			);
-			$where	= 'ext_project_project.id_company	= ext_contact_company.id';
-			$where .= ' AND ' . Todoyu::db()->buildLikeQuery($searchWords, $searchInFields);
+			$where	= Todoyu::db()->buildLikeQuery($searchWords, $searchInFields);
+			$join	= array(
+				'ext_project_project.id_company	= ext_contact_company.id'
+			);
 
 			$queryParts = array(
-				'tables'	=> $tables,
-				'where'		=> $where
+				'tables'=> $tables,
+				'where'	=> $where,
+				'join'	=> $join
 			);
 		}
 
@@ -174,7 +177,6 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 			$compare	= $negate ? 'NOT IN' : 'IN' ;
 
 			$queryParts	= array(
-				'tables'=> array('ext_project_project'),
 				'where'	=> 'ext_project_project.status ' . $compare . '(' . implode(',', $status) . ')'
 			);
 		}
@@ -193,20 +195,19 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 */
 	public static function Filter_title($title, $negate = false) {
 		$title		= trim($title);
+		$queryParts	= false;
 
-		if( $title === '' ) {
-			return false;
+		if( $title !== '' ) {
+			$titleParts	= explode(' ', $title);
+
+			$where	= Todoyu::db()->buildLikeQuery($titleParts, array('ext_project_project.title'), $negate);
+
+			$queryParts = array(
+				'where'	=> $where
+			);
 		}
 
-		$titleParts	= explode(' ', $title);
-
-		$tables	= array('ext_project_project');
-		$where	= Todoyu::db()->buildLikeQuery($titleParts, array('ext_project_project.title'), $negate);
-
-		return array(
-			'tables'=> $tables,
-			'where'	=> $where
-		);
+		return $queryParts;
 	}
 
 
@@ -220,20 +221,19 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 */
 	public static function Filter_company($idCompany, $negate = false) {
 		$idCompany	= intval($idCompany);
+		$queryParts	= false;
 
-		if( $idCompany === 0 ) {
-			return false;
+		if( $idCompany > 0 ) {
+			$compare	= $negate ? '!=' : '=' ;
+
+			$where	= 'ext_project_project.id_company ' . $compare . ' ' . $idCompany;
+
+			$queryParts = array(
+				'where'	=> $where
+			);
 		}
 
-		$compare	= $negate ? '!=' : '=' ;
-
-		$tables	= array('ext_project_project');
-		$where	= 'ext_project_project.id_company ' . $compare . ' ' . $idCompany;
-
-		return array(
-			'tables'=> $tables,
-			'where'	=> $where
-		);
+		return $queryParts;
 	}
 
 
@@ -246,33 +246,32 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @return	Array
 	 */
 	public static function Filter_projectleader($idProjectleader, $negate = false) {
-		$idProjectleader	= intval($idProjectleader);
+		$idProjectleader= intval($idProjectleader);
+		$queryParts		= false;
 
-		if( $idProjectleader === 0 ) {
-			return false;
+		if( $idProjectleader > 0 ) {
+			$compare	= $negate ? 'NOT IN' : 'IN' ;
+
+			$where	= '	ext_project_project.id ' . $compare . ' (
+							SELECT
+								ext_project_project.id
+							FROM
+								ext_project_project,
+								ext_project_mm_project_person,
+								ext_project_role
+							WHERE
+									ext_project_project.id 					= ext_project_mm_project_person.id_project
+								AND ext_project_mm_project_person.id_person	= ' . $idProjectleader .
+							 '  AND	ext_project_mm_project_person.id_role	= ext_project_role.id
+								AND	ext_project_role.rolekey				= \'projectleader\'
+						)';
+
+			$queryParts = array(
+				'where'	=> $where
+			);
 		}
 
-		$compare	= $negate ? 'NOT IN' : 'IN' ;
-
-		$tables	= array('ext_project_project');
-		$where	= '	ext_project_project.id ' . $compare . ' (
-						SELECT
-							ext_project_project.id
-						FROM
-							ext_project_project,
-							ext_project_mm_project_person,
-							ext_project_role
-						WHERE
-								ext_project_project.id 					= ext_project_mm_project_person.id_project
-							AND ext_project_mm_project_person.id_person	= ' . $idProjectleader .
-						 '  AND	ext_project_mm_project_person.id_role	= ext_project_role.id
-							AND	ext_project_role.rolekey				= \'projectleader\'
-					)';
-
-		return array(
-			'tables'=> $tables,
-			'where'	=> $where
-		);
+		return $queryParts;
 	}
 
 
@@ -293,9 +292,6 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 		$queryParts	= false;
 
 		if( $idPerson !== 0 && sizeof($roles) > 0 ) {
-			$tables	= array(
-				'ext_project_project'
-			);
 			$subQuery	= '	SELECT
 								id_project
 							FROM
@@ -309,7 +305,6 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 			$where		= ' ext_project_project.id ' . $compare . ' (' . $subQuery . ')';
 
 			$queryParts	= array(
-				'tables'=> $tables,
 				'where'	=> $where
 			);
 		}
@@ -457,11 +452,9 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 		$date	=	intval($date);
 		$compare	= $negation ? '>=' : '<=';
 
-		$tables 	= array(self::TABLE);
 		$where 		= 'ext_project_project.' . $field . ' ' . $compare . ' ' . $date;
 
 		return array(
-			'tables'	=> $tables,
 			'where' 	=> $where
 		);
 	}
