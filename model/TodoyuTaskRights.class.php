@@ -83,6 +83,10 @@ class TodoyuTaskRights {
 		$idTask		= intval($idTask);
 		$task		= TodoyuTaskManager::getTask($idTask);
 
+		if( $task->isLocked() ) {
+			return false;
+		}
+
 		$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('changefrom'));
 
 		return in_array($task->getStatus(), $statusIDs);
