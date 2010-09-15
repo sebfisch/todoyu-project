@@ -258,7 +258,7 @@ class TodoyuProjectPreferences {
 			}
 		}
 
-		return $projectIDs;
+		return array_slice($projectIDs, 0, 3);
 	}
 
 
