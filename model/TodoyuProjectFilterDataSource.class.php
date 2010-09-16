@@ -36,9 +36,9 @@ class TodoyuProjectFilterDataSource {
 	public static function autocompleteProjects($input, array $formData = array(), $name = '')	{
 		$data = array();
 
-		$keywords	= TodoyuArray::trimExplode(' ', $input, true);
-		$projectIDs	= TodoyuProjectSearch::searchProjects($keywords, array(), 30);
-
+		$keywords		= TodoyuArray::trimExplode(' ', $input, true);
+		$projectIDs		= TodoyuProjectSearch::searchProjects($keywords, array(), 30);
+		
 		if( sizeof($projectIDs) > 0 ) {
 			$fields		= '	p.id,
 							p.title,
@@ -46,9 +46,9 @@ class TodoyuProjectFilterDataSource {
 			$tables		= ' ext_project_project p,
 							ext_contact_company c';
 			$where		= ' p.id_company = c.id AND
-							p.id IN(' . implode(',', $projectIDs) . ')';
+							p.id IN(' . implode(',', $projectIDs) . ') ';
 
-			$projects	= Todoyu::db()->getArray($fields, $tables, $where);
+			$projects	= Todoyu::db()->getArray($fields, $tables, $where, '', '', 30);
 
 			foreach($projects as $project) {
 				if( TodoyuProjectRights::isSeeAllowed($project['id']) ) {

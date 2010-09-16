@@ -45,10 +45,13 @@ class TodoyuProjectSearch implements TodoyuSearchEngineIf {
 	public static function searchProjects(array $find, array $ignore = array(), $limit = 200) {
 		$limit	= intval($limit);
 
-		$table	= self::TABLE;
-		$fields	= array('id', 'description', 'title');
+		$fields	= array(self::TABLE . '.id',self::TABLE . '.description', self::TABLE . '.title', 'ext_contact_company.shortname', 'ext_contact_company.title');
 
-		return TodoyuSearch::searchTable($table, $fields, $find, $ignore, $limit);
+		$where	= Todoyu::db()->buildLikeQuery($find, $fields);
+
+		$tables	= self::TABLE . ' LEFT JOIN ext_contact_company ON ' . self::TABLE . '.id_company = ext_contact_company.id';
+
+		return Todoyu::db()->getColumn(self::TABLE . '.id', $tables, $where, self::TABLE . '.id', '', $limit, 'id');
 	}
 
 
