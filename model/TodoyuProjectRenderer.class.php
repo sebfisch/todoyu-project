@@ -342,7 +342,7 @@ class TodoyuProjectRenderer {
 		}
 
 			// Add a list of lost task (this task should be display, but their parent doesn't match the current filter)
-		$treeHtml .= self::renderLostTasks($idProject, $idTaskShow);
+		$treeHtml .= self::renderLostTasks($idProject, $idTaskShow, $tab);
 
 		return $treeHtml;
 	}
@@ -392,7 +392,7 @@ class TodoyuProjectRenderer {
 	 * @param	Integer		$idTaskShow
 	 * @return	String		HTML
 	 */
-	public static function renderLostTasks($idProject, $idTaskShow) {
+	public static function renderLostTasks($idProject, $idTaskShow, $tab = null) {
 		$idProject	= intval($idProject);
 		$idTaskShow	= intval($idTaskShow);
 
@@ -414,7 +414,7 @@ class TodoyuProjectRenderer {
 
 		foreach($lostTaskIDs as $idLostTask) {
 			if ( TodoyuTaskRights::isSeeAllowed($idLostTask) ) {
-				$lostTaskHtml .= self::renderTask($idLostTask, 0, true);
+				$lostTaskHtml .= self::renderTask($idLostTask, $idTaskShow, true, $tab);
 			}
 		}
 
