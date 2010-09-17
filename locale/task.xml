@@ -3,6 +3,7 @@
 	<labels lang="en_GB">
 		<label index="task">Task</label>
 		<label index="tasks">Tasks</label>
+		<label index="container">Container</label>
 		<label index="attr.title">Task Title</label>
 		<label index="attr.worktype">Work Type</label>
 		<label index="attr.estimated_workload">Estimated Workload</label>
@@ -18,6 +19,8 @@
 		<label index="attr.is_public">Task Visibility</label>
 		<label index="attr.is_public.public">Task Is Public</label>
 		<label index="attr.is_public.private">Task is not public</label>
+		<label index="attr.is_public.public.container">Container Is Public</label>
+		<label index="attr.is_public.private.container">Container Task is not public</label>
 		<label index="attr.id_parenttask">Parent Task</label>
 		<label index="attr.is_estimatedworkload_public">Est. workload public visible</label>
 		<label index="attr.is_estimatedworkload_public.1">Is Public</label>
@@ -111,6 +114,7 @@
 	<labels lang="de_DE">
 		<label index="task">Aufgabe</label>
 		<label index="tasks">Aufgaben</label>
+		<label index="container">Container</label>
 		<label index="attr.title">Aufgaben-Titel</label>
 		<label index="attr.worktype">Leistungsart</label>
 		<label index="attr.estimated_workload">Aufwand geschätzt</label>
@@ -126,6 +130,8 @@
 		<label index="attr.is_public">Aufgaben Sichtbarkeit</label>
 		<label index="attr.is_public.public">Aufgabe ist öffentlich</label>
 		<label index="attr.is_public.private">Aufgabe ist NICHT öffentlich</label>
+		<label index="attr.is_public.public.container">Container ist öffentlich</label>
+		<label index="attr.is_public.private.container">Container ist NICHT öffentlich</label>
 		<label index="attr.id_parenttask">Übergeordnete Aufg.</label>
 		<label index="attr.is_estimatedworkload_public">Aufwand öffentlich</label>
 		<label index="attr.is_estimatedworkload_public.1">Ist öffentlich</label>
@@ -135,6 +141,7 @@
 		<label index="attr.dateover">End-Datum oder Frist ist abgelaufen</label>
 		<label index="attr.locked">Gesperrt</label>
 		<label index="container.attr.person_owner">Container-Eigner</label>
+		<label index="container.attr.is_public">Container Sichtbarkeit</label>
 		<label index="search.label">Aufgaben</label>
 		<label index="search.mode.label">Aufgaben finden</label>
 		<label index="create.label">Neue Aufgabe</label>

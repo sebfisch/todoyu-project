@@ -983,7 +983,7 @@ class TodoyuTaskManager {
 			// Public
 		$info['is_public']	= array(
 			'label'	=> $task->isContainer() ? 'LLL:task.container.attr.is_public' : 'LLL:task.attr.is_public',
-			'value'	=> Label('LLL:task.attr.is_public.' . ($taskData['is_public'] ? 'public' : 'private')),
+			'value'	=> Label('LLL:task.attr.is_public.' . ($taskData['is_public'] ? 'public' : 'private') . ($task->isContainer() ? '.container' : '')) ,
 			'position'	=> 110,
 			'className'	=> ''
 		);
@@ -1106,7 +1106,7 @@ class TodoyuTaskManager {
 			$icons['public'] = array(
 				'id'		=> 'task-' . $idTask . '-public',
 				'class'		=> 'isPublic',
-				'label'		=> 'LLL:task.attr.is_public.public',
+				'label'		=> 'LLL:task.attr.is_public.public' . ($task->isContainer() ? '.container' : ''),
 				'position'	=> 80
 			);
 		}
