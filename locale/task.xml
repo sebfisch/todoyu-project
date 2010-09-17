@@ -206,6 +206,12 @@
 		<label index="ac.parenttask.notFoundInfo">Es wurde keine Aufgabe gefunden die diesen Text oder diese Tasknummer enthält.</label>
 		<label index="ac.project.notFoundInfo">Es wurde kein Projekt mit diesen Text im Titel gefunden.</label>
 		<label index="copySubtasks">Auch Unteraufgaben mitkopieren?</label>
+		<label index="default.date.date_0">Erfassungs-Datum</label>
+		<label index="default.date.date_1">Erfassungs-Datum + 1 Tag</label>
+		<label index="default.date.date_2">Erfassungs-Datum + 2 Tage</label>
+		<label index="default.date.date_3">Erfassungs-Datum + 3 Tage</label>
+		<label index="default.date.date_7">Erfassungs-Datum + 1 Woche</label>
+		<label index="default.date.date_14">Erfassungs-Datum + 2 Wochen</label>
 	</labels>
 	<labels lang="pt_BR">
 		<label index="task">Tarefas</label>
