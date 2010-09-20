@@ -108,8 +108,6 @@
 		<label index="default.date.date_3">Create date + 3 days</label>
 		<label index="default.date.date_7">Create date + 1 week</label>
 		<label index="default.date.date_14">Create date + 2 weeks</label>
-		<label index="default.person_assigned_role">Assign person of role if not selectable</label>
-		<label index="default.person_owner_role">Owned by person of role if not selectable</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="task">Aufgabe</label>
@@ -517,8 +515,6 @@
 		<label index="default.date.date_3">Date de création + 3 jours</label>
 		<label index="default.date.date_7">Date de création + 1 semaine</label>
 		<label index="default.date.date_14">Date de création + 2 semaines</label>
-		<label index="default.person_assigned_role">Assigner la personne du rôle si non sélectionnable</label>
-		<label index="default.person_owner_role">Prise en charge par la personne du rôle si non sélectionnable</label>
 	</labels>
 	<labels lang="nl_NL">
 		<label index="task">Taak</label>

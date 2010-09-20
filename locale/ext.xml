@@ -399,6 +399,8 @@
 		<label index="extconf.taskDefaults.ownerRoles">Rôle par défaut pour le responsable de la tâche</label>
 		<label index="extconf.taskDefaults.worktype">Type de travail par défaut</label>
 		<label index="extconf.taskDefaults.estimated_workload">Charge de travail estimée par défaut</label>
+		<label index="extconf.taskDefaults.person_assigned_role">Assigner la personne du rôle si non sélectionnable</label>
+		<label index="extconf.taskDefaults.person_owner_role">Prise en charge par la personne du rôle si non sélectionnable</label>
 	</labels>
 	<labels lang="nl_NL">
 		<label index="ext.title">Project- en taakbeheer</label>
