@@ -178,8 +178,6 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 				// If form is valid, get form storage data and update task
 			$storageData= $form->getStorageData();
 
-			TodoyuDebug::printInFireBug($storageData, '$storageData');
-
 				// Save task
 			$idTaskNew	= TodoyuTaskManager::saveTask($storageData);
 
@@ -191,7 +189,6 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			TodoyuHeader::sendTodoyuHeader('idTaskOld', $idTask);
 
 			$tableData = TodoyuRecordManager::getRecordData('ext_project_task', $idTaskNew);
-			TodoyuDebug::printInFireBug($tableData, '$tableData');
 
 			if( AREA === EXTID_PROJECT ) {
 				return TodoyuProjectRenderer::renderTask($idTaskNew);
