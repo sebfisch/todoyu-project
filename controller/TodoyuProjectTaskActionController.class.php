@@ -160,7 +160,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$task->injectData($data);
 		$cacheKey	= TodoyuRecordManager::makeClassKey('TodoyuTask', 0);
 		TodoyuCache::set($cacheKey, $task);
-		
+
 
 			// Initialize form for validation
 		$xmlPath	= 'ext/project/config/form/task.xml';
@@ -181,14 +181,11 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 				// Save task
 			$idTaskNew	= TodoyuTaskManager::saveTask($storageData);
 
-				// Save task as open (and its parent)
-//			TodoyuProjectPreferences::saveTaskExpandedStatus($idTaskNew, true);
+				// Set parent task expanded (to make sure saved task is visible)
 			TodoyuProjectPreferences::saveTaskExpandedStatus($idParentTask, true);
 
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
 			TodoyuHeader::sendTodoyuHeader('idTaskOld', $idTask);
-
-			$tableData = TodoyuRecordManager::getRecordData('ext_project_task', $idTaskNew);
 
 			if( AREA === EXTID_PROJECT ) {
 				return TodoyuProjectRenderer::renderTask($idTaskNew);
