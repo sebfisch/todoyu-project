@@ -55,7 +55,7 @@ Todoyu.Ext.project.Project = {
 				'action': 'edit',
 				'project': idProject
 			});
-		} 
+		}
 
 		this.hideDetails(idProject);
 		this.ext.TaskTree.hide(idProject);
@@ -94,6 +94,8 @@ Todoyu.Ext.project.Project = {
 	 * @param	{Number}		idProject
 	 */
 	onRemoved: function(idProject) {
+		Todoyu.notifySuccess('[LLL:project.js.project.deleted]');
+
 		if(Todoyu.getArea() == 'project')	{
 			this.ext.ProjectTaskTree.removeProject(idProject);
 			this.ext.ProjectTaskTree.openFirstTab();

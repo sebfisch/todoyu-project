@@ -69,6 +69,7 @@
 		<label index="ac.company.notFoundInfo">No customer of this name was found. You can only select customers already added in the contact module.</label>
 		<label index="js.removeProject">Do you want to delete the whole project and all of its tasks?</label>
 		<label index="js.quicktask.saved">Quicktask has been saved</label>
+		<label index="js.project.deleted">Project has been successfully deleted</label>
 		<label index="ac.person.notFoundInfo">No person of this name was found</label>
 		<label index="portal.tab.todos">To Do's</label>
 		<label index="extconf.taskDefaults.title">Default Task Title</label>
@@ -153,6 +154,7 @@
 		<label index="ac.company.notFoundInfo">Kein passender Kunde gefunden. Es können nur im Kontakt-Modul erfasste Firmen ausgewählt werden</label>
 		<label index="js.removeProject">Wollen Sie das gesammte Projekt und alle seine Aufgaben löschen?</label>
 		<label index="js.quicktask.saved">Aufgabe wurde gespeichert</label>
+		<label index="js.project.deleted">Das Projekt wurde erfolgreich gelöscht</label>
 		<label index="ac.person.notFoundInfo">Es wurde keine Person gefunden deren Name die angegebenen Zeichen enthält.</label>
 		<label index="portal.tab.todos">Meine Aufgaben</label>
 		<label index="extconf.taskDefaults.title">Standard Titel</label>
