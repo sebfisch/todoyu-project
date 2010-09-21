@@ -406,7 +406,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @return	Array
 	 */
 	public static function Filter_createdateDyn($value, $negate)	{
-		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value, $negate);
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
 
 		return self::Filter_dateDyn($timeStamps, 'date_create', $negate);
 	}
@@ -434,7 +434,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @return	Array
 	 */
 	public static function Filter_editdateDyn($value, $negate)	{
-		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamps($value, $negate);
+		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
 
 		return self::Filter_dateDyn($timeStamps, 'date_update', $negate);
 	}

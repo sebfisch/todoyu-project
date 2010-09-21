@@ -79,7 +79,7 @@ class TodoyuProjectStatusManager {
 			}
 		}
 
-		return sizeof($statuses) > 0 ? $statuses : array(999 => 0);
+		return $statuses;
 	}
 
 
