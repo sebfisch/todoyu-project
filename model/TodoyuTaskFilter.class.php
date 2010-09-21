@@ -828,11 +828,10 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @return	Array
 	 */
 	protected static function Filter_dateDyn($date, $field, $negation = false)	{
-		$date	=	intval($date);
-		$compare	= $negation ? '>=' : '<=';
+		$date	= intval($date);
+		$compare= $negation ? '>=' : '<=';
+		$where 	= 'ext_project_task.' . $field . ' ' . $compare . ' ' . $date;
 
-		$where 		= 'ext_project_task.' . $field . ' ' . $compare . ' ' . $date;
-		TodoyuDebug::printInFirebug($where);
 		return array(
 			'where' 	=> $where
 		);
