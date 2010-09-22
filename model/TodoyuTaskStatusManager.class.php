@@ -119,6 +119,8 @@ class TodoyuTaskStatusManager {
 			$label	= self::getStatusLabel($statusKey);
 			$infos[$index] = TodoyuTaskViewHelper::getStatusOption($index, $statusKey, $label);
 		}
+		
+		TodoyuDebug::printInFireBug($infos, 'infos');
 
 		$infos	= TodoyuHookManager::callHookDataModifier('project', 'taskStatusInfos', $infos);
 

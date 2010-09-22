@@ -100,8 +100,6 @@ abstract class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget {
 			'selected'	=> $this->getSelectedStatusIDs()
 		);
 
-		TodoyuDebug::printInFireBug($data['statuses'], 'statuses');
-
 		$content	= render($this->tmpl, $data);
 
 		$this->setContent($content);
