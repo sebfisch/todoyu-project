@@ -71,19 +71,15 @@ class TodoyuTaskStatusManager {
 		$forceStatus= intval($forceStatus);
 
 		$statuses	= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK']);
-		
-		TodoyuDebug::printInFireBug($statuses, 'statuses');
 
 		foreach($statuses as $index => $statusKey) {
 				// Only get allowed status which the person can see
 			if( $index !== $forceStatus && ! TodoyuTaskRights::hasStatusRight($statusKey, $check) ) {
-				TodoyuDebug::printInFireBug($statusKey, 'unset');
 				unset($statuses[$index]);
 			}
 		}
 
 		return $statuses;
-//		return sizeof($statuses) > 0 ? $statuses : array(999 => 0);
 	}
 
 
