@@ -71,10 +71,13 @@ class TodoyuTaskStatusManager {
 		$forceStatus= intval($forceStatus);
 
 		$statuses	= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK']);
+		
+		TodoyuDebug::printInFireBug($statuses, 'statuses');
 
 		foreach($statuses as $index => $statusKey) {
 				// Only get allowed status which the person can see
 			if( $index !== $forceStatus && ! TodoyuTaskRights::hasStatusRight($statusKey, $check) ) {
+				TodoyuDebug::printInFireBug($statusKey, 'unset');
 				unset($statuses[$index]);
 			}
 		}
@@ -119,8 +122,6 @@ class TodoyuTaskStatusManager {
 			$label	= self::getStatusLabel($statusKey);
 			$infos[$index] = TodoyuTaskViewHelper::getStatusOption($index, $statusKey, $label);
 		}
-		
-		TodoyuDebug::printInFireBug($infos, 'infos');
 
 		$infos	= TodoyuHookManager::callHookDataModifier('project', 'taskStatusInfos', $infos);
 
