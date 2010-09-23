@@ -112,10 +112,11 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public function editAction(array $params)	{
-		restrict('project', 'project:modify');
-
+	public function editAction(array $params) {
 		$idProject = intval($params['project']);
+
+		TodoyuProjectRights::restrictEdit($idProject);
+
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.edit('.$idProject.')', 101);
 
 		return $this->defaultAction($params);
@@ -130,10 +131,11 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public function addtaskAction(array $params)	{
-		//restrict('project', 'project:addtask');
-
+	public function addtaskAction(array $params) {
 		$idProject = intval($params['project']);
+
+		TodoyuTaskRights::restrictAddToProject($idProject);
+
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addTask('.$idProject.')', 101);
 
 		return $this->defaultAction($params);
@@ -149,9 +151,10 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function addcontainerAction(array $params)	{
-		//restrict('project', 'project:addcontainer');
-
 		$idProject = intval($params['project']);
+
+		TodoyuTaskRights::restrictAddToProject($idProject);
+		
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addContainer('.$idProject.')', 101);
 
 		return $this->defaultAction($params);
