@@ -44,10 +44,10 @@ TodoyuContextMenuManager::addFunction('Project', 'TodoyuTaskClipboard::getProjec
 	// Declare project and task status
 Todoyu::$CONFIG['EXT']['project']['STATUS']['PROJECT'] = array(
 	STATUS_PLANNING		=> 'planning',
-	STATUS_PROGRESS		=> 'progress',	
-	STATUS_CLEARED		=> 'cleared',
+	STATUS_PROGRESS		=> 'progress',
+	STATUS_DONE			=> 'done',
 	STATUS_WARRANTY		=> 'warranty',
-	STATUS_DONE			=> 'done'
+	STATUS_CLEARED		=> 'cleared',
 );
 
 Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK'] = array(
