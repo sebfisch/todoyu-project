@@ -337,13 +337,7 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 				'label'		=> 'task.status.progress',
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_PROGRESS . ')',
 				'class'		=> 'projectContextMenu projectStatusProgress'
-			),
-			'done'	=> array(
-				'key'		=> 'status-done',
-				'label'		=> 'task.status.done',
-				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_DONE . ')',
-				'class'		=> 'projectContextMenu projectStatusDone'
-			),
+			),			
 			'cleared'	=> array(
 				'key'		=> 'status-cleared',
 				'label'		=> 'task.status.cleared',
@@ -355,6 +349,12 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 				'label'		=> 'task.status.warranty',
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_WARRANTY . ')',
 				'class'		=> 'projectContextMenu projectStatusWarranty'
+			),
+			'done'	=> array(
+				'key'		=> 'status-done',
+				'label'		=> 'task.status.done',
+				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_DONE . ')',
+				'class'		=> 'projectContextMenu projectStatusDone'
 			)
 		)
 	),
