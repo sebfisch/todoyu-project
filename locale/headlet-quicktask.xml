@@ -29,8 +29,8 @@
 		<label index="title">Vytvořit rychlý úkol</label>
 	</labels>
 	<labels lang="rs_SR">
-		<label index="label">Schnellaufgabe erfassen</label>
-		<label index="title">Schnellaufgabe erfassen</label>
+		<label index="label">Креирај брзи задатак</label>
+		<label index="title">Креирај брзи задатак</label>
 	</labels>
 	<labels lang="ja_JP">
 		<label index="label">クイックタスクの作成</label>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+пројец<?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en_GB">
 		<label index="ext.title">Project and task management</label>
@@ -568,9 +568,9 @@
 		<label index="noproject.tab">Нема прицтупних пројеката</label>
 		<label index="newproject.tab">Креирајте нови пројекат</label>
 		<label index="newproject.title">Нови пројекат</label>
-		<label index="addcontainer">Додајте контејнер </label>
-		<label index="addtask">Додајте задатак</label>
-		<label index="addproject">Додајте пројекат</label>
+		<label index="addcontainer">Додај контејнер </label>
+		<label index="addtask">Додај задатак</label>
+		<label index="addproject">Додај пројекат</label>
 		<label index="editproject">Уредите Пројекат</label>
 		<label index="status.planning">У плану</label>
 		<label index="status.open">Отворено</label>
@@ -598,7 +598,7 @@
 		<label index="attr.status">Статус пројекта</label>
 		<label index="attr.date_start">Почетни датум</label>
 		<label index="attr.date_end">Датум завршавања</label>
-		<label index="attr.date_deadline">Рок завршања муштерије</label>
+		<label index="attr.date_deadline">Рок завршавања муштерије</label>
 		<label index="attr.persons">Учесници</label>
 		<label index="attr.persons.new">Нове особе</label>
 		<label index="attr.persons.role">Улога пројекта</label>
@@ -615,7 +615,7 @@
 		<label index="projectrole.attr.rolekey">Кључна реч улоге</label>
 		<label index="tasktree.losttasks">Задатак са нетачним надређеним задацима/статусима</label>
 		<label index="records.projectrole">Улога корисника</label>
-		<label index="records.worktype">Врста рада</label>
+		<label index="records.worktype">Врста посла</label>
 		<label index="form.validation.dateBefore">Почетни датум мора да буде временски пре завршетка.</label>
 		<label index="form.validation.title">Молимо унесите наслов пројекта</label>
 		<label index="form.validation.company">Једна муштерија је обавезна за један пројекат</label>
@@ -630,8 +630,8 @@
 		<label index="extconf.taskDefaults.status">У напред изабрани статус</label>
 		<label index="extconf.taskDefaults.assignedRoles">У напред изабрана улога од додељене особе једног задатка</label>
 		<label index="extconf.taskDefaults.ownerRoles">У напред изабрана улога од власника задатка</label>
-		<label index="extconf.taskDefaults.worktype">У напред изабрана врста рада</label>
-		<label index="extconf.taskDefaults.estimated_workload">Унапред процењено трошак времена</label>
+		<label index="extconf.taskDefaults.worktype">У напред изабрана врста посла</label>
+		<label index="extconf.taskDefaults.estimated_workload">Процена трошка времена</label>
 	</labels>
 	<labels lang="ja_JP">
 		<label index="ext.title">プロジェクトとタスクの管理</label>
