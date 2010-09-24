@@ -139,23 +139,12 @@ class TodoyuProject extends TodoyuBaseObject {
 
 
 	/**
-	 * checks if the Project is deleted
-	 *
-	 * @return	Boolean
-	 */
-	public function isDeleted()	{
-		return $this->get('deleted') == 1;
-	}
-
-
-
-	/**
 	 * Check whether current person is assigned to this project
 	 *
 	 * @return	Boolean
 	 */
 	public function isCurrentPersonAssigned() {
-		return TodoyuProjectManager::isPersonAssigned($this->id);
+		return TodoyuProjectManager::isPersonAssigned($this->getID());
 	}
 
 

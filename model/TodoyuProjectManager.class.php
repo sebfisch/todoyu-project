@@ -200,20 +200,41 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get all task IDs of a project
+	 * Get all allowed task IDs of a project
 	 *
 	 * @param	Integer		$idProject
 	 * @param	String		$orderBy
 	 * @return	Array
 	 */
-	public static function getTaskIDs($idProject, $orderBy = 'date_create') {
+	public static function getTaskIDs($idProject, $sorting = '') {
+		$idProject	= intval($idProject);
+
+		$taskFilter	= new TodoyuTaskFilter();
+		$taskFilter->addFilter('project', $idProject);
+		$taskFilter->addFilter('type', TASK_TYPE_TASK);
+
+		return $taskFilter->getTaskIDs($sorting);
+	}
+
+
+
+	/**
+	 * Get ALL task IDs in a project. Ignoring status and access rights
+	 *
+	 * @param	Integer		$idProject
+	 * @param	String		$sorting
+	 * @return	Array
+	 */
+	public static function getAllTaskIDs($idProject, $sorting = '') {
 		$idProject	= intval($idProject);
 
 		$field	= 'id';
 		$table	= TodoyuTaskManager::TABLE;
-		$where	= 'id_project = ' . $idProject;
+		$where	= 'id_project 	= ' . $idProject
+				. ' AND deleted	= 0'
+				. ' AND `type`	= ' . TASK_TYPE_TASK;
 
-		return Todoyu::db()->getColumn($field, $table, $where, '', $orderBy);
+		return Todoyu::db()->getColumn($field, $table, $where, '', $sorting);
 	}
 
 
@@ -1171,7 +1192,7 @@ class TodoyuProjectManager {
 	public static function lockAllTasks($idProject, $ext = EXTID_PROJECT) {
 		$idProject	= intval($idProject);
 
-		$taskIDs	= self::getTaskIDs($idProject);
+		$taskIDs	= self::getAllTaskIDs($idProject);
 
 		foreach($taskIDs as $idTask) {
 			TodoyuTaskManager::lockTask($idTask, $ext);

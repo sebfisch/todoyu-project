@@ -69,15 +69,28 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 			TodoyuProjectRights::restrictSee($idProject);
 		}
 
+			// If task ID set
+		if( $idTask !== 0 ) {
+				// Check access rights for task if requested
+			if( ! TodoyuTaskManager::isTaskVisible($idTask) ) {
+					// Reset task ID if not visible
+				$idTask = 0;
+					// Show message about not available task
+				TodoyuPage::addJsOnloadedFunction('Todoyu.notifyError.bind(Todoyu, \'' . Label('task.notAvailable') . '\')');
+			}
+		}
+
 			// Init page
 		TodoyuPage::init('ext/project/view/ext.tmpl');
 
+			// Load project
+		$project	= TodoyuProjectManager::getProject($idProject);
+
 			// If a project is displayed
-		if( $idProject !== 0 && !TodoyuProjectManager::getProject($idProject)->isDeleted() ) {
+		if( $idProject !== 0 && ! $project->isDeleted() ) {
 				// Prepend current project to list
 			TodoyuProjectPreferences::addOpenProject($idProject);
 
-			$project= TodoyuProjectManager::getProject($idProject);
 			$title	= TodoyuLanguage::getLabel('project.page.title') . ' - ' . $project->getFullTitle();
 		} else {
 			$title		= TodoyuLanguage::getLabel('project.page.title.noSelected');
@@ -154,7 +167,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 		$idProject = intval($params['project']);
 
 		TodoyuTaskRights::restrictAddToProject($idProject);
-		
+
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addContainer('.$idProject.')', 101);
 
 		return $this->defaultAction($params);

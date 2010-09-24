@@ -1685,7 +1685,7 @@ class TodoyuTaskManager {
 		if( self::isTask($idTask) ) {
 			$task	= TodoyuTaskManager::getTask($idTask);
 
-			if( $task['deleted'] == 0 ) {
+			if( ! $task->isDeleted() ) {
 				return true;
 			}
 		}

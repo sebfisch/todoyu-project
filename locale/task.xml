@@ -108,6 +108,7 @@
 		<label index="default.date.date_3">Create date + 3 days</label>
 		<label index="default.date.date_7">Create date + 1 week</label>
 		<label index="default.date.date_14">Create date + 2 weeks</label>
+		<label index="notAvailable">The task is not available</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="task">Aufgabe</label>
@@ -217,6 +218,7 @@
 		<label index="default.date.date_3">Erfassungs-Datum + 3 Tage</label>
 		<label index="default.date.date_7">Erfassungs-Datum + 1 Woche</label>
 		<label index="default.date.date_14">Erfassungs-Datum + 2 Wochen</label>
+		<label index="notAvailable">Diese Aufgabe ist nicht verfügbar</label>
 	</labels>
 	<labels lang="pt_BR">
 		<label index="task">Tarefas</label>

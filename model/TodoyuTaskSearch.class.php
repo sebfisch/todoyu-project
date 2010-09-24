@@ -90,6 +90,8 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 						ext_contact_company c';
 			$where	= '		t.id_project = p.id
 						AND	p.id_company= c.id
+						AND t.deleted = 0
+						AND p.deleted = 0
 						AND	t.id IN(' . implode(',', $taskIDs) . ')';
 			$order	= '	t.date_create DESC';
 
