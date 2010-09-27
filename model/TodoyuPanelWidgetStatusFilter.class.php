@@ -74,17 +74,7 @@ abstract class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget {
 	 *
 	 * @return	Array
 	 */
-	public function getSelectedStatusIDs() {
-		$statusIDs	= TodoyuProjectPreferences::getPref($this->pref, 0, AREA);
-
-		if( $statusIDs === false ) {
-			$statusIDs = array();
-		} else {
-			$statusIDs = explode(',', $statusIDs);
-		}
-
-		return $statusIDs;
-	}
+	public abstract function getSelectedStatuses();
 
 
 
@@ -97,7 +87,7 @@ abstract class TodoyuPanelWidgetStatusFilter extends TodoyuPanelWidget {
 		$data	= array(
 			'id'		=> $this->getID(),
 			'statuses'	=> $this->getStatusesInfos(),
-			'selected'	=> $this->getSelectedStatusIDs()
+			'selected'	=> $this->getSelectedStatuses()
 		);
 
 		$content	= render($this->tmpl, $data);

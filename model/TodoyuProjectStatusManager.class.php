@@ -85,6 +85,18 @@ class TodoyuProjectStatusManager {
 
 
 	/**
+	 * Get allowed status IDs
+	 *
+	 * @param	Integer		$forceStatus
+	 * @return	Array
+	 */
+	public static function getStatusIDs($forceStatus = 0) {
+		return array_keys(self::getStatuses($forceStatus));
+	}
+
+
+
+	/**
 	 * Get project status label arrays. The keys are the status indexes
 	 *
 	 * @return	Array

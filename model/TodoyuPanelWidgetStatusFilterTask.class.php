@@ -54,12 +54,25 @@ class TodoyuPanelWidgetStatusFilterTask extends TodoyuPanelWidgetStatusFilter im
 
 
 	/**
-	 * Get array of statuses (which the current person has the right to see) in listing of panel widget 
+	 * Get array of statuses (which the current person has the right to see) in listing of panel widget
 	 *
 	 * @return	Array
 	 */
 	protected function getStatusesInfos() {
 		return TodoyuTaskStatusManager::getStatusInfos('see');
+	}
+
+
+	public function getSelectedStatuses() {
+		$statusIDs	= TodoyuProjectPreferences::getPref($this->pref, 0, AREA);
+
+		if( $statusIDs === false ) {
+			$statusIDs = TodoyuTaskStatusManager::getStatusIDs();
+		} else {
+			$statusIDs = TodoyuArray::intExplode(',', $statusIDs);
+		}
+
+		return $statusIDs;
 	}
 
 

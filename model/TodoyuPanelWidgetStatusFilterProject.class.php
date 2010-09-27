@@ -48,7 +48,7 @@ class TodoyuPanelWidgetStatusFilterProject extends TodoyuPanelWidgetStatusFilter
 		$this->pref	= 'panelwidget-projectstatusfilter';
 
 			// Get selected status IDs
-		$filterJSON			= json_encode($this->getSelectedStatusIDs());
+		$filterJSON			= json_encode($this->getSelectedStatuses());
 
 			// Initialize javaScript
 		TodoyuPage::addJsOnloadedFunction('function(){Todoyu.Ext.project.PanelWidget.ProjectStatusFilterInstance = new Todoyu.Ext.project.PanelWidget.ProjectStatusFilter(' . $filterJSON . ')}', 100);
@@ -63,6 +63,25 @@ class TodoyuPanelWidgetStatusFilterProject extends TodoyuPanelWidgetStatusFilter
 	 */
 	protected function getStatusesInfos() {
 		return TodoyuProjectStatusManager::getStatusInfos();
+	}
+
+
+
+	/**
+	 * Get selected status IDs
+	 *
+	 * @return	Array
+	 */
+	public function getSelectedStatuses() {
+		$statusIDs	= TodoyuProjectPreferences::getPref($this->pref, 0, AREA);
+
+		if( $statusIDs === false ) {
+			$statusIDs = TodoyuProjectStatusManager::getStatusIDs();
+		} else {
+			$statusIDs = TodoyuArray::intExplode(',', $statusIDs);
+		}
+
+		return $statusIDs;
 	}
 
 

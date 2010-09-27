@@ -55,7 +55,7 @@ class TodoyuTaskStatusManager {
 			$statusKey	= $status;
 		}
 
-		return TodoyuLanguage::getLabel('task.status.' . $statusKey);
+		return TodoyuLabelManager::getLabel('task.status.' . $statusKey);
 	}
 
 
@@ -80,6 +80,19 @@ class TodoyuTaskStatusManager {
 		}
 
 		return $statuses;
+	}
+
+
+
+	/**
+	 * Get available status IDs
+	 *
+	 * @param	String		$check
+	 * @param	Integer		$forceStatus
+	 * @return	Array
+	 */
+	public static function getStatusIDs($check = 'see', $forceStatus = 0) {
+		return array_keys(self::getStatuses($check, $forceStatus));
 	}
 
 
