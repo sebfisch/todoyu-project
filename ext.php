@@ -30,12 +30,12 @@ define('EXTID_PROJECT', 112);
 define('PATH_EXT_PROJECT', PATH_EXT . '/project');
 
 	// Register module locales
-TodoyuLanguage::register('project', PATH_EXT_PROJECT . '/locale/ext.xml');
-TodoyuLanguage::register('task', PATH_EXT_PROJECT . '/locale/task.xml');
-TodoyuLanguage::register('projectFilter', PATH_EXT_PROJECT . '/locale/filter.xml');
-TodoyuLanguage::register('panelwidget-projectlist', PATH_EXT_PROJECT . '/locale/panelwidget-projectlist.xml');
-TodoyuLanguage::register('panelwidget-statusfilter', PATH_EXT_PROJECT . '/locale/panelwidget-statusfilter.xml');
-TodoyuLanguage::register('headlet-quicktask', PATH_EXT_PROJECT . '/locale/headlet-quicktask.xml');
+TodoyuLabelManager::register('project', 'project', 'ext.xml');
+TodoyuLabelManager::register('task', 'project' , 'task.xml');
+TodoyuLabelManager::register('projectFilter', 'project', 'filter.xml');
+TodoyuLabelManager::register('panelwidget-projectlist', 'project', 'panelwidget-projectlist.xml');
+TodoyuLabelManager::register('panelwidget-statusfilter', 'project', 'panelwidget-statusfilter.xml');
+TodoyuLabelManager::register('headlet-quicktask', 'project', 'headlet-quicktask.xml');
 
 	// Request configurations
 	// @notice	Auto-loaded configs if available: admin, assets, create, contextmenu, extinfo, filters, form, page, panelwidgets, rights, search

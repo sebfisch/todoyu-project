@@ -168,8 +168,7 @@ class TodoyuProjectManager {
 
 			// Delete project
 		$data	= array(
-			'deleted'		=> 1,
-			'date_update'	=> NOW
+			'deleted'	=> 1
 		);
 
 		self::updateProject($idProject, $data);
@@ -1053,7 +1052,7 @@ class TodoyuProjectManager {
 			'date_update'		=> NOW,
 			'id_person_create'	=> TodoyuAuth::getPersonID(),
 			'deleted'			=> 0,
-			'title'				=> TodoyuLanguage::getLabel('project.newproject.title'),
+			'title'				=> TodoyuLabelManager::getLabel('project.newproject.title'),
 			'description'		=> '',
 			'status'			=> STATUS_PLANNING,
 			'id_company'		=> 0,

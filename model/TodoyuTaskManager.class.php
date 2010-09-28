@@ -312,14 +312,12 @@ class TodoyuTaskManager {
 	public static function deleteProjectTasks($idProject) {
 		$idProject	= intval($idProject);
 
-		$table	= self::TABLE;
 		$where	= 'id_project = ' . $idProject;
 		$data	= array(
-			'deleted'		=> 1,
-			'date_update'	=> NOW
+			'deleted'	=> 1
 		);
 
-		Todoyu::db()->doUpdate($table, $where, $data);
+		TodoyuRecordManager::updateRecords(self::TABLE, $where, $data);
 	}
 
 
