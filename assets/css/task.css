@@ -217,6 +217,7 @@
 
 	.tasks .task .details .description * {
 		line-height:15px;
+		word-wrap:break-word;
 	}
 
 	.tasks .task .details .description ul {
