@@ -427,6 +427,20 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		return TodoyuProjectRenderer::renderSubTasks($idTask, $idTaskShow);
 	}
 
+
+
+	/**
+	 * Get task ID from task number
+	 *
+	 * @param	Array		$params
+	 * @return	Integer
+	 */
+	public function number2idAction(array $params) {
+		$taskNumber	= trim($params['tasknumber']);
+
+		return TodoyuTaskManager::getTaskIDByTaskNumber($taskNumber);
+	}
+
 }
 
 ?>

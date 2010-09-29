@@ -2207,6 +2207,22 @@ class TodoyuTaskManager {
 			return TodoyuLockManager::areLocked('ext_project_task', $allSubtaskIDs);
 		}
 	}
+
+
+
+	/**
+	 * Link task IDs in the text
+	 *
+	 * @param	String		$text
+	 * @return	String
+	 */
+	public static function linkTaskIDsInText($text) {
+		$pattern	= '/(<p>|<span>|\s|^)(\d+\.\d+)(<\/p>|<\/span>|\s|$)/';
+		$replace	= '$1<a href="javascript:void(0)" onclick="Todoyu.Ext.project.goToTaskInProjectByTasknumber(\'$2\')">$2</a>$3';
+
+		return preg_replace($pattern, $replace, $text);
+	}
+	
 }
 
 ?>

@@ -85,7 +85,7 @@ function Dwoo_Plugin_projectStatusLabel(Dwoo $dwoo, $idStatus) {
 
 
 /**
- * Get label of given project role 
+ * Get label of given project role
  *
  * @package		Todoyu
  * @subpackage	Template
@@ -129,7 +129,19 @@ function Dwoo_Plugin_projectStatusKey(Dwoo $dwoo, $idStatus) {
  * @return	Boolean
  */
 function Dwoo_Plugin_isAllowedSeeProjectDetails(Dwoo $dwoo, $idProject) {
-	return  allowed('project', 'project:seeAll') || TodoyuProjectManager::isPersonAssigned($idProject);
+	return allowed('project', 'project:seeAll') || TodoyuProjectManager::isPersonAssigned($idProject);
 }
+
+
+
+/**
+ * @param	Dwoo_Compiler	$compiler
+ * @param	String			$text
+ * @return	String
+ */
+function Dwoo_Plugin_linkTasks_compile(Dwoo_Compiler $compiler, $text) {
+	return 'TodoyuTaskManager::linkTaskIDsInText(' . $text . ')';
+}
+
 
 ?>
