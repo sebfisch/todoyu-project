@@ -487,9 +487,9 @@ class TodoyuProjectManager {
 						c.title as companyFull';
 			$table	= '	ext_project_project p,
 						ext_contact_company c';
-			$where	= '		p.id IN(' . $projectList . ')
-						AND	(p.id_company = 0 OR p.id_company = c.id)
-						AND	p.deleted = 0';
+			$where	= '		p.id IN(' . $projectList . ')'
+					. '	AND	p.id_company = c.id'
+					. '	AND	p.deleted = 0';
 			$order	= 'FIELD(p.id, ' . $projectList . ')';
 			$limit	= 3;
 
