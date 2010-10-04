@@ -884,7 +884,7 @@ class TodoyuTaskManager {
 			// Attributes which are only for tasks (not relevant for containers)
 		if( $task->isTask() ) {
 				// Date start
-			if( $taskData['date_start'] > 0 && Todoyu::person()->isInternal() ) {
+			if( $taskData['date_start'] > 0 && (Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) ) {
 				$info['date_start']	= array(
 					'label'		=> 'LLL:task.attr.date_start',
 					'value'		=> TodoyuTime::format( $taskData['date_start'], 'date'),
@@ -894,7 +894,7 @@ class TodoyuTaskManager {
 			}
 
 				// Date end (if set) (internal deadline)
-			if( $taskData['date_end'] > 0 && Todoyu::person()->isInternal() ) {
+			if( $taskData['date_end'] > 0 && (Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) ) {
 				$formatEnd	= date('F', $data['date_end']) == 0 ? 'date' : 'datetime';
 				$info['date_end']	= array(
 					'label'	=> 'LLL:task.attr.date_end',
@@ -923,7 +923,7 @@ class TodoyuTaskManager {
 			);
 
 				// Person assigned
-			if( intval($taskData['person_assigned']['id']) !== 0 && Todoyu::person()->isInternal() ) {
+			if( intval($taskData['person_assigned']['id']) !== 0 && (Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) ) {
 				$info['person_assigned']	= array(
 					'label'		=> 'LLL:task.attr.person_assigned',
 					'value'		=> TodoyuPersonManager::getLabel($taskData['person_assigned']['id']),
@@ -1100,7 +1100,7 @@ class TodoyuTaskManager {
 		}
 
 			// Add public icon for internals
-		if( $task->isPublic() && Todoyu::person()->isInternal() ) {
+		if( $task->isPublic() && (Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) ) {
 			$icons['public'] = array(
 				'id'		=> 'task-' . $idTask . '-public',
 				'class'		=> 'isPublic',
@@ -2222,7 +2222,7 @@ class TodoyuTaskManager {
 
 		return preg_replace($pattern, $replace, $text);
 	}
-	
+
 }
 
 ?>
