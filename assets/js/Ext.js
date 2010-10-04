@@ -58,8 +58,13 @@ Todoyu.Ext.project = {
 	 *
 	 * @param	{Number}	idTask
 	 * @param	{Number}	idProject
+	 * @param	{Boolean}	newWindow
+	 * @param	{String}	windowName
 	 */
-	goToTaskInProject: function(idTask, idProject) {
+	goToTaskInProject: function(idTask, idProject, newWindow, windowName) {
+		newWindow	= newWindow ? newWindow : false;
+		windowName	= windowName ? windowName : '';
+
 		var params = {
 			'task': idTask
 		};
@@ -67,7 +72,7 @@ Todoyu.Ext.project = {
 			params.project = idProject;
 		}
 
-		Todoyu.goTo('project', 'ext', params, 'task-' + idTask);
+		Todoyu.goTo('project', 'ext', params, 'task-' + idTask, newWindow, windowName);
 	},
 
 
