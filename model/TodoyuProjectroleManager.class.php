@@ -128,7 +128,7 @@ class TodoyuProjectroleManager {
 
 
 	/**
-	 * Get all active projectroles, optionally parse to render title labels
+	 * Get all active project roles, optionally parse to render title labels
 	 *
 	 * @param	Boolean	$parse
 	 * @return	Array
@@ -146,6 +146,27 @@ class TodoyuProjectroleManager {
 		}
 
 		return $projectroles;
+	}
+
+
+
+	/**
+	 * Get role IDs of given person in given project
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idPerson
+	 * @return	Array
+	 */
+	public static function getPersonRoleIDs($idProject, $idPerson = 0) {
+		$idProject	= intval($idProject);
+		$idPerson	= personid($idPerson);
+
+		$field	= 'id_role';
+		$table	= '	ext_project_mm_project_person';
+		$where	= '		id_project	= ' . $idProject
+				. ' AND id_person	= ' . $idPerson;
+
+		return Todoyu::db()->getColumn($field, $table, $where);
 	}
 
 

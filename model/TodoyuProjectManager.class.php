@@ -845,6 +845,8 @@ class TodoyuProjectManager {
 	 * @return	Array
 	 */
 	public static function getProjectRoles($idProject) {
+		$idProject	= intval($idProject);
+
 		$fields	= '	DISTINCT pr.*';
 		$table	= '	ext_project_mm_project_person mm,
 					ext_project_role pr';
@@ -853,6 +855,29 @@ class TodoyuProjectManager {
 				  	AND	pr.deleted		= 0';
 
 		return Todoyu::db()->getArray($fields, $table, $where);
+	}
+
+
+
+	/**
+	 * Get all IDs of roles which are used in a project
+	 *
+	 * @param	Integer		$idProject
+	 * @return	Array
+	 */
+	public static function getProjectRolesIDs($idProject) {
+		$idProject	= intval($idProject);
+
+		$fields	= '	DISTINCT pr.id';
+		$table	= '	ext_project_mm_project_person mm,
+					ext_project_role pr';
+		$where	= '		mm.id_project	= ' . $idProject .
+				  ' AND	mm.id_role		= pr.id
+				  	AND	pr.deleted		= 0';
+
+		$rolesIDs	= Todoyu::db()->getArray($fields, $table, $where);
+
+		return TodoyuArray::flatten($rolesIDs); 
 	}
 
 
@@ -874,6 +899,33 @@ class TodoyuProjectManager {
 		} else {
 			return false;
 		}
+	}
+
+
+
+	/**
+	 * Get all roles with their assigned persons to given project
+	 *
+	 * @param	Integer		$idProject
+	 * @return	Array
+	 */
+	public static function getPersonsIDsOfAllRoles($idProject) {
+		$idProject	= intval($idProject);
+
+			// Get all persons with their roles
+		$field	= 'id_role,id_person';
+		$table	= '	ext_project_mm_project_person';
+		$where	= '	id_project	= ' . $idProject;
+
+		$personsRoles	= Todoyu::db()->getArray($field, $table, $where);
+
+			// Group persons by roles
+		$rolesPersonsIDs = array();
+		foreach( $personsRoles as $personRole) {
+			$rolesPersonsIDs[$personRole['id_role']][] = $personRole['id_person'];
+		}
+
+		return $rolesPersonsIDs;
 	}
 
 
