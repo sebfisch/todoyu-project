@@ -866,18 +866,9 @@ class TodoyuProjectManager {
 	 * @return	Array
 	 */
 	public static function getProjectRolesIDs($idProject) {
-		$idProject	= intval($idProject);
+		$rolesIDs	= self::getProjectRoles($idProject);
 
-		$fields	= '	DISTINCT pr.id';
-		$table	= '	ext_project_mm_project_person mm,
-					ext_project_role pr';
-		$where	= '		mm.id_project	= ' . $idProject .
-				  ' AND	mm.id_role		= pr.id
-				  	AND	pr.deleted		= 0';
-
-		$rolesIDs	= Todoyu::db()->getArray($fields, $table, $where);
-
-		return TodoyuArray::flatten($rolesIDs); 
+		return array_keys(TodoyuArray::useFieldAsIndex($rolesIDs, 'id'));
 	}
 
 
