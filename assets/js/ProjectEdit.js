@@ -96,6 +96,9 @@ Todoyu.Ext.project.Project.Edit = {
 	save: function(form){
 		Todoyu.Ui.closeRTE(form);
 
+		var idProject	= form.id.split('-')[1];
+		Todoyu.Hook.exec('project.project.preSaveProject', idProject);
+
 		$(form).request({
 			'parameters': {
 				'action':	'save'

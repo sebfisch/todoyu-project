@@ -13,6 +13,10 @@ Project Extension - JavaScript Hooks
 	@param	{Number} idProject
 	Evoked after project (creation / editing) form loaded and displayed.
 
+	project.project.preSaveProject
+	@param	{Number} idProject
+	Evoked (after save button clicked) before submission of project form for saving.
+
 	project.project.created
 	@param	{Number} idProject
 	Evoked after new project has been created. (DB record created, DOM updated)
