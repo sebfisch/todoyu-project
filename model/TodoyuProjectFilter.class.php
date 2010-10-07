@@ -250,21 +250,26 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 		$queryParts		= false;
 
 		if( $idProjectleader > 0 ) {
+				// This double subquery if here for performance reasons (don't optimize it!)
+			$subQuery	= 'SELECT
+								id
+							FROM (
+								SELECT
+									ext_project_project.id
+								FROM
+									ext_project_project,
+									ext_project_mm_project_person,
+									ext_project_role
+								WHERE
+										ext_project_project.id 					= ext_project_mm_project_person.id_project
+									AND ext_project_mm_project_person.id_person	= ' . $idProjectleader .
+								 '  AND	ext_project_mm_project_person.id_role	= ext_project_role.id
+									AND	ext_project_role.rolekey				= \'projectleader\'
+								GROUP BY
+									ext_project_project.id
+							) as temp';
 			$compare	= $negate ? 'NOT IN' : 'IN' ;
-
-			$where	= '	ext_project_project.id ' . $compare . ' (
-							SELECT
-								ext_project_project.id
-							FROM
-								ext_project_project,
-								ext_project_mm_project_person,
-								ext_project_role
-							WHERE
-									ext_project_project.id 					= ext_project_mm_project_person.id_project
-								AND ext_project_mm_project_person.id_person	= ' . $idProjectleader .
-							 '  AND	ext_project_mm_project_person.id_role	= ext_project_role.id
-								AND	ext_project_role.rolekey				= \'projectleader\'
-						)';
+			$where		= '	ext_project_project.id ' . $compare . ' (' . $subQuery . ')';
 
 			$queryParts = array(
 				'where'	=> $where
@@ -292,15 +297,20 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 		$queryParts	= false;
 
 		if( $idPerson !== 0 && sizeof($roles) > 0 ) {
+				// This double subquery if here for performance reasons (don't optimize it!)
 			$subQuery	= '	SELECT
 								id_project
-							FROM
-								ext_project_mm_project_person
-							WHERE
-								id_person	= ' . $idPerson .
-					  		' AND	id_role IN (' . implode(',', $roles) . ')
-					  		GROUP BY
-					  			id_project';
+							FROM (
+								SELECT
+									id_project
+								FROM
+									ext_project_mm_project_person
+								WHERE
+										id_person	= ' . $idPerson .
+								' AND	id_role IN (' . implode(',', $roles) . ')
+								GROUP BY
+									id_project
+					  		) as x';
 			$compare	= $negate ? 'NOT IN' : 'IN';
 			$where		= ' ext_project_project.id ' . $compare . ' (' . $subQuery . ')';
 
