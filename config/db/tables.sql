@@ -50,7 +50,8 @@ CREATE TABLE `ext_project_task` (
 	PRIMARY KEY (`id`),
 	KEY `parenttask` (`id_parenttask`),
 	KEY `project` (`id_project`),
-	KEY `assigned_to` (`id_person_assigned`)
+	KEY `assigned_to` (`id_person_assigned`),
+	KEY `multi` (`status`,`type`,`deleted`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
