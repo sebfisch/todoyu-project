@@ -1144,34 +1144,33 @@ class TodoyuProjectManager {
 			return array();
 		}
 
-			// Get visible projects
-		$activeFilters	= array(
-			'status'	=> array(
-				'filter'	=> 'status',
-				'value'		=> array(
-//					STATUS_ACCEPTED,
-//					STATUS_CLEARED,
-					STATUS_CONFIRM,
-//					STATUS_DONE,
-					STATUS_OPEN,
-					STATUS_PLANNING,
-					STATUS_PROGRESS,
-					STATUS_REJECTED,
-//					STATUS_WARRANTY
-				)
-			)
+		$statuses	= array(
+			STATUS_PLANNING,
+			STATUS_PROGRESS
 		);
-		$filter		= new TodoyuProjectFilter($activeFilters);
-		$projectIDs	= $filter->getProjectIDs();
 
-		foreach($projectIDs as $index => $idProject) {
-			$project	= TodoyuProjectManager::getProject($idProject);
+		if( allowed('project', 'task:addInAllProjects') ) {
+				// Get visible projects
+			$activeFilters	= array(
+				'status'	=> array(
+					'filter'	=> 'status',
+					'value'		=> $statuses
+				)
+			);
 
-			if( ! allowed('project', 'task:addInAllProjects') ) {
-				if( ! $project->isCurrentPersonAssigned() ) {
-					unset($projectIDs[$index]);
-				}
-			}
+			$projectFilter	= new TodoyuProjectFilter($activeFilters);
+			$projectIDs		= $projectFilter->getProjectIDs();
+		} else {
+			$field	= 'p.id';
+			$tables	= '	ext_project_project p,
+						ext_project_mm_project_person mm';
+			$where	= '		p.status 	IN (' . implode(',', $statuses) . ')'
+					. ' AND p.id 		= mm.id_project'
+					. ' AND p.deleted	= 0'
+					. ' AND mm.id_person= ' . TodoyuAuth::getPersonID();
+			$fieldName	= 'id';
+
+			$projectIDs	= Todoyu::db()->getColumn($field, $tables, $where, '', '', '', $fieldName);
 		}
 
 		return $projectIDs;
