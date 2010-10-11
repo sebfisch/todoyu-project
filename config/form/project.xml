@@ -97,6 +97,18 @@
 								</options>
 							</config>
 							<required label="LLL:project.form.validation.company" />
+							<wizard>
+								<htmlClass>createNewCompany</htmlClass>
+								<ext>contact</ext>
+								<controller>company</controller>
+								<action>addNewContactWizard</action>
+								<title>LLL:contact.create.company.label</title>
+								<width>700</width>
+								<displayCondition />
+								<restrict>
+									<allow ext="contact" right="contact:modify" />
+								</restrict>
+							</wizard>
 						</field>
 
 					</elements>
