@@ -7,7 +7,7 @@
 
 h1.headerLine span.projectIcons {
 	float:right;
-	margin-top: 4px;
+	margin-top:4px;
 }
 
 
@@ -46,12 +46,12 @@ h1.headerLine span.projectIcons {
 }
 
 .project .infoBoxOuter {
-	padding: 6px;
-	background-color: #eee;
+	padding:6px;
+	background-color:#eee;
 }
 
 .statusPlanning .data .content {
-	background-color: white;
+	background-color:white;
 }
 
 .project .typeCheckbox .fLabel,
@@ -214,6 +214,8 @@ h1.headerLine span.projectIcons {
 	.project .persons .fieldnamePersons .databaseRelation .typeCheckbox .fLabel {
 		width:70%;
 	}
+
+
 
 /* ------------------------------------
 	Project search modifications

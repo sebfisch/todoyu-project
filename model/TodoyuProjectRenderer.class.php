@@ -375,7 +375,7 @@ class TodoyuProjectRenderer {
 
 			// Render all sub tasks
 		foreach($subTaskIDs as $idSubTask) {
-			if ( TodoyuTaskRights::isSeeAllowed($idSubTask) ) {
+			if( TodoyuTaskRights::isSeeAllowed($idSubTask) ) {
 				$data['subtaskHtml'] .= TodoyuProjectRenderer::renderTask($idSubTask, $idTaskShow);
 			}
 		}
@@ -413,7 +413,7 @@ class TodoyuProjectRenderer {
 		$lostTaskHtml	= '';
 
 		foreach($lostTaskIDs as $idLostTask) {
-			if ( TodoyuTaskRights::isSeeAllowed($idLostTask) ) {
+			if( TodoyuTaskRights::isSeeAllowed($idLostTask) ) {
 				$lostTaskHtml .= self::renderTask($idLostTask, $idTaskShow, true, $tab);
 			}
 		}

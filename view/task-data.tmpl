@@ -6,7 +6,7 @@
 	{foreach $data info}
 		{$info.wrap.0}
 		<dt class="{$info.className}">{Label $info.label true}</dt>
-		<dd {if $info.id}id="{$info.id}" {/if}class="{$info.className}">
+		<dd {if $info.id}id="{$info.id}" {/if}class="{$info.className}"{if $info.title} title="{$info.title}{/if}">
 			{$info.value}&#8203;
 		</dd>
 		{$info.wrap.1}

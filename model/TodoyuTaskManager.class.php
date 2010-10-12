@@ -1213,22 +1213,22 @@ class TodoyuTaskManager {
 		$table	= self::TABLE;
 		$where	=  ' deleted = 0 ';
 
-		if ( $getContainers !== true ) {
+		if( $getContainers !== true ) {
 			$where	.= ' AND type = 1 ';
 		}
 
 			// Start and end given: task must intersect with span defined by them
-		if ( $start > 0 && $end > 0 ) {
+		if( $start > 0 && $end > 0 ) {
 			$where	.= ' AND ( date_start <= ' . $end . ' AND date_end >= ' . $start . ' )';
 		} else {
 				// Only start or end given
 				// Start and end of task must be (at or) after given starting time
-			if ( $start > 0 ) {
+			if( $start > 0 ) {
 				$where	.= ' AND date_start  >= ' . $start;
 				$where	.= ' AND date_end    >= ' . $start;
 			}
 				// Start and end of task must be (at or) before given ending time
-			if ( $end	> 0 ) {
+			if( $end	> 0 ) {
 				$where	.= ' AND date_end    <= ' . $end;
 				$where	.= ' AND date_start  <= ' . $end;
 			}

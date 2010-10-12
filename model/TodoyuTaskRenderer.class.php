@@ -73,7 +73,7 @@ class TodoyuTaskRenderer {
 		$tasksHTML	= array();
 
 		foreach($taskIDs as $idTask) {
-			if ( TodoyuTaskRights::isSeeAllowed($idTask) ) {
+			if( TodoyuTaskRights::isSeeAllowed($idTask) ) {
 				$tasksHTML[] = self::renderListingTask($idTask);
 			}
 		}

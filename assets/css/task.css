@@ -17,7 +17,7 @@
 .tasks .expanded h3,
 .tasks .subtasks .expanded h3 {
 	background-color:#f2f2d2;
-	border-bottom: none;
+	border-bottom:none;
 	font-weight:bold;
 }
 .tasks .running h3,
@@ -29,6 +29,8 @@
 	background-color:transparent;
 	font-weight:normal;
 }
+
+
 
 /* --------------------
 	Task header
@@ -107,7 +109,7 @@
 	top:4px;
 	right:93px;
 	width:45px;
-	cursor: text;
+	cursor:text;
 }
 
 .task h3 .headLabel a.title {
@@ -144,14 +146,14 @@
 
 .task span.taskIconsOverflow:hover {
 	width:auto;
-	position: absolute;
+	position:absolute;
 	background-color:#FFF;
 	z-index:1000;
-	background: white;
+	background:white;
 }
 
 .expanded span.taskIconsOverflow:hover {
-	background: #E3EACE;
+	background:#e3eace;
 }
 
 
@@ -200,7 +202,7 @@
 
 .task.container .details {
 	border-color:#000 !important;
-	border-bottom-color:#AAAAAA !important;
+	border-bottom-color:#aaaaaa !important;
 }
 
 	.tasks .task .details .data {
@@ -210,8 +212,8 @@
 		/* Description */
 	.tasks .task .details .left {
 		float:left;
-		width: 330px;
-		max-width: 45%;
+		width:330px;
+		max-width:45%;
 		padding:0 0 0 24px;
 	}
 
@@ -369,6 +371,8 @@
 	background-color:#F7F9FA;
 }
 
+
+
 /* -----------------
 	Task colors
    ---------------- */
@@ -412,6 +416,8 @@
 #taskList h1.headerProjTermine {
 	margin-top:20px;
 }
+
+
 
 /* ------------------
 	Additional task icons
