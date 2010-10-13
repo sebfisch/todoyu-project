@@ -29,6 +29,7 @@ Todoyu.Ext.project.QuickTask = {
 	popupID:		'quicktask',
 
 
+
 	/**
 	 * Toggle quick task popUp
 	 *

@@ -1013,7 +1013,6 @@ class TodoyuTaskManager {
 	 */
 	public static function addContainerInfoToTaskData($taskData, $idTask, $infoLevel) {
 		$idTask		= intval($idTask);
-		$infoLevel	= intval($infoLevel);
 		$task		= self::getTask($idTask);
 
 			// Add special CSS class for containers
@@ -1445,7 +1444,6 @@ class TodoyuTaskManager {
 	 */
 	private static function getDateFromExtConfDefault($type) {
 		$type	= intval($type);
-		$date	= 0;
 
 		if( $type === 0 ) {
 			$date	= 0;

@@ -203,6 +203,12 @@ class TodoyuTaskClipboard {
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 * @param	Integer		$idProject
+	 * @return	Integer
+	 */
 	public static function pastTaskInProject($idProject) {
 		$idProject		= intval($idProject);
 		$project		= TodoyuProjectManager::getProject($idProject);

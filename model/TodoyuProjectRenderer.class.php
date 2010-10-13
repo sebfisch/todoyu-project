@@ -75,7 +75,6 @@ class TodoyuProjectRenderer {
 	public static function renderProjectsContent($idProject, $idTask, $tab = null) {
 		$idProject	= intval($idProject);
 		$idTask		= intval($idTask);
-		$content	= '';
 
 		if( $idProject === 0 ) {
 			$content= self::renderNoProjectSelectContent();

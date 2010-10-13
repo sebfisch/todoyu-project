@@ -87,7 +87,7 @@ class TodoyuProjectFilterDataSource {
 	public static function getStatusOptions(array $definitions)	{
 		$options	= array();
 		$statuses	= TodoyuProjectStatusManager::getStatusInfos();
-		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
+//		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
 
 		foreach($statuses as $status) {
 			$options[] = array(

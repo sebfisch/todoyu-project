@@ -75,7 +75,6 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 			// Set form data
 		$form->setFormData($data);
-
 		$p = TodoyuProjectManager::getProject($idProject);
 
 		if( $form->isValid() ) {
