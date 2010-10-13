@@ -2,7 +2,7 @@
 	Extension icon: stand-alone and in heading
    ---------------------------------------------- */
 span.extIconProject {
-	background:url('../img/exticon.png') no-repeat 0 0px;	
+	background:url('../img/exticon.png') no-repeat 0 0;
 }
 
 h1.extIconProject .title {

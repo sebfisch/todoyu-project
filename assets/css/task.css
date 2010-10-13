@@ -263,13 +263,13 @@
 	}
 
 		.task dd.unread {
-			background:url(../img/icons.png) no-repeat 0px -268px;
+			background:url(../img/icons.png) no-repeat 0 -268px;
 			padding-left:12px;
 			width:118px !important;
 		}
 
 		.task dd.acknowledged {
-			background:url(../img/icons.png) no-repeat 0px -538px;
+			background:url(../img/icons.png) no-repeat 0 -538px;
 			padding-left:12px;
 			width:118px !important;
 		}
@@ -419,9 +419,9 @@
 
 
 
-/* ------------------
+/* ----------------------------
 	Additional task icons
-   ------------------ */
+   ---------------------------- */
 .task-status-container h3 a,
 .task-status-container div.taskdetails {
 	border-left-color:#1E2022;
