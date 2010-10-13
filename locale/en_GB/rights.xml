@@ -71,7 +71,7 @@
 	<label index="projectstatus.progress:see">See Status: In Progress</label>
 	<label index="projectstatus.done:see">See Status: Done</label>
 	<label index="projectstatus.cleared:see">See Status: Cleared</label>
-	<label index="projectstatus.warranty:see">See Status: In Warranty</label>
+	<label index="projectstatus.warranty:see">See Status: Under Warranty</label>
 	<label index="panelwidgets">Panel Widgets</label>
 	<label index="panelwidgets.statusFilter">Status filter panel widgets</label>
 	<label index="panelwidgets.projectStatusFilter">Panel widget project status filter</label>

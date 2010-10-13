@@ -22,7 +22,7 @@
 	<label index="status.accepted">Accepted</label>
 	<label index="status.rejected">Rejected</label>
 	<label index="status.cleared">Cleared</label>
-	<label index="status.warranty">In Warranty</label>
+	<label index="status.warranty">Under Warranty</label>
 	<label index="status.undefined">Undefined</label>
 	<label index="project.save">Save Project</label>
 	<label index="newProject.tabLabel">New Project</label>

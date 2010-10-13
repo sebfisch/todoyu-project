@@ -64,7 +64,7 @@
 	<label index="status.accepted">Accepted</label>
 	<label index="status.rejected">Rejected</label>
 	<label index="status.cleared">Cleared</label>
-	<label index="status.warranty">In Warranty</label>
+	<label index="status.warranty">Under Warranty</label>
 	<label index="cloneSubtasks.confirm">Clone Also Subtasks?</label>
 	<label index="new.Task.defaultTitle">New Task</label>
 	<label index="new.Container.defaultTitle">New Container</label>
