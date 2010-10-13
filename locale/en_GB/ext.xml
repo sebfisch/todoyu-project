@@ -58,7 +58,7 @@
 	<label index="projectrole.attr.rolekey">Role Keyword</label>
 	<label index="tasktree.losttasks">Tasks with inapplicable parents/status</label>
 	<label index="records.projectrole">Project Roles</label>
-	<label index="records.worktype">Work Types</label>
+	<label index="records.worktype">Activity Types</label>
 	<label index="form.validation.dateBefore">Date must be set before end date</label>
 	<label index="form.validation.title">Please enter a project title</label>
 	<label index="form.validation.company">A customer is required for a project</label>
@@ -79,7 +79,7 @@
 	<label index="extconf.taskDefaults.status">Default Task Status</label>
 	<label index="extconf.taskDefaults.assignedRoles">Default role for task assigned person</label>
 	<label index="extconf.taskDefaults.ownerRoles">Default role for task owner</label>
-	<label index="extconf.taskDefaults.worktype">Default task work type</label>
+	<label index="extconf.taskDefaults.worktype">Default task activity type</label>
 	<label index="extconf.taskDefaults.estimated_workload">Default task estimated workload</label>
 	<label index="extconf.taskDefaults.is_public">Default Task Visibility</label>
 	<label index="extconf.taskDefaults.person_assigned_role">Assign person of role if not selectable</label>

@@ -4,7 +4,7 @@
 	<label index="tasks">Tasks</label>
 	<label index="container">Container</label>
 	<label index="attr.title">Task Title</label>
-	<label index="attr.worktype">Work Type</label>
+	<label index="attr.worktype">Activity Type</label>
 	<label index="attr.estimated_workload">Estimated Workload</label>
 	<label index="attr.ext_resources_is_onblock">Work Frequency</label>
 	<label index="attr.billingtype">Billing Type</label>
@@ -78,7 +78,7 @@
 	<label index="type.task">Task</label>
 	<label index="type.container">Container</label>
 	<label index="billableTime">Billable Time</label>
-	<label index="worktype">Work Type</label>
+	<label index="worktype">Activity Type</label>
 	<label index="estimated_workload">Estimated Workload</label>
 	<label index="date_start">Start Date </label>
 	<label index="date_deadline">Customer Deadline</label>
