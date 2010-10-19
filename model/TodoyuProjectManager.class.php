@@ -506,7 +506,7 @@ class TodoyuProjectManager {
 				$companyLabel	= trim($project['companyShort']) === '' ? TodoyuString::crop($project['companyFull'], 8, '..', false) : $project['companyShort'];
 				$tabs[] = array(
 					'id'		=> $project['id'],
-					'label'		=> TodoyuString::crop($companyLabel. ': ' . $project['title'], 23, '..', false)
+					'label'		=> $companyLabel. ': ' . $project['title']
 				);
 			}
 		}
