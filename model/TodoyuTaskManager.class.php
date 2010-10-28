@@ -1726,11 +1726,13 @@ class TodoyuTaskManager {
 				$form->getField('id_parenttask')->remove();
 				$form->addHiddenField('id_parenttask', 0);
 
-					// Remove empty status field
-				$statuses	= TodoyuTaskStatusManager::getStatuses('create');
+				if( $form->hasField('status') ) {
+						// Remove empty status field
+					$statuses	= TodoyuTaskStatusManager::getStatuses('create');
 
-				if( sizeof($statuses) === 0 ) {
-					$form->getField('status')->remove();
+					if( sizeof($statuses) === 0 ) {
+						$form->getField('status')->remove();
+					}
 				}
 			}
 		}
