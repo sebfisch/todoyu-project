@@ -6,7 +6,9 @@
 	<label index="project">Project</label>
 	<label index="projects">Projects</label>
 	<label index="page.title.noSelected">Projects - select your project</label>
-	<label index="noproject.message">Currently, you have no access to any project. Either you are not assigned to any project yet or have no rights to see the current state. Please inform your contact person about this problem.</label>
+	<label index="noproject.message.description">Currently you have no access to any project. Either you are not assigned to any project yet or do not have the necessary rights.</label>
+	<label index="noproject.message.informcontact">Please inform your contact person about this problem.</label>
+	<label index="noproject.message.createproject">Create a first project now by clicking here or using the quick create headlet.</label>
 	<label index="noproject.tab">No Projects Available</label>
 	<label index="newproject.tab">Create a new project</label>
 	<label index="newproject.title">New Project</label>

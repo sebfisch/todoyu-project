@@ -6,7 +6,7 @@
 	<label index="project">プロジェクト</label>
 	<label index="projects">プロジェクト</label>
 	<label index="page.title.noSelected">プロジェクト - プロジェクトを選択</label>
-	<label index="noproject.message">まだプロジェクトを選択していません</label>
+	<label index="noproject.message.description">まだプロジェクトを選択していません</label>
 	<label index="noproject.info">上にある作成ボタンを使用してください</label>
 	<label index="noproject.option.select">プロジェクトツリーから一つ選択</label>
 	<label index="noproject.option.create">新規プロジェクトを作成</label>

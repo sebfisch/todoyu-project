@@ -6,7 +6,7 @@
 	<label index="project">Projet</label>
 	<label index="projects">Projets</label>
 	<label index="page.title.noSelected">Projets - sélectionnez votre projet</label>
-	<label index="noproject.message">Actuellement, vous n'avez accès à aucun projet. Soit vous n'avez pas encore été assigné à un projet, soit vous n'avez pas les permissions nécessaires pour le consulter. Si nécessaire, veuillez informer le responsable de ce problème.</label>
+	<label index="noproject.message.description">Actuellement, vous n'avez accès à aucun projet. Soit vous n'avez pas encore été assigné à un projet, soit vous n'avez pas les permissions nécessaires pour le consulter. Si nécessaire, veuillez informer le responsable de ce problème.</label>
 	<label index="noproject.tab">Aucun projet disponible</label>
 	<label index="newproject.tab">Créer un nouveau projet</label>
 	<label index="newproject.title">Nouveau projet</label>

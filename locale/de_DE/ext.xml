@@ -6,7 +6,9 @@
 	<label index="project">Projekt</label>
 	<label index="projects">Projekte</label>
 	<label index="page.title.noSelected">Projekte - Wählen Sie ein Projekt</label>
-	<label index="noproject.message">Sie haben zur Zeit keinen Zugriff auf ein Projekt. Entweder sind Sie keinem Projekt zugeteilt oder Sie haben nicht die erforderlichen Rechte, um den aktuellen Status des Projektes zu sehen. Informieren Sie bitte Ihre Kontaktperson über diesen Zustand.</label>
+	<label index="noproject.message.description">Sie haben zur Zeit keinen Zugriff auf ein Projekt. Entweder sind Sie keinem Projekt zugeteilt oder Sie haben nicht die erforderlichen Rechte, um den aktuellen Status des Projektes zu sehen.</label>
+	<label index="noproject.message.informcontact">Informieren Sie bitte Ihre Kontaktperson über diesen Zustand.</label>
+	<label index="noproject.message.createproject">Um nun ein Projekt anzulegen, verwenden Sie das QuickCreate Headlet oder clicken Sie hier.</label>
 	<label index="noproject.tab">Keine Projekte verfügbar</label>
 	<label index="newproject.tab">Ein neues Projekt erfassen</label>
 	<label index="newproject.title">Neues Projekt</label>

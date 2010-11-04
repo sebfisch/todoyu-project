@@ -6,7 +6,7 @@
 	<label index="project">Проект</label>
 	<label index="projects">Проекты</label>
 	<label index="page.title.noSelected">Проекты - выберите ваш проект</label>
-	<label index="noproject.message">Вы ещё не выбрали ни одного проекта</label>
+	<label index="noproject.message.description">Вы ещё не выбрали ни одного проекта</label>
 	<label index="noproject.tab">Не выбран ни один проект</label>
 	<label index="newproject.tab">Создать новый проект</label>
 	<label index="newproject.title">Новый проект</label>

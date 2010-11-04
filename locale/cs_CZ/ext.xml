@@ -5,7 +5,7 @@
 	<label index="project">Projekt</label>
 	<label index="projects">Projekty</label>
 	<label index="page.title.noSelected">Projekty - zvolte projekt</label>
-	<label index="noproject.message">Není zvolen žádný projekt</label>
+	<label index="noproject.message.description">Není zvolen žádný projekt</label>
 	<label index="noproject.tab">Nebyl zvolen projekt</label>
 	<label index="newproject.tab">Vytvořit nový projekt</label>
 	<label index="newproject.title">Nový projekt</label>
