@@ -246,33 +246,33 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
 			)
 		)
 	),
-	'status' => array(
-		'key'		=> 'status',
-		'label'		=> 'task.contextmenu.status.change',
-		'jsAction'	=> 'void(0)',
-		'class'		=> 'taskContextMenu taskStatus',
-		'position'	=> 50,
-		'submenu'	=> array(
-			'progress'	=> array(
-				'key'		=> 'status-progress',
-				'label'		=> 'task.status.progress',
-				'jsAction'	=> 'Todoyu.Ext.project.Container.updateStatus(#ID#, ' . STATUS_PROGRESS . ')',
-				'class'		=> 'taskContextMenu projectStatusProgress'
-			),
-			'done'	=> array(
-				'key'		=> 'status-done',
-				'label'		=> 'task.status.done',
-				'jsAction'	=> 'Todoyu.Ext.project.Container.updateStatus(#ID#, ' . STATUS_DONE . ')',
-				'class'		=> 'taskContextMenu projectStatusDone'
-			),
-			'cleared'	=> array(
-				'key'		=> 'status-cleared',
-				'label'		=> 'task.status.cleared',
-				'jsAction'	=> 'Todoyu.Ext.project.Container.updateStatus(#ID#, ' . STATUS_CLEARED . ')',
-				'class'		=> 'taskContextMenu projectStatusCleared'
-			)
-		)
-	)
+//	'status' => array(
+//		'key'		=> 'status',
+//		'label'		=> 'task.contextmenu.status.change',
+//		'jsAction'	=> 'void(0)',
+//		'class'		=> 'taskContextMenu taskStatus',
+//		'position'	=> 50,
+//		'submenu'	=> array(
+//			'progress'	=> array(
+//				'key'		=> 'status-progress',
+//				'label'		=> 'task.status.progress',
+//				'jsAction'	=> 'Todoyu.Ext.project.Container.updateStatus(#ID#, ' . STATUS_PROGRESS . ')',
+//				'class'		=> 'taskContextMenu projectStatusProgress'
+//			),
+//			'done'	=> array(
+//				'key'		=> 'status-done',
+//				'label'		=> 'task.status.done',
+//				'jsAction'	=> 'Todoyu.Ext.project.Container.updateStatus(#ID#, ' . STATUS_DONE . ')',
+//				'class'		=> 'taskContextMenu projectStatusDone'
+//			),
+//			'cleared'	=> array(
+//				'key'		=> 'status-cleared',
+//				'label'		=> 'task.status.cleared',
+//				'jsAction'	=> 'Todoyu.Ext.project.Container.updateStatus(#ID#, ' . STATUS_CLEARED . ')',
+//				'class'		=> 'taskContextMenu projectStatusCleared'
+//			)
+//		)
+//	)
 );
 
 
@@ -337,7 +337,7 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 				'label'		=> 'task.status.progress',
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_PROGRESS . ')',
 				'class'		=> 'projectContextMenu projectStatusProgress'
-			),			
+			),
 			'cleared'	=> array(
 				'key'		=> 'status-cleared',
 				'label'		=> 'task.status.cleared',

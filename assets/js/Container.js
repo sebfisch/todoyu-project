@@ -30,7 +30,7 @@ Todoyu.Ext.project.Container = {
 
 	/**
 	 * Evoke editing of given container (handled via task editing)
-	 * 
+	 *
 	 * @param	{Number}	idContainer
 	 */
 	edit: function(idContainer) {
@@ -110,6 +110,7 @@ Todoyu.Ext.project.Container = {
 	 *
 	 * @param	{Number}	idContainer
 	 * @param	{String}	idStatus
+	 * @todo	Remove
 	 */
 	updateStatus: function(idContainer, idStatus) {
 		this.ext.Task.updateStatus(idContainer, idStatus);
