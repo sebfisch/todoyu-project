@@ -1,7 +1,7 @@
 <div id="task-{$task.id}" class="task status{ucfirst $task.statuskey} {$task.class}">
 	<h3 id="task-{$task.id}-header" class="contextmenutask" name="task-{$task.id}" onclick="Todoyu.Ext.project.Task.toggleDetails({$task.id})">
 
-		<span class="headLabel bcStatus{$task.status}" title="{$task.fulltitle}">
+		<span class="headLabel bcStatus{$task.status}" title="{htmlencode $task.fulltitle}">
 			{if $task.is_container}
 			<span class="taskDate date" title="">
 				&nbsp;
@@ -11,10 +11,10 @@
 			{/if}
 			</span>
 			<span class="customer">
-				{if $task.company.shortname}{$task.company.shortname}{else}{$task.company.title}{/if}&nbsp;
+				{if $task.company.shortname}{htmlencode $task.company.shortname}{else}{htmlencode $task.company.title}{/if}&nbsp;
 			</span>
-			<span class="projectName" title="{Label project.project}: {$task.project.title} (ID: {$task.project.id}) / {Label task.task}: {$task.title}">
-				{htmlencode $task.project.title|truncate:45} - {htmlencode $task.title|truncate:45}
+			<span class="projectName" title="{Label project.project}: {htmlencode $task.project.title} (ID: {$task.project.id}) / {Label task.task}: {htmlencode $task.title}">
+				{htmlencode(truncate($task.project.title,45))} - {htmlencode(truncate($task.title,45))}
 			</span>
 		</span>
 

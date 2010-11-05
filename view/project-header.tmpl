@@ -1,7 +1,7 @@
 <div class="projectstatus bcStatus{$status}"></div>
 <h1 class="title headerLine contextmenuproject" id="project-{$id}-header" {if isAllowedSeeProjectDetails($id)}onclick="Todoyu.Ext.project.Project.toggleDetails({$id})"{/if}>
 	<span id="project-{$id}-titlelabel" class="title titleLabel first" title="ID: {$id}">
-		{$fulltitle}
+		{htmlencode $fulltitle}
 	</span>
 
 	<span class="projectIcons">
