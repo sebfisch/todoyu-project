@@ -565,13 +565,13 @@ class TodoyuProjectRenderer {
 		$taskData	= $task->getTemplateData(2);
 
 			// Render edit form wraped by details and data div like in the view template
-		$wrapedForm	= TodoyuTaskRenderer::renderNewTaskEditForm($idProject, $idParentTask);
+		$wrappedForm	= TodoyuTaskRenderer::renderNewTaskEditForm($idProject, $idParentTask, $type);
 
 			// Prepare data array for template
 		$tmpl	= 'ext/project/view/task-header.tmpl';
 		$data = array(
 			'task'		=> $taskData,
-			'details'	=> $wrapedForm
+			'details'	=> $wrappedForm
 		);
 
 			// Call last hook before rendering

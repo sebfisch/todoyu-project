@@ -189,14 +189,15 @@ class TodoyuTaskRenderer {
 
 
 	/**
-	 * Render edit form to edit a new task. This form is wraped by
+	 * Render edit form to edit a new task or container. This form is wrapped by
 	 * the "detail" and "data" div as used in detail view
 	 *
-	 * @param	Integer	$idProject
-	 * @param	Integer	$idParentTask
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idParentTask
+	 * @param	Integer		$type
 	 * @return	String
 	 */
-	public static function renderNewTaskEditForm($idProject, $idParentTask = 0) {
+	public static function renderNewTaskEditForm($idProject, $idParentTask = 0, $type = TASK_TYPE_TASK) {
 		$idTask			= 0;
 
 			// Render form for new empty task
@@ -207,7 +208,7 @@ class TodoyuTaskRenderer {
 		$data	= array(
 			'idTask'	=> $idTask,
 			'task'	=> array(
-				'status'	=> STATUS_OPEN
+				'status'	=> ( $type === TASK_TYPE_TASK ) ? STATUS_OPEN : 0
 			),
 			'taskdata'	=> $form
 		);

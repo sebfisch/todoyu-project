@@ -144,6 +144,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 */
 	public function saveAction(array $params) {
 		$data			= $params['task'];
+
 		$idTask			= intval($data['id']);
 		$idParentTask	= intval($data['id_parenttask']);
 		$idProject		= intval($data['id_project']);
@@ -170,7 +171,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 			// Check if form is valid
 		if( $form->isValid() ) {
-				// Set parenttask open status
+				// Set parent task open status
 			if( $idParentTask !== 0 ) {
 				TodoyuProjectPreferences::saveSubTasksVisibility($idParentTask, true);
 			}

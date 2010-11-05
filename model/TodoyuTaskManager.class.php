@@ -174,7 +174,6 @@ class TodoyuTaskManager {
 	public static function saveTask(array $data) {
 		$xmlPath	= 'ext/project/config/form/task.xml';
 		$idTask		= intval($data['id']);
-//		$idProject	= intval($data['id_project']);
 
 		if( $idTask === 0 ) {
 				// Create new task with necessary data
@@ -189,13 +188,15 @@ class TodoyuTaskManager {
 			// Check for type
 		if( empty($data['type']) ) {
 			$data['type'] = TASK_TYPE_TASK;
+		} elseif( $data['type'] == TASK_TYPE_CONTAINER ) {
+				// Init container status (none) 
+			$data['status'] = 0;
 		}
 
 			// Call hooked save data functions
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idTask);
 
 		self::updateTask($idTask, $data);
-
 		self::removeTaskFromCache($idTask);
 
 		return $idTask;
