@@ -427,8 +427,8 @@ class TodoyuProjectManager {
 				}
 			}
 
+				// Delete items: only allowed when nothing locked
 			if( ! $project->hasLockedTasks() ) {
-					// Delete
 				$allowed['delete'] = $ownItems['delete'];
 			}
 		}
