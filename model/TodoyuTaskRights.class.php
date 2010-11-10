@@ -135,6 +135,11 @@ class TodoyuTaskRights {
 	 */
 	public static function isAddInProjectAllowed($idProject) {
 		$idProject	= intval($idProject);
+		$project	= TodoyuProjectManager::getProject($idProject);
+
+		if( $project->isLocked() ) {
+			return false;
+		}
 
 		if( TodoyuProjectManager::isPersonAssigned($idProject) ) {
 			return allowed('project', 'task:addInOwnProjects');
