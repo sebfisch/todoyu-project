@@ -17,6 +17,16 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * @module	Project
+ */
+
+/**
+ * Task container
+ *
+ * @class		Container
+ * @namespace	Todoyu.Ext.project
+ */
 Todoyu.Ext.project.Container = {
 
 	/**
