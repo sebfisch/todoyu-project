@@ -18,6 +18,8 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+TodoyuHookManager::registerHook('core', 'substituteLinkableElements', 'TodoyuTaskManager::linkTaskIDsInText');
+
 TodoyuHookManager::registerHook('project', 'taskdata', 			'TodoyuTaskManager::getTaskDataAttributes');
 TodoyuHookManager::registerHook('project', 'projectdata', 		'TodoyuProjectManager::getProjectDataAttributes');
 TodoyuHookManager::registerHook('project', 'taskIcons', 		'TodoyuTaskManager::getTaskIcons');

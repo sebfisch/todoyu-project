@@ -19,7 +19,7 @@
 
 	<div class="infoBox description">
 		<h4>{Label core.description}</h4>
-		<div class="content overflow">{linkTasks(linkUrls(cleanHtml($description)))}</div>
+		<div class="content overflow">{substituteLinkableElements(cleanHtml($description))}</div>
 	</div>
 
 	{* ---------- Dynamic added elements ----------- *}

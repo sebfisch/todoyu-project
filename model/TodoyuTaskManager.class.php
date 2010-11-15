@@ -2212,16 +2212,20 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Link task IDs in the text
+	 * Link task IDs in given text
 	 *
 	 * @param	String		$text
 	 * @return	String
 	 */
 	public static function linkTaskIDsInText($text) {
-		$pattern	= '/(<p>|<span>|\s|^)(\d+\.\d+)(<\/p>|<\/span>|\s|$)/';
-		$replace	= '$1<a href="javascript:void(0)" onclick="Todoyu.Ext.project.goToTaskInProjectByTasknumber(\'$2\')">$2</a>$3';
+		if( allowed('project', 'general:area') ) {
+			$pattern	= '/(<p>|<span>|\s|^)(\d+\.\d+)(<\/p>|<\/span>|\s|$)/';
+			$replace	= '$1<a href="javascript:void(0)" onclick="Todoyu.Ext.project.goToTaskInProjectByTasknumber(\'$2\')">$2</a>$3';
 
-		return preg_replace($pattern, $replace, $text);
+			$text	= preg_replace($pattern, $replace, $text);
+		}
+
+		return $text;
 	}
 
 }
