@@ -56,7 +56,7 @@ class TodoyuProjectPreferences {
 
 
 	/**
-	 * Get  project preference
+	 * Get all preferences of project 
 	 *
 	 * @param	String		$preference
 	 * @param	Integer		$idItem
@@ -252,6 +252,19 @@ class TodoyuProjectPreferences {
 		$list		= self::getPref('projecttabs');
 		$projectIDs	= TodoyuArray::intExplode(',', $list, true, true);
 
+			// Filter to keep only allowed projects
+		return self::unsetForbiddenProjectIDs($projectIDs);
+	}
+
+
+
+	/**
+	 * Remove project which are not allowed to be seen from array of project IDs
+	 *
+	 * @param	Array	$projectIDs
+	 * @return	Array
+	 */
+	public static function unsetForbiddenProjectIDs($projectIDs = array()) {
 		foreach($projectIDs as $index => $idProject) {
 			if( ! TodoyuProjectRights::isSeeAllowed($idProject) ) {
 				unset($projectIDs[$index]);

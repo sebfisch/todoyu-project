@@ -589,6 +589,20 @@ class TodoyuTaskManager {
 
 
 	/**
+	 * Get estimated workload of task
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Integer
+	 */
+	public static function getEstimatedWorkload($idTask) {
+		$idTask	= intval($idTask);
+
+		return self::getTask($idTask)->get('estimated_workload');
+	}
+
+
+
+	/**
 	 * Get sub tasks (as data array) of given task
 	 *
 	 * @param	Integer		$idTask

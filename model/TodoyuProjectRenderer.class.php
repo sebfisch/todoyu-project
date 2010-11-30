@@ -127,8 +127,8 @@ class TodoyuProjectRenderer {
 	/**
 	 * Render tabbed project
 	 *
-	 * @param	Integer	$idProject
-	 * @param	Integer	$idTask
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idTask
 	 * @return 	String
 	 */
 	public static function renderTabbedProject($idProject, $idTask, $tab = null) {
@@ -311,7 +311,7 @@ class TodoyuProjectRenderer {
 
 	/**
 	 * Render project task tree
-	 * The tree includes all task which match the current filter, and the lost tasks section
+	 * The tree includes all tasks which match the current filter, and the lost tasks section
 	 *
 	 * @param	Integer		$idProject			Render the task tree of this project
 	 * @param	Integer		$idTask				Make sure this task is visible
@@ -321,7 +321,7 @@ class TodoyuProjectRenderer {
 		$idProject	= intval($idProject);
 		$idTaskShow	= intval($idTaskShow);
 
-			// Initialize tree in javaScript if not a AJAX refresh
+			// Initialize tree in JavaScript if not a AJAX refresh
 		if( ! TodoyuRequest::isAjaxRequest() ) {
 			TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.TaskTree.init.bind(Todoyu.Ext.project.TaskTree)', 100);
 		}

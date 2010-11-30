@@ -471,12 +471,17 @@ class TodoyuProjectManager {
 
 
 	/**
-	 * Get open project tabs
+	 * Get render data for open project tabs
 	 *
 	 * @return	Array
 	 */
-	public static function getOpenProjectTabs() {
-		$projectIDs	= TodoyuProjectPreferences::getOpenProjectIDs();
+	public static function getOpenProjectTabs($projectIDs = array()) {
+		if( count($projectIDs) === 0 ) {
+			$projectIDs	= TodoyuProjectPreferences::getOpenProjectIDs();
+		} else {
+			$projectIDs	= TodoyuArray::intval($projectIDs);
+		}
+
 		$projectList= implode(',', $projectIDs);
 
 			// Get tab data
