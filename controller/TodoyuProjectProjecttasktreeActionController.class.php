@@ -34,7 +34,7 @@ class TodoyuProjectProjecttasktreeActionController extends TodoyuActionControlle
 
 	/**
 	 * Add a project to the tasktree view
-	 * (Doesn't create a 'new' project, just adds an existing one to the tree)
+	 * (Doesn't create a 'new' project, just adds an existing one to the displayed tree)
 	 *
 	 * @param	Array		$params
 	 * @return	String

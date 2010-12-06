@@ -225,7 +225,7 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Get task type
+	 * Get task type (TASK_TYPE_TASK = 1, TASK_TYPE_CONTAINER = 2)
 	 *
 	 * @return	Integer		Type constant
 	 */

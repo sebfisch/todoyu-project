@@ -46,6 +46,11 @@ class TodoyuProjectRenderer {
 	 */
 	public static $renderedTasks	= array();
 
+	/**
+	 * @var	Array		List of expanded task IDs
+	 */
+	public static $expandedTaskIDs	= array();
+
 
 
 	/**
