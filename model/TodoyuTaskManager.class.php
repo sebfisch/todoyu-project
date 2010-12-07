@@ -603,22 +603,46 @@ class TodoyuTaskManager {
 
 
 	/**
-	 * Get sub tasks (as data array) of given task
+	 * Get direct sub tasks (as data array) of given task (1 level)
 	 *
 	 * @param	Integer		$idTask
+	 * @param	String		$order
 	 * @return	Array
 	 */
-	public static function getSubTasks($idTask) {
+	public static function getSubTasks($idTask, $order = 'date_create') {
 		$idTask	= intval($idTask);
 
 		if( $idTask === 0 )	{
 			return array();
 		}
 
-		$where	= '	id_parenttask	= ' . $idTask . ' AND deleted	= 0';
-		$order	= 'date_create';
+		$where	=	'		id_parenttask	= ' . $idTask
+				  . ' AND	deleted			= 0';
 
 		return TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
+	}
+
+
+
+	/**
+	 * Get IDs of direct (1 level) sub tasks of given task
+	 *
+	 * @param	Integer		$idTask
+	 * @param	String		$order
+	 * @return	Array
+	 */
+	public static function getSubTasksIDs($idTask, $order = 'date_create') {
+		$idTask	= intval($idTask);
+
+		if( $idTask === 0 )	{
+			return array();
+		}
+
+		$field	= 'id';
+		$where	=	'		id_parenttask	= ' . $idTask
+				  . ' AND	deleted			= 0';
+
+		return Todoyu::db()->getColumn($field, self::TABLE, $where, '', $order);
 	}
 
 
