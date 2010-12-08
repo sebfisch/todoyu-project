@@ -578,9 +578,9 @@ class TodoyuTaskManager {
 		$newTasks	= Todoyu::db()->getColumn($field, $table, $where);
 
 		while( sizeof($newTasks) > 0 ) {
-			$subTasks = array_merge($subTasks, $newTasks);
-			$where = sprintf($whereF, implode(',', $newTasks));
-			$newTasks = Todoyu::db()->getColumn($field, $table, $where);
+			$subTasks	= array_merge($subTasks, $newTasks);
+			$where		= sprintf($whereF, implode(',', $newTasks));
+			$newTasks	= Todoyu::db()->getColumn($field, $table, $where);
 		}
 
 		return $subTasks;
