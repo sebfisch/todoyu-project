@@ -60,7 +60,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * @param	{Number}		idTask
 	 */
 	openProject: function(idProject, idTask) {
-		if( this.isProjectLoaded(idProject) && (idTask === 0 || (idTask !== 0 && this.isTaskLoaded(idTask) ) ) ) {
+		if( this.isProjectLoaded(idProject) && (idTask === 0 || idTask === undefined || (idTask !== 0 && this.isTaskLoaded(idTask) ) ) ) {
 			this.displayActiveProject(idProject);
 			if( idTask !== 0 ) {
 				this.ext.Task.scrollTo(idTask);
@@ -90,7 +90,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 	/**
 	 * Remove sub tab of given project
-	 * 
+	 *
 	 * @param	{Number}		idProject
 	 */
 	removeProjectTab: function(idProject) {
@@ -99,18 +99,6 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		if( Todoyu.exists(id) ) {
 			$(id).remove();
 		}
-	},
-
-
-
-	/**
-	 * Check whether given project is loaded (the resp. project tab exists)
-	 *
-	 * @param	{Number}	idProject
-	 * @return	{Boolean}
-	 */
-	hasTab: function(idProject) {
-		return Todoyu.exists('project-tab-' + idProject);
 	},
 
 
@@ -160,7 +148,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 		this.insertTabContent(idProject, response.responseText);
 
-		if( ! this.hasTab(idProject) ) {
+		if( ! Todoyu.Tabs.hasTab('project', idProject) ) {
 			this.addNewTabhead(idProject, label);
 		}
 
@@ -195,10 +183,9 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * @param	{String}	label
 	 */
 	addNewTabhead: function(idProject, label) {
-		var tabClass= 'tabkey-' + idProject + ' project' + idProject + ' projecttab item bcg05';
-		var tab		= Todoyu.Tabs.build('project', idProject, tabClass, label, true);
+		var tabClass= 'project' + idProject + ' projecttab';
 
-		$('project-tabs').insert({'top':tab});
+		Todoyu.Tabs.addTab('project', idProject, tabClass, label, true, true);
 	},
 
 
@@ -212,17 +199,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 			// Remove no selection tab first
 		this.removeNoSelectionTab();
 
-			// Get tab which will be in front
-		var tab = $('project-tab-' + idTab);
-			// Remove it from the DOM
-		tab.remove();
-
-			// Add the tab as first element
-		$('project-tabs').insert({
-			'top':	tab
-		});
-
-		this.highlightTab(idTab);
+		Todoyu.Tabs.moveAsFirst('project', idTab);
 	},
 
 
@@ -244,7 +221,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 	/**
 	 * Get amount of sub tabs shown
-	 * 
+	 *
 	 * @return	{Number}
 	 */
 	getNumTabs: function() {
@@ -272,7 +249,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 	/**
 	 * @todo	check, implement or remove
-	 * 
+	 *
 	 * @param	{Object}	response
 	 */
 	onNoProjectSelectedViewLoaded: function(response) {
@@ -282,26 +259,20 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 	/**
-	 * Highlight the front tab
-	 *
-	 * @todo	check, remove?
-	 * @param	{String}		idTab
-	 */
-	highlightTab: function(idTab) {
-//		var label = $('projecttab-' + idTab).select('.labeltext').first();
-//
-//		Effect.Shake(label, {
-//			'distance': 5,
-//			'duration': 0.3
-//		});
-	},
-
-
-
-	/**
 	 * Remove surplus (spare) project
 	 */
 	removeSurplusProject: function() {
+		var removedProjects = Todoyu.Tabs.removeSurplus('project', this.maxOpenTabs);
+
+		removedProjects.each(function(idProject){
+			if( Todoyu.exists('project-' + idProject) ) {
+				$('project-' + idProject).remove();
+			}
+		});
+
+		/*
+
+
 		var surplusTab = $('project-tabs').down('li').next('li', this.maxOpenTabs-1);
 
 		if( surplusTab !== undefined ) {
@@ -316,6 +287,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 				$('project-' + idProject).remove();
 			}
 		}
+		*/
 	},
 
 
@@ -383,19 +355,13 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * Save currently open projects in prefs
 	 */
 	saveOpenProjects: function() {
-		this.openProjects = [];
-
-		$('project-tabs').childElements().each(function(tab) {
-			this.openProjects.push(tab.id.split('-').last());
-		}.bind(this));
-
-		this.openProjects = this.openProjects.uniq();
+		var openProjects	= Todoyu.Tabs.getTabNames('project');
 
 		var url		= Todoyu.getUrl('project', 'projecttasktree');
 		var options	= {
 			'parameters': {
-				'action':	'openprojects',
-				'projects':	this.openProjects.join(',')
+				action:	'openprojects',
+				'projects':	openProjects.join(',')
 			}
 		};
 
@@ -449,7 +415,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 	/**
 	 * Get current tab items (DOM elements)
-	 * 
+	 *
 	 * @return	Array
 	 */
 	getTabs: function() {
