@@ -390,7 +390,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @return	Array
 	 */
 	public static function Filter_deadline($date, $negate = false)	{
-		return self::makeFilter_date('deadline', $date, $negate);
+		return self::makeFilter_date('date_deadline', $date, $negate);
 	}
 
 
