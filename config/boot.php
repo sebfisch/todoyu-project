@@ -18,16 +18,14 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-/**
- * Extension main file for project extension
- *
- * @package		Todoyu
- * @subpackage	Project
- */
-
 	// Declare ext ID, path
 define('EXTID_PROJECT', 112);
 define('PATH_EXT_PROJECT', PATH_EXT . '/project');
+
+require_once( PATH_EXT_PROJECT . '/config/constants.php' );
+require_once( PATH_EXT_PROJECT . '/config/hooks.php' );
+require_once( PATH_EXT_PROJECT . '/dwoo/plugins.php');
+
 
 	// Register module locales
 TodoyuLabelManager::register('project', 'project', 'ext.xml');
@@ -36,12 +34,5 @@ TodoyuLabelManager::register('projectFilter', 'project', 'filter.xml');
 TodoyuLabelManager::register('panelwidget-projectlist', 'project', 'panelwidget-projectlist.xml');
 TodoyuLabelManager::register('panelwidget-statusfilter', 'project', 'panelwidget-statusfilter.xml');
 TodoyuLabelManager::register('headlet-quicktask', 'project', 'headlet-quicktask.xml');
-
-	// Request configurations
-	// @notice	Auto-loaded configs if available: admin, assets, create, contextmenu, extinfo, filters, form, page, panelwidgets, rights, search
-require_once( PATH_EXT_PROJECT . '/config/constants.php' );
-require_once( PATH_EXT_PROJECT . '/config/extension.php' );
-require_once( PATH_EXT_PROJECT . '/config/hooks.php' );
-require_once( PATH_EXT_PROJECT . '/dwoo/plugins.php');
 
 ?>

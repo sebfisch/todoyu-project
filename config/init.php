@@ -18,14 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-/**
- * General configuration for project extension
- *
- * @package		Todoyu
- * @subpackage	Project
- */
-
-
 
  	// Add autoCompleters
 TodoyuAutocompleter::addAutocompleter('projectperson', 'TodoyuPersonFilterDataSource::autocompletePersons', array('project', 'general:use'));
