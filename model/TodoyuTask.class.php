@@ -214,6 +214,19 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
+	 * Get worktype label
+	 *
+	 * @return	String
+	 */
+	public function getWorktypeLabel() {
+		$worktype	= $this->getWorktype();
+
+		return $worktype['title'];
+	}
+
+
+
+	/**
 	 * Get worktype ID
 	 *
 	 * @return	Integer
