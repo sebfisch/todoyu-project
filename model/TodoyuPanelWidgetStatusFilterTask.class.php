@@ -63,6 +63,12 @@ class TodoyuPanelWidgetStatusFilterTask extends TodoyuPanelWidgetStatusFilter im
 	}
 
 
+
+	/**
+	 * Get currently selected statuses
+	 *
+	 * @return Array|String
+	 */
 	public function getSelectedStatuses() {
 		$statusIDs	= TodoyuProjectPreferences::getPref($this->pref, 0, AREA);
 

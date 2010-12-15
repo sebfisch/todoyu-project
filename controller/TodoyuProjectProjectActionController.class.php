@@ -98,7 +98,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 * 'details' action method
+	 * Render project details
 	 *
 	 * @param	Array	$params
 	 * @return	String
@@ -114,7 +114,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 * 'setstatus' action method
+	 * Update project status
 	 *
 	 * @param	Array	$params
 	 */
@@ -130,7 +130,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 * 'remove' action method
+	 * Delete project
 	 *
 	 * @param	Array	$params
 	 */
@@ -146,8 +146,10 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 * @todo	comment
+	 * Render message when no project is selected
+	 *
 	 * @param	Array		$params
+	 * @return	String
 	 */
 	public function noProjectViewAction(array $params) {
 		return TodoyuProjectRenderer::renderNoProjectSelectedView();
@@ -176,6 +178,13 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 * Paste task from clipboard into project
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
 	public function pasteInProjectAction(array $params) {
 		$idProject	= intval($params['project']);
 

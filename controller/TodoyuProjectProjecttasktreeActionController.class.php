@@ -58,7 +58,7 @@ class TodoyuProjectProjecttasktreeActionController extends TodoyuActionControlle
 
 			// Send project id and tab label as header
 		TodoyuHeader::sendTodoyuHeader('project', $idProject);
-			// Send tablabel json encoded to make sure, all characters are encoded properly
+			// Send tab label JSON encoded to make sure, all characters are encoded properly
 		TodoyuHeader::sendTodoyuHeader('tablabel', $tabLabel);
 
 			// Render project details and tabtree in tab
