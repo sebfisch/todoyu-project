@@ -225,7 +225,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * @return	{Number}
 	 */
 	getNumTabs: function() {
-		return $('project-tabs').select('li').size();
+		return Todoyu.Tabs.getNumTabs('project');
 	},
 
 
@@ -269,25 +269,6 @@ Todoyu.Ext.project.ProjectTaskTree = {
 				$('project-' + idProject).remove();
 			}
 		});
-
-		/*
-
-
-		var surplusTab = $('project-tabs').down('li').next('li', this.maxOpenTabs-1);
-
-		if( surplusTab !== undefined ) {
-				// Get project ID from tab ID
-			var idProject = (surplusTab.readAttribute('id').split('-'))[1];
-
-				// Remove tab
-			surplusTab.remove();
-
-				// Remove project tree if loaded
-			if( Todoyu.exists('project-' + idProject) ) {
-				$('project-' + idProject).remove();
-			}
-		}
-		*/
 	},
 
 
@@ -346,7 +327,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * @return	{Boolean}
 	 */
 	isProjectActive: function(idProject) {
-		return $('project-tabs').select('li.active').first().readAttribute('id').split('-').last() == idProject;
+		return Todoyu.Tabs.getActiveKey('project') == idProject;
 	},
 
 
@@ -376,17 +357,18 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * @return	String
 	 */
 	getActiveProjectID: function() {
-		var activeTabs	= $('project-tabs').select('li.active');
-
-		if( activeTabs.size() === 1 ) {
-			return activeTabs.first().id.split('-').last();
-		} else {
-			if( this.getNumTabs() > 0 ) {
-				return this.getTabs().first().id.split('-').last();
-			}
-		}
-
-		return false;
+		return Todoyu.Tabs.getActiveKey('project');
+//		var activeTabs	= $('project-tabs').select('li.active');
+//
+//		if( activeTabs.size() === 1 ) {
+//			return activeTabs.first().id.split('-').last();
+//		} else {
+//			if( this.getNumTabs() > 0 ) {
+//				return this.getTabs().first().id.split('-').last();
+//			}
+//		}
+//
+//		return false;
 	},
 
 
@@ -397,18 +379,20 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * @return  String
 	 */
 	getActiveProjectTitle: function() {
-		var activeTab	= $('project-tabs').select('li.active span.labeltext');
-		var title		= '';
+		return Todoyu.Tabs.getActive('project').down('.labeltext').innerHTML;
 
-		if( activeTab.size() === 1 ) {
-			title = activeTab.first().innerHTML;
-		} else {
-			if( this.getNumTabs() > 0 ) {
-				title = this.getTabs().first().innerHTML;
-			}
-		}
-
-		return title;
+//		var activeTab	= $('project-tabs').select('li.active span.labeltext');
+//		var title		= '';
+//
+//		if( activeTab.size() === 1 ) {
+//			title = activeTab.first().innerHTML;
+//		} else {
+//			if( this.getNumTabs() > 0 ) {
+//				title = this.getTabs().first().innerHTML;
+//			}
+//		}
+//
+//		return title;
 	},
 
 
@@ -419,7 +403,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * @return	Array
 	 */
 	getTabs: function() {
-		return $('project-tabs').select('li');
+		return Todoyu.Tabs.getAllTabs('project');
 	},
 
 
@@ -430,11 +414,13 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * @return	{Mixed}
 	 */
 	getFirstTab: function()	{
-		if( $('project-tabs') && $('project-tabs').select('li').length > 0 ) {
-			return $('project-tabs').select('li')[0].id.substr(11);
-		} else {
-			return false;
-		}
+		return Todoyu.Tabs.getFirstTab('project');
+
+//		if( $('project-tabs') && $('project-tabs').select('li').length > 0 ) {
+//			return $('project-tabs').select('li')[0].id.substr(11);
+//		} else {
+//			return false;
+//		}
 	}
 
 };
