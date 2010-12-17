@@ -492,7 +492,7 @@ Todoyu.Ext.project.Task = {
 	 *
 	 * @param	{Number}				idTask
 	 * @param	{Number}				status
-	 * @param	Ajax.response		response
+	 * @param	{Ajax.response}			response
 	 */
 	onStatusUpdated: function(idTask, status, response) {
 		Todoyu.Hook.exec('project.task.statusUpdated', idTask, status);
