@@ -34,13 +34,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 		'resultsRenderer'	=> 'TodoyuTaskRenderer::renderTaskListing',
 		'class'				=> 'TodoyuTaskFilter',
 		'defaultSorting'	=> 'ext_project_task.date_deadline',
-		'require'			=> 'project.general:use',
-		'assets'			=> array(
-			array(
-				'ext'	=> 'project',
-				'type'	=> 'public'
-			)
-		)
+		'require'			=> 'project.general:use'
 	),
 	'widgets' => array(
 
@@ -388,13 +382,7 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 		'position'			=> 20,
 		'resultsRenderer'	=> 'TodoyuProjectRenderer::renderProjectListing',
 		'class'				=> 'TodoyuProjectFilter',
-		'require'			=> 'project.general:use',
-		'assets'			=> array(
-			array(
-				'ext'	=> 'project',
-				'type'	=> 'public'
-			)
-		)
+		'require'			=> 'project.general:use'
 	),
 	'widgets' => array(
 
