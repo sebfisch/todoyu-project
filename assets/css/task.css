@@ -219,7 +219,7 @@
 
 	.tasks .task .details .description * {
 		line-height:15px;
-		word-wrap:break-word;
+		white-space:normal;
 	}
 
 	.tasks .task .details .description ul {
@@ -228,7 +228,8 @@
 
 	.tasks .task .details .description ul,
 	.tasks .task .details .description ol {
-		margin:0.2em 0 0.2em 2em;
+		margin:0;
+		padding-left:14px;
 	}
 
 	.task .details .description a {
