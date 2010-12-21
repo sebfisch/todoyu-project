@@ -16,13 +16,13 @@
 }
 .tasks .expanded h3,
 .tasks .subtasks .expanded h3 {
-	background-color:#f2f2d2;
+	background-color:#e2e2e2;
 	border-bottom:none;
 	font-weight:bold;
 }
 .tasks .running h3,
 .tasks .subtasks .running h3 {
-	background-color:#f3f3f3;
+	background-color:#f2f2d2;
 }
 
 .tasks .subtasks h3 {
