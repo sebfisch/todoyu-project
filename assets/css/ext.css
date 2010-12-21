@@ -143,9 +143,11 @@ h1.extIconProject .title {
 }
 
 .project .data ul,
-.task .data ul {
-	padding-left:5px;
-	padding-bottom:5px;
+.task .data ul,
+.task .task-comments ul {
+	margin:0;
+	padding:0 0 5px 14px;
+	list-style-type:disc;
 }
 
 #project-tabs {

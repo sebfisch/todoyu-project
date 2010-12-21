@@ -169,12 +169,6 @@ h1.headerLine span.projectIcons {
 		width:150px;
 	}
 
-	/* Description */
-	.project .description ul {
-		list-style-position:inside;
-		list-style-type:square;
-	}
-
 	/* Project persons */
 
 	.project .persons .fieldnamePersons {

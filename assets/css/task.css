@@ -222,16 +222,6 @@
 		white-space:normal;
 	}
 
-	.tasks .task .details .description ul {
-		list-style-type:disc;
-	}
-
-	.tasks .task .details .description ul,
-	.tasks .task .details .description ol {
-		margin:0;
-		padding-left:14px;
-	}
-
 	.task .details .description a {
 		text-decoration:underline !important;
 	}
@@ -390,10 +380,6 @@
 
 .task-inline-edit .type-date input {
 	width:50px;
-}
-
-.taskDetails .comment ul {
-	list-style:square;
 }
 
 .taskDetails .comment p {
