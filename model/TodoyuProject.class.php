@@ -111,7 +111,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getStartDate() {
-		return $this->get('date_start');
+		return intval($this->get('date_start'));
 	}
 
 
@@ -122,7 +122,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getEndDate() {
-		return $this->get('date_end');
+		return intval($this->get('date_end'));
 	}
 
 
@@ -133,7 +133,21 @@ class TodoyuProject extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getDeadlineDate() {
-		return $this->get('date_deadline');
+		return intval($this->get('date_deadline'));
+	}
+
+
+
+	/**
+	 * Get project range
+	 *
+	 * @return	Array
+	 */
+	public function getRange() {
+		return array(
+			'start'	=> $this->getStartDate() === 0 ? $this->get('date_create') : $this->getStartDate(),
+			'end'	=> $this->getDeadlineDate() === 0 ? $this->getEndDate() === 0 ? NOW : $this->getEndDate() : $this->getDeadlineDate()
+		);
 	}
 
 
