@@ -32,10 +32,20 @@ h1.headerLine span.projectIcons {
 	background-color:#e9e9e9;
 }
 
-
 /* --------------
 	Project
    -------------- */
+.project .infoBoxOuter {
+	padding:6px;
+	background-color:#eee;
+}
+.project .infoBoxOuter.edit {
+	padding:0;
+	background:none;
+}
+.statusPlanning .data .content {
+	background-color:white;
+}
 
 	/* Details */
 .project .headerLine {
@@ -69,8 +79,23 @@ h1.headerLine span.projectIcons {
 	}
 
 	/* Assigned persons */
+	.project ul.assignedPersons {
+		margin:0;
+	} 
+	.project ul.assignedPersons span.name {
+		padding-left:20px;
+	} 
 	.project ul.assignedPersons li.person span.name {
 		background:url(../../../contact/assets/img/icons.png) no-repeat 1px 2px;
+	} 
+	.project ul.assignedPersons .name {
+		width:150px;
+	} 
+	.project ul.assignedPersons .company {
+		width:150px;
+	} 
+	.project ul.assignedPersons .role {
+		width:150px;
 	}
 	
 /* ------------------------------------

@@ -157,8 +157,14 @@ h1.extIconProject .title {
 	list-style:disc;	
 }
 .data ul.ulList {
-	padding-left:0;
+	padding:0;
 }
+
+.data ul.assignedPersons li span {
+	padding-left:20px;
+}
+
+
 
 #project-tabs {
 	width:100%;
