@@ -315,7 +315,7 @@
 
 	.task .tabContent .tab {
 		margin:9px;
-		border:1px solid #E9ECE0;
+		border:1px solid #e1e1e1;
 	}
 
 	.task .tabContent .tabBlock {
@@ -330,7 +330,7 @@
 		top:0;
 		width:25px;
 		height:30px;
-		background:#D6DCC5 url(../../../../core/assets/img/toggle.png) no-repeat 0 -65px;
+		background:#d6dcc5 url(../../../../core/assets/img/toggle.png) no-repeat 0 -65px;
 	}
 
 #taskList .activeTabContent .taskOptionBlock {
@@ -350,10 +350,10 @@
 
 #inlineEditTask .innerBox { /* resource planning inline task editor */
 	margin-top:-20px;
-	border-top:1px dotted #AAB1B7;
+	border-top:1px dotted #aab1b7;
 	width:892px;
 	padding:0 12px 0 12px;
-	background-color:#F7F9FA;
+	background-color:#f7f9fa;
 }
 
 
@@ -406,6 +406,6 @@
 .task-status-container h3 a,
 .task-status-container div.taskdetails {
 	border-left-color:#1E2022;
-	background-color:#FBFBF4;
+	background-color:#fbfbf4;
 	/*background:url(../../../../core/assets/img/bgs/taskcontainer.png);*/
 }
