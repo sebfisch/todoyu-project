@@ -1242,33 +1242,114 @@ class TodoyuTaskManager {
 	 * @return	Array
 	 */
 	public static function getTasksInTimeSpan($start = 0, $end = 0, array $statusIDs = array(), array $personIDs = array(), $limit = '', $getContainers = false) {
+		$fields	= '*';
+		$table	= self::TABLE;
+		$where	= self::getTasksInTimeSpanWhereClause($start, $end, $statusIDs, $personIDs, $getContainers);
+		$order	= 'date_start';
+		$index	= 'id';
+
+		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit, $index);
+	}
+
+
+
+	/**
+	 * Get earliest starting one of the tasks intersecting the given timespan
+	 *
+	 * @param	Integer		$start
+	 * @param	Integer		$end
+	 * @param	Array		$statusIDs
+	 * @param	Array		$personIDs		(id_person_assigned)
+	 * @return	Array
+	 */
+	public static function getEarliestTaskInTimespan($start = 0, $end = 0, array $statusIDs = array(), array $personIDs = array()) {
+		$fields	= '*';
+		$table	= self::TABLE;
+		$where	= self::getTasksInTimeSpanWhereClause($start, $end, $statusIDs, $personIDs);
+		$order	= 'date_start ASC';
+
+		return Todoyu::db()->getRecordByQuery($fields, $table, $where, '', $order);
+	}
+
+
+
+	/**
+	 * Get latest ending one of the tasks intersecting the given timespan
+	 *
+	 * @param	Integer		$start
+	 * @param	Integer		$end
+	 * @param	Array		$statusIDs
+	 * @param	Array		$personIDs		(id_person_assigned)
+	 * @return	Array
+	 */
+	public static function getLatestEndingTaskInTimespan($start = 0, $end = 0, array $statusIDs = array(), array $personIDs = array()) {
+		$fields	= '*';
+		$table	= self::TABLE;
+		$where	= self::getTasksInTimeSpanWhereClause($start, $end, $statusIDs, $personIDs);
+		$order	= 'date_end DESC';
+
+		return Todoyu::db()->getRecordByQuery($fields, $table, $where, '', $order);
+	}
+
+
+
+	/**
+	 * Get IDs of tasks in given timespan
+	 * If timestamp of start/end == 0: don't use it (there by this method can be used as well to query for tasks before / after a given timestamp)
+	 * If personIDs given:	limit to tasks assigned to given persons
+	 * If statuses given:	limit to tasks with given statuses
+	 *
+	 * @param	Integer		$start
+	 * @param	Integer		$end
+	 * @param	Array		$statusIDs
+	 * @param	Array		$personIDs		(id_person_assigned)
+	 * @param	String		$limit
+	 * @param	Boolean		$getContainers
+	 * @return	Array
+	 */
+	public static function getTaskIDsInTimeSpan($start = 0, $end = 0, array $statusIDs = array(), array $personIDs = array(), $limit = '', $getContainers = false) {
+		$fields	= 'id';
+		$table	= self::TABLE;
+		$where	= self::getTasksInTimeSpanWhereClause($start, $end, $statusIDs, $personIDs, $getContainers);
+		$order	= 'date_start';
+		$index	= 'id';
+
+		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit, $index);
+	}
+
+
+
+	/**
+	 * Get WHERE clause for tasks in timespan query
+	 *
+	 * @param	Integer		$start
+	 * @param	Integer		$end
+	 * @param	Array		$statusIDs
+	 * @param	Array		$personIDs
+	 * @param	Boolean		$getContainers
+	 * @return	String
+	 */
+	public static function getTasksInTimeSpanWhereClause($start = 0, $end = 0, array $statusIDs = array(), array $personIDs = array(), $getContainers = false) {
 		$start		= intval($start);
 		$end		= intval($end);
 		$statusIDs	= TodoyuArray::intval($statusIDs, true, true);
 		$personIDs	= TodoyuArray::intval($personIDs, true, true);
 
-		$fields	= '*';
-		$table	= self::TABLE;
-		$where	=  ' deleted = 0 ';
-
-		if( $getContainers !== true ) {
-			$where	.= ' AND type = 1 ';
-		}
+		$where	=  ' deleted = 0 ' . ( $getContainers !== true ? ' AND type = 1 ' : '' );
 
 			// Start and end given: task must intersect with span defined by them
 		if( $start > 0 && $end > 0 ) {
 			$where	.= ' AND ( date_start <= ' . $end . ' AND date_end >= ' . $start . ' )';
 		} else {
-				// Only start or end given
-				// Start and end of task must be (at or) after given starting time
+				// Only start or end given. Start and end of task must be (at or) after given starting time
 			if( $start > 0 ) {
-				$where	.= ' AND date_start  >= ' . $start;
-				$where	.= ' AND date_end    >= ' . $start;
+				$where	.=	' AND date_start  >= ' . $start
+						.	' AND date_end    >= ' . $start;
 			}
 				// Start and end of task must be (at or) before given ending time
-			if( $end	> 0 ) {
-				$where	.= ' AND date_end    <= ' . $end;
-				$where	.= ' AND date_start  <= ' . $end;
+			if( $end > 0 ) {
+				$where	.=	' AND date_end    <= ' . $end
+						.	' AND date_start  <= ' . $end;
 			}
 		}
 
@@ -1276,16 +1357,12 @@ class TodoyuTaskManager {
 		if( count($statusIDs) > 0 ) {
 			$where .= ' AND status IN(' . implode(',', $statusIDs) . ')';
 		}
-
 			// Filter by assigned person IDs
 		if( sizeof($personIDs) ) {
 			$where .= ' AND id_person_assigned IN(' . implode(',', $personIDs) . ')';
 		}
-
-		$order	= 'date_start';
-		$index	= 'id';
-
-		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit, $index);
+		
+		return $where;
 	}
 
 

@@ -246,7 +246,7 @@ class TodoyuProjectManager {
 	public static function getAvailableProjectsForPerson() {
 		$filter		= new TodoyuProjectFilter();
 
-		 return $filter->getProjectIDs('date_create DESC');
+		return $filter->getProjectIDs('date_create DESC');
 	}
 
 
@@ -261,6 +261,32 @@ class TodoyuProjectManager {
 		$projectIDs	= $filter->getProjectIDs('date_create DESC', 1);
 
 		return intval($projectIDs[0]);
+	}
+
+
+
+	/**
+	 * Get IDs of projects in given timespan
+	 * If timestamp of start/end == 0: don't use it (there by this method can be used as well to query for tasks before / after a given timestamp)
+	 * If personIDs given:	limit to tasks assigned to given persons
+	 * If statuses given:	limit to tasks with given statuses
+	 *
+	 * @param	Integer		$start
+	 * @param	Integer		$end
+	 * @param	Array		$statusIDs
+	 * @param	Array		$personIDs		(id_person_assigned)
+	 * @param	String		$limit
+	 * @param	Boolean		$getContainers
+	 * @return	Array
+	 */
+	public static function getProjectIDsInTimeSpan($start = 0, $end = 0, array $statusIDs = array(), array $personIDs = array(), $limit = '', $getContainers = false) {
+		$fields	= 'id_project';
+		$table	= TodoyuTaskManager::TABLE;
+		$where	= TodoyuTaskManager::getTasksInTimeSpanWhereClause($start, $end, $statusIDs, $personIDs, $getContainers);
+		$order	= 'date_start';
+		$index	= 'id_project';
+
+		return array_keys(Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit, $index));
 	}
 
 
