@@ -36,12 +36,11 @@ h1.headerLine span.projectIcons {
 	Project
    -------------- */
 .project .infoBoxOuter {
-	padding:6px;
+	padding:7px;
 	background-color:#eee;
 }
-.project .infoBoxOuter.edit {
-	padding:0;
-	background:none;
+.project .infoBoxOuter.edit form {
+	margin:-7px;
 }
 .statusPlanning .data .content {
 	background-color:white;
