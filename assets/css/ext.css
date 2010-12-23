@@ -78,14 +78,10 @@ h1.extIconProject .title {
 /* -----------------------------------------------
 	Search Listing of Projects
    ----------------------------------------------- */
-.projects {
+.projects {}
+.projectlist .headerLine .fulltitle {}
 
-}
-.projectlist .headerLine .fulltitle{
-
-}
-
-.projectlist .headerLine .projectNumber{
+.projectlist .headerLine .projectNumber {
 	float:right;
 	padding:0 10px;
 }
@@ -142,12 +138,26 @@ h1.extIconProject .title {
 	width:180px;
 }
 
-.project .data ul,
-.task .data ul,
-.task .task-comments ul {
+.data ul,
+.task-comments ul {
 	margin:0;
 	padding:0 0 5px 14px;
-	list-style-type:disc;
+}
+.data ul li,
+.task-comments ul li {
+	padding-left:5px;
+}
+.data ol,
+.task-comments ol {
+	margin:0 0 0 5px;
+	padding:0 0 5px 14px;
+}
+.data ul,
+.task-comments ul {
+	list-style:disc;	
+}
+.data ul.ulList {
+	padding-left:0;
 }
 
 #project-tabs {
@@ -175,52 +185,9 @@ h1.extIconProject .title {
 	}
 
 
-
-.innerBox {
-	padding:10px 0 32px 0;
-	/*background:url(../../../../core/assets/img/content/hr_ver.png) repeat-y 0 -167px;*/
-}
-
-
-div.taskDetails fieldset.left,
-div.projectDetails fieldset.left,
-div.projectEdit fieldset.left {
-	width:60%;
-	float:left;
-	margin-bottom:25px;
-}
-
-div.taskDetails fieldset.left div.comment,
-div.taskDetails div.padding,
-div.projectDetails fieldset.left div.persons,
-div.projectDetails fieldset.left #costctrl,
-div.projectDetails fieldset.left #costctrl_total,
-div.projectDetails fieldset.left div.invoices {
-	padding:0 20px;
-}
-
-div.taskDetails fieldset.left div.comment .content {
-		overflow:hidden;
-	}
-
-div.projectDetails fieldset.left div.invoices,
-div.projectDetails fieldset.left #costctrl_total,
-div.projectDetails fieldset.left #costctrl {
-	margin-top:10px;
-}
-
-div.taskDetails fieldset.right,
-div.projectDetails fieldset.right {
-	width:39%;
-	float:right;
-	margin-bottom:25px;
-}
-
-
-
 /* --------------------------------------
 	Project tree tabs
-   ------------------------------------- */ 
+   ------------------------------------- */
 #project-tabs li span.icon {
 	background:url(../img/icons.png) no-repeat 0 -445px;
 }
@@ -237,3 +204,20 @@ div.projectDetails fieldset.right {
 #search-tab-project span.icon {
 	background:url(../img/icons.png) no-repeat 0 -350px;
 }
+
+/* --------------------------------------
+	tab content
+   ------------------------------------- */
+.task .tabContent .tabBlock.assetForm,
+.task .tabContent .tabBlock.commentform {
+	background:none;
+}
+	.task .tabContent .tabBlock.assetForm .fForm fieldset,
+	.task .tabContent .tabBlock.commentform .fForm fieldset {
+		margin:0;
+		padding-top:10px;
+	}
+	.task .tabContent .tabBlock.assetForm .fForm fieldset legend,
+	.task .tabContent .tabBlock.commentform .fForm fieldset legend {
+		display:none;
+	}
