@@ -233,7 +233,7 @@ class TodoyuTaskClipboard {
 
 
 	/**
-	 * Add contextmenu to paste tasks
+	 * Add context menu to paste tasks
 	 *
 	 * @param	Integer		$idTaskContextmenu
 	 * @param	Array		$items
