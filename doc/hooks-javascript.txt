@@ -81,7 +81,7 @@ Project Extension - JavaScript Hooks
 
 
 
-2.1. quickTask
+2.2. quickTask
 	project.quickTask.formLoaded
 	@param	{Ajax.Response} response
 	Evoked after opening quick task creation form.
@@ -91,3 +91,11 @@ Project Extension - JavaScript Hooks
 	@param	{Number} 		idProject
 	@param	{Ajax.Response} response
 	Evoked after quicktask has been saved and quick creation popUp closed.
+
+
+3.		Panelwidgets
+3.1.	Panelwidget ProjectList
+
+	panelwidget.projectlist.onProjectClick
+	@param	{Object} 		event
+	Evoked after project in projects list has been clicked.

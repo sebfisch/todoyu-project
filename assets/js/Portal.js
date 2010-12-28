@@ -36,7 +36,8 @@ Todoyu.Ext.project.Portal = {
 
 
 	/**
-	 * @todo	comment
+	 * Handler after project has been created: evoke refresh of project listing
+	 *
 	 * @param	{Number}	idProject
 	 */
 	onProjectCreate: function(idProject) {
@@ -46,7 +47,8 @@ Todoyu.Ext.project.Portal = {
 
 
 	/**
-	 * @todo	comment
+	 * Handler after project has been saved: evoke refresh of project listing
+	 *
 	 * @param	{Number}	idProject
 	 */
 	onProjectSaved: function(idProject) {
@@ -55,7 +57,9 @@ Todoyu.Ext.project.Portal = {
 
 
 	/**
-	 * @todo	comment
+	 * Check whether selection tab is active and project list exists in DOM
+	 *
+	 * @return	{Boolean} 
 	 */
 	isProjectListingActive: function() {
 		if( Todoyu.Ext.portal.Tab.getActiveTab() === 'selection' ) {
@@ -68,7 +72,7 @@ Todoyu.Ext.project.Portal = {
 
 
 	/**
-	 * @todo	comment
+	 * Evoke refresh of project listing (if in selection tab with existing listing)
 	 */
 	refreshProjectListing: function() {
 		if( this.isProjectListingActive() ) {

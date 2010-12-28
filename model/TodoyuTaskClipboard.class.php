@@ -165,8 +165,8 @@ class TodoyuTaskClipboard {
 	 * Paste current task in clipboard
 	 *
 	 * @param	Integer		$idWorkingTask		New parent task
-	 * @param	String		$insertMode		Insert mode (before,in,after)
-	 * @return	Integer		New task ID (or old if only moved)
+	 * @param	String		$insertMode			Insert mode (before,in,after)
+	 * @return	Integer							New task ID (or old if only moved)
 	 */
 	public static function pasteTask($idWorkingTask = 0, $insertMode = 'in') {
 		$idWorkingTask	= intval($idWorkingTask);
@@ -205,11 +205,12 @@ class TodoyuTaskClipboard {
 
 
 	/**
-	 * @todo	comment
+	 * Paste cut/copied task from clipboard into given project
+	 *
 	 * @param	Integer		$idProject
 	 * @return	Integer
 	 */
-	public static function pastTaskInProject($idProject) {
+	public static function pasteTaskInProject($idProject) {
 		$idProject		= intval($idProject);
 		$project		= TodoyuProjectManager::getProject($idProject);
 		$dataClipboard	= self::getData();
@@ -279,12 +280,20 @@ class TodoyuTaskClipboard {
 	}
 
 
+
+	/**
+	 * Get task clipboard option items for context menu
+	 *
+	 * @param	Integer		$idProjectContextmenu
+	 * @param	Array		$items
+	 * @return	Array
+	 */
 	public static function getProjectContextMenuItems($idProjectContextmenu, array $items) {
 		$idProjectContextmenu	= intval($idProjectContextmenu);
 
 			// Only show context menu in project area and if something is on the clipboard
 		if( self::hasTask() ) {
-			$data			= self::getData();
+//			$data			= self::getData();
 			$ownItems		= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboardProject']);
 			$clipboardTask	= self::getClipboardTask();
 

@@ -190,7 +190,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 		TodoyuTaskRights::restrictAddToProject($idProject);
 
-		$idTaskNew = TodoyuTaskClipboard::pastTaskInProject($idProject);
+		$idTaskNew = TodoyuTaskClipboard::pasteTaskInProject($idProject);
 
 		TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
 

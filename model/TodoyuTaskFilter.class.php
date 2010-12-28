@@ -974,7 +974,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * @todo	comment
+	 * Setup query parts for task date_... fields (create, update, start, end, deadline) filter
 	 *
 	 * @param	String		$field
 	 * @param	Integer		$date
@@ -993,9 +993,9 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	/**
 	 * Alias Method for TodoyuFiltersetManager::Filter_filterObject for TaskFilter
 	 *
-	 * @param  $value
-	 * @param bool $negate
-	 * @return bool
+	 * @param	Array		$value
+	 * @param	Boolean		$negate
+	 * @return	Boolean
 	 */
 	public static function Filter_filterObject(array $value, $negate = false)	{
 		return TodoyuFiltersetManager::Filter_filterObject($value, $negate);

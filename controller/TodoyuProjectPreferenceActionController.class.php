@@ -33,7 +33,8 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 * @todo	comment
+	 * Project details expanded: save preference 
+	 *
 	 * @param	Array		$params
 	 */
 	public function detailsexpandedAction(array $params) {
@@ -74,7 +75,8 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 * @todo	comment
+	 * Task status filter panelwidget action: save selected status preference
+	 *
 	 * @param	Array		$params
 	 */
 	public function panelwidgettaskstatusfilterAction(array $params) {
@@ -88,7 +90,8 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 * @todo	comment
+	 * Project status filter panelwidget action: save selected status preference
+	 *
 	 * @param	Array		$params
 	 */
 	public function panelwidgetprojectstatusfilterAction(array $params) {

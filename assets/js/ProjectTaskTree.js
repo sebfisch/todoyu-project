@@ -51,6 +51,22 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 	/**
+	 * Hooked into projectlist panelwidget: handle project click event
+	 *
+	 * @param	{Event}		event
+	 */
+	onPanelwidgetProjectlistProjectClick: function(event) {
+		var listElement = event.findElement('li');
+
+		if( Object.isElement(listElement) ) {
+			var idProject = listElement.id.split('-').last();
+			this.openProject(idProject);
+		}
+	},
+
+
+
+	/**
 	 * Open a project
 	 *  - Load project tree if not loaded
 	 *  - Add or activate tab
@@ -68,6 +84,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		} else {
 			this.addNewProject(idProject, idTask);
 		}
+
+		Todoyu.Hook.exec('project.tasktree.openproject', idProject);
 	},
 
 
@@ -137,7 +155,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 	/**
-	 * OnProjectLoaded custom event handler
+	 * On project loaded event: insert tab content in project area
 	 *
 	 * @param	{Ajax.Response}		response
 	 */

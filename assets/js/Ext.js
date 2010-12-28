@@ -44,10 +44,13 @@ Todoyu.Ext.project = {
 	 * Register callbacks to JS hooks
 	 */
 	registerHooks: function() {
-			// Add project creation hooks
 		Todoyu.Hook.add('project.project.created', this.Project.Edit.onProjectCreated.bind(this.Project.Edit));
-
 //		Todoyu.Hook.add('project.task.saved', this.Task.onProjectTaskAdded(response);
+
+			// Register area specific callbacks
+		if( Todoyu.getArea() === 'project' ) {
+			Todoyu.Hook.add('panelwidget.projectlist.onProjectClick', this.ProjectTaskTree.onPanelwidgetProjectlistProjectClick.bind(this.ProjectTaskTree));
+		}
 	},
 
 
