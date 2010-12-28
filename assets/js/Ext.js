@@ -150,7 +150,7 @@ Todoyu.Ext.project = {
 
 
 	/**
-	 * Attach project context menu
+	 * Attach project and task context menus
 	 */
 	attachContextMenu: function() {
 		this.ContextMenuProject.attach();
