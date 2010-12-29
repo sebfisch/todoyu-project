@@ -292,6 +292,38 @@ class TodoyuProjectManager {
 
 
 	/**
+	 * Get IDs of projects with tasks ending after given timestamp
+	 *
+	 * @param	Integer		$endAfter
+	 * @param	Array		$statusIDs
+	 * @param	Array		$personIDs
+	 * @param	String		$limit
+	 * @return	Array
+	 */
+	public static function getIDsOfProjectsWithTasksEndingAfter($endAfter = 0, array $statusIDs = array(), array $personIDs = array(), $limit = '') {
+		$endAfter	= intvaL($endAfter);
+		$statusIDs	= TodoyuArray::intval($statusIDs);
+		$personIDs	= TodoyuArray::intval($personIDs);
+
+		$fields	= 'id_project';
+		$table	= TodoyuTaskManager::TABLE;
+		$order	= 'date_start';
+		$index	= 'id_project';
+
+		$where	=	'		deleted		= 0 '
+				.	' AND	date_end    > ' . $endAfter;
+
+			// Filter by status IDs
+		$where .=	( count($statusIDs) > 0 ) ? ' AND status IN(' . implode(',', $statusIDs) . ')' : '';
+			// Filter by assigned person IDs
+		$where .=	( count($personIDs) > 0 ) ? ' AND id_person_assigned IN(' . implode(',', $personIDs) . ')' : '';
+
+		return array_keys(Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit, $index));
+	}
+
+
+
+	/**
 	 * Check whether a project is visible (available and not deleted)
 	 *
 	 * @param	Integer		$idProject
@@ -961,12 +993,13 @@ class TodoyuProjectManager {
 	 */
 	public static function getRolesPersonIDs($idProject, array $roleIDs = array()) {
 		$idProject	= intval($idProject);
+		$roleIDs	= TodoyuArray::intval($roleIDs);
 
 		if( sizeof($roleIDs) > 0 ) {
 			$field	= 'id_role,id_person';
 			$table	= '	ext_project_mm_project_person';
 			$where	= '	id_project	= ' . $idProject .
-				  	  ' AND id_role IN (' . TodoyuArray::intImplode($roleIDs) . ')';
+				  	  ' AND id_role IN (' . implode(',', $roleIDs) . ')';
 
 			$rolesPersonsIDs	= Todoyu::db()->getArray($field, $table, $where);
 		} else {

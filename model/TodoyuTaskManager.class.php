@@ -1254,6 +1254,61 @@ class TodoyuTaskManager {
 
 
 	/**
+	 * Get earliest starting task of given person, optionally filtered by status
+	 *
+	 * @param	Integer		$idPerson
+	 * @param	Array		$statusIDs
+	 * @return	Array
+	 */
+	public static function getEarliestStartingTaskOfPerson($idPerson, array $statusIDs = array()) {
+		$idPerson	= intval($idPerson);
+		$statusIDs	= TodoyuArray::intval($statusIDs);
+
+		$field	= '*';
+		$table	= self::TABLE;
+
+		$where	= '		deleted = 0 '
+				. ' AND	date_start > 0 '
+				. ' AND	id_person_assigned = ' . $idPerson;
+		$where .= ( count($statusIDs) > 0 ) ? ' AND status IN (' . implode(',', $statusIDs) . ') ' : '';
+
+		$order	= 'date_start ASC';
+		$limit	= '1';
+
+		$rows	= Todoyu::db()->getArray($field, $table, $where, '', $order, $limit);
+		return $rows[0];
+	}
+
+
+
+	/**
+	 * Get latest ending task of given person, optionally filtered by status
+	 *
+	 * @param	Integer		$idPerson
+	 * @param	Array		$statusIDs
+	 * @return	Array
+	 */
+	public static function getLatestEndingTaskOfPerson($idPerson, array $statusIDs = array()) {
+		$idPerson	= intval($idPerson);
+		$statusIDs	= TodoyuArray::intval($statusIDs);
+
+		$field	= '*';
+		$table	= self::TABLE;
+
+		$where	= '		deleted = 0'
+				. ' AND	id_person_assigned = ' . $idPerson;
+		$where .= ( count($statusIDs) > 0 ) ? ' AND status IN (' . implode(',', $statusIDs) . ') ' : '';
+
+		$order	= 'date_end DESC';
+		$limit	= '1';
+
+		$rows	= Todoyu::db()->getArray($field, $table, $where, '', $order, $limit);
+		return $rows[0];
+	}
+
+
+
+	/**
 	 * Get earliest starting one of the tasks intersecting the given timespan
 	 *
 	 * @param	Integer		$start
