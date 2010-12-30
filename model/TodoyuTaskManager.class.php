@@ -1356,16 +1356,20 @@ class TodoyuTaskManager {
 	 *
 	 * @param	Integer		$start
 	 * @param	Integer		$end
+	 * @param	Array		$projectIDs
 	 * @param	Array		$statusIDs
 	 * @param	Array		$personIDs		(id_person_assigned)
 	 * @param	String		$limit
 	 * @param	Boolean		$getContainers
 	 * @return	Array
 	 */
-	public static function getTaskIDsInTimeSpan($start = 0, $end = 0, array $statusIDs = array(), array $personIDs = array(), $limit = '', $getContainers = false) {
+	public static function getTaskIDsInTimeSpan($start = 0, $end = 0, array $projectIDs = array(), array $statusIDs = array(), array $personIDs = array(), $limit = '', $getContainers = false) {
 		$fields	= 'id';
 		$table	= self::TABLE;
+
 		$where	= self::getTasksInTimeSpanWhereClause($start, $end, $statusIDs, $personIDs, $getContainers);
+		$where .= count($projectIDs) > 0 ? ' AND id_project IN (' . implode(',', $projectIDs) . ') ' : '';
+
 		$order	= 'date_start';
 		$index	= 'id';
 
