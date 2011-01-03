@@ -115,4 +115,10 @@ Todoyu::$CONFIG['EXT']['project']['taskDefaults'] = array(
 	'statusQuickTask'	=> STATUS_OPEN
 );
 
+/**
+ * add filter exports
+ */
+TodoyuSearchActionPanelManager::addExport('task', 'csvexport', 'TodoyuTaskExportManager::exportCSV', '');
+TodoyuSearchActionPanelManager::addExport('project', 'csvexport', 'TodoyuProjectExportManager::exportCSV', '');
+
 ?>
