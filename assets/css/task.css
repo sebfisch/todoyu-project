@@ -224,13 +224,6 @@
 		white-space:normal;
 	}
 
-	.task .details .description a {
-		text-decoration:underline !important;
-	}
-	.task .details .description a:hover {
-		background-color:#e2e2e2;
-	}
-
 		/* properties */
 	.tasks .task .details .data div.right {
 		width:275px;

@@ -138,6 +138,15 @@ h1.extIconProject .title {
 	width:180px;
 }
 
+.details .description a,
+.tabContent .comment a {
+	text-decoration:underline !important;
+}
+.details .description a:hover,
+.tabContent .comment a:hover {
+	background-color:#e2e2e2;
+}
+
 .data ul,
 .task-comments ul {
 	margin:0;
