@@ -13,7 +13,7 @@
 						<acName>projectperson</acName>
 						<acLabel>TodoyuPersonManager::getLabel</acLabel>
 						<options>
-							<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onPersonAutocomplete</onCompleteCustom>
+							<onComplete>Todoyu.Ext.project.Project.Edit.onPersonAutocomplete</onComplete>
 						</options>
 					</config>
 					<wizard>

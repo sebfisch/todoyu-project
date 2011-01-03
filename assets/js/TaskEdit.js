@@ -191,8 +191,9 @@ Todoyu.Ext.project.Task.Edit = {
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onParenttaskAutocomplete: function(response, autocompleter) {
-		if( response.getTodoyuHeader('acElements') == 0 ) {
+		if( response.isEmptyAcResult() ) {
 			Todoyu.notifyInfo('[LLL:task.ac.parenttask.notFoundInfo]');
+			return false;
 		}
 	},
 
@@ -205,8 +206,9 @@ Todoyu.Ext.project.Task.Edit = {
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onProjectAutocomplete: function(response, autocompleter) {
-		if( response.getTodoyuHeader('acElements') == 0 ) {
+		if( response.isEmptyAcResult() ) {
 			Todoyu.notifyInfo('[LLL:task.ac.project.notFoundInfo]');
+			return false;
 		}
 	}
 

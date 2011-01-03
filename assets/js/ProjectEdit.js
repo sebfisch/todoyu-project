@@ -204,8 +204,9 @@ Todoyu.Ext.project.Project.Edit = {
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onCompanyAutocomplete: function(response, autocompleter) {
-		if( response.getTodoyuHeader('acElements') === '0' ) {
+		if( response.isEmptyAcResult() ) {
 			Todoyu.notifyInfo('[LLL:project.ac.company.notFoundInfo]');
+			return false;
 		}
 	},
 
@@ -218,8 +219,9 @@ Todoyu.Ext.project.Project.Edit = {
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onPersonAutocomplete: function(response, autocompleter) {
-		if( response.getTodoyuHeader('acElements') === '0' ) {
+		if( response.isEmptyAcResult() ) {
 			Todoyu.notifyInfo('[LLL:project.ac.person.notFoundInfo]');
+			return false;
 		}
 	},
 
@@ -232,7 +234,7 @@ Todoyu.Ext.project.Project.Edit = {
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onProjectleaderAutocomplete: function(response, autocompleter) {
-		this.onPersonAutocomplete(response, autocompleter);
+		return this.onPersonAutocomplete(response, autocompleter);
 	}
 
 };

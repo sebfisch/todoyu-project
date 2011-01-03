@@ -93,7 +93,7 @@
 								<acName>company</acName>
 								<acLabel>TodoyuCompanyManager::getLabel</acLabel>
 								<options>
-									<onCompleteCustom>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onCompleteCustom>
+									<onComplete>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onComplete>
 								</options>
 							</config>
 							<required label="LLL:project.form.validation.company" />
