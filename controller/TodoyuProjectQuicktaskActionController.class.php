@@ -27,6 +27,11 @@
 class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 
 
+	/**
+	 * Initialize: restrict use to authorized users
+	 *
+	 * @param	Array	$params
+	 */
 	public function init(array $params) {
 		restrict('project', 'general:use');
 	}

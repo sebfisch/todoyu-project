@@ -178,7 +178,7 @@ class TodoyuProjectViewHelper {
 
 
 	/**
-	 * Get projects which are available for the person to  as options
+	 * Get projects which are available for the person to as options
 	 *
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array

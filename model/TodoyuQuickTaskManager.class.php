@@ -54,7 +54,6 @@ class TodoyuQuickTaskManager {
 		$xmlPathInsert	= 'ext/project/config/form/field-id_project.xml';
 		$insertForm		= TodoyuFormManager::getForm($xmlPathInsert);
 
-
 			// If person can add tasks in all project, show autocomplete field, else only a select element
 		if( allowed('project', 'task:addInAllProjects') ) {
 			$field	= $insertForm->getField('id_project_ac');
@@ -70,6 +69,11 @@ class TodoyuQuickTaskManager {
 
 			// Load form data by hooks (default is empty)
 		$formData	= TodoyuFormHook::callLoadData($xmlPath, array());
+
+			// Ensure the preset project allows for adding tasks
+		if( ! TodoyuTaskRights::isAddInProjectAllowed($formData['id_project']) ) {
+			$formData['id_project']	= 0;
+		}
 
 		$form->setFormData($formData);
 

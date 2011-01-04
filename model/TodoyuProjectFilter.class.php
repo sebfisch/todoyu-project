@@ -162,6 +162,39 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 
 
+//	/**
+//	 * Filter for locked projects, optionally negated
+//	 *
+//	 * @todo	implement negation
+//	 *
+//	 * @param	Boolean	$locked
+//	 * @param	Boolean	$negate
+//	 * @return	Array
+//	 */
+//	public static function Filter_locked($locked, $negate = false) {
+//		$tables	= array('system_lock');
+//
+//		if( $negate === false ) {
+//			$where	= 'system_lock.table = \'ext_project_project\'';
+//			$join	= array('ext_project_project.id	= system_lock.id_record');
+//		} else {
+//			$where	= ' ext_project_project.id NOT IN(
+//							SELECT system_lock.id_record FROM system_lock WHERE system_lock.table = \'ext_project_project\'
+//						)';
+//			$join	= array();
+//		}
+//
+//		$queryParts = array(
+//			'tables'=> $tables,
+//			'where'	=> $where,
+//			'join'	=> $join
+//		);
+//
+//		return $queryParts;
+//	}
+
+
+
 	/**
 	 * Filter projects by status
 	 *

@@ -80,10 +80,16 @@ class TodoyuTaskManager {
 		$form->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
 
 			// Load task default data
-		$data	= self::getTaskDefaultData();
+		$formData	= self::getTaskDefaultData();
 
-		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, 0, array('form'=>$form));
-		$form->setFormData($data);
+		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, 0, array('form'=>$form));
+
+			// Ensure the preset project allows for adding tasks
+		if( ! TodoyuTaskRights::isAddInProjectAllowed($formData['id_project']) ) {
+			$formData['id_project']	= 0;
+		}
+
+		$form->setFormData($formData);
 
 		return $form;
 	}

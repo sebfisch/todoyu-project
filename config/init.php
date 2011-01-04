@@ -23,6 +23,7 @@
 TodoyuAutocompleter::addAutocompleter('projectperson', 'TodoyuPersonFilterDataSource::autocompletePersons', array('project', 'general:use'));
 TodoyuAutocompleter::addAutocompleter('projecttask', 'TodoyuTaskViewHelper::getProjecttaskAutocomplete', array('project', 'general:use'));
 TodoyuAutocompleter::addAutocompleter('project', 'TodoyuProjectFilterDataSource::autocompleteProjects', array('project', 'general:use'));
+TodoyuAutocompleter::addAutocompleter('taskaddableproject', 'TodoyuProjectFilterDataSource::autocompleteTaskAddableProjects', array('project', 'general:use'));
 
 	// Add context menu handlers
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskManager::getContextMenuItems', 10);

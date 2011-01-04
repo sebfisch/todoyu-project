@@ -9,7 +9,7 @@
 				<field type="textAC" name="id_project_ac">
 					<label>project.project</label>
 					<config>
-						<acName>project</acName>
+						<acName>taskaddableproject</acName>
 						<acLabel>TodoyuProjectViewHelper::getQuicktaskAutocompleteLabel</acLabel>
 						<options>
 							<onComplete>Todoyu.Ext.project.Task.Edit.onProjectAutocomplete</onComplete>

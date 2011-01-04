@@ -215,6 +215,18 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 				'negation'		=> 'default'
 			)
 		),
+		'projectstatus' => array(
+			'funcRef'       => 'TodoyuTaskFilter::Filter_projectstatus',
+			'label'         => 'LLL:projectFilter.project.status',
+			'optgroup'      => 'LLL:project.search.label',
+			'widget'        => 'select',
+			'wConf'         => array(
+				'multiple'      => true,
+				'size'          => 5,
+				'FuncRef'       => 'TodoyuProjectFilterDataSource::getStatusOptions',
+				'negation'      => 'default'
+			)
+		),
 		'projectrole' => array(
 			'funcRef'	=> 'TodoyuTaskFilter::Filter_projectrole',
 			'label'		=> 'LLL:projectFilter.project.projectrole',
@@ -444,6 +456,12 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 				'negation'		=> 'default'
 			)
 		),
+//		'locked' => array(
+//			  'funcRef'       => 'TodoyuProjectFilter::filter_locked',
+//			  'label'         => 'LLL:core.locked',
+//			  'optgroup'      => 'LLL:project.search.label',
+//			  'widget'        => 'checkbox',
+//		),
 
 
 

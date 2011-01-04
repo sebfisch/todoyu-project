@@ -570,7 +570,40 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
+	 * Filter condition: tasks of projects with given status
+	 *
+	 * @param	String		$statusList
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public static function Filter_projectstatus($statusList, $negate = false) {
+		$statusList	= TodoyuArray::intExplode(',', $statusList, true, true);
+		$queryParts	= false;
+		
+		if( sizeof($statusList) > 0 ) {
+			$tables	= array('ext_project_project');
+
+			$compare= $negate ? 'NOT IN' : 'IN';
+			$where	=  'ext_project_project.status ' . $compare . '(' . implode(',', $statusList) . ')';
+			$join	= array('ext_project_task.id_project = ext_project_project.id');
+
+			$queryParts	= array(
+				'where'	=> $where,
+				'tables'=> $tables,
+				'join'	=> $join
+			);
+
+		}
+
+		return $queryParts;
+	}
+
+
+
+	/**
 	 * Filters for tasks being publicly visible
+	 *
+	 * @todo	implement negation
 	 *
 	 * @param	Integer		$value
 	 * @param	Boolean		$negate
@@ -592,7 +625,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter condition: Task status in given stati list?
+	 * Filter condition: Task status in given status list?
 	 *
 	 * @param	String		$statusList
 	 * @param	Boolean		$negate

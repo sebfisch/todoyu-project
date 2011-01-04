@@ -40,16 +40,7 @@ class TodoyuProjectFilterDataSource {
 		$projectIDs		= TodoyuProjectSearch::searchProjects($keywords, array(), 30);
 
 		if( sizeof($projectIDs) > 0 ) {
-			$fields		= '	p.id,
-							p.title,
-							c.shortname as company';
-			$tables		= ' ext_project_project p,
-							ext_contact_company c';
-			$where		= ' p.id_company = c.id AND
-							p.id IN(' . implode(',', $projectIDs) . ') ';
-
-			$projects	= Todoyu::db()->getArray($fields, $tables, $where, '', '', 30);
-
+			$projects	= self::getProjects($projectIDs);
 			foreach($projects as $project) {
 				if( TodoyuProjectRights::isSeeAllowed($project['id']) ) {
 					$data[$project['id']] = $project['company'] .' - ' . $project['title'];
@@ -58,6 +49,53 @@ class TodoyuProjectFilterDataSource {
 		}
 
 		return $data;
+	}
+
+
+
+	/**
+	 * Search for projects in which adding of tasks is allowed by given search string from the auto-completion
+	 *
+	 * @param       String  $search
+	 * @param       Array   $conf
+	 * @return      Array                           array (id => label)
+	 */
+	public static function autocompleteTaskAddableProjects($input, array $formData = array(), $name = '')   {
+		$data = array();
+
+		$keywords	= TodoyuArray::trimExplode(' ', $input, true);
+		$projectIDs	= TodoyuProjectSearch::searchProjects($keywords, array(), 30);
+
+		if( sizeof($projectIDs) > 0 ) {
+			$projects	= self::getProjects($projectIDs);
+			foreach($projects as $project) {
+				if( TodoyuTaskRights::isAddInProjectAllowed($project['id']) ) {
+					$data[$project['id']] = $project['company'] .' - ' . $project['title'];
+				}
+			}
+		}
+
+		return $data;
+	}
+
+
+
+   /**
+	* Get project records with given IDs
+	*
+	* @param       Array   $projectIDs
+	* @return      Array
+	*/
+	private function getProjects(array $projectIDs = array()) {
+		$fields		= '	p.id,
+						p.title,
+						c.shortname as company';
+		$tables		= ' ext_project_project p,
+						ext_contact_company c';
+		$where		= ' p.id_company = c.id AND
+						p.id IN(' . implode(',', $projectIDs) . ') ';
+
+		return Todoyu::db()->getArray($fields, $tables, $where, '', '', 30);
 	}
 
 
@@ -93,7 +131,6 @@ class TodoyuProjectFilterDataSource {
 	public static function getStatusOptions(array $definitions)	{
 		$options	= array();
 		$statuses	= TodoyuProjectStatusManager::getStatusInfos();
-//		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
 
 		foreach($statuses as $status) {
 			$options[] = array(
