@@ -137,7 +137,7 @@ class TodoyuTaskRights {
 		$idProject	= intval($idProject);
 		$project	= TodoyuProjectManager::getProject($idProject);
 
-		if( $project->isLocked() ) {
+		if( in_array($project->getStatus(), array(STATUS_DONE, STATUS_CLEARED)) || $project->isLocked() ) {
 			return false;
 		}
 

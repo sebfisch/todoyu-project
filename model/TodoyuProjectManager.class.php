@@ -491,8 +491,8 @@ class TodoyuProjectManager {
 			}
 		}
 
-			// Only add elements to project, if it is not locked
-		if( ! $project->isLocked() ) {
+			// Only add elements to project if allowed (project not in status done, cleared or has been locked) 
+		if( TodoyuTaskRights::isAddInProjectAllowed($idProject) ) {
 			if( allowed('project', 'task:addInAllProjects') || (allowed('project', 'task:addInOwnProjects') && TodoyuProjectManager::isPersonAssigned($idProject)) ) {
 					// Add task
 				$allowed['addtask'] = $ownItems['addtask'];

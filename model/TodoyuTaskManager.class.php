@@ -429,7 +429,6 @@ class TodoyuTaskManager {
 		$task	= TodoyuTaskManager::getTask($idTask);
 		$project= $task->getProject();
 		$allowed= array();
-//		$type	= '';
 
 		if( $task->isTask() ) {
 			$ownItems	=& Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'];
@@ -465,7 +464,7 @@ class TodoyuTaskManager {
 			}
 
 				// Clone
-			if( !$task->isLocked() && TodoyuTaskRights::isAddAllowed($idTask) ) {
+			if( ! $task->isLocked() && TodoyuTaskRights::isAddAllowed($idTask) ) {
 				$allowed['actions']['submenu']['clone']	= $ownItems['actions']['submenu']['clone'];
 			}
 
@@ -473,7 +472,6 @@ class TodoyuTaskManager {
 			if( $task->isEditable() ) {
 				$allowed['actions']['submenu']['delete'] = $ownItems['actions']['submenu']['delete'];
 			}
-
 
 				// Add (with sub menu)
 			$allowed['add'] = $ownItems['add'];
@@ -486,9 +484,8 @@ class TodoyuTaskManager {
 				$allowed['add']['submenu']['container'] = $ownItems['add']['submenu']['container'];
 			}
 
-
 				// Status
-			if( $task->isTask() && !$task->isLocked() && allowed('project', 'task:editStatus') && TodoyuTaskRights::isStatusChangeAllowed($idTask) ) {
+			if( $task->isTask() && ! $task->isLocked() && allowed('project', 'task:editStatus') && TodoyuTaskRights::isStatusChangeAllowed($idTask) ) {
 				$allowed['status'] = $ownItems['status'];
 
 				$statuses = TodoyuTaskStatusManager::getStatuses('changeto');
