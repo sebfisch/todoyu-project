@@ -38,7 +38,7 @@ class TodoyuProjectFilterDataSource {
 
 		$keywords		= TodoyuArray::trimExplode(' ', $input, true);
 		$projectIDs		= TodoyuProjectSearch::searchProjects($keywords, array(), 30);
-		
+
 		if( sizeof($projectIDs) > 0 ) {
 			$fields		= '	p.id,
 							p.title,
@@ -69,9 +69,15 @@ class TodoyuProjectFilterDataSource {
 	 * @return	Array
 	 */
 	public function getLabel($definitions)	{
-		$project = new TodoyuProject($definitions['value']);
+		$idProject	= intval($definitions['value']);
 
-		$definitions['value_label'] = $project->getFullTitle();
+		if( $idProject !== 0 ) {
+			$project = TodoyuProjectManager::getProject($idProject);
+
+			$definitions['value_label'] = $project->getFullTitle();
+		} else {
+			$definitions['value_label'] = '';
+		}
 
 		return $definitions;
 	}
