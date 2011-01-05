@@ -13,6 +13,12 @@
 		<right name="editAndDelete" require="project:seeOwn" />
 	</section>
 
+	<section name="container" require="general:use">
+		<right name="editAndDeleteOwnContainers" />
+		<right name="editAndDeleteInOwnProjects" />
+		<right name="editAndDeleteInAllProjects" require="project:seeAll,task:editAndDeleteInOwnProjects" />
+	</section>
+
 	<section name="task" require="general:use">
 		<right name="seeAll" />
 		<right name="addInOwnProjects" />

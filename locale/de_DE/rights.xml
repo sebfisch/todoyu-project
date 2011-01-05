@@ -33,6 +33,11 @@
 	<label index="container.copy">Container kopieren (und einfügen)</label>
 	<label index="container.cut">Container ausschneiden (und einfügen)</label>
 	<label index="container.delete">Container löschen</label>
+	<label index="container.addInOwnProjects">Container in eigenen Projekten hinzufügen</label>
+	<label index="container.addInAllProjects">Container in allen Projekten hinzufügen</label>
+	<label index="container.editAndDeleteInOwnProjects">Container in eigenen Projekten bearbeiten/löschen</label>
+	<label index="container.editAndDeleteInAllProjects">Container in allen Project bearbeiten/löschen</label>
+	<label index="container.editAndDeleteOwnContainers">Selbst erstellte Container bearbeiten und löschen</label>
 	<label index="taskstatus">Aufgaben Status</label>
 	<label index="taskstatus.planning:see">Sehen: In Planung</label>
 	<label index="taskstatus.open:see">Sehen: Offen</label>

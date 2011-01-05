@@ -57,18 +57,29 @@ class TodoyuTaskRights {
 			if( ! self::isStatusChangeAllowed($idTask) ) {
 				return false;
 			}
+
+				// Check if person can edit his own tasks
+			if( $task->isCurrentPersonCreator() ) {
+				if( ! allowed('project', 'task:editAndDeleteOwnTasks') ) {
+					return false;
+				}
+			}
 		}
 
-			// Check if person can edit its own tasks
-		if( $task->isCurrentPersonCreator() ) {
-			if( allowed('project', 'task:editAndDeleteOwnTasks') ) {
-				return true;
+		if( $task->isContainer() ) {
+				// Check if person can edit his own containers
+			if( $task->isCurrentPersonCreator() ) {
+				if( ! allowed('project', 'container:editAndDeleteOwnContainers') ) {
+					return false;
+				}
 			}
+
+			
 		}
 
 		$idProject	= TodoyuTaskManager::getProjectID($idTask);
 
-		return self::isEditInProjectAllowed($idProject);
+		return self::isEditInProjectAllowed($idProject, $task->isContainer());
 	}
 
 
@@ -95,18 +106,29 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Check whether person can edit tasks in this project
+	 * Check whether person can edit tasks/containers in this project
 	 *
 	 * @param	Integer		$idProject
+	 * @param	Boolean		$isContainer
 	 * @return	Boolean
 	 */
-	public static function isEditInProjectAllowed($idProject) {
+	public static function isEditInProjectAllowed($idProject, $isContainer = false) {
 		$idProject	= intval($idProject);
 
-		if( TodoyuProjectManager::isPersonAssigned($idProject) ) {
-			return allowed('project', 'task:editAndDeleteInOwnProjects');
+		if( $isContainer == false ) {
+				// Task
+			if( TodoyuProjectManager::isPersonAssigned($idProject) ) {
+				return allowed('project', 'task:editAndDeleteInOwnProjects');
+			} else {
+				return allowed('project', 'task:editAndDeleteInAllProjects');
+			}
 		} else {
-			return allowed('project', 'task:editAndDeleteInAllProjects');
+				// Container
+			if( TodoyuProjectManager::isPersonAssigned($idProject) ) {
+				return allowed('project', 'container:editAndDeleteInOwnProjects');
+			} else {
+				return allowed('project', 'container:editAndDeleteInAllProjects');
+			}
 		}
 	}
 
