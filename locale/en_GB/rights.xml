@@ -79,6 +79,8 @@
 	<label index="taskstatus.accepted:create">Create Status: Accepted</label>
 	<label index="taskstatus.rejected:create">Create Status: Rejected</label>
 	<label index="taskstatus.cleared:create">Create Status: Cleared</label>
+	<label index="clipboard">Clipboard</label>
+	<label index="clipboard.useTaskAndContainerClipboard">Cut, copy, paste and clone tasks/containers</label>
 	<label index="projectstatus">Project Status</label>
 	<label index="projectstatus.planning:see">See Status: In Planning</label>
 	<label index="projectstatus.progress:see">See Status: In Progress</label>

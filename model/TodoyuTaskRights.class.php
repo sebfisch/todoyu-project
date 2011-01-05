@@ -68,13 +68,9 @@ class TodoyuTaskRights {
 
 		if( $task->isContainer() ) {
 				// Check if person can edit his own containers
-			if( $task->isCurrentPersonCreator() ) {
-				if( ! allowed('project', 'container:editAndDeleteOwnContainers') ) {
-					return false;
-				}
+			if( $task->isCurrentPersonCreator() && ! allowed('project', 'container:editAndDeleteOwnContainers') ) {
+				return false;
 			}
-
-			
 		}
 
 		$idProject	= TodoyuTaskManager::getProjectID($idTask);
@@ -115,20 +111,12 @@ class TodoyuTaskRights {
 	public static function isEditInProjectAllowed($idProject, $isContainer = false) {
 		$idProject	= intval($idProject);
 
-		if( $isContainer == false ) {
-				// Task
-			if( TodoyuProjectManager::isPersonAssigned($idProject) ) {
-				return allowed('project', 'task:editAndDeleteInOwnProjects');
-			} else {
-				return allowed('project', 'task:editAndDeleteInAllProjects');
-			}
+		$elementType	= $isContainer ? 'container' : 'task';
+
+		if( TodoyuProjectManager::isPersonAssigned($idProject) ) {
+			return allowed('project', $elementType . ':editAndDeleteInOwnProjects');
 		} else {
-				// Container
-			if( TodoyuProjectManager::isPersonAssigned($idProject) ) {
-				return allowed('project', 'container:editAndDeleteInOwnProjects');
-			} else {
-				return allowed('project', 'container:editAndDeleteInAllProjects');
-			}
+			return allowed('project', $elementType . ':editAndDeleteInAllProjects');
 		}
 	}
 
@@ -138,13 +126,26 @@ class TodoyuTaskRights {
 	 * Check whether person can add a new task under the parent task
 	 *
 	 * @param	Integer		$idParentTask
+	 * @param	Boolean		$isContainer		Element to be added is container?
 	 * @return	Boolean
 	 */
-	public static function isAddAllowed($idParentTask) {
+	public static function isAddAllowed($idParentTask, $isContainer = false) {
 		$idParentTask	= intval($idParentTask);
 		$idProject		= TodoyuTaskManager::getProjectID($idParentTask);
 
-		return self::isAddInProjectAllowed($idProject);
+		return self::isAddInProjectAllowed($idProject, $isContainer);
+	}
+
+
+
+	/**
+	 * Check whether person can add a new container under the parent task
+	 *
+	 * @param	Integer		$idParentTask
+	 * @return	Boolean
+	 */
+	public static function isAddContainerAllowed($idParentTask) {
+		return self::isAddAllowed($idParentTask, true);
 	}
 
 
@@ -153,9 +154,10 @@ class TodoyuTaskRights {
 	 * Check whether a person can add a new task in this project
 	 *
 	 * @param	Integer		$idProject
+	 * @param	Boolean		$isContainer	added element is a container?
 	 * @return	Boolean
 	 */
-	public static function isAddInProjectAllowed($idProject) {
+	public static function isAddInProjectAllowed($idProject, $isContainer = false) {
 		$idProject	= intval($idProject);
 		$project	= TodoyuProjectManager::getProject($idProject);
 
@@ -163,10 +165,12 @@ class TodoyuTaskRights {
 			return false;
 		}
 
+		$elementType	= $isContainer ? 'container' : 'task';
+
 		if( TodoyuProjectManager::isPersonAssigned($idProject) ) {
-			return allowed('project', 'task:addInOwnProjects');
+			return allowed('project', $elementType . ':addInOwnProjects');
 		} else {
-			return allowed('project', 'task:addInAllProjects');
+			return allowed('project', $elementType . ':addInAllProjects');
 		}
 	}
 

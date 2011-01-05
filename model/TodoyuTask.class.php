@@ -359,8 +359,8 @@ class TodoyuTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Check whether the task can be edited
-	 * Check if task is not locked any user has edit rights
+	 * Check whether the task/container can be edited
+	 * Check if task/container is not locked any user has edit rights
 	 *
 	 * @return	Boolean
 	 */

@@ -13,7 +13,13 @@
 		<right name="editAndDelete" require="project:seeOwn" />
 	</section>
 
+	<section name="clipboard" require="general:use">
+		<right name="useTaskAndContainerClipboard" />
+	</section>
+
 	<section name="container" require="general:use">
+		<right name="addInOwnProjects" />
+		<right name="addInAllProjects" require="project:seeAll,container:addInOwnProjects" />
 		<right name="editAndDeleteOwnContainers" />
 		<right name="editAndDeleteInOwnProjects" />
 		<right name="editAndDeleteInAllProjects" require="project:seeAll,task:editAndDeleteInOwnProjects" />

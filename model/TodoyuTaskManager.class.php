@@ -459,19 +459,22 @@ class TodoyuTaskManager {
 			$allowed['actions'] = $ownItems['actions'];
 			unset($allowed['actions']['submenu']);
 
-				// Copy
-			if( allowed('project', 'task:addInOwnProjects') ) {
-				$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
-			}
+				// Clipboard options
+			if( allowed('project', 'clipboard:useTaskAndContainerClipboard')) {
+					// Copy
+				if( allowed('project', 'task:addInOwnProjects') ) {
+					$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
+				}
 
-				// Cut
-			if( $task->isEditable() ) {
-				$allowed['actions']['submenu']['cut']	= $ownItems['actions']['submenu']['cut'];
-			}
+					// Cut
+				if( $task->isEditable() ) {
+					$allowed['actions']['submenu']['cut']	= $ownItems['actions']['submenu']['cut'];
+				}
 
-				// Clone
-			if( ! $task->isLocked() && TodoyuTaskRights::isAddAllowed($idTask) ) {
-				$allowed['actions']['submenu']['clone']	= $ownItems['actions']['submenu']['clone'];
+					// Clone
+				if( ! $task->isLocked() && TodoyuTaskRights::isAddAllowed($idTask) ) {
+					$allowed['actions']['submenu']['clone']	= $ownItems['actions']['submenu']['clone'];
+				}
 			}
 
 				// Delete
@@ -479,15 +482,20 @@ class TodoyuTaskManager {
 				$allowed['actions']['submenu']['delete'] = $ownItems['actions']['submenu']['delete'];
 			}
 
-				// Add (with sub menu)
+
+				// Add... (with sub menu: container,task)
 			$allowed['add'] = $ownItems['add'];
 			unset($allowed['add']['submenu']);
 
-			if( !$project->isLocked() && TodoyuTaskRights::isAddAllowed($idTask) ) {
+			if( ! $project->isLocked() ) {
 					// Add sub task
-				$allowed['add']['submenu']['task'] = $ownItems['add']['submenu']['task'];
+				if( TodoyuTaskRights::isAddAllowed($idTask) ) {
+					$allowed['add']['submenu']['task'] = $ownItems['add']['submenu']['task'];
+				}
 					// Add sub container
-				$allowed['add']['submenu']['container'] = $ownItems['add']['submenu']['container'];
+				if( TodoyuTaskRights::isAddContainerAllowed($idTask) ) {
+					$allowed['add']['submenu']['container'] = $ownItems['add']['submenu']['container'];
+				}
 			}
 
 				// Status
