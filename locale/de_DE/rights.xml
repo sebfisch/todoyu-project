@@ -78,4 +78,7 @@
 	<label index="panelwidgets.taskStatusFilter">Aufgabenstatusfilter-Element</label>
 	<label index="panelwidgets.projectList">Projektlisten-Element</label>
 	<label index="panelwidgets.quickProject:use">Schnell-Projekt Element</label>
+	<label index="export">Exporte</label>
+	<label index="export.taskcsv">Aufgaben als CSV exportieren</label>
+	<label index="export.projectcsv">Projekte als CSV exportieren</label>
 </labels>

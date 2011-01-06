@@ -93,4 +93,7 @@
 	<label index="panelwidgets.taskStatusFilter">Panel widget task status filter</label>
 	<label index="panelwidgets.projectList">Panel widget project list</label>
 	<label index="panelwidgets.quickProject">Panel widget quick project</label>
+	<label index="export">Exports</label>
+	<label index="export.taskcsv">Export Tasks as CSV</label>
+	<label index="export.projectcsv">Export Projects as CSV</label>
 </labels>

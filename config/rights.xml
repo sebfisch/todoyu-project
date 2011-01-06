@@ -95,4 +95,9 @@
 		<right name="warranty:see" />
 	</section>
 
+	<section name="export" require="general:use">
+		<right name="taskcsv" />
+		<right name="projectcsv" />
+	</section>
+
 </rights>
