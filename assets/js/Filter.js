@@ -48,8 +48,6 @@ Todoyu.Ext.project.Filter = {
 	 * @param	{Element}		listElement
 	 */
 	onProjectrolePersonAcSelect: function(name, textInput, listElement) {
-		$('widget-autocompleter-' + name + '-hidden').value = listElement.id;
-
 		this.updateProjectRoleConditionValue(name);
 	},
 
