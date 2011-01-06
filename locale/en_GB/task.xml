@@ -3,6 +3,8 @@
 	<label index="task">Task</label>
 	<label index="tasks">Tasks</label>
 	<label index="container">Container</label>
+	<label index="attr.id">Task ID</label>
+	<label index="attr.type">Type</label>
 	<label index="attr.title">Task Title</label>
 	<label index="attr.worktype">Activity Type</label>
 	<label index="attr.estimated_workload">Estimated Workload</label>
@@ -28,6 +30,7 @@
 	<label index="attr.notAcknowledged">Not Acknowledged (New)</label>
 	<label index="attr.dateover">End date or deadline exceeded</label>
 	<label index="attr.locked">Locked</label>
+	<label index="attr.is_acknowledged">Is Acknowledged</label>
 	<label index="container.attr.person_owner">Container Owner</label>
 	<label index="container.attr.is_public">Container Visibility</label>
 	<label index="search.label">Tasks</label>

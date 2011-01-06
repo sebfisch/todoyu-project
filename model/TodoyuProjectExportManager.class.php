@@ -37,6 +37,8 @@ class TodoyuProjectExportManager {
 
 		$export		= new TodoyuExportCSV($projectsToExport);
 
+		$export->setFilename('todoyu_project_export_' . date('YmdHis') . '.csv');
+
 		$export->download();
 	}
 
@@ -74,8 +76,8 @@ class TodoyuProjectExportManager {
 		$exportData = array(
 			TodoyuLanguage::getLabel('LLL:project.attr.id')					=> $project->id,
 			TodoyuLanguage::getLabel('LLL:task.attr.date_create')			=> TodoyuTime::format($project->date_create, 'date'),
-			'date_update[Label]'											=> TodoyuTime::format($project->date_update, 'date'),
-			'id_person_create[Label]'										=> TodoyuPersonManager::getPerson($project->id_person_create)->getFullName(),
+			TodoyuLanguage::getLabel('LLL:core.date_update')				=> TodoyuTime::format($project->date_update, 'date'),
+			TodoyuLanguage::getLabel('LLL:core.id_user_create')				=> TodoyuPersonManager::getPerson($project->id_person_create)->getFullName(),
 			TodoyuLanguage::getLabel('LLL:project.attr.date_start')			=> TodoyuTime::format($project->date_start),
 			TodoyuLanguage::getLabel('LLL:project.attr.date_end')			=> TodoyuTime::format($project->date_end),
 			TodoyuLanguage::getLabel('LLL:project.attr.date_deadline')		=> TodoyuTime::format($project->date_deadline),

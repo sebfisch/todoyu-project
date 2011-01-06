@@ -3,6 +3,8 @@
 	<label index="task">Aufgabe</label>
 	<label index="tasks">Aufgaben</label>
 	<label index="container">Container</label>
+	<label index="attr.id">Aufgaben ID</label>
+	<label index="attr.type">Typ</label>
 	<label index="attr.title">Aufgaben-Titel</label>
 	<label index="attr.worktype">Leistungsart</label>
 	<label index="attr.estimated_workload">Aufwand geschätzt</label>
@@ -28,6 +30,7 @@
 	<label index="attr.notAcknowledged">Nicht bestätigt (Neu)</label>
 	<label index="attr.dateover">End-Datum oder Frist ist abgelaufen</label>
 	<label index="attr.locked">Gesperrt</label>
+	<label index="attr.is_acknowledged">Ist bestätigt</label>
 	<label index="container.attr.person_owner">Container-Eigner</label>
 	<label index="container.attr.is_public">Container Sichtbarkeit</label>
 	<label index="search.label">Aufgaben</label>
