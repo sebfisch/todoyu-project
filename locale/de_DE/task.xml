@@ -111,4 +111,5 @@
 	<label index="default.date.date_7">Erfassungs-Datum + 1 Woche</label>
 	<label index="default.date.date_14">Erfassungs-Datum + 2 Wochen</label>
 	<label index="notAvailable">Diese Aufgabe ist nicht verfügbar</label>
+	<label index="export.csv">Aufgaben als CSV exportieren</label>
 </labels>

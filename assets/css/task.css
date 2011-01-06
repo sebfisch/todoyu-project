@@ -402,3 +402,12 @@
 	background-color:#fbfbf4;
 	/*background:url(../../../../core/assets/img/bgs/taskcontainer.png);*/
 }
+
+
+/* ---------------------------
+	Task Search Modification
+   --------------------------- */
+
+#action-panel .button.taskExportCsv .icon {
+	background: transparent url('../img/icons.png') 0 -557px no-repeat;
+}

@@ -86,4 +86,5 @@
 	<label index="extconf.taskDefaults.is_public">Default Task Visibility</label>
 	<label index="extconf.taskDefaults.person_assigned_role">Assign person of role if not selectable</label>
 	<label index="extconf.taskDefaults.person_owner_role">Owned by person of role if not selectable</label>
+	<label index="export.csv">Export Project as CSV</label>
 </labels>

@@ -104,6 +104,10 @@ h1.headerLine span.projectIcons {
 	display:none;
 }
 
+#action-panel .button.projectExportCsv .icon {
+	background: transparent url('../img/icons.png') 0 -588px no-repeat;
+}
+
 /* ------------------------------------
 	task tab content
    ------------------------------------ */
