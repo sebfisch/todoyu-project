@@ -1304,6 +1304,25 @@ class TodoyuProjectManager {
 		}
 	}
 
+
+
+	/**
+	 * Get IDs of all internal projects
+	 *
+	 * @return	Array
+	 */
+	public static function getInternalProjectIDs() {
+		$field	= '	p.id';
+		$tables	= '	ext_project_project p,
+					ext_contact_company c';
+		$where	= '		p.id_company	= c.id'
+				. ' AND p.deleted		= 0'
+				. ' AND c.is_internal	= 1';
+		$group	= '	p.id';
+
+		return Todoyu::db()->getColumn($field, $tables, $where, $group, '', '', 'id');
+	}
+
 }
 
 ?>
