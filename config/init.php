@@ -115,19 +115,23 @@ Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters']['owner'] = array(
 );
 
 
+
 	// Maximum projects in project listing widget
 Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectList']['maxProjects']	= 30;
 
-/**
- * Default 'task defaults'. Will be overridden with extconf values of set
- */
+	// Default 'task defaults'. Will be overridden with extconf values of set
 Todoyu::$CONFIG['EXT']['project']['taskDefaults'] = array(
 	'status'			=> STATUS_PLANNING,
 	'statusQuickTask'	=> STATUS_OPEN
 );
 
+	// Duration (timespan from date_start to date_end/deadline) of quicktasks 
+Todoyu::$CONFIG['EXT']['project']['quicktask']['durationDays']  = 3;
+
+
+
 /**
- * add filter exports
+ * Add filter exports
  */
 TodoyuSearchActionPanelManager::addExport('task', 'csvexport', 'TodoyuTaskExportManager::exportCSV', '');
 TodoyuSearchActionPanelManager::addExport('project', 'csvexport', 'TodoyuProjectExportManager::exportCSV', '');

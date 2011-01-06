@@ -100,10 +100,13 @@ class TodoyuQuickTaskManager {
 		$data['id']					= $idTask;
 		$data['status']				= intval(Todoyu::$CONFIG['EXT']['project']['taskDefaults']['statusQuickTask']);
 		$data['id_person_assigned']	= TodoyuAuth::getPersonID();
-		$data['id_person_owner']		= TodoyuAuth::getPersonID();
+		$data['id_person_owner']	= TodoyuAuth::getPersonID();
 		$data['date_start']			= NOW;
-		$data['date_end']			= NOW + TodoyuTime::SECONDS_WEEK;
-		$data['date_deadline']		= NOW + TodoyuTime::SECONDS_WEEK;
+
+		$timestampDateEnd		= NOW + (Todoyu::$CONFIG['EXT']['project']['quicktask']['durationDays'] * TodoyuTime::SECONDS_DAY);
+		$data['date_end']		= $timestampDateEnd;
+		$data['date_deadline']	= $timestampDateEnd;
+
 		$data['type']				= TASK_TYPE_TASK;
 		$data['estimated_workload']	= TodoyuTime::SECONDS_HOUR;
 

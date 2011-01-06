@@ -236,7 +236,7 @@ class TodoyuTaskFilterDataSource {
 		$todayEnd	= TodoyuTime::getEndOfDay();
 		$date		= $negate ? $todayEnd : $todayStart;
 
-		switch($dateRangeKey)	{
+		switch( $dateRangeKey ) {
 			case 'tomorrow':
 				$date += TodoyuTime::SECONDS_DAY;
 				break;

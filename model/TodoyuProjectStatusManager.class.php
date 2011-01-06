@@ -51,7 +51,7 @@ class TodoyuProjectStatusManager {
 		if( is_numeric($status) ) {
 			$idStatus	= intval($status);
 			$statusKey	= self::getStatusKey($idStatus);
-		} elseif($status != '') {
+		} elseif( $status != '' ) {
 			$statusKey	= $status;
 		} else {
 			$statusKey	= 'undefined';

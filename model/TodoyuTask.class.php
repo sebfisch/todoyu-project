@@ -410,7 +410,7 @@ class TodoyuTask extends TodoyuBaseObject {
 		$data		= parent::getTemplateData();
 
 			// There are no BREAKs because everything after the level has to be loaded too
-		switch($infoLevel) {
+		switch( $infoLevel ) {
 			case 5:
 			case 4:
 			case 3:
