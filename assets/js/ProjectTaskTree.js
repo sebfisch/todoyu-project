@@ -431,7 +431,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 *
 	 * @return	{Mixed}
 	 */
-	getFirstTab: function()	{
+	getFirstTab: function() {
 		return Todoyu.Tabs.getFirstTab('project');
 
 //		if( $('project-tabs') && $('project-tabs').select('li').length > 0 ) {

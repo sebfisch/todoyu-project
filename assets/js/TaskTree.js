@@ -78,7 +78,7 @@ Todoyu.Ext.project.TaskTree = {
 	hide: function(idProject) {
 		var taskTree = this.tree(idProject);
 
-		if(taskTree) {
+		if( taskTree ) {
 			taskTree.hide();
 		}
 	},

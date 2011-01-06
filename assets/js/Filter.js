@@ -114,7 +114,7 @@ Todoyu.Ext.project.Filter = {
 		var idPerson	= this.getProjectrolePerson(name);
 		var projectRoles= this.getProjectroleRoles(name);
 
-		if(projectRoles != null)	{
+		if( projectRoles != null ) {
 			var value		= idPerson + ':' + projectRoles.join(',');
 
 			Todoyu.Ext.search.Filter.updateConditionValue(name, value);

@@ -445,7 +445,7 @@ Todoyu.Ext.project.Task = {
 	 *
 	 * @param	{Number}		idTask
 	 */
-	checkAndRemoveTriggerFromParent: function(idTask)	{
+	checkAndRemoveTriggerFromParent: function(idTask) {
 		var idArray = $('task-' + idTask).up().id.split('-');
 		var idParentTask = idArray[1];
 
@@ -526,7 +526,7 @@ Todoyu.Ext.project.Task = {
 		var htmlID		= 'task-' + idTask + '-header';
 		var statusIndex	= 0;
 
-		if(Todoyu.exists(htmlID)) {
+		if( Todoyu.exists(htmlID) ) {
 			var classNames 	= $(htmlID).down('.headLabel').classNames();
 			var statusClass	= classNames.grep(/.*Status(\d)/).first();
 			statusIndex		= statusClass.split('Status').last();
@@ -1014,11 +1014,11 @@ Todoyu.Ext.project.Task = {
 		}
 
 		if( $(idTrigger) ){
-			if( ! $(idTrigger).hasClassName('expandable') )	{
+			if( ! $(idTrigger).hasClassName('expandable') ) {
 				$(idTrigger).addClassName('expandable');
 			}
 
-			if( ! $(idTrigger).hasClassName('expanded') )	{
+			if( ! $(idTrigger).hasClassName('expanded') ) {
 				$(idTrigger).addClassName('expanded');
 			}
 		}

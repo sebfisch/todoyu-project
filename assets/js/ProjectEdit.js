@@ -177,7 +177,7 @@ Todoyu.Ext.project.Project.Edit = {
 			idProject = this.ext.ProjectTaskTree.getActiveProjectID();
 
 				// If there is a project
-			if( idProject !== false )	{
+			if( idProject !== false ) {
 				this.ext.ProjectTaskTree.openProject(idProject);
 				this.ext.ProjectTaskTree.moveTabToFront(idProject);
 			} else {
