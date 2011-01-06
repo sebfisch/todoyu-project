@@ -50,8 +50,8 @@ class TodoyuTaskRights {
 			return true;
 		}
 
-		$idTask		= intval($idTask);
-		$task		= TodoyuTaskManager::getTask($idTask);
+		$idTask	= intval($idTask);
+		$task	= TodoyuTaskManager::getTask($idTask);
 
 		if( $task->isTask() ) {
 			if( ! self::isStatusChangeAllowed($idTask) ) {
@@ -89,6 +89,7 @@ class TodoyuTaskRights {
 	public static function isStatusChangeAllowed($idTask) {
 		$idTask		= intval($idTask);
 		$task		= TodoyuTaskManager::getTask($idTask);
+		$idProject	= $task->getProjectID();
 
 		if( $task->isLocked() ) {
 			return false;
@@ -96,7 +97,7 @@ class TodoyuTaskRights {
 
 		$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('changefrom'));
 
-		return in_array($task->getStatus(), $statusIDs);
+		return in_array($task->getStatus(), $statusIDs) && self::isEditInProjectAllowed($idProject);
 	}
 
 
@@ -110,6 +111,12 @@ class TodoyuTaskRights {
 	 */
 	public static function isEditInProjectAllowed($idProject, $isContainer = false) {
 		$idProject	= intval($idProject);
+		$project	= TodoyuProjectManager::getProject($idProject);
+		$status		= $project->getStatus();
+
+		if( in_array($status, Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing']) || $project->isLocked() ) {
+			return false;
+		}
 
 		$elementType	= $isContainer ? 'container' : 'task';
 
@@ -161,7 +168,7 @@ class TodoyuTaskRights {
 		$idProject	= intval($idProject);
 		$project	= TodoyuProjectManager::getProject($idProject);
 
-		if( in_array($project->getStatus(), array(STATUS_DONE, STATUS_CLEARED)) || $project->isLocked() ) {
+		if( in_array($project->getStatus(), Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing']) || $project->isLocked() ) {
 			return false;
 		}
 

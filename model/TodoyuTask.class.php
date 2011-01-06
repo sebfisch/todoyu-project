@@ -367,7 +367,7 @@ class TodoyuTask extends TodoyuBaseObject {
 	public function isEditable() {
 		$allowed	= TodoyuTaskRights::isEditAllowed($this->getID());
 
-		return $allowed && $this->isLocked() === false;
+		return $allowed && ( $this->isLocked() === false );
 	}
 
 

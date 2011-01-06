@@ -57,6 +57,16 @@ Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK'] = array(
 
 
 /**
+ * Non-editable project status (tasks/containers in project cannot be modified)
+ */
+Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing'] = array(
+	STATUS_DONE,
+	STATUS_CLEARED,
+);
+
+
+
+/**
  * Temporary tab force for all tasks
  * Don't set it here!
  */
