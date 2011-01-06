@@ -838,6 +838,48 @@ class TodoyuProjectManager {
 
 
 	/**
+	 * Get (public) persons which are connected with any of the given projects
+	 *
+	 * @param	Integer		$projectIDs
+	 * @param	Boolean		$withAccount
+	 * @return	Array
+	 */
+	public static function getProjectsPersonsIDs(array $projectIDs = array(), $withAccount = false) {
+		$projectIDs	= TodoyuArray::intval($projectIDs);
+
+		$fields	= '	pe.id';
+		$table	= '	ext_contact_person pe,
+					ext_project_role pr,
+					ext_project_mm_project_person mmpp';
+		$where	= '		mmpp.id_person	= pe.id
+					AND mmpp.id_project	IN (' . implode(',', $projectIDs) . ')' .
+				  ' AND	mmpp.id_role	= pr.id
+				    AND	pe.deleted		= 0';
+		$group	= '	mmpp.id';
+		$order	= '	pe.lastname,
+					pe.firstname';
+
+			// Add public check for external person
+		if( ! Todoyu::person()->isInternal() && ! Todoyu::person()->isAdmin() ) {
+			$where .= ' AND (
+							mmpp.is_public 	= 1 OR
+							mmpp.id_person	= ' . personid() . '
+						)';
+		}
+
+		$group	= 'pe.id';
+
+			// Limit to persons with active todoyu account
+		if( $withAccount === true ) {
+			$where .= ' AND pe.active = 1';
+		}
+
+		return Todoyu::db()->getColumn($fields, $table, $where, $group, $order, '', 'id');
+	}
+
+
+
+	/**
 	 * Get project person label (name + project role)
 	 *
 	 * @param	Integer		$idPerson
