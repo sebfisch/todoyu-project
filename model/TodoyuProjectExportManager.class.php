@@ -30,7 +30,7 @@ class TodoyuProjectExportManager {
 	 * @static
 	 * @param 	Array	$projectIDs
 	 */
-	public static function exportCSV(array $projectIDs)	{
+	public static function exportCSV(array $projectIDs) {
 		$projectIDs	= TodoyuArray::intval($projectIDs);
 
 		$projectsToExport = self::prepareDataForExport($projectIDs);
@@ -47,7 +47,7 @@ class TodoyuProjectExportManager {
 	 * @param	Array	$projectIDs
 	 * @return	Array
 	 */
-	protected static function prepareDataForExport(array $projectIDs)	{
+	protected static function prepareDataForExport(array $projectIDs) {
 		$projectIDs	= TodoyuArray::intval($projectIDs);
 
 		$exportData = array();
@@ -70,17 +70,17 @@ class TodoyuProjectExportManager {
 	 * @param	TodoyuProject	$project
 	 * @return	Array
 	 */
-	protected static function parseDataForExport(TodoyuProject $project)	{
+	protected static function parseDataForExport(TodoyuProject $project) {
 		$exportData = array(
 			TodoyuLanguage::getLabel('LLL:project.attr.id')					=> $project->id,
 			TodoyuLanguage::getLabel('LLL:task.attr.date_create')			=> TodoyuTime::format($project->date_create, 'date'),
 			'date_update[Label]'											=> TodoyuTime::format($project->date_update, 'date'),
-			'id_person_create[Label]'	=> TodoyuPersonManager::getPerson($project->id_person_create)->getFullName(),
+			'id_person_create[Label]'										=> TodoyuPersonManager::getPerson($project->id_person_create)->getFullName(),
 			TodoyuLanguage::getLabel('LLL:project.attr.date_start')			=> TodoyuTime::format($project->date_start),
 			TodoyuLanguage::getLabel('LLL:project.attr.date_end')			=> TodoyuTime::format($project->date_end),
 			TodoyuLanguage::getLabel('LLL:project.attr.date_deadline')		=> TodoyuTime::format($project->date_deadline),
 			TodoyuLanguage::getLabel('LLL:project.attr.title')				=> $project->title,
-			TodoyuLanguage::getLabel('LLL:core.description')				=> $project->description,
+			TodoyuLanguage::getLabel('LLL:core.description')				=> TodoyuString::strictHtml2text($project->description),
 			TodoyuLanguage::getLabel('LLL:project.attr.status')				=> $project->getStatusLabel(),
 			TodoyuLanguage::getLabel('LLL:project.attr.company')			=> $project->getCompany()->getLabel(),
 		);
