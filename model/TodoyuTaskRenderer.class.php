@@ -191,6 +191,13 @@ class TodoyuTaskRenderer {
 			// Construct form object
 		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
 
+			// Adapt task form labels for container
+		if( $task->isContainer() ) {
+			$rightFieldSet	= $form->getFieldset('right');
+			$rightFieldSet->getField('id_person_owner')->setAttribute('label', 'LLL:task.container.attr.person_owner');
+			$rightFieldSet->getField('is_public')->setAttribute('label', 'LLL:task.container.attr.is_public');
+		}
+
 			// Load form data
 		$data	= $task->getTemplateData(0);
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idTask);

@@ -32,7 +32,7 @@
 	<label index="attr.locked">Locked</label>
 	<label index="attr.is_acknowledged">Is Acknowledged</label>
 	<label index="container.attr.person_owner">Container Owner</label>
-	<label index="container.attr.is_public">Container Visibility</label>
+	<label index="container.attr.is_public">Container Is Public</label>
 	<label index="search.label">Tasks</label>
 	<label index="search.mode.label">Find Tasks</label>
 	<label index="create.label">New Task</label>

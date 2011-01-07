@@ -32,7 +32,7 @@
 	<label index="attr.locked">Gesperrt</label>
 	<label index="attr.is_acknowledged">Ist bestätigt</label>
 	<label index="container.attr.person_owner">Container-Eigner</label>
-	<label index="container.attr.is_public">Container Sichtbarkeit</label>
+	<label index="container.attr.is_public">Container ist öffentlich</label>
 	<label index="search.label">Aufgaben</label>
 	<label index="search.mode.label">Aufgaben finden</label>
 	<label index="create.label">Neue Aufgabe</label>

@@ -944,7 +944,7 @@ class TodoyuTaskManager {
 			if( $taskData['date_start'] > 0 && (Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) ) {
 				$info['date_start']	= array(
 					'label'		=> 'LLL:task.attr.date_start',
-					'value'		=> TodoyuTime::format( $taskData['date_start'], 'date'),
+					'value'		=> TodoyuTime::format($taskData['date_start'], 'date'),
 					'position'	=> 10,
 					'className'	=> 'sectionStart'
 				);
