@@ -137,6 +137,24 @@ class TodoyuTaskRenderer {
 		$data			= $task->getTemplateData(0);
 		$data['data']	= TodoyuTaskManager::getTaskInfos($idTask);
 
+			// Remove info about task owner/creator if not visible to current user
+		if( ! allowed('contact', 'person:seeAllPersons') ) {
+			$allowedPersonIDs	= TodoyuPersonRights::getPersonIDsAllowedToBeSeen();
+
+			$dataKeys	= TodoyuArray::flattenToSubKey('__key', $data['data']);
+			$dataOffsets= array_flip($dataKeys);
+
+			if( ! in_array($task->getPersonID('owner'), $allowedPersonIDs) ) {
+				$index = $dataOffsets['person_owner'];
+				unset($data['data'][$index]);
+			}
+
+			if( ! in_array($task->getPersonID('create'), $allowedPersonIDs) ) {
+				$index = $dataOffsets['person_create'];
+				unset($data['data'][$index]);
+			}
+		}
+
 		return render($tmpl, $data);
 	}
 

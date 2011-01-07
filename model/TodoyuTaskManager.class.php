@@ -894,8 +894,7 @@ class TodoyuTaskManager {
 		$data	= array();
 
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskdata', $data, array($idTask));
-
-		$data = TodoyuArray::sortByLabel($data, 'position');
+		$data	= TodoyuArray::sortByLabel($data, 'position');
 
 		return $data;
 	}
