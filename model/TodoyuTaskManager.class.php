@@ -835,12 +835,20 @@ class TodoyuTaskManager {
 		$fields	= ' p.*';
 		$tables	= ' ext_contact_person p,
 					ext_project_task t';
+
 		$where	= '	t.id				= ' . $idTask . '
 					AND	(
 							t.id_person_create	= p.id
 						OR	t.id_person_assigned= p.id
 						OR	t.id_person_owner	= p.id
 					)';
+
+			// Add public/allowed persons check for external person
+		if( ! Todoyu::person()->isInternal() && ! Todoyu::person()->isAdmin() && ! allowed('contact', 'person:seeAllPersons') ) {
+			$allowedPersonIDs = TodoyuPersonRights::getPersonIDsAllowedToBeSeen();
+			$where .= ' AND p.id IN (' . implode(',', $allowedPersonIDs) . ') ';
+		}
+
 		$group	= 'p.id';
 		$order	= 'p.lastname, p.firstname';
 
