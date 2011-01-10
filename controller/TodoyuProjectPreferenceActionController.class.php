@@ -33,7 +33,7 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 * Project details expanded: save preference 
+	 * Save preference: project details expanded?
 	 *
 	 * @param	Array		$params
 	 */
@@ -75,7 +75,7 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 
 
 	/**
-	 * Task status filter panelwidget action: save selected status preference
+	 * Save preference of selected task status filter widget: selected status
 	 *
 	 * @param	Array		$params
 	 */

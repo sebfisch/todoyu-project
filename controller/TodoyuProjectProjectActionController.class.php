@@ -130,7 +130,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 * Delete project
+	 * Delete given project from DB and area view preferences
 	 *
 	 * @param	Array	$params
 	 */
@@ -146,7 +146,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 
 	/**
-	 * Render message when no project is selected
+	 * Render view when no project selected
 	 *
 	 * @param	Array		$params
 	 * @return	String

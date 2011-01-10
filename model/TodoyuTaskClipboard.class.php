@@ -162,7 +162,7 @@ class TodoyuTaskClipboard {
 
 
 	/**
-	 * Paste current task in clipboard
+	 * Paste task from clipboard into given project
 	 *
 	 * @param	Integer		$idWorkingTask		New parent task
 	 * @param	String		$insertMode			Insert mode (before,in,after)
