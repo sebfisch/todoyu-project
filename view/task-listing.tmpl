@@ -14,7 +14,7 @@
 		{foreach $tasks taskHTML}
 			{$taskHTML}
 		{else}
-			<p class="contentMessage">{Label portal.selection.noTasksFound}</p>
+			{contentMessage 'portal.selection.noTasksFound'}
 		{/foreach}
 	</div>
 </div>

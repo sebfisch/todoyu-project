@@ -12,7 +12,7 @@
 		{foreach $projects projectHTML}
 			{$projectHTML}
 		{else}
-			<p class="contentMessage">{Label portal.selection.noProjectsFound}</p>
+			{contentMessage 'portal.selection.noProjectsFound'}
 		{/foreach}
 	</div>
 </div>
