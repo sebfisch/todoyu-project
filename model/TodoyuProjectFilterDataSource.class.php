@@ -43,7 +43,8 @@ class TodoyuProjectFilterDataSource {
 			$projects	= self::getProjects($projectIDs);
 			foreach($projects as $project) {
 				if( TodoyuProjectRights::isSeeAllowed($project['id']) ) {
-					$data[$project['id']] = $project['company'] .' - ' . $project['title'];
+					$companyShort	= (! empty($project['company']) ) ? $project['company'] : TodoyuString::crop($project['companyfulltitle'], 16, '...', false);
+					$data[$project['id']] = $companyShort .' - ' . $project['title'];
 				}
 			}
 		}
@@ -70,7 +71,8 @@ class TodoyuProjectFilterDataSource {
 			$projects	= self::getProjects($projectIDs);
 			foreach($projects as $project) {
 				if( TodoyuTaskRights::isAddInProjectAllowed($project['id']) ) {
-					$data[$project['id']] = $project['company'] .' - ' . $project['title'];
+					$companyShort	= (! empty($project['company']) ) ? $project['company'] : TodoyuString::crop($project['companyfulltitle'], 16, '...', false);
+					$data[$project['id']] = $companyShort .' - ' . $project['title'];
 				}
 			}
 		}
@@ -89,7 +91,8 @@ class TodoyuProjectFilterDataSource {
 	private function getProjects(array $projectIDs = array()) {
 		$fields		= '	p.id,
 						p.title,
-						c.shortname as company';
+						c.shortname as company,
+						c.title as companyfulltitle';
 		$tables		= ' ext_project_project p,
 						ext_contact_company c';
 		$where		= ' p.id_company = c.id AND
@@ -101,7 +104,7 @@ class TodoyuProjectFilterDataSource {
 
 
 	/**
-	 * Gets the label for the current Autocompletion value.
+	 * Gets the label for the current autocompletion value.
 	 *
 	 * @param	Array	$definitions
 	 * @return	Array

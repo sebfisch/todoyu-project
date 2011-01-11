@@ -80,7 +80,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when copied to clipboard
 	 *
-	 * @param	{Number}				idTask
+	 * @param	{Number}			idTask
 	 * @param	{Ajax.Response}		response
 	 */
 	onCopied: function(idTask, response) {
@@ -115,7 +115,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when task is cut
 	 *
-	 * @param	{Number}				idTask
+	 * @param	{Number}			idTask
 	 * @param	{Ajax.Response}		response
 	 */
 	onCut: function(idTask, response) {
@@ -151,7 +151,7 @@ Todoyu.Ext.project.Task = {
 	 *
 	 * @param	{Number}			idTask
 	 * @param	{String}			insertMode
-	 * @param	{Ajax.Response}	response
+	 * @param	{Ajax.Response}		response
 	 */
 	onPasted: function(idTask, insertMode, response) {
 		var idTaskNew		= response.getTodoyuHeader('idTask');
@@ -240,7 +240,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when task was cloned
 	 *
-	 * @param	{Number}				idSourceTask
+	 * @param	{Number}			idSourceTask
 	 * @param	{Ajax.Response}		response
 	 */
 	onCloned: function(idSourceTask, response) {
@@ -296,7 +296,7 @@ Todoyu.Ext.project.Task = {
 	 * Handler when task removed
 	 *
 	 * @param	{Number}			idTask
-	 * @param	{Ajax.Response}	response
+	 * @param	{Ajax.Response}		response
 	 */
 	onRemoved: function(idTask, response) {
 		Todoyu.Hook.exec('project.task.removed', idTask);
@@ -583,7 +583,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when task has been refreshed
 	 *
-	 * @param	{Number}				idTask
+	 * @param	{Number}			idTask
 	 * @param	{Ajax.Response}		response
 	 */
 	onRefreshed: function(idTask, response) {
@@ -751,7 +751,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Evoked upon completion of request having added a sub task to given parent task. Adds context menu to new task, ensures sub tasks (including the new one) of given task are shown, scrolls new task into view.
 	 *
-	 * @param	{Number}		idParentTask
+	 * @param	{Number}			idParentTask
 	 * @param	{Ajax.Response}		response
 	 */
 	onSubTaskAdded: function(idParentTask, response) {
@@ -816,7 +816,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Evoked after completion of request adding sub container to given task. Attaches context menu to container, activates display of sub tasks of task (including the new container), scrolls container into focus.
 	 *
-	 * @param	{Number}		idParentTask
+	 * @param	{Number}			idParentTask
 	 * @param	{Ajax.Response}		response
 	 */
 	onSubContainerAdded: function(idParentTask, response) {
@@ -906,8 +906,8 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when task details have been toggled
 	 *
-	 * @param	{Number}				idTask
-	 * @param	{String}				tab
+	 * @param	{Number}			idTask
+	 * @param	{String}			tab
 	 * @param	{Ajax.Response}		response
 	 */
 	onDetailsToggled: function(idTask, tab, response) {
@@ -989,8 +989,8 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when task details are showed
 	 *
-	 * @param	{Number}				idTask
-	 * @param	{String}				tab
+	 * @param	{Number}			idTask
+	 * @param	{String}			tab
 	 * @param	{Ajax.Response}		response
 	 */
 	onDetailsShowed: function(idTask, tab, response) {
@@ -1055,8 +1055,8 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Handler when details are loaded
 	 *
-	 * @param	{Number}				idTask
-	 * @param	{String}				tab
+	 * @param	{Number}			idTask
+	 * @param	{String}			tab
 	 * @param	{Function}			onComplete
 	 * @param	{Ajax.Response}		response
 	 */
