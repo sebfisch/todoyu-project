@@ -638,8 +638,8 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		if( sizeof($statusList) > 0 ) {
 			$tables	= array(self::TABLE);
 			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= '(   ext_project_task.status ' . $compare . '(' . implode(',', $statusList) . ')
-						OR ext_project_task.type = ' . TASK_TYPE_CONTAINER . ')';
+			$where	= '(	ext_project_task.status ' . $compare . '(' . implode(',', $statusList) . ')
+						OR	ext_project_task.type = ' . TASK_TYPE_CONTAINER . ')';
 
 			$queryParts	= array(
 				'tables'	=> $tables,

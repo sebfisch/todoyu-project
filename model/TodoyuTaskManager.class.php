@@ -1420,13 +1420,13 @@ class TodoyuTaskManager {
 		} else {
 				// Only start or end given. Start and end of task must be (at or) after given starting time
 			if( $start > 0 ) {
-				$where	.=	' AND date_start  >= ' . $start
-						.	' AND date_end    >= ' . $start;
+				$where	.=	' AND date_start	>= ' . $start
+						.	' AND date_end		>= ' . $start;
 			}
 				// Start and end of task must be (at or) before given ending time
 			if( $end > 0 ) {
-				$where	.=	' AND date_end    <= ' . $end
-						.	' AND date_start  <= ' . $end;
+				$where	.=	' AND date_end		<= ' . $end
+						.	' AND date_start	<= ' . $end;
 			}
 		}
 

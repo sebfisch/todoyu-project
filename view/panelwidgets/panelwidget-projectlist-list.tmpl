@@ -2,7 +2,7 @@
 	{foreach $projects project}
 		<li id="panelwidget-{$id}-project-{$project.id}" class="bcStatus{$project.status}">
 			<a href="javascript:void(0)" title="ID: {$project.id}">
-			    {if $project.companyShort}{htmlencode $project.companyShort}{else}{htmlencode(truncate($project.company,40))}{/if} - {htmlencode $project.title}
+				{if $project.companyShort}{htmlencode $project.companyShort}{else}{htmlencode(truncate($project.company,40))}{/if} - {htmlencode $project.title}
 			</a>
 		</li>
 	{else}

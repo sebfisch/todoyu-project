@@ -36,7 +36,7 @@ Project Extension - PHP Hooks
 
 2. Event Data Modification
 --------------------------
-   Evoked via TodoyuHookManager::callHookDataModifier($ext, $name, $dataVar, (Array $additionalParams) )
+	Evoked via TodoyuHookManager::callHookDataModifier($ext, $name, $dataVar, (Array $additionalParams) )
 
 	projectDefaultData
 	Evoked after ProjectManager has set up project basic default data array.

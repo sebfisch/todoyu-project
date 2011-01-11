@@ -311,7 +311,7 @@ class TodoyuProjectManager {
 		$index	= 'id_project';
 
 		$where	=	'		deleted		= 0 '
-				.	' AND	date_end    > ' . $endAfter;
+				.	' AND	date_end	> ' . $endAfter;
 
 			// Filter by status IDs
 		$where .=	( count($statusIDs) > 0 ) ? ' AND status IN(' . implode(',', $statusIDs) . ')' : '';
@@ -801,7 +801,7 @@ class TodoyuProjectManager {
 		$where	= '		mmpp.id_person	= pe.id
 					AND mmpp.id_project	= ' . $idProject .
 				  ' AND	mmpp.id_role	= pr.id
-				    AND	pe.deleted		= 0';
+					AND	pe.deleted		= 0';
 		$group	= '	mmpp.id';
 		$order	= '	pe.lastname,
 					pe.firstname';
@@ -854,7 +854,7 @@ class TodoyuProjectManager {
 		$where	= '		mmpp.id_person	= pe.id
 					AND mmpp.id_project	IN (' . implode(',', $projectIDs) . ')' .
 				  ' AND	mmpp.id_role	= pr.id
-				    AND	pe.deleted		= 0';
+					AND	pe.deleted		= 0';
 		$group	= '	mmpp.id';
 		$order	= '	pe.lastname,
 					pe.firstname';

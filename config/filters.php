@@ -216,15 +216,15 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'projectstatus' => array(
-			'funcRef'       => 'TodoyuTaskFilter::Filter_projectstatus',
-			'label'         => 'LLL:projectFilter.project.status',
-			'optgroup'      => 'LLL:project.search.label',
-			'widget'        => 'select',
-			'wConf'         => array(
-				'multiple'      => true,
-				'size'          => 5,
-				'FuncRef'       => 'TodoyuProjectFilterDataSource::getStatusOptions',
-				'negation'      => 'default'
+			'funcRef'		=> 'TodoyuTaskFilter::Filter_projectstatus',
+			'label'			=> 'LLL:projectFilter.project.status',
+			'optgroup'		=> 'LLL:project.search.label',
+				'widget'	=> 'select',
+			'wConf'			=> array(
+				'multiple'		=> true,
+				'size'			=> 5,
+				'FuncRef'		=> 'TodoyuProjectFilterDataSource::getStatusOptions',
+				'negation'		=> 'default'
 			)
 		),
 		'projectrole' => array(
@@ -457,10 +457,10 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 			)
 		),
 //		'locked' => array(
-//			  'funcRef'       => 'TodoyuProjectFilter::filter_locked',
-//			  'label'         => 'LLL:core.locked',
-//			  'optgroup'      => 'LLL:project.search.label',
-//			  'widget'        => 'checkbox',
+//			  'funcRef'		=> 'TodoyuProjectFilter::filter_locked',
+//			  'label'		=> 'LLL:core.locked',
+//			  'optgroup'	=> 'LLL:project.search.label',
+//			  'widget'		=> 'checkbox',
 //		),
 
 
