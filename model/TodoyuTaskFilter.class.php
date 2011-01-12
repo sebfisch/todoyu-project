@@ -128,6 +128,13 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 
+	/**
+	 * Get query parts for available projects filter
+	 *
+	 * @param	String		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
 	public static function Filter_availableprojects($value, $negate = false) {
 		$availableProjects	= TodoyuProjectManager::getAvailableProjectsForPerson();
 

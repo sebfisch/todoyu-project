@@ -170,6 +170,14 @@ class TodoyuTaskViewHelper {
 
 
 
+	/**
+	 * Get filtered task autocompletion suggestions to given input
+	 *
+	 * @param	String	$input
+	 * @param	Array	$formData
+	 * @param	String	$name
+	 * @return	Array
+	 */
 	public static function getProjecttaskAutocomplete($input, array $formData, $name = '') {
 		$idProject	= intval($formData['id_project']);
 		$idTask		= intval($formData['id']);

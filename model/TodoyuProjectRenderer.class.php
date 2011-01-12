@@ -710,6 +710,13 @@ class TodoyuProjectRenderer {
 	}
 
 
+
+	/**
+	 * Render given project as listing item
+	 *
+	 * @param	Integer		$idProject
+	 * @return	String
+	 */
 	public static function renderListingProject($idProject) {
 		$idProject	= intval($idProject);
 

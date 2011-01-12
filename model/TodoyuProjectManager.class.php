@@ -94,7 +94,7 @@ class TodoyuProjectManager {
 	 * @return	Boolean
 	 */
 	public static function updateProject($idProject, array $data) {
-		$idProject	=	intval($idProject);
+		$idProject	= intval($idProject);
 
 		TodoyuRecordManager::removeRecordCache('TodoyuProject', $idProject);
 
@@ -310,13 +310,13 @@ class TodoyuProjectManager {
 		$order	= 'date_start';
 		$index	= 'id_project';
 
-		$where	=	'		deleted		= 0 '
-				.	' AND	date_end	> ' . $endAfter;
+		$where	= '		deleted		= 0 '
+				. ' AND	date_end	> ' . $endAfter;
 
 			// Filter by status IDs
-		$where .=	( count($statusIDs) > 0 ) ? ' AND status IN(' . implode(',', $statusIDs) . ')' : '';
+		$where .= ( count($statusIDs) > 0 ) ? ' AND status IN(' . implode(',', $statusIDs) . ')' : '';
 			// Filter by assigned person IDs
-		$where .=	( count($personIDs) > 0 ) ? ' AND id_person_assigned IN(' . implode(',', $personIDs) . ')' : '';
+		$where .= ( count($personIDs) > 0 ) ? ' AND id_person_assigned IN(' . implode(',', $personIDs) . ')' : '';
 
 		return array_keys(Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit, $index));
 	}

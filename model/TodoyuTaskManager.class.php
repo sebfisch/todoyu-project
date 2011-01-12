@@ -627,7 +627,7 @@ class TodoyuTaskManager {
 			return array();
 		}
 
-		$where	=	'		id_parenttask	= ' . $idTask
+		$where	= '			id_parenttask	= ' . $idTask
 				  . ' AND	deleted			= 0';
 
 		return TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
@@ -650,7 +650,7 @@ class TodoyuTaskManager {
 		}
 
 		$field	= 'id';
-		$where	=	'		id_parenttask	= ' . $idTask
+		$where	= '			id_parenttask	= ' . $idTask
 				  . ' AND	deleted			= 0';
 
 		return Todoyu::db()->getColumn($field, self::TABLE, $where, '', $order);
@@ -1420,13 +1420,13 @@ class TodoyuTaskManager {
 		} else {
 				// Only start or end given. Start and end of task must be (at or) after given starting time
 			if( $start > 0 ) {
-				$where	.=	' AND date_start	>= ' . $start
-						.	' AND date_end		>= ' . $start;
+				$where	.= '	AND date_start	>= ' . $start
+						. '		AND date_end	>= ' . $start;
 			}
 				// Start and end of task must be (at or) before given ending time
 			if( $end > 0 ) {
-				$where	.=	' AND date_end		<= ' . $end
-						.	' AND date_start	<= ' . $end;
+				$where	.= '	AND date_end	<= ' . $end
+						. '		AND date_start	<= ' . $end;
 			}
 		}
 

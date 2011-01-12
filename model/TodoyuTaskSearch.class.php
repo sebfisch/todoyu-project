@@ -64,7 +64,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 
 
 	/**
-	 * Get suggestions
+	 * Get render arrays for select options of task autocompleter suggestion
 	 *
 	 * @param	Array	$find		Array of words to search for
 	 * @param	Array	$ignore		Array of words to be ignored
@@ -96,9 +96,6 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 			$order	= '	t.date_create DESC';
 
 			$tasks	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
-
-
-
 
 				// Assemble found task suggestions
 			foreach($tasks as $task) {

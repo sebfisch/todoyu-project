@@ -57,6 +57,13 @@ class TodoyuProjectExtConfViewHelper {
 	}
 
 
+
+	/**
+	 * Get status infos of default task 
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @return	Array
+	 */
 	public static function getDefaultValueStatusOptions(TodoyuFormElement $field) {
 		return TodoyuTaskStatusManager::getStatusInfos('see');
 	}

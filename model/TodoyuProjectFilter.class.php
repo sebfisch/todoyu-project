@@ -492,10 +492,10 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @return	Array
 	 */
 	protected static function Filter_dateDyn($date, $field, $negation = false)	{
-		$date	=	intval($date);
-		$compare	= $negation ? '>=' : '<=';
+		$date	= intval($date);
+		$compare= $negation ? '>=' : '<=';
 
-		$where 		= 'ext_project_project.' . $field . ' ' . $compare . ' ' . $date;
+		$where	= 'ext_project_project.' . $field . ' ' . $compare . ' ' . $date;
 
 		return array(
 			'where' 	=> $where
