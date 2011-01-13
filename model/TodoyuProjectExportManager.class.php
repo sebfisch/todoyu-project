@@ -24,9 +24,9 @@
  */
 class TodoyuProjectExportManager {
 
-
-
 	/**
+	 * Exports Project as csv
+	 *
 	 * @static
 	 * @param 	Array	$projectIDs
 	 */
@@ -45,6 +45,8 @@ class TodoyuProjectExportManager {
 
 
 	/**
+	 * Prepares projects for export
+	 *
 	 * @static
 	 * @param	Array	$projectIDs
 	 * @return	Array
@@ -68,6 +70,8 @@ class TodoyuProjectExportManager {
 
 
 	/**
+	 * Parses Project data for CSV export
+	 *
 	 * @static
 	 * @param	TodoyuProject	$project
 	 * @return	Array
