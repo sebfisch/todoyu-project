@@ -76,7 +76,7 @@ class TodoyuTaskExportManager {
 			TodoyuLanguage::getLabel('LLL:task.attr.id')					=> $task->id,
 			TodoyuLanguage::getLabel('LLL:task.attr.date_create')			=> TodoyuTime::format($task->date_create, 'date'),
 			TodoyuLanguage::getLabel('LLL:core.date_update')				=> TodoyuTime::format($task->date_update, 'date'),
-			TodoyuLanguage::getLabel('LLL:core.id_user_create')				=> TodoyuPersonManager::getPerson($task->id_person_create)->getFullName(),
+			TodoyuLanguage::getLabel('LLL:core.id_person_create')				=> TodoyuPersonManager::getPerson($task->id_person_create)->getFullName(),
 			TodoyuLanguage::getLabel('LLL:task.attr.type')					=> $task->isContainer() ? TodoyuLanguage::getLabel('LLL:task.container') : TodoyuLanguage::getLabel('LLL:task.task'),
 			TodoyuLanguage::getLabel('LLL:project.project')					=> TodoyuProjectManager::getProject($task->id_project)->getFullTitle(),
 			TodoyuLanguage::getLabel('LLL:task.attr.id_parenttask')			=> TodoyuTaskManager::getTask($task->id_parenttask)->getFullTitle(),
