@@ -98,7 +98,7 @@ class TodoyuTaskExportManager {
 		$publicTypeKey	= $task->isContainer ? '.container' : '';
 		$exportData[TodoyuLanguage::getLabel('LLL:task.attr.is_public')]			= TodoyuLanguage::getLabel('LLL:task.attr.is_public.' . $publicKey . $publicTypeKey);
 
-		$exportData	= TodoyuHookManager::callHookDataModifier('project', 'onTaskCSVExportParseData', $exportData, array('task'	=> $task));
+		$exportData	= TodoyuHookManager::callHookDataModifier('project', 'taskCSVExportParseData', $exportData, array('task'	=> $task));
 		
 		return $exportData;
 	}

@@ -102,7 +102,17 @@ Project Extension - PHP Hooks
 	@param	'idProject'	=> $idProject
 	Evoked after record to contain copy of another task has already been created, can be used to mutate the original record and/or the copy as both records IDs are given.
 
+	taskCSVExportParseData
+	@param	Array		=> $exportData
+	@param	TodoyuTask	=> $task
+	@return	Array
+	Evoked after task data is parsed for the export. Its possible to modify the exportData array. Has to give it back.
 
+	projectCSVExportParseData
+	@param	Array			=> $exportData
+	@param	TodoyouProject	=> $project
+	@return	Array
+	Evoked after project data is parsed for the export. Its possible to modify the exportData array. Has to give it back.
 
 3. Form Hooks (Build Form, Load Data, Save Data)
 ------------------------------------------------

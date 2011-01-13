@@ -92,7 +92,7 @@ class TodoyuProjectExportManager {
 			$exportData[TodoyuLabelManager::getLabel('LLL:project.attr.persons.role') .'_'. ($index+1)]	= $personData['rolelabel'];
 		}
 
-		$exportData = TodoyuHookManager::callHookDataModifier('project', 'onProjectCSVExportParseData', $exportData, array('project'	=> $project));
+		$exportData = TodoyuHookManager::callHookDataModifier('project', 'projectCSVExportParseData', $exportData, array('project'	=> $project));
 
 		return $exportData;
 	}
