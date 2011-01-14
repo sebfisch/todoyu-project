@@ -3,9 +3,9 @@
 		<a id="task-{$task.id}-subtasks-trigger" onclick="Todoyu.Ext.project.TaskTree.toggleSubtasks(event, {$task.id})" href="javascript:void(0)" class="{if $hasSubtasks}expandable{/if} {if $areSubtasksVisible}expanded{/if}"></a>
 
 		<span class="headLabel bcStatus{$task.status}" title="{htmlencode $task.fulltitle}">
-			<span class="taskDate date" title="{Label core.deadline}: {dateFormat $task.date_deadline D2M2Y2} / {Label core.start}: {dateFormat $task.date_start D2M2Y2}">
-				{if $task.date_deadline > 0}
-					{dateFormat $task.date_deadline D2M2Y2}
+			<span class="taskDate date" title="{Label core.deadline}: {dateFormat $task.date_end D2M2Y2} / {Label core.start}: {dateFormat $task.date_start D2M2Y2}">
+				{if $task.date_end > 0}
+					{dateFormat $task.date_end D2M2Y2}
 				{/if}
 				&nbsp;
 			</span>

@@ -6,8 +6,8 @@
 			<span class="taskDate date" title="">
 				&nbsp;
 			{else}
-			<span class="taskDate date" title="{Label core.deadline}: {dateFormat $task.date_deadline "D2M2Y2"} / {Label core.start}: {dateFormat $task.date_start "D2M2Y2"}">
-				{dateFormat $task.date_deadline D2M2Y2}&nbsp;
+			<span class="taskDate date" title="{Label core.deadline}: {dateFormat $task.date_end "D2M2Y2"} / {Label core.start}: {dateFormat $task.date_start "D2M2Y2"}">
+				{dateFormat $task.date_end D2M2Y2}&nbsp;
 			{/if}
 			</span>
 			<span class="customer">
