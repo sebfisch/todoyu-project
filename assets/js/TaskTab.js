@@ -30,7 +30,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Handle onSelect event of tab: show affected tab which the event occured on
 	 *
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	onSelect: function(event, tabKey) {

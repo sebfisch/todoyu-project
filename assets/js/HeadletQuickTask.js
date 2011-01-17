@@ -39,7 +39,7 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	/**
 	 * Handle button click: evoke add quicktask
 	 *
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 */
 	onButtonClick: function(event) {
 		this.add();

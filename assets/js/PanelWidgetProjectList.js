@@ -98,7 +98,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler for keyup events of full-text search input field
 	 *
-	 * @param	{Object}		event
+	 * @param	{Event}		event
 	 */
 	onFulltextKeyup: function(event) {
 		this.clearTimeout();
@@ -112,7 +112,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Click event handler for project
 	 *
-	 * @param	{Object}		event
+	 * @param	{Event}		event
 	 */
 	onProjectClick: function(event) {
 		Todoyu.Hook.exec('panelwidget.projectlist.onProjectClick', event);
@@ -199,7 +199,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler to be evoked after refresh of project list panelWidget
 	 *
-	 * @param	{Object}  response
+	 * @param	{Ajax.Response}  response
 	 */
 	onUpdated: function(response) {
 		this.observeProjects();
