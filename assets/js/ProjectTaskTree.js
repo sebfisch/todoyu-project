@@ -268,7 +268,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	/**
 	 * @todo	check, implement or remove
 	 *
-	 * @param	{Object}	response
+	 * @param	{Ajax.Response}		response
 	 */
 	onNoProjectSelectedViewLoaded: function(response) {
 

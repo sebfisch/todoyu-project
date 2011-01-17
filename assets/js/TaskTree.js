@@ -120,7 +120,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Evoked after task tree updating has been completed. Adds the context menu.
 	 *
-	 * @param	{Object}	response
+	 * @param	{Ajax.Response}		response
 	 */
 	onUpdated: function(response) {
 		this.addContextMenu();

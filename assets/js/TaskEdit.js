@@ -87,8 +87,8 @@ Todoyu.Ext.project.Task.Edit = {
 	 * Scrolls to given task, calls onTaskEdit hook.
 	 * Evoked after task editing form having been loaded.
 	 *
-	 * @param	{Number}	idTask
-	 * @param	{Object}	response
+	 * @param	{Number}			idTask
+	 * @param	{Ajax.Response}		response
 	 */
 	onFormLoaded: function(idTask, response) {
 		this.ext.Task.scrollTo(idTask);
@@ -120,7 +120,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Evoked after edited task having been saved. Handles display of success / failure message and refresh of saved task / failed form.
 	 *
-	 * @param	{Object}	response
+	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(form, response) {
 		var idTask		= response.getTodoyuHeader('idTask');

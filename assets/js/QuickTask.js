@@ -93,8 +93,8 @@ Todoyu.Ext.project.QuickTask = {
 	/**
 	 * Evoked upon completion of saving a quicktask
 	 * 
-	 * @param	{String}	form
-	 * @param	{Object}	response
+	 * @param	{String}			form
+	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(form, response) {
 		if( response.hasTodoyuError() ) {

@@ -49,7 +49,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 	/**
 	 * Evoked after edited task having been saved. Handles display of success / failure message and refresh of saved task / failed form.
 	 *
-	 * @param	{Object}	response
+	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response) {
 		var idProject	= response.getTodoyuHeader('idProject');
