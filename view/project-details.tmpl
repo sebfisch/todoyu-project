@@ -22,6 +22,18 @@
 		<div class="content overflow">{substituteLinkableElements(cleanHtml($description))}</div>
 	</div>
 
+	{if isInternal()}
+		<div class="infoBox presets">
+			<h4>{Label project.infobox.presets.title}</h4>
+			<div class="content overflow">
+			{foreach $presets preset}
+				<dt>{Label $preset.label true}</dt>
+				<dd>{$preset.value}</dd>
+			{/foreach}
+			</div>
+		</div>
+	{/if}
+
 	{* ---------- Dynamic added elements ----------- *}
 	{if $dynamicElements}
 		{foreach $dynamicElements element}

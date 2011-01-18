@@ -15,6 +15,7 @@ CREATE TABLE `ext_project_project` (
 	`description` mediumtext NOT NULL,
 	`status` tinyint(3) unsigned NOT NULL DEFAULT '0',
 	`id_company` int(10) unsigned NOT NULL DEFAULT '0',
+	`id_taskpreset` int(10) unsigned NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
@@ -103,4 +104,22 @@ CREATE TABLE `ext_project_mm_project_person` (
 	PRIMARY KEY (`id`),
 	KEY `project` (`id_project`),
 	KEY `person` (`id_person`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ext_project_taskpreset`
+--
+
+CREATE TABLE `ext_project_taskpreset` (
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+	`date_create` int(10) unsigned NOT NULL DEFAULT '0',
+	`date_update` int(11) NOT NULL,
+	`id_person_create` int(10) unsigned NOT NULL,
+	`deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+	`title` varchar(64) NOT NULL,
+	`id_person_assigned` int(10) unsigned NOT NULL DEFAULT '0',
+	`is_public` tinyint(1) unsigned NOT NULL DEFAULT '0'
+	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

@@ -22,6 +22,7 @@ TodoyuHookManager::registerHook('core', 'substituteLinkableElements', 'TodoyuTas
 
 TodoyuHookManager::registerHook('project', 'taskdata', 			'TodoyuTaskManager::getTaskDataAttributes');
 TodoyuHookManager::registerHook('project', 'projectdata', 		'TodoyuProjectManager::getProjectDataAttributes');
+TodoyuHookManager::registerHook('project', 'projectpresetdata', 'TodoyuProjectManager::getProjectPresetDataAttributes');
 TodoyuHookManager::registerHook('project', 'taskIcons', 		'TodoyuTaskManager::getTaskIcons');
 TodoyuHookManager::registerHook('project', 'taskinfo',			'TodoyuTaskManager::addContainerInfoToTaskData');
 

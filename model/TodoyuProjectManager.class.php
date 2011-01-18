@@ -601,7 +601,29 @@ class TodoyuProjectManager {
 	}
 
 
+	/** 
+	 * Get all data attributes for the project (merged from all extensions) 
+	 * 
+	 * @param	Integer		$idProject
+	 * @return	Array
+	 */ 
+	public static function getProjectPresetDataArray($idProject) { 
+		$idProject	= intval($idProject);
+		$data		= array();
 
+		$tempData	= TodoyuHookManager::callHook('project', 'projectpresetdata', array($idProject));
+
+		foreach($tempData as $hookInfo) { 
+			$data	= array_merge($data, $hookInfo);
+		} 
+
+		$data	= TodoyuArray::sortByLabel($data);
+
+		return $data; 
+	}
+	
+	
+	
 	/**
 	 * Get attributes array for a project data list
 	 *
@@ -647,6 +669,53 @@ class TodoyuProjectManager {
 
 //		print_r($info);
 //		exit();
+
+		return $info;
+	}
+
+
+
+	/** 
+	 * Get attributes array for a project preset data list 
+	 * 
+	 * @param       Integer         $idProject 
+	 * @return      Array 
+	 */ 
+	public static function getProjectPresetDataAttributes($idProject) { 
+		$idProject	= intval($idProject);
+		$info		= array();
+
+		$project		= TodoyuProjectManager::getProject($idProject);
+		$idTaskPreset	= $project->get('id_taskpreset');
+
+		if( $idTaskPreset > 0 ) { 
+			$taskPreset	= TodoyuTaskpresetManager::getTaskpreset($idTaskPreset);
+
+			$info[] = array( 
+				'label'		=> Label('project.attr.taskpreset'),
+				'value'		=> $taskPreset['title'],
+				'position'	=> 10
+			); 
+
+			$info[] = array( 
+				'label'		=> Label('project.taskpreset.person_assigned'),
+				'value'		=> TodoyuPersonManager::getLabel($taskPreset['id_person_assigned']),
+				'position'	=> 20
+			); 
+
+			$info[] = array( 
+				'label'		=> Label('project.taskpreset.is_public'),
+				'value'		=> Label( intval($taskPreset['is_public']) ? 'core.public' : 'core.notpublic' ),
+				'position'	=> 20
+			); 
+		} else { 
+				// No task preset selected for this project 
+			$info[] = array( 
+				'label'		=> Label('project.attr.taskpreset'),
+				'value'		=> Label('project.taskpreset.option.none'),
+				'position'	=> 10
+			); 
+		}
 
 		return $info;
 	}

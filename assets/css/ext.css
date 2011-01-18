@@ -138,6 +138,18 @@ h1.extIconProject .title {
 	width:180px;
 }
 
+.project .presets dt,
+.task .presets dt {
+	float:left;
+	width:310px;
+	margin-right:14px;
+}
+.project .presets dd,
+.task .presets dd {
+	float:left;
+	width:180px;
+}
+
 .details .description a,
 .tabContent .comment a {
 	text-decoration:underline !important;

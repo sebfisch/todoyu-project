@@ -61,7 +61,7 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 		$formData	= $params['quicktask'];
 
 			// Get form object
-		$form		= TodoyuQuickTaskManager::getQuickTaskForm();
+		$form	= TodoyuQuickTaskManager::getQuickTaskForm();
 
 			// Set form data
 		$form->setFormData($formData);

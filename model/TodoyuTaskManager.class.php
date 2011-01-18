@@ -1478,16 +1478,19 @@ class TodoyuTaskManager {
 	 */
 	public static function getTaskDefaultData($idParentTask = 0, $idProject = 0, $type = TASK_TYPE_TASK) {
 		$idParentTask	= intval($idParentTask);
-		$idProject		= intval($idProject);
 		$type			= intval($type);
+		$idProject		= intval($idProject);
 
 			// Find project if not available as parameter
 		if( $idProject === 0 && $idParentTask !== 0 ) {
 			$idProject	= self::getProjectID($idParentTask);
 		}
+		$project	= TodoyuProjectManager::getProject($idProject);
 
-			// Get extension config
-		$extConf	= TodoyuExtConfManager::getExtConf('project');
+			// Get taskpreset set and extension config
+		$idTaskpreset	= $project->get('id_taskpreset');
+		$taskpreset		= $idTaskpreset > 0 ? TodoyuTaskpresetManager::getTaskpreset($idTaskpreset) : false;
+		$extConf		= TodoyuExtConfManager::getExtConf('project');
 
 			// Set default data
 		$data	= array(
@@ -1503,7 +1506,7 @@ class TodoyuTaskManager {
 			'id_person_assigned'=> 0,
 			'id_person_owner'	=> personid(),
 			'estimated_workload'=> intval($extConf['estimated_workload']),
-			'is_public'			=> intval($extConf['is_public']),
+			'is_public'			=> intval($idTaskpreset > 0 ? $taskpreset['is_public'] : $extConf['is_public']),
 			'id_parenttask'		=> $idParentTask,
 			'type'				=> $type,
 			'id_worktype'		=> intval($extConf['id_worktype'])
@@ -1544,12 +1547,18 @@ class TodoyuTaskManager {
 
 	/**
 	 * Set default task values if missing
-	 * Person may not be allowed to enter the values, so we use the defaults from extConf
+	 * Person may not be allowed to enter the values, so we use the defaults from taskpreset and extConf
 	 *
 	 * @param	Array		$data
 	 * @return	Array
 	 */
 	private static function setDefaultValuesForNotAllowedFields(array $data) {
+		$idProject	= intval($data['id_project']);
+		$project	= TodoyuProjectManager::getProject($idProject);
+
+		$idTaskpreset	= $project->get('id_taskpreset');
+		$taskpreset		= $idTaskpreset > 0 ? TodoyuTaskpresetManager::getTaskpreset($idTaskpreset) : false;
+
 		$extConf	= TodoyuExtConfManager::getExtConf('project');
 		$original	= $data;
 
@@ -1572,26 +1581,36 @@ class TodoyuTaskManager {
 		}
 
 			// Set is_public flag
-		if( ! isset($data['is_public']) ) {
-			$extConfPublic	= intval($extConf['is_public']);
+		if( $idTaskpreset > 0 ) {
+				// Get default via taskpreset record, if any assigned to project
+			$data['is_public']      = intval($taskpreset['is_public']);
+		} else {
+			if( ! isset($data['is_public']) ) {
+					// Get default via extension default config
+				$extConfPublic  = intval($extConf['is_public']);
 
-			if( $extConfPublic === 1 || Todoyu::person()->isExternal() ) {
-				$data['is_public']	= 1;
+				if( $extConfPublic === 1 || Todoyu::person()->isExternal() ) {
+					$data['is_public']      = 1;
+				}
 			}
 		}
 
-
 			// Get assigned person from default
 		if( ! isset($data['id_person_assigned']) ) {
-			$idRole		= intval($extConf['person_assigned_role']);
-			$idProject	= intval($data['id_project']);
+			if( $idTaskpreset > 0 ) {
+					// Get default via taskpreset record, if any assigned to project
+				$data['id_person_assigned'] = intval($taskpreset['id_person_assigned']);
+			} else {
+					// Get default via extension default config
+				$idRole = intval($extConf['person_assigned_role']);
 
-			if( $idRole !== 0 && $idProject !== 0 ) {
-				$personIDs	= TodoyuProjectManager::getRolePersonIDs($idProject, $idRole);
-				$idPerson	= intval($personIDs[0]);
+				if( $idRole !== 0 && $idProject !== 0 ) {
+					$personIDs	= TodoyuProjectManager::getRolePersonIDs($idProject, $idRole);
+					$idPerson	= intval($personIDs[0]);
 
-				if( $idPerson !== 0 ) {
-					$data['id_person_assigned'] = $idPerson;
+					if( $idPerson !== 0 ) {
+						$data['id_person_assigned'] = $idPerson;
+					}
 				}
 			}
 		}

@@ -230,10 +230,13 @@ class TodoyuProjectRenderer {
 		$tmpl		= 'ext/project/view/project-details.tmpl';
 		$data		= $project->getTemplateData();
 
-		$data['assignedPersons']	= TodoyuProjectRenderer::renderProjectPersons($idProject);
+		$data['assignedPersons']= TodoyuProjectRenderer::renderProjectPersons($idProject);
 
 			// Get project data for info listing
 		$data['properties']		= TodoyuProjectManager::getProjectDataArray($idProject);
+
+			// Get presets data
+		$data['presets']		= TodoyuProjectManager::getProjectPresetDataArray($idProject);
 
 			// Call hook to modify the collected project data
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'projectDataBeforeRendering', $data, array($idProject));
@@ -569,7 +572,7 @@ class TodoyuProjectRenderer {
 			// Get task data for rendering
 		$taskData	= $task->getTemplateData(2);
 
-			// Render edit form wraped by details and data div like in the view template
+			// Render edit form wrapped by details and data div like in the view template
 		$wrappedForm	= TodoyuTaskRenderer::renderNewTaskEditForm($idProject, $idParentTask, $type);
 
 			// Prepare data array for template

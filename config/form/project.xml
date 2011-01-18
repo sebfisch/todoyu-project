@@ -117,6 +117,19 @@
 			</elements>
 		</fieldset>
 
+		<fieldset name="presets">
+			<legend>Presets</legend>
+			<class>presets</class>
+			<elements>
+				<field type="select" name="id_taskpreset">
+					<label>project.attr.taskpreset</label>
+					<source type="function">
+						<function>TodoyuProjectViewHelper::getTaskpresetOptions</function>
+					</source>
+					<noPleaseSelect />
+				</field>
+			</elements>
+		</fieldset>
 
 		<fieldset name="persons">
 			<restrict>

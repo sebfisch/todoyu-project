@@ -47,6 +47,7 @@
 	<label index="attr.persons.new">New Project Person</label>
 	<label index="attr.persons.role">Project Role</label>
 	<label index="attr.persons.comment">Comment</label>
+	<label index="attr.taskpreset">Task Presets Set</label>
 	<label index="properties">Properties</label>
 	<label index="contextmenu.showinproject">Show in project area</label>
 	<label index="attr.persons.is_public">Project member is visible for externals</label>
@@ -61,6 +62,12 @@
 	<label index="tasktree.losttasks">Tasks with inapplicable parents/status</label>
 	<label index="records.projectrole">Project Roles</label>
 	<label index="records.worktype">Activity Types</label>
+	<label index="records.taskpreset">Task Presets Set</label>
+	<label index="infobox.presets.title">Presets for newly created tasks</label>
+	<label index="taskpreset.title">Task presets set title</label>
+	<label index="taskpreset.person_assigned">Default assigned person when creating new tasks, if not selectable by user</label>
+	<label index="taskpreset.is_public">Task public visibility preset</label>
+	<label index="taskpreset.option.none">Default Settings</label>
 	<label index="form.validation.dateBefore">Date must be set before end date</label>
 	<label index="form.validation.title">Please enter a project title</label>
 	<label index="form.validation.company">A customer is required for a project</label>

@@ -218,6 +218,31 @@ class TodoyuProjectViewHelper {
 		return $label;
 	}
 
+
+
+	/**
+	 * Get projectRoles options
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @return	Array
+	 */
+	public static function getTaskpresetOptions(TodoyuFormElement $field) {
+		$presets	= array_merge(
+			array('0'	=> array(
+					'id'	=> 0,
+					'title'	=> Label('project.taskpreset.option.none')
+				)
+			),
+			TodoyuTaskpresetManager::getAllTaskpresets()
+		);
+		$reform	= array(
+			'id'	=> 'value',
+			'title'	=> 'label'
+		);
+
+		return TodoyuArray::reform($presets, $reform);
+	}
+
 }
 
 ?>

@@ -39,4 +39,14 @@ TodoyuExtManager::addRecordConfig('project', 'worktype', array(
 	'table'	=> 'ext_project_worktype'
 ));
 
+TodoyuExtManager::addRecordConfig('project', 'taskpreset', array(
+	'label'	=> 'LLL:project.records.taskpreset',
+	'form'	=> 'ext/project/config/form/admin/taskpreset.xml',
+	'list'	=> 'TodoyuTaskpresetManager::getRecords',
+	'save'	=> 'TodoyuTaskpresetManager::saveTaskpreset',
+	'delete'=> 'TodoyuTaskpresetManager::deleteTaskpreset',
+	'object'=> 'TodoyuTaskpreset',
+	'table'	=> 'ext_project_taskpreset'
+));
+
 ?>
