@@ -328,7 +328,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Number}		idTask
 	 */
 	scrollTo: function(idTask) {
-		if( 'task-' + idTask ) {
+		if( Todoyu.exists('task-' + idTask) ) {
 			$('task-' + idTask).scrollToElement();
 		}
 	},

@@ -580,18 +580,19 @@ class TodoyuTaskManager {
 		$idTask		= intval($idTask);
 		$subTasks	= array();
 
-		$field	= 'id';
-		$table	= self::TABLE;
-		$whereF	= '		id_parenttask IN(%s)
-					AND	deleted	= 0';
-
-		$where	= sprintf($whereF, $idTask);
-		$newTasks	= Todoyu::db()->getColumn($field, $table, $where);
-
-		while( sizeof($newTasks) > 0 ) {
-			$subTasks	= array_merge($subTasks, $newTasks);
-			$where		= sprintf($whereF, implode(',', $newTasks));
+		if( $idTask > 0 ) {
+			$field	= 'id';
+			$table	= self::TABLE;
+			$whereF	= '		id_parenttask IN(%s)
+						AND	deleted	= 0';
+			$where	= sprintf($whereF, $idTask);
 			$newTasks	= Todoyu::db()->getColumn($field, $table, $where);
+
+			while( sizeof($newTasks) > 0 ) {
+				$subTasks	= array_merge($subTasks, $newTasks);
+				$where		= sprintf($whereF, implode(',', $newTasks));
+				$newTasks	= Todoyu::db()->getColumn($field, $table, $where);
+			}
 		}
 
 		return $subTasks;
@@ -2411,7 +2412,9 @@ class TodoyuTaskManager {
 	 * @return	Boolean
 	 */
 	public static function isContainerLocked($idContainer) {
-		$allSubtaskIDs	= self::getAllSubTaskIDs($idContainer);
+		$idContainer	= intval($idContainer);
+
+		$allSubtaskIDs	= $idContainer > 0 ? self::getAllSubTaskIDs($idContainer) : array();
 
 		if( sizeof($allSubtaskIDs) === 0 ) {
 			return false;
