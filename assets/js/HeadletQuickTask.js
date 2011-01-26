@@ -29,6 +29,8 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 
 	/**
 	 * Initialize quicktask headlet
+	 *
+	 * @method	init
 	 */
 	init: function() {
 		Todoyu.Hook.add('project.quickTask.saved', this.onQuickTaskSaved.bind(this));
@@ -39,6 +41,7 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	/**
 	 * Handle button click: evoke add quicktask
 	 *
+	 * @method	onButtonClick
 	 * @param	{Event}		event
 	 */
 	onButtonClick: function(event) {
@@ -49,6 +52,8 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 
 	/**
 	 * Add quicktask
+	 *
+	 * @method	add
 	 */
 	add: function() {
 		this.ext.QuickTask.openPopup();
@@ -58,7 +63,8 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 
 	/**
 	 * Handler when quick task has been saved: Update the task list, if task has been added to the active project
-	 * 
+	 *
+	 * @method	onQuickTaskSaved
 	 * @param	{Number}			idTask
 	 * @param	{Number}			idProject
 	 * @param	{Ajax.Response}		response

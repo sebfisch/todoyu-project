@@ -26,6 +26,8 @@ Todoyu.Ext.project.ContextMenuProject = {
 
 	/**
 	 * Attach project context menu
+	 *
+	 * @method	attach
 	 */
 	attach: function() {
 		Todoyu.ContextMenu.attach('project', '.contextmenuproject', this.getID.bind(this));
@@ -35,6 +37,8 @@ Todoyu.Ext.project.ContextMenuProject = {
 
 	/**
 	 * Detach project context menu
+	 *
+	 * @method	detach
 	 */
 	detach: function() {
 		Todoyu.ContextMenu.detach('.contextmenuproject');
@@ -45,8 +49,10 @@ Todoyu.Ext.project.ContextMenuProject = {
 	/**
 	 * Get ID of project the context menu refers to
 	 *
+	 * @method	getID
 	 * @param	{Element}	element
 	 * @param	{Event}		event
+	 * @return	{String}
 	 */
 	getID: function(element, event) {
 		return element.id.split('-')[1];

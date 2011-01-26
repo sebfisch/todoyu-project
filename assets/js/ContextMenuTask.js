@@ -24,6 +24,8 @@ Todoyu.Ext.project.ContextMenuTask = {
 
 	/**
 	 * Attach task context menu
+	 *
+	 * @method	attach
 	 */
 	attach: function() {
 		Todoyu.ContextMenu.attach('task', '.contextmenutask', this.getID.bind(this));
@@ -32,6 +34,8 @@ Todoyu.Ext.project.ContextMenuTask = {
 
 	/**
 	 * Detach task context menu
+	 *
+	 * @method	detach
 	 */
 	detach: function() {
 		Todoyu.ContextMenu.detach('.contextmenutask');
@@ -41,9 +45,10 @@ Todoyu.Ext.project.ContextMenuTask = {
 	/**
 	 * Parse ID out of a task element
 	 *
+	 * @method	getID
 	 * @param	{Element}	element		The observed DOM element
 	 * @param	{Event}		event		The click event
-	 * @return	Task ID
+	 * @return	{String}				Task ID
 	 */
 	getID: function(element, event) {
 		return element.id.split('-')[1];

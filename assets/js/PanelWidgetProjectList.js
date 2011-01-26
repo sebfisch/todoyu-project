@@ -35,6 +35,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Initialize panelWidget
 	 *
+	 * @method	init
 	 * @param	{Object}		filters		Filter hash. Because of JSON, an (empty) array means no data
 	 */
 	init: function(filters) {
@@ -56,6 +57,8 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 	/**
 	 * Add various JS hooks
+	 *
+	 * @method	addHooks
 	 */
 	addHooks: function() {
 			// Project save
@@ -70,6 +73,8 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 	/**
 	 * Install keyup event observer on full-text search input field
+	 *
+	 * @method	observeFulltext
 	 */
 	observeFulltext: function() {
 		$('panelwidget-projectlist-field-fulltext').observe('keyup', this.onFulltextKeyup.bindAsEventListener(this));
@@ -78,7 +83,9 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 
 	/**
-	 * Install click event observer on items of projects list 
+	 * Install click event observer on items of projects list
+	 *
+	 * @method	observeProjects
 	 */
 	observeProjects: function() {
 		$('panelwidget-projectlist-list').observe('click', this.onProjectClick.bindAsEventListener(this));
@@ -88,6 +95,8 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 	/**
 	 * Install status selection observer
+	 *
+	 * @method	observeStatusSelector
 	 */
 	observeStatusSelector: function() {
 		Todoyu.PanelWidget.observe('projectstatusfilter', this.onStatusFilterUpdate.bind(this));
@@ -98,6 +107,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler for keyup events of full-text search input field
 	 *
+	 * @method	onFulltextKeyup
 	 * @param	{Event}		event
 	 */
 	onFulltextKeyup: function(event) {
@@ -112,6 +122,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Click event handler for project
 	 *
+	 * @method	onProjectClick
 	 * @param	{Event}		event
 	 */
 	onProjectClick: function(event) {
@@ -123,6 +134,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Update handler for status filter
 	 *
+	 * @method	onStatusFilterUpdate
 	 * @param	{String}	widgetKey
 	 * @param	{Array}	statuses
 	 */
@@ -134,6 +146,8 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 	/**
 	 * Clear (full-text) timeout
+	 *
+	 * @method	clearTimeout
 	 */
 	clearTimeout: function() {
 		clearTimeout(this.fulltextTimeout);
@@ -143,6 +157,8 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 	/**
 	 * Install full-text timeout
+	 *
+	 * @method	startTimeout
 	 */
 	startTimeout: function() {
 		this.fulltextTimeout = this.update.bind(this).delay(0.3);
@@ -152,6 +168,8 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 	/**
 	 * Get full-text input field value
+	 *
+	 * @method	getFulltext
 	 */
 	getFulltext: function() {
 		return $F('panelwidget-projectlist-field-fulltext');
@@ -162,6 +180,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Apply filter to project list panelwidget
 	 *
+	 * @method	applyFilter
 	 * @param	{String}		name
 	 * @param	{String}		value
 	 * @param	{Boolean}		update
@@ -179,6 +198,8 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 	/**
 	 * Refresh project list panelWidget
+	 *
+	 * @method	update
 	 */
 	update: function() {
 		var url		= Todoyu.getUrl('project', 'panelwidgetprojectlist');
@@ -199,6 +220,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler to be evoked after refresh of project list panelWidget
 	 *
+	 * @method	onUpdated
 	 * @param	{Ajax.Response}  response
 	 */
 	onUpdated: function(response) {
@@ -210,6 +232,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Check whether given project is listed in panelWidget's project list
 	 *
+	 * @method	isProjectListed
 	 * @param	{Number}		idProject
 	 * @return  {Boolean}
 	 */
@@ -222,6 +245,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler being evoked after saving of projects: updates the project list panel widget
 	 *
+	 * @method	onProjectSaved
 	 * @param	{Number}		idProject
 	 */
 	onProjectSaved: function(idProject) {
@@ -232,7 +256,8 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 	/**
 	 * Handler being evoked after creation of new projects: updates the project list panel widget
-	 * 
+	 *
+	 * @method	onProjectCreated
 	 * @param	{Number}		idProject
 	 */
 	onProjectCreated: function(idProject) {
@@ -244,6 +269,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	/**
 	 * Handler being evoked after deleting projects: updates the project list panel widget
 	 *
+	 * @method	onProjectDeleted
 	 * @param	{Number}		idProject
 	 */
 	onProjectDeleted: function(idProject) {

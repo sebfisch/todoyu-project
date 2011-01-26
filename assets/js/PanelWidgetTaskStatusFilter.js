@@ -41,6 +41,7 @@ Todoyu.Ext.project.PanelWidget.TaskStatusFilter = Class.create(Todoyu.PanelWidge
 	/**
 	 * Initialize object
 	 *
+	 * @method	initialize
 	 * @param	{Function}		$super		Original constructor function
 	 */
 	initialize: function($super) {
@@ -52,6 +53,7 @@ Todoyu.Ext.project.PanelWidget.TaskStatusFilter = Class.create(Todoyu.PanelWidge
 	/**
 	 * Handler when selection is changed
 	 *
+	 * @method	onChange
 	 * @param	{Event}		event
 	 * @return	{Boolean}
 	 */
@@ -66,6 +68,8 @@ Todoyu.Ext.project.PanelWidget.TaskStatusFilter = Class.create(Todoyu.PanelWidge
 
 	/**
 	 * Save the current selected statuses as preference
+	 *
+	 * @method	savePreference
 	 */
 	savePreference: function() {
 		var pref	= this.getSelectedStatuses().join(',');

@@ -40,6 +40,7 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = Class.create(Todoyu.PanelWi
 	/**
 	 * Initialize the panelWidget: setup properties, install element observers
 	 *
+	 * @method	initialize
 	 * @param	{Function}	super				parent constructor
 	 * @param	{Array}		selectedStatusIDs	selected status IDs
 	 */
@@ -54,6 +55,7 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = Class.create(Todoyu.PanelWi
 	/**
 	 * Handler when selection is changed
 	 *
+	 * @method	onChange
 	 * @param	{Event}		event
 	 */
 	onChange: function(event) {
@@ -67,6 +69,8 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = Class.create(Todoyu.PanelWi
 
 	/**
 	 * Save the current selected statuses as preference
+	 *
+	 * @method	savePreference
 	 */
 	savePreference: function() {
 		var pref	= this.getSelectedStatuses().join(',');

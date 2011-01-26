@@ -31,6 +31,8 @@ Todoyu.Ext.project = {
 
 	/**
 	 * Initialization
+	 *
+	 * @method	init
 	 */
 	init: function() {
 		this.registerHooks();
@@ -42,6 +44,8 @@ Todoyu.Ext.project = {
 
 	/**
 	 * Register callbacks to JS hooks
+	 *
+	 * @method	registerHooks
 	 */
 	registerHooks: function() {
 		Todoyu.Hook.add('project.project.created', this.Project.Edit.onProjectCreated.bind(this.Project.Edit));
@@ -59,6 +63,7 @@ Todoyu.Ext.project = {
 	 * To be called from other areas (e.g portal) to jump to a specific task within its project,
 	 *	to be shown inside the project area
 	 *
+	 * @method	goToTaskInProject
 	 * @param	{Number}	idTask
 	 * @param	{Number}	idProject
 	 * @param	{Boolean}	newWindow
@@ -84,6 +89,7 @@ Todoyu.Ext.project = {
 	 * Go to a task in project view, if you have only the full tasknumber (no task ID)
 	 * Gets the task ID by AJAX and redirects the browser
 	 *
+	 * @method	goToTaskInProjectByTasknumber
 	 * @param	{String}	taskNumber
 	 */
 	goToTaskInProjectByTasknumber: function(taskNumber) {
@@ -105,6 +111,7 @@ Todoyu.Ext.project = {
 	 * Handler for task IDs request
 	 * responseText is the task ID
 	 *
+	 * @method	onGoToTaskInProjectByTasknumber
 	 * @param	{String}		taskNumber
 	 * @param	{Ajax.Response}	response
 	 */
@@ -119,6 +126,7 @@ Todoyu.Ext.project = {
 	/**
 	 * Toggle task tree of given project
 	 *
+	 * @method	toggleTaskTree
 	 * @param	{Number}	idProject
 	 */
 	toggleTaskTree: function(idProject) {
@@ -136,6 +144,7 @@ Todoyu.Ext.project = {
 	/**
 	 * Event handler: 'onTreeUpdate'
 	 *
+	 * @method	onTreeUpdate
 	 * @param	{Ajax.Response}		response
 	 */
 	onTreeUpdate: function(response) {
@@ -151,6 +160,8 @@ Todoyu.Ext.project = {
 
 	/**
 	 * Attach project and task context menus
+	 *
+	 * @method	attachContextMenu
 	 */
 	attachContextMenu: function() {
 		this.ContextMenuProject.attach();
@@ -162,6 +173,7 @@ Todoyu.Ext.project = {
 	/**
 	 * Save project pref
 	 *
+	 * @method	savePref
 	 * @param	{String}	preference
 	 * @param	{String}	value
 	 * @param	{Number}	idItem

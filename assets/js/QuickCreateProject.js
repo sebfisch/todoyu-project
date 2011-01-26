@@ -21,6 +21,8 @@ Todoyu.Ext.project.QuickCreateProject = {
 
 	/**
 	 * Evoked upon opening of event quick create wizard popUp
+	 *
+	 * @method	onPopupOpened
 	 */
 	onPopupOpened: function() {
 		Todoyu.Hook.exec('project.project.formLoaded', 0);
@@ -31,7 +33,9 @@ Todoyu.Ext.project.QuickCreateProject = {
 	/**
 	 * Save project
 	 *
+	 * @method	save
 	 * @param	{Element}	form
+	 * @return	{Boolean}
 	 */
 	save: function(form){
 		Todoyu.Ui.closeRTE(form);
@@ -51,6 +55,7 @@ Todoyu.Ext.project.QuickCreateProject = {
 	/**
 	 * onSaved project handler - evoked after project has been created / saved
 	 *
+	 * @method	onSaved
 	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response){

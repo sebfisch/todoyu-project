@@ -35,8 +35,9 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Get DOM element of header of project with given ID
 	 *
+	 * @method	getHeader
 	 * @param	{Number}		idProject
-	 * @return	DomElement
+	 * @return	{Element}
 	 */
 	getHeader: function(idProject) {
 		return $('project-' + idProject + '-header');
@@ -47,7 +48,8 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Edit given project
 	 *
-	 * @param {Number} idProject
+	 * @method	edit
+	 * @param	{Number}	idProject
 	 */
 	edit: function(idProject){
 		if( Todoyu.getArea() != 'project' ) {
@@ -69,6 +71,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Delete given project
 	 *
+	 * @method	remove
 	 * @param	{Number}	idProject
 	 */
 	remove: function(idProject) {
@@ -91,6 +94,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Handle completion event after project having been deleted. Remove project from project task tree and remove project tab.
 	 *
+	 * @method	onRemoved
 	 * @param	{Number}		idProject
 	 */
 	onRemoved: function(idProject) {
@@ -112,6 +116,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Remove a project from the project tab (dropdown menu) sub navigation
 	 *
+	 * @method	removeProjectSubNaviItem
 	 * @param	{Number}	idProject
 	 */
 	removeProjectSubNaviItem: function(idProject) {
@@ -131,6 +136,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Toggle display of project details
 	 *
+	 * @method	toggleDetails
 	 * @param	{Number}	idProject
 	 */
 	toggleDetails: function(idProject) {
@@ -159,6 +165,7 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
+	 * @method	onDetailsToggled
 	 * @todo	check: used? remove? comment
 	 */
 	onDetailsToggled: function(idProject, response) {
@@ -172,6 +179,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Save state of project details being expanded
 	 *
+	 * @method	saveDetailsExpanded
 	 * @param	{Number}	idProject
 	 * @param	{Boolean}	expanded
 	 */
@@ -184,6 +192,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Hide details of given project
 	 *
+	 * @method	hideDetails
 	 * @param	{Number}	idProject
 	 */
 	hideDetails: function(idProject) {
@@ -195,6 +204,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Show project details
 	 *
+	 * @method	showDetails
 	 * @param	{Number}	idProject
 	 */
 	showDetails: function(idProject) {
@@ -206,6 +216,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Add task to given project
 	 *
+	 * @method	addTask
 	 * @param	{Number}		idProject
 	 */
 	addTask: function(idProject) {
@@ -224,6 +235,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Add new container to given project
 	 *
+	 * @method	addContainer
 	 * @param	{Number}		idProject
 	 */
 	addContainer: function(idProject) {
@@ -242,6 +254,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Refresh given project display
 	 *
+	 * @method	refresh
 	 * @param	{Number}		idProject
 	 */
 	refresh: function(idProject) {
@@ -264,6 +277,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Change status of given project to given status
 	 *
+	 * @method	updateStatus
 	 * @param	{Number}		idProject
 	 * @param	{Number}		status
 	 */
@@ -284,10 +298,11 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 * Handler being called after project status update being done: refresh project display and set status
+	 * Handler when project status has been updated: refresh project display and set status
 	 *
-	 * @param	{Number}				idProject
-	 * @param	{Number}				status
+	 * @method	onStatusUpdated
+	 * @param	{Number}			idProject
+	 * @param	{Number}			status
 	 * @param	{Ajax.Response}		response
 	 */
 	onStatusUpdated: function(idProject, status, response) {
@@ -302,6 +317,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Get current status of given project
 	 *
+	 * @method	getStatus
 	 * @param	{Number}	idProject
 	 */
 	getStatus: function(idProject) {
@@ -318,6 +334,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Set project status
 	 *
+	 * @method	setStatus
 	 * @param	{Number}		idProject
 	 * @param	{Number}		status
 	 */
@@ -333,9 +350,9 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 * Paste a task in a project
+	 * Paste a task into given project
 	 *
-	 * @function	{pasteTask}
+	 * @method		pasteTask
 	 * @param		{Number}		idProject
 	 */
 	pasteTask: function(idProject) {
@@ -355,7 +372,7 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Handler when task pasted in a project
 	 *
-	 * @function	{onTaskPasted}
+	 * @method		onTaskPasted
 	 * @param		{Number}			idProject
 	 * @param		{Ajax.Response}		response
 	 */

@@ -31,6 +31,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Create form wrap DIVs
 	 *
+	 * @method	createFormWrapDivs
 	 * @param	{Number}	idProject
 	 */
 	createFormWrapDivs: function(idProject) {
@@ -59,6 +60,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Load project form
 	 *
+	 * @method	loadForm
 	 * @param	{Number}	idProject
 	 */
 	loadForm: function(idProject) {
@@ -80,6 +82,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Form has been loaded
 	 *
+	 * @method	onFormLoaded
 	 * @param	{Number}	idProject
 	 */
 	onFormLoaded: function(idProject) {
@@ -91,6 +94,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Save project
 	 *
+	 * @method	save
 	 * @param	{Element}	form
 	 */
 	save: function(form){
@@ -114,6 +118,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * On created handler
 	 *
+	 * @method	onProjectCreated
 	 * @param	{Number}	idProject
 	 */
 	onProjectCreated: function(idProject) {
@@ -129,6 +134,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * onSaved project custom event handler
 	 *
+	 * @method	onSaved
 	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response){
@@ -154,6 +160,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Update form DIV
 	 *
+	 * @method	updateFormDiv
 	 * @param	{Number}		idProject
 	 * @param	{String}		formHTML
 	 */
@@ -166,6 +173,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Cancel project editing / creation
 	 *
+	 * @method	cancel
 	 * @param	{Number}	idProject
 	 */
 	cancel: function(idProject) {
@@ -200,6 +208,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Handler when customer/company field is autocompleted
 	 *
+	 * @method	onCompanyAutocomplete
 	 * @param	{Ajax.Response}			response
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
@@ -215,6 +224,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Handler when person field is autocompleted
 	 *
+	 * @method	onPersonAutocomplete
 	 * @param	{Ajax.Response}			response
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
@@ -230,6 +240,7 @@ Todoyu.Ext.project.Project.Edit = {
 	/**
 	 * Handler when projectleader (person) field is autocompleted
 	 *
+	 * @method	onProjectleaderAutocomplete
 	 * @param	{Ajax.Response}			response
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */

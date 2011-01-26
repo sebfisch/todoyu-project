@@ -28,12 +28,22 @@ Todoyu.Ext.project.Filter = {
 
 
 
+	/**
+	 * Handler when project search result has been updated
+	 *
+	 * @method	onProjectSearchResultsUpdated
+	 */
 	onProjectSearchResultsUpdated: function() {
 		this.ext.ContextMenuProject.attach();
 	},
 
 
 
+	/**
+	 * Handler when task search result has been updated
+	 *
+	 * @method	onTaskSearchResultsUpdated
+	 */
 	onTaskSearchResultsUpdated: function() {
 		this.ext.ContextMenuTask.attach();
 	},
@@ -43,6 +53,7 @@ Todoyu.Ext.project.Filter = {
 	/**
 	 * Handler when a person is selection with the AC
 	 *
+	 * @method	onProjectrolePersonAcSelect
 	 * @param	{String}		name
 	 * @param	{Element}		textInput
 	 * @param	{Element}		listElement
@@ -56,6 +67,7 @@ Todoyu.Ext.project.Filter = {
 	/**
 	 * Handler when the projectrole selection changed
 	 *
+	 * @method	onProjectroleRoleChange
 	 * @param	{String}	name
 	 */
 	onProjectroleRoleChange: function(name) {
@@ -68,6 +80,7 @@ Todoyu.Ext.project.Filter = {
 	 * Handler when person changes. Only send update request if person field is
 	 * empty and the AC handler doesn't send the request
 	 *
+	 * @method	onProjectrolePersonChange
 	 * @param	{String}	name
 	 */
 	onProjectrolePersonChange: function(name) {
@@ -82,6 +95,7 @@ Todoyu.Ext.project.Filter = {
 	/**
 	 * Get selected person
 	 *
+	 * @method	getProjectrolePerson
 	 * @param	{String}	name
 	 * @return	{Number}
 	 */
@@ -93,6 +107,8 @@ Todoyu.Ext.project.Filter = {
 
 	/**
 	 * Get selected project roles
+	 *
+	 * @method	getProjectroleRoles
 	 * @param	{Array}		name
 	 */
 	getProjectroleRoles: function(name) {
@@ -106,6 +122,7 @@ Todoyu.Ext.project.Filter = {
 	 * Concatenate the person and the roles to get a simple string value
 	 * Format: idPerson:idRole,IdRole,idRole
 	 *
+	 * @method	updateProjectRoleConditionValue
 	 * @param	{String}	name
 	 */
 	updateProjectRoleConditionValue: function(name) {

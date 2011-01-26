@@ -41,6 +41,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Evoke editing of given container (handled via task editing)
 	 *
+	 * @method	edit
 	 * @param	{Number}	idContainer
 	 */
 	edit: function(idContainer) {
@@ -52,6 +53,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Clone container
 	 *
+	 * @method	clone
 	 * @param	{Number}	idContainer
 	 */
 	clone: function(idContainer) {
@@ -63,6 +65,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Copy container
 	 *
+	 * @method	cut
 	 * @param	{Number}	idContainer
 	 */
 	cut: function(idContainer) {
@@ -74,6 +77,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Copy container
 	 *
+	 * @method	copy
 	 * @param	{Number}	idContainer
 	 */
 	copy: function(idContainer) {
@@ -85,6 +89,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Remove given container
 	 *
+	 * @method	remove
 	 * @param	{Number}	idContainer
 	 */
 	remove: function(idContainer) {
@@ -96,6 +101,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Add sub task to container
 	 *
+	 * @method	addSubTask
 	 * @param	{Number}	idContainer
 	 */
 	addSubTask: function(idContainer) {
@@ -107,6 +113,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Add sub container to given container
 	 *
+	 * @method	addSubContainer
 	 * @param	{Number}	idContainer
 	 */
 	addSubContainer: function(idContainer) {
@@ -118,6 +125,7 @@ Todoyu.Ext.project.Container = {
 	/**
 	 * Update status of given container
 	 *
+	 * @method	updateStatus
 	 * @param	{Number}	idContainer
 	 * @param	{String}	idStatus
 	 * @todo	Remove
