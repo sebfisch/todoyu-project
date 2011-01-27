@@ -13,6 +13,14 @@
 		<right name="editAndDelete" require="project:seeOwn" />
 	</section>
 
+	<section name="projectstatus" require="project:seeOwn">
+		<right name="planning:see" />
+		<right name="progress:see" />
+		<right name="done:see" />
+		<right name="cleared:see" />
+		<right name="warranty:see" />
+	</section>
+
 	<section name="clipboard" require="general:use">
 		<right name="useTaskAndContainerClipboard" />
 	</section>
@@ -85,14 +93,6 @@
 		<right name="accepted:create" />
 		<right name="rejected:create" />
 		<right name="cleared:create" />
-	</section>
-
-	<section name="projectstatus" require="project:seeOwn">
-		<right name="planning:see" />
-		<right name="progress:see" />
-		<right name="done:see" />
-		<right name="cleared:see" />
-		<right name="warranty:see" />
 	</section>
 
 	<section name="export" require="general:use">
