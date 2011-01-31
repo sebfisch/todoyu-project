@@ -352,8 +352,8 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Paste a task into given project
 	 *
-	 * @method		pasteTask
-	 * @param		{Number}		idProject
+	 * @method	pasteTask
+	 * @param	{Number}		idProject
 	 */
 	pasteTask: function(idProject) {
 		var url		= Todoyu.getUrl('project', 'project');

@@ -540,7 +540,7 @@ Todoyu.Ext.project.Task = {
 	 * Set status of given task
 	 *
 	 * @param	{Number}		idTask
-	 * @param	status
+	 * @param	{String}		status
 	 */
 	setStatus: function(idTask, status) {
 		var htmlID		= 'task-' + idTask + '-header';
