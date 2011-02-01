@@ -19,13 +19,23 @@
 *****************************************************************************/
 
 
- 	// Add autoCompleters
+/* ---------------------------------------------
+	Add autocompleters for project data types
+   --------------------------------------------- */
+	// Person
 TodoyuAutocompleter::addAutocompleter('projectperson', 'TodoyuPersonFilterDataSource::autocompletePersons', array('project', 'general:use'));
+	// Task
 TodoyuAutocompleter::addAutocompleter('projecttask', 'TodoyuTaskViewHelper::getProjecttaskAutocomplete', array('project', 'general:use'));
+	// Project
 TodoyuAutocompleter::addAutocompleter('project', 'TodoyuProjectFilterDataSource::autocompleteProjects', array('project', 'general:use'));
+	// Project that tasks can be added to
 TodoyuAutocompleter::addAutocompleter('taskaddableproject', 'TodoyuProjectFilterDataSource::autocompleteTaskAddableProjects', array('project', 'general:use'));
 
-	// Add context menu handlers
+
+
+/* ----------------------------
+	Context Menu Callbacks
+   ---------------------------- */
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskManager::getContextMenuItems', 10);
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskClipboard::getTaskContextMenuItems', 100);
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskManager::removeEmptyContextMenuParents', 100000);
@@ -34,7 +44,10 @@ TodoyuContextMenuManager::addFunction('Project', 'TodoyuTaskClipboard::getProjec
 
 
 
-	// Declare project and task status
+/* --------------------------------------
+	Declare project sub type statuses
+   -------------------------------------- */
+	// Project status
 Todoyu::$CONFIG['EXT']['project']['STATUS']['PROJECT'] = array(
 	STATUS_PLANNING		=> 'planning',
 	STATUS_PROGRESS		=> 'progress',
@@ -42,7 +55,7 @@ Todoyu::$CONFIG['EXT']['project']['STATUS']['PROJECT'] = array(
 	STATUS_WARRANTY		=> 'warranty',
 	STATUS_CLEARED		=> 'cleared',
 );
-
+	// Task status
 Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK'] = array(
 	STATUS_PLANNING		=> 'planning',
 	STATUS_OPEN			=> 'open',
@@ -53,12 +66,7 @@ Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK'] = array(
 	STATUS_REJECTED		=> 'rejected',
 	STATUS_CLEARED		=> 'cleared'
 );
-
-
-
-/**
- * Non-editable project status (tasks/containers in project cannot be modified)
- */
+	// Non-editable project status (tasks/containers in project cannot be modified)
 Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing'] = array(
 	STATUS_DONE,
 	STATUS_CLEARED,
@@ -66,26 +74,31 @@ Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing'] = arra
 
 
 
+/* --------------------------------------
+	Temporary tab force for all tasks
+ 	Don't set it here!
+   -------------------------------------- */
 /**
- * Temporary tab force for all tasks
- * Don't set it here!
+ * @todo	implement sustainable solution
  */
 Todoyu::$CONFIG['EXT']['project']['Task']['forceTab'] = false;
 
-/**
- * Add filter widget type "projectrole"
- */
+
+
+/* ----------------------------
+	Add search filter widgets
+   ---------------------------- */
+	// Projectrole
 Todoyu::$CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
 	'tmpl'			=> 'ext/project/view/filterwidget-projectrole.tmpl',
 	'configFunc'	=> 'TodoyuProjectFilter::prepareDataForProjectroleWidget'
 );
 
 
-/**
- * Configuration for 'todo' tab
- *
- * @see	ext/project/config/filters.php	(all filter declarations)
- */
+/* ------------------------------
+	Filters used in "todo" tab
+   ------------------------------ */
+	// Assigned tasks to be worked on
 Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters']['assigned'] = array(
 	array(
 		'filter'	=> 'type',
@@ -99,7 +112,7 @@ Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters']['assigned'] = array(
 		'value'		=> STATUS_OPEN . ',' . STATUS_PROGRESS
 	)
 );
-
+	// Tasks the current user has to review and confirm
 Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters']['owner'] = array(
 	array(
 		'filter'	=> 'type',
@@ -116,23 +129,29 @@ Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters']['owner'] = array(
 
 
 
-	// Maximum projects in project listing widget
-Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectList']['maxProjects']	= 30;
-
-	// Default 'task defaults'. Will be overridden with extconf values of set
+/* ---------------------------------------------------------------
+	Task default values. Overridden with extConf values if set
+   --------------------------------------------------------------- */
 Todoyu::$CONFIG['EXT']['project']['taskDefaults'] = array(
 	'status'			=> STATUS_PLANNING,
 	'statusQuickTask'	=> STATUS_OPEN
 );
-
-	// Duration (timespan from date_start to date_end/deadline) of quicktasks 
+	// Duration (timespan from date_start to date_end/deadline) of quicktasks
 Todoyu::$CONFIG['EXT']['project']['quicktask']['durationDays']  = 3;
 
 
 
-/**
- * Add filter exports
- */
+/* ----------------------------
+	Configure panel widgets
+   ---------------------------- */
+	// Maximum projects in project listing widget
+Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectList']['maxProjects']	= 30;
+
+
+
+/* -----------------------
+	Add filter exports
+   ----------------------- */
 TodoyuSearchActionPanelManager::addExport('task', 'csvexport', 'TodoyuTaskExportManager::exportCSV', 'LLL:task.export.csv', 'taskExportCsv', 'project:export.taskcsv');
 TodoyuSearchActionPanelManager::addExport('project', 'csvexport', 'TodoyuProjectExportManager::exportCSV', 'LLL:project.export.csv', 'projectExportCsv', 'project:export.projectcsv');
 
