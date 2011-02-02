@@ -389,6 +389,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	}
 
 
+
 	/**
 	 * Filter condition: date_start
 	 *

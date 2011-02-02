@@ -363,6 +363,7 @@ class TodoyuTaskManager {
 	}
 
 
+
 	/**
 	 * Update status of multiple tasks
 	 *

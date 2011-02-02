@@ -601,6 +601,7 @@ class TodoyuProjectManager {
 	}
 
 
+
 	/** 
 	 * Get all data attributes for the project (merged from all extensions) 
 	 * 
