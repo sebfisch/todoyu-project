@@ -51,6 +51,10 @@ Todoyu.Ext.project.QuickCreateProject = {
 	},
 
 
+	xxX: function() {
+		
+	},
+
 
 	/**
 	 * onSaved project handler - evoked after project has been created / saved

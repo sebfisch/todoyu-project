@@ -29,6 +29,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Create DIVs (details, data) wrapping form (inside header) of given task and have task details be displayed. Div positions: Data before, details after header of given task.
 	 *
+	 * @method	createFormWrapDivs
 	 * @param	{Number}	idTask
 	 */
 	createFormWrapDivs: function(idTask) {
@@ -66,6 +67,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Load task editing form.
 	 *
+	 * @method	loadForm
 	 * @param	{Number}	idTask
 	 */
 	loadForm: function(idTask) {
@@ -87,6 +89,7 @@ Todoyu.Ext.project.Task.Edit = {
 	 * Scrolls to given task, calls onTaskEdit hook.
 	 * Evoked after task editing form having been loaded.
 	 *
+	 * @method	onFormLoaded
 	 * @param	{Number}			idTask
 	 * @param	{Ajax.Response}		response
 	 */
@@ -101,6 +104,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Save edited task
 	 *
+	 * @method	save
 	 * @param	{Element}	form
 	 */
 	save: function(form) {
@@ -120,6 +124,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Evoked after edited task having been saved. Handles display of success / failure message and refresh of saved task / failed form.
 	 *
+	 * @method	onSaved
 	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(form, response) {
@@ -154,6 +159,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Update editing form of given task with given HTML
 	 *
+	 * @method	updateFormDiv
 	 * @param	{Number}	idTask
 	 * @param	{String}	formHTML
 	 */
@@ -166,6 +172,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Cancel editing of given task. Refresh task's parent sub tasks expand trigger, refresh the task.
 	 *
+	 * @method	cancel
 	 * @param	{Number}	idTask
 	 */
 	cancel: function(idTask) {
@@ -187,6 +194,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Handler when parenttask field is autocompleted
 	 *
+	 * @method	onParenttaskAutocomplete
 	 * @param	{Ajax.Response}			response
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
@@ -202,6 +210,7 @@ Todoyu.Ext.project.Task.Edit = {
 	/**
 	 * Handler when project field is autocompleted
 	 *
+	 * @method	onProjectAutocomplete
 	 * @param	{Ajax.Response}			response
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
@@ -209,6 +218,58 @@ Todoyu.Ext.project.Task.Edit = {
 		if( response.isEmptyAcResult() ) {
 			Todoyu.notifyInfo('[LLL:task.ac.project.notFoundInfo]');
 			return false;
+		}
+	},
+
+
+
+	/**
+	 * Project suggestion selected: update form (fields presets)
+	 *
+	 * @method	onPersonAcSelected
+	 * @param		{Element}				inputField
+	 * @param		{Element}				idField
+	 * @param		{String}				selectedValue
+	 * @param		{String}				selectedText
+	 * @param		{Todoyu.Autocompleter}	autocompleter
+	 */
+	onProjectAcSelected: function(inputField, idField, selectedValue, selectedText, autocompleter) {
+		var idProject	= selectedValue;
+		var isQuicktask	= inputField.up('div').id.indexOf('quicktask') != -1;
+
+			// Update quicktask / regular quickcreate task popup form
+		var area	= (isQuicktask ? 'quicktask' : 'task') + '-0-form';
+		Todoyu.Ui.closeRTE(area);
+
+		this.updateCreateTaskForm.bind(this).defer(isQuicktask, idProject);
+	},
+
+
+
+	/**
+	 * Event handler when project has been selected in select (dropdown) of quicktask / task creation popup form
+	 *
+	 * @method	onProjectSelectSelected
+	 * @param inputField
+	 */
+	onProjectSelectSelected: function(inputField) {
+		this.onProjectAcSelected(inputField, inputField.id, $F(inputField), '', '');
+	},
+
+
+
+	/**
+	 * Update quicktask / quickcreate task form
+	 *
+	 * @method	updateCreateTaskForm
+	 * @param	{Boolean}	isQuicktask
+	 * @param	{Number}	idProject
+	 */
+	updateCreateTaskForm: function(isQuicktask, idProject) {
+		if( isQuicktask ) {
+			Todoyu.Ext.project.QuickTask.updateForm(idProject);
+		} else {
+			Todoyu.Ext.project.QuickCreateTask.updateForm(idProject);
 		}
 	}
 

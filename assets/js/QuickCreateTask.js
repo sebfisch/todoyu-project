@@ -29,6 +29,37 @@ Todoyu.Ext.project.QuickCreateTask = {
 
 
 	/**
+	 * Update quickcreate task form (inside popup) with given project preselected
+	 *
+	 * @param	{Number}	idProject
+	 */
+	updateForm: function(idProject) {
+		var url		= Todoyu.getUrl('project', 'Quickcreatetask');
+		var options	= {
+			'parameters': {
+				'action':	'popup',
+				'project':	idProject
+			},
+			'onComplete':	this.onFormUpdated.bind(this)
+		};
+
+		
+		Todoyu.Ui.update('quickcreate_content', url, options);
+	},
+
+
+
+	/**
+	 * Call registered quickcreate task event handler (onPopupOpened)
+	 */
+	onFormUpdated: function() {
+		var quickCreateObject	= 'Todoyu.Ext.project.QuickCreateTask';
+		Todoyu.callUserFunction(quickCreateObject + '.onPopupOpened');
+	},
+
+
+
+	/**
 	 * Save task
 	 *
 	 * @param	{String}		form

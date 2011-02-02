@@ -12,7 +12,8 @@
 						<acName>taskaddableproject</acName>
 						<acLabel>TodoyuProjectViewHelper::getQuicktaskAutocompleteLabel</acLabel>
 						<options>
-							<onComplete>Todoyu.Ext.project.Task.Edit.onProjectAutocomplete</onComplete>
+							<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onProjectAutocomplete</onCompleteCustom>
+							<onSelectCustom>Todoyu.Ext.project.Task.Edit.onProjectAcSelected</onSelectCustom>
 						</options>
 					</config>
 					<required />
@@ -23,6 +24,7 @@
 					<source type="function">
 						<function>TodoyuProjectViewHelper::getAvailableProjectOptions</function>
 					</source>
+					<extraAttributes>onchange="Todoyu.Ext.project.Task.Edit.onProjectSelectSelected(this)"</extraAttributes>
 					<noPleaseSelect />
 					<required />
 				</field>

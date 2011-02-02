@@ -241,7 +241,7 @@ class TodoyuProjectRenderer {
 			// Call hook to modify the collected project data
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'projectDataBeforeRendering', $data, array($idProject));
 
-			// Get dynamicly added details elements
+			// Get dynamically added details elements
 		$data['dynamicElements']	= TodoyuHookManager::callHook('project', 'projectDetailsDynamicElements', array($idProject));
 
 		return render($tmpl, $data);

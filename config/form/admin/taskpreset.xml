@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<hiddenFields>
+		<field name="id" />
+	</hiddenFields>
+
+	<fieldsets>
+
+		<fieldset name="main">
+			<legend>Main task preset fields</legend>
+			<elements>
+
+				<field type="text" name="title">
+					<label>project.taskpreset.title</label>
+					<required />
+				</field>
+
+
+
+				<field type="text" name="tasktitle">
+					<label>project.taskpreset.tasktitle</label>
+				</field>
+
+				<field type="textarea" name="description">
+					<label>project.taskpreset.description</label>
+				</field>
+
+				<field type="select" name="date_start">
+					<label>project.extconf.taskDefaults.date_start</label>
+					<source type="function">
+						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
+					</source>
+					<!--<required/>-->
+				</field>
+
+				<field type="select" name="date_end">
+					<label>project.extconf.taskDefaults.date_end</label>
+					<source type="function">
+						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
+					</source>
+					<!--<required/>-->
+				</field>
+
+				<field type="select" name="date_deadline">
+					<label>project.extconf.taskDefaults.date_deadline</label>
+					<source type="function">
+						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
+					</source>
+					<!--<required/>-->
+				</field>
+
+				<field type="select" name="status">
+					<label>project.extconf.taskDefaults.status</label>
+					<source type="function">
+						<function>TodoyuProjectExtConfViewHelper::getDefaultValueStatusOptions</function>
+					</source>
+				</field>
+
+				<field type="select" name="id_worktype">
+					<label>project.extconf.taskDefaults.worktype</label>
+					<source type="function">
+						<function>TodoyuProjectViewHelper::getExtConfWorktypes</function>
+					</source>
+				</field>
+
+				<field type="time" name="estimated_workload">
+					<label>project.extconf.taskDefaults.estimated_workload</label>
+				</field>
+
+				<field type="checkbox" name="is_public">
+					<label>project.taskpreset.is_public</label>
+				</field>
+
+			</elements>
+		</fieldset>
+
+		<fieldset name="quicktaskSpecific">
+			<class>defaultsforlimited</class>
+			<elements>
+				<field type="text" name="quicktask_duration_days">
+					<label>project.extconf.quicktask_duration_days</label>
+					<default>7</default>
+					
+					<extraAttributes>onkeyup="Todoyu.Form.assistNumericInput(this,true)"</extraAttributes>
+				</field>
+			</elements>
+		</fieldset>
+
+		<fieldset name="taskDefaultsForExternals">
+			<legend>Fallback defaults for persons with limited rights</legend>
+			<class>defaultsforlimited</class>
+			<elements>
+
+				<field type="select" name="person_assigned_role">
+					<label>project.extconf.taskDefaults.person_assigned_role</label>
+					<source type="function">
+						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
+					</source>
+					<restrict>
+						<allow ext="project" right="task:editPersonAssigned" />
+					</restrict>
+				</field>
+
+				<field type="select" name="id_person_assigned">
+					<label>project.taskpreset.person_assigned</label>
+					<extraAttributes>onchange="Todoyu.Ext.project.Sysmanager.onChangeTaskpresetPersonAssigned(this)"</extraAttributes>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getInternalPersonOptions</function>
+						<lazyInit/>
+					</source>
+					<restrict>
+						<allow ext="project" right="task:editPersonAssigned" />
+					</restrict>
+					 <!--<required />-->
+				</field>
+
+				<field type="select" name="person_owner_role">
+					<label>project.extconf.taskDefaults.person_owner_role</label>
+					<source type="function">
+						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
+					</source>
+					<restrict>
+						<allow ext="project" right="task:editPersonOwner" />
+					</restrict>
+				</field>
+
+				<field type="select" name="id_person_owner">
+					<label>project.taskpreset.person_owner</label>
+					<extraAttributes>onchange="Todoyu.Ext.project.Sysmanager.onChangeTaskpresetPersonOwner(this)"</extraAttributes>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getInternalPersonOptions</function>
+						<lazyInit/>
+					</source>
+					<restrict>
+						<allow ext="project" right="task:editPersonAssigned" />
+					</restrict>
+					 <!--<required />-->
+				</field>
+
+			</elements>
+		</fieldset>
+
+	</fieldsets>
+</form>

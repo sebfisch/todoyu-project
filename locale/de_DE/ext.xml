@@ -48,7 +48,7 @@
 	<label index="attr.persons.role">Projektrolle</label>
 	<label index="attr.persons.comment">Kommentar</label>
 	<label index="attr.persons.is_public">Projektbeteiligter ist für Externe sichtbar</label>
-	<label index="attr.taskpreset">Aufgaben-Vorgaben Set</label>
+	<label index="attr.taskpreset">Aufgaben Vorgaben</label>
 	<label index="properties">Eigenschaften</label>
 	<label index="contextmenu.showinproject">Zeige in Projekt-Ansicht</label>
 	<label index="contextmenu.showdetails">Details anzeigen</label>
@@ -61,11 +61,14 @@
 	<label index="tasktree.losttasks">Aufgaben mit unzutreffenden übergeordneten Aufgaben / Status</label>
 	<label index="records.projectrole">Benutzer-Rollen</label>
 	<label index="records.worktype">Arbeits-Typ</label>
-	<label index="records.taskpreset">Aufgaben-Vorgaben Set</label>
+	<label index="records.taskpreset">Aufgaben Vorgaben</label>
 	<label index="infobox.presets.title">Vorgaben für neu erstellte Aufgaben</label>
-	<label index="taskpreset.title">Aufgaben-Vorgaben Set Titel</label>
-	<label index="taskpreset.person_assigned">Zugewiesene Person neuer Aufgaben, wenn nicht durch Ersteller wählbar</label>
-	<label index="taskpreset.is_public">Öffentliche Sichtbarkeit neuer Aufgaben</label>
+	<label index="taskpreset.title">Aufgaben Vorgaben Titel</label>
+	<label index="taskpreset.tasktitle">Aufgabe Standard Titel</label>
+	<label index="taskpreset.description">Standard Beschreibung</label>
+	<label index="taskpreset.person_assigned">Zugewiesene Person, wenn nicht durch Ersteller wählbar</label>
+	<label index="taskpreset.person_owner">Eigner, wenn nicht durch Ersteller wählbar</label>
+	<label index="taskpreset.is_public">Aufgabe ist öffentlich</label>
 	<label index="taskpreset.option.none">Default Vorgaben</label>
 	<label index="form.validation.dateBefore">Datum muss vor dem End-Datum liegen</label>
 	<label index="form.validation.title">Bitte Projekt-Titel angeben</label>
@@ -92,5 +95,6 @@
 	<label index="extconf.taskDefaults.estimated_workload">Vorgabe für geschätzten Aufwand</label>
 	<label index="extconf.taskDefaults.person_assigned_role">Zuzuweisende Person aus Rolle, wenn keine auswählbar ist</label>
 	<label index="extconf.taskDefaults.person_owner_role">Eigner aus Rolle, wenn keiner auswählbar ist</label>
+	<label index="extconf.quicktask_duration_days">Standard für Schnellaufgabendauer in Tagen </label>
 	<label index="export.csv">Projekte als CSV exportieren</label>
 </labels>

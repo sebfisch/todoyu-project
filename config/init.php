@@ -129,9 +129,9 @@ Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters']['owner'] = array(
 
 
 
-/* ---------------------------------------------------------------
-	Task default values. Overridden with extConf values if set
-   --------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------
+	Task default values. Overridden with extConf / task preset set values if set
+   --------------------------------------------------------------------------------- */
 Todoyu::$CONFIG['EXT']['project']['taskDefaults'] = array(
 	'status'			=> STATUS_PLANNING,
 	'statusQuickTask'	=> STATUS_OPEN

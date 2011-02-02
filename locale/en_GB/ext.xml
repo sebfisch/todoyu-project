@@ -65,8 +65,11 @@
 	<label index="records.taskpreset">Task Presets Set</label>
 	<label index="infobox.presets.title">Presets for newly created tasks</label>
 	<label index="taskpreset.title">Task presets set title</label>
-	<label index="taskpreset.person_assigned">Default assigned person when creating new tasks, if not selectable by user</label>
-	<label index="taskpreset.is_public">Task public visibility preset</label>
+	<label index="taskpreset.tasktitle">Task Default Title</label>
+	<label index="taskpreset.description">Task Default Description</label>
+	<label index="taskpreset.person_assigned">Default assigned person, if not selectable by user</label>
+	<label index="taskpreset.person_owner">Default owner, if not selectable by user</label>
+	<label index="taskpreset.is_public">Task Is Public</label>
 	<label index="taskpreset.option.none">Default Settings</label>
 	<label index="form.validation.dateBefore">Date must be set before end date</label>
 	<label index="form.validation.title">Please enter a project title</label>
@@ -93,5 +96,6 @@
 	<label index="extconf.taskDefaults.is_public">Default Task Visibility</label>
 	<label index="extconf.taskDefaults.person_assigned_role">Assign person of role if not selectable</label>
 	<label index="extconf.taskDefaults.person_owner_role">Owned by person of role if not selectable</label>
+	<label index="extconf.quicktask_duration_days">Quicktask default duration in days</label>
 	<label index="export.csv">Export Project as CSV</label>
 </labels>

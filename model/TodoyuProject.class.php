@@ -222,6 +222,17 @@ class TodoyuProject extends TodoyuBaseObject {
 
 
 	/**
+	 * Get ID of assigned taskpreset of project
+	 *
+	 * @return	Integer
+	 */
+	public function getTaskpresetID() {
+		return intval($this->data['id_taskpreset']); 
+	}
+
+
+
+	/**
 	 * Check whether project is locked
 	 *
 	 * @return	Boolean

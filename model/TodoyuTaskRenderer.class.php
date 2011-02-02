@@ -142,7 +142,7 @@ class TodoyuTaskRenderer {
 
 
 			// Person can only see public tasks? remove visibility info
-		if( ! allowed('project', 'task:seeAll') ) {
+		if( ! Todoyu::person()->isInternal() || ! allowed('project', 'task:seeAll') ) {
 			unset($data['data'][$dataOffsets['is_public']]);
 		}
 
@@ -167,10 +167,13 @@ class TodoyuTaskRenderer {
 	/**
 	 * Render quick creation form
 	 *
+	 * @param	Integer		$idProject
 	 * @return	String
 	 */
-	public static function renderQuickCreateForm() {
-		$form	= TodoyuTaskManager::getQuickCreateForm();
+	public static function renderQuickCreateForm($idProject = 0) {
+		$idProject	= intval($idProject);
+
+		$form	= TodoyuTaskManager::getQuickCreateForm($idProject);
 
 		return $form->render();
 	}

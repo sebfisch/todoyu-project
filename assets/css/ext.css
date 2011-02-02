@@ -124,6 +124,8 @@ h1.extIconProject .title {
 	float:right;
 }
 
+
+
 /* --------------------------------------
 	Task and project properties
    ------------------------------------- */  
@@ -212,6 +214,7 @@ h1.extIconProject .title {
 	}
 
 
+
 /* --------------------------------------
 	Project tree tabs
    ------------------------------------- */
@@ -232,8 +235,10 @@ h1.extIconProject .title {
 	background:url(../img/icons.png) no-repeat 0 -350px;
 }
 
+
+
 /* --------------------------------------
-	tab content
+	Tab content
    ------------------------------------- */
 .task .tabContent .tabBlock.assetForm,
 .task .tabContent .tabBlock.commentform {
@@ -248,3 +253,14 @@ h1.extIconProject .title {
 	.task .tabContent .tabBlock.commentform .fForm fieldset legend {
 		display:none;
 	}
+
+
+
+/* -------------------------------------
+	Extconf and task preset set form
+   ------------------------------------- */
+fieldset.defaultsforlimited {
+	margin-top:10px;
+	border-top:1px dotted #e3e3e3;
+	padding-top:10px;
+}

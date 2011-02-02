@@ -32,8 +32,12 @@ Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 			'position'	=> 80
 		),
 		array(
-			'file'		=> 'ext/project/assets/js/Project.js',
+			'file'		=> 'ext/project/assets/js/Sysmanager.js',
 			'position'	=> 81
+		),
+		array(
+			'file'		=> 'ext/project/assets/js/Project.js',
+			'position'	=> 82
 		),
 		array(
 			'file'		=> 'ext/project/assets/js/QuickTask.js',

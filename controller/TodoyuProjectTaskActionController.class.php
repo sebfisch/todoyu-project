@@ -162,7 +162,6 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$cacheKey	= TodoyuRecordManager::makeClassKey('TodoyuTask', 0);
 		TodoyuCache::set($cacheKey, $task);
 
-
 			// Initialize form for validation
 		$xmlPath	= 'ext/project/config/form/task.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);

@@ -26,6 +26,11 @@
  */
 class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionController {
 
+	/**
+	 * Initialize quickcreate controller - restrict access rights
+	 *
+	 * @param	Array	$params
+	 */
 	public function init(array $params) {
 		restrict('project', 'general:use');
 	}
@@ -39,7 +44,9 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 	 * @return	String
 	 */
 	public function popupAction(array $params) {
-		return TodoyuTaskRenderer::renderQuickCreateForm();
+		$idProject	= intval($params['project']);
+
+		return TodoyuTaskRenderer::renderQuickCreateForm($idProject);
 	}
 
 

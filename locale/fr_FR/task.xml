@@ -97,10 +97,10 @@
 	<label index="ac.project.notFoundInfo">Aucun projet avec ce titre n'a été trouvé.</label>
 	<label index="copySubtasks">Copier toutes les sous-tâches?</label>
 	<label index="statusNotVisible">Avec ce nouveau statut, la tâche ne vous est désormais plus visible.</label>
-	<label index="default.date.date_0">Date de création</label>
-	<label index="default.date.date_1">Date de création + 1 jour</label>
-	<label index="default.date.date_2">Date de création + 2 jours</label>
-	<label index="default.date.date_3">Date de création + 3 jours</label>
+	<label index="default.date.date_1">Date de création</label>
+	<label index="default.date.date_2">Date de création + 1 jour</label>
+	<label index="default.date.date_3">Date de création + 2 jours</label>
+	<label index="default.date.date_4">Date de création + 3 jours</label>
 	<label index="default.date.date_7">Date de création + 1 semaine</label>
 	<label index="default.date.date_14">Date de création + 2 semaines</label>
 </labels>

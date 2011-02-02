@@ -33,6 +33,7 @@ Todoyu.Ext.project.QuickTask = {
 	/**
 	 * Toggle quick task popUp
 	 *
+	 * @method	openPopup
 	 * @todo	check - used? to be removed?!
 	 */
 	openPopup: function() {
@@ -51,6 +52,8 @@ Todoyu.Ext.project.QuickTask = {
 
 	/**
 	 * Close quicktask wizard popUp
+	 *
+	 * @method	closePopup
 	 */
 	closePopup: function() {
 		Todoyu.Popup.close(this.popupID);
@@ -61,7 +64,8 @@ Todoyu.Ext.project.QuickTask = {
 	/**
 	 * Handler when PopUp is loaded
 	 * Call hook to inform other extensions
-	 * 
+	 *
+	 * @method	onPopupLoaded
 	 * @param	{Ajax.Response}		response
 	 */
 	onPopupLoaded: function(response) {
@@ -71,8 +75,30 @@ Todoyu.Ext.project.QuickTask = {
 
 
 	/**
+	 * Update quicktask form with given project preselected
+	 *
+	 * @method	updateForm
+	 * @param	{Number}	idProject
+	 */
+	updateForm: function(idProject) {
+		var url		= Todoyu.getUrl('project', 'quicktask');
+		var options	= {
+			'parameters': {
+				'action':	'popup',
+				'project':	idProject
+			},
+			'onComplete':	this.onPopupLoaded.bind(this)
+		};
+
+		Todoyu.Ui.update('quicktask_content', url, options);
+	},
+
+
+
+	/**
 	 * Save (quick-) task
 	 *
+	 * @method	save
 	 * @param	{String}	form
 	 */
 	save: function(form) {
@@ -92,7 +118,8 @@ Todoyu.Ext.project.QuickTask = {
 
 	/**
 	 * Evoked upon completion of saving a quicktask
-	 * 
+	 *
+	 * @method	onSaved
 	 * @param	{String}			form
 	 * @param	{Ajax.Response}		response
 	 */

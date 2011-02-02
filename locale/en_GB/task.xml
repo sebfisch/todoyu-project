@@ -105,10 +105,10 @@
 	<label index="ac.project.notFoundInfo">No project of this title name was found.</label>
 	<label index="copySubtasks">Copy All Subtasks?</label>
 	<label index="statusNotVisible">With the new status, the task is no longer visible for you.</label>
-	<label index="default.date.date_0">Create date</label>
-	<label index="default.date.date_1">Create date + 1 day</label>
-	<label index="default.date.date_2">Create date + 2 days</label>
-	<label index="default.date.date_3">Create date + 3 days</label>
+	<label index="default.date.date_1">Create date</label>
+	<label index="default.date.date_2">Create date + 1 day</label>
+	<label index="default.date.date_3">Create date + 2 days</label>
+	<label index="default.date.date_4">Create date + 3 days</label>
 	<label index="default.date.date_7">Create date + 1 week</label>
 	<label index="default.date.date_14">Create date + 2 weeks</label>
 	<label index="notAvailable">The task is not available</label>
