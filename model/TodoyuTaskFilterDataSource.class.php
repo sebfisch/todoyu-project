@@ -37,8 +37,8 @@ class TodoyuTaskFilterDataSource {
 
 		$result = TodoyuTaskSearch::searchTask($search);
 
-		if(count($result) > 0)	{
-			foreach($result as $task)	{
+		if( count($result) > 0 ) {
+			foreach($result as $task) {
 				$data[$task['id']] = $task['id_project'] . '.' . $task['tasknumber'] . ' - ' . $task['title'];
 			}
 		}
