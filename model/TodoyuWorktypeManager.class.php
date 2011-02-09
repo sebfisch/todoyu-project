@@ -131,7 +131,7 @@ class TodoyuWorktypeManager {
 	 *
 	 * @param	Integer		$idWorktype
 	 */
-	public static function deleteWorktype($idWorktype)	{
+	public static function deleteWorktype($idWorktype) {
 		$idWorktype	= intval($idWorktype);
 
 		return Todoyu::db()->deleteRecord(self::TABLE, $idWorktype);

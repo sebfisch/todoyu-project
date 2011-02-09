@@ -32,7 +32,7 @@ class TodoyuTaskFilterDataSource {
 	 * @param	String	$search
 	 * @param	Array	$config
 	 */
-	public static function getTaskAutocompleteListBySearchword($search, $config = array())	{
+	public static function getTaskAutocompleteListBySearchword($search, $config = array()) {
 		$data = array();
 
 		$result = TodoyuTaskSearch::searchTask($search);
@@ -88,7 +88,7 @@ class TodoyuTaskFilterDataSource {
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public static function getStatusOptions(array $definitions)	{
+	public static function getStatusOptions(array $definitions) {
 		$options	= array();
 		$statuses	= TodoyuTaskStatusManager::getStatusInfos('see');
 
@@ -184,7 +184,7 @@ class TodoyuTaskFilterDataSource {
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public static function getDynamicDateOptions($definitions)	{
+	public static function getDynamicDateOptions($definitions) {
 		$definitions['options'] = array(
 			array(
 				'label' => Label('projectFilter.task.dyndate.today'),
@@ -231,7 +231,7 @@ class TodoyuTaskFilterDataSource {
 	 * @param	String		$dateRangeKey
 	 * @return	Integer
 	 */
-	public static function getDynamicDateTimestamp($dateRangeKey, $negate = false)	{
+	public static function getDynamicDateTimestamp($dateRangeKey, $negate = false) {
 		$todayStart	= TodoyuTime::getStartOfDay();
 		$todayEnd	= TodoyuTime::getEndOfDay();
 		$date		= $negate ? $todayEnd : $todayStart;

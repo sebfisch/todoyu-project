@@ -163,7 +163,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public function addcontainerAction(array $params)	{
+	public function addcontainerAction(array $params) {
 		$idProject = intval($params['project']);
 
 		TodoyuTaskRights::restrictAddToProject($idProject);

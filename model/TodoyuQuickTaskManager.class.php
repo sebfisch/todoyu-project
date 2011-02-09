@@ -33,7 +33,7 @@ class TodoyuQuickTaskManager {
 	 * @param	Integer		$idProject
 	 * @return	String
 	 */
-	public static function renderForm($idProject = 0)	{
+	public static function renderForm($idProject = 0) {
 		$idProject	= intval($idProject);
 
 		$form		= self::getQuickTaskForm($idProject);

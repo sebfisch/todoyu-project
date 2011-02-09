@@ -91,7 +91,7 @@ class TodoyuProjectExportManager {
 			TodoyuLabelManager::getLabel('LLL:project.attr.company')			=> $project->getCompany()->getLabel(),
 		);
 
-		foreach($project['persons'] as $index => $personData)	{
+		foreach($project['persons'] as $index => $personData) {
 			$exportData[TodoyuLabelManager::getLabel('LLL:contact.person') .'_'. ($index+1)]			= $personData['firstname'] . ' ' . $personData['lastname'];
 			$exportData[TodoyuLabelManager::getLabel('LLL:project.attr.persons.role') .'_'. ($index+1)]	= $personData['rolelabel'];
 		}

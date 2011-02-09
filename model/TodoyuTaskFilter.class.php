@@ -226,7 +226,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_currentPersonOwner($negate = false)	{
+	public static function Filter_currentPersonOwner($negate = false) {
 		$idPerson	= personid();
 
 		$queryParts	= self::Filter_ownerPerson($idPerson, $negate);
@@ -380,7 +380,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 		if( strpos($taskNumber, '.') === false && intval($taskNumber) > 0 ) {
 			$taskNumber	= intval($value);
 			$whereParts[] = 'ext_project_task.tasknumber = ' . $taskNumber;
-		} else if( strpos($taskNumber, '.') !== false )	{
+		} else if( strpos($taskNumber, '.') !== false ) {
 			list($project, $task) = explode('.', $taskNumber);
 			$whereParts[] = '(ext_project_task.id_project = ' . intval($project) . ' AND ext_project_task.tasknumber = ' . intval($task) . ')';
 		}
@@ -616,7 +616,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_isPublic($value, $negate = false)	{
+	public static function Filter_isPublic($value, $negate = false) {
 		$tables 	= array(self::TABLE);
 		$isPublic	= $negate ? 0 : 1;
 		$where		= 'ext_project_task.is_public = ' . $isPublic;
@@ -727,7 +727,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_deadlinedate($date, $negate = false)	{
+	public static function Filter_deadlinedate($date, $negate = false) {
 		return self::makeFilter_date('date_deadline', $date, $negate);
 	}
 
@@ -740,7 +740,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_deadlinedateDyn($value, $negate)	{
+	public static function Filter_deadlinedateDyn($value, $negate) {
 		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
 
 		return self::Filter_dateDyn($timeStamps, 'date_deadline', $negate);
@@ -755,7 +755,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_startdate($date, $negate = false)	{
+	public static function Filter_startdate($date, $negate = false) {
 		return self::makeFilter_date('date_start', $date, $negate);
 	}
 
@@ -768,7 +768,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_startdateDyn($value, $negate)	{
+	public static function Filter_startdateDyn($value, $negate) {
 		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
 
 		return self::Filter_dateDyn($timeStamps, 'date_start', $negate);
@@ -783,7 +783,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_enddate($date, $negate = false)	{
+	public static function Filter_enddate($date, $negate = false) {
 		return self::makeFilter_date('date_end', $date, $negate);
 	}
 
@@ -796,7 +796,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_enddateDyn($value, $negate = false)	{
+	public static function Filter_enddateDyn($value, $negate = false) {
 		$date = TodoyuTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
 
 		return self::Filter_dateDyn($date, 'date_end', $negate);
@@ -811,7 +811,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_editdate($date, $negate = false)	{
+	public static function Filter_editdate($date, $negate = false) {
 		return self::makeFilter_date('date_update', $date, $negate);
 	}
 
@@ -824,7 +824,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_editdateDyn($value, $negate)	{
+	public static function Filter_editdateDyn($value, $negate) {
 		$rangeTimestamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
 
 		return self::Filter_dateDyn($rangeTimestamps, 'date_update', $negate);
@@ -839,7 +839,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_createdate($date, $negate = false)	{
+	public static function Filter_createdate($date, $negate = false) {
 		return self::makeFilter_date('date_create', $date, $negate);
 	}
 
@@ -852,7 +852,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_createdateDyn($value, $negate)	{
+	public static function Filter_createdateDyn($value, $negate) {
 		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
 
 		return self::Filter_dateDyn($timeStamps, 'date_create', $negate);
@@ -867,7 +867,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	String		$field
 	 * @return	Array
 	 */
-	protected static function Filter_dateDyn($date, $field, $negation = false)	{
+	protected static function Filter_dateDyn($date, $field, $negation = false) {
 		$date	= intval($date);
 		$compare= $negation ? '>=' : '<=';
 		$where 	= 'ext_project_task.' . $field . ' ' . $compare . ' ' . $date;
@@ -1037,7 +1037,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 	 * @param	Boolean		$negate
 	 * @return	Boolean
 	 */
-	public static function Filter_filterObject(array $value, $negate = false)	{
+	public static function Filter_filterObject(array $value, $negate = false) {
 		return TodoyuFiltersetManager::Filter_filterObject($value, $negate);
 	}
 

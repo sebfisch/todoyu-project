@@ -33,7 +33,7 @@ class TodoyuProjectFilterDataSource {
 	 * @param	Array	$conf
 	 * @return	Array				array (id => label)
 	 */
-	public static function autocompleteProjects($input, array $formData = array(), $name = '')	{
+	public static function autocompleteProjects($input, array $formData = array(), $name = '') {
 		$data = array();
 
 		$keywords		= TodoyuArray::trimExplode(' ', $input, true);
@@ -109,7 +109,7 @@ class TodoyuProjectFilterDataSource {
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public function getLabel($definitions)	{
+	public function getLabel($definitions) {
 		$idProject	= intval($definitions['value']);
 
 		if( $idProject !== 0 ) {
@@ -131,7 +131,7 @@ class TodoyuProjectFilterDataSource {
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public static function getStatusOptions(array $definitions)	{
+	public static function getStatusOptions(array $definitions) {
 		$options	= array();
 		$statuses	= TodoyuProjectStatusManager::getStatusInfos();
 
@@ -155,7 +155,7 @@ class TodoyuProjectFilterDataSource {
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public static function getDynamicDateOptions($definitions)	{
+	public static function getDynamicDateOptions($definitions) {
 		$definitions['options'] = array(
 			array(
 				'label' => Label('projectFilter.project.dyndate.today'),

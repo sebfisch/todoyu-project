@@ -126,7 +126,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 	 * @param	String	$sword
 	 * @return	Array
 	 */
-	public static function searchTask($sword)	{
+	public static function searchTask($sword) {
 		$fields	= array('id', 'title', 'description', 'id_project', 'tasknumber');
 		$table	= self::TABLE;
 
@@ -139,7 +139,7 @@ class TodoyuTaskSearch implements TodoyuSearchEngineIf {
 			$where = Todoyu::db()->buildLikeQuery($searchWords, $fields);
 		}
 
-		if( $where )	{
+		if( $where ) {
 			$where.= ' AND deleted = 0';
 		}
 

@@ -147,7 +147,7 @@ class TodoyuTaskpresetManager {
 	 *
 	 * @param	Integer		$idTaskpreset
 	 */
-	public static function deleteTaskpreset($idTaskpreset)	{
+	public static function deleteTaskpreset($idTaskpreset) {
 		$idTaskpreset	= intval($idTaskpreset);
 
 		return Todoyu::db()->deleteRecord(self::TABLE, $idTaskpreset);

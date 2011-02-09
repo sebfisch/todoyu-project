@@ -166,7 +166,7 @@ class TodoyuProject extends TodoyuBaseObject {
 	/**
 	 * Load foreign data of a project
 	 */
-	public function loadForeignData()	{
+	public function loadForeignData() {
 		$this->data['persons'] = $this->getPersons();
 		$this->data['company'] = $this->getCompany()->getTemplateData(false);
 	}

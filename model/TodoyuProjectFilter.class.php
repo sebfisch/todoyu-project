@@ -397,7 +397,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_startdate($date, $negate = false)	{
+	public static function Filter_startdate($date, $negate = false) {
 		return self::makeFilter_date('date_start', $date, $negate);
 	}
 
@@ -410,7 +410,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_enddate($date, $negate = false)	{
+	public static function Filter_enddate($date, $negate = false) {
 		return self::makeFilter_date('date_end', $date, $negate);
 	}
 
@@ -423,7 +423,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_deadline($date, $negate = false)	{
+	public static function Filter_deadline($date, $negate = false) {
 		return self::makeFilter_date('date_deadline', $date, $negate);
 	}
 
@@ -436,7 +436,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_createdate($date, $negate = false)	{
+	public static function Filter_createdate($date, $negate = false) {
 		return self::makeFilter_date('date_create', $date, $negate);
 	}
 
@@ -449,7 +449,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_createdateDyn($value, $negate)	{
+	public static function Filter_createdateDyn($value, $negate) {
 		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
 
 		return self::Filter_dateDyn($timeStamps, 'date_create', $negate);
@@ -464,7 +464,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_editdate($date, $negate = false)	{
+	public static function Filter_editdate($date, $negate = false) {
 		return self::makeFilter_date('date_update', $date, $negate);
 	}
 
@@ -477,7 +477,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_editdateDyn($value, $negate)	{
+	public static function Filter_editdateDyn($value, $negate) {
 		$timeStamps = TodoyuTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
 
 		return self::Filter_dateDyn($timeStamps, 'date_update', $negate);
@@ -492,7 +492,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	 * @param	String		$field
 	 * @return	Array
 	 */
-	protected static function Filter_dateDyn($date, $field, $negation = false)	{
+	protected static function Filter_dateDyn($date, $field, $negation = false) {
 		$date	= intval($date);
 		$compare= $negation ? '>=' : '<=';
 

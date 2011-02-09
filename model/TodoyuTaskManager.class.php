@@ -628,7 +628,7 @@ class TodoyuTaskManager {
 	public static function getSubTasks($idTask, $order = 'date_create') {
 		$idTask	= intval($idTask);
 
-		if( $idTask === 0 )	{
+		if( $idTask === 0 ) {
 			return array();
 		}
 
@@ -650,7 +650,7 @@ class TodoyuTaskManager {
 	public static function getSubTasksIDs($idTask, $order = 'date_create') {
 		$idTask	= intval($idTask);
 
-		if( $idTask === 0 )	{
+		if( $idTask === 0 ) {
 			return array();
 		}
 
@@ -1219,7 +1219,7 @@ class TodoyuTaskManager {
 	public static function setTaskAcknowledged($idTask) {
 		$idTask	= intval($idTask);
 
-		if( self::getTask($idTask)->isCurrentPersonAssigned() )	{
+		if( self::getTask($idTask)->isCurrentPersonAssigned() ) {
 			$update	= array(
 				'is_acknowledged' => 1
 			);

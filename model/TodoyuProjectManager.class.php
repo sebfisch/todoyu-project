@@ -1348,7 +1348,7 @@ class TodoyuProjectManager {
 	 * @param	String	$conjunction
 	 * @return	Array
 	 */
-	public static function getProjectIDsByFilter($idFilterSet = 0, array $filterConditions = array(), $conjunction = 'AND')	{
+	public static function getProjectIDsByFilter($idFilterSet = 0, array $filterConditions = array(), $conjunction = 'AND') {
 		$idFilterSet = intval($idFilterSet);
 
 		if( $idFilterSet !== 0 ) {
