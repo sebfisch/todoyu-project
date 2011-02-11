@@ -432,7 +432,7 @@ class TodoyuTaskFilter extends TodoyuFilterBase implements TodoyuFilterInterface
 
 
 	/**
-	 * Filter condition: Task created by an person which is member of one of the selected roles
+	 * Filter condition: Task created by a person which is member of one of the selected roles
 	 *
 	 * @param	Array		$roleIDs
 	 * @param	Boolean		$negate
