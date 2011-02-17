@@ -2319,7 +2319,7 @@ class TodoyuTaskManager {
 			}
 		}
 
-		$data   = self::getTaskDefaultData($idRecord, $data['id_project']);
+		//$data   = self::getTaskDefaultData($idRecord, $data['id_project']);
 		
 			// Set owner for quickCreate tasks
 		if( strtolower(CONTROLLER) === 'quickcreatetask' && $data['id_person_owner'] == 0 ) {
