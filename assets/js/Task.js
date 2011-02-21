@@ -718,7 +718,7 @@ Todoyu.Ext.project.Task = {
 		this.addContextMenu(idContainer);
 		this.scrollTo(idContainer);
 
-		Todoyu.Hook.exec('project.task.containerAdded', idTask);
+		Todoyu.Hook.exec('project.task.containerAdded', idContainer);
 	},
 
 
