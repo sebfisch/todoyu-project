@@ -60,7 +60,7 @@ class TodoyuTaskRights {
 
 				// Check if person can edit his own tasks
 			if( $task->isCurrentPersonCreator() ) {
-				if( ! allowed('project', 'task:editAndDeleteOwnTasks') ) {
+				if( ! allowed('project', 'task:editOwnTasks') ) {
 					return false;
 				}
 			}
@@ -68,14 +68,46 @@ class TodoyuTaskRights {
 
 		if( $task->isContainer() ) {
 				// Check if person can edit his own containers
-			if( $task->isCurrentPersonCreator() && ! allowed('project', 'container:editAndDeleteOwnContainers') ) {
+			if( $task->isCurrentPersonCreator() && ! allowed('project', 'container:editOwnContainers') ) {
 				return false;
 			}
 		}
 
-		$idProject	= TodoyuTaskManager::getProjectID($idTask);
+		return self::isEditInProjectAllowed($idTask);
+	}
 
-		return self::isEditInProjectAllowed($idProject, $task->isContainer());
+
+
+	/**
+	 * Check whether a task can get deleted
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Boolean
+	 */
+	public static function isDeleteAllowed($idTask) {
+		if( TodoyuAuth::isAdmin() ) {
+			return true;
+		}
+
+		$idTask	= intval($idTask);
+		$task	= TodoyuTaskManager::getTask($idTask);
+
+		if( $task->isTask() ) {
+			if( $task->isCurrentPersonCreator() ) {
+				if( allowed('project', 'task:deleteOwnTasks') ) {
+					return true;
+				}
+			}
+		} elseif( $task->isContainer() ) {
+				// Check if person can delete his own containers
+			if( $task->isCurrentPersonCreator() ) {
+				if( allowed('project', 'container:deleteOwnContainers') ) {
+					return true;
+				}
+			}
+		}
+
+		return self::isDeleteInProjectAllowed($idTask);
 	}
 
 
@@ -89,15 +121,18 @@ class TodoyuTaskRights {
 	public static function isStatusChangeAllowed($idTask) {
 		$idTask		= intval($idTask);
 		$task		= TodoyuTaskManager::getTask($idTask);
-		$idProject	= $task->getProjectID();
 
 		if( $task->isLocked() ) {
 			return false;
 		}
 
+		if( ! self::isEditInProjectAllowed($idTask) ) {
+			return false;
+		}
+
 		$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('changefrom'));
 
-		return in_array($task->getStatus(), $statusIDs) && self::isEditInProjectAllowed($idProject);
+		return in_array($task->getStatus(), $statusIDs);
 	}
 
 
@@ -105,26 +140,52 @@ class TodoyuTaskRights {
 	/**
 	 * Check whether person can edit tasks/containers in this project
 	 *
-	 * @param	Integer		$idProject
-	 * @param	Boolean		$isContainer
+	 * @param	Integer		$idTask
 	 * @return	Boolean
 	 */
-	public static function isEditInProjectAllowed($idProject, $isContainer = false) {
-		$idProject	= intval($idProject);
-		$project	= TodoyuProjectManager::getProject($idProject);
+	public static function isEditInProjectAllowed($idTask) {
+		$idTask		= intval($idTask);
+		$task		= TodoyuTaskManager::getTask($idTask);
+		$project	= $task->getProject();
 		$status		= $project->getStatus();
 
 		if( in_array($status, Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing']) || $project->isLocked() ) {
 			return false;
 		}
 
-		$elementType	= $isContainer ? 'container' : 'task';
+		$typeName	= $task->isTask() ? 'task' : 'container';
+		$rightName	= $project->isCurrentPersonAssigned() ? 'editInOwnProjects' : 'editInAllProjects';
 
-		if( TodoyuProjectManager::isPersonAssigned($idProject) ) {
-			return allowed('project', $elementType . ':editAndDeleteInOwnProjects');
-		} else {
-			return allowed('project', $elementType . ':editAndDeleteInAllProjects');
+		return allowed('project', $typeName . ':' . $rightName);
+	}
+
+
+
+	/**
+	 * Check whether a task can get deleted by project rights
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Boolean
+	 */
+	public static function isDeleteInProjectAllowed($idTask) {
+		if( TodoyuAuth::isAdmin() ) {
+			return true;
 		}
+
+		$idTask		= intval($idTask);
+		$task		= TodoyuTaskManager::getTask($idTask);
+		$project	= $task->getProject();
+		$status		= $project->getStatus();
+
+		if( in_array($status, Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing']) || $project->isLocked() ) {
+			return false;
+		}
+
+			// Build rights dynamically with type and right
+		$typeName	= $task->isTask() ? 'task' : 'container';
+		$rightName	= $project->isCurrentPersonAssigned() ? 'deleteInOwnProjects' : 'deleteInAllProjects';
+
+		return allowed('project', $typeName . ':' . $rightName);
 	}
 
 
@@ -262,13 +323,13 @@ class TodoyuTaskRights {
 
 
 	/**
-	 * Restrict access to persons who are allowed to edit tasks in the project
+	 * Restrict access if person cannot delete the task
 	 *
-	 * @param	Integer		$idProject
+	 * @param	Integer		$idTask
 	 */
-	public static function restrictEditInProject($idProject) {
-		if( ! self::isEditInProjectAllowed($idProject) ) {
-			self::deny('task:edit');
+	public static function restrictDelete($idTask) {
+		if( ! self::isDeleteAllowed($idTask) ) {
+			self::deny('task:delete');
 		}
 	}
 

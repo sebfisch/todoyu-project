@@ -197,7 +197,7 @@ class TodoyuTaskManager {
 		if( empty($data['type']) ) {
 			$data['type']	= TASK_TYPE_TASK;
 		} elseif( $data['type'] == TASK_TYPE_CONTAINER ) {
-				// Init container status (none) 
+				// Init container status (none)
 			$data['status']	= 0;
 		}
 
@@ -434,15 +434,16 @@ class TodoyuTaskManager {
 	 * @return	Array		Config array for context menu
 	 */
 	public static function getContextMenuItems($idTask, array $items) {
-		$idTask	= intval($idTask);
-		$task	= TodoyuTaskManager::getTask($idTask);
-		$project= $task->getProject();
-		$allowed= array();
+		$idTask		= intval($idTask);
+		$task		= TodoyuTaskManager::getTask($idTask);
+		$project	= $task->getProject();
+		$allowed	= array();
+		$ownItems	= array();
 
 		if( $task->isTask() ) {
-			$ownItems	=& Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'];
+			$ownItems	= Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'];
 		} elseif( $task->isContainer() ) {
-			$ownItems	=& Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Container'];
+			$ownItems	= Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Container'];
 		}
 
 		if( $task->isTask() || $task->isContainer() ) {
@@ -481,7 +482,7 @@ class TodoyuTaskManager {
 			}
 
 				// Delete
-			if( $task->isEditable() ) {
+			if( $task->isDeletable() ) {
 				$allowed['actions']['submenu']['delete'] = $ownItems['actions']['submenu']['delete'];
 			}
 
@@ -1443,7 +1444,7 @@ class TodoyuTaskManager {
 		if( sizeof($personIDs) ) {
 			$where .= ' AND id_person_assigned IN(' . implode(',', $personIDs) . ')';
 		}
-		
+
 		return $where;
 	}
 
@@ -2320,7 +2321,7 @@ class TodoyuTaskManager {
 		}
 
 		//$data   = self::getTaskDefaultData($idRecord, $data['id_project']);
-		
+
 			// Set owner for quickCreate tasks
 		if( strtolower(CONTROLLER) === 'quickcreatetask' && $data['id_person_owner'] == 0 ) {
 			$data['id_person_owner'] = personid();

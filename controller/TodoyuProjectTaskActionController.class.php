@@ -366,14 +366,14 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * 'delete' action method
+	 * Delete a task
 	 *
 	 * @param	Array	$params
 	 */
 	public function deleteAction(array $params) {
 		$idTask		= intval($params['task']);
 
-		TodoyuTaskRights::restrictEdit($idTask);
+		TodoyuTaskRights::restrictDelete($idTask);
 
 		TodoyuTaskManager::deleteTask($idTask, true);
 	}

@@ -301,7 +301,7 @@ class TodoyuTask extends TodoyuBaseObject {
 		return $this->getEstimatedWorkload() > 0;
 	}
 
-	
+
 
 	/**
 	 * Check whether the task is a container
@@ -366,6 +366,19 @@ class TodoyuTask extends TodoyuBaseObject {
 	 */
 	public function isEditable() {
 		$allowed	= TodoyuTaskRights::isEditAllowed($this->getID());
+
+		return $allowed && ( $this->isLocked() === false );
+	}
+
+
+
+	/**
+	 * Check whether the task can be deleted
+	 *
+	 * @return	Boolean
+	 */
+	public function isDeletable() {
+		$allowed	= TodoyuTaskRights::isDeleteAllowed($this->getID());
 
 		return $allowed && ( $this->isLocked() === false );
 	}

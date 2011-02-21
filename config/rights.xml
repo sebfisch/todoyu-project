@@ -28,9 +28,12 @@
 	<section name="container" require="general:use">
 		<right name="addInOwnProjects" />
 		<right name="addInAllProjects" require="project:seeAll,container:addInOwnProjects" />
-		<right name="editAndDeleteOwnContainers" />
-		<right name="editAndDeleteInOwnProjects" />
-		<right name="editAndDeleteInAllProjects" require="project:seeAll,task:editAndDeleteInOwnProjects" />
+		<right name="editOwnContainers" />
+		<right name="editInOwnProjects" />
+		<right name="editInAllProjects" require="project:seeAll,task:editInOwnProjects" />
+		<right name="deleteOwnContainers" />
+		<right name="deleteInOwnProjects" />
+		<right name="deleteInAllProjects" require="project:seeAll,task:deleteInOwnProjects" />
 	</section>
 
 	<section name="task" require="general:use">
@@ -38,18 +41,21 @@
 		<right name="addInOwnProjects" />
 		<right name="addInAllProjects" require="project:seeAll,task:addInOwnProjects" />
 		<right name="addViaQuickCreateHeadlet" require="task:addInOwnProjects" />
-		<right name="editAndDeleteInOwnProjects" />
-		<right name="editAndDeleteInAllProjects" require="project:seeAll,task:editAndDeleteInOwnProjects" />
-		<right name="editAndDeleteOwnTasks" />
+		<right name="editInOwnProjects" />
+		<right name="editInAllProjects" require="project:seeAll,task:editInOwnProjects" />
+		<right name="editOwnTasks" />
+		<right name="deleteInOwnProjects" />
+		<right name="deleteInAllProjects" require="project:seeAll,task:deleteInOwnProjects" />
+		<right name="deleteOwnTasks" />
 		<right name="editStatus" />
-		<right name="editDateStart" require="task:editAndDeleteInOwnProjects" />
-		<right name="editDateEnd" require="task:editAndDeleteInOwnProjects" />
-		<right name="editDeadline" require="task:editAndDeleteInOwnProjects" />
-		<right name="editPersonAssigned" require="task:editAndDeleteInOwnProjects" />
-		<right name="editPersonOwner" require="task:editAndDeleteInOwnProjects" />
-		<right name="editWorktype" require="task:editAndDeleteInOwnProjects" />
-		<right name="editEstimatedWorkload" require="task:editAndDeleteInOwnProjects" />
-		<right name="editIsPublic" require="task:editAndDeleteInOwnProjects" />
+		<right name="editDateStart" require="task:editInOwnProjects" />
+		<right name="editDateEnd" require="task:editInOwnProjects" />
+		<right name="editDeadline" require="task:editInOwnProjects" />
+		<right name="editPersonAssigned" require="task:editInOwnProjects" />
+		<right name="editPersonOwner" require="task:editInOwnProjects" />
+		<right name="editWorktype" require="task:editInOwnProjects" />
+		<right name="editEstimatedWorkload" require="task:editInOwnProjects" />
+		<right name="editIsPublic" require="task:editInOwnProjects" />
 	</section>
 
 	<section name="taskstatus" require="general:use">
