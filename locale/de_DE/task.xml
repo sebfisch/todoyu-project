@@ -54,8 +54,10 @@
 	<label index="contextmenu.container.cut">Ausschneiden</label>
 	<label index="contextmenu.container.clone">Duplizieren</label>
 	<label index="contextmenu.container.delete">Löschen</label>
-	<label index="contextmenu.paste">Aufgaben-Kopie Einfügen...</label>
-	<label index="contextmenu.paste.container">Container-Kopie Einf...</label>
+	<label index="contextmenu.paste.copy">Aufgabe Einfügen (Kopie)</label>
+	<label index="contextmenu.paste.cut">Aufgabe Einfügen</label>
+	<label index="contextmenu.paste.copy.container">Container Einfügen (Kopie)</label>
+	<label index="contextmenu.paste.cut.container">Container Einfügen</label>
 	<label index="contextmenu.paste.in">Als Unteraufgabe</label>
 	<label index="contextmenu.paste.before">Vor dieser Aufgabe</label>
 	<label index="contextmenu.paste.after">Nach dieser Aufgabe</label>

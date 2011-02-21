@@ -247,10 +247,18 @@ class TodoyuTaskClipboard {
 			$ownItems		= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboard']);
 			$clipboardTask	= self::getClipboardTask();
 
+			if( self::isInCutMode() ) {
+				$ownItems['paste']['label'] .= '.cut';
+			} else {
+				$ownItems['paste']['label'] .= '.copy';
+			}
+
 				// Change labels for containers
 			if( $clipboardTask->isContainer() ) {
 				$ownItems['paste']['label'] .= '.container';
 			}
+
+
 
 				// Paste is only available in project view
 			if( AREA === EXTID_PROJECT && TodoyuTaskRights::isAddAllowed($idTaskContextmenu) ) {
