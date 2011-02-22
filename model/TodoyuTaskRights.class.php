@@ -64,7 +64,13 @@ class TodoyuTaskRights {
 					return false;
 				}
 			}
+
+				// Check whether edit for status is allowed
+			if( ! self::isStatusEditAllowed($idTask) ) {
+				return false;
+			}
 		}
+
 
 		if( $task->isContainer() ) {
 				// Check if person can edit his own containers
@@ -131,6 +137,23 @@ class TodoyuTaskRights {
 		}
 
 		$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('changefrom'));
+
+		return in_array($task->getStatus(), $statusIDs);
+	}
+
+
+
+	/**
+	 * Check whether task edit for status is allowed
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Boolean
+	 */
+	public static function isStatusEditAllowed($idTask) {
+		$idTask		= intval($idTask);
+		$task		= TodoyuTaskManager::getTask($idTask);
+
+		$statusIDs	= array_keys(TodoyuTaskStatusManager::getStatuses('edit'));
 
 		return in_array($task->getStatus(), $statusIDs);
 	}
