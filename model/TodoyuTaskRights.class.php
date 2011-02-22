@@ -132,6 +132,12 @@ class TodoyuTaskRights {
 			return false;
 		}
 
+			// Explicit status edit right
+		if( allowed('project', 'task:editStatus') ) {
+			return true;
+		}
+
+			// Task edit right in project
 		if( ! self::isEditInProjectAllowed($idTask) ) {
 			return false;
 		}
