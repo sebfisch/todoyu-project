@@ -36,8 +36,7 @@ Todoyu::$CONFIG['EXT']['project']['info'] = array(
 		'depends' 	=> array(
 			'contact' => '1.0.4'
 		),
-		'conflicts' => array(
-		),
+		'conflicts' => array(),
 		'system'	=> true
 	)
 );
