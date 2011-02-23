@@ -212,7 +212,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idStatus	= intval($params['status']);
 		$status		= TodoyuTaskStatusManager::getStatusKey($idStatus);
 
-		restrict('project', 'taskstatus:' . $status . ':changeto');
+		TodoyuTaskRights::restrictStatusChangeTo($status, $idTask);
 
 		TodoyuTaskManager::updateTaskStatus($idTask, $idStatus);
 
@@ -360,6 +360,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	public function acknowledgeAction(array $params) {
 		$idTask	= intval($params['task']);
 
+		TodoyuTaskRights::restrictSee($idTask);
+
 		TodoyuTaskManager::setTaskAcknowledged($idTask);
 	}
 
@@ -406,6 +408,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask		= intval($params['task']);
 		$tabKey		= $params['tab'];
 
+		TodoyuTaskRights::restrictSee($idTask);
+
 		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tabKey);
 	}
 
@@ -421,6 +425,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask		= intval($params['task']);
 		$idTaskShow	= intval($params['show']);
 
+		TodoyuTaskRights::restrictSee($idTask);
+		
 			// Save open status
 		TodoyuProjectPreferences::saveSubTasksVisibility($idTask, true, AREA);
 
@@ -438,7 +444,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	public function number2idAction(array $params) {
 		$taskNumber	= trim($params['tasknumber']);
 
-		return TodoyuTaskManager::getTaskIDByTaskNumber($taskNumber);
+		$idTask		= TodoyuTaskManager::getTaskIDByTaskNumber($taskNumber);
+		TodoyuTaskRights::restrictSee($idTask);
+
+		return $idTask;
 	}
 
 }

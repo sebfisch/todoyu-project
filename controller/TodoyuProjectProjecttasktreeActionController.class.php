@@ -26,6 +26,11 @@
  */
 class TodoyuProjectProjecttasktreeActionController extends TodoyuActionController {
 
+	/**
+	 * 
+	 *
+	 * @param	Array	$params
+	 */
 	public function init(array $params) {
 		restrict('project', 'general:area');
 	}
@@ -74,6 +79,10 @@ class TodoyuProjectProjecttasktreeActionController extends TodoyuActionControlle
 	 */
 	public function openprojectsAction(array $params) {
 		$openProjectIDs	= TodoyuArray::intExplode(',', $params['projects'], true, true);
+
+		foreach($openProjectIDs as $idProject) {
+			TodoyuProjectRights::restrictSee($idProject);
+		}
 
 		TodoyuProjectPreferences::saveOpenProjectTabs($openProjectIDs);
 	}

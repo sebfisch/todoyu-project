@@ -56,8 +56,12 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 
 			// Add status filter
 		if( ! TodoyuAuth::isAdmin() ) {
-			$statuses	= implode(',', array_keys(TodoyuProjectStatusManager::getStatuses()));
-			$this->addRightsFilter('status', $statuses);
+			if( count(TodoyuProjectStatusManager::getStatuses()) > 0 ) {
+				$status	= array_keys(TodoyuProjectStatusManager::getStatuses());
+				$this->addRightsFilter('status', $status);
+			} else {
+				$this->addRightsFilter('Not', 0);
+			}
 		}
 	}
 
@@ -205,7 +209,7 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 	public static function Filter_status($value, $negate = false) {
 		$status		= is_array($value) ? TodoyuArray::intval($value, true, true) : TodoyuArray::intExplode(',', $value, true, true);
 		$queryParts	= false;
-
+		
 		if( sizeof($status) > 0 ) {
 			$compare	= $negate ? 'NOT IN' : 'IN' ;
 
@@ -518,6 +522,21 @@ class TodoyuProjectFilter extends TodoyuFilterBase implements TodoyuFilterInterf
 		$field	= self::TABLE . '.' . $field;
 
 		return TodoyuFilterHelper::getDateFilterQueryparts($tables, $field, $date, $negate);
+	}
+
+
+
+	/**
+	 * Filter to make a query false (e.g. if no project status is allowed)
+	 * to avoid mysql - errors
+	 *
+	 * @static
+	 * @return	Array
+	 */
+	public static function Filter_Not() {
+		return array(
+			'where' => '0'
+		);
 	}
 }
 

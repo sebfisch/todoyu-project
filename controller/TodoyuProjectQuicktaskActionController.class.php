@@ -47,6 +47,8 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 	public function popupAction(array $params) {
 		$idProject	= intval($params['project']);
 
+		TodoyuTaskRights::restrictAddToProject($idProject);
+		
 		return TodoyuQuickTaskManager::renderForm($idProject);
 	}
 
@@ -61,6 +63,9 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 	public function saveAction(array $params) {
 		$params['quicktask']['start_tracking']	= intval($params['quicktask']['start_tracking']);
 		$formData	= $params['quicktask'];
+		$idProject	= intval($formData['id_project']);
+
+		TodoyuTaskRights::restrictAddToProject($idProject);
 
 			// Get form object
 		$form	= TodoyuQuickTaskManager::getQuickTaskForm();
@@ -71,9 +76,8 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 			// Validate, save workload record / re-render form
 		if( $form->isValid() ) {
 			$storageData	= $form->getStorageData();
-
-			$idTask		= TodoyuQuickTaskManager::save($storageData);
 			$idProject	= intval($storageData['id_project']);
+			$idTask		= TodoyuQuickTaskManager::save($storageData);
 
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTask);
 			TodoyuHeader::sendTodoyuHeader('idProject', $idProject);

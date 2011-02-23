@@ -46,6 +46,8 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 	public function popupAction(array $params) {
 		$idProject	= intval($params['project']);
 
+		TodoyuTaskRights::restrictAddToProject($idProject);
+
 		return TodoyuTaskRenderer::renderQuickCreateForm($idProject);
 	}
 
@@ -61,6 +63,12 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 		$data			= $params['task'];
 		$idTask			= intval($data['id']);
 		$idProject		= intval($data['id_project']);
+
+		if($idTask > 0) {
+			TodoyuTaskRights::restrictEdit($idTask);
+		} else {
+			TodoyuTaskRights::restrictAddToProject($idProject);
+		}
 
 			// Create a cache record for the buildform hooks
 		$task = new TodoyuTask(0);

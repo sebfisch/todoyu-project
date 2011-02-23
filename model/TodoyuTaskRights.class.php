@@ -401,5 +401,19 @@ class TodoyuTaskRights {
 		}
 	}
 
+
+
+	/**
+	 * Checks if the change of status is allowed
+	 *
+	 * @static
+	 * @param	String	$status		Status-Key
+	 * @param	Integer	$idTask
+	 */
+	public static function restrictStatusChangeTo($status, $idTask) {
+		self::restrictSee($idTask);
+
+		restrict('project', 'taskstatus:' . $status . ':changeto');
+	}
 }
 ?>
