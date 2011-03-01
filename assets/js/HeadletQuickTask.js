@@ -17,7 +17,7 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-Todoyu.Ext.project.Headlet.QuickTask = {
+Todoyu.Ext.project.Headlet.QuickTask = Class.create(Todoyu.Headlet, {
 
 	/**
 	 * Ext shortcut
@@ -32,7 +32,9 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	 *
 	 * @method	init
 	 */
-	init: function() {
+	initialize: function($super, name) {
+		$super(name);
+
 		Todoyu.Hook.add('project.quickTask.saved', this.onQuickTaskSaved.bind(this));
 	},
 
@@ -45,17 +47,6 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 	 * @param	{Event}		event
 	 */
 	onButtonClick: function(event) {
-		this.add();
-	},
-
-
-
-	/**
-	 * Add quicktask
-	 *
-	 * @method	add
-	 */
-	add: function() {
 		this.ext.QuickTask.openPopup();
 	},
 
@@ -77,4 +68,4 @@ Todoyu.Ext.project.Headlet.QuickTask = {
 		}
 	}
 
-};
+});

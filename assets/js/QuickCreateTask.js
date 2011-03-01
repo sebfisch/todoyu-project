@@ -90,7 +90,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 			// Save resulted in error?
 		if( response.hasTodoyuError() ) {
 				// Update task edit form with form remarks, display failure notification
-			Todoyu.Headlets.QuickCreate.updatePopupContent(response.responseText);
+			Todoyu.Headlets.getHeadlet('todoyuheadletquickcreate').updatePopupContent(response.responseText);
 			Todoyu.notifyError('[LLL:task.save.error]');
 		} else {
 				// Saving went ok
