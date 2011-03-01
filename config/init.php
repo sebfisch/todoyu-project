@@ -39,7 +39,7 @@ TodoyuAutocompleter::addAutocompleter('taskaddableproject', 'TodoyuProjectFilter
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuProjectTaskManager::getContextMenuItems', 10);
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuProjectTaskClipboard::getTaskContextMenuItems', 100);
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuProjectTaskManager::removeEmptyContextMenuParents', 100000);
-TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectManager::getContextMenuItems', 10);
+TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectProjectManager::getContextMenuItems', 10);
 TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectTaskClipboard::getProjectContextMenuItems', 100);
 
 
@@ -91,7 +91,7 @@ Todoyu::$CONFIG['EXT']['project']['Task']['forceTab'] = false;
 	// Projectrole
 Todoyu::$CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
 	'tmpl'			=> 'ext/project/view/filterwidget-projectrole.tmpl',
-	'configFunc'	=> 'TodoyuProjectFilter::prepareDataForProjectroleWidget'
+	'configFunc'	=> 'TodoyuProjectProjectFilter::prepareDataForProjectroleWidget'
 );
 
 

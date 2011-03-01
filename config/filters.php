@@ -404,7 +404,7 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 		 * OptGroup project
 		 */
 		'title' => array(
-			'funcRef'	=> 'TodoyuProjectFilter::filter_title',
+			'funcRef'	=> 'TodoyuProjectProjectFilter::filter_title',
 			'label'		=> 'LLL:core.title',
 			'optgroup'	=> 'LLL:project.search.label',
 			'widget'	=> 'text',
@@ -413,13 +413,13 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 			)
 		),
 		'fulltext' => array(
-			'funcRef'	=> 'TodoyuProjectFilter::filter_fulltext',
+			'funcRef'	=> 'TodoyuProjectProjectFilter::filter_fulltext',
 			'label'		=> 'LLL:projectFilter.project.fulltext',
 			'optgroup'	=> 'LLL:project.search.label',
 			'widget'	=> 'text',
 		),
 		'status' => array(
-			'funcRef'	=> 'TodoyuProjectFilter::filter_status',
+			'funcRef'	=> 'TodoyuProjectProjectFilter::filter_status',
 			'label'		=> 'LLL:core.status',
 			'optgroup'	=> 'LLL:project.search.label',
 			'widget'	=> 'select',
