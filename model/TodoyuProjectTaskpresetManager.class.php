@@ -42,7 +42,7 @@ class TodoyuProjectTaskpresetManager {
 	public static function getTaskpreset($idTaskpreset) {
 		$idTaskpreset	= intval($idTaskpreset);
 
-		return TodoyuRecordManager::getRecord('TodoyuTaskpreset', $idTaskpreset);
+		return TodoyuRecordManager::getRecord('TodoyuProjectTaskpreset', $idTaskpreset);
 	}
 
 
@@ -56,7 +56,7 @@ class TodoyuProjectTaskpresetManager {
 	public static function getTaskpresetData($idTaskpreset) {
 		$idTaskpreset	= intval($idTaskpreset);
 
-		$preset	= TodoyuRecordManager::getRecord('TodoyuTaskpreset', $idTaskpreset);
+		$preset	= TodoyuRecordManager::getRecord('TodoyuProjectTaskpreset', $idTaskpreset);
 
 		return $preset->getData();
 	}

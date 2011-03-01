@@ -157,7 +157,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		}
 
 			// Create temp record in cache to keep all data. Necessary to save contains valid
-		$task = new TodoyuTask(0);
+		$task = new TodoyuProjectTask(0);
 		$task->injectData($data);
 		$cacheKey	= TodoyuRecordManager::makeClassKey('TodoyuProjectTask', 0);
 		TodoyuCache::set($cacheKey, $task);
