@@ -15,7 +15,7 @@
 	<label index="task.title">Наслов</label>
 	<label index="task.fulltext">Цео текст</label>
 	<label index="task.type">Тип</label>
-	<label index="task.worktype">Врста посла</label>
+	<label index="task.activity">Врста посла</label>
 	<label index="task.timemanagement.label">Управа времена</label>
 	<label index="task.deadlinedate">Рок</label>
 	<label index="task.deadlinedateDyn">Рок (динамичан)</label>

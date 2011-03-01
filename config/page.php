@@ -22,7 +22,7 @@
 if(  allowed('project', 'general:area') ) {
 	TodoyuFrontend::addMenuEntry('project', 'LLL:project.tab.label', '?ext=project', 20);
 
-	$projectEntries	= TodoyuProjectManager::getOpenProjectLabels();
+	$projectEntries	= TodoyuProjectProjectManager::getOpenProjectLabels();
 
 	$entryNum		= 0;
 	foreach($projectEntries as $idProject => $title) {
@@ -31,7 +31,7 @@ if(  allowed('project', 'general:area') ) {
 
 		// Register quick task headlet
 	if( allowed('project', 'task:addViaQuickCreateHeadlet') ) {
-		TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickTask', 55);
+		TodoyuHeadManager::addHeadlet('TodoyuProjectHeadletQuickTask', 55);
 	}
 }
 

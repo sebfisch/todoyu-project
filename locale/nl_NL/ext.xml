@@ -58,7 +58,7 @@
 	<label index="projectrole.attr.rolekey">Sleutelwoord van rol</label>
 	<label index="tasktree.losttasks">Taken met onjuiste status of onjuist bovenliggende taak</label>
 	<label index="records.projectrole">Projectrollen</label>
-	<label index="records.worktype">Werksoorten</label>
+	<label index="records.activity">Werksoorten</label>
 	<label index="form.validation.dateBefore">Datum moet voor de einddatum vallen</label>
 	<label index="form.validation.title">Voer a.u.b. een titel in voor het project</label>
 	<label index="form.validation.company">Een klant is vereist voor een project</label>
@@ -73,6 +73,6 @@
 	<label index="extconf.taskDefaults.status">Standaard status voor taak</label>
 	<label index="extconf.taskDefaults.assignedRoles">Standaard rol voor persoon die aan taak is toegewezen</label>
 	<label index="extconf.taskDefaults.ownerRoles">Standaard rol voor eigenaar van taak</label>
-	<label index="extconf.taskDefaults.worktype">Standaard soort werk</label>
+	<label index="extconf.taskDefaults.activity">Standaard soort werk</label>
 	<label index="extconf.taskDefaults.estimated_workload">Standaard geschatte hoeveelheid werk</label>
 </labels>

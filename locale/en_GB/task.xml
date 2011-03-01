@@ -7,7 +7,7 @@
 	<label index="attr.id">Task ID</label>
 	<label index="attr.type">Type</label>
 	<label index="attr.title">Task Title</label>
-	<label index="attr.worktype">Activity Type</label>
+	<label index="attr.activity">Activity Type</label>
 	<label index="attr.estimated_workload">Estimated Workload</label>
 	<label index="attr.ext_resources_is_onblock">Work Frequency</label>
 	<label index="attr.billingtype">Billing Type</label>
@@ -84,7 +84,7 @@
 	<label index="type.task">Task</label>
 	<label index="type.container">Container</label>
 	<label index="billableTime">Billable Time</label>
-	<label index="worktype">Activity Type</label>
+	<label index="activity">Activity Type</label>
 	<label index="estimated_workload">Estimated Workload</label>
 	<label index="date_start">Start Date </label>
 	<label index="date_deadline">Customer Deadline</label>
@@ -99,7 +99,7 @@
 	<label index="attr.status">Status</label>
 	<label index="error.title">Please enter a title for the task</label>
 	<label index="attr.person_assigned.error">This field is required</label>
-	<label index="attr.id_worktype.error">This field is required</label>
+	<label index="attr.id_activity.error">This field is required</label>
 	<label index="save.error">Saving was not successful</label>
 	<label index="save.success">Saving was successful</label>
 	<label index="pasteNotAllowed">You can't paste the task at this position!</label>

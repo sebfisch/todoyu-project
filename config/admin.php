@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 	// Add record infos
-TodoyuExtManager::addRecordConfig('project', 'projectrole', array(
+TodoyuSysmanagerExtManager::addRecordConfig('project', 'projectrole', array(
 	'label'	=> 'LLL:project.records.projectrole',
 	'form'	=> 'ext/project/config/form/admin/projectrole.xml',
 	'list'	=> 'TodoyuProjectroleManager::getRecords',
@@ -29,23 +29,23 @@ TodoyuExtManager::addRecordConfig('project', 'projectrole', array(
 	'table'	=> 'ext_project_role'
 ));
 
-TodoyuExtManager::addRecordConfig('project', 'worktype', array(
-	'label'	=> 'LLL:project.records.worktype',
-	'form'	=> 'ext/project/config/form/admin/worktype.xml',
-	'list'	=> 'TodoyuWorktypeManager::getRecords',
-	'save'	=> 'TodoyuWorktypeManager::saveWorktype',
-	'delete'=> 'TodoyuWorktypeManager::deleteWorktype',
-	'object'=> 'TodoyuWorktype',
-	'table'	=> 'ext_project_worktype'
+TodoyuSysmanagerExtManager::addRecordConfig('project', 'activity', array(
+	'label'	=> 'LLL:project.records.activity',
+	'form'	=> 'ext/project/config/form/admin/activity.xml',
+	'list'	=> 'TodoyuProjectActivityManager::getRecords',
+	'save'	=> 'TodoyuProjectActivityManager::saveActivity',
+	'delete'=> 'TodoyuProjectActivityManager::deleteActivity',
+	'object'=> 'TodoyuProjectActivity',
+	'table'	=> 'ext_project_activity'
 ));
 
-TodoyuExtManager::addRecordConfig('project', 'taskpreset', array(
+TodoyuSysmanagerExtManager::addRecordConfig('project', 'taskpreset', array(
 	'label'	=> 'LLL:project.records.taskpreset',
 	'form'	=> 'ext/project/config/form/admin/taskpreset.xml',
-	'list'	=> 'TodoyuTaskpresetManager::getRecords',
-	'save'	=> 'TodoyuTaskpresetManager::saveTaskpreset',
-	'delete'=> 'TodoyuTaskpresetManager::deleteTaskpreset',
-	'object'=> 'TodoyuTaskpreset',
+	'list'	=> 'TodoyuProjectTaskpresetManager::getRecords',
+	'save'	=> 'TodoyuProjectTaskpresetManager::saveTaskpreset',
+	'delete'=> 'TodoyuProjectTaskpresetManager::deleteTaskpreset',
+	'object'=> 'TodoyuProjectTaskpreset',
 	'table'	=> 'ext_project_taskpreset'
 ));
 

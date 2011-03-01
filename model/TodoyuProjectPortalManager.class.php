@@ -33,10 +33,10 @@ class TodoyuProjectPortalManager {
 	 */
 	public static function getTodoTaskIDs() {
 		$conditions	= Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters']['assigned'];
-		$taskFilterAssigned	= new TodoyuTaskFilter($conditions);
+		$taskFilterAssigned	= new TodoyuProjectTaskFilter($conditions);
 
 		$conditions			= Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters']['owner'];
-		$taskFilterOwner	= new TodoyuTaskFilter($conditions);
+		$taskFilterOwner	= new TodoyuProjectTaskFilter($conditions);
 
 		$conditions = array(
 			array(
@@ -49,7 +49,7 @@ class TodoyuProjectPortalManager {
 			),
 		);
 
-		$taskFilterMerged = new TodoyuTaskFilter($conditions, 'OR');
+		$taskFilterMerged = new TodoyuProjectTaskFilter($conditions, 'OR');
 
 		return $taskFilterMerged->getTaskIDs('ext_project_task.date_deadline');
 	}

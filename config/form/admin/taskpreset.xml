@@ -56,10 +56,10 @@
 					</source>
 				</field>
 
-				<field type="select" name="id_worktype">
-					<label>project.extconf.taskDefaults.worktype</label>
+				<field type="select" name="id_activity">
+					<label>project.extconf.taskDefaults.activity</label>
 					<source type="function">
-						<function>TodoyuProjectViewHelper::getExtConfWorktypes</function>
+						<function>TodoyuProjectProjectViewHelper::getExtConfActivities</function>
 					</source>
 				</field>
 
@@ -80,7 +80,7 @@
 				<field type="text" name="quicktask_duration_days">
 					<label>project.extconf.quicktask_duration_days</label>
 					<default>7</default>
-					
+
 					<extraAttributes>onkeyup="Todoyu.Form.assistNumericInput(this,true)"</extraAttributes>
 				</field>
 			</elements>
@@ -94,7 +94,7 @@
 				<field type="select" name="person_assigned_role">
 					<label>project.extconf.taskDefaults.person_assigned_role</label>
 					<source type="function">
-						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
+						<function>TodoyuProjectProjectViewHelper::getExtConfProjectRoles</function>
 					</source>
 					<restrict>
 						<allow ext="project" right="task:editPersonAssigned" />
@@ -117,7 +117,7 @@
 				<field type="select" name="person_owner_role">
 					<label>project.extconf.taskDefaults.person_owner_role</label>
 					<source type="function">
-						<function>TodoyuProjectViewHelper::getExtConfProjectRoles</function>
+						<function>TodoyuProjectProjectViewHelper::getExtConfProjectRoles</function>
 					</source>
 					<restrict>
 						<allow ext="project" right="task:editPersonOwner" />

@@ -53,7 +53,7 @@
 		<right name="editDeadline" require="task:editInOwnProjects" />
 		<right name="editPersonAssigned" require="task:editInOwnProjects" />
 		<right name="editPersonOwner" require="task:editInOwnProjects" />
-		<right name="editWorktype" require="task:editInOwnProjects" />
+		<right name="editActivity" require="task:editInOwnProjects" />
 		<right name="editEstimatedWorkload" require="task:editInOwnProjects" />
 		<right name="editIsPublic" require="task:editInOwnProjects" />
 	</section>

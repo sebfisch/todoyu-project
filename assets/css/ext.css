@@ -53,11 +53,11 @@ h1.extIconProject .title {
 /* -----------------------------------------------
 	Quick create (headlet) mode selector entries
    ----------------------------------------------- */
-#headlet-quickcreate-content li.itemProjectProject a {
+#todoyuheadletquickcreate li.itemProjectProject a {
 	background:url(../img/icons.png) no-repeat 5px -388px;
 }
 
-#headlet-quickcreate-content li.itemProjectTask a {
+#todoyuheadletquickcreate li.itemProjectTask a {
 	background:url(../img/icons.png) no-repeat 5px -58px;
 }
 
@@ -66,12 +66,12 @@ h1.extIconProject .title {
 /* -----------------
 	Search
    ----------------- */
-#headlet-quicksearch-content form.searchmodeTask a.mode,
-#headlet-quicksearch-content li.searchmodeTask a {
+#todoyusearchheadletquicksearch form.searchmodeTask a.mode,
+#todoyusearchheadletquicksearch-modes li.searchmodeTask a {
 	background:url(../img/icons.png) no-repeat 3px 3px !important;
 }
-#headlet-quicksearch-content form.searchmodeProject a.mode,
-#headlet-quicksearch-content li.searchmodeProject a {
+#todoyusearchheadletquicksearch form.searchmodeProject a.mode,
+#todoyusearchheadletquicksearch-modes li.searchmodeProject a {
 	background:url(../img/icons.png) no-repeat 3px -447px !important;
 }
 
@@ -128,7 +128,7 @@ h1.extIconProject .title {
 
 /* --------------------------------------
 	Task and project properties
-   ------------------------------------- */  
+   ------------------------------------- */
 .project .properties dt,
 .task .properties dt {
 	float:left;
@@ -177,7 +177,7 @@ h1.extIconProject .title {
 }
 .data ul,
 .task-comments ul {
-	list-style:disc;	
+	list-style:disc;
 }
 .data ul.ulList {
 	padding:0;
@@ -226,7 +226,7 @@ h1.extIconProject .title {
 
 /* --------------------------------------
 	Search tabs
-   ------------------------------------- */  
+   ------------------------------------- */
 #search-tab-task span.icon {
 	background:url(../img/icons.png) no-repeat 0 6px;
 }

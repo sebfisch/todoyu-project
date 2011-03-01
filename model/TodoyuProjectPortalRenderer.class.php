@@ -53,7 +53,7 @@ class TodoyuProjectPortalRenderer {
 	public static function renderTodoTabContent(array $params = array()) {
 		$taskIDs= TodoyuProjectPortalManager::getTodoTaskIDs();
 
-		return TodoyuTaskRenderer::renderTaskListing($taskIDs);
+		return TodoyuProjectTaskRenderer::renderTaskListing($taskIDs);
 	}
 
 }

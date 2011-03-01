@@ -43,7 +43,7 @@
 function Dwoo_Plugin_taskStatusLabel(Dwoo $dwoo, $idStatus) {
 	$idStatus	= intval($idStatus);
 
-	return TodoyuTaskStatusManager::getStatusLabel($idStatus);
+	return TodoyuProjectTaskStatusManager::getStatusLabel($idStatus);
 }
 
 
@@ -61,7 +61,7 @@ function Dwoo_Plugin_taskStatusLabel(Dwoo $dwoo, $idStatus) {
 function Dwoo_Plugin_taskStatusKey(Dwoo $dwoo, $idStatus) {
 	$idStatus	= intval($idStatus);
 
-	return TodoyuTaskStatusManager::getStatusKey($idStatus);
+	return TodoyuProjectTaskStatusManager::getStatusKey($idStatus);
 }
 
 
@@ -79,7 +79,7 @@ function Dwoo_Plugin_taskStatusKey(Dwoo $dwoo, $idStatus) {
 function Dwoo_Plugin_projectStatusLabel(Dwoo $dwoo, $idStatus) {
 	$idStatus	= intval($idStatus);
 
-	return TodoyuProjectStatusManager::getStatusLabel($idStatus);
+	return TodoyuProjectProjectStatusManager::getStatusLabel($idStatus);
 }
 
 
@@ -95,7 +95,7 @@ function Dwoo_Plugin_projectStatusLabel(Dwoo $dwoo, $idStatus) {
  * @return	String
  */
 function Dwoo_Plugin_projectRoleLabel(Dwoo $dwoo, $idProjectrole) {
-	return TodoyuProjectroleManager::getLabel($idProjectrole);
+	return TodoyuProjectProjectroleManager::getLabel($idProjectrole);
 }
 
 
@@ -113,7 +113,7 @@ function Dwoo_Plugin_projectRoleLabel(Dwoo $dwoo, $idProjectrole) {
 function Dwoo_Plugin_projectStatusKey(Dwoo $dwoo, $idStatus) {
 	$idStatus	= intval($idStatus);
 
-	return TodoyuProjectStatusManager::getStatusKey($idStatus);
+	return TodoyuProjectProjectStatusManager::getStatusKey($idStatus);
 }
 
 
@@ -129,7 +129,7 @@ function Dwoo_Plugin_projectStatusKey(Dwoo $dwoo, $idStatus) {
  * @return	Boolean
  */
 function Dwoo_Plugin_isAllowedSeeProjectDetails(Dwoo $dwoo, $idProject) {
-	return allowed('project', 'project:seeAll') || TodoyuProjectManager::isPersonAssigned($idProject);
+	return allowed('project', 'project:seeAll') || TodoyuProjectProjectManager::isPersonAssigned($idProject);
 }
 
 
@@ -140,7 +140,7 @@ function Dwoo_Plugin_isAllowedSeeProjectDetails(Dwoo $dwoo, $idProject) {
  * @return	String
  */
 function Dwoo_Plugin_linkTasks_compile(Dwoo_Compiler $compiler, $text) {
-	return 'TodoyuTaskManager::linkTaskIDsInText(' . $text . ')';
+	return 'TodoyuProjectTaskManager::linkTaskIDsInText(' . $text . ')';
 }
 
 

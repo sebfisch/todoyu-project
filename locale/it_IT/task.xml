@@ -4,7 +4,7 @@
 	<label index="tasks">Attività</label>
 	<label index="container">Contenitore</label>
 	<label index="attr.title">Titolo attività</label>
-	<label index="attr.worktype">Tipo di attività</label>
+	<label index="attr.activity">Tipo di attività</label>
 	<label index="attr.estimated_workload">Carico di lavoro stimato</label>
 	<label index="attr.ext_resources_is_onblock">Frequenza lavoro</label>
 	<label index="attr.billingtype">Tipo di fatturazione</label>
@@ -78,7 +78,7 @@
 	<label index="type.task">Attività</label>
 	<label index="type.container">Contenitore</label>
 	<label index="billableTime">Tempo fatturabile</label>
-	<label index="worktype">Tipo di attività</label>
+	<label index="activity">Tipo di attività</label>
 	<label index="estimated_workload">Carico di lavoro stimato</label>
 	<label index="date_start">Data di inizio</label>
 	<label index="date_deadline">Scadenza cliente</label>
@@ -93,7 +93,7 @@
 	<label index="attr.status">Stato</label>
 	<label index="error.title">Inserire il titolo dell'attività</label>
 	<label index="attr.person_assigned.error">È necessario specificare questo campo</label>
-	<label index="attr.id_worktype.error">Campo ricihesto</label>
+	<label index="attr.id_activity.error">Campo ricihesto</label>
 	<label index="save.error">Il salvataggio non ha avuto successo</label>
 	<label index="save.success">Il salvataggio è stato completato</label>
 	<label index="pasteNotAllowed">Non è possibile incollare l'attività in questa posizione!</label>

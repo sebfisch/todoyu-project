@@ -22,7 +22,7 @@
 	<label index="task.editDeadline">Modifier un jalon</label>
 	<label index="task.editPersonAssigned">Modifier les personnes assignées</label>
 	<label index="task.editPersonOwner">Modifier le responsable d'une tâche</label>
-	<label index="task.editWorktype">Modifier le type de travail</label>
+	<label index="task.editActivity">Modifier le type de travail</label>
 	<label index="task.editEstimatedWorkload">Modifier la charge de travail estimée</label>
 	<label index="task.editIsPublic">Afficher comme public</label>
 	<label index="taskstatus">Statut d'une tâche</label>

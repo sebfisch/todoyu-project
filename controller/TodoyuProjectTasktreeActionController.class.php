@@ -49,10 +49,10 @@ class TodoyuProjectTasktreeActionController extends TodoyuActionController {
 
 			// If a filter is submitted
 		if( ! is_null($filter) ) {
-			TodoyuProjectManager::updateProjectTreeFilters($filter['name'], $filter['value']);
+			TodoyuProjectProjectManager::updateProjectTreeFilters($filter['name'], $filter['value']);
 		}
 
-		return TodoyuProjectRenderer::renderProjectTaskTree($idProject);
+		return TodoyuProjectProjectRenderer::renderProjectTaskTree($idProject);
 	}
 
 }

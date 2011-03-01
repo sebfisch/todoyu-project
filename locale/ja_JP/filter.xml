@@ -15,7 +15,7 @@
 	<label index="task.title">タイトル</label>
 	<label index="task.fulltext">全文</label>
 	<label index="task.type">タイプ</label>
-	<label index="task.worktype">作業形態</label>
+	<label index="task.activity">作業形態</label>
 	<label index="task.timemanagement.label">時間管理</label>
 	<label index="task.deadlinedate">締切</label>
 	<label index="task.deadlinedateDyn">締切 (動的)</label>

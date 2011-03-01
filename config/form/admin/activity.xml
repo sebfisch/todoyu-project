@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<hiddenFields>
+		<field name="id" />
+	</hiddenFields>
+
+	<fieldsets>
+
+		<fieldset name="main">
+			<legend>Main activity Fields</legend>
+			<elements>
+
+				<field type="text" name="title">
+					<label>core.title</label>
+					<required />
+				</field>
+
+			</elements>
+		</fieldset>
+
+	</fieldsets>
+</form>

@@ -3,7 +3,7 @@
 	<label index="task">Tarefas</label>
 	<label index="tasks">Tarefas</label>
 	<label index="attr.title">Título da Tarefa</label>
-	<label index="attr.worktype">Tipo de Serviço</label>
+	<label index="attr.activity">Tipo de Serviço</label>
 	<label index="attr.estimated_workload">Estimativa de Horas de Trabalho</label>
 	<label index="attr.ext_resources_is_onblock">Frequência de Trabalho</label>
 	<label index="attr.billingtype">Tipo de Cobrança</label>
@@ -71,7 +71,7 @@
 	<label index="type.task">Tarefa</label>
 	<label index="type.container">Pasta</label>
 	<label index="billableTime">Hora Remunerada</label>
-	<label index="worktype">Tipo de Serviço</label>
+	<label index="activity">Tipo de Serviço</label>
 	<label index="estimated_workload">Carga de Trabalho Estimada</label>
 	<label index="date_start">Data de Início</label>
 	<label index="date_deadline">Prazo Final - Cliente</label>
@@ -86,7 +86,7 @@
 	<label index="attr.status">Status</label>
 	<label index="error.title">Entre com um título para a tarefa</label>
 	<label index="attr.person_assigned.error">Este Campo é Manadatório</label>
-	<label index="attr.id_worktype.error">Este Campo é Mandatório</label>
+	<label index="attr.id_activity.error">Este Campo é Mandatório</label>
 	<label index="save.error">Não Foi Possível Salvar</label>
 	<label index="save.success">Salvo com Sucesso</label>
 	<label index="pasteNotAllowed">Não é permitido colar a tarefa neste local!</label>

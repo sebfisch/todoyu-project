@@ -20,7 +20,7 @@
 
 
 /**
- * 
+ *
  */
 class TodoyuProjectExportManager {
 
@@ -57,7 +57,7 @@ class TodoyuProjectExportManager {
 		$exportData = array();
 
 		foreach($projectIDs as $idProject)	 {
-			$project	= TodoyuProjectManager::getProject($idProject);
+			$project	= TodoyuProjectProjectManager::getProject($idProject);
 
 			$project->loadForeignData();
 
@@ -73,15 +73,15 @@ class TodoyuProjectExportManager {
 	 * Parses Project data for CSV export
 	 *
 	 * @static
-	 * @param	TodoyuProject	$project
+	 * @param	TodoyuProjectProject	$project
 	 * @return	Array
 	 */
-	protected static function parseDataForExport(TodoyuProject $project) {
+	protected static function parseDataForExport(TodoyuProjectProject $project) {
 		$exportData = array(
 			TodoyuLabelManager::getLabel('LLL:project.attr.id')					=> $project->id,
 			TodoyuLabelManager::getLabel('LLL:task.attr.date_create')			=> TodoyuTime::format($project->date_create, 'date'),
 			TodoyuLabelManager::getLabel('LLL:core.date_update')				=> TodoyuTime::format($project->date_update, 'date'),
-			TodoyuLabelManager::getLabel('LLL:core.id_person_create')			=> TodoyuPersonManager::getPerson($project->id_person_create)->getFullName(),
+			TodoyuLabelManager::getLabel('LLL:core.id_person_create')			=> TodoyuContactPersonManager::getPerson($project->id_person_create)->getFullName(),
 			TodoyuLabelManager::getLabel('LLL:project.attr.date_start')			=> TodoyuTime::format($project->date_start),
 			TodoyuLabelManager::getLabel('LLL:project.attr.date_end')			=> TodoyuTime::format($project->date_end),
 			TodoyuLabelManager::getLabel('LLL:project.attr.date_deadline')		=> TodoyuTime::format($project->date_deadline),

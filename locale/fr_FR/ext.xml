@@ -58,7 +58,7 @@
 	<label index="projectrole.attr.rolekey">Mot-clé du rôle</label>
 	<label index="tasktree.losttasks">Tâches ayant un statut/parent inapplicable</label>
 	<label index="records.projectrole">Rôle dans un projet</label>
-	<label index="records.worktype">Type de travail</label>
+	<label index="records.activity">Type de travail</label>
 	<label index="form.validation.dateBefore">La date doit être définie avant la date de fin.</label>
 	<label index="form.validation.title">Veuillez entrer le titre du projet</label>
 	<label index="form.validation.company">Un client est requis pour un projet</label>
@@ -73,7 +73,7 @@
 	<label index="extconf.taskDefaults.status">Statut de tâche par défaut</label>
 	<label index="extconf.taskDefaults.assignedRoles">Rôle par défaut pour la personne assignée à la tâche</label>
 	<label index="extconf.taskDefaults.ownerRoles">Rôle par défaut pour le responsable de la tâche</label>
-	<label index="extconf.taskDefaults.worktype">Type de travail par défaut</label>
+	<label index="extconf.taskDefaults.activity">Type de travail par défaut</label>
 	<label index="extconf.taskDefaults.estimated_workload">Charge de travail estimée par défaut</label>
 	<label index="extconf.taskDefaults.person_assigned_role">Assigner la personne du rôle si non sélectionnable</label>
 	<label index="extconf.taskDefaults.person_owner_role">Prise en charge par la personne du rôle si non sélectionnable</label>

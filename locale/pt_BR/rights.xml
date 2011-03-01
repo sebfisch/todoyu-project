@@ -21,7 +21,7 @@
 	<label index="task.editDeadline">Editar Data do Prazo Final</label>
 	<label index="task.editPersonAssigned">Editar Responsável</label>
 	<label index="task.editPersonOwner">Editar Proprietário da Tarefa</label>
-	<label index="task.editWorktype">Editar Tipo de Serviço</label>
+	<label index="task.editActivity">Editar Tipo de Serviço</label>
 	<label index="task.editEstimatedWorkload">Editar Estimativa de Horas de Trabalho</label>
 	<label index="task.editIsPublic">Definir como Pública</label>
 	<label index="taskstatus">Status da Tarefa</label>

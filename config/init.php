@@ -23,9 +23,9 @@
 	Add autocompleters for project data types
    --------------------------------------------- */
 	// Person
-TodoyuAutocompleter::addAutocompleter('projectperson', 'TodoyuPersonFilterDataSource::autocompletePersons', array('project', 'general:use'));
+TodoyuAutocompleter::addAutocompleter('projectperson', 'TodoyuContactPersonFilterDataSource::autocompletePersons', array('project', 'general:use'));
 	// Task
-TodoyuAutocompleter::addAutocompleter('projecttask', 'TodoyuTaskViewHelper::getProjecttaskAutocomplete', array('project', 'general:use'));
+TodoyuAutocompleter::addAutocompleter('projecttask', 'TodoyuProjectTaskViewHelper::getProjecttaskAutocomplete', array('project', 'general:use'));
 	// Project
 TodoyuAutocompleter::addAutocompleter('project', 'TodoyuProjectFilterDataSource::autocompleteProjects', array('project', 'general:use'));
 	// Project that tasks can be added to
@@ -36,11 +36,11 @@ TodoyuAutocompleter::addAutocompleter('taskaddableproject', 'TodoyuProjectFilter
 /* ----------------------------
 	Context Menu Callbacks
    ---------------------------- */
-TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskManager::getContextMenuItems', 10);
-TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskClipboard::getTaskContextMenuItems', 100);
-TodoyuContextMenuManager::addFunction('Task', 'TodoyuTaskManager::removeEmptyContextMenuParents', 100000);
+TodoyuContextMenuManager::addFunction('Task', 'TodoyuProjectTaskManager::getContextMenuItems', 10);
+TodoyuContextMenuManager::addFunction('Task', 'TodoyuProjectTaskClipboard::getTaskContextMenuItems', 100);
+TodoyuContextMenuManager::addFunction('Task', 'TodoyuProjectTaskManager::removeEmptyContextMenuParents', 100000);
 TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectManager::getContextMenuItems', 10);
-TodoyuContextMenuManager::addFunction('Project', 'TodoyuTaskClipboard::getProjectContextMenuItems', 100);
+TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectTaskClipboard::getProjectContextMenuItems', 100);
 
 
 
@@ -152,7 +152,7 @@ Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectList']['maxProjects']	= 30;
 /* -----------------------
 	Add filter exports
    ----------------------- */
-TodoyuSearchActionPanelManager::addExport('task', 'csvexport', 'TodoyuTaskExportManager::exportCSV', 'LLL:task.export.csv', 'taskExportCsv', 'project:export.taskcsv');
+TodoyuSearchActionPanelManager::addExport('task', 'csvexport', 'TodoyuProjectTaskExportManager::exportCSV', 'LLL:task.export.csv', 'taskExportCsv', 'project:export.taskcsv');
 TodoyuSearchActionPanelManager::addExport('project', 'csvexport', 'TodoyuProjectExportManager::exportCSV', 'LLL:project.export.csv', 'projectExportCsv', 'project:export.projectcsv');
 
 ?>

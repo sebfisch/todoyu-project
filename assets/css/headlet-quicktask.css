@@ -1,17 +1,13 @@
-#headlet-quicktask {
+#todoyuprojectheadletquicktask {
 
 }
 
-#headlet-quicktask-button {
+#todoyuprojectheadletquicktask .button {
 	background:url(../img/icons.png) no-repeat 1px -115px;
 }
 
 
-#headlets #headlet-quicktask div.button {
-	background:#F00;
-}
-
-#headlet-quicktask .button div.icon  {
+#todoyuprojectheadletquicktask .button div.icon  {
 	height:100%;
 	width:100%;
 	background:url(../img/icons.png) no-repeat 2px -505px;

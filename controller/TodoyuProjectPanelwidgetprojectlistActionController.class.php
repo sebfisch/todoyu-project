@@ -46,7 +46,7 @@ class TodoyuProjectPanelwidgetProjectlistActionController extends TodoyuActionCo
 	public function listAction(array $params) {
 		$filters	= json_decode($params['filters'], true);
 
-		$widget	= TodoyuPanelWidgetManager::getPanelWidget('ProjectList');
+		$widget	= TodoyuPanelWidgetManager::getPanelWidget('project', 'ProjectList');
 
 		$widget->saveFilters($filters);
 

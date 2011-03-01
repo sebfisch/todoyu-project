@@ -56,7 +56,7 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 		);
 
 			// Construct
-		$this->object = new TodoyuTask($idTestTask);
+		$this->object = new TodoyuProjectTask($idTestTask);
 	}
 
 
@@ -78,11 +78,11 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 			// Test successful constructor
 		$idTask	= TodoyuArray::getColumn($this->array, 'id');
 
-		$task = new TodoyuTask($idTask);
+		$task = new TodoyuProjectTask($idTask);
 		$this->assertNotNull($task, 'constructor test');
 
 			// Test construction with task ID (0)
-		$task = new TodoyuTask(0);
+		$task = new TodoyuProjectTask(0);
 		$this->assertNotNull($task, 'constructor test without ID');
 		$title	= $task->getTitle();
 		$this->assertEquals(0, strlen($title), 'task 0 title is empty');
@@ -263,9 +263,9 @@ class TodoyuTaskTest extends PHPUnit_Framework_TestCase
 
 
 	/**
-	 * @todo Implement testGetWorktype().
+	 * @todo Implement testGetActivity().
 	 */
-	public function testGetWorktype() {
+	public function testGetActivity() {
 		// Remove the following lines when you implement this test.
 		$this->markTestIncomplete(
 		  'This test has not been implemented yet.'

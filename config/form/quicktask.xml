@@ -33,18 +33,18 @@
 					<required />
 				</field>
 
-				<field type="select" name="id_worktype">
-					<label>task.attr.worktype</label>
+				<field type="select" name="id_activity">
+					<label>task.attr.activity</label>
 					<source type="function">
-						<function>TodoyuTaskViewHelper::getTaskWorktypeOptions</function>
+						<function>TodoyuProjectTaskViewHelper::getTaskActivityOptions</function>
 						<lazyInit />
 					</source>
 					<noPleaseSelect />
 					<validate>
-						<isNotZero msg="LLL:task.attr.id_worktype.error"/>
+						<isNotZero msg="LLL:task.attr.id_activity.error"/>
 					</validate>
 					<restrict>
-						<allow ext="project" right="task:editWorktype" />
+						<allow ext="project" right="task:editActivity" />
 					</restrict>
 					<required/>
 				</field>

@@ -46,9 +46,9 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 	public function popupAction(array $params) {
 		$idProject	= intval($params['project']);
 
-		TodoyuTaskRights::restrictAddToProject($idProject);
+		TodoyuProjectTaskRights::restrictAddToProject($idProject);
 
-		return TodoyuTaskRenderer::renderQuickCreateForm($idProject);
+		return TodoyuProjectTaskRenderer::renderQuickCreateForm($idProject);
 	}
 
 
@@ -65,19 +65,19 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 		$idProject		= intval($data['id_project']);
 
 		if($idTask > 0) {
-			TodoyuTaskRights::restrictEdit($idTask);
+			TodoyuProjectTaskRights::restrictEdit($idTask);
 		} else {
-			TodoyuTaskRights::restrictAddToProject($idProject);
+			TodoyuProjectTaskRights::restrictAddToProject($idProject);
 		}
 
 			// Create a cache record for the buildform hooks
-		$task = new TodoyuTask(0);
+		$task = TodoyuProjectbillingTaskManager::getTask(0);
 		$task->injectData($data);
-		$cacheKey	= TodoyuRecordManager::makeClassKey('TodoyuTask', 0);
+		$cacheKey	= TodoyuRecordManager::makeClassKey('TodoyuProjectTask', 0);
 		TodoyuCache::set($cacheKey, $task);
 
 			// Get form object, call save hooks, set form data
-		$form	= TodoyuTaskManager::getQuickCreateForm();
+		$form	= TodoyuProjectTaskManager::getQuickCreateForm();
 		$data	= TodoyuFormHook::callSaveData('ext/project/config/form/task.xml', $data, 0);
 		$form->setFormData($data);
 
@@ -87,7 +87,7 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 			$storageData= $form->getStorageData();
 
 				// Save task
-			$idTaskNew	= TodoyuTaskManager::saveTask($storageData);
+			$idTaskNew	= TodoyuProjectTaskManager::saveTask($storageData);
 
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
 			TodoyuHeader::sendTodoyuHeader('idTaskOld', $idTask);

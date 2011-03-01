@@ -79,7 +79,7 @@
 				<field type="select" name="status">
 					<label>task.attr.status</label>
 					<source type="function">
-						<function>TodoyuTaskViewHelper::getTaskStatusOptions</function>
+						<function>TodoyuProjectTaskViewHelper::getTaskStatusOptions</function>
 						<lazyInit />
 					</source>
 					<noPleaseSelect />
@@ -91,7 +91,7 @@
  				<field type="selectgrouped" name="id_person_assigned">
 					<label>task.attr.person_assigned</label>
 					<source type="function">
-						<function>TodoyuTaskViewHelper::getPersonAssignedGroupedOptions</function>
+						<function>TodoyuProjectTaskViewHelper::getPersonAssignedGroupedOptions</function>
 						<lazyInit/>
 					</source>
 					<restrict>
@@ -103,7 +103,7 @@
 				<field type="selectgrouped" name="id_person_owner">
 					<label>task.attr.person_owner</label>
 					<source type="function">
-						<function>TodoyuTaskViewHelper::getTaskOwnerOptions</function>
+						<function>TodoyuProjectTaskViewHelper::getTaskOwnerOptions</function>
 						<lazyInit />
 					</source>
 					<restrict>
@@ -115,24 +115,24 @@
 					<label>task.attr.id_parenttask</label>
 					<config>
 						<acName>projecttask</acName>
-						<acLabel>TodoyuTaskManager::getAutocompleteLabel</acLabel>
+						<acLabel>TodoyuProjectTaskManager::getAutocompleteLabel</acLabel>
 						<options>
 							<onComplete>Todoyu.Ext.project.Task.Edit.onParenttaskAutocomplete</onComplete>
 						</options>
 					</config>
 				</field>
 
-				<field type="select" name="id_worktype">
-					<label>task.attr.worktype</label>
+				<field type="select" name="id_activity">
+					<label>task.attr.activity</label>
 					<source type="function">
-						<function>TodoyuTaskViewHelper::getTaskWorktypeOptions</function>
+						<function>TodoyuProjectTaskViewHelper::getTaskActivityOptions</function>
 						<lazyInit />
 					</source>
 					<validate>
-						<isNotZero msg="LLL:task.attr.id_worktype.error"/>
+						<isNotZero msg="LLL:task.attr.id_activity.error"/>
 					</validate>
 					<restrict>
-						<allow ext="project" right="task:editWorktype" />
+						<allow ext="project" right="task:editActivity" />
 					</restrict>
 					<required/>
 				</field>

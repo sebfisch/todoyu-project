@@ -43,7 +43,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 			'onComplete':	this.onFormUpdated.bind(this)
 		};
 
-		
+
 		Todoyu.Ui.update('quickcreate_content', url, options);
 	},
 
@@ -90,12 +90,12 @@ Todoyu.Ext.project.QuickCreateTask = {
 			// Save resulted in error?
 		if( response.hasTodoyuError() ) {
 				// Update task edit form with form remarks, display failure notification
-			Todoyu.Headlet.QuickCreate.updatePopupContent(response.responseText);
+			Todoyu.Headlets.QuickCreate.updatePopupContent(response.responseText);
 			Todoyu.notifyError('[LLL:task.save.error]');
 		} else {
 				// Saving went ok
 			Todoyu.Hook.exec('project.task.saved', idTask);
- 
+
 			if( Todoyu.getArea() == 'project' ) {
 					// Task tree of project which the new task belongs to is displayed?
 				if( idProject == Todoyu.Ext.project.ProjectTaskTree.getActiveProjectID() ) {

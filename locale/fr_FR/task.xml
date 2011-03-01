@@ -3,7 +3,7 @@
 	<label index="task">Tâche</label>
 	<label index="tasks">Tâches</label>
 	<label index="attr.title">Titre de la tâche</label>
-	<label index="attr.worktype">Type de travail</label>
+	<label index="attr.activity">Type de travail</label>
 	<label index="attr.estimated_workload">Charge de travail estimée</label>
 	<label index="attr.ext_resources_is_onblock">Fréquence de travail</label>
 	<label index="attr.billingtype">Type de facturation</label>
@@ -74,7 +74,7 @@
 	<label index="type.task">Tâche</label>
 	<label index="type.container">Conteneur</label>
 	<label index="billableTime">Temps soumis à facturation</label>
-	<label index="worktype">Type de travail</label>
+	<label index="activity">Type de travail</label>
 	<label index="estimated_workload">Charge de travail estimée</label>
 	<label index="date_start">Date de début </label>
 	<label index="date_deadline">Jalon du client</label>
@@ -89,7 +89,7 @@
 	<label index="attr.status">Statut</label>
 	<label index="error.title">Veuillez entrer le titre de la tâche</label>
 	<label index="attr.person_assigned.error">Ce champ est obligatoire</label>
-	<label index="attr.id_worktype.error">Ce champ est obligatoire</label>
+	<label index="attr.id_activity.error">Ce champ est obligatoire</label>
 	<label index="save.error">L'enregistrement a échoué</label>
 	<label index="save.success">L'enregistrement a été correctement effectué</label>
 	<label index="pasteNotAllowed">Vous ne pouvez pas coller cette tâche à cet endroit!</label>

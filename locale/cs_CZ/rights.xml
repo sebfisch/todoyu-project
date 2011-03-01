@@ -21,7 +21,7 @@
 	<label index="task.editDeadline">Měnít termín splnění</label>
 	<label index="task.editPersonAssigned">Měnit přidělenou osobu</label>
 	<label index="task.editPersonOwner">Měnit zadavatele úkolu</label>
-	<label index="task.editWorktype">Měnit pracovní položku</label>
+	<label index="task.editActivity">Měnit pracovní položku</label>
 	<label index="task.editEstimatedWorkload">Měnit časový odhad</label>
 	<label index="task.editIsPublic">Zveřejnit úkol</label>
 	<label index="taskstatus">Stav úkolu</label>

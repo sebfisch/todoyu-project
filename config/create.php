@@ -22,7 +22,7 @@
 if( allowed('project', 'task:addInOwnProjects') ) {
 		// Check if user can add tasks with quick-add
 		// Needs at least one project where he can add tasks
-	if( TodoyuTaskRights::isQuickAddAllowed() ) {
+	if( TodoyuProjectTaskRights::isQuickAddAllowed() ) {
 		TodoyuQuickCreateManager::addEngine('project', 'task', 'task.create.label', 20, array('portal', 'project'));
 	}
 }

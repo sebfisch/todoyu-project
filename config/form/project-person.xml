@@ -11,7 +11,7 @@
 					<label>contact.person</label>
 					<config>
 						<acName>projectperson</acName>
-						<acLabel>TodoyuPersonManager::getLabel</acLabel>
+						<acLabel>TodoyuContactPersonManager::getLabel</acLabel>
 						<options>
 							<onComplete>Todoyu.Ext.project.Project.Edit.onPersonAutocomplete</onComplete>
 						</options>
@@ -34,7 +34,7 @@
 				<field type="select" name="id_role">
 					<label>project.attr.persons.role</label>
 					<source type="function">
-						<function>TodoyuProjectViewHelper::getProjectroleOptions</function>
+						<function>TodoyuProjectProjectViewHelper::getProjectroleOptions</function>
 					</source>
 					<required />
 				</field>

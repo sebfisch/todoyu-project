@@ -62,7 +62,7 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 
 	/**
 	 * Save opened sub tasks pref
-	 * 
+	 *
 	 * @param	Array		$params
 	 */
 	public function subtasksAction(array $params) {
@@ -82,7 +82,7 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 	public function panelwidgettaskstatusfilterAction(array $params) {
 		$selectedStatuses	= TodoyuArray::intExplode(',', $params['value'], true, true);
 
-		$widget	= TodoyuPanelWidgetManager::getPanelWidget('StatusFilterTask');
+		$widget	= TodoyuPanelWidgetManager::getPanelWidget('project', 'StatusFilterTask');
 
 		$widget->saveSelectedStatuses($selectedStatuses);
 	}
@@ -97,7 +97,7 @@ class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 	public function panelwidgetprojectstatusfilterAction(array $params) {
 		$selectedStatuses	= TodoyuArray::intExplode(',', $params['value'], true, true);
 
-		$widget	= TodoyuPanelWidgetManager::getPanelWidget('StatusFilterProject');
+		$widget	= TodoyuPanelWidgetManager::getPanelWidget('project', 'StatusFilterProject');
 
 		$widget->saveSelectedStatuses($selectedStatuses);
 	}

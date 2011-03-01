@@ -104,7 +104,7 @@ Project Extension - PHP Hooks
 
 	taskCSVExportParseData
 	@param	Array		=> $exportData
-	@param	TodoyuTask	=> $task
+	@param	TodoyuProjectTask	=> $task
 	@return	Array
 	Evoked after task data is parsed for the export. Its possible to modify the exportData array. Has to give it back.
 

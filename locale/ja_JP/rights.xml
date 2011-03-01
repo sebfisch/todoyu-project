@@ -21,7 +21,7 @@
 	<label index="task.editDeadline">締切の編集</label>
 	<label index="task.editPersonAssigned">担当者の編集</label>
 	<label index="task.editPersonOwner">タスク所有者の編集</label>
-	<label index="task.editWorktype">作業形態の編集</label>
+	<label index="task.editActivity">作業形態の編集</label>
 	<label index="task.editEstimatedWorkload">作業見積の編集</label>
 	<label index="task.editIsPublic">パブリックオプションの設定</label>
 	<label index="taskstatus">タスク状態</label>

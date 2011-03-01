@@ -3,7 +3,7 @@
 	<label index="task">Задатак</label>
 	<label index="tasks">Задаци</label>
 	<label index="attr.title">Наслов задатка</label>
-	<label index="attr.worktype">Врста посла</label>
+	<label index="attr.activity">Врста посла</label>
 	<label index="attr.estimated_workload">Процена трошка времена</label>
 	<label index="attr.ext_resources_is_onblock">Склоп задатка</label>
 	<label index="attr.billingtype">Врста наплате</label>
@@ -76,7 +76,7 @@
 	<label index="type.task">Задатак</label>
 	<label index="type.container">Контејнер</label>
 	<label index="billableTime">Наплатљиво време</label>
-	<label index="worktype">Врста посла</label>
+	<label index="activity">Врста посла</label>
 	<label index="estimated_workload">Процена трошка времена</label>
 	<label index="date_start">Почетни датум</label>
 	<label index="date_deadline">Рок муштерије</label>
@@ -91,7 +91,7 @@
 	<label index="attr.status">Статус</label>
 	<label index="error.title">Молимо унесите наслов задатка</label>
 	<label index="attr.person_assigned.error">Ово је обавезно поље</label>
-	<label index="attr.id_worktype.error">Ово је обавезно поље</label>
+	<label index="attr.id_activity.error">Ово је обавезно поље</label>
 	<label index="save.error">Сачување није успело</label>
 	<label index="save.success">Сачување је успело</label>
 	<label index="pasteNotAllowed">Не мошете да убаците овај задатак овде!</label>

@@ -25,7 +25,7 @@
 	<label index="task.editDeadline">Deadline bearbeiten</label>
 	<label index="task.editPersonAssigned">Aufgabe einer Person zuweisen</label>
 	<label index="task.editPersonOwner">Aufgabe einer Person als Besitzer zuweisen</label>
-	<label index="task.editWorktype">Leistungsart bearbeiten</label>
+	<label index="task.editActivity">Leistungsart bearbeiten</label>
 	<label index="task.editEstimatedWorkload">Arbeitsaufwand bearbeiten</label>
 	<label index="task.editIsPublic">Aufgabe öffentlich setzen</label>
 	<label index="container">Container</label>

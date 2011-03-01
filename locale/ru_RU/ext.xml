@@ -58,7 +58,7 @@
 	<label index="projectrole.attr.rolekey">Ключевое слово роли</label>
 	<label index="tasktree.losttasks">Задачи с недействительными родителями или статусами</label>
 	<label index="records.projectrole">Роли проекта</label>
-	<label index="records.worktype">Типы работ</label>
+	<label index="records.activity">Типы работ</label>
 	<label index="form.validation.dateBefore">Дата должна быть перед конечной датой</label>
 	<label index="form.validation.title">Пожалуйста, введите название проекта</label>
 	<label index="form.validation.company">Проекту нужен клиент</label>
@@ -73,6 +73,6 @@
 	<label index="extconf.taskDefaults.status">Статус задачи по умолчанию</label>
 	<label index="extconf.taskDefaults.assignedRoles">Роль по умолчанию для персоны, назначеной задаче</label>
 	<label index="extconf.taskDefaults.ownerRoles">Роль по умолчанию для владельца задачи</label>
-	<label index="extconf.taskDefaults.worktype">Тип работы по умолчанию</label>
+	<label index="extconf.taskDefaults.activity">Тип работы по умолчанию</label>
 	<label index="extconf.taskDefaults.estimated_workload">Значение предполагаемой загрузки по умолчанию</label>
 </labels>

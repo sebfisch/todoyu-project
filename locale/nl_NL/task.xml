@@ -3,7 +3,7 @@
 	<label index="task">Taak</label>
 	<label index="tasks">Taken</label>
 	<label index="attr.title">Titel van taak</label>
-	<label index="attr.worktype">Soort werk</label>
+	<label index="attr.activity">Soort werk</label>
 	<label index="attr.estimated_workload">Geschatte hoeveelheid werk</label>
 	<label index="attr.ext_resources_is_onblock">Frequentie van werk</label>
 	<label index="attr.billingtype">Facturatietype</label>
@@ -74,7 +74,7 @@
 	<label index="type.container">Container</label>
 	<label index="billableTime">Facturabele uren</label>
 	<label index="title.cloned">Kopie van: %s</label>
-	<label index="worktype">Soort werk</label>
+	<label index="activity">Soort werk</label>
 	<label index="estimated_workload">Geschatte hoeveelheid werk</label>
 	<label index="date_start">Begindatum </label>
 	<label index="date_deadline">Deadline klant</label>
@@ -89,7 +89,7 @@
 	<label index="attr.status">Status</label>
 	<label index="error.title">Voer a.u.b. een titel in voor de taak</label>
 	<label index="attr.person_assigned.error">Verplicht veld</label>
-	<label index="attr.id_worktype.error">Verplicht veld</label>
+	<label index="attr.id_activity.error">Verplicht veld</label>
 	<label index="save.error">Opslaan niet gelukt</label>
 	<label index="save.success">Opslaan is gelukt</label>
 	<label index="pasteNotAllowed">De taak kan niet op deze plek geplakt worden!</label>

@@ -15,7 +15,7 @@
 	<label index="task.title">Titel</label>
 	<label index="task.fulltext">Volltext</label>
 	<label index="task.type">Typ</label>
-	<label index="task.worktype">Leistungsart</label>
+	<label index="task.activity">Leistungsart</label>
 	<label index="task.timemanagement.label">Zeit-Management</label>
 	<label index="task.deadlinedate">Kunden-Frist</label>
 	<label index="task.deadlinedateDyn">Kunden-Frist (dynamisch)</label>

@@ -45,9 +45,9 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	public function editAction(array $params) {
 		$idProject	= intval($params['project']);
 
-		TodoyuProjectRights::restrictEdit($idProject);
+		TodoyuProjectProjectRights::restrictEdit($idProject);
 
-		return TodoyuProjectRenderer::renderProjectEditForm($idProject);
+		return TodoyuProjectProjectRenderer::renderProjectEditForm($idProject);
 	}
 
 
@@ -64,9 +64,9 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 			// Check rights
 		if( $idProject === 0 ) {
-			TodoyuProjectRights::restrictAdd();
+			TodoyuProjectProjectRights::restrictAdd();
 		} else {
-			TodoyuProjectRights::restrictEdit();
+			TodoyuProjectProjectRights::restrictEdit();
 		}
 
 			// Construct form object
@@ -75,13 +75,13 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 			// Set form data
 		$form->setFormData($data);
-		$p = TodoyuProjectManager::getProject($idProject);
+		$p = TodoyuProjectProjectManager::getProject($idProject);
 
 		if( $form->isValid() ) {
 			$storageData= $form->getStorageData();
 
 				// Save project
-			$idProjectNew	= TodoyuProjectManager::saveProject($storageData);
+			$idProjectNew	= TodoyuProjectProjectManager::saveProject($storageData);
 
 //			TodoyuProjectPreferences::saveExpandedDetails($idProjectNew, true);
 
@@ -106,9 +106,9 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	public function detailsAction(array $params) {
 		$idProject	= intval($params['project']);
 
-		TodoyuProjectRights::restrictSee($idProject);
+		TodoyuProjectProjectRights::restrictSee($idProject);
 
-		return TodoyuProjectRenderer::renderProjectDetails($idProject);
+		return TodoyuProjectProjectRenderer::renderProjectDetails($idProject);
 	}
 
 
@@ -119,12 +119,12 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function setstatusAction(array $params) {
-		TodoyuProjectRights::restrictEdit();
+		TodoyuProjectProjectRights::restrictEdit();
 
 		$idProject	= intval($params['project']);
 		$status		= intval($params['status']);
 
-		TodoyuProjectManager::updateProjectStatus($idProject, $status);
+		TodoyuProjectProjectManager::updateProjectStatus($idProject, $status);
 	}
 
 
@@ -135,11 +135,11 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function removeAction(array $params) {
-		TodoyuProjectRights::restrictEdit();
+		TodoyuProjectProjectRights::restrictEdit();
 
 		$idProject	= intval($params['project']);
 
-		TodoyuProjectManager::deleteProject($idProject);
+		TodoyuProjectProjectManager::deleteProject($idProject);
 		TodoyuProjectPreferences::removeOpenProject($idProject);
 	}
 
@@ -152,7 +152,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function noProjectViewAction(array $params) {
-		return TodoyuProjectRenderer::renderNoProjectSelectedView();
+		return TodoyuProjectProjectRenderer::renderNoProjectSelectedView();
 	}
 
 
@@ -164,7 +164,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function addSubformAction(array $params) {
-		TodoyuProjectRights::restrictEdit();
+		TodoyuProjectProjectRights::restrictEdit();
 
 		$xmlPath	= 'ext/project/config/form/project.xml';
 
@@ -188,13 +188,13 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	public function pasteInProjectAction(array $params) {
 		$idProject	= intval($params['project']);
 
-		TodoyuTaskRights::restrictAddToProject($idProject);
+		TodoyuProjectTaskRights::restrictAddToProject($idProject);
 
-		$idTaskNew = TodoyuTaskClipboard::pasteTaskInProject($idProject);
+		$idTaskNew = TodoyuProjectTaskClipboard::pasteTaskInProject($idProject);
 
 		TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
 
-		return TodoyuProjectRenderer::renderTask($idTaskNew);
+		return TodoyuProjectProjectRenderer::renderTask($idTaskNew);
 	}
 
 }

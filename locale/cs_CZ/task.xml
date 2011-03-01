@@ -3,7 +3,7 @@
 	<label index="task">Úkol</label>
 	<label index="tasks">Úkoly</label>
 	<label index="attr.title">Název úkolu</label>
-	<label index="attr.worktype">Typ práce</label>
+	<label index="attr.activity">Typ práce</label>
 	<label index="attr.estimated_workload">Časový odhad</label>
 	<label index="attr.ext_resources_is_onblock">Četnost práce??</label>
 	<label index="attr.billingtype">Fakturační typ</label>
@@ -74,7 +74,7 @@
 	<label index="type.container">Složka</label>
 	<label index="billableTime">Fakturovaný čas</label>
 	<label index="title.cloned">Kopie: %s</label>
-	<label index="worktype">Typ práce</label>
+	<label index="activity">Typ práce</label>
 	<label index="estimated_workload">Časový odhad</label>
 	<label index="date_start">Začátek </label>
 	<label index="date_deadline">Zákaznický termín</label>
@@ -89,7 +89,7 @@
 	<label index="attr.status">Stav</label>
 	<label index="error.title">Vložte název tohoto úkolu</label>
 	<label index="attr.person_assigned.error">Tuto položu je nutné vyplnit</label>
-	<label index="attr.id_worktype.error">Tuto položu je nutné vyplnit</label>
+	<label index="attr.id_activity.error">Tuto položu je nutné vyplnit</label>
 	<label index="save.error">Uložení selhalo</label>
 	<label index="save.success">Úspěšně uloženo</label>
 	<label index="pasteNotAllowed">Nemůžete vložit váš úkol na tuto pozici!</label>

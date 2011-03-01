@@ -21,7 +21,7 @@
 	<label index="task.editDeadline">Изменить срок</label>
 	<label index="task.editPersonAssigned">Изменить назначеного участника</label>
 	<label index="task.editPersonOwner">Изменить владельца задачи</label>
-	<label index="task.editWorktype">Изменить тип работы</label>
+	<label index="task.editActivity">Изменить тип работы</label>
 	<label index="task.editEstimatedWorkload">Изменить ожидаемую загрузку</label>
 	<label index="task.editIsPublic">Изменить признак публичности</label>
 	<label index="taskstatus">Статус задачи</label>

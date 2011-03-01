@@ -61,7 +61,7 @@
 	<label index="projectrole.attr.rolekey">ロールのキーワード</label>
 	<label index="tasktree.losttasks">適用できない親か状態がタスクにあります</label>
 	<label index="records.projectrole">プロジェクトロール</label>
-	<label index="records.worktype">作業形態</label>
+	<label index="records.activity">作業形態</label>
 	<label index="form.validation.dateBefore">終了日より前の日付を設定してください</label>
 	<label index="form.validation.title">プロジェクト名を入力してください</label>
 	<label index="form.validation.company">プロジェクトには顧客が必要です</label>
@@ -76,6 +76,6 @@
 	<label index="extconf.taskDefaults.status">デフォルトタスクの状態</label>
 	<label index="extconf.taskDefaults.assignedRoles">タスク担当者のデフォルトロール</label>
 	<label index="extconf.taskDefaults.ownerRoles">タスク所有者のデフォルトロール</label>
-	<label index="extconf.taskDefaults.worktype">デフォルトの作業形態</label>
+	<label index="extconf.taskDefaults.activity">デフォルトの作業形態</label>
 	<label index="extconf.taskDefaults.estimated_workload">デフォルトの作業見積</label>
 </labels>

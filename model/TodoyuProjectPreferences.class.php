@@ -56,7 +56,7 @@ class TodoyuProjectPreferences {
 
 
 	/**
-	 * Get all preferences of project 
+	 * Get all preferences of project
 	 *
 	 * @param	String		$preference
 	 * @param	Integer		$idItem
@@ -137,7 +137,7 @@ class TodoyuProjectPreferences {
 			$prefTab= self::getPref('task-tab', $idTask);
 
 			if( $prefTab === false || $prefTab === '' ) {
-				$prefTab = TodoyuTaskManager::getDefaultTab($idTask);
+				$prefTab = TodoyuProjectTaskManager::getDefaultTab($idTask);
 			}
 		}
 
@@ -266,7 +266,7 @@ class TodoyuProjectPreferences {
 	 */
 	public static function unsetForbiddenProjectIDs($projectIDs = array()) {
 		foreach($projectIDs as $index => $idProject) {
-			if( ! TodoyuProjectRights::isSeeAllowed($idProject) ) {
+			if( ! TodoyuProjectProjectRights::isSeeAllowed($idProject) ) {
 				unset($projectIDs[$index]);
 			}
 		}
@@ -327,7 +327,7 @@ class TodoyuProjectPreferences {
 		$idProject		= 0;
 
 		foreach($openProjects as $idOpenProject) {
-			if( TodoyuProjectRights::isSeeAllowed($idOpenProject) ) {
+			if( TodoyuProjectProjectRights::isSeeAllowed($idOpenProject) ) {
 				$idProject	= $idOpenProject;
 				break;
 			}

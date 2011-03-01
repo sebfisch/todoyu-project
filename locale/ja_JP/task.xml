@@ -3,7 +3,7 @@
 	<label index="task">タスク</label>
 	<label index="tasks">タスク</label>
 	<label index="attr.title">タスク名</label>
-	<label index="attr.worktype">作業形態</label>
+	<label index="attr.activity">作業形態</label>
 	<label index="attr.estimated_workload">作業見積</label>
 	<label index="attr.ext_resources_is_onblock">作業頻度</label>
 	<label index="attr.billingtype">課金形態</label>
@@ -74,7 +74,7 @@
 	<label index="type.container">コンテナ</label>
 	<label index="billableTime">課金時間</label>
 	<label index="title.cloned">コピー対象: %s</label>
-	<label index="worktype">作業形態</label>
+	<label index="activity">作業形態</label>
 	<label index="estimated_workload">作業見積</label>
 	<label index="date_start">開始日 </label>
 	<label index="date_deadline">顧客への締切</label>
@@ -89,7 +89,7 @@
 	<label index="attr.status">ステータス</label>
 	<label index="error.title">タスクの名前を入力してください</label>
 	<label index="attr.person_assigned.error">必須項目</label>
-	<label index="attr.id_worktype.error">必須項目</label>
+	<label index="attr.id_activity.error">必須項目</label>
 	<label index="save.error">保存は成功していません</label>
 	<label index="save.success">保存しました</label>
 	<label index="pasteNotAllowed">この部分にタスクを貼り付けることはできません!</label>

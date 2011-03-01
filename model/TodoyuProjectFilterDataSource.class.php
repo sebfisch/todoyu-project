@@ -37,12 +37,12 @@ class TodoyuProjectFilterDataSource {
 		$data = array();
 
 		$keywords		= TodoyuArray::trimExplode(' ', $input, true);
-		$projectIDs		= TodoyuProjectSearch::searchProjects($keywords, array(), 30);
+		$projectIDs		= TodoyuProjectProjectSearch::searchProjects($keywords, array(), 30);
 
 		if( sizeof($projectIDs) > 0 ) {
 			$projects	= self::getProjects($projectIDs);
 			foreach($projects as $project) {
-				if( TodoyuProjectRights::isSeeAllowed($project['id']) ) {
+				if( TodoyuProjectProjectRights::isSeeAllowed($project['id']) ) {
 					$companyShort	= (! empty($project['company']) ) ? $project['company'] : TodoyuString::crop($project['companyfulltitle'], 16, '...', false);
 					$data[$project['id']] = $companyShort .' - ' . $project['title'];
 				}
@@ -65,12 +65,12 @@ class TodoyuProjectFilterDataSource {
 		$data = array();
 
 		$keywords	= TodoyuArray::trimExplode(' ', $input, true);
-		$projectIDs	= TodoyuProjectSearch::searchProjects($keywords, array(), 30);
+		$projectIDs	= TodoyuProjectProjectSearch::searchProjects($keywords, array(), 30);
 
 		if( sizeof($projectIDs) > 0 ) {
 			$projects	= self::getProjects($projectIDs);
 			foreach($projects as $project) {
-				if( TodoyuTaskRights::isAddInProjectAllowed($project['id']) ) {
+				if( TodoyuProjectTaskRights::isAddInProjectAllowed($project['id']) ) {
 					$companyShort	= (! empty($project['company']) ) ? $project['company'] : TodoyuString::crop($project['companyfulltitle'], 16, '...', false);
 					$data[$project['id']] = $companyShort .' - ' . $project['title'];
 				}
@@ -113,7 +113,7 @@ class TodoyuProjectFilterDataSource {
 		$idProject	= intval($definitions['value']);
 
 		if( $idProject !== 0 ) {
-			$project = TodoyuProjectManager::getProject($idProject);
+			$project = TodoyuProjectProjectManager::getProject($idProject);
 
 			$definitions['value_label'] = $project->getFullTitle();
 		} else {
@@ -133,7 +133,7 @@ class TodoyuProjectFilterDataSource {
 	 */
 	public static function getStatusOptions(array $definitions) {
 		$options	= array();
-		$statuses	= TodoyuProjectStatusManager::getStatusInfos();
+		$statuses	= TodoyuProjectProjectStatusManager::getStatusInfos();
 
 		foreach($statuses as $status) {
 			$options[] = array(

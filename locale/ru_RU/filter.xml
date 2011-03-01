@@ -15,7 +15,7 @@
 	<label index="task.title">Название</label>
 	<label index="task.fulltext">Полный текст</label>
 	<label index="task.type">Тип</label>
-	<label index="task.worktype">Тип работы</label>
+	<label index="task.activity">Тип работы</label>
 	<label index="task.timemanagement.label">Управление временем</label>
 	<label index="task.deadlinedate">Срок</label>
 	<label index="task.deadlinedateDyn">Срок (динамичный)</label>

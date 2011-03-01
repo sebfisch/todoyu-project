@@ -33,7 +33,7 @@ class TodoyuProjectQuickCreateProjectActionController extends TodoyuActionContro
 	 */
 	public function init(array $params) {
 		restrict('project', 'general:use');
-		TodoyuProjectRights::restrictAdd();
+		TodoyuProjectProjectRights::restrictAdd();
 	}
 
 
@@ -45,7 +45,7 @@ class TodoyuProjectQuickCreateProjectActionController extends TodoyuActionContro
 	 * @return	String
 	 */
 	public function popupAction(array $params) {
-		return TodoyuProjectRenderer::renderQuickCreateForm($params);
+		return TodoyuProjectProjectRenderer::renderQuickCreateForm($params);
 	}
 
 
@@ -61,7 +61,7 @@ class TodoyuProjectQuickCreateProjectActionController extends TodoyuActionContro
 		$idProject	= intval($data['id']);
 
 			// Get form object, call save hooks, set form data
-		$form	= TodoyuProjectManager::getQuickCreateForm();
+		$form	= TodoyuProjectProjectManager::getQuickCreateForm();
 
 		$form->setFormData($data);
 
@@ -69,7 +69,7 @@ class TodoyuProjectQuickCreateProjectActionController extends TodoyuActionContro
 			$storageData= $form->getStorageData();
 
 				// Save project
-			$idProjectNew	= TodoyuProjectManager::saveProject($storageData);
+			$idProjectNew	= TodoyuProjectProjectManager::saveProject($storageData);
 
 			TodoyuHeader::sendTodoyuHeader('idProject', $idProjectNew);
 			TodoyuHeader::sendTodoyuHeader('idProjectOld', $idProject);

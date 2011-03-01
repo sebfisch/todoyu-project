@@ -20,7 +20,7 @@
 
 /**
  * View helper for project extconf
- * 
+ *
  * @package		Todoyu
  * @subpackage	Project
  */
@@ -65,13 +65,13 @@ class TodoyuProjectExtConfViewHelper {
 
 
 	/**
-	 * Get status infos of default task 
+	 * Get status infos of default task
 	 *
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
 	public static function getDefaultValueStatusOptions(TodoyuFormElement $field) {
-		return TodoyuTaskStatusManager::getStatusInfos('see');
+		return TodoyuProjectTaskStatusManager::getStatusInfos('see');
 	}
 
 

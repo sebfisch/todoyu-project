@@ -57,7 +57,7 @@
 	<label index="projectrole.attr.rolekey">Кључна реч улоге</label>
 	<label index="tasktree.losttasks">Задатак са нетачним надређеним задацима/статусима</label>
 	<label index="records.projectrole">Улога корисника</label>
-	<label index="records.worktype">Врста посла</label>
+	<label index="records.activity">Врста посла</label>
 	<label index="form.validation.dateBefore">Почетни датум мора да буде временски пре завршетка.</label>
 	<label index="form.validation.title">Молимо унесите наслов пројекта</label>
 	<label index="form.validation.company">Једна муштерија је обавезна за један пројекат</label>
@@ -72,6 +72,6 @@
 	<label index="extconf.taskDefaults.status">У напред изабрани статус</label>
 	<label index="extconf.taskDefaults.assignedRoles">У напред изабрана улога од додељене особе једног задатка</label>
 	<label index="extconf.taskDefaults.ownerRoles">У напред изабрана улога од власника задатка</label>
-	<label index="extconf.taskDefaults.worktype">У напред изабрана врста посла</label>
+	<label index="extconf.taskDefaults.activity">У напред изабрана врста посла</label>
 	<label index="extconf.taskDefaults.estimated_workload">Процена трошка времена</label>
 </labels>

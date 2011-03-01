@@ -60,7 +60,7 @@
 	<label index="projectrole.attr.rolekey">Parola chiave ruolo</label>
 	<label index="tasktree.losttasks">Tasks with inapplicable parents/status</label>
 	<label index="records.projectrole">Ruoli del progetto</label>
-	<label index="records.worktype">Tipi di attività</label>
+	<label index="records.activity">Tipi di attività</label>
 	<label index="form.validation.dateBefore">La data deve essere antecedente la data di termine</label>
 	<label index="form.validation.title">Inserire il titolo del progetto</label>
 	<label index="form.validation.company">È necessario assegnaer un cliente al progetto</label>
@@ -81,7 +81,7 @@
 	<label index="extconf.taskDefaults.status">Stato predefinito delle attività</label>
 	<label index="extconf.taskDefaults.assignedRoles">Ruolo predefinito delle attività</label>
 	<label index="extconf.taskDefaults.ownerRoles">Ruolo predefinito per proprietario delle attività</label>
-	<label index="extconf.taskDefaults.worktype">Tipo di attività predefinito</label>
+	<label index="extconf.taskDefaults.activity">Tipo di attività predefinito</label>
 	<label index="extconf.taskDefaults.estimated_workload">Carico di lavoro stimato predefinito delle attività</label>
 	<label index="extconf.taskDefaults.is_public">Visibilità predefinita delle attività</label>
 	<label index="extconf.taskDefaults.person_assigned_role">Assegna persona con ruolo se non selezionabile</label>

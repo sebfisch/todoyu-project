@@ -15,7 +15,7 @@
 	<label index="task.title">Titolo</label>
 	<label index="task.fulltext">Testo completo</label>
 	<label index="task.type">Tipo</label>
-	<label index="task.worktype">Tipo di attività</label>
+	<label index="task.activity">Tipo di attività</label>
 	<label index="task.timemanagement.label">Gestione temporale</label>
 	<label index="task.deadlinedate">Termime</label>
 	<label index="task.deadlinedateDyn">Termime (dinamico)</label>

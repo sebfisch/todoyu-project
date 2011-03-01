@@ -22,7 +22,7 @@
 	<label index="task.editDeadline">Modifica la scadenza</label>
 	<label index="task.editPersonAssigned">Modifica persone assegnate</label>
 	<label index="task.editPersonOwner">Modifica responsabile di progetto</label>
-	<label index="task.editWorktype">Modifica tipo di attività</label>
+	<label index="task.editActivity">Modifica tipo di attività</label>
 	<label index="task.editEstimatedWorkload">Modifica carico di lavoro stimato</label>
 	<label index="task.editIsPublic">Imposta opzione pubblica</label>
 	<label index="taskstatus">Stato attività</label>

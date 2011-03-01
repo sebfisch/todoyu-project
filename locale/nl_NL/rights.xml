@@ -21,7 +21,7 @@
 	<label index="task.editDeadline">Deadline bewerken</label>
 	<label index="task.editPersonAssigned">Toegewezen persoon bewerken</label>
 	<label index="task.editPersonOwner">Taakeigenaar bewerken</label>
-	<label index="task.editWorktype">Soort werk bewerken</label>
+	<label index="task.editActivity">Soort werk bewerken</label>
 	<label index="task.editEstimatedWorkload">Geschatte hoeveelheid werk bewerken</label>
 	<label index="task.editIsPublic">Openbare optie instellen</label>
 	<label index="taskstatus">Status van taak</label>

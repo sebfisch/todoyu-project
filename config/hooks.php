@@ -18,20 +18,20 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-TodoyuHookManager::registerHook('core', 'substituteLinkableElements', 'TodoyuTaskManager::linkTaskIDsInText');
+TodoyuHookManager::registerHook('core', 'substituteLinkableElements', 'TodoyuProjectTaskManager::linkTaskIDsInText');
 
-TodoyuHookManager::registerHook('project', 'taskdata', 			'TodoyuTaskManager::getTaskDataAttributes');
+TodoyuHookManager::registerHook('project', 'taskdata', 			'TodoyuProjectTaskManager::getTaskDataAttributes');
 TodoyuHookManager::registerHook('project', 'projectdata', 		'TodoyuProjectManager::getProjectDataAttributes');
 TodoyuHookManager::registerHook('project', 'projectpresetdata', 'TodoyuProjectManager::getProjectPresetDataAttributes');
-TodoyuHookManager::registerHook('project', 'taskIcons', 		'TodoyuTaskManager::getTaskIcons');
-TodoyuHookManager::registerHook('project', 'taskinfo',			'TodoyuTaskManager::addContainerInfoToTaskData');
+TodoyuHookManager::registerHook('project', 'taskIcons', 		'TodoyuProjectTaskManager::getTaskIcons');
+TodoyuHookManager::registerHook('project', 'taskinfo',			'TodoyuProjectTaskManager::addContainerInfoToTaskData');
 
 TodoyuHookManager::registerHook('sysmanager', 'renderExtContent-project',		'TodoyuProjectExtManagerRenderer::onRenderExtConfig');
 TodoyuHookManager::registerHook('sysmanager', 'renderRecordsBody-taskpreset',	'TodoyuProjectSysmanagerRenderer::onRenderTaskpresetRecordsBody');
 
-TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTaskManager::hookModifyFormfieldsForTask');
-TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuTaskManager::hookModifyFormfieldsForContainer');
-TodoyuFormHook::registerLoadData('ext/project/config/form/quicktask.xml', 'TodoyuTaskManager::hookLoadTaskFormData');
-TodoyuFormHook::registerLoadData('ext/project/config/form/task.xml', 'TodoyuTaskManager::hookLoadTaskFormData');
+TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookModifyFormfieldsForTask');
+TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookModifyFormfieldsForContainer');
+TodoyuFormHook::registerLoadData('ext/project/config/form/quicktask.xml', 'TodoyuProjectTaskManager::hookLoadTaskFormData');
+TodoyuFormHook::registerLoadData('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookLoadTaskFormData');
 
 ?>

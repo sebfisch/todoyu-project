@@ -3,7 +3,7 @@
 	<label index="task">Задача</label>
 	<label index="tasks">Задачи</label>
 	<label index="attr.title">Название задачи</label>
-	<label index="attr.worktype">Тип работы</label>
+	<label index="attr.activity">Тип работы</label>
 	<label index="attr.estimated_workload">Ожидаемая загрузка</label>
 	<label index="attr.ext_resources_is_onblock">Частота работы</label>
 	<label index="attr.billingtype">Тип платежа</label>
@@ -73,7 +73,7 @@
 	<label index="type.task">Задача</label>
 	<label index="type.container">Контейнер</label>
 	<label index="billableTime">Оплачиваемое время</label>
-	<label index="worktype">Тип работы</label>
+	<label index="activity">Тип работы</label>
 	<label index="estimated_workload">Ожидаемая загрузка</label>
 	<label index="date_start">Время начала </label>
 	<label index="date_deadline">Срок клиента</label>
@@ -88,7 +88,7 @@
 	<label index="attr.status">Статус</label>
 	<label index="error.title">Пожалуйста, введите заголовок для задачи</label>
 	<label index="attr.person_assigned.error">Это поле обязательно</label>
-	<label index="attr.id_worktype.error">Это поле обязательно</label>
+	<label index="attr.id_activity.error">Это поле обязательно</label>
 	<label index="save.error">Не удалось сохранить</label>
 	<label index="save.success">Сохранено успешно</label>
 	<label index="pasteNotAllowed">В эту позицию задачу вставить нельзя!</label>

@@ -15,7 +15,7 @@
 	<label index="task.title">Título</label>
 	<label index="task.fulltext">Texto</label>
 	<label index="task.type">Tipo</label>
-	<label index="task.worktype">Tipo de Serviço</label>
+	<label index="task.activity">Tipo de Serviço</label>
 	<label index="task.timemanagement.label">Gestão de Horas</label>
 	<label index="task.deadlinedate">Prazo Final</label>
 	<label index="task.deadlinedateDyn">Prazo Final (Dynamic)</label>

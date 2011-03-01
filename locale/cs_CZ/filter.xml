@@ -15,7 +15,7 @@
 	<label index="task.title">Název</label>
 	<label index="task.fulltext">Plné znění</label>
 	<label index="task.type">Typ</label>
-	<label index="task.worktype">Pracovní položka</label>
+	<label index="task.activity">Pracovní položka</label>
 	<label index="task.timemanagement.label">Řízení času</label>
 	<label index="task.deadlinedate">Datum splnění</label>
 	<label index="task.deadlinedateDyn">Datum splnění (dynamický)</label>

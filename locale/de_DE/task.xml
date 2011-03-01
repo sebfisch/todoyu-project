@@ -6,7 +6,7 @@
 	<label index="attr.id">Aufgaben ID</label>
 	<label index="attr.type">Typ</label>
 	<label index="attr.title">Aufgaben-Titel</label>
-	<label index="attr.worktype">Leistungsart</label>
+	<label index="attr.activity">Leistungsart</label>
 	<label index="attr.estimated_workload">Aufwand geschätzt</label>
 	<label index="attr.ext_resources_is_onblock">Block-Aufgabe</label>
 	<label index="attr.billingtype">Berechnungstyp</label>
@@ -84,7 +84,7 @@
 	<label index="type.task">Aufgabe</label>
 	<label index="type.container">Container</label>
 	<label index="billableTime">Verrechenbare Zeit</label>
-	<label index="worktype">Leistungsart</label>
+	<label index="activity">Leistungsart</label>
 	<label index="estimated_workload">Geschätzter Aufwand</label>
 	<label index="date_start">Start-Datum</label>
 	<label index="date_deadline">Kunden-Frist</label>
@@ -99,7 +99,7 @@
 	<label index="attr.status">Status</label>
 	<label index="error.title">Bitte einen Aufgaben-Titel angeben</label>
 	<label index="attr.person_assigned.error">Dies ist ein Pflichtfeld</label>
-	<label index="attr.id_worktype.error">Dies ist ein Pflichtfeld</label>
+	<label index="attr.id_activity.error">Dies ist ein Pflichtfeld</label>
 	<label index="save.error">Speichern war nicht erfolgreich</label>
 	<label index="save.success">Speichern war erfolgreich</label>
 	<label index="pasteNotAllowed">Sie können die Aufgabe nicht an dieser Stelle einfügen!</label>

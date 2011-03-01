@@ -48,7 +48,7 @@
 						<field type="select" name="status">
 							<label>core.status</label>
 							<source type="function">
-								<function>TodoyuProjectViewHelper::getProjectStatusOptions</function>
+								<function>TodoyuProjectProjectViewHelper::getProjectStatusOptions</function>
 							</source>
 							<noPleaseSelect />
 						</field>
@@ -91,7 +91,7 @@
 							<label>project.attr.company</label>
 							<config>
 								<acName>company</acName>
-								<acLabel>TodoyuCompanyManager::getLabel</acLabel>
+								<acLabel>TodoyuContactCompanyManager::getLabel</acLabel>
 								<options>
 									<onComplete>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onComplete>
 								</options>
@@ -124,7 +124,7 @@
 				<field type="select" name="id_taskpreset">
 					<label>project.attr.taskpreset</label>
 					<source type="function">
-						<function>TodoyuProjectViewHelper::getTaskpresetOptions</function>
+						<function>TodoyuProjectProjectViewHelper::getTaskpresetOptions</function>
 					</source>
 					<noPleaseSelect />
 				</field>
@@ -148,7 +148,7 @@
 							<controller>project</controller>
 						</url>
 						<label type="function">
-							<function>TodoyuProjectViewHelper::getProjectPersonLabel</function>
+							<function>TodoyuProjectProjectViewHelper::getProjectPersonLabel</function>
 							<noLabel>LLL:project.attr.persons.new</noLabel>
 						</label>
 					</record>

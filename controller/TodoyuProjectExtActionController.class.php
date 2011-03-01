@@ -51,7 +51,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 			// Find project if only the task is given as parameter
 		if( $idTask !== 0 && $idProject === 0 ) {
-			$idProject = TodoyuTaskManager::getProjectID($idTask);
+			$idProject = TodoyuProjectTaskManager::getProjectID($idTask);
 		}
 
 			// Get project if not set by parameter or save the given one in preferences
@@ -61,18 +61,18 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 			// If no project found yet, try to find one the person can see
 		if( $idProject === 0 ) {
-			$idProject	= TodoyuProjectManager::getAvailableProjectForPerson();
+			$idProject	= TodoyuProjectProjectManager::getAvailableProjectForPerson();
 		}
 
 			// Check access rights (if project selected)
 		if( $idProject !== 0 ) {
-			TodoyuProjectRights::restrictSee($idProject);
+			TodoyuProjectProjectRights::restrictSee($idProject);
 		}
 
 			// If task ID set
 		if( $idTask !== 0 ) {
 				// Check access rights for task if requested
-			if( ! TodoyuTaskManager::isTaskVisible($idTask) ) {
+			if( ! TodoyuProjectTaskManager::isTaskVisible($idTask) ) {
 					// Reset task ID if not visible
 				$idTask = 0;
 					// Show message about not available task
@@ -84,7 +84,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 		TodoyuPage::init('ext/project/view/ext.tmpl');
 
 			// Load project
-		$project	= TodoyuProjectManager::getProject($idProject);
+		$project	= TodoyuProjectProjectManager::getProject($idProject);
 
 			// If a project is displayed
 		if( $idProject !== 0 && ! $project->isDeleted() ) {
@@ -100,9 +100,9 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 		TodoyuPage::setTitle($title);
 
 			// Render panel widgets and content
-		$panelWidgets		= TodoyuProjectRenderer::renderPanelWidgets($idProject, $idTask);
-		$projectTabs		= TodoyuProjectRenderer::renderProjectsTabs();
-		$projectTaskTree	= TodoyuProjectRenderer::renderProjectsContent($idProject, $idTask, $taskTab);
+		$panelWidgets		= TodoyuProjectProjectRenderer::renderPanelWidgets($idProject, $idTask);
+		$projectTabs		= TodoyuProjectProjectRenderer::renderProjectsTabs();
+		$projectTaskTree	= TodoyuProjectProjectRenderer::renderProjectsContent($idProject, $idTask, $taskTab);
 
 		TodoyuPage::set('panelWidgets', $panelWidgets);
 		TodoyuPage::set('projectTabs', $projectTabs);
@@ -128,7 +128,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 	public function editAction(array $params) {
 		$idProject = intval($params['project']);
 
-		TodoyuProjectRights::restrictEdit($idProject);
+		TodoyuProjectProjectRights::restrictEdit($idProject);
 
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.edit('.$idProject.')', 101);
 
@@ -147,7 +147,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 	public function addtaskAction(array $params) {
 		$idProject = intval($params['project']);
 
-		TodoyuTaskRights::restrictAddToProject($idProject);
+		TodoyuProjectTaskRights::restrictAddToProject($idProject);
 
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addTask('.$idProject.')', 101);
 
@@ -166,7 +166,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 	public function addcontainerAction(array $params) {
 		$idProject = intval($params['project']);
 
-		TodoyuTaskRights::restrictAddToProject($idProject);
+		TodoyuProjectTaskRights::restrictAddToProject($idProject);
 
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addContainer('.$idProject.')', 101);
 

@@ -22,7 +22,7 @@
 	<label index="task.editDeadline">Уреди рок</label>
 	<label index="task.editPersonAssigned">Додели задатак једној особи</label>
 	<label index="task.editPersonOwner">Додели задатак особи као власник</label>
-	<label index="task.editWorktype">Уреди врсту посла</label>
+	<label index="task.editActivity">Уреди врсту посла</label>
 	<label index="task.editEstimatedWorkload">Уреди процену трошка времена</label>
 	<label index="task.editIsPublic">Објави задатак</label>
 	<label index="container">Контејнер</label>

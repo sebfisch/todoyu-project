@@ -15,7 +15,7 @@
 	<label index="task.title">Titel</label>
 	<label index="task.fulltext">Full-Text</label>
 	<label index="task.type">Type</label>
-	<label index="task.worktype">Werktype</label>
+	<label index="task.activity">Werktype</label>
 	<label index="task.timemanagement.label">Urenbeheer</label>
 	<label index="task.deadlinedate">Deadline</label>
 	<label index="task.deadlinedateDyn">Deadline (Dynamisch)</label>

@@ -43,7 +43,7 @@ CREATE TABLE `ext_project_task` (
 	`date_end` int(10) unsigned NOT NULL DEFAULT '0',
 	`tasknumber` int(11) DEFAULT '0',
 	`status` tinyint(4) NOT NULL,
-	`id_worktype` smallint(6) NOT NULL DEFAULT '0',
+	`id_activity` smallint(6) NOT NULL DEFAULT '0',
 	`estimated_workload` mediumint(8) unsigned NOT NULL DEFAULT '0',
 	`is_acknowledged` tinyint(1) unsigned NOT NULL DEFAULT '0',
 	`is_public` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -75,10 +75,10 @@ CREATE TABLE `ext_project_role` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ext_project_worktype`
+-- Table structure for table `ext_project_activity`
 --
 
-CREATE TABLE `ext_project_worktype` (
+CREATE TABLE `ext_project_activity` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`date_create` int(10) unsigned NOT NULL DEFAULT '0',
 	`date_update` int(11) NOT NULL,
@@ -125,7 +125,7 @@ CREATE TABLE `ext_project_taskpreset` (
 	`date_end` int(10) unsigned NOT NULL DEFAULT '0',
 	`date_deadline` int(10) unsigned NOT NULL DEFAULT '0',
 	`status` tinyint(4) NOT NULL,
-	`id_worktype` smallint(6) NOT NULL DEFAULT '0',
+	`id_activity` smallint(6) NOT NULL DEFAULT '0',
 	`estimated_workload` mediumint(8) unsigned NOT NULL DEFAULT '0',
 	`is_public` tinyint(1) unsigned NOT NULL DEFAULT '0',
 	`quicktask_duration_days` int(10) unsigned NOT NULL DEFAULT '7',
