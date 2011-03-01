@@ -393,7 +393,7 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 		'label'				=> 'LLL:project.search.label',
 		'position'			=> 20,
 		'resultsRenderer'	=> 'TodoyuProjectProjectRenderer::renderProjectListing',
-		'class'				=> 'TodoyuProjectFilter',
+		'class'				=> 'TodoyuProjectProjectFilter',
 		'require'			=> 'project.general:use'
 	),
 	'widgets' => array(
