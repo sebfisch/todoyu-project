@@ -1548,7 +1548,7 @@ class TodoyuProjectTaskManager {
 
 			// Store task with default data in cache
 		$key	= TodoyuRecordManager::makeClassKey('TodoyuProjectTask', 0);
-		$task	= new TodoyuProjectTask(0);
+		$task	= TodoyuProjectTaskManager::getTask(0);
 		$task->injectData($defaultData);
 		TodoyuCache::set($key, $task);
 	}

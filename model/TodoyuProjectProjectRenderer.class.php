@@ -601,7 +601,7 @@ class TodoyuProjectProjectRenderer {
 
 			// Store task with default data in cache
 		$idCache	= TodoyuRecordManager::makeClassKey('TodoyuProjectProject', 0);
-		$project	= new TodoyuProjectProject(0);
+		$project	= TodoyuProjectProjectManager::getProject(0);
 		$project->injectData($defaultData);
 		TodoyuCache::set($idCache, $project);
 
