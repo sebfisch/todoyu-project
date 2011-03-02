@@ -228,8 +228,9 @@ class TodoyuProjectTaskRights {
 	 */
 	public static function isAddAllowed($idParentTask, $isContainer = false) {
 		$idParentTask	= intval($idParentTask);
-		$idProject		= TodoyuProjectTaskManager::getProjectID($idParentTask);
 
+
+		$idProject		= TodoyuProjectTaskManager::getProjectID($idParentTask);
 		return self::isAddInProjectAllowed($idProject, $isContainer);
 	}
 
@@ -371,6 +372,18 @@ class TodoyuProjectTaskRights {
 	 */
 	public static function restrictAdd($idParentTask) {
 		if( ! self::isAddAllowed($idParentTask) ) {
+			self::deny('task:add');
+		}
+	}
+
+
+
+	/**
+	 * Restricts the adding a task over the quickcreate headlet
+	 *
+	 */
+	public static function restrictShowPopupForm() {
+		if( ! allowed('project', 'task:addInOwnProjects') ) {
 			self::deny('task:add');
 		}
 	}
