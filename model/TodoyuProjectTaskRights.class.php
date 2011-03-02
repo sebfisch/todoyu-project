@@ -318,9 +318,13 @@ class TodoyuProjectTaskRights {
 
 			// Check view rights with assignment
 		if( ! TodoyuProjectTaskManager::isPersonAssigned($idTask, 0, true) ) {
-			return allowed('project', 'task:seeAll');
+			if( $task->isPublic() ) {
+				return true;
+			} else {
+				return allowed('project', 'task:seeAll');
+			}
 		}
-
+		
 		return true;
 	}
 
