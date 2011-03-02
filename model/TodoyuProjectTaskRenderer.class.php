@@ -137,13 +137,12 @@ class TodoyuProjectTaskRenderer {
 		$data			= $task->getTemplateData(0);
 		$data['data']	= TodoyuProjectTaskManager::getTaskInfos($idTask);
 
-		$dataKeys	= TodoyuArray::flattenToSubKey('__key', $data['data']);
-		$dataOffsets= array_flip($dataKeys);
-
+		$fieldKeys		= TodoyuArray::getColumn($data['data'], '__key');
+		$fieldIndexes	= array_flip($fieldKeys);
 
 			// Person can only see public tasks? remove visibility info
 		if( ! Todoyu::person()->isInternal() || ! allowed('project', 'task:seeAll') ) {
-			unset($data['data'][$dataOffsets['is_public']]);
+			unset($data['data'][$fieldIndexes['is_public']]);
 		}
 
 			// Remove info about task owner/creator if not visible to current user
@@ -151,11 +150,11 @@ class TodoyuProjectTaskRenderer {
 			$allowedPersonIDs	= TodoyuContactPersonRights::getPersonIDsAllowedToBeSeen();
 
 			if( ! in_array($task->getPersonID('owner'), $allowedPersonIDs) ) {
-				unset($data['data'][$dataOffsets['person_owner']]);
+				unset($data['data'][$fieldIndexes['person_owner']]);
 			}
 
 			if( ! in_array($task->getPersonID('create'), $allowedPersonIDs) ) {
-				unset($data['data'][$dataOffsets['person_create']]);
+				unset($data['data'][$fieldIndexes['person_create']]);
 			}
 		}
 
