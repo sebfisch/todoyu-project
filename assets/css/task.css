@@ -177,7 +177,7 @@
 .task span.taskIcons .notAcknowledged {
 	width:10px;
 	cursor:pointer;
-	background:url(../img/icons.png) no-repeat 0 -267px;
+	background:transparent url('../../../../core/assets/img/icons.png') no-repeat 0 -1288px;
 }
 
 .task span.taskIcons .dateover {
@@ -242,13 +242,13 @@
 	}
 
 		.task dd.unread {
-			background:url(../img/icons.png) no-repeat 0 -268px;
+			background:transparent url('../../../../core/assets/img/icons.png') no-repeat 0 -1288px;
 			padding-left:12px;
 			width:118px !important;
 		}
 
 		.task dd.acknowledged {
-			background:url(../img/icons.png) no-repeat 0 -538px;
+			background:transparent url('../../../../core/assets/img/icons.png') no-repeat 0 -1312px;
 			padding-left:12px;
 			width:118px !important;
 		}
