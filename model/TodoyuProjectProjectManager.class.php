@@ -637,32 +637,32 @@ class TodoyuProjectProjectManager {
 		$project	= TodoyuProjectProjectManager::getProject($idProject);
 
 		$info[]	= array(
-			'label'		=> 'LLL:core.status',
+			'label'		=> 'LLL:core.global.status',
 			'value'		=> $project->getStatusLabel(),
 			'position'	=> 10
 		);
 
 		$info[]	= array(
-			'label'		=> 'LLL:project.attr.company',
+			'label'		=> 'LLL:project.ext.attr.company',
 			'value'		=> $project->getCompany()->getTitle(),
 			'position'	=> 20
 		);
 
 		$info[]	= array(
-			'label'		=> 'LLL:project.attr.date_start',
+			'label'		=> 'LLL:project.ext.attr.date_start',
 			'value'		=> TodoyuTime::format($project->getStartDate(), 'D2MlongY4'),
 			'position'	=> 30
 		);
 
 		$info[]	= array(
-			'label'		=> 'LLL:project.attr.date_end',
+			'label'		=> 'LLL:project.ext.attr.date_end',
 			'value'		=> TodoyuTime::format($project->getEndDate(), 'D2MlongY4'),
 			'position'	=> 32
 		);
 
 		if( $project->getDeadlineDate() > 0 && (Todoyu::person()->isInternal() || Todoyu::person()->isAdmin()) ) {
 			$info[]	= array(
-				'label'		=> 'LLL:project.attr.date_deadline',
+				'label'		=> 'LLL:project.ext.attr.date_deadline',
 				'value'		=> TodoyuTime::format($project->getDeadlineDate(), 'D2MlongY4'),
 				'position'	=> 34
 			);
@@ -690,7 +690,7 @@ class TodoyuProjectProjectManager {
 			$taskPreset	= TodoyuProjectTaskpresetManager::getTaskpresetData($idTaskPreset);
 				// Task preset set title
 			$info[] = array(
-				'label'		=> Label('project.attr.taskpreset'),
+				'label'		=> Label('project.ext.attr.taskpreset'),
 				'value'		=> $taskPreset['title'],
 				'position'	=> 10
 			);
@@ -698,7 +698,7 @@ class TodoyuProjectProjectManager {
 				// Task title
 			if( ! empty($taskPreset['tasktitle']) ) {
 				$info[] = array(
-					'label'		=> Label('project.taskpreset.tasktitle'),
+					'label'		=> Label('project.ext.taskpreset.tasktitle'),
 					'value'		=> trim($taskPreset['tasktitle']),
 					'position'	=> 20
 				);
@@ -707,7 +707,7 @@ class TodoyuProjectProjectManager {
 				// Task description
 			if( ! empty($taskPreset['description']) ) {
 				$info[] = array(
-					'label'		=> Label('project.taskpreset.description'),
+					'label'		=> Label('project.ext.taskpreset.description'),
 					'value'		=> trim($taskPreset['description']),
 					'position'	=> 25
 				);
@@ -716,7 +716,7 @@ class TodoyuProjectProjectManager {
 				// Formula for date_start
 			if( $taskPreset['date_start'] != 0 ) {
 				$info[] = array(
-					'label'		=> Label('project.extconf.taskDefaults.date_start'),
+					'label'		=> Label('project.ext.extconf.taskDefaults.date_start'),
 					'value'		=> TodoyuProjectExtConfViewHelper::getValueDateLabel($taskPreset['date_start']),
 					'position'	=> 30
 				);
@@ -725,7 +725,7 @@ class TodoyuProjectProjectManager {
 				// Formula for date_end
 			if( $taskPreset['date_end'] != 0 ) {
 				$info[] = array(
-					'label'		=> Label('project.extconf.taskDefaults.date_end'),
+					'label'		=> Label('project.ext.extconf.taskDefaults.date_end'),
 					'value'	 	=> TodoyuProjectExtConfViewHelper::getValueDateLabel($taskPreset['date_end']),
 					'position'	=> 30
 				);
@@ -734,7 +734,7 @@ class TodoyuProjectProjectManager {
 				// Formula for date_deadline
 			if( $taskPreset['date_deadline'] != 0 ) {
 				$info[] = array(
-					'label'	 	=> Label('project.extconf.taskDefaults.date_deadline'),
+					'label'	 	=> Label('project.ext.extconf.taskDefaults.date_deadline'),
 					'value'	 	=> TodoyuProjectExtConfViewHelper::getValueDateLabel($taskPreset['date_deadline']),
 					'position'	=> 35
 				);
@@ -743,7 +743,7 @@ class TodoyuProjectProjectManager {
 				// Status
 			if( $taskPreset['status'] != 0 ) {
 				$info[] = array(
-					'label'		=> Label('project.extconf.taskDefaults.status'),
+					'label'		=> Label('project.ext.extconf.taskDefaults.status'),
 					'value'		=> TodoyuProjectTaskStatusManager::getStatusLabel(trim($taskPreset['status'])),
 					'position'	=> 35
 				);
@@ -753,7 +753,7 @@ class TodoyuProjectProjectManager {
 			if( $taskPreset['id_activity'] != 0 ) {
 				$activity       = TodoyuProjectActivityManager::getActivity($taskPreset['id_activity']);
 				$info[] = array(
-					'label'		=> Label('project.extconf.taskDefaults.activity'),
+					'label'		=> Label('project.ext.extconf.taskDefaults.activity'),
 					'value'		=> $activity['title'],
 					'position'	=> 40
 				);
@@ -762,16 +762,16 @@ class TodoyuProjectProjectManager {
 				// Estimated workload
 			if( $taskPreset['estimated_workload'] != 0 ) {
 				$info[] = array(
-					'label'		=> Label('project.extconf.taskDefaults.estimated_workload'),
-					'value'		=> TodoyuTime::sec2hour($taskPreset['estimated_workload']) . ' ' . Label('date.time.hours'),
+					'label'		=> Label('project.ext.extconf.taskDefaults.estimated_workload'),
+					'value'		=> TodoyuTime::sec2hour($taskPreset['estimated_workload']) . ' ' . Label('core.date.time.hours'),
 					'position'	=> 45
 				);
 			}
 
 				// is_public
 			$info[] = array(
-				'label'		=> Label('project.taskpreset.is_public'),
-				'value'		=> Label( intval($taskPreset['is_public']) ? 'core.public' : 'core.notpublic' ),
+				'label'		=> Label('project.ext.taskpreset.is_public'),
+				'value'		=> Label( intval($taskPreset['is_public']) ? 'core.global.public' : 'core.global.notpublic' ),
 				'position'	=> 48
 			);
 
@@ -781,7 +781,7 @@ class TodoyuProjectProjectManager {
 			$idPersonAssigned       = intval($taskPreset['id_person_assigned']);
 			if( $idPersonAssigned > 0 ) {
 				$info[] = array(
-					'label'		=> Label('project.taskpreset.person_assigned'),
+					'label'		=> Label('project.ext.taskpreset.person_assigned'),
 					'value'		=> TodoyuContactPersonManager::getLabel($taskPreset['id_person_assigned']),
 					'position'	=> 50
 				);
@@ -789,7 +789,7 @@ class TodoyuProjectProjectManager {
 				$idRoleAssigned = intval($taskPreset['person_assigned_role']);
 				if( $idRoleAssigned > 0 ) {
 					$info[] = array(
-						'label'		=> Label('project.extconf.taskDefaults.person_assigned_role'),
+						'label'		=> Label('project.ext.extconf.taskDefaults.person_assigned_role'),
 						'value'		=> TodoyuProjectProjectroleManager::getLabel($idRoleAssigned),
 						'position'	=> 50
 					);
@@ -800,7 +800,7 @@ class TodoyuProjectProjectManager {
 			$idPersonOwner  = intval($taskPreset['id_person_owner']);
 			if( $idPersonOwner > 0 ) {
 				$info[] = array(
-					'label'		=> Label('project.taskpreset.person_owner'),
+					'label'		=> Label('project.ext.taskpreset.person_owner'),
 					'value'		=> TodoyuContactPersonManager::getLabel($taskPreset['id_person_owner']),
 					'position'	=> 55
 				);
@@ -808,7 +808,7 @@ class TodoyuProjectProjectManager {
 				$idRoleOwner    = intval($taskPreset['person_owner_role']);
 				if( $idRoleOwner > 0 ) {
 					$info[] = array(
-						'label'		=> Label('project.extconf.taskDefaults.person_owner_role'),
+						'label'		=> Label('project.ext.extconf.taskDefaults.person_owner_role'),
 						'value'		=> TodoyuProjectProjectroleManager::getLabel($idRoleOwner),
 						'position'	=> 55
 					);
@@ -817,8 +817,8 @@ class TodoyuProjectProjectManager {
 		} else {
 				// No task preset selected for this project
 			$info[] = array(
-				'label'		=> Label('project.attr.taskpreset'),
-				'value'		=> Label('project.taskpreset.option.none'),
+				'label'		=> Label('project.ext.attr.taskpreset'),
+				'value'		=> Label('project.ext.taskpreset.option.none'),
 				'position'	=> 10
 			);
 		}
@@ -1376,7 +1376,7 @@ class TodoyuProjectProjectManager {
 			'date_update'		=> NOW,
 			'id_person_create'	=> TodoyuAuth::getPersonID(),
 			'deleted'			=> 0,
-			'title'				=> TodoyuLabelManager::getLabel('project.newproject.title'),
+			'title'				=> TodoyuLabelManager::getLabel('project.ext.newproject.title'),
 			'description'		=> '',
 			'status'			=> STATUS_PLANNING,
 			'id_company'		=> 0,

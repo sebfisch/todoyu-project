@@ -676,7 +676,7 @@ class TodoyuProjectProjectRenderer {
 		$tabs		= array(
 			array(
 				'id'		=> 'noselection',
-				'label'		=> 'LLL:project.noproject.tab'
+				'label'		=> 'LLL:project.ext.noproject.tab'
 			)
 		);
 

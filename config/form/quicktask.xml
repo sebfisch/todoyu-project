@@ -15,7 +15,7 @@
 			<elements>
 
 				<field type="text" name="title">
-					<label>core.title</label>
+					<label>core.global.title</label>
 					<required />
 				</field>
 
@@ -24,7 +24,7 @@
 				</field>
 
 				<field type="RTE" name="description">
-					<label>core.description</label>
+					<label>core.global.description</label>
 					<tinymce>
 						<theme>simple</theme>
 						<width>100%</width>
@@ -34,14 +34,14 @@
 				</field>
 
 				<field type="select" name="id_activity">
-					<label>task.attr.activity</label>
+					<label>project.task.attr.activity</label>
 					<source type="function">
 						<function>TodoyuProjectTaskViewHelper::getTaskActivityOptions</function>
 						<lazyInit />
 					</source>
 					<noPleaseSelect />
 					<validate>
-						<isNotZero msg="LLL:task.attr.id_activity.error"/>
+						<isNotZero msg="LLL:project.task.attr.id_activity.error"/>
 					</validate>
 					<restrict>
 						<allow ext="project" right="task:editActivity" />
@@ -50,7 +50,7 @@
 				</field>
 
 				<field type="checkbox" name="task_done">
-					<label>task.taskDone</label>
+					<label>project.task.taskDone</label>
 				</field>
 
 			</elements>

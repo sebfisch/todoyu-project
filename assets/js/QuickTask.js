@@ -45,7 +45,7 @@ Todoyu.Ext.project.QuickTask = {
 			'onComplete':	this.onPopupLoaded.bind(this)
 		};
 
-		Todoyu.Popup.openWindow(this.popupID, '[LLL:headlet-quicktask.title]', 520, url, options);
+		Todoyu.Popup.openWindow(this.popupID, '[LLL:project.headlet-quicktask.title]', 520, url, options);
 	},
 
 
@@ -132,7 +132,7 @@ Todoyu.Ext.project.QuickTask = {
 			var idProject	= response.getTodoyuHeader('idProject');
 
 			this.closePopup();
-			Todoyu.notifySuccess('[LLL:project.js.quicktask.saved]');
+			Todoyu.notifySuccess('[LLL:project.ext.js.quicktask.saved]');
 
 				// Call hook with saved data
 			Todoyu.Hook.exec('project.quickTask.saved', idTask, idProject, response);

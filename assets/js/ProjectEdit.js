@@ -143,7 +143,7 @@ Todoyu.Ext.project.Project.Edit = {
 
 		if( response.hasTodoyuError() ) {
 			this.updateFormDiv(idProjectOld, response.responseText);
-			Todoyu.notifyError('[LLL:project.save.error]');
+			Todoyu.notifyError('[LLL:project.ext.save.error]');
 		} else {
 			this.ext.ProjectTaskTree.removeProject(idProjectOld);
 			this.ext.ProjectTaskTree.openProject(idProject);
@@ -151,7 +151,7 @@ Todoyu.Ext.project.Project.Edit = {
 			Todoyu.Ui.scrollToTop();
 
 			Todoyu.Hook.exec('project.project.saved', idProject);
-			Todoyu.notifySuccess('[LLL:project.save.success]');
+			Todoyu.notifySuccess('[LLL:project.ext.save.success]');
 		}
 	},
 
@@ -214,7 +214,7 @@ Todoyu.Ext.project.Project.Edit = {
 	 */
 	onCompanyAutocomplete: function(response, autocompleter) {
 		if( response.isEmptyAcResult() ) {
-			Todoyu.notifyInfo('[LLL:project.ac.company.notFoundInfo]');
+			Todoyu.notifyInfo('[LLL:project.ext.ac.company.notFoundInfo]');
 			return false;
 		}
 	},
@@ -230,7 +230,7 @@ Todoyu.Ext.project.Project.Edit = {
 	 */
 	onPersonAutocomplete: function(response, autocompleter) {
 		if( response.isEmptyAcResult() ) {
-			Todoyu.notifyInfo('[LLL:project.ac.person.notFoundInfo]');
+			Todoyu.notifyInfo('[LLL:project.ext.ac.person.notFoundInfo]');
 			return false;
 		}
 	},

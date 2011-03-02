@@ -10,7 +10,7 @@
 			<elements>
 
 				<field type="text" name="fulltext">
-					<label>panelwidget-projectlist.search</label>
+					<label>project.panelwidget-projectlist.search</label>
 				</field>
 
 			</elements>

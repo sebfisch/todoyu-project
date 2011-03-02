@@ -11,7 +11,7 @@
 			<elements>
 
 				<field type="text" name="title">
-					<label>core.title</label>
+					<label>core.global.title</label>
 					<required />
 				</field>
 

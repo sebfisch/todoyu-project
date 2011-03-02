@@ -20,7 +20,7 @@
 
 		// Add menu entry
 if(  allowed('project', 'general:area') ) {
-	TodoyuFrontend::addMenuEntry('project', 'LLL:project.tab.label', '?ext=project', 20);
+	TodoyuFrontend::addMenuEntry('project', 'LLL:project.ext.tab.label', '?ext=project', 20);
 
 	$projectEntries	= TodoyuProjectProjectManager::getOpenProjectLabels();
 

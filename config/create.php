@@ -23,13 +23,13 @@ if( allowed('project', 'task:addInOwnProjects') ) {
 		// Check if user can add tasks with quick-add
 		// Needs at least one project where he can add tasks
 	if( TodoyuProjectTaskRights::isQuickAddAllowed() ) {
-		TodoyuQuickCreateManager::addEngine('project', 'task', 'task.create.label', 20, array('portal', 'project'));
+		TodoyuQuickCreateManager::addEngine('project', 'task', 'project.task.create.label', 20, array('portal', 'project'));
 	}
 }
 
 	// Add create for project
 if( allowed('project', 'project:add') ) {
-	TodoyuQuickCreateManager::addEngine('project', 'project', 'project.create.label', 10, array());
+	TodoyuQuickCreateManager::addEngine('project', 'project', 'project.ext.create.label', 10, array());
 }
 
 ?>

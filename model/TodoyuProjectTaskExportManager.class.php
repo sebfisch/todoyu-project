@@ -73,30 +73,30 @@ class TodoyuProjectTaskExportManager {
 	 */
 	protected static function parseDataForExport(TodoyuProjectTask $task) {
 		$exportData = array(
-			TodoyuLanguage::getLabel('LLL:task.attr.id')					=> $task->id,
-			TodoyuLanguage::getLabel('LLL:task.attr.date_create')			=> TodoyuTime::format($task->date_create, 'date'),
-			TodoyuLanguage::getLabel('LLL:core.date_update')				=> TodoyuTime::format($task->date_update, 'date'),
-			TodoyuLanguage::getLabel('LLL:core.id_person_create')			=> TodoyuContactPersonManager::getPerson($task->id_person_create)->getFullName(),
-			TodoyuLanguage::getLabel('LLL:task.attr.type')					=> $task->isContainer() ? TodoyuLanguage::getLabel('LLL:task.container') : TodoyuLanguage::getLabel('LLL:task.task'),
-			TodoyuLanguage::getLabel('LLL:project.project')					=> TodoyuProjectProjectManager::getProject($task->id_project)->getFullTitle(),
-			TodoyuLanguage::getLabel('LLL:task.attr.id_parenttask')			=> TodoyuProjectTaskManager::getTask($task->id_parenttask)->getFullTitle(),
-			TodoyuLanguage::getLabel('LLL:task.attr.title')					=> $task->getFullTitle(),
-			TodoyuLanguage::getLabel('LLL:task.description')				=> TodoyuString::strictHtml2text($task->description),
-			TodoyuLanguage::getLabel('LLL:task.attr.person_assigned')		=> TodoyuContactPersonManager::getPerson($task->id_person_assigned)->getFullName(),
-			TodoyuLanguage::getLabel('LLL:task.attr.person_owner')			=> TodoyuContactPersonManager::getPerson($task->id_person_owner)->getFullName(),
-			TodoyuLanguage::getLabel('LLL:task.attr.date_deadline')			=> TodoyuTime::format($task->date_deadline),
-			TodoyuLanguage::getLabel('LLL:task.attr.date_start')			=> TodoyuTime::format($task->date_start),
-			TodoyuLanguage::getLabel('LLL:task.attr.date_end')				=> TodoyuTime::format($task->date_end),
-			TodoyuLanguage::getLabel('LLL:task.taskno')						=> $task->tasknumber,
-			TodoyuLanguage::getLabel('LLL:task.attr.status')				=> $task->getStatusLabel(),
-			TodoyuLanguage::getLabel('LLL:task.attr.activity')				=> $task->getActivityLabel(),
-			TodoyuLanguage::getLabel('LLL:task.attr.estimated_workload')	=> TodoyuTime::formatTime($task->getEstimatedWorkload()),
-			TodoyuLanguage::getLabel('LLL:task.attr.is_acknowledged')		=> $task->isAcknowledged() ? '' : TodoyuLanguage::getLabel('LLL:task.attr.notAcknowledged')
+			TodoyuLanguage::getLabel('LLL:project.task.attr.id')					=> $task->id,
+			TodoyuLanguage::getLabel('LLL:project.task.attr.date_create')			=> TodoyuTime::format($task->date_create, 'date'),
+			TodoyuLanguage::getLabel('LLL:core.global.date_update')					=> TodoyuTime::format($task->date_update, 'date'),
+			TodoyuLanguage::getLabel('LLL:core.global.id_person_create')			=> TodoyuContactPersonManager::getPerson($task->id_person_create)->getFullName(),
+			TodoyuLanguage::getLabel('LLL:project.task.attr.type')					=> $task->isContainer() ? Label('project.task.container') : Label('project.task.ext.task'),
+			TodoyuLanguage::getLabel('LLL:project.ext.project')						=> TodoyuProjectProjectManager::getProject($task->id_project)->getFullTitle(),
+			TodoyuLanguage::getLabel('LLL:project.task.attr.id_parenttask')			=> TodoyuProjectTaskManager::getTask($task->id_parenttask)->getFullTitle(),
+			TodoyuLanguage::getLabel('LLL:project.task.attr.title')					=> $task->getFullTitle(),
+			TodoyuLanguage::getLabel('LLL:project.task.description')				=> TodoyuString::strictHtml2text($task->description),
+			TodoyuLanguage::getLabel('LLL:project.task.attr.person_assigned')		=> TodoyuContactPersonManager::getPerson($task->id_person_assigned)->getFullName(),
+			TodoyuLanguage::getLabel('LLL:project.task.attr.person_owner')			=> TodoyuContactPersonManager::getPerson($task->id_person_owner)->getFullName(),
+			TodoyuLanguage::getLabel('LLL:project.task.attr.date_deadline')			=> TodoyuTime::format($task->date_deadline),
+			TodoyuLanguage::getLabel('LLL:project.task.attr.date_start')			=> TodoyuTime::format($task->date_start),
+			TodoyuLanguage::getLabel('LLL:project.task.attr.date_end')				=> TodoyuTime::format($task->date_end),
+			TodoyuLanguage::getLabel('LLL:project.task.taskno')						=> $task->tasknumber,
+			TodoyuLanguage::getLabel('LLL:project.task.attr.status')				=> $task->getStatusLabel(),
+			TodoyuLanguage::getLabel('LLL:project.task.attr.activity')				=> $task->getActivityLabel(),
+			TodoyuLanguage::getLabel('LLL:project.task.attr.estimated_workload')	=> TodoyuTime::formatTime($task->getEstimatedWorkload()),
+			TodoyuLanguage::getLabel('LLL:project.task.attr.is_acknowledged')		=> $task->isAcknowledged() ? '' : Label('LLL:project.task.attr.notAcknowledged')
 		);
 
 		$publicKey	= $task->isPublic() ? 'public' : 'private';
 		$publicTypeKey	= $task->isContainer ? '.container' : '';
-		$exportData[TodoyuLanguage::getLabel('LLL:task.attr.is_public')]			= TodoyuLanguage::getLabel('LLL:task.attr.is_public.' . $publicKey . $publicTypeKey);
+		$exportData[Label('LLL:project.task.attr.is_public')]			= Label('LLL:project.task.attr.is_public.' . $publicKey . $publicTypeKey);
 
 		$exportData	= TodoyuHookManager::callHookDataModifier('project', 'taskCSVExportParseData', $exportData, array('task'	=> $task));
 

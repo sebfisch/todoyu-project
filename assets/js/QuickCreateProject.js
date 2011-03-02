@@ -67,14 +67,14 @@ Todoyu.Ext.project.QuickCreateProject = {
 
 		if( error ) {
 			Todoyu.Headlets.getHeadlet('todoyuheadletquickcreate').updatePopupContent(response.responseText);
-			Todoyu.notifyError('[LLL:project.save.error]');
+			Todoyu.notifyError('[LLL:project.ext.save.error]');
 		} else {
 			var idProject	= response.getTodoyuHeader('idProject');
 			Todoyu.Hook.exec('project.project.created', idProject);
 			Todoyu.Hook.exec('project.project.saved', idProject);
 
 			Todoyu.CoreHeadlets.QuickCreate.closePopup();
-			Todoyu.notifySuccess('[LLL:project.save.success]');
+			Todoyu.notifySuccess('[LLL:project.ext.save.success]');
 		}
 	}
 

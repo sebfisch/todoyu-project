@@ -7,7 +7,7 @@
 			<elements>
 
 				<field type="textAC" name="id_project_ac">
-					<label>project.project</label>
+					<label>project.ext.project</label>
 					<config>
 						<acName>taskaddableproject</acName>
 						<acLabel>TodoyuProjectProjectViewHelper::getQuicktaskAutocompleteLabel</acLabel>
@@ -20,7 +20,7 @@
 				</field>
 
 				<field type="select" name="id_project_select">
-					<label>project.project</label>
+					<label>project.ext.project</label>
 					<source type="function">
 						<function>TodoyuProjectProjectViewHelper::getAvailableProjectOptions</function>
 					</source>

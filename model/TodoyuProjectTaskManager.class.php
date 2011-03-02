@@ -949,7 +949,7 @@ class TodoyuProjectTaskManager {
 				// Date start
 			if( $taskData['date_start'] > 0 && (Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) ) {
 				$info['date_start']	= array(
-					'label'		=> 'LLL:task.attr.date_start',
+					'label'		=> 'LLL:project.task.attr.date_start',
 					'value'		=> TodoyuTime::format($taskData['date_start'], 'date'),
 					'position'	=> 10,
 					'className'	=> 'sectionStart'
@@ -960,7 +960,7 @@ class TodoyuProjectTaskManager {
 			if( $taskData['date_end'] > 0 && (Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) ) {
 				$formatEnd	= date('F', $data['date_end']) == 0 ? 'date' : 'datetime';
 				$info['date_end']	= array(
-					'label'	=> 'LLL:task.attr.date_end',
+					'label'	=> 'LLL:project.task.attr.date_end',
 					'value'	=> TodoyuTime::format($taskData['date_end'], $formatEnd),
 					'position'	=> 20,
 					'className'	=> TodoyuProjectTaskManager::isEnddateExceeded($idTask) ? 'red' : ''
@@ -970,7 +970,7 @@ class TodoyuProjectTaskManager {
 			if( $taskData['date_deadline'] > 0 ) {
 				$formatDeadline	= date('s', $taskData['date_deadline']) === '00' ? 'date' : 'datetime';
 				$info['date_deadline']	= array(
-					'label'	=> 'LLL:task.attr.date_deadline',
+					'label'	=> 'LLL:project.task.attr.date_deadline',
 					'value'	=> TodoyuTime::format($taskData['date_deadline'], $formatDeadline),
 					'position'	=> 30,
 					'className'	=> TodoyuProjectTaskManager::isDeadlineExceeded($idTask) ? 'red' : ''
@@ -979,7 +979,7 @@ class TodoyuProjectTaskManager {
 
 				// Status
 			$info['status']	= array(
-				'label'		=> 'LLL:core.status',
+				'label'		=> 'LLL:core.global.status',
 				'value'		=> $taskData['statuslabel'],
 				'position'	=> 50,
 				'className'	=> ''
@@ -988,7 +988,7 @@ class TodoyuProjectTaskManager {
 				// Person assigned
 			if( intval($taskData['person_assigned']['id']) !== 0 && (Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) ) {
 				$info['person_assigned']	= array(
-					'label'		=> 'LLL:task.attr.person_assigned',
+					'label'		=> 'LLL:project.task.attr.person_assigned',
 					'value'		=> TodoyuContactPersonManager::getLabel($taskData['person_assigned']['id']),
 					'position'	=> 60,
 					'className'	=> 'sectionStart ' . ( $taskData['is_acknowledged'] === '1' ? 'acknowledged' : 'unread')
@@ -998,7 +998,7 @@ class TodoyuProjectTaskManager {
 				// Work type
 			if( ! empty($taskData['activity']) ) {
 				$info['activity'] = array(
-					'label'		=> 'LLL:task.attr.activity',
+					'label'		=> 'LLL:project.task.attr.activity',
 					'value'		=> $taskData['activity']['title'],// 'Internes / Administration',
 					'position'	=> 90,
 					'className'	=> ''
@@ -1008,7 +1008,7 @@ class TodoyuProjectTaskManager {
 				// Estimated workload
 			if( $task->hasEstimatedWorkload() ) {
 				$info['estimated_workload']	= array(
-					'label'	=> 'LLL:task.attr.estimated_workload',
+					'label'	=> 'LLL:project.task.attr.estimated_workload',
 					'value'	=> TodoyuTime::sec2hour($task->getEstimatedWorkload()),
 					'position'	=> 100,
 					'className'	=> 'sectionStart'
@@ -1024,7 +1024,7 @@ class TodoyuProjectTaskManager {
 
 		if( $idPersonOwner !== 0 ) {
 			$info['person_owner'] = array(
-				'label'		=> $task->isContainer() ? 'LLL:task.container.attr.person_owner' : 'LLL:task.attr.person_owner',
+				'label'		=> $task->isContainer() ? 'LLL:project.task.container.attr.person_owner' : 'LLL:project.task.attr.person_owner',
 				'value'		=> TodoyuContactPersonManager::getLabel($idPersonOwner),
 				'position'	=> 70,
 				'className'	=> 'sectionStart'
@@ -1034,7 +1034,7 @@ class TodoyuProjectTaskManager {
 			// Task creator: Different person owns / created task? have both displayed
 		if( $idPersonCreator !== 0 && $idPersonOwner !== $idPersonCreator ) {
 			$info['person_create'] = array(
-				'label'		=> 'LLL:task.attr.person_create',
+				'label'		=> 'LLL:project.task.attr.person_create',
 				'value'		=> TodoyuContactPersonManager::getLabel($idPersonCreator),
 				'position'	=> 65,
 				'className'	=> ''
@@ -1043,15 +1043,15 @@ class TodoyuProjectTaskManager {
 
 			// Public
 		$info['is_public']	= array(
-			'label'	=> $task->isContainer() ? 'LLL:task.container.attr.is_public' : 'LLL:task.attr.is_public',
-			'value'	=> Label('LLL:task.attr.is_public.' . ($taskData['is_public'] ? 'public' : 'private') . ($task->isContainer() ? '.container' : '')) ,
+			'label'	=> $task->isContainer() ? 'LLL:project.task.container.attr.is_public' : 'LLL:project.task.attr.is_public',
+			'value'	=> Label('LLL:project.task.attr.is_public.' . ($taskData['is_public'] ? 'public' : 'private') . ($task->isContainer() ? '.container' : '')) ,
 			'position'	=> 110,
 			'className'	=> ''
 		);
 
 			// Date create
 		$info['date_create']	= array(
-			'label'	=> 'LLL:task.attr.date_create',
+			'label'	=> 'LLL:project.task.attr.date_create',
 			'value'	=> TodoyuTime::format($taskData['date_create'], 'datetime'),
 			'position'	=> 190,
 			'className'	=> ''
@@ -1145,7 +1145,7 @@ class TodoyuProjectTaskManager {
 				$icons['dateover']= array(
 					'id'		=> 'task-' . $idTask . '-dateover',
 					'class'		=> 'dateover',
-					'label'		=> 'LLL:task.attr.dateover',
+					'label'		=> 'LLL:project.task.attr.dateover',
 					'position'	=> 10
 				);
 			}
@@ -1156,7 +1156,7 @@ class TodoyuProjectTaskManager {
 			$icons['container'] = array(
 				'id'		=> 'task-' . $idTask . '-container',
 				'class'		=> 'taskcontainer',
-				'label'		=> 'LLL:task.type.container',
+				'label'		=> 'LLL:project.task.type.container',
 				'position'	=> 10
 			);
 		}
@@ -1166,7 +1166,7 @@ class TodoyuProjectTaskManager {
 			$icons['public'] = array(
 				'id'		=> 'task-' . $idTask . '-public',
 				'class'		=> 'isPublic',
-				'label'		=> 'LLL:task.attr.is_public.public' . ($task->isContainer() ? '.container' : ''),
+				'label'		=> 'LLL:project.task.attr.is_public.public' . ($task->isContainer() ? '.container' : ''),
 				'position'	=> 80
 			);
 		}
@@ -1176,7 +1176,7 @@ class TodoyuProjectTaskManager {
 			$icons['notacknowledged'] = array(
 				'id'		=> 'task-' . $idTask . '-notacknowledged',
 				'class'		=> 'notAcknowledged',
-				'label'		=> 'LLL:task.attr.notAcknowledged',
+				'label'		=> 'LLL:project.task.attr.notAcknowledged',
 				'onclick'	=> 'Todoyu.Ext.project.Task.setAcknowledged(event, ' . $idTask . ')',
 				'position'	=> 100
 			);
@@ -1187,7 +1187,7 @@ class TodoyuProjectTaskManager {
 			$icons['locked'] = array(
 				'id'		=> 'task-' . $idTask . '-locked',
 				'class'		=> 'locked',
-				'label'		=> 'LLL:task.attr.locked',
+				'label'		=> 'LLL:project.task.attr.locked',
 				'position'	=> 150
 			);
 		}

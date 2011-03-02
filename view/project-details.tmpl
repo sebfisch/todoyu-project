@@ -1,7 +1,7 @@
 <div id="project-{$id}-data" class="data infoBoxOuter">
 
 	<div class="infoBox properties">
-		<h4>{Label project.properties}</h4>
+		<h4>{Label project.ext.properties}</h4>
 		<div class="content overflow">
 			<dl>
 			{foreach $properties info}
@@ -13,18 +13,18 @@
 	</div>
 
 	<div class="infoBox">
-		<h4>{Label project.attr.persons}</h4>
+		<h4>{Label project.ext.attr.persons}</h4>
 		<div class="content overflow">{$assignedPersons}</div>
 	</div>
 
 	<div class="infoBox description">
-		<h4>{Label core.description}</h4>
+		<h4>{Label core.global.description}</h4>
 		<div class="content overflow">{substituteLinkableElements(cleanHtml($description))}</div>
 	</div>
 
 	{if isInternal()}
 		<div class="infoBox presets">
-			<h4>{Label project.infobox.presets.title}</h4>
+			<h4>{Label project.ext.infobox.presets.title}</h4>
 			<div class="content overflow">
 			{foreach $presets preset}
 				<dt>{Label $preset.label true}</dt>

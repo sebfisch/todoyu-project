@@ -137,7 +137,7 @@ Todoyu.Ext.project.Task.Edit = {
 		if( response.hasTodoyuError() ) {
 				// Update task edit form with form remarks, display failure notification
 			this.updateFormDiv(idTask, response.responseText);
-			Todoyu.notifyError('[LLL:task.save.error]');
+			Todoyu.notifyError('[LLL:project.task.save.error]');
 
 				// Saving went ok?
 		} else {
@@ -146,7 +146,7 @@ Todoyu.Ext.project.Task.Edit = {
 			this.ext.Task.addContextMenu(idTask);
 
 			Todoyu.Hook.exec('project.task.saved', idTask);
-			Todoyu.notifySuccess('[LLL:task.save.success]');
+			Todoyu.notifySuccess('[LLL:project.task.save.success]');
 
 				// Scroll to task and highlight it
 			this.ext.Task.scrollTo(idTask);
@@ -200,7 +200,7 @@ Todoyu.Ext.project.Task.Edit = {
 	 */
 	onParenttaskAutocomplete: function(response, autocompleter) {
 		if( response.isEmptyAcResult() ) {
-			Todoyu.notifyInfo('[LLL:task.ac.parenttask.notFoundInfo]');
+			Todoyu.notifyInfo('[LLL:project.task.ac.parenttask.notFoundInfo]');
 			return false;
 		}
 	},
@@ -216,7 +216,7 @@ Todoyu.Ext.project.Task.Edit = {
 	 */
 	onProjectAutocomplete: function(response, autocompleter) {
 		if( response.isEmptyAcResult() ) {
-			Todoyu.notifyInfo('[LLL:task.ac.project.notFoundInfo]');
+			Todoyu.notifyInfo('[LLL:project.task.ac.project.notFoundInfo]');
 			return false;
 		}
 	},

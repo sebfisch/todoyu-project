@@ -28,11 +28,11 @@ require_once( PATH_EXT_PROJECT . '/dwoo/plugins.php');
 
 
 	// Register module locales
-TodoyuLabelManager::register('project', 'project', 'ext.xml');
-TodoyuLabelManager::register('task', 'project' , 'task.xml');
-TodoyuLabelManager::register('projectFilter', 'project', 'filter.xml');
-TodoyuLabelManager::register('panelwidget-projectlist', 'project', 'panelwidget-projectlist.xml');
-TodoyuLabelManager::register('panelwidget-statusfilter', 'project', 'panelwidget-statusfilter.xml');
-TodoyuLabelManager::register('headlet-quicktask', 'project', 'headlet-quicktask.xml');
+//TodoyuLabelManager::register('project', 'project', 'ext.xml');
+//TodoyuLabelManager::register('task', 'project' , 'task.xml');
+//TodoyuLabelManager::register('projectFilter', 'project', 'filter.xml');
+//TodoyuLabelManager::register('panelwidget-projectlist', 'project', 'panelwidget-projectlist.xml');
+//TodoyuLabelManager::register('panelwidget-statusfilter', 'project', 'panelwidget-statusfilter.xml');
+//TodoyuLabelManager::register('headlet-quicktask', 'project', 'headlet-quicktask.xml');
 
 ?>

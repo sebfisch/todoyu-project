@@ -26,11 +26,11 @@
  */
 
 if( allowed('project', 'general:use') ) {
-	TodoyuSearchManager::addEngine('task', 'TodoyuProjectTaskSearch::getSuggestions', 'task.search.label', 'task.search.mode.label', 10);
+	TodoyuSearchManager::addEngine('task', 'TodoyuProjectTaskSearch::getSuggestions', 'project.task.search.label', 'project.task.search.mode.label', 10);
 }
 
 if( allowed('project', 'general:use') ) {
-	TodoyuSearchManager::addEngine('project', 'TodoyuProjectProjectSearch::getSuggestions', 'project.search.label', 'project.search.mode.label', 20);
+	TodoyuSearchManager::addEngine('project', 'TodoyuProjectProjectSearch::getSuggestions', 'project.ext.search.label', 'project.ext.search.mode.label', 20);
 }
 
 ?>

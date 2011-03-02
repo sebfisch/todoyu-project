@@ -38,7 +38,7 @@ class TodoyuProjectPanelWidgetStatusFilterTask extends TodoyuProjectPanelWidgetS
 		parent::__construct(
 			'project',									// ext key
 			'taskstatusfilter',							// panel widget ID
-			'LLL:panelwidget-statusfilter.title.task',	// widget title text
+			'LLL:project.panelwidget-statusfilter.title.task',	// widget title text
 			$config,									// widget config array
 			$params,									// widget parameters
 			$idArea										// area ID

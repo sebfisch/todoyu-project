@@ -51,7 +51,7 @@ Todoyu.Ext.project.Task = {
 
 			// Ask to copy sub tasks
 		if( this.hasSubtasks(idTask) ) {
-			withSubtasks = confirm('[LLL:task.copySubtasks]') ? 1 : 0;
+			withSubtasks = confirm('[LLL:project.task.copySubtasks]') ? 1 : 0;
 		}
 
 		var url		= Todoyu.getUrl('project', 'task');
@@ -202,7 +202,7 @@ Todoyu.Ext.project.Task = {
 	 * Handler if person tries to paste on a position which is not allowed
 	 */
 	pasteNotAllowed: function() {
-		alert("[LLL:task.pasteNotAllowed]");
+		alert("[LLL:project.task.pasteNotAllowed]");
 	},
 
 
@@ -214,7 +214,7 @@ Todoyu.Ext.project.Task = {
 	 */
 	clone: function(idTask) {
 			// Has sub tasks? ask whether to include them in copy
-		var copySubTasks	= ( this.hasSubtasks(idTask) ) ? (confirm('[LLL:task.cloneSubtasks.confirm]') ? 1 : 0) : false;
+		var copySubTasks	= ( this.hasSubtasks(idTask) ) ? (confirm('[LLL:project.task.cloneSubtasks.confirm]') ? 1 : 0) : false;
 
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
@@ -263,7 +263,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Number}		idTask
 	 */
 	remove: function(idTask, container) {
-		var confirmLabel	= container === true ? '[LLL:task.js.removecontainer.question]' : '[LLL:task.js.removetask.question]';
+		var confirmLabel	= container === true ? '[LLL:project.task.js.removecontainer.question]' : '[LLL:project.task.js.removetask.question]';
 		if( ! confirm(confirmLabel) ) {
 			return;
 		}
@@ -502,7 +502,7 @@ Todoyu.Ext.project.Task = {
 		var statusNotAllowed	= response.getTodoyuHeader('statusNotAllowed') == 1;
 
 		if( statusNotAllowed ) {
-			Todoyu.notifyInfo('[LLL:task.statusNotVisible]');
+			Todoyu.notifyInfo('[LLL:project.task.statusNotVisible]');
 			Effect.BlindUp('task-' + idTask, {
 				'duration': 0.7
 			});

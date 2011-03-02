@@ -43,7 +43,7 @@ class TodoyuProjectHeadletQuickTask extends TodoyuHeadletTypeButton {
 	 * @return	String
 	 */
 	public function getLabel() {
-		return Label('headlet-quicktask.label');
+		return Label('project.headlet-quicktask.label');
 	}
 
 

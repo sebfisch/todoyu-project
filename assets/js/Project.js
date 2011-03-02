@@ -75,7 +75,7 @@ Todoyu.Ext.project.Project = {
 	 * @param	{Number}	idProject
 	 */
 	remove: function(idProject) {
-		if( confirm('[LLL:project.js.removeProject]') ) {
+		if( confirm('[LLL:project.ext.js.removeProject]') ) {
 			var url		= Todoyu.getUrl('project', 'project');
 			var options	= {
 				'parameters': {
@@ -98,7 +98,7 @@ Todoyu.Ext.project.Project = {
 	 * @param	{Number}		idProject
 	 */
 	onRemoved: function(idProject) {
-		Todoyu.notifySuccess('[LLL:project.js.project.deleted]');
+		Todoyu.notifySuccess('[LLL:project.ext.js.project.deleted]');
 
 		if( Todoyu.getArea() == 'project' ) {
 			this.ext.ProjectTaskTree.removeProject(idProject);

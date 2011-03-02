@@ -20,9 +20,9 @@
 
 	// Add record infos
 TodoyuSysmanagerExtManager::addRecordConfig('project', 'projectrole', array(
-	'label'	=> 'LLL:project.records.projectrole',
+	'label'	=> 'LLL:project.ext.records.projectrole',
 	'form'	=> 'ext/project/config/form/admin/projectrole.xml',
-	'list'	=> 'TodoyuProjectProjectroleroleManager::getRecords',
+	'list'	=> 'TodoyuProjectProjectroleManager::getRecords',
 	'save'	=> 'TodoyuProjectProjectroleManager::saveProjectrole',
 	'delete'=> 'TodoyuProjectProjectroleManager::deleteProjectrole',
 	'object'=> 'TodoyuProjectrole',
@@ -30,7 +30,7 @@ TodoyuSysmanagerExtManager::addRecordConfig('project', 'projectrole', array(
 ));
 
 TodoyuSysmanagerExtManager::addRecordConfig('project', 'activity', array(
-	'label'	=> 'LLL:project.records.activity',
+	'label'	=> 'LLL:project.ext.records.activity',
 	'form'	=> 'ext/project/config/form/admin/activity.xml',
 	'list'	=> 'TodoyuProjectActivityManager::getRecords',
 	'save'	=> 'TodoyuProjectActivityManager::saveActivity',
@@ -40,7 +40,7 @@ TodoyuSysmanagerExtManager::addRecordConfig('project', 'activity', array(
 ));
 
 TodoyuSysmanagerExtManager::addRecordConfig('project', 'taskpreset', array(
-	'label'	=> 'LLL:project.records.taskpreset',
+	'label'	=> 'LLL:project.ext.records.taskpreset',
 	'form'	=> 'ext/project/config/form/admin/taskpreset.xml',
 	'list'	=> 'TodoyuProjectTaskpresetManager::getRecords',
 	'save'	=> 'TodoyuProjectTaskpresetManager::saveTaskpreset',

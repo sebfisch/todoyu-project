@@ -324,7 +324,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		Todoyu.Tabs.setActive('project', idProject);
 
 		var title	= this.getActiveProjectTitle().replace(':', ' - ');
-		Todoyu.Ui.setTitle('[LLL:project.page.title] - ' + title );
+		Todoyu.Ui.setTitle('[LLL:project.ext.page.title] - ' + title );
 
 		this.moveTabToFront(idProject);
 

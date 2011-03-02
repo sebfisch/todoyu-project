@@ -8,15 +8,15 @@
 		<fieldset name="taskDefaults">
 			<elements>
 				<field type="text" name="title">
-					<label>project.extconf.taskDefaults.title</label>
+					<label>project.ext.extconf.taskDefaults.title</label>
 				</field>
 
 				<field type="textarea" name="description">
-					<label>project.extconf.taskDefaults.description</label>
+					<label>project.ext.extconf.taskDefaults.description</label>
 				</field>
 
 				<field type="select" name="date_start">
-					<label>project.extconf.taskDefaults.date_start</label>
+					<label>project.ext.extconf.taskDefaults.date_start</label>
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
 					</source>
@@ -24,7 +24,7 @@
 				</field>
 
 				<field type="select" name="date_end">
-					<label>project.extconf.taskDefaults.date_end</label>
+					<label>project.ext.extconf.taskDefaults.date_end</label>
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
 					</source>
@@ -32,7 +32,7 @@
 				</field>
 
 				<field type="select" name="date_deadline">
-					<label>project.extconf.taskDefaults.date_deadline</label>
+					<label>project.ext.extconf.taskDefaults.date_deadline</label>
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
 					</source>
@@ -40,25 +40,25 @@
 				</field>
 
 				<field type="select" name="status">
-					<label>project.extconf.taskDefaults.status</label>
+					<label>project.ext.extconf.taskDefaults.status</label>
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueStatusOptions</function>
 					</source>
 				</field>
 
 				<field type="select" name="id_activity">
-					<label>project.extconf.taskDefaults.activity</label>
+					<label>project.ext.extconf.taskDefaults.activity</label>
 					<source type="function">
 						<function>TodoyuProjectProjectViewHelper::getExtConfActivities</function>
 					</source>
 				</field>
 
 				<field type="time" name="estimated_workload">
-					<label>project.extconf.taskDefaults.estimated_workload</label>
+					<label>project.ext.extconf.taskDefaults.estimated_workload</label>
 				</field>
 
 				<field type="checkbox" name="is_public">
-					<label>project.extconf.taskDefaults.is_public</label>
+					<label>project.ext.extconf.taskDefaults.is_public</label>
 				</field>
 
 			</elements>
@@ -68,7 +68,7 @@
 			<class>defaultsforlimited</class>
 			<elements>
 				<field type="text" name="quicktask_duration_days">
-					<label>project.extconf.quicktask_duration_days</label>
+					<label>project.ext.extconf.quicktask_duration_days</label>
 					<default>7</default>
 					<extraAttributes>onkeyup="Todoyu.Form.assistNumericInput(this,true)"</extraAttributes>
 				</field>
@@ -81,7 +81,7 @@
 			<elements>
 
 				<field type="select" name="person_assigned_role">
-					<label>project.extconf.taskDefaults.person_assigned_role</label>
+					<label>project.ext.extconf.taskDefaults.person_assigned_role</label>
 					<source type="function">
 						<function>TodoyuProjectProjectViewHelper::getExtConfProjectRoles</function>
 					</source>
@@ -91,7 +91,7 @@
 				</field>
 
 				<field type="select" name="id_person_assigned">
-					<label>project.taskpreset.person_assigned</label>
+					<label>project.ext.taskpreset.person_assigned</label>
 					<extraAttributes>onchange="Todoyu.Ext.project.Sysmanager.onChangeTaskpresetPersonAssigned(this)"</extraAttributes>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getInternalPersonOptions</function>
@@ -104,7 +104,7 @@
 				</field>
 
 				<field type="select" name="person_owner_role">
-					<label>project.extconf.taskDefaults.person_owner_role</label>
+					<label>project.ext.extconf.taskDefaults.person_owner_role</label>
 					<source type="function">
 						<function>TodoyuProjectProjectViewHelper::getExtConfProjectRoles</function>
 					</source>
@@ -114,7 +114,7 @@
 				</field>
 
 				<field type="select" name="id_person_owner">
-					<label>project.taskpreset.person_owner</label>
+					<label>project.ext.taskpreset.person_owner</label>
 					<extraAttributes>onchange="Todoyu.Ext.project.Sysmanager.onChangeTaskpresetPersonOwner(this)"</extraAttributes>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getInternalPersonOptions</function>

@@ -57,7 +57,7 @@ class TodoyuProjectProjectStatusManager {
 			$statusKey	= 'undefined';
 		}
 
-		return Label('project.status.' . $statusKey);
+		return Label('project.ext.status.' . $statusKey);
 	}
 
 

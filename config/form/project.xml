@@ -20,15 +20,15 @@
 					<elements>
 
 						<field type="text" name="title">
-							<label>core.title</label>
+							<label>core.global.title</label>
 							<validate>
-								<isNotEmpty msg="LLL:project.form.validation.title"/>
+								<isNotEmpty msg="LLL:project.ext.form.validation.title"/>
 							</validate>
 							<required/>
 						</field>
 
 						<field type="RTE" name="description">
-							<label>core.description</label>
+							<label>core.global.description</label>
 							<tinymce>
 								<theme>simple</theme>
 								<width>100%</width>
@@ -46,7 +46,7 @@
 					<elements>
 
 						<field type="select" name="status">
-							<label>core.status</label>
+							<label>core.global.status</label>
 							<source type="function">
 								<function>TodoyuProjectProjectViewHelper::getProjectStatusOptions</function>
 							</source>
@@ -54,7 +54,7 @@
 						</field>
 
 						<field type="date" name="date_start">
-							<label>project.attr.date_start</label>
+							<label>project.ext.attr.date_start</label>
 							<validate>
 								<dateNotAfter>
 									<field>date_end</field>
@@ -65,7 +65,7 @@
 						</field>
 
 						<field type="date" name="date_end">
-							<label>project.attr.date_end</label>
+							<label>project.ext.attr.date_end</label>
 							<validate>
 								<dateAfter>
 									<field>date_start</field>
@@ -75,7 +75,7 @@
 						</field>
 
 						<field type="date" name="date_deadline">
-							<label>project.attr.date_deadline</label>
+							<label>project.ext.attr.date_deadline</label>
 							<validate>
 								<dateAfter>
 									<field>date_start</field>
@@ -88,7 +88,7 @@
 							<restrict>
 								<allow ext="contact" right="general:use" />
 							</restrict>
-							<label>project.attr.company</label>
+							<label>project.ext.attr.company</label>
 							<config>
 								<acName>company</acName>
 								<acLabel>TodoyuContactCompanyManager::getLabel</acLabel>
@@ -96,13 +96,13 @@
 									<onComplete>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onComplete>
 								</options>
 							</config>
-							<required label="LLL:project.form.validation.company" />
+							<required label="LLL:project.ext.form.validation.company" />
 							<wizard>
 								<htmlClass>createNewCompany</htmlClass>
 								<ext>contact</ext>
 								<controller>company</controller>
 								<action>addNewContactWizard</action>
-								<title>LLL:contact.create.company.label</title>
+								<title>LLL:contact.ext.create.company.label</title>
 								<width>700</width>
 								<displayCondition />
 								<restrict>
@@ -122,7 +122,7 @@
 			<class>presets</class>
 			<elements>
 				<field type="select" name="id_taskpreset">
-					<label>project.attr.taskpreset</label>
+					<label>project.ext.attr.taskpreset</label>
 					<source type="function">
 						<function>TodoyuProjectProjectViewHelper::getTaskpresetOptions</function>
 					</source>
@@ -139,8 +139,8 @@
 			<class>persons</class>
 			<elements>
 				<field type="databaseRelation" name="persons">
-					<label>project.attr.persons</label>
-					<addLabel>project.attr.persons.new</addLabel>
+					<label>project.ext.attr.persons</label>
+					<addLabel>project.ext.attr.persons.new</addLabel>
 					<record>
 						<form>ext/project/config/form/project-person.xml</form>
 						<url>
@@ -149,7 +149,7 @@
 						</url>
 						<label type="function">
 							<function>TodoyuProjectProjectViewHelper::getProjectPersonLabel</function>
-							<noLabel>LLL:project.attr.persons.new</noLabel>
+							<noLabel>LLL:project.ext.attr.persons.new</noLabel>
 						</label>
 					</record>
 				</field>

@@ -85,7 +85,7 @@ class TodoyuProjectProjectViewHelper {
 		$idPerson	= intval($data['id']);
 
 		if( $idPerson === 0 ) {
-			return TodoyuLabelManager::getLabel('project.persons.new');
+			return TodoyuLabelManager::getLabel('project.ext.persons.new');
 		} else {
 			$idRole		= intval($data['id_role']);
 			$projectData= $formElement->getForm()->getFormData();
@@ -230,7 +230,7 @@ class TodoyuProjectProjectViewHelper {
 		$presets	= array_merge(
 			array('0'	=> array(
 					'id'	=> 0,
-					'title'	=> Label('project.taskpreset.option.none')
+					'title'	=> Label('project.ext.taskpreset.option.none')
 				)
 			),
 			TodoyuProjectTaskpresetManager::getAllTaskpresets()

@@ -36,27 +36,27 @@ class TodoyuProjectExtConfViewHelper {
 
 		return array(
 			array(	// Creation day
-				'label'	=> 'LLL:task.default.date.date_1',
+				'label'	=> 'LLL:project.task.default.date.date_1',
 				'value'	=> '1'
 			),
 			array(	// Creation day + 1 days
-				'label'	=> 'LLL:task.default.date.date_2',
+				'label'	=> 'LLL:project.task.default.date.date_2',
 				'value'	=> '2'
 			),
 			array(	// Creation day + 2 days
-				'label'	=> 'LLL:task.default.date.date_3',
+				'label'	=> 'LLL:project.task.default.date.date_3',
 				'value'	=> '3'
 			),
 			array(	// Creation day + 3 days
-				'label'	=> 'LLL:task.default.date.date_4',
+				'label'	=> 'LLL:project.task.default.date.date_4',
 				'value'	=> '4'
 			),
 			array(	// Creation day + 1 week
-				'label'	=> 'LLL:task.default.date.date_7',
+				'label'	=> 'LLL:project.task.default.date.date_7',
 				'value'	=> '7'
 			),
 			array(	// Creation day + 2 weeks
-				'label'	=> 'LLL:task.default.date.date_14',
+				'label'	=> 'LLL:project.task.default.date.date_14',
 				'value'	=> '14'
 			)
 		);
@@ -85,7 +85,7 @@ class TodoyuProjectExtConfViewHelper {
 	public static function getValueDateLabel($value) {
 		$value	= TodoyuNumeric::intPositive($value);
 
-		return Label('LLL:task.default.date.date_' . $value);
+		return Label('LLL:project.task.default.date.date_' . $value);
 	}
 
 }

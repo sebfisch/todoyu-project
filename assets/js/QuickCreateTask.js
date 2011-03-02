@@ -91,7 +91,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 		if( response.hasTodoyuError() ) {
 				// Update task edit form with form remarks, display failure notification
 			Todoyu.Headlets.getHeadlet('todoyuheadletquickcreate').updatePopupContent(response.responseText);
-			Todoyu.notifyError('[LLL:task.save.error]');
+			Todoyu.notifyError('[LLL:project.task.save.error]');
 		} else {
 				// Saving went ok
 			Todoyu.Hook.exec('project.task.saved', idTask);
@@ -105,7 +105,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 			}
 
 			Todoyu.Popup.close('quickcreate');
-			Todoyu.notifySuccess('[LLL:task.save.success]');
+			Todoyu.notifySuccess('[LLL:project.task.save.success]');
 		}
 	}
 

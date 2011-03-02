@@ -40,7 +40,7 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidget implements T
 		parent::__construct(
 			'project',								// ext key
 			'projectlist',							// panel widget ID
-			'LLL:panelwidget-projectlist.title',	// widget title text
+			'LLL:project.panelwidget-projectlist.title',	// widget title text
 			$config,								// widget config array
 			$params,								// widget parameters
 			$idArea									// area ID

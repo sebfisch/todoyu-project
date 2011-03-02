@@ -10,12 +10,12 @@
 			<elements>
 
 				<field type="text" name="title">
-					<label>core.title</label>
+					<label>core.global.title</label>
 					<required />
 				</field>
 
 				<field type="text" name="rolekey">
-					<label>project.projectrole.attr.rolekey</label>
+					<label>project.ext.projectrole.attr.rolekey</label>
 					<required />
 				</field>
 
