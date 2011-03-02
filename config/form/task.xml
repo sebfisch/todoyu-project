@@ -12,7 +12,7 @@
 	<fieldsets>
 
 		<fieldset name="left">
-			<legend>Left form column</legend>
+			<legend>Task Designation</legend>
 			<class>left noneFloatingInput</class>
 			<elements>
 
@@ -37,7 +37,7 @@
 		</fieldset>
 
 		<fieldset name="right">
-			<legend>Right form column</legend>
+			<legend>Task Attributes</legend>
 			<class>right</class>
 			<elements>
 

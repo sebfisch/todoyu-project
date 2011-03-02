@@ -10,7 +10,7 @@
 	<fieldsets>
 
 		<fieldset name="main">
-			<legend>Top</legend>
+			<legend>Main Project Attributes</legend>
 			<class>top</class>
 			<elements>
 
@@ -118,7 +118,7 @@
 		</fieldset>
 
 		<fieldset name="presets">
-			<legend>Presets</legend>
+			<legend>Task Presets</legend>
 			<class>presets</class>
 			<elements>
 				<field type="select" name="id_taskpreset">
