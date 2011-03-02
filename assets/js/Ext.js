@@ -181,6 +181,17 @@ Todoyu.Ext.project = {
 	 */
 	savePref: function(preference, value, idItem, onComplete) {
 		Todoyu.Pref.save('project', preference, value, idItem, onComplete);
+	},
+
+
+
+	/**
+	 * Open popup with quick create for project
+	 *
+	 * @method	openProjectPopup
+	 */
+	openProjectPopup: function() {
+		Todoyu.Headlets.getHeadlet('todoyuheadletquickcreate').openTypePopup('project','project')
 	}
 
 };

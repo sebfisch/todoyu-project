@@ -6,7 +6,7 @@
 				<p class="message">
 					{Label project.noproject.message.description}
 					{if allowed('project','project:add')}
-						<a href="javascript:void(0)" onclick="Todoyu.Headlets.getHeadlet('todoyuheadletquickcreate').openTypePopup('project','project')">{Label project.noproject.message.createproject}</a>
+						<a href="javascript:void(0)" onclick="Todoyu.Ext.project.openProjectPopup()">{Label project.noproject.message.createproject}</a>
 					{else}
 						{Label project.noproject.message.informcontact}
 					{/if}
