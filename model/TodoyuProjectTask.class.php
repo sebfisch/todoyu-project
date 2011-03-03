@@ -146,7 +146,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	/**
 	 * Get parent task if available
 	 *
-	 * @return	Task
+	 * @return	TodoyuProjectTask
 	 */
 	public function getParentTask() {
 		if( $this->hasParentTask() ) {
