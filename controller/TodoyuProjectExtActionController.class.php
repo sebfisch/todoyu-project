@@ -76,7 +76,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 					// Reset task ID if not visible
 				$idTask = 0;
 					// Show message about not available task
-				TodoyuPage::addJsOnloadedFunction('Todoyu.notifyError.bind(Todoyu, \'' . Label('task.notAvailable') . '\')');
+				TodoyuPage::addJsOnloadedFunction('Todoyu.notifyError.bind(Todoyu, \'' . Label('project.task.notAvailable') . '\')');
 			}
 		}
 

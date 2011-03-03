@@ -198,10 +198,10 @@ class TodoyuProjectTaskRenderer {
 			$fieldNames	= $form->getFieldnames();
 			$rightFieldSet	= $form->getFieldset('right');
 			if( in_array('id_person_owner', $fieldNames) ) {
-				$rightFieldSet->getField('id_person_owner')->setAttribute('label', 'task.container.attr.person_owner');
+				$rightFieldSet->getField('id_person_owner')->setAttribute('label', 'project.task.container.attr.person_owner');
 			}
 			if( in_array('is_public', $fieldNames) ) {
-				$rightFieldSet->getField('is_public')->setAttribute('label', 'task.container.attr.is_public');
+				$rightFieldSet->getField('is_public')->setAttribute('label', 'project.task.container.attr.is_public');
 			}
 		}
 

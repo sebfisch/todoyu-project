@@ -164,11 +164,11 @@ class TodoyuProjectTaskFilterDataSource {
 	public static function getTypeOptions(array $definitions) {
 		$definitions['options'] = array(
 			array(
-				'label'	=> Label('task.type.task'),
+				'label'	=> Label('project.task.type.task'),
 				'value'	=> TASK_TYPE_TASK
 			),
 			array(
-				'label'	=> Label('task.type.container'),
+				'label'	=> Label('project.task.type.container'),
 				'value'	=> TASK_TYPE_CONTAINER
 			)
 		);
