@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	project
  */
-class TodoyuProjectFilterDataSource {
+class TodoyuProjectProjectFilterDataSource {
 
 	/**
 	 * Search for projects by given search string from the auto-completion
@@ -88,7 +88,7 @@ class TodoyuProjectFilterDataSource {
 	 * @param	Array	$projectIDs
 	 * @return	Array
 	 */
-	private function getProjects(array $projectIDs = array()) {
+	private static function getProjects(array $projectIDs = array()) {
 		$fields		= '	p.id,
 						p.title,
 						c.shortname as company,
