@@ -62,7 +62,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 			} else {
 				$this->addRightsFilter('Not', 0);
 			}
-	}
+		}
 	}
 
 
@@ -101,7 +101,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	String		$value			IGNORED
 	 * @param	Boolean		$negate			IGNORED
 	 */
-	public static function Filter_rights($value, $negate = false) {
+	public function Filter_rights($value, $negate = false) {
 		$queryParts	= false;
 
 		if( ! TodoyuAuth::isAdmin() && ! allowed('project', 'project:seeAll') ) {
@@ -132,7 +132,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function Filter_fulltext($searchWords, $negate = false) {
+	public function Filter_fulltext($searchWords, $negate = false) {
 		$searchWords= trim($searchWords);
 		$searchWords= TodoyuArray::trimExplode(' ', $searchWords);
 		$queryParts	= false;
@@ -175,7 +175,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 //	 * @param	Boolean	$negate
 //	 * @return	Array
 //	 */
-//	public static function Filter_locked($locked, $negate = false) {
+//	public function Filter_locked($locked, $negate = false) {
 //		$tables	= array('system_lock');
 //
 //		if( $negate === false ) {
@@ -206,7 +206,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function Filter_status($value, $negate = false) {
+	public function Filter_status($value, $negate = false) {
 		$status		= is_array($value) ? TodoyuArray::intval($value, true, true) : TodoyuArray::intExplode(',', $value, true, true);
 		$queryParts	= false;
 
@@ -230,7 +230,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function Filter_title($title, $negate = false) {
+	public function Filter_title($title, $negate = false) {
 		$title		= trim($title);
 		$queryParts	= false;
 
@@ -256,7 +256,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_company($idCompany, $negate = false) {
+	public function Filter_company($idCompany, $negate = false) {
 		$idCompany	= intval($idCompany);
 		$queryParts	= false;
 
@@ -282,7 +282,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean	$negate
 	 * @return	Array
 	 */
-	public static function Filter_projectleader($idProjectleader, $negate = false) {
+	public function Filter_projectleader($idProjectleader, $negate = false) {
 		$idProjectleader= intval($idProjectleader);
 		$queryParts		= false;
 
@@ -326,7 +326,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_projectrole($value, $negate = false) {
+	public function Filter_projectrole($value, $negate = false) {
 		$parts		= explode(':', $value);
 		$idPerson	= intval($parts[0]);
 		$roles		= TodoyuArray::intExplode(',', $parts[1]);
@@ -367,7 +367,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public static function prepareDataForProjectroleWidget(array $definitions) {
+	public function prepareDataForProjectroleWidget(array $definitions) {
 		$projectroles	= TodoyuProjectProjectroleManager::getProjectroles(true);
 		$reform			= array(
 			'id'	=> 'value',
@@ -401,8 +401,8 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_startdate($date, $negate = false) {
-		return self::makeFilter_date('date_start', $date, $negate);
+	public function Filter_startdate($date, $negate = false) {
+		return $this->makeFilter_date('date_start', $date, $negate);
 	}
 
 
@@ -414,8 +414,8 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_enddate($date, $negate = false) {
-		return self::makeFilter_date('date_end', $date, $negate);
+	public function Filter_enddate($date, $negate = false) {
+		return $this->makeFilter_date('date_end', $date, $negate);
 	}
 
 
@@ -427,8 +427,8 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_deadline($date, $negate = false) {
-		return self::makeFilter_date('date_deadline', $date, $negate);
+	public function Filter_deadline($date, $negate = false) {
+		return $this->makeFilter_date('date_deadline', $date, $negate);
 	}
 
 
@@ -440,8 +440,8 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_createdate($date, $negate = false) {
-		return self::makeFilter_date('date_create', $date, $negate);
+	public function Filter_createdate($date, $negate = false) {
+		return $this->makeFilter_date('date_create', $date, $negate);
 	}
 
 
@@ -453,10 +453,10 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_createdateDyn($value, $negate) {
+	public function Filter_createdateDyn($value, $negate) {
 		$timeStamps = TodoyuProjectTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
 
-		return self::Filter_dateDyn($timeStamps, 'date_create', $negate);
+		return $this->Filter_dateDyn($timeStamps, 'date_create', $negate);
 	}
 
 
@@ -468,8 +468,8 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_editdate($date, $negate = false) {
-		return self::makeFilter_date('date_update', $date, $negate);
+	public function Filter_editdate($date, $negate = false) {
+		return $this->makeFilter_date('date_update', $date, $negate);
 	}
 
 
@@ -481,10 +481,10 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_editdateDyn($value, $negate) {
+	public function Filter_editdateDyn($value, $negate) {
 		$timeStamps = TodoyuProjectTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
 
-		return self::Filter_dateDyn($timeStamps, 'date_update', $negate);
+		return $this->Filter_dateDyn($timeStamps, 'date_update', $negate);
 	}
 
 
@@ -517,7 +517,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	Boolean		$negate
 	 * @return	Boolean
 	 */
-	public static function makeFilter_date($field, $date, $negate = false) {
+	public function makeFilter_date($field, $date, $negate = false) {
 		$tables	= array(self::TABLE);
 		$field	= self::TABLE . '.' . $field;
 
@@ -533,7 +533,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @static
 	 * @return	Array
 	 */
-	public static function Filter_Not() {
+	public function Filter_Not() {
 		return array(
 			'where' => '0'
 		);
