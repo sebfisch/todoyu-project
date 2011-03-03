@@ -282,6 +282,28 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 
 
 	/**
+	 * Check whether the deadline is exceeded
+	 *
+	 * @return	Boolean
+	 */
+	public function isDeadlineExceeded() {
+		return $this->getDeadlineDate() < NOW;
+	}
+
+
+
+	/**
+	 * Check whether the end date is exceeded
+	 *
+	 * @return	Boolean
+	 */
+	public function isEndDateExceeded() {
+		return $this->getEndDate() < NOW;
+	}
+
+
+
+	/**
 	 * Get estimated workload
 	 *
 	 * @return	Integer
@@ -353,7 +375,40 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isCurrentPersonAssigned() {
-		return TodoyuAuth::getPersonID() === intval($this->get('id_person_assigned'));
+		return TodoyuAuth::getPersonID() === $this->getAssignedPersonID();
+	}
+
+
+
+	/**
+	 * Check whether task owner and creator is the same person
+	 *
+	 * @return	Boolean
+	 */
+	public function isOwnerAndCreatorSame() {
+		return $this->getPersonID('owner') === $this->getPersonID('create');
+	}
+
+
+
+	/**
+	 * Get assigned person
+	 *
+	 * @return	TodoyuContactPerson
+	 */
+	public function getAssignedPerson() {
+		return TodoyuContactPersonManager::getPerson($this->getAssignedPersonID());
+	}
+
+
+
+	/**
+	 * Get assigned person ID
+	 *
+	 * @return	Integer
+	 */
+	public function getAssignedPersonID() {
+		return intval($this->get('id_person_assigned'));
 	}
 
 
