@@ -25,7 +25,7 @@ TodoyuSysmanagerExtManager::addRecordConfig('project', 'projectrole', array(
 	'list'	=> 'TodoyuProjectProjectroleManager::getRecords',
 	'save'	=> 'TodoyuProjectProjectroleManager::saveProjectrole',
 	'delete'=> 'TodoyuProjectProjectroleManager::deleteProjectrole',
-	'object'=> 'TodoyuProjectrole',
+	'object'=> 'TodoyuProjectProjectrole',
 	'table'	=> 'ext_project_role'
 ));
 
