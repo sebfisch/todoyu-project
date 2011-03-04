@@ -53,7 +53,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		TodoyuHeader::sendTodoyuHeader('idTask', 0);
 
 			// Send task with form in details part
-		return TodoyuProjectTaskRights::renderNewTaskEdit(0, $idProject, TASK_TYPE_TASK);
+		return TodoyuProjectProjectRenderer::renderNewTaskEdit(0, $idProject, TASK_TYPE_TASK);
 	}
 
 
