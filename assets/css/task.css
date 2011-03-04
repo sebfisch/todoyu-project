@@ -58,7 +58,8 @@
 	height:1px;
 	margin:-4px 0 -4px 0;
 	padding:4px 0 4px 17px;
-	border-left:8px solid;
+	border-left-width:8px;
+	border-left-style:solid;
 	min-height:14px;
 }
 
@@ -193,7 +194,8 @@
 	Task details
    ------------------ */
 .task .details {
-	border-left:1px solid;
+	border-left-width:1px;
+	border-left-style:solid;
 }
 
 .task .details {

@@ -56,7 +56,8 @@ h1.headerLine span.projectIcons {
 .project .projectstatus {
 	position:absolute;
 	height:27px;
-	border-left:8px solid;
+	border-left-width:8px;
+	border-left-style:solid;
 }
 
 .project .description {

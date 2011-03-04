@@ -103,7 +103,8 @@ h1.extIconProject .title {
 
 
 .projects .project h3 .headLabel {
-	border-left:8px solid;
+	border-left-style:solid;
+	border-left-width:8px; 
 	display:block;
 	float:left;
 	height:auto !important;
