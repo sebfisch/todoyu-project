@@ -229,12 +229,11 @@ Todoyu.Ext.project.Task.Edit = {
 	 * @method	onPersonAcSelected
 	 * @param		{Element}				inputField
 	 * @param		{Element}				idField
-	 * @param		{String}				selectedValue
+	 * @param		{String}				idProject
 	 * @param		{String}				selectedText
 	 * @param		{Todoyu.Autocompleter}	autocompleter
 	 */
-	onProjectAcSelected: function(inputField, idField, selectedValue, selectedText, autocompleter) {
-		var idProject	= selectedValue;
+	onProjectAcSelected: function(inputField, idField, idProject, selectedText, autocompleter) {
 		var isQuicktask	= inputField.up('div').id.indexOf('quicktask') != -1;
 
 			// Update quicktask / regular quickcreate task popup form

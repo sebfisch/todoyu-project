@@ -58,8 +58,7 @@
 	height:1px;
 	margin:-4px 0 -4px 0;
 	padding:4px 0 4px 17px;
-	border-left-width:8px;
-	border-left-style:solid;
+	border-left:8px solid;
 	min-height:14px;
 }
 
@@ -147,9 +146,8 @@
 .task span.taskIconsOverflow:hover {
 	width:auto;
 	position:absolute;
-	background-color:#fff;
-	z-index:1000;
 	background:white;
+	z-index:1000;
 }
 
 .expanded span.taskIconsOverflow:hover {
@@ -162,8 +160,7 @@
 	clear:none;
 	width:14px;
 	height:16px;
-	margin:0;
-	margin-left:3px;
+	margin:0 0 0 3px;
 }
 
 .task span.taskIcons .taskcontainer {
@@ -196,8 +193,7 @@
 	Task details
    ------------------ */
 .task .details {
-	border-left-width:1px;
-	border-left-style:solid;
+	border-left:1px solid;
 }
 
 .task .details {

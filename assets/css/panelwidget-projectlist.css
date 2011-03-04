@@ -34,8 +34,7 @@
 }
 
 #panelwidget-projectlist-list li {
-	border-left-width:5px;
-	border-left-style:solid;
+	border-left:5px solid;
 	line-height:18px;
 	margin-bottom:1px;
 	overflow:hidden;
