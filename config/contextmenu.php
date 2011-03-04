@@ -260,35 +260,35 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
 Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 	'showinproject'	=> array(
 		'key'		=> 'showinproject',
-		'label'		=> 'project.contextmenu.showinproject',
+		'label'		=> 'project.ext.contextmenu.showinproject',
 		'jsAction'	=> 'Todoyu.Ext.project.goToTaskInProject(0, #ID#)',
 		'class'		=> 'projectContextMenu showInProject',
 		'position'	=> 10
 	),
 	'showdetails'	=> array(
 		'key'		=> 'showdetails',
-		'label'		=> 'project.contextmenu.showdetails',
+		'label'		=> 'project.ext.contextmenu.showdetails',
 		'jsAction'	=> 'Todoyu.Ext.project.Project.toggleDetails(#ID#)',
 		'class'		=> 'projectContextMenu projectDetails',
 		'position'	=> 10
 	),
 	'hidedetails'	=> array(
 		'key'		=> 'hidedetails',
-		'label'		=> 'project.contextmenu.hidedetails',
+		'label'		=> 'project.ext.contextmenu.hidedetails',
 		'jsAction'	=> 'Todoyu.Ext.project.Project.toggleDetails(#ID#)',
 		'class'		=> 'projectContextMenu projectDetails',
 		'position'	=> 11
 	),
 	'edit'	=> array(
 		'key'		=> 'edit',
-		'label'		=> 'project.contextmenu.edit',
+		'label'		=> 'project.ext.contextmenu.edit',
 		'jsAction'	=> 'Todoyu.Ext.project.Project.edit(#ID#)',
 		'class'		=> 'projectContextMenu projectEdit',
 		'position'	=> 20
 	),
 	'delete' => array(
 		'key'		=> 'delete',
-		'label'		=> 'project.contextmenu.delete',
+		'label'		=> 'project.ext.contextmenu.delete',
 		'jsAction'	=> 'Todoyu.Ext.project.Project.remove(#ID#)',
 		'class'		=> 'projectContextMenu projectDelete',
 		'position'	=> 25
@@ -334,14 +334,14 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 	),
 	'addtask'	=> array(
 		'key'		=> 'addtask',
-		'label'		=> 'project.contextmenu.add.task',
+		'label'		=> 'project.ext.contextmenu.add.task',
 		'jsAction'	=> 'Todoyu.Ext.project.Project.addTask(#ID#)',
 		'class'		=> 'projectContextMenu projectAddTask',
 		'position'	=> 40
 	),
 	'addcontainer'	=> array(
 		'key'		=> 'addcontainer',
-		'label'		=> 'project.contextmenu.add.container',
+		'label'		=> 'project.ext.contextmenu.add.container',
 		'jsAction'	=> 'Todoyu.Ext.project.Project.addContainer(#ID#)',
 		'class'		=> 'projectContextMenu projectAddContainer',
 		'position'	=> 50
