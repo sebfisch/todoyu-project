@@ -85,6 +85,7 @@ Todoyu.Ext.project.Task.Edit = {
 	},
 
 
+
 	/**
 	 * Scrolls to given task, calls onTaskEdit hook.
 	 * Evoked after task editing form having been loaded.
@@ -95,6 +96,7 @@ Todoyu.Ext.project.Task.Edit = {
 	 */
 	onFormLoaded: function(idTask, response) {
 		this.ext.Task.scrollTo(idTask);
+		this.ext.Task.setExpandedStyle(idTask, true);
 
 		Todoyu.Hook.exec('project.task.formLoaded', idTask);
 	},

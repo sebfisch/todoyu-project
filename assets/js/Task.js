@@ -303,6 +303,13 @@ Todoyu.Ext.project.Task = {
 	},
 
 
+
+	/**
+	 * Remove given task element and related sub tasks
+	 *
+	 * @method	removeTaskElement
+	 * @param	{Number}	idTask
+	 */
 	removeTaskElement: function(idTask) {
 		if( Todoyu.exists('task-' + idTask + '-subtasks') ) {
 			$('task-' + idTask + '-subtasks').remove();
@@ -921,12 +928,30 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Refresh the task style for class expanded
 	 *
+	 * @method	refreshExpandedStyle
 	 * @param	{Number}		idTask
 	 */
 	refreshExpandedStyle: function(idTask) {
+		if( this.isDetailsVisible(idTask) ) {
+			this.setExpandedStyle(idTask, true);
+		} else {
+			this.setExpandedStyle(idTask, false);
+		}
+	},
+
+
+
+	/**
+	 * Set task style expanded/ collapsed
+	 *
+	 * @method	setExpandedStyle
+	 * @param	{Number}	idTask
+	 * @param	{Boolean}	isExpanded
+	 */
+	setExpandedStyle: function(idTask, isExpanded) {
 		var task = $('task-' + idTask);
 
-		if( this.isDetailsVisible(idTask) ) {
+		if( isExpanded ) {
 			task.addClassName('expanded');
 		} else {
 			task.removeClassName('expanded');
