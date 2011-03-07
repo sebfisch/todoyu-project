@@ -18,7 +18,14 @@
 *****************************************************************************/
 
 /**
+ * @module	Project
+ */
+
+/**
  * Context menu for tasks
+ *
+ * @class		ContextMenuTask
+ * @namespace	Todoyu.Ext.project
  */
 Todoyu.Ext.project.ContextMenuTask = {
 
@@ -32,6 +39,7 @@ Todoyu.Ext.project.ContextMenuTask = {
 	},
 
 
+
 	/**
 	 * Detach task context menu
 	 *
@@ -40,6 +48,7 @@ Todoyu.Ext.project.ContextMenuTask = {
 	detach: function() {
 		Todoyu.ContextMenu.detach('.contextmenutask');
 	},
+
 
 
 	/**

@@ -39,6 +39,7 @@ Todoyu.Ext.project.TaskParentAC = {
 	/**
 	 * Init project task parent autocompleter 
 	 *
+	 * @method	init
 	 * @param	{String}	idField
 	 */
 	init: function(idField) {

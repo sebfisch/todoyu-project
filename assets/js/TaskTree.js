@@ -30,6 +30,8 @@ Todoyu.Ext.project.TaskTree = {
 
 	/**
 	 * Init project task tree
+	 *
+	 * @method	init
 	 */
 	init: function() {
 		this.installObservers();
@@ -39,6 +41,8 @@ Todoyu.Ext.project.TaskTree = {
 
 	/**
 	 * Install observers
+	 *
+	 * @method	installObservers
 	 */
 	installObservers: function() {
 		Todoyu.PanelWidget.observe('taskstatusfilter', this.onStatusFilterUpdate.bind(this));
@@ -49,6 +53,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Get tree's DOM element ID
 	 *
+	 * @method	tree
 	 * @param	{Number}	idProject
 	 */
 	tree: function(idProject) {
@@ -60,6 +65,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Toggle display of task tree of given project
 	 *
+	 * @method	toggle
 	 * @param	{Number}	 idProject
 	 */
 	toggle: function(idProject) {
@@ -73,6 +79,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Hide task tree of given project
 	 *
+	 * @method	hide
 	 * @param	{Number}	idProject
 	 */
 	hide: function(idProject) {
@@ -88,9 +95,10 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Update task tree with a new filter configuration
 	 *
-	 * @param	{Number}		idProject
-	 * @param	{String}		filterName
-	 * 	param	String		filterValue
+	 * @method	updated
+	 * @param	{Number}	idProject
+	 * @param	{String}	filterName
+	 * @param	{String}	filterValue
 	 */
 	update: function(idProject, filterName, filterValue) {
 		if( Object.isUndefined(idProject) ) {
@@ -120,6 +128,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Evoked after task tree updating has been completed. Adds the context menu.
 	 *
+	 * @method	onUpdated
 	 * @param	{Ajax.Response}		response
 	 */
 	onUpdated: function(response) {
@@ -131,6 +140,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Evoked upon update of status filter: evokes update of given project's tree
 	 *
+	 * @method	onStatusFilterUpdate
 	 * @param	{String}	widgetName
 	 * @param	{Array}	params
 	 */
@@ -146,6 +156,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Get ID of currently active task tree project
 	 *
+	 * @method	getProjectID
 	 * @return	{Number}
 	 */
 	getProjectID: function() {
@@ -157,6 +168,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Toggle display of sub tasks and save resulting display state of given given task inside the task tree(, load sub tasks if toggled to be shown and not loaded yet)
 	 *
+	 * @method	toggleSubtasks
 	 * @param {Event}		event
 	 * @param {Number}		idTask
 	 */
@@ -183,6 +195,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Handler when sub tasks are toggled
 	 *
+	 * @method	onSubtasksToggled
 	 * @param	{Number}	idTask
 	 */
 	onSubtasksToggled: function(idTask) {
@@ -194,6 +207,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Expand sub tasks of given task in task tree
 	 *
+	 * @method	expandSubtasks
 	 * @param	{Number}	idTask
 	 */
 	expandSubtasks: function(idTask) {
@@ -207,6 +221,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Toggle expand-option icon of given task
 	 *
+	 * @method	toggleSubtaskTriggerIcon
 	 * @param	{Number}	idTask
 	 */
 	toggleSubtaskTriggerIcon: function(idTask) {
@@ -218,6 +233,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Check whether sub tasks of given task are loaded (DOM elements exist)
 	 *
+	 * @method	areSubtasksLoaded
 	 * @param	{Number}	idTask
 	 * @return	{Boolean}
 	 */
@@ -230,6 +246,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Check whether sub tasks of given task are set visible currently
 	 *
+	 * @method	areSubtasksVisible
 	 * @param	{Number} idTask
 	 * @return	{Boolean}
 	 */
@@ -240,8 +257,9 @@ Todoyu.Ext.project.TaskTree = {
 
 
 	/**
-	 * Load subtasks
+	 * Load sub tasks
 	 *
+	 * @method	loadSubtasks
 	 * @param	{Number}		idTask
 	 * @param	{Function}	callback
 	 */
@@ -265,6 +283,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Handler when sub tasks are loaded
 	 *
+	 * @method	onSubtasksLoaded
 	 * @param	{Number}			idTask
 	 * @param	{Function}		callback
 	 * @param	{Ajax.Response}	response
@@ -282,6 +301,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Save task tree sub tasks being opened status pref
 	 *
+	 * @method	saveSubtaskOpenStatus
 	 * @param	{Number}	idTask
 	 * @param	{Boolean}	isOpen
 	 */
@@ -293,6 +313,8 @@ Todoyu.Ext.project.TaskTree = {
 
 	/**
 	 * Evoke (Re-)Adding of task tree (tasks') context menu
+	 *
+	 * @method	addContextMenu
 	 */
 	addContextMenu: function() {
 		Todoyu.Ext.project.ContextMenuTask.attach();

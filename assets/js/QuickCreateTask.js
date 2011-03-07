@@ -21,6 +21,8 @@ Todoyu.Ext.project.QuickCreateTask = {
 
 	/**
 	 * Evoked upon opening of event quick create wizard popUp
+	 *
+	 * @method	onPopupOpened
 	 */
 	onPopupOpened: function() {
 
@@ -31,6 +33,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 	/**
 	 * Update quickcreate task form (inside popup) with given project preselected
 	 *
+	 * @method	updateForm
 	 * @param	{Number}	idProject
 	 */
 	updateForm: function(idProject) {
@@ -51,6 +54,8 @@ Todoyu.Ext.project.QuickCreateTask = {
 
 	/**
 	 * Call registered quickcreate task event handler (onPopupOpened)
+	 *
+	 * @method	onFormUpdated
 	 */
 	onFormUpdated: function() {
 		var quickCreateObject	= 'Todoyu.Ext.project.QuickCreateTask';
@@ -62,6 +67,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 	/**
 	 * Save task
 	 *
+	 * @method	save
 	 * @param	{String}		form
 	 */
 	save: function(form) {
@@ -80,6 +86,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 	/**
 	 * Evoked after edited task having been saved. Handles display of success / failure message and refresh of saved task / failed form.
 	 *
+	 * @method	onSaved
 	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response) {

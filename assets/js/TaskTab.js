@@ -30,6 +30,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Handle onSelect event of tab: show affected tab which the event occured on
 	 *
+	 * @method	onSelect
 	 * @param	{Event}		event
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
@@ -44,6 +45,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Show given tab of given task
 	 *
+	 * @method	show
 	 * @param	{Number}	idTask
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
@@ -66,6 +68,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Load given tab of given task
 	 *
+	 * @method	load
 	 * @param	{Number}	idTask
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
@@ -88,6 +91,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Handler when tab is loaded
 	 *
+	 * @method	onLoaded
 	 * @param	{Number}		idTask
 	 * @param	{String}		tabKey
 	 * @param	{Function}	onComplete callback
@@ -104,6 +108,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Check if a tab of a task is already loaded
 	 *
+	 * @method	isLoaded
 	 * @param	{Number}		idTask
 	 * @param	{String}		tabKey
 	 */
@@ -116,6 +121,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Create tab container to given task.
 	 *
+	 * @method	creatTabContainer
 	 * @param	{Number}	idTask
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
@@ -135,6 +141,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Render element ID of given tab of given task
 	 *
+	 * @method	buildTabID
 	 * @param	{Number}	idTask
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 * @return	{String}
@@ -148,6 +155,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Activate given tab of given task: hide other tabs, activate tab head, set tab content visible
 	 *
+	 * @method	activate
 	 * @param	{Number}	idTask
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
@@ -162,6 +170,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Save given task's selected (given) tab
 	 *
+	 * @method	saveSelection
 	 * @param	{Number}	idTask
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
@@ -183,6 +192,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Hide all tabs of given task
 	 *
+	 * @method	hideAll
 	 * @param	{Number}	idTask
 	 */
 	hideAll: function(idTask) {
@@ -195,6 +205,7 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Set given tab of given task visible
 	 *
+	 * @method	setVisible
 	 * @param	{Number}	idTask
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
@@ -207,8 +218,9 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Get tabs container element of given task
 	 *
+	 * @method	getContainer
 	 * @param	{Number}	idTask
-	 * 	@return	Element
+	 * @return	{Element}
 	 */
 	getContainer: function(idTask) {
 		return $('task-' + idTask + '-tabcontainer');
@@ -219,9 +231,10 @@ Todoyu.Ext.project.Task.Tab = {
 	/**
 	 * Get tab head ID of given tab of given task
 	 *
+	 * @method	getHeadID
 	 * @param	{Number}	idTask
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
-	 * 	@return	String
+	 * @return	{String}
 	 */
 	getHeadID: function(idTask, tabKey) {
 		return 'task-' + idTask + '-tabhead-' + tabKey;
@@ -233,7 +246,7 @@ Todoyu.Ext.project.Task.Tab = {
 	 * Extract tabKey (e.g 'timetracking' / 'comment' / 'assets') out of item ID
 	 *
 	 * @param	{Number}	idItem
-	 * 	@return	String
+	 * @return	{String}
 	 */
 	getKeyFromID: function(idItem) {
 		return idItem.split('-').last();
