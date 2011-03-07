@@ -114,9 +114,9 @@
 				<field type="textAC" name="id_parenttask">
 					<label>project.task.attr.id_parenttask</label>
 					<config>
-						<acName>projecttask</acName>
 						<acLabel>TodoyuProjectTaskManager::getAutocompleteLabel</acLabel>
 						<options>
+							<acName>projecttask</acName>
 							<onComplete>Todoyu.Ext.project.Task.Edit.onParenttaskAutocomplete</onComplete>
 						</options>
 					</config>

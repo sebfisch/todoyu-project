@@ -90,9 +90,9 @@
 							</restrict>
 							<label>project.ext.attr.company</label>
 							<config>
-								<acName>company</acName>
 								<acLabel>TodoyuContactCompanyManager::getLabel</acLabel>
 								<options>
+									<acName>company</acName>
 									<onComplete>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onComplete>
 								</options>
 							</config>

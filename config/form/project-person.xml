@@ -10,9 +10,9 @@
 				<field type="textAC" name="id">
 					<label>contact.ext.person</label>
 					<config>
-						<acName>projectperson</acName>
 						<acLabel>TodoyuContactPersonManager::getLabel</acLabel>
 						<options>
+							<acName>projectperson</acName>
 							<onComplete>Todoyu.Ext.project.Project.Edit.onPersonAutocomplete</onComplete>
 						</options>
 					</config>

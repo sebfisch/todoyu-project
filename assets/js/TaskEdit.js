@@ -210,22 +210,6 @@ Todoyu.Ext.project.Task.Edit = {
 
 
 	/**
-	 * Handler when project field is autocompleted
-	 *
-	 * @method	onProjectAutocomplete
-	 * @param	{Ajax.Response}			response
-	 * @param	{Todoyu.Autocompleter}	autocompleter
-	 */
-	onProjectAutocomplete: function(response, autocompleter) {
-		if( response.isEmptyAcResult() ) {
-			Todoyu.notifyInfo('[LLL:project.task.ac.project.notFoundInfo]');
-			return false;
-		}
-	},
-
-
-
-	/**
 	 * Project suggestion selected: update form (fields presets)
 	 *
 	 * @method	onPersonAcSelected

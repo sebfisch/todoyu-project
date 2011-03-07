@@ -9,11 +9,10 @@
 				<field type="textAC" name="id_project_ac">
 					<label>project.ext.project</label>
 					<config>
-						<acName>taskaddableproject</acName>
 						<acLabel>TodoyuProjectProjectViewHelper::getQuicktaskAutocompleteLabel</acLabel>
 						<options>
-							<onCompleteCustom>Todoyu.Ext.project.Task.Edit.onProjectAutocomplete</onCompleteCustom>
-							<onSelectCustom>Todoyu.Ext.project.Task.Edit.onProjectAcSelected</onSelectCustom>
+							<acName>taskaddableproject</acName>
+							<onSelected>Todoyu.Ext.project.Task.Edit.onProjectAcSelected</onSelected>
 						</options>
 					</config>
 					<required />
