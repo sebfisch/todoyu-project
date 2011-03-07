@@ -45,7 +45,7 @@ Todoyu.Ext.project.QuickTask = {
 			'onComplete':	this.onPopupLoaded.bind(this)
 		};
 
-		Todoyu.Popup.openWindow(this.popupID, '[LLL:project.headlet-quicktask.title]', 520, url, options);
+		Todoyu.Popups.open(this.popupID, '[LLL:project.headlet-quicktask.title]', 520, url, options);
 	},
 
 
@@ -56,7 +56,7 @@ Todoyu.Ext.project.QuickTask = {
 	 * @method	closePopup
 	 */
 	closePopup: function() {
-		Todoyu.Popup.close(this.popupID);
+		Todoyu.Popups.close(this.popupID);
 	},
 
 

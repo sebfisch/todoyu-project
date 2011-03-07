@@ -1478,7 +1478,7 @@ class TodoyuProjectProjectManager {
 		$form->setAttribute('action', '?ext=project&amp;controller=quickcreateproject');
 		$form->setAttribute('onsubmit', 'return false');
 		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateProject.save(this.form)');
-		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
+		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popups.close(\'quickcreate\')');
 
 		return $form;
 	}

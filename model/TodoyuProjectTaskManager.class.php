@@ -74,7 +74,7 @@ class TodoyuProjectTaskManager {
 			// Change form action and button functions
 		$form->setAttribute('action', '?ext=project&amp;controller=quickcreatetask');
 		$form->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateTask.save(this.form)');
-		$form->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
+		$form->getField('cancel')->setAttribute('onclick', 'Todoyu.Popups.close(\'quickcreate\')');
 
 			// Load task default data
 		$formData	= self::getTaskDefaultData(0, $idProject);

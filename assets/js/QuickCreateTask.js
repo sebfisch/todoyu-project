@@ -111,7 +111,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 				}
 			}
 
-			Todoyu.Popup.close('quickcreate');
+			Todoyu.Popups.close('quickcreate');
 			Todoyu.notifySuccess('[LLL:project.task.save.success]');
 		}
 	}
