@@ -235,7 +235,7 @@ Todoyu.Ext.project.Task.Edit = {
 	 * Event handler when project has been selected in select (dropdown) of quicktask / task creation popup form
 	 *
 	 * @method	onProjectSelectSelected
-	 * @param inputField
+	 * @param	{Element}	inputField
 	 */
 	onProjectSelectSelected: function(inputField) {
 		this.onProjectAcSelected(inputField, inputField.id, $F(inputField), '', '');

@@ -38,9 +38,9 @@ class TodoyuProjectTasktreeActionController extends TodoyuActionController {
 
 
 	/**
-	 * Update tasktree in project view
+	 * Update task tree in project view
 	 *
-	 * @param 	Array		$params
+	 * @param	Array		$params
 	 * @return	String
 	 */
 	public function updateAction(array $params) {

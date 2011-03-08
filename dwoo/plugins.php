@@ -34,8 +34,8 @@
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param 	Dwoo 		$dwoo
- * @param 	String		$extension
+ * @param	Dwoo 		$dwoo
+ * @param	String		$extension
  * @param	String		$action
  * @param	String		$params
  * @return	String

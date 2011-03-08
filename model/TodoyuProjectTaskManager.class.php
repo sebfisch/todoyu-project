@@ -2104,8 +2104,8 @@ class TodoyuProjectTaskManager {
 	/**
 	 * Clone given task
 	 *
-	 * @param 	Integer		$idTask
-	 * @param 	Boolean		$withSubTasks
+	 * @param	Integer		$idTask
+	 * @param	Boolean		$withSubTasks
 	 * @return	Integer
 	 */
 	public static function cloneTask($idTask, $withSubTasks = true) {

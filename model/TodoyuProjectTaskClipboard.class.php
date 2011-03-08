@@ -30,7 +30,7 @@ class TodoyuProjectTaskClipboard {
 	 * Add a task to clipboard
 	 *
 	 * @param	Integer		$idTask				Task to hold on clipboard
-	 * @param 	String		$mode				Clipboard mode
+	 * @param	String		$mode				Clipboard mode
 	 * @param	Boolean		$withSubtasks		Copy sub tasks
 	 */
 	public static function addTask($idTask, $mode = 'copy', $withSubtasks = true) {

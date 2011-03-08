@@ -195,7 +195,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 *
 	 * @method	insertTabContent
 	 * @param	{Number}	idProject
-	 * @param 	{String}	tabContent
+	 * @param	{String}	tabContent
 	 */
 	insertTabContent: function(idProject, tabContent) {
 		$('projects').insert(tabContent);

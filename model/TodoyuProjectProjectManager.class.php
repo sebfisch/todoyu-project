@@ -678,8 +678,8 @@ class TodoyuProjectProjectManager {
 	/**
 	 * Get attributes array for a project preset data list
 	 *
-	 * @param       Integer         $idProject
-	 * @return      Array
+	 * @param	Integer		$idProject
+	 * @return	Array
 	 */
 	public static function getProjectPresetDataAttributes($idProject) {
 		$idProject	= intval($idProject);

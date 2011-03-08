@@ -100,7 +100,7 @@ class TodoyuProjectProjectViewHelper {
 	/**
 	 * Get project status options. Only allowed "changeto" statuses and currently set one are available
 	 *
-	 * @param TodoyuFormElement	$field
+	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
 	public static function getProjectStatusOptions(TodoyuFormElement $field) {
