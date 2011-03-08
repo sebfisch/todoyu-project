@@ -73,7 +73,7 @@ Todoyu.Ext.project.Sysmanager = {
 	onChangeTaskpresetPersonAssigned: function(field) {
 		var idAssignedRoleField	= field.id.replace('id-person-assigned', 'person-assigned-role');
 		var idSelectedPerson	= $F(field.id);
-		
+
 		this.onChangePersonVersusRoleOption(idAssignedRoleField, idSelectedPerson);
 	},
 

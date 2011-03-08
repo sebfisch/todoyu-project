@@ -321,7 +321,7 @@ class TodoyuProjectTaskRights {
 				return allowed('project', 'task:seeAll');
 			}
 		}
-		
+
 		return true;
 	}
 
