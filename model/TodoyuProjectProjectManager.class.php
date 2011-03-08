@@ -1001,7 +1001,6 @@ class TodoyuProjectProjectManager {
 			$where .= ' AND pe.active = 1';
 		}
 
-
 		$persons= Todoyu::db()->getArray($fields, $table, $where, $group, $order);
 
 			// Get company information

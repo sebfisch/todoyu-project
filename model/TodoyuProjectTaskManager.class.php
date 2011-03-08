@@ -481,7 +481,6 @@ class TodoyuProjectTaskManager {
 			$allowed['actions']['submenu']['delete'] = $ownItems['actions']['submenu']['delete'];
 		}
 
-
 			// Add... (with sub menu: container,task)
 		$allowed['add'] = $ownItems['add'];
 		unset($allowed['add']['submenu']);

@@ -71,7 +71,6 @@ class TodoyuProjectTaskRights {
 			}
 		}
 
-
 		if( $task->isContainer() ) {
 				// Check if person can edit his own containers
 			if( $task->isCurrentPersonCreator() && ! allowed('project', 'container:editOwnContainers') ) {

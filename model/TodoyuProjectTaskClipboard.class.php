@@ -187,7 +187,6 @@ class TodoyuProjectTaskClipboard {
 			$idNewTask = TodoyuProjectTaskManager::moveTask($dataClipboard['task'], $idParentTask, $workingTask['id_project']);
 		}
 
-
 			// Clear clipboard
 		self::clear();
 
