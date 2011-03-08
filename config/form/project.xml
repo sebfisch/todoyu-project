@@ -22,7 +22,7 @@
 						<field type="text" name="title">
 							<label>core.global.title</label>
 							<validate>
-								<isNotEmpty msg="LLL:project.ext.form.validation.title"/>
+								<isNotEmpty msg="project.ext.form.validation.title"/>
 							</validate>
 							<required/>
 						</field>

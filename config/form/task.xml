@@ -19,7 +19,7 @@
 				<field type="text" name="title">
 					<label>core.global.title</label>
 					<validate>
-						<isNotEmpty msg="task.error.title" />
+						<isNotEmpty msg="project.task.error.title" />
 					</validate>
 					<required />
 				</field>
@@ -140,7 +140,7 @@
 				<field type="duration" name="estimated_workload">
 					<label>project.task.attr.estimated_workload</label>
 					<validate>
-						<isNotZerotime msg="LLL:project.task.attr.estimated_workload.error"/>
+						<isNotZerotime msg="LLL:project.task.attr.is_estimatedworkload_public.error"/>
 					</validate>
 					<restrict>
 						<allow ext="project" right="task:editEstimatedWorkload" />
