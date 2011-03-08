@@ -90,11 +90,7 @@ abstract class TodoyuProjectPanelWidgetStatusFilter extends TodoyuPanelWidget {
 			'selected'	=> $this->getSelectedStatuses()
 		);
 
-		$content	= render($this->tmpl, $data);
-
-		$this->setContent($content);
-
-		return $content;
+		return render($this->tmpl, $data);
 	}
 
 
@@ -105,19 +101,6 @@ abstract class TodoyuProjectPanelWidgetStatusFilter extends TodoyuPanelWidget {
 	 * @return	Array
 	 */
 	abstract protected function getStatusesInfos();
-
-
-
-	/**
-	 * Render full panel widget
-	 *
-	 * @return	String
-	 */
-	public function render() {
-		$this->renderContent();
-
-		return parent::render();
-	}
 
 
 

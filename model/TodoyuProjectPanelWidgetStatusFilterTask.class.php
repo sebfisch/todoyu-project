@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-class TodoyuProjectPanelWidgetStatusFilterTask extends TodoyuProjectPanelWidgetStatusFilter implements TodoyuPanelWidgetIf {
+class TodoyuProjectPanelWidgetStatusFilterTask extends TodoyuProjectPanelWidgetStatusFilter {
 
 	/**
 	 * Initialize panel widget status filter

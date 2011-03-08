@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
+class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidget {
 
 	/**
 	 * Initialize project list PanelWidget
@@ -178,24 +178,7 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidget implements T
 			'list'		=> $list
 		);
 
-		$content = render($tmpl, $data);
-
-		$this->setContent($content);
-
-		return $content;
-	}
-
-
-
-	/**
-	 * Render the whole panel widget
-	 *
-	 * @return	String
-	 */
-	public function render() {
-		$this->renderContent();
-
-		return parent::render();
+		return render($tmpl, $data);
 	}
 
 
