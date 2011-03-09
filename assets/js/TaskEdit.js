@@ -20,11 +20,14 @@
 Todoyu.Ext.project.Task.Edit = {
 
 	/**
- 	 *	Ext shortcut
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
- 	 */
+	 * @property	ext
+	 * @type		Object
+	 */
 	ext:	Todoyu.Ext.project,
+
+
 
 	/**
 	 * Create DIVs (details, data) wrapping form (inside header) of given task and have task details be displayed. Div positions: Data before, details after header of given task.

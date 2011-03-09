@@ -20,14 +20,23 @@
 Todoyu.Ext.project.PanelWidget.ProjectList = {
 
 	/**
-	 * Extension backlink
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext: Todoyu.Ext.project,
 
+	/**
+	 * @property	fulltextTimeout
+	 * @type		Object
+	 */
 	fulltextTimeout: null,
 
+	/**
+	 * @property	filters
+	 * @type		Object
+	 */
 	filters: {},
 
 

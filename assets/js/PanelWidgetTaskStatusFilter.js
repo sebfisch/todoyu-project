@@ -23,16 +23,18 @@
 Todoyu.Ext.project.PanelWidget.TaskStatusFilter = Class.create(Todoyu.PanelWidgetStatusSelector, {
 
 	/**
-	 * Reference to extension JS
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext:	Todoyu.Ext.project,
 
-
-
 	/**
 	 * PanelWidget ID
+	 *
+	 * @property	key
+	 * @type		String
 	 */
 	key:	'taskstatusfilter',
 

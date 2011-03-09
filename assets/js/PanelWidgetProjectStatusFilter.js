@@ -23,15 +23,19 @@
 Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = Class.create(Todoyu.PanelWidgetStatusSelector, {
 
 	/**
-	 * Reference to extension namespace
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext:	Todoyu.Ext.project,
 
 
 	/**
 	 * PanelWidget ID
+	 *
+	 * @property	key
+	 * @type		String
 	 */
 	key:	'projectstatusfilter',
 

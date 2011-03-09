@@ -20,16 +20,35 @@
 Todoyu.Ext.project.TaskParentAC = {
 
 	/**
-	 * Extension backlink
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext: Todoyu.Ext.project,
 
+	/**
+	 * @property	field
+	 * @type		Element
+	 */
 	field:			null,
+
+	/**
+	 * @property	url
+	 * @type		String
+	 */
 	url:			null,
+
+	/**
+	 * @property	acContainer
+	 * @type		Element
+	 */
 	acContainer:	null,
 
+	/**
+	 * @property	acOptions
+	 * @type		Object
+	 */
 	acOptions: {
 		'paramName': 'query'
 	},

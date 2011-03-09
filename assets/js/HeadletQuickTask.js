@@ -20,9 +20,10 @@
 Todoyu.Ext.project.Headlet.QuickTask = Class.create(Todoyu.Headlet, {
 
 	/**
-	 * Ext shortcut
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext:	Todoyu.Ext.project,
 

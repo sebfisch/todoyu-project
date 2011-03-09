@@ -23,8 +23,16 @@
 
 Todoyu.Ext.project = {
 
+	/**
+	 * @property	PanelWidget
+	 * @type		Object
+	 */
 	PanelWidget: {},
 
+	/**
+	 * @property	Headlet
+	 * @type		Object
+	 */
 	Headlet: {},
 
 

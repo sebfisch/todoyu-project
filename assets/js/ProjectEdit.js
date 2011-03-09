@@ -20,9 +20,10 @@
 Todoyu.Ext.project.Project.Edit = {
 
 	/**
-	 * Extension backlink
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext: Todoyu.Ext.project,
 
