@@ -59,15 +59,10 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * Hooked into projectlist panelwidget: handle project click event
 	 *
 	 * @method	onPanelwidgetProjectlistProjectClick
-	 * @param	{Event}		event
+	 * @param	{Number}		idProject
 	 */
-	onPanelwidgetProjectlistProjectClick: function(event) {
-		var listElement = event.findElement('li');
-
-		if( Object.isElement(listElement) ) {
-			var idProject = listElement.id.split('-').last();
-			this.openProject(idProject);
-		}
+	onPanelwidgetProjectlistProjectClick: function(idProject) {
+		this.openProject(idProject);
 	},
 
 

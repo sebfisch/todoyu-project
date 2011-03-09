@@ -44,11 +44,10 @@ class TodoyuProjectPanelwidgetProjectlistActionController extends TodoyuActionCo
 	 * @return	String
 	 */
 	public function listAction(array $params) {
-		$filters	= json_decode($params['filters'], true);
-
+		$search	= trim($params['search']);
 		$widget	= TodoyuPanelWidgetManager::getPanelWidget('project', 'ProjectList');
 
-		$widget->saveFilters($filters);
+		$widget->saveSearchText($search);
 
 		return $widget->renderList();
 	}

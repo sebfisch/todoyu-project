@@ -50,9 +50,6 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = Class.create(Todoyu.PanelWi
 	 */
 	initialize: function($super, selectedStatusIDs) {
 		$super('panelwidget-projectstatusfilter-list');
-
-			// Inject the current filter status into the project list widget
-		this.ext.PanelWidget.ProjectList.applyFilter('status', selectedStatusIDs.join(','), false);
 	},
 
 
@@ -63,7 +60,7 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = Class.create(Todoyu.PanelWi
 	 * @param	{Event}		event
 	 */
 	onChange: function(event) {
-		this.fireUpdate(this.key);
+//		this.fireUpdate(this.key);
 		this.savePreference();
 
 		return true;
@@ -80,7 +77,11 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = Class.create(Todoyu.PanelWi
 		var pref	= this.getSelectedStatuses().join(',');
 		var action	= 'panelwidget' + this.key;
 
-		Todoyu.Pref.save('project', action, pref);
+		Todoyu.Pref.save('project', action, pref, 0, this.onSaved.bind(this));
+	},
+
+	onSaved: function() {
+		Todoyu.Hook.exec('project.projectstatus.changed', this.getSelectedStatuses());
 	}
 
 });

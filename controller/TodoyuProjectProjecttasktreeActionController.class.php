@@ -81,7 +81,7 @@ class TodoyuProjectProjecttasktreeActionController extends TodoyuActionControlle
 		$openProjectIDs	= TodoyuArray::intExplode(',', $params['projects'], true, true);
 
 		foreach($openProjectIDs as $idProject) {
-			TodoyuProjectRights::restrictSee($idProject);
+			TodoyuProjectProjectRights::restrictSee($idProject);
 		}
 
 		TodoyuProjectPreferences::saveOpenProjectTabs($openProjectIDs);

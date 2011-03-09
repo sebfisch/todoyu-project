@@ -17,47 +17,25 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-Todoyu.Ext.project.PanelWidget.ProjectList = {
+/**
+ * Project list search widget
+ */
+Todoyu.Ext.project.PanelWidget.ProjectList = Class.create(Todoyu.PanelWidgetSearchList, {
 
 	/**
-	 * Reference to extension
+	 * Initialize with search word
 	 *
-	 * @property	ext
-	 * @type		Object
+	 * @param	{Todoyu.PanelWidgetSearchList.initialize}	$super
+	 * @param	{String}	search
 	 */
-	ext: Todoyu.Ext.project,
-
-	/**
-	 * @property	fulltextTimeout
-	 * @type		Object
-	 */
-	fulltextTimeout: null,
-
-	/**
-	 * @property	filters
-	 * @type		Object
-	 */
-	filters: {},
-
-
-
-	/**
-	 * Initialize panelWidget
-	 *
-	 * @method	init
-	 * @param	{Object}		filters		Filter hash. Because of JSON, an (empty) array means no data
-	 */
-	init: function(filters) {
-			// If filters are given as parameters, add them to internal storage
-		if( typeof(filters) === 'object' && ! Object.isArray(filters) ) {
-			$H(filters).each(function(pair){
-				this.applyFilter(pair.key, pair.value, false);
-			}, this);
-		}
-
-		this.observeFulltext();
-		this.observeProjects();
-		this.observeStatusSelector();
+	initialize: function($super, search) {
+		$super({
+			id:			'projectlist',
+			search:		search,
+			ext:		'project',
+			controller:	'panelwidgetprojectlist',
+			action:		'list'
+		});
 
 		this.addHooks();
 	},
@@ -76,177 +54,31 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 		Todoyu.Hook.add('project.project.created', this.onProjectCreated.bind(this));
 			// Add delete
 		Todoyu.Hook.add('project.project.removed', this.onProjectDeleted.bind(this));
+			// Add status filter
+		Todoyu.Hook.add('project.projectstatus.changed', this.onStatusFilterChanged.bind(this));
 	},
 
 
 
 	/**
-	 * Install keyup event observer on full-text search input field
+	 * Handler when clicked on item
 	 *
-	 * @method	observeFulltext
-	 */
-	observeFulltext: function() {
-		$('panelwidget-projectlist-field-fulltext').observe('keyup', this.onFulltextKeyup.bindAsEventListener(this));
-	},
-
-
-
-	/**
-	 * Install click event observer on items of projects list
-	 *
-	 * @method	observeProjects
-	 */
-	observeProjects: function() {
-		$('panelwidget-projectlist-list').observe('click', this.onProjectClick.bindAsEventListener(this));
-	},
-
-
-
-	/**
-	 * Install status selection observer
-	 *
-	 * @method	observeStatusSelector
-	 */
-	observeStatusSelector: function() {
-		Todoyu.PanelWidget.observe('projectstatusfilter', this.onStatusFilterUpdate.bind(this));
-	},
-
-
-
-	/**
-	 * Handler for keyup events of full-text search input field
-	 *
-	 * @method	onFulltextKeyup
 	 * @param	{Event}		event
+	 * @param	{Element}	item
 	 */
-	onFulltextKeyup: function(event) {
-		this.clearTimeout();
-		this.applyFilter('fulltext', this.getFulltext());
+	onItemClick: function(event, item) {
+		var idProject	= item.id.split('-').last();
 
-		this.startTimeout();
+		Todoyu.Hook.exec('panelwidget.projectlist.onProjectClick', idProject);
 	},
 
 
 
 	/**
-	 * Click event handler for project
-	 *
-	 * @method	onProjectClick
-	 * @param	{Event}		event
+	 * Handler when list was updated
 	 */
-	onProjectClick: function(event) {
-		Todoyu.Hook.exec('panelwidget.projectlist.onProjectClick', event);
-	},
-
-
-
-	/**
-	 * Update handler for status filter
-	 *
-	 * @method	onStatusFilterUpdate
-	 * @param	{String}	widgetKey
-	 * @param	{Array}	statuses
-	 */
-	onStatusFilterUpdate: function(widgetKey, statuses) {
-		this.applyFilter('status', statuses, true);
-	},
-
-
-
-	/**
-	 * Clear (full-text) timeout
-	 *
-	 * @method	clearTimeout
-	 */
-	clearTimeout: function() {
-		clearTimeout(this.fulltextTimeout);
-	},
-
-
-
-	/**
-	 * Install full-text timeout
-	 *
-	 * @method	startTimeout
-	 */
-	startTimeout: function() {
-		this.fulltextTimeout = this.update.bind(this).delay(0.3);
-	},
-
-
-
-	/**
-	 * Get full-text input field value
-	 *
-	 * @method	getFulltext
-	 */
-	getFulltext: function() {
-		return $F('panelwidget-projectlist-field-fulltext');
-	},
-
-
-
-	/**
-	 * Apply filter to project list panelwidget
-	 *
-	 * @method	applyFilter
-	 * @param	{String}		name
-	 * @param	{String}		value
-	 * @param	{Boolean}		update
-	 */
-	applyFilter: function(name, value, update) {
-		this.filters[name] = value;
-
-		if( update === true ) {
-			this.clearTimeout();
-			this.update();
-		}
-	},
-
-
-
-	/**
-	 * Refresh project list panelWidget
-	 *
-	 * @method	update
-	 */
-	update: function() {
-		var url		= Todoyu.getUrl('project', 'panelwidgetprojectlist');
-		var options	= {
-			'parameters': {
-				'action':	'list',
-				'filters':	Object.toJSON(this.filters)
-			},
-			'onComplete':	this.onUpdated.bind(this)
-		};
-		var target	= 'panelwidget-projectlist-list';
-
-		Todoyu.Ui.replace(target, url, options);
-	},
-
-
-
-	/**
-	 * Handler to be evoked after refresh of project list panelWidget
-	 *
-	 * @method	onUpdated
-	 * @param	{Ajax.Response}  response
-	 */
-	onUpdated: function(response) {
-		this.observeProjects();
-	},
-
-
-
-	/**
-	 * Check whether given project is listed in panelWidget's project list
-	 *
-	 * @method	isProjectListed
-	 * @param	{Number}		idProject
-	 * @return  {Boolean}
-	 */
-	isProjectListed: function(idProject) {
-		return Todoyu.exists('panelwidget-projectlist-project-' + idProject);
+	onUpdated: function() {
+		Todoyu.Hook.exec('project.projectlist.updated');
 	},
 
 
@@ -283,6 +115,17 @@ Todoyu.Ext.project.PanelWidget.ProjectList = {
 	 */
 	onProjectDeleted: function(idProject) {
 		this.update();
+	},
+
+
+
+	/**
+	 * Hook when status filter selection has changed
+	 *
+	 * @param	{Array}		statues
+	 */
+	onStatusFilterChanged: function(statues) {
+		this.update();
 	}
 
-};
+});

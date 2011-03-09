@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidget {
+class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidgetSearchList {
 
 	/**
 	 * Initialize project list PanelWidget
@@ -48,10 +48,25 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidget {
 
 		$this->addHasIconClass();
 
-		$filterJSON	= json_encode(self::getFilters());
+		$this->setJsObject('Todoyu.Ext.project.PanelWidget.ProjectList');
+	}
 
-			// Init widget JS (observers)
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.PanelWidget.ProjectList.init.bind(Todoyu.Ext.project.PanelWidget.ProjectList, ' . $filterJSON . ')', 100);
+
+	protected function getItems() {
+		$projects	= $this->getListedProjectsData();
+		$items		= array();
+
+		foreach($projects as $project) {
+			$companyShort	= $project['companyShort'] ? $project['companyShort'] : TodoyuString::crop($project['company'], 40, '', false);
+			$items[] = array(
+				'id'	=> $project['id'],
+				'label'	=> $companyShort . ' - ' . $project['title'],
+				'title'	=> $project['company'] . ' - ' . $project['title'] . ' (ID: ' . $project['id'] . ')',
+				'class'	=> 'bcStatus' . $project['status']
+			);
+		}
+
+		return $items;
 	}
 
 
@@ -62,14 +77,28 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidget {
 	 * @return	Array
 	 */
 	private function getProjectIDs() {
-		$filters	= self::getFilters();
+		$filters	= $this->getProjectFilters();		
 		$filter		= new TodoyuProjectProjectFilter($filters);
 		$limit		= intval(Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectList']['maxProjects']);
 
 			// Get matching project IDs
-		$projectIDs	= $filter->getProjectIDs('', $limit);
+		return $filter->getProjectIDs('', $limit);
+	}
 
-		return $projectIDs;
+
+	private function getProjectFilters() {
+		$statusWidget	= TodoyuPanelWidgetManager::getPanelWidget('project', 'StatusFilterProject');
+
+		return array(
+			array(
+				'filter'	=> 'fulltext',
+				'value'		=> $this->getSearchText()
+			),
+			array(
+				'filter'	=> 'status',
+				'value'		=> $statusWidget->getSelectedStatuses()
+			)
+		);
 	}
 
 
@@ -79,7 +108,7 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidget {
 	 *
 	 * @return	Array
 	 */
-	private function getListedProjects() {
+	private function getListedProjectsData() {
 		$projectIDs	= $this->getProjectIDs();
 
 		if( sizeof($projectIDs) > 0 ) {
@@ -101,124 +130,6 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidget {
 		}
 
 		return $projects;
-	}
-
-
-
-	/**
-	 * Get value of the full-text filter
-	 *
-	 * @return	String
-	 */
-	public static function getSearchText() {
-		$filters	= self::getFilters();
-		$fulltext	= '';
-
-		foreach($filters as $filter) {
-			if( $filter['filter'] === 'fulltext' ) {
-				$fulltext = $filter['value'];
-			}
-		}
-
-		return $fulltext;
-	}
-
-
-
-	/**
-	 * Render filter form
-	 *
-	 * @return	String
-	 */
-	public static function renderFilter() {
-		$xmlPath= 'ext/project/config/form/panelwidget-projectlist.xml';
-		$form	= TodoyuFormManager::getForm($xmlPath);
-		$data	= array(
-			'fulltext'	=> self::getSearchText()
-		);
-
-		$form->setFormData($data);
-		$form->setUseRecordID(false);
-
-		return $form->render();
-	}
-
-
-
-	/**
-	 * Render project list
-	 *
-	 * @return	String
-	 */
-	public function renderList() {
-		$tmpl	= 'ext/project/view/panelwidgets/panelwidget-projectlist-list.tmpl';
-		$data	= array(
-			'id'		=> $this->getID(),
-			'projects'	=> $this->getListedProjects()
-		);
-
-		return render($tmpl, $data);
-	}
-
-
-
-	/**
-	 * Render the panel widget content
-	 *
-	 * @return	String
-	 */
-	public function renderContent() {
-		$filter	= self::renderFilter();
-		$list	= $this->renderList();
-
-		$tmpl	= 'ext/project/view/panelwidgets/panelwidget-projectlist.tmpl';
-		$data	= array(
-			'id'		=> $this->getID(),
-			'filter'	=> $filter,
-			'list'		=> $list
-		);
-
-		return render($tmpl, $data);
-	}
-
-
-
-	/**
-	 * Get active filters
-	 *
-	 * @return	Array
-	 */
-	public static function getFilters() {
-		$filters = TodoyuProjectPreferences::getPref('panelwidget-projectlist-filter', 0, AREA);
-
-		if( $filters === false || $filters === '' ) {
-			return array();
-		} else {
-			return json_decode($filters, true);
-		}
-	}
-
-
-
-	/**
-
-	 *
-	 * @param	Array		$activeFilters
-	 * @param	Integer		$idArea
-	 */
-	public function saveFilters(array $filters) {
-		$filterConfig = array();
-
-		foreach($filters as $name => $value) {
-			$filterConfig[] = array(
-				'filter'=> $name,
-				'value'	=> $value
-			);
-		}
-
-		$filterPref	= json_encode($filterConfig);
-
-		TodoyuProjectPreferences::savePref('panelwidget-projectlist-filter', $filterPref, 0, true, AREA);
 	}
 
 

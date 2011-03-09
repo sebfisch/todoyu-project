@@ -97,5 +97,5 @@ Project Extension - JavaScript Hooks
 3.1.	Panelwidget ProjectList
 
 	panelwidget.projectlist.onProjectClick
-	@param	{Object} 		event
+	@param	{Integer} 		idProject
 	Evoked after project in projects list has been clicked.

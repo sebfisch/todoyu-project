@@ -35,10 +35,8 @@ Todoyu.Ext.project.Portal = {
 	 * @method	init
 	 */
 	init: function() {
-		if( Todoyu.getArea() === 'portal' ) {
-			Todoyu.Hook.add('project.project.created', this.onProjectCreate.bind(this));
-			Todoyu.Hook.add('project.project.saved', this.onProjectSaved.bind(this));
-		}
+		Todoyu.Hook.add('project.project.created', this.onProjectCreate.bind(this));
+		Todoyu.Hook.add('project.project.saved', this.onProjectSaved.bind(this));
 	},
 
 
@@ -70,7 +68,7 @@ Todoyu.Ext.project.Portal = {
 	 * Check whether selection tab is active and project list exists in DOM
 	 *
 	 * @method	isProjectListingActive
-	 * @return	{Boolean} 
+	 * @return	{Boolean}
 	 */
 	isProjectListingActive: function() {
 		if( Todoyu.Ext.portal.Tab.getActiveTab() === 'selection' ) {

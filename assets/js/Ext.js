@@ -45,7 +45,9 @@ Todoyu.Ext.project = {
 	init: function() {
 		this.registerHooks();
 
-		this.Portal.init();
+		if( Todoyu.getArea() === 'portal' ) {
+			this.Portal.init();
+		}
 	},
 
 

@@ -23,12 +23,12 @@
  */
 
 	// PanelWidget Projectlist
-TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuProjectPanelWidgetProjectList', 20);
+TodoyuPanelWidgetManager::addPanelWidget('project', 'project', 'ProjectList', 20);
 
 	// PanelWidget Status Filter for Projects
-TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuProjectPanelWidgetStatusFilterProject', 21);
+TodoyuPanelWidgetManager::addPanelWidget('project', 'project', 'StatusFilterProject', 21);
 
 	// PanelWidget Status Filter for Tasks
-TodoyuPanelWidgetManager::addDefaultPanelWidget('project', 'TodoyuProjectPanelWidgetStatusFilterTask', 30);
+TodoyuPanelWidgetManager::addPanelWidget('project', 'project', 'StatusFilterTask', 30);
 
 ?>
