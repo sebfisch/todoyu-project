@@ -52,7 +52,7 @@ abstract class TodoyuProjectPanelWidgetStatusFilter extends TodoyuPanelWidget {
 	 * @param	Array		$params		Custom parameters for current page request
 	 * @param	Integer		$idArea		Area ID
 	 */
-	public function __construct($ext, $id, $title, array $config, array $params = array(), $idArea = 0) {
+	public function __construct($ext, $id, $title, array $config, array $params = array()) {
 			// Construct panelWidget (init basic configuration)
 		parent::__construct(
 			$ext,			// ext key
