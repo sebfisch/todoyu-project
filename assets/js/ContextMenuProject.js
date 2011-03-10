@@ -18,10 +18,12 @@
 *****************************************************************************/
 
 /**
- * Context menu for tasks
- *
-*/
+ * @module	Project
+ */
 
+/**
+ * Context menu for tasks
+*/
 Todoyu.Ext.project.ContextMenuProject = {
 
 	/**

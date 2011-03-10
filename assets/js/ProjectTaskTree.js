@@ -18,8 +18,11 @@
 *****************************************************************************/
 
 /**
- * Handle project task tree in project module
- * Manage tabs
+ * @module	Project
+ */
+
+/**
+ * Handle project task tree in project module and manage tabs
  */
 Todoyu.Ext.project.ProjectTaskTree = {
 

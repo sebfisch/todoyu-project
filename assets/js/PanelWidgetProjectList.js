@@ -18,6 +18,10 @@
 *****************************************************************************/
 
 /**
+ * @module	Project
+ */
+
+/**
  * Project list search widget
  */
 Todoyu.Ext.project.PanelWidget.ProjectList = Class.create(Todoyu.PanelWidgetSearchList, {

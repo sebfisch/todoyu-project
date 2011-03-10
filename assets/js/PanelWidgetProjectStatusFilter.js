@@ -18,6 +18,10 @@
 *****************************************************************************/
 
 /**
+ * @module	Project
+ */
+
+/**
  *	Panel widget: StatusFilter JS
  */
 Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = Class.create(Todoyu.PanelWidgetStatusSelector, {

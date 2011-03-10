@@ -18,9 +18,15 @@
 *****************************************************************************/
 
 /**
- *	Ext: project
+ * @module	Project
  */
 
+/**
+ * Main project object
+ *
+ * @class		project
+ * @namespace	Todoyu.Ext
+ */
 Todoyu.Ext.project = {
 
 	/**

@@ -18,7 +18,10 @@
 *****************************************************************************/
 
 /**
- * Extension: Project
+ * @module	Project
+ */
+
+/**
  * Functions to handle projects
  */
 Todoyu.Ext.project.Project = {
