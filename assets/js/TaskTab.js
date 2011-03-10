@@ -89,6 +89,7 @@ Todoyu.Ext.project.Task.Tab = {
 	},
 
 
+
 	/**
 	 * Handler when tab is loaded
 	 *

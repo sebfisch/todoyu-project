@@ -69,6 +69,10 @@ Project Extension - JavaScript Hooks
 	@param	{Number} idTask
 	Evoked after task has been deleted.
 
+	project.task.edit.cancelled
+	@param	{Number} idTask
+	Evoked after task edit or create has been deleted.
+
 	project.task.statusUpdated
 	@param	{Number} idTask
 	@param	{Number} status
@@ -91,6 +95,10 @@ Project Extension - JavaScript Hooks
 	@param	{Number} 		idProject
 	@param	{Ajax.Response} response
 	Evoked after quicktask has been saved and quick creation popUp closed.
+
+	project.quickTask.closePopup
+	Evoked when quicktask creation popup is being closed
+
 
 
 3.		Panelwidgets

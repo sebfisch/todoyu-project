@@ -17,6 +17,16 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * @module	Quicktask
+ */
+
+/**
+ * Quicktask
+ *
+ * @class		Quicktask
+ * @namespace	Todoyu.Ext.project
+ */
 Todoyu.Ext.project.QuickTask = {
 
 	/**
@@ -61,6 +71,7 @@ Todoyu.Ext.project.QuickTask = {
 	 * @method	closePopup
 	 */
 	closePopup: function() {
+		Todoyu.Hook.exec('project.quickTask.closePopup');
 		Todoyu.Popups.close(this.popupID);
 	},
 

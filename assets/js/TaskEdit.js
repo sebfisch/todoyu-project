@@ -17,6 +17,16 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ *	@module		project
+ */
+
+/**
+ * TaskEdit
+ *
+ * @class		Task.Edit
+ * @namespace	Todoyu.Ext.project
+ */
 Todoyu.Ext.project.Task.Edit = {
 
 	/**
@@ -192,6 +202,8 @@ Todoyu.Ext.project.Task.Edit = {
 		} else {
 			this.ext.Task.refresh(idTask);
 		}
+
+		Todoyu.Hook.exec('project.task.edit.cancelled', idTask);
 	},
 
 
