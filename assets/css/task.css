@@ -313,7 +313,10 @@
 		position:relative;
 		background:#fff;
 	}
-
+	.task .tabContent .tab {
+		padding: 5px;
+		background:#fff;
+	}
 	.task .tabContent .tabBlock .toggle {
 		display:block;
 		position:absolute;
