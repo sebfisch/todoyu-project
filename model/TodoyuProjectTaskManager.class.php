@@ -460,13 +460,11 @@ class TodoyuProjectTaskManager {
 
 			// Clipboard options
 		if( allowed('project', 'clipboard:useTaskAndContainerClipboard')) {
-				// Copy
+				// Copy & Cut
 			if( allowed('project', 'task:addInOwnProjects') ) {
+					// Copy
 				$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
-			}
-
-				// Cut
-			if( $task->isEditable() ) {
+					// Cut
 				$allowed['actions']['submenu']['cut']	= $ownItems['actions']['submenu']['cut'];
 			}
 
