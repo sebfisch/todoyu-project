@@ -91,7 +91,7 @@ class TodoyuProjectProjectSearch implements TodoyuSearchEngineIf {
 			foreach($projects as $project) {
 				if( TodoyuProjectProjectRights::isSeeAllowed($project['id']) ) {
 					$suggestions[] = array(
-						'labelTitle'=> $project['id'] . ': ' . $project['title'],
+						'labelTitle'=> /*$project['id'] . ': ' .*/ $project['title'],
 						'labelInfo'	=> $project['company'] . ' | ' . $status[$project['status']],
 						'title'		=> $project['id'] . ': ' . $project['title'],
 						'onclick'	=> 'location.href=\'?ext=project&amp;project=' . $project['id'] . '\''
