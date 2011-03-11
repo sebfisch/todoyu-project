@@ -443,13 +443,16 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	/**
 	 * Check whether a task is locked
 	 *
+	 * @param	Boolean		$checkSubtasks		Check also whether a subtask is locked (one subtask locked = task locked too)
 	 * @return	Boolean
 	 */
-	public function isLocked() {
-		if( $this->isTask() ) {
+	public function isLocked($checkSubtasks = false) {
+		if( $checkSubtasks ) {
+			return TodoyuProjectTaskManager::isLocked($this->getID()) || TodoyuProjectTaskManager::areSubtasksLocked($this->getID());
+		} elseif( $this->isTask() ) {
 			return TodoyuProjectTaskManager::isLocked($this->getID());
-		} elseif( $this->isContainer() ) {
-			return TodoyuProjectTaskManager::isContainerLocked($this->getID());
+		} elseif( $this->isContainer()  ) {
+			return TodoyuProjectTaskManager::areSubtasksLocked($this->getID());
 		} else {
 			return false;
 		}

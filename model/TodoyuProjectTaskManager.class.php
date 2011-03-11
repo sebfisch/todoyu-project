@@ -2383,12 +2383,12 @@ class TodoyuProjectTaskManager {
 	 * Check if a container is locked
 	 * A container is not locked directly, but if a subtask is locked, the container is locked too
 	 *
-	 * @param	Integer		$idContainer
+	 * @param	Integer		$idTask
 	 * @return	Boolean
 	 */
-	public static function isContainerLocked($idContainer) {
-		$idContainer	= intval($idContainer);
-		$allSubtaskIDs	= $idContainer > 0 ? self::getAllSubTaskIDs($idContainer) : array();
+	public static function areSubtasksLocked($idTask) {
+		$idTask			= intval($idTask);
+		$allSubtaskIDs	= $idTask > 0 ? self::getAllSubTaskIDs($idTask) : array();
 
 		if( sizeof($allSubtaskIDs) === 0 ) {
 			return false;
