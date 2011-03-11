@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.1.0 (requires core >= 2.1) - not released yet
+	* Changed: Removed task / project ID from quicksearch suggestions list
 	* Feature: Added task expanded style
 	* Changed: moved globally used icons (unacknowledged/acknowledged) to core
 
