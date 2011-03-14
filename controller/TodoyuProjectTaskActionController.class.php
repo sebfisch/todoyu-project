@@ -250,7 +250,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * Get task detail content
+	 * Get task/container detail content
 	 *
 	 * @param	Array		$params
 	 * @return	String
