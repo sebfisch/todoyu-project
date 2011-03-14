@@ -2,10 +2,19 @@ todoyu project extension changelog
 
 project 1.1.0 (requires core >= 2.1) - not released yet
 	* Changed: Removed task / project ID from quicksearch suggestions list
+	* Bugfix: Fixed context menu for task cutting (changed right to the same as copy)
+	* Bugfix: Locked task can only be moved in their own project, not in another project
+	* Feature: Added task asset upload to quicktask creation
+	* Feature: AC cleanup
 	* Feature: Added task expanded style
-	* Changed: moved globally used icons (unacknowledged/acknowledged) to core
+	* Bugfix: Task exports with full task number, check for parent task. Label fix
+	* Feature: Added date and status fields to container
+	* Bugfix: fixed right TodoyuProjectTaskRights::isSeeAllowed (include public flag)
+   	* Changed: moved globally used icons (unacknowledged/acknowledged) to core
 
-project 1.0.7 - released 2010-02-19
-	*
+project 1.0.8 - not released yet
+	* Bugfix: Newly created tasks that are assigned to the creator person were not set acknowledged initially
+ 	* Added changelog
+
 
 

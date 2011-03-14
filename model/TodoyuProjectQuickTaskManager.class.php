@@ -122,19 +122,19 @@ class TodoyuProjectQuickTaskManager {
 		$data['id']					= $idTask;
 		$data['status']				= $presets['status'] > 0 ? $presets['status'] : intval(Todoyu::$CONFIG['EXT']['project']['taskDefaults']['statusQuickTask']);
 
-		if( ! allowed('project', 'task:editPersonAssigned')) {
+		if( ! allowed('project', 'task:editPersonAssigned') ) {
 			$data['id_person_assigned']	= ( $presets['id_person_assigned'] > 0 ) ? intval($presets['id_person_assigned']) : TodoyuProjectProjectManager::getRolePerson($idProject, $presets['person_assigned_role']);
 		} else {
 			$data['id_person_assigned']	= TodoyuAuth::getPersonID();
 		}
 
-		if( ! allowed('project', 'task:editPersonOwner')) {
+		if( ! allowed('project', 'task:editPersonOwner') ) {
 			$data['id_person_owner']= ( $presets['id_person_owner'] > 0 ) ? intval($presets['id_person_owner']) : TodoyuProjectProjectManager::getRolePerson($idProject, $presets['person_owner_role']);
 		} else {
 			$data['id_person_owner']= TodoyuAuth::getPersonID();
 		}
 
-		$data['date_start']			= NOW;
+		$data['date_start']		= NOW;
 
 		$durationInDays			= $presets['quicktask_duration_days'] > 0 ? intval($presets['quicktask_duration_days']) : intval(Todoyu::$CONFIG['EXT']['project']['quicktask']['durationDays']);
 		$timestampDateEnd		= NOW + ($durationInDays * TodoyuTime::SECONDS_DAY);

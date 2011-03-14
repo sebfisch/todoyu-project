@@ -201,6 +201,10 @@ class TodoyuProjectTaskManager {
 			// Call hooked save data functions
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idTask);
 
+		if( $data['id_person_assigned'] == personid() ) {
+			$data['is_acknowledged']	= 1;
+		}
+
 		self::updateTask($idTask, $data);
 		self::removeTaskFromCache($idTask);
 
