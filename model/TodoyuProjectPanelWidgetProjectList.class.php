@@ -34,7 +34,7 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidgetSearchList {
 	 * @param	Integer		$idArea
 	 * @param	Boolean		$expanded
 	 */
-	public function __construct(array $config, array $params = array(), $idArea = 0) {
+	public function __construct(array $config, array $params = array()) {
 
 			// Construct PanelWidget (init basic configuration)
 		parent::__construct(
@@ -42,8 +42,7 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidgetSearchList {
 			'projectlist',							// panel widget ID
 			'LLL:project.panelwidget-projectlist.title',	// widget title text
 			$config,								// widget config array
-			$params,								// widget parameters
-			$idArea									// area ID
+			$params								// widget parameters
 		);
 
 		$this->addHasIconClass();
@@ -77,7 +76,7 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidgetSearchList {
 	 * @return	Array
 	 */
 	private function getProjectIDs() {
-		$filters	= $this->getProjectFilters();		
+		$filters	= $this->getProjectFilters();
 		$filter		= new TodoyuProjectProjectFilter($filters);
 		$limit		= intval(Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectList']['maxProjects']);
 

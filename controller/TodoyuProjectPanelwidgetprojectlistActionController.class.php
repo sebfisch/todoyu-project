@@ -45,6 +45,9 @@ class TodoyuProjectPanelwidgetProjectlistActionController extends TodoyuActionCo
 	 */
 	public function listAction(array $params) {
 		$search	= trim($params['search']);
+		/**
+		 * @var	TodoyuProjectPanelWidgetProjectList	$widget
+		 */
 		$widget	= TodoyuPanelWidgetManager::getPanelWidget('project', 'ProjectList');
 
 		$widget->saveSearchText($search);
