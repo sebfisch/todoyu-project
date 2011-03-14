@@ -13,6 +13,7 @@ project 1.1.0 (requires core >= 2.1) - not released yet
    	* Changed: moved globally used icons (unacknowledged/acknowledged) to core
 
 project 1.0.8 - not released yet
+	* Bugfix: dynamic labels in task/container were not localized to any other than default language
 	* Bugfix: Newly created tasks that are assigned to the creator person were not set acknowledged initially
  	* Added changelog
 

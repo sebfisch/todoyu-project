@@ -136,8 +136,8 @@ class TodoyuProjectTaskManager {
 		if( sizeof($parts) === 2 ) {
 			$field	= 'id';
 			$table	= self::TABLE;
-			$where	= '		id_project	= ' . $parts[0] .
-					  ' AND	tasknumber	= ' . $parts[1];
+			$where	= '		id_project	= ' . $parts[0]
+					. ' AND	tasknumber	= ' . $parts[1];
 			$limit	= 1;
 
 			$foundID= Todoyu::db()->getFieldValue($field, $table, $where, '', '', $limit);
@@ -265,8 +265,8 @@ class TodoyuProjectTaskManager {
 
 		$field	= 'MAX(sorting) as sorting';
 		$table	= self::TABLE;
-		$where	= '		id_project		= ' . $idProject
-				. ' AND	id_parenttask	= ' . $idParentTask;
+		$where	= '		id_project		= ' . $idProject .
+				  ' AND	id_parenttask	= ' . $idParentTask;
 		$group	= 'sorting';
 		$order	= 'sorting DESC';
 		$limit	= 1;
@@ -438,13 +438,9 @@ class TodoyuProjectTaskManager {
 		$task		= TodoyuProjectTaskManager::getTask($idTask);
 		$project	= $task->getProject();
 		$allowed	= array();
-		$ownItems	= array();
 
-		if( $task->isTask() ) {
-			$ownItems	= Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'];
-		} elseif( $task->isContainer() ) {
-			$ownItems	= Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Container'];
-		}
+		$taskType	= $task->isTask() ? 'Task' : 'Container';
+		$ownItems	= Todoyu::$CONFIG['EXT']['project']['ContextMenu'][$taskType];
 
 			// Add project back-link if not in project area
 		if( AREA !== EXTID_PROJECT ) {
@@ -483,7 +479,7 @@ class TodoyuProjectTaskManager {
 			$allowed['actions']['submenu']['delete'] = $ownItems['actions']['submenu']['delete'];
 		}
 
-			// Add... (with sub menu: container,task)
+			// Add... (with sub menu: container/task)
 		$allowed['add'] = $ownItems['add'];
 		unset($allowed['add']['submenu']);
 
@@ -582,8 +578,8 @@ class TodoyuProjectTaskManager {
 		if( $idTask > 0 ) {
 			$field	= 'id';
 			$table	= self::TABLE;
-			$whereF	= '		id_parenttask	IN(%s)
-						AND	deleted			= 0';
+			$whereF	= '		id_parenttask	IN(%s)'
+					. '	AND	deleted			= 0';
 
 			$where	= sprintf($whereF, $idTask);
 			$newTasks	= Todoyu::db()->getColumn($field, $table, $where);
@@ -805,8 +801,8 @@ class TodoyuProjectTaskManager {
 		$tables	= ' ext_contact_person p,
 					ext_project_task t';
 
-		$where	= '	t.id				= ' . $idTask . '
-					AND	(
+		$where	= '	t.id				= ' . $idTask
+				. '	AND	(
 							t.id_person_create	= p.id
 						OR	t.id_person_assigned= p.id
 						OR	t.id_person_owner	= p.id
@@ -2160,8 +2156,8 @@ class TodoyuProjectTaskManager {
 		}
 
 			// Limits for updating other tasks
-		$where .= ' AND sorting > ' . $min . ' AND
-						sorting < ' . $max;
+		$where .= ' AND sorting > ' . $min
+				. ' AND	sorting < ' . $max;
 
 		Todoyu::db()->doUpdate($table, $where, $update, $noQuote);
 
@@ -2212,8 +2208,8 @@ class TodoyuProjectTaskManager {
 
 		$fields	= 'id';
 		$table	= self::TABLE;
-		$where	= '	id					= ' . $idTask .
-				  ' AND (
+		$where	= '	id					= ' . $idTask
+				. ' AND (
 							 id_person_assigned	= ' . $idPerson .
 						' OR id_person_owner	= ' . $idPerson;
 
@@ -2243,9 +2239,9 @@ class TodoyuProjectTaskManager {
 		$fields	= '	t.id';
 		$table	= 	self::TABLE . ' t,
 					ext_project_mm_project_person mm';
-		$where	= '		t.id			= ' . $idTask .
-				  ' AND	t.id_project	= mm.id_project
-				  	AND	mm.id_person	= ' . $idPerson;
+		$where	= '		t.id			= ' . $idTask
+				. ' AND	t.id_project	= mm.id_project '
+				. '	AND	mm.id_person	= ' . $idPerson;
 
 		return Todoyu::db()->hasResult($fields, $table, $where);
 	}
