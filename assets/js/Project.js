@@ -153,31 +153,39 @@ Todoyu.Ext.project.Project = {
 					'parameters': {
 						'action':	'details',
 						'project':	idProject
-					},
-					'onComplete': this.onDetailsToggled.bind(this, idProject)
+					}
 				};
 				Todoyu.Ui.update(detailDiv, url, options);
 			}
+			this.setExpandedStyle(idProject, true);
 			detailDiv.show();
+			
 		} else {
+			this.setExpandedStyle(idProject, false);
 			detailDiv.hide();
 		}
-
+		
 		this.saveDetailsExpanded(idProject, detailDiv.visible());
 	},
-
-
+	
+	
 
 	/**
-	 * @method	onDetailsToggled
-	 * @todo	check: used? remove? comment
+	 * Set project style expanded/ collapsed
+	 *
+	 * @method	setExpandedStyle
+	 * @param	{Number}	idProject
+	 * @param	{Boolean}	isExpanded
 	 */
-	onDetailsToggled: function(idProject, response) {
-//		Todoyu.log('OnComplete erreicht');
-
-		Todoyu.Hook.exec('project.project.detailsToggled', idProject);
+	setExpandedStyle: function(idProject, isExpanded) {
+		var project = $('project-' + idProject);
+		
+		if( isExpanded ) {
+			project.addClassName('expanded');
+		} else {
+			project.removeClassName('expanded');
+		}
 	},
-
 
 
 	/**

@@ -1,4 +1,4 @@
-<div id="project-{$project.id}" class="project">
+<div id="project-{$project.id}" class="project{if $isExpanded} expanded{/if}">
 	<h3 id="project-{$project.id}-header" class="contextmenuproject" onclick="Todoyu.Ext.project.Project.toggleDetails({$project.id})">
 		<span class="headLabel bcStatus{$project.status}"><!-- //--></span>
 		<span class="projectName">

@@ -124,6 +124,12 @@ h1.extIconProject .title {
 	float:right;
 }
 
+.projects .project.expanded h3 {
+	background-color:#e2e2e2;
+	border-bottom:none;
+	font-weight:bold;
+}
+
 
 
 /* --------------------------------------
