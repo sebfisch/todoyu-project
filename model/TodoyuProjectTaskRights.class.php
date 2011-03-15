@@ -294,12 +294,16 @@ class TodoyuProjectTaskRights {
 	 * @return	Boolean
 	 */
 	public static function isSeeAllowed($idTask) {
+		$idTask	= intval($idTask);
+		$task	= TodoyuProjectTaskManager::getTask($idTask);
+
+		if( $task->isDeleted() ) {
+			return false;
+		}
+
 		if( TodoyuAuth::isAdmin() ) {
 			return true;
 		}
-
-		$idTask	= intval($idTask);
-		$task	= TodoyuProjectTaskManager::getTask($idTask);
 
 			// If container, check if person can see the project
 		$seeProject	= TodoyuProjectProjectRights::isSeeAllowed($task->getProjectID());
