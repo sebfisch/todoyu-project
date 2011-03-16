@@ -159,12 +159,12 @@ Todoyu.Ext.project.Project = {
 			}
 			this.setExpandedStyle(idProject, true);
 			detailDiv.show();
-			
 		} else {
 			this.setExpandedStyle(idProject, false);
 			detailDiv.hide();
 		}
 		
+		Todoyu.Hook.exec('project.project.detailsToggled', idProject);
 		this.saveDetailsExpanded(idProject, detailDiv.visible());
 	},
 	
