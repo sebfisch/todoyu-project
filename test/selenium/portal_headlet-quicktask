@@ -153,12 +153,32 @@
 	<td>New Quicktask</td>
 </tr>
 <tr>
+	<td>selectFrame</td>
+	<td>css=#quicktask-0-field-description_ifr</td>
+	<td></td>
+</tr>
+<tr>
+	<td>focus</td>
+	<td>css=#tinymce</td>
+	<td></td>
+</tr>
+<tr>
 	<td>type</td>
-	<td>css=textarea#quicktask-0-field-description.RTE</td>
+	<td>css=#tinymce</td>
 	<td>New Quicktask</td>
 </tr>
 <tr>
-	<td>clickAt</td>
+	<td>selectFrame</td>
+	<td>relative=parent</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>100</td>
+	<td></td>
+</tr>
+<tr>
+	<td>focus</td>
 	<td>css=select#quicktask-0-field-id-activity.select</td>
 	<td></td>
 </tr>
