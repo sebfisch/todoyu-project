@@ -46,7 +46,7 @@ class TodoyuProjectTaskpreset extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getTitle($parse = true) {
-		return $parse ? TodoyuString::getLabel($this->get('title')) : $this->get('title');
+		return $parse ? Label($this->get('title')) : $this->get('title');
 	}
 
 }

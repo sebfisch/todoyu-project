@@ -141,7 +141,7 @@ class TodoyuProjectProjectroleManager {
 
 		if( $parse === true ) {
 			foreach($projectroles as $index => $projectrole) {
-				$projectroles[$index]['title'] = TodoyuString::getLabel($projectrole['title']);
+				$projectroles[$index]['title'] = Label($projectrole['title']);
 			}
 		}
 
