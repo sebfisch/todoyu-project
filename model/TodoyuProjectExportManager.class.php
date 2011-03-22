@@ -77,22 +77,22 @@ class TodoyuProjectExportManager {
 	 */
 	protected static function parseDataForExport(TodoyuProjectProject $project) {
 		$exportData = array(
-			TodoyuLabelManager::getLabel('LLL:project.ext.attr.id')					=> $project->id,
-			TodoyuLabelManager::getLabel('LLL:project.task.attr.date_create')		=> TodoyuTime::format($project->date_create, 'date'),
-			TodoyuLabelManager::getLabel('LLL:core.global.date_update')				=> TodoyuTime::format($project->date_update, 'date'),
-			TodoyuLabelManager::getLabel('LLL:core.global.id_person_create')			=> TodoyuContactPersonManager::getPerson($project->id_person_create)->getFullName(),
-			TodoyuLabelManager::getLabel('LLL:project.ext.attr.date_start')			=> TodoyuTime::format($project->date_start),
-			TodoyuLabelManager::getLabel('LLL:project.ext.attr.date_end')			=> TodoyuTime::format($project->date_end),
-			TodoyuLabelManager::getLabel('LLL:project.ext.attr.date_deadline')		=> TodoyuTime::format($project->date_deadline),
-			TodoyuLabelManager::getLabel('LLL:project.ext.attr.title')				=> $project->title,
-			TodoyuLabelManager::getLabel('LLL:core.global.description')				=> TodoyuString::strictHtml2text($project->description),
-			TodoyuLabelManager::getLabel('LLL:project.ext.attr.status')				=> $project->getStatusLabel(),
-			TodoyuLabelManager::getLabel('LLL:project.ext.attr.company')			=> $project->getCompany()->getLabel(),
+			Label('project.ext.attr.id')					=> $project->id,
+			Label('project.task.attr.date_create')		=> TodoyuTime::format($project->date_create, 'date'),
+			Label('core.global.date_update')				=> TodoyuTime::format($project->date_update, 'date'),
+			Label('core.global.id_person_create')			=> TodoyuContactPersonManager::getPerson($project->id_person_create)->getFullName(),
+			Label('project.ext.attr.date_start')			=> TodoyuTime::format($project->date_start),
+			Label('project.ext.attr.date_end')			=> TodoyuTime::format($project->date_end),
+			Label('project.ext.attr.date_deadline')		=> TodoyuTime::format($project->date_deadline),
+			Label('project.ext.attr.title')				=> $project->title,
+			Label('core.global.description')				=> TodoyuString::strictHtml2text($project->description),
+			Label('project.ext.attr.status')				=> $project->getStatusLabel(),
+			Label('project.ext.attr.company')			=> $project->getCompany()->getLabel(),
 		);
 
 		foreach($project['persons'] as $index => $personData) {
-			$exportData[TodoyuLabelManager::getLabel('LLL:contact.ext.person') .'_'. ($index+1)]			= $personData['firstname'] . ' ' . $personData['lastname'];
-			$exportData[TodoyuLabelManager::getLabel('LLL:project.ext.attr.persons.role') .'_'. ($index+1)]	= $personData['rolelabel'];
+			$exportData[Label('contact.ext.person') .'_'. ($index+1)]			= $personData['firstname'] . ' ' . $personData['lastname'];
+			$exportData[Label('project.ext.attr.persons.role') .'_'. ($index+1)]	= $personData['rolelabel'];
 		}
 
 		$exportData = TodoyuHookManager::callHookDataModifier('project', 'projectCSVExportParseData', $exportData, array('project'	=> $project));

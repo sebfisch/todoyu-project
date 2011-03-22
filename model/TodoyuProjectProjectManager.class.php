@@ -1342,30 +1342,6 @@ class TodoyuProjectProjectManager {
 
 
 	/**
-	 * Get project ID array by filter
-	 *
-	 * @param	Integer	$filterSetID
-	 * @param	Array	$filterConditions
-	 * @param	String	$conjunction
-	 * @return	Array
-	 */
-	public static function getProjectIDsByFilter($idFilterSet = 0, array $filterConditions = array(), $conjunction = 'AND') {
-		$idFilterSet = intval($idFilterSet);
-
-		if( $idFilterSet !== 0 ) {
-			$conditions = TodoyuSearchFilterConditionManager::getFilterSetConditions($idFilterSet, false);
-		} else {
-			$conditions = TodoyuSearchFilterConditionManager::buildFilterConditionArray($filterConditions);
-		}
-
-		$projectFilter = new TodoyuProjectProjectFilter($conditions, $conjunction);
-
-		return $projectFilter->getProjectIDs('ext_project_project.title');
-	}
-
-
-
-	/**
 	 * Get project default data for new projects
 	 *
 	 * @return	Array
@@ -1377,7 +1353,7 @@ class TodoyuProjectProjectManager {
 			'date_update'		=> NOW,
 			'id_person_create'	=> TodoyuAuth::getPersonID(),
 			'deleted'			=> 0,
-			'title'				=> TodoyuLabelManager::getLabel('project.ext.newproject.title'),
+			'title'				=> Label('project.ext.newproject.title'),
 			'description'		=> '',
 			'status'			=> STATUS_PLANNING,
 			'id_company'		=> 0,

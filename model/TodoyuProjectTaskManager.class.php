@@ -1409,30 +1409,6 @@ class TodoyuProjectTaskManager {
 
 
 	/**
-	 * Use task filter to find the matching tasks by filter conditions or filterset
-	 *
-	 * @param	Integer		$idFilterSet
-	 * @param	Array		$conditions
-	 * @param	String		$conjunction
-	 * @return	Array
-	 */
-	public static function getTaskIDsByFilter($idFilterSet = 0, array $conditions = array(), $conjunction = 'AND') {
-		$idFilterSet	= intval($idFilterSet);
-
-		if( $idFilterSet !== 0 ) {
-			$conditions = TodoyuSearchFilterConditionManager::getFilterSetConditions($idFilterSet);
-		} else {
-			$conditions = TodoyuSearchFilterConditionManager::buildFilterConditionArray($conditions);
-		}
-
-		$taskFilter = new TodoyuProjectTaskFilter($conditions, $conjunction);
-
-		return $taskFilter->getTaskIDs();
-	}
-
-
-
-	/**
 	 * Get default task data values for a new task/container
 	 *
 	 * @param	Integer		$idParentTask

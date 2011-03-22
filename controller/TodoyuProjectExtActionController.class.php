@@ -91,9 +91,9 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 				// Prepend current project to list
 			TodoyuProjectPreferences::addOpenProject($idProject);
 
-			$title	= TodoyuLabelManager::getLabel('project.ext.page.title') . ' - ' . $project->getFullTitle();
+			$title	= Label('project.ext.page.title') . ' - ' . $project->getFullTitle();
 		} else {
-			$title		= TodoyuLabelManager::getLabel('project.ext.page.title.noSelected');
+			$title		= Label('project.ext.page.title.noSelected');
 			$idProject	= 0;
 		}
 
