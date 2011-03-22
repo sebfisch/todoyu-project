@@ -819,7 +819,7 @@ class TodoyuProjectTaskManager {
 
 			// Add check for active account
 		if( $withAccount ) {
-			$where .= ' AND p.active = 1';
+			$where .= ' AND p.is_active = 1';
 		}
 
 		return Todoyu::db()->getArray($fields, $tables, $where, $group, $order);

@@ -998,7 +998,7 @@ class TodoyuProjectProjectManager {
 
 			// Limit to persons with active todoyu account
 		if( $withAccount === true ) {
-			$where .= ' AND pe.active = 1';
+			$where .= ' AND pe.is_active = 1';
 		}
 
 		$persons= Todoyu::db()->getArray($fields, $table, $where, $group, $order);
@@ -1047,7 +1047,7 @@ class TodoyuProjectProjectManager {
 
 			// Limit to persons with active todoyu account
 		if( $withAccount === true ) {
-			$where .= ' AND pe.active = 1';
+			$where .= ' AND pe.is_active = 1';
 		}
 
 		return Todoyu::db()->getColumn($fields, $table, $where, $group, $order, '', 'id');
