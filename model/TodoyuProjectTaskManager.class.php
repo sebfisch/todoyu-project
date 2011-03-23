@@ -470,7 +470,9 @@ class TodoyuProjectTaskManager {
 
 				// Clone
 			if( ! $task->isLocked() && TodoyuProjectTaskRights::isAddAllowed($idTask) ) {
-				$allowed['actions']['submenu']['clone']	= $ownItems['actions']['submenu']['clone'];
+				if( AREA !== EXTID_SEARCH ) {
+					$allowed['actions']['submenu']['clone']	= $ownItems['actions']['submenu']['clone'];
+				}
 			}
 		}
 
@@ -483,7 +485,7 @@ class TodoyuProjectTaskManager {
 		$allowed['add'] = $ownItems['add'];
 		unset($allowed['add']['submenu']);
 
-		if( ! $project->isLocked() ) {
+		if( AREA !== EXTID_SEARCH && ! $project->isLocked() ) {
 				// Add sub task
 			if( TodoyuProjectTaskRights::isAddAllowed($idTask) ) {
 				$allowed['add']['submenu']['task'] = $ownItems['add']['submenu']['task'];
