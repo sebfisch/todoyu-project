@@ -58,7 +58,9 @@ class TodoyuProjectTaskSearch implements TodoyuSearchEngineIf {
 		$table	= self::TABLE;
 		$fields	= array('id_project', 'tasknumber', 'description', 'title');
 
-		return TodoyuSearch::searchTable($table, $fields, $find, $ignore, $limit);
+		$addToWhere	= self::getAddToWhereRightsClause();
+
+		return TodoyuSearch::searchTable($table, $fields, $find, $ignore, $limit, $addToWhere);
 	}
 
 
@@ -145,6 +147,44 @@ class TodoyuProjectTaskSearch implements TodoyuSearchEngineIf {
 		$tasks = Todoyu::db()->getArray(implode(',', $fields), $table, $where);
 
 		return $tasks;
+	}
+
+
+
+	/**
+	 * Returns the rights clause query for task
+	 *
+	 * @static
+	 * @return	String
+	 */
+	protected static function getAddToWhereRightsClause() {
+		$addToWhere = ' AND deleted = 0';
+
+		if( ! TodoyuAuth::isAdmin() ) {
+
+			if( ! allowed('project', 'task:seeAll') ) {
+				$addToWhere .= ' AND ext_project_task.id_person_assigned = ' . personid();
+			}
+
+			// Limit to selected status
+			$statuses	= implode(',', array_keys(TodoyuProjectTaskStatusManager::getStatuses('see')));
+			$addToWhere .= ' AND ext_project_task.status IN (' . $statuses . ')';
+
+				// Limit to tasks which are in available projects
+			if( ! allowed('project', 'project:seeAll') ) {
+				$availableProjects = TodoyuProjectProjectManager::getAvailableProjectsForPerson();
+				if( sizeof($availableProjects) > 0) {
+					$addToWhere	.= ' AND ext_project_task.id_project IN(' . implode(',', $availableProjects) . ')';
+				}
+			}
+
+				// Add public filter for all externals (not internal)
+			if( ! Todoyu::person()->isInternal() ) {
+				$addToWhere	.= ' AND ext_project_task.is_public = 1';
+			}
+		}
+
+		return $addToWhere;
 	}
 }
 
