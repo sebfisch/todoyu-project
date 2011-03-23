@@ -405,7 +405,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function tabselectedAction(array $params) {
-		$idTask		= intval($params['task']);
+		$idTask		= intval($params['idTask']);
 		$tabKey		= $params['tab'];
 
 		TodoyuProjectTaskRights::restrictSee($idTask);
