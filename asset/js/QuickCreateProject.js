@@ -45,8 +45,8 @@ Todoyu.Ext.project.QuickCreateProject = {
 		Todoyu.Ui.closeRTE(form);
 
 		$(form).request({
-			'parameters': {
-				'action':	'save'
+			parameters: {
+				action:	'save'
 			},
 			onComplete: this.onSaved.bind(this)
 		});

@@ -58,7 +58,7 @@ Todoyu.Ext.project.Project = {
 	edit: function(idProject){
 		if( Todoyu.getArea() != 'project' ) {
 			Todoyu.goTo('project', 'ext', {
-				'action': 'edit',
+				action: 'edit',
 				'project': idProject
 			});
 		}
@@ -82,11 +82,11 @@ Todoyu.Ext.project.Project = {
 		if( confirm('[LLL:project.ext.js.removeProject]') ) {
 			var url		= Todoyu.getUrl('project', 'project');
 			var options	= {
-				'parameters': {
-					'action':	'remove',
+				parameters: {
+					action:	'remove',
 					'project':	idProject
 				},
-				'onComplete': this.onRemoved.bind(this, idProject)
+				onComplete: this.onRemoved.bind(this, idProject)
 			};
 
 			Todoyu.send(url, options);
@@ -150,8 +150,8 @@ Todoyu.Ext.project.Project = {
 			if( detailDiv.empty() ) {
 				var url		= Todoyu.getUrl('project', 'project');
 				var options	= {
-					'parameters': {
-						'action':	'details',
+					parameters: {
+						action:	'details',
 						'project':	idProject
 					}
 				};
@@ -163,12 +163,12 @@ Todoyu.Ext.project.Project = {
 			this.setExpandedStyle(idProject, false);
 			detailDiv.hide();
 		}
-		
+
 		Todoyu.Hook.exec('project.project.detailsToggled', idProject);
 		this.saveDetailsExpanded(idProject, detailDiv.visible());
 	},
-	
-	
+
+
 
 	/**
 	 * Set project style expanded/ collapsed
@@ -179,7 +179,7 @@ Todoyu.Ext.project.Project = {
 	 */
 	setExpandedStyle: function(idProject, isExpanded) {
 		var project = $('project-' + idProject);
-		
+
 		if( isExpanded ) {
 			project.addClassName('expanded');
 		} else {
@@ -234,7 +234,7 @@ Todoyu.Ext.project.Project = {
 	addTask: function(idProject) {
 		if( Todoyu.getArea() != 'project' ) {
 			Todoyu.goTo('project', 'ext', {
-				'action': 'addtask',
+				action: 'addtask',
 				'project': idProject
 			});
 		}
@@ -255,7 +255,7 @@ Todoyu.Ext.project.Project = {
 			this.ext.Task.addContainerToProject(idProject);
 		} else {
 			Todoyu.goTo('project', 'ext', {
-				'action': 'addcontainer',
+				action: 'addcontainer',
 				'project': idProject
 			});
 		}
@@ -272,8 +272,8 @@ Todoyu.Ext.project.Project = {
 	refresh: function(idProject) {
 		var url		= Todoyu.getUrl('project', 'project');
 		var options	= {
-			'parameters': {
-				'action':	'details',
+			parameters: {
+				action:	'details',
 				'project':	idProject
 			}
 		};
@@ -296,12 +296,12 @@ Todoyu.Ext.project.Project = {
 	updateStatus: function(idProject, status) {
 		var url	= Todoyu.getUrl('project', 'project');
 		var options	= {
-			'parameters': {
-				'action':	'setstatus',
+			parameters: {
+				action:	'setstatus',
 				'project':	idProject,
 				'status':	status
 			},
-			'onComplete':	this.onStatusUpdated.bind(this, idProject, status)
+			onComplete:	this.onStatusUpdated.bind(this, idProject, status)
 		};
 
 		Todoyu.send(url, options);
@@ -370,11 +370,11 @@ Todoyu.Ext.project.Project = {
 	pasteTask: function(idProject) {
 		var url		= Todoyu.getUrl('project', 'project');
 		var options	= {
-			'parameters': {
-				'action':	'pasteInProject',
+			parameters: {
+				action:	'pasteInProject',
 				'project':	idProject
 			},
-			'onComplete': this.onTaskPasted.bind(this, idProject)
+			onComplete: this.onTaskPasted.bind(this, idProject)
 		};
 
 		Todoyu.send(url, options);

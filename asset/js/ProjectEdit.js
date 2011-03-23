@@ -71,8 +71,8 @@ Todoyu.Ext.project.Project.Edit = {
 	loadForm: function(idProject) {
 		var url 	= Todoyu.getUrl('project', 'project');
 		var options = {
-			'parameters': {
-				'action':	'edit',
+			parameters: {
+				action:	'edit',
 				'project':	idProject
 			},
 			onComplete: this.onFormLoaded.bind(this, idProject)
@@ -109,8 +109,8 @@ Todoyu.Ext.project.Project.Edit = {
 		Todoyu.Hook.exec('project.project.preSaveProject', idProject);
 
 		$(form).request({
-			'parameters': {
-				'action':	'save'
+			parameters: {
+				action:	'save'
 			},
 			onComplete: this.onSaved.bind(this)
 		});

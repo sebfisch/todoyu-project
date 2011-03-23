@@ -80,12 +80,12 @@ Todoyu.Ext.project.Task.Tab = {
 	load: function(idTask, tabKey, onComplete) {
 		var url 	= Todoyu.getUrl('project', 'task');
 		var options	= {
-			'parameters': {
-				'action':	'tabload',
+			parameters: {
+				action:	'tabload',
 				'task':		idTask,
 				'tab':		tabKey
 			},
-			'onComplete':	this.onLoaded.bind(this, idTask, tabKey, onComplete)
+			onComplete:	this.onLoaded.bind(this, idTask, tabKey, onComplete)
 		};
 
 		var tabDiv	= this.buildTabID(idTask, tabKey);
@@ -183,8 +183,8 @@ Todoyu.Ext.project.Task.Tab = {
 	saveSelection: function(idTask, tabKey) {
 		var url = Todoyu.getUrl('project', 'task');
 		var options	= {
-			'parameters': {
-				'action':	'tabselected',
+			parameters: {
+				action:	'tabselected',
 				'idTask':	idTask,
 				'tab':		tabKey
 			}

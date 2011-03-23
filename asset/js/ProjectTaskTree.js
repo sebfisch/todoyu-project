@@ -151,12 +151,12 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	addNewProject: function(idProject, idTask) {
 		var url		= Todoyu.getUrl('project', 'projecttasktree');
 		var options = {
-			'parameters': {
-				'action': 	'addproject',
+			parameters: {
+				action: 	'addproject',
 				'project': 	idProject,
 				'task': 	idTask
 			},
-			'onComplete': 	this.onProjectLoaded.bind(this)
+			onComplete: 	this.onProjectLoaded.bind(this)
 		};
 
 		Todoyu.send(url, options);
@@ -273,10 +273,10 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	loadNoProjectSelectedView: function() {
 		var url		= Todoyu.getUrl('project', 'project');
 		var options	= {
-			'parameters': {
-				'action':	'noProjectView'
+			parameters: {
+				action:	'noProjectView'
 			},
-			'onComplete': this.onNoProjectSelectedViewLoaded.bind(this)
+			onComplete: this.onNoProjectSelectedViewLoaded.bind(this)
 		};
 
 		Todoyu.Ui.updateContent(url, options);
@@ -386,7 +386,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 		var url		= Todoyu.getUrl('project', 'projecttasktree');
 		var options	= {
-			'parameters': {
+			parameters: {
 				action:	'openprojects',
 				'projects':	openProjects.join(',')
 			}

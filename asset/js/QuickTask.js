@@ -54,10 +54,10 @@ Todoyu.Ext.project.QuickTask = {
 	openPopup: function() {
 		var url		= Todoyu.getUrl('project', 'quicktask');
 		var options	= {
-			'parameters': {
-				'action':	'popup'
+			parameters: {
+				action:	'popup'
 			},
-			'onComplete':	this.onPopupLoaded.bind(this)
+			onComplete:	this.onPopupLoaded.bind(this)
 		};
 
 		Todoyu.Popups.open(this.popupID, '[LLL:project.headlet-quicktask.title]', 520, url, options);
@@ -99,11 +99,11 @@ Todoyu.Ext.project.QuickTask = {
 	updateForm: function(idProject) {
 		var url		= Todoyu.getUrl('project', 'quicktask');
 		var options	= {
-			'parameters': {
-				'action':	'popup',
+			parameters: {
+				action:	'popup',
 				'project':	idProject
 			},
-			'onComplete':	this.onPopupLoaded.bind(this)
+			onComplete:	this.onPopupLoaded.bind(this)
 		};
 
 		Todoyu.Ui.update('quicktask_content', url, options);
@@ -121,10 +121,10 @@ Todoyu.Ext.project.QuickTask = {
 		Todoyu.Ui.closeRTE(form);
 
 		$(form).request({
-			'parameters': {
-				'action':	'save'
+			parameters: {
+				action:	'save'
 			},
-			'onComplete': this.onSaved.bind(this, form)
+			onComplete: this.onSaved.bind(this, form)
 		});
 
 		return false;

@@ -112,11 +112,11 @@ Todoyu.Ext.project.TaskTree = {
 
 		var url		= Todoyu.getUrl('project', 'tasktree');
 		var options	= {
-			'parameters': {
-				'action':	'update',
+			parameters: {
+				action:	'update',
 				'project':	idProject
 			},
-			'onComplete': this.onUpdated.bind(this)
+			onComplete: this.onUpdated.bind(this)
 		};
 		var target	= 'project-' + idProject + '-tasks';
 
@@ -271,12 +271,12 @@ Todoyu.Ext.project.TaskTree = {
 	loadSubtasks: function(idTask, callback) {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
-			'parameters': {
-				'action':	'subtasks',
+			parameters: {
+				action:	'subtasks',
 				'task':		idTask,
 				'show':		0
 			},
-			'onComplete': this.onSubtasksLoaded.bind(this, idTask, callback)
+			onComplete: this.onSubtasksLoaded.bind(this, idTask, callback)
 		};
 		var target	= 'task-' + idTask;
 

@@ -87,10 +87,10 @@ Todoyu.Ext.project.Task.Edit = {
 		var url 	= Todoyu.getUrl('project', 'task');
 		var options	= {
 			parameters: {
-				'action': 'edit',
+				action: 'edit',
 				'task':	idTask
 			},
-			'onComplete': this.onFormLoaded.bind(this, idTask)
+			onComplete: this.onFormLoaded.bind(this, idTask)
 		};
 		var target	= 'task-' + idTask + '-data';
 
@@ -126,8 +126,8 @@ Todoyu.Ext.project.Task.Edit = {
 		Todoyu.Ui.saveRTE();
 
 		$(form).request({
-			'parameters': {
-				'action':	'save',
+			parameters: {
+				action:	'save',
 				'area':		Todoyu.getArea()
 			},
 			onComplete: this.onSaved.bind(this, form)

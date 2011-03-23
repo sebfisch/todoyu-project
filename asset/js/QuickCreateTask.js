@@ -43,11 +43,11 @@ Todoyu.Ext.project.QuickCreateTask = {
 	updateForm: function(idProject) {
 		var url		= Todoyu.getUrl('project', 'Quickcreatetask');
 		var options	= {
-			'parameters': {
-				'action':	'popup',
+			parameters: {
+				action:	'popup',
 				'project':	idProject
 			},
-			'onComplete':	this.onFormUpdated.bind(this)
+			onComplete:	this.onFormUpdated.bind(this)
 		};
 
 
@@ -78,8 +78,8 @@ Todoyu.Ext.project.QuickCreateTask = {
 		Todoyu.Ui.closeRTE(form);
 
 		$(form).request({
-			'parameters': {
-				'action':	'save'
+			parameters: {
+				action:	'save'
 			},
 			onComplete: this.onSaved.bind(this)
 		});
