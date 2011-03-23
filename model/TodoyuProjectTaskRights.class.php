@@ -132,8 +132,8 @@ class TodoyuProjectTaskRights {
 		}
 
 			// Explicit status edit right
-		if( allowed('project', 'task:editStatus') ) {
-			return true;
+		if( ! allowed('project', 'task:editStatus') ) {
+			return false;
 		}
 
 			// Task edit right in project
