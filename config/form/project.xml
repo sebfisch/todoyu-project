@@ -149,7 +149,7 @@
 						</url>
 						<label type="function">
 							<function>TodoyuProjectProjectViewHelper::getProjectPersonLabel</function>
-							<noLabel>LLL:project.ext.attr.persons.new</noLabel>
+							<noLabel>project.ext.attr.persons.new</noLabel>
 						</label>
 					</record>
 				</field>

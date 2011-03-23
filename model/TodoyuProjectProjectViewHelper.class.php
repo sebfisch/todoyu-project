@@ -85,7 +85,7 @@ class TodoyuProjectProjectViewHelper {
 		$idPerson	= intval($data['id']);
 
 		if( $idPerson === 0 ) {
-			return Label('project.ext.persons.new');
+			return Label('project.ext.attr.persons.new');
 		} else {
 			$idRole		= intval($data['id_role']);
 			$projectData= $formElement->getForm()->getFormData();
