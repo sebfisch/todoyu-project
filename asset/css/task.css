@@ -364,10 +364,6 @@
 	Task colors
    ---------------- */
 
-	/* container */
-.task.container h3 .headLabel {
-	border-left-color:#000 !important;
-}
 
 	/* sub tasks */
 .tasks .subtasks {
