@@ -1934,7 +1934,9 @@ class TodoyuProjectTaskManager {
 
 				// Remove the fields
 			foreach( $fieldsToBeRemoved as $fieldName ) {
-				$form->getField($fieldName)->remove();
+				if( $form->getField($fieldName) ) {
+					$form->getField($fieldName)->remove();
+				}
 			}
 
 				// Remove
@@ -1946,7 +1948,9 @@ class TodoyuProjectTaskManager {
 			}
 
 				// Set 'end date' label
-			$form->getField('date_end')->setLabel('project.ext.attr.date_end');
+			if( $form->getField('date_end') ) {
+				$form->getField('date_end')->setLabel('project.ext.attr.date_end');
+			}
 		}
 
 			// Call hooks to modify $form
