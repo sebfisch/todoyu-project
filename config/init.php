@@ -53,7 +53,7 @@ Todoyu::$CONFIG['EXT']['project']['STATUS']['PROJECT'] = array(
 	STATUS_PROGRESS		=> 'progress',
 	STATUS_DONE			=> 'done',
 	STATUS_WARRANTY		=> 'warranty',
-	STATUS_CLEARED		=> 'cleared',
+	STATUS_CLEARED		=> 'cleared'
 );
 	// Task status
 Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK'] = array(

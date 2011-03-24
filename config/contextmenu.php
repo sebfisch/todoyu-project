@@ -312,11 +312,11 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_PROGRESS . ')',
 				'class'		=> 'projectContextMenu projectStatusProgress'
 			),
-			'cleared'	=> array(
-				'key'		=> 'status-cleared',
-				'label'		=> 'project.task.status.cleared',
-				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_CLEARED . ')',
-				'class'		=> 'projectContextMenu projectStatusCleared'
+			'done'	=> array(
+				'key'		=> 'status-done',
+				'label'		=> 'project.task.status.done',
+				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_DONE . ')',
+				'class'		=> 'projectContextMenu projectStatusDone'
 			),
 			'warranty'	=> array(
 				'key'		=> 'status-warranty',
@@ -324,11 +324,11 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_WARRANTY . ')',
 				'class'		=> 'projectContextMenu projectStatusWarranty'
 			),
-			'done'	=> array(
-				'key'		=> 'status-done',
-				'label'		=> 'project.task.status.done',
-				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_DONE . ')',
-				'class'		=> 'projectContextMenu projectStatusDone'
+			'cleared'	=> array(
+				'key'		=> 'status-cleared',
+				'label'		=> 'project.task.status.cleared',
+				'jsAction'	=> 'Todoyu.Ext.project.Project.updateStatus(#ID#, ' . STATUS_CLEARED . ')',
+				'class'		=> 'projectContextMenu projectStatusCleared'
 			)
 		)
 	),
