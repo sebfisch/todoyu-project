@@ -38,9 +38,12 @@
 	<label index="container.delete">Delete Container</label>
 	<label index="container.addInOwnProjects">Add containers in own projects</label>
 	<label index="container.addInAllProjects">Add containers in all projects</label>
-	<label index="container.editAndDeleteInOwnProjects">Edit and delete containers in own projects</label>
-	<label index="container.editAndDeleteInAllProjects">Edit and delete containers in all projects</label>
-	<label index="container.editAndDeleteOwnContainers">Edit and delete own containers</label>
+	<label index="container.editOwnContainers">Edit own containers</label>
+	<label index="container.editInOwnProjects">Edit containers in own projects</label>
+	<label index="container.editInAllProjects">Edit containers in all projects</label>
+	<label index="container.deleteOwnContainers">Delete own containers</label>
+	<label index="container.deleteInOwnProjects">Delete containers in own projects</label>
+	<label index="container.deleteInAllProjects">Delete containers in all projects</label>
 	<label index="taskstatus">Task Status</label>
 	<label index="taskstatus.planning:see">See Status: In Planning</label>
 	<label index="taskstatus.open:see">See Status: Open</label>
