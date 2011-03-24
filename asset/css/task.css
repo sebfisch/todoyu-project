@@ -57,8 +57,8 @@
 	height:auto !important;
 	height:1px;
 	margin:-4px 0 -4px 0;
-	padding:4px 0 4px 17px;
-	border-left-width:8px;
+	padding:4px 0 4px 21px;
+	border-left-width:4px;
 	border-left-style:solid;
 	min-height:14px;
 }
@@ -80,6 +80,14 @@
 	display:none;
 }
 */
+
+.task.container h3 {
+	background-color: #f7f7f7;
+}
+.task.container h3 .headLabel {
+	border-left-width: 8px;
+	padding-left: 17px;
+}
 
 .task.container .details {
 	border-bottom:1px dotted #aaa;
