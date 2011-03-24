@@ -303,19 +303,39 @@ class TodoyuProjectTaskClipboard {
 
 			// Only show context menu in project area and if something is on the clipboard
 		if( self::hasTask() ) {
-//			$data			= self::getData();
 			$ownItems		= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboardProject']);
 			$clipboardTask	= self::getClipboardTask();
+
+			if( self::isInCutMode() ) {
+				$ownItems['paste']['label'] .= '.cut';
+			} else {
+				$ownItems['paste']['label'] .= '.copy';
+			}
 
 				// Change labels for containers
 			if( $clipboardTask->isContainer() ) {
 				$ownItems['paste']['label'] .= '.container';
 			}
 
+			$isLocked		= $clipboardTask->isLocked(true);
+			$isSameProject	= $clipboardTask->getProjectID() === $idProjectContextmenu;
+			$isAddAllowed	= TodoyuProjectTaskRights::isAddInProjectAllowed($idProjectContextmenu, $clipboardTask->isContainer());
+			$isProjectArea	= AREA === EXTID_PROJECT;
+			$mergeItems		= array();
+
 				// Paste is only available in project view
-			if( AREA === EXTID_PROJECT && TodoyuProjectTaskRights::isAddInProjectAllowed($idProjectContextmenu) ) {
-				$items	= array_merge_recursive($items, $ownItems);
+			if( $isProjectArea && $isAddAllowed && (!$isLocked || $isSameProject) ) {
+				$mergeItems	= $ownItems;
 			}
+
+			if( sizeof($mergeItems) === 0 ) {
+				$mergeItems = $ownItems;
+				unset($mergeItems['paste']['submenu']);
+				$mergeItems['paste']['class'] .= ' disabled';
+				$mergeItems['paste']['jsAction'] = 'Todoyu.Ext.project.Task.pasteNotAllowed()';
+			}
+
+			$items	= array_merge_recursive($items, $mergeItems);
 		}
 
 		return $items;

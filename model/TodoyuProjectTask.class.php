@@ -175,7 +175,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getProjectID() {
-		return $this->id_project;
+		return intval($this->id_project);
 	}
 
 
