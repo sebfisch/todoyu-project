@@ -164,22 +164,6 @@ class TodoyuProjectTaskRenderer {
 
 
 	/**
-	 * Render quick creation form
-	 *
-	 * @param	Integer		$idProject
-	 * @return	String
-	 */
-	public static function renderQuickCreateForm($idProject = 0) {
-		$idProject	= intval($idProject);
-
-		$form	= TodoyuProjectTaskManager::getQuickCreateForm($idProject);
-
-		return $form->render();
-	}
-
-
-
-	/**
 	 * Render the task edit form
 	 *
 	 * @param	Integer		$idTask

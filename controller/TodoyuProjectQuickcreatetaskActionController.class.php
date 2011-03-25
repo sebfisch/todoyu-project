@@ -45,6 +45,7 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 	 */
 	public function popupAction(array $params) {
 		$idProject	= intval($params['project']);
+		$isUpdate	= intval($params['update']) === 1;
 
 		if( $idProject > 0 ) {
 			TodoyuProjectTaskRights::restrictAddToProject($idProject);
@@ -52,7 +53,13 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 			TodoyuProjectTaskRights::restrictShowPopupForm();
 		}
 
-		return TodoyuProjectTaskRenderer::renderQuickCreateForm($idProject);
+		if( ! $isUpdate ) {
+			TodoyuHookManager::callHook('project', 'quickcreatetask', array($idProject));
+		}
+
+		$form	= TodoyuProjectTaskManager::getQuickCreateForm($idProject);
+
+		return $form->render();
 	}
 
 
@@ -82,7 +89,6 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 
 			// Get form object, call save hooks, set form data
 		$form	= TodoyuProjectTaskManager::getQuickCreateForm();
-		$data	= TodoyuFormHook::callSaveData('ext/project/config/form/task.xml', $data, 0);
 		$form->setFormData($data);
 
 			// Check if form is valid

@@ -44,8 +44,9 @@ Todoyu.Ext.project.QuickCreateTask = {
 		var url		= Todoyu.getUrl('project', 'Quickcreatetask');
 		var options	= {
 			parameters: {
-				action:	'popup',
-				'project':	idProject
+				action:		'popup',
+				project:	idProject,
+				update:		1
 			},
 			onComplete:	this.onFormUpdated.bind(this)
 		};

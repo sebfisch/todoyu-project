@@ -57,7 +57,7 @@ class TodoyuProjectTaskManager {
 
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/task.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath);
+		$form		= TodoyuFormManager::getForm($xmlPath, 0, array('quickcreate'=>true));
 
 			// Adjust for quick create
 		$form->removeField('id_parenttask', true);
@@ -2130,11 +2130,11 @@ class TodoyuProjectTaskManager {
 		if( $taskMove['sorting'] < $taskRef['sorting'] ) {
 			$min	= $taskMove['sorting'];
 			$max	= $refSort;
-			$update['sorting']	= 'sorting-1';
+			$update['sorting']	= '`sorting`-1';
 		} else {
 			$min	= $refSort;
 			$max	= $taskMove['sorting'];
-			$update['sorting']	= 'sorting+1';
+			$update['sorting']	= '`sorting`+1';
 		}
 
 			// Limits for updating other tasks
