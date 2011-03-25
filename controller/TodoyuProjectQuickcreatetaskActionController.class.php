@@ -82,7 +82,7 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 		}
 
 			// Create a cache record for the buildform hooks
-		$task = TodoyuProjectbillingTaskManager::getTask(0);
+		$task = TodoyuProjectTaskManager::getTask(0);
 		$task->injectData($data);
 		$cacheKey	= TodoyuRecordManager::makeClassKey('TodoyuProjectTask', 0);
 		TodoyuCache::set($cacheKey, $task);
