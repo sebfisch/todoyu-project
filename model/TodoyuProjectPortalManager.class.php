@@ -51,7 +51,9 @@ class TodoyuProjectPortalManager {
 
 		$taskFilterMerged = new TodoyuProjectTaskFilter($conditions, 'OR');
 
-		return $taskFilterMerged->getTaskIDs('ext_project_task.date_deadline');
+		$sorting	= 'ext_project_task.date_deadline, ext_project_task.date_end';
+
+		return $taskFilterMerged->getTaskIDs($sorting);
 	}
 
 
