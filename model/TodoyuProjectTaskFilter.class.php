@@ -175,6 +175,19 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 
 	/**
+	 * Shortcut to company filter
+	 *
+	 * @param	Integer		$idCompany
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_customer($idCompany, $negate = false) {
+		return $this->Filter_company($idCompany, $negate);
+	}
+
+
+
+	/**
 	 * Filter condition: tasks of projects of given customer
 	 *
 	 * @param	Integer		$idProject
