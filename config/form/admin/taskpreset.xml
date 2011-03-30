@@ -21,7 +21,7 @@
 					<label>project.ext.taskpreset.tasktitle</label>
 				</field>
 
-				<field type="textarea" name="description">
+				<field type="RTE" name="description">
 					<label>project.ext.taskpreset.description</label>
 				</field>
 
