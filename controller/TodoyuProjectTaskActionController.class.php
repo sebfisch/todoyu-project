@@ -226,7 +226,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 	/**
 	 * Get task content
-	 * Render a full task to for refresh
+	 * Render a full task for refresh
 	 *
 	 * @param	Array		$params
 	 * @return	String
