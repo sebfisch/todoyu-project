@@ -915,14 +915,14 @@ class TodoyuProjectTaskManager {
 
 			// Attributes which are only for tasks (not relevant for containers)
 		if( $task->isTask() ) {
-				// Date deadline
-			if( $task->getDeadlineDate() > 0 ) {
-				$formatDeadline	= date('s', $task->getDeadlineDate()) === '00' ? 'date' : 'datetime';
-				$info['date_deadline']	= array(
-					'label'		=> 'LLL:project.task.attr.date_deadline',
-					'value'		=> TodoyuTime::format($task->getDeadlineDate(), $formatDeadline),
-					'position'	=> 30,
-					'className'	=> $task->isDeadlineExceeded() ? 'red' : ''
+				// Date end (if set) (internal deadline)
+			if( $task->getEndDate() > 0 && $isInternalOrAdmin ) {
+				$formatEnd	= date('F', $task->getEndDate()) == 0 ? 'date' : 'datetime';
+				$info['date_end'] = array(
+					'label'		=> 'LLL:project.task.attr.date_end',
+					'value'		=> TodoyuTime::format($task->getEndDate(), $formatEnd),
+					'position'	=> 20,
+					'className'	=> $task->isEndDateExceeded() ? 'red' : ''
 				);
 			}
 
@@ -978,14 +978,15 @@ class TodoyuProjectTaskManager {
 			);
 		}
 
-			// Date end (if set) (internal deadline)
-		if( $task->getEndDate() > 0 && $isInternalOrAdmin ) {
-			$formatEnd	= date('F', $task->getEndDate()) == 0 ? 'date' : 'datetime';
-			$info['date_end'] = array(
-				'label'		=> 'LLL:project.task.attr.date_end',
-				'value'		=> TodoyuTime::format($task->getEndDate(), $formatEnd),
-				'position'	=> 20,
-				'className'	=> $task->isEndDateExceeded() ? 'red' : ''
+
+			// Date deadline
+		if( $task->getDeadlineDate() > 0 ) {
+			$formatDeadline	= date('s', $task->getDeadlineDate()) === '00' ? 'date' : 'datetime';
+			$info['date_deadline']	= array(
+				'label'		=> 'LLL:project.task.attr.date_deadline',
+				'value'		=> TodoyuTime::format($task->getDeadlineDate(), $formatDeadline),
+				'position'	=> 30,
+				'className'	=> $task->isDeadlineExceeded() ? 'red' : ''
 			);
 		}
 
@@ -1945,7 +1946,7 @@ class TodoyuProjectTaskManager {
 			$fieldsToBeRemoved	= array_intersect($formFields, array(
 				'id_activity',
 				'estimated_workload',
-				'date_deadline',
+				'date_end',
 				'id_person_assigned',
 			));
 
@@ -1965,8 +1966,8 @@ class TodoyuProjectTaskManager {
 			}
 
 				// Set 'end date' label
-			if( $form->getField('date_end') ) {
-				$form->getField('date_end')->setLabel('project.ext.attr.date_end');
+			if( $form->getField('date_deadline') ) {
+				$form->getField('date_deadline')->setLabel('project.ext.attr.date_end');
 			}
 		}
 

@@ -5,6 +5,8 @@
 			<span class="taskDate date" title="{Label core.global.deadline}: {dateFormat $task.date_end D2M2Y2} / {Label core.global.start}: {dateFormat $task.date_start D2M2Y2}">
 				{if $task.date_end > 0}
 					{dateFormat $task.date_end D2M2Y2}
+				{else}
+					{dateFormat $task.date_deadline D2M2Y2}
 				{/if}
 				&nbsp;
 			</span>
