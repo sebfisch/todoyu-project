@@ -94,10 +94,10 @@
 	<section name="deletetask" require="general:use">
 		<right name="deleteOwnTasks" />
 		<right name="deleteTaskInOwnProjects" />
-		<right name="deleteTaskInAllProjects" require="project:seeAll,task:deleteInOwnProjects" />
+		<right name="deleteTaskInAllProjects" require="project:seeAll,deletetask:deleteTaskInOwnProjects" />
 		<right name="deleteOwnContainers" />
 		<right name="deleteContainerInOwnProjects" />
-		<right name="deleteContainerInAllProjects" require="project:seeAll,task:deleteInOwnProjects" />
+		<right name="deleteContainerInAllProjects" require="project:seeAll,deletetask:deleteContainerInOwnProjects" />
 	</section>
 
 	<section name="export" require="general:use">
