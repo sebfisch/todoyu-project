@@ -60,7 +60,7 @@ class TodoyuProjectTaskRights {
 
 				// Check if person can edit his own tasks
 			if( $task->isCurrentPersonCreator() ) {
-				if( ! allowed('project', 'task:editOwnTasks') ) {
+				if( ! allowed('project', 'edittask:editOwnTasks') ) {
 					return false;
 				}
 			}
@@ -73,7 +73,7 @@ class TodoyuProjectTaskRights {
 
 		if( $task->isContainer() ) {
 				// Check if person can edit his own containers
-			if( $task->isCurrentPersonCreator() && ! allowed('project', 'container:editOwnContainers') ) {
+			if( $task->isCurrentPersonCreator() && ! allowed('project', 'edittask:editOwnContainers') ) {
 				return false;
 			}
 		}
@@ -99,14 +99,14 @@ class TodoyuProjectTaskRights {
 
 		if( $task->isTask() ) {
 			if( $task->isCurrentPersonCreator() ) {
-				if( allowed('project', 'task:deleteOwnTasks') ) {
+				if( allowed('project', 'deletetask:deleteOwnTasks') ) {
 					return true;
 				}
 			}
 		} elseif( $task->isContainer() ) {
 				// Check if person can delete his own containers
 			if( $task->isCurrentPersonCreator() ) {
-				if( allowed('project', 'container:deleteOwnContainers') ) {
+				if( allowed('project', 'deletetask:deleteOwnContainers') ) {
 					return true;
 				}
 			}
@@ -128,11 +128,6 @@ class TodoyuProjectTaskRights {
 		$task		= TodoyuProjectTaskManager::getTask($idTask);
 
 		if( $task->isLocked() ) {
-			return false;
-		}
-
-			// Explicit status edit right
-		if( ! allowed('project', 'task:editStatus') ) {
 			return false;
 		}
 
@@ -181,10 +176,10 @@ class TodoyuProjectTaskRights {
 			return false;
 		}
 
-		$typeName	= $task->isTask() ? 'task' : 'container';
-		$rightName	= $project->isCurrentPersonAssigned() ? 'editInOwnProjects' : 'editInAllProjects';
+		$typeName	= $task->isTask() ? 'Task' : 'Container';
+		$rightName	= $project->isCurrentPersonAssigned() ? 'edit' . $typeName . 'InOwnProjects' : 'edit' . $typeName . 'InAllProjects';
 
-		return allowed('project', $typeName . ':' . $rightName);
+		return allowed('project', 'edittask:' . $rightName);
 	}
 
 
@@ -210,10 +205,10 @@ class TodoyuProjectTaskRights {
 		}
 
 			// Build rights dynamically with type and right
-		$typeName	= $task->isTask() ? 'task' : 'container';
-		$rightName	= $project->isCurrentPersonAssigned() ? 'deleteInOwnProjects' : 'deleteInAllProjects';
+		$typeName	= $task->isTask() ? 'Task' : 'Container';
+		$rightName	= $project->isCurrentPersonAssigned() ? 'delete' . $typeName . 'InOwnProjects' : 'delete' . $typeName . 'InAllProjects';
 
-		return allowed('project', $typeName . ':' . $rightName);
+		return allowed('project', 'deletetask:' . $rightName);
 	}
 
 
@@ -262,12 +257,12 @@ class TodoyuProjectTaskRights {
 			return false;
 		}
 
-		$elementType	= $isContainer ? 'container' : 'task';
+		$elementType	= $isContainer ? 'Container' : 'Task';
 
 		if( TodoyuProjectProjectManager::isPersonAssigned($idProject) ) {
-			return allowed('project', $elementType . ':addInOwnProjects');
+			return allowed('project', 'addtask:add' . $elementType . 'InOwnProjects');
 		} else {
-			return allowed('project', $elementType . ':addInAllProjects');
+			return allowed('project', 'addtask:add' . $elementType . 'InAllProjects');
 		}
 	}
 
@@ -322,7 +317,7 @@ class TodoyuProjectTaskRights {
 			// Check view rights with assignment
 		if( ! TodoyuProjectTaskManager::isPersonAssigned($idTask, 0, true) ) {
 			if( ! $task->isPublic() ) {
-				return allowed('project', 'task:seeAll');
+				return allowed('project', 'seetask:seeAll');
 			}
 		}
 
@@ -339,7 +334,27 @@ class TodoyuProjectTaskRights {
 	 * @return	Boolean
 	 */
 	public static function hasStatusRight($status, $type = 'see') {
-		return allowed('project', 'taskstatus:' . $status . ':' . $type);
+		$group = self::getStatusRightGroupByType($type);
+
+		return allowed('project', $group . ':' . $status . ':' . $type);
+	}
+
+
+
+	/**
+	 * Gives back the right group of the task status query
+	 *
+	 * @static
+	 * @param	String		$type
+	 * @return	String
+	 */
+	protected static function getStatusRightGroupByType($type = 'see') {
+		if( $type === 'see' )		return 'seetask';
+		if( $type === 'create' )	return 'addtask';
+		if( $type === 'edit' )		return 'edittask';
+		if( $type === 'changefrom' || $type === 'changeto' ) return 'edittaskdetail';
+
+		return 'unknowntype';
 	}
 
 
@@ -388,7 +403,7 @@ class TodoyuProjectTaskRights {
 	 *
 	 */
 	public static function restrictShowPopupForm() {
-		if( ! allowed('project', 'task:addInOwnProjects') ) {
+		if( ! allowed('project', 'addtask:addTaskInOwnProjects') ) {
 			self::deny('task:add');
 		}
 	}
@@ -431,7 +446,7 @@ class TodoyuProjectTaskRights {
 	public static function restrictStatusChangeTo($status, $idTask) {
 		self::restrictSee($idTask);
 
-		restrict('project', 'taskstatus:' . $status . ':changeto');
+		restrict('project', 'seetask:' . $status . ':changeto');
 	}
 }
 ?>

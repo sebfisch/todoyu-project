@@ -68,7 +68,7 @@ class TodoyuProjectTaskManager {
 		$insertForm		= TodoyuFormManager::getForm($xmlPathInsert);
 
 			// If person can add tasks in all project, show auto-completion field, else only a select element
-		$field	= $insertForm->getField( allowed('project', 'task:addInAllProjects') ? 'id_project_ac' : 'id_project_select');
+		$field	= $insertForm->getField( allowed('project', 'addtask:addTaskInAllProjects') ? 'id_project_ac' : 'id_project_select');
 		$form->getFieldset('left')->addField('id_project', $field, 'before:title');
 
 			// Change form action and button functions
@@ -459,9 +459,9 @@ class TodoyuProjectTaskManager {
 		unset($allowed['actions']['submenu']);
 
 			// Clipboard options
-		if( allowed('project', 'clipboard:useTaskAndContainerClipboard')) {
+		if( allowed('project', 'edittask:useTaskAndContainerClipboard')) {
 				// Copy & Cut
-			if( allowed('project', 'task:addInOwnProjects') ) {
+			if( allowed('project', 'addtask:addTaskInOwnProjects') ) {
 					// Copy
 				$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
 					// Cut
@@ -2013,13 +2013,8 @@ class TodoyuProjectTaskManager {
 			// Set status. Check for editing right and use default status as fallback
 		$extConf		= TodoyuSysmanagerExtConfManager::getExtConf('project');
 		$defaultStatus	= intval($extConf['status']);
-		if(  allowed('project', 'task:editStatus') ) {
-			$data['status']		= STATUS_OPEN;
-		} elseif( $defaultStatus !== 0 ) {
-			$data['status']		= $defaultStatus;
-		} else{
-			$data['status']		= STATUS_PLANNING;
-		}
+	
+		$data['status']		= $defaultStatus !== 0 ? $defaultStatus : STATUS_PLANNING;
 
 			// Remove old task number
 		unset($data['tasknumber']);

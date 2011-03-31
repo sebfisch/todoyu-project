@@ -162,7 +162,7 @@ class TodoyuProjectTaskSearch implements TodoyuSearchEngineIf {
 
 		if( ! TodoyuAuth::isAdmin() ) {
 
-			if( ! allowed('project', 'task:seeAll') ) {
+			if( ! allowed('project', 'seetask:seeAll') ) {
 				$addToWhere .= ' AND ext_project_task.id_person_assigned = ' . personid();
 			}
 

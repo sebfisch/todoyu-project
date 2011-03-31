@@ -495,7 +495,7 @@ class TodoyuProjectProjectManager {
 
 			// Only add elements to project if allowed
 		if( TodoyuProjectTaskRights::isAddInProjectAllowed($idProject) ) {
-			if( allowed('project', 'task:addInAllProjects') || (allowed('project', 'task:addInOwnProjects') && TodoyuProjectProjectManager::isPersonAssigned($idProject)) ) {
+			if( allowed('project', 'addtask:addTaskInAllProjects') || (allowed('project', 'addtask:addTaskInOwnProjects') && TodoyuProjectProjectManager::isPersonAssigned($idProject)) ) {
 					// Add task
 				$allowed['addtask'] = $ownItems['addtask'];
 					// Add container
@@ -1398,7 +1398,7 @@ class TodoyuProjectProjectManager {
 	 */
 	public static function getProjectIDsForTaskAdd() {
 			// If person can't event add tasks in own projects, there is no need to get the visible projects
-		if( ! allowed('project', 'task:addInOwnProjects') ) {
+		if( ! allowed('project', 'addtask:addTaskInOwnProjects') ) {
 			return array();
 		}
 
@@ -1407,7 +1407,7 @@ class TodoyuProjectProjectManager {
 			STATUS_PROGRESS
 		);
 
-		if( allowed('project', 'task:addInAllProjects') ) {
+		if( allowed('project', 'addtask:addTaskInAllProjects') ) {
 				// Get visible projects
 			$activeFilters	= array(
 				'status'	=> array(

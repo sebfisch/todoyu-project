@@ -54,7 +54,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 */
 	private function addRightsClauseFilter() {
 			// Limit to current person
-		if( ! allowed('project', 'task:seeAll') ) {
+		if( ! allowed('project', 'seetask:seeAll') ) {
 			$this->addRightsFilter('assignedPerson', personid());
 		}
 

@@ -74,7 +74,7 @@ class TodoyuProjectProjectStatusManager {
 
 		foreach($statuses as $index => $statusKey) {
 				// Only get allowed status which the person can see
-			if( ! allowed('project', 'projectstatus:' . $statusKey . ':see') && $index !== $forceStatus) {
+			if( ! allowed('project', 'project:' . $statusKey . ':see') && $index !== $forceStatus) {
 				unset($statuses[$index]);
 			}
 		}

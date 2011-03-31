@@ -7,58 +7,19 @@
 	</section>
 
 	<section name="project" require="general:use">
-		<right name="add" />
 		<right name="seeOwn" />
 		<right name="seeAll" require="project:seeOwn" />
+		<right name="planning:see" require="project:seeOwn" />
+		<right name="progress:see" require="project:seeOwn" />
+		<right name="done:see" require="project:seeOwn" />
+		<right name="cleared:see" require="project:seeOwn" />
+		<right name="warranty:see" require="project:seeOwn" />
+		<right name="add" require="project:seeOwn" />
 		<right name="editAndDelete" require="project:seeOwn" />
 	</section>
 
-	<section name="projectstatus" require="project:seeOwn">
-		<right name="planning:see" />
-		<right name="progress:see" />
-		<right name="done:see" />
-		<right name="cleared:see" />
-		<right name="warranty:see" />
-	</section>
-
-	<section name="clipboard" require="general:use">
-		<right name="useTaskAndContainerClipboard" />
-	</section>
-
-	<section name="container" require="general:use">
-		<right name="addInOwnProjects" />
-		<right name="addInAllProjects" require="project:seeAll,container:addInOwnProjects" />
-		<right name="editOwnContainers" />
-		<right name="editInOwnProjects" />
-		<right name="editInAllProjects" require="project:seeAll,task:editInOwnProjects" />
-		<right name="deleteOwnContainers" />
-		<right name="deleteInOwnProjects" />
-		<right name="deleteInAllProjects" require="project:seeAll,task:deleteInOwnProjects" />
-	</section>
-
-	<section name="task" require="general:use">
+	<section name="seetask" require="general:use">
 		<right name="seeAll" />
-		<right name="addInOwnProjects" />
-		<right name="addInAllProjects" require="project:seeAll,task:addInOwnProjects" />
-		<right name="addViaQuickCreateHeadlet" require="task:addInOwnProjects" />
-		<right name="editInOwnProjects" />
-		<right name="editInAllProjects" require="project:seeAll,task:editInOwnProjects" />
-		<right name="editOwnTasks" />
-		<right name="deleteInOwnProjects" />
-		<right name="deleteInAllProjects" require="project:seeAll,task:deleteInOwnProjects" />
-		<right name="deleteOwnTasks" />
-		<right name="editStatus" />
-		<right name="editDateStart" require="task:editInOwnProjects" />
-		<right name="editDateEnd" require="task:editInOwnProjects" />
-		<right name="editDeadline" require="task:editInOwnProjects" />
-		<right name="editPersonAssigned" require="task:editInOwnProjects" />
-		<right name="editPersonOwner" require="task:editInOwnProjects" />
-		<right name="editActivity" require="task:editInOwnProjects" />
-		<right name="editEstimatedWorkload" require="task:editInOwnProjects" />
-		<right name="editIsPublic" require="task:editInOwnProjects" />
-	</section>
-
-	<section name="taskstatus" require="general:use">
 		<right name="planning:see" />
 		<right name="open:see" />
 		<right name="progress:see" />
@@ -67,38 +28,76 @@
 		<right name="accepted:see" />
 		<right name="rejected:see" />
 		<right name="cleared:see" />
-		<right name="planning:changeto" require="task:editStatus" />
-		<right name="open:changeto" require="task:editStatus" />
-		<right name="progress:changeto" require="task:editStatus" />
-		<right name="confirm:changeto" require="task:editStatus" />
-		<right name="done:changeto" require="task:editStatus" />
-		<right name="accepted:changeto" require="task:editStatus" />
-		<right name="rejected:changeto" require="task:editStatus" />
-		<right name="cleared:changeto" require="task:editStatus" />
-		<right name="planning:changefrom" />
-		<right name="open:changefrom"  />
-		<right name="progress:changefrom" />
-		<right name="confirm:changefrom" />
-		<right name="done:changefrom" />
-		<right name="accepted:changefrom" />
-		<right name="rejected:changefrom" />
-		<right name="cleared:changefrom" />
-		<right name="planning:edit" />
-		<right name="open:edit"  />
-		<right name="progress:edit" />
-		<right name="confirm:edit" />
-		<right name="done:edit" />
-		<right name="accepted:edit" />
-		<right name="rejected:edit" />
-		<right name="cleared:edit" />
-		<right name="planning:create" />
-		<right name="open:create"  />
-		<right name="progress:create" />
-		<right name="confirm:create" />
-		<right name="done:create" />
-		<right name="accepted:create" />
-		<right name="rejected:create" />
-		<right name="cleared:create" />
+	</section>
+
+	<section name="addtask" require="general:use">
+		<right name="addTaskInOwnProjects" />
+		<right name="addViaQuickCreateHeadlet" require="addtask:addTaskInOwnProjects" />
+		<right name="addTaskInAllProjects" require="project:seeAll,addtask:addTaskInOwnProjects" />
+		<right name="addContainerInOwnProjects" />
+		<right name="addContainerInAllProjects" require="project:seeAll,addtask:addContainerInOwnProjects" />
+		<right name="planning:create" require="addtask:addTaskInOwnProjects" />
+		<right name="open:create" require="addtask:addTaskInOwnProjects" />
+		<right name="progress:create" require="addtask:addTaskInOwnProjects" />
+		<right name="confirm:create" require="addtask:addTaskInOwnProjects" />
+		<right name="done:create" require="addtask:addTaskInOwnProjects" />
+		<right name="accepted:create" require="addtask:addTaskInOwnProjects" />
+		<right name="rejected:create" require="addtask:addTaskInOwnProjects" />
+		<right name="cleared:create" require="addtask:addTaskInOwnProjects" />
+	</section>
+
+	<section name="edittask" require="general:use">
+		<right name="editOwnTasks" />
+		<right name="editTaskInOwnProjects" />
+		<right name="editTaskInAllProjects" require="project:seeAll,edittask:editTaskInOwnProjects" />
+		<right name="editOwnContainers" />
+		<right name="editContainerInOwnProjects" />
+		<right name="editContainerInAllProjects" require="project:seeAll,edittask:editContainerInOwnProjects" />
+		<right name="planning:edit" require="seetask:planning:see" />
+		<right name="open:edit" require="seetask:planning:see" />
+		<right name="progress:edit" require="seetask:planning:see" />
+		<right name="confirm:edit" require="seetask:planning:see" />
+		<right name="done:edit" require="seetask:planning:see" />
+		<right name="accepted:edit" require="seetask:planning:see" />
+		<right name="rejected:edit" require="seetask:planning:see" />
+		<right name="cleared:edit" require="seetask:planning:see" />
+		<right name="useTaskAndContainerClipboard" />
+	</section>
+
+	<section name="edittaskdetail" require="edittask:editOwnTasks">
+		<right name="editDateStart" />
+		<right name="editDateEnd" />
+		<right name="editDeadline" />
+		<right name="editPersonAssigned" />
+		<right name="editPersonOwner" />
+		<right name="editActivity" />
+		<right name="editEstimatedWorkload" />
+		<right name="editIsPublic" />
+		<right name="planning:changefrom" require="seetask:planning:see"/>
+		<right name="open:changefrom" require="seetask:open:see" />
+		<right name="progress:changefrom" require="seetask:progress:see" />
+		<right name="confirm:changefrom" require="seetask:confirm:see" />
+		<right name="done:changefrom" require="seetask:done:see" />
+		<right name="accepted:changefrom" require="seetask:accepted:see" />
+		<right name="rejected:changefrom" require="seetask:rejected:see" />
+		<right name="cleared:changefrom" require="seetask:cleared:see" />
+		<right name="planning:changeto" require="seetask:planning:see" />
+		<right name="open:changeto" require="seetask:open:see" />
+		<right name="progress:changeto" require="seetask:progress:see" />
+		<right name="confirm:changeto" require="seetask:confirm:see" />
+		<right name="done:changeto" require="seetask:done:see" />
+		<right name="accepted:changeto" require="seetask:accepted:see" />
+		<right name="rejected:changeto" require="seetask:rejected:see" />
+		<right name="cleared:changeto" require="seetask:cleared:see"  />
+	</section>
+
+	<section name="deletetask">
+		<right name="deleteOwnTasks" />
+		<right name="deleteTaskInOwnProjects" />
+		<right name="deleteTaskInAllProjects" require="project:seeAll,task:deleteInOwnProjects" />
+		<right name="deleteOwnContainers" />
+		<right name="deleteContainerInOwnProjects" />
+		<right name="deleteContainerInAllProjects" require="project:seeAll,task:deleteInOwnProjects" />
 	</section>
 
 	<section name="export" require="general:use">

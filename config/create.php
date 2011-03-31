@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 	// Add create for task
-if( allowed('project', 'task:addInOwnProjects') ) {
+if( allowed('project', 'addtask:addTaskInOwnProjects') ) {
 		// Check if user can add tasks with quick-add
 		// Needs at least one project where he can add tasks
 	if( TodoyuProjectTaskRights::isQuickAddAllowed() ) {

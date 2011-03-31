@@ -141,7 +141,7 @@ class TodoyuProjectTaskRenderer {
 		$fieldIndexes	= array_flip($fieldKeys);
 
 			// Person can only see public tasks? remove visibility info
-		if( ! Todoyu::person()->isInternal() || ! allowed('project', 'task:seeAll') ) {
+		if( ! Todoyu::person()->isInternal() || ! allowed('project', 'seetask:seeAll') ) {
 			unset($data['data'][$fieldIndexes['is_public']]);
 		}
 

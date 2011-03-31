@@ -217,7 +217,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		TodoyuProjectTaskManager::updateTaskStatus($idTask, $idStatus);
 
 			// If new status is not visible for the user, send info header
-		if( ! allowed('project', 'taskstatus:' . $status . ':see') ) {
+		if( ! allowed('project', 'seetask:' . $status . ':see') ) {
 			TodoyuHeader::sendTodoyuHeader('statusNotAllowed', 1);
 		}
 	}

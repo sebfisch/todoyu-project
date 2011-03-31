@@ -44,7 +44,7 @@
 				<field type="datetime" name="date_start">
 					<label>project.task.date_start</label>
 					<restrict>
-						<allow ext="project" right="task:editDateStart" />
+						<allow ext="project" right="edittaskdetail:editDateStart" />
 					</restrict>
 					<required/>
 				</field>
@@ -58,7 +58,7 @@
 						</dateNotBefore>
 					</validate>
 					<restrict>
-						<allow ext="project" right="task:editDateEnd" />
+						<allow ext="project" right="edittaskdetail:editDateEnd" />
 					</restrict>
 				</field>
 
@@ -71,7 +71,7 @@
 						</dateNotBefore>
 					</validate>
 					<restrict>
-						<allow ext="project" right="task:editDeadline" />
+						<allow ext="project" right="edittaskdetail:editDeadline" />
 					</restrict>
 					<required/>
 				</field>
@@ -84,7 +84,7 @@
 					</source>
 					<noPleaseSelect />
 					<restrict>
-						<allow ext="project" right="task:editStatus" />
+						<allow ext="project" right="edittaskdetail:editStatus" />
 					</restrict>
 				</field>
 
@@ -95,7 +95,7 @@
 						<lazyInit/>
 					</source>
 					<restrict>
-						<allow ext="project" right="task:editPersonAssigned" />
+						<allow ext="project" right="edittaskdetail:editPersonAssigned" />
 					</restrict>
 					 <required />
 				</field>
@@ -107,7 +107,7 @@
 						<lazyInit />
 					</source>
 					<restrict>
-						<allow ext="project" right="task:editPersonOwner" />
+						<allow ext="project" right="edittaskdetail:editPersonOwner" />
 					</restrict>
 				</field>
 
@@ -132,7 +132,7 @@
 						<isNotZero msg="LLL:project.task.attr.id_activity.error"/>
 					</validate>
 					<restrict>
-						<allow ext="project" right="task:editActivity" />
+						<allow ext="project" right="edittaskdetail:editActivity" />
 					</restrict>
 					<required/>
 				</field>
@@ -143,7 +143,7 @@
 						<isNotZerotime msg="LLL:project.task.attr.is_estimatedworkload_public.error"/>
 					</validate>
 					<restrict>
-						<allow ext="project" right="task:editEstimatedWorkload" />
+						<allow ext="project" right="edittaskdetail:editEstimatedWorkload" />
 					</restrict>
 					<required/>
 				</field>
@@ -151,7 +151,7 @@
 				<field type="checkbox" name="is_public">
 					<label>project.task.attr.is_public.public</label>
 					<restrict>
-						<allow ext="project" right="task:editIsPublic" />
+						<allow ext="project" right="edittaskdetail:editIsPublic" />
 					</restrict>
 				</field>
 
