@@ -234,7 +234,7 @@ class TodoyuProjectTaskFilterDataSource {
 	public static function getDynamicDateTimestamp($dateRangeKey, $negate = false) {
 		$todayStart	= TodoyuTime::getStartOfDay();
 		$todayEnd	= TodoyuTime::getEndOfDay();
-		$date		= $negate ? $todayEnd : $todayStart;
+		$date		= $negate ? $todayStart : $todayEnd;
 
 		switch( $dateRangeKey ) {
 			case 'tomorrow':
@@ -256,17 +256,17 @@ class TodoyuProjectTaskFilterDataSource {
 
 			case 'currentweek':
 				$weekRange	= TodoyuTime::getWeekRange(NOW);
-				$date		= $negate ? $weekRange['end'] : $weekRange['start'];
+				$date		= $negate ? $weekRange['start'] : $weekRange['end'] ;
 				break;
 
 			case 'nextweek':
 				$weekRange	= TodoyuTime::getWeekRange(NOW + TodoyuTime::SECONDS_WEEK);
-				$date		= $negate ? $weekRange['end'] : $weekRange['start'];
+				$date		= $negate ? $weekRange['start'] : $weekRange['end'] ;
 				break;
 
 			case 'lastweek':
 				$weekRange	= TodoyuTime::getWeekRange(NOW - TodoyuTime::SECONDS_WEEK);
-				$date		= $negate ? $weekRange['end'] : $weekRange['start'];
+				$date		= $negate ? $weekRange['start'] : $weekRange['end'] ;
 				break;
 
 			case 'todoay':
