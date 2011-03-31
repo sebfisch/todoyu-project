@@ -497,7 +497,7 @@ class TodoyuProjectTaskManager {
 		}
 
 			// Status
-		if( ! $task->isLocked() && TodoyuProjectTaskRights::isStatusChangeAllowed($idTask) ) {
+		if( TodoyuProjectTaskRights::isStatusChangeAllowed($idTask) ) {
 			$allowed['status'] = $ownItems['status'];
 
 			$statuses = TodoyuProjectTaskStatusManager::getStatuses('changeto');
@@ -571,9 +571,10 @@ class TodoyuProjectTaskManager {
 	 * Get also sub-sub-...-tasks
 	 *
 	 * @param	Integer		$idTask
+	 * @param	String		$extraWhere
 	 * @return	Array
 	 */
-	public static function getAllSubTaskIDs($idTask) {
+	public static function getAllSubTaskIDs($idTask, $extraWhere = false) {
 		$idTask		= intval($idTask);
 		$subTasks	= array();
 
@@ -583,8 +584,14 @@ class TodoyuProjectTaskManager {
 			$whereF	= '		id_parenttask	IN(%s)'
 					. '	AND	deleted			= 0';
 
+			if( $extraWhere !== false ) {
+				$whereF .= ' AND (' . $extraWhere . ')';
+			}
+
 			$where	= sprintf($whereF, $idTask);
-			$newTasks	= Todoyu::db()->getColumn($field, $table, $where);
+			$order	= 'sorting';
+
+			$newTasks	= Todoyu::db()->getColumn($field, $table, $where, '', $order);
 
 			while( sizeof($newTasks) > 0 ) {
 				$subTasks = array_merge($subTasks, $newTasks);
@@ -641,7 +648,7 @@ class TodoyuProjectTaskManager {
 	 * @param	String		$order
 	 * @return	Array
 	 */
-	public static function getSubTasksIDs($idTask, $order = 'date_create') {
+	public static function getSubTasksIDs($idTask, $order = 'sorting') {
 		$idTask	= intval($idTask);
 
 		if( $idTask === 0 ) {
@@ -2013,7 +2020,7 @@ class TodoyuProjectTaskManager {
 			// Set status. Check for editing right and use default status as fallback
 		$extConf		= TodoyuSysmanagerExtConfManager::getExtConf('project');
 		$defaultStatus	= intval($extConf['status']);
-	
+
 		$data['status']		= $defaultStatus !== 0 ? $defaultStatus : STATUS_PLANNING;
 
 			// Remove old task number

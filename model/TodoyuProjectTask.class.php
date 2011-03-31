@@ -451,8 +451,8 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 			return TodoyuProjectTaskManager::isLocked($this->getID()) || TodoyuProjectTaskManager::areSubtasksLocked($this->getID());
 		} elseif( $this->isTask() ) {
 			return TodoyuProjectTaskManager::isLocked($this->getID());
-		} elseif( $this->isContainer()  ) {
-			return TodoyuProjectTaskManager::areSubtasksLocked($this->getID());
+		} elseif( $this->isContainer() ) {
+			return false;
 		} else {
 			return false;
 		}
@@ -505,6 +505,18 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 		}
 
 		return $data;
+	}
+
+
+
+	/**
+	 * Get all IDs of the sub tasks
+	 *
+	 * @param	String|Boolean	$extraWhere
+	 * @return	Array
+	 */
+	public function getAllSubTaskIDs($extraWhere = false) {
+		return TodoyuProjectTaskManager::getAllSubTaskIDs($this->getID(), $extraWhere);
 	}
 
 }
