@@ -446,7 +446,7 @@ class TodoyuProjectTaskRights {
 	public static function restrictStatusChangeTo($status, $idTask) {
 		self::restrictSee($idTask);
 
-		restrict('project', 'seetask:' . $status . ':changeto');
+		restrict('project', 'edittaskdetail:' . $status . ':changeto');
 	}
 }
 ?>
