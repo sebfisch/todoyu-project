@@ -2033,16 +2033,11 @@ class TodoyuProjectTaskManager {
 		$taskRef	= TodoyuProjectTaskManager::getTaskData($idTaskRef);
 		$after		= strtolower(trim($moveMode)) === 'after';
 
-			// Update parameters
+			// 1. Move other tasks which are between the move and the ref task
 		$update	= array();
-		$table	= self::TABLE;
-		$where	= '		id_project		= ' . $taskMove['id_project'] .
-				  ' AND	id_parenttask	= ' . $taskRef['id_parenttask'];
-		$noQuote= array('sorting');
 
-			// Move other task which are between the move and the ref task
 			// Adjust the reference sorting position
-		$refSort= $after ? $taskRef['sorting'] + 1 : $taskRef['sorting'] - 1;
+		$refSort= $after ? $taskRef['sorting'] /*+ 1*/ : $taskRef['sorting'] - 1;
 
 			// If task get a higher position
 		if( $taskMove['sorting'] < $taskRef['sorting'] ) {
@@ -2051,17 +2046,24 @@ class TodoyuProjectTaskManager {
 			$update['sorting']	= '`sorting`-1';
 		} else {
 			$min	= $refSort;
-			$max	= $taskMove['sorting'];
+			$max	= false;
 			$update['sorting']	= '`sorting`+1';
 		}
 
+		$table	= self::TABLE;
+		$where	= '		id_project		= ' . $taskMove['id_project']
+				. ' AND	id_parenttask	= ' . $taskRef['id_parenttask']
 			// Limits for updating other tasks
-		$where .= ' AND sorting > ' . $min
-				. ' AND	sorting < ' . $max;
+				. ' AND sorting > ' . $min;
+		if( $max !== false ) {
+			$where	.= ' AND	sorting < ' . $max;
+		}
+
+		$noQuote= array('sorting');
 
 		Todoyu::db()->doUpdate($table, $where, $update, $noQuote);
 
-			// Update moved task
+			// 2. Update moved task itself
 		$update['sorting'] = $after ? $taskRef['sorting'] + 1 : $taskRef['sorting'];
 
 		TodoyuRecordManager::updateRecord(self::TABLE, $idTaskMove, $update, $noQuote);

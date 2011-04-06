@@ -100,7 +100,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * 'addsubcontainer' action method
+	 * Add new sub container
 	 *
 	 * @param	Array	$params
 	 * @return	String
@@ -121,7 +121,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * 'edit' action method
+	 * Open task/container for editing
 	 *
 	 * @param	Array	$params
 	 * @return	String
@@ -338,12 +338,12 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 */
 	public function cloneAction(array $params) {
 		$idTask			= intval($params['task']);
-		$withSubtasks	= intval($params['subtasks']) === 1;
+		$withSubTasks	= intval($params['subtasks']) === 1;
 
 		TodoyuProjectTaskRights::restrictSee($idTask);
 		TodoyuProjectTaskRights::restrictAdd($idTask);
 
-		$idTaskNew		= TodoyuProjectTaskManager::cloneTask($idTask, $withSubtasks);
+		$idTaskNew		= TodoyuProjectTaskManager::cloneTask($idTask, $withSubTasks);
 
 		TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
 
