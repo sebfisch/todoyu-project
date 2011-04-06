@@ -510,7 +510,11 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		if( $idPerson !== 0 ) {
 				// Set up query parts array
 			$compare= $negate ? '!=' : '=';
-			$where	= 'ext_project_task.id_person_assigned ' . $compare . ' ' . intval($idPerson);
+			$where	= '	ext_project_task.id_person_assigned ' . $compare . ' ' . intval($idPerson);
+
+			if( $negate === false ) {
+				$where	.= ' AND	ext_project_task.type	= ' . TASK_TYPE_TASK;
+			}
 
 			$queryParts	= array(
 				'where'	=> $where
@@ -539,6 +543,11 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			);
 			$compare= $negate ? 'NOT IN' : 'IN';
 			$where	= 'ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
+
+			if( $negate === false ) {
+				$where	.= ' AND	ext_project_task.type	= ' . TASK_TYPE_TASK;
+			}
+
 			$join	= array(
 				'ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person'
 			);
