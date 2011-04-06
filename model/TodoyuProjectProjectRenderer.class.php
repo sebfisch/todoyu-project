@@ -376,7 +376,7 @@ class TodoyuProjectProjectRenderer {
 			self::$openRootline	= TodoyuProjectTaskManager::getTaskRootline($idTaskShow);
 		}
 
-		$subTaskIDs	= TodoyuProjectProjectManager::getSubTaskIDs($idTask);
+		$subTaskIDs	= TodoyuProjectTaskManager::getSubTaskIDs($idTask);
 		$data		= array(
 			'idTask' 		=> $idTask,
 			'subtaskHtml'	=> ''

@@ -325,36 +325,10 @@ class TodoyuProjectProjectManager {
 		);
 
 		$taskFilter	= new TodoyuProjectTaskFilter($filters);
-		$taskFilter->enableContainerMode();
+//		$taskFilter->enableContainerMode();
 		$taskIDs	= $taskFilter->getTaskIDs();
 
 		return $taskIDs;
-	}
-
-
-
-	/**
-	 * Get the sub tasks of a task which match to all the filters
-	 *
-	 * @param	Integer		$idTask
-	 * @return	Array
-	 */
-	public static function getSubTaskIDs($idTask) {
-		$idTask		= intval($idTask);
-
-			// Get task filters
-		$filters	= self::getTaskTreeFilterStruct();
-
-			// Add parent task filter
-		$filters[]	= array(
-			'filter'	=> 'parentTask',
-			'value'		=> $idTask
-		);
-
-		$taskFilter	= new TodoyuProjectTaskFilter($filters);
-		$taskFilter->enableContainerMode();
-
-		return $taskFilter->getTaskIDs();
 	}
 
 
@@ -861,11 +835,11 @@ class TodoyuProjectProjectManager {
 		$matchingNotDisplayedTaskIDs = array_diff($matchingTaskIDs, $displayedTasks);
 
 			// Get an array for mapping between tasks and their parents
-		$field		= 'id_parenttask';
+		$field		= 'id,id_parenttask';
 		$table		= 'ext_project_task';
 		$where		= 'id_project = ' . $idProject; // . ' AND id IN(' . implode(',', $matchingNotDisplayedTaskIDs) . ')';
 		$index		= 'id';
-		$parentMap	= Todoyu::db()->getColumn($field, $table, $where, '', '', '', '', $index);
+		$parentMap	= Todoyu::db()->getColumn($field, $table, $where, '', '', '', 'id_parenttask', $index);
 
 		$lostTasks	= array();
 
