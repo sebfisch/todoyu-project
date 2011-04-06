@@ -363,11 +363,13 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		$queryParts	= false;
 
 		if( $value !== '' ) {
+			$logic = ($negate === true) ? ' NOT LIKE ':' LIKE ';
+
 			$tables	= array(self::TABLE);
 			$keyword= Todoyu::db()->escape($value);
 			$where	= '(
-						( 		ext_project_task.description 	LIKE \'%' . $keyword . '%\'
-							OR	ext_project_task.title 			LIKE \'%' . $keyword . '%\'
+						( 		ext_project_task.description 	' . $logic . ' \'%' . $keyword . '%\'
+							OR	ext_project_task.title 			' . $logic . ' \'%' . $keyword . '%\'
 						)';
 
 			if( strpos($value, '.') !== false ) {
