@@ -371,7 +371,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			'wConf'		=> array(
 				'multiple'	=> true,
 				'size'		=> 5,
-				'FuncRef'	=> 'TodoyuSearchFiltersetManager::getFilterSetSelectionOptions'
+				'FuncRef'	=> 'TodoyuSearchFiltersetManager::getTaskFilterSetSelectionOptions'
 			)
 		)
 	),
@@ -534,6 +534,23 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 				'negation'		=> 'datetime'
 			)
 		),
+
+
+
+		/**
+		 * OptGroup filter
+		 */
+		'filterSet' => array(
+			'funcRef'	=> 'TodoyuSearchFiltersetManager::Filter_filterSet',
+			'label'		=> 'search.ext.filterlabel.filterset',
+			'optgroup'	=> 'LLL:core.global.filter',
+			'widget'	=> 'select',
+			'wConf'		=> array(
+				'multiple'	=> true,
+				'size'		=> 5,
+				'FuncRef'	=> 'TodoyuSearchFiltersetManager::getProjectFilterSetSelectionOptions'
+			)
+		)
 	)
 );
 ?>
