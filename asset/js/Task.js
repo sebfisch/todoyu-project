@@ -1054,6 +1054,7 @@ Todoyu.Ext.project.Task = {
 	 * @method	showDetails
 	 * @param	{Number}		idTask
 	 * @param	{String}		tab
+	 * @param	{Function}		onComplete
 	 */
 	showDetails: function(idTask, tab, onComplete) {
 		if( this.isDetailsLoaded(idTask) ) {
