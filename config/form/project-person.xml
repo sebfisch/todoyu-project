@@ -16,18 +16,7 @@
 							<onComplete>Todoyu.Ext.project.Project.Edit.onPersonAutocomplete</onComplete>
 						</options>
 					</config>
-					<wizard>
-						<htmlClass>createNewPerson</htmlClass>
-						<ext>contact</ext>
-						<controller>person</controller>
-						<action>addNewContactWizard</action>
-						<title>LLL:contact.ext.create.person.label</title>
-						<width>700</width>
-						<displayCondition />
-						<restrict>
-							<allow ext="contact" right="contact:modify" />
-						</restrict>
-					</wizard>
+					<wizard name="person" />
 					<required />
 				</field>
 
