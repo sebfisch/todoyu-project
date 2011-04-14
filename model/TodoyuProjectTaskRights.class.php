@@ -344,17 +344,27 @@ class TodoyuProjectTaskRights {
 	/**
 	 * Gives back the right group of the task status query
 	 *
-	 * @static
 	 * @param	String		$type
 	 * @return	String
 	 */
 	protected static function getStatusRightGroupByType($type = 'see') {
-		if( $type === 'see' )		return 'seetask';
-		if( $type === 'create' )	return 'addtask';
-		if( $type === 'edit' )		return 'edittask';
-		if( $type === 'changefrom' || $type === 'changeto' ) return 'edittaskdetail';
+		switch( $type ) {
+			case 'see':
+				return 'seetask';
 
-		return 'unknowntype';
+			case 'create':
+				return 'addtask';
+
+			case 'edit':
+				return 'edittask';
+
+			case 'changefrom':
+			case 'changeto':
+				return 'edittaskdetail';
+
+			default:
+				return 'unknowntype';
+		}
 	}
 
 

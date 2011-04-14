@@ -1825,6 +1825,16 @@ class TodoyuProjectTaskManager {
 						$form->getField('status')->remove();
 					}
 				}
+			} else {
+				if( $form->hasField('status') ) {
+						// Remove empty status field
+					$statusesFrom	= TodoyuProjectTaskStatusManager::getStatuses('changefrom');
+					$statusesTo		= TodoyuProjectTaskStatusManager::getStatuses('changeto');
+
+					if( sizeof($statusesFrom) === 0 || sizeof($statusesTo) === 0 ) {
+						$form->getField('status')->remove();
+					}
+				}
 			}
 		}
 

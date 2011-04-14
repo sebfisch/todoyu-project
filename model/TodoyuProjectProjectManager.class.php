@@ -1433,6 +1433,24 @@ class TodoyuProjectProjectManager {
 		return Todoyu::db()->getColumn($field, $tables, $where, $group, '', '', 'id');
 	}
 
+
+
+	/**
+	 * Get project IDs of a company
+	 *
+	 * @param	Integer		$idCompany
+	 * @return	Array
+	 */
+	public static function getCompanyProjectIDs($idCompany) {
+		$idCompany	= intval($idCompany);
+
+		$field	= 'id';
+		$where	= '		id_company	= ' . $idCompany
+				. ' AND deleted		= 0';
+
+		return Todoyu::db()->getColumn($field, self::TABLE, $where);
+	}
+
 }
 
 ?>
