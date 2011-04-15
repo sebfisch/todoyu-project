@@ -1,5 +1,5 @@
 <div id="task-{$task.id}" class="task {$task.class} {if $isExpanded}expanded{/if}" >
-	<h3 id="task-{$task.id}-header" class="contextmenutask" name="task-{$task.id}" onclick="Todoyu.Ext.project.Task.toggleDetails({$task.id})">
+	<h3 id="task-{$task.id}-header" class="contextmenutask bcStatus{$task.status}" name="task-{$task.id}" onclick="Todoyu.Ext.project.Task.toggleDetails({$task.id})">
 		<a id="task-{$task.id}-subtasks-trigger" onclick="Todoyu.Ext.project.TaskTree.toggleSubtasks(event, {$task.id})" href="javascript:void(0)" class="{if $hasSubtasks}expandable{/if} {if $areSubtasksVisible}expanded{/if}"></a>
 
 		<span class="headLabel bcStatus{$task.status}" title="{htmlencode $task.fulltitle}">
