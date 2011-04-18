@@ -43,7 +43,7 @@ abstract class TodoyuProjectPanelWidgetStatusFilter extends TodoyuPanelWidget {
 
 	/**
 	 * Constructor of status filter base
-	 * Pass all arguments to the wiget constructor
+	 * Pass all arguments to the widget constructor
 	 *
 	 * @param	String		$ext		Extension key where the widget is located
 	 * @param	String		$id			Panel widget ID (class name without TodoyuPanelWidget)
@@ -55,12 +55,11 @@ abstract class TodoyuProjectPanelWidgetStatusFilter extends TodoyuPanelWidget {
 	public function __construct($ext, $id, $title, array $config, array $params = array()) {
 			// Construct panelWidget (init basic configuration)
 		parent::__construct(
-			$ext,			// ext key
-			$id,			// panel widget ID
-			$title,			// widget title text
-			$config,		// widget config array
-			$params,		// widget parameters
-			$idArea			// area ID
+			$ext,		// ext key
+			$id,		// panel widget ID
+			$title,		// widget title text
+			$config,	// widget config array
+			$params		// widget parameters
 		);
 
 		$this->addHasIconClass();

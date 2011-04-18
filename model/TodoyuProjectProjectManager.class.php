@@ -947,7 +947,6 @@ class TodoyuProjectProjectManager {
 					AND mmpp.id_project	IN (' . implode(',', $projectIDs) . ')' .
 				  ' AND	mmpp.id_role	= pr.id
 					AND	pe.deleted		= 0';
-		$group	= '	mmpp.id';
 		$order	= '	pe.lastname,
 					pe.firstname';
 
