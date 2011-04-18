@@ -119,20 +119,6 @@ Todoyu.Ext.project.Container = {
 	 */
 	addSubContainer: function(idContainer) {
 		this.ext.Task.addSubContainer(idContainer);
-	},
-
-
-
-	/**
-	 * Update status of given container
-	 *
-	 * @method	updateStatus
-	 * @param	{Number}	idContainer
-	 * @param	{String}	idStatus
-	 * @todo	Remove
-	 */
-	updateStatus: function(idContainer, idStatus) {
-		this.ext.Task.updateStatus(idContainer, idStatus);
 	}
 
 };
