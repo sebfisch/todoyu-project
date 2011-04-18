@@ -57,9 +57,10 @@ class TodoyuProjectProjectFilterDataSource {
 	/**
 	 * Search for projects in which adding of tasks is allowed by given search string from the auto-completion
 	 *
-	 * @param		String	$search
-	 * @param		Array	$conf
-	 * @return		Array				array (id => label)
+	 * @param	String	$input
+	 * @param	Array	$formData
+	 * @param	String	$name
+	 * @return	Array				array (id => label)
 	 */
 	public static function autocompleteTaskAddableProjects($input, array $formData = array(), $name = '') {
 		$data = array();
