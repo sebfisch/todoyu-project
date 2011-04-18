@@ -91,8 +91,8 @@ class TodoyuProjectExportManager {
 		);
 
 		foreach($project['persons'] as $index => $personData) {
-			$exportData[Label('contact.ext.person') .'_'. ($index+1)]			= $personData['firstname'] . ' ' . $personData['lastname'];
-			$exportData[Label('project.ext.attr.persons.role') .'_'. ($index+1)]	= $personData['rolelabel'];
+			$exportData[Label('contact.ext.person') .'_'. ($index + 1)]				= $personData['firstname'] . ' ' . $personData['lastname'];
+			$exportData[Label('project.ext.attr.persons.role') .'_'. ($index + 1)]	= $personData['rolelabel'];
 		}
 
 		$exportData = TodoyuHookManager::callHookDataModifier('project', 'projectCSVExportParseData', $exportData, array('project'	=> $project));
