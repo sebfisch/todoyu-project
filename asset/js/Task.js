@@ -144,8 +144,8 @@ Todoyu.Ext.project.Task = {
 	 * Paste task
 	 *
 	 * @method	paste
-	 * @param	{Number}		idTask		Task where to paste
-	 * @param	{String}		mode		Insert mode (in,after,before)
+	 * @param	{Number}	idTask		Task where to insert
+	 * @param	{String}	mode		Insert mode (in,after,before)
 	 */
 	paste: function(idTask, mode) {
 		var url		= Todoyu.getUrl('project', 'task');

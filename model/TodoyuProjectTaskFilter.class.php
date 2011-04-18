@@ -163,7 +163,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			);
 
 		} else {
-				// Add negative where. Will definitely cause an empty result
+				// Add negative WHERE. Will definitely cause an empty result
 			$queryParts	= array(
 				'where'	=> '0'
 			);
@@ -1051,7 +1051,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 				$where	= 'ext_project_task.id ' . $compare . '(' . implode(',', $subTasks) . ')';
 
 				$queryParts	= array(
-					'where'		=> $where
+					'where'	=> $where
 				);
 			}
 		}
