@@ -866,7 +866,7 @@ class TodoyuProjectProjectManager {
 			}
 		}
 
-		return $lostTasks;
+		return array_unique($lostTasks);
 	}
 
 
