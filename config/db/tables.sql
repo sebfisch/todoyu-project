@@ -35,7 +35,7 @@ CREATE TABLE `ext_project_task` (
 	`id_project` int(10) unsigned NOT NULL DEFAULT '0',
 	`id_parenttask` mediumint(8) unsigned NOT NULL DEFAULT '0',
 	`title` varchar(255) NOT NULL DEFAULT '',
-	`description` text NOT NULL DEFAULT '',
+	`description` text,
 	`id_person_assigned` int(10) unsigned NOT NULL DEFAULT '0',
 	`id_person_owner` int(10) unsigned NOT NULL DEFAULT '0',
 	`date_deadline` int(10) unsigned NOT NULL DEFAULT '0',
