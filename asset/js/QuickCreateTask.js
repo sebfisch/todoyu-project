@@ -51,7 +51,6 @@ Todoyu.Ext.project.QuickCreateTask = {
 			onComplete:	this.onFormUpdated.bind(this)
 		};
 
-
 		Todoyu.Ui.update('quickcreate_content', url, options);
 	},
 

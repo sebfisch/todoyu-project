@@ -82,13 +82,13 @@
 */
 
 .task.container h3 {
-	background-color: #f7f7f7;
-	border-right-width: 4px;
-	border-right-style: solid;
+	background-color:#f7f7f7;
+	border-right-width:4px;
+	border-right-style:solid;
 }
 .task.container h3 .headLabel {
-	border-left-width: 8px;
-	padding-left: 17px;
+	border-left-width:8px;
+	padding-left:17px;
 }
 
 .task.container .details {
@@ -332,7 +332,7 @@
 		background:#fff;
 	}
 	.task .tabContent .tab {
-		padding: 5px;
+		padding:5px;
 		background:#fff;
 	}
 	.task .tabContent .tabBlock .toggle {
@@ -424,5 +424,5 @@
    --------------------------- */
 
 #action-panel .button.taskExportCsv .icon {
-	background: transparent url('../img/icons.png') 0 -557px no-repeat;
+	background:transparent url('../img/icons.png') 0 -557px no-repeat;
 }

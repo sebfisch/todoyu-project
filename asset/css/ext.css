@@ -256,10 +256,10 @@ h1.extIconProject .title {
 }
 	.task .tabContent .tabBlock.assetForm .fForm fieldset,
 	.task .tabContent .tabBlock.commentform .fForm fieldset {
-		padding-top: 15px;
+		padding-top:15px;
 	}
 	.task .tabContent .fForm fieldset.buttons {
-		padding-top: 0;
+		padding-top:0;
 	}
 	.task .tabContent .tabBlock.assetForm .fForm fieldset legend,
 	.task .tabContent .tabBlock.commentform .fForm fieldset legend {
