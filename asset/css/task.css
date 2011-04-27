@@ -11,7 +11,7 @@
 	padding:4px 0 4px 0;
 	clear:both;
 	cursor:pointer;
-	border-bottom:1px dotted #aaa;
+	border-bottom:1px solid #ddd;
 	background-color:transparent;
 }
 .tasks .expanded h3,
@@ -92,7 +92,7 @@
 }
 
 .task.container .details {
-	border-bottom:1px dotted #aaa;
+	border-bottom:1px solid #ddd;
 }
 /* end of styles only for container element */
 
@@ -101,14 +101,18 @@
 	position:absolute;
 	right:145px;
 	width:100px;
-	top:1px;
+	top:2px;
 	text-align:right;
 	overflow:hidden;
-	border-right:1px dotted #ccc;
-	padding:3px;
+	border-right:1px solid #ddd;
+	padding:2px 3px 1px 3px;
 }
 .task.container h3 span.taskHeadExtras {
 	right:141px;
+}
+.task.expanded h3 span.taskHeadExtras,
+.task.expanded h3 span.taskIcons {
+	border-color: #ccc;
 }
 
 .task h3 span.taskHeadExtras span {
@@ -152,7 +156,7 @@
 	overflow:hidden;
 	margin-top:-2px;
 	padding:0 3px 1px 3px;
-	border-left:1px dotted #ccc;
+	border-left:1px solid #ddd;
 }
 .task.container span.taskIcons {
 	width:71px;
@@ -319,7 +323,7 @@
 	/* task tabs content */
 	.task .tabContent {
 		background-color:#e3eace;
-		border-bottom:1px dotted #aaa;
+		border-bottom:1px solid #ddd;
 	}
 
 	.task .tabContent .tab {
@@ -362,7 +366,7 @@
 
 #inlineEditTask .innerBox { /* resource planning inline task editor */
 	margin-top:-20px;
-	border-top:1px dotted #aab1b7;
+	border-top:1px solid #ddd;
 	width:892px;
 	padding:0 12px 0 12px;
 	background-color:#f7f9fa;
@@ -424,5 +428,5 @@
    --------------------------- */
 
 #action-panel .button.taskExportCsv .icon {
-	background:transparent url('../img/icons.png') 0 -557px no-repeat;
+	background:transparent url('../../../../core/asset/img/icons.png') 1px -1598px no-repeat;
 }
