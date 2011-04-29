@@ -28,7 +28,6 @@
 class TodoyuProjectTaskExportManager {
 
 	/**
-	 * @static
 	 * @param	Array	$taskIDs
 	 */
 	public static function exportCSV(array $taskIDs) {
@@ -46,7 +45,6 @@ class TodoyuProjectTaskExportManager {
 
 
 	/**
-	 * @static
 	 * @param	Array	$taskIDs
 	 * @return	Array
 	 */
@@ -67,7 +65,6 @@ class TodoyuProjectTaskExportManager {
 
 
 	/**
-	 * @static
 	 * @param	TodoyuProjectTask	$task
 	 * @return	Array
 	 */

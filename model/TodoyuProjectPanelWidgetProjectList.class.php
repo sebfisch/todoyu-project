@@ -38,11 +38,11 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidgetSearchList {
 
 			// Construct PanelWidget (init basic configuration)
 		parent::__construct(
-			'project',								// ext key
-			'projectlist',							// panel widget ID
-			'LLL:project.panelwidget-projectlist.title',	// widget title text
-			$config,								// widget config array
-			$params								// widget parameters
+			'project',									// ext key
+			'projectlist',								// panel widget ID
+			'LLL:project.panelwidget-projectlist.title',// widget title text
+			$config,									// widget config array
+			$params										// widget parameters
 		);
 
 		$this->addHasIconClass();

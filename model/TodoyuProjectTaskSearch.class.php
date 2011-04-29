@@ -154,7 +154,6 @@ class TodoyuProjectTaskSearch implements TodoyuSearchEngineIf {
 	/**
 	 * Returns the rights clause query for task
 	 *
-	 * @static
 	 * @return	String
 	 */
 	protected static function getAddToWhereRightsClause() {

@@ -449,8 +449,7 @@ class TodoyuProjectTaskRights {
 	/**
 	 * Checks if the change of status is allowed
 	 *
-	 * @static
-	 * @param	String	$status		Status-Key
+	 * @param	String	$status		Status key
 	 * @param	Integer	$idTask
 	 */
 	public static function restrictStatusChangeTo($status, $idTask) {
