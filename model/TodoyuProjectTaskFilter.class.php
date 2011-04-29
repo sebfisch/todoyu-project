@@ -908,17 +908,18 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Get the dynamic date
 	 *
-	 * @param	Array		$dateRange
+	 * @param	Array		$date
 	 * @param	String		$field
+	 * @param	Boolean		$negation
 	 * @return	Array
 	 */
 	protected static function Filter_dateDyn($date, $field, $negation = false) {
 		$date		= intval($date);
 		$compare	= $negation ? '>=' : '<=';
-		$fieldname	= 'ext_project_task.' . $field;
+		$fieldName	= 'ext_project_task.' . $field;
 
-		$where 	= '(' . $fieldname . ' ' . $compare . ' ' . $date
-				. ' AND ' . $fieldname . ' > 0)';
+		$where 	= '(' . 	$fieldName . ' ' . $compare . ' ' . $date
+				. ' AND ' . $fieldName . ' > 0)';
 
 		return array(
 			'where' => $where
