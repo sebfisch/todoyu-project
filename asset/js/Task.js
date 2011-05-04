@@ -518,12 +518,12 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Number}	 	status
 	 */
 	updateStatus: function(idTask, status) {
-		var url	= Todoyu.getUrl('project', 'task');
+		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			parameters: {
-				'task':		idTask,
+				task:	idTask,
 				action:	'setstatus',
-				'status':	status
+				status:	status
 			},
 			onComplete: this.onStatusUpdated.bind(this, idTask, status)
 		};
@@ -587,17 +587,17 @@ Todoyu.Ext.project.Task = {
 	 *
 	 * @method	setStatus
 	 * @param	{Number}		idTask
-	 * @param	{String}		status
+	 * @param	{String}		newStatus
 	 */
-	setStatus: function(idTask, status) {
+	setStatus: function(idTask, newStatus) {
 		var htmlID		= 'task-' + idTask + '-header';
 
 		if( Todoyu.exists(htmlID) ) {
-			var headLabel	= $(htmlID).down('.headLabel');
-			var oldStatus	= this.getStatus(idTask);
+			var head			= $(htmlID);
+			var oldStatus		= this.getStatus(idTask);
 
-			headLabel.replaceClassName('bcStatus' + oldStatus);
-			headLabel.addClassName('bcStatus' + status);
+			head.down('.headLabel').replaceClassName('bcStatus' + oldStatus, 'bcStatus' + newStatus);
+			head.replaceClassName('bcStatus' + oldStatus, 'bcStatus' + newStatus);
 		}
 	},
 
