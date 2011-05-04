@@ -208,6 +208,45 @@ Todoyu.Ext.project = {
 	 */
 	openProjectPopup: function() {
 		Todoyu.Headlets.getHeadlet('todoyuheadletquickcreate').openTypePopup('project','project')
+	},
+
+
+
+	/**
+	 * Get status of an element
+	 *
+	 * @param element
+	 */
+	getStatusOfElement: function(element) {
+		element			= $(element);
+		var statusIndex	= 0;
+
+		if( element ) {
+			var statusClass	= element.getClassNames().grep(/.*Status(\d)/).first();
+			statusIndex		= statusClass.split('Status').last();
+		}
+
+		return statusIndex;
+	},
+
+
+
+	/**
+	 * Set status for an element
+	 * Element has to contain a class which has the format Status4
+	 * Status class can also be prefixed: bcStatus4
+	 *
+	 * @param	{Element|String}	element
+	 * @param	{Number}			newStatus
+	 */
+	setStatusOfElement: function(element, newStatus) {
+		element			= $(element);
+
+		if( element ) {
+			var oldStatus	= this.getStatusOfElement(element);
+
+			element.className	= element.className.replace('Status' + oldStatus, 'Status' + newStatus);
+		}
 	}
 
 };

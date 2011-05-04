@@ -555,7 +555,9 @@ Todoyu.Ext.project.Task = {
 			if( this.isDetailsLoaded(idTask) ) {
 				this.refresh(idTask);
 			} else {
-				this.setStatus(idTask, status);
+				if( this.isLoaded(idTask) ) {
+					this.setStatus(idTask, status);
+				}
 			}
 		}
 	},
@@ -569,17 +571,15 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Number}		idTask
 	 */
 	getStatus: function(idTask) {
-		var htmlID		= 'task-' + idTask + '-header';
-		var statusIndex	= 0;
+		if( this.isLoaded(idTask) ) {
+			var element		= $('task-' + idTask + '-header').down('.headLabel');
 
-		if( Todoyu.exists(htmlID) ) {
-			var classNames 	= $(htmlID).down('.headLabel').classNames();
-			var statusClass	= classNames.grep(/.*Status(\d)/).first();
-			statusIndex		= statusClass.split('Status').last();
+			return this.ext.getStatusOfElement(element);
+		} else {
+			return 0;
 		}
-
-		return statusIndex;
 	},
+
 
 
 	/**
@@ -590,16 +590,15 @@ Todoyu.Ext.project.Task = {
 	 * @param	{String}		newStatus
 	 */
 	setStatus: function(idTask, newStatus) {
-		var htmlID		= 'task-' + idTask + '-header';
+		if( this.isLoaded(idTask) ) {
+			var head		= $('task-' + idTask + '-header');
+			var headLabel	= head.down('.headLabel');
 
-		if( Todoyu.exists(htmlID) ) {
-			var head			= $(htmlID);
-			var oldStatus		= this.getStatus(idTask);
-
-			head.down('.headLabel').replaceClassName('bcStatus' + oldStatus, 'bcStatus' + newStatus);
-			head.replaceClassName('bcStatus' + oldStatus, 'bcStatus' + newStatus);
+			this.ext.setStatusOfElement(head, newStatus);
+			this.ext.setStatusOfElement(headLabel, newStatus);
 		}
 	},
+
 
 
 

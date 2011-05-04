@@ -336,9 +336,7 @@ Todoyu.Ext.project.Project = {
 		var project		= $('project-' + idProject);
 		var statusBar	= project.down('div.projectstatus') || project.down('span.headLabel');
 
-		var statusClass	= statusBar.classNames().grep(/bcStatus(\d)/).first();
-
-		return statusClass.split('Status').last();
+		return this.ext.getStatusOfElement(statusBar);
 	},
 
 
@@ -354,9 +352,7 @@ Todoyu.Ext.project.Project = {
 		var project		= $('project-' + idProject);
 		var statusBar	= project.down('div.projectstatus') || project.down('span.headLabel');
 
-		var oldStatus	= this.getStatus(idProject);
-
-		statusBar.replaceClassName('bcStatus' + oldStatus, 'bcStatus' + status);
+		this.ext.setStatusOfElement(statusBar, status);
 	},
 
 
