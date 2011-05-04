@@ -364,7 +364,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 		 * OptGroup filter
 		 */
 		'filterSet' => array(
-			'funcRef'	=> 'TodoyuSearchFiltersetManager::Filter_filterSet',
+//			'funcRef'	=> 'TodoyuSearchFiltersetManager::Filter_filterSet',
 			'label'		=> 'search.ext.filterlabel.filterset',
 			'optgroup'	=> 'LLL:core.global.filter',
 			'widget'	=> 'select',
@@ -541,7 +541,7 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 		 * OptGroup filter
 		 */
 		'filterSet' => array(
-			'funcRef'	=> 'TodoyuSearchFiltersetManager::Filter_filterSet',
+//			'funcRef'	=> 'TodoyuSearchFiltersetManager::Filter_filterSet',
 			'label'		=> 'search.ext.filterlabel.filterset',
 			'optgroup'	=> 'LLL:core.global.filter',
 			'widget'	=> 'select',
