@@ -28,7 +28,6 @@
 					<tinymce>
 						<theme>simple</theme>
 						<width>100%</width>
-						<height>80px</height>
 					</tinymce>
 					<required />
 				</field>
