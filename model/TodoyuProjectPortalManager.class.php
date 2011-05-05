@@ -51,9 +51,57 @@ class TodoyuProjectPortalManager {
 
 		$taskFilterMerged = new TodoyuProjectTaskFilter($conditions, 'OR');
 
-		$sorting	= 'ext_project_task.date_deadline, ext_project_task.date_end';
+		$taskIDs	= $taskFilterMerged->getTaskIDs('');
 
-		return $taskFilterMerged->getTaskIDs($sorting);
+		return self::getTaskIDsSorted($taskIDs);
+	}
+
+
+
+	/**
+	 * Sort a list of task by date_end and date_deadline
+	 * Only use date_end if type is task and date_end is not empty
+	 *
+	 * @param	Array	$taskIDs
+	 * @return	Array
+	 */
+	private static function getTaskIDsSorted(array $taskIDs) {
+		if( sizeof($taskIDs) === 0 ) {
+			return array();
+		}
+
+		$idList	= implode(',', $taskIDs);
+
+		$fields	= '	id,
+					date_end,
+					date_deadline,
+					`type` = ' . TASK_TYPE_TASK . ' as istask';
+		$table	= 'ext_project_task';
+		$where	= 'id IN(' . $idList . ')';
+		$order	= 'ext_project_task.date_deadline, ext_project_task.date_end';
+
+		$tasks	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
+
+		usort($tasks, array('TodoyuProjectPortalManager', 'taskListingSortCompare'));
+
+		return TodoyuArray::getColumn($tasks, 'id');
+	}
+
+
+
+	/**
+	 * Compare tasks by date
+	 * Sort by date_end if it's set and if type is task, else sort by date_deadline
+	 *
+	 * @param	Array		$taskA
+	 * @param	Array		$taskB
+	 * @return	Integer
+	 */
+	private static function taskListingSortCompare($taskA, $taskB){
+		$dateA	= $taskA['istask'] && $taskA['date_end'] ? $taskA['date_end'] : $taskA['date_deadline'];
+		$dateB	= $taskB['istask'] && $taskB['date_end'] ? $taskB['date_end'] : $taskB['date_deadline'];
+
+		return $dateA === $dateB ? 0 : $dateA < $dateB ? -1 : 1;
 	}
 
 

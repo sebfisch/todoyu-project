@@ -325,7 +325,6 @@ class TodoyuProjectProjectManager {
 		);
 
 		$taskFilter	= new TodoyuProjectTaskFilter($filters);
-//		$taskFilter->enableContainerMode();
 		$taskIDs	= $taskFilter->getTaskIDs();
 
 		return $taskIDs;
