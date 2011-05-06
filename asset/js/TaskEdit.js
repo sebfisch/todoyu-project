@@ -40,6 +40,19 @@ Todoyu.Ext.project.Task.Edit = {
 
 
 	/**
+	 * Init editing given task right after having loaded project area
+	 *
+	 * @method	initEditOnLoaded
+	 * @param	{Number}			idTask
+	 */
+	initEditOnLoaded: function(idTask) {
+		this.createFormWrapDivs(idTask);
+		this.loadForm(idTask);
+	},
+
+
+
+	/**
 	 * Create DIVs (details, data) wrapping form (inside header) of given task and have task details be displayed. Div positions: Data before, details after header of given task.
 	 *
 	 * @method	createFormWrapDivs
