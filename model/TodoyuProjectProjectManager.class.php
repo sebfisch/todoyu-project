@@ -668,7 +668,7 @@ class TodoyuProjectProjectManager {
 
 				// Activity
 			if( $taskPreset['id_activity'] != 0 ) {
-				$activity       = TodoyuProjectActivityManager::getActivity($taskPreset['id_activity']);
+				$activity	= TodoyuProjectActivityManager::getActivity($taskPreset['id_activity']);
 				$info[] = array(
 					'label'		=> Label('project.ext.extconf.taskDefaults.activity'),
 					'value'		=> $activity['title'],
@@ -695,7 +695,7 @@ class TodoyuProjectProjectManager {
 
 
 				// Assigned person / role
-			$idPersonAssigned       = intval($taskPreset['id_person_assigned']);
+			$idPersonAssigned	= intval($taskPreset['id_person_assigned']);
 			if( $idPersonAssigned > 0 ) {
 				$info[] = array(
 					'label'		=> Label('project.ext.taskpreset.person_assigned'),
@@ -722,7 +722,7 @@ class TodoyuProjectProjectManager {
 					'position'	=> 55
 				);
 			} else {
-				$idRoleOwner    = intval($taskPreset['person_owner_role']);
+				$idRoleOwner	= intval($taskPreset['person_owner_role']);
 				if( $idRoleOwner > 0 ) {
 					$info[] = array(
 						'label'		=> Label('project.ext.extconf.taskDefaults.person_owner_role'),
