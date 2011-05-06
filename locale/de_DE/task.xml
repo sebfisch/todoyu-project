@@ -38,6 +38,7 @@
 	<label index="create.label">Neue Aufgabe</label>
 	<label index="date.deadline.short">F</label>
 	<label index="contextmenu.showinproject">Zeige in Projekt</label>
+	<label index="contextmenu.editinproject">In Projekt bearbeiten</label>
 	<label index="contextmenu.edit">Aufgabe bearbeiten</label>
 	<label index="contextmenu.actions">Aufgabe ...</label>
 	<label index="contextmenu.copy">Kopieren</label>

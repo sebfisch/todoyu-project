@@ -39,6 +39,7 @@
 	<label index="create.label">New Task</label>
 	<label index="date.deadline.short">D</label>
 	<label index="contextmenu.showinproject">Show In Project</label>
+	<label index="contextmenu.editinproject">Edit In Project</label>
 	<label index="contextmenu.edit">Edit Task</label>
 	<label index="contextmenu.actions">Task ...</label>
 	<label index="contextmenu.copy">Copy</label>

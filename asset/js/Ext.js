@@ -102,6 +102,26 @@ Todoyu.Ext.project = {
 
 
 	/**
+	 * Open given task for editing in it's project in project area
+	 *
+	 * @param	{Number}	idTask
+	 */
+	editTaskInProject: function(idTask, idProject, windowName) {
+		windowName	= windowName ? windowName : '';
+
+		var params = {
+			'task': idTask
+		};
+		if( ! Object.isUndefined(idProject) ) {
+			params.project = idProject;
+		}
+
+		Todoyu.goTo('project', 'ext', params, 'task-' + idTask, true, windowName);
+	},
+
+
+
+	/**
 	 * Go to a task in project view, if you have only the full tasknumber (no task ID)
 	 * Gets the task ID by AJAX and redirects the browser
 	 *

@@ -228,11 +228,11 @@ Todoyu.Ext.project.Task.Edit = {
 	 * Project suggestion selected: update form (fields presets)
 	 *
 	 * @method	onPersonAcSelected
-	 * @param		{Element}				inputField
-	 * @param		{Element}				idField
-	 * @param		{String}				idProject
-	 * @param		{String}				selectedText
-	 * @param		{Todoyu.Autocompleter}	autocompleter
+	 * @param	{Element}				inputField
+	 * @param	{Element}				idField
+	 * @param	{String}				idProject
+	 * @param	{String}				selectedText
+	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onProjectAcSelected: function(inputField, idField, idProject, selectedText, autocompleter) {
 		var isQuicktask	= inputField.up('div').id.indexOf('quicktask') != -1;

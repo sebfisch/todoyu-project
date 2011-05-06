@@ -112,7 +112,7 @@
 }
 .task.expanded h3 span.taskHeadExtras,
 .task.expanded h3 span.taskIcons {
-	border-color: #ccc;
+	border-color:#ccc;
 }
 
 .task h3 span.taskHeadExtras span {

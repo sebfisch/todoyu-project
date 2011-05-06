@@ -26,6 +26,11 @@
 	background-position:3px -689px;
 }
 
+#contextmenu .taskContextMenu.editInProject,
+#contextmenu .projectContextMenu.editInProject {
+	background-position:3px -838px;
+}
+
 #contextmenu .projectDetails {
 	background-position:3px -718px;
 }
