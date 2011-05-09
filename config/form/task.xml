@@ -12,7 +12,7 @@
 	<fieldsets>
 
 		<fieldset name="left">
-			<legend>Task Designation</legend>
+			<legend>project.form.legend.taskbasics</legend>
 			<class>left noneFloatingInput</class>
 			<elements>
 
