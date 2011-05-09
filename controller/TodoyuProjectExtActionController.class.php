@@ -41,8 +41,6 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 	public function defaultAction(array $params) {
 		Todoyu::restrict('project', 'general:area');
 
-		TodoyuLogger::logDebug('test');
-
 			// Set project tab
 		TodoyuFrontend::setActiveTab('project');
 
