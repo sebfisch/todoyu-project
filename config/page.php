@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 		// Add menu entry
-if(  allowed('project', 'general:area') ) {
+if(  Todoyu::allowed('project', 'general:area') ) {
 	TodoyuFrontend::addMenuEntry('project', 'LLL:project.ext.tab.label', '?ext=project', 20);
 
 	$projectEntries	= TodoyuProjectProjectManager::getOpenProjectLabels();
@@ -30,12 +30,12 @@ if(  allowed('project', 'general:area') ) {
 	}
 
 		// Register quick task headlet
-	if( allowed('project', 'addtask:addViaQuickCreateHeadlet') ) {
+	if( Todoyu::allowed('project', 'addtask:addViaQuickCreateHeadlet') ) {
 		TodoyuHeadManager::addHeadlet('TodoyuProjectHeadletQuickTask', 55);
 	}
 }
 
-if( TodoyuExtensions::isInstalled('portal') && allowed('portal', 'general:use') ) {
+if( TodoyuExtensions::isInstalled('portal') && Todoyu::allowed('portal', 'general:use') ) {
 		// Add portal tab: 'todos'
 	TodoyuPortalManager::addTab('todo', 'TodoyuProjectPortalRenderer::getTodoTabLabel', 'TodoyuProjectPortalRenderer::renderTodoTabContent', 20);
 }

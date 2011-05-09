@@ -33,7 +33,7 @@ class TodoyuProjectPortalRenderer {
 	 * @return	String
 	 */
 	public static function getTodoTabLabel($count = true) {
-		$label		= Label('project.ext.portal.tab.todos');
+		$label		= Todoyu::Label('project.ext.portal.tab.todos');
 
 		if( $count ) {
 			$numTasks	= TodoyuProjectPortalManager::getTodoCount();

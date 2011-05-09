@@ -54,7 +54,7 @@ class TodoyuProjectProjectSearch implements TodoyuSearchEngineIf {
 
 		$tables	= self::TABLE . ' LEFT JOIN ext_contact_company ON ' . self::TABLE . '.id_company = ext_contact_company.id';
 
-		if( ! TodoyuAuth::isAdmin() && ! allowed('project', 'project:seeAll') ) {
+		if( ! TodoyuAuth::isAdmin() && ! Todoyu::allowed('project', 'project:seeAll') ) {
 			$where	.= ' AND ext_project_mm_project_person.id_person = ' . TodoyuAuth::getPersonID();
 			$tables	.= ' LEFT JOIN ext_project_mm_project_person ON ext_project_project.id = ext_project_mm_project_person.id_project';
 		}

@@ -68,7 +68,7 @@ class TodoyuProjectTaskManager {
 		$insertForm		= TodoyuFormManager::getForm($xmlPathInsert);
 
 			// If person can add tasks in all project, show auto-completion field, else only a select element
-		$field	= $insertForm->getField( allowed('project', 'addtask:addTaskInAllProjects') ? 'id_project_ac' : 'id_project_select');
+		$field	= $insertForm->getField( Todoyu::allowed('project', 'addtask:addTaskInAllProjects') ? 'id_project_ac' : 'id_project_select');
 		$form->getFieldset('left')->addField('id_project', $field, 'before:title');
 
 			// Change form action and button functions
@@ -201,7 +201,7 @@ class TodoyuProjectTaskManager {
 			// Call hooked save data functions
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idTask);
 
-		if( $data['id_person_assigned'] == personid() ) {
+		if( $data['id_person_assigned'] == Todoyu::personid() ) {
 			$data['is_acknowledged']	= 1;
 		}
 
@@ -459,9 +459,9 @@ class TodoyuProjectTaskManager {
 		unset($allowed['actions']['submenu']);
 
 			// Clipboard options
-		if( allowed('project', 'edittask:useTaskAndContainerClipboard')) {
+		if( Todoyu::allowed('project', 'edittask:useTaskAndContainerClipboard')) {
 				// Copy & Cut
-			if( allowed('project', 'addtask:addTaskInOwnProjects') ) {
+			if( Todoyu::allowed('project', 'addtask:addTaskInOwnProjects') ) {
 					// Copy
 				$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
 					// Cut
@@ -818,7 +818,7 @@ class TodoyuProjectTaskManager {
 					)';
 
 			// Add public/allowed persons check for external person
-		if( ! Todoyu::person()->isInternal() && ! Todoyu::person()->isAdmin() && ! allowed('contact', 'person:seeAllPersons') ) {
+		if( ! Todoyu::person()->isInternal() && ! Todoyu::person()->isAdmin() && ! Todoyu::allowed('contact', 'person:seeAllPersons') ) {
 			$allowedPersonIDs = TodoyuContactPersonRights::getPersonIDsAllowedToBeSeen();
 			$where .= ' AND p.id IN (' . implode(',', $allowedPersonIDs) . ') ';
 		}
@@ -1021,7 +1021,7 @@ class TodoyuProjectTaskManager {
 			// Public
 		$info['is_public']	= array(
 			'label'		=> $task->isContainer() ? 'LLL:project.task.container.attr.is_public' : 'LLL:project.task.attr.is_public',
-			'value'		=> Label('LLL:project.task.attr.is_public.' . ($task->isPublic() ? 'public' : 'private') . ($task->isContainer() ? '.container' : '')) ,
+			'value'		=> Todoyu::Label('LLL:project.task.attr.is_public.' . ($task->isPublic() ? 'public' : 'private') . ($task->isContainer() ? '.container' : '')) ,
 			'position'	=> 110,
 			'className'	=> ''
 		);
@@ -1373,7 +1373,7 @@ class TodoyuProjectTaskManager {
 			'date_deadline'		=> self::getDateFromExtConfDefault($presets['date_deadline']),
 			'status'			=> intval($presets['status']),
 			'id_person_assigned'=> 0,
-			'id_person_owner'	=> personid(),
+			'id_person_owner'	=> Todoyu::personid(),
 			'estimated_workload'=> intval($presets['estimated_workload']),
 			'is_public'			=> $presets['is_public'],
 			'id_parenttask'		=> $idParentTask,
@@ -2116,7 +2116,7 @@ class TodoyuProjectTaskManager {
 	 */
 	public static function isPersonAssigned($idTask, $idPerson = 0, $checkCreator = false) {
 		$idTask		= intval($idTask);
-		$idPerson	= personid($idPerson);
+		$idPerson	= Todoyu::personid($idPerson);
 
 		$fields	= 'id';
 		$table	= self::TABLE;
@@ -2146,7 +2146,7 @@ class TodoyuProjectTaskManager {
 	 */
 	public static function isPersonAssignedToProject($idTask, $idPerson = 0) {
 		$idTask		= intval($idTask);
-		$idPerson	= personid($idPerson);
+		$idPerson	= Todoyu::personid($idPerson);
 
 		$fields	= '	t.id';
 		$table	= 	self::TABLE . ' t,
@@ -2193,7 +2193,7 @@ class TodoyuProjectTaskManager {
 
 			// Set owner for quickCreate tasks
 		if( strtolower(CONTROLLER) === 'quickcreatetask' && $data['id_person_owner'] == 0 ) {
-			$data['id_person_owner'] = personid();
+			$data['id_person_owner'] = Todoyu::personid();
 		}
 
 		return $data;
@@ -2316,7 +2316,7 @@ class TodoyuProjectTaskManager {
 	 * @return	String
 	 */
 	public static function linkTaskIDsInText($text) {
-		if( allowed('project', 'general:area') ) {
+		if( Todoyu::allowed('project', 'general:area') ) {
 			$pattern	= '/(<p>|<span>|\s|^)(\d+\.\d+)(<\/p>|<\/span>|\s|$)/';
 			$replace	= '$1<a href="javascript:void(0)" onclick="Todoyu.Ext.project.goToTaskInProjectByTasknumber(\'$2\')">$2</a>$3';
 

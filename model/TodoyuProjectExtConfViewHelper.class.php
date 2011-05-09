@@ -85,7 +85,7 @@ class TodoyuProjectExtConfViewHelper {
 	public static function getValueDateLabel($value) {
 		$value	= TodoyuNumeric::intPositive($value);
 
-		return Label('LLL:project.task.default.date.date_' . $value);
+		return Todoyu::Label('LLL:project.task.default.date.date_' . $value);
 	}
 
 }

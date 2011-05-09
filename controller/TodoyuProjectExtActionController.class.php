@@ -27,7 +27,7 @@
 class TodoyuProjectExtActionController extends TodoyuActionController {
 
 	public function init(array $params) {
-		restrict('project', 'general:use');
+		Todoyu::restrict('project', 'general:use');
 	}
 
 
@@ -39,7 +39,9 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function defaultAction(array $params) {
-		restrict('project', 'general:area');
+		Todoyu::restrict('project', 'general:area');
+
+		TodoyuLogger::logDebug('test');
 
 			// Set project tab
 		TodoyuFrontend::setActiveTab('project');
@@ -76,7 +78,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 					// Reset task ID if not visible
 				$idTask = 0;
 					// Show message about not available task
-				TodoyuPage::addJsOnloadedFunction('Todoyu.notifyError.bind(Todoyu, \'' . Label('project.task.notAvailable') . '\')');
+				TodoyuPage::addJsOnloadedFunction('Todoyu.notifyError.bind(Todoyu, \'' . Todoyu::Label('project.task.notAvailable') . '\')');
 			}
 		}
 
@@ -91,9 +93,9 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 				// Prepend current project to list
 			TodoyuProjectPreferences::addOpenProject($idProject);
 
-			$title	= Label('project.ext.page.title') . ' - ' . $project->getFullTitle();
+			$title	= Todoyu::Label('project.ext.page.title') . ' - ' . $project->getFullTitle();
 		} else {
-			$title		= Label('project.ext.page.title.noSelected');
+			$title		= Todoyu::Label('project.ext.page.title.noSelected');
 			$idProject	= 0;
 		}
 

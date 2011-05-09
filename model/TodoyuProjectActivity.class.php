@@ -46,7 +46,7 @@ class TodoyuProjectActivity extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getTitle($parse = true) {
-		return $parse ? Label($this->get('title')) : $this->get('title');
+		return $parse ? Todoyu::Label($this->get('title')) : $this->get('title');
 	}
 
 }

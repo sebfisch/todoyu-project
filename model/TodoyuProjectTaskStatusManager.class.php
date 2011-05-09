@@ -55,7 +55,7 @@ class TodoyuProjectTaskStatusManager {
 			$statusKey	= $status;
 		}
 
-		return Label('project.task.status.' . $statusKey);
+		return Todoyu::Label('project.task.status.' . $statusKey);
 	}
 
 

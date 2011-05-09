@@ -33,7 +33,7 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function init(array $params) {
-		restrict('project', 'general:use');
+		Todoyu::restrict('project', 'general:use');
 	}
 
 

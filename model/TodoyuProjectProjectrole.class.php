@@ -54,7 +54,7 @@ class TodoyuProjectProjectrole extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getTitle() {
-		return Label($this->get('title'));
+		return Todoyu::Label($this->get('title'));
 	}
 
 

@@ -70,30 +70,30 @@ class TodoyuProjectTaskExportManager {
 	 */
 	protected static function parseDataForExport(TodoyuProjectTask $task) {
 		$exportData = array(
-			Label('project.task.attr.id')					=> $task->getID(),
-			Label('project.task.attr.date_create')			=> TodoyuTime::format($task->date_create, 'date'),
-			Label('core.global.date_update')				=> TodoyuTime::format($task->date_update, 'date'),
-			Label('core.global.id_person_create')			=> $task->getCreatePerson()->getFullName(),
-			Label('project.task.attr.type')					=> $task->isContainer() ? Label('project.task.container') : Label('project.task.task'),
-			Label('project.ext.project')					=> $task->getProject()->getFullTitle(),
-			Label('project.task.attr.id_parenttask')		=> $task->hasParentTask() ? $task->getParentTask()->getFullTitle() : '',
-			Label('project.task.attr.title')				=> $task->getFullTitle(),
-			Label('project.task.description')				=> TodoyuString::strictHtml2text($task->getDescription()),
-			Label('project.task.attr.person_assigned')		=> $task->getPerson('assigned')->getFullName(),
-			Label('project.task.attr.person_owner')			=> $task->getPerson('owner')->getFullName(),
-			Label('project.task.attr.date_deadline')		=> TodoyuTime::format($task->getDeadlineDate()),
-			Label('project.task.attr.date_start')			=> TodoyuTime::format($task->getStartDate()),
-			Label('project.task.attr.date_end')				=> TodoyuTime::format($task->getEndDate()),
-			Label('project.task.taskno')					=> $task->getTaskNumber(true),
-			Label('project.task.attr.status')				=> $task->getStatusLabel(),
-			Label('project.task.attr.activity')				=> $task->getActivityLabel(),
-			Label('project.task.attr.estimated_workload')	=> TodoyuTime::formatTime($task->getEstimatedWorkload()),
-			Label('project.task.attr.is_acknowledged')		=> $task->isAcknowledged() ? '' : Label('LLL:project.task.attr.notAcknowledged')
+			Todoyu::Label('project.task.attr.id')					=> $task->getID(),
+			Todoyu::Label('project.task.attr.date_create')			=> TodoyuTime::format($task->date_create, 'date'),
+			Todoyu::Label('core.global.date_update')				=> TodoyuTime::format($task->date_update, 'date'),
+			Todoyu::Label('core.global.id_person_create')			=> $task->getCreatePerson()->getFullName(),
+			Todoyu::Label('project.task.attr.type')					=> $task->isContainer() ? Todoyu::Label('project.task.container') : Todoyu::Label('project.task.task'),
+			Todoyu::Label('project.ext.project')					=> $task->getProject()->getFullTitle(),
+			Todoyu::Label('project.task.attr.id_parenttask')		=> $task->hasParentTask() ? $task->getParentTask()->getFullTitle() : '',
+			Todoyu::Label('project.task.attr.title')				=> $task->getFullTitle(),
+			Todoyu::Label('project.task.description')				=> TodoyuString::strictHtml2text($task->getDescription()),
+			Todoyu::Label('project.task.attr.person_assigned')		=> $task->getPerson('assigned')->getFullName(),
+			Todoyu::Label('project.task.attr.person_owner')			=> $task->getPerson('owner')->getFullName(),
+			Todoyu::Label('project.task.attr.date_deadline')		=> TodoyuTime::format($task->getDeadlineDate()),
+			Todoyu::Label('project.task.attr.date_start')			=> TodoyuTime::format($task->getStartDate()),
+			Todoyu::Label('project.task.attr.date_end')				=> TodoyuTime::format($task->getEndDate()),
+			Todoyu::Label('project.task.taskno')					=> $task->getTaskNumber(true),
+			Todoyu::Label('project.task.attr.status')				=> $task->getStatusLabel(),
+			Todoyu::Label('project.task.attr.activity')				=> $task->getActivityLabel(),
+			Todoyu::Label('project.task.attr.estimated_workload')	=> TodoyuTime::formatTime($task->getEstimatedWorkload()),
+			Todoyu::Label('project.task.attr.is_acknowledged')		=> $task->isAcknowledged() ? '' : Todoyu::Label('LLL:project.task.attr.notAcknowledged')
 		);
 
 		$publicKey		= $task->isPublic() ? 'public' : 'private';
 		$publicTypeKey	= $task->isContainer() ? '.container' : '';
-		$exportData[Label('project.task.attr.is_public')]			= Label('project.task.attr.is_public.' . $publicKey . $publicTypeKey);
+		$exportData[Todoyu::Label('project.task.attr.is_public')]			= Todoyu::Label('project.task.attr.is_public.' . $publicKey . $publicTypeKey);
 
 		$exportData	= TodoyuHookManager::callHookDataModifier('project', 'taskCSVExportParseData', $exportData, array('task'	=> $task));
 

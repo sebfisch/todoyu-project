@@ -159,35 +159,35 @@ class TodoyuProjectProjectFilterDataSource {
 	public static function getDynamicDateOptions($definitions) {
 		$definitions['options'] = array(
 			array(
-				'label' => Label('project.filter.project.dyndate.today'),
+				'label' => Todoyu::Label('project.filter.project.dyndate.today'),
 				'value'	=> 'today'
 			),
 			array(
-				'label' => Label('project.filter.project.dyndate.tomorrow'),
+				'label' => Todoyu::Label('project.filter.project.dyndate.tomorrow'),
 				'value'	=> 'tomorrow'
 			),
 			array(
-				'label' => Label('project.filter.project.dyndate.dayaftertomorrow'),
+				'label' => Todoyu::Label('project.filter.project.dyndate.dayaftertomorrow'),
 				'value'	=> 'dayaftertomorrow'
 			),
 			array(
-				'label' => Label('LLL:project.filter.project.dyndate.yesterday'),
+				'label' => Todoyu::Label('LLL:project.filter.project.dyndate.yesterday'),
 				'value'	=> 'yesterday'
 			),
 			array(
-				'label' => Label('LLL:project.filter.project.dyndate.daybeforeyesterday'),
+				'label' => Todoyu::Label('LLL:project.filter.project.dyndate.daybeforeyesterday'),
 				'value'	=> 'daybeforeyesterday'
 			),
 			array(
-				'label' => Label('LLL:project.filter.project.dyndate.currentweek'),
+				'label' => Todoyu::Label('LLL:project.filter.project.dyndate.currentweek'),
 				'value'	=> 'currentweek'
 			),
 			array(
-				'label' => Label('LLL:project.filter.project.dyndate.nextweek'),
+				'label' => Todoyu::Label('LLL:project.filter.project.dyndate.nextweek'),
 				'value'	=> 'nextweek'
 			),
 			array(
-				'label' => Label('LLL:project.filter.project.dyndate.lastweek'),
+				'label' => Todoyu::Label('LLL:project.filter.project.dyndate.lastweek'),
 				'value'	=> 'lastweek'
 			)
 		);

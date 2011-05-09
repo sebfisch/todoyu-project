@@ -139,7 +139,7 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidgetSearchList {
 	 * @return	Boolean
 	 */
 	public static function isAllowed() {
-		return allowed('project', 'general:use');
+		return Todoyu::allowed('project', 'general:use');
 	}
 
 }

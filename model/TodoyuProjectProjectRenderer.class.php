@@ -102,7 +102,7 @@ class TodoyuProjectProjectRenderer {
 		$tmpl	= 'ext/project/view/project-noselected.tmpl';
 		$data	= array();
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -124,7 +124,7 @@ class TodoyuProjectProjectRenderer {
 			'project'	=> self::renderTabbedProject($idProject, $idTask, $tab),
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -150,7 +150,7 @@ class TodoyuProjectProjectRenderer {
 			'tasktree'	=> self::renderProjectTaskTree($idProject, $idTask, $tab)
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -212,7 +212,7 @@ class TodoyuProjectProjectRenderer {
 			$data['details'] = self::renderProjectDetails($idProject);
 		}
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -244,7 +244,7 @@ class TodoyuProjectProjectRenderer {
 			// Get dynamically added details elements
 		$data['dynamicElements']	= TodoyuHookManager::callHook('project', 'projectDetailsDynamicElements', array($idProject));
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -262,7 +262,7 @@ class TodoyuProjectProjectRenderer {
 			'persons'	=> TodoyuProjectProjectManager::getProjectPersons($idProject)
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -314,7 +314,7 @@ class TodoyuProjectProjectRenderer {
 			'formhtml'	=> $form->render()
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -389,7 +389,7 @@ class TodoyuProjectProjectRenderer {
 			}
 		}
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -433,7 +433,7 @@ class TodoyuProjectProjectRenderer {
 			'idProject'	=> $idProject
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -541,7 +541,7 @@ class TodoyuProjectProjectRenderer {
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDataBeforeRendering', $data, array($idTask));
 		$tmpl	= 'ext/project/view/task-header.tmpl';
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -587,7 +587,7 @@ class TodoyuProjectProjectRenderer {
 			// Call last hook before rendering
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDataBeforeRendering', $data, array($idTask));
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -613,7 +613,7 @@ class TodoyuProjectProjectRenderer {
 		$data	= $project->getTemplateData();
 		$data['details'] = $wrapedForm;
 
-		$newProjectEditContent = render($tmpl, $data);
+		$newProjectEditContent = Todoyu::render($tmpl, $data);
 
 			// Wrap project
 		$tmpl	= 'ext/project/view/project-wrap.tmpl';
@@ -622,7 +622,7 @@ class TodoyuProjectProjectRenderer {
 			'idProject'	=> 0
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -645,7 +645,7 @@ class TodoyuProjectProjectRenderer {
 		);
 		$tmpl	= 'ext/project/view/project-data-wrap.tmpl';
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -711,7 +711,7 @@ class TodoyuProjectProjectRenderer {
 			TodoyuHookManager::callHook('project', 'renderProjects');
 		}
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -742,7 +742,7 @@ class TodoyuProjectProjectRenderer {
 			$data['details']= self::renderProjectDetails($idProject);
 		}
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 }

@@ -57,7 +57,7 @@ class TodoyuProjectTaskRenderer {
 
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDataBeforeRendering', $data, array($idTask));
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -86,7 +86,7 @@ class TodoyuProjectTaskRenderer {
 			// Add context menu init scripts
 		$data['javascript'] = 'Todoyu.Ext.project.ContextMenuTask.attach();';
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -114,7 +114,7 @@ class TodoyuProjectTaskRenderer {
 			$data['tabs'] = self::renderTabs($idTask, $activeTab);
 		}
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -141,12 +141,12 @@ class TodoyuProjectTaskRenderer {
 		$fieldIndexes	= array_flip($fieldKeys);
 
 			// Person can only see public tasks? remove visibility info
-		if( ! Todoyu::person()->isInternal() || ! allowed('project', 'seetask:seeAll') ) {
+		if( ! Todoyu::person()->isInternal() || ! Todoyu::allowed('project', 'seetask:seeAll') ) {
 			unset($data['data'][$fieldIndexes['is_public']]);
 		}
 
 			// Remove info about task owner/creator if not visible to current user
-		if( ! allowed('contact', 'person:seeAllPersons') ) {
+		if( ! Todoyu::allowed('contact', 'person:seeAllPersons') ) {
 			$allowedPersonIDs	= TodoyuContactPersonRights::getPersonIDsAllowedToBeSeen();
 
 			if( ! in_array($task->getPersonID('owner'), $allowedPersonIDs) ) {
@@ -158,7 +158,7 @@ class TodoyuProjectTaskRenderer {
 			}
 		}
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -203,7 +203,7 @@ class TodoyuProjectTaskRenderer {
 			'formhtml'	=> $form->render()
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -233,7 +233,7 @@ class TodoyuProjectTaskRenderer {
 			'taskdata'	=> $form
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -326,7 +326,7 @@ class TodoyuProjectTaskRenderer {
 		);
 		$tmpl	= 'ext/project/view/task-tabs.tmpl';
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 }

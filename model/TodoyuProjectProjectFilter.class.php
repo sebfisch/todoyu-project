@@ -104,7 +104,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	public function Filter_rights($value, $negate = false) {
 		$queryParts	= false;
 
-		if( ! TodoyuAuth::isAdmin() && ! allowed('project', 'project:seeAll') ) {
+		if( ! TodoyuAuth::isAdmin() && ! Todoyu::allowed('project', 'project:seeAll') ) {
 			$tables	= array(
 				'ext_project_mm_project_person'
 			);

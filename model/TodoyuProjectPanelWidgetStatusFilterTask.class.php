@@ -91,7 +91,7 @@ class TodoyuProjectPanelWidgetStatusFilterTask extends TodoyuProjectPanelWidgetS
 	public static function isAllowed() {
 		$statuses	= TodoyuProjectTaskStatusManager::getStatuses();
 
-		return allowed('project', 'general:use') && sizeof($statuses) > 1;
+		return Todoyu::allowed('project', 'general:use') && sizeof($statuses) > 1;
 	}
 
 }

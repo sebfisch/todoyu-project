@@ -54,8 +54,8 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 */
 	private function addRightsClauseFilter() {
 			// Limit to current person
-		if( ! allowed('project', 'seetask:seeAll') ) {
-			$this->addRightsFilter('assignedPerson', personid());
+		if( ! Todoyu::allowed('project', 'seetask:seeAll') ) {
+			$this->addRightsFilter('assignedPerson', Todoyu::personid());
 		}
 
 			// Limit to selected status
@@ -64,7 +64,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$this->addRightsFilter('status', $statuses);
 
 				// Limit to tasks which are in available projects
-			if( ! allowed('project', 'project:seeAll') ) {
+			if( ! Todoyu::allowed('project', 'project:seeAll') ) {
 				$this->addRightsFilter('availableprojects', 0);
 			}
 
@@ -256,7 +256,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array
 	 */
 	public function Filter_currentPersonOwner($negate = false) {
-		$idPerson	= personid();
+		$idPerson	= Todoyu::personid();
 
 		$queryParts	= $this->Filter_ownerPerson($idPerson, $negate);
 
@@ -572,7 +572,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array
 	 */
 	public function Filter_currentPersonAssigned($value = '', $negate = false) {
-		$idPerson	= personid();
+		$idPerson	= Todoyu::personid();
 
 		$queryParts	= $this->Filter_assignedPerson($idPerson, $negate);
 
@@ -738,7 +738,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array
 	 */
 	public function Filter_currentPersonHasAcknowledged($value, $negate) {
-		$idPerson	= personid();
+		$idPerson	= Todoyu::personid();
 		$queryParts	= $this->Filter_acknowledged($idPerson, $negate);
 
 		return $queryParts;

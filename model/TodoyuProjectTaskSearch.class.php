@@ -161,8 +161,8 @@ class TodoyuProjectTaskSearch implements TodoyuSearchEngineIf {
 
 		if( ! TodoyuAuth::isAdmin() ) {
 
-			if( ! allowed('project', 'seetask:seeAll') ) {
-				$addToWhere .= ' AND ext_project_task.id_person_assigned = ' . personid();
+			if( ! Todoyu::allowed('project', 'seetask:seeAll') ) {
+				$addToWhere .= ' AND ext_project_task.id_person_assigned = ' . Todoyu::personid();
 			}
 
 			// Limit to selected status
@@ -170,7 +170,7 @@ class TodoyuProjectTaskSearch implements TodoyuSearchEngineIf {
 			$addToWhere .= ' AND ext_project_task.status IN (' . $statuses . ')';
 
 				// Limit to tasks which are in available projects
-			if( ! allowed('project', 'project:seeAll') ) {
+			if( ! Todoyu::allowed('project', 'project:seeAll') ) {
 				$availableProjects = TodoyuProjectProjectManager::getAvailableProjectsForPerson();
 				if( sizeof($availableProjects) > 0) {
 					$addToWhere	.= ' AND ext_project_task.id_project IN(' . implode(',', $availableProjects) . ')';

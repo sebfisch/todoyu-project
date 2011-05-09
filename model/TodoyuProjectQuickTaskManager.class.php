@@ -61,7 +61,7 @@ class TodoyuProjectQuickTaskManager {
 		$insertForm		= TodoyuFormManager::getForm($xmlPathInsert);
 
 			// If person can add tasks in all project, show autocomplete field, else only a select element
-		if( allowed('project', 'addtask:addTaskInAllProjects') ) {
+		if( Todoyu::allowed('project', 'addtask:addTaskInAllProjects') ) {
 			$field	= $insertForm->getField('id_project_ac');
 		} else {
 			$field	= $insertForm->getField('id_project_select');
@@ -122,13 +122,13 @@ class TodoyuProjectQuickTaskManager {
 		$data['id']					= $idTask;
 		$data['status']				= $presets['status'] > 0 ? $presets['status'] : intval(Todoyu::$CONFIG['EXT']['project']['taskDefaults']['statusQuickTask']);
 
-		if( ! allowed('project', 'edittaskdetail:editPersonAssigned') ) {
+		if( ! Todoyu::allowed('project', 'edittaskdetail:editPersonAssigned') ) {
 			$data['id_person_assigned']	= ( $presets['id_person_assigned'] > 0 ) ? intval($presets['id_person_assigned']) : TodoyuProjectProjectManager::getRolePerson($idProject, $presets['person_assigned_role']);
 		} else {
 			$data['id_person_assigned']	= TodoyuAuth::getPersonID();
 		}
 
-		if( ! allowed('project', 'edittaskdetail:editPersonOwner') ) {
+		if( ! Todoyu::allowed('project', 'edittaskdetail:editPersonOwner') ) {
 			$data['id_person_owner']= ( $presets['id_person_owner'] > 0 ) ? intval($presets['id_person_owner']) : TodoyuProjectProjectManager::getRolePerson($idProject, $presets['person_owner_role']);
 		} else {
 			$data['id_person_owner']= TodoyuAuth::getPersonID();

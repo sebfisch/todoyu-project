@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 	// Add create for task
-if( allowed('project', 'addtask:addTaskInOwnProjects') ) {
+if( Todoyu::allowed('project', 'addtask:addTaskInOwnProjects') ) {
 		// Check if user can add tasks with quick-add
 		// Needs at least one project where he can add tasks
 	if( TodoyuProjectTaskRights::isQuickAddAllowed() ) {
@@ -28,7 +28,7 @@ if( allowed('project', 'addtask:addTaskInOwnProjects') ) {
 }
 
 	// Add create for project
-if( allowed('project', 'project:add') ) {
+if( Todoyu::allowed('project', 'project:add') ) {
 	TodoyuQuickCreateManager::addEngine('project', 'project', 'project.ext.create.label', 10, array());
 }
 

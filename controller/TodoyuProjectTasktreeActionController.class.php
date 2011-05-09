@@ -32,7 +32,7 @@ class TodoyuProjectTasktreeActionController extends TodoyuActionController {
 	 * @param	Array		$params
 	 */
 	public function init(array $params) {
-		restrict('project', 'general:area');
+		Todoyu::restrict('project', 'general:area');
 	}
 
 

@@ -33,7 +33,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * @param	Array		$params
 	 */
 	public function init(array $params) {
-		restrict('project', 'general:use');
+		Todoyu::restrict('project', 'general:use');
 	}
 
 
@@ -217,7 +217,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		TodoyuProjectTaskManager::updateTaskStatus($idTask, $idStatus);
 
 			// If new status is not visible for the user, send info header
-		if( ! allowed('project', 'seetask:' . $status . ':see') ) {
+		if( ! Todoyu::allowed('project', 'seetask:' . $status . ':see') ) {
 			TodoyuHeader::sendTodoyuHeader('statusNotAllowed', 1);
 		}
 	}

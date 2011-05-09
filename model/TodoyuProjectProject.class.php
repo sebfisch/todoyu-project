@@ -191,7 +191,7 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	 * @return	TodoyuProjectProjectrole				0 if no role defined for person
 	 */
 	public function getPersonRoleID($idPerson = 0) {
-		$idPerson	= ( $idPerson === 0 ) ? personid() : intval($idPerson);
+		$idPerson	= ( $idPerson === 0 ) ? Todoyu::personid() : intval($idPerson);
 		$idRole		= 0;
 
 		$persons	= $this->getPersons();

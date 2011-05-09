@@ -114,15 +114,15 @@ class TodoyuProjectTaskViewHelper {
 		$options	= array();
 
 			// TaskMember persons
-		$groupLabel	= Label('comment.ext.group.taskmembers');
+		$groupLabel	= Todoyu::Label('comment.ext.group.taskmembers');
 		$options[$groupLabel]	= self::getTaskPersonOptions($field);
 
 			// Get project persons
-		$groupLabel	= Label('comment.ext.group.projectmembers');
+		$groupLabel	= Todoyu::Label('comment.ext.group.projectmembers');
 		$options[$groupLabel]	= TodoyuProjectProjectViewHelper::getProjectPersonOptions($field);
 
 			// Get staff persons (employees of internal company)
-		$groupLabel	= Label('comment.ext.group.employees');
+		$groupLabel	= Todoyu::Label('comment.ext.group.employees');
 		$options[$groupLabel]	= TodoyuContactViewHelper::getInternalPersonOptions($field);
 
 		return $options;

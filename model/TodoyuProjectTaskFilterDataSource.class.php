@@ -164,11 +164,11 @@ class TodoyuProjectTaskFilterDataSource {
 	public static function getTypeOptions(array $definitions) {
 		$definitions['options'] = array(
 			array(
-				'label'	=> Label('project.task.type.task'),
+				'label'	=> Todoyu::Label('project.task.type.task'),
 				'value'	=> TASK_TYPE_TASK
 			),
 			array(
-				'label'	=> Label('project.task.type.container'),
+				'label'	=> Todoyu::Label('project.task.type.container'),
 				'value'	=> TASK_TYPE_CONTAINER
 			)
 		);
@@ -187,35 +187,35 @@ class TodoyuProjectTaskFilterDataSource {
 	public static function getDynamicDateOptions($definitions) {
 		$definitions['options'] = array(
 			array(
-				'label' => Label('project.filter.task.dyndate.today'),
+				'label' => Todoyu::Label('project.filter.task.dyndate.today'),
 				'value'	=> 'today'
 			),
 			array(
-				'label' => Label('project.filter.task.dyndate.tomorrow'),
+				'label' => Todoyu::Label('project.filter.task.dyndate.tomorrow'),
 				'value'	=> 'tomorrow'
 			),
 			array(
-				'label' => Label('project.filter.task.dyndate.dayaftertomorrow'),
+				'label' => Todoyu::Label('project.filter.task.dyndate.dayaftertomorrow'),
 				'value'	=> 'dayaftertomorrow'
 			),
 			array(
-				'label' => Label('LLL:project.filter.task.dyndate.yesterday'),
+				'label' => Todoyu::Label('LLL:project.filter.task.dyndate.yesterday'),
 				'value'	=> 'yesterday'
 			),
 			array(
-				'label' => Label('LLL:project.filter.task.dyndate.daybeforeyesterday'),
+				'label' => Todoyu::Label('LLL:project.filter.task.dyndate.daybeforeyesterday'),
 				'value'	=> 'daybeforeyesterday'
 			),
 			array(
-				'label' => Label('LLL:project.filter.task.dyndate.currentweek'),
+				'label' => Todoyu::Label('LLL:project.filter.task.dyndate.currentweek'),
 				'value'	=> 'currentweek'
 			),
 			array(
-				'label' => Label('LLL:project.filter.task.dyndate.nextweek'),
+				'label' => Todoyu::Label('LLL:project.filter.task.dyndate.nextweek'),
 				'value'	=> 'nextweek'
 			),
 			array(
-				'label' => Label('LLL:project.filter.task.dyndate.lastweek'),
+				'label' => Todoyu::Label('LLL:project.filter.task.dyndate.lastweek'),
 				'value'	=> 'lastweek'
 			)
 		);

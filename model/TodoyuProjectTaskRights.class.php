@@ -60,7 +60,7 @@ class TodoyuProjectTaskRights {
 
 				// Check if person can edit his own tasks
 			if( $task->isCurrentPersonCreator() ) {
-				if( ! allowed('project', 'edittask:editOwnTasks') ) {
+				if( ! Todoyu::allowed('project', 'edittask:editOwnTasks') ) {
 					return false;
 				}
 			}
@@ -73,7 +73,7 @@ class TodoyuProjectTaskRights {
 
 		if( $task->isContainer() ) {
 				// Check if person can edit his own containers
-			if( $task->isCurrentPersonCreator() && ! allowed('project', 'edittask:editOwnContainers') ) {
+			if( $task->isCurrentPersonCreator() && ! Todoyu::allowed('project', 'edittask:editOwnContainers') ) {
 				return false;
 			}
 		}
@@ -99,14 +99,14 @@ class TodoyuProjectTaskRights {
 
 		if( $task->isTask() ) {
 			if( $task->isCurrentPersonCreator() ) {
-				if( allowed('project', 'deletetask:deleteOwnTasks') ) {
+				if( Todoyu::allowed('project', 'deletetask:deleteOwnTasks') ) {
 					return true;
 				}
 			}
 		} elseif( $task->isContainer() ) {
 				// Check if person can delete his own containers
 			if( $task->isCurrentPersonCreator() ) {
-				if( allowed('project', 'deletetask:deleteOwnContainers') ) {
+				if( Todoyu::allowed('project', 'deletetask:deleteOwnContainers') ) {
 					return true;
 				}
 			}
@@ -179,7 +179,7 @@ class TodoyuProjectTaskRights {
 		$typeName	= $task->isTask() ? 'Task' : 'Container';
 		$rightName	= $project->isCurrentPersonAssigned() ? 'edit' . $typeName . 'InOwnProjects' : 'edit' . $typeName . 'InAllProjects';
 
-		return allowed('project', 'edittask:' . $rightName);
+		return Todoyu::allowed('project', 'edittask:' . $rightName);
 	}
 
 
@@ -208,7 +208,7 @@ class TodoyuProjectTaskRights {
 		$typeName	= $task->isTask() ? 'Task' : 'Container';
 		$rightName	= $project->isCurrentPersonAssigned() ? 'delete' . $typeName . 'InOwnProjects' : 'delete' . $typeName . 'InAllProjects';
 
-		return allowed('project', 'deletetask:' . $rightName);
+		return Todoyu::allowed('project', 'deletetask:' . $rightName);
 	}
 
 
@@ -260,9 +260,9 @@ class TodoyuProjectTaskRights {
 		$elementType	= $isContainer ? 'Container' : 'Task';
 
 		if( TodoyuProjectProjectManager::isPersonAssigned($idProject) ) {
-			return allowed('project', 'addtask:add' . $elementType . 'InOwnProjects');
+			return Todoyu::allowed('project', 'addtask:add' . $elementType . 'InOwnProjects');
 		} else {
-			return allowed('project', 'addtask:add' . $elementType . 'InAllProjects');
+			return Todoyu::allowed('project', 'addtask:add' . $elementType . 'InAllProjects');
 		}
 	}
 
@@ -317,7 +317,7 @@ class TodoyuProjectTaskRights {
 			// Check view rights with assignment
 		if( ! TodoyuProjectTaskManager::isPersonAssigned($idTask, 0, true) ) {
 			if( ! $task->isPublic() ) {
-				return allowed('project', 'seetask:seeAll');
+				return Todoyu::allowed('project', 'seetask:seeAll');
 			}
 		}
 
@@ -336,7 +336,7 @@ class TodoyuProjectTaskRights {
 	public static function hasStatusRight($status, $type = 'see') {
 		$group = self::getStatusRightGroupByType($type);
 
-		return allowed('project', $group . ':' . $status . ':' . $type);
+		return Todoyu::allowed('project', $group . ':' . $status . ':' . $type);
 	}
 
 
@@ -413,7 +413,7 @@ class TodoyuProjectTaskRights {
 	 *
 	 */
 	public static function restrictShowPopupForm() {
-		if( ! allowed('project', 'addtask:addTaskInOwnProjects') ) {
+		if( ! Todoyu::allowed('project', 'addtask:addTaskInOwnProjects') ) {
 			self::deny('task:add');
 		}
 	}
@@ -455,7 +455,7 @@ class TodoyuProjectTaskRights {
 	public static function restrictStatusChangeTo($status, $idTask) {
 		self::restrictSee($idTask);
 
-		restrict('project', 'edittaskdetail:' . $status . ':changeto');
+		Todoyu::restrict('project', 'edittaskdetail:' . $status . ':changeto');
 	}
 }
 ?>

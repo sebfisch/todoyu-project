@@ -141,7 +141,7 @@ class TodoyuProjectProjectroleManager {
 
 		if( $parse === true ) {
 			foreach($projectroles as $index => $projectrole) {
-				$projectroles[$index]['title'] = Label($projectrole['title']);
+				$projectroles[$index]['title'] = Todoyu::Label($projectrole['title']);
 			}
 		}
 
@@ -159,7 +159,7 @@ class TodoyuProjectProjectroleManager {
 	 */
 	public static function getPersonRoleIDs($idProject, $idPerson = 0) {
 		$idProject	= intval($idProject);
-		$idPerson	= personid($idPerson);
+		$idPerson	= Todoyu::personid($idPerson);
 
 		$field	= 'id_role';
 		$table	= '	ext_project_mm_project_person';

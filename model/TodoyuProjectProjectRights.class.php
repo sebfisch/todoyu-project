@@ -55,12 +55,12 @@ class TodoyuProjectProjectRights {
 		}
 
 			// See all projects
-		if( allowed('project', 'project:seeAll') ) {
+		if( Todoyu::allowed('project', 'project:seeAll') ) {
 			return true;
 		}
 
 			// See own projects and is project member
-		if( allowed('project', 'project:seeOwn') ) {
+		if( Todoyu::allowed('project', 'project:seeOwn') ) {
 			return TodoyuProjectProjectManager::isPersonAssigned($idProject);
 		}
 
@@ -75,7 +75,7 @@ class TodoyuProjectProjectRights {
 	 * @return	Boolean
 	 */
 	public static function isEditAllowed() {
-		return allowed('project', 'project:editAndDelete');
+		return Todoyu::allowed('project', 'project:editAndDelete');
 	}
 
 
@@ -86,7 +86,7 @@ class TodoyuProjectProjectRights {
 	 * @return	Boolean
 	 */
 	public static function isAddAllowed() {
-		return allowed('project', 'project:add');
+		return Todoyu::allowed('project', 'project:add');
 	}
 
 
