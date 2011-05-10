@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
 	<label index="task.">Project and task management</label>
-	<label index="form.legend.taskbasics">Basic information about your task</label>
+	<label index="legend.taskbasics">Basic information about your task</label>
 </labels>
