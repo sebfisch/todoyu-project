@@ -56,4 +56,5 @@
 	<label index="project.dyndate.currentweek">Aktuelle Woche</label>
 	<label index="project.dyndate.nextweek">Nächste Woche</label>
 	<label index="project.dyndate.lastweek">Letzte Woche</label>
+	<label index="project.taskfilter">Aufgabe aus Ausgaben-Filter</label>
 </labels>

@@ -550,7 +550,18 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 				'size'		=> 5,
 				'FuncRef'	=> 'TodoyuSearchFiltersetManager::getProjectFilterSetSelectionOptions'
 			)
+		),
+		'taskFilter'	=> array(
+			'label'		=> 'project.filter.project.taskfilter',
+			'optgroup'	=> 'LLL:core.global.filter',
+			'widget'	=> 'select',
+			'wConf'		=> array(
+				'multiple'	=> true,
+				'size'		=> 5,
+				'FuncRef'	=> 'TodoyuSearchFiltersetManager::getTaskFilterSetSelectionOptions'
+			)
 		)
+
 	)
 );
 ?>

@@ -535,7 +535,41 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 		return array(
 			'where' => '0'
 		);
-}
+	}
+
+
+
+	/**
+	 * Filter by tasks from the project which match a Filter condition from task-filter
+	 *
+	 * @param	String		$value
+	 * @return	Array
+	 */
+	public function Filter_taskFilter($value, $negate = false) {
+		$taskFilter	= new TodoyuProjectTaskFilter();
+
+		$filterSets	= TodoyuArray::intExplode(',', $value, true, true);
+
+		foreach( $filterSets as $filterSet) {
+			$filterObject	= $taskFilter->Filter_filterSet($filterSet);
+
+			$compare	= $negate ? ' NOT IN ' : ' IN ';
+			
+			TodoyuDebug::printInFirebug($filterObject);
+
+			$whereArray[]	= 'ext_project_project.id ' . $compare . '(
+								SELECT id_project FROM ' . implode(',', $filterObject['tables']) .
+							   ' WHERE ' . $filterObject['where'] . ')';
+		}
+
+		if( is_array($whereArray) ) {
+			$where	= implode(' AND ', $whereArray);
+		}
+
+		return array(
+			'where'	=> $where
+		);
+	}
 }
 
 ?>
