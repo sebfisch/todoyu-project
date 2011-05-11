@@ -56,7 +56,7 @@
 	<label index="contextmenu.container.cut">Cut</label>
 	<label index="contextmenu.container.clone">Clone</label>
 	<label index="contextmenu.container.delete">Delete</label>
-	<label index="contextmenu.paste.copy">Insert Task Copy </label>
+	<label index="contextmenu.paste.copy">Insert Task Copy</label>
 	<label index="contextmenu.paste.cut">Insert Task</label>
 	<label index="contextmenu.paste.copy.container">Insert Container (Copy)</label>
 	<label index="contextmenu.paste.cut.container">Insert Container</label>
@@ -87,7 +87,7 @@
 	<label index="billableTime">Billable Time</label>
 	<label index="activity">Activity Type</label>
 	<label index="estimated_workload">Estimated Workload</label>
-	<label index="date_start">Start Date </label>
+	<label index="date_start">Start Date</label>
 	<label index="date_deadline">Customer Deadline</label>
 	<label index="date_end">Internal Deadline</label>
 	<label index="person_assigned">Assigned To</label>

@@ -10,7 +10,7 @@
 	<label index="noproject.tab">Нема прицтупних пројеката</label>
 	<label index="newproject.tab">Креирајте нови пројекат</label>
 	<label index="newproject.title">Нови пројекат</label>
-	<label index="addcontainer">Додај контејнер </label>
+	<label index="addcontainer">Додај контејнер</label>
 	<label index="addtask">Додај задатак</label>
 	<label index="addproject">Додај пројекат</label>
 	<label index="editproject">Уредите Пројекат</label>

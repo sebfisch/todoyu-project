@@ -76,7 +76,7 @@
 	<label index="title.cloned">Kopie van: %s</label>
 	<label index="activity">Soort werk</label>
 	<label index="estimated_workload">Geschatte hoeveelheid werk</label>
-	<label index="date_start">Begindatum </label>
+	<label index="date_start">Begindatum</label>
 	<label index="date_deadline">Deadline klant</label>
 	<label index="date_end">Interne deadline</label>
 	<label index="person_assigned">Toegewezen aan</label>

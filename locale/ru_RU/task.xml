@@ -75,7 +75,7 @@
 	<label index="billableTime">Оплачиваемое время</label>
 	<label index="activity">Тип работы</label>
 	<label index="estimated_workload">Ожидаемая загрузка</label>
-	<label index="date_start">Время начала </label>
+	<label index="date_start">Время начала</label>
 	<label index="date_deadline">Срок клиента</label>
 	<label index="date_end">Внутренний срок</label>
 	<label index="person_assigned">Назначего</label>

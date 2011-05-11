@@ -76,7 +76,7 @@
 	<label index="billableTime">Temps soumis à facturation</label>
 	<label index="activity">Type de travail</label>
 	<label index="estimated_workload">Charge de travail estimée</label>
-	<label index="date_start">Date de début </label>
+	<label index="date_start">Date de début</label>
 	<label index="date_deadline">Jalon du client</label>
 	<label index="date_end">Jalon interne</label>
 	<label index="person_assigned">Assigné à</label>

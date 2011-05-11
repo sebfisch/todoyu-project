@@ -76,7 +76,7 @@
 	<label index="title.cloned">Kopie: %s</label>
 	<label index="activity">Typ práce</label>
 	<label index="estimated_workload">Časový odhad</label>
-	<label index="date_start">Začátek </label>
+	<label index="date_start">Začátek</label>
 	<label index="date_deadline">Zákaznický termín</label>
 	<label index="date_end">Vnitřní termín</label>
 	<label index="person_assigned">Přiděleno</label>

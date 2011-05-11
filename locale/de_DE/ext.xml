@@ -95,6 +95,6 @@
 	<label index="extconf.taskDefaults.estimated_workload">Vorgabe für geschätzten Aufwand</label>
 	<label index="extconf.taskDefaults.person_assigned_role">Zuzuweisende Person aus Rolle, wenn keine auswählbar ist</label>
 	<label index="extconf.taskDefaults.person_owner_role">Eigner aus Rolle, wenn keiner auswählbar ist</label>
-	<label index="extconf.quicktask_duration_days">Standard für Schnellaufgabendauer in Tagen </label>
+	<label index="extconf.quicktask_duration_days">Standard für Schnellaufgabendauer in Tagen</label>
 	<label index="export.csv">Projekte als CSV exportieren</label>
 </labels>

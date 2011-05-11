@@ -76,7 +76,7 @@
 	<label index="title.cloned">コピー対象: %s</label>
 	<label index="activity">作業形態</label>
 	<label index="estimated_workload">作業見積</label>
-	<label index="date_start">開始日 </label>
+	<label index="date_start">開始日</label>
 	<label index="date_deadline">顧客への締切</label>
 	<label index="date_end">内部の締切</label>
 	<label index="person_assigned">担当者</label>
