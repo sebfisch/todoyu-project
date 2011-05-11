@@ -1190,7 +1190,7 @@ class TodoyuProjectProjectManager {
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idPerson
-	 * @return	Bool		Success
+	 * @return	Boolean		Success
 	 */
 	public static function removeProjectPerson($idProject, $idPerson) {
 		$idProject	= intval($idProject);
