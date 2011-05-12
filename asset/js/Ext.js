@@ -244,7 +244,10 @@ Todoyu.Ext.project = {
 
 		if( element ) {
 			var statusClass	= element.getClassNames().grep(/.*Status(\d)/).first();
-			statusIndex		= statusClass.split('Status').last();
+
+			if( statusClass ) {
+				statusIndex		= statusClass.split('Status').last();
+			}
 		}
 
 		return statusIndex;
@@ -266,7 +269,9 @@ Todoyu.Ext.project = {
 		if( element ) {
 			var oldStatus	= this.getStatusOfElement(element);
 
-			element.className	= element.className.replace('Status' + oldStatus, 'Status' + newStatus);
+			if( oldStatus ) {
+				element.className	= element.className.replace('Status' + oldStatus, 'Status' + newStatus);
+			}
 		}
 	}
 
