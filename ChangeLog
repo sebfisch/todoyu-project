@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.1.0 - beta release
+	* Changed: Renamed worktype to activity
 	* Changed: Requires core 2.1
 	* Changed: Structure for 2.1
 	* Changed: All classes are prefixed with extension name
