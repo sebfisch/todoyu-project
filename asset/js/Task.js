@@ -37,6 +37,15 @@ Todoyu.Ext.project.Task = {
 	 */
 	ext:	Todoyu.Ext.project,
 
+	/**
+	 * @property	type
+	 * @type		Object
+	 */
+	type: {
+		task:		1,
+		container:	2
+	},
+
 
 
 	/**
