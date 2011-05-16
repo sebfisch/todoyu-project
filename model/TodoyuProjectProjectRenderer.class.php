@@ -539,7 +539,7 @@ class TodoyuProjectProjectRenderer {
 		}
 
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDataBeforeRendering', $data, array($idTask));
-		$tmpl	= 'ext/project/view/task-header.tmpl';
+		$tmpl	= 'ext/project/view/task.tmpl';
 
 		return Todoyu::render($tmpl, $data);
 	}
@@ -578,7 +578,7 @@ class TodoyuProjectProjectRenderer {
 		$wrappedForm	= TodoyuProjectTaskRenderer::renderNewTaskEditForm($idProject, $idParentTask, $type);
 
 			// Prepare data array for template
-		$tmpl	= 'ext/project/view/task-header.tmpl';
+		$tmpl	= 'ext/project/view/task.tmpl';
 		$data = array(
 			'task'		=> $taskData,
 			'details'	=> $wrappedForm

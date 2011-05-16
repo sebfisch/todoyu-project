@@ -63,6 +63,28 @@ class TodoyuProjectTaskRenderer {
 
 
 	/**
+	 * Render task header
+	 *
+	 * @param	Integer		$idTask
+	 * @return	String
+	 */
+	public static function renderHeader($idTask) {
+		$idTask		= intval($idTask);
+
+		$tmpl	= 'ext/project/view/task-header.tmpl';
+		$data 	= array(
+			'task'				=> TodoyuProjectTaskManager::getTaskInfoArray($idTask, 3),
+			'taskIcons'			=> TodoyuProjectTaskManager::getAllTaskIcons($idTask),
+		);
+
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDataBeforeRendering', $data, array($idTask));
+
+		return Todoyu::render($tmpl, $data);
+	}
+
+
+
+	/**
 	 * Render task list
 	 *
 	 * @param	Array	$taskIDs

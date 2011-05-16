@@ -225,8 +225,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * Get task content
-	 * Render a full task for refresh
+	 * Get task item content - Render a full task for refresh
 	 *
 	 * @param	Array		$params
 	 * @return	String
@@ -242,6 +241,26 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			} else {
 				return TodoyuProjectTaskRenderer::renderListingTask($idTask);
 			}
+		} else {
+			TodoyuLogger::logSecurity('Tried to get task data of a not visible task', $idTask);
+		}
+	}
+
+
+
+	/**
+	 * Get task header content
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function headerAction(array $params) {
+		$idTask	= intval($params['task']);
+
+		TodoyuProjectTaskRights::restrictSee($idTask);
+
+		if( TodoyuProjectTaskManager::isTaskVisible($idTask) ) {
+			return TodoyuProjectTaskRenderer::renderHeader($idTask);
 		} else {
 			TodoyuLogger::logSecurity('Tried to get task data of a not visible task', $idTask);
 		}

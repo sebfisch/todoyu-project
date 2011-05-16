@@ -650,6 +650,43 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
+	 * Refresh task header
+	 *
+	 * @method	refresh
+	 * @param	{Number}			idTask
+	 */
+	refreshHeader: function(idTask) {
+		var target	= 'task-' + idTask + '-header';
+		var url		= Todoyu.getUrl('project', 'task');
+		var options	= {
+			parameters: {
+				action:	'header',
+				'task':	idTask
+			},
+			onComplete: this.onHeaderRefreshed.bind(this, idTask)
+		};
+
+		if( Todoyu.exists(target) ) {
+			Todoyu.Ui.replace(target, url, options);
+		}
+	},
+
+
+
+	/**
+	 * Handler when task header has been refreshed
+	 *
+	 * @method	onRefreshed
+	 * @param	{Number}			idTask
+	 * @param	{Ajax.Response}		response
+	 */
+	onHeaderRefreshed: function(idTask, response) {
+		this.addContextMenu(idTask);
+	},
+
+
+
+	/**
 	 * Update given task with given content
 	 *
 	 * @method	update
