@@ -12,7 +12,7 @@
 	<fieldsets>
 
 		<fieldset name="left">
-			<legend>project.form.legend.taskbasics</legend>
+			<legend>project.form.legend.task.basics</legend>
 			<class>left noneFloatingInput</class>
 			<elements>
 
@@ -36,7 +36,7 @@
 		</fieldset>
 
 		<fieldset name="right">
-			<legend>Task Attributes</legend>
+			<legend>project.form.legend.task.attributes</legend>
 			<class>right</class>
 			<elements>
 

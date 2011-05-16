@@ -6,7 +6,7 @@
 
 	<fieldsets>
 		<fieldset name="main">
-			<legend>projectrole data</legend>
+			<legend>project.form.legend.admin.projectrole.record.general</legend>
 			<elements>
 
 				<field type="text" name="title">

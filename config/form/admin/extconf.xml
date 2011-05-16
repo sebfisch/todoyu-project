@@ -6,6 +6,7 @@
 	<fieldsets>
 
 		<fieldset name="taskDefaults">
+			<legend>project.form.legend.admin.basics</legend>
 			<elements>
 				<field type="text" name="title">
 					<label>project.ext.extconf.taskDefaults.title</label>
@@ -65,7 +66,8 @@
 		</fieldset>
 
 		<fieldset name="quicktaskSpecific">
-			<class>defaultsforlimited</class>
+			<legend>project.form.legend.admin.quicktask</legend>
+
 			<elements>
 				<field type="text" name="quicktask_duration_days">
 					<label>project.ext.extconf.quicktask_duration_days</label>
@@ -76,8 +78,8 @@
 		</fieldset>
 
 		<fieldset name="taskDefaultsForExternals">
-			<legend>Fallback defaults for persons with limited rights</legend>
-			<class>defaultsforlimited</class>
+			<legend>project.form.legend.admin.fallbacks</legend>
+
 			<elements>
 
 				<field type="select" name="person_assigned_role">

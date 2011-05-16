@@ -10,7 +10,7 @@
 	<fieldsets>
 
 		<fieldset name="main">
-			<legend>Main Project Attributes</legend>
+			<legend>project.form.legend.project.basics</legend>
 			<class>top</class>
 			<elements>
 
@@ -106,7 +106,7 @@
 		</fieldset>
 
 		<fieldset name="presets">
-			<legend>Task Presets</legend>
+			<legend>project.form.legend.project.taskpreset</legend>
 			<class>presets</class>
 			<elements>
 				<field type="select" name="id_taskpreset">
@@ -123,7 +123,7 @@
 			<restrict>
 				<allow ext="contact" right="general:use" />
 			</restrict>
-			<legend>Project Persons</legend>
+			<legend>project.form.legend.project.members</legend>
 			<class>persons</class>
 			<elements>
 				<field type="databaseRelation" name="persons">

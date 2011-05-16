@@ -11,7 +11,7 @@
 
 	<fieldsets>
 		<fieldset name="main">
-			<legend>Left form column</legend>
+			<legend>project.form.legend.quicktask.basics</legend>
 			<elements>
 
 				<field type="text" name="title">

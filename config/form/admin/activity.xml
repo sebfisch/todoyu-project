@@ -7,7 +7,7 @@
 	<fieldsets>
 
 		<fieldset name="main">
-			<legend>Main activity Fields</legend>
+			<legend>project.form.legend.admin.activity.record.general</legend>
 			<elements>
 
 				<field type="text" name="title">

@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="task.">Project and task management</label>
-	<label index="legend.taskbasics">Basic information about your task</label>
+	<label index="legend.task.basics">Basic information about your task [DONE]</label>
+	<label index="legend.task.attributes">Task attributes [DONE]</label>
+	<label index="legend.project.basics">Basic information about your project [DONE]</label>
+	<label index="legend.project.taskpreset">Preset configuration of your tasks [DONE]</label>
+	<label index="legend.project.members">Members of the project [DONE]</label>
+	<label index="legend.quicktask.basics">Basic information about your task [DONE]</label>
+	<label index="legend.admin.basics">Default settings of your tasks [DONE]</label>
+	<label index="legend.admin.quicktask">Default behaviour for quicktasks [DONE]</label>
+	<label index="legend.admin.fallbacks">Fallback defaults for persons with limited rights [DONE]</label>
+	<label index="legend.admin.projectrole.record.general">Project Role Data [DONE]</label>
+	<label index="legend.admin.activity.record.general">Activity Type Data [DONE]</label>
+	<label index="legend.admin.taskpreset.record.general">Default settings of your tasks [DONE]</label>
+	<label index="legend.admin.taskpreset.record.quicktask">Default behaviour for quicktasks [DONE]</label>
+	<label index="legend.admin.taskpreset.record.fallbacks">Fallback defaults for persons with limited rights [DONE]</label>
 </labels>
