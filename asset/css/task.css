@@ -191,7 +191,7 @@
 }
 
 .task span.taskIcons .isPublic {
-	background:url(../img/icons.png) no-repeat 1px -206px;
+	background:url(../../../../core/asset/img/icons.png) no-repeat 1px -1108px;
 }
 
 .task span.taskIcons .notAcknowledged {
@@ -234,7 +234,7 @@
 		/* Description */
 	.tasks .task .details .data div.left {
 		float:left;
-		width:330px;
+		width:300px;
 		max-width:45%;
 		padding:0 0 0 24px;
 	}
@@ -246,7 +246,7 @@
 
 		/* properties */
 	.tasks .task .details .data div.right {
-		width:275px;
+		width:305px;
 		max-width:45%;
 		float:right;
 	}
@@ -276,8 +276,7 @@
 	.tasks .task .details .properties dt,
 	.tasks .task .details .properties dd,
 	.tasks .task .details .properties dd a {
-		color:#666;
-		line-height:15px;
+		font-weight:normal;
 	}
 
 	div.task div.details div div.right dl dt.even,

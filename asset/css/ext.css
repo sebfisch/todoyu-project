@@ -139,15 +139,21 @@ h1.extIconProject .title {
 /* --------------------------------------
 	Task and project properties
    ------------------------------------- */
+
+
+
 .project .properties dt,
 .task .properties dt {
 	float:left;
 	width:100px;
+	font-weight:bold;
+	padding:2px 0;
 }
 .project .properties dd,
 .task .properties dd {
 	float:left;
 	width:180px;
+	padding:2px 0;
 }
 
 .project .presets dt,
@@ -155,12 +161,14 @@ h1.extIconProject .title {
 	float:left;
 	width:310px;
 	margin-right:14px;
+	font-weight:bold;
 }
 .project .presets dd,
 .task .presets dd {
 	float:left;
 	width:180px;
 }
+
 
 .details .description a,
 .tabContent .comment a {
