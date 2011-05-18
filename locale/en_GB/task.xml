@@ -115,5 +115,5 @@
 	<label index="default.date.date_7">Create date + 1 week</label>
 	<label index="default.date.date_14">Create date + 2 weeks</label>
 	<label index="notAvailable">The task is not available</label>
-	<label index="export.csv">Export Task as CSV</label>
+	<label index="export.csv">Export task as CSV</label>
 </labels>
