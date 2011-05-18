@@ -413,8 +413,10 @@ class TodoyuProjectProjectRenderer {
 			// If forced task is set, but not rendered, add to lost task if allowed
 		if( $idTaskShow !== 0 ) {
 			if( ! in_array($idTaskShow, self::$renderedTasks) ) {
-				if( TodoyuProjectTaskRights::isSeeAllowed($idTaskShow) ) {
-					$lostTaskIDs[] = $idTaskShow;
+				if( ! in_array($idTaskShow, $lostTaskIDs) ) {
+					if( TodoyuProjectTaskRights::isSeeAllowed($idTaskShow) ) {
+						$lostTaskIDs[] = $idTaskShow;
+					}
 				}
 			}
 		}
