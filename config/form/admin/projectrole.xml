@@ -14,11 +14,6 @@
 					<required />
 				</field>
 
-				<field type="text" name="rolekey">
-					<label>project.ext.projectrole.attr.rolekey</label>
-					<required />
-				</field>
-
 			</elements>
 		</fieldset>
 

@@ -55,7 +55,6 @@
 	<label index="contextmenu.delete">Excluir Projeto</label>
 	<label index="contextmenu.add.task">Adicionar uma nova tarefa</label>
 	<label index="contextmenu.add.container">Adicionar uma Nova Pasta</label>
-	<label index="projectrole.attr.rolekey">Nome do Grupo</label>
 	<label index="tasktree.losttasks">Subtarefas contendo tarefas não serão exibidas na listagem.</label>
 	<label index="records.projectrole">Grupos de Projeto</label>
 	<label index="records.activity">Tipos de Serviços</label>

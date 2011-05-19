@@ -54,7 +54,6 @@
 	<label index="contextmenu.delete">Odstranit projekt</label>
 	<label index="contextmenu.add.task">Přidat nový úkol</label>
 	<label index="contextmenu.add.container">Přidat novou složku</label>
-	<label index="projectrole.attr.rolekey">Klíčová role</label>
 	<label index="tasktree.losttasks">Tasks with inapplicable parents/status</label>
 	<label index="records.projectrole">Projektová role</label>
 	<label index="records.activity">Pracovní položka</label>

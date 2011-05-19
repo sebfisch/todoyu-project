@@ -57,7 +57,6 @@
 	<label index="contextmenu.delete">Projekt löschen</label>
 	<label index="contextmenu.add.task">Aufgabe hinzufügen</label>
 	<label index="contextmenu.add.container">Container hinzufügen</label>
-	<label index="projectrole.attr.rolekey">Rollen-Schlüssel</label>
 	<label index="tasktree.losttasks">Aufgaben mit unzutreffenden übergeordneten Aufgaben / Status</label>
 	<label index="records.projectrole">Benutzer-Rollen</label>
 	<label index="records.activity">Arbeits-Typ</label>

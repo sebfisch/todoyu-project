@@ -57,7 +57,6 @@
 	<label index="contextmenu.delete">Elimina progetto</label>
 	<label index="contextmenu.add.task">Aggiungi una nuova attività</label>
 	<label index="contextmenu.add.container">Aggiungi un nuovo contenitore</label>
-	<label index="projectrole.attr.rolekey">Parola chiave ruolo</label>
 	<label index="tasktree.losttasks">Tasks with inapplicable parents/status</label>
 	<label index="records.projectrole">Ruoli del progetto</label>
 	<label index="records.activity">Tipi di attività</label>

@@ -55,7 +55,6 @@
 	<label index="contextmenu.delete">Supprimer le projet</label>
 	<label index="contextmenu.add.task">Ajouter une nouvelle tâche</label>
 	<label index="contextmenu.add.container">Ajouter un nouveau conteneur</label>
-	<label index="projectrole.attr.rolekey">Mot-clé du rôle</label>
 	<label index="tasktree.losttasks">Tâches ayant un statut/parent inapplicable</label>
 	<label index="records.projectrole">Rôle dans un projet</label>
 	<label index="records.activity">Type de travail</label>

@@ -55,7 +55,6 @@
 	<label index="contextmenu.delete">Удалить проект</label>
 	<label index="contextmenu.add.task">Добавить задачу</label>
 	<label index="contextmenu.add.container">Добавить новый контейнер</label>
-	<label index="projectrole.attr.rolekey">Ключевое слово роли</label>
 	<label index="tasktree.losttasks">Задачи с недействительными родителями или статусами</label>
 	<label index="records.projectrole">Роли проекта</label>
 	<label index="records.activity">Типы работ</label>

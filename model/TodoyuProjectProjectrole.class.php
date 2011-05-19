@@ -38,17 +38,6 @@ class TodoyuProjectProjectrole extends TodoyuBaseObject {
 
 
 	/**
-	 * Get key of projectrole
-	 *
-	 * @return	String
-	 */
-	public function getKey() {
-		return $this->get('rolekey');
-	}
-
-
-
-	/**
 	 * Get title of projectrole
 	 *
 	 * @return	String

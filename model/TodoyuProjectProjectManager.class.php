@@ -885,7 +885,6 @@ class TodoyuProjectProjectManager {
 		$fields	= '	mmpp.*,
 					pe.*,
 					pe.id as id_person,
-					pr.rolekey,
 					pr.title as rolelabel';
 		$table	= '	ext_contact_person pe,
 					ext_project_role pr,

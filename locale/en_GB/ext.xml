@@ -58,7 +58,6 @@
 	<label index="contextmenu.delete">Delete Project</label>
 	<label index="contextmenu.add.task">Add a new task</label>
 	<label index="contextmenu.add.container">Add a new container</label>
-	<label index="projectrole.attr.rolekey">Role Keyword</label>
 	<label index="tasktree.losttasks">Tasks with inapplicable parents/status</label>
 	<label index="records.projectrole">Project Roles</label>
 	<label index="records.activity">Activity Types</label>

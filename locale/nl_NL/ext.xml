@@ -55,7 +55,6 @@
 	<label index="contextmenu.delete">Project verwijderen</label>
 	<label index="contextmenu.add.task">Nieuwe taak toevoegen</label>
 	<label index="contextmenu.add.container">Nieuwe container toevoegen</label>
-	<label index="projectrole.attr.rolekey">Sleutelwoord van rol</label>
 	<label index="tasktree.losttasks">Taken met onjuiste status of onjuist bovenliggende taak</label>
 	<label index="records.projectrole">Projectrollen</label>
 	<label index="records.activity">Werksoorten</label>

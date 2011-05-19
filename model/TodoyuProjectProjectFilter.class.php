@@ -276,49 +276,6 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 
 
 	/**
-	 * Filter projects by project leader
-	 *
-	 * @param	Integer	$idProjectleader
-	 * @param	Boolean	$negate
-	 * @return	Array
-	 */
-	public function Filter_projectleader($idProjectleader, $negate = false) {
-		$idProjectleader= intval($idProjectleader);
-		$queryParts		= false;
-
-		if( $idProjectleader > 0 ) {
-				// This double subquery if here for performance reasons (don't optimize it!)
-			$subQuery	= 'SELECT
-								id
-							FROM (
-								SELECT
-									ext_project_project.id
-								FROM
-									ext_project_project,
-									ext_project_mm_project_person,
-									ext_project_role
-								WHERE
-										ext_project_project.id 					= ext_project_mm_project_person.id_project
-									AND ext_project_mm_project_person.id_person	= ' . $idProjectleader .
-								 '  AND	ext_project_mm_project_person.id_role	= ext_project_role.id
-									AND	ext_project_role.rolekey				= \'projectleader\'
-								GROUP BY
-									ext_project_project.id
-							) as temp';
-			$compare	= $negate ? 'NOT IN' : 'IN' ;
-			$where		= '	ext_project_project.id ' . $compare . ' (' . $subQuery . ')';
-
-			$queryParts = array(
-				'where'	=> $where
-			);
-		}
-
-		return $queryParts;
-	}
-
-
-
-	/**
 	 * Filter condition for projectrole
 	 * The value is a combination between the projectroles and the selected person
 	 *
@@ -554,7 +511,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 			$filterObject	= $taskFilter->Filter_filterSet($filterSet);
 
 			$compare	= $negate ? ' NOT IN ' : ' IN ';
-			
+
 			TodoyuDebug::printInFirebug($filterObject);
 
 			$whereArray[]	= 'ext_project_project.id ' . $compare . '(

@@ -58,7 +58,6 @@
 	<label index="contextmenu.delete">プロジェクトの削除</label>
 	<label index="contextmenu.add.task">新規タスクの追加</label>
 	<label index="contextmenu.add.container">新規コンテナの追加</label>
-	<label index="projectrole.attr.rolekey">ロールのキーワード</label>
 	<label index="tasktree.losttasks">適用できない親か状態がタスクにあります</label>
 	<label index="records.projectrole">プロジェクトロール</label>
 	<label index="records.activity">作業形態</label>

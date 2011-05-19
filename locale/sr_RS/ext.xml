@@ -54,7 +54,6 @@
 	<label index="contextmenu.delete">Избриши пројекат</label>
 	<label index="contextmenu.add.task">Додај задатак</label>
 	<label index="contextmenu.add.container">Додај контејнер</label>
-	<label index="projectrole.attr.rolekey">Кључна реч улоге</label>
 	<label index="tasktree.losttasks">Задатак са нетачним надређеним задацима/статусима</label>
 	<label index="records.projectrole">Улога корисника</label>
 	<label index="records.activity">Врста посла</label>
