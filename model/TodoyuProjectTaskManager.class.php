@@ -1884,6 +1884,15 @@ class TodoyuProjectTaskManager {
 			if( $form->getField('date_deadline') ) {
 				$form->getField('date_deadline')->setLabel('project.ext.attr.date_end');
 			}
+
+				// change fieldset legends
+			if( $form->getFieldset('left') ) {
+				$form->getFieldset('left')->setLegend('project.form.legend.container.basics');
+			}
+
+			if( $form->getFieldset('right') ) {
+				$form->getFieldset('right')->setLegend('project.form.legend.container.attributes');
+			}
 		}
 
 			// Call hooks to modify $form
