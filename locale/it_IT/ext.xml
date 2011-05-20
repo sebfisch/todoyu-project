@@ -70,7 +70,7 @@
 	<label index="js.removeProject">Si è certi di voler eliminare l'intero proegtto e tutti le relative attività?</label>
 	<label index="js.quicktask.saved">L'attività veloce è stata salvata</label>
 	<label index="js.project.deleted">Il progetto è stato eliminato</label>
-	<label index="ac.person.notFoundInfo">Non  stata trovata alcuna persona con questo nome</label>
+	<label index="ac.person.notFoundInfo">Non stata trovata alcuna persona con questo nome</label>
 	<label index="portal.tab.todos">Todo</label>
 	<label index="extconf.taskDefaults.title">Titolo predefinito delle attività</label>
 	<label index="extconf.taskDefaults.description">Descrizione predefinita delle attività</label>
