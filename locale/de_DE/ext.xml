@@ -59,13 +59,13 @@
 	<label index="contextmenu.add.container">Container hinzufügen</label>
 	<label index="tasktree.losttasks">Aufgaben mit unzutreffenden übergeordneten Aufgaben / Status</label>
 	<label index="records.projectrole">Benutzer-Rollen</label>
-	<label index="records.activity">Arbeits-Typ</label>
+	<label index="records.activity">Leistungsart</label>
 	<label index="records.taskpreset">Aufgaben Vorgaben</label>
 	<label index="infobox.presets.title">Vorgaben für neu erstellte Aufgaben</label>
 	<label index="taskpreset.title">Aufgaben Vorgaben Titel</label>
 	<label index="taskpreset.tasktitle">Aufgabe Standard Titel</label>
 	<label index="taskpreset.description">Standard Beschreibung</label>
-	<label index="taskpreset.person_assigned">Zugewiesene Person, wenn nicht durch Ersteller wählbar</label>
+	<label index="taskpreset.person_assigned">Zuzuweisende Person, wenn nicht durch Ersteller wählbar</label>
 	<label index="taskpreset.person_owner">Eigner, wenn nicht durch Ersteller wählbar</label>
 	<label index="taskpreset.is_public">Aufgabe ist öffentlich</label>
 	<label index="taskpreset.option.none">Default Vorgaben</label>
@@ -89,11 +89,11 @@
 	<label index="extconf.taskDefaults.status">Vorausgewählter Status</label>
 	<label index="extconf.taskDefaults.assignedRoles">Vorausgewählte Rolle der zugewiesenen Person einer Aufgabe</label>
 	<label index="extconf.taskDefaults.ownerRoles">Vorausgewählte Rolle für Aufgaben-Eigner</label>
-	<label index="extconf.taskDefaults.activity">Vorausgewählter Arbeits-Typ</label>
+	<label index="extconf.taskDefaults.activity">Vorausgewählte Leistungsart</label>
 	<label index="extconf.taskDefaults.is_public">Aufgabe ist öffentlich</label>
 	<label index="extconf.taskDefaults.estimated_workload">Vorgabe für geschätzten Aufwand</label>
 	<label index="extconf.taskDefaults.person_assigned_role">Zuzuweisende Person aus Rolle, wenn keine auswählbar ist</label>
-	<label index="extconf.taskDefaults.person_owner_role">Eigner aus Rolle, wenn keiner auswählbar ist</label>
-	<label index="extconf.quicktask_duration_days">Standard für Schnellaufgabendauer in Tagen</label>
+	<label index="extconf.taskDefaults.person_owner_role">Eigner aus Rolle, wenn nicht durch Ersteller wählbar</label>
+	<label index="extconf.quicktask_duration_days">Aufgabendauer in Tagen</label>
 	<label index="export.csv">Projekte als CSV exportieren</label>
 </labels>

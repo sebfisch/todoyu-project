@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="legend.task.basics">Basic information about your task [DONE]</label>
-	<label index="legend.task.attributes">Task attributes [DONE]</label>
-	<label index="legend.container.basics">[Change Label Here]</label>
-	<label index="legend.container.attributes">[Change Label Here]</label>
-	<label index="legend.project.basics">Basic information about your project [DONE]</label>
-	<label index="legend.project.taskpreset">Preset configuration of your tasks [DONE]</label>
+	<label index="legend.task.basics">Basic Information [DONE]</label>
+	<label index="legend.task.attributes">Attributes [DONE]</label>
+	<label index="legend.container.basics">Basic Information [DONE]</label>
+	<label index="legend.container.attributes">Attributes [DONE]</label>
+	<label index="legend.project.basics">Basic Information [DONE]</label>
+	<label index="legend.project.taskpreset">Preset configuration of tasks [DONE]</label>
 	<label index="legend.project.members">Members of the project [DONE]</label>
-	<label index="legend.project.approvalroles">Invoice Approval Roles</label>
+	<label index="legend.quicktask.basics">Basic Information [DONE]</label>
+	<label index="legend.project.approvalroles">Invoice Approval Roles [DONE]</label>
 	<label index="legend.quicktask.basics">Basic information about your task [DONE]</label>
 	<label index="legend.admin.basics">Default settings of your tasks [DONE]</label>
 	<label index="legend.admin.quicktask">Default behaviour for quicktasks [DONE]</label>
-	<label index="legend.admin.fallbacks">Fallback defaults for persons with limited rights [DONE]</label>
-	<label index="legend.admin.projectrole.record.general">Project Role Data [DONE]</label>
-	<label index="legend.admin.activity.record.general">Activity Type Data [DONE]</label>
-	<label index="legend.admin.taskpreset.record.general">Default settings of your tasks [DONE]</label>
+	<label index="legend.admin.fallbacks">Fallback defaults for persons with limited rights  [DONE]</label>
+	<label index="legend.admin.projectrole.record.general">Project Role [DONE]</label>
+	<label index="legend.admin.activity.record.general">Activity Type [DONE]</label>
+	<label index="legend.admin.taskpreset.record.general">Default settings of tasks [DONE]</label>
 	<label index="legend.admin.taskpreset.record.quicktask">Default behaviour for quicktasks [DONE]</label>
 	<label index="legend.admin.taskpreset.record.fallbacks">Fallback defaults for persons with limited rights [DONE]</label>
 </labels>
