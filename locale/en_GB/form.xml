@@ -7,6 +7,7 @@
 	<label index="legend.project.basics">Basic information about your project [DONE]</label>
 	<label index="legend.project.taskpreset">Preset configuration of your tasks [DONE]</label>
 	<label index="legend.project.members">Members of the project [DONE]</label>
+	<label index="legend.project.approvalroles">Invoice Approval Roles</label>
 	<label index="legend.quicktask.basics">Basic information about your task [DONE]</label>
 	<label index="legend.admin.basics">Default settings of your tasks [DONE]</label>
 	<label index="legend.admin.quicktask">Default behaviour for quicktasks [DONE]</label>

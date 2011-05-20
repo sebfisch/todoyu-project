@@ -15,8 +15,6 @@
 					<required />
 				</field>
 
-
-
 				<field type="text" name="tasktitle">
 					<label>project.ext.taskpreset.tasktitle</label>
 				</field>
@@ -30,7 +28,6 @@
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
 					</source>
-					<!--<required/>-->
 				</field>
 
 				<field type="select" name="date_end">
@@ -38,7 +35,6 @@
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
 					</source>
-					<!--<required/>-->
 				</field>
 
 				<field type="select" name="date_deadline">
@@ -46,7 +42,6 @@
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
 					</source>
-					<!--<required/>-->
 				</field>
 
 				<field type="select" name="status">
@@ -112,7 +107,6 @@
 					<restrict>
 						<allow ext="project" right="task:editPersonAssigned" />
 					</restrict>
-					 <!--<required />-->
 				</field>
 
 				<field type="select" name="person_owner_role">
@@ -135,7 +129,6 @@
 					<restrict>
 						<allow ext="project" right="task:editPersonAssigned" />
 					</restrict>
-					 <!--<required />-->
 				</field>
 
 			</elements>
