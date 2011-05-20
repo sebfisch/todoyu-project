@@ -35,6 +35,7 @@
 	<label index="task.dyndate.currentweek">Aktuelle Woche</label>
 	<label index="task.dyndate.nextweek">Nächste Woche</label>
 	<label index="task.dyndate.lastweek">Letzte Woche</label>
+	<label index="project.status">Projekt-Status</label>
 	<label index="project.fulltext">Titel-Volltext</label>
 	<label index="project.company">Kunden-Name</label>
 	<label index="project.projectrole">Projekt Rolle</label>

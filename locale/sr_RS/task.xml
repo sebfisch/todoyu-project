@@ -63,7 +63,6 @@
 	<label index="status.warranty">Под гаранцијом</label>
 	<label index="status.customer">Муштерија</label>
 	<label index="cloneSubtasks.confirm">Подређен Задатак исто клонирати?</label>
-	<label index="link.to_task_top">Да би дошли до задатка, стартујте</label>
 	<label index="new.Task.defaultTitle">Нови задатак</label>
 	<label index="new.Container.defaultTitle">Нови контејнер</label>
 	<label index="newTask.empty">Нови задатак</label>

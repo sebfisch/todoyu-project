@@ -51,7 +51,6 @@
 	<label index="properties">Properties</label>
 	<label index="contextmenu.showinproject">Show in project area</label>
 	<label index="attr.persons.is_public">Project member is visible for externals</label>
-	<label index="contextmenu.showinproject">Show in project area</label>
 	<label index="contextmenu.showdetails">Show Details</label>
 	<label index="contextmenu.hidedetails">Hide Details</label>
 	<label index="contextmenu.edit">Edit Project</label>

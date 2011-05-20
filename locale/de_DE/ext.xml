@@ -47,10 +47,10 @@
 	<label index="attr.persons.new">Neue Person</label>
 	<label index="attr.persons.role">Projektrolle</label>
 	<label index="attr.persons.comment">Kommentar</label>
-	<label index="attr.persons.is_public">Projektbeteiligter ist für Externe sichtbar</label>
 	<label index="attr.taskpreset">Aufgaben Vorgaben</label>
 	<label index="properties">Eigenschaften</label>
 	<label index="contextmenu.showinproject">Zeige in Projekt-Ansicht</label>
+	<label index="attr.persons.is_public">Projektbeteiligter ist für Externe sichtbar</label>
 	<label index="contextmenu.showdetails">Details anzeigen</label>
 	<label index="contextmenu.hidedetails">Verstecke Details</label>
 	<label index="contextmenu.edit">Projekt bearbeiten</label>

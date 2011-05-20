@@ -14,8 +14,8 @@
 	<label index="attr.date_start">Start-Datum</label>
 	<label index="attr.date_deadline">Kunden Frist</label>
 	<label index="attr.date_end">Interne Frist</label>
-	<label index="attr.person_assigned">Zugewiesen</label>
 	<label index="attr.person_create">Erfasst von</label>
+	<label index="attr.person_assigned">Zugewiesen</label>
 	<label index="attr.person_owner">Aufgaben-Eigner</label>
 	<label index="attr.is_public">Aufgaben Sichtbarkeit</label>
 	<label index="attr.is_public.public">Aufgabe ist öffentlich</label>
@@ -72,7 +72,6 @@
 	<label index="status.cleared">Verrechnet</label>
 	<label index="status.warranty">In Garantie</label>
 	<label index="cloneSubtasks.confirm">Unter-Aufgaben auch klonen?</label>
-	<label index="link.to_task_top">Um zur Aufgabe zu gelangen, starten</label>
 	<label index="new.Task.defaultTitle">Neue Aufgabe</label>
 	<label index="new.Container.defaultTitle">Neuer Container</label>
 	<label index="newTask.empty">Neue Aufgabe</label>
@@ -107,6 +106,7 @@
 	<label index="ac.parenttask.notFoundInfo">Es wurde keine Aufgabe gefunden die diesen Text oder diese Tasknummer enthält.</label>
 	<label index="ac.project.notFoundInfo">Es wurde kein Projekt mit diesen Text im Titel gefunden.</label>
 	<label index="copySubtasks">Auch Unteraufgaben mitkopieren?</label>
+	<label index="statusNotVisible">Mit dem geänderten Status ist diese Aufgabe nicht mehr für Sie sichtbar.</label>
 	<label index="default.date.date_1">Erfassungs-Datum</label>
 	<label index="default.date.date_2">Erfassungs-Datum + 1 Tag</label>
 	<label index="default.date.date_3">Erfassungs-Datum + 2 Tage</label>
