@@ -27,8 +27,11 @@
 			<h4>{Label project.ext.infobox.presets.title}</h4>
 			<div class="content overflow">
 			{foreach $presets preset}
-				<dt>{Label $preset.label true}</dt>
-				<dd>{$preset.value}</dd>
+				{$class= cycle(values="odd,even")}
+				<div class="presetRow {$class}">
+					<dt>{Label $preset.label true}</dt>
+					<dd>{$preset.value}</dd>
+				</div>
 			{/foreach}
 			</div>
 		</div>
@@ -37,10 +40,10 @@
 	{* ---------- Dynamic added elements ----------- *}
 	{if $dynamicElements}
 		{foreach $dynamicElements element}
-	<div class="{$element.class}">
-		<h4>{$element.title}</h4>
-		<div class="content overflow">{$element.content}</div>
-	</div>
+			<div class="{$element.class} {cycle values="odd,even"}">
+				<h4>{$element.title}</h4>
+				<div class="content overflow">{$element.content}</div>
+			</div>
 		{/foreach}
 	{/if}
 
