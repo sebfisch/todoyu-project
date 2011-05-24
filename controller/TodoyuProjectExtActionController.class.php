@@ -110,8 +110,8 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 			// Add JS onLoad functions
 //		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.init.bind(Todoyu.Ext.project)', 100);
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.ContextMenuTask.attach.bind(Todoyu.Ext.project.ContextMenuTask)', 100);
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.ContextMenuProject.attach.bind(Todoyu.Ext.project.ContextMenuProject)', 100);
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.ContextMenuTask.attach', 100, true);
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.ContextMenuProject.attach', 100, true);
 
 			// Open any task for editing initially?
 		$idTaskEdit	= TodoyuRequest::getParam('edit', true);
