@@ -35,9 +35,7 @@
  * @subpackage	Template
  *
  * @param	Dwoo 		$dwoo
- * @param	String		$extension
- * @param	String		$action
- * @param	String		$params
+ * @param	String		$idStatus
  * @return	String
  */
 function Dwoo_Plugin_taskStatusLabel(Dwoo $dwoo, $idStatus) {
@@ -55,7 +53,7 @@ function Dwoo_Plugin_taskStatusLabel(Dwoo $dwoo, $idStatus) {
  * @subpackage	Template
  *
  * @param	Dwoo	$dwoo
- * @param	Integer	$statusID
+ * @param	Integer	$idStatus
  * @return	String
  */
 function Dwoo_Plugin_taskStatusKey(Dwoo $dwoo, $idStatus) {
@@ -73,7 +71,7 @@ function Dwoo_Plugin_taskStatusKey(Dwoo $dwoo, $idStatus) {
  * @subpackage	Template
  *
  * @param	Dwoo		$dwoo
- * @param	Integer		$statusID
+ * @param	Integer		$idStatus
  * @return	String
  */
 function Dwoo_Plugin_projectStatusLabel(Dwoo $dwoo, $idStatus) {
