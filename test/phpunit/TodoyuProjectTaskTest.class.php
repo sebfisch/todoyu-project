@@ -120,6 +120,8 @@ class TodoyuProjectTaskTest extends PHPUnit_Framework_TestCase
 
 	/**
 	 * @todo Implement testGetTaskNumber().
+	 *
+	 * @param	Boolean		$full
 	 */
 	public function testGetTaskNumber($full = true) {
 		// Remove the following lines when you implement this test.

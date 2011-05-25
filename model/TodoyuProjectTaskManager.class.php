@@ -1729,7 +1729,7 @@ class TodoyuProjectTaskManager {
 	 *
 	 * @param	Integer		$fullTaskNumber			Identifier with project id and task number
 	 * @param	Boolean		$mustExist				TRUE = Has to be in database
-	 * @return
+	 * @return	Boolean
 	 */
 	public static function isTasknumber($fullTaskNumber, $mustExist = false) {
 		$valid	= false;

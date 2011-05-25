@@ -1399,9 +1399,10 @@ class TodoyuProjectProjectManager {
 
 
 	/**
-	 * Lock all tasks of a project
+	 * Lock all tasks of given project
 	 *
 	 * @param	Integer		$idProject
+	 * @param	Integer		$ext
 	 */
 	public static function lockAllTasks($idProject, $ext = EXTID_PROJECT) {
 		$idProject	= intval($idProject);
