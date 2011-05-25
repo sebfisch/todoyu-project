@@ -77,8 +77,7 @@ class TodoyuProjectTaskpresetManager {
 	/**
 	 * Save task preset record to database
 	 *
-	 * @param	Array	$formData
-	 * @param	String	$xmlPath
+	 * @param	Array	$data
 	 * @return	Integer
 	 */
 	public static function saveTaskpreset(array $data) {
@@ -127,7 +126,6 @@ class TodoyuProjectTaskpresetManager {
 	/**
 	 * Gets task preset records for list
 	 *
-	 * @param	Array	$params
 	 * @return	Array
 	 */
 	public static function getRecords() {
@@ -146,6 +144,7 @@ class TodoyuProjectTaskpresetManager {
 	 * Sets deleted flag for given task preset record
 	 *
 	 * @param	Integer		$idTaskpreset
+	 * @return	Boolean
 	 */
 	public static function deleteTaskpreset($idTaskpreset) {
 		$idTaskpreset	= intval($idTaskpreset);

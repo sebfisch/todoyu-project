@@ -31,6 +31,7 @@ class TodoyuProjectTaskFilterDataSource {
 	 *
 	 * @param	String	$search
 	 * @param	Array	$config
+	 * @return	Array
 	 */
 	public static function getTaskAutocompleteListBySearchword($search, $config = array()) {
 		$data = array();
@@ -229,6 +230,7 @@ class TodoyuProjectTaskFilterDataSource {
 	 * Calculates timestamps by dynamic type
 	 *
 	 * @param	String		$dateRangeKey
+	 * @param	Boolean		$negate
 	 * @return	Integer
 	 */
 	public static function getDynamicDateTimestamp($dateRangeKey, $negate = false) {

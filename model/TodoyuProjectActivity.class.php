@@ -42,7 +42,7 @@ class TodoyuProjectActivity extends TodoyuBaseObject {
 	/**
 	 * Get title of activity
 	 *
-	 * @param	Boolean		$parsed
+	 * @param	Boolean		$parse
 	 * @return	String
 	 */
 	public function getTitle($parse = true) {

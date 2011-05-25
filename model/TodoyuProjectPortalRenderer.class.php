@@ -48,6 +48,7 @@ class TodoyuProjectPortalRenderer {
 	/**
 	 * Get content of todo tab in portal
 	 *
+	 * @param	Array	$params
 	 * @return	String
 	 */
 	public static function renderTodoTabContent(array $params = array()) {

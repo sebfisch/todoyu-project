@@ -38,6 +38,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * Initialize project filter with active filters
 	 *
 	 * @param	Array		$activeFilters
+	 * @param	String		$conjunction
 	 */
 	public function __construct(array $activeFilters = array(), $conjunction = 'AND') {
 		parent::__construct('PROJECT', 'ext_project_project', $activeFilters, $conjunction);
@@ -70,9 +71,8 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	/**
 	 * Get IDs of the project which match to all the filters
 	 *
-	 * @param	String		$orderBy
+	 * @param	String		$sorting
 	 * @param	String		$limit
-	 * @param	Boolean		$showDeleted
 	 * @return	Array
 	 */
 	public function getProjectIDs($sorting = '', $limit = '') {
@@ -85,7 +85,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * General items function for anonymous access
 	 *
 	 * @param	String		$sorting
-	 * @param	Integer		$limit
+	 * @param	String		$limit
 	 * @return	Array
 	 */
 	public function getItemIDs($sorting = '', $limit = '') {
@@ -100,6 +100,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 *
 	 * @param	String		$value			IGNORED
 	 * @param	Boolean		$negate			IGNORED
+	 * @return	Array
 	 */
 	public function Filter_rights($value, $negate = false) {
 		$queryParts	= false;
@@ -202,8 +203,8 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	/**
 	 * Filter projects by status
 	 *
-	 * @param	Mixed	$status
-	 * @param	Boolean	$negate
+	 * @param	Mixed		$value
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public function Filter_status($value, $negate = false) {
@@ -449,8 +450,9 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	/**
 	 * Get the dynamic date
 	 *
-	 * @param	Array		$dateRange
+	 * @param	Integer		$date
 	 * @param	String		$field
+	 * @param	Boolean		$negation
 	 * @return	Array
 	 */
 	protected static function Filter_dateDyn($date, $field, $negation = false) {
@@ -500,6 +502,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * Filter by tasks from the project which match a Filter condition from task-filter
 	 *
 	 * @param	String		$value
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public function Filter_taskFilter($value, $negate = false) {

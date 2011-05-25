@@ -65,6 +65,7 @@ class TodoyuProjectProjectStatusManager {
 	/**
 	 * Get all project statuses
 	 *
+	 * @param	Integer		$forceStatus
 	 * @return	Array
 	 */
 	public static function getStatuses($forceStatus = 0) {

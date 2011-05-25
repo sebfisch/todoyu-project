@@ -570,8 +570,8 @@ class TodoyuProjectTaskManager {
 	 * Get ALL sub tasks of a task (the whole tree, instead only the direct children)
 	 * Get also sub-sub-...-tasks
 	 *
-	 * @param	Integer		$idTask
-	 * @param	String		$extraWhere
+	 * @param	Integer			$idTask
+	 * @param	String|Boolean	$extraWhere
 	 * @return	Array
 	 */
 	public static function getAllSubTaskIDs($idTask, $extraWhere = false) {

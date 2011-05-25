@@ -264,6 +264,7 @@ class TodoyuProjectTaskRenderer {
 	 * Render all task tabs (only detail of the active tab)
 	 *
 	 * @param	Integer		$idTask
+	 * @param	String		$activeTab
 	 * @return	String
 	 */
 	public static function renderTabs($idTask, $activeTab = '') {

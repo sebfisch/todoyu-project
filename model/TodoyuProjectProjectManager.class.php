@@ -202,7 +202,7 @@ class TodoyuProjectProjectManager {
 	 * Get all allowed task IDs of a project
 	 *
 	 * @param	Integer		$idProject
-	 * @param	String		$orderBy
+	 * @param	String		$sorting
 	 * @return	Array
 	 */
 	public static function getTaskIDs($idProject, $sorting = '') {
@@ -448,6 +448,7 @@ class TodoyuProjectProjectManager {
 	/**
 	 * Get render data for open project tabs
 	 *
+	 * @param	Array	$projectIDs
 	 * @return	Array
 	 */
 	public static function getOpenProjectTabs($projectIDs = array()) {
@@ -930,7 +931,7 @@ class TodoyuProjectProjectManager {
 	/**
 	 * Get (public) persons which are connected with any of the given projects
 	 *
-	 * @param	Integer		$projectIDs
+	 * @param	Array		$projectIDs
 	 * @param	Boolean		$withAccount
 	 * @return	Array
 	 */
@@ -1377,6 +1378,7 @@ class TodoyuProjectProjectManager {
 	 * Lock project
 	 *
 	 * @param	Integer		$idProject
+	 * @param	Integer		$ext
 	 */
 	public static function lockProject($idProject, $ext = EXTID_PROJECT) {
 		TodoyuLockManager::lock($ext, 'ext_project_project', $idProject);

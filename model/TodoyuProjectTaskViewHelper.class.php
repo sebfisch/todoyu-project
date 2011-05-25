@@ -107,7 +107,7 @@ class TodoyuProjectTaskViewHelper {
 	/**
 	 * Get options array for assigned person selector, options are grouped into: task members, project persons, all staff persons
 	 *
-	 * @param	Array		$formData
+	 * @param	TodoyuFormElement		$field
 	 * @return	Array
 	 */
 	public static function getPersonAssignedGroupedOptions(TodoyuFormElement $field) {
@@ -152,7 +152,7 @@ class TodoyuProjectTaskViewHelper {
 	/**
 	 * Get option of task owner as comment email receiver
 	 *
-	 * @param	Array		$formData
+	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
 	public static function getOwnerEmailOption(TodoyuFormElement $field) {

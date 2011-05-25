@@ -33,6 +33,7 @@ class TodoyuProjectPreferences {
 	 * @param	String		$value
 	 * @param	Integer		$idItem
 	 * @param	Boolean		$unique
+	 * @param	Integer		$idArea
 	 * @param	Integer		$idPerson
 	 */
 	public static function savePref($preference, $value, $idItem = 0, $unique = false, $idArea = 0, $idPerson = 0) {
@@ -46,6 +47,8 @@ class TodoyuProjectPreferences {
 	 *
 	 * @param	String		$preference
 	 * @param	Integer		$idItem
+	 * @param	Integer		$idArea
+	 * @param	Boolean		$unserialize
 	 * @param	Integer		$idPerson
 	 * @return	String
 	 */
@@ -214,8 +217,8 @@ class TodoyuProjectPreferences {
 	/**
 	 * Save pref: details being expanded?
 	 *
-	 * @param	Integer	idProject
-	 * @param	Boolean	$expanded
+	 * @param	Integer		$idProject
+	 * @param	Boolean		$expanded
 	 */
 	public static function saveExpandedDetails($idProject, $expanded = true) {
 		$idProject	= intval($idProject);

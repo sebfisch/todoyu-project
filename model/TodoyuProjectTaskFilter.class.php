@@ -42,6 +42,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * Init filter object
 	 *
 	 * @param	Array	$activeFilters		Active filters for request
+	 * @param	String	$conjunction
 	 */
 	public function __construct(array $activeFilters = array(), $conjunction = 'AND') {
 		parent::__construct('TASK', self::TABLE, $activeFilters, $conjunction);
@@ -81,7 +82,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * Get task IDs which match to all filters
 	 *
 	 * @param	String		$sorting		Force sorting column
-	 * @param	Integer		$limit			Limit result items
+	 * @param	String		$limit			Limit result items
 	 * @return	Array
 	 */
 	public function getTaskIDs($sorting = 'sorting', $limit = '') {
@@ -96,7 +97,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * General access to the result items
 	 *
 	 * @param	String		$sorting
-	 * @param	Integer		$limit
+	 * @param	String		$limit
 	 * @return	Array
 	 */
 	public function getItemIDs($sorting = 'sorting', $limit = '') {
@@ -190,7 +191,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: tasks of projects of given customer
 	 *
-	 * @param	Integer		$idProject
+	 * @param	Integer		$idCompany
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
@@ -584,7 +585,8 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: Project description like given filter value?
 	 *
-	 * @param	Array	$filter
+	 * @param	String		$value
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 * @todo	Recheck this function
 	 */

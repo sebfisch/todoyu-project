@@ -100,6 +100,7 @@ class TodoyuProjectProjectroleManager {
 	 * Sets deleted flag for project role
 	 *
 	 * @param	Integer		$idProjectrole
+	 * @return	Boolean
 	 */
 	public static function deleteProjectrole($idProjectrole) {
 		return TodoyuRecordManager::deleteRecord(self::TABLE, $idProjectrole);
@@ -174,7 +175,6 @@ class TodoyuProjectProjectroleManager {
 	/**
 	 * Get list of existing projectrole records
 	 *
-	 * @param	Array	$params
 	 * @return	Array
 	 */
 	public static function getRecords() {

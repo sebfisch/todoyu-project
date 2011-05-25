@@ -29,8 +29,9 @@ class TodoyuProjectProjectFilterDataSource {
 	/**
 	 * Search for projects by given search string from the auto-completion
 	 *
-	 * @param	String	$search
-	 * @param	Array	$conf
+	 * @param	String	$input
+	 * @param	Array	$formData
+	 * @param	String	$name
 	 * @return	Array				array (id => label)
 	 */
 	public static function autocompleteProjects($input, array $formData = array(), $name = '') {

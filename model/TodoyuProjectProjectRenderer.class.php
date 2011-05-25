@@ -75,6 +75,7 @@ class TodoyuProjectProjectRenderer {
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idTask			Make sure this task is visible (tree open)
+	 * @param	String		$tab
 	 * @return	String
 	 */
 	public static function renderProjectsContent($idProject, $idTask, $tab = null) {
@@ -112,6 +113,7 @@ class TodoyuProjectProjectRenderer {
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idTask
+	 * @param	String		$tab
 	 * @return	String
 	 */
 	protected static function renderSelectedProjectContent($idProject, $idTask = 0, $tab = null) {
@@ -134,6 +136,7 @@ class TodoyuProjectProjectRenderer {
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idTask
+	 * @param 	String		$tab
 	 * @return 	String
 	 */
 	public static function renderTabbedProject($idProject, $idTask, $tab = null) {
@@ -193,6 +196,7 @@ class TodoyuProjectProjectRenderer {
 	 * Render project header
 	 *
 	 * @param	Integer		$idProject
+	 * @param	Boolean		$withDetails
 	 * @return	String
 	 */
 	public static function renderProjectHeader($idProject, $withDetails = null) {
@@ -325,11 +329,12 @@ class TodoyuProjectProjectRenderer {
 	 *
 	 * @param	Integer		$idProject			Render the task tree of this project
 	 * @param	Integer		$idTask				Make sure this task is visible
+	 * @param	String		$tab
 	 * @return	String
 	 */
-	public static function renderProjectTaskTree($idProject, $idTaskShow = 0, $tab = null) {
+	public static function renderProjectTaskTree($idProject, $idTask = 0, $tab = null) {
 		$idProject	= intval($idProject);
-		$idTaskShow	= intval($idTaskShow);
+		$idTask	= intval($idTask);
 
 			// Initialize tree in JavaScript if not a AJAX refresh
 		if( ! TodoyuRequest::isAjaxRequest() ) {
@@ -340,18 +345,18 @@ class TodoyuProjectProjectRenderer {
 		$rootTaskIDs	= TodoyuProjectProjectManager::getRootTaskIDs($idProject);
 
 			// Set rootline of the task, if a task is forced to be shown
-		self::$openRootline = $idTaskShow === 0 ? array() : TodoyuProjectTaskManager::getTaskRootline($idTaskShow);
+		self::$openRootline = $idTask === 0 ? array() : TodoyuProjectTaskManager::getTaskRootline($idTask);
 
 			// Tree HTML buffer
 		$treeHtml	= '';
 
 			// Render tasks (with their sub tasks)
 		foreach($rootTaskIDs as $idTask) {
-			$treeHtml .= self::renderTask($idTask, $idTaskShow, false, $tab);
+			$treeHtml .= self::renderTask($idTask, $idTask, false, $tab);
 		}
 
 			// Add a list of lost task (this task should be display, but their parent doesn't match the current filter)
-		$treeHtml .= self::renderLostTasks($idProject, $idTaskShow, $tab);
+		$treeHtml .= self::renderLostTasks($idProject, $idTask, $tab);
 
 		return $treeHtml;
 	}
@@ -398,12 +403,13 @@ class TodoyuProjectProjectRenderer {
 	 * Render (list of) lost tasks
 	 *
 	 * @param	Integer		$idProject
-	 * @param	Integer		$idTaskShow
+	 * @param	Integer		$idTask
+	 * @param	String		$tab
 	 * @return	String		HTML
 	 */
-	public static function renderLostTasks($idProject, $idTaskShow, $tab = null) {
+	public static function renderLostTasks($idProject, $idTask, $tab = null) {
 		$idProject	= intval($idProject);
-		$idTaskShow	= intval($idTaskShow);
+		$idTask	= intval($idTask);
 
 		$tmpl	= 'ext/project/view/losttasks.tmpl';
 
@@ -411,11 +417,11 @@ class TodoyuProjectProjectRenderer {
 		$lostTaskIDs	= TodoyuProjectProjectManager::getLostTaskInTaskTree($idProject, self::$renderedTasks);
 
 			// If forced task is set, but not rendered, add to lost task if allowed
-		if( $idTaskShow !== 0 ) {
-			if( ! in_array($idTaskShow, self::$renderedTasks) ) {
-				if( ! in_array($idTaskShow, $lostTaskIDs) ) {
-					if( TodoyuProjectTaskRights::isSeeAllowed($idTaskShow) ) {
-						$lostTaskIDs[] = $idTaskShow;
+		if( $idTask !== 0 ) {
+			if( ! in_array($idTask, self::$renderedTasks) ) {
+				if( ! in_array($idTask, $lostTaskIDs) ) {
+					if( TodoyuProjectTaskRights::isSeeAllowed($idTask) ) {
+						$lostTaskIDs[] = $idTask;
 					}
 				}
 			}
@@ -425,7 +431,7 @@ class TodoyuProjectProjectRenderer {
 
 		foreach($lostTaskIDs as $idLostTask) {
 			if( TodoyuProjectTaskRights::isSeeAllowed($idLostTask) ) {
-				$lostTaskHtml .= self::renderTask($idLostTask, $idTaskShow, true, $tab);
+				$lostTaskHtml .= self::renderTask($idLostTask, $idTask, true, $tab);
 			}
 		}
 
@@ -500,6 +506,7 @@ class TodoyuProjectProjectRenderer {
 	 * @param	Integer		$idTask				ID of the task to render
 	 * @param	Integer		$idTaskShow			ID of the task which is forced to be shown (if its a sub task of the rendered task)
 	 * @param	Boolean		$withoutSubTasks	Don't render sub tasks
+	 * @param	String		$tab
 	 * @return	String		Rendered task HTML for project task tree view
 	 */
 	public static function renderTask($idTask, $idTaskShow = 0, $withoutSubTasks = false, $tab = null) {
@@ -552,8 +559,9 @@ class TodoyuProjectProjectRenderer {
 	 * Render a new task in edit mode
 	 *
 	 *
-	 * @param	Integer	$idParentTask
-	 * @param	String	$type
+	 * @param	Integer		$idParentTask
+	 * @param	Integer		$idProject
+	 * @param	Integer		$type
 	 * @return	String
 	 */
 	public static function renderNewTaskEdit($idParentTask = 0, $idProject = 0, $type = TASK_TYPE_TASK) {

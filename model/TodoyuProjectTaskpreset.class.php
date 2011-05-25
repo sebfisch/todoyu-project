@@ -42,7 +42,7 @@ class TodoyuProjectTaskpreset extends TodoyuBaseObject {
 	/**
 	 * Get title of task preset
 	 *
-	 * @param	Boolean		$parsed
+	 * @param	Boolean		$parse
 	 * @return	String
 	 */
 	public function getTitle($parse = true) {

@@ -40,6 +40,7 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	/**
 	 * Get full project title with company short name
 	 *
+	 * @param	Boolean	$companyShort
 	 * @return	String
 	 */
 	public function getFullTitle($companyShort = false) {

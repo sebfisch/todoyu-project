@@ -61,8 +61,7 @@ class TodoyuProjectActivityManager {
 	/**
 	 * Save activity record to database
 	 *
-	 * @param	Array		$formData
-	 * @param	String		$xmlPath
+	 * @param	Array		$data
 	 * @return	Integer
 	 */
 	public static function saveActivity(array $data) {
@@ -111,7 +110,6 @@ class TodoyuProjectActivityManager {
 	/**
 	 * Gets activity records for list
 	 *
-	 * @param	Array	$params
 	 * @return	Array
 	 */
 	public static function getRecords() {
@@ -130,6 +128,7 @@ class TodoyuProjectActivityManager {
 	 * Sets deleted flag for activity
 	 *
 	 * @param	Integer		$idActivity
+	 * @return	Boolean
 	 */
 	public static function deleteActivity($idActivity) {
 		$idActivity	= intval($idActivity);
