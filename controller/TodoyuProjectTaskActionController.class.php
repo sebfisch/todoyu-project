@@ -405,6 +405,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * Load task tab
 	 *
 	 * @param	Array	$params
+	 * @return	String
 	 */
 	public function tabloadAction(array $params) {
 		$idTask		= intval($params['task']);
