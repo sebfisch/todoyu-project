@@ -76,6 +76,8 @@ class TodoyuProjectTaskExportManager {
 			Todoyu::Label('core.global.id_person_create')			=> $task->getCreatePerson()->getFullName(),
 			Todoyu::Label('project.task.attr.type')					=> $task->isContainer() ? Todoyu::Label('project.task.container') : Todoyu::Label('project.task.task'),
 			Todoyu::Label('project.ext.project')					=> $task->getProject()->getFullTitle(),
+			Todoyu::Label('project.task.attr.id_parenttask') .' (' .Todoyu::Label('project.task.attr.id') . ')'
+																	=> $task->hasParentTask() ? $task->getParentTask()->getId() : '',
 			Todoyu::Label('project.task.attr.id_parenttask')		=> $task->hasParentTask() ? $task->getParentTask()->getFullTitle() : '',
 			Todoyu::Label('project.task.attr.title')				=> $task->getFullTitle(),
 			Todoyu::Label('project.task.description')				=> TodoyuString::strictHtml2text($task->getDescription()),
