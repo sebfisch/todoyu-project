@@ -57,8 +57,8 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 	/**
 	 * Save quick task
 	 *
-	 * @param	Array	$params
-	 * @return	String
+	 * @param	Array		$params
+	 * @return	Void|String				Failure returns re-rendered form with error messages
 	 */
 	public function saveAction(array $params) {
 		$params['quicktask']['start_tracking']	= intval($params['quicktask']['start_tracking']);
