@@ -3,7 +3,7 @@
 {block name="widgetbody"}
 
 	<span>
-		<label>{Label project.ext.attr.person.projectrole}</label>
+		<label>{Label project.ext.attr.persons.role}</label>
 		{select options=$definitions.options value=$definitions.valueProjectroles id="filterwidget-select-$definitions.widgetID" multiple=$definitions.wConf.multiple size=$definitions.wConf.size onchange="Todoyu.Ext.project.Filter.onProjectroleRoleChange('$definitions.widgetID')"}
 	</span>
 
