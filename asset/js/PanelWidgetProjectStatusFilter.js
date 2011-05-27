@@ -84,6 +84,11 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = Class.create(Todoyu.PanelWi
 		Todoyu.Pref.save('project', action, pref, 0, this.onSaved.bind(this));
 	},
 
+
+
+	/**
+	 * @method	onSaved 
+	 */
 	onSaved: function() {
 		Todoyu.Hook.exec('project.projectstatus.changed', this.getSelectedStatuses());
 	}

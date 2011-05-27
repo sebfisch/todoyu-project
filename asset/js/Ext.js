@@ -104,6 +104,7 @@ Todoyu.Ext.project = {
 	/**
 	 * Open given task for editing in it's project in project area
 	 *
+	 * @method	editTaskInProject
 	 * @param	{Number}	idTask
 	 */
 	editTaskInProject: function(idTask, idProject, windowName) {
@@ -236,6 +237,7 @@ Todoyu.Ext.project = {
 	/**
 	 * Get status of an element
 	 *
+	 * @method	getStatusOfElement
 	 * @param element
 	 */
 	getStatusOfElement: function(element) {
@@ -260,6 +262,7 @@ Todoyu.Ext.project = {
 	 * Element has to contain a class which has the format Status4
 	 * Status class can also be prefixed: bcStatus4
 	 *
+	 * @method	setStatusOfElement
 	 * @param	{Element|String}	element
 	 * @param	{Number}			newStatus
 	 */

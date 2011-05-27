@@ -29,6 +29,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = Class.create(Todoyu.PanelWidgetSear
 	/**
 	 * Initialize with search word
 	 *
+	 * @method	initialize
 	 * @param	{Todoyu.PanelWidgetSearchList.initialize}	$super
 	 * @param	{String}	search
 	 */
@@ -67,6 +68,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = Class.create(Todoyu.PanelWidgetSear
 	/**
 	 * Handler when clicked on item
 	 *
+	 * @method	onItemClick
 	 * @param	{Event}		event
 	 * @param	{Element}	item
 	 */
@@ -80,6 +82,8 @@ Todoyu.Ext.project.PanelWidget.ProjectList = Class.create(Todoyu.PanelWidgetSear
 
 	/**
 	 * Handler when list was updated
+	 *
+	 * @method	onUpdated
 	 */
 	onUpdated: function() {
 		Todoyu.Hook.exec('project.projectlist.updated');
@@ -126,6 +130,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = Class.create(Todoyu.PanelWidgetSear
 	/**
 	 * Hook when status filter selection has changed
 	 *
+	 * @method	onStatusFilerChanged
 	 * @param	{Array}		statues
 	 */
 	onStatusFilterChanged: function(statues) {

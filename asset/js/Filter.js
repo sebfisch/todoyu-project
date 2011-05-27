@@ -21,6 +21,12 @@
  * @module	Project
  */
 
+/**
+ * Project filter
+ *
+ * @class		Filter
+ * @namespace	Todoyu.Ext.project
+ */
 Todoyu.Ext.project.Filter = {
 
 	/**

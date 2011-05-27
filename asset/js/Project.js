@@ -23,6 +23,9 @@
 
 /**
  * Functions to handle projects
+ *
+ * @class		Project
+ * @namespace	Todoyu.Ext.project
  */
 Todoyu.Ext.project.Project = {
 

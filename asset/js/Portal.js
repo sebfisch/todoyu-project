@@ -21,6 +21,12 @@
  * @module	Project
  */
 
+/**
+ * Project portal
+ *
+ * @class		Portal
+ * @namespace	Todoyu.Ext.project
+ */
 Todoyu.Ext.project.Portal = {
 
 	/**

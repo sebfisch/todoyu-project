@@ -1706,18 +1706,10 @@ class TodoyuProjectTaskManager {
 	 * @param	Integer		$idTask
 	 * @return	Boolean
 	 */
-	public static function isTask($idTask) {
+	public static function taskExists($idTask) {
 		$idTask	= intval($idTask);
 
-		if( $idTask !== 0 ) {
-			$task = self::getTaskData($idTask);
-
-			if( is_array($task) ) {
-				return true;
-			}
-		}
-
-		return false;
+		return TodoyuRecordManager::isRecord(self::TABLE, $idTask);
 	}
 
 
@@ -1769,7 +1761,7 @@ class TodoyuProjectTaskManager {
 	public static function isTaskVisible($idTask) {
 		$idTask	= intval($idTask);
 
-		if( self::isTask($idTask) ) {
+		if( self::taskExists($idTask) ) {
 			$task	= TodoyuProjectTaskManager::getTask($idTask);
 
 			if( ! $task->isDeleted() ) {
