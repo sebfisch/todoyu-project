@@ -31,7 +31,7 @@ TodoyuHookManager::registerHook('sysmanager', 'renderRecordsBody-taskpreset',	'T
 
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookModifyFormfieldsForTask');
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookModifyFormfieldsForContainer');
-TodoyuFormHook::registerLoadData('ext/project/config/form/quicktask.xml', 'TodoyuProjectTaskManager::hookLoadTaskFormData');
-TodoyuFormHook::registerLoadData('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookLoadTaskFormData');
+TodoyuFormHook::registerLoadData('ext/project/config/form/quicktask.xml', 'TodoyuProjectTaskManager::hookLoadDefaultTaskFormData');
+TodoyuFormHook::registerLoadData('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookLoadDefaultTaskFormData');
 
 ?>

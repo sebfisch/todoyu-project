@@ -2178,23 +2178,26 @@ class TodoyuProjectTaskManager {
 	 * Load task data for quicktask
 	 *
 	 * @param	Array		$data
-	 * @param	Integer		$idRecord
+	 * @param	Integer		$idTask
 	 * @param	Array		$params
 	 * @return	Array
 	 */
-	public static function hookLoadTaskFormData(array $data, $idRecord, array $params = array()) {
-		if( TodoyuRequest::getArea() === 'project' ) {
-				// Set project ID
-			if( intval($data['id_project']) === 0 ) {
-				$data['id_project']	= TodoyuProjectPreferences::getActiveProject();
+	public static function hookLoadDefaultTaskFormData(array $data, $idTask, array $params = array()) {
+		if( $idTask === 0 ) {
+				// Load default data
+			$data   = self::getTaskDefaultData($idTask, $data['id_project']);
+
+			if( TodoyuRequest::getArea() === 'project' ) {
+					// Set project ID
+				if( intval($data['id_project']) === 0 ) {
+					$data['id_project']	= TodoyuProjectPreferences::getActiveProject();
+				}
 			}
-		}
 
-		$data   = self::getTaskDefaultData($idRecord, $data['id_project']);
-
-			// Set owner for quickCreate tasks
-		if( strtolower(CONTROLLER) === 'quickcreatetask' && $data['id_person_owner'] == 0 ) {
-			$data['id_person_owner'] = Todoyu::personid();
+				// Set owner for quickCreate tasks
+			if( strtolower(CONTROLLER) === 'quickcreatetask' && $data['id_person_owner'] == 0 ) {
+				$data['id_person_owner'] = Todoyu::personid();
+			}
 		}
 
 		return $data;
