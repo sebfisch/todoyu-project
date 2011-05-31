@@ -159,6 +159,7 @@ class TodoyuProjectProjectRenderer {
 
 
 	/**
+	 * Render view when no project is selected
 	 *
 	 * @return	String
 	 */
@@ -367,7 +368,7 @@ class TodoyuProjectProjectRenderer {
 	 * Render sub tasks
 	 *
 	 * @param	Integer		$idTask			Parent task ID
-	 * @param	Integer		$idTaskShow		Task to show (all parent subtrees will be rendered to show this task)
+	 * @param	Integer		$idTaskShow		Task to be shown (all parent sub trees will be rendered to show this task)
 	 * @return	String
 	 */
 	public static function renderSubTasks($idTask, $idTaskShow = 0) {
@@ -707,7 +708,7 @@ class TodoyuProjectProjectRenderer {
 
 
 	/**
-	 * Render
+	 * Render project listing
 	 *
 	 * @param	Array	$projectIDs
 	 * @return	String
