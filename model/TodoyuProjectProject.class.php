@@ -186,6 +186,71 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 
 
 	/**
+	 * Get IDs of project persons
+	 *
+	 * @return	Array
+	 */
+	public function getPersonsIDs() {
+		$persons		= $this->getPersons();
+		$reformConfig	= array(
+			'id'	=> 'id_person',
+		);
+
+		return TodoyuArray::flatten(TodoyuArray::reform($persons, $reformConfig));
+	}
+
+
+
+	/**
+	 * Get all IDs of persons with the ID of their todoyu role
+	 *
+	 * @param	Boolean		$indexWithPersonIDs
+	 * @return	Array
+	 */
+	public function getPersonsRolesIDs($indexWithPersonIDs = false) {
+		$persons		= $this->getPersons();
+
+		$reformConfig	= array(
+			'id_person'	=> 'id_person',
+			'id_role'	=> 'id_role'
+		);
+
+		if( $indexWithPersonIDs ) {
+			$personRoles = TodoyuArray::reformWithFieldAsIndex($persons, $reformConfig, false, 'id_person');
+		} else {
+			$personRoles = TodoyuArray::reform($persons, $reformConfig);	
+		}
+
+		return $personRoles;
+	}
+
+
+
+	/**
+	 * Get all IDs of persons with the label of their assigned projectrole
+	 *
+	 * @param	Boolean		$indexWithPersonIDs
+	 * @return	Array
+	 */
+	public function getPersonsProjectrolesLabels($indexWithPersonIDs = false) {
+		$persons		= $this->getPersons();
+		$reformConfig	= array(
+			'id_person'	=> 'id_person',
+			'rolelabel'	=> 'rolelabel'
+		);
+
+		if( $indexWithPersonIDs ) {
+			$personRoles = TodoyuArray::reformWithFieldAsIndex($persons, $reformConfig, false, 'id_person');
+		} else {
+			$personRoles = TodoyuArray::reform($persons, $reformConfig);
+		}
+
+		return $personRoles;
+	}
+
+
+
+	/**
 	 * Get ID of role of given (or currently logged-in) person in project
 	 *
 	 * @param	Integer				$idPerson
