@@ -327,12 +327,11 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 */
 	public function prepareDataForProjectroleWidget(array $definitions) {
 		$projectroles	= TodoyuProjectProjectroleManager::getProjectroles(true);
-		$reform			= array(
+		$reformConfig	= array(
 			'id'	=> 'value',
 			'title'	=> 'label'
 		);
-
-		$definitions['options']	= TodoyuArray::reform($projectroles, $reform);
+		$definitions['options']	= TodoyuArray::reform($projectroles, $reformConfig);
 
 			// Prepare separate values
 		$values	= explode(':', $definitions['value']);
@@ -514,8 +513,6 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 			$filterObject	= $taskFilter->Filter_filterSet($filterSet);
 
 			$compare	= $negate ? ' NOT IN ' : ' IN ';
-
-			TodoyuDebug::printInFirebug($filterObject);
 
 			$whereArray[]	= 'ext_project_project.id ' . $compare . '(
 								SELECT id_project FROM ' . implode(',', $filterObject['tables']) .

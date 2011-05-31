@@ -138,13 +138,12 @@ class TodoyuProjectTaskViewHelper {
 	 */
 	public static function getTaskActivityOptions(TodoyuFormElement $field) {
 		$activities	= TodoyuProjectActivityManager::getAllActivities();
-
-		$reform		= array(
+		$reformConfig	= array(
 			'title'	=> 'label',
 			'id'	=> 'value'
 		);
 
-		return TodoyuArray::reform($activities, $reform);
+		return TodoyuArray::reform($activities, $reformConfig);
 	}
 
 

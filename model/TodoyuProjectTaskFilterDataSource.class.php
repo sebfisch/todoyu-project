@@ -115,14 +115,11 @@ class TodoyuProjectTaskFilterDataSource {
 	 */
 	public static function getProjectroleOptionDefinitions(array $definitions) {
 		$projectroles	= TodoyuRoleManager::getAllRoles();
-//		$selected		= TodoyuArray::intExplode(',', $definitions['value'], true, true);
-//		@todo	- check selection needed?
-		$reform			= array(
+		$reformConfig			= array(
 			'title'	=> 'label',
 			'id'	=> 'value'
 		);
-
-		$definitions['options'] = TodoyuArray::reform($projectroles, $reform);
+		$definitions['options'] = TodoyuArray::reform($projectroles, $reformConfig);
 
 		return $definitions;
 	}

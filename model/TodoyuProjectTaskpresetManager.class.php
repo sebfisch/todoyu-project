@@ -130,12 +130,12 @@ class TodoyuProjectTaskpresetManager {
 	 */
 	public static function getRecords() {
 		$taskPresets	= self::getAllTaskpresets();
-		$reform		= array(
+		$reformConfig	= array(
 			'id'	=> 'id',
 			'title'	=> 'label'
 		);
 
-		return TodoyuArray::reform($taskPresets, $reform);
+		return TodoyuArray::reform($taskPresets, $reformConfig);
 	}
 
 

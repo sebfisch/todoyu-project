@@ -114,12 +114,12 @@ class TodoyuProjectActivityManager {
 	 */
 	public static function getRecords() {
 		$activities	= self::getAllActivities();
-		$reform		= array(
+		$reformConfig		= array(
 			'id'	=> 'id',
 			'title'	=> 'label'
 		);
 
-		return TodoyuArray::reform($activities, $reform);
+		return TodoyuArray::reform($activities, $reformConfig);
 	}
 
 

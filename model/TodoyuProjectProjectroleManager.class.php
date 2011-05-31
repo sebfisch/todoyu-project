@@ -179,13 +179,12 @@ class TodoyuProjectProjectroleManager {
 	 */
 	public static function getRecords() {
 		$projectroles	= self::getProjectroles();
-
-		$reform		= array(
+		$reformConfig		= array(
 			'id'	=> 'id',
 			'title'	=> 'label'
 		);
 
-		return TodoyuArray::reform($projectroles, $reform);
+		return TodoyuArray::reform($projectroles, $reformConfig);
 	}
 
 }

@@ -128,13 +128,12 @@ class TodoyuProjectProjectViewHelper {
 	 * @return	Array
 	 */
 	public static function getProjectroleOptions(TodoyuFormElement $field) {
-		$roles	= TodoyuProjectProjectroleManager::getProjectroles();
-		$reform	= array(
+		$roles			= TodoyuProjectProjectroleManager::getProjectroles();
+		$reformConfig	= array(
 			'id'	=> 'value',
 			'title'	=> 'label'
 		);
-
-		$roles	= TodoyuArray::reform($roles, $reform);
+		$roles	= TodoyuArray::reform($roles, $reformConfig);
 
 		return $roles;
 	}
@@ -148,13 +147,13 @@ class TodoyuProjectProjectViewHelper {
 	 * @return	Array
 	 */
 	public static function getExtConfProjectRoles(TodoyuFormElement $field) {
-		$roles	= TodoyuProjectProjectroleManager::getProjectroles(true);
-		$reform	= array(
+		$roles			= TodoyuProjectProjectroleManager::getProjectroles(true);
+		$reformConfig	= array(
 			'title'	=> 'label',
 			'id'	=> 'value'
 		);
 
-		return TodoyuArray::reform($roles, $reform);
+		return TodoyuArray::reform($roles, $reformConfig);
 	}
 
 
@@ -167,12 +166,12 @@ class TodoyuProjectProjectViewHelper {
 	 */
 	public static function getExtConfActivities(TodoyuFormElement $field) {
 		$activities	= TodoyuProjectActivityManager::getAllActivities();
-		$reform	= array(
+		$reformConfig	= array(
 			'title'	=> 'label',
 			'id'	=> 'value'
 		);
 
-		return TodoyuArray::reform($activities, $reform);
+		return TodoyuArray::reform($activities, $reformConfig);
 	}
 
 
@@ -235,12 +234,12 @@ class TodoyuProjectProjectViewHelper {
 			),
 			TodoyuProjectTaskpresetManager::getAllTaskpresets()
 		);
-		$reform	= array(
+		$reformConfig	= array(
 			'id'	=> 'value',
 			'title'	=> 'label'
 		);
 
-		return TodoyuArray::reform($presets, $reform);
+		return TodoyuArray::reform($presets, $reformConfig);
 	}
 
 }
