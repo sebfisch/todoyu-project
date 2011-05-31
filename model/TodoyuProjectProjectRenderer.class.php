@@ -332,9 +332,9 @@ class TodoyuProjectProjectRenderer {
 	 * @param	String		$tab
 	 * @return	String
 	 */
-	public static function renderProjectTaskTree($idProject, $idTask = 0, $tab = null) {
+	public static function renderProjectTaskTree($idProject, $idTaskShow = 0, $tab = null) {
 		$idProject	= intval($idProject);
-		$idTask	= intval($idTask);
+		$idTaskShow	= intval($idTaskShow);
 
 			// Initialize tree in JavaScript if not a AJAX refresh
 		if( ! TodoyuRequest::isAjaxRequest() ) {
@@ -345,18 +345,18 @@ class TodoyuProjectProjectRenderer {
 		$rootTaskIDs	= TodoyuProjectProjectManager::getRootTaskIDs($idProject);
 
 			// Set rootline of the task, if a task is forced to be shown
-		self::$openRootline = $idTask === 0 ? array() : TodoyuProjectTaskManager::getTaskRootline($idTask);
+		self::$openRootline = $idTaskShow === 0 ? array() : TodoyuProjectTaskManager::getTaskRootline($idTaskShow);
 
 			// Tree HTML buffer
 		$treeHtml	= '';
 
 			// Render tasks (with their sub tasks)
 		foreach($rootTaskIDs as $idTask) {
-			$treeHtml .= self::renderTask($idTask, $idTask, false, $tab);
+			$treeHtml .= self::renderTask($idTask, $idTaskShow, false, $tab);
 		}
 
 			// Add a list of lost task (this task should be display, but their parent doesn't match the current filter)
-		$treeHtml .= self::renderLostTasks($idProject, $idTask, $tab);
+		$treeHtml .= self::renderLostTasks($idProject, $idTaskShow, $tab);
 
 		return $treeHtml;
 	}
@@ -512,12 +512,21 @@ class TodoyuProjectProjectRenderer {
 	public static function renderTask($idTask, $idTaskShow = 0, $withoutSubTasks = false, $tab = null) {
 		$idTask		= intval($idTask);
 		$idTaskShow = intval($idTaskShow);
+		$isExpanded	= false;
 
 			// Register which tasks have been rendered
 		self::$renderedTasks[] = $idTask;
 
-			// Get some task information
-		$isExpanded	= $idTask > 0 ? ( $idTask === $idTaskShow ? true : TodoyuProjectTaskManager::isTaskExpanded($idTask)) : false ;
+			// Detect whether task should be extended
+		if( $idTask !== 0 ) {
+			if( $idTask === $idTaskShow ) {
+				$isExpanded = true;
+			} else {
+				$isExpanded = TodoyuProjectTaskManager::isTaskExpanded($idTask);
+			}
+		}
+
+			// Get task information
 		$infoLevel	= $isExpanded ? 3 : 1;
 		$taskData	= TodoyuProjectTaskManager::getTaskInfoArray($idTask, $infoLevel);
 
