@@ -29,7 +29,6 @@
 						<theme>simple</theme>
 						<width>100%</width>
 					</tinymce>
-					<required />
 				</field>
 
 				<field type="select" name="id_activity">
