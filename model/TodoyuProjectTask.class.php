@@ -243,7 +243,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Integer		Type constant
 	 */
 	public function getType() {
-		return $this->data['type'];
+		return intval($this->data['type']);
 	}
 
 
@@ -254,7 +254,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getStartDate() {
-		return $this->get('date_start');
+		return intval($this->get('date_start'));
 	}
 
 
@@ -265,7 +265,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getEndDate() {
-		return $this->get('date_end');
+		return intval($this->get('date_end'));
 	}
 
 
@@ -276,7 +276,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getDeadlineDate() {
-		return $this->get('date_deadline');
+		return intval($this->get('date_deadline'));
 	}
 
 
@@ -328,10 +328,10 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	/**
 	 * Check whether the task is a container
 	 *
-	 * @return	String
+	 * @return	Boolean
 	 */
 	public function isContainer() {
-		return $this->getType() == TASK_TYPE_CONTAINER;
+		return $this->getType() === TASK_TYPE_CONTAINER;
 	}
 
 

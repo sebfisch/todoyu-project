@@ -189,31 +189,22 @@ class TodoyuProjectTaskRenderer {
 	 * Render the task edit form
 	 *
 	 * @param	Integer		$idTask
+	 * @param	Integer		$type		Task type (container/task)
 	 * @return	String
 	 */
-	public static function renderTaskEditForm($idTask) {
+	public static function renderTaskEditForm($idTask, $type = TASK_TYPE_TASK) {
 		$idTask		= intval($idTask);
 		$task		= TodoyuProjectTaskManager::getTask($idTask);
 		$xmlPath	= 'ext/project/config/form/task.xml';
 
+		$task->set('type', $type);
+
 			// Construct form object
 		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
 
-			// Adapt task form labels for container
-		if( $task->isContainer() ) {
-			$fieldNames	= $form->getFieldnames();
-			$rightFieldSet	= $form->getFieldset('right');
-			if( in_array('id_person_owner', $fieldNames) ) {
-				$rightFieldSet->getField('id_person_owner')->setAttribute('label', 'project.task.container.attr.person_owner');
-			}
-			if( in_array('is_public', $fieldNames) ) {
-				$rightFieldSet->getField('is_public')->setAttribute('label', 'project.task.container.attr.is_public');
-			}
-		}
-
 			// Load form data
 		$data	= $task->getTemplateData(0);
-		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idTask);
+		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idTask, array('type'=>$type));
 
 			// Set form data
 		$form->setFormData($data);
@@ -243,16 +234,16 @@ class TodoyuProjectTaskRenderer {
 		$idTask			= 0;
 
 			// Render form for new empty task
-		$form	= self::renderTaskEditForm($idTask);
+		$formHtml	= self::renderTaskEditForm($idTask, $type);
 
 			// Render form into detail wrapper
 		$tmpl	= 'ext/project/view/task-detail-data-wrap.tmpl';
 		$data	= array(
 			'idTask'	=> $idTask,
 			'task'	=> array(
-				'status'	=> ( $type === TASK_TYPE_TASK ) ? STATUS_OPEN : 0
+				'status'	=> $type === TASK_TYPE_TASK ? STATUS_OPEN : 0
 			),
-			'taskdata'	=> $form
+			'formHtml'	=> $formHtml
 		);
 
 		return Todoyu::render($tmpl, $data);

@@ -1885,6 +1885,16 @@ class TodoyuProjectTaskManager {
 			if( $form->getFieldset('right') ) {
 				$form->getFieldset('right')->setLegend('project.form.legend.container.attributes');
 			}
+
+				// Change container labels
+			$fieldNames	= $form->getFieldnames();
+			$rightFieldSet	= $form->getFieldset('right');
+			if( $form->hasField('id_person_owner') ) {
+				$form->getField('id_person_owner')->setAttribute('label', 'project.task.container.attr.person_owner');
+			}
+			if( $form->hasField('is_public') ) {
+				$form->getField('is_public')->setAttribute('label', 'project.task.container.attr.is_public');
+			}
 		}
 
 			// Call hooks to modify $form
@@ -2185,8 +2195,9 @@ class TodoyuProjectTaskManager {
 	public static function hookLoadDefaultTaskFormData(array $data, $idTask, array $params = array()) {
 		if( $idTask === 0 ) {
 				// Load default data
-			$data   = self::getTaskDefaultData($idTask, $data['id_project']);
+			$data   = self::getTaskDefaultData($idTask, $data['id_project'], $params['type']);
 
+				// Set active project when in project area
 			if( TodoyuRequest::getArea() === 'project' ) {
 					// Set project ID
 				if( intval($data['id_project']) === 0 ) {
