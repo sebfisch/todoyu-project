@@ -153,8 +153,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		var options = {
 			parameters: {
 				action: 	'addproject',
-				'project': 	idProject,
-				'task': 	idTask
+				project: 	idProject,
+				task: 		idTask
 			},
 			onComplete: 	this.onProjectLoaded.bind(this)
 		};

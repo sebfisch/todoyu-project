@@ -49,6 +49,11 @@ class TodoyuProjectProjectRights {
 		$project	= TodoyuProjectProjectManager::getProject($idProject);
 		$status		= $project->getStatus();
 
+			// Check if deleted
+		if( $project->isDeleted() ) {
+			return false;
+		}
+
 			// Check if project has allowed status
 		if( ! self::isStatusAllowed($status) && ! TodoyuAuth::isAdmin() ) {
 			return false;
