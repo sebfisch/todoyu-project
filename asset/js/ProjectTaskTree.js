@@ -405,17 +405,6 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 */
 	getActiveProjectID: function() {
 		return Todoyu.Tabs.getActiveKey('project');
-//		var activeTabs	= $('project-tabs').select('li.active');
-//
-//		if( activeTabs.size() === 1 ) {
-//			return activeTabs.first().id.split('-').last();
-//		} else {
-//			if( this.getNumTabs() > 0 ) {
-//				return this.getTabs().first().id.split('-').last();
-//			}
-//		}
-//
-//		return false;
 	},
 
 
@@ -428,19 +417,6 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 */
 	getActiveProjectTitle: function() {
 		return Todoyu.Tabs.getActive('project').down('.labeltext').innerHTML;
-
-//		var activeTab	= $('project-tabs').select('li.active span.labeltext');
-//		var title		= '';
-//
-//		if( activeTab.size() === 1 ) {
-//			title = activeTab.first().innerHTML;
-//		} else {
-//			if( this.getNumTabs() > 0 ) {
-//				title = this.getTabs().first().innerHTML;
-//			}
-//		}
-//
-//		return title;
 	},
 
 
