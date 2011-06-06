@@ -42,7 +42,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 		 * OptGroup task
 		 */
 		'status' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_status',
 			'label'		=> 'core.global.status',
 			'optgroup'	=> 'LLL:project.task.search.label',
 			'widget'	=> 'select',
@@ -54,7 +53,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'creatorPerson' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_creatorPerson',
 			'label'		=> 'project.filter.task.creatorPerson',
 			'optgroup'	=> 'LLL:project.task.search.label',
 			'widget'	=> 'text',
@@ -67,7 +65,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'creatorRoles' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_creatorRoles',
 			'label'		=> 'project.filter.task.creatorRoles',
 			'optgroup'	=> 'LLL:project.task.search.label',
 			'widget'	=> 'select',
@@ -80,7 +77,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'assignedPerson' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_assignedPerson',
 			'label'		=> 'project.filter.task.assignedPerson',
 			'optgroup'	=> 'LLL:project.task.search.label',
 			'widget'	=> 'text',
@@ -94,7 +90,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'assignedRoles' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_assignedRoles',
 			'label'		=> 'project.filter.task.assignedRoles',
 			'optgroup'	=> 'LLL:project.task.search.label',
 			'widget'	=> 'select',
@@ -107,7 +102,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'ownerPerson' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_ownerPerson',
 			'label'		=> 'project.filter.task.ownerPerson',
 			'optgroup'	=> 'LLL:project.task.search.label',
 			'widget'	=> 'text',
@@ -120,7 +114,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'ownerRoles' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_ownerRoles',
 			'label'		=> 'project.filter.task.ownerRoles',
 			'optgroup'	=> 'LLL:project.task.search.label',
 			'widget'	=> 'select',
@@ -133,7 +126,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'acknowledged' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_acknowledged',
 			'label'		=> 'project.filter.task.acknowledged',
 			'optgroup'	=> 'LLL:project.task.search.label',
 			'widget'	=> 'text',
@@ -147,7 +139,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'isPublic'	=> array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_isPublic',
 			'label'		=> 'project.filter.task.isPublic',
 			'optgroup'	=> 'LLL:project.task.search.label',
 			'widget'	=> 'checkbox',
@@ -157,17 +148,11 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'title' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_title',
 			'label'		=> 'project.filter.task.title',
 			'optgroup'	=> 'LLL:project.task.search.label',
-			'widget'	=> 'text',
-			'wConf' => array(
-				'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
-				'negation'		=> 'default'
-			)
+			'widget'	=> 'text'
 		),
 		'fulltext' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_fulltext',
 			'label'		=> 'project.filter.task.fulltext',
 			'optgroup'	=> 'LLL:project.task.search.label',
 			'widget'	=> 'text',
@@ -177,7 +162,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'type' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_type',
 			'label'		=> 'project.filter.task.type',
 			'optgroup'	=> 'LLL:project.task.search.label',
 			'widget'	=> 'select',
@@ -221,8 +205,12 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 				'negation'		=> 'default'
 			)
 		),
+		'projecttitle' => array(
+			'label'		=> 'project.filter.project.title',
+			'optgroup'	=> 'LLL:project.ext.search.label',
+			'widget'	=> 'text'
+		),
 		'projectstatus' => array(
-//			'funcRef'		=> 'TodoyuProjectTaskFilter::Filter_projectstatus',
 			'label'			=> 'LLL:project.filter.project.status',
 			'optgroup'		=> 'LLL:project.ext.search.label',
 				'widget'	=> 'select',
@@ -234,7 +222,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'projectrole' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_projectrole',
 			'label'		=> 'project.filter.project.projectrole',
 			'optgroup'	=> 'LLL:project.ext.search.label',
 			'widget'	=> 'projectrole',
@@ -248,7 +235,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'customer'  => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_company',
 			'label'		=> 'project.filter.project.company',
 			'optgroup'	=> 'LLL:project.ext.search.label',
 			'widget'	=> 'text',
@@ -270,7 +256,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 		 * OptGroup time management
 		 */
 		'deadlinedate'		=> array(
-//			'funcRef' 	=> 'TodoyuProjectTaskFilter::Filter_deadlinedate',
 			'label'		=> 'project.filter.task.deadlinedate',
 			'optgroup'	=> 'LLL:project.filter.task.timemanagement.label',
 			'widget'	=> 'date',
@@ -279,7 +264,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'deadlinedateDyn'	=> array(
-//			'funcRef' 	=> 'TodoyuProjectTaskFilter::Filter_deadlinedateDyn',
 			'label'		=> 'project.filter.task.deadlinedateDyn',
 			'optgroup'	=> 'LLL:project.filter.task.timemanagement.label',
 			'widget'	=> 'select',
@@ -289,7 +273,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'startdate'		=> array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_startdate',
 			'label'		=> 'project.filter.task.startdate',
 			'optgroup'	=> 'LLL:project.filter.task.timemanagement.label',
 			'widget'	=> 'date',
@@ -299,7 +282,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'startdateDyn'	=> array(
-//			'funcRef' 	=> 'TodoyuProjectTaskFilter::Filter_startdateDyn',
 			'label'		=> 'project.filter.task.startdateDyn',
 			'optgroup'	=> 'LLL:project.filter.task.timemanagement.label',
 			'widget'	=> 'select',
@@ -310,7 +292,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'enddate'		=> array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_enddate',
 			'label'		=> 'project.filter.task.enddate',
 			'optgroup'	=> 'LLL:project.filter.task.timemanagement.label',
 			'widget'	=> 'date',
@@ -320,7 +301,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'enddateDyn'	=> array(
-//			'funcRef' 	=> 'TodoyuProjectTaskFilter::Filter_enddateDyn',
 			'label'		=> 'project.filter.task.enddateDyn',
 			'optgroup'	=> 'LLL:project.filter.task.timemanagement.label',
 			'widget'	=> 'select',
@@ -331,7 +311,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'createdate' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_createdate',
 			'label'		=> 'project.filter.task.createdate',
 			'optgroup'	=> 'LLL:project.filter.task.timemanagement.label',
 			'widget'	=> 'date',
@@ -340,7 +319,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'createdateDyn' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_createdateDyn',
 			'label'		=> 'project.filter.task.createdateDyn',
 			'optgroup'	=> 'LLL:project.filter.task.timemanagement.label',
 			'widget'	=> 'select',
@@ -350,7 +328,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'editdate' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_editdate',
 			'label'		=> 'project.filter.task.editdate',
 			'optgroup'	=> 'LLL:project.filter.task.timemanagement.label',
 			'widget'	=> 'date',
@@ -359,7 +336,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'editdateDyn' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_editdateDyn',
 			'label'		=> 'project.filter.task.editdateDyn',
 			'optgroup'	=> 'LLL:project.filter.task.timemanagement.label',
 			'widget'	=> 'select',
@@ -375,7 +351,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 		 * OptGroup filter
 		 */
 		'filterSet' => array(
-//			'funcRef'	=> 'TodoyuSearchFiltersetManager::Filter_filterSet',
 			'label'		=> 'search.ext.filterlabel.filterset',
 			'optgroup'	=> 'LLL:core.global.filter',
 			'widget'	=> 'select',
@@ -415,7 +390,6 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 		 * OptGroup project
 		 */
 		'title' => array(
-//			'funcRef'	=> 'TodoyuProjectProjectFilter::filter_title',
 			'label'		=> 'core.global.title',
 			'optgroup'	=> 'LLL:project.ext.search.label',
 			'widget'	=> 'text',
@@ -424,13 +398,11 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 			)
 		),
 		'fulltext' => array(
-//			'funcRef'	=> 'TodoyuProjectProjectFilter::filter_fulltext',
 			'label'		=> 'project.filter.project.fulltext',
 			'optgroup'	=> 'LLL:project.ext.search.label',
 			'widget'	=> 'text',
 		),
 		'status' => array(
-//			'funcRef'	=> 'TodoyuProjectProjectFilter::filter_status',
 			'label'		=> 'core.global.status',
 			'optgroup'	=> 'LLL:project.ext.search.label',
 			'widget'	=> 'select',
@@ -442,7 +414,6 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 	  		)
 		),
 		'company' => array(
-//			'funcRef'	=> 'TodoyuProjectProjectFilter::Filter_company',
 			'label'		=> 'project.filter.project.company',
 			'optgroup'	=> 'LLL:project.ext.search.label',
 			'widget'	=> 'text',
@@ -455,7 +426,6 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 			)
 		),
 		'projectrole' => array(
-//			'funcRef'	=> 'TodoyuProjectProjectFilter::Filter_projectrole',
 			'label'		=> 'project.filter.project.projectrole',
 			'optgroup'	=> 'LLL:project.ext.search.label',
 			'widget'	=> 'projectrole',
@@ -481,7 +451,6 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 		 * OptGroup time management
 		 */
 		'startdate' => array(
-//			'funcRef'	=> 'TodoyuProjectProjectFilter::Filter_startdate',
 			'label'		=> 'project.filter.project.date_start',
 			'optgroup'	=> 'LLL:project.filter.project.timemanagement.label',
 			'widget'	=> 'date',
@@ -490,7 +459,6 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 			)
 		),
 		'enddate' => array(
-//			'funcRef'	=> 'TodoyuProjectProjectFilter::Filter_enddate',
 			'label'		=> 'project.filter.project.date_end',
 			'optgroup'	=> 'LLL:project.filter.project.timemanagement.label',
 			'widget'	=> 'date',
@@ -499,7 +467,6 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 			)
 		),
 		'deadline' => array(
-//			'funcRef'	=> 'TodoyuProjectProjectFilter::Filter_deadline',
 			'label'		=> 'project.filter.project.deadline',
 			'optgroup'	=> 'LLL:project.filter.project.timemanagement.label',
 			'widget'	=> 'date',
@@ -510,7 +477,6 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 		),
 
 		'createdate' => array(
-//			'funcRef'	=> 'TodoyuProjectProjectFilter::Filter_createdate',
 			'label'		=> 'project.filter.project.createdate',
 			'optgroup'	=> 'LLL:project.filter.project.timemanagement.label',
 			'widget'	=> 'date',
@@ -519,7 +485,6 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 			)
 		),
 		'createdateDyn' => array(
-//			'funcRef'	=> 'TodoyuProjectProjectFilter::Filter_createdateDyn',
 			'label'		=> 'project.filter.project.createdateDyn',
 			'optgroup'	=> 'LLL:project.filter.project.timemanagement.label',
 			'widget'	=> 'select',
@@ -529,7 +494,6 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 			)
 		),
 		'editdate' => array(
-//			'funcRef'	=> 'TodoyuProjectProjectFilter::Filter_editdate',
 			'label'		=> 'project.filter.project.editdate',
 			'optgroup'	=> 'LLL:project.filter.project.timemanagement.label',
 			'widget'	=> 'date',
@@ -538,7 +502,6 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 			)
 		),
 		'editdateDyn' => array(
-//			'funcRef'	=> 'TodoyuProjectProjectFilter::Filter_editdateDyn',
 			'label'		=> 'project.filter.project.editdateDyn',
 			'optgroup'	=> 'LLL:project.filter.project.timemanagement.label',
 			'widget'	=> 'select',
@@ -554,7 +517,6 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 		 * OptGroup filter
 		 */
 		'filterSet' => array(
-//			'funcRef'	=> 'TodoyuSearchFiltersetManager::Filter_filterSet',
 			'label'		=> 'search.ext.filterlabel.filterset',
 			'optgroup'	=> 'LLL:core.global.filter',
 			'widget'	=> 'select',

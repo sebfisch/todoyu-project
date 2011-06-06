@@ -146,6 +146,40 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 
 	/**
+	 * Filter condition: project title matches?
+	 *
+	 * @param	String		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_projecttitle($value, $negate = false) {
+		$words		= TodoyuString::trimExplode(' ', $value, true);
+		$queryParts	= false;
+
+		if( sizeof($words) > 0 ) {
+			$tables	= array(
+				'ext_project_project'
+			);
+			$fields	= array(
+				'ext_project_project.title'
+			);
+			$where	= Todoyu::db()->buildLikeQuery($words, $fields, $negate);
+			$join	= array(
+				'ext_project_task.id_project = ext_project_project.id'
+			);
+			$queryParts	= array(
+				'tables'=> $tables,
+				'where'	=> $where,
+				'join'	=> $join
+			);
+		}
+
+		return $queryParts;
+	}
+
+
+
+	/**
 	 * Get query parts for available projects filter
 	 *
 	 * @param	String		$value
