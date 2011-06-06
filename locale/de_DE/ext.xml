@@ -71,7 +71,7 @@
 	<label index="taskpreset.option.none">Default Vorgaben</label>
 	<label index="form.validation.dateBefore">Datum muss vor dem End-Datum liegen</label>
 	<label index="form.validation.title">Bitte Projekt-Titel angeben</label>
-	<label index="form.validation.company">Ein Kunde ist zwingend für ein Projekt</label>
+	<label index="form.validation.company">Ein Kunde ist zwingend erforderlich für ein Projekt</label>
 	<label index="noLabel.newProjectParticipant">Neuer Projekt-Mitarbeiter</label>
 	<label index="save.error">Speichern war nicht erfolgreich</label>
 	<label index="save.success">Speichern war erfolgreich</label>
