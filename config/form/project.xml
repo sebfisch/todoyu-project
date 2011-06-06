@@ -22,9 +22,9 @@
 						<field type="text" name="title">
 							<label>core.global.title</label>
 							<validate>
-								<isNotEmpty msg="project.ext.form.validation.title"/>
+								<isNotEmpty msg="project.ext.form.validation.title" />
 							</validate>
-							<required/>
+							<required />
 						</field>
 
 						<field type="RTE" name="description">
@@ -33,7 +33,7 @@
 								<theme>simple</theme>
 								<width>100%</width>
 							</tinymce>
-							<required/>
+							<required />
 						</field>
 
 					</elements>

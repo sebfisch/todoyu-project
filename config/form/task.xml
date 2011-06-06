@@ -45,7 +45,7 @@
 					<restrict>
 						<allow ext="project" right="edittaskdetail:editDateStart" />
 					</restrict>
-					<required/>
+					<required />
 				</field>
 
 				<field type="datetime" name="date_end">
@@ -72,7 +72,7 @@
 					<restrict>
 						<allow ext="project" right="edittaskdetail:editDeadline" />
 					</restrict>
-					<required/>
+					<required />
 				</field>
 
 				<field type="select" name="status">
@@ -88,7 +88,7 @@
 					<label>project.task.attr.person_assigned</label>
 					<source type="function">
 						<function>TodoyuProjectTaskViewHelper::getPersonAssignedGroupedOptions</function>
-						<lazyInit/>
+						<lazyInit />
 					</source>
 					<restrict>
 						<allow ext="project" right="edittaskdetail:editPersonAssigned" />
@@ -125,23 +125,23 @@
 						<lazyInit />
 					</source>
 					<validate>
-						<isNotZero msg="LLL:project.task.attr.id_activity.error"/>
+						<isNotZero msg="LLL:project.task.attr.id_activity.error" />
 					</validate>
 					<restrict>
 						<allow ext="project" right="edittaskdetail:editActivity" />
 					</restrict>
-					<required/>
+					<required />
 				</field>
 
 				<field type="duration" name="estimated_workload">
 					<label>project.task.attr.estimated_workload</label>
 					<validate>
-						<isNotZerotime msg="LLL:project.task.attr.is_estimatedworkload_public.error"/>
+						<isNotZerotime msg="LLL:project.task.attr.is_estimatedworkload_public.error" />
 					</validate>
 					<restrict>
 						<allow ext="project" right="edittaskdetail:editEstimatedWorkload" />
 					</restrict>
-					<required/>
+					<required />
 				</field>
 
 				<field type="checkbox" name="is_public">

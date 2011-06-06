@@ -73,7 +73,7 @@
 		<right name="editActivity" />
 		<right name="editEstimatedWorkload" />
 		<right name="editIsPublic" />
-		<right name="planning:changefrom" require="seetask:planning:see"/>
+		<right name="planning:changefrom" require="seetask:planning:see" />
 		<right name="open:changefrom" require="seetask:open:see" />
 		<right name="progress:changefrom" require="seetask:progress:see" />
 		<right name="confirm:changefrom" require="seetask:confirm:see" />

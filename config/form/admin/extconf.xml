@@ -21,7 +21,7 @@
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
 					</source>
-					<!--<required/>-->
+					<!--<required />-->
 				</field>
 
 				<field type="select" name="date_end">
@@ -29,7 +29,7 @@
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
 					</source>
-					<!--<required/>-->
+					<!--<required />-->
 				</field>
 
 				<field type="select" name="date_deadline">
@@ -37,7 +37,7 @@
 					<source type="function">
 						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
 					</source>
-					<!--<required/>-->
+					<!--<required />-->
 				</field>
 
 				<field type="select" name="status">
@@ -97,7 +97,7 @@
 					<extraAttributes>onchange="Todoyu.Ext.project.Sysmanager.onChangeTaskpresetPersonAssigned(this)"</extraAttributes>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getInternalPersonOptions</function>
-						<lazyInit/>
+						<lazyInit />
 					</source>
 					<restrict>
 						<allow ext="project" right="task:editPersonAssigned" />
@@ -120,7 +120,7 @@
 					<extraAttributes>onchange="Todoyu.Ext.project.Sysmanager.onChangeTaskpresetPersonOwner(this)"</extraAttributes>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getInternalPersonOptions</function>
-						<lazyInit/>
+						<lazyInit />
 					</source>
 					<restrict>
 						<allow ext="project" right="task:editPersonOwner" />

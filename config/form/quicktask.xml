@@ -39,12 +39,12 @@
 					</source>
 					<noPleaseSelect />
 					<validate>
-						<isNotZero msg="LLL:project.task.attr.id_activity.error"/>
+						<isNotZero msg="LLL:project.task.attr.id_activity.error" />
 					</validate>
 					<restrict>
 						<allow ext="project" right="task:editActivity" />
 					</restrict>
-					<required/>
+					<required />
 				</field>
 
 				<field type="checkbox" name="task_done">

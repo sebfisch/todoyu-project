@@ -102,7 +102,7 @@
 					<extraAttributes>onchange="Todoyu.Ext.project.Sysmanager.onChangeTaskpresetPersonAssigned(this)"</extraAttributes>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getInternalPersonOptions</function>
-						<lazyInit/>
+						<lazyInit />
 					</source>
 					<restrict>
 						<allow ext="project" right="task:editPersonAssigned" />
@@ -124,7 +124,7 @@
 					<extraAttributes>onchange="Todoyu.Ext.project.Sysmanager.onChangeTaskpresetPersonOwner(this)"</extraAttributes>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getInternalPersonOptions</function>
-						<lazyInit/>
+						<lazyInit />
 					</source>
 					<restrict>
 						<allow ext="project" right="task:editPersonAssigned" />
