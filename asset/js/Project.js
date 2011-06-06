@@ -371,7 +371,7 @@ Todoyu.Ext.project.Project = {
 		var options	= {
 			parameters: {
 				action:	'pasteInProject',
-				'project':	idProject
+				project:idProject
 			},
 			onComplete: this.onTaskPasted.bind(this, idProject)
 		};
@@ -397,10 +397,20 @@ Todoyu.Ext.project.Project = {
 			this.ext.Task.removeTaskElement(idTaskNew);
 		}
 
-		$('project-' + idProject + '-tasks').insert({
-			'bottom': response.responseText
-		});
+		var taskContainer	= $('project-' + idProject + '-tasks');
 
+		if( taskContainer.down('.lostTasks') ) {
+				// Insert before lost tasks
+			taskContainer.down('.lostTasks').insert({
+				before: response.responseText
+			});
+		} else {
+				// Insert as last item
+			taskContainer.down('lostTasks').insert({
+				bottom: response.responseText
+			});
+		}
+		
 			// Attach context menu to all tasks (so the pasted ones get one too)
 		this.ext.ContextMenuTask.attach();
 			// Highlight the new pasted task
