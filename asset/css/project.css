@@ -78,9 +78,11 @@ h1.headerLine span.projectIcons {
 	}
 	.project ul.assignedPersons span.name {
 		padding-left:20px;
+		display: block;
 	}
 	.project ul.assignedPersons li.person span.name {
-		background:url(../../../contact/asset/img/icons.png) no-repeat 1px 2px;
+		background:url(../../../contact/asset/img/icons.png) 1px 1px;
+		background-repeat:no-repeat;
 	}
 	.project ul.assignedPersons .name {
 		width:150px;
