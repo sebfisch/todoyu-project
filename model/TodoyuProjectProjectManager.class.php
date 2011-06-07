@@ -929,6 +929,21 @@ class TodoyuProjectProjectManager {
 
 
 	/**
+	 * Get IDs of persons which are assigned to the project
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Boolean		$withAccount
+	 * @return	Array
+	 */
+	public static function getProjectPersonIDs($idProject, $withAccount = false) {
+		$persons	= self::getProjectPersons($idProject, true, $withAccount);
+
+		return TodoyuArray::getColumnUnique($persons, 'id_person');
+	}
+
+
+
+	/**
 	 * Get (public) persons which are connected with any of the given projects
 	 *
 	 * @param	Array		$projectIDs

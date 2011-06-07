@@ -837,6 +837,21 @@ class TodoyuProjectTaskManager {
 
 
 	/**
+	 * Get IDs of persons which are assigned to the task
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Boolean		$withAccount
+	 * @return	Array
+	 */
+	public static function getTaskPersonIDs($idTask, $withAccount = false) {
+		$persons	= self::getTaskPersons($idTask, $withAccount);
+
+		return TodoyuArray::getColumnUnique($persons, 'id');
+	}
+
+
+
+	/**
 	 * Get task owner
 	 *
 	 * @param	Integer		$idTask
