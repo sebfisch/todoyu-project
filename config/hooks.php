@@ -25,6 +25,12 @@ TodoyuHookManager::registerHook('project', 'projectdata', 		'TodoyuProjectProjec
 TodoyuHookManager::registerHook('project', 'projectpresetdata', 'TodoyuProjectProjectManager::getProjectPresetDataAttributes');
 TodoyuHookManager::registerHook('project', 'taskIcons', 		'TodoyuProjectTaskManager::getTaskIcons');
 TodoyuHookManager::registerHook('project', 'taskinfo',			'TodoyuProjectTaskManager::addContainerInfoToTaskData');
+TodoyuHookManager::registerHook('project', 'taskDefaultData',	'TodoyuProjectTaskManager::hookTaskDefaultDataFromPreset', 50);
+TodoyuHookManager::registerHook('project', 'taskDefaultData',	'TodoyuProjectTaskManager::hookTaskDefaultDataFromEnvironment', 90);
+
+
+
+
 
 //TodoyuHookManager::registerHook('sysmanager', 'renderExtContent-project',		'TodoyuProjectExtManagerRenderer::onRenderExtConfig');
 TodoyuHookManager::registerHook('sysmanager', 'renderRecordsBody-taskpreset',	'TodoyuProjectSysmanagerRenderer::onRenderTaskpresetRecordsBody');
@@ -32,6 +38,6 @@ TodoyuHookManager::registerHook('sysmanager', 'renderRecordsBody-taskpreset',	'T
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookModifyFormfieldsForTask');
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookModifyFormfieldsForContainer');
 TodoyuFormHook::registerLoadData('ext/project/config/form/quicktask.xml', 'TodoyuProjectTaskManager::hookLoadDefaultTaskFormData');
-TodoyuFormHook::registerLoadData('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookLoadDefaultTaskFormData');
+//TodoyuFormHook::registerLoadData('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookLoadDefaultTaskFormData');
 
 ?>

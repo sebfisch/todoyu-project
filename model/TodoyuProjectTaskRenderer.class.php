@@ -197,7 +197,9 @@ class TodoyuProjectTaskRenderer {
 		$task		= TodoyuProjectTaskManager::getTask($idTask);
 		$xmlPath	= 'ext/project/config/form/task.xml';
 
-		$task->set('type', $type);
+		if( $idTask === 0 ) {
+			$task->set('type', $type);
+		}
 
 			// Construct form object
 		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
