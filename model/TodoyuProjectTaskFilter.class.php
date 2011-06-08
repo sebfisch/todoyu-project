@@ -1104,9 +1104,9 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @param	String		$field
 	 * @param	Integer		$date
 	 * @param	Boolean		$negate
-	 * @return	Boolean
+	 * @return	Array|Boolean
 	 */
-	public function makeFilter_date($field, $date, $negate = false) {
+	public static function makeFilter_date($field, $date, $negate = false) {
 		$tables	= array(self::TABLE);
 		$field	= 'ext_project_task.' . $field;
 
@@ -1122,7 +1122,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @param	Boolean		$negate
 	 * @return	Boolean
 	 */
-	public function Filter_filterObject(array $value, $negate = false) {
+	public static function Filter_filterObject(array $value, $negate = false) {
 		return TodoyuSearchFiltersetManager::Filter_filterObject($value, $negate);
 	}
 
