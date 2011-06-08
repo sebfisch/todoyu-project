@@ -153,7 +153,8 @@ class TodoyuProjectTaskRights {
 		$idTask		= intval($idTask);
 		$task		= TodoyuProjectTaskManager::getTask($idTask);
 
-		$statusIDs	= array_keys(TodoyuProjectTaskStatusManager::getStatuses('edit'));
+		$statuses	= TodoyuProjectTaskStatusManager::getStatuses('edit');
+		$statusIDs	= array_keys($statuses);
 
 		return in_array($task->getStatus(), $statusIDs);
 	}

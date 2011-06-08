@@ -420,9 +420,11 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isEditable() {
-		$allowed	= TodoyuProjectTaskRights::isEditAllowed($this->getID());
+		if( $this->isLocked() ) {
+			return false;
+		}
 
-		return $allowed && ( $this->isLocked() === false );
+		return TodoyuProjectTaskRights::isEditAllowed($this->getID());
 	}
 
 
