@@ -73,7 +73,7 @@ class TodoyuProjectQuickTaskManager {
 			// Add custom project field
 		$form->getFieldset('main')->addField('id_project', $field, 'before:title');
 
-		$formData	= TodoyuProjectTaskManager::getTaskDefaultData(0, $idProject);
+		$formData	= TodoyuProjectTaskManager::getTaskDefaultData(0, $idProject, TASK_TYPE_TASK);
 			// Set project ID, if given and allowed to user
 		if( $idProject > 0 && TodoyuProjectTaskRights::isAddInProjectAllowed($idProject, false) ) {
 			$formData['id_project']	= $idProject;
