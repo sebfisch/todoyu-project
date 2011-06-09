@@ -186,8 +186,7 @@ Todoyu.Ext.project = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onTreeUpdate: function(response) {
-		this.ContextMenuTask.attach.bindAsEventListener(this.ContextMenuTask)();
-		this.ContextMenuProject.attach.bindAsEventListener(this.ContextMenuProject)();
+		this.attachContextMenu();
 
 		if( response.getHeader('Todoyu-hash') ) {
 			window.location.hash = response.getHeader('Todoyu-hash');
