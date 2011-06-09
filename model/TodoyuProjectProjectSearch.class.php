@@ -97,10 +97,11 @@ class TodoyuProjectProjectSearch implements TodoyuSearchEngineIf {
 				// Assemble project suggestions array
 			foreach($projects as $project) {
 				if( TodoyuProjectProjectRights::isSeeAllowed($project['id']) ) {
+					$labelTitle = TodoyuString::wrap($project['title'], '<span class="keyword">|</span>') . ' | ' . $project['id'];
 					$suggestions[] = array(
-						'labelTitle'=> TodoyuString::wrap($project['title'], '<span class="keyword">|</span>') . ' | ' . $project['id'],
+						'labelTitle'=> $labelTitle,
 						'labelInfo'	=> $project['company'],
-						'title'		=> $project['id'] . ': ' . $project['title'],
+						'title'		=> strip_tags($labelTitle),
 						'onclick'	=> 'location.href=\'?ext=project&amp;project=' . $project['id'] . '\''
 					);
 				}

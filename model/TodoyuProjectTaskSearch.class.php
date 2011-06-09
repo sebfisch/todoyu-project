@@ -102,10 +102,12 @@ class TodoyuProjectTaskSearch implements TodoyuSearchEngineIf {
 				// Assemble found task suggestions
 			foreach($tasks as $task) {
 				if( TodoyuProjectTaskRights::isSeeAllowed($task['id']) ) {
+					$labelTitle = TodoyuString::wrap($task['title'], '<span class="keyword">|</span>') . ' | ' . $task['id_project'] . '.' . $task['tasknumber'];
+
 					$suggestions[] = array(
-						'labelTitle'=> TodoyuString::wrap($task['title'], '<span class="keyword">|</span>') . ' | ' . $task['id_project'] . '.' . $task['tasknumber'],
+						'labelTitle'=> $labelTitle,
 						'labelInfo'	=> $task['company'] . ' | ' . $task['project'],
-						'title'		=> $task['id_project'] . '.' . $task['tasknumber'] . ': ' . $task['title'],
+						'title'		=> strip_tags($labelTitle),
 						'onclick'	=> 'Todoyu.goToHashURL(\'?ext=project&amp;project=' . $task['id_project'] . '&amp;task=' . $task['id'] . '\', \'task-' . $task['id'] . '\')'
 					);
 				}
