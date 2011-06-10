@@ -5,9 +5,14 @@
 	<dl>
 	{foreach $data info}
 		{$info.wrap.0}
-		<dt class="{$info.className}">{Label $info.label}</dt>
-		<dd {if $info.id}id="{$info.id}" {/if}class="{$info.className}"{if $info.title} title="{$info.title}{/if}">
-			{$info.value}&#8203;
+		<dt{if $info.className} class="{$info.className}"{/if}>{Label $info.label}</dt>
+		<dd{if $info.id} id="{$info.id}"{/if}{if $info.className} class="{$info.className}"{/if}{if $info.title} title="{$info.title}"{/if}>
+			{if $info.className}<span class="icon"></span>{/if}
+			{if $info.value}
+				{$info.value}
+			{else}
+				&#8203;
+			{/if}
 		</dd>
 		{$info.wrap.1}
 	{/foreach}

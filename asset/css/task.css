@@ -262,16 +262,20 @@
 		width:50%;
 	}
 
-		.task dd.unread {
-			background:transparent url('../../../../core/asset/img/icons.png') no-repeat 0 -1288px;
-			padding-left:12px;
-			width:118px !important;
+	.tasks .task .details .properties dd span.icon  {
+		display:none;
+		width:14px;
+		height:14px;
+	}
+
+		.task dd.unread span.icon {
+			background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1288px;
+			display: block !important;
 		}
 
-		.task dd.acknowledged {
-			background:transparent url('../../../../core/asset/img/icons.png') no-repeat 0 -1312px;
-			padding-left:12px;
-			width:118px !important;
+		.task dd.acknowledged span.icon {
+			background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1312px;
+			display: block !important;
 		}
 
 	.tasks .task .details .properties dt,
