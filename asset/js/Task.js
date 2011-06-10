@@ -161,8 +161,8 @@ Todoyu.Ext.project.Task = {
 		var options	= {
 			parameters: {
 				action:	'paste',
-				'task':		idTask,
-				'mode':		mode
+				task:	idTask,
+				mode:	mode
 			},
 			onComplete: this.onPasted.bind(this, idTask, mode)
 		};
@@ -197,6 +197,7 @@ Todoyu.Ext.project.Task = {
 					'bottom': response.responseText
 				});
 				this.ext.TaskTree.expandSubtasks(idTask);
+				this.updateSubtaskExpandTrigger(idTask);
 			} else {
 					// If no sub task container available, refresh task and load its sub task
 				this.refresh(idTask);
@@ -353,7 +354,7 @@ Todoyu.Ext.project.Task = {
 
 				$('task-' + idTask).remove();
 
-				this.checkAndRemoveTriggerFromTask(idParent);
+				this.updateSubtaskExpandTrigger(idParent);
 			} else {
 				$('task-' + idTask).remove();
 			}
@@ -500,21 +501,23 @@ Todoyu.Ext.project.Task = {
 		var idArray = $('task-' + idTask).up().id.split('-');
 		var idParentTask = idArray[1];
 
-		this.checkAndRemoveTriggerFromTask(idParentTask);
+		this.updateSubtaskExpandTrigger(idParentTask);
 	},
 
 
 
 	/**
-	 * Is this the only sub task? remove expandability
+	 * Add or remove the subtask trigger
+	 * Depends on existing subtasks
 	 *
-	 * @method	checkAndRemoveTriggerFromTask
+	 * @method	updateSubtaskExpandTrigger
 	 * @param	{Number}
 	 */
-	checkAndRemoveTriggerFromTask: function(idTask) {
-		if( $('task-' + idTask + '-subtasks').select('div.task').size() < 1 ) {
-			$('task-' + idTask + '-subtasks-trigger').removeClassName('expandable');
-		}
+	updateSubtaskExpandTrigger: function(idTask) {
+		var trigger	= $('task-' + idTask + '-subtasks-trigger');
+		var show	= $('task-' + idTask + '-subtasks').select('div.task').size() > 0;
+
+		trigger[show?'addClassName':'removeClassName']('expandable');
 	},
 
 
