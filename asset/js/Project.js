@@ -86,8 +86,8 @@ Todoyu.Ext.project.Project = {
 			var url		= Todoyu.getUrl('project', 'project');
 			var options	= {
 				parameters: {
-					action:	'remove',
-					'project':	idProject
+					action:		'remove',
+					project:	idProject
 				},
 				onComplete: this.onRemoved.bind(this, idProject)
 			};
@@ -154,8 +154,8 @@ Todoyu.Ext.project.Project = {
 				var url		= Todoyu.getUrl('project', 'project');
 				var options	= {
 					parameters: {
-						action:	'details',
-						'project':	idProject
+						action:		'details',
+						project:	idProject
 					}
 				};
 				Todoyu.Ui.update(detailDiv, url, options);
@@ -276,8 +276,8 @@ Todoyu.Ext.project.Project = {
 		var url		= Todoyu.getUrl('project', 'project');
 		var options	= {
 			parameters: {
-				action:	'details',
-				'project':	idProject
+				action:		'details',
+				project:	idProject
 			}
 		};
 		var target	= 'project-' + idProject + '-details';
@@ -300,9 +300,9 @@ Todoyu.Ext.project.Project = {
 		var url	= Todoyu.getUrl('project', 'project');
 		var options	= {
 			parameters: {
-				action:	'setstatus',
-				'project':	idProject,
-				'status':	status
+				action:		'setstatus',
+				project:	idProject,
+				status:		status
 			},
 			onComplete:	this.onStatusUpdated.bind(this, idProject, status)
 		};

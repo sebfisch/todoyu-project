@@ -387,8 +387,8 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		var url		= Todoyu.getUrl('project', 'projecttasktree');
 		var options	= {
 			parameters: {
-				action:	'openprojects',
-				'projects':	openProjects.join(',')
+				action:		'openprojects',
+				projects:	openProjects.join(',')
 			}
 		};
 

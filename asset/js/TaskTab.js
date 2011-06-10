@@ -82,8 +82,8 @@ Todoyu.Ext.project.Task.Tab = {
 		var options	= {
 			parameters: {
 				action:	'tabload',
-				'task':		idTask,
-				'tab':		tabKey
+				task:	idTask,
+				tab:	tabKey
 			},
 			onComplete:	this.onLoaded.bind(this, idTask, tabKey, onComplete)
 		};
@@ -185,8 +185,8 @@ Todoyu.Ext.project.Task.Tab = {
 		var options	= {
 			parameters: {
 				action:	'tabselected',
-				'idTask':	idTask,
-				'tab':		tabKey
+				idTask:	idTask,
+				tab:	tabKey
 			}
 		};
 

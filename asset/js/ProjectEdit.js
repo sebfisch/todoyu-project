@@ -72,8 +72,8 @@ Todoyu.Ext.project.Project.Edit = {
 		var url 	= Todoyu.getUrl('project', 'project');
 		var options = {
 			parameters: {
-				action:	'edit',
-				'project':	idProject
+				action:		'edit',
+				project:	idProject
 			},
 			onComplete: this.onFormLoaded.bind(this, idProject)
 		};

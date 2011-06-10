@@ -101,7 +101,7 @@ Todoyu.Ext.project.Task.Edit = {
 		var options	= {
 			parameters: {
 				action: 'edit',
-				'task':	idTask
+				task:	idTask
 			},
 			onComplete: this.onFormLoaded.bind(this, idTask)
 		};
@@ -141,7 +141,7 @@ Todoyu.Ext.project.Task.Edit = {
 		$(form).request({
 			parameters: {
 				action:	'save',
-				'area':		Todoyu.getArea()
+				area:	Todoyu.getArea()
 			},
 			onComplete: this.onSaved.bind(this, form)
 		});

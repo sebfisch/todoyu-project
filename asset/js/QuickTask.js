@@ -100,8 +100,8 @@ Todoyu.Ext.project.QuickTask = {
 		var url		= Todoyu.getUrl('project', 'quicktask');
 		var options	= {
 			parameters: {
-				action:	'popup',
-				'project':	idProject
+				action:		'popup',
+				project:	idProject
 			},
 			onComplete:	this.onPopupLoaded.bind(this)
 		};
