@@ -887,8 +887,8 @@ Todoyu.Ext.project.Task = {
 
 		if( ! Todoyu.exists(idSubtaskContainer) ) {
 			$(idTaskContainer).insert({
-				'after': new Element('div', {
-					'id':		idSubtaskContainer,
+				after: new Element('div', {
+					id:			idSubtaskContainer,
 					'class':	'subtasks'
 				})
 			});
