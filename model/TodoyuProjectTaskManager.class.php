@@ -932,7 +932,7 @@ class TodoyuProjectTaskManager {
 		if( $task->isTask() ) {
 				// Date end (if set) (internal deadline)
 			if( $task->getEndDate() > 0 && $isInternalOrAdmin ) {
-				$formatEnd	= date('F', $task->getEndDate()) == 0 ? 'date' : 'datetime';
+				$formatEnd	= self::getTaskDetailsDateFormat($task->getEndDate());
 				$info['date_end'] = array(
 					'label'		=> 'LLL:project.task.attr.date_end',
 					'value'		=> TodoyuTime::format($task->getEndDate(), $formatEnd),
@@ -985,9 +985,10 @@ class TodoyuProjectTaskManager {
 
 			// Date start
 		if( $task->getStartDate() > 0 && $isInternalOrAdmin ) {
+			$formatStart = self::getTaskDetailsDateFormat($task->getStartDate());
 			$info['date_start']	= array(
 				'label'		=> 'LLL:project.task.attr.date_start',
-				'value'		=> TodoyuTime::format($task->getStartDate(), 'date'),
+				'value'		=> TodoyuTime::format($task->getStartDate(), $formatStart),
 				'position'	=> 10,
 				'className'	=> 'sectionStart'
 			);
@@ -996,7 +997,7 @@ class TodoyuProjectTaskManager {
 
 			// Date deadline
 		if( $task->getDeadlineDate() > 0 ) {
-			$formatDeadline	= date('s', $task->getDeadlineDate()) === '00' ? 'date' : 'datetime';
+			$formatDeadline	= self::getTaskDetailsDateFormat($task->getDeadlineDate());
 			$info['date_deadline']	= array(
 				'label'		=> 'LLL:project.task.attr.date_deadline',
 				'value'		=> TodoyuTime::format($task->getDeadlineDate(), $formatDeadline),
@@ -2381,6 +2382,18 @@ class TodoyuProjectTaskManager {
 		}
 
 		return $text;
+	}
+
+
+
+	/**
+	 * if the time of task isn't set to midnight the dates in the task details are shown with time
+	 *
+	 * @param	Integer
+	 * @return	String
+	 */
+	protected static function getTaskDetailsDateFormat($date) {
+		return date('Hi', $date) === '0000' ? 'date' : 'datetime';
 	}
 
 }
