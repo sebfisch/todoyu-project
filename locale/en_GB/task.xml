@@ -3,7 +3,7 @@
 	<label index="task">Task</label>
 	<label index="tasks">Tasks</label>
 	<label index="container">Container</label>
-	<label index="number">Task Nr.</label>
+	<label index="number">Task No.</label>
 	<label index="attr.id">Task ID</label>
 	<label index="attr.type">Type</label>
 	<label index="attr.title">Task Title</label>
