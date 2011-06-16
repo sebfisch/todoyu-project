@@ -262,7 +262,7 @@ class TodoyuProjectTaskRenderer {
 	 */
 	public static function renderTabs($idTask, $activeTab = '') {
 		$idTask		= intval($idTask);
-		$activeTab	= trim($activeTab) === '' ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab ;
+		$activeTab	= trim($activeTab) === '' ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab;
 
 		$tabHeads		= self::renderTabHeads($idTask, $activeTab);
 		$tabContents	= self::renderTabsContent($idTask, $activeTab);

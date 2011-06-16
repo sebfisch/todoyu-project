@@ -605,9 +605,11 @@ Todoyu.Ext.project.Task = {
 		if( this.isLoaded(idTask) ) {
 			var head		= $('task-' + idTask + '-header');
 			var headLabel	= head.down('.headLabel');
+			var details		= $('task-' + idTask + '-details');
 
 			this.ext.setStatusOfElement(head, newStatus);
 			this.ext.setStatusOfElement(headLabel, newStatus);
+			this.ext.setStatusOfElement(details, newStatus);
 		}
 	},
 
