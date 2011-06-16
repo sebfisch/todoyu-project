@@ -178,7 +178,6 @@
 	background:#e3eace;
 }
 
-
 .task span.taskIcons span {
 	float:left;
 	clear:none;
@@ -382,7 +381,6 @@
 	Task colors
    ---------------- */
 
-
 	/* sub tasks */
 .tasks .subtasks {
 	padding-left:10px;
@@ -430,7 +428,6 @@
 /* ---------------------------
 	Task Search Modification
    --------------------------- */
-
 #action-panel .button.taskExportCsv .icon {
 	background:transparent url('../../../../core/asset/img/icons.png') 1px -1598px no-repeat;
 }

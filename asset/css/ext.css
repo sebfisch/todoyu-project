@@ -101,10 +101,10 @@ h1.extIconProject .title {
 	padding:4px 0;
 
 }
+
 .project .expanded h3 {
 	border-bottom:none;
 }
-
 
 .projects .project h3 .headLabel {
 	border-left-style:solid;
@@ -139,9 +139,6 @@ h1.extIconProject .title {
 /* --------------------------------------
 	Task and project properties
    ------------------------------------- */
-
-
-
 .project .properties dt,
 .task .properties dt {
 	float:left;
