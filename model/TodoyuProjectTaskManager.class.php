@@ -675,7 +675,7 @@ class TodoyuProjectTaskManager {
 
 		$subTaskIDs	= self::getSubTaskIDs($idTask);
 
-		return sizeof($subTaskIDs) > 0 ;
+		return sizeof($subTaskIDs) > 0;
 	}
 
 
