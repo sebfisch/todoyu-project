@@ -136,7 +136,7 @@ class TodoyuProjectProjectroleManager {
 	 */
 	public static function getProjectroles($parse = true) {
 		$where	= 'deleted = 0';
-		$order	= 'id';
+		$order	= 'title';
 
 		$projectroles	= TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
 
