@@ -381,7 +381,7 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 * Handler when task pasted in a project
+	 * Handler when task is pasted into project: insert/move task item
 	 *
 	 * @method		onTaskPasted
 	 * @param		{Number}			idProject
@@ -406,7 +406,7 @@ Todoyu.Ext.project.Project = {
 			});
 		} else {
 				// Insert as last item
-			taskContainer.down('lostTasks').insert({
+			taskContainer.insert({
 				bottom: response.responseText
 			});
 		}
