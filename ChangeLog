@@ -1,6 +1,9 @@
 todoyu project extension changelog
 
-project 1.1.0 - beta release
+project 1.1.1 - ???
+	* Changed: Order projectroles by title instead by id
+
+project 1.1.0 - 2011-06-17
 	* Changed: Renamed worktype to activity
 	* Changed: Requires core 2.1
 	* Changed: Structure for 2.1
