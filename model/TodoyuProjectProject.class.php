@@ -52,6 +52,41 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 
 
 	/**
+	 * Get short label for tabs (includes company)
+	 *
+	 * @param	Boolean		$withCompany		Prepend company
+	 * @return	String
+	 */
+	public function getShortLabel($withCompany = true) {
+		$totalLength	= 22;
+		$projectLabel	= $this->getTitle();
+		$projectLabel	= TodoyuString::crop($projectLabel, 11, '..', false);
+
+		if( $withCompany ) {
+			$length			= $totalLength - 2 - mb_strlen($projectLabel);
+			$companyLabel	= $this->getCompany()->getShortLabel();
+			$companyLabel	= TodoyuString::crop($companyLabel, $length, '..', false);
+
+			return $companyLabel . ': ' . $projectLabel;
+		} else {
+			return $projectLabel;
+		}
+	}
+
+
+
+	/**
+	 * Get project title
+	 *
+	 * @return	String
+	 */
+	public function getTitle() {
+		return $this->get('title');
+	}
+
+
+
+	/**
 	 * Get company ID
 	 *
 	 * @return	Integer

@@ -462,38 +462,33 @@ class TodoyuProjectProjectManager {
 
 			// Get tab data
 		if( sizeof($projectIDs) > 0 ) {
-			$fields	= '	p.id,
-						p.title,
-						c.shortname as companyShort,
-						c.title as companyFull';
-			$table	= '	ext_project_project p,
-						ext_contact_company c';
-			$where	= '		p.id IN(' . $projectList . ')'
-					. '	AND	p.id_company = c.id'
-					. '	AND	p.deleted = 0';
-			$order	= 'FIELD(p.id, ' . $projectList . ')';
+			$field	= 'id';
+			$table	= '	ext_project_project';
+			$where	= '		id IN(' . $projectList . ')'
+					. '	AND	deleted = 0';
+			$order	= 'FIELD(id, ' . $projectList . ')';
 			$limit	= 3;
 
-			$projects	= Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit);
-		} else {
-			$projects	= array();
+			$projectIDs	= Todoyu::db()->getColumn($field, $table, $where, '', $order, $limit);
 		}
 
 			// Build tab config
 		$tabs	= array();
 
-		foreach($projects as $project) {
-			if( TodoyuProjectProjectRights::isSeeAllowed($project['id']) ) {
-				$companyLabel	= trim($project['companyShort']) === '' ? TodoyuString::crop($project['companyFull'], 8, '..', false) : $project['companyShort'];
+		foreach($projectIDs as $idProject) {
+			if( TodoyuProjectProjectRights::isSeeAllowed($idProject) ) {
+				$project		= TodoyuProjectProjectManager::getProject($idProject);
 				$tabs[] = array(
 					'id'		=> $project['id'],
-					'label'		=> $companyLabel. ': ' . $project['title']
+					'label'		=> $project->getShortLabel(true)
 				);
 			}
 		}
 
 		return $tabs;
 	}
+
+
 
 
 
