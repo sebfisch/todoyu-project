@@ -269,12 +269,12 @@
 
 		.task dd.unread span.icon {
 			background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1288px;
-			display: block !important;
+			display:block !important;
 		}
 
 		.task dd.acknowledged span.icon {
 			background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1312px;
-			display: block !important;
+			display:block !important;
 		}
 
 	.tasks .task .details .properties dt,
