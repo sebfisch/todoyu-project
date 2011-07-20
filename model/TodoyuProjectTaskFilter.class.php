@@ -686,7 +686,6 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filters for tasks being publicly visible
 	 *
-	 * @todo	implement negation
 	 *
 	 * @param	Integer		$value
 	 * @param	Boolean		$negate
