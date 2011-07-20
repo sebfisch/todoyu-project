@@ -161,11 +161,13 @@ Todoyu.Ext.project.Task.Edit = {
 
 		Todoyu.Ui.closeRTE(form);
 
+		var notificationIdentifier	= 'project.task.saved';
+
 			// Save resulted in error?
 		if( response.hasTodoyuError() ) {
 				// Update task edit form with form remarks, display failure notification
 			this.updateFormDiv(idTask, response.responseText);
-			Todoyu.notifyError('[LLL:project.task.save.error]');
+			Todoyu.notifyError('[LLL:project.task.save.error]', notificationIdentifier);
 
 				// Saving went ok?
 		} else {
@@ -174,7 +176,7 @@ Todoyu.Ext.project.Task.Edit = {
 			this.ext.Task.addContextMenu(idTask);
 
 			Todoyu.Hook.exec('project.task.saved', idTask);
-			Todoyu.notifySuccess('[LLL:project.task.save.success]');
+			Todoyu.notifySuccess('[LLL:project.task.save.success]', notificationIdentifier);
 
 				// Scroll to task and highlight it
 			this.ext.Task.scrollTo(idTask);

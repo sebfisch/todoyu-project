@@ -146,9 +146,11 @@ Todoyu.Ext.project.Project.Edit = {
 		var idProject	= response.getTodoyuHeader('idProject');
 		var idProjectOld= response.getTodoyuHeader('idProjectOld');
 
+		var notificationIdentifier	= 'project.project.saved';
+
 		if( response.hasTodoyuError() ) {
 			this.updateFormDiv(idProjectOld, response.responseText);
-			Todoyu.notifyError('[LLL:project.ext.save.error]');
+			Todoyu.notifyError('[LLL:project.ext.save.error]', notificationIdentifier);
 		} else {
 			this.ext.ProjectTaskTree.removeProject(idProjectOld);
 			this.ext.ProjectTaskTree.openProject(idProject);
@@ -156,7 +158,7 @@ Todoyu.Ext.project.Project.Edit = {
 			Todoyu.Ui.scrollToTop();
 
 			Todoyu.Hook.exec('project.project.saved', idProject);
-			Todoyu.notifySuccess('[LLL:project.ext.save.success]');
+			Todoyu.notifySuccess('[LLL:project.ext.save.success]', notificationIdentifier);
 		}
 	},
 

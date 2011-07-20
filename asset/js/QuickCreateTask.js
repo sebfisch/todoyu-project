@@ -98,11 +98,13 @@ Todoyu.Ext.project.QuickCreateTask = {
 		var idTask		= response.getTodoyuHeader('idTask');
 		var idTaskOld	= response.getTodoyuHeader('idTaskOld');
 
+		var notificationIdentifier	= 'project.task.saved';
+
 			// Save resulted in error?
 		if( response.hasTodoyuError() ) {
 				// Update task edit form with form remarks, display failure notification
 			Todoyu.Headlets.getHeadlet('todoyuheadletquickcreate').updatePopupContent(response.responseText);
-			Todoyu.notifyError('[LLL:project.task.save.error]');
+			Todoyu.notifyError('[LLL:project.task.save.error]', notificationIdentifier);
 		} else {
 				// Saving went ok
 			Todoyu.Hook.exec('project.task.saved', idTask);
@@ -116,7 +118,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 			}
 
 			Todoyu.Popups.close('quickcreate');
-			Todoyu.notifySuccess('[LLL:project.task.save.success]');
+			Todoyu.notifySuccess('[LLL:project.task.save.success]', notificationIdentifier);
 		}
 	}
 

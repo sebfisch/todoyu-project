@@ -67,18 +67,19 @@ Todoyu.Ext.project.QuickCreateProject = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response){
-		var error	= response.hasTodoyuError();
+		var error					= response.hasTodoyuError();
+		var notificationIdentifier	= 'project.quickcreateproject.saved';
 
 		if( error ) {
 			Todoyu.Headlets.getHeadlet('todoyuheadletquickcreate').updatePopupContent(response.responseText);
-			Todoyu.notifyError('[LLL:project.ext.save.error]');
+			Todoyu.notifyError('[LLL:project.ext.save.error]', notificationIdentifier);
 		} else {
 			var idProject	= response.getTodoyuHeader('idProject');
 			Todoyu.Hook.exec('project.project.created', idProject);
 			Todoyu.Hook.exec('project.project.saved', idProject);
 
 			Todoyu.Popups.close('quickcreate');
-			Todoyu.notifySuccess('[LLL:project.ext.save.success]');
+			Todoyu.notifySuccess('[LLL:project.ext.save.success]', notificationIdentifier);
 		}
 	}
 
