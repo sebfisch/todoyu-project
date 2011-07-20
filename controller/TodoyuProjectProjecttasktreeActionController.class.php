@@ -59,7 +59,7 @@ class TodoyuProjectProjecttasktreeActionController extends TodoyuActionControlle
 		}
 
 		$project = TodoyuProjectProjectManager::getProject($idProject);
-		$tabLabel= $project->getShortLabel(true);
+		$tabLabel= $project->getFullTitle(true);
 
 			// Send project id and tab label as header
 		TodoyuHeader::sendTodoyuHeader('project', $idProject);
