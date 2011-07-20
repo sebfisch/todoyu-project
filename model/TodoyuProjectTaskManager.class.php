@@ -2375,8 +2375,8 @@ class TodoyuProjectTaskManager {
 	 */
 	public static function linkTaskIDsInText($text) {
 		if( Todoyu::allowed('project', 'general:area') ) {
-			$pattern	= '/(<p>|<span>|\s|^)(\d+\.\d+)(<\/p>|<\/span>|\s|$)/';
-			$replace	= '$1<a href="javascript:void(0)" onclick="Todoyu.Ext.project.goToTaskInProjectByTasknumber(\'$2\')">$2</a>$3';
+			$pattern	= '/(\d+\.\d+)/';
+			$replace	= '<a href="javascript:void(0)" onclick="Todoyu.Ext.project.goToTaskInProjectByTasknumber(\'$1\')">$1</a>';
 
 			$text	= preg_replace($pattern, $replace, $text);
 		}
