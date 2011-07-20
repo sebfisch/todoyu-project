@@ -55,6 +55,9 @@ Todoyu.Ext.project.QuickCreateProject = {
 	},
 
 
+	/**
+	 * @todo	remove!
+	 */
 	xxX: function() {
 
 	},
