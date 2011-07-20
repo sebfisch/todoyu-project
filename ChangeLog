@@ -3,6 +3,7 @@ todoyu project extension changelog
 project 1.1.1 - ???
 	* Bugfix: pasting task into project(header) w/o lost tasks did not display the inserted item
 	* Changed: Order projectroles by title instead by id
+	* Changed: Use full title for tab labels because they are now cropped in js
 
 project 1.1.0 - 2011-06-17
 	* Changed: Renamed worktype to activity
