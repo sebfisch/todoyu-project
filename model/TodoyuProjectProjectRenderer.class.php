@@ -353,7 +353,7 @@ class TodoyuProjectProjectRenderer {
 
 			// Render tasks (with their sub tasks)
 		foreach($rootTaskIDs as $idTask) {
-			$treeHtml .= self::renderTask($idTask, $idTaskShow, false, $tab);
+			$treeHtml .= self::renderTask($idTask, $idTaskShow, false, false, $tab);
 		}
 
 			// Add a list of lost task (this task should be display, but their parent doesn't match the current filter)
@@ -410,7 +410,7 @@ class TodoyuProjectProjectRenderer {
 	 */
 	public static function renderLostTasks($idProject, $idTask, $tab = null) {
 		$idProject	= intval($idProject);
-		$idTask	= intval($idTask);
+		$idTask		= intval($idTask);
 
 		$tmpl	= 'ext/project/view/losttasks.tmpl';
 
@@ -429,10 +429,9 @@ class TodoyuProjectProjectRenderer {
 		}
 
 		$lostTaskHtml	= '';
-
 		foreach($lostTaskIDs as $idLostTask) {
 			if( TodoyuProjectTaskRights::isSeeAllowed($idLostTask) ) {
-				$lostTaskHtml .= self::renderTask($idLostTask, $idTask, true, $tab);
+				$lostTaskHtml .= self::renderLostTask($idLostTask, $idTask, $tab);
 			}
 		}
 
@@ -504,13 +503,14 @@ class TodoyuProjectProjectRenderer {
 	/**
 	 * Render task for project task tree view
 	 *
-	 * @param	Integer		$idTask				ID of the task to render
-	 * @param	Integer		$idTaskShow			ID of the task which is forced to be shown (if its a sub task of the rendered task)
-	 * @param	Boolean		$withoutSubTasks	Don't render sub tasks
+	 * @param	Integer		$idTask					ID of the task to be rendered
+	 * @param	Integer		$idTaskShow				ID of the task which is forced to be shown (if its a sub task of the rendered task)
+	 * @param	Boolean		$withoutSubTasks		Don't render sub tasks
+	 * @param	Boolean		$isLostTask
 	 * @param	String		$tab
 	 * @return	String		Rendered task HTML for project task tree view
 	 */
-	public static function renderTask($idTask, $idTaskShow = 0, $withoutSubTasks = false, $tab = null) {
+	public static function renderTask($idTask, $idTaskShow = 0, $withoutSubTasks = false, $isLostTask = false, $tab = null) {
 		$idTask		= intval($idTask);
 		$idTaskShow = intval($idTaskShow);
 		$isExpanded	= false;
@@ -538,6 +538,7 @@ class TodoyuProjectProjectRenderer {
 			'taskHeaderExtras'	=> TodoyuProjectTaskManager::getAllTaskHeaderExtras($idTask),
 			'hasSubtasks'		=> TodoyuProjectTaskManager::hasSubTasks($idTask),
 			'areSubtasksVisible'=> self::areSubTasksVisible($idTask),
+			'isLostTask'		=> $isLostTask,
 			'isExpanded'		=> $isExpanded
 		);
 
@@ -566,8 +567,21 @@ class TodoyuProjectProjectRenderer {
 
 
 	/**
-	 * Render a new task in edit mode
+	 * Render lost task for project task tree view: these are tasks whose parents are not matching the current filter, so their matching children are to be shown w/o hierarchic connection
 	 *
+	 * @param	Integer		$idTask			ID of the task to be rendered
+	 * @param	Integer		$idTaskShow		ID of the task which is forced to be shown (if its a sub task of the rendered task)
+	 * @param	String		$tab
+	 * @return	String
+	 */
+	public static function renderLostTask($idTask, $idTaskShow, $tab = null) {
+		return self::renderTask($idTask, $idTaskShow, true, true, $tab);
+	}
+
+
+
+	/**
+	 * Render a new task in edit mode
 	 *
 	 * @param	Integer		$idParentTask
 	 * @param	Integer		$idProject
