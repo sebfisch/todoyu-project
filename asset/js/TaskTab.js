@@ -32,6 +32,7 @@ Todoyu.Ext.project.Task.Tab = {
 	ext:	Todoyu.Ext.project,
 
 
+
 	/**
 	 * Handle onSelect event of tab: show affected tab which the event occured on
 	 *

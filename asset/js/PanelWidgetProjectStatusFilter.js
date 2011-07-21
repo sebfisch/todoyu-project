@@ -34,7 +34,6 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = Class.create(Todoyu.PanelWi
 	 */
 	ext:	Todoyu.Ext.project,
 
-
 	/**
 	 * PanelWidget ID
 	 *
@@ -55,6 +54,7 @@ Todoyu.Ext.project.PanelWidget.ProjectStatusFilter = Class.create(Todoyu.PanelWi
 	initialize: function($super, selectedStatusIDs) {
 		$super('panelwidget-projectstatusfilter-list');
 	},
+
 
 
 	/**

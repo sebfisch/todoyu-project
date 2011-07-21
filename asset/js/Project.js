@@ -191,6 +191,7 @@ Todoyu.Ext.project.Project = {
 	},
 
 
+
 	/**
 	 * Save state of project details being expanded
 	 *
@@ -378,6 +379,7 @@ Todoyu.Ext.project.Project = {
 
 		Todoyu.send(url, options);
 	},
+
 
 
 	/**

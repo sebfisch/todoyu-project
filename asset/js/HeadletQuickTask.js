@@ -32,6 +32,7 @@ Todoyu.Ext.project.Headlet.QuickTask = Class.create(Todoyu.Headlet, {
 	ext:	Todoyu.Ext.project,
 
 
+
 	/**
 	 * Initialize quicktask headlet
 	 *

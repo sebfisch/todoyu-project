@@ -74,6 +74,7 @@ Todoyu.Ext.project.Portal = {
 	},
 
 
+
 	/**
 	 * Check whether selection tab is active and project list exists in DOM
 	 *

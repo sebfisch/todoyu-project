@@ -491,6 +491,7 @@ Todoyu.Ext.project.Task = {
 	},
 
 
+
 	/**
 	 * Remove expand-trigger from parent of give task if its the only sub task
 	 *
