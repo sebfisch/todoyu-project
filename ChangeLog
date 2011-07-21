@@ -1,6 +1,6 @@
 todoyu project extension changelog
 
-project 1.1.1 - not released yet
+project 1.1.1 - ???
 	* Changed: Adapted timetrack list items style in headlet to global task style
 	* Bugfix: Prevented multi-occuring of identical task elements within same page (removed sub tasks expand-trigger from lost tasks)
 	* Bugfix: Pasting task into project(header) w/o lost tasks did not display the inserted item
