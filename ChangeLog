@@ -1,11 +1,13 @@
 todoyu project extension changelog
 
 project 1.1.1 - ???
-	* Changed: Adapted timetrack list items style in headlet to global task style
 	* Bugfix: Prevented multi-occuring of identical task elements within same page (removed sub tasks expand-trigger from lost tasks)
 	* Bugfix: Pasting task into project(header) w/o lost tasks did not display the inserted item
+	* Bugfix: Prevent linking of task numbers when the numbers are not isolated (with whitespace or tag). Number inside an url like string are ignored now
 	* Changed: Order projectroles by title instead by id
 	* Changed: Use full title for tab labels because they are now cropped in js
+	* Changed: Adapted timetrack list items style in headlet to global task style
+	* Changed: Interpolated links are now created as full links instead of js calls. Allows opening in new tab
 
 
 project 1.1.0 - 2011-06-17

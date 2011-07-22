@@ -2375,13 +2375,27 @@ class TodoyuProjectTaskManager {
 	 */
 	public static function linkTaskIDsInText($text) {
 		if( Todoyu::allowed('project', 'general:area') ) {
-			$pattern	= '/(\d+\.\d+)/';
-			$replace	= '<a href="javascript:void(0)" onclick="Todoyu.Ext.project.goToTaskInProjectByTasknumber(\'$1\')">$1</a>';
-
-			$text	= preg_replace($pattern, $replace, $text);
+			$pattern= '/(^|[\s>:]+)(\d+\.\d+)([\s<]+|$)/';
+			$text	= preg_replace_callback($pattern, array(self, 'callbackLinkTaskIDsInText'), $text);
 		}
 
 		return $text;
+	}
+
+
+
+	/**
+	 * Callback to replace task number with link to task in project view
+	 * Match: 0=>all, 1=>before, 2=>number, 3=>after
+	 *
+	 * @param	Array		$matches
+	 * @return	String
+	 */
+	private static function callbackLinkTaskIDsInText(array $matches) {
+		$idTask			= TodoyuProjectTaskManager::getTaskIDByTaskNumber($matches[2]);
+		list($idProject)= explode('.', $matches[2]);
+
+		return $matches[1] . '<a href="?ext=project&project=' . $idProject . '&task=' . $idTask . '#task-' . $idTask . '">' . $matches[2] . '</a>' . $matches[3];
 	}
 
 
