@@ -319,7 +319,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * @param	Array		$params
 	 */
 	public function cutAction(array $params) {
-		$idTask			= intval($params['task']);
+		$idTask	= intval($params['task']);
 
 		TodoyuProjectTaskRights::restrictEdit($idTask);
 
