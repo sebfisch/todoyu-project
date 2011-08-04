@@ -458,14 +458,22 @@ class TodoyuProjectTaskManager {
 		$allowed['actions'] = $ownItems['actions'];
 		unset($allowed['actions']['submenu']);
 
+			// Prepare rights check
+		$useTaskClipboard		= Todoyu::allowed('project', 'edittask:useTaskAndContainerClipboard');
+		$addTasksInOwnProjects	= Todoyu::allowed('project', 'addtask:addTaskInOwnProjects');
+		$hasTaskEditRight		= TodoyuProjectTaskRights::hasStatusRight($task->getStatusKey(), 'edit');
+
 			// Clipboard options
-		if( Todoyu::allowed('project', 'edittask:useTaskAndContainerClipboard')) {
+		if( $useTaskClipboard ) {
 				// Copy & Cut
-			if( Todoyu::allowed('project', 'addtask:addTaskInOwnProjects') ) {
+			if( $addTasksInOwnProjects ) {
 					// Copy
 				$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
+
 					// Cut
-				$allowed['actions']['submenu']['cut']	= $ownItems['actions']['submenu']['cut'];
+				if( $hasTaskEditRight ) {
+					$allowed['actions']['submenu']['cut']	= $ownItems['actions']['submenu']['cut'];
+				}
 			}
 
 				// Clone
