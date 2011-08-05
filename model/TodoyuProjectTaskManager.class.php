@@ -1329,23 +1329,22 @@ class TodoyuProjectTaskManager {
 
 			// Start and end given: task must intersect with span defined by them
 		if( $dateStart > 0 && $dateEnd > 0 ) {
-			$where	.= ' AND ( date_start <= ' . $dateEnd . ' AND date_end >= ' . $dateStart . ' )';
+			$where	.= ' AND date_start 	<= ' . $dateEnd . '
+						 AND date_deadline	>= ' . $dateStart;
 		} else {
 				// Only start or end given. Start and end of task must be (at or) after given starting time
 			if( $dateStart > 0 ) {
-				$where	.= '	AND date_start	>= ' . $dateStart
-						. '		AND date_end	>= ' . $dateStart;
+				$where	.= ' AND date_deadline >= ' . $dateStart;
 			}
-				// Start and end of task must be (at or) before given ending time
+				// Start of task must be (at or) before given ending time
 			if( $dateEnd > 0 ) {
-				$where	.= '	AND date_end	<= ' . $dateEnd
-						. '		AND date_start	<= ' . $dateEnd;
+				$where	.='	AND date_start <= ' . $dateEnd;
 			}
 		}
 
 			// Filter by status IDs
 		if( count($statusIDs) > 0 ) {
-			$where .= ' AND status IN(' . implode(',', $statusIDs) . ')';
+			$where .= ' AND `status` IN(' . implode(',', $statusIDs) . ')';
 		}
 			// Filter by assigned person IDs
 		if( sizeof($personIDs) ) {
