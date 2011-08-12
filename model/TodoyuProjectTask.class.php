@@ -445,19 +445,21 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	/**
 	 * Check whether a task is locked
 	 *
-	 * @param	Boolean		$checkSubtasks		Check also whether a subtask is locked (one subtask locked = task locked too)
+	 * @param	Boolean		$checkSubTasks		Check also whether a subtask is locked (one subtask locked = task locked too)
 	 * @return	Boolean
 	 */
-	public function isLocked($checkSubtasks = false) {
-		if( $checkSubtasks ) {
-			return TodoyuProjectTaskManager::isLocked($this->getID()) || TodoyuProjectTaskManager::areSubtasksLocked($this->getID());
+	public function isLocked($checkSubTasks = false) {
+		if( $checkSubTasks ) {
+			$isLocked	= TodoyuProjectTaskManager::isLocked($this->getID()) || TodoyuProjectTaskManager::areSubtasksLocked($this->getID());
 		} elseif( $this->isTask() ) {
-			return TodoyuProjectTaskManager::isLocked($this->getID());
+			$isLocked	= TodoyuProjectTaskManager::isLocked($this->getID());
 		} elseif( $this->isContainer() ) {
-			return false;
+			$isLocked	= false;
 		} else {
-			return false;
+			$isLocked	= false;
 		}
+
+		return $isLocked;
 	}
 
 
@@ -482,7 +484,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 		$infoLevel	= intval($infoLevel);
 		$data		= parent::getTemplateData();
 
-			// There are no BREAKs because everything after the level has to be loaded too
+			// There are no breaks because everything after the level has to be loaded too
 		switch( $infoLevel ) {
 			case 5:
 			case 4:
@@ -503,7 +505,6 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 			case 0:
 				$data['is_container']	= $this->isContainer();
 				$data['is_locked']		= $this->isLocked();
-
 		}
 
 		return $data;
