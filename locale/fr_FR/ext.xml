@@ -45,9 +45,9 @@
 	<label index="attr.persons.new">Nouvelle personne assignée au projet</label>
 	<label index="attr.persons.role">Rôle dans le projet</label>
 	<label index="attr.persons.comment">Commentaire</label>
+	<label index="attr.persons.is_public">Les membres du projet sont visibles par les personnes extérieures</label>
 	<label index="properties">Propriétés</label>
 	<label index="contextmenu.showinproject">Afficher dans la section projet</label>
-	<label index="attr.persons.is_public">Les membres du projet sont visibles par les personnes extérieures</label>
 	<label index="contextmenu.showinproject">Afficher dans la section projet</label>
 	<label index="contextmenu.showdetails">Afficher les détails</label>
 	<label index="contextmenu.hidedetails">Masquer les détails</label>
