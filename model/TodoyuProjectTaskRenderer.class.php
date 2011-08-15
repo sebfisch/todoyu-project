@@ -162,8 +162,14 @@ class TodoyuProjectTaskRenderer {
 		$fieldKeys		= TodoyuArray::getColumn($data['data'], '__key');
 		$fieldIndexes	= array_flip($fieldKeys);
 
-			// Person can only see public tasks? remove visibility info
+			// Non-internal person? remove estimated time
+		if( ! Todoyu::person()->isInternal() ) {
+			unset($data['data'][$fieldIndexes['estimated_workload']]);
+		}
+
+			// Person can only see public tasks?
 		if( ! Todoyu::person()->isInternal() || ! Todoyu::allowed('project', 'seetask:seeAll') ) {
+				// Remove visibility info
 			unset($data['data'][$fieldIndexes['is_public']]);
 		}
 
