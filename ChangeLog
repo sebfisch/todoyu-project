@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.1.2 - ???
+	* Change: Estimated time of tasks not visible for non-internal persons anymore
 	* Bugfix: TodoyuProjectTaskManager::getTasksInTimeSpanWhereClause() checks now for date_deadline
 	* Bugfix: Escape status field properly for query
 	* Change: Check for task status edit right before showing the option to cut a task
