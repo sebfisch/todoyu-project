@@ -411,7 +411,6 @@ class TodoyuProjectTaskRights {
 
 	/**
 	 * Restricts the adding a task over the quickcreate headlet
-	 *
 	 */
 	public static function restrictShowPopupForm() {
 		if( ! Todoyu::allowed('project', 'addtask:addTaskInOwnProjects') ) {

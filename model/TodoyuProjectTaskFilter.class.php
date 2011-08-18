@@ -109,7 +109,6 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Enable container mode
 	 * If enabled, container will be found, even if status doesn't match
-	 *
 	 */
 	public function enableContainerMode() {
 		$this->containerMode = true;
