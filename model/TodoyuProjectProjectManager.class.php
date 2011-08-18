@@ -952,10 +952,14 @@ class TodoyuProjectProjectManager {
 		$table	= '	ext_contact_person pe,
 					ext_project_role pr,
 					ext_project_mm_project_person mmpp';
-		$where	= '		mmpp.id_person	= pe.id
-					AND mmpp.id_project	IN (' . implode(',', $projectIDs) . ')' .
-				  ' AND	mmpp.id_role	= pr.id
+
+		$where	= '		mmpp.id_person	= pe.id ';
+		if( ! empty($projectIDs) ) {
+			$where	.= ' AND mmpp.id_project	IN (' . implode(',', $projectIDs) . ')';
+		}
+		$where .= ' AND	mmpp.id_role	= pr.id
 					AND	pe.deleted		= 0';
+
 		$order	= '	pe.lastname,
 					pe.firstname';
 
