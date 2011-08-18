@@ -329,7 +329,7 @@ class TodoyuProjectProjectRenderer {
 	 * The tree includes all tasks which match the current filter, and the lost tasks section
 	 *
 	 * @param	Integer		$idProject			Render the task tree of this project
-	 * @param	Integer		$idTask				Make sure this task is visible
+	 * @param	Integer		$idTaskShow			Make sure this task is visible
 	 * @param	String		$tab
 	 * @return	String
 	 */

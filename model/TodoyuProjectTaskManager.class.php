@@ -2410,7 +2410,7 @@ class TodoyuProjectTaskManager {
 	/**
 	 * if the time of task isn't set to midnight the dates in the task details are shown with time
 	 *
-	 * @param	Integer
+	 * @param	Integer		$date
 	 * @return	String
 	 */
 	protected static function getTaskDetailsDateFormat($date) {

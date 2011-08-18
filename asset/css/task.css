@@ -109,7 +109,7 @@
 }
 .task.container h3 span.taskHeadExtras {
 	right:141px;
-	border-right:0px solid #ddd;
+	border-right:0 solid #ddd;
 }
 .task.expanded h3 span.taskHeadExtras,
 .task.expanded h3 span.taskIcons {
