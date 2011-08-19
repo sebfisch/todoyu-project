@@ -119,19 +119,19 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: tasks of given project
 	 *
-	 * @param	Integer	$idProject
-	 * @param	Boolean	$negate
-	 * @return	Array
+	 * @param	Integer			$value		Project ID
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts / false if no project ID given
 	 */
-	public function Filter_project($idProject, $negate = false) {
-		$idProject	= intval($idProject);
+	public function Filter_project($value, $negate = false) {
+		$value		= intval($value);
 		$queryParts	= false;
 
-		if( $idProject > 0 ) {
+		if( $value > 0 ) {
 				// Set up query parts array
 			$tables	= array(self::TABLE);
 			$compare= $negate ? '!= ' : '= ';
-			$where	= 'ext_project_task.id_project ' . $compare . $idProject;
+			$where	= 'ext_project_task.id_project ' . $compare . $value;
 
 			$queryParts	= array(
 				'tables'	=> $tables,
@@ -147,25 +147,20 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: project title matches?
 	 *
-	 * @param	String		$value
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	String			$value		Space-separated search-words
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts / false if no search-words given
 	 */
 	public function Filter_projecttitle($value, $negate = false) {
 		$words		= TodoyuString::trimExplode(' ', $value, true);
 		$queryParts	= false;
 
 		if( sizeof($words) > 0 ) {
-			$tables	= array(
-				'ext_project_project'
-			);
-			$fields	= array(
-				'ext_project_project.title'
-			);
+			$tables	= array('ext_project_project');
+			$fields	= array('ext_project_project.title');
 			$where	= Todoyu::db()->buildLikeQuery($words, $fields, $negate);
-			$join	= array(
-				'ext_project_task.id_project = ext_project_project.id'
-			);
+			$join	= array('ext_project_task.id_project = ext_project_project.id');
+
 			$queryParts	= array(
 				'tables'=> $tables,
 				'where'	=> $where,
@@ -183,24 +178,19 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 *
 	 * @param	String		$value
 	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @return	Array					Query parts
 	 */
 	public function Filter_availableprojects($value, $negate = false) {
 		$availableProjects	= TodoyuProjectProjectManager::getAvailableProjectsForPerson();
 
 		if( sizeof($availableProjects) > 0 ) {
 			$queryParts	= array(
-				'tables'	=> array(
-					'ext_project_project'
-				),
-				'where'	=> 'ext_project_task.id_project IN(' . implode(',', $availableProjects) . ')'
+				'tables'	=> array('ext_project_project'),
+				'where'		=> 'ext_project_task.id_project IN(' . implode(',', $availableProjects) . ')'
 			);
-
 		} else {
 				// Add negative WHERE. Will definitely cause an empty result
-			$queryParts	= array(
-				'where'	=> '0'
-			);
+			$queryParts	= array('where'	=> '0');
 		}
 
 		return $queryParts;
@@ -211,12 +201,12 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Shortcut to company filter
 	 *
-	 * @param	Integer		$idCompany
+	 * @param	Integer		$value			Company ID
 	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @return	Array|Boolean				Query parts / false if no company ID given
 	 */
-	public function Filter_customer($idCompany, $negate = false) {
-		return $this->Filter_company($idCompany, $negate);
+	public function Filter_customer($value, $negate = false) {
+		return $this->Filter_company($value, $negate);
 	}
 
 
@@ -224,29 +214,26 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: tasks of projects of given customer
 	 *
-	 * @param	Integer		$idCompany
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	Integer			$value		Company ID
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts / false if no company ID given
 	 */
-	public function Filter_company($idCompany, $negate = false) {
-		$idCompany	= intval($idCompany);
+	public function Filter_company($value, $negate = false) {
+		$idCompany	= intval($value);
 		$queryParts	= false;
 
 		if( $idCompany > 0 ) {
-			$compare	= $negate ? '!=' : '=' ;
+			$tables	= array('ext_project_project');
 
-			$tables	= array(
-				'ext_project_project'
-			);
+			$compare	= $negate ? '!=' : '=' ;
 			$where	= 'ext_project_project.id_company ' . $compare . ' ' . $idCompany;
-			$join	= array(
-				'ext_project_task.id_project = ext_project_project.id'
-			);
+
+			$join	= array('ext_project_task.id_project = ext_project_project.id');
 
 			return array(
-				'tables'=> $tables,
-				'where'	=> $where,
-				'join'	=> $join
+				'tables'	=> $tables,
+				'where'		=> $where,
+				'join'		=> $join
 			);
 		}
 
@@ -258,12 +245,12 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: tasks where person is owner
 	 *
-	 * @param	Integer		$idOwner
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	Integer			$value		Owner person ID
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts array / false if no person ID given
 	 */
-	public function Filter_ownerPerson($idOwner, $negate = false) {
-		$idOwner	= intval($idOwner);
+	public function Filter_ownerPerson($value, $negate = false) {
+		$idOwner	= intval($value);
 		$queryArray	= false;
 
 		if( $idOwner !== 0 ) {
@@ -286,15 +273,13 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: tasks where current person is owner
 	 *
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts array / false if no person ID given
 	 */
 	public function Filter_currentPersonOwner($negate = false) {
 		$idPerson	= Todoyu::personid();
 
-		$queryParts	= $this->Filter_ownerPerson($idPerson, $negate);
-
-		return $queryParts;
+		return $this->Filter_ownerPerson($idPerson, $negate);
 	}
 
 
@@ -302,12 +287,12 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: tasks of given owner
 	 *
-	 * @param	Array		$roleIDs		Selected roles
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	Array			$value		Comma-separated IDs of selected roles
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts array / false if no role IDs given
 	 */
-	public function Filter_ownerRoles($roleIDs, $negate = false) {
-		$roleIDs	= TodoyuArray::intExplode(',', $roleIDs, true, true);
+	public function Filter_ownerRoles($value, $negate = false) {
+		$roleIDs	= TodoyuArray::intExplode(',', $value, true, true);
 		$queryParts	= false;
 
 		if( sizeof($roleIDs) > 0 ) {
@@ -315,15 +300,15 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 				self::TABLE,
 				'ext_contact_mm_person_role'
 			);
+
 			$where	= 'ext_contact_mm_person_role.id_role IN(' . implode(',', $roleIDs) . ')';
-			$join	= array(
-				'ext_project_task.id_person_owner = ext_contact_mm_person_role.id_person'
-			);
+
+			$join	= array('ext_project_task.id_person_owner = ext_contact_mm_person_role.id_person');
 
 			$queryParts	= array(
-				'tables'=> $tables,
-				'where'	=> $where,
-				'join'	=> $join
+				'tables'	=> $tables,
+				'where'		=> $where,
+				'join'		=> $join
 			);
 		}
 
@@ -335,9 +320,9 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter for task number
 	 *
-	 * @param	String		$value
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	String			$value		Task number
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts array / false if no task number given
 	 */
 	public function Filter_tasknumber($value, $negate = false) {
 		$taskNumber	= intval($value);
@@ -348,8 +333,8 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$where	= 'ext_project_task.tasknumber = ' . $taskNumber;
 
 			$queryParts	= array(
-				'tables'=> $tables,
-				'where'	=> $where
+				'tables'	=> $tables,
+				'where'		=> $where
 			);
 		}
 
@@ -361,9 +346,9 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: task title like given string?
 	 *
-	 * @param	String		$value
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	String			$value		(String part out of) Task title
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts array / false if no title given
 	 */
 	public function Filter_title($value, $negate = false) {
 		$title		= trim($value);
@@ -371,8 +356,8 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 		if( $title !== '' ) {
 			$tables	= array(self::TABLE);
-			$compare= $negate ? 'NOT LIKE' : 'LIKE';
-			$where	= 'ext_project_task.title ' . $compare . ' \'%' . Todoyu::db()->escape($title) . '%\'';
+			$compare= ($negate ? 'NOT' : '');
+			$where	= 'ext_project_task.title ' . $compare . ' LIKE \'%' . Todoyu::db()->escape($title) . '%\'';
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -388,9 +373,9 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Task full-text filter. Searches in task number, title, description
 	 *
-	 * @param	String		$value
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	String			$value		Text
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts array / false if no text given
 	 */
 	public function Filter_fulltext($value, $negate = false) {
 		$value		= trim($value);
@@ -401,15 +386,13 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 			$tables	= array(self::TABLE);
 			$keyword= Todoyu::db()->escape($value);
-			$where	= '(
-						( 		ext_project_task.description 	' . $logic . ' \'%' . $keyword . '%\'
+			$where	= '(( 		ext_project_task.description 	' . $logic . ' \'%' . $keyword . '%\'
 							OR	ext_project_task.title 			' . $logic . ' \'%' . $keyword . '%\'
 						)';
 
 			if( strpos($value, '.') !== false ) {
 				list($project, $task) = TodoyuArray::intExplode('.', $value);
-				$where	.= ' OR (
-									  ext_project_task.id_project = ' . $project .
+				$where	.= ' OR (	  ext_project_task.id_project = ' . $project .
 							 	' AND ext_project_task.tasknumber = ' . $task .
 							')';
 			}
@@ -430,9 +413,9 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Search tasks which match the value in the title or the task number
 	 *
-	 * @param	String		$value
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	String			$value		Task number and/or task title
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts array / false if value is not empty title or task number
 	 */
 	public function Filter_tasknumberortitle($value, $negate = false) {
 		$taskNumber = trim($value);
@@ -471,12 +454,12 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: tasks created by person
 	 *
-	 * @param	Integer		$idPerson
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	Integer			$value		Person ID
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts array / false if no person ID given
 	 */
-	public function Filter_creatorPerson($idPerson, $negate = false) {
-		$idPerson	= intval($idPerson);
+	public function Filter_creatorPerson($value, $negate = false) {
+		$idPerson	= intval($value);
 		$queryParts	= false;
 
 		if( $idPerson !== 0 ) {
@@ -499,12 +482,12 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: Task created by a person which is member of one of the selected roles
 	 *
-	 * @param	Array		$roleIDs
+	 * @param	Array		$value		Comma-separated role IDs
 	 * @param	Boolean		$negate
-	 * @return	Array		Or FALSE
+	 * @return	Array|Boolean			Query parts array / false if no role IDs given
 	 */
-	public function Filter_creatorRoles($roleIDs, $negate = false) {
-		$roleIDs	= TodoyuArray::intExplode(',', $roleIDs, true, true);
+	public function Filter_creatorRoles($value, $negate = false) {
+		$roleIDs	= TodoyuArray::intExplode(',', $value, true, true);
 		$queryParts	= false;
 
 		if( sizeof($roleIDs) > 0 ) {
@@ -533,13 +516,13 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: tasks assigned to person
 	 *
-	 * @param	Integer		$idPerson
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	Integer			$value		Person ID
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts / false if no person ID given
 	 */
-	public function Filter_assignedPerson($idPerson, $negate = false) {
+	public function Filter_assignedPerson($value, $negate = false) {
+		$idPerson	= intval($value);
 		$queryParts	= false;
-		$idPerson	= intval($idPerson);
 
 		if( $idPerson !== 0 ) {
 				// Set up query parts array
@@ -563,28 +546,22 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: task assigned to person of a role?
 	 *
-	 * @param	Array		$roleIDs
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	Array			$value		Role IDs, comma-separated
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts / false if no role IDs given
 	 */
-	public function Filter_assignedRoles($roleIDs, $negate = false) {
-		$roleIDs	= TodoyuArray::intExplode(',', $roleIDs, true, true);
+	public function Filter_assignedRoles($value, $negate = false) {
+		$roleIDs	= TodoyuArray::intExplode(',', $value, true, true);
 		$queryParts	= false;
 
 		if( sizeof($roleIDs) > 0 ) {
-			$tables	= array(
-				'ext_contact_mm_person_role'
-			);
-			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= 'ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
+			$tables	= array('ext_contact_mm_person_role');
 
-			if( $negate === false ) {
-				$where	.= ' AND	ext_project_task.type	= ' . TASK_TYPE_TASK;
-			}
+			$compare= $negate ? 'NOT' : '';
+			$where	= 								'	ext_contact_mm_person_role.id_role ' . $compare . ' IN (' . implode(',', $roleIDs) . ')';
+			$where	.= ( $negate === false ) ? ' AND	ext_project_task.type	= ' . TASK_TYPE_TASK : '';
 
-			$join	= array(
-				'ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person'
-			);
+			$join	= array('ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person');
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -601,9 +578,9 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: tasks assigned to current person
 	 *
-	 * @param	String		$value
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	String			$value		Not used
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts / false if no person ID given
 	 */
 	public function Filter_currentPersonAssigned($value = '', $negate = false) {
 		$idPerson	= Todoyu::personid();
@@ -618,26 +595,20 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: Project description like given filter value?
 	 *
-	 * @param	String		$value
-	 * @param	Boolean		$negate
-	 * @return	Array
-	 * @todo	Recheck this function
+	 * @param	String			$value		Project description substring
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts / false if given string is empty
 	 */
 	public function Filter_projectDescription($value = '', $negate = false) {
 		$queryParts	= false;
-
-		$string	= trim($value);
+		$string		= trim($value);
 
 		if( strlen($string) ) {
 			$string	= Todoyu::db()->escape($string);
 
-			$tables	= array(
-				'ext_project_project'
-			);
+			$tables	= array('ext_project_project');
 			$where	=  'ext_project_project.description LIKE \'%' . $string . '%\'';
-			$join	= array(
-				'ext_project_task.id_project = ext_project_project.id'
-			);
+			$join	= array('ext_project_task.id_project = ext_project_project.id');
 
 			$queryParts	= array(
 				'where'	=> $where,
@@ -654,19 +625,20 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: tasks of projects with given status
 	 *
-	 * @param	String		$statusList
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	String			$value			Comma-separated statuses
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean					Query parts / false if no statuses given
 	 */
-	public function Filter_projectstatus($statusList, $negate = false) {
-		$statusList	= TodoyuArray::intExplode(',', $statusList, true, true);
+	public function Filter_projectstatus($value, $negate = false) {
+		$statuses	= TodoyuArray::intExplode(',', $value, true, true);
 		$queryParts	= false;
 
-		if( sizeof($statusList) > 0 ) {
+		if( sizeof($statuses) > 0 ) {
 			$tables	= array('ext_project_project');
 
-			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	=  'ext_project_project.status ' . $compare . '(' . implode(',', $statusList) . ')';
+			$compare= $negate ? 'NOT' : '';
+			$where	=  'ext_project_project.status ' . $compare . ' IN (' . implode(',', $statuses) . ')';
+
 			$join	= array('ext_project_task.id_project = ext_project_project.id');
 
 			$queryParts	= array(
@@ -688,10 +660,11 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 *
 	 * @param	Integer		$value
 	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @return	Array					Query parts
 	 */
 	public function Filter_isPublic($value, $negate = false) {
 		$tables 	= array(self::TABLE);
+
 		$isPublic	= $negate ? 0 : 1;
 		$where		= 'ext_project_task.is_public = ' . $isPublic;
 
@@ -708,20 +681,19 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: Task status in given status list?
 	 *
-	 * @param	String		$statusList
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	String			$value		Comma-separated statuses
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts array / false if no statuses given
 	 */
-	public function Filter_status($statusList, $negate = false) {
+	public function Filter_status($value, $negate = false) {
+		$statusList	= TodoyuArray::intExplode(',', $value, true, true);
 		$queryParts	= false;
-		$statusList	= TodoyuArray::intExplode(',', $statusList, true, true);
 
 		if( sizeof($statusList) > 0 ) {
 			$tables	= array(self::TABLE);
 			$compare= $negate ? 'NOT IN' : 'IN';
 
 			$where	= 'ext_project_task.status ' . $compare . '(' . implode(',', $statusList) . ')';
-
 
 			if( $this->containerMode ) {
 				$where = '(' . $where . ' OR ext_project_task.type = ' . TASK_TYPE_CONTAINER . ')';
@@ -739,15 +711,15 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 
 	/**
-	 * Filter condition: Task acknowledged by person?
+	 * Filter condition: Task acknowledged by given person?
 	 *
-	 * @param	Integer		$idPerson
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	Integer			$value		Person ID
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts / false if no person ID given
 	 */
-	public function Filter_acknowledged($idPerson, $negate = false) {
+	public function Filter_acknowledged($value, $negate = false) {
+		$idPerson	= intval($value);
 		$queryParts	= false;
-		$idPerson	= intval($idPerson);
 
 		if( $idPerson !== 0 ) {
 			$check	= $negate ? 0 : 1;
@@ -765,11 +737,11 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 
 	/**
-	 * Filter condition: task acknowledged by person
+	 * Filter condition: task acknowledged by current person
 	 *
-	 * @param	String		$value
+	 * @param	String		$value		Person ID
 	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @return	Array					Query parts
 	 */
 	public function Filter_currentPersonHasAcknowledged($value, $negate) {
 		$idPerson	= Todoyu::personid();
@@ -781,14 +753,16 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 
 	/**
-	 * Get only tasks whose parent matches to the value
+	 * Get sub-tasks of the given task ID
 	 *
-	 * @param	Integer		$idTask
+	 * @param	Integer		$value		Task ID
 	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @return	Array					Query parts
 	 */
-	public function Filter_parentTask($idTask, $negate = false) {
-		$where	= 'ext_project_task.id_parenttask ' . ( $negate ? '!=' : '=' ) . ' ' . intval($idTask);
+	public function Filter_parentTask($value, $negate = false) {
+		$idTask	= intval($value);
+
+		$where	= 'ext_project_task.id_parenttask ' . ( $negate ? '!=' : '=' ) . ' ' . $idTask;
 
 		$queryParts	= array(
 			'where'		=> $where
@@ -984,9 +958,9 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter by type (task / container)
 	 *
-	 * @param	Integer		$value		both: 0, TASK_TYPE_TASK: 1 / TASK_TYPE_CONTAINER: 2
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	Integer			$value		Task type - 0: both, 1: TASK_TYPE_TASK / 2: TASK_TYPE_CONTAINER
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts array / false if both types wanted (no limitation needed than)
 	 */
 	public function Filter_type($value, $negate = false) {
 		$type		= intval($value);
@@ -1007,17 +981,17 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: Task has activity
 	 *
-	 * @param	Array		$activityIDs
+	 * @param	Array		$value		Comma-separated activity IDs
 	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @return	Array|Boolean			Query parts array / false if no activity IDs given
 	 */
-	public function Filter_activity($activityIDs, $negate = false) {
+	public function Filter_activity($value, $negate = false) {
+		$activityIDs= TodoyuArray::intExplode(',', $value);
 		$queryParts	= false;
-		$activityIDs= TodoyuArray::intExplode(',', $activityIDs);
 
 		if( sizeof($activityIDs) !== 0 ) {
-			$compare= $negate ? 'NOT IN' : 'IN';
-			$where	= 'ext_project_task.id_activity ' . $compare . '(' . implode(',', $activityIDs) . ')';
+			$compare= $negate ? 'NOT' : '';
+			$where	= 'ext_project_task.id_activity ' . $compare . ' IN (' . implode(',', $activityIDs) . ')';
 
 			$queryParts	= array(
 				'where'	=> $where
@@ -1033,9 +1007,9 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * Filter condition for project role
 	 * The value is a combination between the project role and the person
 	 *
-	 * @param	String		$value		Format: PERSON:ROLE,ROLE,ROLE
-	 * @param	Boolean		$negate
-	 * @return	Array
+	 * @param	String			$value		Format: PERSON:ROLE,ROLE,ROLE
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts array / false if not both person AND role(s) given
 	 */
 	public function Filter_projectrole($value, $negate = false) {
 		$parts		= explode(':', $value);
@@ -1048,12 +1022,10 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$tables	= array(
 				'ext_project_mm_project_person'
 			);
-			$compare= $negate ? 'NOT IN' : 'IN';
+			$compare= $negate ? 'NOT' : '';
 			$where	= '		ext_project_mm_project_person.id_person	= ' . $idPerson .
-					  ' AND ext_project_mm_project_person.id_role ' . $compare . '(' . implode(',', $roles) . ')';
-			$join	= array(
-				'ext_project_task.id_project = ext_project_mm_project_person.id_project'
-			);
+					  ' AND ext_project_mm_project_person.id_role ' . $compare . ' IN (' . implode(',', $roles) . ')';
+			$join	= array('ext_project_task.id_project = ext_project_mm_project_person.id_project');
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -1070,9 +1042,9 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition for all subTasks (recursive)
 	 *
-	 * @param	Integer		$value			idTask
+	 * @param	Integer		$value		Task ID
 	 * @param	Boolean		$negate
-	 * @return	Array|Boolean
+	 * @return	Array|Boolean			Query parts / false if no task ID given
 	 */
 	public function Filter_subtask($value, $negate = false) {
 		$idTask		= intval($value);
@@ -1099,10 +1071,10 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Setup query parts for task date_... fields (create, update, start, end, deadline) filter
 	 *
-	 * @param	String		$field
-	 * @param	Integer		$date
-	 * @param	Boolean		$negate
-	 * @return	Array|Boolean
+	 * @param	String			$field
+	 * @param	Integer			$date
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts array / false if no date timestamp given (or 1.1.1970 00:00)
 	 */
 	public static function makeFilter_date($field, $date, $negate = false) {
 		$tables	= array(self::TABLE);
