@@ -805,7 +805,7 @@ class TodoyuProjectTaskManager {
 
 
 	/**
-	 * Get all persons which are somehow connected with this task
+	 * Get all persons which are somehow connected with this task (and allowed to be seen by the current user)
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Boolean		$withAccount
@@ -828,7 +828,11 @@ class TodoyuProjectTaskManager {
 			// Add public/allowed persons check for external person
 		if( ! Todoyu::person()->isInternal() && ! Todoyu::person()->isAdmin() && ! Todoyu::allowed('contact', 'person:seeAllPersons') ) {
 			$allowedPersonIDs = TodoyuContactPersonRights::getPersonIDsAllowedToBeSeen();
-			$where .= ' AND p.id IN (' . implode(',', $allowedPersonIDs) . ') ';
+			if( count($allowedPersonIDs) > 0 ) {
+				$where .= ' AND p.id IN (' . implode(',', $allowedPersonIDs) . ') ';
+			} else {
+				return array();
+			}
 		}
 
 		$group	= 'p.id';

@@ -161,15 +161,20 @@ class TodoyuProjectTaskSearch implements TodoyuSearchEngineIf {
 	protected static function getAddToWhereRightsClause() {
 		$addToWhere = ' AND deleted = 0';
 
+			// Add limitations for non-admin persons
 		if( ! TodoyuAuth::isAdmin() ) {
-
 			if( ! Todoyu::allowed('project', 'seetask:seeAll') ) {
 				$addToWhere .= ' AND ext_project_task.id_person_assigned = ' . Todoyu::personid();
+			} else {
+					// Limit to selected status
+				$statusesSee= array_keys(TodoyuProjectTaskStatusManager::getStatuses('see'));
+				if( count($statusesSee) > 0 ) {
+					$addToWhere .= ' AND ext_project_task.status IN (' . implode(',', $statusesSee) . ')';
+				} else {
+						// Rights do not permit user to see tasks in any status!
+					return ' AND 0';
+				}
 			}
-
-			// Limit to selected status
-			$statuses	= implode(',', array_keys(TodoyuProjectTaskStatusManager::getStatuses('see')));
-			$addToWhere .= ' AND ext_project_task.status IN (' . $statuses . ')';
 
 				// Limit to tasks which are in available projects
 			if( ! Todoyu::allowed('project', 'project:seeAll') ) {

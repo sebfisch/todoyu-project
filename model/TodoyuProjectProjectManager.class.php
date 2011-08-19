@@ -1350,10 +1350,13 @@ class TodoyuProjectProjectManager {
 			$field	= 'p.id';
 			$tables	= '	ext_project_project p,
 						ext_project_mm_project_person mm';
-			$where	= '		p.status 	IN (' . implode(',', $statuses) . ')'
-					. ' AND p.id 		= mm.id_project'
+			$where	= '	p.id 		= mm.id_project'
 					. ' AND p.deleted	= 0'
 					. ' AND mm.id_person= ' . TodoyuAuth::getPersonID();
+			if( count($statuses) > 0 ) {
+				$where	.=	' AND p.status 	IN (' . implode(',', $statuses) . ')';
+			}
+
 			$fieldName	= 'id';
 
 			$projectIDs	= Todoyu::db()->getColumn($field, $tables, $where, '', '', '', $fieldName);
