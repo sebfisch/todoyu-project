@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.1.2 - ???
+	* Change: Moved filterset optgroup to top of filter options
 	* Change: Estimated time of tasks not visible for non-internal persons anymore
 	* Bugfix: TodoyuProjectTaskManager::getTasksInTimeSpanWhereClause() checks now for date_deadline
 	* Bugfix: Escape status field properly for query

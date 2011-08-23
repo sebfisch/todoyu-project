@@ -39,6 +39,20 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 	'widgets' => array(
 
 		/**
+		 * OptGroup filter
+		 */
+		'filterSet' => array(
+			'label'		=> 'search.ext.filterlabel.filterset',
+			'optgroup'	=> 'core.global.filter',
+			'widget'	=> 'select',
+			'wConf'		=> array(
+				'multiple'	=> true,
+				'size'		=> 5,
+				'FuncRef'	=> 'TodoyuSearchFiltersetManager::getTaskFilterSetSelectionOptions'
+			)
+		),
+
+		/**
 		 * OptGroup task
 		 */
 		'status' => array(
@@ -249,9 +263,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 
 
 
-
-
-
 		/**
 		 * OptGroup time management
 		 */
@@ -343,23 +354,8 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 				'FuncRef'	=> 'TodoyuProjectTaskFilterDataSource::getDynamicDateOptions',
 				'negation'	=> 'datetimeDyn'
 			)
-		),
-
-
-
-		/**
-		 * OptGroup filter
-		 */
-		'filterSet' => array(
-			'label'		=> 'search.ext.filterlabel.filterset',
-			'optgroup'	=> 'core.global.filter',
-			'widget'	=> 'select',
-			'wConf'		=> array(
-				'multiple'	=> true,
-				'size'		=> 5,
-				'FuncRef'	=> 'TodoyuSearchFiltersetManager::getTaskFilterSetSelectionOptions'
-			)
 		)
+
 	),
 
 	/**
@@ -383,6 +379,30 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 		'require'			=> 'project.general:use'
 	),
 	'widgets' => array(
+
+		/**
+		 * OptGroup filter
+		 */
+		'filterSet' => array(
+			'label'		=> 'search.ext.filterlabel.filterset',
+			'optgroup'	=> 'core.global.filter',
+			'widget'	=> 'select',
+			'wConf'		=> array(
+				'multiple'	=> true,
+				'size'		=> 5,
+				'FuncRef'	=> 'TodoyuSearchFiltersetManager::getProjectFilterSetSelectionOptions'
+			)
+		),
+		'taskFilter'	=> array(
+			'label'		=> 'project.filter.project.taskfilter',
+			'optgroup'	=> 'core.global.filter',
+			'widget'	=> 'select',
+			'wConf'		=> array(
+				'multiple'	=> true,
+				'size'		=> 5,
+				'FuncRef'	=> 'TodoyuSearchFiltersetManager::getTaskFilterSetSelectionOptions'
+			)
+		),
 
 
 
@@ -508,32 +528,6 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 			'wConf'		=> array(
 				'FuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getDynamicDateOptions',
 				'negation'		=> 'datetime'
-			)
-		),
-
-
-
-		/**
-		 * OptGroup filter
-		 */
-		'filterSet' => array(
-			'label'		=> 'search.ext.filterlabel.filterset',
-			'optgroup'	=> 'core.global.filter',
-			'widget'	=> 'select',
-			'wConf'		=> array(
-				'multiple'	=> true,
-				'size'		=> 5,
-				'FuncRef'	=> 'TodoyuSearchFiltersetManager::getProjectFilterSetSelectionOptions'
-			)
-		),
-		'taskFilter'	=> array(
-			'label'		=> 'project.filter.project.taskfilter',
-			'optgroup'	=> 'core.global.filter',
-			'widget'	=> 'select',
-			'wConf'		=> array(
-				'multiple'	=> true,
-				'size'		=> 5,
-				'FuncRef'	=> 'TodoyuSearchFiltersetManager::getTaskFilterSetSelectionOptions'
 			)
 		)
 
