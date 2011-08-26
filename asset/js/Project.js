@@ -417,7 +417,7 @@ Todoyu.Ext.project.Project = {
 		this.ext.ContextMenuTask.attach();
 			// Highlight the new pasted task
 		this.ext.Task.highlight(idTaskNew);
-		this.ext.Task.highlightSubtasks(idTaskNew);
+		this.ext.Task.highlightSubTasks(idTaskNew);
 	}
 
 };

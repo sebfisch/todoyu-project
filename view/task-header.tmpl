@@ -1,6 +1,6 @@
 <h3 id="task-{$task.id}-header" class="contextmenutask bcStatus{$task.status}" name="task-{$task.id}" onclick="Todoyu.Ext.project.Task.toggleDetails({$task.id})">
 	{if ! $isLostTask}
-		<a id="task-{$task.id}-subtasks-trigger" onclick="Todoyu.Ext.project.TaskTree.toggleSubtasks(event, {$task.id})" href="javascript:void(0)" class="{if $hasSubtasks}expandable{/if} {if $areSubtasksVisible}expanded{/if}"></a>
+		<a id="task-{$task.id}-subtasks-trigger" onclick="Todoyu.Ext.project.TaskTree.toggleSubTasks(event, {$task.id})" href="javascript:void(0)" class="{if $hasSubtasks}expandable{/if} {if $areSubtasksVisible}expanded{/if}"></a>
 	{/if}
 	<span class="headLabel bcStatus{$task.status}" title="{htmlencode $task.fulltitle}">
 		<span class="taskDate date" title="{Label core.global.deadline}: {if $task.type === constant('TASK_TYPE_TASK') && $task.date_end > 0}{dateFormat $task.date_end D2M2Y2}{else}{dateFormat $task.date_deadline D2M2Y2}{/if} / {Label core.global.start}: {dateFormat $task.date_start D2M2Y2}">

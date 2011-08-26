@@ -200,14 +200,15 @@ Todoyu.Ext.project.Task.Edit = {
 
 
 	/**
-	 * Cancel editing of given task. Refresh task's parent sub tasks expand trigger, refresh the task.
+	 * Cancel editing of given task. Refresh task's parent's sub tasks expand trigger, refresh the task.
 	 *
 	 * @method	cancel
 	 * @param	{Number}	idTask
 	 */
 	cancel: function(idTask) {
 		if( this.ext.Task.hasParentTask(idTask) && idTask == 0) {
-			this.ext.Task.checkAndRemoveTriggerFromParent(idTask);
+			var idParent	= this.ext.Task.getParentTaskID(idTask);
+			this.ext.Task.updateSubTasksExpandTrigger(idParent);
 		}
 
 		Todoyu.Ui.closeRTE('task-' + idTask + '-form');
