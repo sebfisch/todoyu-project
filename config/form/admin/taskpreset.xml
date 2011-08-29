@@ -92,9 +92,6 @@
 					<source type="function">
 						<function>TodoyuProjectProjectViewHelper::getExtConfProjectRoles</function>
 					</source>
-					<restrict>
-						<allow ext="project" right="task:editPersonAssigned" />
-					</restrict>
 				</field>
 
 				<field type="select" name="id_person_assigned">
@@ -104,9 +101,6 @@
 						<function>TodoyuContactViewHelper::getInternalPersonOptions</function>
 						<lazyInit />
 					</source>
-					<restrict>
-						<allow ext="project" right="task:editPersonAssigned" />
-					</restrict>
 				</field>
 
 				<field type="select" name="person_owner_role">
@@ -114,9 +108,6 @@
 					<source type="function">
 						<function>TodoyuProjectProjectViewHelper::getExtConfProjectRoles</function>
 					</source>
-					<restrict>
-						<allow ext="project" right="task:editPersonOwner" />
-					</restrict>
 				</field>
 
 				<field type="select" name="id_person_owner">
@@ -126,9 +117,6 @@
 						<function>TodoyuContactViewHelper::getInternalPersonOptions</function>
 						<lazyInit />
 					</source>
-					<restrict>
-						<allow ext="project" right="task:editPersonAssigned" />
-					</restrict>
 				</field>
 
 			</elements>

@@ -42,7 +42,7 @@
 						<isNotZero msg="LLL:project.task.attr.id_activity.error" />
 					</validate>
 					<restrict>
-						<allow ext="project" right="task:editActivity" />
+						<allow ext="project" right="edittaskdetail:editActivity" />
 					</restrict>
 					<required />
 				</field>

@@ -76,8 +76,9 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 			// Validate, save workload record / re-render form
 		if( $form->isValid() ) {
 			$storageData	= $form->getStorageData();
+			$idTask			= TodoyuProjectQuickTaskManager::save($storageData);
+
 			$idProject	= intval($storageData['id_project']);
-			$idTask		= TodoyuProjectQuickTaskManager::save($storageData);
 
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTask);
 			TodoyuHeader::sendTodoyuHeader('idProject', $idProject);

@@ -151,6 +151,19 @@ class TodoyuProjectQuickTaskManager {
 		}
 		unset($data['task_done']);
 
+
+			// Activity type
+		if( ! Todoyu::allowed('project', 'task:editActivity') ) {
+			$idActivityPreset	= intval($presets['id_activity']);
+
+			if( $idActivityPreset != 0 ) {
+				$data['id_activity'] = $idActivityPreset;
+			} else {
+				$data['id_activity'] = self::getFirstAvailableActivityID();
+			}
+		}
+
+
 			// Call form hooks to save external data
 		$xmlPath	= 'ext/project/config/form/quicktask.xml';
 		$data		= TodoyuFormHook::callSaveData($xmlPath, $data, $idTask);
@@ -159,6 +172,24 @@ class TodoyuProjectQuickTaskManager {
 		$idTask = TodoyuProjectTaskManager::saveTask($data);
 
 		return $idTask;
+	}
+
+
+
+	/**
+	 * Get first available activity ID
+	 * If no activity is entered and no default is defined, we just use the first one
+	 *
+	 * @return	Integer
+	 */
+	private static function getFirstAvailableActivityID() {
+		$field	= 'id';
+		$table	= 'ext_project_activity';
+		$where	= 'deleted = 0';
+		$order	= 'id ASC';
+		$limit	= 1;
+
+		return intval(Todoyu::db()->getFieldValue($field, $table, $where, '', $order, $limit));
 	}
 
 }
