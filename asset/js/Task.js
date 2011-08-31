@@ -357,6 +357,7 @@ Todoyu.Ext.project.Task = {
 		if( this.hasSubTasksContainer(idTask) ) {
 			this.getSubTasksContainer(idTask).remove();
 		}
+
 		if( Todoyu.exists('task-' + idTask) ) {
 			if( this.isSubTask(idTask) ) {
 				$('task-' + idTask).remove();
