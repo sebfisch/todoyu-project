@@ -36,27 +36,27 @@ class TodoyuProjectExtConfViewHelper {
 
 		return array(
 			array(	// Creation day
-				'label'	=> 'LLL:project.task.default.date.date_1',
+				'label'	=> 'project.task.default.date.date_1',
 				'value'	=> '1'
 			),
 			array(	// Creation day + 1 days
-				'label'	=> 'LLL:project.task.default.date.date_2',
+				'label'	=> 'project.task.default.date.date_2',
 				'value'	=> '2'
 			),
 			array(	// Creation day + 2 days
-				'label'	=> 'LLL:project.task.default.date.date_3',
+				'label'	=> 'project.task.default.date.date_3',
 				'value'	=> '3'
 			),
 			array(	// Creation day + 3 days
-				'label'	=> 'LLL:project.task.default.date.date_4',
+				'label'	=> 'project.task.default.date.date_4',
 				'value'	=> '4'
 			),
 			array(	// Creation day + 1 week
-				'label'	=> 'LLL:project.task.default.date.date_7',
+				'label'	=> 'project.task.default.date.date_7',
 				'value'	=> '7'
 			),
 			array(	// Creation day + 2 weeks
-				'label'	=> 'LLL:project.task.default.date.date_14',
+				'label'	=> 'project.task.default.date.date_14',
 				'value'	=> '14'
 			)
 		);
