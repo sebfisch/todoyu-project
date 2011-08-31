@@ -84,7 +84,7 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 			TodoyuHeader::sendTodoyuHeader('idProject', $idProject);
 
 				// Call hook when quicktask is saved
-			TodoyuHookManager::callHook('project', 'QuickTaskSaved', array($idTask, $idProject, $storageData));
+			TodoyuHookManager::callHook('project', 'quicktask.saved', array($idTask, $idProject, $storageData));
 		} else {
 			TodoyuHeader::sendTodoyuErrorHeader();
 

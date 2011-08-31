@@ -81,7 +81,11 @@ class TodoyuProjectProjectManager {
 	 * @return	Integer		New project id
 	 */
 	public static function addProject(array $data) {
-		return TodoyuRecordManager::addRecord(self::TABLE, $data);
+		$idProject = TodoyuRecordManager::addRecord(self::TABLE, $data);
+
+		TodoyuHookManager::callHook('project', 'project.add', array($idProject));
+
+		return $idProject;
 	}
 
 
@@ -98,7 +102,11 @@ class TodoyuProjectProjectManager {
 
 		TodoyuRecordManager::removeRecordCache('TodoyuProjectProject', $idProject);
 
-		return TodoyuRecordManager::updateRecord(self::TABLE, $idProject, $data);
+		$success = TodoyuRecordManager::updateRecord(self::TABLE, $idProject, $data);
+
+		TodoyuHookManager::callHook('project', 'project.update', array($idProject, $data));
+
+		return $success;
 	}
 
 
@@ -108,6 +116,7 @@ class TodoyuProjectProjectManager {
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$status
+	 * @return	Boolean
 	 */
 	public static function updateProjectStatus($idProject, $status) {
 		$idProject	= intval($idProject);
@@ -118,9 +127,9 @@ class TodoyuProjectProjectManager {
 		);
 
 			// Call project status change hooks
-		TodoyuHookManager::callHook('project', 'changeprojectstatus', array($idProject,$status));
+		TodoyuHookManager::callHook('project', 'project.changeStatus', array($idProject, $status));
 
-		self::updateProject($idProject, $data);
+		return self::updateProject($idProject, $data);
 	}
 
 
@@ -333,30 +342,6 @@ class TodoyuProjectProjectManager {
 
 
 	/**
-	 * Set given task expanded
-	 *
-	 * @param	Integer	$idTask
-	 */
-	public static function setTaskExpanded($idTask) {
-		$idTask	= intval($idTask);
-
-		TodoyuPreferenceManager::savePreference(EXTID_PROJECT, 'expandedtask', $idTask);
-	}
-
-
-
-	/**
-	 * Get IDs of expanded tasks
-	 *
-	 * @return	Array
-	 */
-	public static function getExpandedTaskIDs() {
-		return TodoyuPreferenceManager::getPreferences(EXTID_PROJECT, 'expandedtask');
-	}
-
-
-
-	/**
 	 * Get context menu items
 	 *
 	 * @param	Integer	$idProject
@@ -490,27 +475,17 @@ class TodoyuProjectProjectManager {
 
 
 
-
-
 	/**
 	 * Get all data attributes for the project (merged from all extensions)
 	 *
 	 * @param	Integer		$idProject
 	 * @return	Array
 	 */
-	public static function getProjectDataArray($idProject) {
+	public static function getAllProjectProperties($idProject) {
 		$idProject	= intval($idProject);
-		$data		= array();
+		$data		= TodoyuHookManager::callHookDataModifier('project', 'project.properties', array(), array($idProject));
 
-		$tempData	= TodoyuHookManager::callHook('project', 'projectdata', array($idProject));
-
-		foreach($tempData as $hookInfo) {
-			$data	= array_merge($data, $hookInfo);
-		}
-
-		$data = TodoyuArray::sortByLabel($data);
-
-		return $data;
+		return TodoyuArray::sortByLabel($data, 'position');
 	}
 
 
@@ -541,47 +516,47 @@ class TodoyuProjectProjectManager {
 	/**
 	 * Get attributes array for a project data list
 	 *
+	 * @param	Array		$data
 	 * @param	Integer		$idProject
 	 * @return	Array
 	 */
-	public static function getProjectDataAttributes($idProject) {
+	public static function getBasicProjectProperties(array $data, $idProject) {
 		$idProject	= intval($idProject);
-		$info		= array();
 		$project	= TodoyuProjectProjectManager::getProject($idProject);
 
-		$info[]	= array(
+		$data['status']	= array(
 			'label'		=> 'LLL:core.global.status',
 			'value'		=> $project->getStatusLabel(),
 			'position'	=> 10
 		);
 
-		$info[]	= array(
+		$data['company']	= array(
 			'label'		=> 'LLL:project.ext.attr.company',
 			'value'		=> $project->getCompany()->getTitle(),
 			'position'	=> 20
 		);
 
-		$info[]	= array(
+		$data['date_start']	= array(
 			'label'		=> 'LLL:project.ext.attr.date_start',
 			'value'		=> TodoyuTime::format($project->getStartDate(), 'D2MlongY4'),
 			'position'	=> 30
 		);
 
-		$info[]	= array(
+		$data['date_end']	= array(
 			'label'		=> 'LLL:project.ext.attr.date_end',
 			'value'		=> TodoyuTime::format($project->getEndDate(), 'D2MlongY4'),
 			'position'	=> 32
 		);
 
 		if( $project->getDeadlineDate() > 0 && (Todoyu::person()->isInternal() || Todoyu::person()->isAdmin()) ) {
-			$info[]	= array(
+			$data['date_deadline']	= array(
 				'label'		=> 'LLL:project.ext.attr.date_deadline',
 				'value'		=> TodoyuTime::format($project->getDeadlineDate(), 'D2MlongY4'),
 				'position'	=> 34
 			);
 		}
 
-		return $info;
+		return $data;
 	}
 
 
@@ -1053,7 +1028,7 @@ class TodoyuProjectProjectManager {
 	 * @param	Integer		$idProject
 	 * @return	Array
 	 */
-	public static function getProjectRoles($idProject) {
+	public static function getProjectroles($idProject) {
 		$idProject	= intval($idProject);
 
 		$fields	= '	DISTINCT pr.*';
@@ -1075,7 +1050,7 @@ class TodoyuProjectProjectManager {
 	 * @return	Array
 	 */
 	public static function getProjectRolesIDs($idProject) {
-		$rolesIDs	= self::getProjectRoles($idProject);
+		$rolesIDs	= self::getProjectroles($idProject);
 
 		return array_keys(TodoyuArray::useFieldAsIndex($rolesIDs, 'id'));
 	}
@@ -1291,7 +1266,7 @@ class TodoyuProjectProjectManager {
 		);
 
 			// Call hook to modify default task data
-		$defaultData	= TodoyuHookManager::callHookDataModifier('project', 'projectDefaultData', $defaultData);
+		$defaultData	= TodoyuHookManager::callHookDataModifier('project', 'project.defaultData', $defaultData);
 
 		return $defaultData;
 	}

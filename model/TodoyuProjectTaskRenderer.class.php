@@ -55,7 +55,7 @@ class TodoyuProjectTaskRenderer {
 			$data['task']['class'] .= ' expanded';
 		}
 
-		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDataBeforeRendering', $data, array($idTask));
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'task.dataBeforeRendering', $data, array($idTask, 'renderListingTask'));
 
 		return Todoyu::render($tmpl, $data);
 	}
@@ -77,7 +77,7 @@ class TodoyuProjectTaskRenderer {
 			'taskIcons'			=> TodoyuProjectTaskManager::getAllTaskIcons($idTask),
 		);
 
-		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDataBeforeRendering', $data, array($idTask));
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'task.dataBeforeRendering', $data, array($idTask, 'renderHeader'));
 
 		return Todoyu::render($tmpl, $data);
 	}

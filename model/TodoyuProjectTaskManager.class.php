@@ -225,7 +225,11 @@ class TodoyuProjectTaskManager {
 
 		self::removeTaskFromCache($idTask);
 
-		return TodoyuRecordManager::updateRecord(self::TABLE, $idTask, $data);
+		$success = TodoyuRecordManager::updateRecord(self::TABLE, $idTask, $data);
+
+		TodoyuHookManager::callHook('project', 'task.update', array($idTask, $data));
+
+		return $success;
 	}
 
 
@@ -234,20 +238,24 @@ class TodoyuProjectTaskManager {
 	 * Add a new task
 	 *
 	 * @param	Array		$data
-	 * @return	Integer
+	 * @return	Integer		Task ID
 	 */
 	public static function addTask(array $data = array()) {
 			// Create task number
-		$idProject	= intval($data['id_project']);
+		$idProject			= intval($data['id_project']);
 		$data['tasknumber'] = TodoyuProjectProjectManager::getNextTaskNumber($idProject);
 
 			// Create sorting flag
-		$idParent	= intval($data['id_parenttask']);
+		$idParent			= intval($data['id_parenttask']);
 		$data['sorting']	= self::getNextSortingPosition($idProject, $idParent);
 
 		$data	= self::setDefaultValuesForNotAllowedFields($data);
 
-		return TodoyuRecordManager::addRecord(self::TABLE, $data);
+		$idTask	= TodoyuRecordManager::addRecord(self::TABLE, $data);
+
+		TodoyuHookManager::callHook('project', 'task.add', array($idTask));
+
+		return $idTask;
 	}
 
 
@@ -286,9 +294,8 @@ class TodoyuProjectTaskManager {
 	 * Delete a task
 	 *
 	 * @param	Integer		$idTask
-	 * @param	Boolean		$deleteSubTasks
 	 */
-	public static function deleteTask($idTask, $deleteSubTasks = true) {
+	public static function deleteTask($idTask) {
 		$data	= array(
 			'deleted'		=> 1,
 			'date_update'	=> NOW
@@ -296,20 +303,27 @@ class TodoyuProjectTaskManager {
 
 		self::updateTask($idTask, $data);
 
+		TodoyuHookManager::callHook('project', 'task.delete', array($idTask));
+
 			// Delete all sub tasks
-		if( $deleteSubTasks ) {
-			$allSubTaskIDs	= self::getAllSubTaskIDs($idTask);
 
-			if( sizeof($allSubTaskIDs) > 0 ) {
-				$where	= 'id IN(' . implode(',', $allSubTaskIDs) . ')';
-				$update	= array(
-					'deleted'		=> 1,
-					'date_update'	=> NOW
-				);
+		$allSubTaskIDs	= self::getAllSubTaskIDs($idTask);
 
-				Todoyu::db()->doUpdate(self::TABLE, $where, $update);
-			}
+		if( sizeof($allSubTaskIDs) > 0 ) {
+			$where	= 'id IN(' . implode(',', $allSubTaskIDs) . ')';
+			$update	= array(
+				'deleted'		=> 1,
+				'date_update'	=> NOW
+			);
+
+			Todoyu::db()->doUpdate(self::TABLE, $where, $update);
 		}
+
+			// Call delete hook for all subtasks
+		foreach($allSubTaskIDs as $idSubTask) {
+			TodoyuHookManager::callHook('project', 'task.delete', array($idSubTask));
+		}
+
 	}
 
 
@@ -328,6 +342,12 @@ class TodoyuProjectTaskManager {
 		);
 
 		TodoyuRecordManager::updateRecords(self::TABLE, $where, $data);
+
+		$allTaskIDs	= TodoyuProjectProjectManager::getAllTaskIDs($idProject);
+
+		foreach($allTaskIDs as $idTask) {
+			TodoyuHookManager::callHook('project', 'task.delete', array($idTask));
+		}
 	}
 
 
@@ -357,7 +377,7 @@ class TodoyuProjectTaskManager {
 			'status' => intval($newStatus)
 		);
 
-		$data	= TodoyuHookManager::callHookDataModifier('project', 'onTaskStatusChanged', $data, array('idTask' => $idTask));
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'onTaskStatusChanged', $data, array($idTask));
 
 		self::updateTask($idTask, $data);
 	}
@@ -393,6 +413,10 @@ class TodoyuProjectTaskManager {
 			$where	= 'id IN(' . implode(',', $taskIDs) . ')';
 
 			Todoyu::db()->doUpdate(self::TABLE, $where, $fieldValues);
+
+			foreach($taskIDs as $idTask) {
+				TodoyuHookManager::callHook('project', 'task.update', array($idTask));
+			}
 		}
 	}
 
@@ -567,7 +591,6 @@ class TodoyuProjectTaskManager {
 		);
 
 		$taskFilter	= new TodoyuProjectTaskFilter($filters);
-//		$taskFilter->enableContainerMode();
 
 		 return $taskFilter->getTaskIDs();
 	}
@@ -885,7 +908,7 @@ class TodoyuProjectTaskManager {
 
 	/**
 	 * Get all task data informations.
-	 * Information from all extensions are merged, labels are parsed and the list is sorted
+	 * Information from all extensions are merged and the list is sorted
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Array
@@ -1391,12 +1414,7 @@ class TodoyuProjectTaskManager {
 		);
 
 			// Call hook to modify default task data
-		$params	= array(
-			$type,
-			$idProject,
-			$idParentTask
-		);
-		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDefaultData', $data, $params);
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'task.defaultData', $data, array($type, $idProject, $idParentTask));
 
 		return $data;
 	}
@@ -1523,7 +1541,7 @@ class TodoyuProjectTaskManager {
 		}
 
 			// Call hook to allow other extensions to set default values
-		$data	= TodoyuHookManager::callHookDataModifier('project', 'defaultsForNotAllowedTaskFields', $data, array('savedData'	=> $original));
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'task.defaultsForNotAllowedFields', $data, array($original));
 
 		return $data;
 	}
@@ -1901,8 +1919,8 @@ class TodoyuProjectTaskManager {
 			}
 
 				// Change container labels
-			$fieldNames	= $form->getFieldnames();
-			$rightFieldSet	= $form->getFieldset('right');
+//			$fieldNames	= $form->getFieldnames();
+//			$rightFieldSet	= $form->getFieldset('right');
 			if( $form->hasField('id_person_owner') ) {
 				$form->getField('id_person_owner')->setAttribute('label', 'project.task.container.attr.person_owner');
 			}
@@ -1912,7 +1930,7 @@ class TodoyuProjectTaskManager {
 		}
 
 			// Call hooks to modify $form
-		$form	= TodoyuHookManager::callHookDataModifier('project', 'modifyFormfieldsForContainer', $form, array('idTask' => $idTask));
+		$form	= TodoyuHookManager::callHookDataModifier('project', 'task.modifyFormfieldsForContainer', $form, array($idTask));
 
 		return $form;
 	}
@@ -1932,6 +1950,7 @@ class TodoyuProjectTaskManager {
 		$idTask		= intval($idTask);
 		$idParent	= intval($idParent);
 		$idProject	= intval($idProject);
+		$extConf	= TodoyuSysmanagerExtConfManager::getExtConf('project');
 
 			// Get original task data
 		$data		= self::getTaskData($idTask);
@@ -1942,33 +1961,14 @@ class TodoyuProjectTaskManager {
 		}
 			// Set new parent (needed for sorting)
 		$data['id_parenttask']	= $idParent;
+		$defaultStatus			= intval($extConf['status']);
+		$data['status']			= $defaultStatus !== 0 ? $defaultStatus : STATUS_PLANNING;
 
 			// Call data modifier hook for task data
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskcopydata', $data, array($idTask, $idParent, $withSubTasks, $idProject));
 
 			// Add new task (with old data)
 		$idTaskNew	= self::addTask($data);
-
-			// Call data modifier hook, so other extensions can modify data if needed
-		$hookData	= array(
-			'idTask'	=> $idTask,
-			'idTaskNew'	=> $idTaskNew,
-			'idParent'	=> $idParent,
-			'idProject'	=> $idProject
-		);
-		$data		= TodoyuHookManager::callHookDataModifier('project', 'taskcopy', $data, $hookData);
-
-			// Set status. Check for editing right and use default status as fallback
-		$extConf		= TodoyuSysmanagerExtConfManager::getExtConf('project');
-		$defaultStatus	= intval($extConf['status']);
-
-		$data['status']		= $defaultStatus !== 0 ? $defaultStatus : STATUS_PLANNING;
-
-			// Remove old task number
-		unset($data['tasknumber']);
-
-			// Update task data
-		self::updateTask($idTaskNew, $data);
 
 			// Copy sub tasks if enabled
 		if( $withSubTasks && $idTask !== $idParent ) {
@@ -1978,6 +1978,8 @@ class TodoyuProjectTaskManager {
 				self::copyTask($idSubTask, $idTaskNew, true, $idProject);
 			}
 		}
+
+		TodoyuHookManager::callHook('project', 'task.copy', $idTask, $idTaskNew);
 
 		return $idTaskNew;
 	}
@@ -2025,7 +2027,7 @@ class TodoyuProjectTaskManager {
 					'tasknumber'	=> TodoyuProjectProjectManager::getNextTaskNumber($idNewProject)
 				);
 
-				Todoyu::db()->updateRecord(self::TABLE, $idSubTask, $subUpdate);
+				self::updateTask($idSubTask, $subUpdate);
 			}
 		}
 
@@ -2302,6 +2304,7 @@ class TodoyuProjectTaskManager {
 	 */
 	public static function lockTask($idTask, $ext = EXTID_PROJECT) {
 		TodoyuLockManager::lock($ext, 'ext_project_task', $idTask);
+		TodoyuHookManager::callHook('project', 'task.lock', array($idTask));
 	}
 
 
@@ -2314,6 +2317,7 @@ class TodoyuProjectTaskManager {
 	 */
 	public static function unlockTask($idTask, $ext = EXTID_PROJECT) {
 		TodoyuLockManager::unlock($ext, 'ext_project_task', $idTask);
+		TodoyuHookManager::callHook('project', 'task.unlock', array($idTask));
 	}
 
 

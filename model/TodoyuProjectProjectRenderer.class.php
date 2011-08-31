@@ -238,13 +238,13 @@ class TodoyuProjectProjectRenderer {
 		$data['assignedPersons']= TodoyuProjectProjectRenderer::renderProjectPersons($idProject);
 
 			// Get project data for info listing
-		$data['properties']		= TodoyuProjectProjectManager::getProjectDataArray($idProject);
+		$data['properties']		= TodoyuProjectProjectManager::getAllProjectProperties($idProject);
 
 			// Get presets data
 		$data['presets']		= TodoyuProjectProjectManager::getProjectPresetDataArray($idProject);
 
 			// Call hook to modify the collected project data
-		$data	= TodoyuHookManager::callHookDataModifier('project', 'projectDataBeforeRendering', $data, array($idProject));
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'project.dataBeforeRender', $data, array($idProject));
 
 			// Get dynamically added details elements
 		$data['dynamicElements']	= TodoyuHookManager::callHook('project', 'projectDetailsDynamicElements', array($idProject));
@@ -558,7 +558,7 @@ class TodoyuProjectProjectRenderer {
 			$data['subtasks'] = self::renderSubTasks($idTask, $idTaskShow);
 		}
 
-		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDataBeforeRendering', $data, array($idTask));
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'task.dataBeforeRendering', $data, array($idTask, 'renderTask'));
 		$tmpl	= 'ext/project/view/task.tmpl';
 
 		return Todoyu::render($tmpl, $data);
@@ -595,7 +595,7 @@ class TodoyuProjectProjectRenderer {
 		$idTask			= 0;
 
 			// Call task create hook
-		TodoyuHookManager::callHook('project', 'task.create');
+		TodoyuHookManager::callHook('project', 'task.create.render');
 
 			// Find project id if not given as parameter
 		if( $idProject === 0 && $idParentTask > 0 ) {
@@ -622,7 +622,7 @@ class TodoyuProjectProjectRenderer {
 		);
 
 			// Call last hook before rendering
-		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskDataBeforeRendering', $data, array($idTask));
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'task.dataBeforeRendering', $data, array($idTask, 'renderNewTaskEdit'));
 
 		return Todoyu::render($tmpl, $data);
 	}
@@ -745,7 +745,7 @@ class TodoyuProjectProjectRenderer {
 		);
 
 		if( ! TodoyuRequest::isAjaxRequest() ) {
-			TodoyuHookManager::callHook('project', 'renderProjects');
+			TodoyuHookManager::callHook('project', 'projects.render');
 		}
 
 		return Todoyu::render($tmpl, $data);

@@ -396,7 +396,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuProjectTaskRights::restrictDelete($idTask);
 
-		TodoyuProjectTaskManager::deleteTask($idTask, true);
+		TodoyuProjectTaskManager::deleteTask($idTask);
 	}
 
 
