@@ -27,17 +27,23 @@
 class TodoyuProjectTaskManager {
 
 	/**
-	 * @var	Array		Expanded tasks in project view
+	 * Expanded tasks in project view
+	 *
+	 * @var	Array
 	 */
 	private static $expandedTaskIDs = null;
 
 	/**
-	 * @var	String		Default ext table for database requests
+	 * Default ext table for database requests
+	 *
+	 * @var	String
 	 */
 	const TABLE = 'ext_project_task';
 
 	/**
-	 * @var	Array		Installed tabs for tasks
+	 * Installed tabs for tasks
+	 *
+	 * @var	Array
 	 */
 	private static $tabs = null;
 

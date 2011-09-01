@@ -27,7 +27,7 @@
 class TodoyuProjectProjecttasktreeActionController extends TodoyuActionController {
 
 	/**
-	 *
+	 * Initialize controller: restrict access (project extension must be allowed)
 	 *
 	 * @param	Array	$params
 	 */

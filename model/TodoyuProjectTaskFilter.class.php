@@ -27,12 +27,16 @@
 class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFilterInterface {
 
 	/**
-	 * @var	String		Default table for database requests
+	 * Default table for database requests
+	 *
+	 * @var	String
 	 */
 	const TABLE = 'ext_project_task';
 
 	/**
-	 * @var	Boolean		Container mode (ignore container status)
+	 * Container mode (ignore container status)
+	 *
+	 * @var	Boolean
 	 */
 	private $containerMode = false;
 

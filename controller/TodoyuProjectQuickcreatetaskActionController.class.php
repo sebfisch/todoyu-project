@@ -27,7 +27,7 @@
 class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionController {
 
 	/**
-	 * Initialize quickcreate controller - restrict access rights
+	 * Initialize quickCreate controller: restrict access (project extension must be allowed)
 	 *
 	 * @param	Array	$params
 	 */

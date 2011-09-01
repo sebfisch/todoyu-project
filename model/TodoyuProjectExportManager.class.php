@@ -18,9 +18,11 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
 /**
+ * Project export manager
  *
+ * @package		Todoyu
+ * @subpackage	Project
  */
 class TodoyuProjectExportManager {
 

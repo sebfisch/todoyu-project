@@ -27,7 +27,9 @@
 class TodoyuProjectActivityManager {
 
 	/**
-	 * @var	String		Default table for database requests
+	 * Default table for database requests
+	 *
+	 * @var	String
 	 */
 	const TABLE = 'ext_project_activity';
 

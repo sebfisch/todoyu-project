@@ -20,13 +20,14 @@
 
 /**
  * ActionController for project preferences
+ *
  * @package		Todoyu
  * @subpackage	Project
  */
 class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 	/**
-	 * Initiate controller: restrict access
+	 * Initialize controller: restrict access (project extension must be allowed)
 	 *
 	 * @param	Array	$params
 	 */

@@ -27,7 +27,7 @@
 class TodoyuProjectPanelwidgetProjectlistActionController extends TodoyuActionController {
 
 	/**
-	 * Check whether use of project area is allowed
+	 * Initialize controller: restrict access (project extension must be allowed)
 	 *
 	 * @param	Array		$params
 	 */

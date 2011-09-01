@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * handles the datasource for the filter widgets
+ * Handles the data source for filter widgets
  *
  * @package		Todoyu
  * @subpackage	project

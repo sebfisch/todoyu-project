@@ -20,12 +20,17 @@
 
 /**
  * ActionController for project preferences
+ *
  * @package		Todoyu
  * @subpackage	Project
  */
 class TodoyuProjectPreferenceActionController extends TodoyuActionController {
 
-
+	/**
+	 * Initialize controller: restrict access (project extension must be allowed)
+	 *
+	 * @param	Array		$params
+	 */
 	public function init(array $params) {
 		Todoyu::restrict('project', 'general:use');
 	}

@@ -26,9 +26,8 @@
  */
 class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 
-
 	/**
-	 * Initialize: restrict use to authorized users
+	 * Initialize controller: restrict access (project extension must be allowed)
 	 *
 	 * @param	Array	$params
 	 */

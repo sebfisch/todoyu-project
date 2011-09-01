@@ -26,6 +26,11 @@
  */
 class TodoyuProjectExtActionController extends TodoyuActionController {
 
+	/**
+	 * Initialize controller: restrict access (project extension must be allowed)
+	 *
+	 * @param	Array	$params
+	 */
 	public function init(array $params) {
 		Todoyu::restrict('project', 'general:use');
 	}

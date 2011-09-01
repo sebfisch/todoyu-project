@@ -39,7 +39,7 @@ class TodoyuProjectExtConfViewHelper {
 				'label'	=> 'project.task.default.date.date_1',
 				'value'	=> '1'
 			),
-			array(	// Creation day + 1 days
+			array(	// Creation day + 1 day
 				'label'	=> 'project.task.default.date.date_2',
 				'value'	=> '2'
 			),

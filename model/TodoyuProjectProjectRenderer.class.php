@@ -27,27 +27,37 @@
 class TodoyuProjectProjectRenderer {
 
 	/**
-	 * @var	String		Extension key
+	 * Extension key
+	 *
+	 * @var	String
 	 */
 	const EXTKEY = 'project';
 
 	/**
-	 * @var	Array		Visible sub tasks in project view
+	 * Visible sub tasks in project view
+	 *
+	 * @var	Array
 	 */
 	private static $visibleSubTaskIDs = null;
 
 	/**
-	 * @var	Array		Rootline of a task which is forced to be open
+	 * Rootline of a task which is forced to be open
+	 *
+	 * @var	Array
 	 */
 	private static $openRootline	= array();
 
 	/**
-	 * @var	Array		List of rendered task IDs
+	 * List of rendered task IDs
+	 *
+	 * @var	Array
 	 */
 	public static $renderedTasks	= array();
 
 	/**
-	 * @var	Array		List of expanded task IDs
+	 * List of expanded task IDs
+	 *
+	 * @var	Array
 	 */
 	public static $expandedTaskIDs	= array();
 
