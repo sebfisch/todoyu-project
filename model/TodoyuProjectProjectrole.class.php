@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Role of a person in a project
+ * Object class for person's role in a project
  *
  * @package		Todoyu
  * @subpackage	Project

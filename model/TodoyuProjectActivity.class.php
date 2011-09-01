@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Task activity
+ * Task activity object
  *
  * @package		Todoyu
  * @subpackage	Project

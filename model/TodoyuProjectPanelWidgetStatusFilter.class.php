@@ -23,6 +23,7 @@
  *
  * @package		Todoyu
  * @subpackage	Project
+ * @abstract
  */
 abstract class TodoyuProjectPanelWidgetStatusFilter extends TodoyuPanelWidget {
 

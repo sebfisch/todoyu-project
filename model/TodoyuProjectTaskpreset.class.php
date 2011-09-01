@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Taskpreset
+ * Taskpreset object
  *
  * @package		Todoyu
  * @subpackage	Project
