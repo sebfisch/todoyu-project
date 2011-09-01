@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.1.2 - not released yet
+	* Bugfix: Task fulltext filter negation fails
 	* Bugfix: TodoyuProjectTaskManager::getTasksInTimeSpanWhereClause() checks now for date_deadline
 	* Bugfix: Escape status field properly for query
 	* Bugfix: Fixed rights check for activity type in quicktask
