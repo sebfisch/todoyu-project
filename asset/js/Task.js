@@ -918,7 +918,7 @@ Todoyu.Ext.project.Task = {
 
 		var idSubTasksContainer	= this.getSubTasksContainerID(idTask);
 
-		Todoyu.Ui.insert(idSubTaskContainer, url, options);
+		Todoyu.Ui.insert(idSubTasksContainer, url, options);
 	},
 
 
