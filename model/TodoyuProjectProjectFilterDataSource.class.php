@@ -172,23 +172,23 @@ class TodoyuProjectProjectFilterDataSource {
 				'value'	=> 'dayaftertomorrow'
 			),
 			array(
-				'label' => Todoyu::Label('LLL:project.filter.project.dyndate.yesterday'),
+				'label' => Todoyu::Label('project.filter.project.dyndate.yesterday'),
 				'value'	=> 'yesterday'
 			),
 			array(
-				'label' => Todoyu::Label('LLL:project.filter.project.dyndate.daybeforeyesterday'),
+				'label' => Todoyu::Label('project.filter.project.dyndate.daybeforeyesterday'),
 				'value'	=> 'daybeforeyesterday'
 			),
 			array(
-				'label' => Todoyu::Label('LLL:project.filter.project.dyndate.currentweek'),
+				'label' => Todoyu::Label('project.filter.project.dyndate.currentweek'),
 				'value'	=> 'currentweek'
 			),
 			array(
-				'label' => Todoyu::Label('LLL:project.filter.project.dyndate.nextweek'),
+				'label' => Todoyu::Label('project.filter.project.dyndate.nextweek'),
 				'value'	=> 'nextweek'
 			),
 			array(
-				'label' => Todoyu::Label('LLL:project.filter.project.dyndate.lastweek'),
+				'label' => Todoyu::Label('project.filter.project.dyndate.lastweek'),
 				'value'	=> 'lastweek'
 			)
 		);

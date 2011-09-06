@@ -6,7 +6,7 @@
 
 	<span class="projectIcons">
 		{foreach $projectIcons projectIcon}
-			<span id="{$projectIcon.id}" class="{$projectIcon.class}" title="{Label $projectIcon.label true}" {if $projetIcon.onclick}onclick="{$projectIcon.onclick}"{/if}></span>
+			<span id="{$projectIcon.id}" class="{$projectIcon.class}" title="{Label $projectIcon.label}" {if $projetIcon.onclick}onclick="{$projectIcon.onclick}"{/if}></span>
 		{/foreach}
 	</span>
 

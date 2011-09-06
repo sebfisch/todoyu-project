@@ -38,7 +38,7 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidgetSearchList {
 		parent::__construct(
 			'project',									// ext key
 			'projectlist',								// panel widget ID
-			'LLL:project.panelwidget-projectlist.title',// widget title text
+			'project.panelwidget-projectlist.title',// widget title text
 			$config,									// widget config array
 			$params										// widget parameters
 		);

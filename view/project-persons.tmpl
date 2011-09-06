@@ -8,7 +8,7 @@
 	<li class="listItem {cycle values="odd,even"} person">
 		{personLabel idPrefix="project_assigned" idRecord=$person.id_project idPerson=$person.id class="name"}
 		<span class="company">{$person.company[0].title}&nbsp;</span>
-		<span class="role">{Label $person.rolelabel true}</span>
+		<span class="role">{Label $person.rolelabel}</span>
 	</li>
 	{/foreach}
 </ul>

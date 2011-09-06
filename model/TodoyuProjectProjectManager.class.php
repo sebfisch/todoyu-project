@@ -527,32 +527,32 @@ class TodoyuProjectProjectManager {
 		$project	= TodoyuProjectProjectManager::getProject($idProject);
 
 		$data['status']	= array(
-			'label'		=> 'LLL:core.global.status',
+			'label'		=> 'core.global.status',
 			'value'		=> $project->getStatusLabel(),
 			'position'	=> 10
 		);
 
 		$data['company']	= array(
-			'label'		=> 'LLL:project.ext.attr.company',
+			'label'		=> 'project.ext.attr.company',
 			'value'		=> $project->getCompany()->getTitle(),
 			'position'	=> 20
 		);
 
 		$data['date_start']	= array(
-			'label'		=> 'LLL:project.ext.attr.date_start',
+			'label'		=> 'project.ext.attr.date_start',
 			'value'		=> TodoyuTime::format($project->getStartDate(), 'D2MlongY4'),
 			'position'	=> 30
 		);
 
 		$data['date_end']	= array(
-			'label'		=> 'LLL:project.ext.attr.date_end',
+			'label'		=> 'project.ext.attr.date_end',
 			'value'		=> TodoyuTime::format($project->getEndDate(), 'D2MlongY4'),
 			'position'	=> 32
 		);
 
 		if( $project->getDeadlineDate() > 0 && (Todoyu::person()->isInternal() || Todoyu::person()->isAdmin()) ) {
 			$data['date_deadline']	= array(
-				'label'		=> 'LLL:project.ext.attr.date_deadline',
+				'label'		=> 'project.ext.attr.date_deadline',
 				'value'		=> TodoyuTime::format($project->getDeadlineDate(), 'D2MlongY4'),
 				'position'	=> 34
 			);

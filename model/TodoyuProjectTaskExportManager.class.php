@@ -87,7 +87,7 @@ class TodoyuProjectTaskExportManager {
 			Todoyu::Label('project.task.attr.status')				=> $task->getStatusLabel(),
 			Todoyu::Label('project.task.attr.activity')				=> $task->getActivityLabel(),
 			Todoyu::Label('project.task.attr.estimated_workload')	=> TodoyuTime::formatTime($task->getEstimatedWorkload()),
-			Todoyu::Label('project.task.attr.is_acknowledged')		=> $task->isAcknowledged() ? '' : Todoyu::Label('LLL:project.task.attr.notAcknowledged')
+			Todoyu::Label('project.task.attr.is_acknowledged')		=> $task->isAcknowledged() ? '' : Todoyu::Label('project.task.attr.notAcknowledged')
 		);
 
 		$publicKey		= $task->isPublic() ? 'public' : 'private';

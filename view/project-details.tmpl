@@ -5,7 +5,7 @@
 		<div class="content overflow">
 			<dl>
 			{foreach $properties info}
-				<dt>{Label $info.label true}</dt>
+				<dt>{Label $info.label}</dt>
 				<dd>{$info.value}</dd>
 			{/foreach}
 			</dl>
@@ -29,7 +29,7 @@
 			{foreach $presets preset}
 				{$class= cycle(values="odd,even")}
 				<div class="presetRow {$class}">
-					<dt>{Label $preset.label true}</dt>
+					<dt>{Label $preset.label}</dt>
 					<dd>{$preset.value}</dd>
 				</div>
 			{/foreach}
