@@ -925,17 +925,20 @@ class TodoyuProjectProjectManager {
 	public static function getProjectsPersonsIDs(array $projectIDs = array(), $withAccount = false) {
 		$projectIDs	= TodoyuArray::intval($projectIDs, true, true);
 
+			// Stop if no projects given
+		if( sizeof($projectIDs) === 0 ) {
+			return array();
+		}
+
 		$fields	= '	pe.id';
 		$table	= '	ext_contact_person pe,
 					ext_project_role pr,
 					ext_project_mm_project_person mmpp';
 
-		$where	= '		mmpp.id_person	= pe.id ';
-		if( count($projectIDs) > 0 ) {
-			$where	.= ' AND mmpp.id_project	IN (' . implode(',', $projectIDs) . ')';
-		}
-		$where .= ' AND	mmpp.id_role	= pr.id
-					AND	pe.deleted		= 0';
+		$where	= '		mmpp.id_person	= pe.id '
+				. ' AND mmpp.id_project	IN (' . implode(',', $projectIDs) . ')'
+				. ' AND	mmpp.id_role	= pr.id'
+				. '	AND	pe.deleted		= 0';
 
 		$order	= '	pe.lastname,
 					pe.firstname';
