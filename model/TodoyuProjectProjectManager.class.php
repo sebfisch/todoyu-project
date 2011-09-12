@@ -923,7 +923,7 @@ class TodoyuProjectProjectManager {
 	 * @return	Array
 	 */
 	public static function getProjectsPersonsIDs(array $projectIDs = array(), $withAccount = false) {
-		$projectIDs	= TodoyuArray::intval($projectIDs);
+		$projectIDs	= TodoyuArray::intval($projectIDs, true, true);
 
 		$fields	= '	pe.id';
 		$table	= '	ext_contact_person pe,
@@ -931,7 +931,7 @@ class TodoyuProjectProjectManager {
 					ext_project_mm_project_person mmpp';
 
 		$where	= '		mmpp.id_person	= pe.id ';
-		if( ! empty($projectIDs) ) {
+		if( count($projectIDs) > 0 ) {
 			$where	.= ' AND mmpp.id_project	IN (' . implode(',', $projectIDs) . ')';
 		}
 		$where .= ' AND	mmpp.id_role	= pr.id
