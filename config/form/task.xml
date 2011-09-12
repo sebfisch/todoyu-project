@@ -93,7 +93,7 @@
 					<restrict>
 						<allow ext="project" right="edittaskdetail:editPersonAssigned" />
 					</restrict>
-					 <required />
+					<required />
 				</field>
 
 				<field type="selectgrouped" name="id_person_owner">

@@ -12,7 +12,7 @@
 	<label index="legend.quicktask.basics">Basic information about your task</label>
 	<label index="legend.admin.basics">Default settings of your tasks</label>
 	<label index="legend.admin.quicktask">Default behaviour for quicktasks</label>
-	<label index="legend.admin.fallbacks">Fallback defaults for persons with limited rights </label>
+	<label index="legend.admin.fallbacks">Fallback defaults for persons with limited rights</label>
 	<label index="legend.admin.projectrole.record.general">Project Role</label>
 	<label index="legend.admin.activity.record.general">Activity Type</label>
 	<label index="legend.admin.taskpreset.record.general">Default settings of tasks</label>
