@@ -31,7 +31,7 @@
 	<label index="container.addcontainer">Додај подређен контејнер</label>
 	<label index="container.clone">Клонирај контејнер</label>
 	<label index="container.copy">Копирај (и убаци) контејнер</label>
-	<label index="container.cut"> Изрези (и убаци) контејнер</label>
+	<label index="container.cut">Изрези (и убаци) контејнер</label>
 	<label index="container.delete">Избриши контејнер</label>
 	<label index="taskstatus">Статус задатка</label>
 	<label index="taskstatus.planning:see">Види: У плану</label>
