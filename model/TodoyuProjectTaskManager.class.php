@@ -1985,7 +1985,7 @@ class TodoyuProjectTaskManager {
 			}
 		}
 
-		TodoyuHookManager::callHook('project', 'task.copy', $idTask, $idTaskNew);
+		TodoyuHookManager::callHook('project', 'task.copy', array($idTask, $idTaskNew));
 
 		return $idTaskNew;
 	}

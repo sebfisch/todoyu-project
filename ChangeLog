@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.1.2 - not released yet
+	* Bugfix: Clone task fails (ticket #214)
 	* Bugfix: Task fulltext filter negation fails
 	* Bugfix: TodoyuProjectTaskManager::getTasksInTimeSpanWhereClause() checks now for date_deadline
 	* Bugfix: Escape status field properly for query
@@ -9,7 +10,7 @@ project 1.1.2 - not released yet
 	* Change: Moved filterset optgroup to top of filter options
 	* Change: Estimated time of tasks not visible for non-internal persons anymore
 	* Change: Check for task status edit right before showing the option to cut a task
-	* Change: Removed unused formfield rights check in admin forms
+	* Change: Removed unused form field rights check in admin forms
 
 project 1.1.1 - 2011-07-25
 	* Bugfix: Prevented multi-occuring of identical task elements within same page (removed sub tasks expand-trigger from lost tasks)
