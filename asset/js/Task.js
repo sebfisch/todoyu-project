@@ -585,7 +585,9 @@ Todoyu.Ext.project.Task = {
 		var show	= this.getSubTasks(idTask, true).length > 0;
 		var trigger	= this.getSubTasksExpandTrigger(idTask);
 
-		trigger[show ? 'addClassName' : 'removeClassName']('expandable');
+		if( Todoyu.exists(trigger) ) {
+			trigger[show ? 'addClassName' : 'removeClassName']('expandable');
+		}
 	},
 
 

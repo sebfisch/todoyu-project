@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.1.2 - not released yet
+	* Bugfix: JS error on cut+paste (sub)task (ticket #215)
 	* Bugfix: Clone task fails (ticket #214)
 	* Bugfix: Task fulltext filter negation fails
 	* Bugfix: TodoyuProjectTaskManager::getTasksInTimeSpanWhereClause() checks now for date_deadline
