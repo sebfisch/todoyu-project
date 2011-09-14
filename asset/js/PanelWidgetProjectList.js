@@ -30,7 +30,7 @@ Todoyu.Ext.project.PanelWidget.ProjectList = Class.create(Todoyu.PanelWidgetSear
 	 * Initialize with search word
 	 *
 	 * @method	initialize
-	 * @param	{Todoyu.PanelWidgetSearchList.initialize}	$super
+	 * @param	{Function}	$super		Parent constructor: Todoyu.PanelWidgetSearchList.initialize
 	 * @param	{String}	search
 	 */
 	initialize: function($super, search) {

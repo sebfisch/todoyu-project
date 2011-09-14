@@ -37,6 +37,8 @@ Todoyu.Ext.project.Headlet.QuickTask = Class.create(Todoyu.Headlet, {
 	 * Initialize quicktask headlet
 	 *
 	 * @method	init
+	 * @param	{Function}		$super		Parent constructor: Todoyu.Headlet.initialize
+	 * @param	{String}		name
 	 */
 	initialize: function($super, name) {
 		$super(name);
