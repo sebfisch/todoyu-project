@@ -11,7 +11,7 @@
 			{/if}
 			&nbsp;
 		</span>
-		<span class="projectName" title="{if $task.is_container}{Label project.task.container}{else}{Label project.task.task}{/if}: {htmlencode $task.title}  (ID: {$task.id})">
+		<span class="projectName" title="{if $task.is_container}{Label project.task.container}{else}{Label project.task.task}{/if}: {htmlencode $task.title} (ID: {$task.id})">
 			{htmlencode(truncate($task.title 70 break=true))}
 		</span>
 	</span>
