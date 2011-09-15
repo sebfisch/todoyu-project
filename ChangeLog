@@ -1,6 +1,6 @@
 todoyu project extension changelog
 
-project 1.1.2 - not released yet
+project 1.1.2 - 2011-09-15
 	* Bugfix: JS error on cut+paste (sub)task (ticket #215)
 	* Bugfix: Clone task fails (ticket #214)
 	* Bugfix: Task fulltext filter negation fails
@@ -8,10 +8,10 @@ project 1.1.2 - not released yet
 	* Bugfix: Escape status field properly for query
 	* Bugfix: Fixed rights check for activity type in quicktask
 	* Bugfix: Use preset config also for activity type (task for one if no preset is set)
-	* Change: Moved filterset optgroup to top of filter options
-	* Change: Estimated time of tasks not visible for non-internal persons anymore
-	* Change: Check for task status edit right before showing the option to cut a task
-	* Change: Removed unused form field rights check in admin forms
+	* Changed: Moved filterset optgroup to top of filter options
+	* Changed: Estimated time of tasks not visible for non-internal persons anymore
+	* Changed: Check for task status edit right before showing the option to cut a task
+	* Changed: Removed unused form field rights check in admin forms
 
 project 1.1.1 - 2011-07-25
 	* Bugfix: Prevented multi-occuring of identical task elements within same page (removed sub tasks expand-trigger from lost tasks)
@@ -44,7 +44,6 @@ project 1.1.0 - 2011-06-17
 project 1.0.8
 	* Bugfix: dynamic labels in task/container were not localized to any other than default language
 	* Bugfix: Newly created tasks that are assigned to the creator person were not set acknowledged initially
- 	* Added: Changelog
 	* Added: Negation of fulltext task filter
 	* Bugfix: Container header could contain non-existing date_end instead of date_deadline
 	* Changed: Unified displayed date in normal and listing task template
