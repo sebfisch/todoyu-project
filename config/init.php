@@ -152,7 +152,7 @@ Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectList']['maxProjects']	= 30;
 /* -----------------------
 	Add filter exports
    ----------------------- */
-TodoyuSearchActionPanelManager::addExport('task', 'csvexport', 'TodoyuProjectTaskExportManager::exportCSV', 'project.task.export.csv', 'taskExportCsv', 'project:export:taskcsv');
-TodoyuSearchActionPanelManager::addExport('project', 'csvexport', 'TodoyuProjectExportManager::exportCSV', 'project.ext.export.csv', 'projectExportCsv', 'project:export:projectcsv');
+TodoyuSearchActionPanelManager::addExport('task', 'csvexport', 'TodoyuProjectTaskExportManager::exportCSV', 'project.task.export.csv', 'exportCsv', 'project:export:taskcsv');
+TodoyuSearchActionPanelManager::addExport('project', 'csvexport', 'TodoyuProjectExportManager::exportCSV', 'project.ext.export.csv', 'exportCsv', 'project:export:projectcsv');
 
 ?>
