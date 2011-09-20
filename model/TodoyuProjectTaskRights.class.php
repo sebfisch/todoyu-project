@@ -173,7 +173,11 @@ class TodoyuProjectTaskRights {
 		$project	= $task->getProject();
 		$status		= $project->getStatus();
 
-		if( in_array($status, Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing']) || $project->isLocked() ) {
+		if( $project->isLocked() ) {
+			return false;
+		}
+
+		if( in_array($status, Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing'])  ) {
 			return false;
 		}
 
