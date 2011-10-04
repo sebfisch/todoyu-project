@@ -547,7 +547,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 		} else {
 			drag.remove();
 			this.ext.TaskTree.loadSubTasks(idTaskDrop, function(idTask){
-				this.ext.TaskTree.toggleSubTasksTriggerIcon(idTask);
+				this.ext.TaskTree.setSubtaskTriggerExpanded(idTask, true);
 				this.ext.Task.getSubTasksContainer(idTaskDrop).insert(drag);
 				drag.highlight();
 				this.tree.onChange(idTaskDrag, idTask, 'in');
