@@ -371,6 +371,22 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
+	 * Save new task sorting after drag'n'drop sorting
+	 *
+	 * @param	Array	$params
+	 */
+	public function dragdropAction(array $params) {
+//		$idProject	= intval($params['project']);
+		$idTaskDrag	= intval($params['taskDrag']);
+		$idTaskDrop	= intval($params['taskDrop']);
+		$position	= trim($params['position']);
+
+		TodoyuProjectTaskManager::moveTask($idTaskDrag, $idTaskDrop, $position);
+	}
+
+
+
+	/**
 	 * 'acknowledge' action method
 	 *
 	 * @param	Array	$params

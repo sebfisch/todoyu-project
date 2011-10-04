@@ -1,67 +1,113 @@
 /* ------------
 	Task
    ----------- */
-.task { }
 
-.task h3 {
-	display:block;
-	position:relative;
-	height:auto !important;
-	height:1px;
-	padding:4px 0 4px 0;
-	clear:both;
-	cursor:pointer;
-	border-bottom:1px solid #ddd;
-	background-color:transparent;
-}
-.tasks .expanded h3,
-.tasks .subtasks .expanded h3 {
-	background-color:#e2e2e2;
-	border-bottom:none;
-	font-weight:bold;
-}
-.tasks .running h3,
-.tasks .subtasks .running h3 {
-	background-color:#f2f2d2;
-}
+/*.tasks .expanded h3,*/
+/*.tasks .subtasks .expanded h3 {*/
+	/*background-color:#e2e2e2;*/
+	/*border-bottom:none;*/
+	/*font-weight:bold;*/
+/*}*/
+/* @todo move to timetracking */
 
-.tasks .subtasks h3 {
-	background-color:transparent;
-	font-weight:normal;
+
+
+/*.tasks .subtasks h3 {*/
+	/*background-color:transparent;*/
+	/*font-weight:normal;*/
+/*}*/
+
+
+
+
+.taskListing .task .headLabel {
+	padding-left:15px;
 }
 
+.task {
+
+}
 
 
 /* --------------------
 	Task header
    -------------------- */
-.task h3 a.expandable {
+.task h3 {
 	display:block;
-	position:absolute;
-	top:0;
-	left:10px;
-	height:20px;
-	width:15px;
-	background:url(../../../../core/asset/img/tree-icons.png) no-repeat 1px -23px;
-	z-index:1;
+	position:relative;
+	/*height:auto !important;*/
+	/*height:1px;*/
+	/*padding:4px 0 4px 0;*/
+	clear:both;
+	background-color:transparent;
+	border-bottom:1px solid #DDD;
+	height:22px;
+	padding:0;
+}
+.task.expanded h3 {
+	background-color:#e2e2e2;
+	font-weight:bold;
 }
 
-.task h3 a.expanded {
-	height:20px;
-	width:15px;
+.task .statusColor {
+	position: absolute;
+	width:1px;
+	height:22px;
+	left:0;
+	top:0;
+	border-left-width:4px;
+	border-left-style:solid;
+}
+
+.task .dndHandle {
+	position: absolute;
+	width:12px;
+	height:22px;
+	left:-4px;
+	top:0;
+	cursor: n-resize;
+	/*background-color: #F0F;*/
+	/*opacity: 0.2;*/
+}
+
+
+.task h3 span.subtaskTrigger {
+	display:inline-block;
+	/*position:absolute;*/
+	/*top:0;*/
+	/*left:10px;*/
+	height:22px;
+	width:13px;
+	/*z-index:1;*/
+	margin-left:10px;
+
+}
+.task h3 span.subtaskTrigger.expandable {
+	cursor:pointer;
+	background:url(../../../../core/asset/img/tree-icons.png) no-repeat 1px -23px;
+}
+
+.task h3 span.subtaskTrigger.expandable.expanded {
 	background:url(../../../../core/asset/img/tree-icons.png) no-repeat 1px 7px;
 }
 
 .task h3 .headLabel {
 	display:inline-block;
-	height:auto !important;
-	height:1px;
-	margin:-4px 0 -4px 0;
-	padding:4px 0 4px 21px;
-	border-left-width:4px;
-	border-left-style:solid;
-	min-height:14px;
+	padding: 4px;
+	/*height:auto !important;*/
+	/*height:1px;*/
+	/*margin:-4px 0 -4px 0;*/
+	/*padding:4px 0 4px 21px;*/
+	/*border-left-width:4px;*/
+	/*border-left-style:solid;*/
+	/*min-height:14px;*/
+	cursor:pointer;
+	/*background-color: #F0A;*/
 }
+
+/*.task.container h3 .headLabel {*/
+	/*padding-left:17px;*/
+/*}*/
 
 .task h3 .headLabel span {
 	display:inline-block;
@@ -73,6 +119,7 @@
 
 .task h3 .headLabel .projectName {
 	margin-left:5px;
+	max-width: 360px;
 }
 
 /* begin of styles only for container element */
@@ -81,22 +128,25 @@
 }
 */
 
-.task.container h3 {
+/* -------------------------
+	Task header (container)
+   ------------------------ */
+
+.task.container > h3 {
 	background-color:#f7f7f7;
 	border-right-width:4px;
 	border-right-style:solid;
 }
-.task.container h3 .headLabel {
+.task.container > h3 > .statusColor {
 	border-left-width:8px;
-	padding-left:17px;
 }
 
-.task.container .details {
-	border-bottom:1px solid #ddd;
+.task.container > .details {
+	/*border-bottom:1px solid #ddd;*/
 }
 /* end of styles only for container element */
 
-.task h3 span.taskHeadExtras {
+.task h3 .taskHeadExtras {
 	display:inline-block;
 	position:absolute;
 	right:145px;
@@ -107,20 +157,20 @@
 	border-right:1px solid #ddd;
 	padding:2px 3px 1px 3px;
 }
-.task.container h3 span.taskHeadExtras {
+.task.container > h3 > .taskHeadExtras {
 	right:141px;
 	border-right:0 solid #ddd;
 }
-.task.expanded h3 span.taskHeadExtras,
-.task.expanded h3 span.taskIcons {
+.task.expanded h3 .taskHeadExtras,
+.task.expanded h3 .taskIcons {
 	border-color:#ccc;
 }
 
-.task h3 span.taskHeadExtras span {
+.task h3 .taskHeadExtras span {
 	cursor:default;
 }
 
-.task h3 span.taskNumber {
+.task h3 .taskNumber {
 	display:inline-block;
 	position:absolute;
 	top:4px;
@@ -128,7 +178,7 @@
 	width:45px;
 	cursor:text;
 }
-.task.container h3 span.taskNumber {
+.task.container > h3 > .taskNumber {
 	right:89px;
 }
 
@@ -137,11 +187,6 @@
 	width:420px;
 	padding:2px 0;
 	margin-top:-2px;
-}
-
-.running h3 .headLabel span,
-.running h3 span.taskNumber {
-	font-weight:bold;
 }
 
 
@@ -155,11 +200,11 @@
 	height:16px;
 	width:75px;
 	overflow:hidden;
-	margin-top:-2px;
+	margin-top:2px;
 	padding:0 3px 1px 3px;
 	border-left:1px solid #ddd;
 }
-.task.container span.taskIcons {
+.task.container > h3 > .taskIcons {
 	width:71px;
 }
 
@@ -221,7 +266,7 @@
 }
 
 .task .details {
-	border-bottom-color:#aaaaaa;
+	/*border-bottom-color:#aaaaaa;*/
 }
 
 	.tasks .task .details .data {
@@ -326,7 +371,7 @@
 	/* task tabs content */
 	.task .tabContent {
 		background-color:#e3eace;
-		border-bottom:1px solid #ddd;
+		/*border-bottom:1px solid #ddd;*/
 	}
 
 	.task .tabContent .tab {
@@ -351,21 +396,6 @@
 		height:30px;
 		background:#d6dcc5 url(../../../../core/asset/img/toggle.png) no-repeat 0 -65px;
 	}
-
-#taskList .activeTabContent .taskOptionBlock {
-	position:relative;
-	padding:5px;
-	margin:0 20px 5px 20px;
-	border:1px solid #0065a6;
-	background:#fff;
-}
-
-#taskList .activeTabContent {
-	padding:10px 0 5px 0;
-	border-top:1px solid #fff;
-	border-bottom:1px solid #fff;
-	background:#d5dee5;
-}
 
 #inlineEditTask .innerBox { /* resource planning inline task editor */
 	margin-top:-20px;

@@ -86,6 +86,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 			if( idTask !== 0 ) {
 				this.ext.Task.scrollTo(idTask);
 			}
+			this.ext.TaskTree.initSortable();
 		} else {
 			this.addNewProject(idProject, idTask);
 		}
@@ -184,6 +185,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		this.removeSurplusProject();
 		this.displayActiveProject(idProject);
 
+		this.ext.TaskTree.initSortable();
 		this.ext.ContextMenuTask.attach();
 		this.ext.ContextMenuProject.attach();
 

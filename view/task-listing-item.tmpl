@@ -1,7 +1,8 @@
 <div id="task-{$task.id}" class="task status{ucfirst $task.statuskey} {$task.class}">
-	<h3 id="task-{$task.id}-header" class="contextmenutask bcStatus{$task.status}" name="task-{$task.id}" onclick="Todoyu.Ext.project.Task.toggleDetails({$task.id})">
+	<h3 id="task-{$task.id}-header" class="contextmenutask bcStatus{$task.status}" name="task-{$task.id}">
+		<span class="statusColor bcStatus{$task.status}"></span>
+		<span class="headLabel" title="{htmlencode $task.fulltitle}" onclick="Todoyu.Ext.project.Task.toggleDetails({$task.id})">
 
-		<span class="headLabel bcStatus{$task.status}" title="{htmlencode $task.fulltitle}">
 			<span class="taskDate date" title="{Label core.global.deadline}: {if $task.type === constant('TASK_TYPE_TASK') && $task.date_end > 0}{dateFormat $task.date_end D2M2Y2}{else}{dateFormat $task.date_deadline D2M2Y2}{/if} / {Label core.global.start}: {dateFormat $task.date_start D2M2Y2}">
 				{if $task.type === constant('TASK_TYPE_TASK') && $task.date_end > 0}
 					{dateFormat $task.date_end D2M2Y2}

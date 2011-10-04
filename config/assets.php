@@ -119,6 +119,14 @@ Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 		array(
 			'file' => 'ext/project/asset/js/Portal.js',
 			'position' => 120,
+		),
+		array(
+			'file' => 'ext/project/asset/js/TaskTreeSortable.js',
+			'position' => 130,
+		),
+		array(
+			'file' => 'ext/project/asset/js/TaskTreeSortableNode.js',
+			'position' => 131,
 		)
 	),
 	'css' => array(

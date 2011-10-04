@@ -136,7 +136,7 @@ Todoyu.Ext.project.Task.Edit = {
 	 * @param	{Element}	form
 	 */
 	save: function(form) {
-		Todoyu.Ui.saveRTE();
+		Todoyu.Ui.closeRTE(form);
 
 		$(form).request({
 			parameters: {
@@ -158,8 +158,6 @@ Todoyu.Ext.project.Task.Edit = {
 	onSaved: function(form, response) {
 		var idTask		= response.getTodoyuHeader('idTask');
 		var idTaskOld	= response.getTodoyuHeader('idTaskOld');
-
-		Todoyu.Ui.closeRTE(form);
 
 		var notificationIdentifier	= 'project.task.saved';
 

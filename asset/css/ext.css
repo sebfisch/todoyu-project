@@ -91,9 +91,9 @@ h1.extIconProject .title {
 }
 
 
-.project h3 {
+.project h3.projectheader {
 	background-color:transparent;
-	border-bottom:1px solid #ddd;
+	/*border-bottom:1px solid #ddd;*/
 	clear:both;
 	cursor:pointer;
 	display:block;
@@ -280,4 +280,21 @@ fieldset.defaultsforlimited {
 	margin-top:10px;
 	border-top:1px solid #e3e3e3;
 	padding-top:10px;
+}
+
+
+
+
+
+
+div.task h3.dragDropActiveIn {
+	background-color: yellow;
+}
+
+div.task h3.dragDropActiveBefore {
+	border-top: 5px solid yellow;
+}
+
+div.task h3.dragDropActiveAfter {
+	border-bottom: 5px solid yellow;
 }

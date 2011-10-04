@@ -183,8 +183,8 @@ class TodoyuProjectTaskClipboard {
 			// Copy or move the task
 		if( $dataClipboard['mode'] === 'copy' ) {
 			$idNewTask = TodoyuProjectTaskManager::copyTask($dataClipboard['task'], $idParentTask, $dataClipboard['subtasks'], $workingTask['id_project']);
-		} elseif( $dataClipboard['mode'] === 'cut' ) {
-			$idNewTask = TodoyuProjectTaskManager::moveTask($dataClipboard['task'], $idParentTask, $workingTask['id_project']);
+		} else {
+			$idNewTask = TodoyuProjectTaskManager::changeTaskParent($dataClipboard['task'], $idParentTask, $workingTask['id_project']);
 		}
 
 			// Clear clipboard
@@ -217,7 +217,7 @@ class TodoyuProjectTaskClipboard {
 		if( $dataClipboard['mode'] === 'copy' ) {
 			$idNewTask = TodoyuProjectTaskManager::copyTask($dataClipboard['task'], 0, $dataClipboard['subtasks'], $idProject);
 		} elseif( $dataClipboard['mode'] === 'cut' ) {
-			$idNewTask = TodoyuProjectTaskManager::moveTask($dataClipboard['task'], 0, $idProject);
+			$idNewTask = TodoyuProjectTaskManager::changeTaskParent($dataClipboard['task'], 0, $idProject);
 		}
 
 			// Clear clipboard

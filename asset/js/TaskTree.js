@@ -31,6 +31,8 @@ Todoyu.Ext.project.TaskTree = {
 	 */
 	ext:	Todoyu.Ext.project,
 
+	sortable: null,
+
 
 
 	/**
@@ -40,6 +42,49 @@ Todoyu.Ext.project.TaskTree = {
 	 */
 	init: function() {
 		this.installObservers();
+		this.initSortable();
+	},
+
+
+
+	/**
+	 * Initialize sortable tree
+	 */
+	initSortable: function() {
+		var idProject		= this.getProjectID();
+		var taskContainer	= $('project-' + idProject + '-tasks');
+
+		this.sortable = new this.Sortable(taskContainer, {
+			onChange: this.onSortingChange.bind(this, idProject)
+		});
+	},
+
+
+	reloadSortable: function() {
+		this.sortable.reload();
+	},
+	
+
+
+	onSortingChange: function(idProject, idTaskDragged, idTaskDrop, position) {
+		var url		= Todoyu.getUrl('project', 'task');
+		var options	= {
+			parameters: {
+				action: 	'dragdrop',
+				project: 	idProject,
+				taskDrag:	idTaskDragged,
+				taskDrop:	idTaskDrop,
+				position:	position
+			},
+			onComplete: this.onSortingSaved.bind(this, idProject, idTaskDragged, idTaskDrop, position)
+		};
+
+		Todoyu.send(url, options);
+	},
+
+
+	onSortingSaved: function( idProject, idTaskDragged, idTaskDrop, position, response) {
+		Todoyu.notifySuccess('Saved new task position', 'taskDragDrop');
 	},
 
 
@@ -138,6 +183,7 @@ Todoyu.Ext.project.TaskTree = {
 	 */
 	onUpdated: function(response) {
 		this.addContextMenu();
+		this.reloadSortable();
 	},
 
 
@@ -174,25 +220,18 @@ Todoyu.Ext.project.TaskTree = {
 	 * Toggle display of sub tasks and save resulting display state of given given task inside the task tree(, load sub tasks if toggled to be shown and not loaded yet)
 	 *
 	 * @method	toggleSubTasks
-	 * @param	{Event}		event
 	 * @param	{Number}	idTask
+	 * @param	{Function}	callback		Will get the task ID as parameter
 	 */
-	toggleSubTasks: function(event, idTask) {
-		if( event ) {
-			Todoyu.Ui.stopEventBubbling(event);
-		}
-
+	toggleSubTasks: function(idTask, callback) {
 			// Load sub tasks if they are not already loaded
-		if( ! this.areSubTasksLoaded(idTask) ) {
-			this.loadSubTasks(idTask, this.onSubTasksToggled.bind(this));
-		} else {
+		if( this.areSubTasksLoaded(idTask) ) {
 			$('task-' + idTask + '-subtasks').toggle();
 			this.saveSubTaskOpenStatus(idTask, $('task-' + idTask + '-subtasks').visible());
-			this.onSubTasksToggled(idTask);
+			this.onSubTasksToggled(idTask, callback);
+		} else {
+			this.loadSubTasks(idTask, this.onSubTasksToggled.bind(this, idTask, callback));
 		}
-
-			// Toggle expanding icon
-		this.toggleSubTasksTriggerIcon(idTask);
 	},
 
 
@@ -201,10 +240,19 @@ Todoyu.Ext.project.TaskTree = {
 	 * Handler when sub tasks are toggled
 	 *
 	 * @method	onSubTasksToggled
-	 * @param	{Number}	idTask
+	 * @param	{Number}		idTask
+	 * @param	{Function}		callback
+	 * @param	{Number}		idTaskAgain
+	 * @param	{Ajax.Response}	response
 	 */
-	onSubTasksToggled: function(idTask) {
+	onSubTasksToggled: function(idTask, callback, idTaskAgain, response) {
+		if( callback ) {
+			callback(idTask);
+		}
+		this.reloadSortable();
 
+			// Toggle expanding icon
+		this.toggleSubTasksTriggerIcon(idTask);
 	},
 
 
@@ -215,9 +263,9 @@ Todoyu.Ext.project.TaskTree = {
 	 * @method	expandSubTasks
 	 * @param	{Number}	idTask
 	 */
-	expandSubTasks: function(idTask) {
+	expandSubTasks: function(idTask, callback) {
 		if( ! this.areSubTasksVisible(idTask) ) {
-			this.toggleSubTasks(false, idTask);
+			this.toggleSubTasks(idTask, callback);
 		}
 	},
 
@@ -230,7 +278,7 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	{Number}	idTask
 	 */
 	toggleSubTasksTriggerIcon: function(idTask) {
-		$('task-' + idTask + '-subtasks-trigger').toggleClassName('expanded');
+		$('task-' + idTask + '-subtasks-trigger').addClassName('expandable').toggleClassName('expanded');
 	},
 
 
@@ -256,7 +304,9 @@ Todoyu.Ext.project.TaskTree = {
 	 * @return	{Boolean}
 	 */
 	areSubTasksVisible: function(idTask) {
-		return $('task-' + idTask + '-subtasks').visible();
+		var subTaskContainer = $('task-' + idTask + '-subtasks');
+
+		return subTaskContainer && subTaskContainer.visible();
 	},
 
 
@@ -280,7 +330,7 @@ Todoyu.Ext.project.TaskTree = {
 		};
 		var target	= 'task-' + idTask;
 
-		Todoyu.Ui.append(target, url, options);
+		Todoyu.Ui.insert(target, url, options);
 	},
 
 
@@ -294,7 +344,8 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	{Ajax.Response}	response
 	 */
 	onSubTasksLoaded: function(idTask, callback, response) {
-		Todoyu.Ext.project.ContextMenuTask.attach();
+		this.ext.Task.addContextMenu(idTask);
+		this.ext.TaskTree.reloadSortable();
 
 		if( typeof callback === 'function' ) {
 			callback(idTask, response);

@@ -1202,7 +1202,7 @@ class TodoyuProjectTaskManager {
 				'id'		=> 'task-' . $idTask . '-notacknowledged',
 				'class'		=> 'notAcknowledged',
 				'label'		=> 'project.task.attr.notAcknowledged',
-				'onclick'	=> 'Todoyu.Ext.project.Task.setAcknowledged(event, ' . $idTask . ')',
+				'onclick'	=> 'Todoyu.Ext.project.Task.setAcknowledged(' . $idTask . ')',
 				'position'	=> 100
 			);
 		}
@@ -2001,7 +2001,7 @@ class TodoyuProjectTaskManager {
 	 * @param	Integer		$idProject
 	 * @return	Integer
 	 */
-	public static function moveTask($idTask, $idParentTask, $idProject = 0) {
+	public static function changeTaskParent($idTask, $idParentTask, $idProject = 0) {
 		$idTask			= intval($idTask);
 		$idParentTask	= intval($idParentTask);
 		$idProject		= intval($idProject);
@@ -2012,9 +2012,10 @@ class TodoyuProjectTaskManager {
 			// Basic update
 		$update		= array(
 			'id_parenttask'	=> $idParentTask,
-			'id_project'	=> $idNewProject
+			'id_project'	=> $idNewProject,
+			'sorting'		=> self::getNextSortingPosition($idNewProject, $idParentTask)
 		);
-
+		
 			// If project changed, generate a new task number
 		if( $taskData['id_project'] != $idNewProject ) {
 			$update['tasknumber']	= TodoyuProjectProjectManager::getNextTaskNumber($idNewProject);
@@ -2038,6 +2039,23 @@ class TodoyuProjectTaskManager {
 		}
 
 		return $idTask;
+	}
+
+
+
+	/**
+	 * Move task to new position
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Integer		$idTaskRef
+	 * @param	String		$position
+	 */
+	public static function moveTask($idTask, $idTaskRef, $position = 'in') {
+		if( $position === 'in' ) {
+			self::changeTaskParent($idTask, $idTaskRef);
+		} elseif( $position === 'after' || $position === 'before' ) {
+			self::changeTaskOrder($idTask, $idTaskRef, $position);
+		}
 	}
 
 
@@ -2077,7 +2095,7 @@ class TodoyuProjectTaskManager {
 		$after		= strtolower(trim($moveMode)) === 'after';
 
 			// 1. Move other tasks which are between the move and the ref task
-		$update	= array();
+		$updateOthers	= array();
 
 			// Adjust the reference sorting position
 		$refSort= $after ? $taskRef['sorting'] /*+ 1*/ : $taskRef['sorting'] - 1;
@@ -2086,11 +2104,11 @@ class TodoyuProjectTaskManager {
 		if( $taskMove['sorting'] < $taskRef['sorting'] ) {
 			$min	= $taskMove['sorting'];
 			$max	= $refSort;
-			$update['sorting']	= '`sorting`-1';
+			$updateOthers['sorting']	= '`sorting`-1';
 		} else {
 			$min	= $refSort;
 			$max	= false;
-			$update['sorting']	= '`sorting`+1';
+			$updateOthers['sorting']	= '`sorting`+1';
 		}
 
 		$table	= self::TABLE;
@@ -2104,12 +2122,15 @@ class TodoyuProjectTaskManager {
 
 		$noQuote= array('sorting');
 
-		Todoyu::db()->doUpdate($table, $where, $update, $noQuote);
+		Todoyu::db()->doUpdate($table, $where, $updateOthers, $noQuote);
 
 			// 2. Update moved task itself
-		$update['sorting'] = $after ? $taskRef['sorting'] + 1 : $taskRef['sorting'];
+		$updateSelf = array(
+			'sorting'		=> $after ? $taskRef['sorting'] + 1 : $taskRef['sorting'],
+			'id_parenttask'	=> $taskRef['id_parenttask']
+		);
 
-		TodoyuRecordManager::updateRecord(self::TABLE, $idTaskMove, $update, $noQuote);
+		TodoyuRecordManager::updateRecord(self::TABLE, $idTaskMove, $updateSelf, $noQuote);
 	}
 
 

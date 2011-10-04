@@ -776,6 +776,7 @@ Todoyu.Ext.project.Task = {
 		$('task-' + idTask).replace(taskHtml);
 
 		this.addContextMenu(idTask);
+		this.ext.TaskTree.reloadSortable();
 	},
 
 
@@ -841,6 +842,7 @@ Todoyu.Ext.project.Task = {
 			// Scroll to task
 		this.scrollTo(idTask);
 
+		this.ext.TaskTree.reloadSortable();
 		Todoyu.Hook.exec('project.task.formLoaded', idTask);
 	},
 
@@ -953,19 +955,20 @@ Todoyu.Ext.project.Task = {
 	 *
 	 * @method	createSubTaskContainer
 	 * @param	{Number}		idTask
+	 * @return	{Element}
 	 */
 	createSubTaskContainer: function(idTask) {
 		var idSubTasksContainer	= this.getSubTasksContainerID(idTask);
-		var idTaskContainer		= 'task-' + idTask;
 
 		if( ! Todoyu.exists(idSubTasksContainer) ) {
-			$(idTaskContainer).insert({
-				after: new Element('div', {
-					id:			idSubTasksContainer,
-					'class':	'subtasks'
-				})
-			});
+			$('task-' + idTask).insert(new Element('div', {
+								id:			idSubTasksContainer,
+								'class':	'subtasks'
+							}));
+			$('task-' + idTask + '-subtasks-trigger').addClassName('expandable').addClassName('expanded');
 		}
+
+		return $(idSubTasksContainer);
 	},
 
 
@@ -1032,12 +1035,9 @@ Todoyu.Ext.project.Task = {
 	 * Set given task being acknowledged
 	 *
 	 * @method	setAcknowledged
-	 * @param	{Event}		event
 	 * @param	{Number}		idTask
 	 */
-	setAcknowledged: function(event, idTask) {
-		Todoyu.Ui.stopEventBubbling(event);
-
+	setAcknowledged: function(idTask) {
 		this.fadeAcknowledgeIcon(idTask);
 
 		var url		= Todoyu.getUrl('project', 'task');
