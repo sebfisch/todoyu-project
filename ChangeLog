@@ -2,6 +2,8 @@ todoyu project extension changelog
 
 project 1.2.0 - not released yet
 	* Added: Color styles for task and project (from core)
+	* Changed: Cleanup of task header html code (no conflicting event handlers anymore)
+	* Feature: Drag'n'Drop tasks in project
 
 project 1.1.2 - 2011-09-15
 	* Bugfix: JS error on cut+paste (sub)task (ticket #215)

@@ -654,7 +654,7 @@ Todoyu.Ext.project.Task = {
 	 */
 	getStatus: function(idTask) {
 		if( this.isLoaded(idTask) ) {
-			var element		= $('task-' + idTask + '-header').down('.headLabel');
+			var element		= $('task-' + idTask).down('.statusColor');
 
 			return this.ext.getStatusOfElement(element);
 		} else {
@@ -673,13 +673,11 @@ Todoyu.Ext.project.Task = {
 	 */
 	setStatus: function(idTask, newStatus) {
 		if( this.isLoaded(idTask) ) {
-			var head		= $('task-' + idTask + '-header');
-			var headLabel	= head.down('.headLabel');
-			var details		= $('task-' + idTask + '-details');
-
-			this.ext.setStatusOfElement(head, newStatus);
-			this.ext.setStatusOfElement(headLabel, newStatus);
-			this.ext.setStatusOfElement(details, newStatus);
+			var task		= $('task-' + idTask);
+			
+			this.ext.setStatusOfElement(task.down('h3'), newStatus);
+			this.ext.setStatusOfElement(task.down('.statusColor'), newStatus);
+			this.ext.setStatusOfElement(task.down('.details'), newStatus);
 		}
 	},
 

@@ -1,4 +1,4 @@
-<div id="task-{$task.id}" class="task status{ucfirst $task.statuskey} {$task.class}">
+<div id="task-{$task.id}" class="task status{ucfirst $task.statuskey} {$task.class} bcStatus{$task.status}">
 	<h3 id="task-{$task.id}-header" class="contextmenutask bcStatus{$task.status}" name="task-{$task.id}">
 		<span class="statusColor bcStatus{$task.status}"></span>
 		<span class="headLabel" title="{htmlencode $task.fulltitle}" onclick="Todoyu.Ext.project.Task.toggleDetails({$task.id})">
