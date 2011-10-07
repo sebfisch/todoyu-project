@@ -169,6 +169,27 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 
 
 
+	/**
+	 * Filter project ID, optionally negated
+	 *
+	 * @param	String	$projectID
+	 * @param	Boolean	$negate
+	 * @return	Array
+	 */
+	public function Filter_projectID($projectID, $negate = false) {
+		$idProject	= TodoyuNumeric::intPositive($projectID);
+		$queryParts	= false;
+
+		if( $projectID > 0 ) {
+			$compare	= $negate ? '!=' : '=';
+			$queryParts = array('where'	=> self::TABLE . '.id ' . $compare . ' ' . $idProject);
+		}
+
+		return $queryParts;
+	}
+
+
+
 //	/**
 //	 * Filter for locked projects, optionally negated
 //	 *

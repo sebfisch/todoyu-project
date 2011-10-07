@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.2.0 - not released yet
+	* Added: Project filter: "Project ID"
 	* Added: Linked customer company property of project details with contact company view
 	* Added: Color styles for task and project (from core)
 	* Changed: Cleanup of task header html code (no conflicting event handlers anymore)

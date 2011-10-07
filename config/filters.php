@@ -25,6 +25,9 @@
  * @subpackage	Project
  */
 
+/**
+ * Task filters
+ */
 Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 	'key'		=> 'task',
 	'right'		=> 'project:task.searchable',
@@ -368,6 +371,9 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 
 
 
+/**
+ * Project filters
+ */
 Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 	'key'		=> 'project',
 	'right'		=> 'project:project.searchable',
@@ -409,6 +415,14 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 		/**
 		 * OptGroup project
 		 */
+		'projectID' => array(
+			'label'		=> 'project.filter.project.id',
+			'optgroup'	=> 'project.ext.search.label',
+			'widget'	=> 'text',
+			'wConf'		=> array(
+				'negation'	=> 'default'
+			)
+		),
 		'title' => array(
 			'label'		=> 'core.global.title',
 			'optgroup'	=> 'project.ext.search.label',
