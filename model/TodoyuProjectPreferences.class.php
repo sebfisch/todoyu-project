@@ -262,7 +262,7 @@ class TodoyuProjectPreferences {
 
 
 	/**
-	 * Remove project which are not allowed to be seen from array of project IDs
+	 * Remove projects which are not allowed to be seen from array of project IDs
 	 *
 	 * @param	Array	$projectIDs
 	 * @return	Array

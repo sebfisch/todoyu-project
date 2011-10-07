@@ -43,7 +43,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @param	String		$conjunction
 	 */
 	public function __construct(array $activeFilters = array(), $conjunction = 'AND') {
-		parent::__construct('PROJECT', 'ext_project_project', $activeFilters, $conjunction);
+		parent::__construct('PROJECT', self::TABLE, $activeFilters, $conjunction);
 
 		$this->addRightsClauseFilter();
 	}
@@ -71,7 +71,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 
 
 	/**
-	 * Get IDs of the project which match to all the filters
+	 * Get IDs of the projects matching to all filters
 	 *
 	 * @param	String		$sorting
 	 * @param	String		$limit
@@ -98,7 +98,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 
 	/**
 	 * Project rights clause. Limit output by person rights
-	 * If person is not admin or can see all project, limit projects to assigned ones
+	 * If person is not admin or can see all projects, limit projects to assigned ones
 	 *
 	 * @param	String		$value			IGNORED
 	 * @param	Boolean		$negate			IGNORED
@@ -113,7 +113,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 			);
 			$where	= 'ext_project_mm_project_person.id_person	= ' . TodoyuAuth::getPersonID();
 			$join	= array(
-				'ext_project_project.id	= ext_project_mm_project_person.id_project'
+				self::TABLE . '.id	= ext_project_mm_project_person.id_project'
 			);
 
 			$queryParts	= array(
@@ -142,9 +142,9 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 
 		if( sizeof($searchWords) > 0 ) {
 			$searchInFields	= array(
-				'ext_project_project.id',
-				'ext_project_project.title',
-				'ext_project_project.description',
+				self::TABLE . '.id',
+				self::TABLE . '.title',
+				self::TABLE . '.description',
 				'ext_contact_company.title',
 				'ext_contact_company.shortname'
 			);
@@ -154,7 +154,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 			);
 			$where	= Todoyu::db()->buildLikeQuery($searchWords, $searchInFields);
 			$join	= array(
-				'ext_project_project.id_company	= ext_contact_company.id'
+				self::TABLE .  '.id_company	= ext_contact_company.id'
 			);
 
 			$queryParts = array(
@@ -217,7 +217,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 			$compare	= $negate ? 'NOT IN' : 'IN' ;
 
 			$queryParts	= array(
-				'where'	=> 'ext_project_project.status ' . $compare . '(' . implode(',', $status) . ')'
+				'where'	=> self::TABLE . '.status ' . $compare . '(' . implode(',', $status) . ')'
 			);
 		}
 
@@ -240,7 +240,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 		if( $title !== '' ) {
 			$titleParts	= explode(' ', $title);
 
-			$where	= Todoyu::db()->buildLikeQuery($titleParts, array('ext_project_project.title'), $negate);
+			$where	= Todoyu::db()->buildLikeQuery($titleParts, array(self::TABLE . '.title'), $negate);
 
 			$queryParts = array(
 				'where'	=> $where
@@ -266,7 +266,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 		if( $idCompany > 0 ) {
 			$compare	= $negate ? '!=' : '=' ;
 
-			$where	= 'ext_project_project.id_company ' . $compare . ' ' . $idCompany;
+			$where	= self::TABLE . '.id_company ' . $compare . ' ' . $idCompany;
 
 			$queryParts = array(
 				'where'	=> $where
@@ -309,7 +309,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 									id_project
 					  		) as x';
 			$compare	= $negate ? 'NOT IN' : 'IN';
-			$where		= ' ext_project_project.id ' . $compare . ' (' . $subQuery . ')';
+			$where		= ' ' . self::TABLE . '.id ' . $compare . ' (' . $subQuery . ')';
 
 			$queryParts	= array(
 				'where'	=> $where
@@ -460,7 +460,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 		$date	= intval($date);
 		$compare= $negation ? '>=' : '<=';
 
-		$where	= 'ext_project_project.' . $field . ' ' . $compare . ' ' . $date;
+		$where	= self::TABLE . '.' . $field . ' ' . $compare . ' ' . $date;
 
 		return array(
 			'where' 	=> $where
@@ -516,7 +516,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 
 			$compare	= $negate ? ' NOT IN ' : ' IN ';
 
-			$whereArray[]	= 'ext_project_project.id ' . $compare . '(
+			$whereArray[]	=	self::TABLE . '.id ' . $compare . '(
 								SELECT id_project FROM ' . implode(',', $filterObject['tables']) .
 							   ' WHERE ' . $filterObject['where'] . ')';
 		}

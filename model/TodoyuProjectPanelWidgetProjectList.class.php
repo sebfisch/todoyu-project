@@ -49,6 +49,12 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidgetSearchList {
 	}
 
 
+
+	/**
+	 * Get project list items
+	 *
+	 * @return	Array
+	 */
 	protected function getItems() {
 		$projects	= $this->getListedProjectsData();
 		$items		= array();
@@ -83,6 +89,12 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidgetSearchList {
 	}
 
 
+
+	/**
+	 * Get configuration for status' and fulltext filter
+	 *
+	 * @return	Array
+	 */
 	private function getProjectFilters() {
 		$statusWidget	= TodoyuPanelWidgetManager::getPanelWidget('project', 'StatusFilterProject');
 

@@ -6,7 +6,11 @@
 			<dl>
 			{foreach $properties info}
 				<dt>{Label $info.label}</dt>
-				<dd>{$info.value}</dd>
+				<dd>
+					{if $info.__key == 'company' && isCompanySeeAllowed($id_company)}<a href="javascript:void(0)" onclick="Todoyu.Ext.contact.Company.show({$id_company})">{/if}
+					{$info.value}
+					{if $info.__key == 'company' && isCompanySeeAllowed($id_company)}</a>{/if}
+				</dd>
 			{/foreach}
 			</dl>
 		</div>
