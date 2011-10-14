@@ -3,11 +3,6 @@
    ----------- */
 .task {}
 
-.taskListing .task .headLabel {
-	padding-left:15px;
-}
-
-
 
 /* --------------------
 	Task header
@@ -80,6 +75,11 @@
 	margin-left:5px;
 	max-width: 360px;
 }
+
+.taskListing .task .headLabel {
+	padding-left:15px;
+}
+
 
 /* -------------------------
 	Task header (container)
@@ -216,10 +216,6 @@
 .task .details {
 	border-left-width:1px;
 	border-left-style:solid;
-}
-
-.task .details {
-	/*border-bottom-color:#aaaaaa;*/
 }
 
 	.tasks .task .details .data {
