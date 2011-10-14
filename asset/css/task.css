@@ -1,32 +1,12 @@
 /* ------------
 	Task
    ----------- */
-
-/*.tasks .expanded h3,*/
-/*.tasks .subtasks .expanded h3 {*/
-	/*background-color:#e2e2e2;*/
-	/*border-bottom:none;*/
-	/*font-weight:bold;*/
-/*}*/
-/* @todo move to timetracking */
-
-
-
-/*.tasks .subtasks h3 {*/
-	/*background-color:transparent;*/
-	/*font-weight:normal;*/
-/*}*/
-
-
-
+.task {}
 
 .taskListing .task .headLabel {
 	padding-left:15px;
 }
 
-.task {
-
-}
 
 
 /* --------------------
@@ -35,9 +15,6 @@
 .task h3 {
 	display:block;
 	position:relative;
-	/*height:auto !important;*/
-	/*height:1px;*/
-	/*padding:4px 0 4px 0;*/
 	clear:both;
 	background-color:transparent;
 	border-bottom:1px solid #DDD;
@@ -65,20 +42,14 @@
 	height:22px;
 	left:-4px;
 	top:0;
-	cursor: n-resize;
-	/*background-color: #F0F;*/
-	/*opacity: 0.2;*/
+	cursor: move;
 }
 
 
 .task h3 span.subtaskTrigger {
 	display:inline-block;
-	/*position:absolute;*/
-	/*top:0;*/
-	/*left:10px;*/
 	height:22px;
 	width:13px;
-	/*z-index:1;*/
 	margin-left:10px;
 
 }
@@ -94,20 +65,8 @@
 .task h3 .headLabel {
 	display:inline-block;
 	padding: 4px;
-	/*height:auto !important;*/
-	/*height:1px;*/
-	/*margin:-4px 0 -4px 0;*/
-	/*padding:4px 0 4px 21px;*/
-	/*border-left-width:4px;*/
-	/*border-left-style:solid;*/
-	/*min-height:14px;*/
 	cursor:pointer;
-	/*background-color: #F0A;*/
 }
-
-/*.task.container h3 .headLabel {*/
-	/*padding-left:17px;*/
-/*}*/
 
 .task h3 .headLabel span {
 	display:inline-block;
@@ -121,12 +80,6 @@
 	margin-left:5px;
 	max-width: 360px;
 }
-
-/* begin of styles only for container element */
-/*.task.container h3 .headLabel .taskDate {
-	display:none;
-}
-*/
 
 /* -------------------------
 	Task header (container)
@@ -142,7 +95,7 @@
 }
 
 .task.container > .details {
-	/*border-bottom:1px solid #ddd;*/
+
 }
 /* end of styles only for container element */
 
