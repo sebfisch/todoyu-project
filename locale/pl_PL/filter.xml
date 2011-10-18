@@ -52,7 +52,7 @@
 	<label index="project.editdateDyn">Edytowane (Dynamiczny)</label>
 	<label index="project.dyndate.today">Dzisiaj</label>
 	<label index="project.dyndate.tomorrow">Jutro</label>
-	<label index="project.dyndate.dayaftertomorrowPojutrze</label>
+	<label index="project.dyndate.dayaftertomorrow">Pojutrze</label>
 	<label index="project.dyndate.yesterday">Wczoraj</label>
 	<label index="project.dyndate.daybeforeyesterday">Przedwczoraj</label>
 	<label index="project.dyndate.currentweek">Bieżący tydzień</label>
