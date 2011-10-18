@@ -7,6 +7,9 @@ project 1.2.0 - not released yet
 	* Changed: Cleanup of task header html code (no conflicting event handlers anymore)
 	* Feature: Drag'n'Drop tasks in project
 
+project 1.1.3 - not released yet
+	* Translation: Polish
+
 project 1.1.2 - 2011-09-15
 	* Bugfix: JS error on cut+paste (sub)task (ticket #215)
 	* Bugfix: Clone task fails (ticket #214)
