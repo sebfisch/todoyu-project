@@ -1270,7 +1270,7 @@ class TodoyuProjectProjectManager {
 			'date_deadline'		=> NOW + 3600 * 24 * 30
 		);
 
-			// Call hook to modify default task data
+			// Call hook to modify default project data
 		$defaultData	= TodoyuHookManager::callHookDataModifier('project', 'project.defaultData', $defaultData);
 
 		return $defaultData;
