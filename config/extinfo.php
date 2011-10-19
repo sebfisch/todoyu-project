@@ -33,7 +33,7 @@ Todoyu::$CONFIG['EXT']['project']['info'] = array(
 	'state' 		=> 'stable',
 	'version' 		=> '1.2.0a',
 	'constraints' 	=> array(
-		'core'		=> '2.2.0a',
+		'core'		=> '2.1.3',
 		'depends' 	=> array(
 			'contact' => '1.1.0'
 		),
