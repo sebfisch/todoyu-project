@@ -61,6 +61,7 @@
 	display:inline-block;
 	padding: 4px;
 	cursor:pointer;
+	min-width: 350px;
 }
 
 .task h3 .headLabel span {
