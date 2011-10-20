@@ -289,15 +289,15 @@ fieldset.defaultsforlimited {
 	Drag'n'drop hover styles
    ------------------------------------- */
 div.task h3.dragDropActiveIn {
-	background-color: yellow;
+	background-color:yellow;
 }
 
 div.task h3.dragDropActiveBefore {
-	border-top: 5px solid yellow;
+	border-top:5px solid yellow;
 }
 
 div.task h3.dragDropActiveAfter {
-	border-bottom: 5px solid yellow;
+	border-bottom:5px solid yellow;
 }
 
 

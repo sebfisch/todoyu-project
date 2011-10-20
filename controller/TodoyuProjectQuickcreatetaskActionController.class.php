@@ -67,13 +67,13 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 	/**
 	 * Save task
 	 *
-	 * @param	Array		$params
-	 * @return	Void|String				Failure returns re-rendered form with error messages
+	 * @param	Array			$params
+	 * @return	Void|String		Failure returns re-rendered form with error messages
 	 */
 	public function saveAction(array $params) {
-		$data			= $params['task'];
-		$idTask			= intval($data['id']);
-		$idProject		= intval($data['id_project']);
+		$data		= $params['task'];
+		$idTask		= intval($data['id']);
+		$idProject	= intval($data['id_project']);
 
 		if( $idTask > 0 ) {
 			TodoyuProjectTaskRights::restrictEdit($idTask);

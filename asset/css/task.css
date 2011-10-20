@@ -22,7 +22,7 @@
 }
 
 .task .statusColor {
-	position: absolute;
+	position:absolute;
 	width:1px;
 	height:22px;
 	left:0;
@@ -32,12 +32,12 @@
 }
 
 .task .dndHandle {
-	position: absolute;
+	position:absolute;
 	width:12px;
 	height:22px;
 	left:-4px;
 	top:0;
-	cursor: move;
+	cursor:move;
 }
 
 
@@ -58,9 +58,9 @@
 
 .task h3 .headLabel {
 	display:inline-block;
-	padding: 4px;
+	padding:4px;
 	cursor:pointer;
-	min-width: 350px;
+	min-width:350px;
 }
 
 .task h3 .headLabel span {
@@ -73,7 +73,7 @@
 
 .task h3 .headLabel .projectName {
 	margin-left:5px;
-	max-width: 360px;
+	max-width:360px;
 }
 
 .taskListing .task .headLabel {
