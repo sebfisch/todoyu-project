@@ -1166,7 +1166,10 @@ class TodoyuProjectTaskManager {
 			// Task-only information (not relevant for containers)
 		if( $task->isTask() ) {
 				// 'dateover': end date or deadline passed
-			if( $task->getStatus() != STATUS_CLEARED && (($task->getEndDate() > 0 && $task->isEndDateExceeded()) || $task->isDeadlineExceeded()) ) {
+			if( $task->getStatus() != STATUS_CLEARED &&
+					// @todo	Refaktor: Extract condition into task method 'isInThePast()'
+				(($task->getEndDate() > 0 && $task->isEndDateExceeded()) || $task->isDeadlineExceeded())
+			) {
 				$icons['dateover']= array(
 					'id'		=> 'task-' . $idTask . '-dateover',
 					'class'		=> 'dateover',
