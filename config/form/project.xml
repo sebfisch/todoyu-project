@@ -59,7 +59,6 @@
 									<field>date_end</field>
 								</dateNotAfter>
 							</validate>
-							<class>myClass</class>
 							<required />
 						</field>
 

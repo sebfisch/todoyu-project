@@ -30,8 +30,6 @@ TodoyuHookManager::registerHook('project', 'task.defaultData',	'TodoyuProjectTas
 
 
 
-
-
 //TodoyuHookManager::registerHook('sysmanager', 'renderExtContent-project',		'TodoyuProjectExtManagerRenderer::onRenderExtConfig');
 TodoyuHookManager::registerHook('sysmanager', 'renderRecordsBody-taskpreset',	'TodoyuProjectSysmanagerRenderer::onRenderTaskpresetRecordsBody');
 
