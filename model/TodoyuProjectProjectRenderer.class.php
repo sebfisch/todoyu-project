@@ -608,7 +608,7 @@ class TodoyuProjectProjectRenderer {
 			// @todo	check - add params of parent task ID project ID?
 		TodoyuHookManager::callHook('project', 'task.create.render');
 
-			// Find project id if not given as parameter
+			// Find project ID if not given as parameter
 		if( $idProject === 0 && $idParentTask > 0 ) {
 			$idProject	= TodoyuProjectTaskManager::getProjectID($idParentTask);
 		}

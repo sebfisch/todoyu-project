@@ -1760,7 +1760,7 @@ class TodoyuProjectTaskManager {
 	 * $mustExist is not set (default), only the format is checked.
 	 * If $mustExist is set, also a database request will check if this task exists
 	 *
-	 * @param	Integer		$fullTaskNumber			Identifier with project id and task number
+	 * @param	Integer		$fullTaskNumber			Identifier with project ID and task number
 	 * @param	Boolean		$mustExist				TRUE = Has to be in database
 	 * @return	Boolean
 	 */
@@ -1964,7 +1964,7 @@ class TodoyuProjectTaskManager {
 			// Get original task data
 		$data		= self::getTaskData($idTask);
 
-			// Set new project id if given
+			// Set new project ID if given
 		if( $idProject !== 0 ) {
 			$data['id_project'] = $idProject;
 		}

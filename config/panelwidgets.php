@@ -24,10 +24,8 @@
 
 	// PanelWidget Projectlist
 TodoyuPanelWidgetManager::addPanelWidget('project', 'project', 'ProjectList', 20);
-
 	// PanelWidget Status Filter for Projects
 TodoyuPanelWidgetManager::addPanelWidget('project', 'project', 'StatusFilterProject', 21);
-
 	// PanelWidget Status Filter for Tasks
 TodoyuPanelWidgetManager::addPanelWidget('project', 'project', 'StatusFilterTask', 30);
 

@@ -80,7 +80,7 @@ class TodoyuProjectProjectManager {
 	 * Add a project to the database
 	 *
 	 * @param	Array		$data		Data to fill all database fields
-	 * @return	Integer		New project id
+	 * @return	Integer		New project ID
 	 */
 	public static function addProject(array $data) {
 		$idProject = TodoyuRecordManager::addRecord(self::TABLE, $data);
@@ -97,7 +97,7 @@ class TodoyuProjectProjectManager {
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Array		$data
-	 * @return	Boolean
+	 * @return	Boolean					Success?
 	 */
 	public static function updateProject($idProject, array $data) {
 		$idProject	= intval($idProject);
@@ -878,7 +878,7 @@ class TodoyuProjectProjectManager {
 						)';
 		}
 
-			// If persons should be unique, group by id (we don't care about the project roles)
+			// If persons should be unique, group by ID (we don't care about the project roles)
 		if( $personUnique === true ) {
 			$group	= 'pe.id';
 		}

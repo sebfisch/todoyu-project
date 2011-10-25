@@ -48,7 +48,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuProjectTaskRights::restrictAddToProject($idProject);
 
-			// Send task id for JS
+			// Send task ID for JS
 		TodoyuHeader::sendTodoyuHeader('idTask', 0);
 
 			// Send task with form in details part
@@ -68,7 +68,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuProjectTaskRights::restrictAddToProject($idProject);
 
-			// Send task id for JS
+			// Send task ID for JS
 		TodoyuHeader::sendTodoyuHeader('idContainer', 0);
 
 			// Send task with form in details part
@@ -89,7 +89,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuProjectTaskRights::restrictAdd($idParentTask);
 
-			// Send task id for JS
+			// Send task ID for JS
 		TodoyuHeader::sendTodoyuHeader('idTask', 0);
 
 			// Send task with form in details part
@@ -110,7 +110,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuProjectTaskRights::restrictAdd($idParentTask);
 
-			// Send task id for JS
+			// Send task ID for JS
 		TodoyuHeader::sendTodoyuHeader('idContainer', 0);
 
 			// Send task with form in details part
