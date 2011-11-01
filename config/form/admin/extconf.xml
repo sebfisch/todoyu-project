@@ -54,7 +54,7 @@
 					</source>
 				</field>
 
-				<field type="time" name="estimated_workload">
+				<field type="duration" name="estimated_workload">
 					<label>project.ext.extconf.taskDefaults.estimated_workload</label>
 				</field>
 

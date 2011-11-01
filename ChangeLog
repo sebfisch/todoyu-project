@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.2.0 - not released yet
+	* Bugfix: Fixed duration picker in extconf and presets
 	* Bugfix: Fixed rights label
 	* Changed: ext_project_project.description and ext_project_taskpreset.description are now mediumtext not text
 	* Added: Project filter: "Project ID"
