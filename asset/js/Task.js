@@ -1256,12 +1256,11 @@ Todoyu.Ext.project.Task = {
 			},
 			onComplete: this.onDetailsLoaded.bind(this, idTask, tab, onComplete)
 		};
-		var target	= 'task-' + idTask + '-header';
 
 			// Fade out the "not acknowledged" icon if its there
 		this.fadeAcknowledgeIcon.delay(1, idTask);
 
-		Todoyu.Ui.append(target, url, options);
+		Todoyu.send(url,  options);
 	},
 
 
@@ -1276,6 +1275,12 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onDetailsLoaded: function(idTask, tab, onComplete, response) {
+		var target	= 'task-' + idTask + '-header';
+
+		if(!this.isDetailsLoaded(idTask)) {
+			$(target).insert({after: response.responseText});
+		}
+
 		Todoyu.callIfExists(onComplete, this, idTask, tab, response);
 	},
 
