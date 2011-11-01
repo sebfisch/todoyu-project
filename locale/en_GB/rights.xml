@@ -4,7 +4,7 @@
 	<label index="general.use">Use/see project module functionality</label>
 	<label index="general.area">Access Project Area</label>
 	<label index="project">Project</label>
-	<label index="project.seeOwn">See only projects where this role is member of</label>
+	<label index="project.seeOwn">See projects where this role is member of</label>
 	<label index="project.seeAll">See All Projects</label>
 	<label index="project.planning:see">See project with status: In Planning</label>
 	<label index="project.progress:see">See project with status: In Progress</label>
