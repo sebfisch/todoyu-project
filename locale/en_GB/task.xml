@@ -63,6 +63,10 @@
 	<label index="contextmenu.paste.in">As Subtask</label>
 	<label index="contextmenu.paste.before">Before This Task</label>
 	<label index="contextmenu.paste.after">After This Task</label>
+	<label index="contextmenu.paste.error.projectarea">Paste is only allowed in the project area</label>
+	<label index="contextmenu.paste.error.locked">Paste is not allowed, because the element has locked subelements</label>
+	<label index="contextmenu.paste.error.notallowed">Paste is not allowed</label>
+	<label index="contextmenu.paste.error.self">Paste is not possible</label>
 	<label index="status.planning">Planning</label>
 	<label index="status.open">Open</label>
 	<label index="status.progress">In Progress</label>

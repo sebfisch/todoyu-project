@@ -63,6 +63,10 @@
 	<label index="contextmenu.paste.in">Als Unteraufgabe</label>
 	<label index="contextmenu.paste.before">Vor dieser Aufgabe</label>
 	<label index="contextmenu.paste.after">Nach dieser Aufgabe</label>
+	<label index="contextmenu.paste.error.projectarea">Einfügen ist nur in der Projektansicht möglich</label>
+	<label index="contextmenu.paste.error.locked">Einfügen ist nicht möglich, da das kopierte Element gesperrte Unterelemente besitzt</label>
+	<label index="contextmenu.paste.error.notallowed">Einfügen ist nicht erlaubt</label>
+	<label index="contextmenu.paste.error.self">Einfügen in sich selber ist nicht möglich</label>
 	<label index="status.planning">Planung</label>
 	<label index="status.open">Offen</label>
 	<label index="status.progress">In Bearbeitung</label>

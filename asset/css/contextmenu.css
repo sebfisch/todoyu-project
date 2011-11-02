@@ -276,3 +276,12 @@
 #contextmenu .containerAddContainer {
 	background-position:3px -117px;
 }
+
+/* ---------------------------
+	Paste Warning
+   --------------------------- */
+
+#contextmenu .pastewarning a {
+	padding-left: 10px;
+	background: #f6f4de none;
+}

@@ -26,6 +26,11 @@
  */
 class TodoyuProjectTaskClipboard {
 
+	const TASK_CONTEXTMENU_PASTE_ERROR_PROJECTAREA	= 'projectarea';
+	const TASK_CONTEXTMENU_PASTE_ERROR_LOCKED		= 'locked';
+	const TASK_CONTEXTMENU_PASTE_ERROR_NOTALLOWED	= 'notallowed';
+	const TASK_CONTEXTMENU_PASTE_ERROR_SELF			= 'self';
+
 	/**
 	 * Add a task to clipboard
 	 *
@@ -274,15 +279,15 @@ class TodoyuProjectTaskClipboard {
 				if( $idTaskContextmenu == $data['task'] || $isSubTask ) {
 					if( $data['mode'] === 'cut' || $data['subtasks'] ) {
 						$mergeItems = array();
+						$errorCode = self::TASK_CONTEXTMENU_PASTE_ERROR_SELF;
 					}
 				}
+			} else {
+				$errorCode = self::getPasteErrorCode($isProjectArea, $isLocked);
 			}
 
 			if( sizeof($mergeItems) === 0 ) {
-				$mergeItems = $ownItems;
-				unset($mergeItems['paste']['submenu']);
-				$mergeItems['paste']['class'] .= ' disabled';
-				$mergeItems['paste']['jsAction'] = 'Todoyu.Ext.project.Task.pasteNotAllowed()';
+				$mergeItems = self::mergeItemsPasteNotAllowed($ownItems, $errorCode);
 			}
 
 			$items	= array_merge_recursive($items, $mergeItems);
@@ -332,16 +337,56 @@ class TodoyuProjectTaskClipboard {
 			}
 
 			if( sizeof($mergeItems) === 0 ) {
-				$mergeItems = $ownItems;
-				unset($mergeItems['paste']['submenu']);
-				$mergeItems['paste']['class'] .= ' disabled';
-				$mergeItems['paste']['jsAction'] = 'Todoyu.Ext.project.Task.pasteNotAllowed()';
+				$errorCode = self::getPasteErrorCode($isProjectArea, $isAddAllowed, $isLocked);
+				$mergeItems = self::mergeItemsPasteNotAllowed($ownItems, $errorCode);
 			}
 
 			$items	= array_merge_recursive($items, $mergeItems);
 		}
 
 		return $items;
+	}
+
+
+
+	/**
+	 * @static
+	 * @param	Boolean		$isProjectArea
+	 * @param	Boolean		$isLocked
+	 * @return	String
+	 */
+	protected static function getPasteErrorCode($isProjectArea, $isLocked) {
+		if ( !$isProjectArea ) {
+			return self::TASK_CONTEXTMENU_PASTE_ERROR_PROJECTAREA;
+		} else if ( $isLocked ) {
+			return self::TASK_CONTEXTMENU_PASTE_ERROR_LOCKED;
+		}
+
+		return self::TASK_CONTEXTMENU_PASTE_ERROR_NOTALLOWED;
+	}
+
+
+
+	/**
+	 * @static
+	 * @param	Array		$ownItems
+	 * @return	Array
+	 */
+	protected static function mergeItemsPasteNotAllowed($ownItems, $errorCode) {
+		$mergeItems = $ownItems;
+		unset($mergeItems['paste']['submenu']);
+
+		$mergeItems['paste']['submenu']['message'] = array(
+			'key'		=> 'pastewarning',
+			'class'		=> 'taskContextMenu pasteWarning',
+			'label'		=> 'project.task.contextmenu.paste.error.'.$errorCode,
+			'jsAction'	=> 'void(0)',
+		);
+
+		$mergeItems['paste']['class'] .= ' disabled';
+		$mergeItems['paste']['jsAction'] = 'Todoyu.Ext.project.Task.pasteNotAllowed()';
+
+		return $mergeItems;
 	}
 
 }
