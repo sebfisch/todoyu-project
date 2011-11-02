@@ -43,6 +43,7 @@
 
 .task h3 span.subtaskTrigger {
 	display:inline-block;
+	float: left;
 	height:22px;
 	width:13px;
 	margin-left:10px;
@@ -58,9 +59,10 @@
 
 .task h3 .headLabel {
 	display:inline-block;
-	padding:4px;
 	cursor:pointer;
 	min-width:350px;
+	height: 22px;
+	padding:4px;
 }
 
 .task h3 .headLabel span {

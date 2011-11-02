@@ -48,6 +48,7 @@ h1.headerLine span.projectIcons {
 
 .project .projectstatus {
 	position:absolute;
+	top: 0;
 	height:27px;
 	border-left-width:8px;
 	border-left-style:solid;
