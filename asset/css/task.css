@@ -305,11 +305,6 @@
 		margin-top:10px;
 	}
 
-	.task .taskTabs .tabs li,
-	.task .taskTabs .tabs li p span.lt {
-		background-image:url(../../../../core/asset/img/rounded-box01.png) !important;
-	}
-
 	.task .taskTabs .tabs li {
 		background-color:#edf1e0 !important;
 	}
