@@ -38,7 +38,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * Add a new task directly to the project root
+	 * Get form for adding a new task (directly into the project root)
 	 *
 	 * @param	Array		$params
 	 * @return	String		Empty task form
@@ -58,7 +58,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * Add a new container directly to the project
+	 * Get form for adding a new container (directly into the project root)
 	 *
 	 * @param	Array		$params
 	 * @return	String		Container edit form
@@ -78,7 +78,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * Add a sub task to a task
+	 * Get form for adding a sub task to a task
 	 *
 	 * @param	Array		$params
 	 * @return	String
@@ -99,7 +99,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 
 	/**
-	 * Add new sub container
+	 * Get form for adding a new sub container
 	 *
 	 * @param	Array	$params
 	 * @return	String
