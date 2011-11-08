@@ -34,7 +34,7 @@
 			<div class="content overflow">
 				<table class="list presetsListing">
 				{foreach $presets preset}
-					<tr class="presetRow {cycle values="odd,even" reset=true}">
+					<tr class="presetRow {cycle values="odd,even"}">
 						<th>{Label $preset.label}</th>
 						<td>{$preset.value}</td>
 					</tr>
@@ -47,7 +47,7 @@
 	{* ---------- Dynamic added elements ----------- *}
 	{if $dynamicElements}
 		{foreach $dynamicElements element}
-			<div class="{$element.class} {cycle values="odd,even" reset=true}">
+			<div class="{$element.class} {cycle values="odd,even"}">
 				<h4>{$element.title}</h4>
 				<div class="content overflow">{$element.content}</div>
 			</div>
