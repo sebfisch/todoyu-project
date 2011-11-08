@@ -44,7 +44,7 @@ h1.headerLine span.projectIcons {
 	/* Details */
 .project .projectstatus {
 	position:absolute;
-	top: 0;
+	top:0;
 	height:27px;
 	border-left-width:8px;
 	border-left-style:solid;
@@ -72,7 +72,7 @@ h1.headerLine span.projectIcons {
 	/* Assigned persons */
 	.project table.assignedPersons th.name,
 	.project table.assignedPersons td.name {
-		padding-left: 20px;
+		padding-left:20px;
 	}
 	.project table.assignedPersons td.name {
 		background:url(../../../contact/asset/img/icons.png) no-repeat 1px 3px;
