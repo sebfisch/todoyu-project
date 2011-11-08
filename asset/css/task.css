@@ -124,13 +124,18 @@
 .task h3 .taskHeadExtras span {
 	cursor:default;
 }
-
+.headerLine .taskNumber,
 .task h3 .taskNumber {
 	display:inline-block;
 	position:absolute;
+	width:45px;
+}
+.headerLine .taskNumber {
+	right:92px;
+}
+.task h3 .taskNumber {
 	top:4px;
 	right:93px;
-	width:45px;
 	cursor:text;
 }
 .task.container > h3 > .taskNumber {
