@@ -501,7 +501,7 @@ class TodoyuProjectTaskManager {
 				$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
 
 					// Cut
-				if( $hasTaskEditRight ) {
+				if( $hasTaskEditRight && !$task->isLocked() ) {
 					$allowed['actions']['submenu']['cut']	= $ownItems['actions']['submenu']['cut'];
 				}
 			}

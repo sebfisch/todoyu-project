@@ -454,7 +454,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 		} elseif( $this->isTask() ) {
 			$isLocked	= TodoyuProjectTaskManager::isLocked($this->getID());
 		} elseif( $this->isContainer() ) {
-			$isLocked	= false;
+			$isLocked	= TodoyuProjectTaskManager::isLocked($this->getID());;
 		} else {
 			$isLocked	= false;
 		}
