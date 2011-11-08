@@ -90,7 +90,7 @@ Todoyu::$CONFIG['EXT']['project']['Task']['forceTab'] = false;
    ---------------------------- */
 	// Projectrole
 Todoyu::$CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
-	'tmpl'			=> 'ext/project/view/filterwidget-projectrole.tmpl',
+	'tmpl'			=> 'ext/project/view/filterwidget/projectrole.tmpl',
 	'configFunc'	=> 'TodoyuProjectProjectFilter::prepareDataForProjectroleWidget'
 );
 

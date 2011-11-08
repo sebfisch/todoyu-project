@@ -1,7 +1,8 @@
 todoyu project extension changelog
 
 project 1.2.0 - not released yet
-	* Added: Information when pasing is not allowed
+	* Changed: Namespace of filter-widget
+	* Added: Information when pasting is not allowed
 	* Bugfix: Prevent task from double - open
 	* Bugfix: Fixed duration picker in extconf and presets
 	* Bugfix: Fixed rights label
