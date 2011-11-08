@@ -39,7 +39,7 @@ abstract class TodoyuProjectPanelWidgetStatusFilter extends TodoyuPanelWidget {
 	 *
 	 * @var	String
 	 */
-	protected $tmpl = 'ext/project/view/panelwidgets/panelwidget-statusfilter.tmpl';
+	protected $tmpl = 'ext/project/view/panelwidget/statusfilter.tmpl';
 
 
 	/**
