@@ -85,17 +85,15 @@ class TodoyuProjectTaskManager {
 			// Load task default data
 		$formData	= self::getTaskDefaultData(0, $idProject);
 
-			// Set project ID, if given and allowed to user
-		if( $idProject > 0 && TodoyuProjectTaskRights::isAddInProjectAllowed($idProject, false) ) {
-			$formData['id_project']	= $idProject;
-		}
-
 			// Load extra data from hooks
 		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, 0, array('form'=>$form));
 
 			// Ensure the preset project allows for adding tasks
 		if( ! TodoyuProjectTaskRights::isAddInProjectAllowed($formData['id_project']) ) {
 			$formData['id_project']	= 0;
+		} else if($idProject === 0) {
+			$formData = self::getTaskDefaultData(0, $formData['id_project']);
+			$formData = TodoyuFormHook::callLoadData($xmlPath, $formData, 0, array('form' => $form));
 		}
 
 		$form->setFormData($formData);

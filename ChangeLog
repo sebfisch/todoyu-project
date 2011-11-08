@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.2.0 - not released yet
+	* Bugfix: Presets in quick - add - task
 	* Changed: Panel-widget clean-up
 	* Changed: Namespace of filter-widget
 	* Added: Information when pasting is not allowed
