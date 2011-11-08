@@ -1,14 +1,14 @@
-<ul class="ulList assignedPersons">
-	<li class="listItem listItemHeader">
-		<span class="name">{Label contact.ext.person}</span>
-		<span class="company">{Label contact.ext.company}</span>
-		<span class="role">{Label project.ext.attr.persons.role}</span>
-	</li>
+<table class="list fixedTable personListing assignedPersons">
+	<tr class="listItem listItemHeader">
+		<th class="name">{Label contact.ext.person}</th>
+		<th class="company">{Label contact.ext.company}</th>
+		<th class="role">{Label project.ext.attr.persons.role}</th>
+	</tr>
 	{foreach $persons person}
-	<li class="listItem {cycle values="odd,even"} person">
-		{personLabel idPrefix="project_assigned" idRecord=$person.id_project idPerson=$person.id class="name"}
-		<span class="company">{$person.company[0].title}&nbsp;</span>
-		<span class="role">{Label $person.rolelabel}</span>
-	</li>
-	{/foreach}
-</ul>
+	<tr class="listItem {cycle values="odd,even"} person">
+		<td class="name">{personLabel idPrefix="project_assigned" idRecord=$person.id_project idPerson=$person.id class="name"}</td>
+		<td class="company">{$person.company[0].title}&nbsp;</td>
+		<td class="role">{Label $person.rolelabel}</td>
+	</tr>
+	{/foreach}	
+</table>

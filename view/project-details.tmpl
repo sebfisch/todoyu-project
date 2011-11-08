@@ -3,16 +3,18 @@
 	<div class="infoBox properties">
 		<h4>{Label project.ext.properties}</h4>
 		<div class="content overflow">
-			<dl>
-			{foreach $properties info}
-				<dt>{Label $info.label}</dt>
-				<dd>
-					{if $info.__key == 'company' && isCompanySeeAllowed($id_company)}<a href="javascript:void(0)" onclick="Todoyu.Ext.contact.Company.show({$id_company})">{/if}
-					{$info.value}
-					{if $info.__key == 'company' && isCompanySeeAllowed($id_company)}</a>{/if}
-				</dd>
-			{/foreach}
-			</dl>
+			<table class="list propertiesListing">
+				{foreach $properties info}
+				<tr class="{cycle values="odd,even"}">
+					<th class="label">{Label $info.label}</th>
+					<td>
+						{if $info.__key == 'company' && isCompanySeeAllowed($id_company)}<a href="javascript:void(0)" onclick="Todoyu.Ext.contact.Company.show({$id_company})">{/if}
+						{$info.value}
+						{if $info.__key == 'company' && isCompanySeeAllowed($id_company)}</a>{/if}
+					</td>
+				</tr>
+				{/foreach}
+			</table>
 		</div>
 	</div>
 
@@ -30,13 +32,14 @@
 		<div class="infoBox presets">
 			<h4>{Label project.ext.infobox.presets.title}</h4>
 			<div class="content overflow">
-			{foreach $presets preset}
-				{$class= cycle(values="odd,even")}
-				<div class="presetRow {$class}">
-					<dt>{Label $preset.label}</dt>
-					<dd>{$preset.value}</dd>
-				</div>
-			{/foreach}
+				<table class="list presetsListing">
+				{foreach $presets preset}
+					<tr class="presetRow {cycle values="odd,even" reset=true}">
+						<th>{Label $preset.label}</th>
+						<td>{$preset.value}</td>
+					</tr>
+				{/foreach}
+				</table>
 			</div>
 		</div>
 	{/if}
@@ -44,7 +47,7 @@
 	{* ---------- Dynamic added elements ----------- *}
 	{if $dynamicElements}
 		{foreach $dynamicElements element}
-			<div class="{$element.class} {cycle values="odd,even"}">
+			<div class="{$element.class} {cycle values="odd,even" reset=true}">
 				<h4>{$element.title}</h4>
 				<div class="content overflow">{$element.content}</div>
 			</div>

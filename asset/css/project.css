@@ -42,10 +42,6 @@ h1.headerLine span.projectIcons {
 }
 
 	/* Details */
-.project .headerLine {
-	background-position:0 -92px;
-}
-
 .project .projectstatus {
 	position:absolute;
 	top: 0;
@@ -74,25 +70,12 @@ h1.headerLine span.projectIcons {
 	}
 
 	/* Assigned persons */
-	.project ul.assignedPersons {
-		margin:0;
+	.project table.assignedPersons th.name,
+	.project table.assignedPersons td.name {
+		padding-left: 20px;
 	}
-	.project ul.assignedPersons span.name {
-		padding-left:20px;
-		display:block;
-	}
-	.project ul.assignedPersons li.person span.name {
-		background:url(../../../contact/asset/img/icons.png) 1px 1px;
-		background-repeat:no-repeat;
-	}
-	.project ul.assignedPersons .name {
-		width:150px;
-	}
-	.project ul.assignedPersons .company {
-		width:150px;
-	}
-	.project ul.assignedPersons .role {
-		width:150px;
+	.project table.assignedPersons td.name {
+		background:url(../../../contact/asset/img/icons.png) no-repeat 1px 3px;
 	}
 
 
