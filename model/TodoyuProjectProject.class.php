@@ -88,6 +88,17 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 
 
 	/**
+	 * Get project description
+	 *
+	 * @return	String
+	 */
+	public function getDescription() {
+		return $this->get('description');
+	}
+
+
+
+	/**
 	 * Get company ID
 	 *
 	 * @return	Integer
