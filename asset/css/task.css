@@ -41,19 +41,19 @@
 }
 
 
-.task h3 span.subtaskTrigger {
+.task > h3 > span.subtaskTrigger {
 	display:inline-block;
 	float:left;
 	height:22px;
 	width:13px;
 	margin-left:10px;
 }
-.task h3 span.subtaskTrigger.expandable {
+.task > h3 > span.subtaskTrigger.expandable {
 	cursor:pointer;
 	background:url(../../../../core/asset/img/tree-icons.png) no-repeat 1px -23px;
 }
 
-.task h3 span.subtaskTrigger.expandable.expanded {
+.task > h3 > span.subtaskTrigger.expandable.expanded {
 	background:url(../../../../core/asset/img/tree-icons.png) no-repeat 1px 7px;
 }
 
