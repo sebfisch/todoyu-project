@@ -16,7 +16,7 @@
 	height:22px;
 	padding:0;
 }
-.task.expanded h3 {
+.task.expanded > h3 {
 	background-color:#e2e2e2;
 	font-weight:bold;
 }
