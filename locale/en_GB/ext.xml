@@ -95,5 +95,5 @@
 	<label index="extconf.taskDefaults.person_assigned_role">Assign role if not selectable</label>
 	<label index="extconf.taskDefaults.person_owner_role">Owned by person of role if not selectable</label>
 	<label index="extconf.quicktask_duration_days">Quicktask default duration in days</label>
-	<label index="export.csv">Export Project as CSV</label>
+	<label index="export.csv">Export projects as CSV</label>
 </labels>
