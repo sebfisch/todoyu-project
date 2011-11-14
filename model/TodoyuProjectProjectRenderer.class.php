@@ -340,10 +340,10 @@ class TodoyuProjectProjectRenderer {
 	 *
 	 * @param	Integer		$idProject			Render the task tree of this project
 	 * @param	Integer		$idTaskShow			Make sure this task is visible
-	 * @param	String		$tab
+	 * @param	String		$taskShowTab		Opened tab of the selected task
 	 * @return	String
 	 */
-	public static function renderProjectTaskTree($idProject, $idTaskShow = 0, $tab = null) {
+	public static function renderProjectTaskTree($idProject, $idTaskShow = 0, $taskShowTab = null) {
 		$idProject	= intval($idProject);
 		$idTaskShow	= intval($idTaskShow);
 
@@ -363,11 +363,11 @@ class TodoyuProjectProjectRenderer {
 
 			// Render tasks (with their sub tasks)
 		foreach($rootTaskIDs as $idTask) {
-			$treeHtml .= self::renderTask($idTask, $idTaskShow, false, false, $tab);
+			$treeHtml .= self::renderTask($idTask, $idTaskShow, false, false, $taskShowTab);
 		}
 
 			// Add a list of lost task (this task should be display, but their parent doesn't match the current filter)
-		$treeHtml .= self::renderLostTasks($idProject, $idTaskShow, $tab);
+		$treeHtml .= self::renderLostTasks($idProject, $idTaskShow, $taskShowTab);
 
 		return $treeHtml;
 	}
@@ -379,9 +379,10 @@ class TodoyuProjectProjectRenderer {
 	 *
 	 * @param	Integer		$idTask			Parent task ID
 	 * @param	Integer		$idTaskShow		Task to be shown (all parent sub trees will be rendered to show this task)
+	 * @param	String		$taskShowTab	Open tab of showed task
 	 * @return	String
 	 */
-	public static function renderSubTasks($idTask, $idTaskShow = 0) {
+	public static function renderSubTasks($idTask, $idTaskShow = 0, $taskShowTab = null) {
 		$idTask		= intval($idTask);
 		$idTaskShow	= intval($idTaskShow);
 
@@ -401,7 +402,7 @@ class TodoyuProjectProjectRenderer {
 			// Render all sub tasks
 		foreach($subTaskIDs as $idSubTask) {
 			if( TodoyuProjectTaskRights::isSeeAllowed($idSubTask) ) {
-				$data['subtaskHtml'] .= TodoyuProjectProjectRenderer::renderTask($idSubTask, $idTaskShow);
+				$data['subtaskHtml'] .= TodoyuProjectProjectRenderer::renderTask($idSubTask, $idTaskShow, false, false, $taskShowTab);
 			}
 		}
 
@@ -517,10 +518,10 @@ class TodoyuProjectProjectRenderer {
 	 * @param	Integer		$idTaskShow				ID of the task which is forced to be shown (if its a sub task of the rendered task)
 	 * @param	Boolean		$withoutSubTasks		Don't render sub tasks
 	 * @param	Boolean		$isLostTask
-	 * @param	String		$tab
+	 * @param	String		$taskShowTab
 	 * @return	String		Rendered task HTML for project task tree view
 	 */
-	public static function renderTask($idTask, $idTaskShow = 0, $withoutSubTasks = false, $isLostTask = false, $tab = null) {
+	public static function renderTask($idTask, $idTaskShow = 0, $withoutSubTasks = false, $isLostTask = false, $taskShowTab = null) {
 		$idTask		= intval($idTask);
 		$idTaskShow = intval($idTaskShow);
 		$isExpanded	= false;
@@ -565,7 +566,7 @@ class TodoyuProjectProjectRenderer {
 
 			// Render sub tasks
 		if( $withoutSubTasks === false && $data['hasSubtasks'] && $data['areSubtasksVisible'] ) {
-			$data['subtasks'] = self::renderSubTasks($idTask, $idTaskShow);
+			$data['subtasks'] = self::renderSubTasks($idTask, $idTaskShow, $taskShowTab);
 		}
 
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'task.dataBeforeRendering', $data, array($idTask, 'renderTask'));
