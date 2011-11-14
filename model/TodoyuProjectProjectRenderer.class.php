@@ -415,13 +415,13 @@ class TodoyuProjectProjectRenderer {
 	 * Render (list of) lost tasks
 	 *
 	 * @param	Integer		$idProject
-	 * @param	Integer		$idTask
-	 * @param	String		$tab
+	 * @param	Integer		$idTaskShow
+	 * @param	String		$taskShowTab
 	 * @return	String		HTML
 	 */
-	public static function renderLostTasks($idProject, $idTask, $tab = null) {
+	public static function renderLostTasks($idProject, $idTaskShow, $taskShowTab = null) {
 		$idProject	= intval($idProject);
-		$idTask		= intval($idTask);
+		$idTaskShow	= intval($idTaskShow);
 
 		$tmpl	= 'ext/project/view/losttasks.tmpl';
 
@@ -429,11 +429,11 @@ class TodoyuProjectProjectRenderer {
 		$lostTaskIDs	= TodoyuProjectProjectManager::getLostTaskInTaskTree($idProject, self::$renderedTasks);
 
 			// If forced task is set, but not rendered, add to lost task if allowed
-		if( $idTask !== 0 ) {
-			if( ! in_array($idTask, self::$renderedTasks) ) {
-				if( ! in_array($idTask, $lostTaskIDs) ) {
-					if( TodoyuProjectTaskRights::isSeeAllowed($idTask) ) {
-						$lostTaskIDs[] = $idTask;
+		if( $idTaskShow !== 0 ) {
+			if( ! in_array($idTaskShow, self::$renderedTasks) ) {
+				if( ! in_array($idTaskShow, $lostTaskIDs) ) {
+					if( TodoyuProjectTaskRights::isSeeAllowed($idTaskShow) ) {
+						$lostTaskIDs[] = $idTaskShow;
 					}
 				}
 			}
@@ -442,7 +442,7 @@ class TodoyuProjectProjectRenderer {
 		$lostTaskHtml	= '';
 		foreach($lostTaskIDs as $idLostTask) {
 			if( TodoyuProjectTaskRights::isSeeAllowed($idLostTask) ) {
-				$lostTaskHtml .= self::renderLostTask($idLostTask, $idTask, $tab);
+				$lostTaskHtml .= self::renderLostTask($idLostTask, $idTaskShow, $taskShowTab);
 			}
 		}
 
@@ -555,8 +555,8 @@ class TodoyuProjectProjectRenderer {
 
 			// Render details if task is expanded
 		if( $isExpanded ) {
-			if( ! is_null($tab) && $idTask === $idTaskShow ) {
-				$activeTab	= trim(strtolower($tab));
+			if( ! is_null($taskShowTab) && $idTask === $idTaskShow ) {
+				$activeTab	= trim(strtolower($taskShowTab));
 			} else {
 				$activeTab	= TodoyuProjectPreferences::getActiveTaskTab($idTask);
 			}
@@ -582,11 +582,11 @@ class TodoyuProjectProjectRenderer {
 	 *
 	 * @param	Integer		$idTask			ID of the task to be rendered
 	 * @param	Integer		$idTaskShow		ID of the task which is forced to be shown (if its a sub task of the rendered task)
-	 * @param	String		$tab
+	 * @param	String		$taskShowTab
 	 * @return	String
 	 */
-	public static function renderLostTask($idTask, $idTaskShow, $tab = null) {
-		return self::renderTask($idTask, $idTaskShow, true, true, $tab);
+	public static function renderLostTask($idTask, $idTaskShow, $taskShowTab = null) {
+		return self::renderTask($idTask, $idTaskShow, true, true, $taskShowTab);
 	}
 
 
