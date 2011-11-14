@@ -162,8 +162,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		TodoyuCache::set($cacheKey, $task);
 
 			// Initialize form for validation
-		$xmlPath	= 'ext/project/config/form/task.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
+		$xmlPath= 'ext/project/config/form/task.xml';
+		$form	= TodoyuFormManager::getForm($xmlPath, $idTask);
 
 		$form->setFormData($data);
 
@@ -376,7 +376,6 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function dragdropAction(array $params) {
-//		$idProject	= intval($params['project']);
 		$idTaskDrag	= intval($params['taskDrag']);
 		$idTaskDrop	= intval($params['taskDrop']);
 		$position	= trim($params['position']);
@@ -423,8 +422,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function tabloadAction(array $params) {
-		$idTask		= intval($params['task']);
-		$tab		= $params['tab'];
+		$idTask	= intval($params['task']);
+		$tab	= $params['tab'];
 
 		TodoyuProjectTaskRights::restrictSee($idTask);
 		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tab);
@@ -440,8 +439,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function tabselectedAction(array $params) {
-		$idTask		= intval($params['idTask']);
-		$tabKey		= $params['tab'];
+		$idTask	= intval($params['idTask']);
+		$tabKey	= $params['tab'];
 
 		TodoyuProjectTaskRights::restrictSee($idTask);
 

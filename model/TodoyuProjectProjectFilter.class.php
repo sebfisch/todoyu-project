@@ -508,7 +508,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 
 
 	/**
-	 * Set filtering WHERE clause falsified (e.g. if no project status is allowed) to avoid mySql errors
+	 * Set filtering WHERE clause falsified (e.g. if no project status is allowed) to avoid MySQL errors
 	 *
 	 * @return	Array
 	 */
