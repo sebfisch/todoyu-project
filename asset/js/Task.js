@@ -293,18 +293,40 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Delete task with given ID
+	 * Hilite task with given ID (and it's sub tasks) and ask for removal confirmation
 	 *
 	 * @method	remove
 	 * @param	{Number}		idTask
-	 * @param	{Boolean}		container
+	 * @param	{Boolean}		isContainer
 	 */
-	remove: function(idTask, container) {
-			// Confirm deletion
-		var confirmLabel	= container === true ? '[LLL:project.task.js.removecontainer.question]' : '[LLL:project.task.js.removetask.question]';
+	remove: function(idTask, isContainer) {
+		new Effect.Highlight('task-' + idTask, { duration: 2.0 });
+		new Effect.Highlight('task-' + idTask + '-header', { duration: 2.0 });
+			// Highlight also sub tasks
+		$('task-' + idTask).select('.task').each(function(subTask) {
+			new Effect.Highlight(subTask.id, { duration: 2.0 });
+			new Effect.Highlight(subTask.id + '-header', { duration: 2.0 });
+		});
+
+		this.confirmRemove.bind(this).delay(0.4, idTask, isContainer);
+	},
+
+
+
+	/**
+	 * Confirm task deletion
+	 *
+	 * @method	confirmRemove
+	 * @param	{Number}		idTask
+	 * @param	{Boolean}		isContainer
+	 */
+	confirmRemove: function(idTask, isContainer) {
+		var confirmLabel	= isContainer === true ? '[LLL:project.task.js.removecontainer.question]' : '[LLL:project.task.js.removetask.question]';
+
 		if( ! confirm(confirmLabel) ) {
 			return;
 		}
+			// Removal has been confirmed
 		var idParent= this.getParentTaskID(idTask);
 
 			// Animate element deletion (task itself and empty container of sub elements if present)
