@@ -4,7 +4,8 @@
 .task {}
 
 .task.marked,
-.task.marked * {
+.task.marked h3,
+.task.marked div {
 	background-color:#ffff97 !important;
 }
 
