@@ -59,8 +59,11 @@
 	<label index="contextmenu.add.container">Add a new container</label>
 	<label index="tasktree.losttasks">Tasks with inapplicable parents/status</label>
 	<label index="records.projectrole">Project Roles</label>
+	<label index="records.projectrole.desc">Roles for project memebers</label>
 	<label index="records.activity">Activity Types</label>
+	<label index="records.activity.desc">Task activities</label>
 	<label index="records.taskpreset">Task Presets Set</label>
+	<label index="records.taskpreset.desc">Field presets for tasks in a project</label>
 	<label index="infobox.presets.title">Presets for newly created tasks</label>
 	<label index="taskpreset.title">Task presets set title</label>
 	<label index="taskpreset.tasktitle">Task Default Title</label>
