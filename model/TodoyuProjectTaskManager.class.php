@@ -462,11 +462,15 @@ class TodoyuProjectTaskManager {
 	 * @return	Array		Config array for context menu
 	 */
 	public static function getContextMenuItems($idTask, array $items) {
-		$idTask		= intval($idTask);
-		$task		= TodoyuProjectTaskManager::getTask($idTask);
+		$idTask	= intval($idTask);
+		$task	= TodoyuProjectTaskManager::getTask($idTask);
+
+		if( $task->isDeleted() ) {
+			return $items;
+		}
+
 		$project	= $task->getProject();
 		$allowed	= array();
-
 		$taskType	= $task->isTask() ? 'Task' : 'Container';
 		$ownItems	= Todoyu::$CONFIG['EXT']['project']['ContextMenu'][$taskType];
 
@@ -754,6 +758,18 @@ class TodoyuProjectTaskManager {
 		$task	= Todoyu::db()->getRecordByQuery($field, $table, $where);
 
 		return intval($task['id_parenttask']) > 0;
+	}
+
+
+
+	/**
+	 * Check whether the given task is deleted
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Boolean
+	 */
+	public static function isDeleted($idTask) {
+		return self::getTask($idTask)->isDeleted();
 	}
 
 

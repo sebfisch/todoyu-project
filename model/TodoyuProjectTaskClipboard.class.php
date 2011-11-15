@@ -257,7 +257,6 @@ class TodoyuProjectTaskClipboard {
 			$isCopyMode		= self::isInCopyMode();
 			$mergeItems		= array();
 
-
 			if( self::isInCutMode() ) {
 				$ownItems['paste']['label'] .= '.cut';
 			} else {
