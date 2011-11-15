@@ -60,12 +60,26 @@ Todoyu.Ext.project.TaskTree = {
 	},
 
 
+
+	/**
+	 * Reload drag'n'drop sorting (reinitialize)
+	 *
+	 * @method	reloadSortable
+	 */
 	reloadSortable: function() {
 		this.sortable.reload();
 	},
-	
 
 
+
+	/**
+	 * Handler when sorting was changed with drag'n'drop
+	 *
+	 * @param	{Number}	idProject
+	 * @param	{Number}	idTaskDragged
+	 * @param	{Number}	idTaskDrop
+	 * @param	{String}	position
+	 */
 	onSortingChange: function(idProject, idTaskDragged, idTaskDrop, position) {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
@@ -83,8 +97,18 @@ Todoyu.Ext.project.TaskTree = {
 	},
 
 
+
+	/**
+	 * Handler when new sorting order was saved
+	 *
+	 * @param	{Number}		idProject
+	 * @param	{Number}		idTaskDragged
+	 * @param	{Number}		idTaskDrop
+	 * @param	{String}		position
+	 * @param	{Ajax.Response}	response
+	 */
 	onSortingSaved: function( idProject, idTaskDragged, idTaskDrop, position, response) {
-		Todoyu.notifySuccess('Saved new task position', 'taskDragDrop');
+		Todoyu.notifySuccess('[LLL:project.task.dragndrop.saved]', 'taskDragDrop');
 	},
 
 

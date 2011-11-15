@@ -509,10 +509,10 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	 * @return	{Number|Boolean}
 	 */
 	getParentTaskID: function() {
-		var task = this.getTask();
+		var parentTask = this.getParentTask();
 
-		if( task ) {
-			return task.id.split('-').last();
+		if( parentTask ) {
+			return parentTask.id.split('-').last();
 		} else {
 			return false;
 		}
@@ -543,6 +543,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 		if( this.ext.TaskTree.areSubTasksLoaded(idTaskDrop) ) {
 			this.ext.TaskTree.expandSubTasks(idTaskDrop);
 			this.ext.Task.getSubTasksContainer(idTaskDrop).insert(drag);
+			this.ext.Task.updateSubTasksExpandTrigger(idTaskDrop);
 			this.tree.onChange(idTaskDrag, idTaskDrop, 'in');
 		} else {
 			drag.remove();
@@ -550,6 +551,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 				this.ext.TaskTree.setSubtaskTriggerExpanded(idTask, true);
 				this.ext.Task.getSubTasksContainer(idTaskDrop).insert(drag);
 				drag.highlight();
+				this.ext.Task.updateSubTasksExpandTrigger(idTaskDrop);
 				this.tree.onChange(idTaskDrag, idTask, 'in');
 				this.tree.reload();
 			}.bind(this));
