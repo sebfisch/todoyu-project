@@ -3,6 +3,11 @@
    ----------- */
 .task {}
 
+.task.marked,
+.task.marked * {
+	background-color:#ffff97 !important;
+}
+
 /* --------------------
 	Task header
    -------------------- */

@@ -293,37 +293,40 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Hilite task with given ID (and it's sub tasks) and ask for removal confirmation
+	 * Toggle marking of task (no animation), optionally include sub tasks
+	 *
+	 * @method	toggleTaskMarking
+	 * @param	{Number}	idTask
+	 * @param	{Boolean}	includeSubTasks
+	 */
+	toggleTaskMarking: function(idTask, includeSubTasks) {
+		$('task-' + idTask).toggleClassName('marked');
+
+		if( includeSubTasks ) {
+			var subTasks	= this.getSubTasks(idTask);
+			subTasks.each(function(subTask) {
+				var idSubTask	= subTask.id.split('-')[1];
+				this.toggleTaskMarking(idSubTask, true);
+			}, this);
+		}
+	},
+
+
+
+	/**
+	 * Confirm and remove task + sub tasks
 	 *
 	 * @method	remove
 	 * @param	{Number}		idTask
 	 * @param	{Boolean}		isContainer
 	 */
 	remove: function(idTask, isContainer) {
-		new Effect.Highlight('task-' + idTask, { duration: 2.0 });
-		new Effect.Highlight('task-' + idTask + '-header', { duration: 2.0 });
-			// Highlight also sub tasks
-		$('task-' + idTask).select('.task').each(function(subTask) {
-			new Effect.Highlight(subTask.id, { duration: 2.0 });
-			new Effect.Highlight(subTask.id + '-header', { duration: 2.0 });
-		});
+		Todoyu.ContextMenu.hide();
+		this.toggleTaskMarking(idTask, true);
 
-		this.confirmRemove.bind(this).delay(0.4, idTask, isContainer);
-	},
-
-
-
-	/**
-	 * Confirm and proceed with/cancel task deletion
-	 *
-	 * @method	confirmRemove
-	 * @param	{Number}		idTask
-	 * @param	{Boolean}		isContainer
-	 */
-	confirmRemove: function(idTask, isContainer) {
 		var confirmLabel	= isContainer === true ? '[LLL:project.task.js.removecontainer.question]' : '[LLL:project.task.js.removetask.question]';
-
 		if( ! confirm(confirmLabel) ) {
+			this.toggleTaskMarking(idTask, true);
 			return;
 		}
 			// Removal has been confirmed
