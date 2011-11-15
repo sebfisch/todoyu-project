@@ -314,7 +314,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Confirm task deletion
+	 * Confirm and proceed with/cancel task deletion
 	 *
 	 * @method	confirmRemove
 	 * @param	{Number}		idTask
