@@ -5,7 +5,7 @@ project 1.2.0 - not released yet
 
 project 1.1.3 - not released yet
 	* Bugfix: Add status class to generated wrapping container for task edit
-	* Bugfix: Deeplink with preselected tab works now for sub tasks too
+	* Bugfix: Deep-link with preselected tab works now for sub tasks too
 	* Bugfix: Presets in quick - add - task
 	* Bugfix: Prevent task from double - open
 	* Bugfix: Fixed duration picker in extconf and presets
@@ -20,7 +20,7 @@ project 1.1.3 - not released yet
 	* Changed: ext_project_project.description and ext_project_taskpreset.description are now mediumtext not text
 	* Changed: Panel-widget clean-up
 	* Changed: Namespace of filter-widget
-	* Changed: Cleanup of task header html code (no conflicting event handlers anymore)
+	* Changed: Cleanup of task header HTML code (no conflicting event handlers anymore)
 	* Translation: Polish
 
 project 1.1.2 - 2011-09-15
@@ -40,10 +40,10 @@ project 1.1.1 - 2011-07-25
 	* Bugfix: Prevented multi-occuring of identical task elements within same page (removed sub tasks expand-trigger from lost tasks)
 	* Bugfix: Pasting task into project(header) w/o lost tasks did not display the inserted item
 	* Bugfix: Prevent linking of task numbers when the numbers are not isolated (with whitespace or tag). Number inside an url like string are ignored now
-	* Changed: Order projectroles by title instead by id
-	* Changed: Use full title for tab labels because they are now cropped in js
+	* Changed: Order projectroles by title instead of ID
+	* Changed: Use full title for tab labels because they are now cropped in JS
 	* Changed: Adapted timetrack list items style in headlet to global task style
-	* Changed: Interpolated links are now created as full links instead of js calls. Allows opening in new tab
+	* Changed: Interpolated links are now created as full links instead of JS calls. Allows opening in new tab
 
 
 project 1.1.0 - 2011-06-17

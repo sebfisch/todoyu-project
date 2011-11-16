@@ -8,9 +8,9 @@
 				<tr class="{cycle values="odd,even"}">
 					<th class="label">{Label $info.label}</th>
 					<td>
-						{if $info.__key == 'company' && isCompanySeeAllowed($id_company)}<a href="?ext=contact&amp;tab=company&amp;id={$id_company}">{/if}
+						{if allowed('contact', 'general:area') && $info.__key == 'company' && isCompanySeeAllowed($id_company)}<a href="?ext=contact&amp;tab=company&amp;id={$id_company}">{/if}
 						{$info.value}
-						{if $info.__key == 'company' && isCompanySeeAllowed($id_company)}</a>{/if}
+						{if allowed('contact', 'general:area') && $info.__key == 'company' && isCompanySeeAllowed($id_company)}</a>{/if}
 					</td>
 				</tr>
 				{/foreach}
