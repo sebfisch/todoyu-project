@@ -1,7 +1,16 @@
 /* ------------
 	Task
    ----------- */
-.task {}
+.task,
+.task .task:last-child {
+	border-bottom: 1px solid #ddd;
+}
+.task .subtasks  {
+	border-top: 1px solid #ddd;
+}
+.task .subtasks .task:last-child {
+	border-bottom: none;
+}
 
 .task.marked,
 .task.marked h3,
@@ -17,12 +26,8 @@
 	position:relative;
 	clear:both;
 	background-color:transparent;
-	border-bottom:1px solid #ddd;
 	height:22px;
 	padding:0;
-}
-.task.expanded {
-	border-bottom:1px solid #ddd;
 }
 .task.expanded > h3 {
 	background-color:#e2e2e2;
