@@ -194,7 +194,7 @@ Todoyu.Ext.project.Task = {
 				// If sub task container already exists, add it
 			if( this.hasSubTasksContainer(idTask) ) {
 				this.getSubTasksContainer(idTask).insert({
-					'bottom': response.responseText
+					bottom: response.responseText
 				});
 				this.ext.TaskTree.expandSubTasks(idTask);
 				this.updateSubTasksExpandTrigger(idTask);
@@ -207,13 +207,13 @@ Todoyu.Ext.project.Task = {
 		} else if( insertMode === 'before' ) {
 				// Insert task before current
 			$('task-' + idTask).insert({
-				'before': response.responseText
+				before: response.responseText
 			});
 		} else if( insertMode === 'after' ) {
 				// Insert task after current
 			var target = this.hasSubTasksContainer(idTask) ? this.getSubTasksContainerID(idTask) : 'task-' + idTask;
 			$(target).insert({
-				'after': response.responseText
+				after: response.responseText
 			});
 		}
 
@@ -382,17 +382,28 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Number}	idTask
 	 */
 	removeTaskElement: function(idTask) {
-		if( this.hasSubTasksContainer(idTask) ) {
-			this.getSubTasksContainer(idTask).remove();
-		}
-
 		if( Todoyu.exists('task-' + idTask) ) {
-			if( this.isSubTask(idTask) ) {
-				$('task-' + idTask).remove();
-				this.updateSubTasksExpandTrigger(this.getParentTaskID(idTask));
-			} else {
-				$('task-' + idTask).remove();
+			var idParentTask = this.getParentTaskID(idTask);
+
+			$('task-' + idTask).remove();
+
+			if( idParentTask ) {
+				this.updateSubTasksExpandTrigger(idParentTask);
+				this.removeEmptySubTaskContainer(idParentTask);
 			}
+		}
+	},
+
+	
+
+	/**
+	 * Remove empty subtask container
+	 *
+	 * @param	{Number}	idTask
+	 */
+	removeEmptySubTaskContainer: function(idTask) {
+		if( this.hasSubTasksContainer(idTask) && !this.hasSubTasks(idTask) ) {
+			this.getSubTasksContainer(idTask).remove();
 		}
 	},
 
@@ -473,7 +484,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Get ID of sub tasks container element of task with given ID
 	 *
-	 * @method	getSubTaskContainerID
+	 * @method	getSubTasksContainerID
 	 * @param	{Number}				idTask
 	 * @return	{String}
 	 */
@@ -526,6 +537,25 @@ Todoyu.Ext.project.Task = {
 		}
 
 		return idParent;
+	},
+
+
+
+	/**
+	 * Get parent task element
+	 *
+	 * @param	{Number}	idTask
+	 * @return	{Element}
+	 */
+	getParentTask: function(idTask) {
+		var parent 	= false;
+		var idParent= this.getParentTaskID();
+
+		if( idParent  ) {
+			parent = $('task-' + idTask);
+		}
+
+		return parent;
 	},
 
 
@@ -792,10 +822,6 @@ Todoyu.Ext.project.Task = {
 	 * @param	{String}	taskHtml
 	 */
 	update: function(idTask, taskHtml) {
-		if( this.hasSubTasksContainer(idTask) ) {
-			this.getSubTasksContainer(idTask).remove();
-		}
-
 		$('task-' + idTask).replace(taskHtml);
 
 		this.addContextMenu(idTask);
