@@ -39,6 +39,8 @@ class TodoyuProjectActivity extends TodoyuBaseObject {
 
 
 
+
+
 	/**
 	 * Get title of activity
 	 *
