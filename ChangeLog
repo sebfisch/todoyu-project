@@ -4,12 +4,13 @@ project 1.2.0 - not released yet
 	* Feature: Drag'n'Drop tasks in project
 
 project 1.1.3 - not released yet
-	* Added: When asking for task/container removal confirmation the affected task +sub tasks are highlighted
+	* Bugfix: Add status class to generated wrapping container for task edit
 	* Bugfix: Deeplink with preselected tab works now for sub tasks too
 	* Bugfix: Presets in quick - add - task
 	* Bugfix: Prevent task from double - open
 	* Bugfix: Fixed duration picker in extconf and presets
 	* Bugfix: Fixed rights label
+	* Added: When asking for task/container removal confirmation the affected task +sub tasks are highlighted
 	* Added: Information when pasting is not allowed
 	* Added: Project filter: "Project ID"
 	* Added: Linked customer company property of project details with contact company view

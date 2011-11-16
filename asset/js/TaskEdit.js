@@ -64,24 +64,25 @@ Todoyu.Ext.project.Task.Edit = {
 		var idData		= 'task-' + idTask + '-data';
 
 		if( ! Todoyu.exists(idDetails) ) {
+			var statusCode = this.ext.Task.getStatus(idTask);
 				// Create details div
 			var details = new Element('div', {
 				'id':		idDetails,
-				'class':	'details edit'
+				'class':	'details edit bcStatus' + statusCode
 			});
 
 				// Create data div
 			var data = new Element('div', {
-				'id':		idData,
-				'class':	'data'
+				id:		idData,
+				'class':'data'
 			});
 
 			details.insert({
-				'top':	data
+				top:	data
 			});
 
 			$(idHeader).insert({
-				'after':	details
+				after:	details
 			});
 		}
 
