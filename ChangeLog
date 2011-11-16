@@ -10,6 +10,7 @@ project 1.1.3 - not released yet
 	* Bugfix: Prevent task from double - open
 	* Bugfix: Fixed duration picker in extconf and presets
 	* Bugfix: Fixed rights label
+	* Bugfix: Company link loaded inside of project instead in contact area
 	* Added: When asking for task/container removal confirmation the affected task +sub tasks are highlighted
 	* Added: Information when pasting is not allowed
 	* Added: Project filter: "Project ID"
