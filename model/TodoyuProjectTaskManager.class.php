@@ -283,7 +283,9 @@ class TodoyuProjectTaskManager {
 		$order	= 'sorting DESC';
 		$limit	= 1;
 
+		TodoyuCache::disable();
 		$maxSorting	= Todoyu::db()->getFieldValue($field, $table, $where, $group, $order, $limit, 'sorting'); // getRecordByQuery($fields, $table, $where, $group);
+		TodoyuCache::enable();
 
 		if( $maxSorting === false ) {
 			return 0;
