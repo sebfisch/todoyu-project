@@ -261,11 +261,6 @@ Todoyu.Ext.project.Task = {
 		};
 		var target	= 'task-' + idTask;
 
-			// If task has already sub tasks, add the form after the sub tasks
-		if( this.hasSubTasks(idTask) ) {
-			target += '-subtasks';
-		}
-
 		Todoyu.Ui.append(target, url, options);
 	},
 
