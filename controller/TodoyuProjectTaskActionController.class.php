@@ -254,12 +254,13 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function headerAction(array $params) {
-		$idTask	= intval($params['task']);
+		$idTask		= intval($params['task']);
+		$isListing	= AREA !== 'project';
 
 		TodoyuProjectTaskRights::restrictSee($idTask);
 
 		if( TodoyuProjectTaskManager::isTaskVisible($idTask) ) {
-			return TodoyuProjectTaskRenderer::renderHeader($idTask);
+			return TodoyuProjectTaskRenderer::renderHeader($idTask, $isListing);
 		} else {
 			TodoyuLogger::logSecurity('Tried to get task data of a not visible task', $idTask);
 		}

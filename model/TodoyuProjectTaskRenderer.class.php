@@ -66,12 +66,18 @@ class TodoyuProjectTaskRenderer {
 	 * Render task header
 	 *
 	 * @param	Integer		$idTask
+	 * @param	Boolean		$isListing		Render header for listing item (not for project tree view)
 	 * @return	String
 	 */
-	public static function renderHeader($idTask) {
+	public static function renderHeader($idTask, $isListing = false) {
 		$idTask		= intval($idTask);
 
-		$tmpl	= 'ext/project/view/task-header.tmpl';
+		if( $isListing ) {
+			$tmpl	= 'ext/project/view/task-listing-header.tmpl';
+		} else {
+			$tmpl	= 'ext/project/view/task-header.tmpl';
+		}
+
 		$data 	= array(
 			'task'				=> TodoyuProjectTaskManager::getTaskInfoArray($idTask, 3),
 			'taskIcons'			=> TodoyuProjectTaskManager::getAllTaskIcons($idTask),
