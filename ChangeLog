@@ -47,32 +47,32 @@ project 1.1.1 - 2011-07-25
 
 
 project 1.1.0 - 2011-06-17
+	* Bugfix: Locked task can only be moved in their own project, not in another project
+	* Bugfix: Task exports with full task number, check for parent task. Label fix
+	* Bugfix: Fixed right TodoyuProjectTaskRights::isSeeAllowed (include public flag)
+  	* Bugfix: Fixed context menu for task cutting (changed right to the same as copy)
+	* Feature: Added task asset upload to quicktask creation
+ 	* Feature: Added date and status fields to container
 	* Changed: Renamed worktype to activity
 	* Changed: Requires core 2.1
 	* Changed: Structure for 2.1
 	* Changed: All classes are prefixed with extension name
-	* Feature: Added task asset upload to quicktask creation
- 	* Feature: Added date and status fields to container
 	* Changed: Regrouped the rights of the extension to improve usability
 	* Changed: Removed task / project ID from quicksearch suggestions list
 	* Changed: Added task expanded style
 	* Changed: moved globally used icons (unacknowledged/acknowledged) to core
    	* Changed: Assigned_to.. filters - if there's an assignment condition given, type cant be container
-  	* Bugfix: Fixed context menu for task cutting (changed right to the same as copy)
-	* Bugfix: Locked task can only be moved in their own project, not in another project
-	* Bugfix: Task exports with full task number, check for parent task. Label fix
-	* Bugfix: fixed right TodoyuProjectTaskRights::isSeeAllowed (include public flag)
 
 
 project 1.0.8
-	* Bugfix: dynamic labels in task/container were not localized to any other than default language
+	* Bugfix: Dynamic labels in task/container were not localized to any other than default language
 	* Bugfix: Newly created tasks that are assigned to the creator person were not set acknowledged initially
-	* Added: Negation of fulltext task filter
 	* Bugfix: Container header could contain non-existing date_end instead of date_deadline
-	* Changed: Unified displayed date in normal and listing task template
-	* Changed: Container ist never locked
 	* Bugfix: Dependencies of project rights
 	* Feature: Regrouped the rights of the extension to improve usability
+	* Added: Negation of fulltext task filter
+	* Changed: Unified displayed date in normal and listing task template
+	* Changed: Container ist never locked
 	* Changed: Task preset description field to RTE
 
 project 1.0.4 - 2011-03-29

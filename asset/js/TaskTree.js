@@ -302,7 +302,9 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	{Number}	idTask
 	 */
 	toggleSubTasksTriggerIcon: function(idTask) {
-		this.getSubtaskTrigger(idTask).addClassName('expandable').toggleClassName('expanded');
+		var trigger	=	$('task-' + idTask + '-subtasks-trigger');
+
+		trigger.addClassName('expandable').toggleClassName('expanded');
 	},
 
 
@@ -314,20 +316,11 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	{Boolean}	expanded
 	 */
 	setSubtaskTriggerExpanded: function(idTask, expanded) {
+		var trigger	= $('task-' + idTask + '-subtasks-trigger');
+
 		var method	= expanded !== false ? 'addClassName' : 'removeClassName';
 
-		this.getSubtaskTrigger(idTask).addClassName('expandable')[method]('expanded');
-	},
-
-
-
-	/**
-	 * Get trigger for subtask
-	 *
-	 * @param	{Number}	idTask
-	 */
-	getSubtaskTrigger: function(idTask) {
-		return $('task-' + idTask + '-subtasks-trigger');
+		trigger.addClassName('expandable')[method]('expanded');
 	},
 
 
