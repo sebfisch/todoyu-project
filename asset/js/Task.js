@@ -288,20 +288,21 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Toggle marking of task (no animation), optionally include sub tasks
+	 * Mark a task
 	 *
-	 * @method	toggleTaskMarking
 	 * @param	{Number}	idTask
-	 * @param	{Boolean}	includeSubTasks
+	 * @param	{Boolean}	mark
+	 * @param	{Boolean}	withSubTasks
 	 */
-	toggleTaskMarking: function(idTask, includeSubTasks) {
-		$('task-' + idTask).toggleClassName('marked');
+	markTask: function(idTask, mark, withSubTasks) {
+		var method	= mark !== false ? 'addClassName' : 'removeClassName';
 
-		if( includeSubTasks ) {
-			var subTasks	= this.getSubTasks(idTask);
-			subTasks.each(function(subTask) {
-				var idSubTask	= subTask.id.split('-')[1];
-				this.toggleTaskMarking(idSubTask, true);
+		$('task-' + idTask)[method]('marked');
+
+		if( withSubTasks !== false ) {
+			this.getSubTasks(idTask).each(function(subTask) {
+				var idSubTask	= subTask.id.split('-').last();
+				this.markTask(idSubTask, mark, true);
 			}, this);
 		}
 	},
@@ -317,29 +318,18 @@ Todoyu.Ext.project.Task = {
 	 */
 	remove: function(idTask, isContainer) {
 		Todoyu.ContextMenu.hide();
-		this.toggleTaskMarking(idTask, true);
+		this.markTask(idTask);
 
 		var confirmLabel	= isContainer === true ? '[LLL:project.task.js.removecontainer.question]' : '[LLL:project.task.js.removetask.question]';
 		if( ! confirm(confirmLabel) ) {
-			this.toggleTaskMarking(idTask, true);
+			this.markTask(idTask, false);
 			return;
 		}
 			// Removal has been confirmed
 		var idParent= this.getParentTaskID(idTask);
 
 			// Animate element deletion (task itself and empty container of sub elements if present)
-		if( this.hasSubTasksContainer(idTask) ) {
-			Effect.BlindUp(this.getSubTasksContainerID(idTask), {
-				'duration': 0.3
-			});
-		}
-		Effect.BlindUp('task-' + idTask, {
-			'duration': 0.7,
-			afterFinish:	function(event) {
-					// Update sub elements expand/collapse trigger of parent task after finishing the animation
-				Todoyu.Ext.project.Task.updateSubTasksExpandTrigger(idParent);
-			}
-		});
+		this.animateRemove(idTask);
 
 			// Start deletion request
 		var url		= Todoyu.getUrl('project', 'task');
@@ -352,6 +342,32 @@ Todoyu.Ext.project.Task = {
 		};
 
 		Todoyu.send(url, options);
+	},
+
+
+
+	/**
+	 * Animate removal of a task
+	 *
+	 * @param	{Number}	idTask
+	 */
+	animateRemove: function(idTask) {
+		var idParent= this.getParentTaskID(idTask);
+		
+			// Animate element deletion (task itself and empty container of sub elements if present)
+		if( this.hasSubTasksContainer(idTask) ) {
+			Effect.BlindUp(this.getSubTasksContainer(idTask), {
+				duration: 0.5
+			});
+		}
+		Effect.BlindUp('task-' + idTask, {
+			duration: 	0.7,
+			afterFinish: function(event) {
+					// Update sub elements expand/collapse trigger of parent task after finishing the animation
+				this.updateSubTasksExpandTrigger(idParent);
+				$('task-' + idTask).remove();
+			}.bind(this)
+		});
 	},
 
 
