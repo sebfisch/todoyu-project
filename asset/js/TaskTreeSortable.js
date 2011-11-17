@@ -59,6 +59,7 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	 * @param	{Object}			options
 	 */
 	initialize: function(container, options) {
+		return;
 		this.options = options || {};
 		this.options.droppable = this.options.droppable || {};
 		this.options.draggable = this.options.draggable || {};
@@ -78,6 +79,7 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	 * Detects new added elements and adds drop and drop behaviour
 	 */
 	reload: function() {
+		return;
 		this.root.destroy();
 		this.root = new this.ext.TaskTree.SortableNode(this, null, this.element, this.options);
 
