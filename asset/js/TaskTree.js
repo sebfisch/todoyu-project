@@ -248,15 +248,24 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	{Function}	callback		Will get the task ID as parameter
 	 */
 	toggleSubTasks: function(idTask, callback) {
+		if( ! this.ext.Task.hasSubTasks(idTask) ) {
+			this.onSubTasksToggled(idTask, callback);
+			return;
+		}
+
 			// Load sub tasks if they are not already loaded
 		if( this.areSubTasksLoaded(idTask) ) {
-			$('task-' + idTask + '-subtasks').toggle();
-			this.saveSubTaskOpenStatus(idTask, $('task-' + idTask + '-subtasks').visible());
+			var container = this.ext.Task.getSubTasksContainer(idTask);
+			container.toggle();
+			this.saveSubTaskOpenStatus(idTask, container.visible());
 			this.onSubTasksToggled(idTask, callback);
 		} else {
 			this.loadSubTasks(idTask, this.onSubTasksToggled.bind(this, idTask, callback));
 		}
 	},
+
+
+
 
 
 
@@ -275,8 +284,10 @@ Todoyu.Ext.project.TaskTree = {
 		}
 		this.reloadSortable();
 
-			// Toggle expanding icon
-		this.toggleSubTasksTriggerIcon(idTask);
+		if( this.ext.Task.hasSubTasks(idTask) ) {
+				// Toggle expanding icon
+			this.toggleSubTasksTriggerIcon(idTask);
+		}
 	},
 
 
