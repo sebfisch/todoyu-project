@@ -1,14 +1,14 @@
 /* ------------
 	Task
    ----------- */
-.task,
-.task .task:last-child {
+div.task,
+div.task .task:last-child {
 	border-bottom: 1px solid #ddd;
 }
-.task .subtasks  {
+div.task .subtasks  {
 	border-top: 1px solid #ddd;
 }
-.task .subtasks .task:last-child {
+div.task .subtasks .task:last-child {
 	border-bottom: none;
 }
 
