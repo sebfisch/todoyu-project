@@ -423,7 +423,9 @@ class TodoyuProjectProjectManager {
 		$table	= 'ext_project_task';
 		$where	= 'id_project	= ' . $idProject;
 
+		TodoyuCache::disable();
 		$highestNumber	= Todoyu::db()->getFieldValue($field, $table, $where, '', '', '', 'tasknr');
+		TodoyuCache::enable();
 
 		$nextNumber		= intval($highestNumber) + 1;
 
