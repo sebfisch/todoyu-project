@@ -205,15 +205,19 @@ Todoyu.Ext.project.Task.Edit = {
 	 * @param	{Number}	idTask
 	 */
 	cancel: function(idTask) {
-		if( this.ext.Task.hasParentTask(idTask) && idTask == 0) {
-			var idParent	= this.ext.Task.getParentTaskID(idTask);
-			this.ext.Task.updateSubTasksExpandTrigger(idParent);
-		}
-
 		Todoyu.Ui.closeRTE('task-' + idTask + '-form');
 
 		if( idTask == 0 ) {
+				// Remove task element and if it was the only child: remove parent's children expand trigger
+			if( this.ext.Task.hasParentTask(idTask) && idTask == 0 ) {
+				var idParent	= this.ext.Task.getParentTaskID(idTask);
+			}
+
 			$('task-' + idTask).remove();
+
+			if( idParent ) {
+				this.ext.Task.updateSubTasksExpandTrigger(idParent);
+			}
 		} else {
 			this.ext.Task.refresh(idTask);
 		}

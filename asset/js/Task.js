@@ -518,12 +518,16 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * check if task has a parent task
+	 * Check whether task (exists and) has a parent task
 	 *
 	 * @method	hasParentTask
 	 * @param	{Number}		idTask
 	 */
 	hasParentTask: function(idTask){
+		if( ! Todoyu.exists('task-' + idTask) ) {
+			return false;
+		}
+
 		return $('task-' + idTask).up().hasClassName('subtasks');
 	},
 
@@ -649,10 +653,41 @@ Todoyu.Ext.project.Task = {
 	 */
 	updateSubTasksExpandTrigger: function(idTask) {
 		var show	= this.getSubTasks(idTask, true).length > 0;
-		var trigger	= this.getSubTasksExpandTrigger(idTask);
 
+		if( show ) {
+			this.addSubTasksExpandTrigger(idTask);
+		} else {
+			this.removeSubTasksExpandTrigger(idTask);
+		}
+	},
+
+
+
+	/**
+	 * Remove expand trigger from given task header
+	 *
+	 * @method	addSubTasksExpandTrigger
+ 	 * @param	{Number}	idTask
+	 */
+	addSubTasksExpandTrigger: function(idTask) {
+		var trigger	= this.getSubTasksExpandTrigger(idTask);
 		if( trigger ) {
-			trigger[show ? 'addClassName' : 'removeClassName']('expandable');
+			trigger.addClassName('expandable');
+		}
+	},
+
+
+
+	/**
+	 * Remove expand trigger from given task header
+	 *
+	 * @method	removeSubTasksExpandTrigger
+ 	 * @param	{Number}	idTask
+	 */
+	removeSubTasksExpandTrigger: function(idTask) {
+		var trigger	= this.getSubTasksExpandTrigger(idTask);
+		if( trigger ) {
+			trigger.removeClassName('expandable');
 		}
 	},
 
