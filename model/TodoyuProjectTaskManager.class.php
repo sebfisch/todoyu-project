@@ -1521,8 +1521,11 @@ class TodoyuProjectTaskManager {
 		}
 
 			// Set is_public flag (if task creator is an external person, the task is always public)
-		$data['is_public']	= ( Todoyu::person()->isExternal() ) ? 1 : intval($preset['is_public']);
-
+		if( Todoyu::person()->isExternal() ) {
+			$data['is_public']	= 1;
+		} elseif( ! isset($data['is_public']) ) {
+			$data['is_public']	= intval($preset['is_public']);
+		}
 
 
 			// Assigned person (explicitly configured or indirect via role)
