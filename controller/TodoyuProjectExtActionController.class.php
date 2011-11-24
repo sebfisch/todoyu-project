@@ -109,12 +109,11 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 		$projectTabs		= TodoyuProjectProjectRenderer::renderProjectsTabs();
 		$projectTaskTree	= TodoyuProjectProjectRenderer::renderProjectsContent($idProject, $idTask, $taskTab);
 
-		TodoyuPage::set('panelWidgets', $panelWidgets);
+		TodoyuPage::setPanelWidgets($panelWidgets);
 		TodoyuPage::set('projectTabs', $projectTabs);
 		TodoyuPage::set('taskTree', $projectTaskTree);
 
 			// Add JS onLoad functions
-//		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.init.bind(Todoyu.Ext.project)', 100);
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.ContextMenuTask.attach', 100, true);
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.ContextMenuProject.attach', 100, true);
 
@@ -123,6 +122,9 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 		if( $idTaskEdit > 0 ) {
 			TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Task.Edit.initEditOnLoaded.bind(Todoyu.Ext.project.Task.Edit, ' . $idTaskEdit . ')', 100);
 		}
+
+			// Add last projects as submenu items
+		TodoyuProjectManager::addLastProjectsAsSubmenuItems();
 
 		return TodoyuPage::render();
 	}

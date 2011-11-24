@@ -287,8 +287,10 @@ class TodoyuProjectPreferences {
 	public static function addOpenProject($idProject) {
 		$idProject	= intval($idProject);
 
+		TodoyuCache::disable();
 			// Get currently tabbed projects
 		$projectIDs	= self::getOpenProjectIDs();
+		TodoyuCache::enable();
 
 			// Remove project from list if already in
 		$projectIDs	= TodoyuArray::removeByValue($projectIDs, array($idProject));
@@ -310,7 +312,9 @@ class TodoyuProjectPreferences {
 		$idProject	= intval($idProject);
 
 			// Get currently tabbed projects
+		TodoyuCache::disable();
 		$projectIDs	= self::getOpenProjectIDs();
+		TodoyuCache::enable();
 
 			// Remove project from list
 		$projectIDs	= TodoyuArray::removeByValue($projectIDs, array($idProject));

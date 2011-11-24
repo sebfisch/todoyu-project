@@ -18,19 +18,26 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-		// Add menu entry
-if(  Todoyu::allowed('project', 'general:area') ) {
-	TodoyuFrontend::addMenuEntry('project', 'project.ext.tab.label', '?ext=project', 20);
+/**
+ * General project extension manager
+ *
+ * @package		Todoyu
+ * @subpackage	Project
+ */
+class TodoyuProjectManager {
 
-		// Register quick task headlet
-	if( Todoyu::allowed('project', 'addtask:addViaQuickCreateHeadlet') ) {
-		TodoyuHeadManager::addHeadlet('TodoyuProjectHeadletQuickTask', 55);
+	/**
+	 * Add the last 3 projects as sub menu items to the project main tab
+	 */
+	public static function addLastProjectsAsSubmenuItems() {
+		$projectEntries	= TodoyuProjectProjectManager::getOpenProjectLabels();
+
+		$counter = 0;
+		foreach($projectEntries as $idProject => $title) {
+			TodoyuFrontend::addSubmenuEntry('project', 'project' . $idProject, $title, '?ext=project&project=' . $idProject, $counter++);
+		}
 	}
-}
 
-if( TodoyuExtensions::isInstalled('portal') && Todoyu::allowed('portal', 'general:use') ) {
-		// Add portal tab: 'todos'
-	TodoyuPortalManager::addTab('todo', 'TodoyuProjectPortalRenderer::getTodoTabLabel', 'TodoyuProjectPortalRenderer::renderTodoTabContent', 20);
 }
 
 ?>
