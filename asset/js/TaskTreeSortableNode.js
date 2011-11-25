@@ -319,7 +319,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	 */
 	onDragEnd: function(draggable, event) {
 		this.enableDrop();
-		this.tree.unmarkAll();
+		this.hideMarker();
 
 		if( draggable.oldParentID ) {
 			this.ext.Task.updateSubTasksExpandTrigger(draggable.oldParentID);
@@ -405,7 +405,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	onDrop: function(drag, drop, event) {
 			// Prevent child dropping
 		if( !this.isChild(drop, drag) ) {
-			this.tree.unmarkAll();
+			this.hideMarker();
 			this.insertTask(this.dropPosition, drag, event);
 
 			this.log('Dropped item: ' + drag.id);
@@ -592,8 +592,62 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	 * @param position
 	 */
 	mark: function(position) {
-		this.tree.unmarkAll();
-		this.drop.addClassName('dragDropActive' + Todoyu.Helper.ucwords(position));
+		this.hideMarker();
+
+		switch(position) {
+			case 'in':
+				this.element.insert({
+					before: this.getMarker()
+				});
+				this.getMarker().addClassName('inside');
+				break;
+
+			case 'before':
+				this.element.insert({
+					before: this.getMarker()
+				});
+				break;
+
+			case 'after':
+				this.element.insert({
+					after: this.getMarker()
+				});
+				break;
+		}
+
+		this.showMarker();
+	},
+
+	
+
+	/**
+	 * Get marker element
+	 *
+	 * @return	{Element}
+	 */
+	getMarker: function() {
+		return this.tree.getMarker();
+	},
+
+
+
+	/**
+	 * Show marker
+	 */
+	showMarker: function() {
+		this.tree.showMarker();
+	},
+
+
+
+	/**
+	 * Hide marker
+	 *
+	 * Also remove inside class which may be added
+	 * and move the marker back to the body element to prevent any removed by task refresh action
+	 */
+	hideMarker: function() {
+		this.tree.hideMarker();
 	},
 
 

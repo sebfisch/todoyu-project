@@ -50,6 +50,10 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	 */
 	debug: false,
 
+	/**
+	 * Marker arrow element
+	 */
+	marker: null,
 
 
 	/**
@@ -59,7 +63,6 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	 * @param	{Object}			options
 	 */
 	initialize: function(container, options) {
-		return;
 		this.options = options || {};
 		this.options.droppable = this.options.droppable || {};
 		this.options.draggable = this.options.draggable || {};
@@ -70,16 +73,67 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 		if( this.options.auto !== false ) {
 			this.makeSortable();
 		}
+
+		this.createMarker();
+	},
+
+	
+
+	/**
+	 * Create marker element and it to the DOM
+	 */
+	createMarker: function() {
+		this.marker = new Element('div',{
+			id:	'dragDropMarker'
+		}).setStyle({
+			display: 'none'
+		}).insert(
+			new Element('div')
+		);
+		$(document.body).insert(this.marker);
 	},
 
 
+
+	/**
+	 * Get marker element
+	 *
+	 * @return	{Element}
+	 */
+	getMarker: function() {
+		return this.marker;
+	},
+
+
+
+	/**
+	 * Show marker
+	 */
+	showMarker: function() {
+		this.getMarker().show();
+	},
+
+
+
+	/**
+	 * Hide marker
+	 *
+	 * Also remove inside class which may be added
+	 * and move the marker back to the body element to prevent any removed by task refresh action
+	 */
+	hideMarker: function() {
+		this.getMarker().hide();
+		this.getMarker().removeClassName('inside');
+		$(document.body).insert(this.getMarker());
+	},
+
+	
 
 	/**
 	 * Reload tree
 	 * Detects new added elements and adds drop and drop behaviour
 	 */
 	reload: function() {
-		return;
 		this.root.destroy();
 		this.root = new this.ext.TaskTree.SortableNode(this, null, this.element, this.options);
 
@@ -104,21 +158,6 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 		this.root.disableSortable();
 	},
 
-
-
-	/**
-	 * Unmark all nodes from hover classes
-	 */
-	unmarkAll: function() {
-		['dragDropActiveIn', 'dragDropActiveBefore', 'dragDropActiveAfter'].each(function(className){
-			var active = this.element.down('.' + className);
-
-			if( active ) {
-				active.removeClassName(className);
-			}
-		}, this);
-	},
-	
 
 
 	/**

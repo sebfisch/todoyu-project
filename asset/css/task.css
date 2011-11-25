@@ -50,7 +50,7 @@ div.task .subtasks .task:last-child {
 	height:22px;
 	left:-4px;
 	top:0;
-	/*cursor:move;*/
+	cursor:move;
 }
 
 
@@ -93,6 +93,28 @@ div.task .subtasks .task:last-child {
 
 .taskListing .task .headLabel {
 	padding-left:15px;
+}
+
+
+/* -------------------------------------
+	Drag'n'drop hover styles
+   ------------------------------------- */
+#dragDropMarker {
+	height:0;
+	overflow: visible;
+	position:absolute;
+	z-index:1000;
+}
+#dragDropMarker div {
+	position:absolute;
+	left:-23px;
+	top:-12px;
+	height:25px;
+	width:22px;
+	background:url(../img/icons.png) no-repeat 0 -240px;
+}
+#dragDropMarker.inside div {
+	top:0;
 }
 
 

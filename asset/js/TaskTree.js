@@ -67,7 +67,9 @@ Todoyu.Ext.project.TaskTree = {
 	 * @method	reloadSortable
 	 */
 	reloadSortable: function() {
-		if( this.sortable ) {
+		if( ! this.sortable ) {
+			this.initSortable();
+		} else {
 			this.sortable.reload();
 		}
 	},
