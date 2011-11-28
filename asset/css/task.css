@@ -126,7 +126,7 @@ div.task .subtasks .task:last-child {
 	/*background:url(../../../../core/asset/img/icons.png) no-repeat 13px -386px !important;*/
 }
 div.task.dragDropTarget > h3 {
-	background-color: #FF9;
+	background-color: #E3EACE;
 }
 
 
