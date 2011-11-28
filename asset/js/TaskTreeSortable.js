@@ -136,8 +136,26 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 		$(document.body).insert(this.getMarker());
 	},
 
+
+
+	/**
+	 * Remove all marker classes
+	 */
 	removeMarkerClasses: function() {
 		this.getMarker().removeClassName('in').removeClassName('before').removeClassName('after').removeClassName('outside');
+	},
+
+
+
+	/**
+	 * Unmark the active task
+	 */
+	unmarkActiveTask: function() {
+		var active	= this.element.down('div.dragDropTarget');
+
+		if( active ) {
+			active.removeClassName('dragDropTarget');
+		}
 	},
 
 	

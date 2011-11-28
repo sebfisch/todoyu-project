@@ -358,8 +358,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 		if( y < 0 ) {
 			var offsetDiff	= this.topOffset - this.tree.topOffset;
 			if( -y > offsetDiff + buffer ) {
-//				this.hideMarker();
-				this.getMarker().addClassName('outside');
+				this.hideMarker();
+//				this.getMarker().addClassName('outside');
 			}
 		}
 
@@ -372,8 +372,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 			var treeBottom	= this.tree.topOffset + treeHeight;
 
 			if( dragTop + buffer > treeBottom ) {
-				this.getMarker().addClassName('outside');
-//				this.hideMarker();
+//				this.getMarker().addClassName('outside');
+				this.hideMarker();
 			}
 		}
 
@@ -647,11 +647,6 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 		switch(position) {
 			case 'in':
-				this.element.insert({
-					before: this.getMarker()
-				});
-				break;
-
 			case 'before':
 				this.element.insert({
 					before: this.getMarker()
@@ -667,6 +662,15 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 		this.getMarker().addClassName(position);
 		this.showMarker();
+	},
+
+
+
+	/**
+	 * Mark current element as target
+	 */
+	markAsTarget: function() {
+		this.element.addClassName('dragDropTarget');
 	},
 
 	
@@ -687,6 +691,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	 */
 	showMarker: function() {
 		this.tree.showMarker();
+		this.markAsTarget();
 	},
 
 
@@ -699,6 +704,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	 */
 	hideMarker: function() {
 		this.tree.hideMarker();
+		this.tree.unmarkActiveTask();
 	},
 
 

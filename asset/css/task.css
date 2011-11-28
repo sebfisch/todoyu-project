@@ -123,7 +123,10 @@ div.task .subtasks .task:last-child {
 	background:url(../img/icons.png) no-repeat 0 -710px;
 }
 #dragDropMarker.outside div {
-	background:url(../../../../core/asset/img/icons.png) no-repeat 13px -386px !important;
+	/*background:url(../../../../core/asset/img/icons.png) no-repeat 13px -386px !important;*/
+}
+div.task.dragDropTarget > h3 {
+	background-color: #FF9;
 }
 
 
