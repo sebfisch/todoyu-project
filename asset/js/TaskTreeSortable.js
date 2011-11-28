@@ -55,6 +55,12 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	 */
 	marker: null,
 
+	/**
+	 * Top offset of task tree container
+	 */
+	topOffset: 0,
+	
+
 
 	/**
 	 * Initialize sortable tree
@@ -73,6 +79,9 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 		if( this.options.auto !== false ) {
 			this.makeSortable();
 		}
+
+			// Set top offset of container
+		this.topOffset = this.element.cumulativeOffset().top;
 
 		this.createMarker();
 	},
@@ -123,8 +132,12 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	 */
 	hideMarker: function() {
 		this.getMarker().hide();
-		this.getMarker().removeClassName('inside');
+		this.removeMarkerClasses();
 		$(document.body).insert(this.getMarker());
+	},
+
+	removeMarkerClasses: function() {
+		this.getMarker().removeClassName('in').removeClassName('before').removeClassName('after').removeClassName('outside');
 	},
 
 	

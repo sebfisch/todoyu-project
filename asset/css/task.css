@@ -107,15 +107,26 @@ div.task .subtasks .task:last-child {
 }
 #dragDropMarker div {
 	position:absolute;
-	left:-23px;
+	left:-31px;
 	top:-12px;
 	height:25px;
-	width:22px;
-	background:url(../img/icons.png) no-repeat 0 -240px;
+	width:30px;
 }
-#dragDropMarker.inside div {
+#dragDropMarker.in div {
 	top:0;
+	background:url(../img/icons.png) no-repeat 0 -650px;
 }
+#dragDropMarker.after div {
+	background:url(../img/icons.png) no-repeat 0 -680px;
+}
+#dragDropMarker.before div {
+	background:url(../img/icons.png) no-repeat 0 -710px;
+}
+#dragDropMarker.outside div {
+	background:url(../../../../core/asset/img/icons.png) no-repeat 13px -386px !important;
+}
+
+
 
 
 /* -------------------------

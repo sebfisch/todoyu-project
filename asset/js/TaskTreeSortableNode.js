@@ -62,14 +62,19 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	 */
 	options: {},
 	
-	lastParentID: null,
-
 	/**
 	 * Extension back ref
 	 * @var	{Object}
 	 */
 	ext: Todoyu.Ext.project,
 
+	/**
+	 * Top offset of node
+	 * @var	{Number}
+	 */
+	topOffset: 0,
+
+	
 
 	/**
 	 * Initialize node
@@ -94,11 +99,13 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 		}, options.droppable);
 
 		this.draggableOptions = Object.extend({
-			revert: 'failure',
-			constraint:  'vertical',
-			handle: 'dndHandle',
-			onStart: this.onDragStart.bind(this),
-			onEnd: this.onDragEnd.bind(this)
+			revert: 	'failure',
+			constraint: 'vertical',
+			handle: 	'dndHandle',
+			onStart: 	this.onDragStart.bind(this),
+			onEnd: 		this.onDragEnd.bind(this),
+			scroll:		window,
+			snap:		this.snapDraggable.bind(this)
 		}, options.draggable);
 
 		this.initChildren();
@@ -302,6 +309,9 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	onDragStart: function(draggable, event) {
 		this.disableDrop();
 
+			// Get top offset
+		this.topOffset = this.element.cumulativeOffset().top;
+
 		if( !this.isRootTask() ) {
 			draggable.oldParentID = this.getParentTaskID();
 		}
@@ -327,6 +337,47 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 		}
 
 		this.log('Stop dragging');
+	},
+
+
+
+	/**
+	 * Check whether draggable is still in the task tree
+	 * Hide marker if not
+	 * Note: Reducing the offset doesn't help, because the overlapping depends on the mouse and not the element
+	 *
+	 * @param	{Number}	x
+	 * @param	{Number}	y
+	 * @return	{Array}
+	 */
+	snapDraggable: function(x, y) {
+			// Half task height as buffer
+		var buffer = 11;
+
+			// Dragged upwards
+		if( y < 0 ) {
+			var offsetDiff	= this.topOffset - this.tree.topOffset;
+			if( -y > offsetDiff + buffer ) {
+//				this.hideMarker();
+				this.getMarker().addClassName('outside');
+			}
+		}
+
+			// Dragged downwards
+		if( y > 0 ) {
+			var lostTasks	= this.tree.element.down('div.lostTasks');
+			var lostHeight	= lostTasks ? lostTasks.getHeight()+20 : 0;
+			var treeHeight	= this.tree.element.getHeight() - lostHeight;
+			var dragTop		= this.topOffset + y;
+			var treeBottom	= this.tree.topOffset + treeHeight;
+
+			if( dragTop + buffer > treeBottom ) {
+				this.getMarker().addClassName('outside');
+//				this.hideMarker();
+			}
+		}
+
+		return [x,y];
 	},
 
 
@@ -599,7 +650,6 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 				this.element.insert({
 					before: this.getMarker()
 				});
-				this.getMarker().addClassName('inside');
 				break;
 
 			case 'before':
@@ -615,6 +665,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 				break;
 		}
 
+		this.getMarker().addClassName(position);
 		this.showMarker();
 	},
 
