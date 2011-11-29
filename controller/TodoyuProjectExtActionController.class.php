@@ -123,9 +123,6 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 			TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Task.Edit.initEditOnLoaded.bind(Todoyu.Ext.project.Task.Edit, ' . $idTaskEdit . ')', 100);
 		}
 
-			// Add last projects as submenu items
-		TodoyuProjectManager::addLastProjectsAsSubmenuItems();
-
 		return TodoyuPage::render();
 	}
 

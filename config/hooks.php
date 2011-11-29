@@ -28,7 +28,8 @@ TodoyuHookManager::registerHook('project', 'taskinfo',			'TodoyuProjectTaskManag
 TodoyuHookManager::registerHook('project', 'task.defaultData',	'TodoyuProjectTaskManager::hookTaskDefaultDataFromPreset', 50);
 TodoyuHookManager::registerHook('project', 'task.defaultData',	'TodoyuProjectTaskManager::hookTaskDefaultDataFromEnvironment', 90);
 
-
+		// Add last projects as submenu items
+TodoyuHookManager::registerHook('core', 'renderPage', 'TodoyuProjectManager::addLastProjectsAsSubmenuItems');
 
 //TodoyuHookManager::registerHook('sysmanager', 'renderExtContent-project',		'TodoyuProjectExtManagerRenderer::onRenderExtConfig');
 TodoyuHookManager::registerHook('sysmanager', 'renderRecordsBody-taskpreset',	'TodoyuProjectSysmanagerRenderer::onRenderTaskpresetRecordsBody');

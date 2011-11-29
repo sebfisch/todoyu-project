@@ -4,6 +4,7 @@ project 1.2.0 - not released yet
 	* Feature: Drag'n'Drop tasks in project
 
 project 1.1.4 - not released yet
+	* Bugfix: Last opened projects weren't added as submenu
 	* Bugfix: Changed physically deletion of records
 	* Bugfix: Toggle trigger left over in parent w/o children after cancelling creation of only sub task
 	* Bugfix: Next task number query was cached. Batch creation of task produced same task number for while batch
