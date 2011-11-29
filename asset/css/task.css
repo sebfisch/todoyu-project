@@ -51,6 +51,12 @@ div.task .subtasks .task:last-child {
 	left:-4px;
 	top:0;
 	cursor:move;
+	background-color:#FFF; /* IE fix */
+	opacity: 0.001; /* IE fix */
+}
+
+.task .dndHandle:hover {
+	background-color: purple;
 }
 
 

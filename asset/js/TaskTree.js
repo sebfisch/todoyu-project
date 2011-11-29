@@ -402,7 +402,7 @@ Todoyu.Ext.project.TaskTree = {
 	 */
 	onSubTasksLoaded: function(idTask, callback, response) {
 		this.ext.Task.addContextMenu(idTask);
-		this.ext.TaskTree.reloadSortable();
+		this.reloadSortable();
 
 		if( typeof callback === 'function' ) {
 			callback(idTask, response);

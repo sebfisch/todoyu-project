@@ -871,7 +871,10 @@ Todoyu.Ext.project.Task = {
 		$('task-' + idTask).replace(taskHtml);
 
 		this.addContextMenu(idTask);
-		this.ext.TaskTree.reloadSortable();
+
+		if( Todoyu.getArea() === 'project' ) {
+			this.ext.TaskTree.reloadSortable();
+		}
 	},
 
 
