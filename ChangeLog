@@ -4,6 +4,7 @@ project 1.2.0 - not released yet
 	* Feature: Drag'n'Drop tasks in project
 
 project 1.1.4 - not released yet
+	* Bugfix: Changed physically deletion of records
 	* Bugfix: Toggle trigger left over in parent w/o children after cancelling creation of only sub task
 	* Bugfix: Next task number query was cached. Batch creation of task produced same task number for while batch
 	* Bugfix: is_public flag was for internal users always overwritten with preset, even if non was selected => no preset=not public

@@ -135,7 +135,7 @@ class TodoyuProjectActivityManager {
 	public static function deleteActivity($idActivity) {
 		$idActivity	= intval($idActivity);
 
-		return Todoyu::db()->deleteRecord(self::TABLE, $idActivity);
+		return TodoyuRecordManager::deleteRecord(self::TABLE, $idActivity);
 	}
 }
 
