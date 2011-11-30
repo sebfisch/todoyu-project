@@ -255,7 +255,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 */
 	public function headerAction(array $params) {
 		$idTask		= intval($params['task']);
-		$isListing	= EXT !== 'project';
+		$isListing	= AREA !== EXTID_PROJECT;
 
 		TodoyuProjectTaskRights::restrictSee($idTask);
 
