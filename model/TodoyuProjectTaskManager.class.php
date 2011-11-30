@@ -2439,7 +2439,7 @@ class TodoyuProjectTaskManager {
 	 */
 	public static function linkTaskIDsInText($text) {
 		if( Todoyu::allowed('project', 'general:area') ) {
-			$pattern= '/(^|[\s>:]+)(\d+\.\d+)([\s<]+|$)/';
+			$pattern= '/(^|[^\w\.]+)(\d+\.\d+)([^\w\.]+|$)/';
 			$text	= preg_replace_callback($pattern, array(self, 'callbackLinkTaskIDsInText'), $text);
 		}
 
@@ -2457,9 +2457,14 @@ class TodoyuProjectTaskManager {
 	 */
 	private static function callbackLinkTaskIDsInText(array $matches) {
 		$idTask			= TodoyuProjectTaskManager::getTaskIDByTaskNumber($matches[2]);
-		list($idProject)= explode('.', $matches[2]);
 
-		return $matches[1] . '<a href="?ext=project&project=' . $idProject . '&task=' . $idTask . '#task-' . $idTask . '">' . $matches[2] . '</a>' . $matches[3];
+		if( $idTask === 0 ) {
+			return $matches[0];
+		} else {
+			list($idProject)= explode('.', $matches[2]);
+
+			return $matches[1] . '<a href="?ext=project&project=' . $idProject . '&task=' . $idTask . '#task-' . $idTask . '">' . $matches[2] . '</a>' . $matches[3];
+		}
 	}
 
 

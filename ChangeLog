@@ -2,6 +2,7 @@ todoyu project extension changelog
 
 project 1.2.0 - not released yet
 	* Feature: Drag'n'Drop tasks in project
+	* Changed: Detect all task numbers in text and only link them if the belong to an existing task
 
 project 1.1.4 - not released yet
 	* Bugfix: Last opened projects weren't added as submenu
