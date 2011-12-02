@@ -53,13 +53,12 @@ abstract class TodoyuProjectPanelWidgetStatusFilter extends TodoyuPanelWidget {
 	 * @param	Array		$params		Custom parameters for current page request
 	 */
 	public function __construct($ext, $id, $title, array $config, array $params = array()) {
-			// Construct panelWidget (init basic configuration)
 		parent::__construct(
-			$ext,		// ext key
-			$id,		// panel widget ID
-			$title,		// widget title text
-			$config,	// widget config array
-			$params		// widget parameters
+			$ext,	// ext key
+			$id,	// panel widget ID
+			$title,	// widget title text
+			$config,// widget config array
+			$params	// widget parameters
 		);
 
 		$this->addHasIconClass();

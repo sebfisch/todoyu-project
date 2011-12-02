@@ -34,14 +34,13 @@ class TodoyuProjectPanelWidgetStatusFilterTask extends TodoyuProjectPanelWidgetS
 	 * @param	Integer		$idArea
 	 */
 	public function __construct(array $config, array $params = array(), $idArea = 0) {
-			// Construct panelWidget (init basic configuration)
 		parent::__construct(
-			'project',											// ext key
-			'taskstatusfilter',									// panel widget ID
+			'project',										// ext key
+			'taskstatusfilter',								// panel widget ID
 			'project.panelwidget-statusfilter.title.task',	// widget title text
-			$config,											// widget config array
-			$params,											// widget parameters
-			$idArea												// area ID
+			$config,										// widget config array
+			$params,										// widget parameters
+			$idArea											// area ID
 		);
 
 			// Define preference
