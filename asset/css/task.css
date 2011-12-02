@@ -296,6 +296,7 @@ div.task.dragDropTarget > h3 {
 	.tasks .task .details .description * {
 		line-height:15px;
 		white-space:normal;
+		word-wrap: break-word;
 	}
 
 		/* properties */
