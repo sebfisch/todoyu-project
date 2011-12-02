@@ -9,6 +9,7 @@ project 1.2.0 - not released yet
 	* Bugfix: is_public flag was for internal users always overwritten with preset, even if non was selected => no preset=not public
 	* Bugfix: Project deeplink to not open project caused problems, because list of open projects was already cached (without new project in it)
 	* Bugfix: Refresh of task header get project instead of listing task header
+	* Bugfix: Long text in task description did not break in chrome
 	* Changed: Detect all task numbers in text and only link them if the belong to an existing task
 
 project 1.1.3 - 2011-11-17
