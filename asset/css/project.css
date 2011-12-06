@@ -70,12 +70,14 @@ h1.headerLine span.projectIcons {
 	}
 
 	/* Assigned persons */
-	.project table.assignedPersons th.name,
-	.project table.assignedPersons td.name {
-		padding-left:20px;
+	.project table.assignedPersons th.name {
+		width:270px;
 	}
-	.project table.assignedPersons td.name {
-		background:url(../../../contact/asset/img/icons.png) no-repeat 1px 3px;
+	.project table.assignedPersons th.company {
+		width:200px;
+	}
+	.project table.assignedPersons th.role {
+		width:124px;
 	}
 
 
