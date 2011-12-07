@@ -80,6 +80,12 @@ h1.headerLine span.projectIcons {
 		width:124px;
 	}
 
+	/* This can be removed when core 2.1.4 is available */
+	.project table.list.assignedPersons td > span.icon {
+		height:25px;
+		margin:-2px 4px -8px 2px;
+	}
+
 
 
 /* ------------------------------------
