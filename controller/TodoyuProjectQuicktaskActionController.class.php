@@ -46,7 +46,11 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 	public function popupAction(array $params) {
 		$idProject	= intval($params['project']);
 
-		TodoyuProjectTaskRights::restrictAddToProject($idProject);
+		if( $idProject !== 0 ) {
+			TodoyuProjectTaskRights::restrictAddToProject($idProject);
+		} else {
+			Todoyu::restrict('project', 'addtask:addTaskInOwnProjects');
+		}
 
 		return TodoyuProjectQuickTaskManager::renderForm($idProject);
 	}
