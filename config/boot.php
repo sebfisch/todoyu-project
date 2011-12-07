@@ -24,6 +24,6 @@ define('PATH_EXT_PROJECT', PATH_EXT . '/project');
 
 require_once( PATH_EXT_PROJECT . '/config/constants.php' );
 require_once( PATH_EXT_PROJECT . '/config/hooks.php' );
-require_once( PATH_EXT_PROJECT . '/dwoo/plugins.php');
+require_once( PATH_EXT_PROJECT . '/dwoo/plugins.php' );
 
 ?>

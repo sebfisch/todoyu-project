@@ -555,7 +555,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 
 	/**
-	 * Get the id of the parent task
+	 * Get the ID of the parent task
 	 *
 	 * @return	{Number|Boolean}
 	 */

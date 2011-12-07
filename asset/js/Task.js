@@ -274,7 +274,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onCloned: function(idSourceTask, response) {
-			// Get task id from header
+			// Get task ID from header
 		var idTask = response.getTodoyuHeader('idTask');
 			// Attach context menu
 		this.addContextMenu(idTask);
@@ -990,7 +990,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onProjectContainerAdded: function(response) {
-			// Get task id from header
+			// Get task ID from header
 		var idContainer = response.getTodoyuHeader('idContainer');
 
 		this.addContextMenu(idContainer);

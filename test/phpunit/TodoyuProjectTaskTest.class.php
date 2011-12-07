@@ -113,11 +113,11 @@ class TodoyuProjectTaskTest extends PHPUnit_Framework_TestCase
 		$fullTitle	= $this->object->getFullTitle();
 
 		$this->assertInternalType( 'string', $fullTitle );
-		$this->assertGreaterThan( 0, strlen($fullTitle) );
+		$this->assertGreaterThan(0, strlen($fullTitle));
 
 			// Full title must be longer than title
 		$title	= $this->object->getTitle();
-		$this->assertGreaterThan( strlen($title), strlen($fullTitle) );
+		$this->assertGreaterThan(strlen($title), strlen($fullTitle));
 	}
 
 
