@@ -48,6 +48,21 @@ class TodoyuProjectTaskPresetManager {
 	}
 
 
+	/**
+	 * Gets data of taskpreset
+	 *
+	 * @param	Integer				$idTaskpreset		Taskpreset ID
+	 * @return	TodoyuProjectTaskpreset
+	 */
+	public static function getTaskpresetData($idTaskpreset) {
+		$idTaskpreset	= intval($idTaskpreset);
+
+		$preset	= TodoyuRecordManager::getRecord('TodoyuProjectTaskpreset', $idTaskpreset);
+
+		return $preset->getData();
+	}
+
+
 
 	/**
 	 * Get all task presets
