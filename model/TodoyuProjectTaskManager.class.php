@@ -503,14 +503,14 @@ class TodoyuProjectTaskManager {
 				$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
 
 					// Cut
-				if( $hasTaskEditRight && !$task->isLocked() ) {
+				if( $hasTaskEditRight ) {
 					$allowed['actions']['submenu']['cut']	= $ownItems['actions']['submenu']['cut'];
 				}
 			}
 
 				// Clone
-			if( ! $task->isLocked() && TodoyuProjectTaskRights::isAddAllowed($idTask) ) {
-				if( AREA !== EXTID_SEARCH ) {
+			if( TodoyuProjectTaskRights::isAddAllowed($idTask) ) {
+				if( AREA === EXTID_PROJECT ) {
 					$allowed['actions']['submenu']['clone']	= $ownItems['actions']['submenu']['clone'];
 				}
 			}

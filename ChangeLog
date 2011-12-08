@@ -13,6 +13,8 @@ project 1.2.0 - not released yet
 	* Bugfix: Long text in task description did not break in chrome
 	* Bugfix: Quicktask headlet did not work outside of the project area (rights problem)
 	* Changed: Detect all task numbers in text and only link them if the belong to an existing task
+	* Changed: Allow task clone for locked tasks
+	* Changed: Allow cutting locked tasks, but only allow pasting in same project
 	* Added: JavaScript Object for task preset record handling
 	* Removed: Removed global task presets from project extconf
 	* Removed: Special labels for default values in task preset (now the normal labels are used)
