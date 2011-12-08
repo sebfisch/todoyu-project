@@ -86,6 +86,7 @@
 	<label index="js.removetask.question">Wollen Sie diese Aufgabe wirklich löschen?</label>
 	<label index="js.removecontainer.question">Wollen Sie diesen Container wirklich löschen?</label>
 	<label index="js.clonesubtasks.question">Auch Unteraufgaben klonen?</label>
+	<label index="deletedTasks">Gelöschte Tasks</label>
 	<label index="type.task">Aufgabe</label>
 	<label index="type.container">Container</label>
 	<label index="billableTime">Verrechenbare Zeit</label>

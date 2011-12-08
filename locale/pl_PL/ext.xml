@@ -81,19 +81,6 @@
 	<label index="js.project.deleted">Projekt został usunięty</label>
 	<label index="ac.person.notFoundInfo">Nie odnaleziono osoby o tym imieniu</label>
 	<label index="portal.tab.todos">Do zrobienia</label>
-	<label index="extconf.taskDefaults.title">Domyślny tytuł zadania</label>
-	<label index="extconf.taskDefaults.description">Domyślny opis zadania</label>
-	<label index="extconf.taskDefaults.date_start">Domyślna data rozpoczęcia zadania</label>
-	<label index="extconf.taskDefaults.date_end">Domyslny wewnętrzny deadline zadania</label>
-	<label index="extconf.taskDefaults.date_deadline">Domyslny deadline zadania klienta</label>
-	<label index="extconf.taskDefaults.status">Domyślny status zadania</label>
-	<label index="extconf.taskDefaults.assignedRoles">Domyślna rola dla osoby przypisanej do zadania</label>
-	<label index="extconf.taskDefaults.ownerRoles">Domyślna rola dla właściciela zadania</label>
-	<label index="extconf.taskDefaults.activity">Domyślny typ działalności zadania</label>
-	<label index="extconf.taskDefaults.estimated_workload">Domyślne szacowane obłożenie zadania</label>
-	<label index="extconf.taskDefaults.is_public">Zadanie jest publiczne</label>
-	<label index="extconf.taskDefaults.person_assigned_role">Przypisz rolę jeśli nie wybrano</label>
-	<label index="extconf.taskDefaults.person_owner_role">Prowadzone przez osobę roli jeśli nie wybrano</label>
-	<label index="extconf.quicktask_duration_days">Domyślny czas trwania Szybkiego zadania w dniach</label>
+	<label index="taskpreset.quicktask_duration_days">Domyślny czas trwania Szybkiego zadania w dniach</label>
 	<label index="export.csv">Eksportuj projekt jako CSV</label>
 </labels>

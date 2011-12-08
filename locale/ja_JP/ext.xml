@@ -81,19 +81,6 @@
 	<label index="js.project.deleted">プロジェクトは削除されました</label>
 	<label index="ac.person.notFoundInfo">この名前の人は見つかりませんでした</label>
 	<label index="portal.tab.todos">ToDo</label>
-	<label index="extconf.taskDefaults.title">デフォルトタスクのタイトル</label>
-	<label index="extconf.taskDefaults.description">デフォルトタスクの説明</label>
-	<label index="extconf.taskDefaults.date_start">デフォルトタスクの開始日</label>
-	<label index="extconf.taskDefaults.date_end">デフォルトタスクの内部締切</label>
-	<label index="extconf.taskDefaults.date_deadline">デフォルトタスクの締切日</label>
-	<label index="extconf.taskDefaults.status">デフォルトタスクの状態</label>
-	<label index="extconf.taskDefaults.assignedRoles">タスク担当者のデフォルトロール</label>
-	<label index="extconf.taskDefaults.ownerRoles">タスク所有者のデフォルトロール</label>
-	<label index="extconf.taskDefaults.activity">デフォルトの作業形態</label>
-	<label index="extconf.taskDefaults.estimated_workload">デフォルトの作業見積</label>
-	<label index="extconf.taskDefaults.is_public">デフォルトタスクの表示</label>
-	<label index="extconf.taskDefaults.person_assigned_role">選択されない場合にアサインされるロール</label>
-	<label index="extconf.taskDefaults.person_owner_role">選択されない場合のロールの所有者</label>
-	<label index="extconf.quicktask_duration_days">クイックタスクのデフォルトの期間</label>
+	<label index="taskpreset.quicktask_duration_days">クイックタスクのデフォルトの期間</label>
 	<label index="export.csv">CSV形式でプロジェクトをエクスポート</label>
 </labels>

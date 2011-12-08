@@ -32,7 +32,7 @@ Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 			'position'	=> 80
 		),
 		array(
-			'file'		=> 'ext/project/asset/js/Sysmanager.js',
+			'file'		=> 'ext/project/asset/js/TaskPreset.js',
 			'position'	=> 81
 		),
 		array(

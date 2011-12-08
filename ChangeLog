@@ -2,6 +2,7 @@ todoyu project extension changelog
 
 project 1.2.0 - not released yet
 	* Feature: Drag'n'Drop tasks in project
+	* Feature: Complete refactoring of task presets. All task fields are available now. Better integration of other extensions
 	* Bugfix: Last opened projects weren't added as submenu
 	* Bugfix: Changed physically deletion of records
 	* Bugfix: Toggle trigger left over in parent w/o children after cancelling creation of only sub task
@@ -12,6 +13,9 @@ project 1.2.0 - not released yet
 	* Bugfix: Long text in task description did not break in chrome
 	* Bugfix: Quicktask headlet did not work outside of the project area (rights problem)
 	* Changed: Detect all task numbers in text and only link them if the belong to an existing task
+	* Added: JavaScript Object for task preset record handling
+	* Removed: Removed global task presets from project extconf
+	* Removed: Special labels for default values in task preset (now the normal labels are used)
 
 project 1.1.3 - 2011-11-17
 	* Bugfix: Add status class to generated wrapping container for task edit

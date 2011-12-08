@@ -37,7 +37,7 @@ class TodoyuProjectSysmanagerRenderer {
 		$idTaskpreset	= intval($idTaskpreset);
 
 		if( $idTaskpreset > 0 ) {
-			$body .= TodoyuString::wrapScript('Todoyu.Ext.project.Sysmanager.initTaskpresetForm(' . $idTaskpreset . ')');
+			$body .= TodoyuString::wrapScript('Todoyu.Ext.project.TaskPreset.initForm(' . $idTaskpreset . ')');
 		}
 
 		return $body;

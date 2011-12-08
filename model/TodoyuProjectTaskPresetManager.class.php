@@ -19,12 +19,12 @@
 *****************************************************************************/
 
 /**
- * Taskpreset manager
+ * Task preset manager
  *
  * @package		Todoyu
  * @subpackage	Project
  */
-class TodoyuProjectTaskpresetManager {
+class TodoyuProjectTaskPresetManager {
 
 	/**
 	 * Default table for database requests
@@ -38,29 +38,13 @@ class TodoyuProjectTaskpresetManager {
 	/**
 	 * Gets a taskpreset object
 	 *
-	 * @param	Integer				$idTaskpreset		Taskpreset ID
-	 * @return	TodoyuProjectTaskpreset
+	 * @param	Integer		$idTaskPreset
+	 * @return	TodoyuProjectTaskPreset
 	 */
-	public static function getTaskpreset($idTaskpreset) {
-		$idTaskpreset	= intval($idTaskpreset);
+	public static function getTaskPreset($idTaskPreset) {
+		$idTaskPreset	= intval($idTaskPreset);
 
-		return TodoyuRecordManager::getRecord('TodoyuProjectTaskpreset', $idTaskpreset);
-	}
-
-
-
-	/**
-	 * Gets data of taskpreset
-	 *
-	 * @param	Integer				$idTaskpreset		Taskpreset ID
-	 * @return	TodoyuProjectTaskpreset
-	 */
-	public static function getTaskpresetData($idTaskpreset) {
-		$idTaskpreset	= intval($idTaskpreset);
-
-		$preset	= TodoyuRecordManager::getRecord('TodoyuProjectTaskpreset', $idTaskpreset);
-
-		return $preset->getData();
+		return TodoyuRecordManager::getRecord('TodoyuProjectTaskPreset', $idTaskPreset);
 	}
 
 
@@ -70,7 +54,7 @@ class TodoyuProjectTaskpresetManager {
 	 *
 	 * @return	Array
 	 */
-	public static function getAllTaskpresets() {
+	public static function getAllTaskPresets() {
 		return TodoyuRecordManager::getAllRecords(self::TABLE);
 	}
 
@@ -82,20 +66,20 @@ class TodoyuProjectTaskpresetManager {
 	 * @param	Array	$data
 	 * @return	Integer
 	 */
-	public static function saveTaskpreset(array $data) {
-		$idTaskpreset	= intval($data['id']);
+	public static function saveTaskPreset(array $data) {
+		$idTaskPreset	= intval($data['id']);
 		$xmlPath		= 'ext/project/config/form/admin/taskpreset.xml';
 
-		if( $idTaskpreset === 0 ) {
-			$idTaskpreset = self::addTaskpreset();
+		if( $idTaskPreset === 0 ) {
+			$idTaskPreset = self::addTaskpreset();
 		}
 
 			// Call hooked save data functions
-		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idTaskpreset);
+		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idTaskPreset);
 
-		self::updateTaskpreset($idTaskpreset, $data);
+		self::updateTaskPreset($idTaskPreset, $data);
 
-		return $idTaskpreset;
+		return $idTaskPreset;
 	}
 
 
@@ -115,12 +99,12 @@ class TodoyuProjectTaskpresetManager {
 	/**
 	 * Update task preset record
 	 *
-	 * @param	Integer		$idTaskpreset
+	 * @param	Integer		$idTaskPreset
 	 * @param	Array		$data
 	 * @return	Boolean
 	 */
-	public static function updateTaskpreset($idTaskpreset, array $data) {
-		return TodoyuRecordManager::updateRecord(self::TABLE, $idTaskpreset, $data);
+	public static function updateTaskPreset($idTaskPreset, array $data) {
+		return TodoyuRecordManager::updateRecord(self::TABLE, $idTaskPreset, $data);
 	}
 
 
@@ -131,7 +115,7 @@ class TodoyuProjectTaskpresetManager {
 	 * @return	Array
 	 */
 	public static function getRecords() {
-		$taskPresets	= self::getAllTaskpresets();
+		$taskPresets	= self::getAllTaskPresets();
 		$reformConfig	= array(
 			'id'	=> 'id',
 			'title'	=> 'label'
@@ -145,14 +129,15 @@ class TodoyuProjectTaskpresetManager {
 	/**
 	 * Sets deleted flag for given task preset record
 	 *
-	 * @param	Integer		$idTaskpreset
+	 * @param	Integer		$idTaskPreset
 	 * @return	Boolean
 	 */
-	public static function deleteTaskpreset($idTaskpreset) {
-		$idTaskpreset	= intval($idTaskpreset);
+	public static function deleteTaskPreset($idTaskPreset) {
+		$idTaskPreset	= intval($idTaskPreset);
 
-		return TodoyuRecordManager::deleteRecord(self::TABLE, $idTaskpreset);
+		return TodoyuRecordManager::deleteRecord(self::TABLE, $idTaskPreset);
 	}
+
 }
 
 ?>

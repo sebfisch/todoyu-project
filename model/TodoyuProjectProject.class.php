@@ -304,7 +304,7 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	 * @return	TodoyuProjectProjectrole				0 if no role defined for person
 	 */
 	public function getPersonRoleID($idPerson = 0) {
-		$idPerson	= ( $idPerson === 0 ) ? Todoyu::personid() : intval($idPerson);
+		$idPerson	= Todoyu::personid($idPerson);
 		$idRole		= 0;
 
 		$persons	= $this->getPersons();
@@ -335,12 +335,55 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 
 
 	/**
+	 * Get person IDs with role in project
+	 *
+	 * @param	Integer		$idRole
+	 * @return	Array
+	 */
+	public function getRolePersonIDs($idRole) {
+		$idRole	= intval($idRole);
+
+		$field	= 'id_person';
+		$table	= 'ext_project_mm_project_person';
+		$where	= '		id_project	= ' . $this->getID()
+				. '	AND id_role		= ' . $idRole;
+		$order	= '	is_public,
+					id';
+
+		return Todoyu::db()->getColumn($field, $table, $where, '', $order);
+	}
+
+
+
+	/**
 	 * Get ID of assigned taskpreset of project
 	 *
 	 * @return	Integer
 	 */
-	public function getTaskpresetID() {
+	public function getTaskPresetID() {
 		return intval($this->data['id_taskpreset']);
+	}
+
+
+
+	/**
+	 * Check whether project has a task preset
+	 *
+	 * @return	Boolean
+	 */
+	public function hasTaskPreset() {
+		return $this->getTaskPresetID() !== 0;
+	}
+
+
+
+	/**
+	 * Get task preset
+	 *
+	 * @return	TodoyuProjectTaskPreset
+	 */
+	public function getTaskPreset() {
+		return TodoyuProjectTaskPresetManager::getTaskPreset($this->getTaskPresetID());
 	}
 
 

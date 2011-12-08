@@ -68,9 +68,4 @@
 	<label index="js.quicktask.saved">Задатак је сачуван</label>
 	<label index="ac.person.notFoundInfo">Није пронађена ниједно особа чије име садржи унешене знакове.</label>
 	<label index="portal.tab.todos">Моји задаци</label>
-	<label index="extconf.taskDefaults.status">У напред изабрани статус</label>
-	<label index="extconf.taskDefaults.assignedRoles">У напред изабрана улога од додељене особе једног задатка</label>
-	<label index="extconf.taskDefaults.ownerRoles">У напред изабрана улога од власника задатка</label>
-	<label index="extconf.taskDefaults.activity">У напред изабрана врста посла</label>
-	<label index="extconf.taskDefaults.estimated_workload">Процена трошка времена</label>
 </labels>

@@ -45,10 +45,10 @@ TodoyuSysmanagerExtManager::addRecordConfig('project', 'taskpreset', array(
 	'label'	=> 'project.ext.records.taskpreset',
 	'desc'	=> 'project.ext.records.taskpreset.desc',
 	'form'	=> 'ext/project/config/form/admin/taskpreset.xml',
-	'list'	=> 'TodoyuProjectTaskpresetManager::getRecords',
-	'save'	=> 'TodoyuProjectTaskpresetManager::saveTaskpreset',
-	'delete'=> 'TodoyuProjectTaskpresetManager::deleteTaskpreset',
-	'object'=> 'TodoyuProjectTaskpreset',
+	'list'	=> 'TodoyuProjectTaskPresetManager::getRecords',
+	'save'	=> 'TodoyuProjectTaskPresetManager::saveTaskPreset',
+	'delete'=> 'TodoyuProjectTaskPresetManager::deleteTaskPreset',
+	'object'=> 'TodoyuProjectTaskPreset',
 	'table'	=> 'ext_project_taskpreset'
 ));
 

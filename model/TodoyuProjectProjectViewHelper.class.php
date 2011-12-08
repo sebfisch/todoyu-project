@@ -225,15 +225,8 @@ class TodoyuProjectProjectViewHelper {
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
-	public static function getTaskpresetOptions(TodoyuFormElement $field) {
-		$presets	= array_merge(
-			array('0'	=> array(
-					'id'	=> 0,
-					'title'	=> Todoyu::Label('project.ext.taskpreset.option.none')
-				)
-			),
-			TodoyuProjectTaskpresetManager::getAllTaskpresets()
-		);
+	public static function getTaskPresetOptions(TodoyuFormElement $field) {
+		$presets	= TodoyuProjectTaskPresetManager::getAllTaskPresets();
 		$reformConfig	= array(
 			'id'	=> 'value',
 			'title'	=> 'label'

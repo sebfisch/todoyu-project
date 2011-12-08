@@ -127,10 +127,12 @@ CREATE TABLE `ext_project_taskpreset` (
 	`id_activity` smallint(6) NOT NULL DEFAULT '0',
 	`estimated_workload` mediumint(8) unsigned NOT NULL DEFAULT '0',
 	`is_public` tinyint(1) unsigned NOT NULL DEFAULT '0',
-	`quicktask_duration_days` int(10) unsigned NOT NULL DEFAULT '7',
-	`person_assigned_role` int(10) unsigned NOT NULL DEFAULT '0',
+	`quicktask_duration_days` int(10) unsigned NOT NULL DEFAULT '0',
 	`id_person_assigned` int(10) unsigned NOT NULL DEFAULT '0',
-	`person_owner_role` int(10) unsigned NOT NULL DEFAULT '0',
-	`id_person_owner` int(10) unsigned NOT NULL DEFAULT '0'
+	`id_person_owner` int(10) unsigned NOT NULL DEFAULT '0',
+	`id_person_assigned_fallback` int(10) unsigned NOT NULL DEFAULT '0',
+	`id_person_owner_fallback` int(10) unsigned NOT NULL DEFAULT '0',
+	`id_role_assigned_fallback` int(10) unsigned NOT NULL DEFAULT '0',
+	`id_role_owner_fallback` int(10) unsigned NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

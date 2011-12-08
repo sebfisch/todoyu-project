@@ -25,8 +25,9 @@ TodoyuHookManager::registerHook('project', 'project.properties','TodoyuProjectPr
 TodoyuHookManager::registerHook('project', 'projectpresetdata', 'TodoyuProjectProjectManager::getProjectPresetDataAttributes');
 TodoyuHookManager::registerHook('project', 'taskIcons', 		'TodoyuProjectTaskManager::getTaskIcons');
 TodoyuHookManager::registerHook('project', 'taskinfo',			'TodoyuProjectTaskManager::addContainerInfoToTaskData');
-TodoyuHookManager::registerHook('project', 'task.defaultData',	'TodoyuProjectTaskManager::hookTaskDefaultDataFromPreset', 50);
-TodoyuHookManager::registerHook('project', 'task.defaultData',	'TodoyuProjectTaskManager::hookTaskDefaultDataFromEnvironment', 90);
+TodoyuHookManager::registerHook('project', 'task.defaultData',	'TodoyuProjectTaskManager::hookTaskDefaultDataFromEnvironment', 50);
+TodoyuHookManager::registerHook('project', 'task.defaultData',	'TodoyuProjectTaskManager::hookTaskDefaultDataFromPreset', 60);
+
 
 		// Add last projects as submenu items
 TodoyuHookManager::registerHook('core', 'renderPage', 'TodoyuProjectManager::addLastProjectsAsSubmenuItems');

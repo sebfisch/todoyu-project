@@ -69,9 +69,4 @@
 	<label index="js.quicktask.saved">Quicktask Foi Salva</label>
 	<label index="ac.person.notFoundInfo">Nenhum usuário foi encontrado</label>
 	<label index="portal.tab.todos">A Fazer</label>
-	<label index="extconf.taskDefaults.status">Status Padrão para Tarefas</label>
-	<label index="extconf.taskDefaults.assignedRoles">Grupo Padrão para Usuários em Tarefas</label>
-	<label index="extconf.taskDefaults.ownerRoles">Grupo Padrão Para o Proprietário da Tarefa</label>
-	<label index="extconf.taskDefaults.activity">Tipo de Serviço Padrão</label>
-	<label index="extconf.taskDefaults.estimated_workload">Carga de Trabalho Padrão</label>
 </labels>

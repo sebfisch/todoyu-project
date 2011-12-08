@@ -15,7 +15,9 @@
 	<label index="legend.admin.fallbacks">Fallback defaults for persons with limited rights</label>
 	<label index="legend.admin.projectrole.record.general">Project Role</label>
 	<label index="legend.admin.activity.record.general">Activity Type</label>
+	<label index="legend.admin.taskpreset.record.preset">Task Preset</label>
 	<label index="legend.admin.taskpreset.record.general">Default settings of tasks</label>
 	<label index="legend.admin.taskpreset.record.quicktask">Default behaviour for quicktasks</label>
 	<label index="legend.admin.taskpreset.record.fallbacks">Fallback defaults for persons with limited rights</label>
+	<label index="extconf.basic">Basic settings</label>
 </labels>

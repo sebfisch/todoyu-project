@@ -58,6 +58,13 @@ class TodoyuProjectTaskManager {
 	public static function getQuickCreateForm($idProject = 0) {
 		$idProject	= intval($idProject);
 
+			// Check rights for project
+		if( $idProject !== 0 ) {
+			if( !TodoyuProjectTaskRights::isAddInProjectAllowed($idProject) ) {
+				$idProject = 0;
+			}
+		}
+
 			// Create empty record of type task cache first. so hooks know what kind of task it is
 		self::createNewTaskWithDefaultsInCache(0, 0, TASK_TYPE_TASK);
 
@@ -84,17 +91,8 @@ class TodoyuProjectTaskManager {
 
 			// Load task default data
 		$formData	= self::getTaskDefaultData(0, $idProject);
-
 			// Load extra data from hooks
 		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, 0, array('form'=>$form));
-
-			// Ensure the preset project allows for adding tasks
-		if( ! TodoyuProjectTaskRights::isAddInProjectAllowed($formData['id_project']) ) {
-			$formData['id_project']	= 0;
-		} else if($idProject === 0) {
-			$formData = self::getTaskDefaultData(0, $formData['id_project']);
-			$formData = TodoyuFormHook::callLoadData($xmlPath, $formData, 0, array('form' => $form));
-		}
 
 		$form->setFormData($formData);
 
@@ -1414,9 +1412,10 @@ class TodoyuProjectTaskManager {
 	 * @param	Integer		$idParentTask
 	 * @param	Integer		$idProject
 	 * @param	Integer		$type
+	 * @param	Boolean		$isQuickTask
 	 * @return	Array
 	 */
-	public static function getTaskDefaultData($idParentTask = 0, $idProject = 0, $type = TASK_TYPE_TASK) {
+	public static function getTaskDefaultData($idParentTask = 0, $idProject = 0, $type = TASK_TYPE_TASK, $isQuickTask = false) {
 		$idParentTask	= intval($idParentTask);
 		$type			= intval($type);
 		$idProject		= intval($idProject);
@@ -1439,7 +1438,7 @@ class TodoyuProjectTaskManager {
 		);
 
 			// Call hook to modify default task data
-		$data	= TodoyuHookManager::callHookDataModifier('project', 'task.defaultData', $data, array($type, $idProject, $idParentTask));
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'task.defaultData', $data, array($type, $idProject, $idParentTask, $isQuickTask));
 
 		return $data;
 	}
@@ -1475,103 +1474,95 @@ class TodoyuProjectTaskManager {
 	 * Set default task values if missing
 	 * Person may not be allowed to enter the values, so we use the defaults from taskpreset and extConf
 	 *
-	 * @param	Array		$data
+	 * @param	Array		$submittedTaskData
 	 * @return	Array
 	 */
-	private static function setDefaultValuesForNotAllowedFields(array $data) {
-		$idProject	= intval($data['id_project']);
-		$project	= TodoyuProjectProjectManager::getProject($idProject);
+	private static function setDefaultValuesForNotAllowedFields(array $submittedTaskData) {
+		$idProject		= intval($submittedTaskData['id_project']);
+		$project		= TodoyuProjectProjectManager::getProject($idProject);
+		$originalData	= $submittedTaskData;
 
-			// Get presets from taskpreset set (if assigned) or extConf
-		$idTaskpreset	= $project->get('id_taskpreset');
-		if( $idTaskpreset > 0 ) {
-			$preset	= TodoyuProjectTaskpresetManager::getTaskpresetData($idTaskpreset);
-		} else {
-			$preset	= TodoyuSysmanagerExtConfManager::getExtConf('project');
-		}
+			// Set defaults if a task preset is selected for project
+		if( $project->hasTaskPreset() ) {
+			$taskPreset	= $project->getTaskPreset();
 
-		$original		= $data;
+				// Date start
+			if( !isset($submittedTaskData['date_start']) && $taskPreset->hasDateStart() ) {
+				$submittedTaskData['date_start'] = $taskPreset->getDateStart();
+			}
 
-			// Set date_start, date_end, date_deadline dynamically calculated from time of creation + offset
-		if( ! isset($data['date_start']) ) {
-			$data['date_start'] = self::buildDateFromExtConfDefault($preset['date_start']);
-		}
-		if( ! isset($data['date_end']) ) {
-			$data['date_end'] = self::buildDateFromExtConfDefault($preset['date_end']);;
-		}
-		if( ! isset($data['date_deadline']) ) {
-			$data['date_deadline'] = self::buildDateFromExtConfDefault($preset['date_deadline']);;
-		}
+				// Date end
+			if( !isset($submittedTaskData['date_end']) && $taskPreset->hasDateEnd() ) {
+				$submittedTaskData['date_end'] = $taskPreset->getDateEnd();
+			}
 
-			// Set status
-		if( ! isset($data['status']) ) {
-			$presetStatus	= intval($preset['status']);
-			$defaultStatus	= intval(Todoyu::$CONFIG['EXT']['project']['taskDefaults']['status']);
-			$data['status']	= $presetStatus === 0 ? $defaultStatus : $presetStatus;
-		}
+				// Date deadline
+			if( !isset($submittedTaskData['date_deadline']) && $taskPreset->hasDateDeadline() ) {
+				$submittedTaskData['date_deadline'] = $taskPreset->getDateDeadline();
+			}
 
-			// Get work type from preset
-		if( ! isset($data['id_activity']) ) {
-			$data['id_activity'] = intval($preset['id_activity']);
-		}
+				// Status
+			if( !isset($submittedTaskData['status']) ) {
+				if( $taskPreset->hasStatus() ) {
+					$submittedTaskData['status'] = $taskPreset->getStatus();
+				} else {
+					$submittedTaskData['status'] = Todoyu::$CONFIG['EXT']['project']['taskDefaults']['status'];
+				}
+			}
 
-			// Get workload from preset
-		if( ! isset($data['estimated_workload']) ) {
-			$data['estimated_workload'] = intval($preset['estimated_workload']);
-		}
+				// Activity
+			if( !isset($submittedTaskData['id_activity']) && $taskPreset->hasActivity() ) {
+				$submittedTaskData['id_activity'] = $taskPreset->getActivityID();
+			}
 
-			// Set is_public flag (if task creator is an external person, the task is always public)
-		if( Todoyu::person()->isExternal() ) {
-			$data['is_public']	= 1;
-		} elseif( ! isset($data['is_public']) ) {
-			$data['is_public']	= intval($preset['is_public']);
-		}
+				// Estimated workload
+			if( !isset($submittedTaskData['estimated_workload']) ) {
+				$submittedTaskData['estimated_workload'] = $taskPreset->getEstimatedWorkload();
+			}
 
+				// Set is_public flag (if task creator is an external person, the task is always public)
+			if( Todoyu::person()->isExternal() ) {
+				$submittedTaskData['is_public']	= 1;
+			} elseif( !isset($submittedTaskData['is_public']) ) {
+				$submittedTaskData['is_public']	= $taskPreset->getIsPublic();
+			}
 
-			// Assigned person (explicitly configured or indirect via role)
-		if( ! isset($data['id_person_assigned']) ) {
-			$defaultIDPersonAssigned	= intval($preset['id_person_assigned']);
-			if( $defaultIDPersonAssigned > 0 ) {
-					// Person ID is set in presets specifically
-				$data['id_person_assigned'] = $defaultIDPersonAssigned;
-			} else {
-					// Person is set in presets indirectly (via role)
-				$idRole	= intval($preset['person_assigned_role']);
-				if( $idRole > 0 && $idProject !== 0 ) {
-					$rolePersonIDs			= TodoyuProjectProjectManager::getRolePersonIDs($idProject, $idRole);
-					$defaultIDPersonAssigned= intval($rolePersonIDs[0]);
+				// Assigned person (explicitly configured or indirect via role)
+			if( !isset($submittedTaskData['id_person_assigned']) ) {
+				if( $taskPreset->hasPersonAssignedFallback() ) {
+					$submittedTaskData['id_person_assigned'] = $taskPreset->getPersonAssignedFallbackID();
+				} elseif( $taskPreset->hasRoleAssignedFallback() ) {
+					$idRole		= $taskPreset->getRoleAssignedFallbackID();
+					$personIDs	= $project->getRolePersonIDs($idRole);
+					$idPerson	= intval($personIDs[0]);
 
-					if( $defaultIDPersonAssigned !== 0 ) {
-						$data['id_person_assigned'] = $defaultIDPersonAssigned;
+					if( $idPerson !== 0 ) {
+						$submittedTaskData['id_person_assigned'] = $idPerson;
 					}
 				}
 			}
-		}
 
-			// Owner (explicitly configured or indirect via role)
-		if( ! isset($data['id_person_owner']) ) {
-			$defaultIDPersonOwner	= intval($preset['id_person_owner']);
-			if( $defaultIDPersonOwner > 0 ) {
-					// Person ID is set in presets specifically
-				$data['id_person_owner'] = $defaultIDPersonOwner;
-			} else {
-					// Person is set in presets indirectly (via role)
-				$idRole	= intval($preset['person_owner_role']);
-				if( $idRole > 0 && $idProject !== 0 ) {
-					$rolePersonIDs			= TodoyuProjectProjectManager::getRolePersonIDs($idProject, $idRole);
-					$defaultIDPersonOwner= intval($rolePersonIDs[0]);
+				// Owner person (explicitly configured or indirect via role)
+			if( !isset($submittedTaskData['id_person_owner']) ) {
+				if( $taskPreset->hasPersonOwnerFallback() ) {
+					$submittedTaskData['id_person_owner'] = $taskPreset->getPersonOwnerFallbackID();
+				} elseif( $taskPreset->hasRoleOwnerFallback() ) {
+					$idRole		= $taskPreset->getRoleOwnerFallbackID();
+					$personIDs	= $project->getRolePersonIDs($idRole);
+					$idPerson	= intval($personIDs[0]);
 
-					if( $defaultIDPersonOwner !== 0 ) {
-						$data['id_person_owner'] = $defaultIDPersonOwner;
+					if( $idPerson !== 0 ) {
+						$submittedTaskData['id_person_owner'] = $idPerson;
 					}
 				}
 			}
+
 		}
 
 			// Call hook to allow other extensions to set default values
-		$data	= TodoyuHookManager::callHookDataModifier('project', 'task.defaultsForNotAllowedFields', $data, array($original));
+		$submittedTaskData	= TodoyuHookManager::callHookDataModifier('project', 'task.defaultsForNotAllowedFields', $submittedTaskData, array($idProject, $originalData));
 
-		return $data;
+		return $submittedTaskData;
 	}
 
 
@@ -1579,14 +1570,14 @@ class TodoyuProjectTaskManager {
 	/**
 	 * Get a date based on the extConf value set for this type
 	 *
-	 * @param	Integer		$offsetValue		Identifier for number of days of the date in the future from now
+	 * @param	Integer		$configValue		Identifier for number of days of the date in the future from now
 	 * @return	Integer		timestamp
 	 */
-	private static function buildDateFromExtConfDefault($offsetValue) {
-		$offsetValue= intval($offsetValue);
+	public static function getDateFromConfigValue($configValue) {
+		$configValue= intval($configValue);
 		$date		= 0;
 
-		switch( $offsetValue ) {
+		switch( $configValue ) {
 				// Day of creation (NOW)
 			case 1:
 				$date	= TodoyuTime::getStartOfDay();
@@ -1594,13 +1585,13 @@ class TodoyuProjectTaskManager {
 
 				// Creation day + 1, 2, 3 days
 			case 2:	case 3:	case 4:
-				$time	= NOW + TodoyuTime::SECONDS_DAY * ($offsetValue - 1);
+				$time	= NOW + TodoyuTime::SECONDS_DAY * ($configValue - 1);
 				$date	= TodoyuTime::getStartOfDay($time);
 				break;
 
 				// Creation day + 1, 2 weeks
 			case 7:	case 14:
-				$time	= NOW + TodoyuTime::SECONDS_DAY * $offsetValue;
+				$time	= NOW + TodoyuTime::SECONDS_DAY * $configValue;
 				$date	= TodoyuTime::getStartOfDay($time);
 				break;
 		}
@@ -2250,8 +2241,7 @@ class TodoyuProjectTaskManager {
 
 
 	/**
-	 * Hook to load default task data from environment
-	 * Ex: Project
+	 * Set active project as project if new task is created in project area and no project is set (quicktask)
 	 *
 	 * @param	Array		$data
 	 * @param	Integer		$type
@@ -2260,12 +2250,16 @@ class TodoyuProjectTaskManager {
 	 * @return	Array
 	 */
 	public static function hookTaskDefaultDataFromEnvironment(array $data, $type, $idProject, $idParentTask = 0) {
+		$idProject	= intval($idProject);
+
+		if( $idProject === 0 ) {
+			$idProject = intval($idProject);
+		}
+
 			// Set active project when in project area
-		if( TodoyuRequest::getArea() === 'project' ) {
+		if( $idProject === 0 && AREA === EXTID_PROJECT ) {
 				// Set project ID
-			if( intval($data['id_project']) === 0 ) {
-				$data['id_project']	= TodoyuProjectPreferences::getActiveProject();
-			}
+			$data['id_project']	= TodoyuProjectPreferences::getActiveProject();
 		}
 
 		return $data;
@@ -2284,36 +2278,21 @@ class TodoyuProjectTaskManager {
 	 */
 	public static function hookTaskDefaultDataFromPreset(array $data, $type, $idProject, $idParentTask = 0) {
 		$idProject	= intval($idProject);
-		$project	= TodoyuProjectProjectManager::getProject($idProject);
 
-			// Get presets from taskpreset set (if assigned) or extension config
-		$idTaskPreset	= $project->getTaskpresetID();
-		if( $idTaskPreset !== 0 ) {
-			$presetData			= TodoyuProjectTaskpresetManager::getTaskpresetData($idTaskPreset);
-			$presetData['title']= $presetData['tasktitle'];
-		} else {
-			$presetData	= TodoyuSysmanagerExtConfManager::getExtConf('project');
+			// Fetch project id from data (set before by other hook)
+		if( $idProject === 0 ) {
+			$idProject = intval($data['id_project']);
 		}
 
-		$data['title']				= trim($presetData['title']);
-		$data['description']		= trim($presetData['description']);
-		$data['estimated_workload']	= intval($presetData['estimated_workload']);
-		$data['is_public']			= intval($presetData['is_public']);
-		$data['id_activity']		= intval($presetData['id_activity']);
+		if( $idProject !== 0 ) {
+			$project	= TodoyuProjectProjectManager::getProject($idProject);
 
-		if( $presetData['status'] != 0 ) {
-			$data['status']				= intval($presetData['status']);
-		}
+			if( $project->hasTaskPreset() ) {
+				$taskPreset	= $project->getTaskPreset();
+				$presetData	= $taskPreset->getPresetData();
 
-			// Dates
-		if( $presetData['date_start'] != 0 ) {
-			$data['date_start']		= self::buildDateFromExtConfDefault($presetData['date_start']);
-		}
-		if( $presetData['date_end'] != 0 ) {
-			$data['date_end']		= self::buildDateFromExtConfDefault($presetData['date_end']);
-		}
-		if( $presetData['date_deadline'] != 0 ) {
-			$data['date_deadline']	= self::buildDateFromExtConfDefault($presetData['date_deadline']);
+				$data = array_merge($data, $presetData);
+			}
 		}
 
 		return $data;

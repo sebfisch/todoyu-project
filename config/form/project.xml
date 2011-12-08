@@ -111,9 +111,8 @@
 				<field type="select" name="id_taskpreset">
 					<label>project.ext.attr.taskpreset</label>
 					<source type="function">
-						<function>TodoyuProjectProjectViewHelper::getTaskpresetOptions</function>
+						<function>TodoyuProjectProjectViewHelper::getTaskPresetOptions</function>
 					</source>
-					<noPleaseSelect />
 				</field>
 			</elements>
 		</fieldset>

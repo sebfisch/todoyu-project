@@ -73,14 +73,21 @@ class TodoyuProjectQuickTaskManager {
 			// Add custom project field
 		$form->getFieldset('main')->addField('id_project', $field, 'before:title');
 
-		$formData	= TodoyuProjectTaskManager::getTaskDefaultData(0, $idProject, TASK_TYPE_TASK);
-			// Set project ID, if given and allowed to user
-		if( $idProject > 0 && TodoyuProjectTaskRights::isAddInProjectAllowed($idProject, false) ) {
-			$formData['id_project']	= $idProject;
+			// Load default data
+		$formData	= TodoyuProjectTaskManager::getTaskDefaultData(0, $idProject, TASK_TYPE_TASK, true);
+
+			// Load data by form hooks
+		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData);
+
+			// Check if project id was set by a hook
+		if( $idProject === 0 ) {
+			$idProject = intval($formData['id_project']);
 		}
 
-			// Load form data by hooks (default is empty)
-		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData);
+			// Set project ID, if given and allowed to user
+		if( $idProject !== 0 && TodoyuProjectTaskRights::isAddInProjectAllowed($idProject, false) ) {
+			$formData['id_project']	= $idProject;
+		}
 
 			// Ensure the preset project allows for adding tasks
 		if( ! TodoyuProjectTaskRights::isAddInProjectAllowed($formData['id_project']) ) {
@@ -97,79 +104,59 @@ class TodoyuProjectQuickTaskManager {
 	/**
 	 * Adds mandatory task data to that received from quicktask form, saves new task to DB
 	 *
-	 * @param	Array	$data
+	 * @param	Array	$formData
 	 * @return	Integer
 	 */
-	public static function save(array $data) {
+	public static function save(array $formData) {
 			// Add empty task to have a task ID to work with
-		$idProject	= intval($data['id_project']);
+		$idProject	= intval($formData['id_project']);
+		$project	= TodoyuProjectProjectManager::getProject($idProject);
 		$firstData	= array(
 			'id_project'	=> $idProject,
 			'id_parenttask'	=> 0
 		);
 		$idTask		= TodoyuProjectTaskManager::addTask($firstData);
 
-			// Get presets from taskpreset set (if assigned) or extension config
-		$idTaskpreset	= TodoyuProjectProjectManager::getProject($idProject)->getTaskpresetID();
-		if( $idTaskpreset > 0 ) {
-			$presets	= TodoyuProjectTaskpresetManager::getTaskpresetData($idTaskpreset);
-			$presets['title']	= $presets['tasktitle'];
-		} else {
-			$presets	= TodoyuSysmanagerExtConfManager::getExtConf('project');
-		}
-
-			// Prepare data to save task
-		$data['id']					= $idTask;
-		$data['status']				= $presets['status'] > 0 ? $presets['status'] : intval(Todoyu::$CONFIG['EXT']['project']['taskDefaults']['statusQuickTask']);
-
-		if( ! Todoyu::allowed('project', 'edittaskdetail:editPersonAssigned') ) {
-			$data['id_person_assigned']	= ( $presets['id_person_assigned'] > 0 ) ? intval($presets['id_person_assigned']) : TodoyuProjectProjectManager::getRolePerson($idProject, $presets['person_assigned_role']);
-		} else {
-			$data['id_person_assigned']	= TodoyuAuth::getPersonID();
-		}
-
-		if( ! Todoyu::allowed('project', 'edittaskdetail:editPersonOwner') ) {
-			$data['id_person_owner']= ( $presets['id_person_owner'] > 0 ) ? intval($presets['id_person_owner']) : TodoyuProjectProjectManager::getRolePerson($idProject, $presets['person_owner_role']);
-		} else {
-			$data['id_person_owner']= TodoyuAuth::getPersonID();
-		}
-
-		$data['date_start']		= NOW;
-
-		$durationInDays			= $presets['quicktask_duration_days'] > 0 ? intval($presets['quicktask_duration_days']) : intval(Todoyu::$CONFIG['EXT']['project']['quicktask']['durationDays']);
-		$timestampDateEnd		= NOW + ($durationInDays * TodoyuTime::SECONDS_DAY);
-		$data['date_end']		= $timestampDateEnd;
-		$data['date_deadline']	= $timestampDateEnd;
-
-		$data['type']				= TASK_TYPE_TASK;
-		$data['estimated_workload']	= $presets['estimated_workload'] > 0 ? $presets['estimated_workload'] : TodoyuTime::SECONDS_HOUR;
+		$formData['date_start']	= NOW;
+		$formData['id_activity']= self::getFirstAvailableActivityID();
 
 			// If task already done: set also date_end
-		if( intval($data['task_done']) === 1 ) {
-			$data['status'] 	= STATUS_DONE;
-			$data['date_end']	= NOW;
+		if( intval($formData['task_done']) === 1 ) {
+			$formData['status'] 	= STATUS_DONE;
+			$formData['date_end']	= NOW;
 		}
-		unset($data['task_done']);
+		unset($formData['task_done']);
 
 
-			// Activity type
-		if( ! Todoyu::allowed('project', 'task:editActivity') ) {
-			$idActivityPreset	= intval($presets['id_activity']);
+		$defaultData	= TodoyuProjectTaskManager::getTaskDefaultData(0, $idProject, TASK_TYPE_TASK, true);
+		$durationInDays	= Todoyu::$CONFIG['EXT']['project']['quicktask']['durationDays'];
 
-			if( $idActivityPreset != 0 ) {
-				$data['id_activity'] = $idActivityPreset;
-			} else {
-				$data['id_activity'] = self::getFirstAvailableActivityID();
+			// Try to get data from task preset
+		if( $project->hasTaskPreset() ) {
+			$taskPreset	= $project->getTaskPreset();
+
+			if( $taskPreset->hasQuickTaskDurationDays() ) {
+				$durationInDays	= $taskPreset->getQuickTaskDurationDays();
 			}
+		} else {
+			$formData['status'] = Todoyu::$CONFIG['EXT']['project']['taskDefaults']['statusQuickTask'];
 		}
 
+			// Calculate end dates depending on the
+		$dateEnd					= TodoyuTime::getStartOfDay(NOW + ($durationInDays * TodoyuTime::SECONDS_DAY));
+		$formData['date_end']		= $dateEnd;
+		$formData['date_deadline']	= $dateEnd;
 
-			// Call form hooks to save external data
+
 		$xmlPath	= 'ext/project/config/form/quicktask.xml';
-		$data		= TodoyuFormHook::callSaveData($xmlPath, $data, $idTask);
+			// Merge with default data
+
+		$formData	= array_merge($defaultData, $formData);
+			// Call form hooks to save external data
+		$formData	= TodoyuFormHook::callSaveData($xmlPath, $formData, $idTask);
 
 			// Save task to DB
-		$idTask = TodoyuProjectTaskManager::saveTask($data);
+		TodoyuProjectTaskManager::saveTask($formData);
 
 		return $idTask;
 	}

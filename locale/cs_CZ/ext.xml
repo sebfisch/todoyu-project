@@ -68,9 +68,4 @@
 	<label index="js.quicktask.saved">Rychlý úkol byl uložen</label>
 	<label index="ac.person.notFoundInfo">Osoba s tímto jménem nebyla nalezena</label>
 	<label index="portal.tab.todos">Úkoly</label>
-	<label index="extconf.taskDefaults.status">Výchozí stav úkolu</label>
-	<label index="extconf.taskDefaults.assignedRoles">Výchozí role osoby přidělené úkolu</label>
-	<label index="extconf.taskDefaults.ownerRoles">Výchozí role pro vlastníka úkolu</label>
-	<label index="extconf.taskDefaults.activity">Výchozí pracovní položka</label>
-	<label index="extconf.taskDefaults.estimated_workload">Výchozí časový odhad</label>
 </labels>

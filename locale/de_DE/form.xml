@@ -15,7 +15,9 @@
 	<label index="legend.admin.fallbacks">Voreinstellungen für Personen mit limitiertem Zugriff</label>
 	<label index="legend.admin.projectrole.record.general">Projektrollen</label>
 	<label index="legend.admin.activity.record.general">Leistungsart</label>
+	<label index="legend.admin.taskpreset.record.preset">Aufgaben Vorgabe</label>
 	<label index="legend.admin.taskpreset.record.general">Standardeinstellungen für Aufgaben</label>
 	<label index="legend.admin.taskpreset.record.quicktask">Standardverhalten für Quicktasks</label>
 	<label index="legend.admin.taskpreset.record.fallbacks">Voreinstellungen für Personen mit limitiertem Zugriff</label>
+	<label index="extconf.basic">Grundeinstellungen</label>
 </labels>
