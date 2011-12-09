@@ -366,7 +366,74 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 	 */
 	'filters' => array(
 
+	),
+
+	/**
+	 * Sorting of the results
+	 */
+	'sorting' => array(
+		'dateCreate' => array(
+			'label'		=> 'core.date.date_create',
+			'optgroup'	=> 'project.task.task'
+		),
+		'dateUpdate' => array(
+			'label'		=> 'core.date.date_update',
+			'optgroup'	=> 'project.task.task'
+		),
+		'dateStart' => array(
+			'label'		=> 'project.task.attr.date_start',
+			'optgroup'	=> 'project.task.task'
+		),
+		'dateEnd' => array(
+			'label'		=> 'project.task.attr.date_end',
+			'optgroup'	=> 'project.task.task'
+		),
+		'dateDeadline' => array(
+			'label'		=> 'project.task.attr.date_deadline',
+			'optgroup'	=> 'project.task.task'
+		),
+		'projectID' 	=> array(
+			'label'		=> 'project.filter.project.id',
+			'optgroup'	=> 'project.task.task'
+		),
+		'title' => array(
+			'label'		=> 'core.global.title',
+			'optgroup'	=> 'project.task.task'
+		),
+		'personAssigned' => array(
+			'label'		=> 'project.task.person_assigned',
+			'optgroup'	=> 'project.task.task'
+		),
+		'personOwner' => array(
+			'label'		=> 'project.task.person_owner',
+			'optgroup'	=> 'project.task.task'
+		),
+		'taskNumber' => array(
+			'label'		=> 'project.task.taskno',
+			'optgroup'	=> 'project.task.task'
+		),
+		'status' => array(
+			'label'		=> 'project.task.attr.status',
+			'optgroup'	=> 'project.task.task'
+		),
+		'activity' => array(
+			'label'		=> 'project.task.attr.activity',
+			'optgroup'	=> 'project.task.task'
+		),
+		'estimatedWorkload' => array(
+			'label'		=> 'project.task.estimated_workload',
+			'optgroup'	=> 'project.task.task'
+		),
+		'acknowledged' => array(
+			'label'		=> 'project.task.attr.is_acknowledged',
+			'optgroup'	=> 'project.task.task'
+		),
+		'public' => array(
+			'label'		=> 'project.task.attr.is_public',
+			'optgroup'	=> 'project.task.task'
+		)
 	)
+
 );
 
 
@@ -545,6 +612,41 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 			)
 		)
 
+	),
+
+	'sorting' => array(
+		'dateCreate' => array(
+			'label'		=> 'core.date.date_create',
+			'optgroup'	=> 'project.ext.search.label'
+		),
+		'dateUpdate' => array(
+			'label'		=> 'core.date.date_update',
+			'optgroup'	=> 'project.ext.search.label'
+		),
+		'dateStart' => array(
+			'label'		=> 'project.ext.attr.date_start',
+			'optgroup'	=> 'project.ext.search.label'
+		),
+		'dateEnd' => array(
+			'label'		=> 'project.ext.attr.date_end',
+			'optgroup'	=> 'project.ext.search.label'
+		),
+		'projectID' 	=> array(
+			'label'		=> 'project.ext.attr.id',
+			'optgroup'	=> 'project.ext.search.label'
+		),
+		'title' => array(
+			'label'		=> 'core.global.title',
+			'optgroup'	=> 'project.ext.search.label'
+		),
+		'status' => array(
+			'label'		=> 'project.task.attr.status',
+			'optgroup'	=> 'project.ext.search.label'
+		),
+		'company' => array(
+			'label'		=> 'project.ext.attr.company',
+			'optgroup'	=> 'project.ext.search.label'
+		)
 	)
 );
 ?>

@@ -47,9 +47,10 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 *
 	 * @param	Array	$activeFilters		Active filters for request
 	 * @param	String	$conjunction
+	 * @param	Array	$sorting
 	 */
-	public function __construct(array $activeFilters = array(), $conjunction = 'AND') {
-		parent::__construct('TASK', self::TABLE, $activeFilters, $conjunction);
+	public function __construct(array $activeFilters = array(), $conjunction = 'AND', array $sorting = array()) {
+		parent::__construct('TASK', self::TABLE, $activeFilters, $conjunction, $sorting);
 	}
 
 
@@ -85,14 +86,14 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Get task IDs which match to all filters
 	 *
-	 * @param	String		$sorting		Force sorting column
-	 * @param	String		$limit			Limit result items
+	 * @param	String		$sortingFallback		Force sorting column
+	 * @param	String		$limit				Limit result items
 	 * @return	Array
 	 */
-	public function getTaskIDs($sorting = 'sorting', $limit = '') {
+	public function getTaskIDs($sortingFallback = 'sorting', $limit = '') {
 		$this->addRightsClauseFilter();
 
-		return parent::getItemIDs($sorting, $limit, false);
+		return parent::getItemIDs($sortingFallback, $limit, false);
 	}
 
 
@@ -100,12 +101,12 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * General access to the result items
 	 *
-	 * @param	String		$sorting
+	 * @param	String		$sortingFallback
 	 * @param	String		$limit
 	 * @return	Array
 	 */
-	public function getItemIDs($sorting = 'sorting', $limit = '') {
-		return $this->getTaskIDs($sorting, $limit);
+	public function getItemIDs($sortingFallback = 'sorting', $limit = '') {
+		return $this->getTaskIDs($sortingFallback, $limit);
 	}
 
 
@@ -1099,6 +1100,177 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 */
 	public static function Filter_filterObject(array $value, $negate = false) {
 		return TodoyuSearchFiltersetManager::Filter_filterObject($value, $negate);
+	}
+
+
+
+	/**
+	 * Order by date create
+	 *
+	 * @param	Boolean		$desc
+	 * @return	Array
+	 */
+	public function Sorting_DateCreate($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.date_create ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+
+	/**
+	 * @param bool $desc
+	 * @return array
+	 */
+	public function Sorting_DateUpdate($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.date_update ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+
+	/**
+	 * @param bool $desc
+	 * @return array
+	 */
+	public function Sorting_dateStart($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.date_start ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+
+	/**
+	 * @param bool $desc
+	 * @return array
+	 */
+	public function Sorting_dateEnd($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.date_end ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+
+	/**
+	 * @param bool $desc
+	 * @return array
+	 */
+	public function Sorting_dateDeadline($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.date_deadline ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+
+	/**
+	 * @param bool $desc
+	 * @return array
+	 */
+	public function Sorting_projectID($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.id_project ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+
+	/**
+	 * @param bool $desc
+	 * @return array
+	 */
+	public function Sorting_title($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.title ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+
+	/**
+	 * @param bool $desc
+	 * @return array
+	 */
+	public function Sorting_personAssigned($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.id_person_assigned ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+	public function Sorting_personOwner($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.id_person_owner ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+	public function Sorting_taskNumber($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.tasknumber ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+	public function Sorting_status($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.status ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+	public function Sorting_activity($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.id_activity ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+	public function Sorting_estimatedWorkload($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.estimated_workload ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+	public function Sorting_acknowledged($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.is_acknowledged ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+	public function Sorting_public($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_task.is_public ' . self::getSortDir($desc)
+			)
+		);
 	}
 
 }

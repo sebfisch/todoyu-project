@@ -41,9 +41,10 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 *
 	 * @param	Array		$activeFilters
 	 * @param	String		$conjunction
+	 * @param	Array		$sorting
 	 */
-	public function __construct(array $activeFilters = array(), $conjunction = 'AND') {
-		parent::__construct('PROJECT', self::TABLE, $activeFilters, $conjunction);
+	public function __construct(array $activeFilters = array(), $conjunction = 'AND', array $sorting = array()) {
+		parent::__construct('PROJECT', self::TABLE, $activeFilters, $conjunction, $sorting);
 
 		$this->addRightsClauseFilter();
 	}
@@ -73,12 +74,12 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	/**
 	 * Get IDs of the projects matching to all filters
 	 *
-	 * @param	String		$sorting
+	 * @param	String		$sortingFallback
 	 * @param	String		$limit
 	 * @return	Array
 	 */
-	public function getProjectIDs($sorting = '', $limit = '') {
-		return parent::getItemIDs($sorting, $limit);
+	public function getProjectIDs($sortingFallback = '', $limit = '') {
+		return parent::getItemIDs($sortingFallback, $limit);
 	}
 
 
@@ -86,12 +87,12 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	/**
 	 * General items function for anonymous access
 	 *
-	 * @param	String		$sorting
+	 * @param	String		$sortingFallback
 	 * @param	String		$limit
 	 * @return	Array
 	 */
-	public function getItemIDs($sorting = '', $limit = '') {
-		return $this->getProjectIDs($sorting, $limit);
+	public function getItemIDs($sortingFallback = '', $limit = '') {
+		return $this->getProjectIDs($sortingFallback, $limit);
 	}
 
 
@@ -529,8 +530,9 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 */
 	public function Filter_taskFilter($value, $negate = false) {
 		$taskFilter	= new TodoyuProjectTaskFilter();
-
 		$filterSets	= TodoyuArray::intExplode(',', $value, true, true);
+		$whereArray	= array();
+		$queryParts	= false;
 
 		foreach( $filterSets as $filterSet) {
 			$filterObject	= $taskFilter->Filter_filterSet($filterSet);
@@ -542,14 +544,143 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 							   ' WHERE ' . $filterObject['where'] . ')';
 		}
 
-		if( is_array($whereArray) ) {
-			$where	= implode(' AND ', $whereArray);
+		if( sizeof($whereArray) > 0 ) {
+			$queryParts = array(
+				'where' => implode(' AND ', $whereArray)
+			);
 		}
 
+		return $queryParts;
+	}
+
+
+
+	/**
+	 * Order by date create
+	 *
+	 * @param	Boolean		$desc
+	 * @return	Array
+	 */
+	public function Sorting_DateCreate($desc = false) {
 		return array(
-			'where'	=> $where
+			'order'	=> array(
+				'ext_project_project.date_create ' . self::getSortDir($desc)
+			)
 		);
 	}
+
+
+
+	/**
+	 * Order by date update
+	 *
+	 * @param	Boolean		$desc
+	 * @return	Array
+	 */
+	public function Sorting_DateUpdate($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_project.date_update ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+
+	/**
+	 * Order by date start
+	 *
+	 * @param	Boolean		$desc
+	 * @return	Array
+	 */
+	public function Sorting_dateStart($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_project.date_start ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+
+	/**
+	 * Order by date end
+	 *
+	 * @param	Boolean		$desc
+	 * @return	Array
+	 */
+	public function Sorting_dateEnd($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_project.date_end ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+
+	/**
+	 * Order by project id
+	 *
+	 * @param	Boolean		$desc
+	 * @return	Array
+	 */
+	public function Sorting_projectID($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_project.id ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+
+	/**
+	 * Order by title
+	 *
+	 * @param	Boolean		$desc
+	 * @return	Array
+	 */
+	public function Sorting_title($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_project.title ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+
+	/**
+	 * Order by status
+	 *
+	 * @param	Boolean		$desc
+	 * @return	Array
+	 */
+	public function Sorting_status($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_project.status ' . self::getSortDir($desc)
+			)
+		);
+	}
+
+
+
+	/**
+	 * Order by company (id)
+	 *
+	 * @param	Boolean		$desc
+	 * @return	Array
+	 */
+	public function Sorting_company($desc = false) {
+		return array(
+			'order'	=> array(
+				'ext_project_project.id_company ' . self::getSortDir($desc)
+			)
+		);
+	}
+
 }
 
 ?>
