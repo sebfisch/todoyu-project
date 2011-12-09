@@ -65,6 +65,7 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	/**
 	 * Initialize sortable tree
 	 *
+	 * @method	initialize
 	 * @param	{String|Element}	container
 	 * @param	{Object}			options
 	 */
@@ -90,6 +91,8 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 
 	/**
 	 * Create marker element and it to the DOM
+	 *
+	 * @method	createMarker
 	 */
 	createMarker: function() {
 		this.marker = new Element('div',{
@@ -107,6 +110,7 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	/**
 	 * Get marker element
 	 *
+	 * @method	getMarker
 	 * @return	{Element}
 	 */
 	getMarker: function() {
@@ -117,6 +121,8 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 
 	/**
 	 * Show marker
+	 *
+	 * @method	showMarker
 	 */
 	showMarker: function() {
 		this.getMarker().show();
@@ -129,6 +135,8 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	 *
 	 * Also remove inside class which may be added
 	 * and move the marker back to the body element to prevent any removed by task refresh action
+	 *
+	 * @method	hideMarker
 	 */
 	hideMarker: function() {
 		this.getMarker().hide();
@@ -140,6 +148,8 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 
 	/**
 	 * Remove all marker classes
+	 *
+	 * @method	removeMarkerClasses
 	 */
 	removeMarkerClasses: function() {
 		this.getMarker().removeClassName('in').removeClassName('before').removeClassName('after').removeClassName('outside');
@@ -149,6 +159,8 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 
 	/**
 	 * Unmark the active task
+	 *
+	 * @method	unmarkActiveTask
 	 */
 	unmarkActiveTask: function() {
 		var active	= this.element.down('div.dragDropTarget');
@@ -161,8 +173,9 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	
 
 	/**
-	 * Reload tree
-	 * Detects new added elements and adds drop and drop behaviour
+	 * Reload tree. Detects newly added elements and adds drag and drop behaviour
+	 *
+	 * @method	reload
 	 */
 	reload: function() {
 		this.root.destroy();
@@ -175,6 +188,8 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 
 	/**
 	 * Make tree sortable
+	 *
+	 * @method	makeSortable
 	 */
 	makeSortable: function() {
 		this.root.makeSortable();
@@ -184,6 +199,8 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 
 	/**
 	 * Disable tree sorting
+	 *
+	 * @method	disableSortable
 	 */
 	disableSortable: function() {
 		this.root.disableSortable();
@@ -194,6 +211,7 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	/**
 	 * Find a node by DOM element
 	 *
+	 * @method	findNode
 	 * @param	{Element}	element
 	 */
 	findNode: function(element) {
@@ -205,6 +223,7 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	/**
 	 * Call change handler
 	 *
+	 * @method	onChange
 	 * @param	{Number}	idTaskDrag
 	 * @param	{Number}	idTaskDrop
 	 * @param	{String}	position
@@ -221,6 +240,7 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	/**
 	 * Log message
 	 *
+	 * @method	log
 	 * @param	{String}	message
 	 * @param	{Object}	item
 	 */
@@ -239,8 +259,11 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	/**
 	 * Get the debug tree object
 	 * This is a simplified tree with useful debug info
+	 *
+	 * @method	getDebugTree
 	 */
 	getDebugTree: function() {
 		return this.root.getDebugTree();
 	}
+
 });

@@ -49,6 +49,8 @@ Todoyu.Ext.project.TaskTree = {
 
 	/**
 	 * Initialize sortable tree
+	 *
+	 * @method	initSortable
 	 */
 	initSortable: function() {
 		var idProject		= this.getProjectID();
@@ -79,6 +81,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Handler when sorting was changed with drag'n'drop
 	 *
+	 * @method	onSortingChange
 	 * @param	{Number}	idProject
 	 * @param	{Number}	idTaskDragged
 	 * @param	{Number}	idTaskDrop
@@ -105,6 +108,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Handler when new sorting order was saved
 	 *
+	 * @method	onSortingSaved
 	 * @param	{Number}		idProject
 	 * @param	{Number}		idTaskDragged
 	 * @param	{Number}		idTaskDrop
@@ -270,9 +274,6 @@ Todoyu.Ext.project.TaskTree = {
 
 
 
-
-
-
 	/**
 	 * Handler when sub tasks are toggled
 	 *
@@ -327,6 +328,7 @@ Todoyu.Ext.project.TaskTree = {
 	/**
 	 * Set subtask trigger to a specific state
 	 *
+	 * @method	setSubtaskTriggerExpanded
 	 * @param	{Number}	idTask
 	 * @param	{Boolean}	expanded
 	 */
@@ -425,7 +427,7 @@ Todoyu.Ext.project.TaskTree = {
 
 
 	/**
-	 * Evoke (Re-)Adding of task tree (tasks') context menu
+	 * Evoke (Re-)Adding of task tree (tasks') context menu                                                            pr
 	 *
 	 * @method	addContextMenu
 	 */

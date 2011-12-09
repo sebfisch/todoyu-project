@@ -26,6 +26,7 @@
  * @see			Todoyu.Ext.project.TaskTree.Sortable
  */
 Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
+
 	/**
 	 * Tree
 	 * @var	{Todoyu.Ext.project.TaskTree.Sortable}
@@ -79,6 +80,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Initialize node
 	 *
+	 * @method	initialize
 	 * @param	{Todoyu.Ext.project.TaskTree.Sortable}		tree
 	 * @param	{Todoyu.Ext.project.TaskTree.SortableNode}	parent
 	 * @param	{Element}									element
@@ -115,6 +117,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 	/**
 	 * Initialize child nodes
+	 *
+	 * @method	initChildren
 	 */
 	initChildren: function() {
 		var childNodes = [];
@@ -139,6 +143,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Remove a child from this node
 	 *
+	 * @method	removeChild
 	 * @param	{Todoyu.Ext.project.TaskTree.SortableNode}	child
 	 */
 	removeChild: function(child) {
@@ -150,6 +155,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Add a child to this node
 	 *
+	 * @method	addChild
 	 * @param	{Todoyu.Ext.project.TaskTree.SortableNode}	child
 	 */
 	addChild: function(child) {
@@ -162,6 +168,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Log message
 	 *
+	 * @method	log
 	 * @param	{String}	message
 	 * @param	{Object}	item
 	 */
@@ -174,6 +181,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Find a node (for the element) in this node or in one of the sub nodes (recursive)
 	 *
+	 * @method	findNode
 	 * @param	{Element}	element
 	 */
 	findNode: function(element) {
@@ -195,6 +203,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 	/**
 	 * Destroy node
+	 *
+	 * @method	destroy
 	 */
 	destroy: function() {
 		this.disableSortable(false);
@@ -210,6 +220,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Make node sortable
 	 * Scriptaculous says to make the children droppable first
+	 *
+	 * @method	makeSortable
 	 */
 	makeSortable: function() {
 			// Make all children sortable
@@ -229,8 +241,9 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 	/**
 	 * Disable sorting
-	 * 
-	 * @param recursive
+	 *
+	 * @method	disableSortable
+	 * @param	{Boolean}	recursive
 	 */
 	disableSortable: function(recursive) {
 		this.log('Disable sorting: ' + this.element.id);
@@ -248,6 +261,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 	/**
 	 * Enable dragging for this node
+	 *
+	 * @method	enableDrag
 	 */
 	enableDrag: function() {
 		if( !this.drag && !this.isRootNode() ) {
@@ -260,6 +275,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 	/**
 	 * Disable dragging for this node
+	 *
+	 * @method	disableDrag
 	 */
 	disableDrag: function() {
 		if( this.drag ) {
@@ -273,6 +290,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 	/**
 	 * Create a drop zone for this node
+	 *
+	 * @method	enableDrop
 	 */
 	enableDrop: function() {
 		if( !this.drop && !this.isRootNode() ) {
@@ -289,6 +308,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 	/**
 	 * Remove the drop zone for this node
+	 *
+	 * @method	disableDrop
 	 */
 	disableDrop: function() {
 		if( this.drop ) {
@@ -303,6 +324,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Handler when drag started
 	 *
+	 * @method	onDragStart
 	 * @param	{Draggable}		draggable
 	 * @param	{Event}			event
 	 */
@@ -324,6 +346,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Handler when drag ended
 	 *
+	 * @method	onDragEnd
 	 * @param	{Draggable}	draggable
 	 * @param	{Event}		event
 	 */
@@ -346,6 +369,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	 * Hide marker if not
 	 * Note: Reducing the offset doesn't help, because the overlapping depends on the mouse and not the element
 	 *
+	 * @method	snapDraggable
 	 * @param	{Number}	x
 	 * @param	{Number}	y
 	 * @return	{Array}
@@ -359,7 +383,6 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 			var offsetDiff	= this.topOffset - this.tree.topOffset;
 			if( -y > offsetDiff + buffer ) {
 				this.hideMarker();
-//				this.getMarker().addClassName('outside');
 			}
 		}
 
@@ -372,7 +395,6 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 			var treeBottom	= this.tree.topOffset + treeHeight;
 
 			if( dragTop + buffer > treeBottom ) {
-//				this.getMarker().addClassName('outside');
 				this.hideMarker();
 			}
 		}
@@ -385,6 +407,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Get drop zone of the element
 	 *
+	 * @method	getDropZone
 	 * @return	{Element}
 	 */
 	getDropZone: function() {
@@ -396,6 +419,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Check whether current node is the root node
 	 *
+	 * @method	isRootNode
 	 * @return	{Boolean}
 	 */
 	isRootNode: function() {
@@ -407,6 +431,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Check whether node is a root task (first level task)
 	 *
+	 * @method	isRootTask
 	 * @return	{Boolean}
 	 */
 	isRootTask: function() {
@@ -418,6 +443,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Handler on task hover
 	 *
+	 * @method	onHover
 	 * @param	{Element}	drag
 	 * @param	{Element}	drop
 	 * @param	{Number}	overlap
@@ -434,8 +460,9 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 
 	/**
-	 * Check whether element a
+	 * Check whether element a is child of element b
 	 *
+	 * @method	isChild
 	 * @param	{Element}	elementA
 	 * @param	{Element}	elementB
 	 * @return	{Boolean}
@@ -449,6 +476,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Handler on task drop
 	 *
+	 * @method	onDrop
 	 * @param	{Element}	drag
 	 * @param	{Element}	drop
 	 * @param	{Event}		event
@@ -471,6 +499,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 	/**
 	 * Insert a task
+	 *
+	 * @method	insertTask
 	 * @param	{String}	position		in, after, before
 	 * @param	{Element}	drag
 	 * @param	{Event}		event
@@ -508,6 +538,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Set new parent node
 	 *
+	 * @method	setNewParent
 	 * @param	{Todoyu.Ext.project.TaskTree.SortableNode}	newParent
 	 */
 	setNewParent: function(newParent) {
@@ -522,6 +553,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Remove some styles left over by the library
 	 *
+	 * @method	removeDraggingStyles
 	 * @param	{Element}	drag
 	 */
 	removeDraggingStyles: function(drag) {
@@ -535,6 +567,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Get current task ID (node is a drop zone)
 	 *
+	 * @method	getTaskID
 	 * @return	{String}
 	 */
 	getTaskID: function() {
@@ -546,6 +579,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Get task element (div)
 	 *
+	 * @method	getTask
 	 * @return	{Element}
 	 */
 	getTask: function() {
@@ -557,6 +591,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Get the ID of the parent task
 	 *
+	 * @method	getParentTaskID
 	 * @return	{Number|Boolean}
 	 */
 	getParentTaskID: function() {
@@ -574,6 +609,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Get the parent task
 	 *
+	 * @method	getParentTask
 	 * @return	{Element|undefined}
 	 */
 	getParentTask: function() {
@@ -585,6 +621,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Insert task as sub task of current task node
 	 *
+	 * @method	insertTaskAsSubtask
 	 * @param	{Element}	drag
 	 */
 	insertTaskAsSubtask: function(drag) {
@@ -614,6 +651,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Insert task after current task node
 	 *
+	 * @method	insertTaskAfter
 	 * @param	{Element}	drag
 	 */
 	insertTaskAfter: function(drag) {
@@ -627,6 +665,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Insert task before current task node
 	 *
+	 * @method	insertTaskBefore
 	 * @param	{Element}	drag
 	 */
 	insertTaskBefore: function(drag) {
@@ -638,9 +677,10 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 
 	/**
-	 * Mark current node as drop zone for current postion
+	 * Mark current node as drop zone for current position
 	 *
-	 * @param position
+	 * @method	mark
+	 * @param	{String}	position	in, before, after
 	 */
 	mark: function(position) {
 		this.hideMarker();
@@ -668,6 +708,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 	/**
 	 * Mark current element as target
+	 *
+	 * @method	markAsTarget
 	 */
 	markAsTarget: function() {
 		this.element.addClassName('dragDropTarget');
@@ -678,6 +720,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Get marker element
 	 *
+	 * @method	getMarker
 	 * @return	{Element}
 	 */
 	getMarker: function() {
@@ -688,6 +731,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 	/**
 	 * Show marker
+	 *
+	 * @method	showMarker
 	 */
 	showMarker: function() {
 		this.tree.showMarker();
@@ -701,6 +746,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	 *
 	 * Also remove inside class which may be added
 	 * and move the marker back to the body element to prevent any removed by task refresh action
+	 *
+	 * @method	hideMarker
 	 */
 	hideMarker: function() {
 		this.tree.hideMarker();
@@ -712,6 +759,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Get debug tree for this node
 	 *
+	 * @method	getDebugTree
 	 * @return	{Object}
 	 */
 	getDebugTree: function() {
@@ -730,4 +778,5 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 		return data;
 	}
+
 });
