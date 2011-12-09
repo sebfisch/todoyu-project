@@ -120,13 +120,14 @@ div.task .subtasks .task:last-child {
 	background: url(../img/icons.png) no-repeat;
 }
 #dragDropMarker.in div {
-	top:0;
+	top:1px;
 	background-position:0 -650px;
 }
 #dragDropMarker.after div {
 	background-position:0 -678px;
 }
 #dragDropMarker.before div {
+	top:-14px;
 	background-position:0 -710px;
 }
 div.task.dragDropTarget > h3 {
