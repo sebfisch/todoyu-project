@@ -69,7 +69,7 @@ class TodoyuProjectTaskFilterDataSource {
 	}
 
 
-	
+
 	/**
 	 * AutoCompleter function to search for tasks
 	 *

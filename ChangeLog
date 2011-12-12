@@ -3,6 +3,7 @@ todoyu project extension changelog
 project 1.2.0 - not released yet
 	* Feature: Drag'n'Drop tasks in project
 	* Feature: Complete refactoring of task presets. All task fields are available now. Better integration of other extensions
+	* Feature: New filter for child tasks
 	* Bugfix: Last opened projects weren't added as sub menu
 	* Bugfix: Changed physically deletion of records
 	* Bugfix: Toggle trigger left over in parent w/o children after cancelling creation of only sub task
