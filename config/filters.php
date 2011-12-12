@@ -385,64 +385,71 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 	 */
 	'sorting' => array(
 		'dateCreate' => array(
-			'label'		=> 'core.date.date_create',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'core.date.date_create',
+			'optgroup'			=> 'project.task.task'
 		),
 		'dateUpdate' => array(
-			'label'		=> 'core.date.date_update',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'core.date.date_update',
+			'optgroup'			=> 'project.task.task',
+			'restrictInternal'	=> true
 		),
 		'dateStart' => array(
-			'label'		=> 'project.task.attr.date_start',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'project.task.attr.date_start',
+			'optgroup'			=> 'project.task.task',
+			'restrictInternal'	=> true
 		),
 		'dateEnd' => array(
-			'label'		=> 'project.task.attr.date_end',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'project.task.attr.date_end',
+			'optgroup'			=> 'project.task.task',
+			'restrictInternal'	=> true
 		),
 		'dateDeadline' => array(
-			'label'		=> 'project.task.attr.date_deadline',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'project.task.attr.date_deadline',
+			'optgroup'			=> 'project.task.task'
 		),
 		'projectID' 	=> array(
-			'label'		=> 'project.filter.project.id',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'project.filter.project.id',
+			'optgroup'			=> 'project.task.task'
 		),
 		'title' => array(
-			'label'		=> 'core.global.title',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'core.global.title',
+			'optgroup'			=> 'project.task.task'
 		),
 		'personAssigned' => array(
-			'label'		=> 'project.task.person_assigned',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'project.task.person_assigned',
+			'optgroup'			=> 'project.task.task',
+			'right'				=> 'contact:person.seeAllPersons'
 		),
 		'personOwner' => array(
-			'label'		=> 'project.task.person_owner',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'project.task.person_owner',
+			'optgroup'			=> 'project.task.task',
+			'right'				=> 'contact:person.seeAllPersons'
 		),
 		'taskNumber' => array(
-			'label'		=> 'project.task.taskno',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'project.task.taskno',
+			'optgroup'			=> 'project.task.task'
 		),
 		'status' => array(
-			'label'		=> 'project.task.attr.status',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'project.task.attr.status',
+			'optgroup'			=> 'project.task.task'
 		),
 		'activity' => array(
-			'label'		=> 'project.task.attr.activity',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'project.task.attr.activity',
+			'optgroup'			=> 'project.task.task'
 		),
 		'estimatedWorkload' => array(
-			'label'		=> 'project.task.estimated_workload',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'project.task.estimated_workload',
+			'optgroup'			=> 'project.task.task',
+			'restrictInternal'	=> true
 		),
 		'acknowledged' => array(
-			'label'		=> 'project.task.attr.is_acknowledged',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'project.task.attr.is_acknowledged',
+			'optgroup'			=> 'project.task.task'
 		),
 		'public' => array(
-			'label'		=> 'project.task.attr.is_public',
-			'optgroup'	=> 'project.task.task'
+			'label'				=> 'project.task.attr.is_public',
+			'optgroup'			=> 'project.task.task',
+			'restrictInternal'	=> true
 		)
 	)
 
