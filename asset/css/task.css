@@ -50,7 +50,6 @@ div.task .subtasks .task:last-child {
 	height:22px;
 	left:-4px;
 	top:0;
-	cursor:move;
 	background-color:#FFF; /* IE fix */
 	opacity: 0.001; /* IE fix */
 }
@@ -134,6 +133,9 @@ div.task.dragDropTarget > h3 {
 	background-color: #E3EACE;
 }
 
+body.dragAndDrop .task .dndHandle {
+	cursor: move;
+}
 
 
 

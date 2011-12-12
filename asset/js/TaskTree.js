@@ -48,17 +48,30 @@ Todoyu.Ext.project.TaskTree = {
 
 
 	/**
+	 * Check whether drag and drop is allowed
+	 *
+	 * @return	{Boolean}
+	 */
+	isDragAndDropAllowed: function() {
+		return $(document.body).hasClassName('dragAndDrop');
+	},
+
+
+
+	/**
 	 * Initialize sortable tree
 	 *
 	 * @method	initSortable
 	 */
 	initSortable: function() {
-		var idProject		= this.getProjectID();
-		var taskContainer	= $('project-' + idProject + '-tasks');
+		if( this.isDragAndDropAllowed() ) {
+			var idProject		= this.getProjectID();
+			var taskContainer	= $('project-' + idProject + '-tasks');
 
-		this.sortable = new this.Sortable(taskContainer, {
-			onChange: this.onSortingChange.bind(this, idProject)
-		});
+			this.sortable = new this.Sortable(taskContainer, {
+				onChange: this.onSortingChange.bind(this, idProject)
+			});
+		}
 	},
 
 
@@ -69,10 +82,12 @@ Todoyu.Ext.project.TaskTree = {
 	 * @method	reloadSortable
 	 */
 	reloadSortable: function() {
-		if( ! this.sortable ) {
-			this.initSortable();
-		} else {
-			this.sortable.reload();
+		if( this.isDragAndDropAllowed() ) {
+			if( ! this.sortable ) {
+				this.initSortable();
+			} else {
+				this.sortable.reload();
+			}
 		}
 	},
 

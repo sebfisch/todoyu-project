@@ -332,6 +332,25 @@ class TodoyuProjectTaskRights {
 
 
 	/**
+	 * Check whether user can use drag and drop for tasks
+	 *
+	 * @return	Boolean
+	 */
+	public static function isDragAndDropAllowed() {
+		if( Todoyu::person()->isAdmin() ) {
+			return true;
+		}
+
+		if( Todoyu::person()->isExternal() ) {
+			return false;
+		}
+
+		return Todoyu::allowed('project', 'edittask:useTaskAndContainerClipboard');
+	}
+
+
+
+	/**
 	 * Check whether person can see a taskstatus
 	 *
 	 * @param	String		$status
@@ -461,5 +480,17 @@ class TodoyuProjectTaskRights {
 
 		Todoyu::restrict('project', 'edittaskdetail:' . $status . ':changeto');
 	}
+
+
+
+	/**
+	 * Restrict access to task drag and drop
+	 */
+	public static function restrictDragAndDrop() {
+		if( !self::isDragAndDropAllowed() ) {
+			self::deny('task:dragdrop');
+		}
+	}
+
 }
 ?>
