@@ -168,6 +168,7 @@ class TodoyuProjectTaskRenderer {
 		$fieldKeys		= TodoyuArray::getColumn($data['data'], '__key');
 		$fieldIndexes	= array_flip($fieldKeys);
 
+// @todo	move rights and internal-only access restrictions into config and make removal generic
 			// Non-internal person? remove estimated time
 		if( ! Todoyu::person()->isInternal() ) {
 			unset($data['data'][$fieldIndexes['estimated_workload']]);
