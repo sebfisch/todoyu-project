@@ -218,6 +218,18 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 
 	/**
+	 * Check whether the given element is draggable
+	 *
+	 * @param	{Element}	element
+	 * @return	{Boolean}
+	 */
+	isNodeDraggable: function(element) {
+		return element.select('.dndHandle').length > 0;
+	},
+
+
+
+	/**
 	 * Make node sortable
 	 * Scriptaculous says to make the children droppable first
 	 *
@@ -226,8 +238,10 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	makeSortable: function() {
 			// Make all children sortable
 		this.children.each(function(child){
-			child.makeSortable();
-		});
+			if( this.isNodeDraggable(child.element) ) {
+				child.makeSortable();
+			}
+		}, this);
 
 		if( !this.drop ) {
 				// Create a drop zone on the node

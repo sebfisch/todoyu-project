@@ -28,18 +28,22 @@
  * @namespace	Todoyu.Ext.project.TaskTree
  */
 Todoyu.Ext.project.TaskTree.Sortable = Class.create({
+
 	/**
 	 * Tree container element
 	 */
 	element: null,
+
 	/**
 	 * Root node
 	 */
 	root: null,
+
 	/**
 	 * Tree options
 	 */
 	options: {},
+
 	/**
 	 * Ext back ref
 	 */

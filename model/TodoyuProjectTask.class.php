@@ -465,7 +465,25 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 
 
 	/**
-	 * @todo	Check: implement?
+	 * Check whether drag and drop of the task is allowed
+	 *
+	 * @return	Boolean
+	 */
+	public function isDraggable() {
+		$isDraggable	= true;
+
+			// No drag & drop on locked tasks / tasks with locked sub tasks
+		if( $this->isLocked(true) ) {
+			$isDraggable	= false;
+		}
+
+		return $isDraggable;
+	}
+
+
+
+	/**
+	 * @todo	See todo in getTemplateData
 	 */
 	protected function loadForeignData() {
 
@@ -505,6 +523,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 			case 0:
 				$data['is_container']	= $this->isContainer();
 				$data['is_locked']		= $this->isLocked();
+				$data['isDraggable']	= $this->isDraggable();
 		}
 
 		return $data;
