@@ -222,6 +222,8 @@ Todoyu.Ext.project.Task = {
 			// Highlight the new pasted task
 		this.highlight(idTaskNew);
 		this.highlightSubTasks(idTaskNew);
+
+		this.ext.TaskTree.removeEmptySubTaskContainers();
 	},
 
 

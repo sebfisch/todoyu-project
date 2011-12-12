@@ -88,6 +88,8 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	{String}	position
 	 */
 	onSortingChange: function(idProject, idTaskDragged, idTaskDrop, position) {
+		this.removeEmptySubTaskContainers();
+
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			parameters: {
@@ -117,6 +119,19 @@ Todoyu.Ext.project.TaskTree = {
 	 */
 	onSortingSaved: function( idProject, idTaskDragged, idTaskDrop, position, response) {
 		Todoyu.notifySuccess('[LLL:project.task.dragndrop.saved]', 'taskDragDrop');
+	},
+
+
+
+	/**
+	 * Remove all empty subtask containers
+	 */
+	removeEmptySubTaskContainers: function() {
+		$$('div.subtasks').each(function(container){
+			if( container.empty() ) {
+				container.remove();
+			}
+		});
 	},
 
 

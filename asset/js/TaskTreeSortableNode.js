@@ -511,6 +511,8 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 
 
+
+
 	/**
 	 * Insert a task
 	 *
