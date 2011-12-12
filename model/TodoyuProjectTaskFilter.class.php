@@ -884,9 +884,9 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array
 	 */
 	public function Filter_editdateDyn($value, $negate) {
-		$rangeTimestamps = TodoyuProjectTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
+		$refDate = TodoyuProjectTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
 
-		return $this->Filter_dateDyn($rangeTimestamps, 'date_update', $negate);
+		return $this->Filter_dateDyn($refDate, 'date_update', $negate);
 	}
 
 
@@ -922,7 +922,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Get the dynamic date
 	 *
-	 * @param	Array		$date
+	 * @param	Integer		$date
 	 * @param	String		$field
 	 * @param	Boolean		$negation
 	 * @return	Array
