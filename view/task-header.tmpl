@@ -1,7 +1,7 @@
 <h3 id="task-{$task.id}-header" class="contextmenutask bcStatus{$task.status}" name="task-{$task.id}">
 	<span class="statusColor bcStatus{$task.status}"></span>
 
-	<span class="{if $task.isDraggable}dndHandle{/if}"></span>
+	<span class="dndHandle {if $task.isDraggable}draggable{/if}"></span>
 	{if ! $isLostTask}
 		<span id="task-{$task.id}-subtasks-trigger" onclick="Todoyu.Ext.project.TaskTree.toggleSubTasks({$task.id})" href="javascript:void(0)" class="subtaskTrigger {if $hasSubtasks}expandable{/if} {if $areSubtasksVisible}expanded{/if}"></span>
 	{/if}

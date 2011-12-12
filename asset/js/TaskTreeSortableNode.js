@@ -224,7 +224,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	 * @return	{Boolean}
 	 */
 	isNodeDraggable: function(element) {
-		return element.select('.dndHandle').length > 0;
+		return element.down('.dndHandle').hasClassName('draggable');
 	},
 
 
@@ -238,16 +238,16 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	makeSortable: function() {
 			// Make all children sortable
 		this.children.each(function(child){
-			if( this.isNodeDraggable(child.element) ) {
-				child.makeSortable();
-			}
-		}, this);
+			child.makeSortable();
+		});
 
 		if( !this.drop ) {
 				// Create a drop zone on the node
 			this.enableDrop();
 				// Make draggable if not the root node
-			this.enableDrag();
+			if( this.isNodeDraggable(this.element) ) {
+				this.enableDrag();
+			}
 		}
 	},
 

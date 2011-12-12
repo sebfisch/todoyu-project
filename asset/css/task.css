@@ -132,11 +132,9 @@ div.task .subtasks .task:last-child {
 div.task.dragDropTarget > h3 {
 	background-color: #E3EACE;
 }
-
-body.dragAndDrop .task .dndHandle {
+.task .dndHandle.draggable {
 	cursor: move;
 }
-
 
 
 /* -------------------------

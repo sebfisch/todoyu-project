@@ -381,7 +381,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTaskDrop	= intval($params['taskDrop']);
 		$position	= trim($params['position']);
 
-		TodoyuProjectTaskRights::restrictDragAndDrop();
+		TodoyuProjectTaskRights::restrictDragAndDrop($idTaskDrag);
 
 		TodoyuProjectTaskManager::moveTask($idTaskDrag, $idTaskDrop, $position);
 	}

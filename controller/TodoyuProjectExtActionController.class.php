@@ -85,11 +85,6 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 			}
 		}
 
-			// Add drag and drop class
-		if( TodoyuProjectTaskRights::isDragAndDropAllowed() ) {
-			TodoyuPage::addBodyClass('dragAndDrop');
-		}
-
 			// Init page
 		TodoyuPage::init('ext/project/view/ext.tmpl');
 

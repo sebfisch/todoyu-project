@@ -334,18 +334,23 @@ class TodoyuProjectTaskRights {
 	/**
 	 * Check whether user can use drag and drop for tasks
 	 *
+	 * @param	Integer		$idTask
 	 * @return	Boolean
 	 */
-	public static function isDragAndDropAllowed() {
+	public static function isDragAndDropForTaskAllowed($idTask) {
+		$idTask	= intval($idTask);
+
 		if( Todoyu::person()->isAdmin() ) {
 			return true;
 		}
 
-		if( Todoyu::person()->isExternal() ) {
-			return false;
-		}
+		$task	= TodoyuProjectTaskManager::getTask($idTask);
 
-		return Todoyu::allowed('project', 'edittask:useTaskAndContainerClipboard');
+		$useTaskClipboard		= Todoyu::allowed('project', 'edittask:useTaskAndContainerClipboard');
+		$addTasksInOwnProjects	= Todoyu::allowed('project', 'addtask:addTaskInOwnProjects');
+		$hasTaskEditRight		= TodoyuProjectTaskRights::hasStatusRight($task->getStatusKey(), 'edit');
+
+		return $useTaskClipboard && $addTasksInOwnProjects && $hasTaskEditRight;
 	}
 
 
@@ -485,9 +490,11 @@ class TodoyuProjectTaskRights {
 
 	/**
 	 * Restrict access to task drag and drop
+	 *
+	 * @param	Integer		$idTask
 	 */
-	public static function restrictDragAndDrop() {
-		if( !self::isDragAndDropAllowed() ) {
+	public static function restrictDragAndDrop($idTask) {
+		if( !self::isDragAndDropForTaskAllowed($idTask) ) {
 			self::deny('task:dragdrop');
 		}
 	}

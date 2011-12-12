@@ -470,14 +470,11 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isDraggable() {
-		$isDraggable	= true;
+		$useTaskClipboard		= Todoyu::allowed('project', 'edittask:useTaskAndContainerClipboard');
+		$addTasksInOwnProjects	= Todoyu::allowed('project', 'addtask:addTaskInOwnProjects');
+		$hasTaskEditRight		= TodoyuProjectTaskRights::hasStatusRight($this->getStatusKey(), 'edit');
 
-			// No drag & drop on locked tasks / tasks with locked sub tasks
-		if( $this->isLocked(true) ) {
-			$isDraggable	= false;
-		}
-
-		return $isDraggable;
+		return $useTaskClipboard && $addTasksInOwnProjects && $hasTaskEditRight;
 	}
 
 
