@@ -200,6 +200,18 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 				'negation'	=> 'default'
 			)
 		),
+		'parentTask' => array(
+			'label'		=> 'project.task.attr.id_parenttask',
+			'optgroup'	=> 'project.task.search.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'autocomplete'	=> true,
+				'FuncRef'		=> 'TodoyuProjectTaskFilterDataSource::autocompleteTasks',
+				'FuncParams'	=> array(),
+				'LabelFuncRef'	=> 'TodoyuProjectTaskFilterDataSource::getLabel',
+				'negation'		=> 'default'
+			)
+		),
 
 
 

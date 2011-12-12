@@ -60,6 +60,17 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 
 
 	/**
+	 * Get title with task number
+	 *
+	 * @return	String
+	 */
+	public function getTitleWithTaskNumber() {
+		return $this->getTaskNumber(true) . ': ' . $this->getTitle();
+	}
+
+
+
+	/**
 	 * Get task number of the task.
 	 * The task number is a combination of the project ID and an incrementing task number per project
 	 *

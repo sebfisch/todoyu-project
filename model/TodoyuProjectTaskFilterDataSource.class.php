@@ -27,6 +27,50 @@
 class TodoyuProjectTaskFilterDataSource {
 
 	/**
+	 * Get autocomplete values for task
+	 *
+	 * @param	String		$input
+	 * @param	Array		$formData
+	 * @param	String		$name
+	 * @return	Array
+	 */
+	public static function autocompleteTasks($input, array $formData = array(), $name = '') {
+		$filters	= array(
+			array(
+				'filter'=> 'tasknumberortitle',
+				'value'	=> $input
+			)
+		);
+
+		return TodoyuProjectTaskFilterDataSource::getTaskAutocompleteListByFilter($filters);
+	}
+
+
+
+	/**
+	 * Gets the label for the current autocompletion value.
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
+	public function getLabel(array $definitions) {
+		$idTask	= intval($definitions['value']);
+
+
+		if( $idTask !== 0 ) {
+			$task	= TodoyuProjectTaskManager::getTask($idTask);
+
+			$definitions['value_label'] = $task->getTitleWithTaskNumber();
+		} else {
+			$definitions['value_label'] = '';
+		}
+
+		return $definitions;
+	}
+
+
+	
+	/**
 	 * AutoCompleter function to search for tasks
 	 *
 	 * @param	String	$search
@@ -242,7 +286,6 @@ class TodoyuProjectTaskFilterDataSource {
 
 			case 'dayaftertomorrow':
 				$date += TodoyuTime::SECONDS_DAY * 2;
-
 				break;
 
 			case 'yesterday':

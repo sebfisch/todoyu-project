@@ -178,7 +178,7 @@ class TodoyuProjectTaskViewHelper {
 	 * @param	String	$name
 	 * @return	Array
 	 */
-	public static function getProjecttaskAutocomplete($input, array $formData, $name = '') {
+	public static function autocompleteProjectTasks($input, array $formData, $name = '') {
 		$idProject	= intval($formData['id_project']);
 		$idTask		= intval($formData['id']);
 
