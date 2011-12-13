@@ -766,17 +766,17 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array					Query parts
 	 */
 	public function Filter_parentTask($value, $negate = false) {
-//		if( empty($value) ) {
-//			return array();
-//		}
+		$queryParts	= false;
 
-		$idTask	= intval($value);
+		if( is_numeric($value) ) {
+			$idTask	= intval($value);
 
-		$where	= 'ext_project_task.id_parenttask ' . ( $negate ? '!=' : '=' ) . ' ' . $idTask;
+			$where	= 'ext_project_task.id_parenttask ' . ( $negate ? '!=' : '=' ) . ' ' . $idTask;
 
-		$queryParts	= array(
-			'where'		=> $where
-		);
+			$queryParts	= array(
+				'where'		=> $where
+			);
+		}
 
 		return $queryParts;
 	}
