@@ -190,7 +190,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			)
 		),
 		'activity' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_activity',
 			'label'		=> 'project.filter.task.activity',
 			'optgroup'	=> 'project.task.search.label',
 			'widget'	=> 'select',
@@ -222,7 +221,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 		 * OptGroup project
 		 */
 		'project' => array(
-//			'funcRef'	=> 'TodoyuProjectTaskFilter::Filter_project',
 			'label'		=> 'project.filter.project',
 			'optgroup'	=> 'project.ext.search.label',
 			'widget'	=> 'text',
@@ -418,12 +416,12 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 		'personAssigned' => array(
 			'label'				=> 'project.task.person_assigned',
 			'optgroup'			=> 'project.task.task',
-			'right'				=> 'contact:person.seeAllPersons'
+			'right'				=> 'contact.person:seeAllPersons'
 		),
 		'personOwner' => array(
 			'label'				=> 'project.task.person_owner',
 			'optgroup'			=> 'project.task.task',
-			'right'				=> 'contact:person.seeAllPersons'
+			'right'				=> 'contact.person:seeAllPersons'
 		),
 		'taskNumber' => array(
 			'label'				=> 'project.task.taskno',
