@@ -416,12 +416,12 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 		'personAssigned' => array(
 			'label'				=> 'project.task.person_assigned',
 			'optgroup'			=> 'project.task.task',
-			'right'				=> 'contact.person:seeAllPersons'
+			'require'			=> 'contact.person:seeAllPersons'
 		),
 		'personOwner' => array(
 			'label'				=> 'project.task.person_owner',
 			'optgroup'			=> 'project.task.task',
-			'right'				=> 'contact.person:seeAllPersons'
+			'require'			=> 'contact.person:seeAllPersons'
 		),
 		'taskNumber' => array(
 			'label'				=> 'project.task.taskno',
