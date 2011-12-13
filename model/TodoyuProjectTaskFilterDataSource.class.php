@@ -42,7 +42,7 @@ class TodoyuProjectTaskFilterDataSource {
 			)
 		);
 
-		return TodoyuProjectTaskFilterDataSource::getTaskAutocompleteListByFilter($filters);
+		return TodoyuProjectTaskFilterDataSource::getTaskAutocompleteListByFilter($filters, 30);
 	}
 
 
@@ -97,12 +97,15 @@ class TodoyuProjectTaskFilterDataSource {
 	 * Get autoComplete suggestions list by task filters
 	 *
 	 * @param	Array		$filters
+	 * @param	Integer		$limit
 	 * @return	Array
 	 */
-	public static function getTaskAutocompleteListByFilter(array $filters = array()) {
-		// Search tasks by filter
+	public static function getTaskAutocompleteListByFilter(array $filters = array(), $limit = 50) {
+		$limit	= intval($limit);
+
+			// Search tasks by filter
 		$taskFilter	= new TodoyuProjectTaskFilter($filters);
-		$taskIDs	= $taskFilter->getTaskIDs();
+		$taskIDs	= $taskFilter->getTaskIDs('', $limit);
 
 		if( sizeof($taskIDs) > 0 ) {
 				// Get task details
