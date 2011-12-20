@@ -1,5 +1,9 @@
 todoyu project extension changelog
 
+project 1.3.0 - not released yet
+	* Added: Getter for all fields (description, owner)
+	* Changed: Require core 2.2 (new html2text)
+
 project 1.2.0 - 2011-12-13
 	* Feature: Drag'n'Drop tasks in project
 	* Feature: Complete refactoring of task presets. All task fields are available now. Better integration of other extensions

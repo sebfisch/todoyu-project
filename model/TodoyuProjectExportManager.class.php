@@ -77,17 +77,17 @@ class TodoyuProjectExportManager {
 	 */
 	protected static function parseDataForExport(TodoyuProjectProject $project) {
 		$exportData = array(
-			Todoyu::Label('project.ext.attr.id')					=> $project->id,
-			Todoyu::Label('project.task.attr.date_create')		=> TodoyuTime::format($project->date_create, 'date'),
-			Todoyu::Label('core.global.date_update')				=> TodoyuTime::format($project->date_update, 'date'),
-			Todoyu::Label('core.global.id_person_create')			=> TodoyuContactPersonManager::getPerson($project->id_person_create)->getFullName(),
-			Todoyu::Label('project.ext.attr.date_start')			=> TodoyuTime::format($project->date_start),
-			Todoyu::Label('project.ext.attr.date_end')			=> TodoyuTime::format($project->date_end),
-			Todoyu::Label('project.ext.attr.date_deadline')		=> TodoyuTime::format($project->date_deadline),
-			Todoyu::Label('project.ext.attr.title')				=> $project->title,
-			Todoyu::Label('core.global.description')				=> TodoyuString::strictHtml2text($project->description),
-			Todoyu::Label('project.ext.attr.status')				=> $project->getStatusLabel(),
-			Todoyu::Label('project.ext.attr.company')			=> $project->getCompany()->getLabel(),
+			Todoyu::Label('project.ext.attr.id')			=> $project->getID(),
+			Todoyu::Label('project.task.attr.date_create')	=> TodoyuTime::format($project->getDateCreate(), 'date'),
+			Todoyu::Label('core.global.date_update')		=> TodoyuTime::format($project->getDateUpdate(), 'date'),
+			Todoyu::Label('core.global.id_person_create')	=> $project->getCreatePerson()->getFullName(),
+			Todoyu::Label('project.ext.attr.date_start')	=> TodoyuTime::format($project->getStartDate()),
+			Todoyu::Label('project.ext.attr.date_end')		=> TodoyuTime::format($project->getEndDate()),
+			Todoyu::Label('project.ext.attr.date_deadline')	=> TodoyuTime::format($project->getDeadlineDate()),
+			Todoyu::Label('project.ext.attr.title')			=> $project->getTitle(),
+			Todoyu::Label('core.global.description')		=> TodoyuString::html2text($project->getDescription(), true),
+			Todoyu::Label('project.ext.attr.status')		=> $project->getStatusLabel(),
+			Todoyu::Label('project.ext.attr.company')		=> $project->getCompany()->getLabel(),
 		);
 
 		foreach($project['persons'] as $index => $personData) {

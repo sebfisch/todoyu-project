@@ -43,7 +43,18 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getTitle() {
-		return $this->data['title'];
+		return $this->get('title');
+	}
+
+
+
+	/**
+	 * Get description
+	 *
+	 * @return	String
+	 */
+	public function getDescription() {
+		return $this->get('description');
 	}
 
 
@@ -414,12 +425,34 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 
 
 	/**
+	 * Get owner person
+	 *
+	 * @return	TodoyuContactPerson
+	 */
+	public function getOwnerPerson() {
+		return TodoyuContactPersonManager::getPerson($this->getOwnerPersonID());
+	}
+
+
+
+	/**
 	 * Get assigned person ID
 	 *
 	 * @return	Integer
 	 */
 	public function getAssignedPersonID() {
 		return intval($this->get('id_person_assigned'));
+	}
+
+
+
+	/**
+	 * Get owner person ID
+	 *
+	 * @return	Integer
+	 */
+	public function getOwnerPersonID() {
+		return intval($this->get('id_person_owner'));
 	}
 
 
