@@ -117,8 +117,8 @@ class TodoyuProjectQuickTaskManager {
 		);
 		$idTask		= TodoyuProjectTaskManager::addTask($firstData);
 
+		$formData['id']			= $idTask;
 		$formData['date_start']	= NOW;
-		$formData['id_activity']= self::getFirstAvailableActivityID();
 
 			// If task already done: set also date_end
 		if( intval($formData['task_done']) === 1 ) {
@@ -127,8 +127,6 @@ class TodoyuProjectQuickTaskManager {
 		}
 		unset($formData['task_done']);
 
-
-		$defaultData	= TodoyuProjectTaskManager::getTaskDefaultData(0, $idProject, TASK_TYPE_TASK, true);
 		$durationInDays	= Todoyu::$CONFIG['EXT']['project']['quicktask']['durationDays'];
 
 			// Try to get data from task preset
@@ -147,12 +145,8 @@ class TodoyuProjectQuickTaskManager {
 		$formData['date_end']		= $dateEnd;
 		$formData['date_deadline']	= $dateEnd;
 
-
-		$xmlPath	= 'ext/project/config/form/quicktask.xml';
-			// Merge with default data
-
-		$formData	= array_merge($defaultData, $formData);
 			// Call form hooks to save external data
+		$xmlPath	= 'ext/project/config/form/quicktask.xml';
 		$formData	= TodoyuFormHook::callSaveData($xmlPath, $formData, $idTask);
 
 			// Save task to DB

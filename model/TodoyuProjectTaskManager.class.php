@@ -1429,7 +1429,6 @@ class TodoyuProjectTaskManager {
 		$data	= array(
 			'id'				=> 0,
 			'id_project'		=> $idProject,
-			'tasknumber'		=> 0,
 			'id_person_assigned'=> 0,
 			'id_person_owner'	=> Todoyu::personid(),
 			'id_parenttask'		=> $idParentTask,
