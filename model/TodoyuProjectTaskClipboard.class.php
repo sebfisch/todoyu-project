@@ -262,7 +262,7 @@ class TodoyuProjectTaskClipboard {
 		if( self::getClipboardTask()->isContainer() ) {
 			$ownItems['paste']['label'] .= '.container';
 		}
-		TodoyuDebug::printInFirebug($ownItems, 'oi');
+
 		return $ownItems;
 	}
 
