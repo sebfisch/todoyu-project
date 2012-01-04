@@ -155,7 +155,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 			);
 			$where	= Todoyu::db()->buildLikeQuery($searchWords, $searchInFields);
 			$join	= array(
-				self::TABLE .  '.id_company	= ext_contact_company.id'
+				self::TABLE . '.id_company	= ext_contact_company.id'
 			);
 
 			$queryParts = array(

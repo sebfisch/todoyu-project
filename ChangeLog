@@ -5,6 +5,7 @@ project 1.3.0 - not released yet
 	* Changed: Require core 2.2 (new html2text)
 
 project 1.2.1 - not released yet
+	* Bugfix: Task/Container drag&drop did not work on pasted/duplicated task
 	* Bugfix: Created second empty task when saving quicktask. Data was mixed up with default data
 
 project 1.2.0 - 2011-12-13

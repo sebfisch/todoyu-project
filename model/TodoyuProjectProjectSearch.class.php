@@ -47,7 +47,7 @@ class TodoyuProjectProjectSearch implements TodoyuSearchEngineIf {
 	public static function searchProjects(array $find, array $ignore = array(), $limit = 200) {
 		$limit	= intval($limit);
 
-		$fields	= array(self::TABLE . '.id',self::TABLE . '.description', self::TABLE . '.title', 'ext_contact_company.shortname', 'ext_contact_company.title');
+		$fields	= array(self::TABLE . '.id', self::TABLE . '.description', self::TABLE . '.title', 'ext_contact_company.shortname', 'ext_contact_company.title');
 
 		$where	= Todoyu::db()->buildLikeQuery($find, $fields);
 		$where	.= ' AND ' . self::TABLE . '.deleted = 0 AND ext_contact_company.deleted = 0';

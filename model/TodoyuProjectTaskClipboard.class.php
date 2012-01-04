@@ -26,24 +26,38 @@
  */
 class TodoyuProjectTaskClipboard {
 
+	/**
+	 * @var	String	Paste failure identifier - wrong area
+	 */
 	const TASK_CONTEXTMENU_PASTE_ERROR_PROJECTAREA	= 'projectarea';
+	/**
+	 * @var	String	Paste failure identifier - task is locked
+	 */
 	const TASK_CONTEXTMENU_PASTE_ERROR_LOCKED		= 'locked';
+	/**
+	 * @var	String	Paste failure identifier - paste not allowed
+	 */
 	const TASK_CONTEXTMENU_PASTE_ERROR_NOTALLOWED	= 'notallowed';
+	/**
+	 * @var	String	Paste failure identifier - task cannot be pasted into itself
+	 */
 	const TASK_CONTEXTMENU_PASTE_ERROR_SELF			= 'self';
+
+
 
 	/**
 	 * Add a task to clipboard
 	 *
 	 * @param	Integer		$idTask				Task to hold on clipboard
 	 * @param	String		$mode				Clipboard mode
-	 * @param	Boolean		$withSubtasks		Copy sub tasks
+	 * @param	Boolean		$withSubTasks		Copy sub tasks
 	 */
-	public static function addTask($idTask, $mode = 'copy', $withSubtasks = true) {
+	public static function addTask($idTask, $mode = 'copy', $withSubTasks = true) {
 		$idTask	= intval($idTask);
 		$data	= array(
 			'mode'		=> $mode,
 			'task'		=> $idTask,
-			'subtasks'	=> $withSubtasks
+			'subtasks'	=> $withSubTasks
 		);
 
 		TodoyuClipboard::set('task', $data);
@@ -179,11 +193,7 @@ class TodoyuProjectTaskClipboard {
 		$dataClipboard	= self::getData();
 
 			// In: Working task is parent, After/Before: Working tasks parent is the parent
-		if( $insertMode === 'in' ) {
-			$idParentTask = $idWorkingTask;
-		} else {
-			$idParentTask = $workingTask['id_parenttask'];
-		}
+		$idParentTask = $insertMode === 'in' ? $idWorkingTask : $workingTask['id_parenttask'];
 
 			// Copy or move the task
 		if( $dataClipboard['mode'] === 'copy' ) {
@@ -219,6 +229,7 @@ class TodoyuProjectTaskClipboard {
 		$dataClipboard	= self::getData();
 
 			// Copy or move the task
+		$idNewTask	= null;
 		if( $dataClipboard['mode'] === 'copy' ) {
 			$idNewTask = TodoyuProjectTaskManager::copyTask($dataClipboard['task'], 0, $dataClipboard['subtasks'], $idProject);
 		} elseif( $dataClipboard['mode'] === 'cut' ) {
@@ -237,6 +248,27 @@ class TodoyuProjectTaskClipboard {
 
 
 	/**
+	 * Get "own" (implemented by project extension) task / project contextmenu items
+	 *
+	 * @param	String	$contextMenu	Identifier
+	 * @return	Array
+	 */
+	public static function getContextMenuOwnItems($contextMenu = 'TaskClipboard') {
+		$ownItems	= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['ContextMenu'][$contextMenu]);
+
+			// Change labels for paste-mode and item type and
+		$ownItems['paste']['label'] .= self::isInCutMode() ? '.cut' : '.copy';
+
+		if( self::getClipboardTask()->isContainer() ) {
+			$ownItems['paste']['label'] .= '.container';
+		}
+		TodoyuDebug::printInFirebug($ownItems, 'oi');
+		return $ownItems;
+	}
+
+
+
+	/**
 	 * Add context menu to paste tasks
 	 *
 	 * @param	Integer		$idTaskContextmenu
@@ -247,31 +279,21 @@ class TodoyuProjectTaskClipboard {
 			// Only show context menu in project area and if something is on the clipboard
 		if( self::hasTask() ) {
 			$data			= self::getData();
-			$ownItems		= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboard']);
+
 			$clipboardTask	= self::getClipboardTask();
-			$contextTask	= TodoyuProjectTaskManager::getTask($idTaskContextmenu);
 			$isLocked		= $clipboardTask->isLocked(true);
+			$contextTask	= TodoyuProjectTaskManager::getTask($idTaskContextmenu);
 			$isSameProject	= $clipboardTask->getProjectID() === $contextTask->getProjectID();
 			$isAddAllowed	= TodoyuProjectTaskRights::isAddAllowed($idTaskContextmenu);
 			$isProjectArea	= AREA === EXTID_PROJECT;
 			$isCopyMode		= self::isInCopyMode();
 			$mergeItems		= array();
 
-			if( self::isInCutMode() ) {
-				$ownItems['paste']['label'] .= '.cut';
-			} else {
-				$ownItems['paste']['label'] .= '.copy';
-			}
-
-				// Change labels for containers
-			if( $clipboardTask->isContainer() ) {
-				$ownItems['paste']['label'] .= '.container';
-			}
+			$ownItems	= self::getContextMenuOwnItems('TaskClipboard');
 
 				// Paste is only available in project view
-			if( $isProjectArea && $isAddAllowed && ($isCopyMode || !$isLocked || $isSameProject) ) {
+			if( $isProjectArea && $isAddAllowed && ($isCopyMode || ! $isLocked || $isSameProject) ) {
 				$mergeItems	= $ownItems;
-
 				$isSubTask	= TodoyuProjectTaskManager::isSubTaskOf($idTaskContextmenu, $data['task'], true);
 
 					// Don't allow paste on itself or sub tasks when: cut mode or with sub tasks
@@ -282,6 +304,7 @@ class TodoyuProjectTaskClipboard {
 					}
 				}
 			} else {
+					// Paste not available
 				$errorCode = self::getPasteErrorCode($isProjectArea, $isLocked);
 			}
 
@@ -309,33 +332,19 @@ class TodoyuProjectTaskClipboard {
 
 			// Only show context menu in project area and if something is on the clipboard
 		if( self::hasTask() ) {
-			$ownItems		= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['ContextMenu']['TaskClipboardProject']);
 			$clipboardTask	= self::getClipboardTask();
-
-			if( self::isInCutMode() ) {
-				$ownItems['paste']['label'] .= '.cut';
-			} else {
-				$ownItems['paste']['label'] .= '.copy';
-			}
-
-				// Change labels for containers
-			if( $clipboardTask->isContainer() ) {
-				$ownItems['paste']['label'] .= '.container';
-			}
-
 			$isLocked		= $clipboardTask->isLocked(true);
 			$isSameProject	= $clipboardTask->getProjectID() === $idProjectContextmenu;
 			$isAddAllowed	= TodoyuProjectTaskRights::isAddInProjectAllowed($idProjectContextmenu, $clipboardTask->isContainer());
 			$isProjectArea	= AREA === EXTID_PROJECT;
 			$isCopyMode		= self::isInCopyMode();
-			$mergeItems		= array();
 
-				// Paste is only available in project view
-			if( $isProjectArea && $isAddAllowed && ($isCopyMode || !$isLocked || $isSameProject) ) {
+			$ownItems	= self::getContextMenuOwnItems('TaskClipboardProject');
+
+				// Paste only when allowed & in project view & when tasks are not looked & when cut-pasting in same project
+			if( $isProjectArea && $isAddAllowed && ($isCopyMode || ! $isLocked || $isSameProject) ) {
 				$mergeItems	= $ownItems;
-			}
-
-			if( sizeof($mergeItems) === 0 ) {
+			} else {
 				$errorCode = self::getPasteErrorCode($isProjectArea, $isAddAllowed, $isLocked);
 				$mergeItems = self::mergeItemsPasteNotAllowed($ownItems, $errorCode);
 			}
@@ -355,7 +364,7 @@ class TodoyuProjectTaskClipboard {
 	 * @return	String
 	 */
 	protected static function getPasteErrorCode($isProjectArea, $isLocked) {
-		if ( !$isProjectArea ) {
+		if ( ! $isProjectArea ) {
 			return self::TASK_CONTEXTMENU_PASTE_ERROR_PROJECTAREA;
 		} else if ( $isLocked ) {
 			return self::TASK_CONTEXTMENU_PASTE_ERROR_LOCKED;
@@ -378,7 +387,7 @@ class TodoyuProjectTaskClipboard {
 		$mergeItems['paste']['submenu']['message'] = array(
 			'key'		=> 'pastewarning',
 			'class'		=> 'taskContextMenu pasteWarning',
-			'label'		=> 'project.task.contextmenu.paste.error.'.$errorCode,
+			'label'		=> 'project.task.contextmenu.paste.error.' . $errorCode,
 			'jsAction'	=> 'void(0)',
 		);
 

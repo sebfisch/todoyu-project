@@ -140,7 +140,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 		TodoyuProjectProjectRights::restrictEdit($idProject);
 
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.edit('.$idProject.')', 101);
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.edit(' . $idProject . ')', 101);
 
 		return $this->defaultAction($params);
 	}
@@ -159,7 +159,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 		TodoyuProjectTaskRights::restrictAddToProject($idProject);
 
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addTask('.$idProject.')', 101);
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addTask(' . $idProject . ')', 101);
 
 		return $this->defaultAction($params);
 	}
@@ -178,7 +178,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 		TodoyuProjectTaskRights::restrictAddToProject($idProject);
 
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addContainer('.$idProject.')', 101);
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addContainer(' . $idProject . ')', 101);
 
 		return $this->defaultAction($params);
 	}

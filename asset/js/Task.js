@@ -182,43 +182,47 @@ Todoyu.Ext.project.Task = {
 	 */
 	onPasted: function(idTask, insertMode, response) {
 		var idTaskNew		= response.getTodoyuHeader('idTask');
-		var clipboardMode	= response.getTodoyuHeader('clipboardMode');
 
 			// If task was cut, remove old element
-		if( clipboardMode === 'cut' ) {
+		if( response.getTodoyuHeader('clipboardMode') === 'cut' ) {
 			this.removeTaskElement(idTaskNew);
 		}
 
-			// Insert as sub task of the current task
-		if( insertMode === 'in' ) {
-				// If sub task container already exists, add it
-			if( this.hasSubTasksContainer(idTask) ) {
-				this.getSubTasksContainer(idTask).insert({
-					bottom: response.responseText
-				});
-				this.ext.TaskTree.expandSubTasks(idTask);
-				this.updateSubTasksExpandTrigger(idTask);
-			} else {
-					// If no sub task container available, refresh task and load its sub task
-				this.refresh(idTask);
-					// Append sub tasks
-				this.ext.TaskTree.loadSubTasks(idTask, this.ext.TaskTree.toggleSubTasksTriggerIcon.bind(this, idTask));
-			}
-		} else if( insertMode === 'before' ) {
+		switch( insertMode ) {
+				// Insert as sub task of the current task
+			case 'in':
+					// If sub task container already exists, add it
+				if( this.hasSubTasksContainer(idTask) ) {
+					this.getSubTasksContainer(idTask).insert({bottom: response.responseText});
+					this.ext.TaskTree.expandSubTasks(idTask);
+					this.updateSubTasksExpandTrigger(idTask);
+				} else {
+						// If no sub task container available, refresh task and load its sub task
+					this.refresh(idTask);
+						// Append sub tasks
+					this.ext.TaskTree.loadSubTasks(idTask, this.ext.TaskTree.toggleSubTasksTriggerIcon.bind(this, idTask));
+				}
+				break;
+
 				// Insert task before current
-			$('task-' + idTask).insert({
-				before: response.responseText
-			});
-		} else if( insertMode === 'after' ) {
+			case 'before':
+				$('task-' + idTask).insert({before: response.responseText});
+				break;
+
 				// Insert task after current
-			var target = this.hasSubTasksContainer(idTask) ? this.getSubTasksContainerID(idTask) : 'task-' + idTask;
-			$(target).insert({
-				after: response.responseText
-			});
+			case 'after':
+				var target = this.hasSubTasksContainer(idTask) ? this.getSubTasksContainerID(idTask) : 'task-' + idTask;
+				$(target).insert({after: response.responseText});
+				break;
 		}
 
-			// Attach context menu to all tasks (so the pasted ones get one too)
+			// Attach context menu to all tasks (so the pasted ones get one too), re-init drag&drop
 		this.ext.ContextMenuTask.attach();
+
+		if( Todoyu.getArea() === 'project' ) {
+			this.ext.TaskTree.reloadSortable();
+		}
+
 			// Highlight the new pasted task
 		this.highlight(idTaskNew);
 		this.highlightSubTasks(idTaskNew);
@@ -278,8 +282,13 @@ Todoyu.Ext.project.Task = {
 	onCloned: function(idSourceTask, response) {
 			// Get task ID from header
 		var idTask = response.getTodoyuHeader('idTask');
-			// Attach context menu
+			// Attach context menu, re-init drag&drop
 		this.addContextMenu(idTask);
+
+		if( Todoyu.getArea() === 'project' ) {
+			this.ext.TaskTree.reloadSortable();
+		}
+
 			// Highlight cloned element
 		this.highlight(idTask);
 		this.highlightSubTasks(idTask);
@@ -593,7 +602,7 @@ Todoyu.Ext.project.Task = {
 			if( ! visibleOnly ) {
 					// Get all sub tasks
 				subTasks	= this.getSubTasksContainer(idTask).select('div.task');
-			 } else {
+			} else {
 					// Get only visible sub tasks
 				this.getSubTasks(idTask, false).each(
 					function(subTask) {
@@ -768,7 +777,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Set status of given task
+	 * Set given task status styles
 	 *
 	 * @method	setStatus
 	 * @param	{Number}		idTask

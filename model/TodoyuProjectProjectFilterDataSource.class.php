@@ -45,7 +45,7 @@ class TodoyuProjectProjectFilterDataSource {
 			foreach($projects as $project) {
 				if( TodoyuProjectProjectRights::isSeeAllowed($project['id']) ) {
 					$companyShort	= (! empty($project['company']) ) ? $project['company'] : TodoyuString::crop($project['companyfulltitle'], 16, '..', false);
-					$data[$project['id']] = $companyShort .' - ' . $project['title'];
+					$data[$project['id']] = $companyShort . ' - ' . $project['title'];
 				}
 			}
 		}
@@ -74,7 +74,7 @@ class TodoyuProjectProjectFilterDataSource {
 			foreach($projects as $project) {
 				if( TodoyuProjectTaskRights::isAddInProjectAllowed($project['id']) ) {
 					$companyShort	= (! empty($project['company']) ) ? $project['company'] : TodoyuString::crop($project['companyfulltitle'], 16, '..', false);
-					$data[$project['id']] = $companyShort .' - ' . $project['title'];
+					$data[$project['id']] = $companyShort . ' - ' . $project['title'];
 				}
 			}
 		}

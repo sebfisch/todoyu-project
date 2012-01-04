@@ -137,7 +137,7 @@ class TodoyuProjectTaskSearch implements TodoyuSearchEngineIf {
 
 		if( strstr($sword, '.') ) {
 			list($project, $taskNumber) = explode('.', $sword);
-			$where = 'id_project = '.intval($project).' AND tasknumber = '.intval($taskNumber);
+			$where = 'id_project = '.intval($project) . ' AND tasknumber = ' . intval($taskNumber);
 		} else {
 			$searchWords = TodoyuArray::trimExplode(' ', $sword, true);
 
