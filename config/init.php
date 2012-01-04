@@ -74,6 +74,17 @@ Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing'] = arra
 
 
 
+	// In which task status is time exceeding relevant?
+Todoyu::$CONFIG['EXT']['project']['taskStatusTimeExceedingRelevant'] = array(
+	STATUS_PLANNING,
+	STATUS_OPEN,
+	STATUS_PROGRESS,
+	STATUS_CONFIRM,
+	STATUS_REJECTED
+);
+
+
+
 /* --------------------------------------
 	Temporary tab force for all tasks
  	Don't set it here!

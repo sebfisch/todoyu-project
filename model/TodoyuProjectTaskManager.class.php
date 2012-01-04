@@ -992,7 +992,7 @@ class TodoyuProjectTaskManager {
 					'label'		=> 'project.task.attr.date_end',
 					'value'		=> TodoyuTime::format($task->getEndDate(), $formatEnd),
 					'position'	=> 20,
-					'className'	=> $task->isEndDateExceeded() ? 'red' : ''
+					'className'	=> $task->isStatusTimeExceedingRelevant() && $task->isEndDateExceeded() ? 'red' : ''
 				);
 			}
 
@@ -1057,7 +1057,7 @@ class TodoyuProjectTaskManager {
 				'label'		=> 'project.task.attr.date_deadline',
 				'value'		=> TodoyuTime::format($task->getDeadlineDate(), $formatDeadline),
 				'position'	=> 30,
-				'className'	=> $task->isDeadlineExceeded() ? 'red' : ''
+				'className'	=> $task->isStatusTimeExceedingRelevant() && $task->isDeadlineExceeded() ? 'red' : ''
 			);
 		}
 
@@ -1180,8 +1180,7 @@ class TodoyuProjectTaskManager {
 			// Task-only information (not relevant for containers)
 		if( $task->isTask() ) {
 				// 'dateover': end date or deadline passed
-			if( $task->getStatus() != STATUS_CLEARED &&
-					// @todo	Refaktor: Extract condition into task method 'isInThePast()'
+			if( $task->isStatusTimeExceedingRelevant() &&
 				(($task->getEndDate() > 0 && $task->isEndDateExceeded()) || $task->isDeadlineExceeded())
 			) {
 				$icons['dateover']= array(
@@ -1192,16 +1191,6 @@ class TodoyuProjectTaskManager {
 				);
 			}
 		}
-
-			// Add container icon
-//		if( $task->isContainer() ) {
-//			$icons['container'] = array(
-//				'id'		=> 'task-' . $idTask . '-container',
-//				'class'		=> 'taskcontainer',
-//				'label'		=> 'project.task.type.container',
-//				'position'	=> 10
-//			);
-//		}
 
 			// Add public icon for internals
 		if( $task->isPublic() && (Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) ) {

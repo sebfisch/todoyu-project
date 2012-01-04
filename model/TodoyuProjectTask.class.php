@@ -144,6 +144,19 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 
 
 	/**
+	 * Check whether task status is relevant to time exceeding
+	 *
+	 * @return	Boolean
+	 */
+	public function isStatusTimeExceedingRelevant() {
+		$relevantStatus	= Todoyu::$CONFIG['EXT']['project']['taskStatusTimeExceedingRelevant'];
+
+		return in_array($this->getStatus(), $relevantStatus);
+	}
+
+
+
+	/**
 	 * Check whether task has a parent task (or is in project root)
 	 *
 	 * @return	Boolean
@@ -315,7 +328,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Check whether the end date is exceeded
+	 * Check tasks in date-relevant status for end date being exceeded
 	 *
 	 * @return	Boolean
 	 */
