@@ -43,5 +43,4 @@ define('TASK_TYPE_CONTAINER',	2);
 	// Task number format
 define('TASKNUMBER_FORMAT', '/(\d)+\.(\d)+/')
 
-
 ?>

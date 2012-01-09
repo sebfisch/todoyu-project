@@ -51,11 +51,11 @@ div.task .subtasks .task:last-child {
 	left:-4px;
 	top:0;
 	background-color:#FFF; /* IE fix */
-	opacity: 0.001; /* IE fix */
+	opacity:0.001; /* IE fix */
 }
 
 .task .dndHandle:hover {
-	background-color: purple;
+	background-color:purple;
 }
 
 
@@ -106,7 +106,7 @@ div.task .subtasks .task:last-child {
    ------------------------------------- */
 #dragDropMarker {
 	height:0;
-	overflow: visible;
+	overflow:visible;
 	position:absolute;
 	z-index:100000;
 }
@@ -116,7 +116,7 @@ div.task .subtasks .task:last-child {
 		top:-12px;
 		height:25px;
 		width:30px;
-		background: url(../img/icons.png) no-repeat;
+		background:url(../img/icons.png) no-repeat;
 	}
 		#dragDropMarker.in div {
 			top:1px;
@@ -131,10 +131,10 @@ div.task .subtasks .task:last-child {
 		}
 
 div.task.dragDropTarget > h3 {
-	background-color: #E3EACE;
+	background-color:#E3EACE;
 }
 .task .dndHandle.draggable {
-	cursor: move;
+	cursor:move;
 }
 
 
@@ -298,7 +298,7 @@ div.task.dragDropTarget > h3 {
 	.tasks .task .details .description * {
 		line-height:15px;
 		white-space:normal;
-		word-wrap: break-word;
+		word-wrap:break-word;
 	}
 
 		/* properties */

@@ -44,6 +44,24 @@ TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectTaskClipboard::ge
 
 
 
+/* -----------------------------------------------------------------
+	Setup content tabs of different task types
+	(Use TodoyuProjectTaskManager::addTaskTab() to register tabs)
+   ----------------------------------------------------------------- */
+Todoyu::$CONFIG['EXT']['project']['task']['type'][TASK_TYPE_TASK]['tabs'] = array();
+Todoyu::$CONFIG['EXT']['project']['task']['type'][TASK_TYPE_CONTAINER]['tabs'] = array();
+
+
+
+/* --------------------------------------
+	Temporary tab force for all tasks
+ 	Don't set it here!
+   -------------------------------------- */
+// @todo	implement sustainable solution
+Todoyu::$CONFIG['EXT']['project']['Task']['forceTab'] = false;
+
+
+
 /* --------------------------------------
 	Declare project sub type statuses
    -------------------------------------- */
@@ -85,17 +103,6 @@ Todoyu::$CONFIG['EXT']['project']['taskStatusTimeExceedingRelevant'] = array(
 
 
 
-/* --------------------------------------
-	Temporary tab force for all tasks
- 	Don't set it here!
-   -------------------------------------- */
-/**
- * @todo	implement sustainable solution
- */
-Todoyu::$CONFIG['EXT']['project']['Task']['forceTab'] = false;
-
-
-
 /* ----------------------------
 	Add search filter widgets
    ---------------------------- */
@@ -109,6 +116,7 @@ Todoyu::$CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
 /* ------------------------------
 	Filters used in "todo" tab
    ------------------------------ */
+	// @todo	move to portal extension
 	// Assigned tasks to be worked on
 Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters']['assigned'] = array(
 	array(

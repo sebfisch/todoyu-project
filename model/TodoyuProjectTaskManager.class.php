@@ -783,7 +783,8 @@ class TodoyuProjectTaskManager {
 	 */
 	public static function getTabs($idTask, $evalLabel = true) {
 		if( is_null(self::$tabs) ) {
-			$tabs = TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['task']['tabs']);
+			$type	= self::getTask($idTask)->getType();
+			$tabs	= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['task']['type'][$type]['tabs']);
 			self::$tabs = TodoyuArray::sortByLabel($tabs);
 		}
 
@@ -805,10 +806,13 @@ class TodoyuProjectTaskManager {
 	 * Get a tab configuration
 	 *
 	 * @param	String		$tabKey
+	 * @param	Integer		$taskType
 	 * @return	Array
 	 */
-	public static function getTabConfig($tabKey) {
-		return Todoyu::$CONFIG['EXT']['project']['task']['tabs'][$tabKey];
+	public static function getTabConfig($tabKey, $taskType = TASK_TYPE_TASK) {
+		$taskType	= (int) $taskType;
+
+		return Todoyu::$CONFIG['EXT']['project']['task']['type'][$taskType]['tabs'][$tabKey];
 	}
 
 
@@ -831,13 +835,16 @@ class TodoyuProjectTaskManager {
 	/**
 	 * Register a task tab
 	 *
+	 * @param	Integer		$taskType				TASK_TYPE_TASK / TASK_TYPE_CONTAINER
 	 * @param	String		$idTab					Tab identifier
 	 * @param	String		$labelFunction			Function which renders the label or just a label string
 	 * @param	String		$contentFunction		Function which renders the content
 	 * @param	Integer		$position
 	 */
-	public static function addTaskTab($idTab, $labelFunction, $contentFunction, $position = 100) {
-		Todoyu::$CONFIG['EXT']['project']['task']['tabs'][$idTab] = array(
+	public static function addTaskTab($taskType, $idTab, $labelFunction, $contentFunction, $position = 100) {
+		$type	= (int) $taskType;
+
+		Todoyu::$CONFIG['EXT']['project']['task']['type'][$type]['tabs'][$idTab] = array(
 			'id'		=> $idTab,
 			'label'		=> $labelFunction,
 			'position'	=> intval($position),

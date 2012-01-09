@@ -48,7 +48,7 @@ class TodoyuProjectTaskTest extends PHPUnit_Framework_TestCase
 	 */
 	protected function setUp() {
 			// Get ID of some task
-		$where		= 'deleted = 0 AND type = ' . TASK_TYPE_TASK;
+		$where		= 'deleted = 0 AND `type` = ' . TASK_TYPE_TASK;
 		$idTestTask	= Todoyu::db()->getFieldValue('id', 'ext_project_task', $where, '', '', '0,1', 'id');
 
 		$this->array	= array(

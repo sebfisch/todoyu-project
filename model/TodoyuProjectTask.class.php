@@ -537,6 +537,26 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 
 
 	/**
+	 * Check whether there are tabs configured for this type of task
+	 *
+	 * @return	Boolean
+	 */
+	public function hasTabs() {
+		$type		= $this->getType();
+
+			// Check for configured tabs
+		$tabsConfig	= Todoyu::$CONFIG['EXT']['project']['task']['type'][$type]['tabs'];
+		$has		= is_array($tabsConfig) && sizeof($tabsConfig) > 0;
+
+			// Call hooks
+		$has	= TodoyuHookManager::callHookDataModifier('project', 'taskHasTabs', $has, array($this->getID()));
+
+		return $has;
+	}
+
+
+
+	/**
 	 * @todo	See todo in getTemplateData
 	 */
 	protected function loadForeignData() {

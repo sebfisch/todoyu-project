@@ -138,7 +138,7 @@ class TodoyuProjectTaskRenderer {
 		);
 
 			// Only add tabs if its a normal task (not container)
-		if( $task->isTask() ) {
+		if( $task->hasTabs() ) {
 			$data['tabs'] = self::renderTabs($idTask, $activeTab);
 		}
 
