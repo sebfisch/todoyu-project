@@ -36,29 +36,26 @@ TodoyuAutocompleter::addAutocompleter('taskaddableproject', 'TodoyuProjectProjec
 /* ----------------------------
 	Context Menu Callbacks
    ---------------------------- */
+TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectProjectManager::getContextMenuItems', 10);
+TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectTaskClipboard::getProjectContextMenuItems', 100);
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuProjectTaskManager::getContextMenuItems', 10);
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuProjectTaskClipboard::getTaskContextMenuItems', 100);
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuProjectTaskManager::removeEmptyContextMenuParents', 100000);
-TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectProjectManager::getContextMenuItems', 10);
-TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectTaskClipboard::getProjectContextMenuItems', 100);
 
 
 
-/* -----------------------------------------------------------------
-	Setup content tabs of different task types
-	(Use TodoyuProjectTaskManager::addTaskTab() to register tabs)
-   ----------------------------------------------------------------- */
-Todoyu::$CONFIG['EXT']['project']['task']['type'][TASK_TYPE_TASK]['tabs'] = array();
-Todoyu::$CONFIG['EXT']['project']['task']['type'][TASK_TYPE_CONTAINER]['tabs'] = array();
+/* ----------------------------------------------------------------------
+	Setup project content item tabs
+	Use TodoyuContentItemTabManager::registerTab() to add tab configs
+   ---------------------------------------------------------------------- */
+Todoyu::$CONFIG['EXT']['project']['project']['tabs']	= array();
+Todoyu::$CONFIG['EXT']['project']['task']['tabs']		= array();
+Todoyu::$CONFIG['EXT']['project']['container']['tabs']	= array();
 
-
-
-/* --------------------------------------
-	Temporary tab force for all tasks
- 	Don't set it here!
-   -------------------------------------- */
-// @todo	implement sustainable solution
-Todoyu::$CONFIG['EXT']['project']['Task']['forceTab'] = false;
+	// Force pre-selected tabs
+Todoyu::$CONFIG['EXT']['project']['project']['forceTab']	= false;
+Todoyu::$CONFIG['EXT']['project']['task']['forceTab']		= false;
+Todoyu::$CONFIG['EXT']['project']['container']['forceTab']	= false;
 
 
 

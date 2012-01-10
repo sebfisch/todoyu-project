@@ -746,7 +746,7 @@ class TodoyuProjectTaskManager {
 	 * Check whether task has a parent
 	 *
 	 * @param	Integer		$idTask
-	 * @return 	Boolean
+	 * @return	Boolean
 	 */
 	public static function hasParentTask($idTask) {
 		$idTask	= intval($idTask);
@@ -770,86 +770,6 @@ class TodoyuProjectTaskManager {
 	 */
 	public static function isDeleted($idTask) {
 		return self::getTask($idTask)->isDeleted();
-	}
-
-
-
-	/**
-	 * Get task tabs config array (labels parsed)
-	 *
-	 * @param	Integer		$idTask
-	 * @param	Boolean		$evalLabel		If true, all labels with a function reference will be parsed
-	 * @return	Array
-	 */
-	public static function getTabs($idTask, $evalLabel = true) {
-		if( is_null(self::$tabs) ) {
-			$type	= self::getTask($idTask)->getType();
-			$tabs	= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['task']['type'][$type]['tabs']);
-			self::$tabs = TodoyuArray::sortByLabel($tabs);
-		}
-
-		$tabs = self::$tabs;
-
-		if( $evalLabel ) {
-			foreach($tabs as $index => $tab) {
-				$labelFunc	= $tab['label'];
-				$tabs[$index]['label'] = TodoyuFunction::callUserFunction($labelFunc, $idTask);
-			}
-		}
-
-		return $tabs;
-	}
-
-
-
-	/**
-	 * Get a tab configuration
-	 *
-	 * @param	String		$tabKey
-	 * @param	Integer		$taskType
-	 * @return	Array
-	 */
-	public static function getTabConfig($tabKey, $taskType = TASK_TYPE_TASK) {
-		$taskType	= (int) $taskType;
-
-		return Todoyu::$CONFIG['EXT']['project']['task']['type'][$taskType]['tabs'][$tabKey];
-	}
-
-
-
-	/**
-	 * Get the tab which is active by default (if no preference is stored)
-	 *
-	 * @param	Integer		$idTask
-	 * @return	String
-	 */
-	public static function getDefaultTab($idTask) {
-		$tabs	= self::getTabs($idTask, false);
-		$first	= array_shift($tabs);
-
-		return $first['id'];
-	}
-
-
-
-	/**
-	 * Register a task tab
-	 *
-	 * @param	Integer		$taskType				TASK_TYPE_TASK / TASK_TYPE_CONTAINER
-	 * @param	String		$idTab					Tab identifier
-	 * @param	String		$labelFunction			Function which renders the label or just a label string
-	 * @param	String		$contentFunction		Function which renders the content
-	 * @param	Integer		$position
-	 */
-	public static function addTaskTab($taskType, $idTab, $labelFunction, $contentFunction, $position = 100) {
-		$type	= (int) $taskType;
-
-		Todoyu::$CONFIG['EXT']['project']['task']['type'][$type]['tabs'][$idTab] = array(
-			'id'		=> $idTab,
-			'label'		=> $labelFunction,
-			'position'	=> intval($position),
-			'content'	=> $contentFunction
-		);
 	}
 
 
@@ -1375,7 +1295,7 @@ class TodoyuProjectTaskManager {
 
 			// Start and end given: task must intersect with span defined by them
 		if( $dateStart > 0 && $dateEnd > 0 ) {
-			$where	.= ' AND date_start 	<= ' . $dateEnd . '
+			$where	.= ' AND date_start		<= ' . $dateEnd . '
 						 AND date_deadline	>= ' . $dateStart;
 		} else {
 				// Only start or end given. Start and end of task must be (at or) after given starting time
@@ -2211,7 +2131,7 @@ class TodoyuProjectTaskManager {
 		$idPerson	= Todoyu::personid($idPerson);
 
 		$fields	= '	t.id';
-		$table	= 	self::TABLE . ' t,
+		$table	=	self::TABLE . ' t,
 					ext_project_mm_project_person mm';
 		$where	= '		t.id			= ' . $idTask
 				. ' AND	t.id_project	= mm.id_project '
@@ -2451,6 +2371,50 @@ class TodoyuProjectTaskManager {
 	 */
 	protected static function getTaskDetailsDateFormat($date) {
 		return date('Hi', $date) === '0000' ? 'date' : 'datetime';
+	}
+
+
+
+	/**
+	 * Get task tabs config array (labels parsed)
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Boolean		$evalLabel		If true, all labels with a function reference will be parsed
+	 * @return	Array
+	 */
+	public static function getTabs($idTask, $evalLabel = true) {
+		$typeKey	= self::getTask($idTask)->getTypeKey();
+
+		return TodoyuContentItemTabManager::getTabs('project', $typeKey, $idTask, $evalLabel);
+	}
+
+
+
+	/**
+	 * Get a tab configuration
+	 *
+	 * @param	String		$tabKey
+	 * @param	Integer		$typeID
+	 * @return	Array
+	 */
+	public static function getTabConfig($tabKey, $typeID = TASK_TYPE_TASK) {
+		$typeKey	= ((int) $typeID === TASK_TYPE_TASK) ? 'task' : 'container';
+
+		return TodoyuContentItemTabManager::getTabConfig('project', $typeKey, $tabKey);
+	}
+
+
+
+	/**
+	 * Get the tab which is active by default (if no preference is stored)
+	 *
+	 * @param	Integer		$idTask
+	 * @return	String
+	 */
+	public static function getDefaultTab($idTask) {
+		$typeKey	= self::getTask($idTask)->getTypeKey();
+
+		return TodoyuContentItemTabManager::getDefaultTab('project', $typeKey, $idTask);
 	}
 
 }

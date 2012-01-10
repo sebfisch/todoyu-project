@@ -34,7 +34,7 @@
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo 		$dwoo
+ * @param	Dwoo		$dwoo
  * @param	String		$idStatus
  * @return	String
  */
@@ -122,7 +122,7 @@ function Dwoo_Plugin_projectStatusKey(Dwoo $dwoo, $idStatus) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo 		$dwoo
+ * @param	Dwoo		$dwoo
  * @param	Integer		$idProject
  * @return	Boolean
  */

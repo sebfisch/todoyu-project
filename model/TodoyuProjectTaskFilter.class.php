@@ -387,19 +387,19 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		$queryParts	= false;
 
 		if( $value !== '' ) {
-			$logic 		= ($negate === true) ? ' NOT LIKE ':' LIKE ';
+			$logic		= ($negate === true) ? ' NOT LIKE ':' LIKE ';
 			$conjunction= ($negate === true) ? ' AND ':' OR ';
 
 			$tables	= array(self::TABLE);
 			$keyword= Todoyu::db()->escape($value);
-			$where	= '(( 							ext_project_task.description 	' . $logic . ' \'%' . $keyword . '%\'
-							' . $conjunction . '	ext_project_task.title 			' . $logic . ' \'%' . $keyword . '%\'
+			$where	= '((							ext_project_task.description	' . $logic . ' \'%' . $keyword . '%\'
+							' . $conjunction . '	ext_project_task.title			' . $logic . ' \'%' . $keyword . '%\'
 						)';
 
 			if( strpos($value, '.') !== false ) {
 				list($project, $task) = TodoyuArray::intExplode('.', $value);
 				$where	.= ' OR (	  ext_project_task.id_project = ' . $project .
-							 	' AND ext_project_task.tasknumber = ' . $task .
+								' AND ext_project_task.tasknumber = ' . $task .
 							')';
 			}
 
@@ -564,7 +564,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$tables	= array('ext_contact_mm_person_role');
 
 			$compare= $negate ? 'NOT' : '';
-			$where	= 								'	ext_contact_mm_person_role.id_role ' . $compare . ' IN (' . implode(',', $roleIDs) . ')';
+			$where	=								'	ext_contact_mm_person_role.id_role ' . $compare . ' IN (' . implode(',', $roleIDs) . ')';
 			$where	.= ( $negate === false ) ? ' AND	ext_project_task.type	= ' . TASK_TYPE_TASK : '';
 
 			$join	= array('ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person');
@@ -669,7 +669,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array					Query parts
 	 */
 	public function Filter_isPublic($value, $negate = false) {
-		$tables 	= array(self::TABLE);
+		$tables	= array(self::TABLE);
 
 		$isPublic	= $negate ? 0 : 1;
 		$where		= 'ext_project_task.is_public = ' . $isPublic;
@@ -936,7 +936,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		$compare	= $negation ? '>=' : '<=';
 		$fieldName	= 'ext_project_task.' . $field;
 
-		$where 	= '(' . 	$fieldName . ' ' . $compare . ' ' . $date
+		$where	= '(' .		$fieldName . ' ' . $compare . ' ' . $date
 				. ' AND ' . $fieldName . ' > 0)';
 
 		return array(
@@ -950,7 +950,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * Filter task by not being given ID (get all but given)
 	 *
 	 * @param	String		$value
-	 * @param	Boolean 	$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public function Filter_nottask($value, $negate = false) {
@@ -959,7 +959,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		$where = 'ext_project_task.id != ' . $idTask;
 
 		return array(
-			'where' 	=> $where
+			'where'	=> $where
 		);
 	}
 

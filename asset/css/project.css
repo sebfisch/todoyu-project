@@ -98,7 +98,7 @@ h1.headerLine span.projectIcons {
 
 
 /* ------------------------------------
-	Task tab content
+	Asset form
    ------------------------------------ */
 .assetForm .fForm {
 	padding:0;
@@ -109,4 +109,57 @@ h1.headerLine span.projectIcons {
 }
 .assetForm .fForm fieldset legend {
 	border-color:#e3eace;
+}
+
+
+
+/* ----------------------
+	Project Tabs
+   ---------------------- */
+#content .projectTabs .tabs {
+	top:0;
+	left:0;
+	width:auto;
+	margin:0 10px;
+}
+
+.project .projectTabs {
+	margin-top:10px;
+}
+
+.project .projectTabs .tabs li {
+	background-color:#edf1e0 !important;
+}
+
+.project .projectTabs .tabs li:hover,
+.project .projectTabs .tabs li.active {
+	background-color:#e3eace !important;
+}
+
+/* project tabs content */
+.project .tabContent {
+	background-color:#e3eace;
+}
+
+.project .tabContent .tab {
+	margin:9px;
+	border:1px solid #e1e1e1;
+}
+
+.project .tabContent .tabBlock {
+	position:relative;
+	background:#fff;
+}
+.project .tabContent .tab {
+	padding:5px;
+	background:#fff;
+}
+.project .tabContent .tabBlock .toggle {
+	display:block;
+	position:absolute;
+	right:0;
+	top:0;
+	width:25px;
+	height:30px;
+	background:#d6dcc5 url(../../../../core/asset/img/toggle.png) no-repeat 0 -65px;
 }

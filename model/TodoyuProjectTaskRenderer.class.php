@@ -41,7 +41,7 @@ class TodoyuProjectTaskRenderer {
 
 			// Prepare data array for template
 		$tmpl	= 'ext/project/view/task-listing-item.tmpl';
-		$data 	= array(
+		$data	= array(
 			'task'				=> $taskData,
 			'isExpanded'		=> $isExpanded,
 			'subtasks'			=> '',
@@ -78,7 +78,7 @@ class TodoyuProjectTaskRenderer {
 			$tmpl	= 'ext/project/view/task-header.tmpl';
 		}
 
-		$data 	= array(
+		$data	= array(
 			'task'		=> TodoyuProjectTaskManager::getTaskInfoArray($idTask, 3),
 			'taskIcons'	=> TodoyuProjectTaskManager::getAllTaskIcons($idTask),
 		);
@@ -137,9 +137,9 @@ class TodoyuProjectTaskRenderer {
 			'taskData'	=> self::renderTaskData($idTask)
 		);
 
-			// Only add tabs if its a normal task (not container)
+			// Add tabs from registered tab configurations
 		if( $task->hasTabs() ) {
-			$data['tabs'] = self::renderTabs($idTask, $activeTab);
+			$data['tabs'] = TodoyuContentItemTabRenderer::renderTabs('project', $task->getTypeKey(), $idTask, $activeTab);
 		}
 
 		return Todoyu::render($tmpl, $data);
@@ -260,100 +260,6 @@ class TodoyuProjectTaskRenderer {
 			),
 			'formHtml'	=> $formHtml
 		);
-
-		return Todoyu::render($tmpl, $data);
-	}
-
-
-
-	/**
-	 * Render all task tabs (only detail of the active tab)
-	 *
-	 * @param	Integer		$idTask
-	 * @param	String		$activeTab
-	 * @return	String
-	 */
-	public static function renderTabs($idTask, $activeTab = '') {
-		$idTask		= intval($idTask);
-		$activeTab	= trim($activeTab) === '' ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab;
-
-		$tabHeads		= self::renderTabHeads($idTask, $activeTab);
-		$tabContents	= self::renderTabsContent($idTask, $activeTab);
-
-		return $tabHeads . $tabContents;
-	}
-
-
-
-	/**
-	 * Render content of a task tab
-	 *
-	 * @param	Integer		$idTask
-	 * @param	String		$tab
-	 * @return	String
-	 */
-	public static function renderTabContent($idTask, $tab) {
-		$idTask		= intval($idTask);
-		$tabConfig	= TodoyuProjectTaskManager::getTabConfig($tab);
-
-		return TodoyuFunction::callUserFunction($tabConfig['content'], $idTask);
-	}
-
-
-
-	/**
-	 * Render the heads of all tabs
-	 *
-	 * @param	Integer		$idTask
-	 * @param	String		$activeTab
-	 * @return	String
-	 */
-	public static function renderTabHeads($idTask, $activeTab = '') {
-		$idTask		= intval($idTask);
-		$name		= 'task-' . $idTask;
-		$jsHandler	= 'Todoyu.Ext.project.Task.Tab.onSelect.bind(Todoyu.Ext.project.Task.Tab)';
-		$tabs		= TodoyuProjectTaskManager::getTabs($idTask);
-		$activeTab	= $activeTab === '' ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab;
-
-			// Add special fields for task tabs
-		foreach($tabs as $index => $tab) {
-			$tabs[$index]['htmlId'] 	= 'task-' . $idTask . '-tab-' . $tab['id'];
-			$tabs[$index]['classKey'] 	= $tab['id'] . '-' . $idTask;
-		}
-
-		return TodoyuTabheadRenderer::renderTabs($name, $tabs, $jsHandler, $activeTab);
-	}
-
-
-
-	/**
-	 * Render tab container with the content tab of the active task
-	 *
-	 * @param	Integer		$idTask
-	 * @param	String		$activeTab
-	 * @return	String
-	 */
-	public static function renderTabsContent($idTask, $activeTab = '') {
-		$idTask		= intval($idTask);
-
-		$tabsConfig	= TodoyuProjectTaskManager::getTabs($idTask);
-		$tabContent	= '';
-		$activeTab	= $activeTab === '' ? TodoyuProjectPreferences::getActiveTaskTab($idTask) : $activeTab;
-
-			// Only render active tab
-		foreach($tabsConfig as $tabConfig) {
-			if( $tabConfig['id'] == $activeTab ) {
-				$tabContent	= TodoyuFunction::callUserFunction($tabConfig['content'], $idTask);
-				break;
-			}
-		}
-
-		$data	= array(
-			'tabHtml'	=> $tabContent,
-			'tabKey'	=> $activeTab,
-			'idTask'	=> $idTask
-		);
-		$tmpl	= 'ext/project/view/task-tabs.tmpl';
 
 		return Todoyu::render($tmpl, $data);
 	}

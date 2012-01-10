@@ -284,6 +284,17 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 
 
 	/**
+	 * Get task type key
+	 *
+	 * @return	String		'task' / 'container'
+	 */
+	public function getTypeKey() {
+		return ((int) $this->getType() === TASK_TYPE_TASK) ? 'task' : 'container';
+	}
+
+
+
+	/**
 	 * Get start date
 	 *
 	 * @return	Integer
@@ -542,10 +553,9 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function hasTabs() {
-		$type		= $this->getType();
-
 			// Check for configured tabs
-		$tabsConfig	= Todoyu::$CONFIG['EXT']['project']['task']['type'][$type]['tabs'];
+		$type		= $this->getType() === TASK_TYPE_TASK ? 'task' : 'container';
+		$tabsConfig	= Todoyu::$CONFIG['EXT']['project'][$type]['tabs'];
 		$has		= is_array($tabsConfig) && sizeof($tabsConfig) > 0;
 
 			// Call hooks
@@ -587,11 +597,11 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 				$data['person_assigned']= $this->getPersonData('assigned');
 				$data['person_owner']	= $this->getPersonData('owner');
 				$data['activity']		= $this->getActivity()->getTemplateData();
-				$data['fulltitle'] 		= $this->getFullTitle();
-				$data['company'] 		= $this->getProject()->getCompany()->getTemplateData();
+				$data['fulltitle']		= $this->getFullTitle();
+				$data['company']		= $this->getProject()->getCompany()->getTemplateData();
 
 			case 1:
-				$data['statuskey'] 		= $this->getStatusKey();
+				$data['statuskey']		= $this->getStatusKey();
 				$data['statuslabel']	= $this->getStatusLabel();
 
 			case 0:

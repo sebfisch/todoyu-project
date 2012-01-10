@@ -24,17 +24,17 @@
 
 Todoyu::$CONFIG['EXT']['project']['info'] = array(
 	'title'			=> 'Project and Task Management',
-	'description' 	=> 'Basic Project and Task Management',
-	'author' 		=> array(
+	'description'	=> 'Basic Project and Task Management',
+	'author'		=> array(
 		'name'		=> 'todoyu Core Developer Team',
 		'email'		=> 'team@todoyu.com',
 		'company'	=> 'snowflake productions GmbH, Zurich'
 	),
-	'state' 		=> 'stable',
+	'state'			=> 'stable',
 	'version' 		=> '1.3.0dev',
-	'constraints' 	=> array(
+	'constraints'	=> array(
 		'core'		=> '2.2.0dev',
-		'depends' 	=> array(
+		'depends'	=> array(
 			'contact' => '1.1.0'
 		),
 		'conflicts' => array(),

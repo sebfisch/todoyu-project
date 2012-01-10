@@ -122,7 +122,7 @@ class TodoyuProjectQuickTaskManager {
 
 			// If task already done: set also date_end
 		if( intval($formData['task_done']) === 1 ) {
-			$formData['status'] 	= STATUS_DONE;
+			$formData['status']		= STATUS_DONE;
 			$formData['date_end']	= NOW;
 		}
 		unset($formData['task_done']);

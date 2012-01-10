@@ -31,7 +31,7 @@ class TodoyuProjectProjectManager {
 	 *
 	 * @var	String
 	 */
-	const TABLE = 'ext_project_project';
+	const TABLE	= 'ext_project_project';
 
 
 
@@ -104,7 +104,7 @@ class TodoyuProjectProjectManager {
 
 		TodoyuRecordManager::removeRecordCache('TodoyuProjectProject', $idProject);
 
-		$success = TodoyuRecordManager::updateRecord(self::TABLE, $idProject, $data);
+		$success	= TodoyuRecordManager::updateRecord(self::TABLE, $idProject, $data);
 
 		TodoyuHookManager::callHook('project', 'project.update', array($idProject, $data));
 
@@ -240,7 +240,7 @@ class TodoyuProjectProjectManager {
 
 		$field	= 'id';
 		$table	= TodoyuProjectTaskManager::TABLE;
-		$where	= 'id_project 	= ' . $idProject
+		$where	= 'id_project	= ' . $idProject
 				. ' AND deleted	= 0'
 				. ' AND `type`	= ' . TASK_TYPE_TASK;
 
@@ -617,7 +617,7 @@ class TodoyuProjectProjectManager {
 			if( $taskPreset->hasDateEnd() ) {
 				$info[] = array(
 					'label'		=> 'project.task.date_end',
-					'value'	 	=> $taskPreset->getDateEndLabel(),
+					'value'		=> $taskPreset->getDateEndLabel(),
 					'position'	=> 30
 				);
 			}
@@ -625,8 +625,8 @@ class TodoyuProjectProjectManager {
 				// Formula for date_deadline
 			if( $taskPreset->hasDateDeadline() ) {
 				$info[] = array(
-					'label'	 	=> 'project.task.date_deadline',
-					'value'	 	=> $taskPreset->getDateDeadlineLabel(),
+					'label'		=> 'project.task.date_deadline',
+					'value'		=> $taskPreset->getDateDeadlineLabel(),
 					'position'	=> 35
 				);
 			}
@@ -879,7 +879,7 @@ class TodoyuProjectProjectManager {
 			// Add public check for external person
 		if( ! Todoyu::person()->isInternal() && ! Todoyu::person()->isAdmin() ) {
 			$where .= ' AND (
-							mmpp.is_public 	= 1 OR
+							mmpp.is_public	= 1 OR
 							mmpp.id_person	= ' . Todoyu::personid() . '
 						)';
 		}
@@ -952,7 +952,7 @@ class TodoyuProjectProjectManager {
 			// Add public check for external person
 		if( ! Todoyu::person()->isInternal() && ! Todoyu::person()->isAdmin() ) {
 			$where .= ' AND (
-							mmpp.is_public 	= 1 OR
+							mmpp.is_public	= 1 OR
 							mmpp.id_person	= ' . Todoyu::personid() . '
 						)';
 		}
@@ -1045,9 +1045,9 @@ class TodoyuProjectProjectManager {
 		$fields	= '	DISTINCT pr.*';
 		$table	= '	ext_project_mm_project_person mm,
 					ext_project_role pr';
-		$where	= '		mm.id_project	= ' . $idProject .
-				  ' AND	mm.id_role		= pr.id
-				  	AND	pr.deleted		= 0';
+		$where	= '		mm.id_project	= ' . $idProject
+				. ' AND	mm.id_role		= pr.id '
+				. '	AND	pr.deleted		= 0';
 
 		return Todoyu::db()->getArray($fields, $table, $where);
 	}
@@ -1131,7 +1131,7 @@ class TodoyuProjectProjectManager {
 			$field	= 'id_role,id_person';
 			$table	= '	ext_project_mm_project_person';
 			$where	= '	id_project	= ' . $idProject .
-				  	  ' AND id_role IN (' . implode(',', $roleIDs) . ')';
+					  ' AND id_role IN (' . implode(',', $roleIDs) . ')';
 
 			$rolesPersonsIDs	= Todoyu::db()->getArray($field, $table, $where);
 		} else {
@@ -1334,11 +1334,11 @@ class TodoyuProjectProjectManager {
 			$field	= 'p.id';
 			$tables	= '	ext_project_project p,
 						ext_project_mm_project_person mm';
-			$where	= '	p.id 		= mm.id_project'
+			$where	= '	p.id		= mm.id_project'
 					. ' AND p.deleted	= 0'
 					. ' AND mm.id_person= ' . TodoyuAuth::getPersonID();
 			if( count($statuses) > 0 ) {
-				$where	.=	' AND p.status 	IN (' . implode(',', $statuses) . ')';
+				$where	.=	' AND p.status	IN (' . implode(',', $statuses) . ')';
 			}
 
 			$fieldName	= 'id';
@@ -1450,6 +1450,44 @@ class TodoyuProjectProjectManager {
 				. ' AND deleted		= 0';
 
 		return Todoyu::db()->getColumn($field, self::TABLE, $where);
+	}
+
+
+
+	/**
+	 * Get project detail tabs config array (labels parsed)
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Boolean		$evalLabel		If true, all labels with a function reference will be parsed
+	 * @return	Array
+	 */
+	public static function getTabs($idProject, $evalLabel = true) {
+		return TodoyuContentItemTabManager::getTabs('project', 'project', $idProject, $evalLabel);
+	}
+
+
+
+	/**
+	 * Get a project detail tab configuration
+	 *
+	 * @param	String		$tabKey
+	 * @param	Integer		$typeID
+	 * @return	Array
+	 */
+	public static function getTabConfig($tabKey) {
+		return TodoyuContentItemTabManager::getTabConfig('project', 'project', $tabKey);
+	}
+
+
+
+	/**
+	 * Get the project detail tab which is active by default (if no preference is stored)
+	 *
+	 * @param	Integer		$idProject
+	 * @return	String
+	 */
+	public static function getDefaultTab($idProject) {
+		return TodoyuContentItemTabManager::getDefaultTab('project', 'project', $idProject);
 	}
 
 }

@@ -146,8 +146,8 @@ class TodoyuProjectProjectRenderer {
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idTask
-	 * @param 	String		$tab
-	 * @return 	String
+	 * @param	String		$tab
+	 * @return	String
 	 */
 	public static function renderTabbedProject($idProject, $idTask, $tab = null) {
 		$idProject	= intval($idProject);
@@ -224,7 +224,7 @@ class TodoyuProjectProjectRenderer {
 		}
 
 		if( $withDetails === true ) {
-			$data['details'] = self::renderProjectDetails($idProject);
+			$data['details'] = self::renderProjectDetail($idProject);
 		}
 
 		return Todoyu::render($tmpl, $data);
@@ -236,9 +236,10 @@ class TodoyuProjectProjectRenderer {
 	 * Render project details in project view
 	 *
 	 * @param	Integer		$idProject
+	 * @param	String		$activeTab
 	 * @return	String
 	 */
-	public static function renderProjectDetails($idProject) {
+	public static function renderProjectDetail($idProject, $activeTab = '') {
 		$idProject	= intval($idProject);
 		$project	= TodoyuProjectProjectManager::getProject($idProject);
 
@@ -259,8 +260,14 @@ class TodoyuProjectProjectRenderer {
 			// Get dynamically added details elements
 		$data['dynamicElements']	= TodoyuHookManager::callHook('project', 'projectDetailsDynamicElements', array($idProject));
 
+			// Add tabs from registered tab configurations
+		if( $project->hasTabs() ) {
+			$data['tabs'] = TodoyuContentItemTabRenderer::renderTabs('project', 'project', $idProject, $activeTab);
+		}
+
 		return Todoyu::render($tmpl, $data);
 	}
+
 
 
 
@@ -395,7 +402,7 @@ class TodoyuProjectProjectRenderer {
 
 		$subTaskIDs	= TodoyuProjectTaskManager::getSubTaskIDs($idTask);
 		$data		= array(
-			'idTask' 		=> $idTask,
+			'idTask'		=> $idTask,
 			'subtaskHtml'	=> ''
 		);
 
@@ -782,14 +789,14 @@ class TodoyuProjectProjectRenderer {
 
 			// Prepare data array for template
 		$tmpl	= 'ext/project/view/project-listing-item.tmpl';
-		$data 	= array(
+		$data	= array(
 			'project'			=> $project->getTemplateData(false),
 			'isExpanded'		=> $isExpanded
 		);
 
 			// Render details if task is expanded
 		if( $isExpanded ) {
-			$data['details']= self::renderProjectDetails($idProject);
+			$data['details']= self::renderProjectDetail($idProject);
 		}
 
 		return Todoyu::render($tmpl, $data);

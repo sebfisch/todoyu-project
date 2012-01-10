@@ -26,15 +26,15 @@
  */
 
 	// Statuses for projects and tasks
-define('STATUS_PLANNING', 	1);
+define('STATUS_PLANNING',	1);
 define('STATUS_OPEN',		2);
-define('STATUS_PROGRESS', 	3);
-define('STATUS_CONFIRM', 	4);
-define('STATUS_DONE', 		5);
-define('STATUS_ACCEPTED', 	6);
-define('STATUS_REJECTED', 	7);
-define('STATUS_CLEARED', 	8);
-define('STATUS_WARRANTY', 	9);
+define('STATUS_PROGRESS',	3);
+define('STATUS_CONFIRM',	4);
+define('STATUS_DONE',		5);
+define('STATUS_ACCEPTED',	6);
+define('STATUS_REJECTED',	7);
+define('STATUS_CLEARED',	8);
+define('STATUS_WARRANTY',	9);
 
 	// Basic task types
 define('TASK_TYPE_TASK',		1);

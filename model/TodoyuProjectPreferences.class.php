@@ -123,47 +123,6 @@ class TodoyuProjectPreferences {
 
 
 	/**
-	 * Get the key of the currently active tab (default if none is selected)
-	 *
-	 * @param	Integer		$idTask
-	 * @return	String
-	 */
-	public static function getActiveTaskTab($idTask) {
-		$idTask	= intval($idTask);
-
-			// Override selected tab
-		$forceTab	= self::getForcedTaskTab();
-
-		if( $forceTab !== false ) {
-			$prefTab = $forceTab;
-		} else {
-			$prefTab= self::getPref('task-tab', $idTask);
-
-			if( $prefTab === false || $prefTab === '' ) {
-				$prefTab = TodoyuProjectTaskManager::getDefaultTab($idTask);
-			}
-		}
-
-		return $prefTab;
-	}
-
-
-
-	/**
-	 * Save active tab in task
-	 *
-	 * @param	Integer		$idTask
-	 * @param	String		$tab
-	 */
-	public static function saveActiveTaskTab($idTask, $tab) {
-		$idTask	= intval($idTask);
-
-		self::savePref('task-tab', $tab, $idTask, true);
-	}
-
-
-
-	/**
 	 * Save expanded task status
 	 *
 	 * @param	Integer		$idTask			Task ID
@@ -346,23 +305,93 @@ class TodoyuProjectPreferences {
 
 
 	/**
-	 * Set forced tab for current rendering
+	 * Get the key of the currently active tab inside the details of the given project (default if none is selected)
 	 *
-	 * @param	String		$tab
+	 * @param	Integer		$idProject
+	 * @return	String
 	 */
-	public static function setForcedTaskTab($tab) {
-		Todoyu::$CONFIG['EXT']['project']['Task']['forceTab'] = $tab;
+	public static function getActiveProjectDetailTab($idProject) {
+		return TodoyuContentItemTabPreferences::getActiveTab('project', 'project', $idProject);
 	}
 
 
 
 	/**
-	 * Get currently forced tab (or false)
+	 * Get the key of the currently active tab (default if none is selected)
+	 *
+	 * @param	Integer		$idTask
+	 * @return	String
+	 */
+	public static function getActiveTaskTab($idTask) {
+		return TodoyuContentItemTabPreferences::getActiveTab('project', 'task', $idTask);
+	}
+
+
+
+	/**
+	 * Save active tab in project
+	 *
+	 * @param	Integer		$idProject
+	 * @param	String		$tab
+	 */
+	public static function saveActiveProjectDetailTab($idProject, $tab) {
+		TodoyuContentItemTabPreferences::saveActiveTab('project', 'project', $idProject, $tab);
+	}
+
+
+
+	/**
+	 * Save active tab in task
+	 *
+	 * @param	Integer		$idTask
+	 * @param	String		$tab
+	 */
+	public static function saveActiveTaskTab($idTask, $tab) {
+		TodoyuContentItemTabPreferences::saveActiveTab('project', 'task', $idTask, $tab);
+	}
+
+
+
+	/**
+	 * Set forced project detail tab for current rendering
+	 *
+	 * @param	String		$tab
+	 */
+	public static function setForcedProjectTab($tab) {
+		TodoyuContentItemTabPreferences::setForcedTab('project', 'project', $tab);
+	}
+
+
+
+	/**
+	 * Set forced task tab for current rendering
+	 *
+	 * @param	String		$tab
+	 */
+	public static function setForcedTaskTab($tab) {
+		TodoyuContentItemTabPreferences::setForcedTab('project', 'task', $tab);
+	}
+
+
+
+	/**
+	 * Get currently forced project detail tab (or false)
+	 *
+	 * @return	String		Or FALSE
+	 */
+	public static function getForcedProjectDetailTab() {
+		return TodoyuContentItemTabPreferences::getForcedTab('project', 'project');
+	}
+
+
+
+	/**
+	 * Get currently forced task tab (or false)
 	 *
 	 * @return	String		Or FALSE
 	 */
 	public static function getForcedTaskTab() {
-		return Todoyu::$CONFIG['EXT']['project']['Task']['forceTab'];
+		return TodoyuContentItemTabPreferences::getForcedTab('project', 'task');
 	}
 
 }

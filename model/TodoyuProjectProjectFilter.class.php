@@ -329,7 +329,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 								' AND	id_role IN (' . implode(',', $roles) . ')
 								GROUP BY
 									id_project
-					  		) as x';
+							) as x';
 			$compare	= $negate ? 'NOT IN' : 'IN';
 			$where		= ' ' . self::TABLE . '.id ' . $compare . ' (' . $subQuery . ')';
 
@@ -359,7 +359,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 
 			// Prepare separate values
 		$values	= explode(':', $definitions['value']);
-		$definitions['valuePerson'] 		= intval($values[0]);
+		$definitions['valuePerson']			= intval($values[0]);
 		$definitions['valuePersonLabel']	= TodoyuContactPersonManager::getLabel($values[0]);
 		$definitions['valueProjectroles']	= TodoyuArray::intExplode(',', $values[1], true, true);
 
@@ -485,7 +485,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 		$where	= self::TABLE . '.' . $field . ' ' . $compare . ' ' . $date;
 
 		return array(
-			'where' 	=> $where
+			'where'	=> $where
 		);
 	}
 

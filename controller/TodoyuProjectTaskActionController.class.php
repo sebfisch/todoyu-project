@@ -44,7 +44,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * @return	String		Empty task form
 	 */
 	public function addprojecttaskAction(array $params) {
-		$idProject 	= intval($params['project']);
+		$idProject	= intval($params['project']);
 
 		TodoyuProjectTaskRights::restrictAddToProject($idProject);
 
@@ -64,7 +64,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 * @return	String		Container edit form
 	 */
 	public function addprojectcontainerAction(array $params) {
-		$idProject 	= intval($params['project']);
+		$idProject	= intval($params['project']);
 
 		TodoyuProjectTaskRights::restrictAddToProject($idProject);
 
@@ -352,7 +352,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	/**
 	 * Clone a task and add it right behind the clone source
 	 *
-	 * @param	Array 		$params
+	 * @param	Array		$params
 	 * @return	String		Cloned task HTML
 	 */
 	public function cloneAction(array $params) {
@@ -431,7 +431,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		TodoyuProjectTaskRights::restrictSee($idTask);
 		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tab);
 
-		return TodoyuProjectTaskRenderer::renderTabContent($idTask, $tab);
+		return TodoyuContentItemTabRenderer::renderTabContent('project', 'task', $idTask, $tab);
 	}
 
 
@@ -447,7 +447,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuProjectTaskRights::restrictSee($idTask);
 
-		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tabKey);
+		TodoyuContentItemTabPreferences::saveActiveTab('project', 'task', $idTask, $tabKey);
 	}
 
 

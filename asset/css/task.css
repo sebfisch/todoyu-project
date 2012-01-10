@@ -354,56 +354,63 @@ div.task.dragDropTarget > h3 {
 		clear:left;
 	}
 
-		/* task tabs */
-	#content .taskTabs .tabs {
-		top:0;
-		left:0;
-		width:auto;
-		margin:0 10px;
-	}
 
-	.task .taskTabs {
-		margin-top:10px;
-	}
 
-	.task .taskTabs .tabs li {
-		background-color:#edf1e0 !important;
-	}
+/* ----------------------
+	Task Tabs
+   ---------------------- */
+#content .taskTabs .tabs {
+	top:0;
+	left:0;
+	width:auto;
+	margin:0 10px;
+}
 
-	.task .taskTabs .tabs li:hover,
-	.task .taskTabs .tabs li.active {
-		background-color:#e3eace !important;
-	}
+.task .taskTabs {
+	margin-top:10px;
+}
 
-	/* task tabs content */
-	.task .tabContent {
-		background-color:#e3eace;
-		/*border-bottom:1px solid #ddd;*/
-	}
+.task .taskTabs .tabs li {
+	background-color:#edf1e0 !important;
+}
 
-	.task .tabContent .tab {
-		margin:9px;
-		border:1px solid #e1e1e1;
-	}
+.task .taskTabs .tabs li:hover,
+.task .taskTabs .tabs li.active {
+	background-color:#e3eace !important;
+}
 
-	.task .tabContent .tabBlock {
-		position:relative;
-		background:#fff;
-	}
-	.task .tabContent .tab {
-		padding:5px;
-		background:#fff;
-	}
-	.task .tabContent .tabBlock .toggle {
-		display:block;
-		position:absolute;
-		right:0;
-		top:0;
-		width:25px;
-		height:30px;
-		background:#d6dcc5 url(../../../../core/asset/img/toggle.png) no-repeat 0 -65px;
-	}
+/* task tabs content */
+.task .tabContent {
+	background-color:#e3eace;
+	/*border-bottom:1px solid #ddd;*/
+}
 
+.task .tabContent .tab {
+	margin:9px;
+	border:1px solid #e1e1e1;
+}
+
+.task .tabContent .tabBlock {
+	position:relative;
+	background:#fff;
+}
+.task .tabContent .tab {
+	padding:5px;
+	background:#fff;
+}
+.task .tabContent .tabBlock .toggle {
+	display:block;
+	position:absolute;
+	right:0;
+	top:0;
+	width:25px;
+	height:30px;
+	background:#d6dcc5 url(../../../../core/asset/img/toggle.png) no-repeat 0 -65px;
+}
+
+
+
+/*@todo	move into resources ext */
 #inlineEditTask .innerBox { /* resource planning inline task editor */
 	margin-top:-20px;
 	border-top:1px solid #ddd;

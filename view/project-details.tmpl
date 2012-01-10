@@ -54,4 +54,10 @@
 		{/foreach}
 	{/if}
 
+	{if $tabs} {* ----- Only render tab container if tabs are rendered ----- *}
+		<div id="project-{$idProject}-tabcontainer" class="projectTabs">
+			{$tabs}
+		</div>
+	{/if}
+
 </div>

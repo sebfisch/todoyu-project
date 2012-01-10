@@ -405,7 +405,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			'label'				=> 'project.task.attr.date_deadline',
 			'optgroup'			=> 'project.task.task'
 		),
-		'projectID' 	=> array(
+		'projectID'		=> array(
 			'label'				=> 'project.filter.project.id',
 			'optgroup'			=> 'project.task.task'
 		),
@@ -461,7 +461,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 	'key'		=> 'project',
 	'right'		=> 'project:project.searchable',
-	'config' 	=> array(
+	'config'	=> array(
 		'label'				=> 'project.ext.search.label',
 		'position'			=> 20,
 		'resultsRenderer'	=> 'TodoyuProjectProjectRenderer::renderProjectListing',
@@ -529,7 +529,7 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 				'size'		=> 5,
 				'FuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getStatusOptions',
 				'negation'	=> 'default'
-	  		)
+			)
 		),
 		'company' => array(
 			'label'		=> 'project.filter.project.company',
@@ -648,7 +648,7 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 			'label'		=> 'project.ext.attr.date_end',
 			'optgroup'	=> 'project.ext.search.label'
 		),
-		'projectID' 	=> array(
+		'projectID'		=> array(
 			'label'		=> 'project.ext.attr.id',
 			'optgroup'	=> 'project.ext.search.label'
 		),

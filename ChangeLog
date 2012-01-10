@@ -2,6 +2,7 @@ todoyu project extension changelog
 
 project 1.3.0 - not released yet
 	* Added: Getter for all fields (description, owner)
+	* Changed: Reworked specific task inline-tabs handling to use core's generic content item tabs handling instead
 	* Changed: Made task tabs differently configurable per task type (task / container)
 	* Changed: Replaced hardcoded check for task tabs to be rendered by evaluation of registered tabs configurations
 	* Changed: Require core 2.2 (new html2text)

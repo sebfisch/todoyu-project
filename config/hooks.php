@@ -20,10 +20,10 @@
 
 TodoyuHookManager::registerHook('core', 'substituteLinkableElements', 'TodoyuProjectTaskManager::linkTaskIDsInText');
 
-TodoyuHookManager::registerHook('project', 'taskdata', 			'TodoyuProjectTaskManager::getTaskDataAttributes');
+TodoyuHookManager::registerHook('project', 'taskdata',			'TodoyuProjectTaskManager::getTaskDataAttributes');
 TodoyuHookManager::registerHook('project', 'project.properties','TodoyuProjectProjectManager::getBasicProjectProperties', 10);
 TodoyuHookManager::registerHook('project', 'projectpresetdata', 'TodoyuProjectProjectManager::getProjectPresetDataAttributes');
-TodoyuHookManager::registerHook('project', 'taskIcons', 		'TodoyuProjectTaskManager::getTaskIcons');
+TodoyuHookManager::registerHook('project', 'taskIcons',			'TodoyuProjectTaskManager::getTaskIcons');
 TodoyuHookManager::registerHook('project', 'taskinfo',			'TodoyuProjectTaskManager::addContainerInfoToTaskData');
 TodoyuHookManager::registerHook('project', 'task.defaultData',	'TodoyuProjectTaskManager::hookTaskDefaultDataFromEnvironment', 50);
 TodoyuHookManager::registerHook('project', 'task.defaultData',	'TodoyuProjectTaskManager::hookTaskDefaultDataFromPreset', 60);

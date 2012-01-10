@@ -115,7 +115,7 @@ class TodoyuProjectTaskFilterDataSource {
 			$order	= 'title';
 
 			$tasks		= Todoyu::db()->getArray($fields, $table, $where, '', $order);
-			$tasksAc 	= array();
+			$tasksAc	= array();
 
 			foreach($tasks as $task) {
 				$tasksAc[$task['id']] = $task['id_project'] . '.' . $task['tasknumber'] . ' ' . $task['title'];
