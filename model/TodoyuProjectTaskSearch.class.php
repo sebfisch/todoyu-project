@@ -171,7 +171,7 @@ class TodoyuProjectTaskSearch implements TodoyuSearchEngineIf {
 					// Limit to selected status
 				$statusesSee= array_keys(TodoyuProjectTaskStatusManager::getStatuses('see'));
 				if( count($statusesSee) > 0 ) {
-					$addToWhere .= ' AND ext_project_task.status IN (' . implode(',', $statusesSee) . ')';
+					$addToWhere .= ' AND ' . Todoyu::db()->buildInArrayQuery($statusesSee, 'ext_project_task.status');
 				} else {
 						// Rights do not permit user to see tasks in any status!
 					return ' AND 0';

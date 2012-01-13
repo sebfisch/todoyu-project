@@ -929,8 +929,6 @@ class TodoyuProjectProjectManager {
 	 * @return	Array
 	 */
 	public static function getProjectsPersonsIDs(array $projectIDs = array(), $withAccount = false) {
-		$projectIDs	= TodoyuArray::intval($projectIDs, true, true);
-
 			// Stop if no projects given
 		if( sizeof($projectIDs) === 0 ) {
 			return array();
@@ -942,7 +940,7 @@ class TodoyuProjectProjectManager {
 					ext_project_mm_project_person mmpp';
 
 		$where	= '		mmpp.id_person	= pe.id '
-				. ' AND mmpp.id_project	IN (' . implode(',', $projectIDs) . ')'
+				. ' AND ' . Todoyu::db()->buildInArrayQuery($projectIDs, 'mmpp.id_project')
 				. ' AND	mmpp.id_role	= pr.id'
 				. '	AND	pe.deleted		= 0';
 
@@ -1131,7 +1129,7 @@ class TodoyuProjectProjectManager {
 			$field	= 'id_role,id_person';
 			$table	= '	ext_project_mm_project_person';
 			$where	= '	id_project	= ' . $idProject .
-					  ' AND id_role IN (' . implode(',', $roleIDs) . ')';
+					  ' AND ' . Todoyu::db()->buildInArrayQuery($roleIDs, 'id_role');
 
 			$rolesPersonsIDs	= Todoyu::db()->getArray($field, $table, $where);
 		} else {
@@ -1338,7 +1336,7 @@ class TodoyuProjectProjectManager {
 					. ' AND p.deleted	= 0'
 					. ' AND mm.id_person= ' . TodoyuAuth::getPersonID();
 			if( count($statuses) > 0 ) {
-				$where	.=	' AND p.status	IN (' . implode(',', $statuses) . ')';
+				$where	.=	' AND ' . Todoyu::db()->buildInArrayQuery($statuses, 'p.status');
 			}
 
 			$fieldName	= 'id';

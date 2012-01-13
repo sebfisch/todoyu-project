@@ -316,19 +316,15 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 		$queryParts	= false;
 
 		if( $idPerson !== 0 && sizeof($roles) > 0 ) {
-				// This double subquery if here for performance reasons (don't optimize it!)
-			$subQuery	= '	SELECT
-								id_project
+				// This double sub query is here for performance reasons (don't optimize it!)
+			$subQuery	= '	SELECT id_project
 							FROM (
-								SELECT
-									id_project
-								FROM
-									ext_project_mm_project_person
+								SELECT  id_project
+								FROM    ext_project_mm_project_person
 								WHERE
 										id_person	= ' . $idPerson .
-								' AND	id_role IN (' . implode(',', $roles) . ')
-								GROUP BY
-									id_project
+								' AND ' . Todoyu::db()->buildInArrayQuery($roles, 'id_role')
+								. ' GROUP BY id_project
 							) as x';
 			$compare	= $negate ? 'NOT IN' : 'IN';
 			$where		= ' ' . self::TABLE . '.id ' . $compare . ' (' . $subQuery . ')';

@@ -563,8 +563,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		if( sizeof($roleIDs) > 0 ) {
 			$tables	= array('ext_contact_mm_person_role');
 
-			$compare= $negate ? 'NOT' : '';
-			$where	=								'	ext_contact_mm_person_role.id_role ' . $compare . ' IN (' . implode(',', $roleIDs) . ')';
+			$where	= Todoyu::db()->buildInArrayQuery($roleIDs, 'ext_contact_mm_person_role.id_role', true, $negate);
 			$where	.= ( $negate === false ) ? ' AND	ext_project_task.type	= ' . TASK_TYPE_TASK : '';
 
 			$join	= array('ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person');
@@ -640,17 +639,10 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		$queryParts	= false;
 
 		if( sizeof($statuses) > 0 ) {
-			$tables	= array('ext_project_project');
-
-			$compare= $negate ? 'NOT' : '';
-			$where	=  'ext_project_project.status ' . $compare . ' IN (' . implode(',', $statuses) . ')';
-
-			$join	= array('ext_project_task.id_project = ext_project_project.id');
-
 			$queryParts	= array(
-				'where'	=> $where,
-				'tables'=> $tables,
-				'join'	=> $join
+				'where'	=> Todoyu::db()->buildInArrayQuery($statuses, 'ext_project_project.status', true, $negate),
+				'tables'=> array('ext_project_project'),
+				'join'	=> array('ext_project_task.id_project = ext_project_project.id')
 			);
 
 		}
@@ -1000,11 +992,8 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		$queryParts	= false;
 
 		if( sizeof($activityIDs) !== 0 ) {
-			$compare= $negate ? 'NOT' : '';
-			$where	= 'ext_project_task.id_activity ' . $compare . ' IN (' . implode(',', $activityIDs) . ')';
-
 			$queryParts	= array(
-				'where'	=> $where
+				'where'	=> Todoyu::db()->buildInArrayQuery($activityIDs, 'ext_project_task.id_activity', true, $negate)
 			);
 		}
 
@@ -1029,12 +1018,11 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		$queryParts	= false;
 
 		if( $idPerson !== 0 && sizeof($roles) > 0 ) {
-			$tables	= array(
-				'ext_project_mm_project_person'
-			);
-			$compare= $negate ? 'NOT' : '';
+			$tables	= array('ext_project_mm_project_person');
+
 			$where	= '		ext_project_mm_project_person.id_person	= ' . $idPerson .
-					  ' AND ext_project_mm_project_person.id_role ' . $compare . ' IN (' . implode(',', $roles) . ')';
+					  ' AND ' . Todoyu::db()->buildInArrayQuery($roles, 'ext_project_mm_project_person.id_role', true, $negate);
+
 			$join	= array('ext_project_task.id_project = ext_project_mm_project_person.id_project');
 
 			$queryParts	= array(
