@@ -30,7 +30,6 @@
  */
 Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 	'key'		=> 'task',
-	'right'		=> 'project:task.searchable',
 	'config'	=> array(
 		'label'				=> 'project.task.search.label',
 		'position'			=> 10,
@@ -460,7 +459,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
  */
 Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 	'key'		=> 'project',
-	'right'		=> 'project:project.searchable',
 	'config'	=> array(
 		'label'				=> 'project.ext.search.label',
 		'position'			=> 20,
