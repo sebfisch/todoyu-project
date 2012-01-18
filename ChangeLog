@@ -13,7 +13,7 @@ project 1.2.1 - not released yet
 	* Changed: Task with time-exceeding irrelevant status are no more marked when dates have exceeded
 
 project 1.2.0 - 2011-12-13
-	* Feature: Drag'n'Drop tasks in project
+	* Feature: Drag & drop tasks in project
 	* Feature: Complete refactoring of task presets. All task fields are available now. Better integration of other extensions
 	* Feature: New filter for child tasks
 	* Bugfix: Last opened projects weren't added as sub menu
@@ -75,7 +75,6 @@ project 1.1.1 - 2011-07-25
 	* Changed: Adapted timetrack list items style in headlet to global task style
 	* Changed: Interpolated links are now created as full links instead of JS calls. Allows opening in new tab
 
-
 project 1.1.0 - 2011-06-17
 	* Bugfix: Locked task can only be moved in their own project, not in another project
 	* Bugfix: Task exports with full task number, check for parent task. Label fix
@@ -93,7 +92,6 @@ project 1.1.0 - 2011-06-17
 	* Changed: moved globally used icons (unacknowledged/acknowledged) to core
    	* Changed: Assigned_to.. filters - if there's an assignment condition given, type cant be container
 
-
 project 1.0.8
 	* Bugfix: Dynamic labels in task/container were not localized to any other than default language
 	* Bugfix: Newly created tasks that are assigned to the creator person were not set acknowledged initially
@@ -106,6 +104,3 @@ project 1.0.8
 	* Changed: Task preset description field to RTE
 
 project 1.0.4 - 2011-03-29
-
-
-
