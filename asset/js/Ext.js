@@ -90,7 +90,7 @@ Todoyu.Ext.project = {
 		windowName	= windowName ? windowName : '';
 
 		var params = {
-			'task': idTask
+			task: idTask
 		};
 		if( ! Object.isUndefined(idProject) ) {
 			params.project = idProject;
@@ -111,8 +111,8 @@ Todoyu.Ext.project = {
 		windowName	= windowName ? windowName : '';
 
 		var params = {
-			'task': idTask,
-			'edit': idTask
+			task: idTask,
+			edit: idTask
 		};
 		if( ! Object.isUndefined(idProject) ) {
 			params.project = idProject;

@@ -743,7 +743,7 @@ Todoyu.Ext.project.Task = {
 		if( statusNotAllowed ) {
 			Todoyu.notifyInfo('[LLL:project.task.statusNotVisible]');
 			Effect.BlindUp('task-' + idTask, {
-				'duration': 0.7
+				duration: 0.7
 			});
 		} else {
 			if( this.isDetailsLoaded(idTask) ) {

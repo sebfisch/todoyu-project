@@ -134,9 +134,9 @@ Todoyu.Ext.project.Project.Tab = {
 	 */
 	createTabContainer: function(idProject, tabKey) {
 		$('project-' + idProject + '-tabcontent').insert({
-			'top': new Element(
+			top: new Element(
 				'div', {
-					'id':		this.buildTabID(idProject, tabKey),
+					id:			this.buildTabID(idProject, tabKey),
 					'class':	'tab'
 				}
 			)

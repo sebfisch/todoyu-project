@@ -67,7 +67,7 @@ Todoyu.Ext.project.Task.Edit = {
 			var statusCode = this.ext.Task.getStatus(idTask);
 				// Create details div
 			var details = new Element('div', {
-				'id':		idDetails,
+				id:		idDetails,
 				'class':	'details edit bcStatus' + statusCode
 			});
 

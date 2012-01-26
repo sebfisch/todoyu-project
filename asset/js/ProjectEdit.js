@@ -46,12 +46,12 @@ Todoyu.Ext.project.Project.Edit = {
 			// Create data DIV above project details DIV element
 		if( ! Todoyu.exists(idData) ) {
 			var data = new Element('div', {
-				'id':		idData,
+				id:		idData,
 				'class':	'data edit'
 			});
 
 			$(idDetails).insert({
-				'top': data
+				top: data
 			});
 		}
 

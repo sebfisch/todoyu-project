@@ -62,7 +62,7 @@ Todoyu.Ext.project.Project = {
 		if( Todoyu.getArea() != 'project' ) {
 			Todoyu.goTo('project', 'ext', {
 				action: 'edit',
-				'project': idProject
+				project: idProject
 			});
 		}
 
@@ -238,8 +238,8 @@ Todoyu.Ext.project.Project = {
 	addTask: function(idProject) {
 		if( Todoyu.getArea() != 'project' ) {
 			Todoyu.goTo('project', 'ext', {
-				action: 'addtask',
-				'project': idProject
+				action: 	'addtask',
+				project:	idProject
 			});
 		}
 
@@ -259,8 +259,8 @@ Todoyu.Ext.project.Project = {
 			this.ext.Task.addContainerToProject(idProject);
 		} else {
 			Todoyu.goTo('project', 'ext', {
-				action: 'addcontainer',
-				'project': idProject
+				action: 	'addcontainer',
+				project: 	idProject
 			});
 		}
 	},

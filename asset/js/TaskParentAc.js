@@ -54,7 +54,7 @@ Todoyu.Ext.project.TaskParentAC = {
 	 * @type		Object
 	 */
 	acOptions: {
-		'paramName': 'query'
+		paramName: 'query'
 	},
 
 
