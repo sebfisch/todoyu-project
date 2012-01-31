@@ -601,6 +601,93 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 		return $data;
 	}
 
+
+
+	/**
+	 * Apply preset data to task data
+	 * Fill all empty fields if configured in the task preset
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
+	public function apply(array $data) {
+		$idProject	= intval($data['id_project']);
+		$project	= TodoyuProjectProjectManager::getProject($idProject);
+
+			// Date start
+		if( !isset($data['date_start']) && $this->hasDateStart() ) {
+			$data['date_start'] = $this->getDateStart();
+		}
+
+			// Date end
+		if( !isset($data['date_end']) && $this->hasDateEnd() ) {
+			$data['date_end'] = $this->getDateEnd();
+		}
+
+			// Date deadline
+		if( !isset($data['date_deadline']) && $this->hasDateDeadline() ) {
+			$data['date_deadline'] = $this->getDateDeadline();
+		}
+
+			// Status
+		if( !isset($data['status']) ) {
+			if( $this->hasStatus() ) {
+				$data['status'] = $this->getStatus();
+			} else {
+				$data['status'] = Todoyu::$CONFIG['EXT']['project']['taskDefaults']['status'];
+			}
+		}
+
+			// Activity
+		if( !isset($data['id_activity']) && $this->hasActivity() ) {
+			$data['id_activity'] = $this->getActivityID();
+		}
+
+			// Estimated workload
+		if( !isset($data['estimated_workload']) ) {
+			$data['estimated_workload'] = $this->getEstimatedWorkload();
+		}
+
+			// Set is_public flag (if task creator is an external person, the task is always public)
+		if( Todoyu::person()->isExternal() ) {
+			$data['is_public']	= 1;
+		} elseif( !isset($data['is_public']) ) {
+			$data['is_public']	= $this->getIsPublic();
+		}
+
+			// Assigned person (explicitly configured or indirect via role)
+		if( !isset($data['id_person_assigned']) ) {
+			if( $this->hasPersonAssignedFallback() ) {
+				$data['id_person_assigned'] = $this->getPersonAssignedFallbackID();
+			} elseif( $this->hasRoleAssignedFallback() ) {
+				$idRole		= $this->getRoleAssignedFallbackID();
+				$personIDs	= $project->getRolePersonIDs($idRole);
+				$idPerson	= intval($personIDs[0]);
+
+				if( $idPerson !== 0 ) {
+					$data['id_person_assigned'] = $idPerson;
+				}
+			}
+		}
+
+			// Owner person (explicitly configured or indirect via role)
+		if( !isset($data['id_person_owner']) ) {
+			if( $this->hasPersonOwnerFallback() ) {
+				$data['id_person_owner'] = $this->getPersonOwnerFallbackID();
+			} elseif( $this->hasRoleOwnerFallback() ) {
+				$idRole		= $this->getRoleOwnerFallbackID();
+				$personIDs	= $project->getRolePersonIDs($idRole);
+				$idPerson	= intval($personIDs[0]);
+
+				if( $idPerson !== 0 ) {
+					$data['id_person_owner'] = $idPerson;
+				}
+			}
+		}
+
+		return $data;
+	}
+
 }
 
 ?>

@@ -1389,95 +1389,39 @@ class TodoyuProjectTaskManager {
 	 * Set default task values if missing
 	 * Person may not be allowed to enter the values, so we use the defaults from taskpreset and extConf
 	 *
-	 * @param	Array		$submittedTaskData
+	 * @param	Array		$taskData
 	 * @return	Array
 	 */
-	private static function setDefaultValuesForNotAllowedFields(array $submittedTaskData) {
-		$idProject		= intval($submittedTaskData['id_project']);
-		$project		= TodoyuProjectProjectManager::getProject($idProject);
-		$originalData	= $submittedTaskData;
+	private static function setDefaultValuesForNotAllowedFields(array $taskData) {
+		$idProject		= intval($taskData['id_project']);
+		$originalData	= $taskData;
 
-			// Set defaults if a task preset is selected for project
-		if( $project->hasTaskPreset() ) {
-			$taskPreset	= $project->getTaskPreset();
-
-				// Date start
-			if( !isset($submittedTaskData['date_start']) && $taskPreset->hasDateStart() ) {
-				$submittedTaskData['date_start'] = $taskPreset->getDateStart();
-			}
-
-				// Date end
-			if( !isset($submittedTaskData['date_end']) && $taskPreset->hasDateEnd() ) {
-				$submittedTaskData['date_end'] = $taskPreset->getDateEnd();
-			}
-
-				// Date deadline
-			if( !isset($submittedTaskData['date_deadline']) && $taskPreset->hasDateDeadline() ) {
-				$submittedTaskData['date_deadline'] = $taskPreset->getDateDeadline();
-			}
-
-				// Status
-			if( !isset($submittedTaskData['status']) ) {
-				if( $taskPreset->hasStatus() ) {
-					$submittedTaskData['status'] = $taskPreset->getStatus();
-				} else {
-					$submittedTaskData['status'] = Todoyu::$CONFIG['EXT']['project']['taskDefaults']['status'];
-				}
-			}
-
-				// Activity
-			if( !isset($submittedTaskData['id_activity']) && $taskPreset->hasActivity() ) {
-				$submittedTaskData['id_activity'] = $taskPreset->getActivityID();
-			}
-
-				// Estimated workload
-			if( !isset($submittedTaskData['estimated_workload']) ) {
-				$submittedTaskData['estimated_workload'] = $taskPreset->getEstimatedWorkload();
-			}
-
-				// Set is_public flag (if task creator is an external person, the task is always public)
-			if( Todoyu::person()->isExternal() ) {
-				$submittedTaskData['is_public']	= 1;
-			} elseif( !isset($submittedTaskData['is_public']) ) {
-				$submittedTaskData['is_public']	= $taskPreset->getIsPublic();
-			}
-
-				// Assigned person (explicitly configured or indirect via role)
-			if( !isset($submittedTaskData['id_person_assigned']) ) {
-				if( $taskPreset->hasPersonAssignedFallback() ) {
-					$submittedTaskData['id_person_assigned'] = $taskPreset->getPersonAssignedFallbackID();
-				} elseif( $taskPreset->hasRoleAssignedFallback() ) {
-					$idRole		= $taskPreset->getRoleAssignedFallbackID();
-					$personIDs	= $project->getRolePersonIDs($idRole);
-					$idPerson	= intval($personIDs[0]);
-
-					if( $idPerson !== 0 ) {
-						$submittedTaskData['id_person_assigned'] = $idPerson;
-					}
-				}
-			}
-
-				// Owner person (explicitly configured or indirect via role)
-			if( !isset($submittedTaskData['id_person_owner']) ) {
-				if( $taskPreset->hasPersonOwnerFallback() ) {
-					$submittedTaskData['id_person_owner'] = $taskPreset->getPersonOwnerFallbackID();
-				} elseif( $taskPreset->hasRoleOwnerFallback() ) {
-					$idRole		= $taskPreset->getRoleOwnerFallbackID();
-					$personIDs	= $project->getRolePersonIDs($idRole);
-					$idPerson	= intval($personIDs[0]);
-
-					if( $idPerson !== 0 ) {
-						$submittedTaskData['id_person_owner'] = $idPerson;
-					}
-				}
-			}
-
-		}
+			// Add data from task presets
+		$taskData	= TodoyuProjectTaskPresetManager::applyTaskPreset($taskData);
 
 			// Call hook to allow other extensions to set default values
-		$submittedTaskData	= TodoyuHookManager::callHookDataModifier('project', 'task.defaultsForNotAllowedFields', $submittedTaskData, array($idProject, $originalData));
+		$taskData	= TodoyuHookManager::callHookDataModifier('project', 'task.defaultsForNotAllowedFields', $taskData, array($idProject, $originalData));
 
-		return $submittedTaskData;
+			// Add still missing fields which are required
+		$taskData	= self::applyMissingRequiredFields($taskData);
+
+		return $taskData;
+	}
+
+
+
+	/**
+	 * Add values for required fields which are still missing
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
+	private static function applyMissingRequiredFields(array $data) {
+		if( !isset($data['status']) ) {
+			$data['status'] = STATUS_PLANNING;
+		}
+
+		return $data;
 	}
 
 

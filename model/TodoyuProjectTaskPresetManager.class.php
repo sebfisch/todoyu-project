@@ -153,6 +153,72 @@ class TodoyuProjectTaskPresetManager {
 		return TodoyuRecordManager::deleteRecord(self::TABLE, $idTaskPreset);
 	}
 
+
+
+	/**
+	 * Get the assigned task preset or the fallback task preset
+	 * Return false if no preset assigned AND no fallback set
+	 *
+	 * @param	Integer		$idProject
+	 * @return	TodoyuProjectTaskPreset|Boolean
+	 */
+	private static function getTaskPresetOrFallback($idProject) {
+		$idProject	= intval($idProject);
+		$project	= TodoyuProjectProjectManager::getProject($idProject);
+		$taskPreset	= false;
+
+		if( $project->hasTaskPreset() ) {
+			$taskPreset = $project->getTaskPreset();
+		} else {
+			if( self::hasFallbackTaskPreset() ) {
+				$taskPreset = self::getFallbackTaskPreset();
+			}
+		}
+
+		return $taskPreset;
+	}
+
+
+	/**
+	 * Check whether a fallback task preset has been selected
+	 *
+	 * @return	Boolean
+	 */
+	private static function hasFallbackTaskPreset() {
+		return TodoyuProjectManager::getFallbackTaskPresetID() !== 0;
+	}
+
+
+
+	/**
+	 * Get fallback task preset
+	 *
+	 * @return	TodoyuProjectTaskPreset
+	 */
+	private static function getFallbackTaskPreset() {
+		return self::getTaskPreset(TodoyuProjectManager::getFallbackTaskPresetID());
+	}
+
+
+
+	/**
+	 * Apply a task preset to given data. All missing values which are configured in the preset are filled in
+	 *
+	 * @param	Array	$data
+	 * @return	Array
+	 */
+	public static function applyTaskPreset(array $data) {
+		$idProject		= intval($data['id_project']);
+		$taskPreset		= self::getTaskPresetOrFallback($idProject);
+
+			// Set defaults if a task preset is selected for project
+		if( $taskPreset ) {
+			$data	= $taskPreset->apply($data);
+		}
+
+		return $data;
+	}
+
 }
 
 ?>

@@ -38,6 +38,19 @@ class TodoyuProjectManager {
 		}
 	}
 
+
+
+	/**
+	 * Get fallback preset ID from extconf
+	 *
+	 * @return	Integer
+	 */
+	public static function getFallbackTaskPresetID() {
+		$idPreset	= TodoyuSysmanagerExtConfManager::getExtConfValue('project', 'fallbacktaskpreset');
+
+		return intval($idPreset);
+	}
+
 }
 
 ?>
