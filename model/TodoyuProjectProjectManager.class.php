@@ -732,11 +732,7 @@ class TodoyuProjectProjectManager {
 	public static function getTaskTreeFilters() {
 		$filterConfig	= TodoyuProjectPreferences::getPref('tasktree-filters', 0, 0, true);
 
-		if( $filterConfig === false ) {
-			$filterConfig = array();
-		}
-
-		return $filterConfig;
+		return TodoyuArray::assure($filterConfig);
 	}
 
 
@@ -885,12 +881,12 @@ class TodoyuProjectProjectManager {
 		}
 
 			// If persons should be unique, group by ID (we don't care about the project roles)
-		if( $personUnique === true ) {
+		if( $personUnique ) {
 			$group	= 'pe.id';
 		}
 
 			// Limit to persons with active todoyu account
-		if( $withAccount === true ) {
+		if( $withAccount ) {
 			$where .= ' AND pe.is_active = 1';
 		}
 
@@ -958,7 +954,7 @@ class TodoyuProjectProjectManager {
 		$group	= 'pe.id';
 
 			// Limit to persons with active todoyu account
-		if( $withAccount === true ) {
+		if( $withAccount ) {
 			$where .= ' AND pe.is_active = 1';
 		}
 

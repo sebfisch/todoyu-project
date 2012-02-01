@@ -150,11 +150,7 @@ class TodoyuProjectPreferences {
 	public static function getExpandedTasks() {
 		$taskIDs = self::getPrefs('task-expanded');
 
-		if( $taskIDs === false ) {
-			$taskIDs = array();
-		}
-
-		return $taskIDs;
+		return TodoyuArray::assure($taskIDs);
 	}
 
 

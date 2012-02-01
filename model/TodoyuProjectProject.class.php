@@ -441,7 +441,7 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isEditable() {
-		return TodoyuProjectProjectRights::isEditAllowed() && $this->isLocked() === false;
+		return TodoyuProjectProjectRights::isEditAllowed() && !$this->isLocked();
 	}
 
 

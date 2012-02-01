@@ -261,7 +261,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		if( $idOwner !== 0 ) {
 				// Set up query parts array
 			$tables	= array(self::TABLE);
-			$compare= $negate === true ? '!= ' : '= ';
+			$compare= $negate ? '!= ' : '= ';
 			$where	= 'ext_project_task.id_person_owner ' . $compare . $idOwner;
 
 			$queryArray	= array(
@@ -387,8 +387,8 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		$queryParts	= false;
 
 		if( $value !== '' ) {
-			$logic		= ($negate === true) ? ' NOT LIKE ':' LIKE ';
-			$conjunction= ($negate === true) ? ' AND ':' OR ';
+			$logic		= $negate ? ' NOT LIKE ':' LIKE ';
+			$conjunction= $negate ? ' AND ':' OR ';
 
 			$tables	= array(self::TABLE);
 			$keyword= Todoyu::db()->escape($value);
@@ -469,7 +469,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		$queryParts	= false;
 
 		if( $idPerson !== 0 ) {
-			$logic = ($negate === true) ? '!=':'=';
+			$logic	= $negate ? '!=':'=';
 
 			$tables	= array(self::TABLE);
 			$where	= 'ext_project_task.id_person_create ' . $logic . ' ' . $idPerson;
@@ -535,8 +535,8 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$compare= $negate ? '!=' : '=';
 			$where	= '	ext_project_task.id_person_assigned ' . $compare . ' ' . intval($idPerson);
 
-			if( $negate === false ) {
-				$where	.= ' AND	ext_project_task.type	= ' . TASK_TYPE_TASK;
+			if( !$negate ) {
+				$where	.= ' AND ext_project_task.type	= ' . TASK_TYPE_TASK;
 			}
 
 			$queryParts	= array(
@@ -564,7 +564,10 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$tables	= array('ext_contact_mm_person_role');
 
 			$where	= Todoyu::db()->buildInArrayQuery($roleIDs, 'ext_contact_mm_person_role.id_role', true, $negate);
-			$where	.= ( $negate === false ) ? ' AND	ext_project_task.type	= ' . TASK_TYPE_TASK : '';
+
+			if( !$negate ) {
+				$where .= ' AND	ext_project_task.type	= ' . TASK_TYPE_TASK;
+			}
 
 			$join	= array('ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person');
 

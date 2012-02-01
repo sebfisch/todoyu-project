@@ -308,7 +308,7 @@ class TodoyuProjectTaskRights {
 			// If container, check if person can see the project
 		$seeProject	= TodoyuProjectProjectRights::isSeeAllowed($task->getProjectID());
 
-		if( $task->isContainer() || $seeProject === false ) {
+		if( $task->isContainer() || !$seeProject ) {
 			return $seeProject;
 		}
 

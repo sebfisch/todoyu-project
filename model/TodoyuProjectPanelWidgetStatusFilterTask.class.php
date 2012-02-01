@@ -71,10 +71,10 @@ class TodoyuProjectPanelWidgetStatusFilterTask extends TodoyuProjectPanelWidgetS
 	public function getSelectedStatuses() {
 		$statusIDs	= TodoyuProjectPreferences::getPref($this->pref, 0, AREA);
 
-		if( $statusIDs === false ) {
-			$statusIDs = TodoyuProjectTaskStatusManager::getStatusIDs();
-		} else {
+		if( $statusIDs ) {
 			$statusIDs = TodoyuArray::intExplode(',', $statusIDs);
+		} else {
+			$statusIDs = TodoyuProjectTaskStatusManager::getStatusIDs();
 		}
 
 		return $statusIDs;

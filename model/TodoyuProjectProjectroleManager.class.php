@@ -142,7 +142,7 @@ class TodoyuProjectProjectroleManager {
 
 		$projectroles	= TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
 
-		if( $parse === true ) {
+		if( $parse ) {
 			foreach($projectroles as $index => $projectrole) {
 				$projectroles[$index]['title'] = Todoyu::Label($projectrole['title']);
 			}

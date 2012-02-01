@@ -505,7 +505,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	public function isDeletable() {
 		$allowed	= TodoyuProjectTaskRights::isDeleteAllowed($this->getID());
 
-		return $allowed && ( $this->isLocked() === false );
+		return $allowed && !$this->isLocked();
 	}
 
 

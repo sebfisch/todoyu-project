@@ -74,10 +74,10 @@ class TodoyuProjectPanelWidgetStatusFilterProject extends TodoyuProjectPanelWidg
 	public function getSelectedStatuses() {
 		$statusIDs	= TodoyuProjectPreferences::getPref($this->pref, 0, AREA);
 
-		if( $statusIDs === false ) {
-			$statusIDs = TodoyuProjectProjectStatusManager::getStatusIDs();
-		} else {
+		if( $statusIDs ) {
 			$statusIDs = TodoyuArray::intExplode(',', $statusIDs);
+		} else {
+			$statusIDs = TodoyuProjectProjectStatusManager::getStatusIDs();
 		}
 
 		return $statusIDs;

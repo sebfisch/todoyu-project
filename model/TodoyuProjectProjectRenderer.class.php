@@ -223,7 +223,7 @@ class TodoyuProjectProjectRenderer {
 			$withDetails = TodoyuProjectPreferences::isProjectDetailsExpanded($idProject);
 		}
 
-		if( $withDetails === true ) {
+		if( $withDetails ) {
 			$data['details'] = self::renderProjectDetail($idProject);
 		}
 
@@ -570,7 +570,7 @@ class TodoyuProjectProjectRenderer {
 		}
 
 			// Render sub tasks
-		if( $withoutSubTasks === false && $data['hasSubtasks'] && $data['areSubtasksVisible'] ) {
+		if( !$withoutSubTasks && $data['hasSubtasks'] && $data['areSubtasksVisible'] ) {
 			$data['subtasks'] = self::renderSubTasks($idTask, $idTaskShow, $taskShowTab);
 		}
 

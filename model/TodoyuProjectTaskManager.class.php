@@ -285,7 +285,7 @@ class TodoyuProjectTaskManager {
 		$maxSorting	= Todoyu::db()->getFieldValue($field, $table, $where, $group, $order, $limit, 'sorting'); // getRecordByQuery($fields, $table, $where, $group);
 		TodoyuCache::enable();
 
-		if( $maxSorting === false ) {
+		if( !$maxSorting ) {
 			return 0;
 		} else {
 			return intval($maxSorting) + 1;
@@ -1495,7 +1495,7 @@ class TodoyuProjectTaskManager {
 		}
 
 			// If no container found, use project
-		if( $range === false ) {
+		if( !$range ) {
 			if( $idProject !== 0 ) {
 				$project	= TodoyuProjectProjectManager::getProject($idProject);
 			} elseif( $idTask !== 0 ) {
