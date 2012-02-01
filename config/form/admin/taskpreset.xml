@@ -75,7 +75,6 @@
 
 				<field type="select" name="id_person_assigned">
 					<label>project.task.attr.person_assigned</label>
-					<extraAttributes>onchange="Todoyu.Ext.project.Sysmanager.onChangeTaskpresetPersonAssigned(this)"</extraAttributes>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getInternalPersonOptions</function>
 					</source>
@@ -83,7 +82,6 @@
 
 				<field type="select" name="id_person_owner">
 					<label>project.task.attr.person_owner</label>
-					<extraAttributes>onchange="Todoyu.Ext.project.Sysmanager.onChangeTaskpresetPersonOwner(this)"</extraAttributes>
 					<source type="function">
 						<function>TodoyuProjectViewHelper::getPresetOwnerOptions</function>
 					</source>
