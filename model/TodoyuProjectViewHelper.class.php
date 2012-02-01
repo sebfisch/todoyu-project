@@ -49,23 +49,12 @@ class TodoyuProjectViewHelper {
 	 *
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
-	 * @todo	Use TodoyuArray::prependSelectOption() as soon as this extension requires core 2.2
 	 */
 	public static function getPresetOwnerOptions(TodoyuFormElement $field) {
 		$options	= TodoyuContactViewHelper::getInternalPersonOptions($field);
-		$select		= array(
-			'value'		=> 0,
-			'label'		=> 'project.ext.taskpreset.pleaseSelectOwner'
-		);
-		$separator	= array(
-			'value'		=> 0,
-			'label'		=> '---------------------------',
-			'disabled'	=> true
-		);
+		$label		= 'project.ext.taskpreset.pleaseSelectOwner';
 
-		array_unshift($options, $select, $separator);
-
-		return $options;
+		return TodoyuArray::prependSelectOption($options, $label);
 	}
 
 }
