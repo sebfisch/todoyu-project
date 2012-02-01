@@ -72,6 +72,7 @@
 	<label index="taskpreset.role_owner_fallback">Owner person with role, if not selectable</label>
 	<label index="taskpreset.option.none">No task preset selected</label>
 	<label index="taskpreset.quicktask_duration_days">Quicktask default duration in days</label>
+	<label index="taskpreset.pleaseSelectOwner">Dynamic: Task creator (default)</label>
 	<label index="form.validation.dateBefore">Date must be set before end date</label>
 	<label index="form.validation.title">Please enter a project title</label>
 	<label index="form.validation.company">A customer is required for a project</label>

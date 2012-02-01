@@ -1360,13 +1360,13 @@ class TodoyuProjectProjectManager {
 
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/project.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath, $idProject);
+		$form		= TodoyuFormManager::getForm($xmlPath, $idProject, array('quickcreate'=>true));
 
 			// Adjust form to needs of quick creation wizard
 		$form->setAttribute('action', '?ext=project&amp;controller=quickcreateproject');
 		$form->setAttribute('onsubmit', 'return false');
 		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateProject.save(this.form)');
-		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popups.close(\'quickcreate\')');
+		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', "Todoyu.Popups.close('quickcreate')");
 
 		return $form;
 	}
@@ -1469,7 +1469,6 @@ class TodoyuProjectProjectManager {
 	 * Get a project detail tab configuration
 	 *
 	 * @param	String		$tabKey
-	 * @param	Integer		$typeID
 	 * @return	Array
 	 */
 	public static function getTabConfig($tabKey) {
@@ -1486,6 +1485,31 @@ class TodoyuProjectProjectManager {
 	 */
 	public static function getDefaultTab($idProject) {
 		return TodoyuContentItemTabManager::getDefaultTab('project', 'project', $idProject);
+	}
+
+
+
+	/**
+	 * Add fallback task preset as default preset for new projects
+	 *
+	 * @param	Array		$data
+	 * @param	Integer		$idProject
+	 * @param	Array		$params
+	 * @return	Array
+	 */
+	public static function hookLoadPresetData(array $data, $idProject, array $params) {
+		$idProject	= intval($idProject);
+
+		if( $idProject === 0 ) {
+			if( !isset($data['id_taskpreset']) ) {
+				$idFallbackPreset	= TodoyuProjectManager::getFallbackTaskPresetID();
+				if( $idFallbackPreset !== 0 ) {
+					$data['id_taskpreset'] = $idFallbackPreset;
+				}
+			}
+		}
+
+		return $data;
 	}
 
 }

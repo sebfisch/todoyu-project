@@ -85,8 +85,9 @@
 					<label>project.task.attr.person_owner</label>
 					<extraAttributes>onchange="Todoyu.Ext.project.Sysmanager.onChangeTaskpresetPersonOwner(this)"</extraAttributes>
 					<source type="function">
-						<function>TodoyuContactViewHelper::getInternalPersonOptions</function>
+						<function>TodoyuProjectViewHelper::getPresetOwnerOptions</function>
 					</source>
+					<noPleaseSelect />
 				</field>
 
 			</elements>
@@ -99,7 +100,6 @@
 
 				<field type="text" name="quicktask_duration_days">
 					<label>project.ext.taskpreset.quicktask_duration_days</label>
-					<default>7</default>
 					<extraAttributes>onkeyup="Todoyu.Form.assistNumericInput(this,true)"</extraAttributes>
 				</field>
 

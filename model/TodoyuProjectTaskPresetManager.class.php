@@ -162,7 +162,7 @@ class TodoyuProjectTaskPresetManager {
 	 * @param	Integer		$idProject
 	 * @return	TodoyuProjectTaskPreset|Boolean
 	 */
-	private static function getTaskPresetOrFallback($idProject) {
+	public static function getTaskPresetOrFallback($idProject) {
 		$idProject	= intval($idProject);
 		$project	= TodoyuProjectProjectManager::getProject($idProject);
 		$taskPreset	= false;
@@ -184,7 +184,7 @@ class TodoyuProjectTaskPresetManager {
 	 *
 	 * @return	Boolean
 	 */
-	private static function hasFallbackTaskPreset() {
+	public static function hasFallbackTaskPreset() {
 		return TodoyuProjectManager::getFallbackTaskPresetID() !== 0;
 	}
 
@@ -195,7 +195,7 @@ class TodoyuProjectTaskPresetManager {
 	 *
 	 * @return	TodoyuProjectTaskPreset
 	 */
-	private static function getFallbackTaskPreset() {
+	public static function getFallbackTaskPreset() {
 		return self::getTaskPreset(TodoyuProjectManager::getFallbackTaskPresetID());
 	}
 

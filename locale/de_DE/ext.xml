@@ -71,6 +71,8 @@
 	<label index="taskpreset.role_assigned_fallback">Zugewiesen an Person mit Rolle, falls nicht wählbar</label>
 	<label index="taskpreset.role_owner_fallback">Eigner ist Person mit Rolle, falls nicht wählbar</label>
 	<label index="taskpreset.option.none">Keine Vorgaben</label>
+	<label index="taskpreset.quicktask_duration_days">Aufgabendauer in Tagen</label>
+	<label index="taskpreset.pleaseSelectOwner">Dynamisch: Ersteller der Aufgabe (Standard)</label>
 	<label index="form.validation.dateBefore">Datum muss vor dem End-Datum liegen</label>
 	<label index="form.validation.title">Bitte Projekt-Titel angeben</label>
 	<label index="form.validation.company">Ein Kunde ist zwingend erforderlich für ein Projekt</label>
@@ -83,7 +85,8 @@
 	<label index="js.project.deleted">Das Projekt wurde erfolgreich gelöscht</label>
 	<label index="ac.person.notFoundInfo">Es wurde keine Person gefunden deren Name die angegebenen Zeichen enthält.</label>
 	<label index="portal.tab.todos">Meine Aufgaben</label>
-	<label index="taskpreset.quicktask_duration_days">Aufgabendauer in Tagen</label>
 	<label index="export.csv">Projekte als CSV exportieren</label>
-	<label index="extconf.defaultTaskPreset">Standard Task Vorgabe</label>
+	<label index="extconf.taskPreset">Aufgabenvorlage</label>
+	<label index="extconf.fallbackTaskPreset">Standard Aufgabenvorlage</label>
+	<label index="extconf.fallbackInfo">Die Standard Aufgabenvorlage wird für Aufgaben in Projekten benutzt, die keine Aufgabenvorlage haben.</label>
 </labels>
