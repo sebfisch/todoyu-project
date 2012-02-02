@@ -99,6 +99,7 @@
 				<field type="text" name="quicktask_duration_days">
 					<label>project.ext.taskpreset.quicktask_duration_days</label>
 					<extraAttributes>onkeyup="Todoyu.Form.assistNumericInput(this,true)"</extraAttributes>
+					<default>1</default>
 				</field>
 
 			</elements>
