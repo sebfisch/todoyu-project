@@ -53,3 +53,7 @@
 .panelWidgetStatusFilter option.statusCustomer {
 	background-position:2px -2px;
 }
+
+.panelWidgetStatusFilter option.statusWaiting {
+	background-position:6px -295px;
+}

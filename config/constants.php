@@ -35,6 +35,7 @@ define('STATUS_ACCEPTED',	6);
 define('STATUS_REJECTED',	7);
 define('STATUS_CLEARED',	8);
 define('STATUS_WARRANTY',	9);
+define('STATUS_WAITING',	10);
 
 	// Basic task types
 define('TASK_TYPE_TASK',		1);

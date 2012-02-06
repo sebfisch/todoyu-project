@@ -76,6 +76,7 @@
 	<label index="status.rejected">Zurückgewiesen</label>
 	<label index="status.cleared">Verrechnet</label>
 	<label index="status.warranty">In Garantie</label>
+	<label index="status.waiting">Wartend</label>
 	<label index="cloneSubtasks.confirm">Unter-Aufgaben auch klonen?</label>
 	<label index="new.Task.defaultTitle">Neue Aufgabe</label>
 	<label index="new.Container.defaultTitle">Neuer Container</label>

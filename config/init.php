@@ -70,7 +70,7 @@ Todoyu::$CONFIG['EXT']['project']['STATUS']['PROJECT'] = array(
 	STATUS_WARRANTY		=> 'warranty',
 	STATUS_CLEARED		=> 'cleared'
 );
-	// Task status
+	// Task status keys (needed to convert status constants to resp. key strings, e.g. for rights checks)
 Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK'] = array(
 	STATUS_PLANNING		=> 'planning',
 	STATUS_OPEN			=> 'open',
@@ -79,7 +79,8 @@ Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK'] = array(
 	STATUS_DONE			=> 'done',
 	STATUS_ACCEPTED		=> 'accepted',
 	STATUS_REJECTED		=> 'rejected',
-	STATUS_CLEARED		=> 'cleared'
+	STATUS_CLEARED		=> 'cleared',
+	STATUS_WAITING		=> 'waiting'
 );
 	// Non-editable project status (tasks/containers in project cannot be modified)
 Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing'] = array(
@@ -95,7 +96,8 @@ Todoyu::$CONFIG['EXT']['project']['taskStatusTimeExceedingRelevant'] = array(
 	STATUS_OPEN,
 	STATUS_PROGRESS,
 	STATUS_CONFIRM,
-	STATUS_REJECTED
+	STATUS_REJECTED,
+	STATUS_WAITING,
 );
 
 
@@ -108,6 +110,7 @@ Todoyu::$CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
 	'tmpl'			=> 'ext/project/view/filterwidget/projectrole.tmpl',
 	'configFunc'	=> 'TodoyuProjectProjectFilter::prepareDataForProjectroleWidget'
 );
+
 
 
 /* ------------------------------

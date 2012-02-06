@@ -23,6 +23,7 @@
 	<label index="seetask.accepted:see">See task with status: Accepted</label>
 	<label index="seetask.rejected:see">See task with status: Rejected</label>
 	<label index="seetask.cleared:see">See task with status: Cleared</label>
+	<label index="seetask.waiting:see">See task with status: Waiting</label>
 	<label index="addtask">Add Task / Container</label>
 	<label index="addtask.addTaskInOwnProjects">Add task in own projects</label>
 	<label index="addtask.addViaQuickCreateHeadlet">Use quick task creation headlet</label>
@@ -37,6 +38,7 @@
 	<label index="addtask.accepted:create">Create task with status: Accepted</label>
 	<label index="addtask.rejected:create">Create task with status: Rejected</label>
 	<label index="addtask.cleared:create">Create task with status: Cleared</label>
+	<label index="addtask.waiting:create">Create task with status: Waiting</label>
 	<label index="edittask">Edit Task / Container</label>
 	<label index="edittask.editOwnTasks">Edit own tasks</label>
 	<label index="edittask.editTaskInOwnProjects">Edit task in own projects</label>
@@ -52,6 +54,7 @@
 	<label index="edittask.accepted:edit">Edit task with status: Accepted</label>
 	<label index="edittask.rejected:edit">Edit task with status: Rejected</label>
 	<label index="edittask.cleared:edit">Edit task with status: Cleared</label>
+	<label index="edittask.waiting:edit">Edit task with status: Waiting</label>
 	<label index="edittask.useTaskAndContainerClipboard">Cut, copy, paste and clone tasks/containers</label>
 	<label index="edittaskdetail">Edit Task Detail</label>
 	<label index="edittaskdetail.editStatus">Edit Status</label>
@@ -79,6 +82,7 @@
 	<label index="edittaskdetail.accepted:changeto">Change Status To: Accepted</label>
 	<label index="edittaskdetail.rejected:changeto">Change Status To: Rejected</label>
 	<label index="edittaskdetail.cleared:changeto">Change Status To: Cleared</label>
+	<label index="edittaskdetail.waiting:changeto">Change Status To: Waiting</label>
 	<label index="deletetask">Delete Task/Container</label>
 	<label index="deletetask.deleteOwnTasks">Delete own tasks</label>
 	<label index="deletetask.deleteTaskInOwnProjects">Delete task in own projects</label>

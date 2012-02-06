@@ -457,7 +457,7 @@ class TodoyuProjectTaskManager {
 	/**
 	 * Get the context menu items for a task/container
 	 *
-	 * @param	Integer		$idTask
+	 * @param	Int		    $idTask
 	 * @param	Array		$items
 	 * @return	Array		Config array for context menu
 	 */

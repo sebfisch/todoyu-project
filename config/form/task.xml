@@ -135,6 +135,7 @@
 
 				<field type="duration" name="estimated_workload">
 					<label>project.task.attr.estimated_workload</label>
+					<extraAttributes>onkeyup="Todoyu.Form.assistDurationInput(this)"</extraAttributes>
 					<validate>
 						<isNotZerotime msg="LLL:project.task.attr.is_estimatedworkload_public.error" />
 					</validate>

@@ -161,6 +161,12 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 				'label'		=> 'project.task.status.warranty',
 				'jsAction'	=> 'Todoyu.Ext.project.Task.updateStatus(#ID#, ' . STATUS_WARRANTY . ')',
 				'class'		=> 'taskContextMenu taskStatusWarranty'
+			),
+			'waiting'	=> array(
+				'key'		=> 'status-waiting',
+				'label'		=> 'project.task.status.waiting',
+				'jsAction'	=> 'Todoyu.Ext.project.Task.updateStatus(#ID#, ' . STATUS_WAITING . ')',
+				'class'		=> 'taskContextMenu taskStatusWaiting'
 			)
 		)
 	)

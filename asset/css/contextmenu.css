@@ -73,10 +73,6 @@
 	#contextmenu .status ul li a.taskContextMenu {
 		background-image:url(../img/taskstatus.png) !important;
 	}
-/*	#contextmenu .status ul lia .projectContextMenu {
-		background-image:url(../img/projectstatus.png) !important;
-	}
-*/
 
 #contextmenu .task-showinproject {
 	background-position:3px -718px;
@@ -185,6 +181,10 @@
 
 #contextmenu .taskStatusAccepted {
 	background-position:4px -267px;
+}
+
+#contextmenu .taskStatusWaiting {
+	background-position:4px -297px;
 }
 
 
