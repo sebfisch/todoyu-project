@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.3.0 - not released yet
+	* Added: Input validation of estimated duration field of task
 	* Added: New task/container status "waiting"
 	* Added: Getter for all fields (description, owner)
 	* Changed: Clarified sub tasks copy confirmation dialog
