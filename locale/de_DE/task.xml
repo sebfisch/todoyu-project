@@ -112,7 +112,7 @@
 	<label index="pasteNotAllowed">Sie können die Aufgabe nicht an dieser Stelle einfügen!</label>
 	<label index="ac.parenttask.notFoundInfo">Es wurde keine Aufgabe gefunden die diesen Text oder diese Tasknummer enthält.</label>
 	<label index="ac.project.notFoundInfo">Es wurde kein Projekt mit diesen Text im Titel gefunden.</label>
-	<label index="copySubtasks">Auch Unteraufgaben mitkopieren?</label>
+	<label index="copySubtasks">Auch Unteraufgaben mitkopieren?\n(Abbrechen = ohne Unteraufgaben kopieren)</label>
 	<label index="statusNotVisible">Mit dem geänderten Status ist diese Aufgabe nicht mehr für Sie sichtbar.</label>
 	<label index="default.date.date_1">Erfassungs-Datum</label>
 	<label index="default.date.date_2">Erfassungs-Datum + 1 Tag</label>

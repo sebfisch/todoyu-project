@@ -112,7 +112,7 @@
 	<label index="pasteNotAllowed">You can't paste the task at this position!</label>
 	<label index="ac.parenttask.notFoundInfo">No task of this name or number was found.</label>
 	<label index="ac.project.notFoundInfo">No project of this title name was found.</label>
-	<label index="copySubtasks">Copy All Subtasks?</label>
+	<label index="copySubtasks">Copy includes sub tasks?\n(Cancel = copy w/o sub tasks)</label>
 	<label index="statusNotVisible">With the new status, the task is no longer visible for you.</label>
 	<label index="default.date.date_1">Create date</label>
 	<label index="default.date.date_2">Create date + 1 day</label>

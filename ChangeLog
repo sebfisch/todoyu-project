@@ -3,6 +3,7 @@ todoyu project extension changelog
 project 1.3.0 - not released yet
 	* Added: New task/container status "waiting"
 	* Added: Getter for all fields (description, owner)
+	* Changed: Clarified sub tasks copy confirmation dialog
 	* Changed: Replaced title tag of task deadline/date_end in task header (was labeled wrong in german) by title of span, e.g. 2012.1.1. - 2012.12.31.
 	* Changed: Reworked specific task inline-tabs handling to use core's generic content item tabs handling instead
 	* Changed: Made task tabs differently configurable per task type (task / container)
