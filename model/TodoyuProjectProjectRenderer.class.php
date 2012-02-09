@@ -563,7 +563,7 @@ class TodoyuProjectProjectRenderer {
 			if( ! is_null($taskShowTab) && $idTask === $idTaskShow ) {
 				$activeTab	= trim(strtolower($taskShowTab));
 			} else {
-				$activeTab	= TodoyuProjectPreferences::getActiveTaskTab($idTask);
+				$activeTab	= TodoyuProjectPreferences::getActiveItemTab($idTask, TodoyuProjectTaskManager::getTask($idTask)->getTypeKey());
 			}
 
 			$data['details']= TodoyuProjectTaskRenderer::renderTaskDetail($idTask, $activeTab);

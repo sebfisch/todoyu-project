@@ -1,6 +1,8 @@
 todoyu project extension changelog
 
 project 1.3.0 - not released yet
+	* Bugfix: ActiveTab saving fixed
+	* Changed: JS-Handling for taskTabs moved to core
 	* Added: Input validation of estimated duration field of task
 	* Added: New task/container status "waiting"
 	* Added: Getter for all fields (description, owner)

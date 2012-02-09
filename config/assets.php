@@ -73,10 +73,6 @@ Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 			'position'	=> 102
 		),
 		array(
-			'file'		=> 'ext/project/asset/js/TaskTab.js',
-			'position'	=> 102
-		),
-		array(
 			'file'		=> 'ext/project/asset/js/Container.js',
 			'position'	=> 103
 		),

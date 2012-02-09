@@ -318,8 +318,8 @@ class TodoyuProjectPreferences {
 	 * @param	Integer		$idTask
 	 * @return	String
 	 */
-	public static function getActiveTaskTab($idTask) {
-		return TodoyuContentItemTabPreferences::getActiveTab('project', 'task', $idTask);
+	public static function getActiveItemTab($idTask, $itemKey) {
+		return TodoyuContentItemTabPreferences::getActiveTab('project', $itemKey, $idTask);
 	}
 
 
@@ -342,8 +342,8 @@ class TodoyuProjectPreferences {
 	 * @param	Integer		$idTask
 	 * @param	String		$tab
 	 */
-	public static function saveActiveTaskTab($idTask, $tab) {
-		TodoyuContentItemTabPreferences::saveActiveTab('project', 'task', $idTask, $tab);
+	public static function saveActiveItemTab($idItem, $tab, $itemKey) {
+		TodoyuContentItemTabPreferences::saveActiveTab('project', $itemKey, $idItem, $tab);
 	}
 
 

@@ -284,7 +284,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		TodoyuProjectPreferences::saveTaskExpandedStatus($idTask, true);
 
 		if( $tab !== '' ) {
-			TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tab);
+			TodoyuProjectPreferences::saveActiveItemTab($idTask, $tab, TodoyuProjectTaskManager::getTask($idTask)->getTypeKey());
 		}
 
 			// Set task acknowledged
@@ -429,7 +429,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$tab	= $params['tab'];
 
 		TodoyuProjectTaskRights::restrictSee($idTask);
-		TodoyuProjectPreferences::saveActiveTaskTab($idTask, $tab);
+		TodoyuProjectPreferences::saveActiveItemTab($idTask, $tab, TodoyuProjectTaskManager::getTask($idTask)->getTypeKey());
 
 		return TodoyuContentItemTabRenderer::renderTabContent('project', 'task', $idTask, $tab);
 	}
