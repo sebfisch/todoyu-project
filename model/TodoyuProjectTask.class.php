@@ -298,8 +298,20 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * Get start date
 	 *
 	 * @return	Integer
+	 * @deprecated
 	 */
 	public function getStartDate() {
+		return $this->getDateStart();
+	}
+
+
+
+	/**
+	 * Get start date
+	 *
+	 * @return	Integer
+	 */
+	public function getDateStart() {
 		return intval($this->get('date_start'));
 	}
 
@@ -309,8 +321,20 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * Get end date
 	 *
 	 * @return	Integer
+	 * @depreceated
 	 */
 	public function getEndDate() {
+		return $this->getDateEnd();
+	}
+
+
+
+	/**
+	 * Get end date
+	 *
+	 * @return	Integer
+	 */
+	public function getDateEnd() {
 		return intval($this->get('date_end'));
 	}
 
