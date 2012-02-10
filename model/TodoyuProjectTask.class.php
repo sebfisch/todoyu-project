@@ -330,12 +330,28 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Get end date
+	 * Get end date (or fallback to deadline if enabled
 	 *
+	 * @param	Boolean		$fallbackDeadline
 	 * @return	Integer
 	 */
-	public function getDateEnd() {
-		return intval($this->get('date_end'));
+	public function getDateEnd($fallbackDeadline = false) {
+		$dateEnd	= intval($this->get('date_end'));
+
+		return $dateEnd === 0 && $fallbackDeadline ? $this->getDateDeadline() : $dateEnd;
+	}
+
+
+
+	/**
+	 * Get deadline date
+	 *
+	 * @deprecated
+	 * @see		getDateDeadline
+	 * @return	Integer
+	 */
+	public function getDeadlineDate() {
+		return $this->getDateDeadline();
 	}
 
 
@@ -345,7 +361,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 *
 	 * @return	Integer
 	 */
-	public function getDeadlineDate() {
+	public function getDateDeadline() {
 		return intval($this->get('date_deadline'));
 	}
 
