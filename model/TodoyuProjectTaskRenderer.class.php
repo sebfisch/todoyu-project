@@ -206,7 +206,30 @@ class TodoyuProjectTaskRenderer {
 	 * @return	String
 	 */
 	public static function renderTaskEditForm($idTask, $type = TASK_TYPE_TASK) {
-		$idTask		= intval($idTask);
+		$idTask	= intval($idTask);
+
+		$form	= self::getEditTaskForm($idTask, $type);
+
+			// Render
+		$tmpl	= 'ext/project/view/task-edit.tmpl';
+		$data	= array(
+			'idTask'	=> $idTask,
+			'formhtml'	=> $form->render()
+		);
+
+		return Todoyu::render($tmpl, $data);
+	}
+
+
+
+	/**
+	 * @param	Integer $idTask
+	 * @param	Integer $type
+	 * @return	TodoyuForm
+	 */
+	public static function getEditTaskForm($idTask, $type) {
+		$idTask	= intval($idTask);
+
 		$task		= TodoyuProjectTaskManager::getTask($idTask);
 		$xmlPath	= 'ext/project/config/form/task.xml';
 
@@ -224,14 +247,7 @@ class TodoyuProjectTaskRenderer {
 			// Set form data
 		$form->setFormData($data);
 
-			// Render
-		$tmpl	= 'ext/project/view/task-edit.tmpl';
-		$data	= array(
-			'idTask'	=> $idTask,
-			'formhtml'	=> $form->render()
-		);
-
-		return Todoyu::render($tmpl, $data);
+		return $form;
 	}
 
 

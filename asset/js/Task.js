@@ -1371,7 +1371,7 @@ Todoyu.Ext.project.Task = {
 			// Fade out the "not acknowledged" icon if its there
 		this.fadeAcknowledgeIcon.delay(1, idTask);
 
-		Todoyu.send(url,  options);
+		Todoyu.send(url, options);
 	},
 
 
