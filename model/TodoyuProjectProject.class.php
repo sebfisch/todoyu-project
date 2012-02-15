@@ -156,6 +156,8 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	/**
 	 * Get project start date
 	 *
+	 * @deprecated
+	 * @see		getDateStart
 	 * @return	Integer
 	 */
 	public function getStartDate() {
@@ -165,8 +167,21 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 
 
 	/**
+	 * Get project start date
+	 *
+	 * @return	Integer
+	 */
+	public function getDateStart() {
+		return $this->getInt('date_start');
+	}
+
+
+
+	/**
 	 * Get project end date
 	 *
+	 * @deprecated
+	 * @see		getDateEnd
 	 * @return	Integer
 	 */
 	public function getEndDate() {
@@ -176,8 +191,21 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 
 
 	/**
+	 * Get project end date
+	 *
+	 * @return	Integer
+	 */
+	public function getDateEnd() {
+		return $this->getInt('date_end');
+	}
+
+
+
+	/**
 	 * Get project deadline date
 	 *
+	 * @deprecated
+	 * @see		getDateDeadline
 	 * @return	Integer
 	 */
 	public function getDeadlineDate() {
@@ -187,14 +215,25 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 
 
 	/**
+	 * Get project deadline date
+	 *
+	 * @return	Integer
+	 */
+	public function getDateDeadline() {
+		return $this->getInt('date_deadline');
+	}
+
+
+
+	/**
 	 * Get project range
 	 *
 	 * @return	Array
 	 */
-	public function getRange() {
+	public function getRangeDates() {
 		return array(
-			'start'	=> $this->getStartDate() === 0 ? $this->get('date_create') : $this->getStartDate(),
-			'end'	=> $this->getDeadlineDate() === 0 ? $this->getEndDate() === 0 ? NOW : $this->getEndDate() : $this->getDeadlineDate()
+			'start'	=> $this->getDateStart() === 0 ? $this->getDateCreate() : $this->getDateStart(),
+			'end'	=> $this->getDateDeadline() === 0 ? $this->getDateEnd() === 0 ? NOW : $this->getDateEnd() : $this->getDateDeadline()
 		);
 	}
 

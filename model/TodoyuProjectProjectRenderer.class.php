@@ -361,7 +361,7 @@ class TodoyuProjectProjectRenderer {
 		$rootTaskIDs	= TodoyuProjectProjectManager::getRootTaskIDs($idProject);
 
 			// Set rootline of the task, if a task is forced to be shown
-		self::$openRootline = $idTaskShow === 0 ? array() : TodoyuProjectTaskManager::getTaskRootline($idTaskShow);
+		self::$openRootline = $idTaskShow === 0 ? array() : TodoyuProjectTaskManager::getRootlineTaskIDs($idTaskShow);
 
 			// Tree HTML buffer
 		$treeHtml	= '';
@@ -395,7 +395,7 @@ class TodoyuProjectProjectRenderer {
 
 			// Load open rootline if necessary
 		if( $idTaskShow > 0 && sizeof(self::$openRootline) === 0 ) {
-			self::$openRootline	= TodoyuProjectTaskManager::getTaskRootline($idTaskShow);
+			self::$openRootline	= TodoyuProjectTaskManager::getRootlineTaskIDs($idTaskShow);
 		}
 
 		$subTaskIDs	= TodoyuProjectTaskManager::getSubTaskIDs($idTask);

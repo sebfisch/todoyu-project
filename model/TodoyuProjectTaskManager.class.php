@@ -1474,7 +1474,7 @@ class TodoyuProjectTaskManager {
 		$range		= false;
 
 		if( $idTask > 0 ) {
-			$rootLineTasks	= self::getRootlineTasks($idTask);
+			$rootLineTasks	= self::getRootlineTasksData($idTask);
 
 
 			if( $checkSelf !== true ) {
@@ -1539,9 +1539,9 @@ class TodoyuProjectTaskManager {
 	 * Get the root line of a task (all parent task IDs)
 	 *
 	 * @param	Integer		$idTask
-	 * @return	Array
+	 * @return	Integer[]
 	 */
-	public static function getTaskRootline($idTask) {
+	public static function getRootlineTaskIDs($idTask) {
 		$idTask		= intval($idTask);
 
 			// Check whether already cached
@@ -1550,9 +1550,8 @@ class TodoyuProjectTaskManager {
 		if( TodoyuCache::isIn($idCache) ) {
 			$rootLine	= TodoyuCache::get($idCache);
 		} else {
+			$rootLine	= array();
 			$idParent	= self::getParentTaskID($idTask);
-
-			$rootLine	= array($idTask);
 
 			while( $idParent !== 0 ) {
 				$rootLine[] = $idParent;
@@ -1574,10 +1573,10 @@ class TodoyuProjectTaskManager {
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function getRootlineTasks($idTask) {
+	public static function getRootlineTasksData($idTask) {
 		$idTask	= intval($idTask);
 
-		$rootLine	= self::getTaskRootline($idTask);
+		$rootLine	= self::getRootlineTaskIDs($idTask);
 		$list		= implode(',', $rootLine);
 
 		$where	= 'id IN(' . $list . ')';
@@ -1585,6 +1584,21 @@ class TodoyuProjectTaskManager {
 
 		return TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);
 	}
+
+
+
+	/**
+	 * Get all tasks which are in the rootline of a task
+	 *
+	 * @param	Integer		$idTask
+	 * @return	TodoyuProjectTask[]
+	 */
+	public static function getRootlineTasks($idTask) {
+		$taskIDs	= self::getRootlineTaskIDs($idTask);
+
+		return TodoyuRecordManager::getRecordList('TodoyuProjectTask', $taskIDs);
+	}
+
 
 
 
