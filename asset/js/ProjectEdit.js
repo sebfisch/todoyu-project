@@ -127,7 +127,7 @@ Todoyu.Ext.project.Project.Edit = {
 	 * @param	{Number}	idProject
 	 */
 	onProjectCreated: function(idProject) {
-		if( Todoyu.getArea() === 'project' ) {
+		if( Todoyu.isInArea('project') ) {
 			this.ext.ProjectTaskTree.openProject(idProject);
 
 			Todoyu.Ui.scrollToTop();

@@ -258,12 +258,10 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	public function hasTabs() {
 			// Check for configured tabs
 		$tabsConfig	= Todoyu::$CONFIG['EXT']['project']['project']['tabs'];
-		$has		= is_array($tabsConfig) && sizeof($tabsConfig) > 0;
+		$hasTabs	= is_array($tabsConfig) && sizeof($tabsConfig) > 0;
 
 			// Call hooks
-		$has	= TodoyuHookManager::callHookDataModifier('project', 'projectHasTabs', $has, array($this->getID()));
-
-		return $has;
+		return TodoyuHookManager::callHookDataModifier('project', 'projectHasTabs', $hasTabs, array($this->getID()));
 	}
 
 

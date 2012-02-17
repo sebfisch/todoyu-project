@@ -51,7 +51,7 @@ Todoyu.Ext.project = {
 	init: function() {
 		this.registerHooks();
 
-		if( Todoyu.getArea() === 'portal' ) {
+		if( Todoyu.isInArea('portal') ) {
 			this.Portal.init();
 		}
 	},
@@ -68,7 +68,7 @@ Todoyu.Ext.project = {
 //		Todoyu.Hook.add('project.task.saved', this.Task.onProjectTaskAdded(response);
 
 			// Register area specific callbacks
-		if( Todoyu.getArea() === 'project' ) {
+		if( Todoyu.isInArea('project') ) {
 			Todoyu.Hook.add('panelwidget.projectlist.onProjectClick', this.ProjectTaskTree.onPanelwidgetProjectlistProjectClick.bind(this.ProjectTaskTree));
 		}
 	},

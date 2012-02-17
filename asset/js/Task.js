@@ -219,7 +219,7 @@ Todoyu.Ext.project.Task = {
 			// Attach context menu to all tasks (so the pasted ones get one too), re-init drag&drop
 		this.ext.ContextMenuTask.attach();
 
-		if( Todoyu.getArea() === 'project' ) {
+		if( Todoyu.isInArea('project') ) {
 			this.ext.TaskTree.reloadSortable();
 		}
 
@@ -285,7 +285,7 @@ Todoyu.Ext.project.Task = {
 			// Attach context menu, re-init drag&drop
 		this.addContextMenu(idTask);
 
-		if( Todoyu.getArea() === 'project' ) {
+		if( Todoyu.isInArea('project') ) {
 			this.ext.TaskTree.reloadSortable();
 		}
 
@@ -883,7 +883,7 @@ Todoyu.Ext.project.Task = {
 
 		this.addContextMenu(idTask);
 
-		if( Todoyu.getArea() === 'project' ) {
+		if( Todoyu.isInArea('project') ) {
 			this.ext.TaskTree.reloadSortable();
 		}
 	},

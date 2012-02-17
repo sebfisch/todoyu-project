@@ -154,6 +154,7 @@ Todoyu.Ext.project.Task.Edit = {
 	 * Evoked after edited task having been saved. Handles display of success / failure message and refresh of saved task / failed form.
 	 *
 	 * @method	onSaved
+	 * @param	{Element}			form
 	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(form, response) {

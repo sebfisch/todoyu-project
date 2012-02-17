@@ -107,7 +107,7 @@ Todoyu.Ext.project.Project = {
 	onRemoved: function(idProject) {
 		Todoyu.notifySuccess('[LLL:project.ext.js.project.deleted]');
 
-		if( Todoyu.getArea() == 'project' ) {
+		if( Todoyu.isInArea('project') ) {
 			this.ext.ProjectTaskTree.removeProject(idProject);
 			this.ext.ProjectTaskTree.openFirstTab();
 			this.removeProjectSubNaviItem(idProject);
@@ -255,7 +255,7 @@ Todoyu.Ext.project.Project = {
 	 * @param	{Number}		idProject
 	 */
 	addContainer: function(idProject) {
-		if( Todoyu.getArea() === 'project' ) {
+		if( Todoyu.isInArea('project') ) {
 			this.ext.Task.addContainerToProject(idProject);
 		} else {
 			Todoyu.goTo('project', 'ext', {
