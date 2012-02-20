@@ -321,7 +321,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * Get end date
 	 *
 	 * @return	Integer
-	 * @depreceated
+	 * @deprecated
 	 */
 	public function getEndDate() {
 		return $this->getDateEnd();
@@ -339,6 +339,17 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 		$dateEnd	= intval($this->get('date_end'));
 
 		return $dateEnd === 0 && $fallbackDeadline ? $this->getDateDeadline() : $dateEnd;
+	}
+
+
+
+	/**
+	 * Check whether date end is set
+	 *
+	 * @return	Boolean
+	 */
+	public function hasDateEnd() {
+		return $this->getInt('date_end') > 0;
 	}
 
 
@@ -362,7 +373,30 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getDateDeadline() {
-		return intval($this->get('date_deadline'));
+		return $this->getInt('date_deadline');
+	}
+
+
+
+	/**
+	 * Check whether date deadline is set
+	 *
+	 * @return	Boolean
+	 */
+	public function hasDateDeadline() {
+		return $this->getInt('date_deadline') !== 0;
+	}
+
+
+
+	/**
+	 * Check whether the deadline is exceeded
+	 *
+	 * @return	Boolean
+	 * @deprecated
+	 */
+	public function isDeadlineExceeded() {
+		return $this->isDateDeadlineExceeded();
 	}
 
 
@@ -372,8 +406,8 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 *
 	 * @return	Boolean
 	 */
-	public function isDeadlineExceeded() {
-		return $this->getDeadlineDate() < NOW;
+	public function isDateDeadlineExceeded() {
+		return $this->getDateDeadline() < NOW;
 	}
 
 
@@ -382,8 +416,20 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * Check tasks in date-relevant status for end date being exceeded
 	 *
 	 * @return	Boolean
+	 * @deprecated
 	 */
 	public function isEndDateExceeded() {
+		return $this->isDateEndExceeded();
+	}
+
+
+
+	/**
+	 * Check whether date end is in the past
+	 *
+	 * @return	Boolean
+	 */
+	public function isDateEndExceeded() {
 		return $this->getEndDate() < NOW;
 	}
 
@@ -511,12 +557,35 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 
 
 	/**
+	 * Check whether a person is assigned
+	 *
+	 * @return	Boolean
+	 */
+	public function hasPersonAssigned() {
+		return $this->getInt('id_person_assigned') !== 0;
+	}
+
+
+
+	/**
 	 * Get owner person ID
 	 *
 	 * @return	Integer
 	 */
 	public function getOwnerPersonID() {
-		return intval($this->get('id_person_owner'));
+		return $this->getInt('id_person_owner');
+	}
+
+
+
+
+	/**
+	 * Check whether an owner is defined
+	 *
+	 * @return	Boolean
+	 */
+	public function hasOwnerPerson() {
+		return $this->getOwnerPersonID() !== 0;
 	}
 
 

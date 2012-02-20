@@ -132,11 +132,6 @@ Data modification
 	@param	Integer		$idTask
 	@param	Integer		$infoLevel
 
-#taskdataattributes
-	Modify task data attributes before rendering
-	@param	Array		$data
-	@param	Integer		$idTask
-
 #taskIcons
 	Collect task icons
 	@param	Array		$data

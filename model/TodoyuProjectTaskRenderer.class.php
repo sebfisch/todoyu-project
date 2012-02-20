@@ -154,44 +154,17 @@ class TodoyuProjectTaskRenderer {
 	 * @return	String
 	 */
 	public static function renderTaskData($idTask) {
-		$idTask	= intval($idTask);
+		$idTask		= intval($idTask);
+		$task		= TodoyuProjectTaskManager::getTask($idTask);
 
-			// Get task object
-		$task	= TodoyuProjectTaskManager::getTask($idTask);
+		$attributes	= TodoyuProjectTaskManager::getAllTaskAttributes($idTask);
+		$attributes	= TodoyuArray::sortByLabel($attributes, 'position');
 
 		$tmpl	= 'ext/project/view/task-data.tmpl';
-
-			// Get task template data
-		$data			= $task->getTemplateData(0);
-		$data['data']	= TodoyuProjectTaskManager::getTaskInfos($idTask);
-
-		$fieldKeys		= TodoyuArray::getColumn($data['data'], '__key');
-		$fieldIndexes	= array_flip($fieldKeys);
-
-// @todo	move rights and internal-only access restrictions into config and make removal generic
-			// Non-internal person? remove estimated time
-		if( ! Todoyu::person()->isInternal() ) {
-			unset($data['data'][$fieldIndexes['estimated_workload']]);
-		}
-
-			// Person can only see public tasks?
-		if( ! Todoyu::person()->isInternal() || ! Todoyu::allowed('project', 'seetask:seeAll') ) {
-				// Remove visibility info
-			unset($data['data'][$fieldIndexes['is_public']]);
-		}
-
-			// Remove info about task owner/creator if not visible to current user
-		if( ! Todoyu::allowed('contact', 'person:seeAllPersons') ) {
-			$allowedPersonIDs	= TodoyuContactPersonRights::getPersonIDsAllowedToBeSeen();
-
-			if( ! in_array($task->getPersonID('owner'), $allowedPersonIDs) ) {
-				unset($data['data'][$fieldIndexes['person_owner']]);
-			}
-
-			if( ! in_array($task->getPersonID('create'), $allowedPersonIDs) ) {
-				unset($data['data'][$fieldIndexes['person_create']]);
-			}
-		}
+		$data	= array(
+			'task'		=> $task->getTemplateData(0),
+			'attributes'=> $attributes
+		);
 
 		return Todoyu::render($tmpl, $data);
 	}

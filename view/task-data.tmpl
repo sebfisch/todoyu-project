@@ -1,20 +1,20 @@
 <div class="left description">
-	{substituteLinkableElements(cleanHtml($description))}
+	{substituteLinkableElements(cleanHtml($task.description))}
 </div>
 <div class="right properties">
 	<dl>
-	{foreach $data info}
-		{$info.wrap.0}
-		<dt{if $info.className} class="{$info.className}"{/if}>{Label $info.label}</dt>
-		<dd{if $info.id} id="{$info.id}"{/if}{if $info.className} class="{$info.className}"{/if}{if $info.title} title="{$info.title}"{/if}>
-			{if $info.className}<span class="icon"></span>{/if}
-			{if $info.value}
-				{$info.value}
+	{foreach $attributes attribute}
+		{$attribute.wrap.0}
+		<dt{if $attribute.className} class="{$attribute.className}"{/if}>{Label $attribute.label}</dt>
+		<dd{if $attribute.id} id="{$attribute.id}"{/if}{if $attribute.className} class="{$attribute.className}"{/if}{if $attribute.title} title="{$attribute.title}"{/if}>
+			{if $attribute.className}<span class="icon"></span>{/if}
+			{if $attribute.value}
+				{$attribute.value}
 			{else}
 				&#8203;
 			{/if}
 		</dd>
-		{$info.wrap.1}
+		{$attribute.wrap.1}
 	{/foreach}
 	</dl>
 </div>

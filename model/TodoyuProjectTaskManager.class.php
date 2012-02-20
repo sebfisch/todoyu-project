@@ -860,14 +860,11 @@ class TodoyuProjectTaskManager {
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function getTaskInfos($idTask) {
+	public static function getAllTaskAttributes($idTask) {
 		$idTask	= intval($idTask);
 		$data	= array();
 
-		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskdata', $data, array($idTask));
-		$data	= TodoyuArray::sortByLabel($data, 'position');
-
-		return $data;
+		return TodoyuHookManager::callHookDataModifier('project', 'taskdata', $data, array($idTask));
 	}
 
 
@@ -902,30 +899,30 @@ class TodoyuProjectTaskManager {
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function getTaskDataAttributes(array $data, $idTask) {
+	public static function getTaskAttributes(array $data, $idTask) {
 		$idTask		= intval($idTask);
 		$task		= TodoyuProjectTaskManager::getTask($idTask);
 
-		$isInternalOrAdmin	= Todoyu::person()->isInternal() || TodoyuAuth::isAdmin();
-
-		$info	= array();
+		$isInternal			= TodoyuAuth::isInternal();
+		$visiblePersonIDs	= TodoyuContactPersonRights::getPersonIDsAllowedToBeSeen();
+		$seeAllPersons		= Todoyu::allowed('contact', 'person:seeAllPersons');
 
 			// Attributes which are only for tasks (not relevant for containers)
 		if( $task->isTask() ) {
 				// Date end (if set) (internal deadline)
-			if( $task->getEndDate() > 0 && $isInternalOrAdmin ) {
-				$formatEnd	= self::getTaskDetailsDateFormat($task->getEndDate());
-				$info['date_end'] = array(
+			if( $isInternal && $task->hasDateEnd()  ) {
+				$formatEnd	= self::getTaskDetailsDateFormat($task->getDateEnd());
+				$data['date_end'] = array(
 					'label'		=> 'project.task.attr.date_end',
-					'value'		=> TodoyuTime::format($task->getEndDate(), $formatEnd),
+					'value'		=> TodoyuTime::format($task->getDateEnd(), $formatEnd),
 					'position'	=> 20,
-					'className'	=> $task->isStatusTimeExceedingRelevant() && $task->isEndDateExceeded() ? 'red' : ''
+					'className'	=> $task->isStatusTimeExceedingRelevant() && $task->isDateEndExceeded() ? 'red' : ''
 				);
 			}
 
 				// Person assigned
-			if( $task->getAssignedPersonID() !== 0 && $isInternalOrAdmin ) {
-				$info['person_assigned']	= array(
+			if( $isInternal && $task->hasPersonAssigned() ) {
+				$data['person_assigned']	= array(
 					'label'		=> 'project.task.attr.person_assigned',
 					'value'		=> $task->getAssignedPerson()->getLabel(),
 					'position'	=> 60,
@@ -934,7 +931,7 @@ class TodoyuProjectTaskManager {
 			}
 
 				// Activity type
-			$info['activity'] = array(
+			$data['activity'] = array(
 				'label'		=> 'project.task.attr.activity',
 				'value'		=> $task->getActivity()->getTitle(),// 'Internes / Administration',
 				'position'	=> 90,
@@ -943,8 +940,8 @@ class TodoyuProjectTaskManager {
 
 
 				// Estimated workload
-			if( $task->hasEstimatedWorkload() ) {
-				$info['estimated_workload']	= array(
+			if( $isInternal && $task->hasEstimatedWorkload() ) {
+				$data['estimated_workload']	= array(
 					'label'		=> 'project.task.attr.estimated_workload',
 					'value'		=> TodoyuTime::sec2hour($task->getEstimatedWorkload()),
 					'position'	=> 100,
@@ -953,9 +950,9 @@ class TodoyuProjectTaskManager {
 			}
 
 				// Date create
-			$info['date_create']	= array(
+			$data['date_create']	= array(
 				'label'		=> 'project.task.attr.date_create',
-				'value'		=> TodoyuTime::format($task->get('date_create'), 'datetime'),
+				'value'		=> TodoyuTime::format($task->getDateCreate(), 'datetime'),
 				'position'	=> 190,
 				'className'	=> ''
 			);
@@ -966,11 +963,11 @@ class TodoyuProjectTaskManager {
 			// Attributes of tasks and containers
 
 			// Date start
-		if( $task->getStartDate() > 0 && $isInternalOrAdmin ) {
-			$formatStart = self::getTaskDetailsDateFormat($task->getStartDate());
-			$info['date_start']	= array(
+		if( $isInternal ) {
+			$dateFormat = self::getTaskDetailsDateFormat($task->getDateStart());
+			$data['date_start']	= array(
 				'label'		=> 'project.task.attr.date_start',
-				'value'		=> TodoyuTime::format($task->getStartDate(), $formatStart),
+				'value'		=> TodoyuTime::format($task->getDateStart(), $dateFormat),
 				'position'	=> 10,
 				'className'	=> 'sectionStart'
 			);
@@ -978,18 +975,18 @@ class TodoyuProjectTaskManager {
 
 
 			// Date deadline
-		if( $task->getDeadlineDate() > 0 ) {
-			$formatDeadline	= self::getTaskDetailsDateFormat($task->getDeadlineDate());
-			$info['date_deadline']	= array(
+		if( $task->hasDateDeadline() ) {
+			$dateFormat	= self::getTaskDetailsDateFormat($task->getDateDeadline());
+			$data['date_deadline']	= array(
 				'label'		=> 'project.task.attr.date_deadline',
-				'value'		=> TodoyuTime::format($task->getDeadlineDate(), $formatDeadline),
+				'value'		=> TodoyuTime::format($task->getDateDeadline(), $dateFormat),
 				'position'	=> 30,
-				'className'	=> $task->isStatusTimeExceedingRelevant() && $task->isDeadlineExceeded() ? 'red' : ''
+				'className'	=> $task->isStatusTimeExceedingRelevant() && $task->isDateDeadlineExceeded() ? 'red' : ''
 			);
 		}
 
 			// Status
-		$info['status']	= array(
+		$data['status']	= array(
 			'label'		=> 'core.global.status',
 			'value'		=> $task->getStatusLabel(),
 			'position'	=> 50,
@@ -997,35 +994,38 @@ class TodoyuProjectTaskManager {
 		);
 
 			// Person owner
-		if( $task->getPersonID('owner') !== 0 ) {
-			$info['person_owner'] = array(
-				'label'		=> $task->isContainer() ? 'project.task.container.attr.person_owner' : 'project.task.attr.person_owner',
-				'value'		=> $task->getPerson('owner')->getLabel(),
-				'position'	=> 70,
-				'className'	=> 'sectionStart'
-			);
+		if( $task->hasOwnerPerson() ) {
+			if( $seeAllPersons || in_array($task->getOwnerPersonID(), $visiblePersonIDs) ) {
+				$data['person_owner'] = array(
+					'label'		=> $task->isContainer() ? 'project.task.container.attr.person_owner' : 'project.task.attr.person_owner',
+					'value'		=> $task->getOwnerPerson()->getLabel(),
+					'position'	=> 70,
+					'className'	=> 'sectionStart'
+				);
+			}
 		}
 
 			// Task creator: Different person owns / created task? have both displayed
-		if( $task->getPersonID('creator') !== 0 && !$task->isOwnerAndCreatorSame() ) {
-			$info['person_create'] = array(
-				'label'		=> 'project.task.attr.person_create',
-				'value'		=> $task->getPerson('create')->getLabel(),
-				'position'	=> 65,
-				'className'	=> ''
-			);
+		if( !$task->isOwnerAndCreatorSame() ) {
+			if( $seeAllPersons || in_array($task->getOwnerPersonID(), $visiblePersonIDs) ) {
+				$data['person_create'] = array(
+					'label'		=> 'project.task.attr.person_create',
+					'value'		=> $task->getPerson('create')->getLabel(),
+					'position'	=> 65,
+					'className'	=> ''
+				);
+			}
 		}
 
 			// Public
-		$info['is_public']	= array(
-			'label'		=> $task->isContainer() ? 'project.task.container.attr.is_public' : 'project.task.attr.is_public',
-			'value'		=> Todoyu::Label('project.task.attr.is_public.' . ($task->isPublic() ? 'public' : 'private') . ($task->isContainer() ? '.container' : '')) ,
-			'position'	=> 110,
-			'className'	=> ''
-		);
-
-		$data	= array_merge($data, $info);
-		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskdataattributes', $data, array($idTask));
+		if( $isInternal ) {
+			$data['is_public']	= array(
+				'label'		=> $task->isContainer() ? 'project.task.container.attr.is_public' : 'project.task.attr.is_public',
+				'value'		=> Todoyu::Label('project.task.attr.is_public.' . ($task->isPublic() ? 'public' : 'private') . ($task->isContainer() ? '.container' : '')) ,
+				'position'	=> 110,
+				'className'	=> ''
+			);
+		}
 
 		return $data;
 	}
