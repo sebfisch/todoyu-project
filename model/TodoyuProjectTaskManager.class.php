@@ -1439,20 +1439,28 @@ class TodoyuProjectTaskManager {
 		switch( $configValue ) {
 				// Day of creation (NOW)
 			case 1:
-				$date	= TodoyuTime::getStartOfDay();
+				$date	= TodoyuTime::getDayStart();
 				break;
 
 				// Creation day + 1, 2, 3 days
 			case 2:	case 3:	case 4:
 				$time	= NOW + TodoyuTime::SECONDS_DAY * ($configValue - 1);
-				$date	= TodoyuTime::getStartOfDay($time);
+				$date	= TodoyuTime::getDayStart($time);
 				break;
 
 				// Creation day + 1, 2 weeks
 			case 7:	case 14:
 				$time	= NOW + TodoyuTime::SECONDS_DAY * $configValue;
-				$date	= TodoyuTime::getStartOfDay($time);
+				$date	= TodoyuTime::getDayStart($time);
 				break;
+		}
+
+			// Prevent date on weekend
+		$weekDay		= date('w', $date);
+		$weekendDays	= TodoyuTime::getWeekEndDayIndexes();
+			// Add two days, if the date is during a weekend
+		if( in_array($weekDay, $weekendDays) ) {
+			$date	= TodoyuTime::addDays($date, 2);
 		}
 
 		return $date;
