@@ -217,11 +217,7 @@ Todoyu.Ext.project.Task = {
 		}
 
 			// Attach context menu to all tasks (so the pasted ones get one too), re-init drag&drop
-		this.ext.ContextMenuTask.attach();
-
-		if( Todoyu.isInArea('project') ) {
-			this.ext.TaskTree.reloadSortable();
-		}
+		this.initTask(idTask);
 
 			// Highlight the new pasted task
 		this.highlight(idTaskNew);
@@ -283,11 +279,7 @@ Todoyu.Ext.project.Task = {
 			// Get task ID from header
 		var idTask = response.getTodoyuHeader('idTask');
 			// Attach context menu, re-init drag&drop
-		this.addContextMenu(idTask);
-
-		if( Todoyu.isInArea('project') ) {
-			this.ext.TaskTree.reloadSortable();
-		}
+		this.initTask(idTask);
 
 			// Highlight cloned element
 		this.highlight(idTask);
@@ -829,7 +821,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onRefreshed: function(idTask, response) {
-		this.addContextMenu(idTask);
+		this.initTask(idTask);
 	},
 
 
@@ -866,7 +858,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onHeaderRefreshed: function(idTask, response) {
-		this.addContextMenu(idTask);
+		this.initTask(idTask);
 	},
 
 
@@ -881,11 +873,7 @@ Todoyu.Ext.project.Task = {
 	update: function(idTask, taskHtml) {
 		$('task-' + idTask).replace(taskHtml);
 
-		this.addContextMenu(idTask);
-
-		if( Todoyu.isInArea('project') ) {
-			this.ext.TaskTree.reloadSortable();
-		}
+		this.initTask(idTask);
 	},
 
 
@@ -947,11 +935,10 @@ Todoyu.Ext.project.Task = {
 			// Get task ID from header
 		var idTask = response.getTodoyuHeader('idTask');
 			// Add context menu to new task
-		this.addContextMenu(idTask);
+		this.initTask(idTask);
 			// Scroll to task
 		this.scrollTo(idTask);
 
-		this.ext.TaskTree.reloadSortable();
 		Todoyu.Hook.exec('project.task.formLoaded', idTask);
 	},
 
@@ -1004,8 +991,8 @@ Todoyu.Ext.project.Task = {
 			// Get task ID from header
 		var idContainer = response.getTodoyuHeader('idContainer');
 
-		this.addContextMenu(idContainer);
 		this.scrollTo(idContainer);
+		this.initTask(idContainer);
 
 		Todoyu.Hook.exec('project.task.containerAdded', idContainer);
 	},
@@ -1051,7 +1038,7 @@ Todoyu.Ext.project.Task = {
 
 		this.showSubTasks(idParentTask);
 
-		this.addContextMenu(idTask);
+		this.initTask(idTask);
 		this.scrollTo(idTask);
 
 		Todoyu.Hook.exec('project.task.subtaskAdded', idTask);
@@ -1119,7 +1106,7 @@ Todoyu.Ext.project.Task = {
 	onSubContainerAdded: function(idParentTask, response) {
 		var idContainer = response.getHeader('Todoyu-idContainer');
 
-		this.addContextMenu(idContainer);
+		this.initTask(idContainer);
 		this.showSubTasks(idParentTask);
 		this.scrollTo(idContainer);
 
@@ -1388,8 +1375,10 @@ Todoyu.Ext.project.Task = {
 	onDetailsLoaded: function(idTask, tab, onComplete, response) {
 		var target	= 'task-' + idTask + '-header';
 
-		if(!this.isDetailsLoaded(idTask)) {
-			$(target).insert({after: response.responseText});
+		if( !this.isDetailsLoaded(idTask) ) {
+			$(target).insert({
+				after: response.responseText
+			});
 		}
 
 		Todoyu.callIfExists(onComplete, this, idTask, tab, response);
@@ -1419,6 +1408,31 @@ Todoyu.Ext.project.Task = {
 	 */
 	isLoaded: function(idTask) {
 		return Todoyu.exists('task-' + idTask);
+	},
+
+
+
+	/**
+	 * Initialize task UI features
+	 * Context menu and drag'n'drop
+	 *
+	 * @param	{Number}	idTask
+	 */
+	initTask: function(idTask) {
+		this.addContextMenu(idTask);
+		this.reloadSortable();
+	},
+
+
+
+	/**
+	 * Init sortable features after updates
+	 *
+	 */
+	reloadSortable: function() {
+		if( Todoyu.isInArea('project') ) {
+			this.ext.TaskTree.reloadSortable();
+		}
 	}
 
 };

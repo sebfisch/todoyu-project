@@ -236,7 +236,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		if( TodoyuProjectTaskManager::isTaskVisible($idTask) ) {
 			if( AREA === EXTID_PROJECT ) {
-				return TodoyuProjectProjectRenderer::renderTask($idTask, 0, true);
+				return TodoyuProjectProjectRenderer::renderTask($idTask);
 			} else {
 				return TodoyuProjectTaskRenderer::renderListingTask($idTask);
 			}
