@@ -122,8 +122,10 @@ class TodoyuProjectTaskViewHelper {
 		$options[$groupLabel]	= TodoyuProjectProjectViewHelper::getProjectPersonOptions($field);
 
 			// Get staff persons (employees of internal company)
-		$groupLabel	= Todoyu::Label('comment.ext.group.employees');
-		$options[$groupLabel]	= TodoyuContactViewHelper::getInternalPersonOptions($field);
+		if( TodoyuAuth::isInternal() || Todoyu::allowed('contact', 'person:seeAllInternalPersons') ) {
+			$groupLabel	= Todoyu::Label('comment.ext.group.employees');
+			$options[$groupLabel]	= TodoyuContactViewHelper::getInternalPersonOptions($field);
+		}
 
 		return $options;
 	}
