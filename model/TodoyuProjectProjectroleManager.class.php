@@ -189,5 +189,23 @@ class TodoyuProjectProjectroleManager {
 		return TodoyuArray::reform($projectroles, $reformConfig);
 	}
 
+
+
+	/**
+	 * Check whether the project role is in use and therefor not deletable
+	 *
+	 * @param	Integer		$idProjectrole
+	 * @return	Boolean
+	 */
+	public static function isDeletable($idProjectrole) {
+		$idProjectrole	= intval($idProjectrole);
+
+		$field	= 'id';
+		$table	= 'ext_project_mm_project_person';
+		$where	= 'id_role = ' . $idProjectrole;
+
+		return Todoyu::db()->hasResult($field, $table, $where, '', 1) === false;
+	}
+
 }
 ?>

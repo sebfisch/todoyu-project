@@ -20,36 +20,38 @@
 
 	// Add record infos
 TodoyuSysmanagerExtManager::addRecordConfig('project', 'projectrole', array(
-	'label'	=> 'project.ext.records.projectrole',
-	'desc'	=> 'project.ext.records.projectrole.desc',
-	'form'	=> 'ext/project/config/form/admin/projectrole.xml',
-	'list'	=> 'TodoyuProjectProjectroleManager::getRecords',
-	'save'	=> 'TodoyuProjectProjectroleManager::saveProjectrole',
-	'delete'=> 'TodoyuProjectProjectroleManager::deleteProjectrole',
-	'object'=> 'TodoyuProjectProjectrole',
-	'table'	=> 'ext_project_role'
+	'label'			=> 'project.ext.records.projectrole',
+	'desc'			=> 'project.ext.records.projectrole.desc',
+	'form'			=> 'ext/project/config/form/admin/projectrole.xml',
+	'list'			=> 'TodoyuProjectProjectroleManager::getRecords',
+	'save'			=> 'TodoyuProjectProjectroleManager::saveProjectrole',
+	'delete'		=> 'TodoyuProjectProjectroleManager::deleteProjectrole',
+	'object'		=> 'TodoyuProjectProjectrole',
+	'table'			=> 'ext_project_role',
+	'isDeletable'	=> 'TodoyuProjectProjectroleManager::isDeletable'
 ));
 
 TodoyuSysmanagerExtManager::addRecordConfig('project', 'activity', array(
-	'label'	=> 'project.ext.records.activity',
-	'desc'	=> 'project.ext.records.activity.desc',
-	'form'	=> 'ext/project/config/form/admin/activity.xml',
-	'list'	=> 'TodoyuProjectActivityManager::getRecords',
-	'save'	=> 'TodoyuProjectActivityManager::saveActivity',
-	'delete'=> 'TodoyuProjectActivityManager::deleteActivity',
-	'object'=> 'TodoyuProjectActivity',
-	'table'	=> 'ext_project_activity'
+	'label'			=> 'project.ext.records.activity',
+	'desc'			=> 'project.ext.records.activity.desc',
+	'form'			=> 'ext/project/config/form/admin/activity.xml',
+	'list'			=> 'TodoyuProjectActivityManager::getRecords',
+	'save'			=> 'TodoyuProjectActivityManager::saveActivity',
+	'delete'		=> 'TodoyuProjectActivityManager::deleteActivity',
+	'object'		=> 'TodoyuProjectActivity',
+	'table'			=> 'ext_project_activity',
+	'isDeletable'	=> 'TodoyuProjectActivityManager::isDeletable'
 ));
 
 TodoyuSysmanagerExtManager::addRecordConfig('project', 'taskpreset', array(
 	'label'	=> 'project.ext.records.taskpreset',
 	'desc'	=> 'project.ext.records.taskpreset.desc',
-	'form'	=> 'ext/project/config/form/admin/taskpreset.xml',
-	'list'	=> 'TodoyuProjectTaskPresetManager::getRecords',
-	'save'	=> 'TodoyuProjectTaskPresetManager::saveTaskPreset',
-	'delete'=> 'TodoyuProjectTaskPresetManager::deleteTaskPreset',
-	'object'=> 'TodoyuProjectTaskPreset',
-	'table'	=> 'ext_project_taskpreset'
+	'form'			=> 'ext/project/config/form/admin/taskpreset.xml',
+	'list'			=> 'TodoyuProjectTaskPresetManager::getRecords',
+	'save'			=> 'TodoyuProjectTaskPresetManager::saveTaskPreset',
+	'delete'		=> 'TodoyuProjectTaskPresetManager::deleteTaskPreset',
+	'object'		=> 'TodoyuProjectTaskPreset',
+	'table'			=> 'ext_project_taskpreset'
 ));
 
 ?>

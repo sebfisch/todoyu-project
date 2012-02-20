@@ -137,6 +137,24 @@ class TodoyuProjectActivityManager {
 
 		return TodoyuRecordManager::deleteRecord(self::TABLE, $idActivity);
 	}
+
+
+
+	/**
+	 * Check whether the activity is in use and therefor not deletable
+	 *
+	 * @param	Integer		$idActivity
+	 * @return	Boolean
+	 */
+	public static function isDeletable($idActivity) {
+		$idActivity	= intval($idActivity);
+
+		$field	= 'id';
+		$table	= 'ext_project_task';
+		$where	= 'id_activity = ' . $idActivity;
+
+		return Todoyu::db()->hasResult($field, $table, $where, '', 1) === false;
+	}
 }
 
 ?>
