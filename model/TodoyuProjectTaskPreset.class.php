@@ -234,7 +234,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getDateStartKey() {
-		return intval($this->get('date_start'));
+		return $this->get('date_start');
 	}
 
 
@@ -278,7 +278,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getDateEndKey() {
-		return intval($this->get('date_end'));
+		return $this->get('date_end');
 	}
 
 
@@ -289,7 +289,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function hasDateEnd() {
-		return $this->get('date_end') != 0;
+		return $this->get('date_end') !== '0';
 	}
 
 
@@ -322,7 +322,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getDateDeadlineKey() {
-		return intval($this->get('date_deadline'));
+		return $this->get('date_deadline');
 	}
 
 
@@ -333,7 +333,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function hasDateDeadline() {
-		return $this->get('date_deadline') != 0;
+		return $this->get('date_deadline') !== '0';
 	}
 
 

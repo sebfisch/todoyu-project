@@ -23,6 +23,7 @@
 	<label index="seetask.accepted:see">Sieht Aufgaben mit Status: Abgenommen</label>
 	<label index="seetask.rejected:see">Sieht Aufgaben mit Status: Zurückgewiesen</label>
 	<label index="seetask.cleared:see">Sieht Aufgaben mit Status: Verrechnet</label>
+	<label index="seetask.waiting:see">Sieht Aufgaben mit Status: Wartend</label>
 	<label index="addtask">Aufgaben / Container hinzufügen</label>
 	<label index="addtask.addTaskInOwnProjects">Aufgaben in eigenen Projekten hinzufügen</label>
 	<label index="addtask.addViaQuickCreateHeadlet">Aufgaben Schnell-Erzeugungswerkzeug verwenden</label>
@@ -37,6 +38,7 @@
 	<label index="addtask.accepted:create">Aufgaben erstellen mit Status: Accepted</label>
 	<label index="addtask.rejected:create">Aufgaben erstellen mit Status: Rejected</label>
 	<label index="addtask.cleared:create">Aufgaben erstellen mit Status: Cleared</label>
+	<label index="addtask.waiting:create">Aufgabe erstellen mit Status: Wartend</label>
 	<label index="edittask">Aufgaben / Container bearbeiten</label>
 	<label index="edittask.editOwnTasks">Selbst erstellte Aufgaben bearbeiten</label>
 	<label index="edittask.editTaskInOwnProjects">Aufgaben in eigenen Projekten bearbeiten</label>
@@ -52,6 +54,7 @@
 	<label index="edittask.accepted:edit">Aufgaben bearbeiten mit Status: Abgenommen</label>
 	<label index="edittask.rejected:edit">Aufgaben bearbeiten mit Status: Zurückgewiesen</label>
 	<label index="edittask.cleared:edit">Aufgaben bearbeiten mit Status: Verrechnet</label>
+	<label index="edittask.waiting:edit">Aufgaben bearbeiten mit Status: Wartend</label>
 	<label index="edittask.useTaskAndContainerClipboard">Ausschneiden, Kopieren, Einfügen und Klonen von Aufgaben / Containern</label>
 	<label index="edittaskdetail">Augaben Daten bearbeiten</label>
 	<label index="edittaskdetail.editStatus">Status bearbeiten</label>
@@ -79,6 +82,7 @@
 	<label index="edittaskdetail.accepted:changeto">Status ändern in: Abgenommen</label>
 	<label index="edittaskdetail.rejected:changeto">Status ändern in: Zurückgewiesen</label>
 	<label index="edittaskdetail.cleared:changeto">Status ändern in: Verrechnet</label>
+	<label index="edittaskdetail.waiting:changeto">Status ändern in: Wartend</label>
 	<label index="deletetask">Aufgabe / Container löschen</label>
 	<label index="deletetask.deleteOwnTasks">Selbst erstellte Aufgaben löschen</label>
 	<label index="deletetask.deleteTaskInOwnProjects">Aufgaben in eigenen Projekten löschen</label>
