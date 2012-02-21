@@ -255,19 +255,19 @@ h1.extIconProject .title {
 /* --------------------------------------
 	Tab content
    ------------------------------------- */
-.task .tabContent .tabBlock.assetForm,
-.task .tabContent .tabBlock.commentform {
+.task .tabContent .tabBlock,
+.task .tabContent .tabBlock {
 	background:none;
 }
-	.task .tabContent .tabBlock.assetForm .fForm fieldset,
-	.task .tabContent .tabBlock.commentform .fForm fieldset {
+	.task .tabContent .tabBlock .fForm fieldset,
+	.task .tabContent .tabBlock .fForm fieldset {
 		padding-top:15px;
 	}
 	.task .tabContent .fForm fieldset.buttons {
 		padding-top:0;
 	}
-	.task .tabContent .tabBlock.assetForm .fForm fieldset legend,
-	.task .tabContent .tabBlock.commentform .fForm fieldset legend {
+	.task .tabContent .tabBlock .fForm fieldset legend,
+	.task .tabContent .tabBlock .fForm fieldset legend {
 		display:none;
 	}
 
