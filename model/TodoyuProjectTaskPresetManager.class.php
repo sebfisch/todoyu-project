@@ -219,6 +219,76 @@ class TodoyuProjectTaskPresetManager {
 		return $data;
 	}
 
+
+
+	/**
+	 * Get a date based on the extConf value set for this type
+	 *
+	 * @param	Integer		$duration		Identifier for number of days of the date in the future from now
+	 * @param	Integer		$dateStart
+	 * @return	Integer
+	 */
+	public static function getDateFromDayDuration($duration, $dateStart = 0) {
+		$dateStart		= TodoyuTime::getDayStart($dateStart);
+		$preventWeekend	= false;
+		$addDaysToDate	= 0;
+
+			// Handle working day config
+		if( substr($duration, 0, 5) === 'work_' ) {
+			$preventWeekend = true;
+			$duration 		= substr($duration, 5);
+		}
+
+			// Real value depends in selected group
+		switch( $duration ) {
+				// Day of creation (NOW)
+			case 1:
+				$addDaysToDate= 0;
+				break;
+
+				// Creation day + 1, 2, 3 days
+			case 2:	case 3:	case 4:
+				$addDaysToDate= $duration-1;
+				break;
+
+				// Creation day + 1, 2 weeks
+			case 7:	case 14:
+				$addDaysToDate= $duration;
+				break;
+		}
+
+			// Add the selected amount of days
+		$dateEnd	= TodoyuTime::addDays($dateStart, $addDaysToDate);
+
+			// Only count working days
+		if( $preventWeekend ) {
+			$weekendDays		= TodoyuTime::getWeekEndDayIndexes();
+			$dateStartWeekDay	= date('w', $dateStart);
+			$dateStartPos 		= array_search($dateStartWeekDay, $weekendDays);
+
+				// If today is weekend, add days depending on the day of the weekend
+			if( $dateStartPos !== false ) {
+				$dateEnd	= TodoyuTime::addDays($dateEnd, 2-$dateStartPos);
+			}
+
+				// Add the days for all the weekends between start and end
+			if( $duration >= 7 ) {
+				$daysToAdd	= $duration/7 * 2;
+				$dateEnd	= TodoyuTime::addDays($dateEnd, $daysToAdd);
+			}
+
+				// Make sure the end date is not on a weekend day
+			$dateEndWeekDay		= date('w', $dateEnd);
+			$dateEndPos			= array_search($dateEndWeekDay, $weekendDays);
+
+			if( $dateEndPos !== false ) {
+				$dateEnd	= TodoyuTime::addDays($dateEnd, 2-$dateEndPos);
+			}
+		}
+
+		return $dateEnd;
+	}
+
 }
 
 ?>

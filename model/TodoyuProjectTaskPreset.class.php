@@ -223,7 +223,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getDateStart() {
-		return TodoyuProjectTaskManager::getDateFromConfigValue($this->getDateStartKey());
+		return TodoyuProjectTaskPresetManager::getDateFromDayDuration($this->getDateStartKey());
 	}
 
 
@@ -245,7 +245,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function hasDateStart() {
-		return $this->get('date_start') != 0;
+		return $this->get('date_start') !== '0';
 	}
 
 
@@ -256,7 +256,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getDateStartLabel() {
-		return TodoyuProjectExtConfViewHelper::getValueDateLabel($this->getDateStartKey());
+		return TodoyuProjectExtConfViewHelper::getDateOffsetLabel($this->getDateStartKey());
 	}
 
 
@@ -267,7 +267,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getDateEnd() {
-		return TodoyuProjectTaskManager::getDateFromConfigValue($this->getDateEndKey());
+		return TodoyuProjectTaskPresetManager::getDateFromDayDuration($this->getDateEndKey());
 	}
 
 
@@ -300,7 +300,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getDateEndLabel() {
-		return TodoyuProjectExtConfViewHelper::getValueDateLabel($this->getDateEndKey());
+		return TodoyuProjectExtConfViewHelper::getDateOffsetLabel($this->getDateEndKey());
 	}
 
 
@@ -311,7 +311,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getDateDeadline() {
-		return TodoyuProjectTaskManager::getDateFromConfigValue($this->getDateDeadlineKey());
+		return TodoyuProjectTaskPresetManager::getDateFromDayDuration($this->getDateDeadlineKey());
 	}
 
 
@@ -344,7 +344,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getDateDeadlineLabel() {
-		return TodoyuProjectExtConfViewHelper::getValueDateLabel($this->getDateDeadlineKey());
+		return TodoyuProjectExtConfViewHelper::getDateOffsetLabel($this->getDateDeadlineKey());
 	}
 
 

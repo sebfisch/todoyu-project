@@ -32,12 +32,16 @@ class TodoyuProjectExtConfViewHelper {
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
-	public static function getDefaultValueDateOptions(TodoyuFormElement $field) {
+	public static function getDateOffsetOptions(TodoyuFormElement $field) {
 
 		return array(
 			array(	// Creation day
 				'label'	=> 'project.task.default.date.date_1',
 				'value'	=> 1
+			),
+			array(	// Creation day
+				'label'	=> 'project.task.default.date.date_work_1',
+				'value'	=> 'work_1'
 			),
 			array(	// Creation day + 1 day
 				'label'	=> 'project.task.default.date.date_2',
@@ -67,9 +71,17 @@ class TodoyuProjectExtConfViewHelper {
 				'label'	=> 'project.task.default.date.date_7',
 				'value'	=> 7
 			),
+			array(	// Creation day + 1 working week
+				'label'	=> 'project.task.default.date.date_work_7',
+				'value'	=> 'work_7'
+			),
 			array(	// Creation day + 2 weeks
 				'label'	=> 'project.task.default.date.date_14',
 				'value'	=> 14
+			),
+			array(	// Creation day + 2 working weeks
+				'label'	=> 'project.task.default.date.date_work_14',
+				'value'	=> 'work_14'
 			)
 		);
 	}
@@ -94,9 +106,7 @@ class TodoyuProjectExtConfViewHelper {
 	 * @param	Integer		$value
 	 * @return	String
 	 */
-	public static function getValueDateLabel($value) {
-		$value	= TodoyuNumeric::intPositive($value);
-
+	public static function getDateOffsetLabel($value) {
 		return Todoyu::Label('project.task.default.date.date_' . $value);
 	}
 

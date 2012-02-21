@@ -618,7 +618,7 @@ class TodoyuProjectProjectManager {
 				$info[] = array(
 					'label'		=> 'project.task.date_end',
 					'value'		=> $taskPreset->getDateEndLabel(),
-					'position'	=> 30
+					'position'	=> 31
 				);
 			}
 
@@ -627,7 +627,7 @@ class TodoyuProjectProjectManager {
 				$info[] = array(
 					'label'		=> 'project.task.date_deadline',
 					'value'		=> $taskPreset->getDateDeadlineLabel(),
-					'position'	=> 35
+					'position'	=> 32
 				);
 			}
 

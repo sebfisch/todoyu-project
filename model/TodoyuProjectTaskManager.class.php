@@ -1427,58 +1427,6 @@ class TodoyuProjectTaskManager {
 
 
 	/**
-	 * Get a date based on the extConf value set for this type
-	 *
-	 * @param	Integer		$configValue		Identifier for number of days of the date in the future from now
-	 * @return	Integer		timestamp
-	 */
-	public static function getDateFromConfigValue($configValue) {
-		$dateToday		= TodoyuTime::getDayStart();
-		$preventWeekend	= false;
-		$addDaysToDate	= 0;
-
-			// Handle working day config
-		if( substr($configValue, 0, 5) === 'work_' ) {
-			$preventWeekend = true;
-			$configValue 	= substr($configValue, 5);
-		}
-
-		switch( $configValue ) {
-				// Day of creation (NOW)
-			case 1:
-				$addDaysToDate= 0;
-				break;
-
-				// Creation day + 1, 2, 3 days
-			case 2:	case 3:	case 4:
-				$addDaysToDate= $configValue-1;
-				break;
-
-				// Creation day + 1, 2 weeks
-			case 7:	case 14:
-				$addDaysToDate= $configValue;
-				break;
-		}
-
-		$date	= TodoyuTime::addDays($dateToday, $addDaysToDate);
-
-			// Prevent date on weekend
-		if( $preventWeekend ) {
-			TodoyuDebug::printInFirebug('x');
-			$weekDay		= date('w', $date);
-			$weekendDays	= TodoyuTime::getWeekEndDayIndexes();
-				// Add two days, if the date is during a weekend
-			if( in_array($weekDay, $weekendDays) ) {
-				$date	= TodoyuTime::addDays($date, 2);
-			}
-		}
-
-		return $date;
-	}
-
-
-
-	/**
 	 * Get parent element date ranges. Parent means in this case container or project (not parent task)
 	 *
 	 * @param	Integer		$idTask			Task ID to check upwards from

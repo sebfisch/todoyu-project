@@ -115,14 +115,17 @@
 	<label index="copySubtasks">Copy includes sub tasks?\n(Cancel = copy w/o sub tasks)</label>
 	<label index="statusNotVisible">With the new status, the task is no longer visible for you.</label>
 	<label index="default.date.date_1">Create date</label>
+	<label index="default.date.date_work_1">Create date (or next working day)</label>
 	<label index="default.date.date_2">Create date + 1 day</label>
 	<label index="default.date.date_work_2">Create date + 1 working day</label>
 	<label index="default.date.date_3">Create date + 2 days</label>
 	<label index="default.date.date_work_3">Create date + 2 working days</label>
 	<label index="default.date.date_4">Create date + 3 days</label>
 	<label index="default.date.date_work_4">Create date + 3 working days</label>
-	<label index="default.date.date_7">Create date + 1 week</label>
-	<label index="default.date.date_14">Create date + 2 weeks</label>
+	<label index="default.date.date_7">Create date + 7 days</label>
+	<label index="default.date.date_work_7">Create date + 7 working days</label>
+	<label index="default.date.date_14">Create date + 14 days</label>
+	<label index="default.date.date_work_14">Create date + 14 working days</label>
 	<label index="notAvailable">The task is not available</label>
 	<label index="export.csv">Export tasks as CSV</label>
 	<label index="dragndrop.saved">New position successfully saved</label>

@@ -33,21 +33,21 @@
 				<field type="select" name="date_start">
 					<label>project.task.date_start</label>
 					<source type="function">
-						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
+						<function>TodoyuProjectExtConfViewHelper::getDateOffsetOptions</function>
 					</source>
 				</field>
 
 				<field type="select" name="date_end">
 					<label>project.task.date_end</label>
 					<source type="function">
-						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
+						<function>TodoyuProjectExtConfViewHelper::getDateOffsetOptions</function>
 					</source>
 				</field>
 
 				<field type="select" name="date_deadline">
 					<label>project.task.date_deadline</label>
 					<source type="function">
-						<function>TodoyuProjectExtConfViewHelper::getDefaultValueDateOptions</function>
+						<function>TodoyuProjectExtConfViewHelper::getDateOffsetOptions</function>
 					</source>
 				</field>
 

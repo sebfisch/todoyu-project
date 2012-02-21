@@ -115,14 +115,17 @@
 	<label index="copySubtasks">Auch Unteraufgaben mitkopieren?\n(Abbrechen = ohne Unteraufgaben kopieren)</label>
 	<label index="statusNotVisible">Mit dem geänderten Status ist diese Aufgabe nicht mehr für Sie sichtbar.</label>
 	<label index="default.date.date_1">Erfassungs-Datum</label>
+	<label index="default.date.date_work_1">Erfassungs-Datum (oder nächster Arbeitstag)</label>
 	<label index="default.date.date_2">Erfassungs-Datum + 1 Tag</label>
 	<label index="default.date.date_work_2">Erfassungs-Datum + 1 Arbeitstag</label>
 	<label index="default.date.date_3">Erfassungs-Datum + 2 Tage</label>
 	<label index="default.date.date_work_3">Erfassungs-Datum + 2 Arbeitstage</label>
 	<label index="default.date.date_4">Erfassungs-Datum + 3 Tage</label>
 	<label index="default.date.date_work_4">Erfassungs-Datum + 3 Arbeitstage</label>
-	<label index="default.date.date_7">Erfassungs-Datum + 1 Woche</label>
-	<label index="default.date.date_14">Erfassungs-Datum + 2 Wochen</label>
+	<label index="default.date.date_7">Erfassungs-Datum + 7 Tage</label>
+	<label index="default.date.date_work_7">Erfassungs-Datum + 7 Arbeitstage</label>
+	<label index="default.date.date_14">Erfassungs-Datum + 14 Tage</label>
+	<label index="default.date.date_work_14">Erfassungs-Datum + 14 Arbeitstage</label>
 	<label index="notAvailable">Diese Aufgabe ist nicht verfügbar</label>
 	<label index="export.csv">Aufgaben als CSV exportieren</label>
 	<label index="dragndrop.saved">Neue Position erfolgreich gespeichert</label>
