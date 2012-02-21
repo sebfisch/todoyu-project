@@ -141,7 +141,7 @@ class TodoyuProjectQuickTaskManager {
 		}
 
 			// Calculate end dates depending on the
-		$dateEnd					= TodoyuTime::getStartOfDay(NOW + ($durationInDays * TodoyuTime::SECONDS_DAY));
+		$dateEnd					= TodoyuTime::getDayStart(NOW + ($durationInDays * TodoyuTime::SECONDS_DAY));
 		$formData['date_end']		= $dateEnd;
 		$formData['date_deadline']	= $dateEnd;
 

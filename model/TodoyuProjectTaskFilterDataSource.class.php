@@ -278,8 +278,8 @@ class TodoyuProjectTaskFilterDataSource {
 	 * @return	Integer
 	 */
 	public static function getDynamicDateTimestamp($dateRangeKey, $negate = false) {
-		$todayStart	= TodoyuTime::getStartOfDay();
-		$todayEnd	= TodoyuTime::getEndOfDay();
+		$todayStart	= TodoyuTime::getDayStart();
+		$todayEnd	= TodoyuTime::getDayEnd();
 		$date		= $negate ? $todayStart : $todayEnd;
 
 		switch( $dateRangeKey ) {
