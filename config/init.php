@@ -75,12 +75,12 @@ Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK'] = array(
 	STATUS_PLANNING		=> 'planning',
 	STATUS_OPEN			=> 'open',
 	STATUS_PROGRESS		=> 'progress',
+	STATUS_WAITING		=> 'waiting',
 	STATUS_CONFIRM		=> 'confirm',
 	STATUS_DONE			=> 'done',
 	STATUS_ACCEPTED		=> 'accepted',
 	STATUS_REJECTED		=> 'rejected',
-	STATUS_CLEARED		=> 'cleared',
-	STATUS_WAITING		=> 'waiting'
+	STATUS_CLEARED		=> 'cleared'
 );
 	// Non-editable project status (tasks/containers in project cannot be modified)
 Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing'] = array(
