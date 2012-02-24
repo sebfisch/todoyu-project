@@ -29,7 +29,9 @@ Todoyu.Ext.project.QuickCreateTask = {
 	 * @method	onPopupOpened
 	 */
 	onPopupOpened: function() {
-
+		Todoyu.Hook.exec('project.task.formLoaded', 0, {
+			quickCreate: true
+		});
 	},
 
 
@@ -62,8 +64,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 	 * @method	onFormUpdated
 	 */
 	onFormUpdated: function() {
-		var quickCreateObject	= 'Todoyu.Ext.project.QuickCreateTask';
-		Todoyu.callUserFunction(quickCreateObject + '.onPopupOpened');
+		Todoyu.callUserFunction('Todoyu.Ext.project.QuickCreateTask.onPopupOpened');
 	},
 
 

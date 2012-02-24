@@ -51,6 +51,9 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			// Send task ID for JS
 		TodoyuHeader::sendTodoyuHeader('idTask', 0);
 
+			// Call hook
+		TodoyuHookManager::callHook('project', 'task.create', array(0, $idProject, TASK_TYPE_TASK));
+
 			// Send task with form in details part
 		return TodoyuProjectProjectRenderer::renderNewTaskEdit(0, $idProject, TASK_TYPE_TASK);
 	}
@@ -70,6 +73,9 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 			// Send task ID for JS
 		TodoyuHeader::sendTodoyuHeader('idContainer', 0);
+
+			// Call hook
+		TodoyuHookManager::callHook('project', 'task.create', array(0, $idProject, TASK_TYPE_CONTAINER));
 
 			// Send task with form in details part
 		return TodoyuProjectProjectRenderer::renderNewTaskEdit(0, $idProject, TASK_TYPE_CONTAINER);
@@ -92,6 +98,9 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			// Send task ID for JS
 		TodoyuHeader::sendTodoyuHeader('idTask', 0);
 
+			// Call hook
+		TodoyuHookManager::callHook('project', 'task.create', array($idParentTask, 0, TASK_TYPE_TASK));
+
 			// Send task with form in details part
 		return TodoyuProjectProjectRenderer::renderNewTaskEdit($idParentTask, 0, TASK_TYPE_TASK);
 	}
@@ -113,6 +122,9 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			// Send task ID for JS
 		TodoyuHeader::sendTodoyuHeader('idContainer', 0);
 
+			// Call hook
+		TodoyuHookManager::callHook('project', 'task.create', array($idParentTask, 0, TASK_TYPE_CONTAINER));
+
 			// Send task with form in details part
 		return TodoyuProjectProjectRenderer::renderNewTaskEdit($idParentTask, 0, TASK_TYPE_CONTAINER);
 	}
@@ -129,6 +141,8 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask		= intval($params['task']);
 
 		TodoyuProjectTaskRights::restrictEdit($idTask);
+
+		TodoyuHookManager::callHook('project', 'task.edit', array($idTask));
 
 		return TodoyuProjectTaskRenderer::renderTaskEditForm($idTask);
 	}
