@@ -125,7 +125,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 			// Look for sub tasks/child nodes
 		if( this.isRootNode() ) {
-			childNodes = this.element.childElements();
+			childNodes = this.getChildTasks();
 		} else {
 			var subtaskContainer = this.element.down('div.subtasks');
 			if( subtaskContainer ) {
@@ -136,6 +136,19 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 		childNodes.each(function(task){
 			this.addChild(new Todoyu.Ext.project.TaskTree.SortableNode(this.tree, this, task, this.options));
 		}, this);
+	},
+
+
+
+	/**
+	 * Get all child elements which are tasks
+	 *
+	 * @return	{Array}
+	 */
+	getChildTasks: function() {
+		return this.element.childElements().findAll(function(element){
+			return element.hasClassName('task');
+		});
 	},
 
 

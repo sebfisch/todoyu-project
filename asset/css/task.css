@@ -137,6 +137,10 @@ div.task.dragDropTarget > h3 {
 	cursor:move;
 }
 
+.lostTasks .task .dndHandle.draggable {
+	cursor:default;
+}
+
 
 /* -------------------------
 	Task header (container)
