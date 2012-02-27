@@ -26,10 +26,6 @@
 
 				<field type="RTE" name="description">
 					<label>core.global.description</label>
-					<tinymce>
-						<theme>simple</theme>
-						<width>100%</width>
-					</tinymce>
 				</field>
 
 			</elements>
