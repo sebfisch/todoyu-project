@@ -24,6 +24,7 @@ h1.headerLine span.projectIcons {
 
 .tasks .lostTasks .subtaskTrigger {
 	background: none !important;
+	height:1px;
 }
 
 .tasks .lostTasks h2 {
