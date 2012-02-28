@@ -228,8 +228,10 @@ class TodoyuProjectTaskClipboard {
 		$idProject		= intval($idProject);
 		$dataClipboard	= self::getData();
 
+		$this->id_person_create;
+
 			// Copy or move the task
-		$idNewTask	= null;
+		$idNewTask	= 0;
 		if( $dataClipboard['mode'] === 'copy' ) {
 			$idNewTask = TodoyuProjectTaskManager::copyTask($dataClipboard['task'], 0, $dataClipboard['subtasks'], $idProject);
 		} elseif( $dataClipboard['mode'] === 'cut' ) {

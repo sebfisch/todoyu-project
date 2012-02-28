@@ -40,7 +40,7 @@ class TodoyuProjectProjectViewHelper {
 			'index'		=> $index,
 			'value'		=> $index,
 			'key'		=> $statusKey,
-			'class'		=> 'status' . ucwords($statusKey),
+			'class'		=> 'status' . ucfirst($statusKey),
 			'label'		=> $label
 		);
 

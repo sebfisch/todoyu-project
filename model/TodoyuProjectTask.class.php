@@ -185,10 +185,10 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 */
 	public function getParentTask() {
 		if( $this->hasParentTask() ) {
-			return TodoyuProjectTaskManager::getTask($this->id_parenttask);
-		} else {
-			return false;
+			return TodoyuProjectTaskManager::getTask($this->getParentTaskID());
 		}
+
+		return false;
 	}
 
 
@@ -199,7 +199,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getParentTaskID() {
-		return intval($this->id_parenttask);
+		return $this->getInt('id_parenttask');
 	}
 
 
@@ -210,7 +210,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getProjectID() {
-		return intval($this->id_project);
+		return $this->getInt('id_project');
 	}
 
 
@@ -278,7 +278,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Integer		Type constant
 	 */
 	public function getType() {
-		return intval($this->data['type']);
+		return $this->getInt('type');
 	}
 
 
@@ -289,7 +289,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	String		'task' / 'container'
 	 */
 	public function getTypeKey() {
-		return ((int) $this->getType() === TASK_TYPE_TASK) ? 'task' : 'container';
+		return $this->isTask() ? 'task' : 'container';
 	}
 
 
@@ -312,7 +312,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getDateStart() {
-		return intval($this->get('date_start'));
+		return $this->getInt('date_start');
 	}
 
 
@@ -336,7 +336,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getDateEnd($fallbackDeadline = false) {
-		$dateEnd	= intval($this->get('date_end'));
+		$dateEnd	= $this->getInt('date_end');
 
 		return $dateEnd === 0 && $fallbackDeadline ? $this->getDateDeadline() : $dateEnd;
 	}
@@ -430,7 +430,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isDateEndExceeded() {
-		return $this->getEndDate() < NOW;
+		return $this->getDateEnd() < NOW;
 	}
 
 
@@ -441,7 +441,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getEstimatedWorkload() {
-		return intval($this->get('estimated_workload'));
+		return $this->getInt('estimated_workload');
 	}
 
 
@@ -474,7 +474,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isTask() {
-		return $this->getType() == TASK_TYPE_TASK;
+		return $this->getType() === TASK_TYPE_TASK;
 	}
 
 
@@ -485,7 +485,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isPublic() {
-		return $this->get('is_public') == 1;
+		return $this->getInt('is_public') === 1;
 	}
 
 
@@ -496,7 +496,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isAcknowledged() {
-		return $this->get('is_acknowledged') == 1;
+		return $this->getInt('is_acknowledged') === 1;
 	}
 
 
@@ -551,7 +551,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getAssignedPersonID() {
-		return intval($this->get('id_person_assigned'));
+		return $this->getInt('id_person_assigned');
 	}
 
 
@@ -626,14 +626,11 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isLocked($checkSubTasks = false) {
-		if( $checkSubTasks ) {
-			$isLocked	= TodoyuProjectTaskManager::isLocked($this->getID()) || TodoyuProjectTaskManager::areSubtasksLocked($this->getID());
-		} elseif( $this->isTask() ) {
-			$isLocked	= TodoyuProjectTaskManager::isLocked($this->getID());
-		} elseif( $this->isContainer() ) {
-			$isLocked	= TodoyuProjectTaskManager::isLocked($this->getID());;
-		} else {
-			$isLocked	= false;
+		$isLocked	= TodoyuProjectTaskManager::isLocked($this->getID());
+
+			// Not locked itself, check subtasks
+		if( !$isLocked && $checkSubTasks ) {
+			$isLocked = TodoyuProjectTaskManager::areSubtasksLocked($this->getID());
 		}
 
 		return $isLocked;

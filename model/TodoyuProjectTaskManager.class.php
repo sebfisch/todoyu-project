@@ -623,7 +623,7 @@ class TodoyuProjectTaskManager {
 			$whereF	= '		id_parenttask	IN(%s)'
 					. '	AND	deleted			= 0';
 
-			if( $extraWhere !== false ) {
+			if( $extraWhere ) {
 				$whereF .= ' AND (' . $extraWhere . ')';
 			}
 

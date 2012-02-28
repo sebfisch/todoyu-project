@@ -100,7 +100,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getEstimatedWorkload() {
-		return intval($this->get('estimated_workload'));
+		return $this->getInt('estimated_workload');
 	}
 
 
@@ -133,7 +133,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getIsPublic() {
-		return intval($this->get('is_public'));
+		return $this->getInt('is_public');
 	}
 
 
@@ -157,7 +157,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getActivityID() {
-		return intval($this->get('id_activity'));
+		return $this->getInt('id_activity');
 	}
 
 
@@ -190,7 +190,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getStatus() {
-		return intval($this->get('status'));
+		return $this->getInt('status');
 	}
 
 
@@ -355,7 +355,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getPersonAssignedID() {
-		return intval($this->get('id_person_assigned'));
+		return $this->getInt('id_person_assigned');
 	}
 
 
@@ -388,7 +388,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getPersonOwnerID() {
-		return intval($this->get('id_person_owner'));
+		return $this->getInt('id_person_owner');
 	}
 
 
@@ -421,7 +421,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getPersonAssignedFallbackID() {
-		return intval($this->get('id_person_assigned_fallback'));
+		return $this->getInt('id_person_assigned_fallback');
 	}
 
 
@@ -454,7 +454,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getPersonOwnerFallbackID() {
-		return intval($this->get('id_person_owner_fallback'));
+		return $this->getInt('id_person_owner_fallback');
 	}
 
 
@@ -487,7 +487,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getRoleAssignedFallbackID() {
-		return intval($this->get('id_role_assigned_fallback'));
+		return $this->getInt('id_role_assigned_fallback');
 	}
 
 
@@ -520,7 +520,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getRoleOwnerFallbackID() {
-		return intval($this->get('id_role_owner_fallback'));
+		return $this->getInt('id_role_owner_fallback');
 	}
 
 
@@ -553,7 +553,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getQuickTaskDurationDays() {
-		return intval($this->get('quicktask_duration_days'));
+		return $this->getInt('quicktask_duration_days');
 	}
 
 
