@@ -174,6 +174,24 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
+	 *
+	 * @param	{Number}	idProject
+	 */
+	toggleTaskPresetDetails: function(idProject) {
+		var detailDiv	= $('taskpresetlist-' + idProject);
+
+		if(detailDiv) {
+			if( detailDiv.visible() ) {
+				detailDiv.hide();
+			} else {
+				detailDiv.show();
+			}
+		}
+	},
+
+
+
+	/**
 	 * Set project style expanded/ collapsed
 	 *
 	 * @method	setExpandedStyle

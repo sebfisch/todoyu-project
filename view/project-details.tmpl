@@ -30,8 +30,8 @@
 
 	{if isInternal()}
 		<div class="infoBox presets">
-			<h4>{Label project.ext.infobox.presets.title}</h4>
-			<div class="content overflow">
+			<h4 onclick="Todoyu.Ext.project.Project.toggleTaskPresetDetails('{$id}');">{Label project.ext.infobox.presets.title}</h4>
+			<div class="content overflow" id="taskpresetlist-{$id}" style="display:none">
 				<table class="list presetsListing">
 				{foreach $presets preset}
 					<tr class="presetRow {cycle values="odd,even"}">
