@@ -502,12 +502,56 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 
 
 	/**
+	 * Get assigned person
+	 *
+	 * @return	TodoyuContactPerson
+	 */
+	public function getPersonAssigned() {
+		return $this->getPerson('assigned');
+	}
+
+
+
+	/**
+	 * Get owner person
+	 *
+	 * @return	TodoyuContactPerson
+	 */
+	public function getPersonOwner() {
+		return $this->getPerson('owner');
+	}
+
+
+
+	/**
+	 * Get assigned person ID
+	 *
+	 * @return	Integer
+	 */
+	public function getPersonAssignedID() {
+		return $this->getPersonID('assigned');
+	}
+
+
+
+	/**
+	 * Get owner person ID
+	 *
+	 * @return	Integer
+	 */
+	public function getPersonOwnerID() {
+		return $this->getPersonID('owner');
+	}
+
+
+
+	/**
 	 * Check if current person is assigned to this task
 	 *
 	 * @return	Boolean
 	 */
 	public function isCurrentPersonAssigned() {
-		return TodoyuAuth::getPersonID() === $this->getAssignedPersonID();
+		return TodoyuAuth::getPersonID() === $this->getPersonAssignedID();
 	}
 
 
@@ -518,40 +562,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isOwnerAndCreatorSame() {
-		return $this->getPersonID('owner') === $this->getPersonID('create');
-	}
-
-
-
-	/**
-	 * Get assigned person
-	 *
-	 * @return	TodoyuContactPerson
-	 */
-	public function getAssignedPerson() {
-		return TodoyuContactPersonManager::getPerson($this->getAssignedPersonID());
-	}
-
-
-
-	/**
-	 * Get owner person
-	 *
-	 * @return	TodoyuContactPerson
-	 */
-	public function getOwnerPerson() {
-		return TodoyuContactPersonManager::getPerson($this->getOwnerPersonID());
-	}
-
-
-
-	/**
-	 * Get assigned person ID
-	 *
-	 * @return	Integer
-	 */
-	public function getAssignedPersonID() {
-		return $this->getInt('id_person_assigned');
+		return $this->getPersonOwnerID() === $this->getPersonCreateID();
 	}
 
 
@@ -562,20 +573,8 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function hasPersonAssigned() {
-		return $this->getInt('id_person_assigned') !== 0;
+		return $this->getPersonAssignedID() !== 0;
 	}
-
-
-
-	/**
-	 * Get owner person ID
-	 *
-	 * @return	Integer
-	 */
-	public function getOwnerPersonID() {
-		return $this->getInt('id_person_owner');
-	}
-
 
 
 
@@ -585,7 +584,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function hasOwnerPerson() {
-		return $this->getOwnerPersonID() !== 0;
+		return $this->getPersonOwnerID() !== 0;
 	}
 
 
@@ -699,9 +698,9 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 			case 3:
 			case 2:
 				$data['project']		= $this->getProject()->getTemplateData();
-				$data['person_create']	= $this->getPersonData('create');
-				$data['person_assigned']= $this->getPersonData('assigned');
-				$data['person_owner']	= $this->getPersonData('owner');
+				$data['person_create']	= $this->getPersonCreate()->getTemplateData();
+				$data['person_assigned']= $this->getPersonAssigned()->getTemplateData();
+				$data['person_owner']	= $this->getPersonOwner()->getTemplateData();
 				$data['activity']		= $this->getActivity()->getTemplateData();
 				$data['fulltitle']		= $this->getFullTitle();
 				$data['company']		= $this->getProject()->getCompany()->getTemplateData();

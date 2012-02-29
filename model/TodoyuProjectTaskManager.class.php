@@ -924,7 +924,7 @@ class TodoyuProjectTaskManager {
 			if( $isInternal && $task->hasPersonAssigned() ) {
 				$data['person_assigned']	= array(
 					'label'		=> 'project.task.attr.person_assigned',
-					'value'		=> $task->getAssignedPerson()->getLabel(),
+					'value'		=> $task->getPersonAssigned()->getLabel(),
 					'position'	=> 60,
 					'className'	=> 'sectionStart ' . ( $task->isAcknowledged() ? 'acknowledged' : 'unread')
 				);
@@ -995,10 +995,10 @@ class TodoyuProjectTaskManager {
 
 			// Person owner
 		if( $task->hasOwnerPerson() ) {
-			if( $seeAllPersons || in_array($task->getOwnerPersonID(), $visiblePersonIDs) ) {
+			if( $seeAllPersons || in_array($task->getPersonOwnerID(), $visiblePersonIDs) ) {
 				$data['person_owner'] = array(
 					'label'		=> $task->isContainer() ? 'project.task.container.attr.person_owner' : 'project.task.attr.person_owner',
-					'value'		=> $task->getOwnerPerson()->getLabel(),
+					'value'		=> $task->getPersonOwner()->getLabel(),
 					'position'	=> 70,
 					'className'	=> 'sectionStart'
 				);
@@ -1007,10 +1007,10 @@ class TodoyuProjectTaskManager {
 
 			// Task creator: Different person owns / created task? have both displayed
 		if( !$task->isOwnerAndCreatorSame() ) {
-			if( $seeAllPersons || in_array($task->getOwnerPersonID(), $visiblePersonIDs) ) {
+			if( $seeAllPersons || in_array($task->getPersonOwnerID(), $visiblePersonIDs) ) {
 				$data['person_create'] = array(
 					'label'		=> 'project.task.attr.person_create',
-					'value'		=> $task->getPerson('create')->getLabel(),
+					'value'		=> $task->getPersonCreate()->getLabel(),
 					'position'	=> 65,
 					'className'	=> ''
 				);

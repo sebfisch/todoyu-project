@@ -80,7 +80,7 @@ class TodoyuProjectExportManager {
 			Todoyu::Label('project.ext.attr.id')			=> $project->getID(),
 			Todoyu::Label('project.task.attr.date_create')	=> TodoyuTime::format($project->getDateCreate(), 'date'),
 			Todoyu::Label('core.global.date_update')		=> TodoyuTime::format($project->getDateUpdate(), 'date'),
-			Todoyu::Label('core.global.id_person_create')	=> $project->getCreatePerson()->getFullName(),
+			Todoyu::Label('core.global.id_person_create')	=> $project->getPersonCreate()->getFullName(),
 			Todoyu::Label('project.ext.attr.date_start')	=> TodoyuTime::format($project->getStartDate()),
 			Todoyu::Label('project.ext.attr.date_end')		=> TodoyuTime::format($project->getEndDate()),
 			Todoyu::Label('project.ext.attr.date_deadline')	=> TodoyuTime::format($project->getDeadlineDate()),
