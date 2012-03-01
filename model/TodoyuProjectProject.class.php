@@ -104,7 +104,7 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getCompanyID() {
-		return intval($this->data['id_company']);
+		return $this->getInt('id_company');
 	}
 
 
@@ -126,7 +126,7 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getStatus() {
-		return intval($this->data['status']);
+		return $this->getInt('status');
 	}
 
 
@@ -161,7 +161,7 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getStartDate() {
-		return $this->getInt('date_start');
+		return $this->getDateStart();
 	}
 
 
@@ -185,7 +185,7 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getEndDate() {
-		return $this->getInt('date_end');
+		return $this->getDateEnd();
 	}
 
 
@@ -209,7 +209,7 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getDeadlineDate() {
-		return $this->getInt('date_deadline');
+		return $this->getDateDeadline();
 	}
 
 
@@ -416,7 +416,7 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getTaskPresetID() {
-		return intval($this->data['id_taskpreset']);
+		return $this->getInt('id_taskpreset');
 	}
 
 

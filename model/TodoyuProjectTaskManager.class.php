@@ -1108,7 +1108,7 @@ class TodoyuProjectTaskManager {
 		if( $task->isTask() ) {
 				// 'dateover': end date or deadline passed
 			if( $task->isStatusTimeExceedingRelevant() &&
-				(($task->getEndDate() > 0 && $task->isEndDateExceeded()) || $task->isDeadlineExceeded())
+				(($task->getDateEnd() > 0 && $task->isDateEndExceeded()) || $task->isDateDeadlineExceeded() )
 			) {
 				$icons['dateover']= array(
 					'id'		=> 'task-' . $idTask . '-dateover',
@@ -1470,8 +1470,8 @@ class TodoyuProjectTaskManager {
 
 			if( isset($project) ) {
 				$range	= array(
-					'start'	=> $project->getStartDate(),
-					'end'	=> $project->getEndDate()
+					'start'	=> $project->getDateStart(),
+					'end'	=> $project->getDateEnd()
 				);
 			}
 		}

@@ -32,8 +32,6 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @param	Integer	$idTaskpreset
 	 */
 	public function __construct($idTaskpreset) {
-		$idTaskpreset	= intval($idTaskpreset);
-
 		parent::__construct($idTaskpreset, 'ext_project_taskpreset');
 	}
 
@@ -56,7 +54,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getTaskTitle() {
-		return trim($this->get('tasktitle'));
+		return $this->get('tasktitle');
 	}
 
 
@@ -78,7 +76,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getDescription() {
-		return trim($this->get('description'));
+		return $this->get('description');
 	}
 	
 

@@ -542,20 +542,20 @@ class TodoyuProjectProjectManager {
 
 		$data['date_start']	= array(
 			'label'		=> 'project.ext.attr.date_start',
-			'value'		=> TodoyuTime::format($project->getStartDate(), 'D2MlongY4'),
+			'value'		=> TodoyuTime::format($project->getDateStart(), 'D2MlongY4'),
 			'position'	=> 30
 		);
 
 		$data['date_end']	= array(
 			'label'		=> 'project.ext.attr.date_end',
-			'value'		=> TodoyuTime::format($project->getEndDate(), 'D2MlongY4'),
+			'value'		=> TodoyuTime::format($project->getDateEnd(), 'D2MlongY4'),
 			'position'	=> 32
 		);
 
-		if( $project->getDeadlineDate() > 0 && (Todoyu::person()->isInternal() || Todoyu::person()->isAdmin()) ) {
+		if( $project->getDateDeadline() > 0 && (Todoyu::person()->isInternal() || Todoyu::person()->isAdmin()) ) {
 			$data['date_deadline']	= array(
 				'label'		=> 'project.ext.attr.date_deadline',
-				'value'		=> TodoyuTime::format($project->getDeadlineDate(), 'D2MlongY4'),
+				'value'		=> TodoyuTime::format($project->getDateDeadline(), 'D2MlongY4'),
 				'position'	=> 34
 			);
 		}

@@ -196,7 +196,9 @@ class TodoyuProjectTaskPresetManager {
 	 * @return	TodoyuProjectTaskPreset
 	 */
 	public static function getFallbackTaskPreset() {
-		return self::getTaskPreset(TodoyuProjectManager::getFallbackTaskPresetID());
+		$idFallbackPreset	= TodoyuProjectManager::getFallbackTaskPresetID();
+
+		return self::getTaskPreset($idFallbackPreset);
 	}
 
 
