@@ -498,8 +498,9 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	public function makeFilter_date($field, $date, $negate = false) {
 		$tables	= array(self::TABLE);
 		$field	= self::TABLE . '.' . $field;
+		$time	= TodoyuTime::parseDate($date);
 
-		return TodoyuSearchFilterHelper::getDateFilterQueryparts($tables, $field, $date, $negate);
+		return TodoyuSearchFilterHelper::getDateFilterQueryparts($tables, $field, $time, $negate);
 	}
 
 

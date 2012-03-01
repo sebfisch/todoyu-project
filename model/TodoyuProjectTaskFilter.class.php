@@ -836,13 +836,26 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 	/**
 	 * Filter condition: date_end
+	 * Contains fallback to date deadline
 	 *
 	 * @param	String		$date
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public function Filter_enddate($date, $negate = false) {
-		return $this->makeFilter_date('date_end', $date, $negate);
+		$queryParts	= false;
+		$time		= TodoyuTime::parseDate($date);
+
+		if( $time !== 0 ) {
+			$info	= TodoyuSearchFilterHelper::getTimeAndLogicForDate($time, $negate);
+			$fields	= 'IF(ext_project_task.date_end, ext_project_task.date_end, ext_project_task.date_deadline)';
+
+			$queryParts = array(
+				'where'	=> $fields . ' ' . $info['logic'] . ' ' . $info['timestamp']
+			);
+		}
+
+		return $queryParts;
 	}
 
 
