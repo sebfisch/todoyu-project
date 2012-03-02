@@ -19,12 +19,11 @@
 *****************************************************************************/
 
 /**
- * Add project search engine types: tasks, projects
+ * Register search engine types of project: tasks, projects to search headlet
  *
  * @package		Todoyu
  * @subpackage	Project
  */
-
 if( Todoyu::allowed('project', 'general:use') ) {
 	TodoyuSearchManager::addEngine('task', 'TodoyuProjectTaskSearch::getSuggestions', 'project.task.search.label', 'project.task.search.mode.label', 10);
 }

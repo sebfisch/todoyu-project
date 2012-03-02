@@ -277,6 +277,18 @@ class TodoyuProjectProjectManager {
 
 
 	/**
+	 * Check whether the project is locked
+	 *
+	 * @param	Number		$idProject
+	 * @return	Boolean
+	 */
+	public static function isLocked($idProject) {
+		return TodoyuLockManager::isLocked('ext_project_project', $idProject);
+	}
+
+
+
+	/**
 	 * Check whether a project is visible (available and not deleted)
 	 *
 	 * @param	Integer		$idProject

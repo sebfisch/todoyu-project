@@ -392,14 +392,14 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 			$tables	= array(self::TABLE);
 			$keyword= Todoyu::db()->escape($value);
-			$where	= '((							ext_project_task.description	' . $logic . ' \'%' . $keyword . '%\'
-							' . $conjunction . '	ext_project_task.title			' . $logic . ' \'%' . $keyword . '%\'
+			$where	= '((							' . self::TABLE . '	' . $logic . ' \'%' . $keyword . '%\'
+							' . $conjunction . '	' . self::TABLE . '.title			' . $logic . ' \'%' . $keyword . '%\'
 						)';
 
 			if( strpos($value, '.') !== false ) {
 				list($project, $task) = TodoyuArray::intExplode('.', $value);
-				$where	.= ' OR (	  ext_project_task.id_project = ' . $project .
-								' AND ext_project_task.tasknumber = ' . $task .
+				$where	.= ' OR (	  ' . self::TABLE . '.id_project = ' . $project .
+								' AND ' . self::TABLE . '.tasknumber = ' . $task .
 							')';
 			}
 
@@ -433,15 +433,15 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			// If task number was numeric and bigger than zero, check the task number
 		if( strpos($taskNumber, '.') === false && intval($taskNumber) > 0 ) {
 			$taskNumber	= intval($value);
-			$whereParts[] = 'ext_project_task.tasknumber = ' . $taskNumber;
+			$whereParts[] = self::TABLE . '.tasknumber = ' . $taskNumber;
 		} else if( strpos($taskNumber, '.') !== false ) {
 			list($project, $task) = explode('.', $taskNumber);
-			$whereParts[] = '(ext_project_task.id_project = ' . intval($project) . ' AND ext_project_task.tasknumber = ' . intval($task) . ')';
+			$whereParts[] = '(' . self::TABLE . '.id_project = ' . intval($project) . ' AND ' . self::TABLE . '.tasknumber = ' . intval($task) . ')';
 		}
 
 			// If value was not empty, check matches in the title
 		if( $title !== '' ) {
-			$whereParts[] = 'ext_project_task.title LIKE \'%' . Todoyu::db()->escape($title) . '%\'';
+			$whereParts[] = self::TABLE . '.title LIKE \'%' . Todoyu::db()->escape($title) . '%\'';
 		}
 
 		if( sizeof($whereParts) > 0 ) {
@@ -472,7 +472,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$logic	= $negate ? '!=':'=';
 
 			$tables	= array(self::TABLE);
-			$where	= 'ext_project_task.id_person_create ' . $logic . ' ' . $idPerson;
+			$where	= self::TABLE . '.id_person_create ' . $logic . ' ' . $idPerson;
 
 			$queryParts = array(
 				'tables'=> $tables,
@@ -504,7 +504,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$compare= $negate ? 'NOT IN' : 'IN';
 			$where	= 'ext_contact_mm_person_role.id_role ' . $compare . '(' . implode(',', $roleIDs) . ')';
 			$join	= array(
-				'ext_project_task.id_person_create = ext_contact_mm_person_role.id_person'
+				self::TABLE . '.id_person_create = ext_contact_mm_person_role.id_person'
 			);
 
 			$queryParts	= array(
@@ -533,10 +533,10 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		if( $idPerson !== 0 ) {
 				// Set up query parts array
 			$compare= $negate ? '!=' : '=';
-			$where	= '	ext_project_task.id_person_assigned ' . $compare . ' ' . intval($idPerson);
+			$where	= self::TABLE . '.id_person_assigned ' . $compare . ' ' . intval($idPerson);
 
 			if( !$negate ) {
-				$where	.= ' AND ext_project_task.type	= ' . TASK_TYPE_TASK;
+				$where	.= ' AND ' . self::TABLE . '.type	= ' . TASK_TYPE_TASK;
 			}
 
 			$queryParts	= array(
@@ -566,10 +566,10 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$where	= Todoyu::db()->buildInArrayQuery($roleIDs, 'ext_contact_mm_person_role.id_role', true, $negate);
 
 			if( !$negate ) {
-				$where .= ' AND	ext_project_task.type	= ' . TASK_TYPE_TASK;
+				$where .= ' AND	' . self::TABLE . '.type	= ' . TASK_TYPE_TASK;
 			}
 
-			$join	= array('ext_project_task.id_person_assigned = ext_contact_mm_person_role.id_person');
+			$join	= array(self::TABLE . '.id_person_assigned = ext_contact_mm_person_role.id_person');
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -616,7 +616,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 			$tables	= array('ext_project_project');
 			$where	=  'ext_project_project.description LIKE \'%' . $string . '%\'';
-			$join	= array('ext_project_task.id_project = ext_project_project.id');
+			$join	= array(self::TABLE . '.id_project = ext_project_project.id');
 
 			$queryParts	= array(
 				'where'	=> $where,
@@ -645,7 +645,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$queryParts	= array(
 				'where'	=> Todoyu::db()->buildInArrayQuery($statuses, 'ext_project_project.status', true, $negate),
 				'tables'=> array('ext_project_project'),
-				'join'	=> array('ext_project_task.id_project = ext_project_project.id')
+				'join'	=> array(self::TABLE . '.id_project = ext_project_project.id')
 			);
 
 		}
@@ -667,7 +667,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		$tables	= array(self::TABLE);
 
 		$isPublic	= $negate ? 0 : 1;
-		$where		= 'ext_project_task.is_public = ' . $isPublic;
+		$where		= self::TABLE . '.is_public = ' . $isPublic;
 
 		$queryParts	= array(
 			'tables'	=> $tables,
@@ -694,10 +694,10 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$tables	= array(self::TABLE);
 			$compare= $negate ? 'NOT IN' : 'IN';
 
-			$where	= 'ext_project_task.status ' . $compare . '(' . implode(',', $statusList) . ')';
+			$where	= self::TABLE . '.status ' . $compare . '(' . implode(',', $statusList) . ')';
 
 			if( $this->containerMode ) {
-				$where = '(' . $where . ' OR ext_project_task.type = ' . TASK_TYPE_CONTAINER . ')';
+				$where = '(' . $where . ' OR ' . self::TABLE . '.type = ' . TASK_TYPE_CONTAINER . ')';
 			}
 
 			$queryParts	= array(
@@ -724,8 +724,8 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 		if( $idPerson !== 0 ) {
 			$check	= $negate ? 0 : 1;
-			$where	= '		ext_project_task.id_person_assigned	= ' . $idPerson .
-					  ' AND	ext_project_task.is_acknowledged	= ' . $check;
+			$where	= '     ' . self::TABLE . '.id_person_assigned	= ' . $idPerson .
+					  ' AND	' . self::TABLE . '.is_acknowledged	= ' . $check;
 
 			$queryParts	= array(
 				'where'	=> $where
@@ -766,7 +766,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		if( is_numeric($value) ) {
 			$idTask	= intval($value);
 
-			$where	= 'ext_project_task.id_parenttask ' . ( $negate ? '!=' : '=' ) . ' ' . $idTask;
+			$where	= self::TABLE . '.id_parenttask ' . ( $negate ? '!=' : '=' ) . ' ' . $idTask;
 
 			$queryParts	= array(
 				'where'		=> $where
@@ -942,7 +942,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	protected static function Filter_dateDyn($date, $field, $negation = false) {
 		$date		= intval($date);
 		$compare	= $negation ? '>=' : '<=';
-		$fieldName	= 'ext_project_task.' . $field;
+		$fieldName	= self::TABLE . '.' . $field;
 
 		$where	= '(' .		$fieldName . ' ' . $compare . ' ' . $date
 				. ' AND ' . $fieldName . ' > 0)';
@@ -964,7 +964,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	public function Filter_nottask($value, $negate = false) {
 		$idTask	= intval($value);
 
-		$where = 'ext_project_task.id != ' . $idTask;
+		$where = self::TABLE . '.id != ' . $idTask;
 
 		return array(
 			'where'	=> $where
@@ -987,7 +987,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		if( $type > 0 ) {
 			$compare	= $negate ? '!=' : '=';
 			$queryParts = array(
-				'where'		=> 'ext_project_task.type ' . $compare . $type
+				'where'		=> self::TABLE . '.type ' . $compare . $type
 			);
 		}
 
@@ -1009,7 +1009,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 		if( sizeof($activityIDs) !== 0 ) {
 			$queryParts	= array(
-				'where'	=> Todoyu::db()->buildInArrayQuery($activityIDs, 'ext_project_task.id_activity', true, $negate)
+				'where'	=> Todoyu::db()->buildInArrayQuery($activityIDs, self::TABLE . '.id_activity', true, $negate)
 			);
 		}
 
@@ -1039,7 +1039,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$where	= '		ext_project_mm_project_person.id_person	= ' . $idPerson .
 					  ' AND ' . Todoyu::db()->buildInArrayQuery($roles, 'ext_project_mm_project_person.id_role', true, $negate);
 
-			$join	= array('ext_project_task.id_project = ext_project_mm_project_person.id_project');
+			$join	= array(self::TABLE . '.id_project = ext_project_mm_project_person.id_project');
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -1069,7 +1069,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 			if( sizeof($subTasks) > 0 ) {
 				$compare= $negate ? 'NOT IN' : 'IN';
-				$where	= 'ext_project_task.id ' . $compare . '(' . implode(',', $subTasks) . ')';
+				$where	= self::TABLE . '.id ' . $compare . '(' . implode(',', $subTasks) . ')';
 
 				$queryParts	= array(
 					'where'	=> $where
@@ -1092,7 +1092,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 */
 	public static function makeFilter_date($field, $date, $negate = false) {
 		$tables	= array(self::TABLE);
-		$field	= 'ext_project_task.' . $field;
+		$field	= self::TABLE . '.' . $field;
 
 		return TodoyuSearchFilterHelper::getDateFilterQueryparts($tables, $field, $date, $negate);
 	}
@@ -1118,10 +1118,10 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @param	Boolean		$desc
 	 * @return	Array
 	 */
-	public function Sorting_DateCreate($desc = false) {
+	private function Sorting_Attribute($attribute, $desc = false) {
 		return array(
 			'order'	=> array(
-				'ext_project_task.date_create ' . self::getSortDir($desc)
+				self::TABLE . '.' . $attribute . ' ' . self::getSortDir($desc)
 			)
 		);
 	}
@@ -1129,156 +1129,153 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 
 	/**
-	 * @param bool $desc
-	 * @return array
+	 * Order by date create
+	 *
+	 * @param	Boolean		$desc
+	 * @return	Array
+	 */
+	public function Sorting_DateCreate($desc = false) {
+		return $this->Sorting_Attribute('date_create', $desc);
+	}
+
+
+
+	/**
+	 * @param	Boolean $desc
+	 * @return	Array
 	 */
 	public function Sorting_DateUpdate($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.date_update ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('date_update', $desc);
 	}
 
 
 
 	/**
-	 * @param bool $desc
-	 * @return array
+	 * @param   Boolean $desc
+	 * @return	Array
 	 */
 	public function Sorting_dateStart($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.date_start ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('date_start', $desc);
 	}
 
 
 
 	/**
-	 * @param bool $desc
-	 * @return array
+	 * @param	Boolean	$desc
+	 * @return	Array
 	 */
 	public function Sorting_dateEnd($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.date_end ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('date_end', $desc);
 	}
 
 
 
 	/**
-	 * @param bool $desc
-	 * @return array
+	 * @param	Boolean	$desc
+	 * @return	Array
 	 */
 	public function Sorting_dateDeadline($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.date_deadline ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('date_deadline', $desc);
 	}
 
 
 
 	/**
-	 * @param bool $desc
-	 * @return array
+	 * @param	Boolean	$desc
+	 * @return	Array
 	 */
 	public function Sorting_projectID($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.id_project ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('id_project', $desc);
 	}
 
 
 
 	/**
-	 * @param bool $desc
-	 * @return array
+	 * @param	Boolean	$desc
+	 * @return	Array
 	 */
 	public function Sorting_title($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.title ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('title', $desc);
 	}
 
 
 
 	/**
-	 * @param bool $desc
-	 * @return array
+	 * @param	Boolean	$desc
+	 * @return	Array
 	 */
 	public function Sorting_personAssigned($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.id_person_assigned ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('id_person_assigned', $desc);
 	}
 
+
+
+	/**
+	 * @param	Boolean	$desc
+	 * @return	Array
+	 */
 	public function Sorting_personOwner($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.id_person_owner ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('id_person_owner', $desc);
 	}
 
+
+
+	/**
+	 * @param	Boolean	$desc
+	 * @return	Array
+	 */
 	public function Sorting_taskNumber($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.tasknumber ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('tasknumber', $desc);
 	}
 
+
+
+	/**
+	 * @param	Boolean	$desc
+	 * @return	Array
+	 */
 	public function Sorting_status($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.status ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('status', $desc);
 	}
 
+
+
+	/**
+	 * @param	Boolean	$desc
+	 * @return	Array
+	 */
 	public function Sorting_activity($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.id_activity ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('id_activity', $desc);
 	}
 
 
+
+	/**
+	 * @param	Boolean	$desc
+	 * @return	Array
+	 */
 	public function Sorting_estimatedWorkload($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.estimated_workload ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('estimated_workload', $desc);
 	}
 
+
+
+	/**
+	 * @param	Boolean	$desc
+	 * @return	Array
+	 */
 	public function Sorting_acknowledged($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.is_acknowledged ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('is_acknowledged', $desc);
 	}
 
+
+
+	/**
+	 * @param	Boolean	$desc
+	 * @return	Array
+	 */
 	public function Sorting_public($desc = false) {
-		return array(
-			'order'	=> array(
-				'ext_project_task.is_public ' . self::getSortDir($desc)
-			)
-		);
+		return $this->Sorting_Attribute('is_public', $desc);
 	}
 
 }
