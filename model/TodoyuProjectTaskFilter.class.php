@@ -392,8 +392,8 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 			$tables	= array(self::TABLE);
 			$keyword= Todoyu::db()->escape($value);
-			$where	= '((							' . self::TABLE . '	' . $logic . ' \'%' . $keyword . '%\'
-							' . $conjunction . '	' . self::TABLE . '.title			' . $logic . ' \'%' . $keyword . '%\'
+			$where	= '((							' . self::TABLE . '.description	' . $logic . ' \'%' . $keyword . '%\'
+							' . $conjunction . '	' . self::TABLE . '.title		' . $logic . ' \'%' . $keyword . '%\'
 						)';
 
 			if( strpos($value, '.') !== false ) {
