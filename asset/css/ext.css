@@ -387,9 +387,9 @@ fieldset.defaultsforlimited {
 }
 
 .project .infoBox.presets h4.closed {
-	background: white url(../img/icons.png) no-repeat 627px -775px;
+	background: white url(../img/icons.png) no-repeat right -775px;
 }
 
 .project .infoBox.presets h4.open {
-	background: white url(../img/icons.png) no-repeat 627px -745px;
+	background: white url(../img/icons.png) no-repeat right -745px;
 }
