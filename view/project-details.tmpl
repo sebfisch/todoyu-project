@@ -30,7 +30,7 @@
 
 	{if isInternal()}
 		<div class="infoBox presets">
-			<h4 onclick="Todoyu.Ext.project.Project.toggleTaskPresetDetails('{$id}');">{Label project.ext.infobox.presets.title}</h4>
+			<h4  id="toggle-icon-presetlist-{$id}" onclick="Todoyu.Ext.project.Project.toggleTaskPresetDetails('{$id}');" class="closed">{Label project.ext.infobox.presets.title}</h4>
 			<div class="content overflow" id="taskpresetlist-{$id}" style="display:none">
 				<table class="list presetsListing">
 				{foreach $presets preset}

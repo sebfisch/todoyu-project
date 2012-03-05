@@ -376,3 +376,20 @@ fieldset.defaultsforlimited {
 .bgStatus10 {
 	background-color:pink;
 }
+
+
+/* -------------------------
+	Project details taskpreset
+	------------------------*/
+
+.project .infoBox.presets h4 {
+	cursor: pointer;
+}
+
+.project .infoBox.presets h4.closed {
+	background: white url(../img/icons.png) no-repeat 627px -775px;
+}
+
+.project .infoBox.presets h4.open {
+	background: white url(../img/icons.png) no-repeat 627px -745px;
+}

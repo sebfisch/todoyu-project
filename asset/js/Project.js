@@ -179,12 +179,22 @@ Todoyu.Ext.project.Project = {
 	 */
 	toggleTaskPresetDetails: function(idProject) {
 		var detailDiv	= $('taskpresetlist-' + idProject);
+		var icon		= $('toggle-icon-presetlist-' + idProject);
+		var toggleClass = '';
 
 		if(detailDiv) {
 			if( detailDiv.visible() ) {
 				detailDiv.hide();
+				toggleClass='closed';
+
 			} else {
 				detailDiv.show();
+				toggleClass='open';
+			}
+
+			if( icon ) {
+				icon.addClassName(toggleClass);
+				icon.removeClassName(toggleClass == 'open' ? 'closed' : 'open');
 			}
 		}
 	},
