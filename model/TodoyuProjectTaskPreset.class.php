@@ -120,7 +120,7 @@ class TodoyuProjectTaskPreset extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getEstimatedWorkloadLabel() {
-		return TodoyuTime::sec2hour($this->getEstimatedWorkload()) . ' ' . Todoyu::Label('core.date.time.hours');
+		return TodoyuTime::formatHours($this->getEstimatedWorkload()) . ' ' . Todoyu::Label('core.date.time.hours');
 	}
 
 

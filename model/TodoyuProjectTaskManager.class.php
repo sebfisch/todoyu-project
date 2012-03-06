@@ -943,7 +943,7 @@ class TodoyuProjectTaskManager {
 			if( $isInternal && $task->hasEstimatedWorkload() ) {
 				$data['estimated_workload']	= array(
 					'label'		=> 'project.task.attr.estimated_workload',
-					'value'		=> TodoyuTime::sec2hour($task->getEstimatedWorkload()),
+					'value'		=> TodoyuTime::formatHours($task->getEstimatedWorkload()),
 					'position'	=> 100,
 					'className'	=> 'sectionStart'
 				);
