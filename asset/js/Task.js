@@ -584,7 +584,7 @@ Todoyu.Ext.project.Task = {
 	 * @method	getSubTasks
 	 * @param	{Number}	idTask
 	 * @param	{Boolean}	visibleOnly			Default: false
-	 * @return	{Array}
+	 * @return	{Element[]}
 	 */
 	getSubTasks: function(idTask, visibleOnly) {
 		visibleOnly	= ( typeof visibleOnly == 'undefined' ) ? false : visibleOnly;

@@ -401,7 +401,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	 * @method	snapDraggable
 	 * @param	{Number}	x
 	 * @param	{Number}	y
-	 * @return	{Array}
+	 * @return	{Number[]}
 	 */
 	snapDraggable: function(x, y) {
 			// Half task height as buffer

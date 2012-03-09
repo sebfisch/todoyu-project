@@ -427,7 +427,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * Get current tab items (DOM elements)
 	 *
 	 * @method	getTabs
-	 * @return	{Array}
+	 * @return	{Element[]}
 	 */
 	getTabs: function() {
 		return Todoyu.Tabs.getAllTabs('project');
