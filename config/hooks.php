@@ -39,4 +39,8 @@ TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuPro
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookModifyFormfieldsForContainer');
 TodoyuFormHook::registerLoadData('ext/project/config/form/project.xml', 'TodoyuProjectProjectManager::hookLoadPresetData');
 
+
+	// Callbacks for exteding filter widgets of other extensions
+TodoyuHookManager::registerHook('core', 'loadconfig.contact.filters', 'TodoyuProjectManager::hookLoadContactPersonFilterConfig');
+
 ?>

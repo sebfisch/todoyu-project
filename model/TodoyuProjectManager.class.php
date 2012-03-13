@@ -32,7 +32,7 @@ class TodoyuProjectManager {
 	public static function addLastProjectsAsSubmenuItems() {
 		$projectEntries	= TodoyuProjectProjectManager::getOpenProjectLabels();
 
-		$counter = 0;
+		$counter	= 0;
 		foreach($projectEntries as $idProject => $title) {
 			TodoyuFrontend::addSubmenuEntry('project', 'project' . $idProject, $title, '?ext=project&project=' . $idProject, $counter++);
 		}
@@ -49,6 +49,17 @@ class TodoyuProjectManager {
 		$idPreset	= TodoyuSysmanagerExtConfManager::getExtConfValue('project', 'fallbacktaskpreset');
 
 		return intval($idPreset);
+	}
+
+
+
+	/**
+	 * Load configs of project related filter widgets of contact persons
+	 */
+	public static function hookLoadContactPersonFilterConfig() {
+		$filePath	= realpath(PATH_EXT_PROJECT . DIR_SEP . 'config' . DIR_SEP . 'filtersPerson.php');
+
+		include_once($filePath);
 	}
 
 }

@@ -1,11 +1,12 @@
 todoyu project extension changelog
 
 project 1.3.0 - not released yet
+	* Added: Person filter widget: "assigned in project"
 	* Added: Visualization of task-presets toggle ability
 	* Added: Added toggling for taskpresets in projectheader (default closed)
 	* Bugfix: ActiveTab saving fixed
 	* Bugfix: Missing init of Drag'n'Drop after status updates
-    * Bugifx: Subtasks are not rendered after status update of parent task
+	* Bugifx: Subtasks are not rendered after status update of parent task
 	* Added: Input validation of estimated duration field of task
 	* Added: New task/container status "waiting"
 	* Added: Getter for all fields (description, owner)
@@ -21,10 +22,10 @@ project 1.3.0 - not released yet
 	* Changed: Require core 2.2 (new html2text)
 	* Changed: JS-Handling for taskTabs moved to core
 	* Changed: Rename date functions according to task (getStartDate() => getDateStart())
-    * Changed: Rename TodoyuProjectProject::getRange() to getRangeDates()
-    * Changed: Rename TodoyuProjectTaskManager::getTaskRootline() to getRootlineTaskIDs()
-    * Changed: Rename TodoyuProjectTaskManager::getRoolineTasks() getRootlineTasksData()
-    * Changed: Extended config of dynamic dates in task preset. Select days or working days
+	* Changed: Rename TodoyuProjectProject::getRange() to getRangeDates()
+	* Changed: Rename TodoyuProjectTaskManager::getTaskRootline() to getRootlineTaskIDs()
+	* Changed: Rename TodoyuProjectTaskManager::getRoolineTasks() getRootlineTasksData()
+	* Changed: Extended config of dynamic dates in task preset. Select days or working days
 
 project 1.2.0 - 2011-12-13
 	* Feature: Drag & drop tasks in project

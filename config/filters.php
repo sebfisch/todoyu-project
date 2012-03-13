@@ -664,4 +664,5 @@ Todoyu::$CONFIG['FILTERS']['PROJECT'] = array(
 		)
 	)
 );
+
 ?>
