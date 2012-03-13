@@ -23,7 +23,7 @@
  *
  * @package		Todoyu
  * @subpackage	Project
- * @see         TodoyuProjectManager::hookLoadContactPersonFilterConfig
+ * @see         TodoyuProjectManager::hookLoadContactFilterConfig
  */
 
 	// Persons assigned in project

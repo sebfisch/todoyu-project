@@ -56,8 +56,8 @@ class TodoyuProjectManager {
 	/**
 	 * Load configs of project related filter widgets of contact persons
 	 */
-	public static function hookLoadContactPersonFilterConfig() {
-		$filePath	= realpath(PATH_EXT_PROJECT . DIR_SEP . 'config' . DIR_SEP . 'filtersPerson.php');
+	public static function hookLoadContactFilterConfig() {
+		$filePath	= realpath(PATH_EXT_PROJECT . DIR_SEP . 'config' . DIR_SEP . 'filters-contact.php');
 
 		include_once($filePath);
 	}
