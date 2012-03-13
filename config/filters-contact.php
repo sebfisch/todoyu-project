@@ -28,7 +28,7 @@
 
 	// Persons assigned in project
 Todoyu::$CONFIG['FILTERS']['PERSON']['widgets']['assignedinproject'] = array(
-	'funcRef'	=> 'TodoyuProjectContactPersonFilter::Filter_assignedinproject',
+	'funcRef'	=> 'TodoyuProjectPersonFilter::Filter_assignedinproject',
 	'label'		=> 'project.filter.person.assignedinproject',
 	'optgroup'	=> 'project.filter.optgroup.projects',
 	'widget'	=> 'text',

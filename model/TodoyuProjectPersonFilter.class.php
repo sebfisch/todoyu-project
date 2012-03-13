@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-class TodoyuProjectContactPersonFilter extends TodoyuSearchFilterBase implements TodoyuFilterInterface {
+class TodoyuProjectPersonFilter extends TodoyuSearchFilterBase implements TodoyuFilterInterface {
 
 	/**
 	 * Default table for database requests
