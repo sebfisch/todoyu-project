@@ -118,6 +118,7 @@ class TodoyuProjectTaskManager {
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Array
+	 * @deprecated
 	 */
 	public static function getTaskData($idTask) {
 		return TodoyuRecordManager::getRecordData(self::TABLE, $idTask);
@@ -273,19 +274,18 @@ class TodoyuProjectTaskManager {
 		$idProject		= intval($idProject);
 		$idParentTask	= intval($idParentTask);
 
-		$field	= 'MAX(sorting) as sorting';
-		$table	= self::TABLE;
-		$where	= '		id_project		= ' . $idProject .
-				  ' AND	id_parenttask	= ' . $idParentTask;
-		$group	= 'sorting';
-		$order	= 'sorting DESC';
-		$limit	= 1;
+		$field		= 'MAX(sorting) as maxSorting';
+		$table		= self::TABLE;
+		$where		= '		id_project		= ' . $idProject .
+					  ' AND	id_parenttask	= ' . $idParentTask;
+		$group		= 'id_parenttask';
+		$fieldName	= 'maxSorting';
 
 		TodoyuCache::disable();
-		$maxSorting	= Todoyu::db()->getFieldValue($field, $table, $where, $group, $order, $limit, 'sorting'); // getRecordByQuery($fields, $table, $where, $group);
+		$maxSorting	= Todoyu::db()->getFieldValue($field, $table, $where, $group, '', '', $fieldName); // getRecordByQuery($fields, $table, $where, $group);
 		TodoyuCache::enable();
 
-		if( !$maxSorting ) {
+		if( $maxSorting === false ) {
 			return 0;
 		} else {
 			return intval($maxSorting) + 1;
@@ -1845,69 +1845,95 @@ class TodoyuProjectTaskManager {
 
 
 	/**
+	 * Move task to new position
+	 *
+	 * @param	Integer		$idTaskMove
+	 * @param	Integer		$idTaskRef
+	 * @param	String		$position
+	 */
+	public static function moveTask($idTaskMove, $idTaskRef, $position = 'in') {
+		if( $position === 'in' ) {
+			self::insertAsSubtask($idTaskMove, $idTaskRef);
+		} elseif( $position === 'after' || $position === 'before' ) {
+			self::changeTaskOrder($idTaskMove, $idTaskRef, $position);
+		}
+	}
+
+
+
+	/**
+	 * Insert a task as subtasks
+	 * Update the sorting position of the old and the new sorting group
+	 *
+	 * @param	Integer		$idTaskMove
+	 * @param	Integer		$idParentTask
+	 * @param	Integer		$idProject
+	 */
+	public static function insertAsSubtask($idTaskMove, $idParentTask, $idProject = 0) {
+		$taskMove	= self::getTask($idTaskMove);
+
+			// Update tasks in the old sorting group
+		self::updateSortingGroup($taskMove->getProjectID(), $taskMove->getParentTaskID(), $taskMove->getTreePosition(), true);
+
+			// Insert into new sorting group
+		self::changeTaskParent($idTaskMove, $idParentTask, $idProject);
+	}
+
+
+
+	/**
 	 * Move a task. Change its parent
 	 * Move to another project is also supported
 	 *
-	 * @param	Integer		$idTask				Task to move
-	 * @param	Integer		$idParentTask		New parent task
+	 * @param	Integer		$idTaskMove				Task to move
+	 * @param	Integer		$idTaskParent		New parent task
 	 * @param	Integer		$idProject
 	 * @return	Integer
 	 */
-	public static function changeTaskParent($idTask, $idParentTask, $idProject = 0) {
-		$idTask			= intval($idTask);
-		$idParentTask	= intval($idParentTask);
+	public static function changeTaskParent($idTaskMove, $idTaskParent, $idProject = 0) {
+		$idTaskMove		= intval($idTaskMove);
+		$idTaskParent	= intval($idTaskParent);
 		$idProject		= intval($idProject);
-		$taskData		= self::getTaskData($idTask);
-		$parentData		= $idParentTask === 0 ? false : self::getTaskData($idParentTask);
-		$idNewProject	= $idParentTask === 0 ? $idProject : intval($parentData['id_project']);
+		$taskMove		= self::getTask($idTaskMove);
+
+			// Get project ID from parent task
+		if( $idTaskParent !== 0 ) {
+			$taskParent	= self::getTask($idTaskParent);
+			$idProject	= $taskParent->getProjectID();
+		}
 
 			// Basic update
 		$update		= array(
-			'id_parenttask'	=> $idParentTask,
-			'id_project'	=> $idNewProject,
-			'sorting'		=> self::getNextSortingPosition($idNewProject, $idParentTask)
+			'id_parenttask'	=> $idTaskParent,
+			'id_project'	=> $idProject,
+			'sorting'		=> self::getNextSortingPosition($idProject, $idTaskParent)
 		);
-		
+
 			// If project changed, generate a new task number
-		if( $taskData['id_project'] != $idNewProject ) {
-			$update['tasknumber']	= TodoyuProjectProjectManager::getNextTaskNumber($idNewProject);
+		if( $taskMove->getProjectID() != $idProject ) {
+			$update['tasknumber']	= TodoyuProjectProjectManager::getNextTaskNumber($idProject);
 		}
 
 			// Update the moved task
-		self::updateTask($idTask, $update);
+		self::updateTask($idTaskMove, $update);
 
 			// If project changed, update also all sub tasks with new project ID and generate new task number
-		if( $taskData['id_project'] != $idNewProject ) {
-			$allSubTaskIDs	= self::getAllSubTaskIDs($idTask);
+		if( $taskMove->getProjectID() != $idProject ) {
+			$allSubTaskIDs	= self::getAllSubTaskIDs($idTaskMove);
 
 			foreach($allSubTaskIDs as $idSubTask) {
 				$subUpdate	= array(
-					'id_project'	=> $idNewProject,
-					'tasknumber'	=> TodoyuProjectProjectManager::getNextTaskNumber($idNewProject)
+					'id_project'	=> $idProject,
+					'tasknumber'	=> TodoyuProjectProjectManager::getNextTaskNumber($idProject)
 				);
 
 				self::updateTask($idSubTask, $subUpdate);
 			}
 		}
 
-		return $idTask;
-	}
+		TodoyuDebug::printInFirebug($update['sorting'], 'New position_' . $idTaskMove);
 
-
-
-	/**
-	 * Move task to new position
-	 *
-	 * @param	Integer		$idTask
-	 * @param	Integer		$idTaskRef
-	 * @param	String		$position
-	 */
-	public static function moveTask($idTask, $idTaskRef, $position = 'in') {
-		if( $position === 'in' ) {
-			self::changeTaskParent($idTask, $idTaskRef);
-		} elseif( $position === 'after' || $position === 'before' ) {
-			self::changeTaskOrder($idTask, $idTaskRef, $position);
-		}
+		return $idTaskMove;
 	}
 
 
@@ -1921,11 +1947,10 @@ class TodoyuProjectTaskManager {
 	 */
 	public static function cloneTask($idTask, $withSubTasks = true) {
 		$idTask		= intval($idTask);
-		$taskData	= TodoyuProjectTaskManager::getTaskData($idTask);
+		$task		= self::getTask($idTask);
+		$idNewTask	= self::copyTask($idTask, $task->getParentTaskID(), $withSubTasks, $task->getProjectID());
 
-		$idNewTask	= self::copyTask($idTask, $taskData['id_parenttask'], $withSubTasks, $taskData['id_project']);
-
-		TodoyuProjectTaskManager::changeTaskOrder($idNewTask, $idTask, 'after');
+		self::changeTaskOrder($idNewTask, $idTask, 'after');
 
 		return $idNewTask;
 	}
@@ -1938,51 +1963,66 @@ class TodoyuProjectTaskManager {
 	 * @param	Integer		$idTaskMove			Task which was moved
 	 * @param	Integer		$idTaskRef			Task which is the reference for after/before
 	 * @param	String		$moveMode			Mode: after or before
+	 * @return	Integer		New position
 	 */
 	public static function changeTaskOrder($idTaskMove, $idTaskRef, $moveMode) {
 		$idTaskMove	= intval($idTaskMove);
 		$idTaskRef	= intval($idTaskRef);
-		$taskMove	= TodoyuProjectTaskManager::getTaskData($idTaskMove);
-		$taskRef	= TodoyuProjectTaskManager::getTaskData($idTaskRef);
-		$after		= strtolower(trim($moveMode)) === 'after';
+		$taskMove	= self::getTask($idTaskMove);
+		$taskRef	= self::getTask($idTaskRef);
+		$idProject	= $taskMove->getProjectID();
 
-			// 1. Move other tasks which are between the move and the ref task
-		$updateOthers	= array();
+		$isInsertAfter		= strtolower(trim($moveMode)) === 'after';
+		$isInsertBefore		= !$isInsertAfter;
+		$isDifferentGroup	= $taskMove->getParentTaskID() !== $taskRef->getParentTaskID();
+		$isSameGroup		= !$isDifferentGroup;
+		$isRefTaskAfter		= $isSameGroup && $taskMove->getTreePosition() < $taskRef->getTreePosition();
+		$refPosition		= $taskRef->getTreePosition();
+		$hasToFixPosition	= $isInsertBefore || $isRefTaskAfter;
 
-			// Adjust the reference sorting position
-		$refSort= $after ? $taskRef['sorting'] /*+ 1*/ : $taskRef['sorting'] - 1;
+			// Move up all tasks which are lower old position
+		self::updateSortingGroup($idProject, $taskMove->getParentTaskID(), $taskMove->getTreePosition(), true);
 
-			// If task get a higher position
-		if( $taskMove['sorting'] < $taskRef['sorting'] ) {
-			$min	= $taskMove['sorting'];
-			$max	= $refSort;
-			$updateOthers['sorting']	= '`sorting`-1';
-		} else {
-			$min	= $refSort;
-			$max	= false;
-			$updateOthers['sorting']	= '`sorting`+1';
+			// Correct reference position, because to upper query already changed the ref position
+		if( $hasToFixPosition ) {
+			$refPosition--;
 		}
+		self::updateSortingGroup($idProject, $taskRef->getParentTaskID(), $refPosition, false);
 
-		$table	= self::TABLE;
-		$where	= '		id_project		= ' . $taskMove['id_project']
-				. ' AND	id_parenttask	= ' . $taskRef['id_parenttask']
-			// Limits for updating other tasks
-				. ' AND sorting > ' . $min;
-		if( $max !== false ) {
-			$where	.= ' AND	sorting < ' . $max;
-		}
+			// Set new position
+		$newPosition = $hasToFixPosition ? $taskRef->getTreePosition() : $taskRef->getTreePosition() + 1;
+		$newTaskMoveData = array(
+			'sorting'		=> $newPosition,
+			'id_parenttask'	=> $taskRef->getParentTaskID()
+		);
+		TodoyuRecordManager::updateRecord(self::TABLE, $idTaskMove, $newTaskMoveData);
 
-		$noQuote= array('sorting');
+		TodoyuDebug::printInFirebug($newPosition, 'New position ' . $idTaskMove);
 
-		Todoyu::db()->doUpdate($table, $where, $updateOthers, $noQuote);
+		return $newPosition;
+	}
 
-			// 2. Update moved task itself
-		$updateSelf = array(
-			'sorting'		=> $after ? $taskRef['sorting'] + 1 : $taskRef['sorting'],
-			'id_parenttask'	=> $taskRef['id_parenttask']
+
+
+	/**
+	 * Update the sorting for a group
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idParentTask		Parent task
+	 * @param	Integer		$refPosition		Reference position
+	 * @param	Boolean		$moveLowerUp		Shift every task one step to the top/bottom
+	 */
+	public static function updateSortingGroup($idProject, $idParentTask, $refPosition, $moveLowerUp) {
+		$calc			= $moveLowerUp ? '-' : '+';
+		$noQuoteFields 	= array('sorting');
+		$where			= '		id_project		= ' . $idProject
+						. ' AND id_parenttask	= '  . $idParentTask
+						. ' AND	sorting 		>'  . $refPosition;
+		$updateFields	= array(
+			'sorting'	=> 'sorting' . $calc . '1'
 		);
 
-		TodoyuRecordManager::updateRecord(self::TABLE, $idTaskMove, $updateSelf, $noQuote);
+		Todoyu::db()->doUpdate(self::TABLE, $where, $updateFields, $noQuoteFields);
 	}
 
 

@@ -162,7 +162,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function hasParentTask() {
-		return $this->id_parenttask > 0;
+		return $this->getParentTaskID() !== 0;
 	}
 
 
@@ -541,6 +541,17 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 */
 	public function getPersonOwnerID() {
 		return $this->getPersonID('owner');
+	}
+
+
+
+	/**
+	 * Get sorting position for project tree
+	 *
+	 * @return	Integer
+	 */
+	public function getTreePosition() {
+		return $this->getInt('sorting');
 	}
 
 

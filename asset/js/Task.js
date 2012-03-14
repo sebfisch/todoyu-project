@@ -191,28 +191,26 @@ Todoyu.Ext.project.Task = {
 		switch( insertMode ) {
 				// Insert as sub task of the current task
 			case 'in':
-					// If sub task container already exists, add it
-				if( this.hasSubTasksContainer(idTask) ) {
-					this.getSubTasksContainer(idTask).insert({bottom: response.responseText});
-					this.ext.TaskTree.expandSubTasks(idTask);
-					this.updateSubTasksExpandTrigger(idTask);
-				} else {
-						// If no sub task container available, refresh task and load its sub task
-					this.refresh(idTask);
-						// Append sub tasks
-					this.ext.TaskTree.loadSubTasks(idTask, this.ext.TaskTree.toggleSubTasksTriggerIcon.bind(this, idTask));
+				if( !this.hasSubTasksContainer(idTask) ) {
+					this.createSubTaskContainer(idTask);
 				}
+				this.getSubTasksContainer(idTask).insert(response.responseText);
+				this.ext.TaskTree.expandSubTasks(idTask);
+				this.updateSubTasksExpandTrigger(idTask);
 				break;
 
 				// Insert task before current
 			case 'before':
-				$('task-' + idTask).insert({before: response.responseText});
+				$('task-' + idTask).insert({
+					before: response.responseText
+				});
 				break;
 
 				// Insert task after current
 			case 'after':
-				var target = this.hasSubTasksContainer(idTask) ? this.getSubTasksContainerID(idTask) : 'task-' + idTask;
-				$(target).insert({after: response.responseText});
+				$('task-' + idTask).insert({
+					after: response.responseText
+				});
 				break;
 		}
 
@@ -1056,12 +1054,11 @@ Todoyu.Ext.project.Task = {
 	createSubTaskContainer: function(idTask) {
 		var idSubTasksContainer	= this.getSubTasksContainerID(idTask);
 
-		if( ! Todoyu.exists(idSubTasksContainer) ) {
+		if( !Todoyu.exists(idSubTasksContainer) ) {
 			$('task-' + idTask).insert(new Element('div', {
 								id:			idSubTasksContainer,
-								'class':	'subtasks'
+								className:	'subtasks'
 							}));
-			$('task-' + idTask + '-subtasks-trigger').addClassName('expandable').addClassName('expanded');
 		}
 
 		return $(idSubTasksContainer);
