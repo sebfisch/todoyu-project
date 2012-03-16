@@ -658,7 +658,6 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filters for tasks being publicly visible
 	 *
-	 *
 	 * @param	Integer		$value
 	 * @param	Boolean		$negate
 	 * @return	Array					Query parts

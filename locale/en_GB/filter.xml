@@ -62,5 +62,6 @@
 	<label index="project.taskfilter">Task from Task Filter</label>
 	<label index="optgroup.projects">Projects</label>
 	<label index="person.assignedinproject">Assigned In Project</label>
+	<label index="company.projectstatus">Has project(s) with status</label>
 
 </labels>
