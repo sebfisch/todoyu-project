@@ -85,7 +85,7 @@ class TodoyuProjectTaskManager {
 		$form->getFieldset('left')->addField('id_project', $field, 'before:title');
 
 			// Change form action and button functions
-		$form->setAttribute('action', '?ext=project&amp;controller=quickcreatetask');
+		$form->setAttribute('action', 'index.php?ext=project&amp;controller=quickcreatetask');
 		$form->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateTask.save(this.form)');
 		$form->getField('cancel')->setAttribute('onclick', 'Todoyu.Popups.close(\'quickcreate\')');
 
@@ -2321,7 +2321,7 @@ class TodoyuProjectTaskManager {
 		} else {
 			list($idProject)= explode('.', $matches[2]);
 
-			return $matches[1] . '<a href="?ext=project&project=' . $idProject . '&task=' . $idTask . '#task-' . $idTask . '">' . $matches[2] . '</a>' . $matches[3];
+			return $matches[1] . '<a href="index.php?ext=project&project=' . $idProject . '&task=' . $idTask . '#task-' . $idTask . '">' . $matches[2] . '</a>' . $matches[3];
 		}
 	}
 

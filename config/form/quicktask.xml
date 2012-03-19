@@ -2,7 +2,7 @@
 <form>
 	<attributes>
 		<attribute name="name">quicktask</attribute>
-		<attribute name="action">?ext=project&amp;controller=quicktask</attribute>
+		<attribute name="action">index.php?ext=project&amp;controller=quicktask</attribute>
 	</attributes>
 
 	<hiddenFields>

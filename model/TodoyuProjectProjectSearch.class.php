@@ -102,7 +102,7 @@ class TodoyuProjectProjectSearch implements TodoyuSearchEngineIf {
 						'labelTitle'=> $labelTitle,
 						'labelInfo'	=> $project['company'],
 						'title'		=> strip_tags($labelTitle),
-						'onclick'	=> 'location.href=\'?ext=project&amp;project=' . $project['id'] . '\''
+						'onclick'	=> 'location.href=\'index.php?ext=project&amp;project=' . $project['id'] . '\''
 					);
 				}
 			}

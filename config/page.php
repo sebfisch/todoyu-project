@@ -20,7 +20,7 @@
 
 		// Add menu entry
 if(  Todoyu::allowed('project', 'general:area') ) {
-	TodoyuFrontend::addMenuEntry('project', 'project.ext.tab.label', '?ext=project', 20);
+	TodoyuFrontend::addMenuEntry('project', 'project.ext.tab.label', 'index.php?ext=project', 20);
 
 		// Register quick task headlet
 	if( Todoyu::allowed('project', 'addtask:addViaQuickCreateHeadlet') ) {

@@ -1371,7 +1371,7 @@ class TodoyuProjectProjectManager {
 		$form		= TodoyuFormManager::getForm($xmlPath, $idProject, array('quickcreate'=>true));
 
 			// Adjust form to needs of quick creation wizard
-		$form->setAttribute('action', '?ext=project&amp;controller=quickcreateproject');
+		$form->setAttribute('action', 'index.php?ext=project&amp;controller=quickcreateproject');
 		$form->setAttribute('onsubmit', 'return false');
 		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateProject.save(this.form)');
 		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', "Todoyu.Popups.close('quickcreate')");
