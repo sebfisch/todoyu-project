@@ -47,7 +47,7 @@ class TodoyuProjectPanelWidgetStatusFilterTask extends TodoyuProjectPanelWidgetS
 		$this->pref	= 'panelwidget-taskstatusfilter';
 
 			// Initialize JavaScript
-		TodoyuPage::addJsOnloadedFunction('function(){Todoyu.R.TaskStatusFilter = new Todoyu.Ext.project.PanelWidget.TaskStatusFilter()}', 100);
+		TodoyuPage::addJsInit('Todoyu.R.TaskStatusFilter = new Todoyu.Ext.project.PanelWidget.TaskStatusFilter()');
 	}
 
 

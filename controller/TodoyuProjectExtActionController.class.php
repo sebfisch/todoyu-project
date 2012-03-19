@@ -81,7 +81,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 					// Reset task ID if not visible
 				$idTask = 0;
 					// Show message about not available task
-				TodoyuPage::addJsOnloadedFunction('Todoyu.notifyError.bind(Todoyu, \'' . Todoyu::Label('project.task.notAvailable') . '\')');
+				TodoyuPage::addJsInit('Todoyu.notifyError(\'' . Todoyu::Label('project.task.notAvailable') . '\')');
 			}
 		}
 
@@ -114,13 +114,13 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 		TodoyuPage::set('taskTree', $projectTaskTree);
 
 			// Add JS onLoad functions
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.ContextMenuTask.attach', 100, true);
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.ContextMenuProject.attach', 100, true);
+		TodoyuPage::addJsInit('Todoyu.Ext.project.ContextMenuTask.attach()');
+		TodoyuPage::addJsInit('Todoyu.Ext.project.ContextMenuProject.attach()');
 
 			// Open any task for editing initially?
 		$idTaskEdit	= TodoyuRequest::getParam('edit', true);
 		if( $idTaskEdit > 0 ) {
-			TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Task.Edit.initEditOnLoaded.bind(Todoyu.Ext.project.Task.Edit, ' . $idTaskEdit . ')', 100);
+			TodoyuPage::addJsInit('Todoyu.Ext.project.Task.Edit.initEditOnLoaded(' . $idTaskEdit . ')');
 		}
 
 		return TodoyuPage::render();
@@ -140,7 +140,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 		TodoyuProjectProjectRights::restrictEdit($idProject);
 
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.edit(' . $idProject . ')', 101);
+		TodoyuPage::addJsInit('Todoyu.Ext.project.Project.edit(' . $idProject . ')', 101);
 
 		return $this->defaultAction($params);
 	}
@@ -159,7 +159,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 		TodoyuProjectTaskRights::restrictAddToProject($idProject);
 
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addTask(' . $idProject . ')', 101);
+		TodoyuPage::addJsInit('Todoyu.Ext.project.Project.addTask(' . $idProject . ')', 101);
 
 		return $this->defaultAction($params);
 	}
@@ -178,7 +178,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 		TodoyuProjectTaskRights::restrictAddToProject($idProject);
 
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.Project.addContainer(' . $idProject . ')', 101);
+		TodoyuPage::addJsInit('Todoyu.Ext.project.Project.addContainer(' . $idProject . ')', 101);
 
 		return $this->defaultAction($params);
 	}
