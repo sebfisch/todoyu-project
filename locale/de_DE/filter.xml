@@ -59,6 +59,8 @@
 	<label index="project.dyndate.currentweek">Aktuelle Woche</label>
 	<label index="project.dyndate.nextweek">Nächste Woche</label>
 	<label index="project.dyndate.lastweek">Letzte Woche</label>
+	<label index="optgroup.projects">Projekte</label>
 	<label index="project.taskfilter">Aufgabe aus Ausgaben-Filter</label>
+	<label index="person.assignedinproject">In Projekt zugewiesen</label>
 	<label index="company.projectstatus">Hat Projekt(e) in Status</label>
 </labels>

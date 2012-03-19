@@ -59,9 +59,8 @@
 	<label index="project.dyndate.currentweek">Current Week</label>
 	<label index="project.dyndate.nextweek">Next Week</label>
 	<label index="project.dyndate.lastweek">Last Week</label>
+	<label index="optgroup.projects">Projects</label>>
 	<label index="project.taskfilter">Task from Task Filter</label>
-	<label index="optgroup.projects">Projects</label>
 	<label index="person.assignedinproject">Assigned In Project</label>
 	<label index="company.projectstatus">Has project(s) with status</label>
-
 </labels>
