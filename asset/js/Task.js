@@ -244,18 +244,18 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Number}		idTask
 	 */
 	clone: function(idTask) {
-		var cloneSubTasks = 0;
-		if ( this.hasSubTasks(idTask) ) {
+		var cloneSubTasks = false;
+		if( this.hasSubTasks(idTask) ) {
 				// Has sub tasks? ask whether to include them in copy
-			cloneSubTasks	= confirm('[LLL:project.task.cloneSubtasks.confirm]') ? 1 : 0;
+			cloneSubTasks	= confirm('[LLL:project.task.cloneSubtasks.confirm]');
 		}
 
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			parameters: {
-				action:		'clone',
-				task:		idTask,
-				subtasks:	cloneSubTasks
+				action:			'clone',
+				task:			idTask,
+				cloneSubtasks:	cloneSubTasks ? 1 : 0
 			},
 			onComplete: this.onCloned.bind(this, idTask)
 		};
@@ -275,15 +275,18 @@ Todoyu.Ext.project.Task = {
 	 */
 	onCloned: function(idSourceTask, response) {
 			// Get task ID from header
-		var idTask = response.getTodoyuHeader('idTask');
+		var idNewTask = response.getTodoyuHeader('task');
 			// Attach context menu, re-init drag&drop
-		this.initTask(idTask);
+		this.initTask(idNewTask);
 
 			// Highlight cloned element
-		this.highlight(idTask);
-		this.highlightSubTasks(idTask);
+		this.highlight(idNewTask);
+		this.highlightSubTasks(idNewTask);
 
-		Todoyu.Hook.exec('project.task.cloned', idSourceTask, idTask);
+		Todoyu.Hook.exec('project.task.cloned', idSourceTask, idNewTask);
+
+			// Directly open task for editing
+		this.edit(idNewTask);
 	},
 
 
