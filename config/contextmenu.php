@@ -29,18 +29,18 @@
 	 * Context menu configuration for task
 	 */
 Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
-	'showinproject'	=> array(
-		'key'		=> 'showinproject',
-		'label'		=> 'project.task.contextmenu.showinproject',
-		'jsAction'	=> 'Todoyu.Ext.project.goToTaskInProject(#ID#)',
-		'class'		=> 'taskContextMenu task-showinproject',
-		'position'	=> 10
-	),
 	'edit'	=> array(
 		'key'		=> 'edit',
 		'label'		=> 'project.task.contextmenu.edit',
 		'jsAction'	=> 'Todoyu.Ext.project.Task.edit(#ID#)',
 		'class'		=> 'taskContextMenu taskEdit',
+		'position'	=> 10
+	),
+	'showinproject'	=> array(
+		'key'		=> 'showinproject',
+		'label'		=> 'project.task.contextmenu.showinproject',
+		'jsAction'	=> 'Todoyu.Ext.project.goToTaskInProject(#ID#)',
+		'class'		=> 'taskContextMenu task-showinproject',
 		'position'	=> 20
 	),
 	'actions' => array(
@@ -180,18 +180,18 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 	 * Context menu configuration for container
 	 */
 Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Container'] = array(
-	'showinproject'	=> array(
-		'key'		=> 'showinproject',
-		'label'		=> 'project.task.contextmenu.showinproject',
-		'jsAction'	=> 'Todoyu.Ext.project.goToTaskInProject(#ID#)',
-		'class'		=> 'taskContextMenu task-showinproject',
-		'position'	=> 10
-	),
 	'edit'	=> array(
 		'key'		=> 'edit',
 		'label'		=> 'project.task.contextmenu.container.edit',
 		'jsAction'	=> 'Todoyu.Ext.project.Container.edit(#ID#)',
 		'class'		=> 'taskContextMenu containerEdit',
+		'position'	=> 10
+	),
+	'showinproject'	=> array(
+		'key'		=> 'showinproject',
+		'label'		=> 'project.task.contextmenu.showinproject',
+		'jsAction'	=> 'Todoyu.Ext.project.goToTaskInProject(#ID#)',
+		'class'		=> 'taskContextMenu task-showinproject',
 		'position'	=> 20
 	),
 	'actions' => array(

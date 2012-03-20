@@ -474,16 +474,16 @@ class TodoyuProjectTaskManager {
 		$taskType	= $task->isTask() ? 'Task' : 'Container';
 		$ownItems	= Todoyu::$CONFIG['EXT']['project']['ContextMenu'][$taskType];
 
-			// Add project back-link if not in project area
+			// Edit
+		if( $task->isEditable() ) {
+			$allowed['edit'] = $ownItems['edit'];
+		}
+
+				// Add project back-link if not in project area
 		if( AREA !== EXTID_PROJECT ) {
 			if( TodoyuProjectProjectRights::isSeeAllowed($task->getProjectID()) ) {
 				$allowed['showinproject'] = $ownItems['showinproject'];
 			}
-		}
-
-			// Edit
-		if( $task->isEditable() ) {
-			$allowed['edit'] = $ownItems['edit'];
 		}
 
 			// Actions (with sub menu)
