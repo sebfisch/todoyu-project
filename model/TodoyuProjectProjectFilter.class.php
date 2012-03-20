@@ -319,8 +319,8 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 				// This double sub query is here for performance reasons (don't optimize it!)
 			$subQuery	= '	SELECT id_project
 							FROM (
-								SELECT  id_project
-								FROM    ext_project_mm_project_person
+								SELECT	id_project
+								FROM	ext_project_mm_project_person
 								WHERE
 										id_person	= ' . $idPerson .
 								' AND ' . Todoyu::db()->buildInArrayQuery($roles, 'id_role')

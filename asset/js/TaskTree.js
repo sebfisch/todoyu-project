@@ -442,7 +442,7 @@ Todoyu.Ext.project.TaskTree = {
 
 
 	/**
-	 * Evoke (Re-)Adding of task tree (tasks') context menu                                                            pr
+	 * Evoke (Re-)Adding of task tree (tasks') context menu
 	 *
 	 * @method	addContextMenu
 	 */

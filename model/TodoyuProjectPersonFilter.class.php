@@ -64,9 +64,9 @@ class TodoyuProjectPersonFilter extends TodoyuSearchFilterBase implements Todoyu
 				'ext_project_mm_project_person'
 			);
 
-			$where	= '     ext_project_mm_project_person.id_project    = ' . $idProject
-					. ' AND ext_project_project.deleted                 = 0'
-					. ' AND ext_contact_person.id                       = ext_project_mm_project_person.id_person';
+			$where	= '		ext_project_mm_project_person.id_project	= ' . $idProject
+					. ' AND ext_project_project.deleted					= 0'
+					. ' AND ext_contact_person.id						= ext_project_mm_project_person.id_person';
 
 			$queryParts = array(
 				'tables'=> $tables,

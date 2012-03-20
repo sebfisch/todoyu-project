@@ -457,9 +457,9 @@ class TodoyuProjectTaskManager {
 	/**
 	 * Get the context menu items for a task/container
 	 *
-	 * @param	Int		    $idTask
-	 * @param	Array		$items
-	 * @return	Array		Config array for context menu
+	 * @param	Int		$idTask
+	 * @param	Array	$items
+	 * @return	Array	Config array for context menu
 	 */
 	public static function getContextMenuItems($idTask, array $items) {
 		$idTask	= intval($idTask);

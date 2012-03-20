@@ -723,7 +723,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 		if( $idPerson !== 0 ) {
 			$check	= $negate ? 0 : 1;
-			$where	= '     ' . self::TABLE . '.id_person_assigned	= ' . $idPerson .
+			$where	= '		' . self::TABLE . '.id_person_assigned	= ' . $idPerson .
 					  ' AND	' . self::TABLE . '.is_acknowledged	= ' . $check;
 
 			$queryParts	= array(
