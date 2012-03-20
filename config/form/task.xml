@@ -11,9 +11,7 @@
 	</hiddenFields>
 	<fieldsets>
 
-		<fieldset name="left">
-			<legend>project.form.legend.task.basics</legend>
-			<class>left noneFloatingInput</class>
+		<fieldset name="basic">
 			<elements>
 
 				<field type="text" name="title">
@@ -31,9 +29,7 @@
 			</elements>
 		</fieldset>
 
-		<fieldset name="right">
-			<legend>project.form.legend.task.attributes</legend>
-			<class>right</class>
+		<fieldset name="details">
 			<elements>
 
 				<field type="datetime" name="date_start">

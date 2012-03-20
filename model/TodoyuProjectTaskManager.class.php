@@ -70,11 +70,11 @@ class TodoyuProjectTaskManager {
 
 			// Construct form object
 		$xmlPath	= 'ext/project/config/form/task.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath, 0, array('quickcreate'=>true));
+		$taskForm	= TodoyuFormManager::getForm($xmlPath, 0, array('quickcreate'=>true));
 
 			// Adjust for quick create
-		$form->removeField('id_parenttask', true);
-		$form->removeHiddenField('id_project');
+		$taskForm->removeField('id_parenttask', true);
+		$taskForm->removeHiddenField('id_project');
 
 			// Load form with extra field data
 		$xmlPathInsert	= 'ext/project/config/form/field-id_project.xml';
@@ -82,21 +82,21 @@ class TodoyuProjectTaskManager {
 
 			// If person can add tasks in all project, show auto-completion field, else only a select element
 		$field	= $insertForm->getField( Todoyu::allowed('project', 'addtask:addTaskInAllProjects') ? 'id_project_ac' : 'id_project_select');
-		$form->getFieldset('left')->addField('id_project', $field, 'before:title');
+		$taskForm->getFieldset('basic')->addField('id_project', $field, 'before:title');
 
 			// Change form action and button functions
-		$form->setAttribute('action', 'index.php?ext=project&amp;controller=quickcreatetask');
-		$form->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateTask.save(this.form)');
-		$form->getField('cancel')->setAttribute('onclick', 'Todoyu.Popups.close(\'quickcreate\')');
+		$taskForm->setAttribute('action', 'index.php?ext=project&amp;controller=quickcreatetask');
+		$taskForm->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateTask.save(this.form)');
+		$taskForm->getField('cancel')->setAttribute('onclick', 'Todoyu.Popups.close(\'quickcreate\')');
 
 			// Load task default data
 		$formData	= self::getTaskDefaultData(0, $idProject);
 			// Load extra data from hooks
-		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, 0, array('form'=>$form));
+		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, 0, array('form'=>$taskForm));
 
-		$form->setFormData($formData);
+		$taskForm->setFormData($formData);
 
-		return $form;
+		return $taskForm;
 	}
 
 
@@ -1728,17 +1728,17 @@ class TodoyuProjectTaskManager {
 	/**
 	 * Modify task form object for container editing
 	 *
-	 * @param	TodoyuForm	$form			Task edit form object
+	 * @param	TodoyuForm	$taskForm			Task edit form object
 	 * @param	Integer		$idTask			Task ID
 	 * @return	TodoyuForm	Modified form object
 	 */
-	public static function hookModifyFormfieldsForContainer(TodoyuForm $form, $idTask) {
+	public static function hookModifyFormfieldsForContainer(TodoyuForm $taskForm, $idTask) {
 		$idTask	= intval($idTask);
 		$task	= self::getTask($idTask);
 
 			// Remove fields which are not needed in containers
 		if( $task->isContainer() ) {
-			$formFields			= $form->getFieldnames();
+			$formFields			= $taskForm->getFieldnames();
 				// Ensure the fields to be removed do still exist
 			$fieldsToBeRemoved	= array_intersect($formFields, array(
 				'id_activity',
@@ -1749,48 +1749,36 @@ class TodoyuProjectTaskManager {
 
 				// Remove the fields
 			foreach( $fieldsToBeRemoved as $fieldName ) {
-				if( $form->getField($fieldName) ) {
-					$form->getField($fieldName)->remove();
+				if( $taskForm->getField($fieldName) ) {
+					$taskForm->getField($fieldName)->remove();
 				}
 			}
 
 				// Remove
 			if( $idTask === 0 ) {
 				if( in_array('id_parenttask', $formFields) ) {
-					$form->getField('id_parenttask')->remove();
+					$taskForm->getField('id_parenttask')->remove();
 				}
-				$form->addHiddenField('id_parenttask', 0);
+				$taskForm->addHiddenField('id_parenttask', 0);
 			}
 
 				// Set 'end date' label
-			if( $form->getField('date_deadline') ) {
-				$form->getField('date_deadline')->setLabel('project.ext.attr.date_end');
+			if( $taskForm->getField('date_deadline') ) {
+				$taskForm->getField('date_deadline')->setLabel('project.ext.attr.date_end');
 			}
 
-				// change fieldset legends
-			if( $form->getFieldset('left') ) {
-				$form->getFieldset('left')->setLegend('project.form.legend.container.basics');
+			if( $taskForm->hasField('id_person_owner') ) {
+				$taskForm->getField('id_person_owner')->setAttribute('label', 'project.task.container.attr.person_owner');
 			}
-
-			if( $form->getFieldset('right') ) {
-				$form->getFieldset('right')->setLegend('project.form.legend.container.attributes');
-			}
-
-				// Change container labels
-//			$fieldNames	= $form->getFieldnames();
-//			$rightFieldSet	= $form->getFieldset('right');
-			if( $form->hasField('id_person_owner') ) {
-				$form->getField('id_person_owner')->setAttribute('label', 'project.task.container.attr.person_owner');
-			}
-			if( $form->hasField('is_public') ) {
-				$form->getField('is_public')->setAttribute('label', 'project.task.container.attr.is_public');
+			if( $taskForm->hasField('is_public') ) {
+				$taskForm->getField('is_public')->setAttribute('label', 'project.task.container.attr.is_public');
 			}
 		}
 
 			// Call hooks to modify $form
-		$form	= TodoyuHookManager::callHookDataModifier('project', 'task.modifyFormfieldsForContainer', $form, array($idTask));
+		$taskForm	= TodoyuHookManager::callHookDataModifier('project', 'task.modifyFormfieldsForContainer', $taskForm, array($idTask));
 
-		return $form;
+		return $taskForm;
 	}
 
 

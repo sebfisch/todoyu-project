@@ -279,7 +279,7 @@ div.task.dragDropTarget > h3 {
 /* ------------------
 	Task details
    ------------------ */
-.task .details {
+.task > .details {
 	border-left-width:1px;
 	border-left-style:solid;
 }
@@ -306,7 +306,7 @@ div.task.dragDropTarget > h3 {
 	}
 
 		/* properties */
-	.tasks .task .details .data div.right {
+	.tasks .task .details .data .right {
 		width:305px;
 		max-width:45%;
 		float:right;
@@ -358,17 +358,10 @@ div.task.dragDropTarget > h3 {
 		clear:left;
 	}
 
-
-
-/*@todo	move into resources ext */
-#inlineEditTask .innerBox { /* resource planning inline task editor */
-	margin-top:-20px;
-	border-top:1px solid #ddd;
-	width:892px;
-	padding:0 12px 0 12px;
-	background-color:#f7f9fa;
-}
-
+	.task fieldset.basic,
+	.task fieldset.details {
+		padding-top:15px;
+	}
 
 
 /* -----------------
