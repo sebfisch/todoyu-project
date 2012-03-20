@@ -92,6 +92,13 @@ h1.headerLine span.projectIcons {
 	}
 
 
+.formProject fieldset.basic {
+	padding-top: 15px;
+}
+
+
+
+
 
 /* ------------------------------------
 	Project search modifications

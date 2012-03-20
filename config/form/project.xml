@@ -9,93 +9,83 @@
 	</hiddenFields>
 	<fieldsets>
 
-		<fieldset name="main">
-			<legend>project.form.legend.project.basics</legend>
-			<class>top</class>
+		<fieldset name="basic">
 			<elements>
 
-				<fieldset name="basic">
-					<legend>Main project data</legend>
-					<class>basic left noneFloatingInput</class>
-					<elements>
+				<field type="text" name="title">
+					<label>core.global.title</label>
+					<validate>
+						<isNotEmpty msg="project.ext.form.validation.title" />
+					</validate>
+					<required />
+				</field>
 
-						<field type="text" name="title">
-							<label>core.global.title</label>
-							<validate>
-								<isNotEmpty msg="project.ext.form.validation.title" />
-							</validate>
-							<required />
-						</field>
+				<field type="RTE" name="description">
+					<label>core.global.description</label>
+					<required />
+				</field>
 
-						<field type="RTE" name="description">
-							<label>core.global.description</label>
-							<required />
-						</field>
+				<field type="select" name="status">
+					<label>core.global.status</label>
+					<source type="function">
+						<function>TodoyuProjectProjectViewHelper::getProjectStatusOptions</function>
+					</source>
+					<noPleaseSelect />
+				</field>
 
-					</elements>
-				</fieldset>
+				<field type="date" name="date_start">
+					<label>project.ext.attr.date_start</label>
+					<validate>
+						<dateNotAfter>
+							<field>date_end</field>
+						</dateNotAfter>
+					</validate>
+					<required />
+				</field>
 
-				<fieldset name="data">
-					<legend>Project data</legend>
-					<class>data right</class>
-					<elements>
+				<field type="date" name="date_end">
+					<label>project.ext.attr.date_end</label>
+					<validate>
+						<dateAfter>
+							<field>date_start</field>
+							<allowEmpty />
+						</dateAfter>
+					</validate>
+				</field>
 
-						<field type="select" name="status">
-							<label>core.global.status</label>
-							<source type="function">
-								<function>TodoyuProjectProjectViewHelper::getProjectStatusOptions</function>
-							</source>
-							<noPleaseSelect />
-						</field>
+				<field type="date" name="date_deadline">
+					<label>project.ext.attr.date_deadline</label>
+					<validate>
+						<dateAfter>
+							<field>date_start</field>
+							<allowEmpty />
+						</dateAfter>
+					</validate>
+				</field>
 
-						<field type="date" name="date_start">
-							<label>project.ext.attr.date_start</label>
-							<validate>
-								<dateNotAfter>
-									<field>date_end</field>
-								</dateNotAfter>
-							</validate>
-							<required />
-						</field>
+				<field type="textAC" name="id_company">
+					<restrict>
+						<allow ext="contact" right="general:use" />
+					</restrict>
+					<label>project.ext.attr.company</label>
+					<config>
+						<acLabel>TodoyuContactCompanyManager::getLabel</acLabel>
+						<options>
+							<acName>company</acName>
+							<onComplete>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onComplete>
+						</options>
+					</config>
+					<required label="LLL:project.ext.form.validation.company" />
+					<wizard name="company" />
+				</field>
 
-						<field type="date" name="date_end">
-							<label>project.ext.attr.date_end</label>
-							<validate>
-								<dateAfter>
-									<field>date_start</field>
-									<allowEmpty />
-								</dateAfter>
-							</validate>
-						</field>
+			</elements>
+		</fieldset>
 
-						<field type="date" name="date_deadline">
-							<label>project.ext.attr.date_deadline</label>
-							<validate>
-								<dateAfter>
-									<field>date_start</field>
-									<allowEmpty />
-								</dateAfter>
-							</validate>
-						</field>
+		<fieldset name="data">
+			<elements>
 
-						<field type="textAC" name="id_company">
-							<restrict>
-								<allow ext="contact" right="general:use" />
-							</restrict>
-							<label>project.ext.attr.company</label>
-							<config>
-								<acLabel>TodoyuContactCompanyManager::getLabel</acLabel>
-								<options>
-									<acName>company</acName>
-									<onComplete>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onComplete>
-								</options>
-							</config>
-							<required label="LLL:project.ext.form.validation.company" />
-							<wizard name="company" />
-						</field>
 
-					</elements>
-				</fieldset>
 
 			</elements>
 		</fieldset>

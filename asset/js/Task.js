@@ -244,10 +244,10 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Number}		idTask
 	 */
 	clone: function(idTask) {
-		var copySubTasks = 0;
+		var cloneSubTasks = 0;
 		if ( this.hasSubTasks(idTask) ) {
 				// Has sub tasks? ask whether to include them in copy
-			copySubTasks	= confirm('[LLL:project.task.cloneSubtasks.confirm]') ? 1 : 0;
+			cloneSubTasks	= confirm('[LLL:project.task.cloneSubtasks.confirm]') ? 1 : 0;
 		}
 
 		var url		= Todoyu.getUrl('project', 'task');
@@ -255,7 +255,7 @@ Todoyu.Ext.project.Task = {
 			parameters: {
 				action:		'clone',
 				task:		idTask,
-				subtasks:	copySubTasks
+				subtasks:	cloneSubTasks
 			},
 			onComplete: this.onCloned.bind(this, idTask)
 		};
