@@ -81,8 +81,8 @@
 	<label index="save.success">Saving was successful</label>
 	<label index="ac.company.notFoundInfo">No customer of this name was found. You can only select customers already added in the contact module.</label>
 	<label index="js.removeProject">Do you want to delete the whole project and all of its tasks?</label>
-	<label index="js.quicktask.saved">Quicktask has been saved</label>
-	<label index="js.project.deleted">Project has been successfully deleted</label>
+	<label index="js.quicktask.saved">Quicktask has been saved.</label>
+	<label index="js.project.deleted">Project has been successfully deleted.</label>
 	<label index="ac.person.notFoundInfo">No person of this name was found</label>
 	<label index="portal.tab.todos">To Do's</label>
 	<label index="export.csv">Export projects as CSV</label>
