@@ -1786,20 +1786,20 @@ class TodoyuProjectTaskManager {
 	/**
 	 * Copy a task (set also a new parent)
 	 *
-	 * @param	Integer		$idTask
+	 * @param	Integer		$idTaskSource
 	 * @param	Integer		$idParent
 	 * @param	Boolean		$withSubTasks
 	 * @param	Integer		$idProject
 	 * @return	Integer
 	 */
-	public static function copyTask($idTask, $idParent, $withSubTasks = true, $idProject = 0) {
-		$idTask		= intval($idTask);
-		$idParent	= intval($idParent);
-		$idProject	= intval($idProject);
-		$extConf	= TodoyuSysmanagerExtConfManager::getExtConf('project');
+	public static function copyTask($idTaskSource, $idParent, $withSubTasks = true, $idProject = 0) {
+		$idTaskSource	= intval($idTaskSource);
+		$taskSource		= self::getTask($idTaskSource);
+		$idParent		= intval($idParent);
+		$idProject		= intval($idProject);
 
 			// Get original task data
-		$data		= self::getTaskData($idTask);
+		$data	= $taskSource->getObjectData();
 
 			// Set new project ID if given
 		if( $idProject !== 0 ) {
@@ -1807,27 +1807,44 @@ class TodoyuProjectTaskManager {
 		}
 			// Set new parent (needed for sorting)
 		$data['id_parenttask']	= $idParent;
-		$defaultStatus			= intval($extConf['status']);
-		$data['status']			= $defaultStatus !== 0 ? $defaultStatus : STATUS_PLANNING;
+
+			// Remove status if not allowed for copied tasks (new default status will be set during add process)
+		if( !self::isAllowedStatusForCopiedTask($taskSource->getStatus()) ) {
+			unset($data['status']);
+		}
 
 			// Call data modifier hook for task data
-		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskcopydata', $data, array($idTask, $idParent, $withSubTasks, $idProject));
+		$data	= TodoyuHookManager::callHookDataModifier('project', 'taskcopydata', $data, array($idTaskSource, $idParent, $withSubTasks, $idProject));
 
 			// Add new task (with old data)
 		$idTaskNew	= self::addTask($data);
 
 			// Copy sub tasks if enabled
-		if( $withSubTasks && $idTask !== $idParent ) {
-			$subTaskIDs = self::getSubTaskIDs($idTask);
+		if( $withSubTasks && $idTaskSource !== $idParent ) {
+			$subTaskIDs = self::getSubTaskIDs($idTaskSource);
 
 			foreach($subTaskIDs as $idSubTask) {
 				self::copyTask($idSubTask, $idTaskNew, true, $idProject);
 			}
 		}
 
-		TodoyuHookManager::callHook('project', 'task.copy', array($idTask, $idTaskNew));
+		TodoyuHookManager::callHook('project', 'task.copy', array($idTaskSource, $idTaskNew));
 
 		return $idTaskNew;
+	}
+
+
+
+	/**
+	 * Check whether status is allowed for copied tasks
+	 *
+	 * @param	Integer		$status
+	 * @return	Boolean
+	 */
+	public static function isAllowedStatusForCopiedTask($status) {
+		$allowedStatuses	= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['allowedCopiedStatus']);
+
+		return in_array($status, $allowedStatuses);
 	}
 
 

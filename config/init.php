@@ -87,6 +87,12 @@ Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing'] = arra
 	STATUS_DONE,
 	STATUS_CLEARED
 );
+	// Copied and cloned tasks can have this status. Fallback to default if not
+Todoyu::$CONFIG['EXT']['project']['allowedCopiedStatus'] = array(
+	STATUS_PLANNING,
+	STATUS_OPEN,
+	STATUS_PROGRESS
+);
 
 
 
