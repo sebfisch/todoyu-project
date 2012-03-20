@@ -271,7 +271,7 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	{Function}	callback		Will get the task ID as parameter
 	 */
 	toggleSubTasks: function(idTask, callback) {
-		if( ! this.ext.Task.hasSubTasks(idTask) ) {
+		if( !this.ext.Task.hasSubTasks(idTask) ) {
 			this.onSubTasksToggled(idTask, callback);
 			return;
 		}
@@ -295,10 +295,10 @@ Todoyu.Ext.project.TaskTree = {
 	 * @method	onSubTasksToggled
 	 * @param	{Number}		idTask
 	 * @param	{Function}		callback
-	 * @param	{Number}		idTaskAgain
+	 * @param	{Number}		idTaskDummy
 	 * @param	{Ajax.Response}	response
 	 */
-	onSubTasksToggled: function(idTask, callback, idTaskAgain, response) {
+	onSubTasksToggled: function(idTask, callback, idTaskDummy, response) {
 		if( callback ) {
 			callback(idTask);
 		}

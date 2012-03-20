@@ -271,20 +271,6 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project'] = array(
 		'class'		=> 'projectContextMenu showInProject',
 		'position'	=> 10
 	),
-	'showdetails'	=> array(
-		'key'		=> 'showdetails',
-		'label'		=> 'project.ext.contextmenu.showdetails',
-		'jsAction'	=> 'Todoyu.Ext.project.Project.toggleDetails(#ID#)',
-		'class'		=> 'projectContextMenu projectDetails',
-		'position'	=> 10
-	),
-	'hidedetails'	=> array(
-		'key'		=> 'hidedetails',
-		'label'		=> 'project.ext.contextmenu.hidedetails',
-		'jsAction'	=> 'Todoyu.Ext.project.Project.toggleDetails(#ID#)',
-		'class'		=> 'projectContextMenu projectDetails',
-		'position'	=> 11
-	),
 	'edit'	=> array(
 		'key'		=> 'edit',
 		'label'		=> 'project.ext.contextmenu.edit',

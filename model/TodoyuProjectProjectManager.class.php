@@ -377,15 +377,6 @@ class TodoyuProjectProjectManager {
 			}
 		}
 
-			// Show details
-		if( TodoyuProjectProjectRights::isSeeAllowed($idProject) ) {
-			if( $isExpanded ) {
-				$allowed['hidedetails'] = $ownItems['hidedetails'];
-			} else {
-				$allowed['showdetails'] = $ownItems['showdetails'];
-			}
-		}
-
 			// Modify project
 		if( $project->isEditable() ) {
 				// Edit
