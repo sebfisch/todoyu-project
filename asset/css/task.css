@@ -31,6 +31,8 @@ div.task .subtasks .task:last-child {
 }
 .task.expanded > h3 {
 	background-color:#e2e2e2;
+}
+.task.expanded > h3 .headLabel {
 	font-weight:bold;
 }
 
@@ -98,6 +100,10 @@ div.task .subtasks .task:last-child {
 
 .taskListing .task .headLabel {
 	padding-left:15px;
+}
+
+.taskTree .task .taskHeader .taskNumber .taskNumberProject {
+	color:#999;
 }
 
 

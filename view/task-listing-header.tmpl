@@ -18,8 +18,8 @@
 		</span>
 	</span>
 
-	<span class="taskNumber" title="{Label portal.ext.tasktree.header.tasknumber}: {$task.id_project}.{$task.tasknumber}">
-		{$task.id_project}.{$task.tasknumber}
+	<span class="taskNumber">
+		<span class="taskNumberProject">{$task.id_project}.</span><span class="taskNumberTask">{$task.tasknumber}</span>
 	</span>
 	<span class="taskIcons{if sizeof($taskIcons) > 4} taskIconsOverflow{/if}">
 		{foreach $taskIcons taskIcon}

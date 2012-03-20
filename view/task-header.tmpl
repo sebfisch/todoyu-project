@@ -1,4 +1,4 @@
-<h3 id="task-{$task.id}-header" class="contextmenutask bcStatus{$task.status}" name="task-{$task.id}">
+<h3 id="task-{$task.id}-header" class="contextmenutask bcStatus{$task.status} taskHeader" name="task-{$task.id}">
 	<span class="statusColor bcStatus{$task.status}"></span>
 
 	<span class="dndHandle {if $task.isDraggable}draggable{/if}"></span>
@@ -25,8 +25,8 @@
 		{/foreach}
 	</span>
 
-	<span class="taskNumber" title="{Label portal.ext.tasktree.header.tasknumber}: {$task.id_project}.{$task.tasknumber}">
-		{$task.id_project}.{$task.tasknumber}
+	<span class="taskNumber">
+		<span class="taskNumberProject">{$task.id_project}</span>.<span class="taskNumberTask">{$task.tasknumber}</span>
 	</span>
 
 	<span class="taskIcons{if sizeof($taskIcons) > 4} taskIconsOverflow{/if}">
