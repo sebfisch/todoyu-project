@@ -14,12 +14,8 @@
 	<label index="addproject">Přidat projekt</label>
 	<label index="editproject">Upravit projekt</label>
 	<label index="status.planning">Plánování</label>
-	<label index="status.open">Otevřen</label>
 	<label index="status.progress">Rozpracovaný</label>
-	<label index="status.confirm">K odsouhlašení</label>
 	<label index="status.done">Ukončen</label>
-	<label index="status.accepted">Akceptován</label>
-	<label index="status.rejected">Odmítnut</label>
 	<label index="status.cleared">Zůčtován</label>
 	<label index="status.warranty">V záruce</label>
 	<label index="status.undefined">Nedefinováno</label>

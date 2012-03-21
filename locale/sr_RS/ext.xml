@@ -17,12 +17,8 @@
 	<label index="addproject">Додај пројекат</label>
 	<label index="editproject">Уредите Пројекат</label>
 	<label index="status.planning">У плану</label>
-	<label index="status.open">Отворено</label>
 	<label index="status.progress">У току</label>
-	<label index="status.confirm">За потврду</label>
 	<label index="status.done">Обављено</label>
-	<label index="status.accepted">Прихваћено</label>
-	<label index="status.rejected">Одбијено</label>
 	<label index="status.cleared">Обрачунато</label>
 	<label index="status.warranty">Под гаранцијом</label>
 	<label index="status.undefined">Неодлучно</label>

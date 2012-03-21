@@ -17,12 +17,8 @@
 	<label index="addproject">Dodaj projekt</label>
 	<label index="editproject">Edit Project</label>
 	<label index="status.planning">Planowanie</label>
-	<label index="status.open">Otwórz</label>
 	<label index="status.progress">W toku</label>
-	<label index="status.confirm">Do zatwierdzenia</label>
 	<label index="status.done">Zrobione</label>
-	<label index="status.accepted">Zaakceptowane</label>
-	<label index="status.rejected">Odrzucone</label>
 	<label index="status.cleared">Wyczyszczone</label>
 	<label index="status.warranty">W ramach gwarancji</label>
 	<label index="status.undefined">Niezdefiniowane</label>

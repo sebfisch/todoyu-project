@@ -17,12 +17,8 @@
 	<label index="addproject">プロジェクトの追加</label>
 	<label index="editproject">プロジェクトの編集</label>
 	<label index="status.planning">計画</label>
-	<label index="status.open">開く</label>
 	<label index="status.progress">処理中</label>
-	<label index="status.confirm">確認用</label>
 	<label index="status.done">完了</label>
-	<label index="status.accepted">受領済</label>
-	<label index="status.rejected">却下</label>
 	<label index="status.cleared">クリア済</label>
 	<label index="status.warranty">保証期間内</label>
 	<label index="status.undefined">未定義</label>

@@ -73,7 +73,7 @@
 	<label index="status.confirm">Awaiting Confirmation</label>
 	<label index="status.done">Done</label>
 	<label index="status.accepted">Accepted</label>
-	<label index="status.rejected">Rejected</label>
+	<label index="status.rejected">Reject to Owner</label>
 	<label index="status.cleared">Cleared</label>
 	<label index="status.warranty">Under Warranty</label>
 	<label index="status.waiting">Waiting</label>

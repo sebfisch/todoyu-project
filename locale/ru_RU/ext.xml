@@ -17,12 +17,8 @@
 	<label index="addproject">Добавить проект</label>
 	<label index="editproject">Редактировать проект</label>
 	<label index="status.planning">Планирование</label>
-	<label index="status.open">Открыт</label>
 	<label index="status.progress">В процессе</label>
-	<label index="status.confirm">Для подтверждения</label>
 	<label index="status.done">Закончен</label>
-	<label index="status.accepted">Принят</label>
-	<label index="status.rejected">Отклонён</label>
 	<label index="status.cleared">Очищен</label>
 	<label index="status.warranty">В гарантии</label>
 	<label index="status.undefined">Неопределено</label>

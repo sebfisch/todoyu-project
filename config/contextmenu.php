@@ -132,6 +132,12 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 				'jsAction'	=> 'Todoyu.Ext.project.Task.updateStatus(#ID#, ' . STATUS_WAITING . ')',
 				'class'		=> 'taskContextMenu taskStatusWaiting'
 			),
+			'rejected'	=> array(
+				'key'		=> 'status-rejected',
+				'label'		=> 'project.task.status.rejected',
+				'jsAction'	=> 'Todoyu.Ext.project.Task.updateStatus(#ID#, ' . STATUS_REJECTED . ')',
+				'class'		=> 'taskContextMenu taskStatusRejected'
+			),
 			'confirm'	=> array(
 				'key'		=> 'status-confirm',
 				'label'		=> 'project.task.status.confirm',
@@ -149,12 +155,6 @@ Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Task'] = array(
 				'label'		=> 'project.task.status.accepted',
 				'jsAction'	=> 'Todoyu.Ext.project.Task.updateStatus(#ID#, ' . STATUS_ACCEPTED . ')',
 				'class'		=> 'taskContextMenu taskStatusAccepted'
-			),
-			'rejected'	=> array(
-				'key'		=> 'status-rejected',
-				'label'		=> 'project.task.status.rejected',
-				'jsAction'	=> 'Todoyu.Ext.project.Task.updateStatus(#ID#, ' . STATUS_REJECTED . ')',
-				'class'		=> 'taskContextMenu taskStatusRejected'
 			),
 			'cleared'	=> array(
 				'key'		=> 'status-cleared',

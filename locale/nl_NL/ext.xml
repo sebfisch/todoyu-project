@@ -15,12 +15,8 @@
 	<label index="addproject">Project toevoegen</label>
 	<label index="editproject">Project bewerken</label>
 	<label index="status.planning">Planning</label>
-	<label index="status.open">Open</label>
 	<label index="status.progress">In ontwikkeling</label>
-	<label index="status.confirm">Ter bevestiging</label>
 	<label index="status.done">Gereed</label>
-	<label index="status.accepted">Geaccepteerd</label>
-	<label index="status.rejected">Afgewezen</label>
 	<label index="status.cleared">Vrijgegeven</label>
 	<label index="status.warranty">Onder garantie</label>
 	<label index="status.undefined">Ongedefinieerd</label>

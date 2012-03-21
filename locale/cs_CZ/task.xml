@@ -58,7 +58,7 @@
 	<label index="status.confirm">Čeká na odsouhlašení</label>
 	<label index="status.done">Ukončen</label>
 	<label index="status.accepted">Odsouhlašen</label>
-	<label index="status.rejected">Odmítnut</label>
+	<label index="status.rejected">Odmítnout zadavatel</label>
 	<label index="status.cleared">Zaúčtován</label>
 	<label index="status.warranty">V záruce</label>
 	<label index="cloneSubtasks.confirm">Klonovat také podúkoly?</label>

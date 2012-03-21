@@ -15,12 +15,8 @@
 	<label index="addproject">Ajouter un projet</label>
 	<label index="editproject">Modifier le projet</label>
 	<label index="status.planning">Planning</label>
-	<label index="status.open">Ouvert</label>
 	<label index="status.progress">En cours de réalisation</label>
-	<label index="status.confirm">En attente de confirmation</label>
 	<label index="status.done">Terminé</label>
-	<label index="status.accepted">Accepté</label>
-	<label index="status.rejected">Rejeté</label>
 	<label index="status.cleared">Effacé</label>
 	<label index="status.warranty">Sous garantie</label>
 	<label index="status.undefined">Indéfini</label>

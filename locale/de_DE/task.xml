@@ -73,7 +73,7 @@
 	<label index="status.confirm">Zur Abnahme</label>
 	<label index="status.done">Erledigt</label>
 	<label index="status.accepted">Bestätigt</label>
-	<label index="status.rejected">Zurückgewiesen</label>
+	<label index="status.rejected">Zurück an Eigner</label>
 	<label index="status.cleared">Verrechnet</label>
 	<label index="status.warranty">In Garantie</label>
 	<label index="status.waiting">Wartend</label>
