@@ -63,7 +63,7 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			'widget'	=> 'select',
 			'wConf'		=> array(
 				'multiple'	=> true,
-				'size'		=> 8,
+				'size'		=> 9,
 				'FuncRef'	=> 'TodoyuProjectTaskFilterDataSource::getStatusOptions',
 				'negation'	=> 'default'
 			)
