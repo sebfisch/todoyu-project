@@ -227,13 +227,13 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * Move tab to front (place if leftmost)
 	 *
 	 * @method	moveTabToFront
-	 * @param	{Number}	idTab
+	 * @param	{Number}	idProject
 	 */
-	moveTabToFront: function(idTab) {
+	moveTabToFront: function(idProject) {
 			// Remove no selection tab first
 		this.removeNoSelectionTab();
 
-		Todoyu.Tabs.moveAsFirst('project', idTab);
+		Todoyu.Tabs.moveAsFirst('project', idProject);
 	},
 
 
