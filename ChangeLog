@@ -1,12 +1,12 @@
 todoyu project extension changelog
 
 project 1.3.0 - not released yet
-	* Added: Person filter widget: "assigned in project"
-	* Added: Visualization of task-presets toggle ability
-	* Added: Added toggling for taskpresets in projectheader (default closed)
 	* Bugfix: ActiveTab saving fixed
 	* Bugfix: Missing init of Drag'n'Drop after status updates
 	* Bugifx: Subtasks are not rendered after status update of parent task
+	* Added: Person filter widget: "assigned in project"
+	* Added: Visualization of task-presets toggle ability
+	* Added: Added toggling for taskpresets in projectheader (default closed)
 	* Added: Input validation of estimated duration field of task
 	* Added: New task/container status "waiting"
 	* Added: Getter for all fields (description, owner)
