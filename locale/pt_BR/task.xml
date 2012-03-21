@@ -46,7 +46,7 @@
 	<label index="contextmenu.container.clone">Clonar</label>
 	<label index="contextmenu.container.delete">Excluir</label>
 	<label index="contextmenu.paste">Inserir Cópia de Tarefa ...</label>
-	<label index="contextmenu.paste.container">Inserir Cópia de Cont...</label>
+	<label index="contextmenu.paste.container">Inserir Cópia de Cont ...</label>
 	<label index="contextmenu.paste.in">Como Subtarefa</label>
 	<label index="contextmenu.paste.before">Antes desta tarefa</label>
 	<label index="contextmenu.paste.after">Após esta tarefa</label>
