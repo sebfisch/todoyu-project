@@ -31,7 +31,7 @@ h1.headerLine span.projectIcons {
 	margin-bottom:1px;
 	padding:5px 5px 5px 20px;
 	font-size:11px;
-	text-transform:uppercase;
+	/*text-transform:uppercase;*/
 	font-weight:normal;
 	letter-spacing:0.1em;
 	background-color:#e9e9e9;
