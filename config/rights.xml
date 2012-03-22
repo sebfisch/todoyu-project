@@ -27,7 +27,7 @@
 		<right name="rejected:see" />
 		<right name="confirm:see" />
 		<right name="done:see" />
-		<right name="accepted:see" />		
+		<right name="accepted:see" />
 		<right name="cleared:see" />
 	</section>
 
