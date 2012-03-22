@@ -23,12 +23,12 @@
 		<right name="planning:see" />
 		<right name="open:see" />
 		<right name="progress:see" />
+		<right name="waiting:see" />
+		<right name="rejected:see" />
 		<right name="confirm:see" />
 		<right name="done:see" />
-		<right name="accepted:see" />
-		<right name="rejected:see" />
+		<right name="accepted:see" />		
 		<right name="cleared:see" />
-		<right name="waiting:see" />
 	</section>
 
 	<section name="addtask" require="general:use">
@@ -40,12 +40,12 @@
 		<right name="planning:create" require="seetask:planning:see" />
 		<right name="open:create" require="seetask:open:see" />
 		<right name="progress:create" require="seetask:progress:see" />
+		<right name="waiting:create" require="seetask:waiting:see" />
+		<right name="rejected:create" require="seetask:rejected:see" />
 		<right name="confirm:create" require="seetask:confirm:see" />
 		<right name="done:create" require="seetask:done:see" />
 		<right name="accepted:create" require="seetask:accepted:see" />
-		<right name="rejected:create" require="seetask:rejected:see" />
 		<right name="cleared:create" require="seetask:cleared:see" />
-		<right name="waiting:create" require="seetask:waiting:see" />
 	</section>
 
 	<section name="edittask" require="general:use">
@@ -58,12 +58,12 @@
 		<right name="planning:edit" require="seetask:planning:see" />
 		<right name="open:edit" require="seetask:open:see" />
 		<right name="progress:edit" require="seetask:progress:see" />
+		<right name="waiting:edit" require="seetask:waiting:see" />
+		<right name="rejected:edit" require="seetask:rejected:see" />
 		<right name="confirm:edit" require="seetask:confirm:see" />
 		<right name="done:edit" require="seetask:done:see" />
 		<right name="accepted:edit" require="seetask:accepted:see" />
-		<right name="rejected:edit" require="seetask:rejected:see" />
 		<right name="cleared:edit" require="seetask:cleared:see" />
-		<right name="waiting:edit" require="seetask:waiting:see" />
 		<right name="useTaskAndContainerClipboard" />
 	</section>
 
@@ -79,21 +79,21 @@
 		<right name="planning:changefrom" require="seetask:planning:see" />
 		<right name="open:changefrom" require="seetask:open:see" />
 		<right name="progress:changefrom" require="seetask:progress:see" />
+		<right name="waiting:changeto" require="seetask:waiting:see" />
+		<right name="rejected:changefrom" require="seetask:rejected:see" />
 		<right name="confirm:changefrom" require="seetask:confirm:see" />
 		<right name="done:changefrom" require="seetask:done:see" />
 		<right name="accepted:changefrom" require="seetask:accepted:see" />
-		<right name="rejected:changefrom" require="seetask:rejected:see" />
 		<right name="cleared:changefrom" require="seetask:cleared:see" />
 		<right name="planning:changeto" require="seetask:planning:see" />
-		<right name="waiting:changeto" require="seetask:waiting:see" />
 		<right name="open:changeto" />
 		<right name="progress:changeto" />
+		<right name="waiting:changeto" />
+		<right name="rejected:changeto" />
 		<right name="confirm:changeto" />
 		<right name="done:changeto" />
 		<right name="accepted:changeto" />
-		<right name="rejected:changeto" />
 		<right name="cleared:changeto" />
-		<right name="waiting:changeto" />
 	</section>
 
 	<section name="deletetask" require="general:use">
