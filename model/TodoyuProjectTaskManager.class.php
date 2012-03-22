@@ -799,7 +799,7 @@ class TodoyuProjectTaskManager {
 		if( ! Todoyu::person()->isInternal() && ! Todoyu::person()->isAdmin() && ! Todoyu::allowed('contact', 'person:seeAllPersons') ) {
 			$allowedPersonIDs = TodoyuContactPersonRights::getPersonIDsAllowedToBeSeen();
 			if( count($allowedPersonIDs) > 0 ) {
-				$where .= ' AND ' . Todoyu::db()->buildInArrayQuery($allowedPersonIDs, 'p.id');
+				$where .= ' AND ' . TodoyuSql::buildInArrayQuery($allowedPersonIDs, 'p.id');
 			} else {
 				return array();
 			}
@@ -1260,7 +1260,7 @@ class TodoyuProjectTaskManager {
 		$where	= self::getTasksInTimeSpanWhereClause($dateStart, $dateEnd, $statusIDs, $personIDs, $getContainers);
 
 		if( sizeof($projectIDs) > 0 ) {
-			$where .= ' AND ' . Todoyu::db()->buildInArrayQuery($projectIDs, 'id_project');
+			$where .= ' AND ' . TodoyuSql::buildInArrayQuery($projectIDs, 'id_project');
 		}
 
 		$field	= 'id';

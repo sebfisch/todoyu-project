@@ -141,7 +141,7 @@ class TodoyuProjectTaskSearch implements TodoyuSearchEngineIf {
 		} else {
 			$searchWords = TodoyuArray::trimExplode(' ', $sword, true);
 
-			$where = Todoyu::db()->buildLikeQuery($searchWords, $fields);
+			$where = TodoyuSql::buildLikeQuery($searchWords, $fields);
 		}
 
 		if( $where ) {
@@ -171,7 +171,7 @@ class TodoyuProjectTaskSearch implements TodoyuSearchEngineIf {
 					// Limit to selected status
 				$statusesSee= array_keys(TodoyuProjectTaskStatusManager::getStatuses('see'));
 				if( count($statusesSee) > 0 ) {
-					$addToWhere .= ' AND ' . Todoyu::db()->buildInArrayQuery($statusesSee, 'ext_project_task.status');
+					$addToWhere .= ' AND ' . TodoyuSql::buildInArrayQuery($statusesSee, 'ext_project_task.status');
 				} else {
 						// Rights do not permit user to see tasks in any status!
 					return ' AND 0';

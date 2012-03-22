@@ -153,7 +153,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 			$tables	= array(
 				'ext_contact_company'
 			);
-			$where	= Todoyu::db()->buildLikeQuery($searchWords, $searchInFields);
+			$where	= TodoyuSql::buildLikeQuery($searchWords, $searchInFields);
 			$join	= array(
 				self::TABLE . '.id_company	= ext_contact_company.id'
 			);
@@ -262,7 +262,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 		if( $title !== '' ) {
 			$titleParts	= explode(' ', $title);
 
-			$where	= Todoyu::db()->buildLikeQuery($titleParts, array(self::TABLE . '.title'), $negate);
+			$where	= TodoyuSql::buildLikeQuery($titleParts, array(self::TABLE . '.title'), $negate);
 
 			$queryParts = array(
 				'where'	=> $where
@@ -323,7 +323,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 								FROM	ext_project_mm_project_person
 								WHERE
 										id_person	= ' . $idPerson .
-								' AND ' . Todoyu::db()->buildInArrayQuery($roles, 'id_role')
+								' AND ' . TodoyuSql::buildInArrayQuery($roles, 'id_role')
 								. ' GROUP BY id_project
 							) as x';
 			$compare	= $negate ? 'NOT IN' : 'IN';

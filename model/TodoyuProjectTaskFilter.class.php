@@ -163,7 +163,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		if( sizeof($words) > 0 ) {
 			$tables	= array('ext_project_project');
 			$fields	= array('ext_project_project.title');
-			$where	= Todoyu::db()->buildLikeQuery($words, $fields, $negate);
+			$where	= TodoyuSql::buildLikeQuery($words, $fields, $negate);
 			$join	= array('ext_project_task.id_project = ext_project_project.id');
 
 			$queryParts	= array(
@@ -362,7 +362,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		if( $title !== '' ) {
 			$tables	= array(self::TABLE);
 			$compare= ($negate ? 'NOT' : '');
-			$where	= 'ext_project_task.title ' . $compare . ' LIKE \'%' . Todoyu::db()->escape($title) . '%\'';
+			$where	= 'ext_project_task.title ' . $compare . ' LIKE \'%' . TodoyuSql::escape($title) . '%\'';
 
 			$queryParts	= array(
 				'tables'=> $tables,
@@ -391,7 +391,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$conjunction= $negate ? ' AND ':' OR ';
 
 			$tables	= array(self::TABLE);
-			$keyword= Todoyu::db()->escape($value);
+			$keyword= TodoyuSql::escape($value);
 			$where	= '((							' . self::TABLE . '.description	' . $logic . ' \'%' . $keyword . '%\'
 							' . $conjunction . '	' . self::TABLE . '.title		' . $logic . ' \'%' . $keyword . '%\'
 						)';
@@ -441,7 +441,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 			// If value was not empty, check matches in the title
 		if( $title !== '' ) {
-			$whereParts[] = self::TABLE . '.title LIKE \'%' . Todoyu::db()->escape($title) . '%\'';
+			$whereParts[] = self::TABLE . '.title LIKE \'%' . TodoyuSql::escape($title) . '%\'';
 		}
 
 		if( sizeof($whereParts) > 0 ) {
@@ -563,7 +563,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		if( sizeof($roleIDs) > 0 ) {
 			$tables	= array('ext_contact_mm_person_role');
 
-			$where	= Todoyu::db()->buildInArrayQuery($roleIDs, 'ext_contact_mm_person_role.id_role', true, $negate);
+			$where	= TodoyuSql::buildInArrayQuery($roleIDs, 'ext_contact_mm_person_role.id_role', true, $negate);
 
 			if( !$negate ) {
 				$where .= ' AND	' . self::TABLE . '.type	= ' . TASK_TYPE_TASK;
@@ -612,7 +612,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		$string		= trim($value);
 
 		if( strlen($string) ) {
-			$string	= Todoyu::db()->escape($string);
+			$string	= TodoyuSql::escape($string);
 
 			$tables	= array('ext_project_project');
 			$where	=  'ext_project_project.description LIKE \'%' . $string . '%\'';
@@ -643,7 +643,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 		if( sizeof($statuses) > 0 ) {
 			$queryParts	= array(
-				'where'	=> Todoyu::db()->buildInArrayQuery($statuses, 'ext_project_project.status', true, $negate),
+				'where'	=> TodoyuSql::buildInArrayQuery($statuses, 'ext_project_project.status', true, $negate),
 				'tables'=> array('ext_project_project'),
 				'join'	=> array(self::TABLE . '.id_project = ext_project_project.id')
 			);
@@ -1008,7 +1008,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 		if( sizeof($activityIDs) !== 0 ) {
 			$queryParts	= array(
-				'where'	=> Todoyu::db()->buildInArrayQuery($activityIDs, self::TABLE . '.id_activity', true, $negate)
+				'where'	=> TodoyuSql::buildInArrayQuery($activityIDs, self::TABLE . '.id_activity', true, $negate)
 			);
 		}
 
@@ -1036,7 +1036,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$tables	= array('ext_project_mm_project_person');
 
 			$where	= '		ext_project_mm_project_person.id_person	= ' . $idPerson .
-					  ' AND ' . Todoyu::db()->buildInArrayQuery($roles, 'ext_project_mm_project_person.id_role', true, $negate);
+					  ' AND ' . TodoyuSql::buildInArrayQuery($roles, 'ext_project_mm_project_person.id_role', true, $negate);
 
 			$join	= array(self::TABLE . '.id_project = ext_project_mm_project_person.id_project');
 
