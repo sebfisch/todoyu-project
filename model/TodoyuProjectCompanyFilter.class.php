@@ -60,15 +60,15 @@ class TodoyuProjectCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 			return false;
 		}
 
-		$tables = array(
+		$tables	= array(
 			self::TABLE,
 			'ext_project_project'
 		);
 
-		$where  = Todoyu::db()->buildInArrayQuery($statuses, 'ext_project_project.status', true, $negate)
+		$where	= Todoyu::db()->buildInArrayQuery($statuses, 'ext_project_project.status', true, $negate)
 				. ' AND ext_project_project.id_company = ' . self::TABLE . '.id ';
 
-		$join   = array(self::TABLE . '.id = ext_project_project.id_company');
+		$join	= array(self::TABLE . '.id = ext_project_project.id_company');
 
 		return array(
 			'where'	=> $where,
