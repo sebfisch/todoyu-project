@@ -5,7 +5,7 @@
 	<label index="legend.container.basics">Basic Information</label>
 	<label index="legend.container.attributes">Attributes</label>
 	<label index="legend.project.basics">Basic Information</label>
-	<label index="legend.project.taskpreset">Preset configuration of tasks</label>
+	<label index="legend.project.preset">Preset configuration</label>
 	<label index="legend.project.members">Members of the project</label>
 	<label index="legend.quicktask.basics">Basic Information</label>
 	<label index="legend.project.approvalroles">Invoice Approval Roles</label>

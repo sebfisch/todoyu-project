@@ -5,7 +5,7 @@
 	<label index="legend.container.basics">Basisinformation</label>
 	<label index="legend.container.attributes">Attribute</label>
 	<label index="legend.project.basics">Basisinformation</label>
-	<label index="legend.project.taskpreset">Voreinstellung für Tasks</label>
+	<label index="legend.project.preset">Voreinstellung</label>
 	<label index="legend.project.members">Projektmitarbeiter</label>
 	<label index="legend.quicktask.basics">Basisinformation</label>
 	<label index="legend.project.approvalroles">Verrechnungsabnahme Rollen</label>

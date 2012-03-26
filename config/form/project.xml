@@ -91,7 +91,7 @@
 		</fieldset>
 
 		<fieldset name="presets">
-			<legend>project.form.legend.project.taskpreset</legend>
+			<legend>project.form.legend.project.preset</legend>
 			<class>presets</class>
 			<elements>
 				<field type="select" name="id_taskpreset">
