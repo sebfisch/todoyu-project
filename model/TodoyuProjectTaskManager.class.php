@@ -408,18 +408,18 @@ class TodoyuProjectTaskManager {
 	 * Update multiple tasks
 	 *
 	 * @param	Array		$taskIDs
-	 * @param	Array		$fieldValues
+	 * @param	Array		$data
 	 */
-	public static function updateTasks(array $taskIDs, array $fieldValues) {
+	public static function updateTasks(array $taskIDs, array $data) {
 		$taskIDs= TodoyuArray::intval($taskIDs);
 
 		if( sizeof($taskIDs) > 0 ) {
 			$where	= 'id IN(' . implode(',', $taskIDs) . ')';
 
-			Todoyu::db()->doUpdate(self::TABLE, $where, $fieldValues);
+			Todoyu::db()->doUpdate(self::TABLE, $where, $data);
 
 			foreach($taskIDs as $idTask) {
-				TodoyuHookManager::callHook('project', 'task.update', array($idTask));
+				TodoyuHookManager::callHook('project', 'task.update', array($idTask, $data));
 			}
 		}
 	}
