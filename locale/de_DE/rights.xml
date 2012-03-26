@@ -55,7 +55,6 @@
 	<label index="edittask.rejected:edit">Aufgaben bearbeiten mit Status: Zurückgewiesen</label>
 	<label index="edittask.cleared:edit">Aufgaben bearbeiten mit Status: Verrechnet</label>
 	<label index="edittask.waiting:edit">Aufgaben bearbeiten mit Status: Wartend</label>
-	<label index="edittask.useTaskAndContainerClipboard">Ausschneiden, Kopieren, Einfügen und Klonen von Aufgaben / Containern</label>
 	<label index="edittaskdetail">Augaben Daten bearbeiten</label>
 	<label index="edittaskdetail.editStatus">Status bearbeiten</label>
 	<label index="edittaskdetail.editDateStart">Startdatum bearbeiten</label>

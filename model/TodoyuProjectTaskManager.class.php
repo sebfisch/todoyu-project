@@ -491,28 +491,24 @@ class TodoyuProjectTaskManager {
 		unset($allowed['actions']['submenu']);
 
 			// Prepare rights check
-		$useTaskClipboard		= Todoyu::allowed('project', 'edittask:useTaskAndContainerClipboard');
 		$addTasksInOwnProjects	= Todoyu::allowed('project', 'addtask:addTaskInOwnProjects');
 		$hasTaskEditRight		= TodoyuProjectTaskRights::hasStatusRight($task->getStatusKey(), 'edit');
 
-			// Clipboard options
-		if( $useTaskClipboard ) {
-				// Copy & Cut
-			if( $addTasksInOwnProjects ) {
-					// Copy
-				$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
+			// Copy & Cut
+		if( $addTasksInOwnProjects ) {
+				// Copy
+			$allowed['actions']['submenu']['copy']	= $ownItems['actions']['submenu']['copy'];
 
-					// Cut
-				if( $hasTaskEditRight ) {
-					$allowed['actions']['submenu']['cut']	= $ownItems['actions']['submenu']['cut'];
-				}
+				// Cut
+			if( $hasTaskEditRight ) {
+				$allowed['actions']['submenu']['cut']	= $ownItems['actions']['submenu']['cut'];
 			}
+		}
 
-				// Clone
-			if( TodoyuProjectTaskRights::isAddAllowed($idTask) ) {
-				if( AREA === EXTID_PROJECT ) {
-					$allowed['actions']['submenu']['clone']	= $ownItems['actions']['submenu']['clone'];
-				}
+			// Clone
+		if( TodoyuProjectTaskRights::isAddAllowed($idTask) ) {
+			if( AREA === EXTID_PROJECT ) {
+				$allowed['actions']['submenu']['clone']	= $ownItems['actions']['submenu']['clone'];
 			}
 		}
 

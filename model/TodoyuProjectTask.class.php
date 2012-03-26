@@ -654,11 +654,10 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isDraggable() {
-		$useTaskClipboard		= Todoyu::allowed('project', 'edittask:useTaskAndContainerClipboard');
 		$addTasksInOwnProjects	= Todoyu::allowed('project', 'addtask:addTaskInOwnProjects');
 		$hasTaskEditRight		= TodoyuProjectTaskRights::hasStatusRight($this->getStatusKey(), 'edit');
 
-		return $useTaskClipboard && $addTasksInOwnProjects && $hasTaskEditRight;
+		return $addTasksInOwnProjects && $hasTaskEditRight;
 	}
 
 

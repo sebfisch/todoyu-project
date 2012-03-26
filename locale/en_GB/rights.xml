@@ -55,7 +55,6 @@
 	<label index="edittask.rejected:edit">Edit task with status: Rejected</label>
 	<label index="edittask.cleared:edit">Edit task with status: Cleared</label>
 	<label index="edittask.waiting:edit">Edit task with status: Waiting</label>
-	<label index="edittask.useTaskAndContainerClipboard">Cut, copy, paste and clone tasks/containers</label>
 	<label index="edittaskdetail">Edit Task Detail</label>
 	<label index="edittaskdetail.editStatus">Edit Status</label>
 	<label index="edittaskdetail.editDateStart">Edit Start Date</label>

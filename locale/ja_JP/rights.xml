@@ -52,7 +52,6 @@
 	<label index="edittask.accepted:edit">編集するタスクの状態: 受理</label>
 	<label index="edittask.rejected:edit">編集するタスクの状態: 却下</label>
 	<label index="edittask.cleared:edit">編集するタスクの状態: クリア済み</label>
-	<label index="edittask.useTaskAndContainerClipboard">タスクの切り取り・コピー・貼り付け・複製/コンテナ</label>
 	<label index="edittaskdetail">タスクの詳細を編集</label>
 	<label index="edittaskdetail.editStatus">状態を編集</label>
 	<label index="edittaskdetail.editDateStart">開始日を編集</label>

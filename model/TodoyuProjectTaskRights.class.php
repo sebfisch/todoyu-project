@@ -346,11 +346,10 @@ class TodoyuProjectTaskRights {
 
 		$task	= TodoyuProjectTaskManager::getTask($idTask);
 
-		$useTaskClipboard		= Todoyu::allowed('project', 'edittask:useTaskAndContainerClipboard');
 		$addTasksInOwnProjects	= Todoyu::allowed('project', 'addtask:addTaskInOwnProjects');
 		$hasTaskEditRight		= TodoyuProjectTaskRights::hasStatusRight($task->getStatusKey(), 'edit');
 
-		return $useTaskClipboard && $addTasksInOwnProjects && $hasTaskEditRight;
+		return $addTasksInOwnProjects && $hasTaskEditRight;
 	}
 
 

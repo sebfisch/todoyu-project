@@ -52,7 +52,6 @@
 	<label index="edittask.accepted:edit">Редактировать задачу со статусом: Принято</label>
 	<label index="edittask.rejected:edit">Редактировать задачу со статусом: Отклонено</label>
 	<label index="edittask.cleared:edit">Редактировать задачу со статусом: Очищено</label>
-	<label index="edittask.useTaskAndContainerClipboard">Вырезать, скопировать, клонировать или вставить задачу или контейнер</label>
 	<label index="edittaskdetail">Реактировать информацию о задаче</label>
 	<label index="edittaskdetail.editStatus">Изменить статус</label>
 	<label index="edittaskdetail.editDateStart">Изменить начальную дату</label>

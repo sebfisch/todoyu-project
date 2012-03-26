@@ -52,7 +52,6 @@
 	<label index="edittask.accepted:edit">Edytuj zadanie ze statusem: Zaakceptowane</label>
 	<label index="edittask.rejected:edit">Edytuj zadanie ze statusem: Odrzucone</label>
 	<label index="edittask.cleared:edit">Edytuj zadanie ze statusem: Wyczyszczone</label>
-	<label index="edittask.useTaskAndContainerClipboard">Wytnij, kopiuj, wklej i klonuj zadanie/kontener</label>
 	<label index="edittaskdetail">Edytuj szczegóły zadania</label>
 	<label index="edittaskdetail.editStatus">Edytuj status</label>
 	<label index="edittaskdetail.editDateStart">Edytuj datę rozpoczęcia</label>

@@ -52,7 +52,6 @@
 	<label index="edittask.accepted:edit">Уреди задатке са статусом: Прихваћено</label>
 	<label index="edittask.rejected:edit">Уреди задатке са статусом: Одбијено</label>
 	<label index="edittask.cleared:edit">Уреди задатке са статусом: Обрачунато</label>
-	<label index="edittask.useTaskAndContainerClipboard">Исеци, копирај, налепи, клонирај задатак/контејнер</label>
 	<label index="edittaskdetail">Уреди детање задатка</label>
 	<label index="edittaskdetail.editStatus">Уреди статус</label>
 	<label index="edittaskdetail.editDateStart">Уреди почетни датум</label>

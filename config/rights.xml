@@ -64,7 +64,6 @@
 		<right name="done:edit" require="seetask:done:see" />
 		<right name="accepted:edit" require="seetask:accepted:see" />
 		<right name="cleared:edit" require="seetask:cleared:see" />
-		<right name="useTaskAndContainerClipboard" />
 	</section>
 
 	<section name="edittaskdetail" require="general:use" >
