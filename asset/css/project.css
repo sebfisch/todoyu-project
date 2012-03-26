@@ -23,7 +23,7 @@ h1.headerLine span.projectIcons {
 }
 
 .tasks .lostTasks .subtaskTrigger {
-	background: none !important;
+	background:none !important;
 	height:1px;
 }
 
@@ -93,7 +93,7 @@ h1.headerLine span.projectIcons {
 
 
 .formProject fieldset.basic {
-	padding-top: 15px;
+	padding-top:15px;
 }
 
 

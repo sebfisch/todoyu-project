@@ -69,6 +69,7 @@
 	<label index="edittaskdetail.planning:changefrom">Is allowed to change status for tasks with status: In Planning</label>
 	<label index="edittaskdetail.open:changefrom">Is allowed to change status for tasks with status: Open</label>
 	<label index="edittaskdetail.progress:changefrom">Is allowed to change status for tasks with status: In Progress</label>
+	<label index="edittaskdetail.waiting:changefrom">Is allowed to change status for tasks with status: Waiting</label>
 	<label index="edittaskdetail.confirm:changefrom">Is allowed to change status for tasks with status: To Confirm</label>
 	<label index="edittaskdetail.done:changefrom">Is allowed to change status for tasks with status: Done</label>
 	<label index="edittaskdetail.accepted:changefrom">Is allowed to change status for tasks with status: Accepted</label>

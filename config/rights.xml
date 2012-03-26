@@ -79,13 +79,14 @@
 		<right name="planning:changefrom" require="seetask:planning:see" />
 		<right name="open:changefrom" require="seetask:open:see" />
 		<right name="progress:changefrom" require="seetask:progress:see" />
-		<right name="waiting:changeto" require="seetask:waiting:see" />
+		<right name="waiting:changefrom" require="seetask:waiting:see" />
 		<right name="rejected:changefrom" require="seetask:rejected:see" />
 		<right name="confirm:changefrom" require="seetask:confirm:see" />
 		<right name="done:changefrom" require="seetask:done:see" />
 		<right name="accepted:changefrom" require="seetask:accepted:see" />
 		<right name="cleared:changefrom" require="seetask:cleared:see" />
 		<right name="planning:changeto" require="seetask:planning:see" />
+		<right name="waiting:changeto" require="seetask:waiting:see" />
 		<right name="open:changeto" />
 		<right name="progress:changeto" />
 		<right name="waiting:changeto" />

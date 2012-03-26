@@ -69,6 +69,7 @@
 	<label index="edittaskdetail.planning:changefrom">Status ändern erlaubt von Aufgaben mit Status: In Planung</label>
 	<label index="edittaskdetail.open:changefrom">Status ändern erlaubt von Aufgaben mit Status: Offen</label>
 	<label index="edittaskdetail.progress:changefrom">Status ändern erlaubt von Aufgaben mit Status: In Bearbeitung</label>
+	<label index="edittaskdetail.waiting:changefrom">Status ändern erlaubt von Aufgaben mit Status: Wartend</label>
 	<label index="edittaskdetail.confirm:changefrom">Status ändern erlaubt von Aufgaben mit Status: Zur Abnahme</label>
 	<label index="edittaskdetail.done:changefrom">Status ändern erlaubt von Aufgaben mit Status: Erledigt</label>
 	<label index="edittaskdetail.accepted:changefrom">Status ändern erlaubt von Aufgaben mit Status: Abgenommen</label>
