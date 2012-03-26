@@ -81,7 +81,7 @@
 	<label index="js.project.deleted">Das Projekt wurde erfolgreich gelöscht.</label>
 	<label index="ac.person.notFoundInfo">Es wurde keine Person gefunden deren Name die angegebenen Zeichen enthält.</label>
 	<label index="portal.tab.todos">Meine Aufgaben</label>
-	<label index="export.csv">Projekte als CSV exportieren</label>
+	<label index="export.csv">Als CSV exportieren</label>
 	<label index="extconf.taskPreset">Aufgabenvorlage</label>
 	<label index="extconf.fallbackTaskPreset">Standard Aufgabenvorlage</label>
 	<label index="extconf.fallbackInfo">Die Standard Aufgabenvorlage wird für Aufgaben in Projekten benutzt, die keine Aufgabenvorlage haben.</label>
