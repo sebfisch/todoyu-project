@@ -84,7 +84,7 @@
 	<label index="extconf.taskDefaults.description">Дефаулт опис задатка</label>
 	<label index="extconf.taskDefaults.date_start">Дефаулт почетног датума задатка</label>
 	<label index="extconf.taskDefaults.date_end">Дефаулт почетног датума задатка за муштерију</label>
-	<label index="extconf.taskDefaults.date_deadline">Дефаулт завршни рок  задатка</label>
+	<label index="extconf.taskDefaults.date_deadline">Дефаулт завршни рок задатка</label>
 	<label index="extconf.taskDefaults.status">У напред изабрани статус</label>
 	<label index="extconf.taskDefaults.assignedRoles">У напред изабрана улога од додељене особе једног задатка</label>
 	<label index="extconf.taskDefaults.ownerRoles">У напред изабрана улога од власника задатка</label>
