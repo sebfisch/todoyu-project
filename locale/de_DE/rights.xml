@@ -91,6 +91,6 @@
 	<label index="deletetask.deleteContainerInOwnProjects">Container in eigenen Projekten löschen</label>
 	<label index="deletetask.deleteContainerInAllProjects">Container in allen Projekten löschen</label>
 	<label index="export">Exporte</label>
-	<label index="export.taskcsv">Als CSV exportieren</label>
-	<label index="export.projectcsv">Als CSV exportieren</label>
+	<label index="export.taskcsv">Tasks als CSV exportieren</label>
+	<label index="export.projectcsv">Prjekte als CSV exportieren</label>
 </labels>
