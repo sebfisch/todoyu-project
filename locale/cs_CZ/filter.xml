@@ -27,14 +27,6 @@
 	<label index="task.editdateDyn">Naposledy upraveno (dynamický)</label>
 	<label index="task.createdate">Vytvořeno</label>
 	<label index="task.createdateDyn">Vytvořeno (dynamický)</label>
-	<label index="task.dyndate.today">Dnes</label>
-	<label index="task.dyndate.tomorrow">Zítra</label>
-	<label index="task.dyndate.dayaftertomorrow">Pozítří</label>
-	<label index="task.dyndate.yesterday">Včera</label>
-	<label index="task.dyndate.daybeforeyesterday">Předevčírem</label>
-	<label index="task.dyndate.currentweek">Tento týden</label>
-	<label index="task.dyndate.nextweek">Příští týden</label>
-	<label index="task.dyndate.lastweek">Minulý týden</label>
 	<label index="project.fulltext">Celý název</label>
 	<label index="project.company">Zákazník</label>
 	<label index="project.projectrole">Projektová role</label>

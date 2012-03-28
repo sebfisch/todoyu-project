@@ -424,14 +424,14 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 
 
 	/**
-	 * get the dynamic create date
+	 * Get the dynamic create date
 	 *
 	 * @param	String		$value
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public function Filter_createdateDyn($value, $negate) {
-		$timeStamps = TodoyuProjectTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
+		$timeStamps = TodoyuSearchFilterHelper::getDynamicDateTimestamp($value, $negate);
 
 		return $this->Filter_dateDyn($timeStamps, 'date_create', $negate);
 	}
@@ -459,7 +459,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @return	Array
 	 */
 	public function Filter_editdateDyn($value, $negate) {
-		$timeStamps = TodoyuProjectTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
+		$timeStamps = TodoyuSearchFilterHelper::getDynamicDateTimestamp($value, $negate);
 
 		return $this->Filter_dateDyn($timeStamps, 'date_update', $negate);
 	}

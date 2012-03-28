@@ -27,14 +27,6 @@
 	<label index="task.editdateDyn">Laatste wijziging (Dynamisch)</label>
 	<label index="task.createdate">Aangemaakt</label>
 	<label index="task.createdateDyn">Aangemaakt (Dynamisch)</label>
-	<label index="task.dyndate.today">Vandaag</label>
-	<label index="task.dyndate.tomorrow">Morgen</label>
-	<label index="task.dyndate.dayaftertomorrow">Overmorgen</label>
-	<label index="task.dyndate.yesterday">Gisteren</label>
-	<label index="task.dyndate.daybeforeyesterday">Eergisteren</label>
-	<label index="task.dyndate.currentweek">Deze week</label>
-	<label index="task.dyndate.nextweek">Volgende week</label>
-	<label index="task.dyndate.lastweek">Vorige week</label>
 	<label index="project.fulltext">Titel Full-Text</label>
 	<label index="project.company">Klantnaam</label>
 	<label index="project.projectrole">Projectrol</label>

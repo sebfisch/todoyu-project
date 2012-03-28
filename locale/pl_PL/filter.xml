@@ -27,14 +27,6 @@
 	<label index="task.editdateDyn">Ostatio edytowany (Dynamiczny)</label>
 	<label index="task.createdate">Utworzony</label>
 	<label index="task.createdateDyn">Utworzony (Dynamiczny)</label>
-	<label index="task.dyndate.today">Dzisiaj</label>
-	<label index="task.dyndate.tomorrow">Jutro</label>
-	<label index="task.dyndate.dayaftertomorrow">Pojutrze</label>
-	<label index="task.dyndate.yesterday">Wczoraj</label>
-	<label index="task.dyndate.daybeforeyesterday">Przedwczoraj</label>
-	<label index="task.dyndate.currentweek">Bieżący tydzień</label>
-	<label index="task.dyndate.nextweek">Następny tydzień</label>
-	<label index="task.dyndate.lastweek">Poprzedni tydzień</label>
 	<label index="project.status">Status projektu</label>
 	<label index="project.fulltext">Tytuł Rozszerzony</label>
 	<label index="project.title">Tytuł prjketu</label>
@@ -50,13 +42,5 @@
 	<label index="project.createdateDyn">Utwórz (Dynamiczny)</label>
 	<label index="project.editdate">Edytowane</label>
 	<label index="project.editdateDyn">Edytowane (Dynamiczny)</label>
-	<label index="project.dyndate.today">Dzisiaj</label>
-	<label index="project.dyndate.tomorrow">Jutro</label>
-	<label index="project.dyndate.dayaftertomorrow">Pojutrze</label>
-	<label index="project.dyndate.yesterday">Wczoraj</label>
-	<label index="project.dyndate.daybeforeyesterday">Przedwczoraj</label>
-	<label index="project.dyndate.currentweek">Bieżący tydzień</label>
-	<label index="project.dyndate.nextweek">Następny tydzień</label>
-	<label index="project.dyndate.lastweek">Poprzedni tydzień</label>
 	<label index="project.taskfilter">Zadania z filtra zadań</label>
 </labels>

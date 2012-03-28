@@ -27,14 +27,6 @@
 	<label index="task.editdateDyn">Zuletzt bearbeitet (dynamisch)</label>
 	<label index="task.createdate">Erstellt</label>
 	<label index="task.createdateDyn">Erstellt (dynamisch)</label>
-	<label index="task.dyndate.today">Heute</label>
-	<label index="task.dyndate.tomorrow">Morgen</label>
-	<label index="task.dyndate.dayaftertomorrow">Übermorgen</label>
-	<label index="task.dyndate.yesterday">Gestern</label>
-	<label index="task.dyndate.daybeforeyesterday">Vorgestern</label>
-	<label index="task.dyndate.currentweek">Aktuelle Woche</label>
-	<label index="task.dyndate.nextweek">Nächste Woche</label>
-	<label index="task.dyndate.lastweek">Letzte Woche</label>
 	<label index="project.id">Projekt ID</label>
 	<label index="project.status">Projekt-Status</label>
 	<label index="project.fulltext">Titel-Volltext</label>
@@ -51,16 +43,9 @@
 	<label index="project.createdateDyn">Erzeugt (dynamisch)</label>
 	<label index="project.editdate">Bearbeitet</label>
 	<label index="project.editdateDyn">Bearbeitet (dynamisch)</label>
-	<label index="project.dyndate.today">Heute</label>
-	<label index="project.dyndate.tomorrow">Morgen</label>
-	<label index="project.dyndate.dayaftertomorrow">Übermorgen</label>
-	<label index="project.dyndate.yesterday">Gestern</label>
-	<label index="project.dyndate.daybeforeyesterday">Vorgestern</label>
-	<label index="project.dyndate.currentweek">Aktuelle Woche</label>
-	<label index="project.dyndate.nextweek">Nächste Woche</label>
-	<label index="project.dyndate.lastweek">Letzte Woche</label>
 	<label index="optgroup.projects">Projekte</label>
 	<label index="project.taskfilter">Aufgabe aus Ausgaben-Filter</label>
 	<label index="person.assignedinproject">In Projekt zugewiesen</label>
 	<label index="company.projectstatus">Hat Projekt(e) in Status</label>
+	<label index="company.dateCreateTask">Hat Aufgaben die vor/nach erzeugt wurden</label>
 </labels>

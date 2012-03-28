@@ -798,7 +798,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array
 	 */
 	public function Filter_deadlinedateDyn($value, $negate) {
-		$timeStamps = TodoyuProjectTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
+		$timeStamps = TodoyuSearchFilterHelper::getDynamicDateTimestamp($value, $negate);
 
 		return $this->Filter_dateDyn($timeStamps, 'date_deadline', $negate);
 	}
@@ -826,7 +826,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array
 	 */
 	public function Filter_startdateDyn($value, $negate) {
-		$timeStamps = TodoyuProjectTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
+		$timeStamps = TodoyuSearchFilterHelper::getDynamicDateTimestamp($value, $negate);
 
 		return $this->Filter_dateDyn($timeStamps, 'date_start', $negate);
 	}
@@ -867,7 +867,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array
 	 */
 	public function Filter_enddateDyn($value, $negate = false) {
-		$date = TodoyuProjectTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
+		$date = TodoyuSearchFilterHelper::getDynamicDateTimestamp($value, $negate);
 
 		return $this->Filter_dateDyn($date, 'date_end', $negate);
 	}
@@ -895,7 +895,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array
 	 */
 	public function Filter_editdateDyn($value, $negate) {
-		$refDate = TodoyuProjectTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
+		$refDate = TodoyuSearchFilterHelper::getDynamicDateTimestamp($value, $negate);
 
 		return $this->Filter_dateDyn($refDate, 'date_update', $negate);
 	}
@@ -923,7 +923,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array
 	 */
 	public function Filter_createdateDyn($value, $negate) {
-		$timeStamps = TodoyuProjectTaskFilterDataSource::getDynamicDateTimestamp($value, $negate);
+		$timeStamps = TodoyuSearchFilterHelper::getDynamicDateTimestamp($value, $negate);
 
 		return $this->Filter_dateDyn($timeStamps, 'date_create', $negate);
 	}

@@ -27,14 +27,6 @@
 	<label index="task.editdateDyn">Alterado Em (Dynamic)</label>
 	<label index="task.createdate">Criado</label>
 	<label index="task.createdateDyn">Criado (Dynamic)</label>
-	<label index="task.dyndate.today">Hoje</label>
-	<label index="task.dyndate.tomorrow">Amanhã</label>
-	<label index="task.dyndate.dayaftertomorrow">Depois de Amanhã</label>
-	<label index="task.dyndate.yesterday">Ontem</label>
-	<label index="task.dyndate.daybeforeyesterday">Anteontem</label>
-	<label index="task.dyndate.currentweek">Esta Semana</label>
-	<label index="task.dyndate.nextweek">Próxima Semana</label>
-	<label index="task.dyndate.lastweek">Semana Passada</label>
 	<label index="project.fulltext">Título</label>
 	<label index="project.company">Cliente</label>
 	<label index="project.projectrole">Grupo do Projeto</label>

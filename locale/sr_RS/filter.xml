@@ -27,14 +27,6 @@
 	<label index="task.editdateDyn">Задње уређено (динамично)</label>
 	<label index="task.createdate">Креирано</label>
 	<label index="task.createdateDyn">Креирано (динамично)</label>
-	<label index="task.dyndate.today">Данас</label>
-	<label index="task.dyndate.tomorrow">Сутра</label>
-	<label index="task.dyndate.dayaftertomorrow">Прексутра</label>
-	<label index="task.dyndate.yesterday">Јуђе</label>
-	<label index="task.dyndate.daybeforeyesterday">Прекјуђе</label>
-	<label index="task.dyndate.currentweek">Тренутна недеља</label>
-	<label index="task.dyndate.nextweek">Следећа недеља</label>
-	<label index="task.dyndate.lastweek">Прошла недења</label>
 	<label index="project.id">ИД Пројекта</label>
 	<label index="project.status">Статус пројекта</label>
 	<label index="project.fulltext">Наслов цео текст</label>
@@ -51,13 +43,5 @@
 	<label index="project.createdateDyn">Креирано (динамично)</label>
 	<label index="project.editdate">Уређено</label>
 	<label index="project.editdateDyn">Уређено (динамично)</label>
-	<label index="project.dyndate.today">Данас</label>
-	<label index="project.dyndate.tomorrow">Сутра</label>
-	<label index="project.dyndate.dayaftertomorrow">Прекосутра</label>
-	<label index="project.dyndate.yesterday">Јуче</label>
-	<label index="project.dyndate.daybeforeyesterday">Прекјуче</label>
-	<label index="project.dyndate.currentweek">Ове недеље</label>
-	<label index="project.dyndate.nextweek">Следече недеље</label>
-	<label index="project.dyndate.lastweek">Прошле недеље</label>
 	<label index="project.taskfilter">Задатак из филтера задатка</label>
 </labels>

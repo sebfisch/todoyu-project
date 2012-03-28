@@ -158,40 +158,7 @@ class TodoyuProjectProjectFilterDataSource {
 	 * @return	Array
 	 */
 	public static function getDynamicDateOptions($definitions) {
-		$definitions['options'] = array(
-			array(
-				'label' => Todoyu::Label('project.filter.project.dyndate.today'),
-				'value'	=> 'today'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.project.dyndate.tomorrow'),
-				'value'	=> 'tomorrow'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.project.dyndate.dayaftertomorrow'),
-				'value'	=> 'dayaftertomorrow'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.project.dyndate.yesterday'),
-				'value'	=> 'yesterday'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.project.dyndate.daybeforeyesterday'),
-				'value'	=> 'daybeforeyesterday'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.project.dyndate.currentweek'),
-				'value'	=> 'currentweek'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.project.dyndate.nextweek'),
-				'value'	=> 'nextweek'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.project.dyndate.lastweek'),
-				'value'	=> 'lastweek'
-			)
-		);
+		$definitions['options'] =  TodoyuSearchFilterHelper::getDynamicDateOptions();
 
 		return $definitions;
 	}

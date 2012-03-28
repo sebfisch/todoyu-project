@@ -77,6 +77,71 @@ class TodoyuProjectCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 		);
 	}
 
+
+
+	/**
+	 * Filter for companies with task created before/after date
+	 *
+	 * @param	String		$date		DD/MM/YYYY
+	 * @param	Boolean		$negate
+	 * @return	Array|Boolean
+	 */
+	public function Filter_dateCreateTask($date, $negate = false) {
+		$queryParts	= false;
+
+		if( !empty($date) ) {
+			$timestamp	= TodoyuTime::parseDate($date);
+			$queryParts	= self::getTaskDateCreateQueryParts($timestamp, $negate);
+		}
+
+		return $queryParts;
+	}
+
+
+
+	/**
+	 * @param	String	$dateRangeKey	"today", "tomorrow", ...
+	 * @param	Boolean	$negate
+	 * @return	Array|Boolean
+	 */
+	public function Filter_dateCreateTaskDynamic($dateRangeKey, $negate = false) {
+		$queryParts	= false;
+
+		if( !empty($dateRangeKey) ) {
+			$timestamp	= TodoyuSearchFilterHelper::getDynamicDateTimestamp($dateRangeKey, $negate);
+			$queryParts	= self::getTaskDateCreateQueryParts($timestamp, $negate);
+		}
+
+		return $queryParts;
+	}
+
+
+
+	/**
+	 * @param	Integer		$timestamp
+	 * @param	Boolean		$negate
+	 */
+	private static function getTaskDateCreateQueryParts($timestamp, $negate = false) {
+		$tables	= array(
+			self::TABLE,
+			'ext_project_project',
+			'ext_project_task',
+		);
+
+		$info	= TodoyuSearchFilterHelper::getTimeAndLogicForDate($timestamp, $negate);
+
+		$where	= ' 	ext_project_task.deleted 		= 0 '
+				. ' AND ext_project_task.date_create ' . $info['logic'] . ' ' . $info['timestamp']
+				. ' AND ext_project_project.id			= ext_project_task.id_project '
+				. ' AND ext_project_project.deleted		= 0'
+				. ' AND ext_project_project.id_company	= ' . self::TABLE . '.id';
+
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where
+		);
+	}
+
 }
 
 ?>

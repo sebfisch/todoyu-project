@@ -27,14 +27,6 @@
 	<label index="task.editdateDyn">Ultima modifica (dinamica)</label>
 	<label index="task.createdate">Data creazione</label>
 	<label index="task.createdateDyn">Data creazione (dinamica)</label>
-	<label index="task.dyndate.today">Oggi</label>
-	<label index="task.dyndate.tomorrow">Domani</label>
-	<label index="task.dyndate.dayaftertomorrow">Dopodomani</label>
-	<label index="task.dyndate.yesterday">Ieri</label>
-	<label index="task.dyndate.daybeforeyesterday">L'altroieri</label>
-	<label index="task.dyndate.currentweek">Settimana corrente</label>
-	<label index="task.dyndate.nextweek">Prossima settimana</label>
-	<label index="task.dyndate.lastweek">Settimana precedente</label>
 	<label index="project.fulltext">Testo completo</label>
 	<label index="project.company">Cliente</label>
 	<label index="project.projectrole">Ruolo progetto</label>
@@ -48,12 +40,4 @@
 	<label index="project.createdateDyn">Data creazione (dinamica)</label>
 	<label index="project.editdate">Ultima modifica</label>
 	<label index="project.editdateDyn">Ultima modifica (dinamica)</label>
-	<label index="project.dyndate.today">Oggi</label>
-	<label index="project.dyndate.tomorrow">Domani</label>
-	<label index="project.dyndate.dayaftertomorrow">Dopodomani</label>
-	<label index="project.dyndate.yesterday">Ieri</label>
-	<label index="project.dyndate.daybeforeyesterday">L'altroieri</label>
-	<label index="project.dyndate.currentweek">Settimana corrente</label>
-	<label index="project.dyndate.nextweek">Prossima settimana</label>
-	<label index="project.dyndate.lastweek">Settimana precedente</label>
 </labels>

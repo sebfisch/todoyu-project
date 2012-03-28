@@ -230,42 +230,7 @@ class TodoyuProjectTaskFilterDataSource {
 	 * @return	Array
 	 */
 	public static function getDynamicDateOptions($definitions) {
-		$definitions['options'] = array(
-			array(
-				'label' => Todoyu::Label('project.filter.task.dyndate.today'),
-				'value'	=> 'today'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.task.dyndate.tomorrow'),
-				'value'	=> 'tomorrow'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.task.dyndate.dayaftertomorrow'),
-				'value'	=> 'dayaftertomorrow'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.task.dyndate.yesterday'),
-				'value'	=> 'yesterday'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.task.dyndate.daybeforeyesterday'),
-				'value'	=> 'daybeforeyesterday'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.task.dyndate.currentweek'),
-				'value'	=> 'currentweek'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.task.dyndate.nextweek'),
-				'value'	=> 'nextweek'
-			),
-			array(
-				'label' => Todoyu::Label('project.filter.task.dyndate.lastweek'),
-				'value'	=> 'lastweek'
-			)
-		);
-
-		return $definitions;
+		$definitions['options'] = $definitions['options'] =  TodoyuSearchFilterHelper::getDynamicDateOptions();
 	}
 
 
@@ -273,53 +238,13 @@ class TodoyuProjectTaskFilterDataSource {
 	/**
 	 * Calculates timestamps by dynamic type
 	 *
+	 * @deprecated
 	 * @param	String		$dateRangeKey
 	 * @param	Boolean		$negate
 	 * @return	Integer
 	 */
 	public static function getDynamicDateTimestamp($dateRangeKey, $negate = false) {
-		$todayStart	= TodoyuTime::getDayStart();
-		$todayEnd	= TodoyuTime::getDayEnd();
-		$date		= $negate ? $todayStart : $todayEnd;
-
-		switch( $dateRangeKey ) {
-			case 'tomorrow':
-				$date += TodoyuTime::SECONDS_DAY;
-				break;
-
-			case 'dayaftertomorrow':
-				$date += TodoyuTime::SECONDS_DAY * 2;
-				break;
-
-			case 'yesterday':
-				$date -= TodoyuTime::SECONDS_DAY;
-				break;
-
-			case 'daybeforeyesterday':
-				$date -= TodoyuTime::SECONDS_DAY * 2;
-				break;
-
-			case 'currentweek':
-				$weekRange	= TodoyuTime::getWeekRange(NOW);
-				$date		= $negate ? $weekRange['start'] : $weekRange['end'] ;
-				break;
-
-			case 'nextweek':
-				$weekRange	= TodoyuTime::getWeekRange(NOW + TodoyuTime::SECONDS_WEEK);
-				$date		= $negate ? $weekRange['start'] : $weekRange['end'] ;
-				break;
-
-			case 'lastweek':
-				$weekRange	= TodoyuTime::getWeekRange(NOW - TodoyuTime::SECONDS_WEEK);
-				$date		= $negate ? $weekRange['start'] : $weekRange['end'] ;
-				break;
-
-			case 'todoay':
-			default:
-				break;
-		}
-
-		return $date;
+		return TodoyuSearchFilterHelper::getDynamicDateTimestamp($dateRangeKey, $negate);
 	}
 
 }

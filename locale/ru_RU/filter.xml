@@ -27,14 +27,6 @@
 	<label index="task.editdateDyn">Последний раз редактировалось (динамически)</label>
 	<label index="task.createdate">Создано</label>
 	<label index="task.createdateDyn">Создано (динамически)</label>
-	<label index="task.dyndate.today">Сегодня</label>
-	<label index="task.dyndate.tomorrow">Завтра</label>
-	<label index="task.dyndate.dayaftertomorrow">Послезавтра</label>
-	<label index="task.dyndate.yesterday">Вчера</label>
-	<label index="task.dyndate.daybeforeyesterday">Позавчера</label>
-	<label index="task.dyndate.currentweek">Эта неделя</label>
-	<label index="task.dyndate.nextweek">Следующая неделя</label>
-	<label index="task.dyndate.lastweek">Предыдущая неделя</label>
 	<label index="project.status">Статус проекта</label>
 	<label index="project.fulltext">Полнотекстовый заголовок</label>
 	<label index="project.company">Название клиента</label>
@@ -49,13 +41,5 @@
 	<label index="project.createdateDyn">Создан (динамически)</label>
 	<label index="project.editdate">Изменён</label>
 	<label index="project.editdateDyn">Изменён (динамически)</label>
-	<label index="project.dyndate.today">Сегодня</label>
-	<label index="project.dyndate.tomorrow">Завтра</label>
-	<label index="project.dyndate.dayaftertomorrow">Послезавтра</label>
-	<label index="project.dyndate.yesterday">Вчера</label>
-	<label index="project.dyndate.daybeforeyesterday">Позавчера</label>
-	<label index="project.dyndate.currentweek">На этой ненеде</label>
-	<label index="project.dyndate.nextweek">На следующей неделе</label>
-	<label index="project.dyndate.lastweek">На предыдущей неделе</label>
 	<label index="project.taskfilter">Задача из фильтра задач</label>
 </labels>
