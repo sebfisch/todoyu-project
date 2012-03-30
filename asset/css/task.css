@@ -341,11 +341,10 @@ div.task.dragDropTarget > h3 {
 		.task dd.acknowledged span.icon {
 			background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1312px;
 			display:block !important;
+			margin-left: -14px;
 		}
 
-	.tasks .task .details .properties dt,
-	.tasks .task .details .properties dd,
-	.tasks .task .details .properties dd a {
+	.task .details .properties * {
 		font-weight:normal;
 	}
 
