@@ -230,7 +230,9 @@ class TodoyuProjectTaskFilterDataSource {
 	 * @return	Array
 	 */
 	public static function getDynamicDateOptions($definitions) {
-		$definitions['options'] = $definitions['options'] =  TodoyuSearchFilterHelper::getDynamicDateOptions();
+		$definitions['options'] = TodoyuSearchFilterHelper::getDynamicDateOptions();
+
+		return $definitions;
 	}
 
 
