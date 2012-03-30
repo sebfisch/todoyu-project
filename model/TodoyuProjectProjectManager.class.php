@@ -403,9 +403,11 @@ class TodoyuProjectProjectManager {
 			if( Todoyu::allowed('project', 'addtask:addTaskInAllProjects') || (Todoyu::allowed('project', 'addtask:addTaskInOwnProjects') && TodoyuProjectProjectManager::isPersonAssigned($idProject)) ) {
 					// Add task
 				$allowed['addtask'] = $ownItems['addtask'];
-					// Add container
-				$allowed['addcontainer'] = $ownItems['addcontainer'];
 			}
+		}
+			// Add container
+		if( TodoyuProjectTaskRights::isAddInProjectAllowed($idProject, true) ) {
+			$allowed['addcontainer'] = $ownItems['addcontainer'];
 		}
 
 		return array_merge_recursive($items, $allowed);

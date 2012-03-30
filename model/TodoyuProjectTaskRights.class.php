@@ -228,8 +228,7 @@ class TodoyuProjectTaskRights {
 	public static function isAddAllowed($idParentTask, $isContainer = false) {
 		$idParentTask	= intval($idParentTask);
 
-
-		$idProject		= TodoyuProjectTaskManager::getProjectID($idParentTask);
+		$idProject	= TodoyuProjectTaskManager::getProjectID($idParentTask);
 		return self::isAddInProjectAllowed($idProject, $isContainer);
 	}
 
@@ -248,7 +247,7 @@ class TodoyuProjectTaskRights {
 
 
 	/**
-	 * Check whether a person can add a new task in this project
+	 * Check whether a person can add a new task/container in this project
 	 *
 	 * @param	Integer		$idProject
 	 * @param	Boolean		$isContainer	added element is a container?
