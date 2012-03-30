@@ -921,7 +921,7 @@ class TodoyuProjectTaskManager {
 				$data['person_assigned']	= array(
 					'label'		=> 'project.task.attr.person_assigned',
 					'value'		=> $task->getPersonAssigned()->getLabel(),
-					'position'	=> 60,
+					'position'	=> 110,
 					'className'	=> 'sectionStart ' . ( $task->isAcknowledged() ? 'acknowledged' : 'unread')
 				);
 			}
@@ -930,18 +930,15 @@ class TodoyuProjectTaskManager {
 			$data['activity'] = array(
 				'label'		=> 'project.task.attr.activity',
 				'value'		=> $task->getActivity()->getTitle(),// 'Internes / Administration',
-				'position'	=> 90,
-				'className'	=> ''
+				'position'	=> 220
 			);
-
 
 				// Estimated workload
 			if( $isInternal && $task->hasEstimatedWorkload() ) {
 				$data['estimated_workload']	= array(
 					'label'		=> 'project.task.attr.estimated_workload',
 					'value'		=> TodoyuTime::formatHours($task->getEstimatedWorkload()),
-					'position'	=> 100,
-					'className'	=> 'sectionStart'
+					'position'	=> 230
 				);
 			}
 
@@ -949,7 +946,7 @@ class TodoyuProjectTaskManager {
 			$data['date_create']	= array(
 				'label'		=> 'project.task.attr.date_create',
 				'value'		=> TodoyuTime::format($task->getDateCreate(), 'datetime'),
-				'position'	=> 190,
+				'position'	=> 140,
 				'className'	=> ''
 			);
 		}
@@ -964,8 +961,7 @@ class TodoyuProjectTaskManager {
 			$data['date_start']	= array(
 				'label'		=> 'project.task.attr.date_start',
 				'value'		=> TodoyuTime::format($task->getDateStart(), $dateFormat),
-				'position'	=> 10,
-				'className'	=> 'sectionStart'
+				'position'	=> 10
 			);
 		}
 
@@ -981,22 +977,16 @@ class TodoyuProjectTaskManager {
 			);
 		}
 
-			// Status
-		$data['status']	= array(
-			'label'		=> 'core.global.status',
-			'value'		=> $task->getStatusLabel(),
-			'position'	=> 50,
-			'className'	=> ''
-		);
 
+			// -------- SECTION ------------
 			// Person owner
 		if( $task->hasOwnerPerson() ) {
 			if( $seeAllPersons || in_array($task->getPersonOwnerID(), $visiblePersonIDs) ) {
 				$data['person_owner'] = array(
 					'label'		=> $task->isContainer() ? 'project.task.container.attr.person_owner' : 'project.task.attr.person_owner',
 					'value'		=> $task->getPersonOwner()->getLabel(),
-					'position'	=> 70,
-					'className'	=> 'sectionStart'
+					'position'	=> 120,
+					'className'	=> $task->isContainer() ? 'sectionStart' : ''
 				);
 			}
 		}
@@ -1007,19 +997,24 @@ class TodoyuProjectTaskManager {
 				$data['person_create'] = array(
 					'label'		=> 'project.task.attr.person_create',
 					'value'		=> $task->getPersonCreate()->getLabel(),
-					'position'	=> 65,
-					'className'	=> ''
+					'position'	=> 130
 				);
 			}
 		}
 
+			// Status
+		$data['status']	= array(
+			'label'		=> 'core.global.status',
+			'value'		=> $task->getStatusLabel(),
+			'position'	=> 210,
+			'className'	=> 'sectionStart'
+		);
 			// Public
 		if( $isInternal ) {
 			$data['is_public']	= array(
 				'label'		=> $task->isContainer() ? 'project.task.container.attr.is_public' : 'project.task.attr.is_public',
 				'value'		=> Todoyu::Label('project.task.attr.is_public.' . ($task->isPublic() ? 'public' : 'private') . ($task->isContainer() ? '.container' : '')) ,
-				'position'	=> 110,
-				'className'	=> ''
+				'position'	=> 240
 			);
 		}
 

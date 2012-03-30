@@ -311,7 +311,7 @@ div.task.dragDropTarget > h3 {
 
 		/* properties */
 	.tasks .task .details .data .right {
-		width:305px;
+		width:280px;
 		max-width:45%;
 		float:right;
 	}
@@ -332,9 +332,10 @@ div.task.dragDropTarget > h3 {
 		height:14px;
 	}
 
-		.task dd.unread span.icon {
+		.task .properties .unread .icon {
 			background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1288px;
 			display:block !important;
+			margin-left: -14px;
 		}
 
 		.task dd.acknowledged span.icon {
@@ -353,9 +354,10 @@ div.task.dragDropTarget > h3 {
 		background-color:#f9f9f9;
 	}
 
-	div.task div.details div div.right dl dt.sectionStart,
-	div.task div.details div div.right dl dd.sectionStart {
-		margin-top:11px;
+	.task .details .right .sectionStart {
+		padding-top: 10px;
+		margin-top:2px;
+		border-top: 1px solid #EEE;
 	}
 
 	.tasks .task .details .properties dt {
