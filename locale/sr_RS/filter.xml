@@ -31,7 +31,7 @@
 	<label index="project.status">Статус пројекта</label>
 	<label index="project.fulltext">Наслов цео текст</label>
 	<label index="project.title">Наслов пројекта</label>
-	<label index="project.company">Име муштерије</label>
+	<label index="project.company">муштерије</label>
 	<label index="project.projectrole">Улога пројекта</label>
 	<label index="project.projectleader">Лидер пројекта</label>
 	<label index="project.projectsupervisor">Супервизор пројекта</label>

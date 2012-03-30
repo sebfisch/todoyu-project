@@ -30,7 +30,7 @@
 	<label index="project.status">Status projektu</label>
 	<label index="project.fulltext">Tytuł Rozszerzony</label>
 	<label index="project.title">Tytuł prjketu</label>
-	<label index="project.company">Nazwa klienta</label>
+	<label index="project.company">Klienta</label>
 	<label index="project.projectrole">Rola projektu</label>
 	<label index="project.projectleader">Menadzer projektu</label>
 	<label index="project.projectsupervisor">Kierownik projektu</label>

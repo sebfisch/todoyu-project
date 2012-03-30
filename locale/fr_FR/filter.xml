@@ -28,7 +28,7 @@
 	<label index="task.createdate">Créé</label>
 	<label index="task.createdateDyn">Créé (dynamique)</label>
 	<label index="project.fulltext">Titre plein texte</label>
-	<label index="project.company">Nom du client</label>
+	<label index="project.company">Client</label>
 	<label index="project.projectrole">Rôle dans le projet</label>
 	<label index="project.projectleader">Chef de projet</label>
 	<label index="project.projectsupervisor">Superviseur du projet</label>

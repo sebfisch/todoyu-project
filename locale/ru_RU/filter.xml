@@ -29,7 +29,7 @@
 	<label index="task.createdateDyn">Создано (динамически)</label>
 	<label index="project.status">Статус проекта</label>
 	<label index="project.fulltext">Полнотекстовый заголовок</label>
-	<label index="project.company">Название клиента</label>
+	<label index="project.company">клиента</label>
 	<label index="project.projectrole">Роль проекта</label>
 	<label index="project.projectleader">Лидер проекта</label>
 	<label index="project.projectsupervisor">Супервизор проекта</label>
