@@ -216,13 +216,16 @@ class TodoyuProjectTaskRights {
 		}
 
 			// Must be allowed to edit tasks in resulting status
-		$idProject	= $task->getProjectID();
+		$cloneResultStatus	= Todoyu::$CONFIG['EXT']['project']['taskDefaults']['status'];
 
-		if( TodoyuProjectTaskPresetManager::hasFallbackTaskPreset($idProject) ) {
+		$idProject	= $task->getProjectID();
+		$project	= $task->getProject();
+		if( $project->hasTaskPreset() || TodoyuProjectTaskPresetManager::hasFallbackTaskPreset() ) {
 			$projectTaskPreset	= TodoyuProjectTaskPresetManager::getTaskPresetOrFallback($idProject);
-			$cloneResultStatus	= intval($projectTaskPreset->getStatus());
-		} else {
-			$cloneResultStatus	= Todoyu::$CONFIG['EXT']['project']['taskDefaults']['status'];
+			if( $projectTaskPreset->hasStatus() ) {
+					// Override default status from preset
+				$cloneResultStatus	= intval($projectTaskPreset->getStatus());
+			}
 		}
 
 		$statusIDsAllowedForEdit	= array_keys(TodoyuProjectTaskStatusManager::getStatuses('edit'));
