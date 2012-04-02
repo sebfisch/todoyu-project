@@ -365,7 +365,6 @@ class TodoyuProjectProjectManager {
 	public static function getContextMenuItems($idProject, array $items) {
 		$idProject	= intval($idProject);
 		$project	= self::getProject($idProject);
-		$isExpanded	= TodoyuProjectPreferences::isProjectDetailsExpanded($idProject);
 
 		$ownItems	= TodoyuArray::assure(Todoyu::$CONFIG['EXT']['project']['ContextMenu']['Project']);
 		$allowed	= array();

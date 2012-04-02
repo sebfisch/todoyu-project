@@ -479,7 +479,7 @@ class TodoyuProjectTaskManager {
 			$allowed['edit'] = $ownItems['edit'];
 		}
 
-				// Add project back-link if not in project area
+			// Add project back-link if not in project area
 		if( AREA !== EXTID_PROJECT ) {
 			if( TodoyuProjectProjectRights::isSeeAllowed($task->getProjectID()) ) {
 				$allowed['showinproject'] = $ownItems['showinproject'];
@@ -506,10 +506,8 @@ class TodoyuProjectTaskManager {
 		}
 
 			// Clone
-		if( TodoyuProjectTaskRights::isAddAllowed($idTask) ) {
-			if( AREA === EXTID_PROJECT ) {
-				$allowed['actions']['submenu']['clone']	= $ownItems['actions']['submenu']['clone'];
-			}
+		if( TodoyuProjectTaskRights::isCloneAllowed($idTask) ) {
+			$allowed['actions']['submenu']['clone']	= $ownItems['actions']['submenu']['clone'];
 		}
 
 			// Delete
@@ -1409,7 +1407,7 @@ class TodoyuProjectTaskManager {
 	 */
 	private static function applyMissingRequiredFields(array $data) {
 		if( !isset($data['status']) ) {
-			$data['status'] = STATUS_PLANNING;
+			$data['status'] = Todoyu::$CONFIG['EXT']['project']['taskDefaults']['status'];
 		}
 
 		return $data;
@@ -1927,7 +1925,7 @@ class TodoyuProjectTaskManager {
 			}
 		}
 
-		TodoyuDebug::printInFirebug($update['sorting'], 'New position_' . $idTaskMove);
+//		TodoyuDebug::printInFirebug($update['sorting'], 'New position_' . $idTaskMove);
 
 		return $idTaskMove;
 	}

@@ -144,7 +144,7 @@ class TodoyuProjectTaskRights {
 
 
 	/**
-	 * Check whether task edit for status is allowed
+	 * Check whether task edit for status of given task is allowed
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Boolean
@@ -185,6 +185,52 @@ class TodoyuProjectTaskRights {
 		$rightName	= $project->isCurrentPersonAssigned() ? 'edit' . $typeName . 'InOwnProjects' : 'edit' . $typeName . 'InAllProjects';
 
 		return Todoyu::allowed('project', 'edittask:' . $rightName);
+	}
+
+
+
+	/**
+	 * Check whether a task can be cloned by a person
+	 * -Must be in project area
+	 * -Parent task must be not locked
+	 * -Must be allowed to see the task to be cloned
+	 * -Must be allowed to edit tasks in the resulting status
+	 *
+	 * @param	Integer		$idTask
+	 */
+	public static function isCloneAllowed($idTask) {
+			// Must be in project area
+		if( AREA != EXTID_PROJECT ) {
+			return false;
+		}
+			// Must be allowed to see task
+		if( !self::isSeeAllowed($idTask) ) {
+			return false;
+		}
+
+			// Must be allowed to add task into parent (parent not locked)
+		$task	= TodoyuProjectTaskManager::getTask($idTask);
+
+		if( !self::isAddAllowed($task->getParentTaskID(), $task->isContainer()) ) {
+			return false;
+		}
+
+			// Must be allowed to edit tasks in resulting status
+		$idProject	= $task->getProjectID();
+
+		if( TodoyuProjectTaskPresetManager::hasFallbackTaskPreset($idProject) ) {
+			$projectTaskPreset	= TodoyuProjectTaskPresetManager::getTaskPresetOrFallback($idProject);
+			$cloneResultStatus	= intval($projectTaskPreset->getStatus());
+		} else {
+			$cloneResultStatus	= Todoyu::$CONFIG['EXT']['project']['taskDefaults']['status'];
+		}
+
+		$statusIDsAllowedForEdit	= array_keys(TodoyuProjectTaskStatusManager::getStatuses('edit'));
+		if( $cloneResultStatus === 0 || !in_array($cloneResultStatus, $statusIDsAllowedForEdit) ) {
+			return false;
+		}
+
+		return true;
 	}
 
 

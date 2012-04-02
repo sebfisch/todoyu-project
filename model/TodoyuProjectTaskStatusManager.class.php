@@ -61,7 +61,7 @@ class TodoyuProjectTaskStatusManager {
 
 
 	/**
-	 * Get all task statuses
+	 * Get allowed task statuses of given type
 	 *
 	 * @param	String		$check
 	 * @param	Integer		$forceStatus
