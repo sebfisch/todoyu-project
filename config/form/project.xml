@@ -99,6 +99,7 @@
 					<source type="function">
 						<function>TodoyuProjectProjectViewHelper::getTaskPresetOptions</function>
 					</source>
+					<noPleaseSelect />
 				</field>
 			</elements>
 		</fieldset>

@@ -61,6 +61,7 @@
 	<label index="records.taskpreset">Task Presets Set</label>
 	<label index="records.taskpreset.desc">Field presets for tasks in a project</label>
 	<label index="infobox.presets.title">Presets for newly created tasks</label>
+	<label index="taskpreset.noneForProject">No presets for new tasks in this project</label>
 	<label index="taskpreset.title">Task presets set title</label>
 	<label index="taskpreset.person_owner_fallback">Owner person, if not selectable </label>
 	<label index="taskpreset.person_assigned_fallback">Assigned person, if not selectable</label>

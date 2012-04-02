@@ -231,8 +231,10 @@ class TodoyuProjectProjectViewHelper {
 			'id'	=> 'value',
 			'title'	=> 'label'
 		);
+		$options	= TodoyuArray::reform($presets, $reformConfig);
+		$options	= TodoyuArray::prependSelectOption($options, 'project.ext.taskpreset.noneForProject');
 
-		return TodoyuArray::reform($presets, $reformConfig);
+		return $options;
 	}
 
 }

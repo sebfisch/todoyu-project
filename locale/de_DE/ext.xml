@@ -61,6 +61,7 @@
 	<label index="records.taskpreset">Aufgaben Vorgaben</label>
 	<label index="records.taskpreset.desc">Vorgaben für Felder von Tasks in Projekten</label>
 	<label index="infobox.presets.title">Vorgaben für neu erstellte Aufgaben</label>
+	<label index="taskpreset.noneForProject">Keine Vorgaben für neue Aufgaben in diesem Projekt</label>
 	<label index="taskpreset.title">Aufgaben Vorgaben Titel</label>
 	<label index="taskpreset.person_owner_fallback">Eigner, falls nicht wählbar</label>
 	<label index="taskpreset.person_assigned_fallback">Zugewiesen, falls nicht wählbar</label>
