@@ -1093,21 +1093,6 @@ class TodoyuProjectTaskManager {
 		$idTask	= intval($idTask);
 		$task	= self::getTask($idTask);
 
-			// Task-only information (not relevant for containers)
-		if( $task->isTask() ) {
-				// 'dateover': end date or deadline passed
-			if( $task->isStatusTimeExceedingRelevant() &&
-				(($task->getDateEnd() > 0 && $task->isDateEndExceeded()) || $task->isDateDeadlineExceeded() )
-			) {
-				$icons['dateover']= array(
-					'id'		=> 'task-' . $idTask . '-dateover',
-					'class'		=> 'dateover',
-					'label'		=> 'project.task.attr.dateover',
-					'position'	=> 10
-				);
-			}
-		}
-
 			// Add public icon for internals
 		if( $task->isPublic() && (Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) ) {
 			$icons['public'] = array(
