@@ -335,13 +335,13 @@ div.task.dragDropTarget > h3 {
 		.task .properties .unread .icon {
 			background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1288px;
 			display:block !important;
-			margin-left: -14px;
+			margin-left:-14px;
 		}
 
 		.task dd.acknowledged span.icon {
 			background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1312px;
 			display:block !important;
-			margin-left: -14px;
+			margin-left:-14px;
 		}
 
 	.task .details .properties * {
@@ -354,9 +354,9 @@ div.task.dragDropTarget > h3 {
 	}
 
 	.task .details .right .sectionStart {
-		padding-top: 10px;
+		padding-top:10px;
 		margin-top:2px;
-		border-top: 1px solid #EEE;
+		border-top:1px solid #eee;
 	}
 
 	.tasks .task .details .properties dt {
