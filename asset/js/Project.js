@@ -413,9 +413,9 @@ Todoyu.Ext.project.Project = {
 	/**
 	 * Handler when task is pasted into project: insert/move task item
 	 *
-	 * @method		onTaskPasted
-	 * @param		{Number}			idProject
-	 * @param		{Ajax.Response}		response
+	 * @method	onTaskPasted
+	 * @param	{Number}			idProject
+	 * @param	{Ajax.Response}		response
 	 */
 	onTaskPasted: function(idProject, response) {
 		var idTaskNew		= response.getTodoyuHeader('idTask');

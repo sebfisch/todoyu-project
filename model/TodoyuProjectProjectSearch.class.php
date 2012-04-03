@@ -92,7 +92,7 @@ class TodoyuProjectProjectSearch implements TodoyuSearchEngineIf {
 			$order	= '	p.date_create DESC';
 
 			$projects	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
-			$status		= TodoyuProjectProjectStatusManager::getStatusLabels();
+//			$status		= TodoyuProjectProjectStatusManager::getStatusLabels();
 
 				// Assemble project suggestions array
 			foreach($projects as $project) {
