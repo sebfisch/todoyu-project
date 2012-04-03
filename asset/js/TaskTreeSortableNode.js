@@ -233,6 +233,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Check whether the given element is draggable
 	 *
+	 * @method	isNodeDraggable
 	 * @param	{Element}	element
 	 * @return	{Boolean}
 	 */

@@ -252,6 +252,7 @@ Todoyu.Ext.project.Project.Tab = {
 	/**
 	 * Extract tabKey (e.g 'timetracking' / 'comment' / 'assets') out of item ID
 	 *
+	 * @method	getKeyFromID
 	 * @param	{Number}	idItem
 	 * @return	{String}
 	 */

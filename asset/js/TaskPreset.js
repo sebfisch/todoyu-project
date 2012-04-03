@@ -59,6 +59,7 @@ Todoyu.Ext.project.TaskPreset = {
 	/**
 	 * Get field element by type
 	 *
+	 * @method	getField
 	 * @param	{String}	subject			person or role
 	 * @param	{String}	type			assigned or owner
 	 */
@@ -107,6 +108,7 @@ Todoyu.Ext.project.TaskPreset = {
 	/**
 	 * Enable all fields in the form
 	 *
+	 * @method	onSave
 	 * @param	{Event}		event
 	 * @param	{Element}	button
 	 */
@@ -119,6 +121,7 @@ Todoyu.Ext.project.TaskPreset = {
 	/**
 	 * Handle change on person select
 	 *
+	 * @method	onPersonChanged
 	 * @param	{String}	type		assigned or owner
 	 * @param	{Event}		event		DOM event
 	 * @param	{Element}	element		select element

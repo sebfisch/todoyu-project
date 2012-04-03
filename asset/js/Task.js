@@ -294,6 +294,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Mark a task
 	 *
+	 * @method	markTask
 	 * @param	{Number}	idTask
 	 * @param	{Boolean}	mark
 	 * @param	{Boolean}	withSubTasks
@@ -353,6 +354,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Animate removal of a task
 	 *
+	 * @method	animateRemove
 	 * @param	{Number}	idTask
 	 */
 	animateRemove: function(idTask) {
@@ -414,6 +416,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Remove empty subtask container
 	 *
+	 * @method	removeEmptySubTaskContainer
 	 * @param	{Number}	idTask
 	 */
 	removeEmptySubTaskContainer: function(idTask) {
@@ -563,6 +566,7 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Get parent task element
 	 *
+	 * @method	getParentTask
 	 * @param	{Number}	idTask
 	 * @return	{Element}
 	 */
@@ -1416,6 +1420,7 @@ Todoyu.Ext.project.Task = {
 	 * Initialize task UI features
 	 * Context menu and drag'n'drop
 	 *
+	 * @method	initTask
 	 * @param	{Number}	idTask
 	 */
 	initTask: function(idTask) {
