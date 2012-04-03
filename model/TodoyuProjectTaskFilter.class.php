@@ -780,7 +780,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: date_deadline
 	 *
-	 * @param	String		$date
+	 * @param	String		$date		Formatted (according to current locale) date string
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
@@ -808,7 +808,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: date_start
 	 *
-	 * @param	String		$date
+	 * @param	String		$date		Formatted (according to current locale) date string
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
@@ -877,7 +877,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: date_update
 	 *
-	 * @param	String		$date
+	 * @param	String		$date		Formatted (according to current locale) date string
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
@@ -905,7 +905,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	/**
 	 * Filter condition: date_create
 	 *
-	 * @param	String		$date
+	 * @param	String		$date		Formatted (according to current locale) date string
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
@@ -1085,15 +1085,12 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * Setup query parts for task date_... fields (create, update, start, end, deadline) filter
 	 *
 	 * @param	String			$field
-	 * @param	Integer			$date
+	 * @param	Integer			$date		Formatted (according to current locale) date string
 	 * @param	Boolean			$negate
 	 * @return	Array|Boolean				Query parts array / false if no date timestamp given (or 1.1.1970 00:00)
 	 */
 	public static function makeFilter_date($field, $date, $negate = false) {
-		$tables	= array(self::TABLE);
-		$field	= self::TABLE . '.' . $field;
-
-		return TodoyuSearchFilterHelper::getDateFilterQueryparts($tables, $field, $date, $negate);
+		return TodoyuSearchFilterHelper::makeFilter_date(self::TABLE, $field, $date, $negate);
 	}
 
 

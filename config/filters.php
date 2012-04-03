@@ -57,6 +57,17 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 		/**
 		 * OptGroup task
 		 */
+		'type' => array(
+			'label'		=> 'project.filter.task.type',
+			'optgroup'	=> 'project.task.search.label',
+			'widget'	=> 'select',
+			'wConf' => array(
+				'multiple'	=> false,
+				'size'		=> 2,
+				'FuncRef'	=> 'TodoyuProjectTaskFilterDataSource::getTypeOptions',
+				'negation'	=> 'default'
+			)
+		),
 		'status' => array(
 			'label'		=> 'core.global.status',
 			'optgroup'	=> 'project.task.search.label',
@@ -175,17 +186,6 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 			'wConf' => array(
 				'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
 				'negation'		=> 'default'
-			)
-		),
-		'type' => array(
-			'label'		=> 'project.filter.task.type',
-			'optgroup'	=> 'project.task.search.label',
-			'widget'	=> 'select',
-			'wConf' => array(
-				'multiple'	=> false,
-				'size'		=> 2,
-				'FuncRef'	=> 'TodoyuProjectTaskFilterDataSource::getTypeOptions',
-				'negation'	=> 'default'
 			)
 		),
 		'activity' => array(

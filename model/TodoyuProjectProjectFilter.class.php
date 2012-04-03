@@ -374,7 +374,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	/**
 	 * Filter condition: date_start
 	 *
-	 * @param	String		$date
+	 * @param	String		$date		Formatted (according to current locale) date string
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
@@ -387,7 +387,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	/**
 	 * Filter condition: date_end
 	 *
-	 * @param	String		$date
+	 * @param	String		$date		Formatted (according to current locale) date string
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
@@ -400,7 +400,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	/**
 	 * Filter condition: deadline
 	 *
-	 * @param	String		$date
+	 * @param	String		$date		Formatted (according to current locale) date string
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
@@ -413,7 +413,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	/**
 	 * Filter condition: date_create
 	 *
-	 * @param	String		$date
+	 * @param	String		$date		Formatted (according to current locale) date string
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
@@ -441,7 +441,7 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	/**
 	 * Filter condition: date_update
 	 *
-	 * @param	String		$date
+	 * @param	String		$date		Formatted (according to current locale) date string
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
@@ -491,16 +491,12 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * Prepare date based filter widget for given field
 	 *
 	 * @param	String		$field
-	 * @param	Integer		$date
+	 * @param	Integer		$date		Formatted (according to current locale) date string
 	 * @param	Boolean		$negate
 	 * @return	Boolean
 	 */
 	public function makeFilter_date($field, $date, $negate = false) {
-		$tables	= array(self::TABLE);
-		$field	= self::TABLE . '.' . $field;
-		$time	= TodoyuTime::parseDate($date);
-
-		return TodoyuSearchFilterHelper::getDateFilterQueryparts($tables, $field, $time, $negate);
+		return TodoyuSearchFilterHelper::makeFilter_date(self::TABLE, $field, $date, $negate);
 	}
 
 
