@@ -84,6 +84,6 @@
 	<label index="portal.tab.todos">Meine Aufgaben</label>
 	<label index="export.csv">Als CSV exportieren</label>
 	<label index="extconf.taskPreset">Aufgabenvorlage</label>
-	<label index="extconf.fallbackTaskPreset">Standard Aufgabenvorlage</label>
-	<label index="extconf.fallbackInfo">Die Standard Aufgabenvorlage wird für Aufgaben in Projekten benutzt, die keine Aufgabenvorlage haben.</label>
+	<label index="extconf.fallbackTaskPreset">Fallback Aufgabenvorlage</label>
+	<label index="extconf.fallbackInfo">Die Fallback Aufgabenvorlage wird für Aufgaben in Projekten benutzt, die keine eigene Aufgabenvorlage haben. Sie ist ausserdem für neue Projekte vorausgewählt</label>
 </labels>

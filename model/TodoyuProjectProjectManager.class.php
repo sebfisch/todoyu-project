@@ -1497,7 +1497,7 @@ class TodoyuProjectProjectManager {
 	 * @param	Array		$params
 	 * @return	Array
 	 */
-	public static function hookLoadPresetData(array $data, $idProject, array $params) {
+	public static function hookSetProjectDefaultData(array $data, $idProject, array $params) {
 		$idProject	= intval($idProject);
 
 		if( $idProject === 0 ) {

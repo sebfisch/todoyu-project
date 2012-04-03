@@ -37,7 +37,7 @@ TodoyuHookManager::registerHook('sysmanager', 'renderRecordsBody-taskpreset',	'T
 
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookModifyFormfieldsForTask');
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookModifyFormfieldsForContainer');
-TodoyuFormHook::registerLoadData('ext/project/config/form/project.xml', 'TodoyuProjectProjectManager::hookLoadPresetData');
+TodoyuFormHook::registerLoadData('ext/project/config/form/project.xml', 'TodoyuProjectProjectManager::hookSetProjectDefaultData');
 
 
 	// Callbacks for exteding filter widgets of other extensions
