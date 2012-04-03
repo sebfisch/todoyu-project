@@ -5,7 +5,7 @@ div.task,
 div.task .task:last-child {
 	border-bottom:1px solid #ddd;
 }
-div.task .subtasks  {
+div.task .subtasks {
 	border-top:1px solid #ddd;
 }
 div.task .subtasks .task:last-child {
@@ -326,7 +326,7 @@ div.task.dragDropTarget > h3 {
 		width:50%;
 	}
 
-	.tasks .task .details .properties dd span.icon  {
+	.tasks .task .details .properties dd span.icon {
 		display:none;
 		width:14px;
 		height:14px;
