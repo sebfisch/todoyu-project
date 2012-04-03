@@ -32,7 +32,7 @@
 	<label index="project.fulltext">Titel-Volltext</label>
 	<label index="project.title">Projekttitel</label>
 	<label index="project.company">Kunde</label>
-	<label index="project.projectrole">Projekt Rolle</label>
+	<label index="project.projectrole">Person hat Projektrolle</label>
 	<label index="project.projectleader">Projektleiter</label>
 	<label index="project.projectsupervisor">Projekt Supervisor</label>
 	<label index="project.timemanagement.label">Zeit-Management</label>
