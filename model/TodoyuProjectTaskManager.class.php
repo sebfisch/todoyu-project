@@ -2277,7 +2277,7 @@ class TodoyuProjectTaskManager {
 	public static function linkTaskIDsInText($text) {
 		if( Todoyu::allowed('project', 'general:area') ) {
 			$pattern= '/(^|[^\w\.]+)(\d+\.\d+)([^\w\.]+|$)/';
-			$text	= preg_replace_callback($pattern, array(self, 'callbackLinkTaskIDsInText'), $text);
+			$text	= preg_replace_callback($pattern, array('TodoyuProjectTaskManager', 'callbackLinkTaskIDsInText'), $text);
 		}
 
 		return $text;
