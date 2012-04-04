@@ -1280,7 +1280,7 @@ Todoyu.Ext.project.Task = {
 	 */
 	showDetails: function(idTask, tab, onComplete) {
 		if( this.isDetailsLoaded(idTask) ) {
-			this.Tab.show(idTask, tab, onComplete);
+			Todoyu.ContentItemTab.show(idTask, tab, 'task', 'project', onComplete);
 		} else {
 			var func = this.onDetailsShowed.bind(this);
 
@@ -1309,7 +1309,8 @@ Todoyu.Ext.project.Task = {
 	 */
 	onDetailsShowed: function(idTask, tab, response) {
 		this.refreshExpandedStyle(idTask);
-		this.Tab.show(idTask, tab);
+
+		Todoyu.ContentItemTab.show(idTask, tab);
 	},
 
 
