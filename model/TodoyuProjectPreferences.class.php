@@ -95,7 +95,7 @@ class TodoyuProjectPreferences {
 	 * @param	Boolean		$isVisible
 	 * @param	Integer		$idArea
 	 */
-	public static function saveSubTasksVisibility($idTask, $isVisible = true, $idArea = 0) {
+	public static function saveSubTasksVisibility($idTask, $isVisible = true, $idArea = EXTID_PROJECT) {
 		$idTask	= intval($idTask);
 		$idArea	= intval($idArea);
 
@@ -111,10 +111,10 @@ class TodoyuProjectPreferences {
 	/**
 	 * Get visible sub tasks
 	 *
-	 * @param	Integer $idArea
-	 * @return	Array
+	 * @param	Integer 	$idArea
+	 * @return	Integer[]
 	 */
-	public static function getVisibleSubTasks($idArea = 0) {
+	public static function getVisibleSubTaskIDs($idArea = EXTID_PROJECT) {
 		$idArea	= intval($idArea);
 
 		return self::getPrefs('tasktree-subtasks', 0, $idArea);
@@ -147,7 +147,7 @@ class TodoyuProjectPreferences {
 	 *
 	 * @return	Array
 	 */
-	public static function getExpandedTasks() {
+	public static function getExpandedTaskIDs() {
 		$taskIDs = self::getPrefs('task-expanded');
 
 		return TodoyuArray::assure($taskIDs);

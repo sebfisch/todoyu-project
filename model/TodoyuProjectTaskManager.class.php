@@ -1648,7 +1648,7 @@ class TodoyuProjectTaskManager {
 		$idTask	= intval($idTask);
 
 		if( is_null(self::$expandedTaskIDs) ) {
-			self::$expandedTaskIDs = TodoyuProjectPreferences::getExpandedTasks();
+			self::$expandedTaskIDs = TodoyuProjectPreferences::getExpandedTaskIDs();
 		}
 
 		return in_array($idTask, self::$expandedTaskIDs);

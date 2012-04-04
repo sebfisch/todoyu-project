@@ -194,8 +194,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 				// Save task
 			$idTaskNew	= TodoyuProjectTaskManager::saveTask($storageData);
 
-				// Set parent task expanded (to make sure saved task is visible)
-			TodoyuProjectPreferences::saveTaskExpandedStatus($idParentTask, true);
+				// Set parent tasks subtasks expanded (to make sure saved task is visible)
+			if( $storageData['id_parenttask'] > 0 ) {
+				TodoyuProjectPreferences::saveSubTasksVisibility($idTask, true);
+			}
 
 			TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
 			TodoyuHeader::sendTodoyuHeader('idTaskOld', $idTask);

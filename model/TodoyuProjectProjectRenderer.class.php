@@ -472,7 +472,7 @@ class TodoyuProjectProjectRenderer {
 		$idTask	= intval($idTask);
 
 		if( is_null(self::$expandedTaskIDs) ) {
-			self::$expandedTaskIDs = TodoyuProjectPreferences::getExpandedTasks();
+			self::$expandedTaskIDs = TodoyuProjectPreferences::getExpandedTaskIDs();
 		}
 
 		return in_array($idTask, self::$expandedTaskIDs);
@@ -508,7 +508,7 @@ class TodoyuProjectProjectRenderer {
 		}
 
 		if( is_null(self::$visibleSubTaskIDs) ) {
-			self::$visibleSubTaskIDs = TodoyuProjectPreferences::getVisibleSubTasks(EXTID_PROJECT);
+			self::$visibleSubTaskIDs = TodoyuProjectPreferences::getVisibleSubTaskIDs();
 		}
 
 		return in_array($idTask, self::$visibleSubTaskIDs);
