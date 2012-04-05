@@ -1310,7 +1310,7 @@ Todoyu.Ext.project.Task = {
 	onDetailsShowed: function(idTask, tab, response) {
 		this.refreshExpandedStyle(idTask);
 
-		Todoyu.ContentItemTab.show(idTask, tab);
+		Todoyu.ContentItemTab.show(idTask, tab, 'task');
 	},
 
 
