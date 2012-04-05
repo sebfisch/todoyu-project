@@ -48,4 +48,5 @@
 	<label index="person.assignedinproject">In Projekt zugewiesen</label>
 	<label index="company.projectstatus">Hat Projekt(e) in Status</label>
 	<label index="company.dateCreateTask">Hat Aufgaben die vor/nach erzeugt wurden</label>
+	<label index="company.dateCreateTaskDynamic">Hat Aufgaben die vor/nach erzeugt wurden (dynamisch)</label>
 </labels>
