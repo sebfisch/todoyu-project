@@ -1046,6 +1046,7 @@ Todoyu.Ext.project.Task = {
 		this.initTask(idTask);
 		this.scrollTo(idTask);
 
+		Todoyu.Hook.exec('project.task.formLoaded', idTask);
 		Todoyu.Hook.exec('project.task.subtaskAdded', idTask);
 	},
 
