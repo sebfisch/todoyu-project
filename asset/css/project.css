@@ -55,48 +55,26 @@ h1.headerLine span.projectIcons {
 	border-left-style:solid;
 }
 
-.project .description {
-	margin-bottom:10px;
-}
-
 	.project .description a {
 		text-decoration:underline;
 	}
 
-		/* Properties */
-	.project .properties dt {
-		float:left;
-		width:110px;
-	}
-
-	.project .properties dd {
-		float:left;
-		width:190px;
-	}
 
 	/* Assigned persons */
 	.project table.assignedPersons th.name {
-		width:270px;
-	}
-	.project table.assignedPersons th.company {
 		width:200px;
 	}
-	.project table.assignedPersons th.role {
-		width:124px;
+	.project table.assignedPersons th.company {
+		width:240px;
 	}
-
-	/* This can be removed when core 2.1.4 is available */
-	.project table.list.assignedPersons td > span.icon {
-		height:25px;
-		margin:-2px 4px -8px 2px;
+	.project table.assignedPersons th.role {
+		width:154px;
 	}
 
 
 .formProject fieldset.basic {
 	padding-top:15px;
 }
-
-
 
 
 
