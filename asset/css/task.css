@@ -166,14 +166,13 @@ div.task.dragDropTarget > h3 {
 
 .task h3 .taskHeadExtras {
 	display:inline-block;
+	overflow:hidden;
+	padding:2px 3px 1px 3px;
 	position:absolute;
 	right:145px;
-	width:100px;
-	top:2px;
 	text-align:right;
-	overflow:hidden;
-	border-right:1px solid #ddd;
-	padding:2px 3px 1px 3px;
+	top:2px;
+	width:100px;
 }
 .task.container > h3 > .taskHeadExtras {
 	right:141px;
