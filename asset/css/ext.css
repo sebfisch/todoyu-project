@@ -139,59 +139,53 @@ h1.extIconProject .title {
 /* --------------------------------------
 	Task and project properties
    ------------------------------------- */
-.project .properties dt,
+
 .task .properties dt {
 	float:left;
 	width:100px;
 	font-weight:bold;
 	padding:2px 0;
 }
-.project .properties dd,
+
 .task .properties dd {
 	float:left;
 	width:180px;
 	padding:2px 0;
 }
 
-.project .presets dt,
 .task .presets dt {
 	float:left;
 	width:310px;
 	margin-right:14px;
 	font-weight:bold;
 }
-.project .presets dd,
+
 .task .presets dd {
 	float:left;
 	width:180px;
 }
 
 
-.details .description a,
-.tabContent .comment a {
+
+.details .description a {
 	text-decoration:underline !important;
 }
-.details .description a:hover,
-.tabContent .comment a:hover {
+.details .description a:hover {
 	background-color:#e2e2e2;
 }
 
-.data ul,
-.task-comments ul {
+.data ul {
 	margin:0;
 	padding:0 0 5px 14px;
 }
-.data ul li,
-.task-comments ul li {
+.data ul li {
 	padding-left:5px;
 }
-.data ol,
-.task-comments ol {
+.data ol {
 	margin:0 0 0 5px;
 	padding:0 0 5px 14px;
 }
-.data ul,
-.task-comments ul {
+.data ul  {
 	list-style:disc;
 }
 .data ul.ulList {
