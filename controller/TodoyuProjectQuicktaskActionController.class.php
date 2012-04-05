@@ -68,12 +68,12 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 		$formData	= $params['quicktask'];
 		$idProject	= intval($formData['id_project']);
 
-		TodoyuProjectTaskRights::restrictAddToProject($idProject);
+		if( $idProject !== 0 ) {
+			TodoyuProjectTaskRights::restrictAddToProject($idProject);
+		}
 
-			// Get form object
+			// Get form object, set data
 		$form	= TodoyuProjectQuickTaskManager::getQuickTaskForm();
-
-			// Set form data
 		$form->setFormData($formData);
 
 			// Validate, save workload record / re-render form

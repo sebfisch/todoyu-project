@@ -72,25 +72,30 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 	 */
 	public function saveAction(array $params) {
 		$data		= $params['task'];
+
 		$idTask		= intval($data['id']);
 		$idProject	= intval($data['id_project']);
 
-		if( $idTask > 0 ) {
-			TodoyuProjectTaskRights::restrictEdit($idTask);
+		if( $idProject == 0 ) {
+			$form	= TodoyuProjectTaskManager::getQuickCreateForm();
+			$form->setFormData($data);
 		} else {
-			TodoyuProjectTaskRights::restrictAddToProject($idProject);
+			if( $idTask > 0 ) {
+				TodoyuProjectTaskRights::restrictEdit($idTask);
+			} else {
+				TodoyuProjectTaskRights::restrictAddToProject($idProject);
+			}
+
+				// Create a cache record for the buildform hooks
+			$task = TodoyuProjectTaskManager::getTask(0);
+			$task->injectData($data);
+			$cacheKey	= TodoyuRecordManager::makeClassKey('TodoyuProjectTask', 0);
+			TodoyuCache::set($cacheKey, $task);
+
+				// Get form object, call save hooks, set form data
+			$form	= TodoyuProjectTaskManager::getQuickCreateForm();
+			$form->setFormData($data);
 		}
-
-			// Create a cache record for the buildform hooks
-		$task = TodoyuProjectTaskManager::getTask(0);
-		$task->injectData($data);
-		$cacheKey	= TodoyuRecordManager::makeClassKey('TodoyuProjectTask', 0);
-		TodoyuCache::set($cacheKey, $task);
-
-			// Get form object, call save hooks, set form data
-		$form	= TodoyuProjectTaskManager::getQuickCreateForm();
-		$form->setFormData($data);
-
 			// Check if form is valid
 		if( $form->isValid() ) {
 				// If form is valid, get form storage data and update task
