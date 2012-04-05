@@ -48,9 +48,6 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 		TodoyuProjectTaskRights::restrictAddToProject($idProject);
 
-			// Send task ID for JS
-		TodoyuHeader::sendTodoyuHeader('idTask', 0);
-
 			// Call hook
 		TodoyuHookManager::callHook('project', 'task.create', array(0, $idProject, TASK_TYPE_TASK));
 
@@ -70,9 +67,6 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idProject	= intval($params['project']);
 
 		TodoyuProjectTaskRights::restrictAddToProject($idProject);
-
-			// Send task ID for JS
-		TodoyuHeader::sendTodoyuHeader('idContainer', 0);
 
 			// Call hook
 		TodoyuHookManager::callHook('project', 'task.create', array(0, $idProject, TASK_TYPE_CONTAINER));

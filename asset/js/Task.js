@@ -903,9 +903,6 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Number} 	idProject
 	 */
 	addTaskToProject: function(idProject) {
-		this.removeNewTaskContainer();
-
-		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			parameters: {
 				action:		'addprojecttask',
@@ -914,8 +911,49 @@ Todoyu.Ext.project.Task = {
 			onComplete: this.onProjectTaskAdded.bind(this)
 		};
 
-			// Lost tasks are displayed? => add before lost tasks / else: add at bottom of list
+		this.createNewTaskElementAtTreeBottom(idProject, options);
+	},
+
+
+
+	/**
+	 * Evoke adding of new container to given project
+	 *
+	 * @method	addContainerToProject
+	 * @param	{Number} idProject
+	 */
+	addContainerToProject: function(idProject) {
+		var options	= {
+			parameters: {
+				action:		'addprojectcontainer',
+				project:	idProject
+			},
+			onComplete: this.onProjectContainerAdded.bind(this)
+		};
+
+		this.createNewTaskElementAtTreeBottom(idProject, options);
+	},
+
+
+
+	/**
+	 * Create new task element (or container) at the bottom of the tree.
+	 * Make sure the new task is created before the losttasks element
+	 *
+	 * @param	{Number}	idProject
+	 * @param	{Object}	options
+	 * @param	{String}	[url]			Optional, default project/task controller
+	 */
+	createNewTaskElementAtTreeBottom: function(idProject, options, url) {
 		var target;
+
+			// Set url if not defined
+		if( !url ) {
+			url		= Todoyu.getUrl('project', 'task');
+		}
+
+		this.removeNewTaskContainer();
+
 		if( Todoyu.exists('project-' + idProject + '-losttasks') ) {
 			target	= 'project-' + idProject + '-losttasks';
 			options.insertion = 'before';
@@ -937,14 +975,27 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Object} 		response
 	 */
 	onProjectTaskAdded: function(response) {
-			// Get task ID from header
-		var idTask = response.getTodoyuHeader('idTask');
 			// Add context menu to new task
-		this.initTask(idTask);
+		this.initTask(0);
 			// Scroll to task
-		this.scrollTo(idTask);
+		this.scrollTo(0);
 
-		Todoyu.Hook.exec('project.task.formLoaded', idTask);
+		Todoyu.Hook.exec('project.task.formLoaded', 0);
+	},
+
+
+
+	/**
+	 * Evoked after container having been added to project. Add context menu and scroll to the new container.
+	 *
+	 * @method	onProjectContainerAdded
+	 * @param	{Ajax.Response}		response
+	 */
+	onProjectContainerAdded: function(response) {
+		this.scrollTo(0);
+		this.initTask(0);
+
+		Todoyu.Hook.exec('project.task.containerAdded', 0);
 	},
 
 
@@ -958,48 +1009,6 @@ Todoyu.Ext.project.Task = {
 	 */
 	focusTitleField: function(idTask) {
 		$('task-' + idTask + '-field-title').focus();
-	},
-
-
-
-	/**
-	 * Evoke adding of new container to given project
-	 *
-	 * @method	addContainerToProject
-	 * @param	{Number} idProject
-	 */
-	addContainerToProject: function(idProject) {
-		this.removeNewTaskContainer();
-
-		var url		= Todoyu.getUrl('project', 'task');
-		var options	= {
-			parameters: {
-				action:		'addprojectcontainer',
-				project:	idProject
-			},
-			onComplete: this.onProjectContainerAdded.bind(this)
-		};
-		var target	= 'project-' + idProject + '-tasks';
-
-		Todoyu.Ui.insert(target, url, options);
-	},
-
-
-
-	/**
-	 * Evoked after container having been added to project. Add context menu and scroll to the new container.
-	 *
-	 * @method	onProjectContainerAdded
-	 * @param	{Ajax.Response}		response
-	 */
-	onProjectContainerAdded: function(response) {
-			// Get task ID from header
-		var idContainer = response.getTodoyuHeader('idContainer');
-
-		this.scrollTo(idContainer);
-		this.initTask(idContainer);
-
-		Todoyu.Hook.exec('project.task.containerAdded', idContainer);
 	},
 
 
