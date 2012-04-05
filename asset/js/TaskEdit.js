@@ -209,13 +209,18 @@ Todoyu.Ext.project.Task.Edit = {
 		Todoyu.Ui.closeRTE('task-' + idTask + '-form');
 
 		if( idTask == 0 ) {
-				// Remove task element and if it was the only child: remove parent's children expand trigger
-			if( this.ext.Task.hasParentTask(idTask) && idTask == 0 ) {
-				var idParent	= this.ext.Task.getParentTaskID(idTask);
+				// Get parent, if it has parent
+			if( this.ext.Task.hasParentTask(idTask) ) {
+				var idParent = this.ext.Task.getParentTaskID(idTask);
 			}
 
+				// Remove task
 			$('task-' + idTask).remove();
 
+				// Remove empty container
+			this.ext.TaskTree.removeEmptySubTaskContainers();
+
+				// Fix subtask trigger
 			if( idParent ) {
 				this.ext.Task.updateSubTasksExpandTrigger(idParent);
 			}
