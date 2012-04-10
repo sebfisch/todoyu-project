@@ -206,16 +206,13 @@ class TodoyuProjectTaskClipboard {
 
 			// In: Working task is parent, After/Before: Working tasks parent is the parent
 		$idParentTask	= $insertMode === 'in' ? $idRefTask : $refTask->getParentTaskID();
-		$idNewTask		= self::getTaskID();
 
-			// Copy the task
-		if( self::isInCopyMode() ) {
+
+		if( self::isInCopyMode() ) { // Copy
 			$idNewTask = TodoyuProjectTaskManager::copyTask(self::getTaskID(), $idParentTask, self::isWithSubtasks(), $refTask->getProjectID());
-		}
-
-			// Move the task and set new parent/sorting
-		if( self::isInCutMode() && $insertMode === 'in' ) {
+		} else { // Move
 			TodoyuProjectTaskManager::changeTaskParent(self::getTaskID(), $idParentTask, $refTask->getProjectID());
+			$idNewTask		= self::getTaskID();
 		}
 
 			// Reorder tasks
