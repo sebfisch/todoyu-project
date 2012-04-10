@@ -295,8 +295,8 @@ Todoyu.Ext.project.TaskTree = {
 	 * @method	onSubTasksToggled
 	 * @param	{Number}		idTask
 	 * @param	{Function}		callback
-	 * @param	{Number}		idTaskDummy
-	 * @param	{Ajax.Response}	response
+	 * @param	{Number}		[idTaskDummy]
+	 * @param	{Ajax.Response}	[response]
 	 */
 	onSubTasksToggled: function(idTask, callback, idTaskDummy, response) {
 		if( callback ) {
@@ -305,8 +305,9 @@ Todoyu.Ext.project.TaskTree = {
 		this.reloadSortable();
 
 		if( this.ext.Task.hasSubTasks(idTask) ) {
-				// Toggle expanding icon
-			this.toggleSubTasksTriggerIcon(idTask);
+			var isVisible = this.ext.Task.getSubTasksContainer(idTask).visible();
+
+			this.setSubtaskTriggerExpanded(idTask, isVisible);
 		}
 	},
 
@@ -319,7 +320,7 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	{Number}	idTask
 	 */
 	expandSubTasks: function(idTask, callback) {
-		if( ! this.areSubTasksVisible(idTask) ) {
+		if( !this.areSubTasksVisible(idTask) ) {
 			this.toggleSubTasks(idTask, callback);
 		}
 	},
@@ -333,9 +334,12 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	{Number}	idTask
 	 */
 	toggleSubTasksTriggerIcon: function(idTask) {
-		var trigger	=	$('task-' + idTask + '-subtasks-trigger');
-
-		trigger.addClassName('expandable').toggleClassName('expanded');
+		if( this.ext.Task.hasSubTasksContainer(idTask) ) {
+			var areSubtasksVisible = this.ext.Task.getSubTasksContainer(idTask).visible();
+			this.setSubtaskTriggerExpanded(idTask, areSubtasksVisible);
+		} else {
+			this.ext.Task.getSubTasksExpandTrigger(idTask).removeClassName('expandable');
+		}
 	},
 
 
@@ -345,14 +349,16 @@ Todoyu.Ext.project.TaskTree = {
 	 *
 	 * @method	setSubtaskTriggerExpanded
 	 * @param	{Number}	idTask
-	 * @param	{Boolean}	expanded
+	 * @param	{Boolean}	isExpanded
 	 */
-	setSubtaskTriggerExpanded: function(idTask, expanded) {
-		var trigger	= $('task-' + idTask + '-subtasks-trigger');
+	setSubtaskTriggerExpanded: function(idTask, isExpanded) {
+		var trigger	= this.ext.Task.getSubTasksExpandTrigger(idTask);
+		var method	= isExpanded !== false ? 'addClassName' : 'removeClassName';
 
-		var method	= expanded !== false ? 'addClassName' : 'removeClassName';
-
-		trigger.addClassName('expandable')[method]('expanded');
+			// Show icon
+		trigger.addClassName('expandable');
+			// Set icon style
+		trigger[method]('expanded');
 	},
 
 

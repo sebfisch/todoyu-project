@@ -385,7 +385,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 		this.hideMarker();
 
 		if( draggable.oldParentID ) {
-			this.ext.Task.updateSubTasksExpandTrigger(draggable.oldParentID);
+			this.ext.TaskTree.toggleSubTasksTriggerIcon(draggable.oldParentID);
 			delete draggable.oldParentID;
 		}
 
@@ -600,7 +600,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	 * Get current task ID (node is a drop zone)
 	 *
 	 * @method	getTaskID
-	 * @return	{String}
+	 * @return	{Number}
 	 */
 	getTaskID: function() {
 		return this.element.id.split('-')[1];
@@ -663,19 +663,31 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 		if( this.ext.TaskTree.areSubTasksLoaded(idTaskDrop) ) {
 			this.ext.TaskTree.expandSubTasks(idTaskDrop);
 			this.ext.Task.getSubTasksContainer(idTaskDrop).insert(drag);
-			this.ext.Task.updateSubTasksExpandTrigger(idTaskDrop);
+			this.ext.TaskTree.toggleSubTasksTriggerIcon(idTaskDrop);
 			this.tree.onChange(idTaskDrag, idTaskDrop, 'in');
 		} else {
 			drag.remove();
-			this.ext.TaskTree.loadSubTasks(idTaskDrop, function(idTask){
-				this.ext.TaskTree.setSubtaskTriggerExpanded(idTask, true);
-				this.ext.Task.getSubTasksContainer(idTaskDrop).insert(drag);
-				drag.highlight();
-				this.ext.Task.updateSubTasksExpandTrigger(idTaskDrop);
-				this.tree.onChange(idTaskDrag, idTask, 'in');
-				this.tree.reload();
-			}.bind(this));
+			this.ext.TaskTree.loadSubTasks(idTaskDrop, this.onSubtaskLoadedAfterDragAsSubtask.bind(this, drag, idTaskDrop, idTaskDrag));
 		}
+	},
+
+
+	
+	/**
+	 * Handle response when dropped as subtask but subtasks were not loaded yet
+	 *
+	 * @param	{Element}	drag
+	 * @param	{Number}	idTaskDrop
+	 * @param	{Number}	idTaskDrag
+	 * @param	{Number}	idTask			Parent task whichs subtasks were loaded
+	 */
+	onSubtaskLoadedAfterDragAsSubtask: function(drag, idTaskDrop, idTaskDrag, idTask) {
+		this.ext.TaskTree.setSubtaskTriggerExpanded(idTask, true);
+		this.ext.Task.getSubTasksContainer(idTaskDrop).insert(drag);
+		drag.highlight();
+		this.ext.TaskTree.toggleSubTasksTriggerIcon(idTaskDrop);
+		this.tree.onChange(idTaskDrag, idTask, 'in');
+		this.tree.reload();
 	},
 
 

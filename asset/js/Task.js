@@ -194,9 +194,11 @@ Todoyu.Ext.project.Task = {
 				if( !this.hasSubTasksContainer(idTask) ) {
 					this.createSubTaskContainer(idTask);
 				}
-				this.getSubTasksContainer(idTask).insert(response.responseText);
+				this.getSubTasksContainer(idTask).insert({
+					bottom: response.responseText
+				});
 				this.ext.TaskTree.expandSubTasks(idTask);
-				this.updateSubTasksExpandTrigger(idTask);
+				this.ext.TaskTree.toggleSubTasksTriggerIcon(idTask);
 				break;
 
 				// Insert task before current
@@ -296,8 +298,8 @@ Todoyu.Ext.project.Task = {
 	 *
 	 * @method	markTask
 	 * @param	{Number}	idTask
-	 * @param	{Boolean}	mark
-	 * @param	{Boolean}	withSubTasks
+	 * @param	{Boolean}	[mark]
+	 * @param	{Boolean}	[withSubTasks]
 	 */
 	markTask: function(idTask, mark, withSubTasks) {
 		var method	= mark !== false ? 'addClassName' : 'removeClassName';
@@ -370,8 +372,8 @@ Todoyu.Ext.project.Task = {
 			duration: 	0.7,
 			afterFinish: function(event) {
 					// Update sub elements expand/collapse trigger of parent task after finishing the animation
-				this.updateSubTasksExpandTrigger(idParent);
 				$('task-' + idTask).remove();
+				this.ext.TaskTree.removeEmptySubTaskContainers();
 			}.bind(this)
 		});
 	},
@@ -388,6 +390,9 @@ Todoyu.Ext.project.Task = {
 	 */
 	onRemoved: function(idTask, idParent, response) {
 		Todoyu.Hook.exec('project.task.removed', idTask);
+
+		this.ext.TaskTree.removeEmptySubTaskContainers.bind(this.ext.TaskTree).delay(0.6);
+		this.ext.TaskTree.toggleSubTasksTriggerIcon.bind(this.ext.TaskTree, idParent).delay(0.6);
 	},
 
 
@@ -399,14 +404,16 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Number}	idTask
 	 */
 	removeTaskElement: function(idTask) {
-		if( Todoyu.exists('task-' + idTask) ) {
+		var task = $('task-' + idTask);
+
+		if( task ) {
 			var idParentTask = this.getParentTaskID(idTask);
 
-			$('task-' + idTask).remove();
+			task.remove();
 
 			if( idParentTask ) {
-				this.updateSubTasksExpandTrigger(idParentTask);
-				this.removeEmptySubTaskContainer(idParentTask);
+				this.toggleSubTasksTrigger(idParentTask);
+				this.ext.TaskTree.removeEmptySubTaskContainers();
 			}
 		}
 	},
@@ -592,7 +599,7 @@ Todoyu.Ext.project.Task = {
 	 * @return	{Element[]}
 	 */
 	getSubTasks: function(idTask, visibleOnly) {
-		visibleOnly	= ( typeof visibleOnly == 'undefined' ) ? false : visibleOnly;
+		visibleOnly	= visibleOnly === true;
 		var subTasks= [];
 
 		if( this.hasSubTasksContainer(idTask) ) {
@@ -641,61 +648,16 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Check whether given task has a sub tasks expand trigger
+	 * Toggle subtasks expand trigger
 	 *
-	 * @method	hasSubTasksExpandTrigger
 	 * @param	{Number}	idTask
-	 * @return	{Boolean}
 	 */
-	hasSubTasksExpandTrigger: function(idTask) {
-		return Todoyu.exists(this.getSubTasksExpandTrigger(idTask));
-	},
-
-
-
-	/**
-	 * Add or remove the subtask trigger. Depends on existing (visible) sub tasks
-	 *
-	 * @method	updateSubTasksExpandTrigger
-	 * @param	{Number}
-	 */
-	updateSubTasksExpandTrigger: function(idTask) {
-		var show	= this.getSubTasks(idTask, true).length > 0;
-
-		if( show ) {
-			this.addSubTasksExpandTrigger(idTask);
-		} else {
-			this.removeSubTasksExpandTrigger(idTask);
-		}
-	},
-
-
-
-	/**
-	 * Remove expand trigger from given task header
-	 *
-	 * @method	addSubTasksExpandTrigger
- 	 * @param	{Number}	idTask
-	 */
-	addSubTasksExpandTrigger: function(idTask) {
+	toggleSubTasksTrigger: function(idTask) {
+		var show	= this.hasSubTasksContainer(idTask);
+		var method	= show ? 'addClassName' : 'removeClassname';
 		var trigger	= this.getSubTasksExpandTrigger(idTask);
 		if( trigger ) {
-			trigger.addClassName('expandable');
-		}
-	},
-
-
-
-	/**
-	 * Remove expand trigger from given task header
-	 *
-	 * @method	removeSubTasksExpandTrigger
- 	 * @param	{Number}	idTask
-	 */
-	removeSubTasksExpandTrigger: function(idTask) {
-		var trigger	= this.getSubTasksExpandTrigger(idTask);
-		if( trigger ) {
-			trigger.removeClassName('expandable');
+			trigger[method]('expandable');
 		}
 	},
 
@@ -1226,9 +1188,9 @@ Todoyu.Ext.project.Task = {
 	 */
 	refreshExpandedStyle: function(idTask) {
 		if( this.isDetailsVisible(idTask) ) {
-			this.setExpandedStyle(idTask, true);
+			this.setDetailsExpandedStyle(idTask, true);
 		} else {
-			this.setExpandedStyle(idTask, false);
+			this.setDetailsExpandedStyle(idTask, false);
 		}
 	},
 
@@ -1237,17 +1199,16 @@ Todoyu.Ext.project.Task = {
 	/**
 	 * Set task style expanded/ collapsed
 	 *
-	 * @method	setExpandedStyle
+	 * @method	setDetailsExpandedStyle
 	 * @param	{Number}	idTask
 	 * @param	{Boolean}	isExpanded
 	 */
-	setExpandedStyle: function(idTask, isExpanded) {
-		var task = $('task-' + idTask);
+	setDetailsExpandedStyle: function(idTask, isExpanded) {
+		var task	= $('task-' + idTask);
+		var method	= isExpanded ? 'addClassName' : 'removeClassName';
 
-		if( isExpanded ) {
-			task.addClassName('expanded');
-		} else {
-			task.removeClassName('expanded');
+		if( task ) {
+			task[method]('expanded');
 		}
 	},
 
@@ -1336,18 +1297,8 @@ Todoyu.Ext.project.Task = {
 		if( this.hasSubTasksContainer(idTask) ) {
 			this.getSubTasksContainer(idTask).show();
 		}
-			// If sub tasks expand trigger present: set expandable, expanded
-		if( this.hasSubTasksExpandTrigger(idTask) ){
-			var subTasksExpandTrigger	= this.getSubTasksExpandTrigger(idTask);
 
-			if( ! subTasksExpandTrigger.hasClassName('expandable') ) {
-				subTasksExpandTrigger.addClassName('expandable');
-			}
-
-			if( ! subTasksExpandTrigger.hasClassName('expanded') ) {
-				subTasksExpandTrigger.addClassName('expanded');
-			}
-		}
+		this.ext.TaskTree.setSubtaskTriggerExpanded(idTask, true);
 	},
 
 

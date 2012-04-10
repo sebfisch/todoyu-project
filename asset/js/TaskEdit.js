@@ -123,7 +123,7 @@ Todoyu.Ext.project.Task.Edit = {
 	 */
 	onFormLoaded: function(idTask, response) {
 		this.ext.Task.scrollTo(idTask);
-		this.ext.Task.setExpandedStyle(idTask, true);
+		this.ext.Task.setDetailsExpandedStyle(idTask, true);
 
 		Todoyu.Hook.exec('project.task.formLoaded', idTask);
 	},
@@ -222,7 +222,7 @@ Todoyu.Ext.project.Task.Edit = {
 
 				// Fix subtask trigger
 			if( idParent ) {
-				this.ext.Task.updateSubTasksExpandTrigger(idParent);
+				this.ext.TaskTree.toggleSubTasksTriggerIcon(idParent);
 			}
 		} else {
 			this.ext.Task.refresh(idTask);
