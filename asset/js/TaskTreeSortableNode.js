@@ -672,7 +672,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	},
 
 
-	
+
 	/**
 	 * Handle response when dropped as subtask but subtasks were not loaded yet
 	 *
