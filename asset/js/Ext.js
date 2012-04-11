@@ -95,19 +95,19 @@ Todoyu.Ext.project = {
 			&& (!Todoyu.Tabs.hasTab('project', idProject) || !this.Task.isProjectOfTaskVisible(idTask) )
 		) {
 			document.location.reload();
+		} else {
+			newWindow	= newWindow ? newWindow : false;
+			windowName	= windowName ? windowName : '';
+
+			params = {
+				task: idTask
+			};
+			if( ! Object.isUndefined(idProject) ) {
+				params.project = idProject;
+			}
+
+			Todoyu.goTo('project', 'ext', params, 'task-' + idTask, newWindow, windowName);
 		}
-
-		newWindow	= newWindow ? newWindow : false;
-		windowName	= windowName ? windowName : '';
-
-		var params = {
-			task: idTask
-		};
-		if( ! Object.isUndefined(idProject) ) {
-			params.project = idProject;
-		}
-
-		Todoyu.goTo('project', 'ext', params, 'task-' + idTask, newWindow, windowName);
 	},
 
 
