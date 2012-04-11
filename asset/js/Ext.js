@@ -86,6 +86,17 @@ Todoyu.Ext.project = {
 	 * @param	{String}	windowName
 	 */
 	goToTaskInProject: function(idTask, idProject, newWindow, windowName) {
+			// URL + hash are already set but project/task not available? reload
+		var params	= {
+			project:	idProject,
+			task:		idTask
+		};
+		if( 	Todoyu.isCurrentLocationHref('project', 'ext', params, 'task-' + idTask)
+			&& (!Todoyu.Tabs.hasTab('project', idProject) || !this.Task.isProjectOfTaskVisible(idTask) )
+		) {
+			document.location.reload();
+		}
+
 		newWindow	= newWindow ? newWindow : false;
 		windowName	= windowName ? windowName : '';
 

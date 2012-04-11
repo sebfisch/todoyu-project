@@ -473,7 +473,8 @@ class TodoyuProjectProjectManager {
 				$project		= TodoyuProjectProjectManager::getProject($idProject);
 				$tabs[] = array(
 					'id'		=> $project['id'],
-					'label'		=> $project->getFullTitle(true)
+					'label'		=> $project->getFullTitle(true),
+					'class'		=> 'projecttab'
 				);
 			}
 		}

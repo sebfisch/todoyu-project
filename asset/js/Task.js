@@ -435,6 +435,37 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
+	 * Check whether task element exists within DOM
+	 *
+	 * @method	isTaskInCurrentView
+	 * @return	{Boolean}
+	 */
+	isTaskInCurrentView: function(idTask) {
+		return Todoyu.exists('task-' + idTask);
+	},
+
+
+	/**
+	 * Check whether the project tab of the task present and visible
+	 *
+	 * @method	isProjectOfTaskVisible
+	 * @param	{Number}	idTask
+	 * @return	{Boolean}
+	 */
+	isProjectOfTaskVisible: function(idTask) {
+		if( !this.isTaskInCurrentView(idTask) ) {
+			return false;
+		}
+
+		var task	= $('task-' + idTask);
+		var project	= task.up('div.project');
+
+		return Todoyu.Ui.isVisible(project);
+	},
+
+
+
+	/**
 	 * Scroll to given task
 	 *
 	 * @method	scrollTo
