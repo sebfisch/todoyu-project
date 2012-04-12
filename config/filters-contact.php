@@ -26,10 +26,6 @@
  * @see			TodoyuProjectManager::hookLoadContactFilterConfig
  */
 
-if( ! Todoyu::allowed('contact', 'general:area') ) {
-	return;
-}
-
 	// Persons assigned in project
 Todoyu::$CONFIG['FILTERS']['PERSON']['widgets']['assignedinproject'] = array(
 	'funcRef'	=> 'TodoyuProjectPersonFilter::Filter_assignedinproject',
