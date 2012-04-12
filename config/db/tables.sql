@@ -16,7 +16,8 @@ CREATE TABLE `ext_project_project` (
 	`status` tinyint(3) unsigned NOT NULL DEFAULT '0',
 	`id_company` int(10) unsigned NOT NULL DEFAULT '0',
 	`id_taskpreset` int(10) unsigned NOT NULL DEFAULT '0',
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	KEY `status` (`deleted`,`status`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
