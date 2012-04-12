@@ -197,12 +197,14 @@ class TodoyuProjectTaskRights {
 	 * -Must be allowed to edit tasks in the resulting status
 	 *
 	 * @param	Integer		$idTask
+	 * @return	Boolean
 	 */
 	public static function isCloneAllowed($idTask) {
 			// Must be in project area
 		if( AREA != EXTID_PROJECT ) {
 			return false;
 		}
+
 			// Must be allowed to see task
 		if( !self::isSeeAllowed($idTask) ) {
 			return false;
@@ -211,7 +213,7 @@ class TodoyuProjectTaskRights {
 			// Must be allowed to add task into parent (parent not locked)
 		$task	= TodoyuProjectTaskManager::getTask($idTask);
 
-		if( !self::isAddAllowed($task->getParentTaskID(), $task->isContainer()) ) {
+		if( !self::isAddInTaskProjectAllowed($idTask, $task->isContainer()) ) {
 			return false;
 		}
 
@@ -270,14 +272,14 @@ class TodoyuProjectTaskRights {
 	/**
 	 * Check whether person can add a new task under the parent task
 	 *
-	 * @param	Integer		$idParentTask
+	 * @param	Integer		$idTask
 	 * @param	Boolean		$isContainer		Element to be added is container?
 	 * @return	Boolean
 	 */
-	public static function isAddAllowed($idParentTask, $isContainer = false) {
-		$idParentTask	= intval($idParentTask);
+	public static function isAddInTaskProjectAllowed($idTask, $isContainer = false) {
+		$idTask		= intval($idTask);
+		$idProject	= TodoyuProjectTaskManager::getProjectID($idTask);
 
-		$idProject	= TodoyuProjectTaskManager::getProjectID($idParentTask);
 		return self::isAddInProjectAllowed($idProject, $isContainer);
 	}
 
@@ -286,11 +288,11 @@ class TodoyuProjectTaskRights {
 	/**
 	 * Check whether person can add a new container under the parent task
 	 *
-	 * @param	Integer		$idParentTask
+	 * @param	Integer		$idTask
 	 * @return	Boolean
 	 */
-	public static function isAddContainerAllowed($idParentTask) {
-		return self::isAddAllowed($idParentTask, true);
+	public static function isAddInContainerProjectAllowed($idTask) {
+		return self::isAddInTaskProjectAllowed($idTask, true);
 	}
 
 
@@ -474,10 +476,10 @@ class TodoyuProjectTaskRights {
 	/**
 	 * Restrict access to persons who are allowed to add tasks in the project of this task
 	 *
-	 * @param	Integer		$idParentTask
+	 * @param	Integer		$idTask
 	 */
-	public static function restrictAdd($idParentTask) {
-		if( ! self::isAddAllowed($idParentTask) ) {
+	public static function restrictAddSubTask($idTask) {
+		if( ! self::isAddInTaskProjectAllowed($idTask) ) {
 			self::deny('task:add');
 		}
 	}

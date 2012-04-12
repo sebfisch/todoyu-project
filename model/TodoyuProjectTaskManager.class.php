@@ -521,11 +521,11 @@ class TodoyuProjectTaskManager {
 
 		if( AREA !== EXTID_SEARCH && ! $project->isLocked() ) {
 				// Add sub task
-			if( TodoyuProjectTaskRights::isAddAllowed($idTask) ) {
+			if( TodoyuProjectTaskRights::isAddInTaskProjectAllowed($idTask) ) {
 				$allowed['add']['submenu']['task'] = $ownItems['add']['submenu']['task'];
 			}
 				// Add sub container
-			if( TodoyuProjectTaskRights::isAddContainerAllowed($idTask) ) {
+			if( TodoyuProjectTaskRights::isAddInContainerProjectAllowed($idTask) ) {
 				$allowed['add']['submenu']['container'] = $ownItems['add']['submenu']['container'];
 			}
 		}

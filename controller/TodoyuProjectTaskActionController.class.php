@@ -87,7 +87,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			// Parent for the new sub task
 		$idParentTask	= intval($params['task']);
 
-		TodoyuProjectTaskRights::restrictAdd($idParentTask);
+		TodoyuProjectTaskRights::restrictAddSubTask($idParentTask);
 
 			// Send task ID for JS
 		TodoyuHeader::sendTodoyuHeader('idTask', 0);
@@ -111,7 +111,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 			// Parent for the new sub task
 		$idParentTask	= intval($params['task']);
 
-		TodoyuProjectTaskRights::restrictAdd($idParentTask);
+		TodoyuProjectTaskRights::restrictAddSubTask($idParentTask);
 
 			// Send task ID for JS
 		TodoyuHeader::sendTodoyuHeader('idContainer', 0);
@@ -348,7 +348,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTask	= intval($params['task']);
 		$mode	= $params['mode'];
 
-		TodoyuProjectTaskRights::restrictAdd($idTask);
+		TodoyuProjectTaskRights::restrictAddSubTask($idTask);
 
 		$idTaskNew = TodoyuProjectTaskClipboard::pasteTask($idTask, $mode);
 
@@ -370,7 +370,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$cloneSubtasks	= intval($params['cloneSubtasks']) === 1;
 
 		TodoyuProjectTaskRights::restrictSee($idTask);
-		TodoyuProjectTaskRights::restrictAdd($idTask);
+		TodoyuProjectTaskRights::restrictAddSubTask($idTask);
 
 		$idTaskNew		= TodoyuProjectTaskManager::cloneTask($idTask, $cloneSubtasks);
 

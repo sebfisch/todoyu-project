@@ -294,7 +294,7 @@ class TodoyuProjectTaskClipboard {
 			$isLocked		= $clipboardTask->isLocked(true);
 			$contextTask	= TodoyuProjectTaskManager::getTask($idTaskContextmenu);
 			$isSameProject	= $clipboardTask->getProjectID() === $contextTask->getProjectID();
-			$isAddAllowed	= TodoyuProjectTaskRights::isAddAllowed($idTaskContextmenu);
+			$isAddAllowed	= TodoyuProjectTaskRights::isAddInTaskProjectAllowed($idTaskContextmenu);
 			$isProjectArea	= AREA === EXTID_PROJECT;
 			$isCopyMode		= self::isInCopyMode();
 			$mergeItems		= array();
@@ -302,7 +302,7 @@ class TodoyuProjectTaskClipboard {
 			$ownItems	= self::getContextMenuOwnItems('TaskClipboard');
 
 				// Paste is only available in project view
-			if( $isProjectArea && $isAddAllowed && ($isCopyMode || ! $isLocked || $isSameProject) ) {
+			if( $isProjectArea && $isAddAllowed && ($isCopyMode || !$isLocked || $isSameProject) ) {
 				$mergeItems	= $ownItems;
 				$isSubTask	= TodoyuProjectTaskManager::isSubTaskOf($idTaskContextmenu, self::getTaskID(), true);
 
