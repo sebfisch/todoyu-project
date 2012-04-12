@@ -5,7 +5,7 @@
 	<dl>
 	{foreach $attributes attribute}
 		{$attribute.wrap.0}
-		<dt{if $attribute.className} class="{$attribute.className}"{/if}>{Label $attribute.label}</dt>
+		<dt{if $attribute.classNameLabel} class="{$attribute.classNameLabel}"{else}{if $attribute.className} class="{$attribute.className}"{/if}{/if}>{Label $attribute.label}</dt>
 		<dd{if $attribute.id} id="{$attribute.id}"{/if}{if $attribute.className} class="{$attribute.className}"{/if}{if $attribute.title} title="{$attribute.title}"{/if}>
 			{if $attribute.className}<span class="icon"></span>{/if}
 			{if $attribute.value}
