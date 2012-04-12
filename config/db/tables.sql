@@ -17,7 +17,7 @@ CREATE TABLE `ext_project_project` (
 	`id_company` int(10) unsigned NOT NULL DEFAULT '0',
 	`id_taskpreset` int(10) unsigned NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -53,7 +53,7 @@ CREATE TABLE `ext_project_task` (
 	KEY `project` (`id_project`),
 	KEY `assigned_to` (`id_person_assigned`),
 	KEY `multi` (`status`,`type`,`deleted`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -69,7 +69,7 @@ CREATE TABLE `ext_project_role` (
 	`title` varchar(64) NOT NULL,
 	`deleted` tinyint(1) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE `ext_project_activity` (
 	`deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
 	`title` varchar(64) NOT NULL
 	PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,7 @@ CREATE TABLE `ext_project_mm_project_person` (
 	PRIMARY KEY (`id`),
 	KEY `project` (`id_project`),
 	KEY `person` (`id_person`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -135,4 +135,4 @@ CREATE TABLE `ext_project_taskpreset` (
 	`id_role_assigned_fallback` int(10) unsigned NOT NULL DEFAULT '0',
 	`id_role_owner_fallback` int(10) unsigned NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
