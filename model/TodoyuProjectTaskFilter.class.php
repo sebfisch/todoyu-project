@@ -66,8 +66,12 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 			// Limit to selected status
 		if( ! TodoyuAuth::isAdmin() ) {
-			$statuses	= implode(',', array_keys(TodoyuProjectTaskStatusManager::getStatuses('see')));
-			$this->addRightsFilter('status', $statuses);
+			$statusIDs = TodoyuProjectTaskStatusManager::getStatusIDs();
+			if( sizeof($statusIDs) === 0 ) {
+				$statusIDs = array('99999999'); // Dummy status
+			}
+			$statusList	= implode(',', $statusIDs);
+			$this->addRightsFilter('status', $statusList);
 
 				// Limit to tasks which are in available projects
 			if( ! Todoyu::allowed('project', 'project:seeAll') ) {
