@@ -60,9 +60,10 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 
 			// Add status filter
 		if( ! TodoyuAuth::isAdmin() ) {
-			if( count(TodoyuProjectProjectStatusManager::getStatuses()) > 0 ) {
-				$status	= array_keys(TodoyuProjectProjectStatusManager::getStatuses());
-				$this->addRightsFilter('status', $status);
+			$statusIDs	= TodoyuProjectProjectStatusManager::getStatusIDs();
+			if( sizeof($statusIDs) > 0 ) {
+				$statusList = implode(',', $statusIDs);
+				$this->addRightsFilter('status', $statusList);
 			} else {
 				$this->addRightsFilter('Not', 0);
 			}
