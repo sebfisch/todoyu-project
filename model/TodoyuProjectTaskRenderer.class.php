@@ -232,10 +232,11 @@ class TodoyuProjectTaskRenderer {
 	 * @param	Integer		$idProject
 	 * @param	Integer		$idParentTask
 	 * @param	Integer		$type
+	 * @param	Integer		$status
 	 * @return	String
 	 */
-	public static function renderNewTaskEditForm($idProject, $idParentTask = 0, $type = TASK_TYPE_TASK) {
-		$idTask			= 0;
+	public static function renderNewTaskEditForm($idProject, $idParentTask = 0, $type = TASK_TYPE_TASK, $status = STATUS_OPEN) {
+		$idTask		= 0;
 
 			// Render form for new empty task
 		$formHtml	= self::renderTaskEditForm($idTask, $type);
@@ -245,7 +246,7 @@ class TodoyuProjectTaskRenderer {
 		$data	= array(
 			'idTask'	=> $idTask,
 			'task'	=> array(
-				'status'	=> $type === TASK_TYPE_TASK ? STATUS_OPEN : 0
+				'status'	=> $status
 			),
 			'formHtml'	=> $formHtml
 		);

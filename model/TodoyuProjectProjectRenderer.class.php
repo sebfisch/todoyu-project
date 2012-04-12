@@ -563,7 +563,8 @@ class TodoyuProjectProjectRenderer {
 			if( ! is_null($taskShowTab) && $idTask === $idTaskShow ) {
 				$activeTab	= trim(strtolower($taskShowTab));
 			} else {
-				$activeTab	= TodoyuProjectPreferences::getActiveItemTab($idTask, TodoyuProjectTaskManager::getTask($idTask)->getTypeKey());
+				$task		= TodoyuProjectTaskManager::getTask($idTask);
+				$activeTab	= TodoyuProjectPreferences::getActiveItemTab($idTask, $task->getTypeKey());
 			}
 
 			$data['details']= TodoyuProjectTaskRenderer::renderTaskDetail($idTask, $activeTab);
@@ -621,14 +622,11 @@ class TodoyuProjectProjectRenderer {
 			// Create task with defaults in cache with ID: 0
 		TodoyuProjectTaskManager::createNewTaskWithDefaultsInCache($idParentTask, $idProject, $type);
 
-			// Get default task
-		$task		= TodoyuProjectTaskManager::getTask($idTask);
-
 			// Get task data for rendering
-		$taskData	= $task->getTemplateData(2);
+		$taskData	= TodoyuProjectTaskManager::getTaskInfoArray($idTask, 2);
 
 			// Render edit form wrapped by details and data div like in the view template
-		$wrappedForm	= TodoyuProjectTaskRenderer::renderNewTaskEditForm($idProject, $idParentTask, $type);
+		$wrappedForm	= TodoyuProjectTaskRenderer::renderNewTaskEditForm($idProject, $idParentTask, $type, $taskData['status']);
 
 			// Prepare data array for template
 		$tmpl	= 'ext/project/view/task.tmpl';

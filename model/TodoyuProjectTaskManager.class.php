@@ -1307,8 +1307,8 @@ class TodoyuProjectTaskManager {
 	 */
 	public static function getTaskDefaultData($idParentTask = 0, $idProject = 0, $type = TASK_TYPE_TASK, $isQuickTask = false) {
 		$idParentTask	= intval($idParentTask);
-		$type			= intval($type);
 		$idProject		= intval($idProject);
+		$type			= intval($type);
 
 			// Find project if not available as parameter
 		if( $idProject === 0 && $idParentTask !== 0 ) {
