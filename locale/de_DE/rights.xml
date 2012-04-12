@@ -20,7 +20,7 @@
 	<label index="seetask.progress:see">Sieht Aufgaben mit Status: In Bearbeitung</label>
 	<label index="seetask.confirm:see">Sieht Aufgaben mit Status: Zur Abnahme</label>
 	<label index="seetask.done:see">Sieht Aufgaben mit Status: Erledigt</label>
-	<label index="seetask.accepted:see">Sieht Aufgaben mit Status: Abgenommen</label>
+	<label index="seetask.accepted:see">Sieht Aufgaben mit Status: Bestätigt</label>
 	<label index="seetask.rejected:see">Sieht Aufgaben mit Status: Zurückgewiesen</label>
 	<label index="seetask.cleared:see">Sieht Aufgaben mit Status: Verrechnet</label>
 	<label index="seetask.waiting:see">Sieht Aufgaben mit Status: Wartend</label>
@@ -51,7 +51,7 @@
 	<label index="edittask.progress:edit">Aufgaben bearbeiten mit Status: In Bearbeitung</label>
 	<label index="edittask.confirm:edit">Aufgaben bearbeiten mit Status: Zur Abnahme</label>
 	<label index="edittask.done:edit">Aufgaben bearbeiten mit Status: Erledigt</label>
-	<label index="edittask.accepted:edit">Aufgaben bearbeiten mit Status: Abgenommen</label>
+	<label index="edittask.accepted:edit">Aufgaben bearbeiten mit Status: Bestätigt</label>
 	<label index="edittask.rejected:edit">Aufgaben bearbeiten mit Status: Zurückgewiesen</label>
 	<label index="edittask.cleared:edit">Aufgaben bearbeiten mit Status: Verrechnet</label>
 	<label index="edittask.waiting:edit">Aufgaben bearbeiten mit Status: Wartend</label>
@@ -71,7 +71,7 @@
 	<label index="edittaskdetail.waiting:changefrom">Status ändern erlaubt von Aufgaben mit Status: Wartend</label>
 	<label index="edittaskdetail.confirm:changefrom">Status ändern erlaubt von Aufgaben mit Status: Zur Abnahme</label>
 	<label index="edittaskdetail.done:changefrom">Status ändern erlaubt von Aufgaben mit Status: Erledigt</label>
-	<label index="edittaskdetail.accepted:changefrom">Status ändern erlaubt von Aufgaben mit Status: Abgenommen</label>
+	<label index="edittaskdetail.accepted:changefrom">Status ändern erlaubt von Aufgaben mit Status: Bestätigt</label>
 	<label index="edittaskdetail.rejected:changefrom">Status ändern erlaubt von Aufgaben mit Status: Zurückgewiesen</label>
 	<label index="edittaskdetail.cleared:changefrom">Status ändern erlaubt von Aufgaben mit Status: Verrechnet</label>
 	<label index="edittaskdetail.planning:changeto">Status ändern in: In Planung</label>
@@ -79,7 +79,7 @@
 	<label index="edittaskdetail.progress:changeto">Status ändern in: In Bearbeitung</label>
 	<label index="edittaskdetail.confirm:changeto">Status ändern in: Zur Abnahme</label>
 	<label index="edittaskdetail.done:changeto">Status ändern in: Erledigt</label>
-	<label index="edittaskdetail.accepted:changeto">Status ändern in: Abgenommen</label>
+	<label index="edittaskdetail.accepted:changeto">Status ändern in: Bestätigt</label>
 	<label index="edittaskdetail.rejected:changeto">Status ändern in: Zurückgewiesen</label>
 	<label index="edittaskdetail.cleared:changeto">Status ändern in: Verrechnet</label>
 	<label index="edittaskdetail.waiting:changeto">Status ändern in: Wartend</label>
