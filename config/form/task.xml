@@ -56,7 +56,7 @@
 				<field type="datetime" name="date_deadline">
 					<label>project.task.date_deadline</label>
 					<validate>
-						<dateNotBefore msg="Deadline date has to be after startdate">
+						<dateNotBefore msg="project.ext.form.validation.dateAfter">
 							<field>date_start</field>
 							<allowEmpty />
 						</dateNotBefore>
@@ -117,7 +117,7 @@
 						<lazyInit />
 					</source>
 					<validate>
-						<isNotZero msg="LLL:project.task.attr.id_activity.error" />
+						<isNotZero msg="project.task.attr.id_activity.error" />
 					</validate>
 					<restrict>
 						<allow ext="project" right="edittaskdetail:editActivity" />
@@ -129,7 +129,7 @@
 					<label>project.task.attr.estimated_workload</label>
 					<extraAttributes>onblur="Todoyu.Form.assistDurationInput(this)"</extraAttributes>
 					<validate>
-						<isNotZerotime msg="LLL:project.task.attr.is_estimatedworkload_public.error" />
+						<isNotZerotime msg="project.task.attr.is_estimatedworkload_public.error" />
 					</validate>
 					<restrict>
 						<allow ext="project" right="edittaskdetail:editEstimatedWorkload" />
