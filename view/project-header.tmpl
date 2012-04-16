@@ -1,6 +1,6 @@
 <h1 class="title headerLine contextmenuproject" id="project-{$id}-header" {if isAllowedSeeProjectDetails($id)}onclick="Todoyu.Ext.project.Project.toggleDetails({$id})"{/if}>
 	<div class="projectstatus bcStatus{$status}"></div>
-	<span id="project-{$id}-titlelabel" class="title titleLabel first" title="ID: {$id}">
+	<span id="project-{$id}-titlelabel" class="title titleLabel first" title="ID:{$id} - {htmlencode $fulltitle}">
 		{htmlencode $fulltitle}
 	</span>
 
