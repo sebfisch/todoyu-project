@@ -475,7 +475,7 @@ class TodoyuProjectTaskManager {
 		$ownItems	= Todoyu::$CONFIG['EXT']['project']['ContextMenu'][$taskType];
 
 			// Edit
-		if( $task->isEditable() ) {
+		if( $task->isEditable(false) ) {
 			$allowed['edit'] = $ownItems['edit'];
 		}
 

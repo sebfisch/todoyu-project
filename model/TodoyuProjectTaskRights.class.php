@@ -54,19 +54,19 @@ class TodoyuProjectTaskRights {
 		$task	= TodoyuProjectTaskManager::getTask($idTask);
 
 		if( $task->isTask() ) {
-			if( ! self::isStatusChangeAllowed($idTask) ) {
+			if( !self::isStatusChangeAllowed($idTask) ) {
 				return false;
 			}
 
 				// Check if person can edit his own tasks
 			if( $task->isCurrentPersonCreator() ) {
-				if( ! Todoyu::allowed('project', 'edittask:editOwnTasks') ) {
+				if( !Todoyu::allowed('project', 'edittask:editOwnTasks') ) {
 					return false;
 				}
 			}
 
 				// Check whether edit for status is allowed
-			if( ! self::isStatusEditAllowed($idTask) ) {
+			if( !self::isStatusEditAllowed($idTask) ) {
 				return false;
 			}
 		}

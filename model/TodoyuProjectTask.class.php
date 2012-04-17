@@ -606,8 +606,8 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 *
 	 * @return	Boolean
 	 */
-	public function isEditable() {
-		if( $this->isLocked() ) {
+	public function isEditable($checkSubTasks = false) {
+		if( $this->isLocked($checkSubTasks) ) {
 			return false;
 		}
 
