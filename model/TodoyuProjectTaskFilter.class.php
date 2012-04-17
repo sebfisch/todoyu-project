@@ -168,7 +168,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		if( sizeof($words) > 0 ) {
 			$tables	= array('ext_project_project');
 			$fields	= array('ext_project_project.title');
-			$where	= TodoyuSql::buildLikeQuery($words, $fields, $negate);
+			$where	= TodoyuSql::buildLikeQueryPart($words, $fields, $negate);
 			$join	= array('ext_project_task.id_project = ext_project_project.id');
 
 			$queryParts	= array(
@@ -568,7 +568,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 		if( sizeof($roleIDs) > 0 ) {
 			$tables	= array('ext_contact_mm_person_role');
 
-			$where	= TodoyuSql::buildInArrayQuery($roleIDs, 'ext_contact_mm_person_role.id_role', true, $negate);
+			$where	= TodoyuSql::buildInListQueryPart($roleIDs, 'ext_contact_mm_person_role.id_role', true, $negate);
 
 			if( !$negate ) {
 				$where .= ' AND	' . self::TABLE . '.type	= ' . TASK_TYPE_TASK;
@@ -648,7 +648,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 		if( sizeof($statuses) > 0 ) {
 			$queryParts	= array(
-				'where'	=> TodoyuSql::buildInArrayQuery($statuses, 'ext_project_project.status', true, $negate),
+				'where'	=> TodoyuSql::buildInListQueryPart($statuses, 'ext_project_project.status', true, $negate),
 				'tables'=> array('ext_project_project'),
 				'join'	=> array(self::TABLE . '.id_project = ext_project_project.id')
 			);
@@ -1013,7 +1013,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 
 		if( sizeof($activityIDs) !== 0 ) {
 			$queryParts	= array(
-				'where'	=> TodoyuSql::buildInArrayQuery($activityIDs, self::TABLE . '.id_activity', true, $negate)
+				'where'	=> TodoyuSql::buildInListQueryPart($activityIDs, self::TABLE . '.id_activity', true, $negate)
 			);
 		}
 
@@ -1041,7 +1041,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 			$tables	= array('ext_project_mm_project_person');
 
 			$where	= '		ext_project_mm_project_person.id_person	= ' . $idPerson .
-					  ' AND ' . TodoyuSql::buildInArrayQuery($roles, 'ext_project_mm_project_person.id_role', true, $negate);
+					  ' AND ' . TodoyuSql::buildInListQueryPart($roles, 'ext_project_mm_project_person.id_role', true, $negate);
 
 			$join	= array(self::TABLE . '.id_project = ext_project_mm_project_person.id_project');
 

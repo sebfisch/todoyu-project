@@ -49,7 +49,7 @@ class TodoyuProjectProjectSearch implements TodoyuSearchEngineIf {
 
 		$fields	= array(self::TABLE . '.id', self::TABLE . '.description', self::TABLE . '.title', 'ext_contact_company.shortname', 'ext_contact_company.title');
 
-		$where	= TodoyuSql::buildLikeQuery($find, $fields);
+		$where	= TodoyuSql::buildLikeQueryPart($find, $fields);
 		$where	.= ' AND ' . self::TABLE . '.deleted = 0 AND ext_contact_company.deleted = 0';
 
 		$tables	= self::TABLE . ' LEFT JOIN ext_contact_company ON ' . self::TABLE . '.id_company = ext_contact_company.id';
