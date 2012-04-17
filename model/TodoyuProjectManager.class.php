@@ -34,7 +34,7 @@ class TodoyuProjectManager {
 
 		$counter	= 0;
 		foreach($projectEntries as $idProject => $title) {
-			TodoyuFrontend::addSubmenuEntry('project', 'project' . $idProject, $title, 'index.php?ext=project&project=' . $idProject, $counter++);
+			TodoyuFrontend::addSubmenuEntry('project', 'project' . $idProject, $title, 'index.php?ext=project&amp;project=' . $idProject, $counter++);
 		}
 	}
 
