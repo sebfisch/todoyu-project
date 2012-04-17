@@ -11,6 +11,17 @@
 <tr><td rowspan="1" colspan="3">project area > elements present?</td></tr>
 </thead><tbody>
 <!------ project area > elements present?-->
+<!--main tab activated in area?-->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Projects</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>css=div#header div.inner div#navi-main ul#navi-main-list.navilist li.itemProject a.active</td>
+	<td></td>
+</tr>
 <!--panelwidgets-->
 <tr>
 	<td>assertElementPresent</td>
@@ -37,7 +48,7 @@
 	<td>panelwidget-taskbookmarks-title</td>
 	<td></td>
 </tr>
-
+<!---->
 </tbody></table>
 </body>
 </html>

@@ -65,16 +65,6 @@
 </tr>
 <tr>
 	<td>assertElementPresent</td>
-	<td>quicktask-0-field-id-asset</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
-	<td>quicktask-0-field-upload</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
 	<td>quicktask-0-field-save</td>
 	<td></td>
 </tr>
@@ -99,10 +89,16 @@
 	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
 	<td>10000</td>
 </tr>
+<!--reopen quicktask popup form-->
 <tr>
 	<td>click</td>
 	<td>todoyuprojectheadletquicktask-button</td>
 	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>100</td>
+	<td>100</td>
 </tr>
 <tr>
 	<td>waitForCondition</td>
@@ -127,17 +123,7 @@
 </tr>
 <tr>
 	<td>assertElementPresent</td>
-	<td>css=html body#todoyu-portal.todoyu-portal div#quicktask.dialog</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
 	<td>css=div#formElement-quicktask-0-field-title-labelbox.error</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
-	<td>css=div#formElement-quicktask-0-field-description-labelbox.error</td>
 	<td></td>
 </tr>
 <tr>
