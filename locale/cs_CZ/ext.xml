@@ -17,12 +17,8 @@
 	<label index="addproject">Přidat projekt</label>
 	<label index="editproject">Upravit projekt</label>
 	<label index="status.planning">Plánování</label>
-	<label index="status.open">Otevřený</label>
 	<label index="status.progress">Rozpracovaný</label>
-	<label index="status.confirm">K odsouhlasení</label>
 	<label index="status.done">Ukončený</label>
-	<label index="status.accepted">Akceptovaný</label>
-	<label index="status.rejected">Odmítnutý</label>
 	<label index="status.cleared">Zaúčtovaný</label>
 	<label index="status.warranty">V záruce</label>
 	<label index="status.undefined">Nedefinovaný</label>
@@ -41,7 +37,7 @@
 	<label index="attr.title">Název projektu</label>
 	<label index="attr.status">Stav</label>
 	<label index="attr.date_start">Počáteční datum</label>
-	<label index="attr.date_end">Konečné datum</label>
+	<label index="attr.date_end">Závěrečné datum</label>
 	<label index="attr.date_deadline">Termín zákazníka</label>
 	<label index="attr.persons">Přidělené osoby</label>
 	<label index="attr.persons.new">Nová osoba v projektu</label>
@@ -65,6 +61,7 @@
 	<label index="records.taskpreset">Šablony pro úkoly</label>
 	<label index="records.taskpreset.desc">Pole šablon pro úkoly v projektu</label>
 	<label index="infobox.presets.title">Šablona pro nově vytvořené úkoly</label>
+	<label index="taskpreset.noneForProject">Není přiřazena žádná šablona pro úkoly tohoto projektu</label>
 	<label index="taskpreset.title">Název šablony úkolů</label>
 	<label index="taskpreset.person_owner_fallback">Vlastník, jestliže nejde vybrat </label>
 	<label index="taskpreset.person_assigned_fallback">Přiřazená osoba, jestliže nelze vybrat</label>
@@ -72,7 +69,9 @@
 	<label index="taskpreset.role_owner_fallback">Vlastník s rolí, jestliže nejde vybrat</label>
 	<label index="taskpreset.option.none">Není vybraná šablona úkolu</label>
 	<label index="taskpreset.quicktask_duration_days">Implicitní trvání rychlého úkolu ve dnech</label>
+	<label index="taskpreset.pleaseSelectOwner">Dynamicky: Tvůrce úkolu (standardně)</label>
 	<label index="form.validation.dateBefore">Datum musí být před počátečním datem</label>
+	<label index="form.validation.dateAfter">Datum musí být nastaveno po počátečním datu</label>
 	<label index="form.validation.title">Vložte název projektu</label>
 	<label index="form.validation.company">Je požadován zákazník pro tento projekt</label>
 	<label index="noLabel.newProjectParticipant">Nová účastník projektu</label>
@@ -85,5 +84,7 @@
 	<label index="ac.person.notFoundInfo">Osoba s tímto jménem nebyla nalezena</label>
 	<label index="portal.tab.todos">Úkoly</label>
 	<label index="export.csv">Exportovat projekty do CSV</label>
-	<label index="extconf.defaultTaskPreset">Standardní šablona úkolu</label>
+	<label index="extconf.taskPreset">Šablona úkolu</label>
+	<label index="extconf.fallbackTaskPreset">Výchozí šablona</label>
+	<label index="extconf.fallbackInfo">Výchozí šablona se aplikuje na úkoly v projektech, které nemají přiřazenou vlastní šablonu úkolů. Je to také výchozí stav pro nové projekty</label>
 </labels>
