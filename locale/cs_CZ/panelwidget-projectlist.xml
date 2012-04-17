@@ -2,5 +2,5 @@
 <labels>
 	<label index="title">Projekty</label>
 	<label index="search">Vyhledat</label>
-	<label index="list.empty">Žáden projekt nebyl nalezen (pro vybraný filtr)</label>
+	<label index="list.empty">Žádný projekt nebyl nalezen (pro vybraný filtr)</label>
 </labels>
