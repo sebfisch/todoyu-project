@@ -2300,7 +2300,14 @@ class TodoyuProjectTaskManager {
 		} else {
 			list($idProject)= explode('.', $matches[2]);
 
-			return $matches[1] . '<a href="index.php?ext=project&project=' . $idProject . '&task=' . $idTask . '#task-' . $idTask . '">' . $matches[2] . '</a>' . $matches[3];
+			$taskUrl	= TodoyuString::buildUrl(array(
+				'ext'		=> 'project',
+				'project'	=> $idProject,
+				'task'		=> $idTask
+			), 'task-' . $idTask);
+			$linkTag	= TodoyuString::buildATag($taskUrl, $matches[2]);
+
+			return $matches[1] . $linkTag . $matches[3];
 		}
 	}
 
