@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form>
+<form	xmlns="http://www.todoyu.com"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.todoyu.com ../../../../core/config/form.xsd">
 	<attributes>
 		<attribute name="action">index.php?ext=project&amp;controller=task</attribute>
 		<attribute name="name">task</attribute>
