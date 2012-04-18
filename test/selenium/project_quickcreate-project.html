@@ -294,6 +294,7 @@
 	<td>project-0-field-title</td>
 	<td>new project for testing</td>
 </tr>
+<!--comment via tinyMce-->
 <tr>
 	<td>selectFrame</td>
 	<td>css=#project-0-field-description_ifr</td>
@@ -301,17 +302,22 @@
 </tr>
 <tr>
 	<td>focus</td>
-	<td>css=#tinymce</td>
+	<td>//html/body[@id=&quot;tinymce&quot;]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>css=#tinymce</td>
+	<td>typeKeys</td>
+	<td>//html/body[@id=&quot;tinymce&quot;]</td>
 	<td>And here some wonderfull description...</td>
 </tr>
 <tr>
 	<td>selectFrame</td>
-	<td>relative=parent</td>
+	<td>relative=top</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>100</td>
 	<td></td>
 </tr>
 <tr>
@@ -329,6 +335,7 @@
 	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
 	<td>10000</td>
 </tr>
+<!--Title and description validate now?-->
 <tr>
 	<td>assertTextNotPresent</td>
 	<td>Please enter a project title</td>
@@ -348,19 +355,24 @@
 <tr>
 	<td>type</td>
 	<td>project-0-field-date-start</td>
-	<td>03/21/2011</td>
+	<td>01/01/2016</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>project-0-field-date-end</td>
-	<td>03/27/2011</td>
+	<td>02/02/2016</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>project-0-field-date-deadline</td>
-	<td>03/23/2011</td>
+	<td>02/02/2016</td>
 </tr>
 <!--use customer AC-->
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
 <tr>
 	<td>keyPress</td>
 	<td>project-0-field-id-company-fulltext</td>
@@ -377,29 +389,29 @@
 	<td>s</td>
 </tr>
 <tr>
-	<td>keyPress</td>
+	<td>typeKeys</td>
 	<td>project-0-field-id-company-fulltext</td>
 	<td>b</td>
 </tr>
 <tr>
+	<td>pause</td>
+	<td>100</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
+	<td>10000</td>
+</tr>
+<tr>
 	<td>keyDown</td>
 	<td>project-0-field-id-company-fulltext</td>
-	<td>e</td>
+	<td>13</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>200</td>
+	<td>focus</td>
+	<td>--------------------------------------</td>
 	<td></td>
-</tr>
-<tr>
-	<td>keyUp</td>
-	<td>project-0-field-id-company-fulltext</td>
-	<td>e</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>css=div#project-0-field-id-company-suggest.acResultContainer ul li#8.selected</td>
-	<td>\13</td>
 </tr>
 <!--form should be filled ok, try saving-->
 <tr>
@@ -418,11 +430,15 @@
 	<td>10000</td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
-	<td>Eisbergen: new project f</td>
+	<td>assertElementPresent</td>
+	<td>//span[@id=&quot;project-15-titlelabel&quot;]</td>
 	<td></td>
 </tr>
-
+<tr>
+	<td>assertTextPresent</td>
+	<td>new project for testing</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>

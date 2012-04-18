@@ -10,90 +10,58 @@
 <thead>
 <tr><td rowspan="1" colspan="3">portal > headlet: quicktask INCOMPLETE</td></tr>
 </thead><tbody>
-<!------ portal > headlet: quicktask-->
-<tr>
-	<td>assertElementPresent</td>
-	<td>todoyuprojectheadletquicktask-button</td>
-	<td></td>
-</tr>
-<!--open quicktask creation popup-->
+<!------ portal > headlet: quicktask > create task-->
+<!--open quicktask popup form-->
 <tr>
 	<td>click</td>
 	<td>todoyuprojectheadletquicktask-button</td>
 	<td></td>
 </tr>
 <tr>
+	<td>pause</td>
+	<td>100</td>
+	<td>100</td>
+</tr>
+<tr>
 	<td>waitForCondition</td>
 	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
 	<td>10000</td>
 </tr>
-<!--assert form elements present-->
 <tr>
 	<td>assertElementPresent</td>
 	<td>quicktask-0-field-id-project-fulltext</td>
 	<td></td>
 </tr>
+<!--->project autocompleter-->
 <tr>
-	<td>assertElementPresent</td>
-	<td>quicktask-0-field-title</td>
+	<td>focus</td>
+	<td>//input[@id=&quot;quicktask-0-field-id-project-fulltext&quot;]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>quicktask-0-field-description</td>
+	<td>selectWindow</td>
+	<td>null</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>quicktask-0-field-id-activity</td>
-	<td></td>
+	<td>keyPress</td>
+	<td>//input[@id=&quot;quicktask-0-field-id-project-fulltext&quot;]</td>
+	<td>G</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>quicktask-0-field-workload-done</td>
-	<td></td>
+	<td>keyPress</td>
+	<td>//input[@id=&quot;quicktask-0-field-id-project-fulltext&quot;]</td>
+	<td>o</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>quicktask-0-field-start-tracking</td>
-	<td></td>
+	<td>keyPress</td>
+	<td>//input[@id=&quot;quicktask-0-field-id-project-fulltext&quot;]</td>
+	<td>o</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>quicktask-0-field-task-done</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
-	<td>quicktask-0-field-save</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
-	<td>quicktask-0-field-cancel</td>
-	<td></td>
-</tr>
-<!--try closing via cancel button, reopen-->
-<tr>
-	<td>click</td>
-	<td>css=button#quicktask-0-field-cancel.button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>pause</td>
-	<td>100</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForCondition</td>
-	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
-	<td>10000</td>
-</tr>
-<!--reopen quicktask popup form-->
-<tr>
-	<td>click</td>
-	<td>todoyuprojectheadletquicktask-button</td>
-	<td></td>
+	<td>typeKeys</td>
+	<td>//input[@id=&quot;quicktask-0-field-id-project-fulltext&quot;]</td>
+	<td>d</td>
 </tr>
 <tr>
 	<td>pause</td>
@@ -105,38 +73,18 @@
 	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
 	<td>10000</td>
 </tr>
-<!--try saving empty - should fail because of required fields-->
 <tr>
-	<td>click</td>
-	<td>css=button#quicktask-0-field-save.button</td>
-	<td></td>
+	<td>keyDown</td>
+	<td>//input[@id=&quot;quicktask-0-field-id-project-fulltext&quot;]</td>
+	<td>13</td>
 </tr>
-<tr>
-	<td>pause</td>
-	<td>100</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForCondition</td>
-	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
-	<td>10000</td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
-	<td>css=div#formElement-quicktask-0-field-title-labelbox.error</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertTextPresent</td>
-	<td>This is a required field</td>
-	<td></td>
-</tr>
-<!--fill out quicktask form: title,description,activity type: frontend engineering-->
+<!---> title-->
 <tr>
 	<td>type</td>
 	<td>css=input#quicktask-0-field-title.text</td>
 	<td>New Quicktask</td>
 </tr>
+<!---> description (tinyMce)..-->
 <tr>
 	<td>selectFrame</td>
 	<td>css=#quicktask-0-field-description_ifr</td>
@@ -144,17 +92,17 @@
 </tr>
 <tr>
 	<td>focus</td>
-	<td>css=#tinymce</td>
+	<td>//html/body[@id=&quot;tinymce&quot;]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>css=#tinymce</td>
+	<td>typeKeys</td>
+	<td>//html/body[@id=&quot;tinymce&quot;]</td>
 	<td>New Quicktask</td>
 </tr>
 <tr>
 	<td>selectFrame</td>
-	<td>relative=parent</td>
+	<td>relative=top</td>
 	<td></td>
 </tr>
 <tr>
@@ -162,6 +110,7 @@
 	<td>100</td>
 	<td></td>
 </tr>
+<!---> activity type-->
 <tr>
 	<td>focus</td>
 	<td>css=select#quicktask-0-field-id-activity.select</td>
@@ -197,7 +146,7 @@
 	<td>100</td>
 	<td></td>
 </tr>
-<!--save task, assert presents-->
+<!--save task-->
 <tr>
 	<td>click</td>
 	<td>css=button#quicktask-0-field-save.saveButton</td>
@@ -213,15 +162,108 @@
 	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
 	<td>10000</td>
 </tr>
+<!--Look for it using the quicksearch headlet, open it..-->
 <tr>
-	<td>assertTextPresent</td>
-	<td>New Quicktask</td>
+	<td>click</td>
+	<td>//a[@id=&quot;todoyusearchheadletquicksearch-button&quot;]</td>
 	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>100</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//input[@id=&quot;todoyusearchheadletquicksearch-query&quot;]</td>
+	<td></td>
+</tr>
+<!--..Type into quicksearch-->
+<tr>
+	<td>focus</td>
+	<td>//input[@id=&quot;todoyusearchheadletquicksearch-query&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>keyPress</td>
+	<td>//input[@id=&quot;todoyusearchheadletquicksearch-query&quot;]</td>
+	<td>N</td>
+</tr>
+<tr>
+	<td>keyPress</td>
+	<td>//input[@id=&quot;todoyusearchheadletquicksearch-query&quot;]</td>
+	<td>e</td>
+</tr>
+<tr>
+	<td>keyPress</td>
+	<td>//input[@id=&quot;todoyusearchheadletquicksearch-query&quot;]</td>
+	<td>w</td>
+</tr>
+<tr>
+	<td>typeKeys</td>
+	<td>//input[@id=&quot;todoyusearchheadletquicksearch-query&quot;]</td>
+	<td> Quickta</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>100</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//div[@id=&quot;todoyusearchheadletquicksearch-suggest&quot;]/ul[@class=&quot;quicksearch-suggest&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//div[@id=&quot;todoyusearchheadletquicksearch-suggest&quot;]/ul[@class=&quot;quicksearch-suggest&quot;]/li/ul/li/a[contains(@title,&quot;New Quicktask&quot;)]</td>
+	<td></td>
+</tr>
+<!--Jump to created task-->
+<tr>
+	<td>click</td>
+	<td>//div[@id=&quot;todoyusearchheadletquicksearch-suggest&quot;]/ul[@class=&quot;quicksearch-suggest&quot;]/li/ul/li/a[contains(@title,&quot;New Quicktask&quot;)]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>100</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>storeTitle</td>
+	<td>varPageTitle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertExpression</td>
+	<td>javascript{storedVars['varPageTitle'].substr(0,&nbsp;&nbsp;storedVars['varPageTitle'].indexOf(&quot;-&quot;) - 1);}</td>
+	<td>Projects</td>
 </tr>
 <!--Delete the created quicktask-->
 <tr>
 	<td>contextMenu</td>
-	<td>//html/body/div[4]/div/div/div[2]/div/div[2]/div/div/div[5]/h3/span</td>
+	<td>//h3[@id=&quot;task-177-header&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -243,6 +285,38 @@
 	<td>click</td>
 	<td>css=ul#contextmenu-actions-submenu.context-submenu li#contextmenu-delete.delete a.taskDelete</td>
 	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>100</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
+	<td>10000</td>
+</tr>
+<!--Task gone?-->
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//h3[@id=&quot;task-177-header&quot;]</td>
+	<td></td>
+</tr>
+<!--Return to portal-->
+<tr>
+	<td>clickAndWait</td>
+	<td>css=div#header div.inner div#navi-main ul#navi-main-list.navilist li.itemPortal a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeTitle</td>
+	<td>varPageTitle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertExpression</td>
+	<td>javascript{storedVars['varPageTitle'].substr(0,&nbsp;&nbsp;storedVars['varPageTitle'].indexOf(&quot;-&quot;) - 1);}</td>
+	<td>Portal</td>
 </tr>
 </tbody></table>
 </body>

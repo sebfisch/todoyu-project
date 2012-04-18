@@ -11,6 +11,22 @@
 <tr><td rowspan="1" colspan="3">project > panelwidget - projectlist</td></tr>
 </thead><tbody>
 <!------ project > panelwidget: projectlist-->
+<!--Go to projects area-->
+<tr>
+	<td>clickAndWait</td>
+	<td>css=div#header div.inner div#navi-main ul#navi-main-list.navilist li.itemProject a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeTitle</td>
+	<td>varPageTitle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertExpression</td>
+	<td>javascript{storedVars['varPageTitle'].substr(0,&nbsp;&nbsp;storedVars['varPageTitle'].indexOf(&quot;-&quot;) - 1);}</td>
+	<td>Projects</td>
+</tr>
 <tr>
 	<td>assertElementPresent</td>
 	<td>panelwidget-projectlist-title</td>
@@ -54,7 +70,7 @@
 </tr>
 <tr>
 	<td>assertExpression</td>
-	<td>javascript{storedVars['widgetHeight'] &lt; 40}</td>
+	<td>javascript{storedVars['widgetHeight'] &lt; 45}</td>
 	<td>true</td>
 </tr>
 <tr>
@@ -94,7 +110,7 @@
 </tr>
 <tr>
 	<td>assertExpression</td>
-	<td>javascript{storedVars['widgetHeight'] &lt; 40}</td>
+	<td>javascript{storedVars['widgetHeight'] &lt; 45}</td>
 	<td>true</td>
 </tr>
 <tr>

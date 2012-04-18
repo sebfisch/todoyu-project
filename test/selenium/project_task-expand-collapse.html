@@ -24,7 +24,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=div#task-59.task h3#task-59-header.contextmenutask</td>
+	<td>//div[@id=&quot;task-59&quot;]/h3[@id=&quot;task-59-header&quot;]/span[@class=&quot;headLabel&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -39,12 +39,18 @@
 </tr>
 <tr>
 	<td>assertElementPresent</td>
-	<td>css=div#task-59.expanded h3#task-59-header.contextmenutask</td>
+	<td>//div[@id=&quot;task-59-details&quot;]</td>
 	<td></td>
 </tr>
 <tr>
+	<td>assertVisible</td>
+	<td>//div[@id=&quot;task-59-data&quot;]</td>
+	<td></td>
+</tr>
+<!--collapse again-->
+<tr>
 	<td>click</td>
-	<td>css=div#task-59.task h3#task-59-header.contextmenutask</td>
+	<td>//div[@id=&quot;task-59&quot;]/h3[@id=&quot;task-59-header&quot;]/span[@class=&quot;headLabel&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -57,10 +63,15 @@
 	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
 	<td>10000</td>
 </tr>
+<tr>
+	<td>assertNotVisible</td>
+	<td>//div[@id=&quot;task-59-data&quot;]</td>
+	<td></td>
+</tr>
 <!--task 33: expand, go to portal & return, check expand-state, re-collapse-->
 <tr>
 	<td>click</td>
-	<td>css=div#task-59.task h3#task-59-header.contextmenutask</td>
+	<td>//div[@id=&quot;task-59&quot;]/h3[@id=&quot;task-59-header&quot;]/span[@class=&quot;headLabel&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -85,12 +96,18 @@
 </tr>
 <tr>
 	<td>assertElementPresent</td>
-	<td>css=div#task-59.expanded h3#task-59-header.contextmenutask</td>
+	<td>//div[@id=&quot;task-59-details&quot;]</td>
 	<td></td>
 </tr>
 <tr>
+	<td>assertVisible</td>
+	<td>//div[@id=&quot;task-59-data&quot;]</td>
+	<td></td>
+</tr>
+<!--collapse once again-->
+<tr>
 	<td>click</td>
-	<td>css=div#task-59.task h3#task-59-header.contextmenutask</td>
+	<td>//div[@id=&quot;task-59&quot;]/h3[@id=&quot;task-59-header&quot;]/span[@class=&quot;headLabel&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -102,6 +119,11 @@
 	<td>waitForCondition</td>
 	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
 	<td>10000</td>
+</tr>
+<tr>
+	<td>assertNotVisible</td>
+	<td>//div[@id=&quot;task-59-data&quot;]</td>
+	<td></td>
 </tr>
 </tbody></table>
 </body>

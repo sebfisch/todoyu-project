@@ -11,6 +11,44 @@
 <tr><td rowspan="1" colspan="3">portal > task expand collapse</td></tr>
 </thead><tbody>
 <!------ projects > project expand & collapse-->
+<!--Go to projects area-->
+<tr>
+	<td>clickAndWait</td>
+	<td>css=div#header div.inner div#navi-main ul#navi-main-list.navilist li.itemProject a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeTitle</td>
+	<td>varPageTitle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertExpression</td>
+	<td>javascript{storedVars['varPageTitle'].substr(0,&nbsp;&nbsp;storedVars['varPageTitle'].indexOf(&quot;-&quot;) - 1);}</td>
+	<td>Projects</td>
+</tr>
+<!--Select project 8 from widget-->
+<tr>
+	<td>click</td>
+	<td>//li[@id=&quot;panelwidget-projectlist-item-8&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>100</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
+	<td>10000</td>
+</tr>
+<!--Tab of proj.8 activated?-->
+<tr>
+	<td>assertElementPresent</td>
+	<td>//li[@id=&quot;project-tab-8&quot;][contains(@class,&quot;active&quot;)]</td>
+	<td></td>
+</tr>
 <!--expand and re-collapse project 8-->
 <tr>
 	<td>assertElementPresent</td>
@@ -22,6 +60,7 @@
 	<td>css=div#project-8-details</td>
 	<td></td>
 </tr>
+<!--Expand-->
 <tr>
 	<td>click</td>
 	<td>css=div#project-8.project h1#project-8-header.title</td>
@@ -47,6 +86,7 @@
 	<td>css=div#project-8-details</td>
 	<td></td>
 </tr>
+<!--Re-Collapse-->
 <tr>
 	<td>click</td>
 	<td>css=div#project-8.project h1#project-8-header.title</td>
