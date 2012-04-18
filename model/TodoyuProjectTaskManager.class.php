@@ -114,19 +114,6 @@ class TodoyuProjectTaskManager {
 
 
 	/**
-	 * Get task record data
-	 *
-	 * @param	Integer		$idTask
-	 * @return	Array
-	 * @deprecated
-	 */
-	public static function getTaskData($idTask) {
-		return TodoyuRecordManager::getRecordData(self::TABLE, $idTask);
-	}
-
-
-
-	/**
 	 * Get task ID by full task number
 	 *
 	 * @param	String		$fullTaskNumber			Task number separated by point (.)
