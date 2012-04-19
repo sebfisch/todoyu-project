@@ -33,6 +33,8 @@ class TodoyuProjectCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 	 */
 	const TABLE = 'ext_contact_company';
 
+
+
 	/**
 	 * Init filter object
 	 *
@@ -75,6 +77,49 @@ class TodoyuProjectCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 			'tables'=> $tables,
 			'join'	=> $join
 		);
+	}
+
+
+
+	/**
+	 * Filter condition: companies with projects with given title fulltext
+	 *
+	 * @param	String			$searchWords
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean					Query parts / false if no statuses given
+	 */
+	public function Filter_projecttitlefulltext($searchWords, $negate = false) {
+		$searchWords= trim($searchWords);
+		$searchWords= TodoyuArray::trimExplode(' ', $searchWords);
+		$queryParts	= false;
+
+		if( sizeof($searchWords) > 0 ) {
+			$searchInFields	= array(
+				TodoyuProjectProjectFilter::TABLE . '.id',
+				TodoyuProjectProjectFilter::TABLE . '.title',
+				TodoyuProjectProjectFilter::TABLE . '.description',
+				'ext_contact_company.title',
+				'ext_contact_company.shortname'
+			);
+
+			$tables	= array(
+				TodoyuProjectProjectFilter::TABLE,
+				'ext_contact_company'
+			);
+			$where	= TodoyuSql::buildLikeQueryPart($searchWords, $searchInFields)
+					. ' AND ext_contact_company.id = ext_project_project.id_company ' ;
+			$join	= array(
+				TodoyuProjectProjectFilter::TABLE . '.id_company	= ext_contact_company.id'
+			);
+
+			$queryParts = array(
+				'tables'=> $tables,
+				'where'	=> $where,
+				'join'	=> $join
+			);
+		}
+
+		return $queryParts;
 	}
 
 

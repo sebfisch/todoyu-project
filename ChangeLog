@@ -1,7 +1,8 @@
 todoyu project extension changelog
 
 project 1.3.0 - not released yet
-	* Added: Person filter widget: "assigned in project"
+	* Added: Company filter widget: project title fulltext
+	* Added: Person filter widget: assigned in project
 	* Added: Visualization of task-presets toggle ability
 	* Added: Added toggling for taskpresets in projectheader (default closed)
 	* Added: Input validation of estimated duration field of task
@@ -102,7 +103,7 @@ project 1.1.0 - 2011-06-17
 	* Changed: Removed task / project ID from quicksearch suggestions list
 	* Changed: Added task expanded style
 	* Changed: moved globally used icons (unacknowledged/acknowledged) to core
-   	* Changed: Assigned_to.. filters - if there's an assignment condition given, type cant be container
+	* Changed: Assigned_to.. filters - if there's an assignment condition given, type cant be container
 
 project 1.0.8
 	* Bugfix: Dynamic labels in task/container were not localized to any other than default language

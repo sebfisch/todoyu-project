@@ -41,6 +41,18 @@ Todoyu::$CONFIG['FILTERS']['PERSON']['widgets']['assignedinproject'] = array(
 	)
 );
 
+	// Company has project(s) with title fulltext
+Todoyu::$CONFIG['FILTERS']['COMPANY']['widgets']['projecttitlefulltext']	= array(
+	'funcRef'	=> 'TodoyuProjectCompanyFilter::Filter_projecttitlefulltext',
+	'label'		=> 'project.filter.project.fulltext',
+	'optgroup'	=> 'project.filter.optgroup.projects',
+	'widget'	=> 'text',
+	'wConf' => array(
+		'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
+		'negation'		=> false
+	)
+);
+
 	// Company has project(s) with status...
 Todoyu::$CONFIG['FILTERS']['COMPANY']['widgets']['projectstatus'] = array(
 	'funcRef'	=> 'TodoyuProjectCompanyFilter::Filter_projectstatus',

@@ -33,6 +33,8 @@ class TodoyuProjectPersonFilter extends TodoyuSearchFilterBase implements Todoyu
 	 */
 	const TABLE = 'ext_contact_person';
 
+
+
 	/**
 	 * Init filter object
 	 *
