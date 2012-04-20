@@ -66,7 +66,7 @@
 	<label index="edittaskdetail.open:changefrom">Można zmienić status zadania ze statusem: Otwarty</label>
 	<label index="edittaskdetail.progress:changefrom">Można zmienić status zadania ze statusem: W realizacji</label>
 	<label index="edittaskdetail.confirm:changefrom">Można zmienić status zadania ze statusem: Do zatwierdzenia</label>
-	<label index="edittaskdetail.done:changefrom">Można zmienić status zadania ze statusem: Zrobione<label>
+	<label index="edittaskdetail.done:changefrom">Można zmienić status zadania ze statusem: Zrobione</label>
 	<label index="edittaskdetail.accepted:changefrom">Można zmienić status zadania ze statusem: Zaakceptowane</label>
 	<label index="edittaskdetail.rejected:changefrom">Można zmienić status zadania ze statusem: Odrzucone</label>
 	<label index="edittaskdetail.cleared:changefrom">Można zmienić status zadania ze statusem: Wyczyszczone</label>
