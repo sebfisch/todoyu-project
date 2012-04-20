@@ -115,6 +115,7 @@ Todoyu.Ext.project.Project.Tab = {
 	/**
 	 * Check if a tab of a project is already loaded
 	 *
+	 * @todo	check: still in use? remove?
 	 * @method	isLoaded
 	 * @param	{Number}		idProject
 	 * @param	{String}		tabKey

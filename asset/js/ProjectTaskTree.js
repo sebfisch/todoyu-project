@@ -81,7 +81,10 @@ Todoyu.Ext.project.ProjectTaskTree = {
 	 * @param	{Number}		idTask
 	 */
 	openProject: function(idProject, idTask) {
-		if( this.isProjectLoaded(idProject) && (idTask === 0 || idTask === undefined || (idTask !== 0 && this.isTaskLoaded(idTask) ) ) ) {
+		if( 	this.isProjectLoaded(idProject)
+			&&	Todoyu.Tabs.hasTab('project', idProject)
+			&&	( (idTask !== 0 && this.isTaskLoaded(idTask) || idTask === 0 || idTask === undefined ) )
+		) {
 			this.displayActiveProject(idProject);
 			if( idTask !== 0 ) {
 				this.ext.Task.scrollTo(idTask);
