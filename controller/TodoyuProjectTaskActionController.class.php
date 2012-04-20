@@ -245,6 +245,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		TodoyuProjectTaskRights::restrictSee($idTask);
 
 		if( TodoyuProjectTaskManager::isTaskVisible($idTask) ) {
+			if( intval($params['expand']) === 1 ) {
+				TodoyuProjectPreferences::saveSubTasksVisibility($idTask, true);
+			}
+
 			if( AREA === EXTID_PROJECT ) {
 				return TodoyuProjectProjectRenderer::renderTask($idTask);
 			} else {
@@ -353,6 +357,7 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 		$idTaskNew = TodoyuProjectTaskClipboard::pasteTask($idTask, $mode);
 
 		TodoyuHeader::sendTodoyuHeader('idTask', $idTaskNew);
+		TodoyuHeader::sendTodoyuHeader('idTaskRef', $idTask);
 
 		return TodoyuProjectProjectRenderer::renderTask($idTaskNew);
 	}

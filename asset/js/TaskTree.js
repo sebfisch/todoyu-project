@@ -442,7 +442,7 @@ Todoyu.Ext.project.TaskTree = {
 	 * @param	{Boolean}	isOpen
 	 */
 	saveSubTaskOpenStatus: function(idTask, isOpen) {
-		Todoyu.Pref.save('project', 'subtasks', isOpen?1:0, idTask);
+		Todoyu.Pref.save('project', 'subtasks', isOpen ? 1 : 0, idTask);
 	},
 
 
@@ -454,6 +454,46 @@ Todoyu.Ext.project.TaskTree = {
 	 */
 	addContextMenu: function() {
 		Todoyu.Ext.project.ContextMenuTask.attach();
+	},
+
+
+
+	/**
+	 * Load sub tasks
+	 *
+	 * @method	loadSubTasks
+	 * @param	{Number}		idTask
+	 * @param	{Boolean}		[expand]
+	 */
+	reloadTask: function(idTask, expand) {
+		expand	= expand || false;
+
+		var url		= Todoyu.getUrl('project', 'task');
+		var options	= {
+			parameters: {
+				action:	'get',
+				task:	idTask,
+				expand:	expand ? 1:0
+			},
+			onComplete: this.onReloadedTask.bind(this, idTask)
+		};
+
+		var target	= 'task-' + idTask;
+
+		Todoyu.Ui.replace(target, url, options);
+	},
+
+
+
+	/**
+	 * Handler when sub tasks are loaded
+	 *
+	 * @method	onReloadedTask
+	 * @param	{Number}			idTask
+	 * @param	{Ajax.Response}		response
+	 */
+	onReloadedTask: function(idTask, response) {
+		this.onSubTasksLoaded(idTask);
 	}
 
 };

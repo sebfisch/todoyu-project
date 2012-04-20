@@ -191,14 +191,9 @@ Todoyu.Ext.project.Task = {
 		switch( insertMode ) {
 				// Insert as sub task of the current task
 			case 'in':
-				if( !this.hasSubTasksContainer(idTask) ) {
-					this.createSubTaskContainer(idTask);
-				}
-				this.getSubTasksContainer(idTask).insert({
-					bottom: response.responseText
-				});
-				this.ext.TaskTree.expandSubTasks(idTask);
-				this.ext.TaskTree.toggleSubTasksTriggerIcon(idTask);
+					// Reload the resp. parent task expanded, showing all including the pasted sub tasks
+				var idParent	= response.getTodoyuHeader('idTaskRef');
+				this.ext.TaskTree.reloadTask(idParent, true);
 				break;
 
 				// Insert task before current

@@ -123,7 +123,7 @@ class TodoyuProjectPreferences {
 
 
 	/**
-	 * Save expanded task status
+	 * Save expanded (displaying it's details) task status
 	 *
 	 * @param	Integer		$idTask			Task ID
 	 * @param	Boolean		$expanded		Is task now expanded?
