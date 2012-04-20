@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form	xmlns="http://www.todoyu.com"
+<form	xmlns="http://www.todoyu.com/schema/form"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.todoyu.com ../../../../core/config/form.xsd">
+		xsi:schemaLocation="http://www.todoyu.com/schema/form ../../../../core/config/form.xsd">
 	<attributes>
 		<attribute name="name">quicktask</attribute>
 		<attribute name="action">index.php?ext=project&amp;controller=quicktask</attribute>
@@ -22,7 +22,7 @@
 				</field>
 
 				<field type="text" name="id_project">
-					<dummy>this field will be replaced</dummy>
+					<comment>this field will be replaced</comment>
 				</field>
 
 				<field type="RTE" name="description">
