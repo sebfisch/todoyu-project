@@ -266,7 +266,7 @@ Todoyu.Ext.project.Task.Edit = {
 		var area	= (isQuicktask ? 'quicktask' : 'task') + '-0-form';
 		Todoyu.Ui.closeRTE(area);
 
-		this.updateCreateTaskForm.bind(this).defer(isQuicktask, idProject);
+		this.updateCreateTaskForm.bind(this, isQuicktask, idProject).defer();
 	},
 
 
