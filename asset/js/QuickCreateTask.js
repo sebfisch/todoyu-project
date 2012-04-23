@@ -106,6 +106,9 @@ Todoyu.Ext.project.QuickCreateTask = {
 		if( response.hasTodoyuError() ) {
 				// Update task edit form with form remarks, display failure notification
 			Todoyu.Headlets.getHeadlet('todoyuheadletquickcreate').updatePopupContent(response.responseText);
+			Todoyu.Hook.exec('project.task.formLoaded', 0, {
+				quickCreate: true
+			});
 			Todoyu.notifyError('[LLL:project.task.save.error]', notificationIdentifier);
 		} else {
 				// Saving went ok

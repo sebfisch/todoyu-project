@@ -94,6 +94,7 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 
 				// Get form object, call save hooks, set form data
 			$form	= TodoyuProjectTaskManager::getQuickCreateForm();
+
 			$form->setFormData($data);
 		}
 			// Check if form is valid
