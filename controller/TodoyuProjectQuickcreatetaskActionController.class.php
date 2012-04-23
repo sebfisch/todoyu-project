@@ -53,11 +53,16 @@ class TodoyuProjectQuickCreateTaskActionController extends TodoyuActionControlle
 			TodoyuProjectTaskRights::restrictShowPopupForm();
 		}
 
-		if( ! $isUpdate ) {
+		if( $isUpdate ) {
+				// Get form data to preserve entered data
+			parse_str(trim($params['data']), $formData);
+			$formData	= TodoyuArray::assure($formData['task']);
+		} else {
 			TodoyuHookManager::callHook('project', 'quickcreatetask', array($idProject));
+			$formData	= array();
 		}
 
-		$form	= TodoyuProjectTaskManager::getQuickCreateForm($idProject);
+		$form	= TodoyuProjectTaskManager::getQuickCreateForm($idProject, $formData);
 
 		return $form->render();
 	}

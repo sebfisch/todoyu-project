@@ -48,12 +48,27 @@ Todoyu.Ext.project.QuickCreateTask = {
 			parameters: {
 				action:		'popup',
 				project:	idProject,
-				update:		1
+				update:		1,
+				data:		this.getFormData(false)
 			},
 			onComplete:	this.onFormUpdated.bind(this)
 		};
 
 		Todoyu.Ui.update('quickcreate_content', url, options);
+	},
+
+
+
+	/**
+	 * Get quick create task form data
+	 *
+	 * @param	{Boolean}	hash		Get as hash
+	 * @return	{String|Object}
+	 */
+	getFormData: function(hash) {
+		hash = hash === true;
+
+		return $('quickcreate_content').down('form').serialize(hash);
 	},
 
 

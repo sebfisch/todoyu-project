@@ -53,9 +53,10 @@ class TodoyuProjectTaskManager {
 	 * Get task quick create form object
 	 *
 	 * @param	Integer			$idProject
+	 * @param	Array			$formData
 	 * @return	TodoyuForm		form object
 	 */
-	public static function getQuickCreateForm($idProject = 0) {
+	public static function getQuickCreateForm($idProject = 0, array $formData = array()) {
 		$idProject	= intval($idProject);
 
 			// Check rights for project
@@ -89,10 +90,10 @@ class TodoyuProjectTaskManager {
 		$taskForm->getField('save')->setAttribute('onclick', 'Todoyu.Ext.project.QuickCreateTask.save(this.form)');
 		$taskForm->getField('cancel')->setAttribute('onclick', 'Todoyu.Popups.close(\'quickcreate\')');
 
-			// Load task default data
-		$formData	= self::getTaskDefaultData(0, $idProject);
-			// Load extra data from hooks
-		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, 0, array('form'=>$taskForm));
+			// Merge default data with current form data (only override empty fields)
+		$defaultFormData= self::getTaskDefaultData(0, $idProject);
+		$formData		= TodoyuArray::mergeEmptyFields($formData, $defaultFormData);
+		$formData		= TodoyuFormHook::callLoadData($xmlPath, $formData, 0, array('form'=>$taskForm));
 
 		$taskForm->setFormData($formData);
 
