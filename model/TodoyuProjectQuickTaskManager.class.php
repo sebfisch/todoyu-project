@@ -111,21 +111,16 @@ class TodoyuProjectQuickTaskManager {
 			// Add empty task to have a task ID to work with
 		$idProject	= intval($formData['id_project']);
 		$project	= TodoyuProjectProjectManager::getProject($idProject);
+
 		$firstData	= array(
 			'id_project'	=> $idProject,
 			'id_parenttask'	=> 0
 		);
+
 		$idTask		= TodoyuProjectTaskManager::addTask($firstData);
 
 		$formData['id']			= $idTask;
 		$formData['date_start']	= NOW;
-
-			// If task already done: set also date_end
-		if( intval($formData['task_done']) === 1 ) {
-			$formData['status']		= STATUS_DONE;
-			$formData['date_end']	= NOW;
-		}
-		unset($formData['task_done']);
 
 		$durationInDays	= Todoyu::$CONFIG['EXT']['project']['quicktask']['durationDays'];
 
@@ -137,8 +132,17 @@ class TodoyuProjectQuickTaskManager {
 				$durationInDays	= $taskPreset->getQuickTaskDurationDays();
 			}
 		} else {
-			$formData['status'] = Todoyu::$CONFIG['EXT']['project']['taskDefaults']['statusQuickTask'];
+			if( intval($formData['task_done']) !== 1 ) {
+				$formData['status'] = Todoyu::$CONFIG['EXT']['project']['taskDefaults']['statusQuickTask'];
+			}
 		}
+
+			// If task already done: set also date_end
+		if( intval($formData['task_done']) === 1 ) {
+			$formData['status']		= STATUS_DONE;
+			$formData['date_end']	= NOW;
+		}
+		unset($formData['task_done']);
 
 			// Calculate end dates depending on the
 		$dateEnd					= TodoyuTime::getDayStart(NOW + ($durationInDays * TodoyuTime::SECONDS_DAY));

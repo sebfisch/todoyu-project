@@ -65,6 +65,8 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 	 */
 	public function saveAction(array $params) {
 		$params['quicktask']['start_tracking']	= intval($params['quicktask']['start_tracking']);
+		$params['quicktask']['task_done']		= intval($params['quicktask']['task_done']);
+
 		$formData	= $params['quicktask'];
 		$idProject	= intval($formData['id_project']);
 
@@ -76,7 +78,7 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 		$form	= TodoyuProjectQuickTaskManager::getQuickTaskForm();
 		$form->setFormData($formData);
 
-			// Validate, save workload record / re-render form
+			// Validate, save workload record
 		if( $form->isValid() ) {
 			$storageData	= $form->getStorageData();
 			$idTask			= TodoyuProjectQuickTaskManager::save($storageData);
@@ -89,6 +91,7 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 				// Call hook when quicktask is saved
 			TodoyuHookManager::callHook('project', 'quicktask.saved', array($idTask, $idProject, $storageData));
 		} else {
+				// Error detected, Re-render form
 			TodoyuHeader::sendTodoyuErrorHeader();
 
 			return $form->render();
