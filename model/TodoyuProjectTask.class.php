@@ -99,7 +99,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 
 
 	/**
-	 * Check whether task has status
+	 * Check whether task is in given status
 	 *
 	 * @param	Integer		$idStatus
 	 * @return	Boolean
