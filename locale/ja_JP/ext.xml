@@ -65,7 +65,7 @@
 	<label index="taskpreset.person_owner">ユーザに選択されない場合のデフォルト所有者</label>
 	<label index="taskpreset.is_public">公開タスク</label>
 	<label index="taskpreset.option.none">デフォルトの設定</label>
-	<label index="form.validation.dateBefore">終了日より前の日付を設定してください</label>
+	<label index="form.validation.dateBeforeEnd">終了日より前の日付を設定してください</label>
 	<label index="form.validation.title">プロジェクト名を入力してください</label>
 	<label index="form.validation.company">プロジェクトには顧客が必要です</label>
 	<label index="noLabel.newProjectParticipant">新規プロジェクトの参加者</label>

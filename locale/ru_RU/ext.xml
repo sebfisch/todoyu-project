@@ -65,7 +65,7 @@
 	<label index="taskpreset.person_owner">Назначить владельцем задачу этого работника, если не выбирается при создании задачи</label>
 	<label index="taskpreset.is_public">Задача видна всем</label>
 	<label index="taskpreset.option.none">Стандартные настройки</label>
-	<label index="form.validation.dateBefore">Дата должна быть перед конечной датой</label>
+	<label index="form.validation.dateBeforeEnd">Дата должна быть перед конечной датой</label>
 	<label index="form.validation.title">Пожалуйста, введите название проекта</label>
 	<label index="form.validation.company">Проекту нужен клиент</label>
 	<label index="noLabel.newProjectParticipant">Новый участник проекта</label>

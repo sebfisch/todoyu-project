@@ -54,7 +54,7 @@
 	<label index="tasktree.losttasks">Taken met onjuiste status of onjuist bovenliggende taak</label>
 	<label index="records.projectrole">Projectrollen</label>
 	<label index="records.activity">Werksoorten</label>
-	<label index="form.validation.dateBefore">Datum moet voor de einddatum vallen</label>
+	<label index="form.validation.dateBeforeEnd">Datum moet voor de einddatum vallen</label>
 	<label index="form.validation.title">Voer a.u.b. een titel in voor het project</label>
 	<label index="form.validation.company">Een klant is vereist voor een project</label>
 	<label index="noLabel.newProjectParticipant">Nieuwe deelnemer aan project</label>

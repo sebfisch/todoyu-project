@@ -54,7 +54,7 @@
 	<label index="tasktree.losttasks">Subtarefas contendo tarefas não serão exibidas na listagem.</label>
 	<label index="records.projectrole">Grupos de Projeto</label>
 	<label index="records.activity">Tipos de Serviços</label>
-	<label index="form.validation.dateBefore">Data Deve ser Anterior ao Término</label>
+	<label index="form.validation.dateBeforeEnd">Data Deve ser Anterior ao Término</label>
 	<label index="form.validation.title">Entre com o título do projeto</label>
 	<label index="form.validation.company">Um cliente é necessária para um projeto</label>
 	<label index="noLabel.newProjectParticipant">Novo Participante do Projeto</label>

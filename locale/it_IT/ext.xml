@@ -56,7 +56,7 @@
 	<label index="tasktree.losttasks">Tasks with inapplicable parents/status</label>
 	<label index="records.projectrole">Ruoli del progetto</label>
 	<label index="records.activity">Tipi di attività</label>
-	<label index="form.validation.dateBefore">La data deve essere antecedente la data di termine</label>
+	<label index="form.validation.dateBeforeEnd">La data deve essere antecedente la data di termine</label>
 	<label index="form.validation.title">Inserire il titolo del progetto</label>
 	<label index="form.validation.company">È necessario assegnaer un cliente al progetto</label>
 	<label index="noLabel.newProjectParticipant">Nuovo partecipante al progetto</label>

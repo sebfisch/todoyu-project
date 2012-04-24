@@ -70,8 +70,8 @@
 	<label index="taskpreset.option.none">Není vybraná šablona úkolu</label>
 	<label index="taskpreset.quicktask_duration_days">Implicitní trvání rychlého úkolu ve dnech</label>
 	<label index="taskpreset.pleaseSelectOwner">Dynamicky: Tvůrce úkolu (standardně)</label>
-	<label index="form.validation.dateBefore">Datum musí být před počátečním datem</label>
-	<label index="form.validation.dateAfter">Datum musí být nastaveno po počátečním datu</label>
+	<label index="form.validation.dateBeforeEnd">Datum musí být před počátečním datem</label>
+	<label index="form.validation.dateAfterStart">Datum musí být nastaveno po počátečním datu</label>
 	<label index="form.validation.title">Vložte název projektu</label>
 	<label index="form.validation.company">Je požadován zákazník pro tento projekt</label>
 	<label index="noLabel.newProjectParticipant">Nová účastník projektu</label>

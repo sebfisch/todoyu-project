@@ -58,10 +58,14 @@
 				<field type="datetime" name="date_deadline">
 					<label>project.task.date_deadline</label>
 					<validate>
-						<dateNotBefore msg="project.ext.form.validation.dateAfter">
+						<dateNotBefore msg="project.ext.form.validation.dateAfterStart">
 							<field>date_start</field>
 							<allowEmpty />
 						</dateNotBefore>
+						<dateAfter msg="project.ext.form.validation.dateAfterEnd">
+							<field>date_end</field>
+							<allowEmpty />
+						</dateAfter>
 					</validate>
 					<restrict>
 						<allow ext="project" right="edittaskdetail:editDeadline" />

@@ -70,8 +70,9 @@
 	<label index="taskpreset.option.none">Keine Vorgaben</label>
 	<label index="taskpreset.quicktask_duration_days">Aufgabendauer in Tagen</label>
 	<label index="taskpreset.pleaseSelectOwner">Dynamisch: Ersteller der Aufgabe (Standard)</label>
-	<label index="form.validation.dateBefore">Datum muss vor dem End-Datum liegen</label>
-	<label index="form.validation.dateAfter">Datum muss nach dem Start-Datum liegen</label>
+	<label index="form.validation.dateBeforeEnd">Datum muss vor dem End-Datum liegen</label>
+	<label index="form.validation.dateAfterStart">Datum muss nach dem Start-Datum liegen</label>
+	<label index="form.validation.dateAfterEnd">Datum muss nach der Internen Frist liegen</label>
 	<label index="form.validation.title">Bitte Projekt-Titel angeben</label>
 	<label index="form.validation.company">Ein Kunde ist zwingend erforderlich für ein Projekt</label>
 	<label index="noLabel.newProjectParticipant">Neuer Projekt-Mitarbeiter</label>

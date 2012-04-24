@@ -72,7 +72,7 @@
 	<label index="taskpreset.role_owner_fallback">Owner person with role, if not selectable</label>
 	<label index="taskpreset.option.none">没有选择任务preset</label>
 	<label index="taskpreset.quicktask_duration_days">快速任务默认持续时间为1天</label>
-	<label index="form.validation.dateBefore">日期必须位于结束日期前</label>
+	<label index="form.validation.dateBeforeEnd">日期必须位于结束日期前</label>
 	<label index="form.validation.title">请输入项目标题</label>
 	<label index="form.validation.company">项目必须有一个客户</label>
 	<label index="noLabel.newProjectParticipant">新项目参与人</label>

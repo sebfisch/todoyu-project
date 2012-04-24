@@ -68,7 +68,7 @@
 	<label index="taskpreset.person_owner">Дефаулт власник задатка, ако није за изабрати од корисника</label>
 	<label index="taskpreset.is_public">Задатак је јаван</label>
 	<label index="taskpreset.option.none">Дефаулт подешавања</label>
-	<label index="form.validation.dateBefore">Почетни датум мора да буде временски пре завршетка.</label>
+	<label index="form.validation.dateBeforeEnd">Почетни датум мора да буде временски пре завршетка.</label>
 	<label index="form.validation.title">Молимо унесите наслов пројекта</label>
 	<label index="form.validation.company">Једна муштерија је обавезна за један пројекат</label>
 	<label index="noLabel.newProjectParticipant">Нови запошљеници пројекта</label>

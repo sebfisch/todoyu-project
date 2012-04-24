@@ -65,7 +65,7 @@
 	<label index="taskpreset.person_owner">Domyślny właściciel, jeśli nie zostaną wybrane przez użytkownika</label>
 	<label index="taskpreset.is_public">Zadanie jest publiczne</label>
 	<label index="taskpreset.option.none">Ustawienia domyślne</label>
-	<label index="form.validation.dateBefore">Data musi zostać ustawiona przed datą zakończenia</label>
+	<label index="form.validation.dateBeforeEnd">Data musi zostać ustawiona przed datą zakończenia</label>
 	<label index="form.validation.title">Proszę podaj nazwę projektu</label>
 	<label index="form.validation.company">Wymagany jest klient dla projektu</label>
 	<label index="noLabel.newProjectParticipant">Nowy uczestnik projektu</label>
