@@ -56,9 +56,11 @@ Todoyu.Ext.project.TaskTree = {
 		var idProject		= this.getProjectID();
 		var taskContainer	= $('project-' + idProject + '-tasks');
 
-		this.sortable = new this.Sortable(taskContainer, {
-			onChange: this.onSortingChange.bind(this, idProject)
-		});
+		if( taskContainer ) {
+			this.sortable = new this.Sortable(taskContainer, {
+				onChange: this.onSortingChange.bind(this, idProject)
+			});
+		}
 	},
 
 

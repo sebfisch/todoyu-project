@@ -61,7 +61,9 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 
 			// Get project if not set by parameter or save the given one in preferences
 		if( $idProject === 0 ) {
+			TodoyuCache::disable();
 			$idProject	= TodoyuProjectPreferences::getActiveProject();
+			TodoyuCache::enable();
 		}
 
 			// If no project found yet, try to find one the person can see
@@ -92,7 +94,7 @@ class TodoyuProjectExtActionController extends TodoyuActionController {
 		$project	= TodoyuProjectProjectManager::getProject($idProject);
 
 			// If a project is displayed
-		if( $idProject !== 0 && ! $project->isDeleted() ) {
+		if( $idProject !== 0 && !$project->isDeleted() ) {
 				// Prepend current project to list
 			TodoyuProjectPreferences::addOpenProject($idProject);
 

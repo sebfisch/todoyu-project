@@ -164,7 +164,7 @@ class TodoyuProjectPreferences {
 		$projectIDs	= TodoyuArray::intval($projectIDs, true, true);
 		$list		= implode(',', $projectIDs);
 
-		TodoyuPreferenceManager::savePreference(EXTID_PROJECT, 'projecttabs', $list, 0, true);
+		self::savePref('projecttabs', $list, 0, true);
 	}
 
 
