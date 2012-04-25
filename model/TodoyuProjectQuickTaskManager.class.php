@@ -28,25 +28,10 @@
 class TodoyuProjectQuickTaskManager {
 
 	/**
-	 * Render quicktask form
-	 *
-	 * @param	Integer		$idProject
-	 * @return	String
-	 */
-	public static function renderForm($idProject = 0) {
-		$idProject	= intval($idProject);
-
-		$form		= self::getQuickTaskForm($idProject);
-
-		return $form->render();
-	}
-
-
-
-	/**
 	 * Get quicktask form which is customized for current user
 	 *
-	 * @param	Integer		$idProject
+	 * @param	Integer			$idProject
+	 * @param	Array			$formData
 	 * @return	TodoyuForm
 	 */
 	public static function getQuickTaskForm($idProject = 0, array $formData = array()) {
