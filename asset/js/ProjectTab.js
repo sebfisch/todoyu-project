@@ -129,7 +129,7 @@ Todoyu.Ext.project.Project.Tab = {
 	/**
 	 * Create tab container to given project.
 	 *
-	 * @method	creatTabContainer
+	 * @method	createTabContainer
 	 * @param	{Number}	idProject
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */

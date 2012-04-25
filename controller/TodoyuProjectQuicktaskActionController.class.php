@@ -45,6 +45,7 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 	 */
 	public function popupAction(array $params) {
 		$idProject	= intval($params['project']);
+		$isUpdate	= intval($params['update']) === 1;
 
 		if( $idProject !== 0 ) {
 			TodoyuProjectTaskRights::restrictAddToProject($idProject);
@@ -52,7 +53,18 @@ class TodoyuProjectQuicktaskActionController extends TodoyuActionController {
 			Todoyu::restrict('project', 'addtask:addTaskInOwnProjects');
 		}
 
-		return TodoyuProjectQuickTaskManager::renderForm($idProject);
+		if( $isUpdate ) {
+				// Get form data to preserve entered data
+			parse_str(trim($params['data']), $formData);
+			$formData	= TodoyuArray::assure($formData['quicktask']);
+		} else {
+			TodoyuHookManager::callHook('project', 'quicktask', array($idProject));
+			$formData	= array();
+		}
+
+		$form	= TodoyuProjectQuickTaskManager::getQuickTaskForm($idProject, $formData);
+
+		return $form->render();
 	}
 
 

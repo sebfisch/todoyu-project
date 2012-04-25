@@ -676,7 +676,7 @@ Todoyu.Ext.project.Task = {
 
 
 	/**
-	 * Toggle subtasks expand trigger
+	 * Toggle sub tasks expand trigger
 	 *
 	 * @param	{Number}	idTask
 	 */
@@ -1326,7 +1326,7 @@ Todoyu.Ext.project.Task = {
 			this.getSubTasksContainer(idTask).show();
 		}
 
-		this.ext.TaskTree.setSubtaskTriggerExpanded(idTask, true);
+		this.ext.TaskTree.setSubTaskTriggerExpanded(idTask, true);
 	},
 
 

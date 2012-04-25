@@ -174,7 +174,7 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 *
+	 * @method	toggleTaskPresetDetails
 	 * @param	{Number}	idProject
 	 */
 	toggleTaskPresetDetails: function(idProject) {

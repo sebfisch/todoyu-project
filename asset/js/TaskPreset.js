@@ -72,6 +72,8 @@ Todoyu.Ext.project.TaskPreset = {
 	/**
 	 * Initialize fields on load
 	 * Disable group selects when person is selected
+	 *
+	 * @method	initFields
 	 */
 	initFields: function() {
 		if( $F(this.getField('person', 'assigned')) != 0 ) {
@@ -88,6 +90,8 @@ Todoyu.Ext.project.TaskPreset = {
 
 	/**
 	 * Add observers to person fields
+	 *
+	 * @method	addObservers
 	 */
 	addObservers: function() {
 		this.getField('person', 'assigned').on('change', this.onPersonChanged.bind(this, 'assigned'));
@@ -98,6 +102,8 @@ Todoyu.Ext.project.TaskPreset = {
 
 	/**
 	 * Add extra event to save button to enable all fields (so they will be saved)
+	 *
+	 * @method	addSaveObserver
 	 */
 	addSaveObserver: function() {
 		$('record-' + this.idTaskPreset + '-field-save').on('mousedown', this.onSave.bind(this));

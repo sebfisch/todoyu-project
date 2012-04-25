@@ -62,6 +62,7 @@ Todoyu.Ext.project.QuickCreateTask = {
 	/**
 	 * Get quick create task form data
 	 *
+	 * @method	getFormData
 	 * @param	{Boolean}	hash		Get as hash
 	 * @return	{String|Object}
 	 */

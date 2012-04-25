@@ -182,7 +182,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		this.insertTabContent(idProject, response.responseText);
 
 		if( ! Todoyu.Tabs.hasTab('project', idProject) ) {
-			this.addNewTabhead(idProject, label);
+			this.addNewTabHead(idProject, label);
 		}
 
 		this.removeSurplusProject();
@@ -212,13 +212,23 @@ Todoyu.Ext.project.ProjectTaskTree = {
 
 
 	/**
-	 * Add new tab head with given label to project tabs
-	 *
 	 * @method	addNewTabhead
+	 * @deprecated
 	 * @param	{Number}	idProject
 	 * @param	{String}	label
 	 */
 	addNewTabhead: function(idProject, label) {
+		this.addNewTabHead(idProject, label);
+	},
+
+	/**
+	 * Add new tab head with given label to project tabs
+	 *
+	 * @method	addNewTabHead
+	 * @param	{Number}	idProject
+	 * @param	{String}	label
+	 */
+	addNewTabHead: function(idProject, label) {
 		var tabClass= 'project' + idProject + ' projecttab';
 
 		Todoyu.Tabs.addTab('project', idProject, tabClass, label, true, true);

@@ -11,6 +11,7 @@ project 1.3.0 - not released yet
 	* Added: TodoyuProjectTaskManager::getRootlineTasks() which return a list of task objects from the rootline
 	* Added: Projectroles and activity support isDeletable flag in records manager
 	* Added: Hooks for task.create and task.edit
+	* Changed: Task presets do not override already filled-out fields when changing the project
 	* Changed: Filter date end falls back to date deadline if not set
 	* Changed: Clarified sub tasks copy confirmation dialog
 	* Changed: Replaced title tag of task deadline/date_end in task header (was labeled wrong in german) by title of span, e.g. 2012.1.1. - 2012.12.31.

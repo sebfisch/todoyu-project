@@ -126,7 +126,9 @@ Todoyu.Ext.project.TaskTree = {
 
 
 	/**
-	 * Remove all empty subtask containers
+	 * Remove all empty sub task containers
+	 *
+	 * @method	removeEmptySubTaskContainers
 	 */
 	removeEmptySubTaskContainers: function() {
 		$$('div.subtasks').each(function(container){
@@ -309,7 +311,7 @@ Todoyu.Ext.project.TaskTree = {
 		if( this.ext.Task.hasSubTasks(idTask) ) {
 			var isVisible = this.ext.Task.getSubTasksContainer(idTask).visible();
 
-			this.setSubtaskTriggerExpanded(idTask, isVisible);
+			this.setSubTaskTriggerExpanded(idTask, isVisible);
 		}
 	},
 
@@ -338,7 +340,7 @@ Todoyu.Ext.project.TaskTree = {
 	toggleSubTasksTriggerIcon: function(idTask) {
 		if( this.ext.Task.hasSubTasksContainer(idTask) ) {
 			var areSubtasksVisible = this.ext.Task.getSubTasksContainer(idTask).visible();
-			this.setSubtaskTriggerExpanded(idTask, areSubtasksVisible);
+			this.setSubTaskTriggerExpanded(idTask, areSubtasksVisible);
 		} else {
 			this.ext.Task.getSubTasksExpandTrigger(idTask).removeClassName('expandable');
 		}
@@ -346,14 +348,25 @@ Todoyu.Ext.project.TaskTree = {
 
 
 
+
 	/**
-	 * Set subtask trigger to a specific state
+	 * @method	setSubtaskTriggerExpanded
+	 * @deprecated
+	 * @param	{Number}	idTask
+	 * @param	{Boolean}	isExpanded
+	 */
+	setSubtaskTriggerExpanded: function(idTask, isExpanded) {
+		this.setSubTaskTriggerExpanded(idTask, isExpanded);
+	},
+
+	/**
+	 * Set sub task trigger to a specific state
 	 *
 	 * @method	setSubtaskTriggerExpanded
 	 * @param	{Number}	idTask
 	 * @param	{Boolean}	isExpanded
 	 */
-	setSubtaskTriggerExpanded: function(idTask, isExpanded) {
+	setSubTaskTriggerExpanded: function(idTask, isExpanded) {
 		var trigger	= this.ext.Task.getSubTasksExpandTrigger(idTask);
 		var method	= isExpanded !== false ? 'addClassName' : 'removeClassName';
 

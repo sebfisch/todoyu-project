@@ -49,7 +49,7 @@ class TodoyuProjectQuickTaskManager {
 	 * @param	Integer		$idProject
 	 * @return	TodoyuForm
 	 */
-	public static function getQuickTaskForm($idProject = 0) {
+	public static function getQuickTaskForm($idProject = 0, array $formData = array()) {
 		$idProject	= intval($idProject);
 
 			// Construct form object
@@ -74,25 +74,27 @@ class TodoyuProjectQuickTaskManager {
 		$form->getFieldset('main')->addField('id_project', $field, 'before:title');
 
 			// Load default data
-		$formData	= TodoyuProjectTaskManager::getTaskDefaultData(0, $idProject, TASK_TYPE_TASK, true);
+		$defaultFormData	= TodoyuProjectTaskManager::getTaskDefaultData(0, $idProject, TASK_TYPE_TASK, true);
 
 			// Load data by form hooks
-		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData);
+		$defaultFormData	= TodoyuFormHook::callLoadData($xmlPath, $defaultFormData);
 
 			// Check if project id was set by a hook
 		if( $idProject === 0 ) {
-			$idProject = intval($formData['id_project']);
+			$idProject = intval($defaultFormData['id_project']);
 		}
 
 			// Set project ID, if given and allowed to user
 		if( $idProject !== 0 && TodoyuProjectTaskRights::isAddInProjectAllowed($idProject, false) ) {
-			$formData['id_project']	= $idProject;
+			$defaultFormData['id_project']	= $idProject;
 		}
 
 			// Ensure the preset project allows for adding tasks
-		if( ! TodoyuProjectTaskRights::isAddInProjectAllowed($formData['id_project']) ) {
-			$formData['id_project']	= 0;
+		if( !TodoyuProjectTaskRights::isAddInProjectAllowed($defaultFormData['id_project']) ) {
+			$defaultFormData['id_project']	= 0;
 		}
+
+		$formData	= TodoyuArray::mergeEmptyFields($formData, $defaultFormData);
 
 		$form->setFormData($formData);
 

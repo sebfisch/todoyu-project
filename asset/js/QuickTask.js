@@ -78,8 +78,32 @@ Todoyu.Ext.project.QuickTask = {
 
 
 	/**
-	 * Handler when PopUp is loaded
-	 * Call hook to inform other extensions
+	 * Update quicktask form with given project preselected
+	 *
+	 * @method	updateForm
+	 * @param	{Number}	idProject
+	 */
+	updateForm: function(idProject) {
+		Todoyu.Ui.closeRTE( $('quicktask_content').down('form') );
+
+		var url		= Todoyu.getUrl('project', 'quicktask');
+		var options	= {
+			parameters: {
+				action:		'popup',
+				project:	idProject,
+				update:		1,
+				data:		this.getFormData(false)
+			},
+			onComplete:	this.onFormUpdated.bind(this)
+		};
+
+		Todoyu.Ui.update('quicktask_content', url, options);
+	},
+
+
+
+	/**
+	 * Call registered quicktask event handler
 	 *
 	 * @method	onPopupLoaded
 	 * @param	{Ajax.Response}		response
@@ -91,22 +115,28 @@ Todoyu.Ext.project.QuickTask = {
 
 
 	/**
-	 * Update quicktask form with given project preselected
+	 * Call registered quicktask event handler
 	 *
-	 * @method	updateForm
-	 * @param	{Number}	idProject
+	 * @method	onFormUpdated
+	 * @param	{Ajax.Response}		response
 	 */
-	updateForm: function(idProject) {
-		var url		= Todoyu.getUrl('project', 'quicktask');
-		var options	= {
-			parameters: {
-				action:		'popup',
-				project:	idProject
-			},
-			onComplete:	this.onPopupLoaded.bind(this)
-		};
+	onFormUpdated: function(response) {
+		Todoyu.Hook.exec('project.quickTask.formLoaded', response);
+	},
 
-		Todoyu.Ui.update('quicktask_content', url, options);
+
+
+	/**
+	 * Get quick create task form data
+	 *
+	 * @method	getFormData
+	 * @param	{Boolean}	hash		Get as hash
+	 * @return	{String|Object}
+	 */
+	getFormData: function(hash) {
+		hash = hash === true;
+
+		return $('quicktask_content').down('form').serialize(hash);
 	},
 
 

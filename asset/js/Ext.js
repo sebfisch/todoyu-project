@@ -135,13 +135,22 @@ Todoyu.Ext.project = {
 
 
 	/**
+	 * @method	goToTaskInProjectByTasknumber
+	 * @deprecated
+	 * @param	{Number}	taskNumber
+	 */
+	goToTaskInProjectByTasknumber: function(taskNumber) {
+		this.goToTaskInProjectByTaskNumber(taskNumber);
+	},
+
+	/**
 	 * Go to a task in project view, if you have only the full tasknumber (no task ID)
 	 * Gets the task ID by AJAX and redirects the browser
 	 *
 	 * @method	goToTaskInProjectByTasknumber
 	 * @param	{String}	taskNumber
 	 */
-	goToTaskInProjectByTasknumber: function(taskNumber) {
+	goToTaskInProjectByTaskNumber: function(taskNumber) {
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
 			parameters: {
@@ -157,14 +166,24 @@ Todoyu.Ext.project = {
 
 
 	/**
-	 * Handler for task IDs request
-	 * responseText is the task ID
-	 *
 	 * @method	onGoToTaskInProjectByTasknumber
+	 * @deprecated
 	 * @param	{String}		taskNumber
 	 * @param	{Ajax.Response}	response
 	 */
 	onGoToTaskInProjectByTasknumber: function(taskNumber, response) {
+		this.onGoToTaskInProjectByTaskNumber(taskNumber, response);
+	},
+
+	/**
+	 * Handler for task IDs request
+	 * responseText is the task ID
+	 *
+	 * @method	onGoToTaskInProjectByTaskNumber
+	 * @param	{String}		taskNumber
+	 * @param	{Ajax.Response}	response
+	 */
+	onGoToTaskInProjectByTaskNumber: function(taskNumber, response) {
 		var idTask	= parseInt(response.responseText, 10);
 
 		this.goToTaskInProject(idTask);

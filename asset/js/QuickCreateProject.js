@@ -58,15 +58,6 @@ Todoyu.Ext.project.QuickCreateProject = {
 
 
 	/**
-	 * @todo	remove!
-	 */
-	xxX: function() {
-
-	},
-
-
-
-	/**
 	 * onSaved project handler - evoked after project has been created / saved
 	 *
 	 * @method	onSaved

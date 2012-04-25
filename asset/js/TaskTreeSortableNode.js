@@ -143,6 +143,7 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 	/**
 	 * Get all child elements which are tasks
 	 *
+	 * @method	getChildTasks
 	 * @return	{Array}
 	 */
 	getChildTasks: function() {
@@ -527,8 +528,6 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 
 
-
-
 	/**
 	 * Insert a task
 	 *
@@ -674,15 +673,16 @@ Todoyu.Ext.project.TaskTree.SortableNode = Class.create({
 
 
 	/**
-	 * Handle response when dropped as subtask but subtasks were not loaded yet
+	 * Handle response when dropped as sub task but sub tasks were not loaded yet
 	 *
+	 * @method	onSubtaskLoadedAfterDragAsSubtask
 	 * @param	{Element}	drag
 	 * @param	{Number}	idTaskDrop
 	 * @param	{Number}	idTaskDrag
 	 * @param	{Number}	idTask			Parent task whichs subtasks were loaded
 	 */
 	onSubtaskLoadedAfterDragAsSubtask: function(drag, idTaskDrop, idTaskDrag, idTask) {
-		this.ext.TaskTree.setSubtaskTriggerExpanded(idTask, true);
+		this.ext.TaskTree.setSubTaskTriggerExpanded(idTask, true);
 		this.ext.Task.getSubTasksContainer(idTaskDrop).insert(drag);
 		drag.highlight();
 		this.ext.TaskTree.toggleSubTasksTriggerIcon(idTaskDrop);
