@@ -168,6 +168,7 @@ Todoyu.Ext.project.Task.Edit = {
 				// Update task edit form with form remarks, display failure notification
 			this.updateFormDiv(idTask, response.responseText);
 			Todoyu.notifyError('[LLL:project.task.save.error]', notificationIdentifier);
+			this.onFormLoaded(idTask, response);
 
 				// Saving went ok?
 		} else {
