@@ -386,8 +386,10 @@ Todoyu.Ext.project.Task = {
 	onRemoved: function(idTask, idParent, response) {
 		Todoyu.Hook.exec('project.task.removed', idTask);
 
-		this.ext.TaskTree.removeEmptySubTaskContainers.bind(this.ext.TaskTree).delay(0.6);
-		this.ext.TaskTree.toggleSubTasksTriggerIcon.bind(this.ext.TaskTree, idParent).delay(0.6);
+		if( Todoyu.isInArea('project') ) {
+			this.ext.TaskTree.removeEmptySubTaskContainers.bind(this.ext.TaskTree).delay(0.6);
+			this.ext.TaskTree.toggleSubTasksTriggerIcon.bind(this.ext.TaskTree, idParent).delay(0.6);
+		}
 	},
 
 
