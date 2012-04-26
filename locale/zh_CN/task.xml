@@ -76,7 +76,7 @@
 	<label index="status.rejected">已拒绝</label>
 	<label index="status.cleared">已完结</label>
 	<label index="status.warranty">维保中</label>
-	<label index="status.waiting"><!--Translate-->Waiting</label>
+	<label index="status.waiting">等待中</label>
 	<label index="cloneSubtasks.confirm">克隆子任务?</label>
 	<label index="new.Task.defaultTitle">新建任务</label>
 	<label index="new.Container.defaultTitle">新建容器</label>
