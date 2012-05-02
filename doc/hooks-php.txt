@@ -4,75 +4,107 @@ Project Extension - PHP Hooks
 Event Hooks
 ***************************************
 
-#quickcreatetask
-	New quick create task form is rendered
-	@param	Integer			$idProject
+#project.quickcreatetask
+	Form for a new task in create popup is displayed
+	@param	Integer		$idProject
 
-#quicktask.saved
+
+#project.quicktask
+	Form for a new quick task in create popup is displayed
+	@param	Integer		$idProject
+
+
+#project.quicktask.saved
 	Quicktask was saved
 	@param	Integer		$idTask
 	@param	Integer		$idProject
-	@param	Array		$storageData (not cleaned for db yet)
+	@param	Array		$storageData
 
-#project.add
-	Project added
+
+#project.project.add
+	Project was added
 	@param	Integer		$idProject
 
-#project.update
-	Project updated
+
+#project.project.update
+	Project was updated
 	@param	Integer		$idProject
 	@param	Array		$data
 
-#project.changeStatus
+
+#project.project.changeStatus
 	Project status changed
 	@param	Integer		$idProject
 	@param	Integer		$newStatus
 
-#project.delete
-	Project deleted
+
+#project.project.delete
+	Project was deleted
 	@param	Integer		$idProject
 
-#projectpresetdata
+
+#project.projectpresetdata
 	Collect preset data attributes (labels and value)
 	@todo	Refactor
 	@param	Integer		$idProject
 	@return	Array
 
-#projectDetailsDynamicElements
+
+#project.projectDetailsDynamicElements
 	Collect dynamic elements for project detail rendering (own sections)
 	@param	Integer		$idProject
 	@return	Array		[class, title, content]
 
-#task.create.render
+
+#project.task.create.render
 	Before rendering the form to create a new task
 
-#projects.render
+
+#project.projects.render
 	Before projects are rendered for listings
 
-#task.update
+
+#project.task.create
+	Request for a new task. Render empty task form
+	@param	Integer		$idParentTask
+	@param	Integer		$idProject
+	@param	Integer		$type
+
+
+#project.task.update
 	Task updated
 	@param	Integer		$idTask
 	@param	Array		$data
 
-#task.add
+
+#project.task.add
 	Task added
 	@param	Integer		$idTask
 
-#task.delete
+
+#project.task.delete
 	Task deleted
 	@param	Integer		$idTask
 
-#task.copy
+
+#project.task.copy
 	Task copied
 	@param	Integer		$idTaskOld
 	@param	Integer		$idTaskNew
 
-#task.lock
+
+#project.task.lock
 	Task locked
 	@param	Integer		$idTask
 
-#task.unlock
+
+#project.task.unlock
 	Task unlocked
+	@param	Integer		$idTask
+
+
+#project.task.edit
+	Edit a task
 	@param	Integer		$idTask
 
 

@@ -32,8 +32,8 @@ TodoyuHookManager::registerHook('project', 'task.defaultData',	'TodoyuProjectTas
 		// Add last projects as submenu items
 TodoyuHookManager::registerHook('core', 'renderPage', 'TodoyuProjectManager::addLastProjectsAsSubmenuItems');
 
-//TodoyuHookManager::registerHook('sysmanager', 'renderExtContent-project',		'TodoyuProjectExtManagerRenderer::onRenderExtConfig');
-TodoyuHookManager::registerHook('sysmanager', 'renderRecordsBody-taskpreset',	'TodoyuProjectSysmanagerRenderer::onRenderTaskpresetRecordsBody');
+//TodoyuHookManager::registerHook('sysmanager', 'renderExtContent.project',		'TodoyuProjectExtManagerRenderer::onRenderExtConfig');
+TodoyuHookManager::registerHook('sysmanager', 'renderRecordsBody.taskpreset',	'TodoyuProjectSysmanagerRenderer::onRenderTaskpresetRecordsBody');
 
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookModifyFormfieldsForTask');
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuProjectTaskManager::hookModifyFormfieldsForContainer');
