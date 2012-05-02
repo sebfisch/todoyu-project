@@ -117,7 +117,7 @@
 	<label index="default.date.date_1">创建日期</label>
 	<label index="default.date.date_work_1">创建日期, 或下一个工作日</label>
 	<label index="default.date.date_2">创建日期 + 1 天</label>
-	<label index="default.date.date_work_2"><创建日期 + 1 工作日</label>
+	<label index="default.date.date_work_2">创建日期 + 1 工作日</label>
 	<label index="default.date.date_3">创建日期 + 2 天</label>
 	<label index="default.date.date_work_3">创建日期 + 2 工作日</label>
 	<label index="default.date.date_4">创建日期 + 3 天</label>
