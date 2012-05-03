@@ -1,6 +1,6 @@
 todoyu project extension changelog
 
-project 1.3.0 - not released yet
+project 1.3.0 - 2012-05-03
 	* Added: Company filter widget: project title fulltext
 	* Added: Person filter widget: assigned in project
 	* Added: Visualization of task-presets toggle ability
