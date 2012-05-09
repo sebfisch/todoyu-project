@@ -47,10 +47,12 @@
 	{* ---------- Dynamic added elements ----------- *}
 	{if $dynamicElements}
 		{foreach $dynamicElements element}
-			<div class="{$element.class} {cycle values="odd,even"}">
-				<h4>{$element.title}</h4>
-				<div class="content overflow">{$element.content}</div>
-			</div>
+			{if $element}
+				<div class="{$element.class} {cycle values="odd,even"}">
+					<h4>{Label $element.title}</h4>
+					<div class="content overflow">{$element.content}</div>
+				</div>
+			{/if}
 		{/foreach}
 	{/if}
 
