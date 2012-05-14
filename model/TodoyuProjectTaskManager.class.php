@@ -387,6 +387,10 @@ class TodoyuProjectTaskManager {
 			'status'	=> intval($status)
 		);
 
+		foreach($taskIDs as $idTask) {
+			$update	= TodoyuHookManager::callHookDataModifier('project', 'onTaskStatusChanged', $update, array($idTask));
+		}
+
 		self::updateTasks($taskIDs, $update);
 	}
 
