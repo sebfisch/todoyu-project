@@ -249,21 +249,25 @@ h1.extIconProject .title {
 /* --------------------------------------
 	Tab content
    ------------------------------------- */
-.task .tabContent .tabBlock,
 .task .tabContent .tabBlock {
 	background:none;
 }
-	.task .tabContent .tabBlock .fForm fieldset,
-	.task .tabContent .tabBlock .fForm fieldset {
-		padding-top:15px;
-	}
-	.task .tabContent .fForm fieldset.buttons {
-		padding-top:0;
-	}
-	.task .tabContent .tabBlock .fForm fieldset legend,
-	.task .tabContent .tabBlock .fForm fieldset legend {
-		display:none;
-	}
+.task .tabContent .tabBlock .fForm fieldset{
+	padding-top:15px;
+}
+.task .tabContent .fForm fieldset.buttons {
+	padding-top:0;
+}
+.task .tabContent .tabBlock .fForm fieldset legend {
+	display:none;
+}
+.task .tabContent .tabBlock .fForm fieldset.showLegend {
+	padding-top: 40px;
+}
+.task .tabContent .tabBlock .fForm fieldset.showLegend legend {
+	display:block;
+}
+
 
 
 
