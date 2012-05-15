@@ -379,15 +379,12 @@ fieldset.defaultsforlimited {
 /* -------------------------
 	Project details taskpreset
 	------------------------*/
-
-.project .infoBox.presets h4 {
-	cursor:pointer;
+.project .infoBox.expandable h4 {
+	background-image: url(../img/icons.png);
+	background-repeat: no-repeat;
+	background-position: right -745px;
+	cursor: pointer;
 }
-
-.project .infoBox.presets h4.closed {
-	background:white url(../img/icons.png) no-repeat right -775px;
-}
-
-.project .infoBox.presets h4.open {
-	background:white url(../img/icons.png) no-repeat right -745px;
+.project .infoBox.expandable h4.closed {
+	background-position: right -775px;
 }

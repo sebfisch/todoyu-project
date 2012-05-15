@@ -29,9 +29,9 @@
 	</div>
 
 	{if isInternal()}
-		<div class="infoBox presets">
-			<h4  id="toggle-icon-presetlist-{$id}" onclick="Todoyu.Ext.project.Project.toggleTaskPresetDetails('{$id}');" class="closed">{Label project.ext.infobox.presets.title}</h4>
-			<div class="content overflow" id="taskpresetlist-{$id}" style="display:none">
+		<div id="project-infobox-presetlist" class="infoBox expandable presets">
+			<h4 id="project-infobox-presetlist-header" onclick="Todoyu.Ext.project.Project.toggleInfoBox('presetlist')" class="closed">{Label project.ext.infobox.presets.title}</h4>
+			<div id="project-infobox-presetlist-content" class="content overflow" style="display:none">
 				<table class="list presetsListing">
 				{foreach $presets preset}
 					<tr class="presetRow {cycle values="odd,even"}">
@@ -46,11 +46,11 @@
 
 	{* ---------- Dynamic added elements ----------- *}
 	{if $dynamicElements}
-		{foreach $dynamicElements element}
+		{foreach $dynamicElements key element}
 			{if $element}
-				<div class="{$element.class} {cycle values="odd,even"}">
-					<h4>{Label $element.title}</h4>
-					<div class="content overflow">{$element.content}</div>
+				<div id="project-infobox-dyn{$key}" class="infoBox expandable {$element.class}">
+					<h4 id="project-infobox-dyn{$key}-header" onclick="Todoyu.Ext.project.Project.toggleInfoBox('dyn{$key}')" class="closed">{Label $element.title}</h4>
+					<div id="project-infobox-dyn{$key}-content" class="content overflow" style="display:none">{$element.content}</div>
 				</div>
 			{/if}
 		{/foreach}

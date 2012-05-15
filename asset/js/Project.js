@@ -174,34 +174,6 @@ Todoyu.Ext.project.Project = {
 
 
 	/**
-	 * @method	toggleTaskPresetDetails
-	 * @param	{Number}	idProject
-	 */
-	toggleTaskPresetDetails: function(idProject) {
-		var detailDiv	= $('taskpresetlist-' + idProject);
-		var icon		= $('toggle-icon-presetlist-' + idProject);
-		var toggleClass = '';
-
-		if(detailDiv) {
-			if( detailDiv.visible() ) {
-				detailDiv.hide();
-				toggleClass='closed';
-
-			} else {
-				detailDiv.show();
-				toggleClass='open';
-			}
-
-			if( icon ) {
-				icon.addClassName(toggleClass);
-				icon.removeClassName(toggleClass == 'open' ? 'closed' : 'open');
-			}
-		}
-	},
-
-
-
-	/**
 	 * Set project style expanded/ collapsed
 	 *
 	 * @method	setExpandedStyle
@@ -446,6 +418,22 @@ Todoyu.Ext.project.Project = {
 			// Highlight the new pasted task
 		this.ext.Task.highlight(idTaskNew);
 		this.ext.Task.highlightSubTasks(idTaskNew);
+	},
+
+
+
+	/**
+	 * Toggle project info box content
+	 *
+	 * @param	{String}	boxKey
+	 */
+	toggleInfoBox: function(boxKey) {
+		var header	= $('project-infobox-' + boxKey + '-header');
+		var content	= $('project-infobox-' + boxKey + '-content');
+		var closed	= content.visible();
+
+		content.toggle();
+		header.toggleClassName('closed');
 	}
 
 };
