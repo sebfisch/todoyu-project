@@ -782,14 +782,14 @@ Todoyu.Ext.project.Task = {
 
 
 
-
 	/**
-	 * Refresh a task if loaded
+	 * Refresh a task
 	 *
 	 * @method	refresh
-	 * @param	{Number}			idTask
+	 * @param	{Number}		idTask
+	 * @param	{Function}		callback
 	 */
-	refresh: function(idTask) {
+	refresh: function(idTask, callback) {
 		var target	= 'task-' + idTask;
 		var url		= Todoyu.getUrl('project', 'task');
 		var options	= {
@@ -797,7 +797,7 @@ Todoyu.Ext.project.Task = {
 				action:	'get',
 				task:	idTask
 			},
-			onComplete: this.onRefreshed.bind(this, idTask)
+			onComplete: this.onRefreshed.bind(this, idTask, callback)
 		};
 
 		if( Todoyu.exists(target) ) {
@@ -813,10 +813,15 @@ Todoyu.Ext.project.Task = {
 	 *
 	 * @method	onRefreshed
 	 * @param	{Number}			idTask
+	 * @param	{Function}			callback
 	 * @param	{Ajax.Response}		response
 	 */
-	onRefreshed: function(idTask, response) {
+	onRefreshed: function(idTask, callback, response) {
 		this.initTask(idTask);
+
+		if( callback ) {
+			callback(idTask, response);
+		}
 	},
 
 
