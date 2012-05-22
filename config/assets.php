@@ -135,7 +135,7 @@ Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 			'position'	=> 100
 		),
 		array(
-			'file'		=> 'ext/project/asset/css/ext.css',
+			'file'		=> 'ext/project/asset/css/ext.scss',
 			'media'		=> 'all',
 			'position'	=> 100
 		),

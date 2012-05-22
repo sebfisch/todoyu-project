@@ -317,11 +317,13 @@ div.task.dragDropTarget > h3 {
 
 	.tasks .task .details .properties dt {
 		float:left;
+		padding:2px 0;
 		width:50%;
 	}
 
 	.tasks .task .details .properties dd {
 		float:left;
+		padding:2px 0;
 		width:50%;
 	}
 

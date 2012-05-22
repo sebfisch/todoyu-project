@@ -1,0 +1,16 @@
+@import '../../../core/config/theme.scss';
+
+/**
+  Status colors for tasks and Projects
+ */
+
+$statusPlanning:#7f007f;
+$statusOpen:#ff0000;
+$statusProgress:#ffac00;
+$statusConfirm:#fffc00;
+$statusDone:#77dc00;
+$statusAccepted:green;
+$statusRejected:#a60000;
+$statusCleared:#dbdbdb;
+$statusWarranty:#6085dd;
+$statusWaiting:pink;
