@@ -787,7 +787,7 @@ Todoyu.Ext.project.Task = {
 	 *
 	 * @method	refresh
 	 * @param	{Number}		idTask
-	 * @param	{Function}		callback
+	 * @param	{Function}		[callback]
 	 */
 	refresh: function(idTask, callback) {
 		var target	= 'task-' + idTask;
