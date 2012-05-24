@@ -2359,6 +2359,64 @@ class TodoyuProjectTaskManager {
 		return TodoyuContentItemTabManager::getDefaultTab('project', $typeKey, $idTask);
 	}
 
+
+
+	/**
+	 * Get filtered task autocompletion suggestions to given input
+	 *
+	 * @param	String	$input
+	 * @param	Array	$formData
+	 * @param	String	$name
+	 * @return	Array
+	 */
+	public static function autocompleteProjectTasks($input, array $formData, $name = '') {
+		$idProject	= intval($formData['id_project']);
+		$idTask		= intval($formData['id']);
+
+		$filters	= array(
+			array(
+				'filter'=> 'tasknumberortitle',
+				'value'	=> $input
+			),
+			array(
+				'filter'=> 'nottask',
+				'value'	=> $idTask
+			),
+			array(
+				'filter'=> 'project',
+				'value'	=> $idProject
+			),
+			array(
+				'filter'=> 'subtask',
+				'value'	=> $idTask,
+				'negate'=> true
+			)
+		);
+
+		return TodoyuProjectTaskFilterDataSource::getTaskAutocompleteListByFilter($filters);
+	}
+
+
+
+	/**
+	 * Get task autocomplete list
+	 *
+	 * @param	String		$input
+	 * @param	Array		$formData
+	 * @param	String		$name
+	 * @return	Array
+	 */
+	public static function autocompleteTasks($input, array $formData, $name = '') {
+		$filters	= array(
+			array(
+				'filter'=> 'tasknumberortitle',
+				'value'	=> $input
+			)
+		);
+
+		return TodoyuProjectTaskFilterDataSource::getTaskAutocompleteListByFilter($filters);
+	}
+
 }
 
 ?>

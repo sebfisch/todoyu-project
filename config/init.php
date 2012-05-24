@@ -24,7 +24,9 @@
 	// Person
 TodoyuAutocompleter::addAutocompleter('projectperson', 'TodoyuContactPersonFilterDataSource::autocompletePersons', array('project', 'general:use'));
 	// Task
-TodoyuAutocompleter::addAutocompleter('projecttask', 'TodoyuProjectTaskViewHelper::autocompleteProjectTasks', array('project', 'general:use'));
+TodoyuAutocompleter::addAutocompleter('task', 'TodoyuProjectTaskManager::autocompleteTasks', array('project', 'general:use'));
+	// Task in project
+TodoyuAutocompleter::addAutocompleter('projecttask', 'TodoyuProjectTaskManager::autocompleteProjectTasks', array('project', 'general:use'));
 	// Project
 TodoyuAutocompleter::addAutocompleter('project', 'TodoyuProjectProjectFilterDataSource::autocompleteProjects', array('project', 'general:use'));
 	// Project that tasks can be added to
