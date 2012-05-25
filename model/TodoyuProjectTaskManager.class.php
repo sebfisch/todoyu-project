@@ -2417,6 +2417,38 @@ class TodoyuProjectTaskManager {
 		return TodoyuProjectTaskFilterDataSource::getTaskAutocompleteListByFilter($filters);
 	}
 
+
+
+	/**
+	 * Get task edit form
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Integer		$type
+	 * @return	TodoyuForm
+	 */
+	public static function getTaskEditForm($idTask, $type = TASK_TYPE_TASK) {
+		$idTask	= intval($idTask);
+
+		$task		= self::getTask($idTask);
+		$xmlPath	= 'ext/project/config/form/task.xml';
+
+		if( $idTask === 0 ) {
+			$task->set('type', $type);
+		}
+
+			// Construct form object
+		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
+
+			// Load form data
+		$data	= $task->getTemplateData(0);
+		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idTask, array('type'=>$type));
+
+			// Set form data
+		$form->setFormData($data);
+
+		return $form;
+	}
+
 }
 
 ?>
