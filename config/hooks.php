@@ -29,7 +29,7 @@ TodoyuHookManager::registerHook('project', 'task.defaultData',	'TodoyuProjectTas
 TodoyuHookManager::registerHook('project', 'task.defaultData',	'TodoyuProjectTaskManager::hookTaskDefaultDataFromPreset', 60);
 
 
-		// Add last projects as submenu items
+		// Add last projects as sub menu items
 TodoyuHookManager::registerHook('core', 'renderPage', 'TodoyuProjectManager::addLastProjectsAsSubmenuItems');
 
 //TodoyuHookManager::registerHook('sysmanager', 'renderExtContent.project',		'TodoyuProjectExtManagerRenderer::onRenderExtConfig');
@@ -40,7 +40,7 @@ TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuPro
 TodoyuFormHook::registerLoadData('ext/project/config/form/project.xml', 'TodoyuProjectProjectManager::hookSetProjectDefaultData');
 
 
-	// Callbacks for exteding filter widgets of other extensions
+	// Callbacks for extending filter widgets of other extensions
 TodoyuHookManager::registerHook('core', 'loadconfig.contact.filters', 'TodoyuProjectManager::hookLoadContactFilterConfig');
 
 ?>
