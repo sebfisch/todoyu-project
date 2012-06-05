@@ -342,7 +342,10 @@ Todoyu.Ext.project.TaskTree = {
 			var areSubtasksVisible = this.ext.Task.getSubTasksContainer(idTask).visible();
 			this.setSubTaskTriggerExpanded(idTask, areSubtasksVisible);
 		} else {
-			this.ext.Task.getSubTasksExpandTrigger(idTask).removeClassName('expandable');
+			var subtaskExpandTrigger = this.ext.Task.getSubTasksExpandTrigger(idTask);
+			if( subtaskExpandTrigger ) {
+				subtaskExpandTrigger.removeClassName('expandable');
+			}
 		}
 	},
 
