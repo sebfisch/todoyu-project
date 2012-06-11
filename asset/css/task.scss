@@ -1,12 +1,16 @@
+@import "../../../../core/config/theme.scss";
+
+
+
 /* ------------
 	Task
    ----------- */
 div.task,
 div.task .task:last-child {
-	border-bottom:1px solid #ddd;
+	border-bottom:1px solid $grey02;
 }
 div.task .subtasks {
-	border-top:1px solid #ddd;
+	border-top:1px solid $grey02;
 }
 div.task .subtasks .task:last-child {
 	border-bottom:none;
@@ -52,7 +56,7 @@ div.task .subtasks .task:last-child {
 	height:22px;
 	left:-4px;
 	top:0;
-	background-color:#FFF; /* IE fix */
+	//background-color:#FFFFFF; /* IE fix */
 	opacity:0.001; /* IE fix */
 }
 
@@ -176,11 +180,11 @@ div.task.dragDropTarget > h3 {
 }
 .task.container > h3 > .taskHeadExtras {
 	right:141px;
-	border-right:0 solid #ddd;
+	border-right:0 solid $grey02;
 }
 .task.expanded h3 .taskHeadExtras,
 .task.expanded h3 .taskIcons {
-	border-color:#ccc;
+	border-color:$grey03;
 }
 
 .task h3 .taskHeadExtras span {
@@ -224,7 +228,7 @@ div.task.dragDropTarget > h3 {
 	overflow:hidden;
 	margin-top:2px;
 	padding:0 3px 1px 3px;
-	border-left:1px solid #ddd;
+	border-left:1px solid $grey02;
 }
 .task.container > h3 > .taskIcons {
 	width:71px;

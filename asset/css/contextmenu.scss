@@ -1,3 +1,7 @@
+@import "../../../../core/config/theme.scss";
+
+
+
 /*  -------------------------------------------------------
 	Project & Task common context menu items:
 
@@ -107,7 +111,7 @@
 }
 #contextmenu .taskPaste.disabled {
 	background-position:3px -657px;
-	color:#ccc;
+	color:$grey03;
 }
 
 #contextmenu .taskPasteIn {

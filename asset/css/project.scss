@@ -1,3 +1,7 @@
+@import "../../../../core/config/theme.scss";
+
+
+
 /* --------------
 	Header
    -------------- */
@@ -138,11 +142,11 @@ h1.headerLine span.projectIcons {
 
 .project .tabContent .tabBlock {
 	position:relative;
-	background:#fff;
+	background:$white;
 }
 .project .tabContent .tab {
 	padding:5px;
-	background:#fff;
+	background:$white;
 }
 .project .tabContent .tabBlock .toggle {
 	display:block;

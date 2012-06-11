@@ -1,7 +1,11 @@
+@import "../../../../core/config/theme.scss";
+
+
+
 div.taskparent-ac {
 	position:absolute;
 	width:250px;
-	background-color:#fff;
+	background-color:$white;
 	border:1px solid #888;
 	margin:0;
 	padding:0;

@@ -140,19 +140,19 @@ Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 			'position'	=> 100
 		),
 		array(
-			'file'		=> 'ext/project/asset/css/task.css',
+			'file'		=> 'ext/project/asset/css/task.scss',
 			'position'	=> 101
 		),
 		array(
-			'file'		=> 'ext/project/asset/css/project.css',
+			'file'		=> 'ext/project/asset/css/project.scss',
 			'position'	=> 102
 		),
 		array(
-			'file'		=> 'ext/project/asset/css/contextmenu.css',
+			'file'		=> 'ext/project/asset/css/contextmenu.scss',
 			'position'	=> 103
 		),
 		array(
-			'file'		=> 'ext/project/asset/css/taskparent-ac.css',
+			'file'		=> 'ext/project/asset/css/taskparent-ac.scss',
 			'position'	=> 104
 		),
 		array(

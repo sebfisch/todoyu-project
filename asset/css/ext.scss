@@ -1,4 +1,6 @@
-@import '../../config/theme.scss';
+@import "../../../project/config/theme.scss";
+
+
 
 /* ----------------------------------------------
 	Extension icon: stand-alone and in heading
@@ -267,98 +269,98 @@ fieldset.defaultsforlimited {
 
 	/* planning */
 .bcStatus1 {
-	border-color:$statusPlanning;
+	border-color:$colorStatusPlanning;
 }
 
 .bgStatus1 {
-	background-color:$statusPlanning;
+	background-color:$colorStatusPlanning;
 }
 
 	/* open */
 .bcStatus2 {
-	border-color:$statusOpen;
+	border-color:$colorStatusOpen;
 }
 
 .bgStatus2 {
-	background-color:$statusOpen;
+	background-color:$colorStatusOpen;
 }
 
 	/* progress */
 .bcStatus3 {
-	border-color:$statusProgress;
+	border-color:$colorStatusProgress;
 }
 
 .bgStatus3 {
-	background-color:$statusProgress;
+	background-color:$colorStatusProgress;
 }
 
 	/* confirm */
 .bcStatus4 {
-	border-color:$statusConfirm;
+	border-color:$colorStatusConfirm;
 }
 
 .bgStatus4 {
-	background-color:$statusConfirm;
+	background-color:$colorStatusConfirm;
 }
 
 	/* done */
 .bcStatus5 {
-	border-color:$statusDone;
+	border-color:$colorStatusDone;
 }
 
 .bgStatus5 {
-	background-color:$statusDone;
+	background-color:$colorStatusDone;
 }
 
 	/* accepted */
 .bcStatus6 {
-	border-color:$statusAccepted;
+	border-color:$colorStatusAccepted;
 }
 
 .bgStatus6 {
-	background-color:$statusAccepted;
+	background-color:$colorStatusAccepted;
 }
 
 	/* rejected */
 .bcStatus7 {
-	border-color:$statusRejected;
+	border-color:$colorStatusRejected;
 }
 
 .bgStatus7 {
-	background-color:$statusRejected;
+	background-color:$colorStatusRejected;
 }
 
 	/* cleared */
 .bcStatus8 {
-	border-color:$statusCleared;
+	border-color:$colorStatusCleared;
 }
 
 .bgStatus8 {
-	background-color:$statusCleared;
+	background-color:$colorStatusCleared;
 }
 
 	/* warranty */
 .bcStatus9 {
-	border-color:$statusWarranty;
+	border-color:$colorStatusWarranty;
 }
 
 .bgStatus9 {
-	background-color:$statusWarranty;
+	background-color:$colorStatusWarranty;
 }
 
 	/* customer */
 .bcStatus10 {
-	border-color:$statusWaiting;
+	border-color:$colorStatusWaiting;
 }
 
 .bgStatus10 {
-	background-color:$statusWaiting;
+	background-color:$colorStatusWaiting;
 }
 
 
-/* -------------------------
-	Project details taskpreset
-	------------------------*/
+/* ---------------------------------
+	Project details task preset
+	--------------------------------*/
 .project .infoBox.expandable h4 {
 	cursor: pointer;
 
