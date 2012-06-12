@@ -7,10 +7,10 @@
    ----------- */
 div.task,
 div.task .task:last-child {
-	border-bottom:1px solid $grey02;
+	border-bottom:1px solid $colorNeutral02;
 }
 div.task .subtasks {
-	border-top:1px solid $grey02;
+	border-top:1px solid $colorNeutral02;
 }
 div.task .subtasks .task:last-child {
 	border-bottom:none;
@@ -34,7 +34,7 @@ div.task .subtasks .task:last-child {
 	padding:0;
 }
 .task.expanded > h3 {
-	background-color:#e2e2e2;
+	background-color:$colorNeutral01;
 }
 .task.expanded > h3 .headLabel {
 	font-weight:bold;
@@ -139,7 +139,7 @@ div.task .subtasks .task:last-child {
 		}
 
 div.task.dragDropTarget > h3 {
-	background-color:#E3EACE;
+	background-color:$colorCorporate02;
 }
 .task .dndHandle.draggable {
 	cursor:move;
@@ -155,7 +155,7 @@ div.task.dragDropTarget > h3 {
    ------------------------ */
 
 .task.container > h3 {
-	background-color:#f7f7f7;
+	background-color:$colorNeutral00;
 	border-right-width:4px;
 	border-right-style:solid;
 }
@@ -180,11 +180,11 @@ div.task.dragDropTarget > h3 {
 }
 .task.container > h3 > .taskHeadExtras {
 	right:141px;
-	border-right:0 solid $grey02;
+	border-right:0 solid $colorNeutral02;
 }
 .task.expanded h3 .taskHeadExtras,
 .task.expanded h3 .taskIcons {
-	border-color:$grey03;
+	border-color:$colorNeutral03;
 }
 
 .task h3 .taskHeadExtras span {
@@ -228,7 +228,7 @@ div.task.dragDropTarget > h3 {
 	overflow:hidden;
 	margin-top:2px;
 	padding:0 3px 1px 3px;
-	border-left:1px solid $grey02;
+	border-left:1px solid $colorNeutral02;
 }
 .task.container > h3 > .taskIcons {
 	width:71px;
@@ -246,7 +246,7 @@ div.task.dragDropTarget > h3 {
 }
 
 .expanded span.taskIconsOverflow:hover {
-	background:#e3eace;
+	background:$colorCorporate02;
 }
 
 .task span.taskIcons span {

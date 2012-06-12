@@ -38,7 +38,7 @@ h1.headerLine span.projectIcons {
 	text-transform:uppercase;
 	font-weight:normal;
 	letter-spacing:0.1em;
-	background-color:#e9e9e9;
+	background-color:$colorNeutral01;
 }
 
 
@@ -47,7 +47,7 @@ h1.headerLine span.projectIcons {
 	Project
    -------------- */
 .statusPlanning .data .content {
-	background-color:white;
+	background-color:$white;
 }
 
 	/* Details */
@@ -102,7 +102,7 @@ h1.headerLine span.projectIcons {
 	margin-bottom:0;
 }
 .assetForm .fForm fieldset legend {
-	border-color:#e3eace;
+	border-color:$colorCorporate02;
 }
 
 
@@ -122,22 +122,22 @@ h1.headerLine span.projectIcons {
 }
 
 .project .projectTabs .tabs li {
-	background-color:#edf1e0 !important;
+	background-color:$colorCorporate01 !important;
 }
 
 .project .projectTabs .tabs li:hover,
 .project .projectTabs .tabs li.active {
-	background-color:#e3eace !important;
+	background-color:$colorCorporate02 !important;
 }
 
 /* project tabs content */
 .project .tabContent {
-	background-color:#e3eace;
+	background-color:$colorCorporate02;
 }
 
 .project .tabContent .tab {
 	margin:9px;
-	border:1px solid #e1e1e1;
+	border:1px solid $colorNeutral02;
 }
 
 .project .tabContent .tabBlock {
@@ -155,5 +155,5 @@ h1.headerLine span.projectIcons {
 	top:0;
 	width:25px;
 	height:30px;
-	background:#d6dcc5 url(../../../../core/asset/img/toggle.png) no-repeat 0 -65px;
+	background:$colorCorporate04 url(../../../../core/asset/img/toggle.png) no-repeat 0 -65px;
 }

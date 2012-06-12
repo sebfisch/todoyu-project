@@ -93,7 +93,7 @@ h1.extIconProject .title {
 
 .project h3.projectheader {
 	background-color:transparent;
-	border-bottom:1px solid $grey02;
+	border-bottom:1px solid $colorNeutral02;
 	clear:both;
 	cursor:pointer;
 	display:block;
@@ -129,7 +129,7 @@ h1.extIconProject .title {
 }
 
 .projects .project.expanded h3 {
-	background-color:$grey02;
+	background-color:$colorNeutral02;
 	border-bottom:none;
 	font-weight:bold;
 }
@@ -158,7 +158,7 @@ h1.extIconProject .title {
 	text-decoration:underline !important;
 }
 .details .description a:hover {
-	background-color:$grey02;
+	background-color:$colorNeutral02;
 }
 
 .data ul {
@@ -198,8 +198,8 @@ h1.extIconProject .title {
 
 	.noProjectSelected .option {
 		padding:10px;
-		background-color:$grey01;
-		border:1px solid $grey05;
+		background-color:$colorNeutral01;
+		border:1px solid $colorNeutral05;
 		margin-bottom:10px;
 		font-size:14px;
 		cursor:pointer;
@@ -257,7 +257,7 @@ h1.extIconProject .title {
    ------------------------------------- */
 fieldset.defaultsforlimited {
 	margin-top:10px;
-	border-top:1px solid $grey02;
+	border-top:1px solid $colorNeutral02;
 	padding-top:10px;
 }
 
