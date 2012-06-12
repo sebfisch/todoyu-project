@@ -6,7 +6,7 @@ div.taskparent-ac {
 	position:absolute;
 	width:250px;
 	background-color:$white;
-	border:1px solid #888;
+	border:1px solid $colorApprove06;
 	margin:0;
 	padding:0;
 }
@@ -18,7 +18,7 @@ div.taskparent-ac ul {
 }
 
 div.taskparent-ac ul li.selected {
-	background-color:#ffb;
+	background-color:$colorNotice00;
 }
 
 div.taskparent-ac ul li {
