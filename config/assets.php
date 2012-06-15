@@ -131,7 +131,7 @@ Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 	),
 	'css' => array(
 		array(
-			'file'		=> 'ext/project/asset/css/headlet-quicktask.css',
+			'file'		=> 'ext/project/asset/css/headlet-quicktask.scss',
 			'position'	=> 100
 		),
 		array(
@@ -156,20 +156,20 @@ Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 			'position'	=> 104
 		),
 		array(
-			'file'		=> 'ext/project/asset/css/panelwidget-projectlist.css',
+			'file'		=> 'ext/project/asset/css/panelwidget-projectlist.scss',
 			'media'		=> 'all',
 			'position'	=> 110
 		),
 		array(
-			'file' => 'ext/project/asset/css/panelwidget-statusfilter.css',
+			'file' => 'ext/project/asset/css/panelwidget-statusfilter.scss',
 			'position' => 120,
 		),
 		array(
-			'file' => 'ext/project/asset/css/panelwidget-taskstatusfilter.css',
+			'file' => 'ext/project/asset/css/panelwidget-taskstatusfilter.scss',
 			'position' => 120,
 		),
 		array(
-			'file' => 'ext/project/asset/css/panelwidget-projectstatusfilter.css',
+			'file' => 'ext/project/asset/css/panelwidget-projectstatusfilter.scss',
 			'position' => 120,
 		)
 	)
