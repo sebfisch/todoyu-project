@@ -245,7 +245,21 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isCurrentPersonAssigned() {
-		return TodoyuProjectProjectManager::isPersonAssigned($this->getID());
+		return $this->isPersonAssigned();
+	}
+
+
+
+	/**
+	 * Check whether person is assigned to the project
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	Boolean
+	 */
+	public function isPersonAssigned($idPerson = 0) {
+		$idPerson	= Todoyu::personid($idPerson);
+
+		return TodoyuProjectProjectManager::isPersonAssigned($this->getID(), $idPerson);
 	}
 
 
