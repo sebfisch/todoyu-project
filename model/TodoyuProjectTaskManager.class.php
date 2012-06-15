@@ -2449,6 +2449,19 @@ class TodoyuProjectTaskManager {
 		return $form;
 	}
 
+
+
+	/**
+	 * Get task label
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Boolean		$full
+	 * @return	String
+	 */
+	public function getLabel($idTask, $full = false) {
+		return self::getTask($idTask)->getLabel($full);
+	}
+
 }
 
 ?>

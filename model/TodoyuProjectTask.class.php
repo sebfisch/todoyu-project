@@ -82,6 +82,18 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 
 
 	/**
+	 * Get task label
+	 *
+	 * @param	Boolean		$full		Full/long label
+	 * @return	String
+	 */
+	public function getLabel($full = false ) {
+		return $full ? $this->getFullTitle() : $this->getTitleWithTaskNumber();
+	}
+
+
+
+	/**
 	 * Get task number of the task.
 	 * The task number is a combination of the project ID and an incrementing task number per project
 	 *
