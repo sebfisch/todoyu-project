@@ -50,6 +50,18 @@ class TodoyuProjectActivityManager {
 
 
 	/**
+	 * Get activity label
+	 *
+	 * @param	Integer		$idActivity
+	 * @return	String
+	 */
+	public static function getLabel($idActivity) {
+		return self::getActivity($idActivity)->getTitle();
+	}
+
+
+
+	/**
 	 * Get all work types
 	 *
 	 * @return	Array
