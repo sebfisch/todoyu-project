@@ -290,7 +290,6 @@ class TodoyuProjectTaskManager {
 	public static function deleteTask($idTask) {
 		$data	= array(
 			'deleted'		=> 1,
-			'date_update'	=> NOW
 		);
 
 		self::updateTask($idTask, $data);
@@ -315,7 +314,6 @@ class TodoyuProjectTaskManager {
 		foreach($allSubTaskIDs as $idSubTask) {
 			TodoyuHookManager::callHook('project', 'task.delete', array($idSubTask));
 		}
-
 	}
 
 
