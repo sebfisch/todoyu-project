@@ -6,6 +6,7 @@ project 1.3.1 - not released yet
 	* Changed: Changed ext.css to ext.scss
 	* Changed: Moved TodoyuProjectTaskViewHelper::autocompleteProjectTasks() to TodoyuProjectTaskManager
 	* Changed: Moved TodoyuProjectTaskRenderer::getEditTaskForm() to TodoyuProjectTaskManager
+	* Changed: Fixed calling order of saveData, setDefaultValuesForNotAllowedFields, addTask, updateTask and hooks task.update, task.add
 	* Added: Callback parameter for Task.refresh()
 	* Added: Autocompleter for tasks
 	* Added: TodoyuProjectProject->isPersonAssigned()

@@ -173,6 +173,7 @@ class TodoyuProjectTaskManager {
 	public static function saveTask(array $data) {
 		$xmlPath	= 'ext/project/config/form/task.xml';
 		$idTask		= intval($data['id']);
+		$isNew		= $idTask === 0;
 
 		if( $idTask === 0 ) {
 				// Create new task with necessary data
@@ -190,14 +191,26 @@ class TodoyuProjectTaskManager {
 		}
 
 			// Call hooked save data functions
-		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idTask);
+		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idTask, array('new'=>$isNew));
 
-		if( $data['id_person_assigned'] == Todoyu::personid() ) {
-			$data['is_acknowledged']	= 1;
+			// Get default data from preset for new task
+		if( $isNew ) {
+			$data	= self::setDefaultValuesForNotAllowedFields($data);
 		}
 
-		self::updateTask($idTask, $data);
+			// Set acknowledged if assigned to the user itself
+		if( !isset($data['is_acknowledged']) && intval($data['id_person_assigned']) === Todoyu::personid() ) {
+			$data['is_acknowledged'] = 1;
+		}
+
+			// Update the task with cleaned and collected fallback data
+		self::updateTask($idTask, $data, $isNew);
 		self::removeTaskFromCache($idTask);
+
+			// Inform about new added task (delayed, because the actual add only adds some very basic dat
+		if( $isNew ) {
+			TodoyuHookManager::callHook('project', 'task.add', array($idTask));
+		}
 
 		return $idTask;
 	}
@@ -209,16 +222,19 @@ class TodoyuProjectTaskManager {
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Array		$data
+	 * @param	Boolean		$isNew
 	 * @return	Boolean
 	 */
-	public static function updateTask($idTask, array $data) {
+	public static function updateTask($idTask, array $data, $isNew = false) {
 		$idTask	= intval($idTask);
 
 		self::removeTaskFromCache($idTask);
 
 		$success = TodoyuRecordManager::updateRecord(self::TABLE, $idTask, $data);
 
-		TodoyuHookManager::callHook('project', 'task.update', array($idTask, $data));
+		if( !$isNew ) {
+			TodoyuHookManager::callHook('project', 'task.update', array($idTask, $data));
+		}
 
 		return $success;
 	}
@@ -240,11 +256,7 @@ class TodoyuProjectTaskManager {
 		$idParent			= intval($data['id_parenttask']);
 		$data['sorting']	= self::getNextSortingPosition($idProject, $idParent);
 
-		$data	= self::setDefaultValuesForNotAllowedFields($data);
-
 		$idTask	= TodoyuRecordManager::addRecord(self::TABLE, $data);
-
-		TodoyuHookManager::callHook('project', 'task.add', array($idTask));
 
 		return $idTask;
 	}
@@ -1362,6 +1374,8 @@ class TodoyuProjectTaskManager {
 
 			// Add data from task presets
 		$taskData	= TodoyuProjectTaskPresetManager::applyTaskPreset($taskData);
+		
+		TodoyuDebug::printInFirebug($taskData, 'taskData project');
 
 			// Call hook to allow other extensions to set default values
 		$taskData	= TodoyuHookManager::callHookDataModifier('project', 'task.defaultsForNotAllowedFields', $taskData, array($idProject, $originalData));
