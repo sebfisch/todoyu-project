@@ -46,6 +46,7 @@ Todoyu.Ext.project.Filter = {
 	 */
 	onProjectSearchResultsUpdated: function() {
 		this.ext.ContextMenuProject.attach();
+		this.ext.ContextMenuProjectInline.attach();
 	},
 
 

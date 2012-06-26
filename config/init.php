@@ -42,6 +42,7 @@ TodoyuContextMenuManager::addFunction('Project', 'TodoyuProjectTaskClipboard::ge
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuProjectTaskManager::getContextMenuItems', 10);
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuProjectTaskClipboard::getTaskContextMenuItems', 100);
 TodoyuContextMenuManager::addFunction('Task', 'TodoyuProjectTaskManager::removeEmptyContextMenuParents', 100000);
+TodoyuContextMenuManager::addFunction('ProjectInline', 'TodoyuProjectProjectManager::getInlineContextMenuItems', 10);
 
 
 

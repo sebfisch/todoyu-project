@@ -61,6 +61,7 @@ Todoyu.Ext.project = {
 	 */
 	registerHooks: function() {
 		Todoyu.Hook.add('project.project.created', this.Project.Edit.onProjectCreated.bind(this.Project.Edit));
+		Todoyu.Hook.add('core.contextmenu', this.ContextMenuProjectInline.onContextMenu.bind(this.ContextMenuProjectInline));
 //		Todoyu.Hook.add('project.task.saved', this.Task.onProjectTaskAdded(response);
 
 			// Register area specific callbacks
@@ -229,6 +230,7 @@ Todoyu.Ext.project = {
 	attachContextMenu: function() {
 		this.ContextMenuProject.attach();
 		this.ContextMenuTask.attach();
+		this.ContextMenuProjectInline.attach();
 	},
 
 

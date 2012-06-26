@@ -415,6 +415,16 @@ class TodoyuProjectProjectManager {
 
 
 	/**
+	 * @param	Integer		$idProject
+	 * @param	Array		$items
+	 */
+	public static function getInlineContextMenuItems($idProject, array $items){
+		return array_merge($items, TodoyuContextMenuManager::getTypeContextMenuItems('project', $idProject));
+	}
+
+
+
+	/**
 	 * Get next available task number
 	 *
 	 * @param	Integer		$idProject

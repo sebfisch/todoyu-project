@@ -50,12 +50,6 @@ Event Hooks
 	@return	Array
 
 
-#project.projectDetailsDynamicElements
-	Collect dynamic elements for project detail rendering (own sections)
-	@param	Integer		$idProject
-	@return	Array		[class, title, content]
-
-
 #project.task.create.render
 	Before rendering the form to create a new task
 

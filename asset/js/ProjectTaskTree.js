@@ -191,6 +191,7 @@ Todoyu.Ext.project.ProjectTaskTree = {
 		this.ext.TaskTree.initSortable();
 		this.ext.ContextMenuTask.attach();
 		this.ext.ContextMenuProject.attach();
+		this.ext.ContextMenuProjectInline.attach();
 
 		Todoyu.Hook.exec('project.project.loaded', idProject);
 	},

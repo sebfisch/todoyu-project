@@ -1,7 +1,11 @@
-<div class="menu" id="{$idProject}-menu">
+<div class="menu contextmenuProjectInline" id="menu-{$idProject}">
 	<span class="icon"></span>
-	<span class="label"></span>
+	<span class="label">{Label LLL:project.ext.project.tabs.menu}</span>
 </div>
+
+<script type="text/javascript">
+	Todoyu.Ext.project.ContextMenuProjectInline.attach();
+</script>
 
 <div class="gap">
 
