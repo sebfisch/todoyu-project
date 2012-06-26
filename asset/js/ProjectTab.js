@@ -77,6 +77,7 @@ Todoyu.Ext.project.Project.Tab = {
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	load: function(idProject, tabKey, onComplete) {
+		this.showAjaxLoader(idProject);
 		var url 	= Todoyu.getUrl('project', 'project');
 		var options	= {
 			parameters: {
@@ -106,6 +107,7 @@ Todoyu.Ext.project.Project.Tab = {
 		Todoyu.callIfExists(onComplete, this, idProject, tabKey);
 
 		Todoyu.Hook.exec('project.projectTab.onLoaded', idProject);
+		this.hideAjaxLoader(idProject);
 	},
 
 
@@ -273,6 +275,20 @@ Todoyu.Ext.project.Project.Tab = {
 	 */
 	getKeyFromID: function(idItem) {
 		return idItem.split('-').last();
+	},
+
+
+
+	showAjaxLoader: function(idProject) {
+		var ajaxLoader = $('project-' + idProject + '-ajaxloader');
+		ajaxLoader.show();
+	},
+
+
+
+	hideAjaxLoader: function(idProject) {
+		var ajaxLoader = $('project-' + idProject + '-ajaxloader');
+		ajaxLoader.hide();
 	}
 
 };

@@ -202,6 +202,23 @@ $projectDetailBorder:1px solid $colorNeutral03;
 		padding: 3px;
 		width: 554px;
 		max-width: 554px;
+
+		& .ajaxLoader {
+			position: absolute;
+			width: 60px;
+			height: 60px;
+			border: 8px solid $black;
+			border-right-color: transparent;
+			border-radius: 50%;
+			box-shadow: 0 0 25px 2px $colorNeutral09;
+			top: 100px;
+			left: 350px;
+			animation: spin 1s linear infinite;
+			-moz-animation: spin 1s linear infinite;
+			-webkit-animation: spin 1s linear infinite;
+			-o-animation: spin 1s linear infinite;
+			-ms-animation: spin 1s linear infinite;
+		}
 	}
 
 	& .projectDetailsTabs {
@@ -271,4 +288,30 @@ $projectDetailBorder:1px solid $colorNeutral03;
 			background:url(../img/projectheader.png) no-repeat 0px -62px;
 		}
 	}
+}
+
+@keyframes spin {
+	from { transform: rotate(0deg);   opacity: 0.2; }
+	50%  { transform: rotate(180deg); opacity: 1.0; }
+	to   { transform: rotate(360deg); opacity: 0.2; }
+}
+@-moz-keyframes spin {
+	from { -moz-transform: rotate(0deg);   opacity: 0.2; }
+	50%  { -moz-transform: rotate(180deg); opacity: 1.0; }
+	to   { -moz-transform: rotate(360deg); opacity: 0.2; }
+}
+@-webkit-keyframes spin {
+	from { -webkit-transform: rotate(0deg);   opacity: 0.2; }
+	50%  { -webkit-transform: rotate(180deg); opacity: 1.0; }
+	to   { -webkit-transform: rotate(360deg); opacity: 0.2; }
+}
+@-ms-keyframes spin {
+	from { -ms-transform: rotate(0deg);   opacity: 0.2; }
+	50%  { -ms-transform: rotate(180deg); opacity: 1.0; }
+	to   { -ms-transform: rotate(360deg); opacity: 0.2; }
+}
+@-o-keyframes spin {
+	from { -ms-transform: rotate(0deg);   opacity: 0.2; }
+	50%  { -ms-transform: rotate(180deg); opacity: 1.0; }
+	to   { -ms-transform: rotate(360deg); opacity: 0.2; }
 }
