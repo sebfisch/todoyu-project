@@ -243,7 +243,7 @@ class TodoyuProjectProjectRenderer {
 		$idProject	= intval($idProject);
 
 			// Inform about detail rendering
-		TodoyuHookManager::callHook('project', 'project.detail.render', array($idProject, $activeTab));
+		TodoyuHookManager::callHook('project', 'project.detail.tab', array($idProject, $activeTab));
 
 		$tmpl		= 'ext/project/view/project-details.tmpl';
 		$data['content']	= TodoyuContentItemTabRenderer::renderTabContent('project', 'projectdetail', $idProject, $activeTab);
