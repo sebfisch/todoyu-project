@@ -53,7 +53,7 @@ class TodoyuProjectProjectDetailsTabsManager {
 		$activeTab	= TodoyuProjectPreferences::getActiveProjectDetailTab($idProject);
 
 		if( $activeTab === null) {
-			$activeTab = TodoyuContentItemTabManager::getDefaultTab('project', 'projectdetail', $idProject);
+			$activeTab = TodoyuContentItemTabManager::getDefaultTab('project', 'projectdetail', $idProject, true);
 		}
 
 		return $activeTab;

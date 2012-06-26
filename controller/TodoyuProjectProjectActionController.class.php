@@ -109,7 +109,9 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 		TodoyuProjectProjectRights::restrictSee($idProject);
 
-		return TodoyuProjectProjectRenderer::renderProjectDetail($idProject, TodoyuProjectProjectDetailsTabsManager::getActiveTab($idProject));
+		$tab = TodoyuProjectProjectDetailsTabsManager::getActiveTab($idProject);
+
+		return TodoyuProjectProjectRenderer::renderProjectDetail($idProject, $tab);
 	}
 
 
