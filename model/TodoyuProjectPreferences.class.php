@@ -307,7 +307,7 @@ class TodoyuProjectPreferences {
 	 * @return	String
 	 */
 	public static function getActiveProjectDetailTab($idProject) {
-		return TodoyuContentItemTabPreferences::getActiveTab('project', 'project', $idProject);
+		return TodoyuContentItemTabPreferences::getActiveTab('project', 'projectdetail', $idProject);
 	}
 
 
@@ -331,7 +331,7 @@ class TodoyuProjectPreferences {
 	 * @param	String		$tab
 	 */
 	public static function saveActiveProjectDetailTab($idProject, $tab) {
-		TodoyuContentItemTabPreferences::saveActiveTab('project', 'project', $idProject, $tab);
+		TodoyuContentItemTabPreferences::saveActiveTab('project', 'projectdetail', $idProject, $tab);
 	}
 
 
@@ -354,7 +354,7 @@ class TodoyuProjectPreferences {
 	 * @param	String		$tab
 	 */
 	public static function setForcedProjectTab($tab) {
-		TodoyuContentItemTabPreferences::setForcedTab('project', 'project', $tab);
+		TodoyuContentItemTabPreferences::setForcedTab('project', 'projectdetail', $tab);
 	}
 
 
@@ -376,7 +376,7 @@ class TodoyuProjectPreferences {
 	 * @return	String		Or FALSE
 	 */
 	public static function getForcedProjectDetailTab() {
-		return TodoyuContentItemTabPreferences::getForcedTab('project', 'project');
+		return TodoyuContentItemTabPreferences::getForcedTab('project', 'projectdetail');
 	}
 
 

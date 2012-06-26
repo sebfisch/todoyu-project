@@ -49,12 +49,12 @@ TodoyuContextMenuManager::addFunction('Task', 'TodoyuProjectTaskManager::removeE
 	Setup project content item tabs
 	Use TodoyuContentItemTabManager::registerTab() to add tab configs
    ---------------------------------------------------------------------- */
-Todoyu::$CONFIG['EXT']['project']['project']['tabs']	= array();
+Todoyu::$CONFIG['EXT']['project']['projectdetail']['tabs']	= array();
 Todoyu::$CONFIG['EXT']['project']['task']['tabs']		= array();
 Todoyu::$CONFIG['EXT']['project']['container']['tabs']	= array();
 
 	// Force pre-selected tabs
-Todoyu::$CONFIG['EXT']['project']['project']['forceTab']	= false;
+Todoyu::$CONFIG['EXT']['project']['projectdetail']['forceTab']	= false;
 Todoyu::$CONFIG['EXT']['project']['task']['forceTab']		= false;
 Todoyu::$CONFIG['EXT']['project']['container']['forceTab']	= false;
 
@@ -181,4 +181,13 @@ Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectList']['maxProjects']	= 30;
 TodoyuSearchActionPanelManager::addExport('task', 'csvexport', 'TodoyuProjectTaskExportManager::exportCSV', 'project.task.export.csv', 'exportCsv', 'project:export:taskcsv');
 TodoyuSearchActionPanelManager::addExport('project', 'csvexport', 'TodoyuProjectExportManager::exportCSV', 'project.ext.export.csv', 'exportCsv', 'project:export:projectcsv');
 
+
+/* -----------------------
+	Project Detail tabs
+   ----------------------- */
+TodoyuProjectProjectDetailsTabsManager::registerDetailsTab('general', 'LLL:project.ext.project.tabs.general', 'TodoyuProjectProjectRenderer::renderProjectDetailGeneral', 1);
+
+if(Todoyu::person()->isInternal()) {
+	TodoyuProjectProjectDetailsTabsManager::registerDetailsTab('preferences', 'LLL:project.ext.project.tabs.preferences', 'TodoyuProjectProjectRenderer::renderProjectDetailPreferences', 30);
+}
 ?>

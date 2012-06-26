@@ -88,4 +88,6 @@
 	<label index="extconf.taskPreset">Task Preset</label>
 	<label index="extconf.fallbackTaskPreset">Fallback preset</label>
 	<label index="extconf.fallbackInfo">The fallback task preset is applied for tasks in projects which have no own task preset. It's also the default for new projects</label>
+	<label index="project.tabs.general">General</label>
+	<label index="project.tabs.preferences">Task Preset</label>
 </labels>

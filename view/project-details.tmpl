@@ -1,65 +1,11 @@
-<div id="project-{$id}-data" class="data infoBoxOuter">
-
-	<div class="infoBox properties">
-		<h4>{Label project.ext.properties}</h4>
-		<div class="content overflow">
-			<table class="list propertiesListing">
-				{foreach $properties info}
-				<tr class="{cycle values="odd,even"}">
-					<th class="label">{Label $info.label}</th>
-					<td>
-						{if allowed('contact', 'general:area') && $info.__key == 'company' && isCompanySeeAllowed($id_company)}<a href="index.php?ext=contact&amp;tab=company&amp;id={$id_company}">{/if}
-						{$info.value}
-						{if allowed('contact', 'general:area') && $info.__key == 'company' && isCompanySeeAllowed($id_company)}</a>{/if}
-					</td>
-				</tr>
-				{/foreach}
-			</table>
-		</div>
+<div id="project-{$idProject}-tabcontainer" class="data infoBoxOuter overflow">
+	<div class="projectDetailsTabs">
+		{include file="project-details-tabs.tmpl"}
 	</div>
 
-	<div class="infoBox">
-		<h4>{Label project.ext.attr.persons}</h4>
-		<div class="content overflow">{$assignedPersons}</div>
-	</div>
-
-	<div class="infoBox description">
-		<h4>{Label core.global.description}</h4>
-		<div class="content overflow">{substituteLinkableElements(cleanHtml($description))}</div>
-	</div>
-
-	{if isInternal()}
-		<div id="project-infobox-presetlist" class="infoBox expandable presets">
-			<h4 id="project-infobox-presetlist-header" onclick="Todoyu.Ext.project.Project.toggleInfoBox('presetlist')" class="closed">{Label project.ext.infobox.presets.title}</h4>
-			<div id="project-infobox-presetlist-content" class="content overflow" style="display:none">
-				<table class="list presetsListing">
-				{foreach $presets preset}
-					<tr class="presetRow {cycle values="odd,even"}">
-						<th>{Label $preset.label}</th>
-						<td>{$preset.value}</td>
-					</tr>
-				{/foreach}
-				</table>
-			</div>
+	<div class="projectDetailsContent overflow" id="project-{$idProject}-tabcontent">
+		<div id="project-{$idProject}-tabcontent-{$activeTab}" class="tab">
+			{$content}
 		</div>
-	{/if}
-
-	{* ---------- Dynamic added elements ----------- *}
-	{if $dynamicElements}
-		{foreach $dynamicElements key element}
-			{if $element}
-				<div id="project-infobox-dyn{$key}" class="infoBox expandable {$element.class}">
-					<h4 id="project-infobox-dyn{$key}-header" onclick="Todoyu.Ext.project.Project.toggleInfoBox('dyn{$key}')" class="closed">{Label $element.title}</h4>
-					<div id="project-infobox-dyn{$key}-content" class="content overflow" style="display:none">{$element.content}</div>
-				</div>
-			{/if}
-		{/foreach}
-	{/if}
-
-	{if $tabs} {* ----- Only render tab container if tabs are rendered ----- *}
-		<div id="project-{$idProject}-tabcontainer" class="projectTabs">
-			{$tabs}
-		</div>
-	{/if}
-
+	</div>
 </div>

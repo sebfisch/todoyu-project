@@ -40,10 +40,8 @@ Todoyu.Ext.project.Project.Tab = {
 	 * @param	{Event}		event
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
-	onSelect: function(event, tabKey) {
-		var idParts	= event.findElement('li').id.split('-');
-
-		this.show(idParts[1], idParts[3]);
+	onSelect: function(idProject, tabKey) {
+		this.show(idProject, tabKey);
 	},
 
 
@@ -170,7 +168,23 @@ Todoyu.Ext.project.Project.Tab = {
 	activate: function(idProject, tabKey) {
 		this.hideAll(idProject);
 		this.setVisible(idProject, tabKey);
-		Todoyu.Tabs.setActive('project-' + idProject, tabKey);
+		this.setActive(idProject, tabKey);
+	},
+
+
+
+	setActive: function(idProject, tabName) {
+		var list	= $(idProject + '-tabs');
+
+		if( list ) {
+			var tab = list.down('div.tabkey-' + tabName);
+
+			if( tab ) {
+				list.select('div').invoke('removeClassName', 'active');
+				tab.addClassName('active');
+				return;
+			}
+		}
 	},
 
 

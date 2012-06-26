@@ -88,4 +88,6 @@
 	<label index="extconf.taskPreset">Aufgabenvorlage</label>
 	<label index="extconf.fallbackTaskPreset">Fallback Aufgabenvorlage</label>
 	<label index="extconf.fallbackInfo">Die Fallback Aufgabenvorlage wird für Aufgaben in Projekten benutzt, die keine eigene Aufgabenvorlage haben. Sie ist ausserdem für neue Projekte vorausgewählt</label>
+	<label index="project.tabs.general">Allgemein</label>
+	<label index="project.tabs.preferences">Aufgabenvorlage</label>
 </labels>

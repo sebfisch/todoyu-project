@@ -224,7 +224,7 @@ class TodoyuProjectProjectRenderer {
 		}
 
 		if( $withDetails ) {
-			$data['details'] = self::renderProjectDetail($idProject);
+			$data['details'] = self::renderProjectDetail($idProject, TodoyuProjectProjectDetailsTabsManager::getActiveTab($idProject));
 		}
 
 		return Todoyu::render($tmpl, $data);
@@ -241,33 +241,59 @@ class TodoyuProjectProjectRenderer {
 	 */
 	public static function renderProjectDetail($idProject, $activeTab = '') {
 		$idProject	= intval($idProject);
-		$project	= TodoyuProjectProjectManager::getProject($idProject);
 
 		$tmpl		= 'ext/project/view/project-details.tmpl';
-		$data		= $project->getTemplateData();
+		$data['content']	= TodoyuContentItemTabRenderer::renderTabContent('project', 'projectdetail', $idProject, $activeTab);
+		$data['idProject']	= $idProject;
+
+		// Add tabs from registered tab configurations
+		$data['tabs']		= TodoyuProjectProjectDetailsTabsManager::getDetailsTabConfiguration($idProject);
+		$data['activeTab']	= $activeTab;
+
+		return Todoyu::render($tmpl, $data);
+	}
+
+
+
+	/**
+	 * @static
+	 * @param	Integer		$idProject
+	 * @return	String
+	 */
+	public static function renderProjectDetailGeneral($idProject) {
+		$idProject	= intval($idProject);
+		$project	= TodoyuProjectProjectManager::getProject($idProject);
+
+		$tmpl	= 'ext/project/view/project-details-general.tmpl';
+		$data	= $project->getTemplateData();
 
 		$data['assignedPersons']= TodoyuProjectProjectRenderer::renderProjectPersons($idProject);
 
 			// Get project data for info listing
 		$data['properties']		= TodoyuProjectProjectManager::getAllProjectProperties($idProject);
 
-			// Get presets data
-		$data['presets']		= TodoyuProjectProjectManager::getProjectPresetDataArray($idProject);
-
 			// Call hook to modify the collected project data
 		$data	= TodoyuHookManager::callHookDataModifier('project', 'project.dataBeforeRender', $data, array($idProject));
-
-			// Get dynamically added details elements
-		$data['dynamicElements']	= TodoyuHookManager::callHook('project', 'projectDetailsDynamicElements', array($idProject));
-
-			// Add tabs from registered tab configurations
-		if( $project->hasTabs() ) {
-			$data['tabs'] = TodoyuContentItemTabRenderer::renderTabs('project', 'project', $idProject, $activeTab);
-		}
 
 		return Todoyu::render($tmpl, $data);
 	}
 
+
+
+	/**
+	 * @param	Integer		$idProject
+	 * @return	String
+	 */
+	public static function renderProjectDetailPreferences($idProject) {
+		$idProject			= intval($idProject);
+		$data['presets']	= TodoyuProjectProjectManager::getProjectPresetDataArray($idProject);
+
+		$tmpl	= 'ext/project/view/project-details-preferences.tmpl';
+
+		$data['presets']		= TodoyuProjectProjectManager::getProjectPresetDataArray($idProject);
+
+		return Todoyu::render($tmpl, $data);
+	}
 
 
 
@@ -791,7 +817,7 @@ class TodoyuProjectProjectRenderer {
 
 			// Render details if task is expanded
 		if( $isExpanded ) {
-			$data['details']= self::renderProjectDetail($idProject);
+			$data['details']= self::renderProjectDetail($idProject, TodoyuProjectProjectDetailsTabsManager::getActiveTab($idProject));
 		}
 
 		return Todoyu::render($tmpl, $data);

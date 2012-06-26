@@ -156,3 +156,107 @@ h1.headerLine span.projectIcons {
 	height:30px;
 	background:$colorCorporate04 url(../../../../core/asset/img/toggle.png) no-repeat 0 -65px;
 }
+
+/* ----------------------
+	Project Details
+   ---------------------- */
+$projectDetailBorder:1px solid $colorNeutral03;
+
+.project {
+	& .projectDetails {
+		position: relative;
+		border: $projectDetailBorder;
+		border-width: 0 1px 1px 1px;
+		margin-bottom: 30px;
+		padding-bottom: 10px;
+
+		& .infoBox {
+			border: $projectDetailBorder;
+			margin: 5px;
+			border-radius: 0 10px 0 0;
+
+			& h4 {
+				border-bottom: $projectDetailBorder;
+				border-radius: 0 10px 0 0;
+			}
+
+			& .content {
+				padding: 0;
+			}
+
+			&.description .content {
+				padding: 3px;
+			}
+
+		}
+	}
+
+	& .infoBoxOuter {
+		height: 100%;
+		padding: 0;
+		background-color: $white;
+	}
+
+	& .projectDetailsContent {
+		float: left;
+		padding: 3px;
+		width: 554px;
+		max-width: 554px;
+	}
+
+	& .projectDetailsTabs {
+		float: left;
+		width: 100px;
+
+		& .gap {
+			height: 30px;
+			border: $projectDetailBorder;
+			border-width: 1px 1px 1px 0;
+			border-radius: 0 3px 3px 0;
+		}
+
+		& .menu {
+			height: 49px;
+		}
+
+		& .tabs {
+
+			& .projectDetailsTab {
+				border: $projectDetailBorder;
+				border-radius: 0 3px 3px 0;
+				border-width: 0 1px 1px 0;
+				height: 42px;
+				background-color: $colorNeutral01;
+				cursor: pointer;
+				padding: 4px 0;
+
+				&.active {
+					border-width: 0 0 1px 0;
+					height: 42px;
+					background-color: $white;
+					border-radius: 0;
+				}
+
+				& .icon {
+					height: 32px;
+					width: 32px;
+					float: none;
+					margin-left: 34px;
+				}
+
+				& .label {
+					padding-left: 6px;
+				}
+
+			}
+		}
+
+		& .generalProjectTab .icon {
+			background:url(../img/projectheader.png) no-repeat 0px -186px;
+		}
+
+		& .preferencesProjectTab .icon {
+			background:url(../img/projectheader.png) no-repeat 0px -62px;
+		}
+	}
+}

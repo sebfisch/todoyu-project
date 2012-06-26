@@ -109,7 +109,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 		TodoyuProjectProjectRights::restrictSee($idProject);
 
-		return TodoyuProjectProjectRenderer::renderProjectDetail($idProject);
+		return TodoyuProjectProjectRenderer::renderProjectDetail($idProject, TodoyuProjectProjectDetailsTabsManager::getActiveTab($idProject));
 	}
 
 
@@ -208,12 +208,12 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 	 */
 	public function tabloadAction(array $params) {
 		$idProject	= intval($params['project']);
-		$tab	= $params['tab'];
+		$tabKey		= $params['tab'];
 
 		TodoyuProjectProjectRights::restrictSee($idProject);
-		TodoyuProjectPreferences::saveActiveProjectDetailTab($idProject, $tab);
+		TodoyuProjectPreferences::saveActiveProjectDetailTab($idProject, $tabKey);
 
-		return TodoyuContentItemTabRenderer::renderTabContent('project', 'project', $idProject, $tab);
+		return TodoyuContentItemTabRenderer::renderTabContent('project', 'projectdetail', $idProject, $tabKey);
 	}
 
 
@@ -229,7 +229,7 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 
 		TodoyuProjectProjectRights::restrictSee($idProject);
 
-		TodoyuContentItemTabPreferences::saveActiveTab('project', 'project', $idProject, $tabKey);
+		TodoyuProjectPreferences::saveActiveProjectDetailTab($idProject, $tabKey);
 	}
 
 }
