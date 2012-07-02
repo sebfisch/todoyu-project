@@ -165,8 +165,6 @@ $projectDetailBorder:1px solid $colorNeutral03;
 .project {
 	& .projectDetails {
 		position: relative;
-		border: $projectDetailBorder;
-		border-width: 0 1px 1px 1px;
 		margin-bottom: 30px;
 		padding-bottom: 10px;
 
@@ -188,6 +186,22 @@ $projectDetailBorder:1px solid $colorNeutral03;
 			}
 
 		}
+
+		& .projectDetailLeft {
+			float: left;
+			position: relative;
+			right: 560px;
+			top: 1px;
+			margin-top: -1px;
+			background-color: $white;
+		}
+
+		& .projectDetailRight {
+			float: left;
+			position: relative;
+			overflow: hidden;
+			background-color: $colorNeutral01;
+		}
 	}
 
 	& .infoBoxOuter {
@@ -199,8 +213,11 @@ $projectDetailBorder:1px solid $colorNeutral03;
 	& .projectDetailsContent {
 		float: left;
 		padding: 3px;
-		width: 554px;
-		max-width: 554px;
+		width: 556px;
+		max-width: 556px;
+		display: block;
+		position:relative;
+		left: 560px;
 
 		& .ajaxLoader {
 			position: absolute;
@@ -223,11 +240,12 @@ $projectDetailBorder:1px solid $colorNeutral03;
 	& .projectDetailsTabs {
 		float: left;
 		width: 100px;
+		height: 100%;
+		position: relative;
+		left: 562px;
 
 		& .gap {
 			height: 30px;
-			border: $projectDetailBorder;
-			border-width: 1px 1px 1px 0;
 			border-radius: 0 3px 3px 0;
 		}
 
@@ -239,7 +257,13 @@ $projectDetailBorder:1px solid $colorNeutral03;
 		}
 
 		& .menu {
-			height: 49px;
+			height: 50px;
+			border-radius: 0 0 0 3px;
+			position: relative;
+			left: 1px;
+			margin-left: -1px;
+			background-color: $colorNeutral01;
+			box-shadow: -1px 2px 2px -2px $black;
 
 			& .icon {
 				background: url(../img/projectheader.png) no-repeat 0px -186px;
@@ -254,22 +278,23 @@ $projectDetailBorder:1px solid $colorNeutral03;
 
 			& .projectDetailsTab {
 				border: $projectDetailBorder;
-				border-radius: 0 3px 3px 0;
-				border-width: 0 1px 1px 0;
+				border-radius: 3px 0 0 3px;
 				height: 42px;
-				background-color: $colorNeutral01;
+				background-color: $white;
 				cursor: pointer;
 				padding: 4px 0;
+				margin: 3px 0;
+				box-shadow: -9px 0 20px -18px $black inset;
+				border-width: 1px 0 1px 1px;
 
 				&.active {
-					border-width: 0 0 0 0;
-					height: 42px;
-					background-color: $white;
-					border-radius: 0;
-				}
-
-				&.active + .projectDetailsTab {
-					border-width: 1px 1px 1px 0;
+					height: 44px;
+					background-color: $colorNeutral01;
+					position: relative;
+					left: 1px;
+					margin-left: -1px;
+					box-shadow: -1px 2px 2px -2px $black;
+					border: none;
 				}
 
 				& .label {
@@ -314,3 +339,4 @@ $projectDetailBorder:1px solid $colorNeutral03;
 	50%  { -ms-transform: rotate(180deg); opacity: 1.0; }
 	to   { -ms-transform: rotate(360deg); opacity: 0.2; }
 }
+

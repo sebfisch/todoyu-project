@@ -1,13 +1,16 @@
 <div id="project-{$idProject}-tabcontainer" class="data infoBoxOuter overflow">
-	<div class="projectDetailsTabs">
-		{include file="project-details-tabs.tmpl"}
-	</div>
+	<div class="projectDetailRight">
+		<div class="projectDetailLeft">
+			<div class="projectDetailsTabs">
+				{include file="project-details-tabs.tmpl"}
+			</div>
 
-	<div class="projectDetailsContent overflow" id="project-{$idProject}-tabcontent">
-		<div id="project-{$idProject}-tabcontent-{$activeTab}" class="tab">
-			{$content}
+			<div class="projectDetailsContent overflow" id="project-{$idProject}-tabcontent">
+				<div id="project-{$idProject}-tabcontent-{$activeTab}" class="tab">
+					{$content}
+				</div>
+				<div id="project-{$idProject}-ajaxloader" class="ajaxLoader" style="display:none;"></div>
+			</div>
 		</div>
-		<div id="project-{$idProject}-ajaxloader" class="ajaxLoader" style="display:none;"></div>
 	</div>
-
 </div>
