@@ -39,27 +39,13 @@ class TodoyuProjectProjectSearch implements TodoyuSearchEngineIf {
 	 *
 	 * @todo rewrite whole method with filters if possible
 	 *
-	 * @param	Array		$find		Keywords which have to be in the projects
-	 * @param	Array		$ignore		Keywords which must not be in the project
+	 * @param	Array		$searchWords		Keywords which have to be in the projects
+	 * @param	Array		$ignoreWords		Keywords which must not be in the project
 	 * @param	Integer		$limit
 	 * @return	Array		Project IDs
 	 */
-	public static function searchProjects(array $find, array $ignore = array(), $limit = 200) {
-		$limit	= intval($limit);
-
-		$fields	= array(self::TABLE . '.id', self::TABLE . '.description', self::TABLE . '.title', 'ext_contact_company.shortname', 'ext_contact_company.title');
-
-		$where	= TodoyuSql::buildLikeQueryPart($find, $fields);
-		$where	.= ' AND ' . self::TABLE . '.deleted = 0 AND ext_contact_company.deleted = 0';
-
-		$tables	= self::TABLE . ' LEFT JOIN ext_contact_company ON ' . self::TABLE . '.id_company = ext_contact_company.id';
-
-		if( ! TodoyuAuth::isAdmin() && ! Todoyu::allowed('project', 'project:seeAll') ) {
-			$where	.= ' AND ext_project_mm_project_person.id_person = ' . TodoyuAuth::getPersonID();
-			$tables	.= ' LEFT JOIN ext_project_mm_project_person ON ext_project_project.id = ext_project_mm_project_person.id_project';
-		}
-
-		return Todoyu::db()->getColumn(self::TABLE . '.id', $tables, $where, self::TABLE . '.id', '', $limit, 'id');
+	public static function searchProjects(array $searchWords, array $ignoreWords = array(), $limit = 200) {
+		return TodoyuProjectProjectManager::searchProjects($searchWords, array(), $ignoreWords, $limit);
 	}
 
 

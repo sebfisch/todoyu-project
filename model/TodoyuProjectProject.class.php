@@ -88,6 +88,18 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 
 
 	/**
+	 * Get project label
+	 *
+	 * @param	Boolean		$companyShort
+	 * @return	String
+	 */
+	public function getLabel($companyShort = true) {
+		return $this->getFullTitle($companyShort);
+	}
+
+
+
+	/**
 	 * Get project description
 	 *
 	 * @return	String

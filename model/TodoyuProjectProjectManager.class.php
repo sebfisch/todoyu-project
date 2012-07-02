@@ -71,7 +71,7 @@ class TodoyuProjectProjectManager {
 	 * @return	String
 	 */
 	public static function getLabel($idProject) {
-		return $idProject > 0 ? self::getProject($idProject)->getFullTitle(true) : '';
+		return $idProject > 0 ? self::getProject($idProject)->getLabel() : '';
 	}
 
 
@@ -1521,6 +1521,83 @@ class TodoyuProjectProjectManager {
 		}
 
 		return $data;
+	}
+
+
+
+	/**
+	 * Get matching projects for form records
+	 *
+	 * @param	Array		$searchWords
+	 * @param	Array		$ignoreIDs
+	 * @return	Array
+	 */
+	public static function getMatchingProjects(array $searchWords, array $ignoreIDs = array()) {
+		$projectIDs		= self::searchProjects($searchWords, $ignoreIDs, array(), 30);
+		$projectItems	= array();
+
+		foreach($projectIDs as $idProject) {
+			$project	= self::getProject($idProject);
+
+			$projectItems[] = array(
+				'id'	=> $project->getID(),
+				'label'	=> $project->getLabel()
+			);
+		}
+
+		return $projectItems;
+	}
+
+
+
+	/**
+	 * Search projects
+	 *
+	 * @param	String[]		$searchWords
+	 * @param	Integer[]		$ignoreIDs
+	 * @param	String[]		$ignoreWords
+	 * @param	Integer			$limit
+	 * @return	Integer[]
+	 */
+	public static function searchProjects(array $searchWords, $ignoreIDs = array(), array $ignoreWords = array(), $limit = 100) {
+		$searchWords	= TodoyuArray::trim($searchWords, true);
+		$ignoreIDs		= TodoyuArray::intval($ignoreIDs, true, true);
+		$ignoreWords	= TodoyuArray::trim($ignoreWords, true);
+		$limit			= intval($limit);
+
+		$field	= 'ext_project_project.id';
+		$searchInFields	= array(
+			'ext_project_project.id',
+			'ext_project_project.description',
+			'ext_project_project.title',
+			'ext_contact_company.shortname',
+			'ext_contact_company.title'
+		);
+		$tables	= 'ext_project_project
+					LEFT JOIN ext_contact_company
+						ON ext_project_project.id_company = ext_contact_company.id';
+		$where	= '		ext_project_project.deleted = 0'
+				. '	 AND ext_contact_company.deleted = 0';
+
+		if( sizeof($searchWords) > 0 ) {
+			$where	.= ' AND ' . TodoyuSql::buildLikeQueryPart($searchWords, $searchInFields);
+		}
+		if( sizeof($ignoreWords) > 0 ) {
+			$where .= ' AND ' . TodoyuSql::buildLikeQueryPart($ignoreWords, $searchInFields, true);
+		}
+		if( sizeof($ignoreIDs) > 0 ) {
+			$where .= ' AND ' . TodoyuSql::buildLikeQueryPart($ignoreIDs, array($field), true);
+		}
+
+		$group	= self::TABLE . '.id';
+
+		if( !Todoyu::allowed('project', 'project:seeAll') ) {
+			$tables	.= ' LEFT JOIN ext_project_mm_project_person
+							ON ext_project_project.id = ext_project_mm_project_person.id_project';
+			$where	.= ' AND ext_project_mm_project_person.id_person = ' . TodoyuAuth::getPersonID();
+		}
+
+		return Todoyu::db()->getColumn($field, $tables, $where, $group, '', $limit, 'id');
 	}
 
 }

@@ -66,8 +66,8 @@ class TodoyuProjectProjectFilterDataSource {
 	public static function autocompleteTaskAddableProjects($input, array $formData = array(), $name = '') {
 		$data = array();
 
-		$keywords	= TodoyuArray::trimExplode(' ', $input, true);
-		$projectIDs	= TodoyuProjectProjectSearch::searchProjects($keywords, array(), 30);
+		$searchWords= TodoyuArray::trimExplode(' ', $input, true);
+		$projectIDs	= TodoyuProjectProjectManager::searchProjects($searchWords, array(), array(), 30);
 
 		if( sizeof($projectIDs) > 0 ) {
 			$projects	= self::getProjects($projectIDs);
