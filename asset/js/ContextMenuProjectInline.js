@@ -88,8 +88,8 @@ Todoyu.Ext.project.ContextMenuProjectInline = {
 			var dimension	= selector.viewportOffset();
 			var scrollOffset = Element.cumulativeScrollOffset(selector);
 
-			$('contextmenu').style.top = (dimension.top + scrollOffset.top)+ 'px';
-			$('contextmenu').style.left = (dimension.left + scrollOffset.left + selector.getWidth()) + 'px';
+			$('contextmenu').style.top = (dimension.top + scrollOffset.top + selector.getHeight())+ 'px';
+			$('contextmenu').style.left = (dimension.left + scrollOffset.left) + 'px';
 		}
 	}
 };

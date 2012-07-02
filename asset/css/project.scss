@@ -173,7 +173,6 @@ $projectDetailBorder:1px solid $colorNeutral03;
 		& .infoBox {
 			border: $projectDetailBorder;
 			margin: 5px;
-			border-radius: 0 10px 0 0;
 
 			& h4 {
 				border-bottom: $projectDetailBorder;
@@ -243,7 +242,7 @@ $projectDetailBorder:1px solid $colorNeutral03;
 			height: 49px;
 
 			& .icon {
-				background:url(../img/projectheader.png) no-repeat 0px -186px;
+				background: url(../img/projectheader.png) no-repeat 0px -186px;
 			}
 
 			& .label {
