@@ -174,7 +174,6 @@ $projectDetailBorder:1px solid $colorNeutral03;
 
 			& h4 {
 				border-bottom: $projectDetailBorder;
-				border-radius: 0 10px 0 0;
 			}
 
 			& .content {
@@ -202,22 +201,6 @@ $projectDetailBorder:1px solid $colorNeutral03;
 			overflow: hidden;
 			background-color: $colorNeutral01;
 		}
-	}
-
-	& .infoBoxOuter {
-		height: 100%;
-		padding: 0;
-		background-color: $white;
-	}
-
-	& .projectDetailsContent {
-		float: left;
-		padding: 3px;
-		width: 556px;
-		max-width: 556px;
-		display: block;
-		position:relative;
-		left: 560px;
 
 		& .ajaxLoader {
 			position: absolute;
@@ -235,6 +218,22 @@ $projectDetailBorder:1px solid $colorNeutral03;
 			-o-animation: spin 1s linear infinite;
 			-ms-animation: spin 1s linear infinite;
 		}
+	}
+
+	& .infoBoxOuter {
+		height: 100%;
+		padding: 0;
+		background-color: $white;
+	}
+
+	& .projectDetailsContent {
+		float: left;
+		padding: 3px;
+		width: 556px;
+		max-width: 556px;
+		display: block;
+		position:relative;
+		left: 560px;
 	}
 
 	& .projectDetailsTabs {
