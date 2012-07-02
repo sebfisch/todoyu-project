@@ -243,7 +243,7 @@ $projectDetailBorder:1px solid $colorNeutral03;
 			height: 49px;
 
 			& .icon {
-				background:url(../img/projectheader.png) no-repeat 0px -248px;
+				background:url(../img/projectheader.png) no-repeat 0px -186px;
 			}
 
 			& .label {
@@ -281,11 +281,11 @@ $projectDetailBorder:1px solid $colorNeutral03;
 		}
 
 		& .generalProjectTab .icon {
-			background:url(../img/projectheader.png) no-repeat 0px -186px;
+			background:url(../img/projectheader.png) no-repeat 0px -124px;
 		}
 
 		& .preferencesProjectTab .icon {
-			background:url(../img/projectheader.png) no-repeat 0px -62px;
+			background:url(../img/projectheader.png) no-repeat 0px 0px;
 		}
 	}
 }
