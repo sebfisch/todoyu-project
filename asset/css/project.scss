@@ -259,9 +259,8 @@ $projectDetailBorder:1px solid $colorNeutral03;
 			left: 1px;
 			margin-left: -1px;
 			background-color: $colorNeutral01;
-			box-shadow: -1px 4px 18px -10px $black;
+			box-shadow: -1px 4px 10px -10px $black;
 			-webkit-box-shadow: -1px 4px 18px -10px $black;
-			-moz-box-shadow: -1px 4px 10px -10px $black;
 
 			& .icon {
 				background: url(../img/projectheader.png) no-repeat 0px -186px;
@@ -282,9 +281,8 @@ $projectDetailBorder:1px solid $colorNeutral03;
 				cursor: pointer;
 				padding: 4px 0;
 				margin: 3px 0;
-				box-shadow: -11px 0 22px -17px $black inset;
+				box-shadow: -1px 4px 10px -10px $black inset;
 				-webkit-box-shadow: -11px 0 22px -17px $black inset;
-				-moz-box-shadow: -1px 4px 10px -10px $black;
 				border-width: 1px 0 1px 1px;
 
 				&.active {
@@ -293,9 +291,8 @@ $projectDetailBorder:1px solid $colorNeutral03;
 					position: relative;
 					left: 1px;
 					margin-left: -1px;
-					box-shadow: -1px 4px 18px -10px $black;
+					box-shadow: -1px 4px 10px -10px $black;
 					-webkit-box-shadow: -1px 4px 18px -10px $black;
-					-moz-box-shadow: -1px 4px 10px -10px $black;
 					border: none;
 				}
 
