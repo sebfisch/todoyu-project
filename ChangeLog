@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.3.1 - not released yet
+	* Bugfix: Replace project-details on edit
 	* Changed: Width adaption
 	* Added: animation when project tabs are loaded from server
 	* Added: Context menu on button
