@@ -1375,8 +1375,6 @@ class TodoyuProjectTaskManager {
 			// Add data from task presets
 		$taskData	= TodoyuProjectTaskPresetManager::applyTaskPreset($taskData);
 		
-		TodoyuDebug::printInFirebug($taskData, 'taskData project');
-
 			// Call hook to allow other extensions to set default values
 		$taskData	= TodoyuHookManager::callHookDataModifier('project', 'task.defaultsForNotAllowedFields', $taskData, array($idProject, $originalData));
 
