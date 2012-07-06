@@ -3,7 +3,7 @@
 	<div id="project-infobox-presetlist-content" class="content overflow">
 		<table class="list presetsListing">
 		{foreach $presets preset}
-			<tr class="presetRow {cycle values="odd,even"}">
+			<tr class="{cycle values="odd,even"}">
 				<th>{Label $preset.label}</th>
 				<td>{$preset.value}</td>
 			</tr>
