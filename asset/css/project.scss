@@ -249,7 +249,7 @@ $projectDetailBorder:1px solid $colorNeutral03;
 			height: 32px;
 			width: 32px;
 			float: none;
-			margin-left: 34px;
+			margin-left: 6px;
 		}
 
 		& .menu {
@@ -263,7 +263,7 @@ $projectDetailBorder:1px solid $colorNeutral03;
 			-webkit-box-shadow: -1px 4px 18px -10px $black;
 
 			& .icon {
-				background: url(../img/projectheader.png) no-repeat 0px -186px;
+				background: url(../img/projectheader.png) no-repeat -7px -186px;
 			}
 
 			& .label {
@@ -304,7 +304,7 @@ $projectDetailBorder:1px solid $colorNeutral03;
 		}
 
 		& .generalProjectTab .icon {
-			background:url(../img/projectheader.png) no-repeat 0px -124px;
+			background:url(../img/projectheader.png) no-repeat -7px -124px;
 		}
 
 		& .preferencesProjectTab .icon {
