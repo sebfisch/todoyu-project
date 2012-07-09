@@ -261,6 +261,7 @@ $projectDetailBorder:1px solid $colorNeutral03;
 			background-color: $colorNeutral01;
 			box-shadow: -1px 4px 10px -10px $black;
 			-webkit-box-shadow: -1px 4px 18px -10px $black;
+			cursor: pointer;
 
 			& .icon {
 				background: url(../img/projectheader.png) no-repeat -7px -186px;

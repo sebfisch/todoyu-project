@@ -44,6 +44,7 @@ Todoyu.Ext.project.ContextMenuProjectInline = {
 
 		$$(selector).each(function(element){
 			element.on('click', Todoyu.ContextMenu.load.bind(Todoyu.ContextMenu, this.type, this.getID.bind(this), element));
+			element.on('contextmenu', Todoyu.ContextMenu.load.bind(Todoyu.ContextMenu, this.type, this.getID.bind(this), element));
 		//	element.on('mouseover', Todoyu.ContextMenu.load.bind(Todoyu.ContextMenu, this.type, this.getID.bind(this), element));
 		}, this);
 	},
@@ -59,6 +60,7 @@ Todoyu.Ext.project.ContextMenuProjectInline = {
 
 		elements.each(function(element) {
 			element.stopObserving('click');
+			element.stopObserving('contextmenu');
 	//		element.stopObserving('mouseover');
 		});
 	},
@@ -88,7 +90,7 @@ Todoyu.Ext.project.ContextMenuProjectInline = {
 			var dimension	= selector.viewportOffset();
 			var scrollOffset = Element.cumulativeScrollOffset(selector);
 
-			$('contextmenu').style.top = (dimension.top + scrollOffset.top + selector.getHeight())+ 'px';
+			$('contextmenu').style.top = (dimension.top + scrollOffset.top + (selector.getHeight() / 2) ) + 'px';
 			$('contextmenu').style.left = (dimension.left + scrollOffset.left) + 'px';
 		}
 	}
