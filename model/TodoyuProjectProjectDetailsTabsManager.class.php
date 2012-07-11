@@ -26,6 +26,8 @@
 class TodoyuProjectProjectDetailsTabsManager {
 
 	/**
+	 * Register a tab for project header details
+	 *
 	 * @param	String		$key
 	 * @param	String		$label
 	 * @param	String		$function
@@ -38,7 +40,10 @@ class TodoyuProjectProjectDetailsTabsManager {
 
 
 	/**
-	 * @return	Array
+	 * Get tabs for project detail
+	 *
+	 * @param	Integer			$idProject
+	 * @return	Array[]
 	 */
 	public static function getDetailsTabConfiguration($idProject) {
 		return TodoyuContentItemTabManager::getTabs('project', 'projectdetail', $idProject, false);
@@ -47,7 +52,10 @@ class TodoyuProjectProjectDetailsTabsManager {
 
 
 	/**
-	 * @param	$idProject
+	 * Get active tab key
+	 *
+	 * @param	Integer		$idProject
+	 * @return	String
 	 */
 	public static function getActiveTab($idProject) {
 		$activeTab	= TodoyuProjectPreferences::getActiveProjectDetailTab($idProject);
@@ -58,6 +66,7 @@ class TodoyuProjectProjectDetailsTabsManager {
 
 		return $activeTab;
 	}
+
 }
 
 ?>

@@ -46,136 +46,6 @@ TodoyuContextMenuManager::addFunction('ProjectInline', 'TodoyuProjectProjectMana
 
 
 
-/* ----------------------------------------------------------------------
-	Setup project content item tabs
-	Use TodoyuContentItemTabManager::registerTab() to add tab configs
-   ---------------------------------------------------------------------- */
-Todoyu::$CONFIG['EXT']['project']['projectdetail']['tabs']	= array();
-Todoyu::$CONFIG['EXT']['project']['task']['tabs']		= array();
-Todoyu::$CONFIG['EXT']['project']['container']['tabs']	= array();
-
-	// Force pre-selected tabs
-Todoyu::$CONFIG['EXT']['project']['projectdetail']['forceTab']	= false;
-Todoyu::$CONFIG['EXT']['project']['task']['forceTab']		= false;
-Todoyu::$CONFIG['EXT']['project']['container']['forceTab']	= false;
-
-
-
-/* --------------------------------------
-	Declare project sub type statuses
-   -------------------------------------- */
-	// Project status
-Todoyu::$CONFIG['EXT']['project']['STATUS']['PROJECT'] = array(
-	STATUS_PLANNING		=> 'planning',
-	STATUS_PROGRESS		=> 'progress',
-	STATUS_DONE			=> 'done',
-	STATUS_WARRANTY		=> 'warranty',
-	STATUS_CLEARED		=> 'cleared'
-);
-	// Task status keys (needed to convert status constants to resp. key strings, e.g. for rights checks)
-Todoyu::$CONFIG['EXT']['project']['STATUS']['TASK'] = array(
-	STATUS_PLANNING		=> 'planning',
-	STATUS_OPEN			=> 'open',
-	STATUS_PROGRESS		=> 'progress',
-	STATUS_WAITING		=> 'waiting',
-	STATUS_REJECTED		=> 'rejected',
-	STATUS_CONFIRM		=> 'confirm',
-	STATUS_DONE			=> 'done',
-	STATUS_ACCEPTED		=> 'accepted',
-	STATUS_CLEARED		=> 'cleared'
-);
-	// Non-editable project status (tasks/containers in project cannot be modified)
-Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing'] = array(
-	STATUS_DONE,
-	STATUS_CLEARED
-);
-	// Copied and cloned tasks can have this status. Fallback to default if not
-Todoyu::$CONFIG['EXT']['project']['allowedCopiedStatus'] = array(
-	STATUS_PLANNING,
-	STATUS_OPEN,
-	STATUS_PROGRESS
-);
-
-
-
-	// In which task status is time exceeding relevant?
-Todoyu::$CONFIG['EXT']['project']['taskStatusTimeExceedingRelevant'] = array(
-	STATUS_PLANNING,
-	STATUS_OPEN,
-	STATUS_PROGRESS,
-	STATUS_CONFIRM,
-	STATUS_REJECTED,
-	STATUS_WAITING,
-);
-
-
-
-/* ----------------------------
-	Add search filter widgets
-   ---------------------------- */
-	// Projectrole
-Todoyu::$CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
-	'tmpl'			=> 'ext/project/view/filterwidget/projectrole.tmpl',
-	'configFunc'	=> 'TodoyuProjectProjectFilter::prepareDataForProjectroleWidget'
-);
-
-
-
-/* ------------------------------
-	Filters used in "todo" tab
-   ------------------------------ */
-	// @todo	move to portal extension
-	// Assigned tasks to be worked on
-Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters']['assigned'] = array(
-	array(
-		'filter'	=> 'type',
-		'value'		=> TASK_TYPE_TASK
-	),
-	array(
-		'filter'	=> 'currentPersonAssigned'
-	),
-	array(
-		'filter'	=> 'status',
-		'value'		=> STATUS_OPEN . ',' . STATUS_PROGRESS
-	)
-);
-	// Tasks the current user has to review and confirm
-Todoyu::$CONFIG['EXT']['project']['portalTodoTabFilters']['owner'] = array(
-	array(
-		'filter'	=> 'type',
-		'value'		=> TASK_TYPE_TASK
-	),
-	array(
-		'filter'	=> 'currentPersonOwner'
-	),
-	array(
-		'filter'	=> 'status',
-		'value'		=> STATUS_CONFIRM
-	)
-);
-
-
-
-/* ---------------------------------------------------------------------------------
-	Task default values. Overridden with extConf / task preset set values if set
-   --------------------------------------------------------------------------------- */
-Todoyu::$CONFIG['EXT']['project']['taskDefaults'] = array(
-	'status'			=> STATUS_PLANNING,
-	'statusQuickTask'	=> STATUS_OPEN
-);
-	// Duration (timespan from date_start to date_end/deadline) of quicktasks
-Todoyu::$CONFIG['EXT']['project']['quicktask']['durationDays']  = 3;
-
-
-
-/* ----------------------------
-	Configure panel widgets
-   ---------------------------- */
-	// Maximum projects in project listing widget
-Todoyu::$CONFIG['EXT']['project']['panelWidgetProjectList']['maxProjects']	= 30;
-
-
-
 /* -----------------------
 	Add filter exports
    ----------------------- */
@@ -195,7 +65,100 @@ TodoyuFormManager::addFieldTypeRecords('recordsProject', 'TodoyuProjectFormEleme
    ----------------------- */
 TodoyuProjectProjectDetailsTabsManager::registerDetailsTab('general', 'LLL:project.ext.project.tabs.general', 'TodoyuProjectProjectRenderer::renderProjectDetailGeneral', 1);
 
-if(Todoyu::person()->isInternal()) {
+if( Todoyu::person()->isInternal() ) {
 	TodoyuProjectProjectDetailsTabsManager::registerDetailsTab('preferences', 'LLL:project.ext.project.tabs.preferences', 'TodoyuProjectProjectRenderer::renderProjectDetailPreferences', 30);
 }
+
+
+
+
+Todoyu::$CONFIG['EXT']['project'] = array(
+	'STATUS'	=> array( // Available type statuses
+		'PROJECT' => array(
+			STATUS_PLANNING		=> 'planning',
+			STATUS_PROGRESS		=> 'progress',
+			STATUS_DONE			=> 'done',
+			STATUS_WARRANTY		=> 'warranty',
+			STATUS_CLEARED		=> 'cleared'
+		),
+		'TASK' => array(
+			STATUS_PLANNING		=> 'planning',
+			STATUS_OPEN			=> 'open',
+			STATUS_PROGRESS		=> 'progress',
+			STATUS_WAITING		=> 'waiting',
+			STATUS_REJECTED		=> 'rejected',
+			STATUS_CONFIRM		=> 'confirm',
+			STATUS_DONE			=> 'done',
+			STATUS_ACCEPTED		=> 'accepted',
+			STATUS_CLEARED		=> 'cleared'
+		)
+	),
+	'projectStatusDisallowChildrenEditing' => array( // Non-editable project status (tasks/containers in project cannot be modified)
+		STATUS_DONE,
+		STATUS_CLEARED
+	),
+	'allowedCopiedStatus' => array( // Copied and cloned tasks can have this status. Fallback to default if not
+		STATUS_PLANNING,
+		STATUS_OPEN,
+		STATUS_PROGRESS
+	),
+	'taskStatusTimeExceedingRelevant' => array( // In which task status is time exceeding relevant?
+		STATUS_PLANNING,
+		STATUS_OPEN,
+		STATUS_PROGRESS,
+		STATUS_CONFIRM,
+		STATUS_REJECTED,
+		STATUS_WAITING
+	),
+	'portalTodoTabFilters' => array( // Filters used in "todo" tab
+		'assigned' => array( // Assigned tasks to be worked on
+			array(
+				'filter'	=> 'type',
+				'value'		=> TASK_TYPE_TASK
+			),
+			array(
+				'filter'	=> 'currentPersonAssigned'
+			),
+			array(
+				'filter'	=> 'status',
+				'value'		=> STATUS_OPEN . ',' . STATUS_PROGRESS
+			)
+		),
+		'owner' => array( // Tasks the current user has to review and confirm
+			array(
+				'filter'	=> 'type',
+				'value'		=> TASK_TYPE_TASK
+			),
+			array(
+				'filter'	=> 'currentPersonOwner'
+			),
+			array(
+				'filter'	=> 'status',
+				'value'		=> STATUS_CONFIRM
+			)
+		)
+	),
+	'taskDefaults' => array( // Task default values. Overridden with extConf / task preset set values if set
+		'status'			=> STATUS_PLANNING,
+		'statusQuickTask'	=> STATUS_OPEN
+	),
+	'quicktask' => array(
+		'durationDays'  => 3 // Duration (timespan from date_start to date_end/deadline) of quicktasks
+	),
+	'panelWidgetProjectList' => array(
+		'maxProjects' => 30 // Maximum projects in project listing widget
+	)
+);
+
+
+
+/* ----------------------------
+	Add search filter widgets
+   ---------------------------- */
+	// Projectrole
+Todoyu::$CONFIG['EXT']['search']['widgettypes']['projectrole'] =array(
+	'tmpl'			=> 'ext/project/view/filterwidget/projectrole.tmpl',
+	'configFunc'	=> 'TodoyuProjectProjectFilter::prepareDataForProjectroleWidget'
+);
+
 ?>

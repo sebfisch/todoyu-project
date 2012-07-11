@@ -682,62 +682,12 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	public function hasTabs() {
 			// Check for configured tabs
 		$type		= $this->getType() === TASK_TYPE_TASK ? 'task' : 'container';
-		$tabsConfig	= Todoyu::$CONFIG['EXT']['project'][$type]['tabs'];
-		$has		= is_array($tabsConfig) && sizeof($tabsConfig) > 0;
+		$hasTabs	= TodoyuContentItemTabManager::hasTabs('project', $type);
 
 			// Call hooks
-		$has	= TodoyuHookManager::callHookDataModifier('project', 'taskHasTabs', $has, array($this->getID()));
+		$hasTabs	= TodoyuHookManager::callHookDataModifier('project', 'taskHasTabs', $hasTabs, array($this->getID()));
 
-		return $has;
-	}
-
-
-
-	/**
-	 * @todo	See todo in getTemplateData
-	 */
-	protected function loadForeignData() {
-
-	}
-
-
-
-	/**
-	 * Get data for template rendering
-	 *
-	 * @todo	Use loadForeignData
-	 * @param	Integer		$infoLevel		Level of information (the higher the number, the more information is collected)
-	 * @return	Array
-	 */
-	public function getTemplateData($infoLevel = 0) {
-		$infoLevel	= intval($infoLevel);
-		$data		= parent::getTemplateData();
-
-			// There are no breaks because everything after the level has to be loaded too
-		switch( $infoLevel ) {
-			case 5:
-			case 4:
-			case 3:
-			case 2:
-				$data['project']		= $this->getProject()->getTemplateData();
-				$data['person_create']	= $this->getPersonCreate()->getTemplateData();
-				$data['person_assigned']= $this->getPersonAssigned()->getTemplateData();
-				$data['person_owner']	= $this->getPersonOwner()->getTemplateData();
-				$data['activity']		= $this->getActivity()->getTemplateData();
-				$data['fulltitle']		= $this->getFullTitle();
-				$data['company']		= $this->getProject()->getCompany()->getTemplateData();
-
-			case 1:
-				$data['statuskey']		= $this->getStatusKey();
-				$data['statuslabel']	= $this->getStatusLabel();
-
-			case 0:
-				$data['is_container']	= $this->isContainer();
-				$data['is_locked']		= $this->isLocked();
-				$data['isDraggable']	= $this->isDraggable();
-		}
-
-		return $data;
+		return $hasTabs;
 	}
 
 
@@ -750,6 +700,53 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 */
 	public function getAllSubTaskIDs($extraWhere = false) {
 		return TodoyuProjectTaskManager::getAllSubTaskIDs($this->getID(), $extraWhere);
+	}
+
+
+
+	/**
+	 * Load foreign data
+	 *
+	 */
+	protected function loadForeignData($infoLevel) {
+		if( $infoLevel >= 2 && !$this->has('project') ) {
+			$this->set('project', $this->getProject()->getTemplateData());
+			$this->set('person_create', $this->getPersonCreate()->getTemplateData());
+			$this->set('person_assigned', $this->getPersonAssigned()->getTemplateData());
+			$this->set('person_owner', $this->getPersonOwner()->getTemplateData());
+			$this->set('activity', $this->getActivity()->getTemplateData());
+			$this->set('fulltitle', $this->getFullTitle());
+			$this->set('company', $this->getProject()->getCompany()->getTemplateData());
+		}
+
+		if( $infoLevel >= 1 && !$this->has('statuskey') ) {
+			$this->set('statuskey', $this->getStatusKey());
+			$this->set('statuslabel', $this->getStatusLabel());
+		}
+	}
+
+
+
+	/**
+	 * Get data for template rendering
+	 *
+	 * @param	Integer		$infoLevel		Level of information (the higher the number, the more information is collected)
+	 * @return	Array
+	 */
+	public function getTemplateData($infoLevel = 0) {
+		$infoLevel	= intval($infoLevel);
+
+		if( $infoLevel > 0 ) {
+			$this->loadForeignData($infoLevel);
+		}
+
+		if( !$this->has('is_container') ) {
+			$this->set('is_container', $this->isContainer());
+			$this->set('is_locked', $this->isLocked());
+			$this->set('isDraggable', $this->isDraggable());
+		}
+
+		return parent::getTemplateData();
 	}
 
 }
