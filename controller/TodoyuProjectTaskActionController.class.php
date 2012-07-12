@@ -372,12 +372,12 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 	 */
 	public function cloneAction(array $params) {
 		$idTask			= intval($params['task']);
-		$cloneSubtasks	= intval($params['cloneSubtasks']) === 1;
+		$cloneSubTasks	= intval($params['cloneSubtasks']) === 1;
 
 		TodoyuProjectTaskRights::restrictSee($idTask);
 		TodoyuProjectTaskRights::restrictAddSubTask($idTask);
 
-		$idTaskNew		= TodoyuProjectTaskManager::cloneTask($idTask, $cloneSubtasks);
+		$idTaskNew	= TodoyuProjectTaskManager::cloneTask($idTask, $cloneSubTasks);
 
 		TodoyuHeader::sendTodoyuHeader('task', $idTaskNew);
 

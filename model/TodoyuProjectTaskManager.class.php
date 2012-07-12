@@ -253,8 +253,11 @@ class TodoyuProjectTaskManager {
 		$data['tasknumber'] = TodoyuProjectProjectManager::getNextTaskNumber($idProject);
 
 			// Create sorting flag
-		$idParent			= intval($data['id_parenttask']);
-		$data['sorting']	= self::getNextSortingPosition($idProject, $idParent);
+		$idParent		= intval($data['id_parenttask']);
+		$data['sorting']= self::getNextSortingPosition($idProject, $idParent);
+
+		$data	= TodoyuProjectTaskPresetManager::applyTaskPreset($data);
+		$data	= self::applyMissingRequiredFields($data);
 
 		$idTask	= TodoyuRecordManager::addRecord(self::TABLE, $data);
 
