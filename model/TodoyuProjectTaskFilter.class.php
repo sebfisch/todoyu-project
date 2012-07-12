@@ -429,31 +429,28 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array|Boolean				Query parts array / false if value is not empty title or task number
 	 */
 	public function Filter_tasknumberortitle($value, $negate = false) {
-		$taskNumber = trim($value);
-		$title		= trim($value);
+		$value		= trim($value);
 		$queryParts	= false;
 
-		$whereParts	= array();
+		if( $value !== '' ) {
+			$whereParts	= array();
 
-			// If task number was numeric and bigger than zero, check the task number
-		if( strpos($taskNumber, '.') === false && intval($taskNumber) > 0 ) {
-			$taskNumber	= intval($value);
-			$whereParts[] = self::TABLE . '.tasknumber = ' . $taskNumber;
-		} else if( strpos($taskNumber, '.') !== false ) {
-			list($project, $task) = explode('.', $taskNumber);
-			$whereParts[] = '(' . self::TABLE . '.id_project = ' . intval($project) . ' AND ' . self::TABLE . '.tasknumber = ' . intval($task) . ')';
-		}
+				// Task number
+			if( TodoyuProjectTaskManager::isTaskNumberFormat($value) ) {
+				list($idProject, $taskNumber) = TodoyuArray::intExplode('.', $value, true, true, 2);
+				$compare	= $negate ? '!=' : '=';
 
-			// If value was not empty, check matches in the title
-		if( $title !== '' ) {
-			$whereParts[] = self::TABLE . '.title LIKE \'%' . TodoyuSql::escape($title) . '%\'';
-		}
+				$whereParts[] = '(		ext_project_task.id_project ' . $compare . $idProject .
+								' AND	ext_project_task.tasknumber ' . $compare . $taskNumber . ')';
+			}
 
-		if( sizeof($whereParts) > 0 ) {
-			$where	= '(' . implode(' OR ', $whereParts) . ')';
+				// Title
+			$searchWords	= TodoyuArray::trimExplode(' ', $value, true);
+			$searchFields	= array('ext_project_task.title');
+			$whereParts[]	= TodoyuSql::buildLikeQueryPart($searchWords, $searchFields, $negate);
 
 			$queryParts	= array(
-				'where'	=> $where
+				'where'	=> '(' . implode(' OR ', $whereParts) . ')'
 			);
 		}
 

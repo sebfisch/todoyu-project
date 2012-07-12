@@ -1589,11 +1589,11 @@ class TodoyuProjectTaskManager {
 	 * @param	Boolean		$mustExist				TRUE = Has to be in database
 	 * @return	Boolean
 	 */
-	public static function isTasknumber($fullTaskNumber, $mustExist = false) {
+	public static function isTaskNumber($fullTaskNumber, $mustExist = false) {
 		$valid	= false;
 
 			// Check for point (.)
-		if( strpos($fullTaskNumber, '.') !== false ) {
+		if( self::isTaskNumberFormat($fullTaskNumber) ) {
 				// Split into project / task number
 			$parts	= TodoyuArray::intExplode('.', $fullTaskNumber, true, true);
 
@@ -1614,6 +1614,21 @@ class TodoyuProjectTaskManager {
 		}
 
 		return $valid;
+	}
+
+
+
+	/**
+	 * Check whether string looks like a task number
+	 *
+	 * @param	String		$taskNumber
+	 * @return	Boolean
+	 */
+	public static function isTaskNumberFormat($taskNumber) {
+		$taskNumber	= trim($taskNumber);
+		$pattern	= '/^\d+\.\d+$/';
+
+		return preg_match($pattern, $taskNumber) === 1;
 	}
 
 
@@ -2468,9 +2483,10 @@ class TodoyuProjectTaskManager {
 	 * @param	Boolean		$full
 	 * @return	String
 	 */
-	public function getLabel($idTask, $full = false) {
+	public static function getLabel($idTask, $full = false) {
 		return self::getTask($idTask)->getLabel($full);
 	}
+
 
 }
 

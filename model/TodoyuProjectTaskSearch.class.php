@@ -49,7 +49,7 @@ class TodoyuProjectTaskSearch implements TodoyuSearchEngineIf {
 
 			// If keyword is a task number, directly get the task
 		if( sizeof($find) === 1 ) {
-			if( TodoyuProjectTaskManager::isTasknumber($find[0], true) ) {
+			if( TodoyuProjectTaskManager::isTaskNumber($find[0], true) ) {
 				$idTask	= TodoyuProjectTaskManager::getTaskIDByTaskNumber($find[0]);
 
 				return array($idTask);
