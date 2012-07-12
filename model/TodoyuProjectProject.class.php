@@ -497,6 +497,18 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 
 
 	/**
+	 * Check whether currency person can add tasks to this project
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	Boolean
+	 */
+	public function canPersonAddTasks($idPerson = 0) {
+		return TodoyuProjectProjectManager::canPersonAddTasks($this->getID(), $idPerson);
+	}
+
+
+
+	/**
 	 * Check whether this project is editable
 	 *
 	 * @return	Boolean

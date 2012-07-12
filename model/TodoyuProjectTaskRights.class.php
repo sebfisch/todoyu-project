@@ -308,7 +308,11 @@ class TodoyuProjectTaskRights {
 		$idProject	= intval($idProject);
 		$project	= TodoyuProjectProjectManager::getProject($idProject);
 
-		if( in_array($project->getStatus(), Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing']) || $project->isLocked() ) {
+		if( $project->isLocked() ) {
+			return false;
+		}
+
+		if( in_array($project->getStatus(), Todoyu::$CONFIG['EXT']['project']['projectStatusDisallowChildrenEditing']) ) {
 			return false;
 		}
 

@@ -398,12 +398,10 @@ class TodoyuProjectProjectManager {
 		}
 
 			// Only add elements to project if allowed
-		if( TodoyuProjectTaskRights::isAddInProjectAllowed($idProject) ) {
-			if( Todoyu::allowed('project', 'addtask:addTaskInAllProjects') || (Todoyu::allowed('project', 'addtask:addTaskInOwnProjects') && TodoyuProjectProjectManager::isPersonAssigned($idProject)) ) {
-					// Add task
-				$allowed['addtask'] = $ownItems['addtask'];
-			}
+		if( $project->canPersonAddTasks() ) {
+			$allowed['addtask'] = $ownItems['addtask']; // Add task
 		}
+
 			// Add container
 		if( TodoyuProjectTaskRights::isAddInProjectAllowed($idProject, true) ) {
 			$allowed['addcontainer'] = $ownItems['addcontainer'];
@@ -1598,6 +1596,31 @@ class TodoyuProjectProjectManager {
 		}
 
 		return Todoyu::db()->getColumn($field, $tables, $where, $group, '', $limit, 'id');
+	}
+
+
+
+	/**
+	 * Check whether currency person can add tasks to this project
+	 *
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idPerson
+	 * @return	Boolean
+	 */
+	public static function canPersonAddTasks($idProject, $idPerson = 0) {
+		$idProject	= intval($idProject);
+		$idPerson	= Todoyu::personid($idPerson);
+
+		if( TodoyuProjectTaskRights::isAddInProjectAllowed($idProject) ) {
+			if( Todoyu::allowed('project', 'addtask:addTaskInAllProjects') ) {
+				return true;
+			}
+			if( Todoyu::allowed('project', 'addtask:addTaskInOwnProjects') && self::isPersonAssigned($idProject, $idPerson) ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }
