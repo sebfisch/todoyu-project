@@ -9,11 +9,14 @@ div.task,
 div.task .task:last-child {
 	border-bottom:1px solid $colorNeutral02;
 }
-div.task .subtasks {
-	border-top:1px solid $colorNeutral02;
-}
-div.task .subtasks .task:last-child {
-	border-bottom:none;
+div.task {
+	.subtasks {
+		border-top:1px solid $colorNeutral02;
+
+		.task:last-child {
+			border-bottom:none;
+		}
+	}
 }
 
 .task.marked,
@@ -25,85 +28,98 @@ div.task .subtasks .task:last-child {
 /* --------------------
 	Task header
    -------------------- */
-.task h3 {
-	display:block;
-	position:relative;
-	clear:both;
-	background-color:transparent;
-	height:22px;
-	padding:0;
-}
-.task.expanded > h3 {
-	background-color:$colorNeutral01;
-}
-.task.expanded > h3 .headLabel {
-	font-weight:bold;
+.task {
+	> h3 {
+		display:block;
+		position:relative;
+		clear:both;
+		background-color:transparent;
+		height:22px;
+		padding:0;
+
+		> .subtaskTrigger {
+			display:inline-block;
+			float:left;
+			height:22px;
+			width:13px;
+			margin-left:10px;
+
+			&.expandable {
+				cursor:pointer;
+				background:url(../../../../core/asset/img/tree-icons.png) no-repeat 1px -23px;
+
+				&.expanded {
+					background:url(../../../../core/asset/img/tree-icons.png) no-repeat 1px 7px;
+				}
+			}
+		}
+
+		.headLabel {
+			display:inline-block;
+			cursor:pointer;
+			min-width:350px;
+			height:22px;
+			padding:4px;
+
+			span {
+				display:inline-block;
+			}
+
+			.taskDate {
+				width:50px;
+			}
+
+			.projectName {
+				margin-left:5px;
+				max-width:360px;
+			}
+		}
+	}
+
+	&.expanded {
+		> h3 {
+			background-color:$colorNeutral01;
+
+			.headLabel {
+				font-weight:bold;
+			}
+		}
+	}
+
+	.statusColor {
+		position:absolute;
+		width:1px;
+		height:22px;
+		left:0;
+		top:0;
+		border-left-width:4px;
+		border-left-style:solid;
+	}
+
+	.dndHandle {
+		position:absolute;
+		width:12px;
+		height:22px;
+		left:-4px;
+		top:0;
+		//background-color:#FFFFFF; /* IE fix */
+		opacity:0.001; /* IE fix */
+
+		&:hover {
+			background-color:purple;
+		}
+	}
 }
 
-.task .statusColor {
-	position:absolute;
-	width:1px;
-	height:22px;
-	left:0;
-	top:0;
-	border-left-width:4px;
-	border-left-style:solid;
-}
-
-.task .dndHandle {
-	position:absolute;
-	width:12px;
-	height:22px;
-	left:-4px;
-	top:0;
-	//background-color:#FFFFFF; /* IE fix */
-	opacity:0.001; /* IE fix */
-}
-
-.task .dndHandle:hover {
-	background-color:purple;
-}
 
 
-.task > h3 > span.subtaskTrigger {
-	display:inline-block;
-	float:left;
-	height:22px;
-	width:13px;
-	margin-left:10px;
-}
-.task > h3 > span.subtaskTrigger.expandable {
-	cursor:pointer;
-	background:url(../../../../core/asset/img/tree-icons.png) no-repeat 1px -23px;
-}
 
-.task > h3 > span.subtaskTrigger.expandable.expanded {
-	background:url(../../../../core/asset/img/tree-icons.png) no-repeat 1px 7px;
-}
-
-.task h3 .headLabel {
-	display:inline-block;
-	cursor:pointer;
-	min-width:350px;
-	height:22px;
-	padding:4px;
-}
-
-.task h3 .headLabel span {
-	display:inline-block;
-}
-
-.task h3 .headLabel .taskDate {
-	width:50px;
-}
-
-.task h3 .headLabel .projectName {
-	margin-left:5px;
-	max-width:360px;
-}
-
-.taskListing .task .headLabel {
-	padding-left:15px;
+.taskListing {
+	.task {
+		.headLabel {
+			padding-left:15px;
+		}
+	}
 }
 
 
@@ -117,8 +133,8 @@ div.task .subtasks .task:last-child {
 	overflow:visible;
 	position:absolute;
 	z-index:100000;
-}
-	#dragDropMarker div {
+
+	div {
 		position:absolute;
 		left:-31px;
 		top:-12px;
@@ -126,27 +142,39 @@ div.task .subtasks .task:last-child {
 		width:30px;
 		background:url(../img/icons.png) no-repeat;
 	}
-		#dragDropMarker.in div {
-			top:1px;
-			background-position:0 -650px;
-		}
-		#dragDropMarker.after div {
-			background-position:0 -678px;
-		}
-		#dragDropMarker.before div {
-			top:-14px;
-			background-position:0 -710px;
-		}
+
+	&.in div {
+		top:1px;
+		background-position:0 -650px;
+	}
+
+	&.after div {
+		background-position:0 -678px;
+	}
+
+	&.before div {
+		top:-14px;
+		background-position:0 -710px;
+	}
+}
+
+
 
 div.task.dragDropTarget > h3 {
 	background-color:$colorCorporate02;
 }
-.task .dndHandle.draggable {
-	cursor:move;
+.task {
+	.dndHandle.draggable {
+		cursor:move;
+	}
 }
 
-.lostTasks .task .dndHandle.draggable {
-	cursor:default;
+.lostTasks {
+	.task {
+		.dndHandle.draggable {
+			cursor:default;
+		}
+	}
 }
 
 
@@ -154,41 +182,61 @@ div.task.dragDropTarget > h3 {
 	Task header (container)
    ------------------------ */
 
-.task.container > h3 {
-	background-color:$colorNeutral00;
-	border-right-width:4px;
-	border-right-style:solid;
-}
-.task.container > h3 > .statusColor {
-	border-left-width:8px;
+.task.container {
+	> h3 {
+		background-color:$colorNeutral00;
+		border-right-width:4px;
+		border-right-style:solid;
+
+		> .statusColor {
+			border-left-width:8px;
+		}
+	}
 }
 
-.task.container > .details {
 
-}
 /* end of styles only for container element */
 
-.task h3 .taskHeadExtras {
-	display:inline-block;
-	overflow:hidden;
-	padding:2px 3px 1px 3px;
-	position:absolute;
-	right:145px;
-	text-align:right;
-	top:2px;
-	width:100px;
+.task {
+	h3 {
+		.taskHeadExtras {
+			display:inline-block;
+			overflow:hidden;
+			padding:2px 3px 1px 3px;
+			position:absolute;
+			right:145px;
+			text-align:right;
+			top:2px;
+			width:100px;
+		}
+	}
 }
-.task.container > h3 > .taskHeadExtras {
-	right:141px;
-	border-right:0 solid $colorNeutral02;
+.task.container {
+	> h3 {
+		> .taskHeadExtras {
+			right:141px;
+			border-right:0 solid $colorNeutral02;
+		}
+	}
 }
-.task.expanded h3 .taskHeadExtras,
-.task.expanded h3 .taskIcons {
-	border-color:$colorNeutral03;
+.task.expanded {
+	h3 {
+		.taskHeadExtras,
+		.taskIcons {
+			border-color:$colorNeutral03;
+		}
+	}
 }
 
-.task h3 .taskHeadExtras span {
-	cursor:default;
+
+.task {
+	h3 {
+		.taskHeadExtras {
+			span {
+				cursor:default;
+			}
+		}
+	}
 }
 .headerLine .taskNumber,
 .task h3 .taskNumber {
@@ -196,23 +244,39 @@ div.task.dragDropTarget > h3 {
 	position:absolute;
 	width:45px;
 }
-.headerLine .taskNumber {
-	right:92px;
+.headerLine {
+	.taskNumber {
+		right:92px;
+	}
 }
-.task h3 .taskNumber {
-	top:4px;
-	right:93px;
-	cursor:text;
+.task {
+	h3 {
+		.taskNumber {
+			top:4px;
+			right:93px;
+			cursor:text;
+		}
+	}
 }
-.task.container > h3 > .taskNumber {
-	right:89px;
+.task.container {
+	> h3 {
+		> .taskNumber {
+			right:89px;
+		}
+	}
 }
 
-.task h3 .headLabel a.title {
-	display:block;
-	width:420px;
-	padding:2px 0;
-	margin-top:-2px;
+.task {
+	h3 {
+		.headLabel {
+			a.title {
+				display:block;
+				width:420px;
+				padding:2px 0;
+				margin-top:-2px;
+			}
+		}
+	}
 }
 
 
@@ -220,184 +284,207 @@ div.task.dragDropTarget > h3 {
 /* ----------------------
 	Task Icons
    ---------------------- */
-.task span.taskIcons {
-	position:absolute;
-	right:0;
-	height:16px;
-	width:75px;
-	overflow:hidden;
-	margin-top:2px;
-	padding:0 3px 1px 3px;
-	border-left:1px solid $colorNeutral02;
+.task {
+	span.taskIcons {
+		position:absolute;
+		right:0;
+		height:16px;
+		width:75px;
+		overflow:hidden;
+		margin-top:2px;
+		padding:0 3px 1px 3px;
+		border-left:1px solid $colorNeutral02;
+	}
 }
-.task.container > h3 > .taskIcons {
-	width:71px;
-}
-
-.task span.taskIconsOverflow {
-	background:url(../img/icons.png) no-repeat right -527px;
-}
-
-.task span.taskIconsOverflow:hover {
-	width:auto;
-	position:absolute;
-	background:white;
-	z-index:1000;
+.task.container {
+	> h3 {
+		> .taskIcons {
+			width:71px;
+		}
+	}
 }
 
-.expanded span.taskIconsOverflow:hover {
-	background:$colorCorporate02;
+.task {
+	span.taskIconsOverflow {
+		background:url(../img/icons.png) no-repeat right -527px;
+
+		&:hover {
+			width:auto;
+			position:absolute;
+			background:white;
+			z-index:1000;
+		}
+	}
 }
 
-.task span.taskIcons span {
-	float:left;
-	clear:none;
-	width:14px;
-	height:16px;
-	margin:0 0 0 3px;
+
+.expanded {
+	span.taskIconsOverflow:hover {
+		background:$colorCorporate02;
+	}
 }
 
-.task span.taskIcons .taskcontainer {
-	background:url(../img/icons.png) no-repeat 0 -87px;
-}
+.task{
+	span.taskIcons {
+		span {
+			float:left;
+			clear:none;
+			width:14px;
+			height:16px;
+			margin:0 0 0 3px;
+		}
 
-.task span.taskIcons .isPublic {
-	background:url(../../../../core/asset/img/icons.png) no-repeat 1px -1108px;
-}
+		.taskcontainer {
+			background:url(../img/icons.png) no-repeat 0 -87px;
+		}
 
-.task span.taskIcons .notAcknowledged {
-	width:10px;
-	cursor:pointer;
-	background:transparent url('../../../../core/asset/img/icons.png') no-repeat 0 -1288px;
-}
+		.isPublic {
+			background:url(../../../../core/asset/img/icons.png) no-repeat 1px -1108px;
+		}
 
-.task span.taskIcons .dateover {
-	width:14px;
-	background:url(../img/icons.png) no-repeat 0 -328px;
-}
+		.notAcknowledged {
+			width:10px;
+			cursor:pointer;
+			background:transparent url('../../../../core/asset/img/icons.png') no-repeat 0 -1288px;
+		}
 
-.task span.taskIcons .locked {
-	width:14px;
-	background:url(../img/icons.png) no-repeat 0 -480px;
-}
+		.dateover {
+			width:14px;
+			background:url(../img/icons.png) no-repeat 0 -328px;
+		}
 
+		.locked {
+			width:14px;
+			background:url(../img/icons.png) no-repeat 0 -480px;
+		}
+	}
+}
 
 
 /* ------------------
 	Task details
    ------------------ */
-.task > .details {
-	border-left-width:1px;
-	border-left-style:solid;
+.task {
+	> .details {
+		border-left-width:1px;
+		border-left-style:solid;
+	}
 }
 
-	.tasks .task .details .data {
-		padding:7px 0;
-	}
-		.tasks .task .details .data .task-inline-edit {
-			margin:-7px 0;
+.tasks {
+	.task {
+		.details {
+			.data {
+				padding:7px 0;
+
+				.task-inline-edit {
+					margin:-7px 0;
+				}
+
+				.description {
+					float:left;
+					width:556px;
+					max-width:45%;
+					padding:0 0 0 27px;
+
+					* {
+						line-height:15px;
+						white-space:normal;
+						word-wrap:break-word;
+					}
+				}
+
+				.properties {
+					width:536px;
+					max-width:45%;
+					float:right;
+
+					* {
+						font-weight:normal;
+					}
+
+					dt {
+						float:left;
+						clear:left;
+						padding:2px 0;
+						width:50%;
+					}
+					dd {
+						float:left;
+						padding:2px 0;
+						width:50%;
+
+						span.icon {
+							display:none;
+							width:14px;
+							height:14px;
+						}
+					}
+
+					.unread .icon {
+						background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1288px;
+						display:block !important;
+						margin-left:-14px;
+					}
+					.acknowledged .icon {
+						background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1312px;
+						display:block !important;
+						margin-left:-14px;
+					}
+
+					.sectionStart {
+						padding-top:10px;
+						margin-top:2px;
+						border-top:1px solid $colorNeutral01;
+					}
+				}
+			}
 		}
-
-		/* Description */
-	.tasks .task .details .data div.left {
-		float:left;
-		width:556px;
-		max-width:45%;
-		padding:0 0 0 27px;
 	}
+}
 
-	.tasks .task .details .description * {
-		line-height:15px;
-		white-space:normal;
-		word-wrap:break-word;
-	}
 
-		/* properties */
-	.tasks .task .details .data .right {
-		width:536px;
-		max-width:45%;
-		float:right;
-	}
-
-	.tasks .task .details .properties dt {
-		float:left;
-		padding:2px 0;
-		width:50%;
-	}
-
-	.tasks .task .details .properties dd {
-		float:left;
-		padding:2px 0;
-		width:50%;
-	}
-
-	.tasks .task .details .properties dd span.icon {
-		display:none;
-		width:14px;
-		height:14px;
-	}
-
-		.task .properties .unread .icon {
-			background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1288px;
-			display:block !important;
-			margin-left:-14px;
+.task {
+	.formTask {
+		fieldset.basic,
+		fieldset.details {
+			padding-top:15px;
 		}
-
-		.task dd.acknowledged span.icon {
-			background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1312px;
-			display:block !important;
-			margin-left:-14px;
-		}
-
-	.task > .details .data > .properties * {
-		font-weight:normal;
 	}
-
-	div.task div.details div div.right dl dt.even,
-	div.task div.details div div.right dl dd.even {
-		background-color:$colorNeutral00;
-	}
-
-	.task .details .right .sectionStart {
-		padding-top:10px;
-		margin-top:2px;
-		border-top:1px solid $colorNeutral01;
-	}
-
-	.tasks .task .details .properties dt {
-		clear:left;
-	}
-
-	.task fieldset.basic,
-	.task fieldset.details {
-		padding-top:15px;
-	}
-
+}
 
 /* -----------------
 	Task colors
    ---------------- */
 
 	/* sub tasks */
-.tasks .subtasks {
-	padding-left:10px;
+.tasks {
+	.subtasks {
+		padding-left:10px;
+	}
 }
 
-.task-inline-edit .type-date input {
-	width:50px;
+.task-inline-edit {
+	.type-date input {
+		width:50px;
+	}
 }
 
-.taskDetails .comment p {
-	padding:5px;
+.taskDetails {
+	.comment p {
+		padding:5px;
+	}
 }
 
 .taskcontainer {
 	background:url('../img/icons.png') no-repeat -5px -75px;
 }
 
-.task-inline-edit .bottom {
-	float:left;
-	clear:both;
+.task-inline-edit {
+	.bottom {
+		float:left;
+		clear:both;
+	}
 }
 
 #taskList,
@@ -405,8 +492,10 @@ div.task.dragDropTarget > h3 {
 	z-index:1;
 }
 
-#taskList h1.headerProjTermine {
-	margin-top:20px;
+#taskList {
+	h1.headerProjTermine {
+		margin-top:20px;
+	}
 }
 
 
@@ -414,18 +503,24 @@ div.task.dragDropTarget > h3 {
 /* ----------------------------
 	Additional task icons
    ---------------------------- */
-.task-status-container h3 a,
-.task-status-container div.taskdetails {
-	border-left-color:$colorNeutral09;
-	background-color:#fbfbf4;
-	/*background:url(../../../../core/asset/img/bgs/taskcontainer.png);*/
+.task-status-container {
+	h3 a,
+	div.taskdetails {
+		border-left-color:$colorNeutral09;
+		background-color:#fbfbf4;
+		/*background:url(../../../../core/asset/img/bgs/taskcontainer.png);*/
+	}
 }
 
 
 /* ---------------------------
 	Task Search Modification
    --------------------------- */
-#action-panel .button.exportCsv .icon {
-	background:transparent url('../../../../core/asset/img/icons.png') 6px -1598px no-repeat;
-	width:24px;
+#action-panel {
+	.button.exportCsv {
+		.icon {
+			background:transparent url('../../../../core/asset/img/icons.png') 6px -1598px no-repeat;
+			width:24px;
+		}
+	}
 }
