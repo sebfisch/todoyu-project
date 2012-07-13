@@ -236,25 +236,6 @@ class TodoyuProjectProjectActionController extends TodoyuActionController {
 		TodoyuProjectPreferences::saveActiveProjectDetailTab($idProject, $tabKey);
 	}
 
-
-
-	/**
-	 * Get matching person records
-	 *
-	 * @param	Array	$params
-	 * @return	String
-	 */
-	public function projectListAction(array $params) {
-		$search			= trim($params['search']);
-		$searchWords	= TodoyuArray::trimExplode(' ', $search, true);
-		$ignoreIDs		= TodoyuArray::intExplode(',', $params['ignore']);
-		$projects		= TodoyuProjectProjectManager::getMatchingProjects($searchWords, $ignoreIDs);
-
-		TodoyuHeader::sendTypeJSON();
-
-		return json_encode($projects);
-	}
-
 }
 
 ?>

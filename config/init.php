@@ -57,7 +57,7 @@ TodoyuSearchActionPanelManager::addExport('project', 'csvexport', 'TodoyuProject
 	Form elements
    ----------------------- */
 	// Records selector: projects
-TodoyuFormManager::addFieldTypeRecords('recordsProject', 'TodoyuProjectFormElement_RecordsProject');
+TodoyuFormRecordsManager::addType('project', 'TodoyuProjectFormElement_RecordsProject', 'TodoyuProjectProjectManager::getMatchingProjects');
 
 
 /* -----------------------

@@ -1530,7 +1530,7 @@ class TodoyuProjectProjectManager {
 	 * @param	Array		$ignoreIDs
 	 * @return	Array
 	 */
-	public static function getMatchingProjects(array $searchWords, array $ignoreIDs = array()) {
+	public static function getMatchingProjects(array $searchWords, array $ignoreIDs = array(), array $params = array(), $type = null) {
 		$projectIDs		= self::searchProjects($searchWords, $ignoreIDs, array(), 30);
 		$projectItems	= array();
 

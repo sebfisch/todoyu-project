@@ -27,10 +27,14 @@
 class TodoyuProjectFormElement_RecordsProject extends TodoyuFormElement_Records {
 
 	/**
-	 * Init the object with special person config
+	 * Initialize
+	 *
+	 * @param	String				$name
+	 * @param	TodoyuFormFieldset	$fieldset
+	 * @param	Array				$config
 	 */
-	protected function init() {
-		$this->initRecords('project', 'project', 'project', 'projectList');
+	public function __construct($name, TodoyuFormFieldset $fieldset, array $config = array()) {
+		parent::__construct('project', $name, $fieldset, $config);
 	}
 
 
@@ -46,8 +50,9 @@ class TodoyuProjectFormElement_RecordsProject extends TodoyuFormElement_Records 
 
 		foreach($projectIDs as $idProject) {
 			$records[] = array(
-				'id'	=> $idProject,
-				'label'	=> TodoyuProjectProjectManager::getLabel($idProject)
+				'id'		=> $idProject,
+				'label'		=> TodoyuProjectProjectManager::getLabel($idProject),
+				'className'	=> 'project'
 			);
 		}
 
