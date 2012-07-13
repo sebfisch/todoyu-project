@@ -57,7 +57,6 @@ div.task {
 		.headLabel {
 			display:inline-block;
 			cursor:pointer;
-			min-width:350px;
 			height:22px;
 			padding:4px;
 
@@ -71,7 +70,6 @@ div.task {
 
 			.projectName {
 				margin-left:5px;
-				max-width:360px;
 			}
 		}
 	}
@@ -111,13 +109,50 @@ div.task {
 	}
 }
 
-
-
-
-.taskListing {
+/* -------------------------
+	Project task tree
+   ----------------------- */
+.taskTree {
 	.task {
 		.headLabel {
-			padding-left:15px;
+			width: 650px;
+
+			.projectName {
+				max-width: 550px;
+			}
+		}
+	}
+}
+
+/* -------------------------
+	Flat task listing
+   ----------------------- */
+.taskListing {
+	.headerLine .taskDate,
+	.task .headLabel .taskDate {
+		width:49px;
+	}
+
+	.headerLine .customer,
+	.task .headLabel .customer {
+		width:100px;
+	}
+
+	.headerLine .projectName,
+	.task .headLabel .projectName {
+		width:500px;
+	}
+
+	.task {
+		.headLabel {
+			padding-left: 15px;
+			min-width: 700px;
+
+			.customer,
+			.projectName,
+			.taskNumber {
+				margin:0 0 0 5px;
+			}
 		}
 	}
 }

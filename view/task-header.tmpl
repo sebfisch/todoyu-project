@@ -19,7 +19,7 @@
 
 	<span class="taskHeadExtras">
 		{foreach $taskHeaderExtras headerExtra}
-			<span id="task-{$task.id}-headerextra-{$headerExtra.key}" class="{$headerExtra.key}">
+			<span id="task-{$task.id}-headerextra-{$headerExtra.key}" class="{$headerExtra.key}" {if $headerExtra.title}title="{htmlencode $headerExtra.title}"{/if}>
 				{$headerExtra.content}
 			</span>
 		{/foreach}
