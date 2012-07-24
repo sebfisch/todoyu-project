@@ -94,19 +94,19 @@ Todoyu::$CONFIG['EXT']['project'] = array(
 		)
 	),
 	'projectStatusDisallowChildrenEditing' => array( // Non-editable project status (tasks/containers in project cannot be modified)
-		STATUS_DONE,
-		STATUS_CLEARED
+		STATUS_CLEARED,
+		STATUS_DONE
 	),
 	'allowedCopiedStatus' => array( // Copied and cloned tasks can have this status. Fallback to default if not
-		STATUS_PLANNING,
 		STATUS_OPEN,
+		STATUS_PLANNING,
 		STATUS_PROGRESS
 	),
 	'taskStatusTimeExceedingRelevant' => array( // In which task status is time exceeding relevant?
-		STATUS_PLANNING,
-		STATUS_OPEN,
-		STATUS_PROGRESS,
 		STATUS_CONFIRM,
+		STATUS_OPEN,
+		STATUS_PLANNING,
+		STATUS_PROGRESS,
 		STATUS_REJECTED,
 		STATUS_WAITING
 	),

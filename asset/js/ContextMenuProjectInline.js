@@ -28,15 +28,12 @@
  */
 Todoyu.Ext.project.ContextMenuProjectInline = {
 
-	/**
-	 *
-	 */
 	type: 'ProjectInline',
 
 
 
 	/**
-	 *
+	 * @method	attach
 	 */
 	attach: function() {
 		var selector	= '.contextmenuProjectInline';
@@ -52,7 +49,7 @@ Todoyu.Ext.project.ContextMenuProjectInline = {
 
 
 	/**
-	 *
+	 * @method	detach
 	 * @param	{String}		selector
 	 */
 	detach: function(selector) {
@@ -68,7 +65,9 @@ Todoyu.Ext.project.ContextMenuProjectInline = {
 
 
 	/**
-	 *
+	 * @method	getID
+	 * @param	{Element}	element
+	 * @param	{Event}		event
 	 * @return {String}
 	 */
 	getID: function(element, event) {
@@ -77,11 +76,11 @@ Todoyu.Ext.project.ContextMenuProjectInline = {
 
 
 	/**
-	 *
+	 * @method	onContextMenu
 	 * @param	{String}		type
 	 * @param	{String}		elementKey
-	 * @param	{Integer}		left
-	 * @param	{Integer}		top
+	 * @param	{Number}		left
+	 * @param	{Number}		top
 	 */
 	onContextMenu: function(type, elementKey, left, top) {
 		if( type == this.type) {

@@ -21,16 +21,21 @@ h1.extIconProject .title {
 	/* Projects */
 #navi-main-list-project li.item a,
 #navi-main-list-search li.itemSearchProject a {
-	background-image:url(../img/icons.png) !important;
-	background-repeat:no-repeat;
-	background-position:6px -446px;
+	background: {
+		image:url(../img/icons.png) !important;
+		repeat:no-repeat;
+		position:6px -446px;
+	}
+
 }
 
   /* Search */
 #navi-main-list-search li.itemSearchTask a {
-	background-image:url(../img/icons.png) !important;
-	background-repeat:no-repeat;
-	background-position:6px 6px;
+	background: {
+		image:url(../img/icons.png) !important;
+		repeat:no-repeat;
+		position:6px 6px;
+	}
 }
 
 
@@ -183,12 +188,12 @@ h1.extIconProject .title {
 }
 
 	.noProjectSelected .option {
-		padding:10px;
 		background-color:$colorNeutral01;
 		border:1px solid $colorNeutral05;
-		margin-bottom:10px;
-		font-size:14px;
 		cursor:pointer;
+		font-size:14px;
+		margin-bottom:10px;
+		padding:10px;
 	}
 
 	.noProjectSelected p.message {

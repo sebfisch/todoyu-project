@@ -32,13 +32,15 @@ h1.headerLine span.projectIcons {
 }
 
 .tasks .lostTasks h2 {
+	background-color:$colorNeutral01;
+	font: {
+		size:11px;
+		weight:normal;
+	}
+	letter-spacing:0.1em;
 	margin-bottom:1px;
 	padding:5px 5px 5px 20px;
-	font-size:11px;
 	text-transform:uppercase;
-	font-weight:normal;
-	letter-spacing:0.1em;
-	background-color:$colorNeutral01;
 }
 
 
@@ -187,118 +189,118 @@ $projectDetailBorder:1px solid $colorNeutral03;
 		}
 
 		& .projectDetailLeft {
-			float: left;
-			position: relative;
-			right: 816px;
-			top: 1px;
-			margin-top: -1px;
-			background-color: $white;
+			background-color:$white;
+			float:left;
+			margin-top:-1px;
+			position:relative;
+			right:816px;
+			top:1px;
 		}
 
 		& .projectDetailRight {
-			float: left;
-			position: relative;
-			overflow: hidden;
-			background-color: $colorNeutral01;
+			float:left;
+			position:relative;
+			overflow:hidden;
+			background-color:$colorNeutral01;
 		}
 
 		& .ajaxLoader {
-			position: absolute;
-			width: 200px;
-			height: 25px;
-			top: 150px;
-			left: 400px;
-			font-size: 25px;
-			animation:  pulse 1s  ease-in-out infinite;
-			-moz-animation: pulse 1s  ease-in-out infinite;
-			-webkit-animation: pulse 1s  ease-in-out infinite;
-			-ms-animation: pulse 1s  ease-in-out infinite;
-			-o-animation: pulse 1s  ease-in-out infinite;
+			position:absolute;
+			width:200px;
+			height:25px;
+			top:150px;
+			left:400px;
+			font-size:25px;
+			animation:pulse 1s  ease-in-out infinite;
+			-moz-animation:pulse 1s  ease-in-out infinite;
+			-webkit-animation:pulse 1s  ease-in-out infinite;
+			-ms-animation:pulse 1s  ease-in-out infinite;
+			-o-animation:pulse 1s  ease-in-out infinite;
 		}
 	}
 
 	& .infoBoxOuter {
-		height: 100%;
-		padding: 0;
-		background-color: $white;
+		background-color:$white;
+		height:100%;
+		padding:0;
 	}
 
 	& .projectDetailsContent {
-		float: left;
-		padding: 3px;
-		width: 812px;
-		max-width: 812px;
-		display: block;
+		display:block;
+		float:left;
+		left:816px;
+		max-width:812px;
+		padding:3px;
 		position:relative;
-		left: 816px;
+		width:812px;
 	}
 
 	& .projectDetailsTabs {
-		float: left;
-		width: 100px;
-		height: 100%;
-		position: relative;
-		left: 818px;
+		float:left;
+		height:100%;
+		left:818px;
+		position:relative;
+		width:100px;
 
 		& .gap {
-			height: 30px;
-			border-radius: 0 3px 3px 0;
+			border-radius:0 3px 3px 0;
+			height:30px;
 		}
 
 		& .icon {
-			height: 32px;
-			width: 32px;
-			float: none;
-			margin-left: 6px;
+			float:none;
+			height:32px;
+			margin-left:6px;
+			width:32px;
 		}
 
 		& .menu {
-			height: 50px;
-			border-radius: 0 0 0 3px;
-			position: relative;
-			left: 1px;
-			margin-left: -1px;
-			background-color: $colorNeutral01;
-			box-shadow: -1px 4px 10px -10px $black;
-			-webkit-box-shadow: -1px 4px 18px -10px $black;
-			cursor: pointer;
+			height:50px;
+			border-radius:0 0 0 3px;
+			position:relative;
+			left:1px;
+			margin-left:-1px;
+			background-color:$colorNeutral01;
+			box-shadow:-1px 4px 10px -10px $black;
+			-webkit-box-shadow:-1px 4px 18px -10px $black;
+			cursor:pointer;
 
 			& .icon {
-				background: url(../img/projectheader.png) no-repeat -7px -186px;
+				background:url(../img/projectheader.png) no-repeat -7px -186px;
 			}
 
 			& .label {
-				padding-left: 6px;
+				padding-left:6px;
 			}
 		}
 
 		& .tabs {
 
 			& .projectDetailsTab {
-				border: $projectDetailBorder;
-				border-radius: 3px 0 0 3px;
-				height: 42px;
-				background-color: $white;
-				cursor: pointer;
-				padding: 4px 0;
-				margin: 3px 0;
-				box-shadow: -11px 0 22px -17px $black inset;
-				-webkit-box-shadow: -11px 0 22px -17px $black inset;
-				border-width: 1px 0 1px 1px;
+				border:$projectDetailBorder;
+				border-radius:3px 0 0 3px;
+				height:42px;
+				background-color:$white;
+				cursor:pointer;
+				padding:4px 0;
+				margin:3px 0;
+				box-shadow:-11px 0 22px -17px $black inset;
+				-webkit-box-shadow:-11px 0 22px -17px $black inset;
+				border-width:1px 0 1px 1px;
 
 				&.active {
-					height: 44px;
-					background-color: $colorNeutral01;
-					position: relative;
-					left: 1px;
-					margin-left: -1px;
-					box-shadow: -1px 4px 10px -10px $black;
-					-webkit-box-shadow: -1px 4px 18px -10px $black;
-					border: none;
+					background-color:$colorNeutral01;
+					border:none;
+					box-shadow:-1px 4px 10px -10px $black;
+					-webkit-box-shadow:-1px 4px 18px -10px $black;
+					height:44px;
+					left:1px;
+					margin-left:-1px;
+					position:relative;
 				}
 
 				& .label {
-					padding-left: 6px;
+					padding-left:6px;
 				}
 
 			}
@@ -334,4 +336,3 @@ $projectDetailBorder:1px solid $colorNeutral03;
 	from {opacity: 0;}
 	to {opacity: 0.50;}
 }
-
