@@ -103,6 +103,7 @@
 					<restrict>
 						<allow ext="project" right="edittaskdetail:editPersonOwner" />
 					</restrict>
+                    <required />
 				</field>
 
 				<field type="textAC" name="id_parenttask">
