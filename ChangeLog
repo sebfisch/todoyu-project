@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.4.0 - not released yet
+	* Bugfix: Check for create-right on status done in quicktask
 	* Bugfix: Replace project-details on edit
 	* Bugfix: Fixed JS-Error on task deletion
 	* Bugfix: Decode html-entities in title - tag

@@ -47,6 +47,9 @@
 
 				<field type="checkbox" name="task_done">
 					<label>project.task.taskDone</label>
+					<restrict>
+						<allow ext="project" right="addtask:done:create" />
+					</restrict>
 				</field>
 
 			</elements>
