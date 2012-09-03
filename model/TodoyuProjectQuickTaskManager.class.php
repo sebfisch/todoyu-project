@@ -109,6 +109,11 @@ class TodoyuProjectQuickTaskManager {
 		$formData['id']			= $idTask;
 		$formData['date_start']	= NOW;
 
+			// Assign to current user. If not allowed, use fallback later
+		if( Todoyu::allowed('project', 'edittaskdetail:editPersonAssigned') ) {
+			$formData['id_person_assigned']	= Todoyu::personid();
+		}
+
 		$durationInDays	= Todoyu::$CONFIG['EXT']['project']['quicktask']['durationDays'];
 
 			// Try to get data from task preset
