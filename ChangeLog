@@ -1,5 +1,8 @@
 todoyu project extension changelog
 
+project 1.4.1 - not released yet
+	* Added: New panelwidget projectSelector - allows finding project via title fulltext and customer name, handles virtual project groups
+
 project 1.4.0 - not released yet
 	* Bugfix: Check for create-right on status done in quicktask
 	* Bugfix: Replace project-details on edit

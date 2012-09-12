@@ -60,6 +60,24 @@ class TodoyuProjectManager {
 		TodoyuFileManager::includeFile('ext/project/config/filters-contact.php', true);
 	}
 
+
+
+	/**
+	 * Get panel widget project selector
+	 * Try to get a custom implementation for the current area
+	 *
+	 * @param	String		$areaExtKey		Extension key of current area
+	 * @return	TodoyuProjectPanelWidgetProjectSelector	Or an extension of this class
+	 */
+	public static function getPanelWidgetProjectSelector($areaExtKey) {
+		$widgetName	= 'ProjectSelector';
+
+		$overrideExists	= TodoyuPanelWidgetManager::exists(AREA, $areaExtKey, $widgetName);
+		$extKey			= $overrideExists ? $areaExtKey : 'project';
+
+		return TodoyuPanelWidgetManager::getPanelWidget($extKey, $widgetName);
+	}
+
 }
 
 ?>
