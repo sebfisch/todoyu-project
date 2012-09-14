@@ -123,7 +123,7 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 	 * @param	{Boolean}	addRemoveIcons
 	 */
 	addItemsIcons: function(addDeleteGroupIcons, addAddIcons, addRemoveIcons) {
-			// Add (+) select icon to all selectable virtual group, group and person items
+			// Add (+) select icon to all selectable virtual group, group and project items
 		if( addAddIcons ) {
 			this.addAddIconsToList();
 		}
@@ -209,7 +209,7 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 
 
 	/**
-	 * Get first highlighted (if any) item from persons selection
+	 * Get first highlighted (if any) item from projets selection
 	 *
 	 * @method	getAllSelectedAndHighlightedItems
 	 * @return	{Element[]}
@@ -291,19 +291,19 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 
 
 	/**
-	 * Sort selection items (virtual groups, groups then persons by alphabet)
+	 * Sort selection items (virtual groups, groups then projects by alphabet)
 	 *
 	 * @method	sortSelect
 	 * @param	{Element[]}		nodes
 	 */
 	sortNodes: function(nodes) {
 			// Collect nodes grouped by type
-		var hashPersons			= {};
+		var hashProjects			= {};
 		var hashVirtualGroups	= {};
 		var hashGroups			= {};
 
 		nodes.each(function(item) {
-			var hash = item.hasClassName('person') ? hashPersons : ( item.hasClassName('group') ? hashGroups : hashVirtualGroups);
+			var hash = item.hasClassName('project') ? hashProjects : ( item.hasClassName('group') ? hashGroups : hashVirtualGroups);
 			var label	= item.down('a').innerHTML.stripTags().strip();
 			hash[label] = item;
 		});
@@ -313,7 +313,7 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 
 		this.insertSelectionNodesSorted(hashVirtualGroups);
 		this.insertSelectionNodesSorted(hashGroups);
-		this.insertSelectionNodesSorted(hashPersons);
+		this.insertSelectionNodesSorted(hashProjects);
 	},
 
 
@@ -403,9 +403,9 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 	 */
 	onVirtualGroupDeleted: function(idVirtualGroup, response) {
 		if( response.hasTodoyuError() ) {
-			Todoyu.notifySuccess('[LLL:contact.panelwidget-projectselector.deletegroup.error]');
+			Todoyu.notifySuccess('[LLL:project.panelwidget-projectselector.deletegroup.error]');
 		} else {
-			Todoyu.notifySuccess('[LLL:contact.panelwidget-projectselector.deletegroup.success]');
+			Todoyu.notifySuccess('[LLL:project.panelwidget-projectselector.deletegroup.success]');
 
 				// Remove item from widget items (results or selection), store updated selection and refresh widget
 			var item	= $('panelwidget-projectselector-item-v' + idVirtualGroup);
@@ -462,7 +462,7 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 	 */
 	addMessageIfSelectionEmpty: function() {
 		if( this.isSelectionEmpty() ) {
-			this.selection.update('<p>[LLL:contact.panelwidget-projectselector.selection.empty]</p>');
+			this.selection.update('<p>[LLL:project.panelwidget-projectselector.selection.empty]</p>');
 		}
 	},
 
@@ -555,7 +555,7 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 	 */
 	onListUpdated: function($super, response) {
 		$super(response);
-		Todoyu.Hook.exec('contact.projectselector.updated');
+		Todoyu.Hook.exec('project.projectselector.updated');
 	},
 
 	
@@ -635,7 +635,7 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 			if( !item.down('span.deletegroup') ) {
 				item.insert(new Element('span', {
 					'class':	'deletegroup',
-					title:		'[LLL:contact.panelwidget-projectselector.icon.deletegroup]'
+					title:		'[LLL:project.panelwidget-projectselector.icon.deletegroup]'
 				}));
 			}
 		});
@@ -652,7 +652,7 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 		this.list.select('li a').each(function(item){
 			item.insert(new Element('span', {
 				'class':	'add',
-				title:		'[LLL:contact.panelwidget-projectselector.icon.additem]'
+				title:		'[LLL:project.panelwidget-projectselector.icon.additem]'
 			}));
 		});
 	},
@@ -670,7 +670,7 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 
 		items.each(function(item){
 			var anchor = item.down('a');
-			this.insertItemSpan(anchor, 'remove', '[LLL:contact.panelwidget-projectselector.icon.removefromselection]');
+			this.insertItemSpan(anchor, 'remove', '[LLL:project.panelwidget-projectselector.icon.removefromselection]');
 		}, this);
 	},
 
@@ -687,7 +687,7 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 
 		items.each(function(item){
 			var anchor = item.down('a');
-			this.insertItemSpan(anchor, 'deletegroup', '[LLL:contact.panelwidget-projectselector.icon.deletegroup]');
+			this.insertItemSpan(anchor, 'deletegroup', '[LLL:project.panelwidget-projectselector.icon.deletegroup]');
 		}, this);
 	},
 
@@ -734,12 +734,12 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 
 
 	/**
-	 * Get all selected elements (persons). Gets also group and other types
+	 * Get all selected elements (projects). Gets also group and other types
 	 *
-	 * @method	getSelectedPersons
+	 * @method	getSelectedProjects
 	 * @return	{Array}
 	 */
-	getSelectedPersons: function() {
+	getSelectedProjects: function() {
 		return this.getSelectedItems().findAll(function(item){
 			return item.substr(0, 1) !== '-';
 		});
@@ -748,18 +748,18 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 
 
 	/**
-	 * Save persons and groups as "virtual" group preference
+	 * Save projects and groups as "virtual" group preference
 	 *
 	 * @method	onSaveGroupButtonClick
 	 */
 	onSaveGroupButtonClick: function() {
-			// No persons selected
+			// No projects selected
 		if( !this.isAnyItemSelected(true) ) {
-			alert('LLL:contact.panelwidget-projectselector.selection.empty');
+			alert('LLL:project.panelwidget-projectselector.selection.empty');
 			return;
 		}
 
-		var title 	= prompt('[LLL:contact.panelwidget-projectselector.newGroupLabel.prompt]', '[LLL:contact.panelwidget-projectselector.newGroupLabel.prompt.preset]');
+		var title 	= prompt('[LLL:project.panelwidget-projectselector.newGroupLabel.prompt]', '[LLL:project.panelwidget-projectselector.newGroupLabel.prompt.preset]');
 
 			// Canceled saving
 		if( title === null ) {
@@ -767,12 +767,12 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 		}
 			// No name entered
 		if( title.strip() === '' ) {
-			alert('[LLL:contact.panelwidget-projectselector.newGroupLabel.error.saveEmptyName]');
+			alert('[LLL:project.panelwidget-projectselector.newGroupLabel.error.saveEmptyName]');
 			return;
 		}
 
-			// Save group items (persons and groups, as type-prefixed IDs e.g. g1 g2 g3 p1 p2 p3...)
-		var url		= Todoyu.getUrl('contact', 'panelwidgetprojectselector');
+			// Save group items (projects and groups, as type-prefixed IDs e.g. g1 g2 g3 p1 p2 p3...)
+		var url		= Todoyu.getUrl('project', 'panelwidgetprojectselector');
 		var options	= {
 			parameters: {
 				action:	'saveGroup',
@@ -797,7 +797,7 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 		var idPreference	= response.getTodoyuHeader('idPreference');
 
 		if( idPreference != 0 ) {
-			Todoyu.notifySuccess('[LLL:contact.panelwidget-projectselector.newGroupLabel.saved.success]');
+			Todoyu.notifySuccess('[LLL:project.panelwidget-projectselector.newGroupLabel.saved.success]');
 
 				// Render and insert selection item
 			var item	= new Element('li', {

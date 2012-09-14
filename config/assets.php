@@ -169,6 +169,11 @@ Todoyu::$CONFIG['EXT']['project']['assets'] = array(
 			'position'	=> 110
 		),
 		array(
+			'file'		=> 'ext/project/asset/css/panelwidget-projectselector.scss',
+			'media'		=> 'all',
+			'position'	=> 110
+		),
+		array(
 			'file' => 'ext/project/asset/css/panelwidget-statusfilter.scss',
 			'position' => 120,
 		),

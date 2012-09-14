@@ -36,7 +36,7 @@ class TodoyuProjectPanelwidgetprojectselectorActionController extends TodoyuActi
 
 
 	/**
-	 * Get list of matching persons and groups
+	 * Get list of matching projects and groups
 	 *
 	 * @param	Array	$params
 	 * @return	String
@@ -62,7 +62,7 @@ class TodoyuProjectPanelwidgetprojectselectorActionController extends TodoyuActi
 	public function saveAction(array $params) {
 		$items	= TodoyuString::trimExplode(',', $params['selection'], true);
 
-		$selectorWidget	= TodoyuProjectManager::getPanelWidgetStaffSelector(AREAEXT);
+		$selectorWidget	= TodoyuProjectManager::getPanelWidgetProjectSelector(AREAEXT);
 		/**
 		 * @var	TodoyuProjectPanelWidgetProjectSelector	$selectorWidget
 		 */
