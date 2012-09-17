@@ -1555,13 +1555,15 @@ class TodoyuProjectProjectManager {
 	 * @param	Integer[]		$ignoreIDs
 	 * @param	String[]		$ignoreWords
 	 * @param	Integer			$limit
+	 * @param	Integer[]		$status
 	 * @return	Integer[]
 	 */
-	public static function searchProjects(array $searchWords, $ignoreIDs = array(), array $ignoreWords = array(), $limit = 100) {
+	public static function searchProjects(array $searchWords, $ignoreIDs = array(), array $ignoreWords = array(), $limit = 100, array $status = array()) {
 		$searchWords	= TodoyuArray::trim($searchWords, true);
 		$ignoreIDs		= TodoyuArray::intval($ignoreIDs, true, true);
 		$ignoreWords	= TodoyuArray::trim($ignoreWords, true);
 		$limit			= intval($limit);
+		$status			= TodoyuArray::intval($status);
 
 		$field	= 'ext_project_project.id';
 		$searchInFields	= array(
@@ -1576,6 +1578,10 @@ class TodoyuProjectProjectManager {
 						ON ext_project_project.id_company = ext_contact_company.id';
 		$where	= '		ext_project_project.deleted = 0'
 				. '	 AND ext_contact_company.deleted = 0';
+
+		if( sizeof($status) > 0 ) {
+			$where .= ' AND ' . TodoyuSql::buildInListQueryPart($status, 'ext_project_project.status');
+		}
 
 		if( sizeof($searchWords) > 0 ) {
 			$where	.= ' AND ' . TodoyuSql::buildLikeQueryPart($searchWords, $searchInFields);

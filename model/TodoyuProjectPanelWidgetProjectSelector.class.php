@@ -200,12 +200,13 @@ class TodoyuProjectPanelWidgetProjectSelector extends TodoyuPanelWidgetSearchLis
 	 * Search project matching the search words
 	 *
 	 * @param	Array	$searchWords
+	 * @param	Array	$status
 	 * @return	Array
 	 */
-	protected function searchProjects(array $searchWords) {
+	protected function searchProjects(array $searchWords, array $status = array()) {
 		$selectedProjects= $this->getSelectedProjectIDs();
 
-		return TodoyuProjectProjectManager::searchProjects($searchWords, $selectedProjects, array(), 10);
+		return TodoyuProjectProjectManager::searchProjects($searchWords, $selectedProjects, array(), 10, $status);
 	}
 
 
