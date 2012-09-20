@@ -185,10 +185,10 @@ class TodoyuProjectPanelWidgetProjectSelector extends TodoyuPanelWidgetSearchLis
 		$group	= 'jt.id';
 		$limit	= 10;
 
-		$selectedJobtypeIDs	= $this->getSelectedGroupIDs();
+		$selectedJobTypeIDs	= $this->getSelectedGroupIDs();
 
-		if( sizeof($selectedJobtypeIDs) > 0 ) {
-			$where .= ' AND jt.id NOT IN(' . implode(',', $selectedJobtypeIDs) . ')';
+		if( sizeof($selectedJobTypeIDs) > 0 ) {
+			$where .= ' AND jt.id NOT IN(' . implode(',', $selectedJobTypeIDs) . ')';
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, $group, $order, $limit);

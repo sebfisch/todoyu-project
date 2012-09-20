@@ -967,7 +967,7 @@ Todoyu.Ext.project.Task = {
 	 * Called after completion of (request of) task being added to project.
 	 *
 	 * @method	onProjectTaskAdded
-	 * @param	{Object} 		response
+	 * @param	{Ajax.Response} 	response
 	 */
 	onProjectTaskAdded: function(response) {
 			// Add context menu to new task

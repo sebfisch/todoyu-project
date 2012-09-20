@@ -68,6 +68,8 @@ Todoyu.Ext.project.PanelWidget.ProjectSelector = Class.create(Todoyu.PanelWidget
 		this.selection	= $('panelwidget-projectselector-selection');
 
 		this.buttonSaveGroup	= $('panelwidget-projectselector-button-savegroup');
+		this.buttonSaveGroup.remove();	//@todo implement group handling
+
 
 		this.initProjectSelectorObservers();
 
