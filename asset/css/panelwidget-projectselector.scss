@@ -88,10 +88,15 @@
 	width:95%;
 
 	li {
+		a {
+			width:1000px;
+		}
+
 		a span {
 			background-image:url(../../../../core/asset/img/icons.png);
 			background-repeat:no-repeat;
 			display:inline-block;
+			position:absolute;
 			float:right;
 			height:16px;
 			margin-right:40px;
@@ -109,6 +114,8 @@
 
 			&.remove {
 				background-position:2px -358px;
+				position:absolute;
+				right:-30px;
 			}
 		}
 
