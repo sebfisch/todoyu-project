@@ -322,7 +322,7 @@ class TodoyuProjectPanelWidgetProjectSelector extends TodoyuPanelWidgetSearchLis
 				case 'p':
 					$project	= TodoyuProjectProjectManager::getProject($idRecord);
 					$itemLabel	= $project->getLabel(true);
-					$itemClass	= 'person status' . ucwords($project->getStatusKey());
+					$itemClass	= 'project status' . ucwords($project->getStatusKey());
 					break;
 
 				case 'g':
