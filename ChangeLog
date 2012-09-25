@@ -1,5 +1,8 @@
 todoyu project extension changelog
 
+project 1.5.0 - not released yet
+	* Added: Project selector panel widget
+
 project 1.4.1 - not released yet
 	* Added: New panelwidget projectSelector - allows finding project via title fulltext and customer name, handles virtual project groups
 
