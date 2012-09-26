@@ -11,7 +11,8 @@ project 1.4.0 - not released yet
 	* Bugfix: Replace project-details on edit
 	* Bugfix: Fixed JS-Error on task deletion
 	* Bugfix: Decode html-entities in title - tag
-	* Added: animation when project tabs are loaded from server
+	* Added: New panelwidget - projectselector
+	* Added: Animation when project tabs are loaded from server
 	* Added: Context menu on button
 	* Added: Project tabs
 	* Added: Callback parameter for Task.refresh()

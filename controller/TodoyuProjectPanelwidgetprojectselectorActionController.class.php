@@ -30,7 +30,7 @@ class TodoyuProjectPanelwidgetprojectselectorActionController extends TodoyuActi
 	 * @param	Array	$params
 	 */
 	public function init(array $params) {
-		Todoyu::restrict('project', 'panelwidgets:projectSelector');
+//		Todoyu::restrict('project', 'panelwidgets:projectSelector');
 	}
 
 
@@ -75,57 +75,6 @@ class TodoyuProjectPanelwidgetprojectselectorActionController extends TodoyuActi
 			'items'		=> $items,
 			'projects'	=> $selectorWidget->getProjectIDsOfSelection()
 		));
-	}
-
-
-
-	/**
-	 * Save selected projects + groups as new "virtual" group (preference)
-	 *
-	 * @param	Array	$params
-	 */
-	public function saveGroupAction(array $params) {
-			// Validate title to be unique
-		$title	= TodoyuContactPanelWidgetStaffSelector::validateGroupTitle(trim($params['title']));
-
-			// Store new "virtual" group preference
-			// Group items: projects and groups, as type-prefixed IDs e.g. g1 g2 g3 p1 p2 p3...
-		$groupItems	= $params['items'];
-		/**	@var TodoyuProjectPanelWidgetProjectSelector $selectorWidget */
-		$selectorWidget	= TodoyuProjectManager::getPanelWidgetProjectSelector(AREAEXT);
-		$idPref	= $selectorWidget->saveVirtualGroup($title, $groupItems);
-
-			// Add new item into selection and store selection
-		$selection	= $selectorWidget->getSelection();
-		$selection[]= 'v'.$idPref;
-		$selectorWidget->saveSelection($selection);
-
-		TodoyuHeader::sendTodoyuHeader('idPreference', $idPref);
-	}
-
-
-
-	/**
-	 * Delete given "virtual" group (pref)
-	 *
-	 * @param	Array	$params
-	 */
-	public function deleteGroupAction(array $params) {
-		$idPref = (int) $params['group'];
-
-			// Only admin and pref-owner can delete a virtual group
-		if( ! TodoyuAuth::isAdmin() ) {
-			$prefRecord		= Todoyu::db()->getRecord(TodoyuPreferenceManager::TABLE, $idPref);
-			$idPrefPerson	= (int) $prefRecord['id_person'];
-
-			if( Todoyu::personid() !== $idPrefPerson ) {
-					// Deletion failed because pref belongs to another person
-				TodoyuHeader::sendTodoyuErrorHeader();
-				return ;
-			}
-		}
-
-		Todoyu::db()->deleteRecord(TodoyuPreferenceManager::TABLE, $idPref);
 	}
 
 }
