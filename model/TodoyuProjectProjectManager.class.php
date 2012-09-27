@@ -1323,7 +1323,8 @@ class TodoyuProjectProjectManager {
 
 		$statuses	= array(
 			STATUS_PLANNING,
-			STATUS_PROGRESS
+			STATUS_PROGRESS,
+			STATUS_WARRANTY
 		);
 
 		if( Todoyu::allowed('project', 'addtask:addTaskInAllProjects') ) {
