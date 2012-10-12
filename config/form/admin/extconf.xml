@@ -22,7 +22,7 @@
 					<comment>project.ext.extconf.fallbackInfo</comment>
 				</field>
 
-				<field type="text" name="maxOpenProjetcs">
+				<field type="text" name="maxOpenProjects">
 					<label>project.ext.extconf.maxOpenProjects</label>
 					<validate>
 						<isNotZero />
