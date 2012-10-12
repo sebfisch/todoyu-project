@@ -110,6 +110,17 @@ class TodoyuProjectExtConfViewHelper {
 		return Todoyu::Label('project.task.default.date.date_' . $value);
 	}
 
+
+
+	/**
+	 * @return	Integer
+	 */
+	public static function getMaxNumberOfOpenProjects(){
+		$conf	= TodoyuSysmanagerExtConfManager::getExtConf('project');
+
+		return intval($conf['maxOpenProjetcs']) > 0 ? intval($conf['maxOpenProjects']) : 3;
+	}
+
 }
 
 ?>

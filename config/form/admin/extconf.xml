@@ -22,6 +22,14 @@
 					<comment>project.ext.extconf.fallbackInfo</comment>
 				</field>
 
+				<field type="text" name="maxOpenProjetcs">
+					<label>project.ext.extconf.maxOpenProjects</label>
+					<validate>
+						<isNotZero />
+					</validate>
+					<default>3</default>
+				</field>
+
 			</elements>
 		</fieldset>
 

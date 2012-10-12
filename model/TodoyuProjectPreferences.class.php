@@ -229,7 +229,7 @@ class TodoyuProjectPreferences {
 			}
 		}
 
-		return array_slice($projectIDs, 0, 3);
+		return array_slice($projectIDs, 0, TodoyuProjectExtConfViewHelper::getMaxNumberOfOpenProjects());
 	}
 
 
@@ -240,7 +240,16 @@ class TodoyuProjectPreferences {
 	 * @param	Integer		$idProject
 	 */
 	public static function addOpenProject($idProject) {
-		$idProject	= intval($idProject);
+		self::addOpenProjects(array($idProject));
+	}
+
+
+
+	/**
+	 * @param	$openProjectIDs
+	 */
+	public static function addOpenProjects(array $openProjectIDs) {
+		$openProjectIDs	= TodoyuArray::intval($openProjectIDs, true);
 
 		TodoyuCache::disable();
 			// Get currently tabbed projects
@@ -248,10 +257,10 @@ class TodoyuProjectPreferences {
 		TodoyuCache::enable();
 
 			// Remove project from list if already in
-		$projectIDs	= TodoyuArray::removeByValue($projectIDs, array($idProject));
+		$projectIDs	= TodoyuArray::removeByValue($projectIDs, $openProjectIDs);
 
 			// Prepend the current one
-		array_unshift($projectIDs, $idProject);
+		$projectIDs = array_slice(array_merge($openProjectIDs, $projectIDs), 0, TodoyuProjectExtConfViewHelper::getMaxNumberOfOpenProjects());
 
 		self::saveOpenProjectTabs($projectIDs);
 	}
@@ -389,7 +398,6 @@ class TodoyuProjectPreferences {
 	public static function getForcedTaskTab() {
 		return TodoyuContentItemTabPreferences::getForcedTab('project', 'task');
 	}
-
 }
 
 ?>

@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.5.0 - not released yet
+	* Added: Amount of Projetcs in the menu drop-down is now a config
 	* Added: Project selector panel widget
 	* Added: Template fields to task listing header. titlePrefix + titlePostfix
 	* Changed: Always prefer internal deadline in task listing headers

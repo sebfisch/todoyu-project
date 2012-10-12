@@ -84,7 +84,7 @@ class TodoyuProjectProjecttasktreeActionController extends TodoyuActionControlle
 			TodoyuProjectProjectRights::restrictSee($idProject);
 		}
 
-		TodoyuProjectPreferences::saveOpenProjectTabs($openProjectIDs);
+		TodoyuProjectPreferences::addOpenProjects($openProjectIDs);
 	}
 
 }
