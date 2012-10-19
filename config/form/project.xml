@@ -73,7 +73,7 @@
 					<config>
 						<acLabel>TodoyuContactCompanyManager::getLabel</acLabel>
 						<options>
-							<acName>company</acName>
+							<acName>activecompany</acName>
 							<onComplete>Todoyu.Ext.project.Project.Edit.onCompanyAutocomplete</onComplete>
 						</options>
 					</config>
