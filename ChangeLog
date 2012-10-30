@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.5.0 - not released yet
+	* Added: Re-Added icon for exceeded deadline/end-date. With Tolerance factor in extconf
 	* Added: New autocompleter for companies in project form
 	* Added: Amount of Projetcs in the menu drop-down is now a config
 	* Added: Project selector panel widget

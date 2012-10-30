@@ -1129,6 +1129,17 @@ class TodoyuProjectTaskManager {
 			);
 		}
 
+
+			// Deadline or Enddate exceeded
+		if( $task->isStatusTimeExceedingRelevant() && $task->isTask() && ($task->isDateDeadlineExceeded() || $task->isDateEndExceeded(true)) ) {
+			$icons['locked'] = array(
+				'id'		=> 'task-' . $idTask . '-dateover',
+				'class'		=> 'dateover',
+				'label'		=> 'project.task.attr.dateover',
+				'position'	=> 150
+			);
+		}
+
 		return $icons;
 	}
 

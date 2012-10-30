@@ -419,7 +419,7 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isDateDeadlineExceeded() {
-		return $this->getDateDeadline() < NOW;
+		return $this->getDateDeadline() + TodoyuProjectExtConfViewHelper::getToleranceDateDeadline() < NOW;
 	}
 
 
@@ -441,8 +441,8 @@ class TodoyuProjectTask extends TodoyuBaseObject {
 	 *
 	 * @return	Boolean
 	 */
-	public function isDateEndExceeded() {
-		return $this->getDateEnd() < NOW;
+	public function isDateEndExceeded($fallback = false) {
+		return $this->getDateEnd($fallback) + TodoyuProjectExtConfViewHelper::getToleranceDateEnd() < NOW;
 	}
 
 

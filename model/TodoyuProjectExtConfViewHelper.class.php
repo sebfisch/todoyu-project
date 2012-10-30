@@ -116,11 +116,41 @@ class TodoyuProjectExtConfViewHelper {
 	 * @return	Integer
 	 */
 	public static function getMaxNumberOfOpenProjects(){
-		$conf	= TodoyuSysmanagerExtConfManager::getExtConf('project');
+		$conf	= self::getExtConf();
 
 		return intval($conf['maxOpenProjects']) > 0 ? intval($conf['maxOpenProjects']) : 3;
 	}
 
+
+
+	/**
+	 * @return	Integer
+	 */
+	public static function getToleranceDateDeadline() {
+		$conf = self::getExtConf();
+
+		return intval($conf['toleranceDeadline']) * 60;
+	}
+
+
+
+	/**
+	 * @return	Integer
+	 */
+	public static function getToleranceDateEnd() {
+		$conf = self::getExtConf();
+
+		return intval($conf['toleranceEnddate']) * 60;
+	}
+
+
+
+	/**
+	 * @return	Array
+	 */
+	protected static function getExtConf() {
+		return TodoyuSysmanagerExtConfManager::getExtConf('project');
+	}
 }
 
 ?>
