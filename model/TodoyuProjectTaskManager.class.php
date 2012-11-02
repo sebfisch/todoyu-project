@@ -915,7 +915,7 @@ class TodoyuProjectTaskManager {
 					'label'		=> 'project.task.attr.date_end',
 					'value'		=> TodoyuTime::format($task->getDateEnd(), $formatEnd),
 					'position'	=> 20,
-					'className'	=> $task->isStatusTimeExceedingRelevant() && $task->isDateEndExceeded() ? 'red' : ''
+					'className'	=> $task->isDateEndExceeded() ? 'red' : ''
 				);
 			}
 
@@ -976,7 +976,7 @@ class TodoyuProjectTaskManager {
 				'label'		=> 'project.task.attr.date_deadline',
 				'value'		=> TodoyuTime::format($task->getDateDeadline(), $dateFormat),
 				'position'	=> 30,
-				'className'	=> $task->isStatusTimeExceedingRelevant() && $task->isDateDeadlineExceeded() ? 'red' : ''
+				'className'	=> $task->isDateDeadlineExceeded() ? 'red' : ''
 			);
 		}
 
@@ -1130,9 +1130,9 @@ class TodoyuProjectTaskManager {
 		}
 
 
-			// Deadline or Enddate exceeded
-		if( $task->isStatusTimeExceedingRelevant() && $task->isTask() && ($task->isDateDeadlineExceeded() || $task->isDateEndExceeded(true)) ) {
-			$icons['locked'] = array(
+			// Deadline or Enddate exceeded$
+		if( $task->isDateDeadlineExceeded() || $task->isDateEndExceeded() ) {
+			$icons['dateover'] = array(
 				'id'		=> 'task-' . $idTask . '-dateover',
 				'class'		=> 'dateover',
 				'label'		=> 'project.task.attr.dateover',

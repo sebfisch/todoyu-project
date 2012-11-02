@@ -32,7 +32,7 @@
 class TodoyuProjectTaskTest extends PHPUnit_Framework_TestCase
 {
 	/**
-	 * @var TodoyuPortalManager
+	 * @var TodoyuProjectTask
 	 */
 	protected $object;
 
@@ -396,6 +396,243 @@ class TodoyuProjectTaskTest extends PHPUnit_Framework_TestCase
 		$this->markTestIncomplete(
 		  'This test has not been implemented yet.'
 		);
+	}
+
+
+
+	/**
+	 *
+	 */
+	public function testEstimatedTimeExceededConfigToZero() {
+		$configZero = array(
+			'toleranceEnddate'	=> 0,
+			'toleranceDeadline'	=> 0,
+		);
+
+		$configNull = array(
+			'toleranceEnddate'	=> null,
+			'toleranceDeadline'	=> null,
+		);
+
+		$month = 1 * 30 * 24 * 3600;
+
+		$task	= TodoyuProjectTaskManager::getTask($this->array['id']);
+
+		// 1 month in the future (false anyway)
+		$dateToCheck = NOW + $month;
+		$task->set('date_deadline', $dateToCheck);
+		$task->set('date_end', $dateToCheck);
+
+
+		$this->assertEquals($dateToCheck, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateDeadline());
+		$this->assertEquals($dateToCheck, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateEnd());
+
+		TodoyuSysmanagerExtConfManager::setExtConf('project', $configZero);
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateDeadlineExceeded());
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateEndExceeded());
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		TodoyuSysmanagerExtConfManager::setExtConf('project', $configNull);
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateDeadlineExceeded());
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateEndExceeded());
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// 1 month in the past
+		$dateToCheck = NOW - $month;
+		$task->set('date_deadline', $dateToCheck);
+		$task->set('date_end', $dateToCheck);
+
+		$this->assertEquals($dateToCheck, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateDeadline());
+		$this->assertEquals($dateToCheck, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateEnd());
+
+		TodoyuSysmanagerExtConfManager::setExtConf('project', $configZero);
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateDeadlineExceeded());
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateEndExceeded());
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		TodoyuSysmanagerExtConfManager::setExtConf('project', $configNull);
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateDeadlineExceeded());
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateEndExceeded());
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+	}
+
+
+
+	/**
+	 *
+	 */
+	public function testDateEndExceeded() {
+		$config = array(
+			'toleranceEnddate'	=> 24 * 60,
+			'toleranceDeadline'	=> 0
+		);
+
+		$caseExceeded		= NOW - 24 * 3600 - 1;
+
+		$caseNotExceeded	= NOW - 24 * 3600;
+		$caseNotExceeded1	= NOW + 24 * 3600;
+		$caseNotExceeded2	= NOW;
+		$caseNotExceeded3	= $caseExceeded;
+
+		$task	= TodoyuProjectTaskManager::getTask($this->array['id']);
+
+		TodoyuSysmanagerExtConfManager::setExtConf('project', $config);
+		$task->set('status', STATUS_OPEN);
+
+		// case Exceeded
+		$task->set('date_end', $caseExceeded);
+		$this->assertEquals($caseExceeded, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateEnd());
+		$this->assertEquals(STATUS_OPEN, TodoyuProjectTaskManager::getTask($this->array['id'])->getStatus());
+		$this->assertTrue(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateEndExceeded());
+		$this->assertArrayHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// case Not Exceeded
+		$task->set('date_end', $caseNotExceeded);
+		$this->assertEquals($caseNotExceeded, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateEnd());
+		$this->assertEquals(STATUS_OPEN, TodoyuProjectTaskManager::getTask($this->array['id'])->getStatus());
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateEndExceeded());
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// case Not Exceeded 1
+		$task->set('date_end', $caseNotExceeded1);
+		$this->assertEquals($caseNotExceeded1, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateEnd());
+		$this->assertEquals(STATUS_OPEN, TodoyuProjectTaskManager::getTask($this->array['id'])->getStatus());
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateEndExceeded());
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// case Not Exceeded 2
+		$task->set('date_end', $caseNotExceeded2);
+		$this->assertEquals($caseNotExceeded2, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateEnd());
+		$this->assertEquals(STATUS_OPEN, TodoyuProjectTaskManager::getTask($this->array['id'])->getStatus());
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateEndExceeded());
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// case Not Exceeded 3
+		$task->set('date_end', $caseNotExceeded3);
+		$task->set('status', STATUS_CLEARED);
+
+		$this->assertEquals($caseNotExceeded3, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateEnd());
+		$this->assertEquals(STATUS_CLEARED, TodoyuProjectTaskManager::getTask($this->array['id'])->getStatus());
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateEndExceeded());
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+	}
+
+
+
+	/**
+	 *
+	 */
+	public function testDateDeadlineExceeded() {
+		$config = array(
+			'toleranceEnddate'	=> 0,
+			'toleranceDeadline'	=> 24 * 60,
+		);
+
+		$caseExceeded		= NOW - 24 * 3600 - 1;
+
+		$caseNotExceeded	= NOW - 24 * 3600;
+		$caseNotExceeded1	= NOW + 24 * 3600;
+		$caseNotExceeded2	= NOW;
+		$caseNotExceeded3	= $caseExceeded;
+
+		$task	= TodoyuProjectTaskManager::getTask($this->array['id']);
+
+		TodoyuSysmanagerExtConfManager::setExtConf('project', $config);
+		$task->set('status', STATUS_OPEN);
+
+		// case Exceeded
+		$task->set('date_deadline', $caseExceeded);
+		$this->assertEquals($caseExceeded, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateDeadline());
+		$this->assertEquals($caseExceeded, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateDeadline());
+		$this->assertEquals(STATUS_OPEN, TodoyuProjectTaskManager::getTask($this->array['id'])->getStatus());
+		$this->assertTrue($task->isDateDeadlineExceeded());
+		$this->assertArrayHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// case Not Exceeded
+		$task->set('date_deadline', $caseNotExceeded);
+		$this->assertEquals($caseNotExceeded,TodoyuProjectTaskManager::getTask($this->array['id'])->getDateDeadline());
+		$this->assertEquals(STATUS_OPEN, TodoyuProjectTaskManager::getTask($this->array['id'])->getStatus());
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateDeadlineExceeded());
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// case Not Exceeded 1
+		$task->set('date_deadline', $caseNotExceeded1);
+		$this->assertEquals($caseNotExceeded1, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateDeadline());
+		$this->assertEquals(STATUS_OPEN, TodoyuProjectTaskManager::getTask($this->array['id'])->getStatus());
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateDeadlineExceeded());
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// case Not Exceeded 2
+		$task->set('date_deadline', $caseNotExceeded2);
+		$this->assertEquals($caseNotExceeded2, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateDeadline());
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateDeadlineExceeded());
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// case Not Exceeded 3
+		$task->set('date_deadline', $caseNotExceeded3);
+		$task->set('status', STATUS_CLEARED);
+
+		$this->assertEquals($caseNotExceeded3, TodoyuProjectTaskManager::getTask($this->array['id'])->getDateDeadline());
+		$this->assertEquals(STATUS_CLEARED, TodoyuProjectTaskManager::getTask($this->array['id'])->getStatus());
+		$this->assertFalse(TodoyuProjectTaskManager::getTask($this->array['id'])->isDateDeadlineExceeded());
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+	}
+
+
+
+	public function testCombinatedExeeeding() {
+		$config = array(
+			'toleranceEnddate'	=> 60,
+			'toleranceDeadline'	=> 24 * 60,
+		);
+
+		$dateEnd1 = 0;
+		$dateEnd2 = NOW - 3600;
+		$dateEnd3 = NOW - 24 * 3600;
+
+		$dateDeadline1 = NOW - 24 * 3600;
+		$dateDeadline2 = NOW - 24 * 3600 - 1;
+
+		$task	= TodoyuProjectTaskManager::getTask($this->array['id']);
+		// set relevant status for exceeding
+		$task->set('status', STATUS_OPEN);
+
+		// config
+		TodoyuSysmanagerExtConfManager::setExtConf('project', $config);
+
+		// Enddate 0, Deadline not exceeded = NOT EXCEEDED
+		$task->set('date_end', $dateEnd1);
+		$task->set('date_deadline', $dateDeadline1);
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// Enddate 0, Deadline exceeded = EXCEEDED
+		$task->set('date_end', $dateEnd1);
+		$task->set('date_deadline', $dateDeadline2);
+		$this->assertArrayHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// Enddate not exceeded, Deadline not exceeded = NOT EXCEEDED
+		$task->set('date_end', $dateEnd2);
+		$task->set('date_deadline', $dateDeadline1);
+
+		$this->assertArrayNotHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// Enddate exceeded, Deadline not exceeded = EXCEEDED
+		$task->set('date_end', $dateEnd3);
+		$task->set('date_deadline', $dateDeadline1);
+
+		$this->assertArrayHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// Enddate not Exceeded, Deadline exceeded = EXCEEDED
+		$task->set('date_end', $dateEnd2);
+		$task->set('date_deadline', $dateDeadline2);
+
+		$this->assertArrayHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
+
+		// Enddate exceeded, Deadline exceeded = EXCEEDED
+		$task->set('date_end', $dateEnd3);
+		$task->set('date_deadline', $dateDeadline2);
+
+		$this->assertArrayHasKey('dateover', TodoyuProjectTaskManager::getTaskIcons(array(), $this->array['id']));
 	}
 
 }
