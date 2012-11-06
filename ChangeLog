@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.5.0 - not released yet
+	* Added: New filter-widget for company search: project from filterset with negations
 	* Bugfix: TaskFilterSet filter for project could have caused slow query
 	* Added: Test Runner for extension
 	* Fixed Bug: Date exceeding wasn't correct

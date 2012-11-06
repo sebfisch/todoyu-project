@@ -38,6 +38,30 @@ class TodoyuProjectCompanyFilterDataSource {
 		return $definitions;
 	}
 
+
+
+	/**
+	 * Get filterset options for project
+	 *
+	 * @param	Array		$definitions
+	 * @return	Array
+	 */
+	public static function getProjectFilterSetSelectionOptions(array $definitions) {
+		$allFiltersets	= TodoyuSearchFiltersetManager::getTypeFiltersets('PROJECT', Todoyu::personid(), true);
+
+		$options	= array();
+
+		foreach($allFiltersets as $filterset) {
+			$options[] = array(
+				'value'		=> $filterset['id'],
+				'label'		=> $filterset['title']
+			);
+		}
+
+		$definitions['options'] = $options;
+		return $definitions;
+	}
+
 }
 
 ?>

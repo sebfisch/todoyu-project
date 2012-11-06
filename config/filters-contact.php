@@ -67,6 +67,8 @@ Todoyu::$CONFIG['FILTERS']['COMPANY']['widgets']['projectstatus'] = array(
 	)
 );
 
+
+
 	// Company has task(s) created before/after
 //Todoyu::$CONFIG['FILTERS']['COMPANY']['widgets']['dateCreateTask'] = array(
 //	'funcRef'	=> 'TodoyuProjectCompanyFilter::Filter_dateCreateTask',
@@ -86,6 +88,20 @@ Todoyu::$CONFIG['FILTERS']['COMPANY']['widgets']['dateCreateTaskDynamic'] = arra
 	'wConf'		=> array(
 		'FuncRef'	=> 'TodoyuProjectCompanyFilterDataSource::getDynamicDateOptions',
 		'negation'	=> 'datetimeDyn'
+	)
+);
+
+	// Company has / has not projects in project filter set
+Todoyu::$CONFIG['FILTERS']['COMPANY']['widgets']['projectfilter'] = array(
+	'funcRef'	=> 'TodoyuProjectCompanyFilter::Filter_projectFilter',
+	'label'		=> 'project.filter.company.projectfilter',
+	'optgroup'	=> 'project.filter.optgroup.projects',
+	'widget'	=> 'select',
+	'wConf'		=> array(
+		'multiple'	=> true,
+		'size'		=> 5,
+		'FuncRef'	=> 'TodoyuProjectCompanyFilterDataSource::getProjectFilterSetSelectionOptions',
+		'negation'	=> 'default'
 	)
 );
 

@@ -63,20 +63,48 @@ class TodoyuProjectCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 		}
 
 		$tables	= array(
-			self::TABLE,
-			'ext_project_project'
+			self::TABLE . ' RIGHT JOIN ext_project_project ON ' . self::TABLE . '.id = ext_project_project.id_company'
 		);
 
 		$where	= TodoyuSql::buildInListQueryPart($statuses, 'ext_project_project.status', true, $negate)
-				. ' AND ext_project_project.id_company = ' . self::TABLE . '.id ';
+//				. ' AND ext_project_project.id_company = ' . self::TABLE . '.id '
+				. ' AND ext_project_project.deleted = 0';
 
 		$join	= array(self::TABLE . '.id = ext_project_project.id_company');
 
 		return array(
 			'where'	=> $where,
 			'tables'=> $tables,
-			'join'	=> $join
+			'removeTables'	=> array(self::TABLE, 'ext_project_project')
+//			'join'	=> $join
 		);
+	}
+
+
+
+	/**
+	 * @param	Array		$value
+	 * @param	Boolean		$negate
+	 */
+	public function Filter_projectFilter($value, $negate = false) {
+		$filterSets	= TodoyuArray::intExplode(',', $value, true, true);
+		$queryParts	= false;
+
+		$taskFilter = new TodoyuProjectProjectFilter(array(array('filter' => 'filterSet', 'value' => $filterSets)));
+
+		$queryArray = $taskFilter->getQueryArray();
+		$queryArray['group']	= '';
+		$queryArray['fields']	= str_ireplace('sql_calc_found_rows', '', $queryArray['fields']);
+		$subQuery = TodoyuSql::buildSELECTquery($queryArray['fields'], $queryArray['tables'], $queryArray['where']);
+
+
+		$compare	= $negate ? ' NOT IN ' : ' IN ';
+
+		$queryParts['tables']	= array('ext_project_project', 'ext_contact_company');
+		$queryParts['where']	= 'ext_project_project.id ' . $compare . ' (' . $subQuery . ')';
+		$queryParts['join']		= array('ext_project_project.id_company = ext_contact_company.id');
+
+		return $queryParts;
 	}
 
 
@@ -186,7 +214,6 @@ class TodoyuProjectCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 			'where'	=> $where
 		);
 	}
-
 }
 
 ?>

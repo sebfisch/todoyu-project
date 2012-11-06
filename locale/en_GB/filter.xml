@@ -49,4 +49,5 @@
 	<label index="company.projectstatus">Has project(s) with status</label>
 	<label index="company.dateCreateTask">Has tasks created before/after</label>
 	<label index="company.dateCreateTaskDynamic">Has tasks created from/until (dynamic)</label>
+	<label index="company.projectfilter">Projects from project-filter</label>
 </labels>
