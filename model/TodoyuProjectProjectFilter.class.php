@@ -523,26 +523,22 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @return	Array
 	 */
 	public function Filter_taskFilter($value, $negate = false) {
-		$taskFilter	= new TodoyuProjectTaskFilter();
 		$filterSets	= TodoyuArray::intExplode(',', $value, true, true);
-		$whereArray	= array();
 		$queryParts	= false;
 
-		foreach( $filterSets as $filterSet) {
-			$filterObject	= $taskFilter->Filter_filterSet($filterSet);
+		$taskFilter = new TodoyuProjectTaskFilter(array(array('filter' => 'filterSet', 'value' => $filterSets)));
 
-			$compare	= $negate ? ' NOT IN ' : ' IN ';
+		$queryArray = $taskFilter->getQueryArray();
+		$queryArray['group']	= '';
+		$queryArray['fields']	= str_ireplace('sql_calc_found_rows', '', $queryArray['fields']);
+		$subQuery = TodoyuSql::buildSELECTquery($queryArray['fields'], $queryArray['tables'], $queryArray['where']);
 
-			$whereArray[]	=	self::TABLE . '.id ' . $compare . '(
-								SELECT id_project FROM ' . implode(',', $filterObject['tables']) .
-							   ' WHERE ' . $filterObject['where'] . ')';
-		}
 
-		if( sizeof($whereArray) > 0 ) {
-			$queryParts = array(
-				'where' => implode(' AND ', $whereArray)
-			);
-		}
+		$compare	= $negate ? ' NOT IN ' : ' IN ';
+
+		$queryParts['tables']	= array('ext_project_project', 'ext_project_task');
+		$queryParts['where']	= 'ext_project_task.id ' . $compare . ' (' . $subQuery . ')';
+		$queryParts['join']		= array('ext_project_project.id = ext_project_task.id_project');
 
 		return $queryParts;
 	}
