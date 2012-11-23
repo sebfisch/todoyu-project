@@ -97,6 +97,9 @@ class TodoyuProjectCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 		$queryArray['fields']	= str_ireplace('sql_calc_found_rows', '', $queryArray['fields']);
 		$subQuery = TodoyuSql::buildSELECTquery($queryArray['fields'], $queryArray['tables'], $queryArray['where']);
 
+		// This double sub query is here for performance reasons (don't optimize it!)
+		$subQuery = ' SELECT id FROM ( ' . $subQuery . ') as x';
+
 
 		$compare	= $negate ? ' NOT IN ' : ' IN ';
 
