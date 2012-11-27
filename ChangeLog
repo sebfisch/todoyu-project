@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.5.0 - not released yet
+	* Changed: Replaced fixed task-title cropping with css-text-overflow behaviour
 	* Fixed Bug: Performance problems with sub-queries
 	* Added: New filter-widget for company search: project from filterset with negations
 	* Bugfix: TaskFilterSet filter for project could have caused slow query

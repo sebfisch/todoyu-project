@@ -14,7 +14,7 @@
 			{if $task.company.shortname}{htmlencode $task.company.shortname}{else}{htmlencode $task.company.title}{/if}&nbsp;
 		</span>
 		<span class="projectName" title="{Label project.ext.project}: {htmlencode $task.project.title} (ID: {$task.project.id}) / {Label project.task.task}: {htmlencode $task.title}">
-			{$titlePrefix}{htmlencode(truncate($task.project.title,60))} - {htmlencode(truncate($task.title,60))}{$titlePostfix}
+			{$titlePrefix}{htmlencode($task.project.title)} - {htmlencode($task.title)}{$titlePostfix}
 		</span>
 	</span>
 
