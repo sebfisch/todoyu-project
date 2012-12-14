@@ -138,7 +138,7 @@ Todoyu.Ext.project.Project.Tab = {
 			top: new Element(
 				'div', {
 					id:			this.buildTabID(idProject, tabKey),
-					'class':	'tab'
+					className:	'tab projectDetails' + tabKey.capitalize()
 				}
 			)
 		});
