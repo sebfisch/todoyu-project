@@ -526,6 +526,10 @@ class TodoyuProjectProjectFilter extends TodoyuSearchFilterBase implements Todoy
 		$filterSets	= TodoyuArray::intExplode(',', $value, true, true);
 		$queryParts	= false;
 
+		if( sizeof($filterSets) === 0 ) {
+			return false;
+		}
+
 		$taskFilter = new TodoyuProjectTaskFilter(array(array('filter' => 'filterSet', 'value' => $filterSets)));
 
 		$queryArray = $taskFilter->getQueryArray();
