@@ -2463,20 +2463,29 @@ class TodoyuProjectTaskManager {
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Integer		$type
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idParentTask
 	 * @return	TodoyuForm
 	 */
-	public static function getTaskEditForm($idTask, $type = TASK_TYPE_TASK) {
-		$idTask	= intval($idTask);
+	public static function getTaskEditForm($idTask, $type = TASK_TYPE_TASK, $idProject = 0, $idParentTask = 0) {
+		$idTask			= intval($idTask);
+		$idProject		= intval($idProject);
+		$idParentTask	= intval($idParentTask);
 
 		$task		= self::getTask($idTask);
 		$xmlPath	= 'ext/project/config/form/task.xml';
 
 		if( $idTask === 0 ) {
 			$task->set('type', $type);
+		} elseif( $idProject === 0 ) {
+			$idProject	= $task->getProjectID();
 		}
 
 			// Construct form object
-		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
+		$form		= TodoyuFormManager::getForm($xmlPath, $idTask, array(
+			'project'	=> $idProject,
+			'parent'	=> $idParentTask
+		));
 
 			// Load form data
 		$data	= $task->getTemplateData(0);

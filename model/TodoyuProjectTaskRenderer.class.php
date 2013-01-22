@@ -176,12 +176,16 @@ class TodoyuProjectTaskRenderer {
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Integer		$type		Task type (container/task)
+	 * @param	Integer		$idProject
+	 * @param	Integer		$idParentTask
 	 * @return	String
 	 */
-	public static function renderTaskEditForm($idTask, $type = TASK_TYPE_TASK) {
-		$idTask	= intval($idTask);
+	public static function renderTaskEditForm($idTask, $type = TASK_TYPE_TASK, $idProject = 0, $idParentTask = 0) {
+		$idTask			= intval($idTask);
+		$idProject		= intval($idProject);
+		$idParentTask	= intval($idParentTask);
 
-		$form	= TodoyuProjectTaskManager::getTaskEditForm($idTask, $type);
+		$form	= TodoyuProjectTaskManager::getTaskEditForm($idTask, $type, $idProject, $idParentTask);
 
 			// Render
 		$tmpl	= 'ext/project/view/task-edit.tmpl';
@@ -222,7 +226,7 @@ class TodoyuProjectTaskRenderer {
 		$idTask		= 0;
 
 			// Render form for new empty task
-		$formHtml	= self::renderTaskEditForm($idTask, $type);
+		$formHtml	= self::renderTaskEditForm($idTask, $type, $idProject, $idParentTask);
 
 			// Render form into detail wrapper
 		$tmpl	= 'ext/project/view/task-detail-data-wrap.tmpl';
