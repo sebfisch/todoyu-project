@@ -27,7 +27,7 @@
 	<label index="attr.is_estimatedworkload_public">Aufwand öffentlich</label>
 	<label index="attr.is_estimatedworkload_public.1">Ist öffentlich</label>
 	<label index="attr.is_estimatedworkload_public.0">Nicht öffentlich</label>
-	<label index="attr.is_estimatedworkload_public.error">Bitte füllen Sie den gesschätzten Aufwand ein</label>
+	<label index="attr.is_estimatedworkload_public.error">Bitte füllen Sie den geschätzten Aufwand ein</label>
 	<label index="attr.notAcknowledged">Nicht bestätigt (Neu)</label>
 	<label index="attr.dateover">End-Datum oder Frist ist abgelaufen</label>
 	<label index="attr.locked">Gesperrt</label>
