@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.5.0 - not released yet
+	* Changed: Text-cropping over css
 	* Added: New filter-widget for company search: project from filterset with negations
 	* Added: Test Runner for extension
 	* Added: Re-Added icon for exceeded deadline/end-date. With Tolerance factor in extconf

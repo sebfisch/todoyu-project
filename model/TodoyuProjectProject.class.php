@@ -58,16 +58,10 @@ class TodoyuProjectProject extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getShortLabel($withCompany = true) {
-		$totalLength	= 21;
-		$projectLength	= 10;
 		$projectLabel	= $this->getTitle();
-		$projectLabel	= TodoyuString::crop($projectLabel, $projectLength, '..', false);
 
 		if( $withCompany ) {
-			$length			= $totalLength - 2 - mb_strlen($projectLabel);
 			$companyLabel	= $this->getCompany()->getShortLabel();
-			$companyLabel	= TodoyuString::crop($companyLabel, $length, '..', false);
-					
 			return $companyLabel . ': ' . $projectLabel;
 		} else {
 			return $projectLabel;

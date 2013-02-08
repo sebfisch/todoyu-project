@@ -58,7 +58,7 @@ class TodoyuProjectPanelWidgetProjectList extends TodoyuPanelWidgetSearchList {
 		$items		= array();
 
 		foreach($projects as $project) {
-			$companyShort	= $project['companyShort'] ? $project['companyShort'] : TodoyuString::crop($project['company'], 40, '', false);
+			$companyShort	= $project['companyShort'] ? $project['companyShort'] : $project['company'];
 			$items[] = array(
 				'id'	=> $project['id'],
 				'label'	=> $companyShort . ' - ' . $project['title'],

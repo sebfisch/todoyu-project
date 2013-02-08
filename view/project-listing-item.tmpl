@@ -2,7 +2,7 @@
 	<h3 id="project-{$project.id}-header" class="projectheader contextmenuproject" onclick="Todoyu.Ext.project.Project.toggleDetails({$project.id})">
 		<span class="headLabel bcStatus{$project.status}"><!-- //--></span>
 		<span class="projectName">
-			{htmlencode $project.fulltitle|truncate:111}
+			{htmlencode $project.fulltitle}
 		</span>
 		<span class="projectNumber">
 			{$project.id}
