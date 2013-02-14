@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.5.0 - not released yet
+	* Added: Dwoo-Plugin for task-number
 	* Changed: Text-cropping over css
 	* Added: New filter-widget for company search: project from filterset with negations
 	* Added: Test Runner for extension

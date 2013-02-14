@@ -142,4 +142,15 @@ function Dwoo_Plugin_linkTasks_compile(Dwoo_Compiler $compiler, $text) {
 }
 
 
+/**
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$idTask
+ * @return	String
+ */
+function Dwoo_Plugin_taskNumber(Dwoo $dwoo, $idTask) {
+	$idTask	= intval($idTask);
+	return TodoyuProjectTaskManager::getTask($idTask)->getTaskNumber(true);
+}
+
+
 ?>
