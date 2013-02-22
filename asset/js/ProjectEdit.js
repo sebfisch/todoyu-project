@@ -209,6 +209,7 @@ Todoyu.Ext.project.Project.Edit = {
 			Todoyu.Ui.scrollToTop();
 		}
 
+		Todoyu.Hook.exec('project.project.edit.cancelled', idProject);
 	},
 
 

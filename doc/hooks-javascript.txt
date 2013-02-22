@@ -23,16 +23,19 @@ Project Extension - JavaScript Hooks
 
 	project.project.loaded
 	@param	{Number} idProject
-	Evoked after project loaed. (elements updated in DOM)
+	Evoked after project loaded. (elements updated in DOM)
 
 	project.project.saved
 	@param	{Number} idProject
 	Evoked after project saved. (DB record updated, project elements updated in DOM)
 
+	project.project.edit.cancelled
+	@param	{Number} idProject
+	Evoked after project cancelled
+
 	project.project.removed
 	@param	{Number} idProject
 	Evoked after project has been deleted. (DB record deleted, project elements removed from DOM)
-
 
 
 2. Task
