@@ -329,7 +329,7 @@ class TodoyuProjectProjectRenderer {
 
 			// Preset (empty) form data
 		$xmlPath	= 'ext/project/config/form/project.xml';
-		$data		= TodoyuFormHook::callLoadData($xmlPath, array(), 0, array('quickcreate'=>true, 'params'=>$params));
+		$data		= TodoyuFormHook::callLoadData($xmlPath, array('id' => 0), 0, array('quickcreate'=>true, 'params'=>$params));
 		$form->setFormData($data);
 
 		return $form->render();

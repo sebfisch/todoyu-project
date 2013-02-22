@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.5.0 - not released yet
+	* Bugfix: set id to 0 on new project for correct marker parsing
 	* Added: JS-Hook for cancelled project-forms
 	* Added: Dwoo-Plugin for task-number
 	* Changed: Text-cropping over css
