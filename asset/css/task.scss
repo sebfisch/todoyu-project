@@ -101,8 +101,6 @@ div.task {
 		height:22px;
 		left:-4px;
 		top:0;
-		//background-color:#FFFFFF; /* IE fix */
-		opacity:0.001; /* IE fix */
 
 		&:hover {
 			background-color:purple;
