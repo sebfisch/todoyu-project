@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.5.0 - not released yet
+	* Bugfix: Initialize project-status filter only if allowed
 	* Bugfix: Fixed task-link-parsing
 	* Bugfix: set id to 0 on new project for correct marker parsing
 	* Added: JS-Hook for cancelled project-forms
