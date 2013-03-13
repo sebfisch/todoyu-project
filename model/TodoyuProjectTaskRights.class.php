@@ -386,6 +386,16 @@ class TodoyuProjectTaskRights {
 
 
 	/**
+	 * @param	Boolean		$isPublic
+	 * @return	Boolean
+	 */
+	public static function isSeePublicFlagAllowed($isPublic) {
+		return $isPublic && (Todoyu::person()->isInternal() || TodoyuAuth::isAdmin());
+	}
+
+
+
+	/**
 	 * Check whether user can use drag and drop for tasks
 	 *
 	 * @param	Integer		$idTask

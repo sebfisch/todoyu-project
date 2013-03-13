@@ -1099,7 +1099,7 @@ class TodoyuProjectTaskManager {
 		$task	= self::getTask($idTask);
 
 			// Add public icon for internals
-		if( $task->isPublic() && (Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) ) {
+		if( TodoyuProjectTaskRights::isSeePublicFlagAllowed($task->isPublic()) ) {
 			$icons['public'] = array(
 				'id'		=> 'task-' . $idTask . '-public',
 				'class'		=> 'isPublic',
@@ -1130,7 +1130,7 @@ class TodoyuProjectTaskManager {
 		}
 
 
-			// Deadline or Enddate exceeded$
+			// Deadline or Enddate exceeded
 		if( $task->isDateDeadlineExceeded() || $task->isDateEndExceeded() ) {
 			$icons['dateover'] = array(
 				'id'		=> 'task-' . $idTask . '-dateover',
