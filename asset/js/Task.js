@@ -768,7 +768,7 @@ Todoyu.Ext.project.Task = {
 	 *
 	 * @method	setStatus
 	 * @param	{Number}		idTask
-	 * @param	{String}		newStatus
+	 * @param	{Number}		newStatus
 	 */
 	setStatus: function(idTask, newStatus) {
 		if( this.isLoaded(idTask) ) {
