@@ -71,7 +71,7 @@ Todoyu.Ext.project.TaskTree.Sortable = Class.create({
 	 *
 	 * @method	initialize
 	 * @param	{String|Element}	container
-	 * @param	{Object}			options
+	 * @param	{Object}			[options]
 	 */
 	initialize: function(container, options) {
 		this.options = options || {};
