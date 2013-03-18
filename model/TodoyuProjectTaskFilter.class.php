@@ -361,13 +361,13 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array|Boolean				Query parts array / false if no title given
 	 */
 	public function Filter_title($value, $negate = false) {
-		$title		= trim($value);
 		$queryParts	= false;
+		$titleWords	= TodoyuString::trimExplode(' ', $value, true);
 
-		if( $title !== '' ) {
+		if( sizeof($titleWords) ) {
 			$tables	= array(self::TABLE);
-			$compare= ($negate ? 'NOT' : '');
-			$where	= 'ext_project_task.title ' . $compare . ' LIKE \'%' . TodoyuSql::escape($title) . '%\'';
+			$fields	= array('ext_project_task.title');
+			$where	= TodoyuSql::buildLikeQueryPart($titleWords, $fields, $negate);
 
 			$queryParts	= array(
 				'tables'=> $tables,

@@ -177,7 +177,10 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 		'title' => array(
 			'label'		=> 'project.filter.task.title',
 			'optgroup'	=> 'project.task.search.label',
-			'widget'	=> 'text'
+			'widget'	=> 'text',
+			'wConf'		=> array(
+				'negation'		=> 'default'
+			)
 		),
 		'fulltext' => array(
 			'label'		=> 'project.filter.task.fulltext',
@@ -234,7 +237,10 @@ Todoyu::$CONFIG['FILTERS']['TASK'] = array(
 		'projecttitle' => array(
 			'label'		=> 'project.filter.project.title',
 			'optgroup'	=> 'project.ext.search.label',
-			'widget'	=> 'text'
+			'widget'	=> 'text',
+			'wConf' => array(
+				'negation'		=> 'default'
+			)
 		),
 		'projectstatus' => array(
 			'label'			=> 'project.filter.project.status',

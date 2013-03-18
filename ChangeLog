@@ -2,12 +2,8 @@ todoyu project extension changelog
 
 project 1.5.0 - not released yet
 	* Added: Permission check for task-fields in export
-	* Bugfix: Initialize project-status filter only if allowed
-	* Bugfix: Fixed task-link-parsing
-	* Bugfix: set id to 0 on new project for correct marker parsing
 	* Added: JS-Hook for cancelled project-forms
 	* Added: Dwoo-Plugin for task-number
-	* Changed: Text-cropping over css
 	* Added: New filter-widget for company search: project from filterset with negations
 	* Added: Test Runner for extension
 	* Added: Re-Added icon for exceeded deadline/end-date. With Tolerance factor in extconf
@@ -15,12 +11,18 @@ project 1.5.0 - not released yet
 	* Added: Amount of Projetcs in the menu drop-down is now a config
 	* Added: Project selector panel widget
 	* Added: Template fields to task listing header. titlePrefix + titlePostfix
+	* Added: Negation for task and project title search filter
 	* Changed: Always prefer internal deadline in task listing headers
 	* Changed: Replaced fixed task-title cropping with css-text-overflow behaviour
 	* Changed: Project and parent task IDs are given as parameters for the task create form hook
+	* Changed: Text-cropping over css
+	* Changed: Allow multiple words for task title search filter (separated by whitespace)
 	* Bugfix: TaskFilterSet filter for project could have caused slow query
 	* Bugfix: Date exceeding wasn't correct
 	* Bugfix: Performance problems with sub-queries
+	* Bugfix: Initialize project-status filter only if allowed
+	* Bugfix: Fixed task-link-parsing
+	* Bugfix: set id to 0 on new project for correct marker parsing
 
 project 1.4.1 - not released yet
 	* Added: New panelwidget projectSelector - allows finding project via title fulltext and customer name, handles virtual project groups
