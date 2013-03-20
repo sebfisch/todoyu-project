@@ -12,6 +12,7 @@ project 1.5.0 - not released yet
 	* Added: Project selector panel widget
 	* Added: Template fields to task listing header. titlePrefix + titlePostfix
 	* Added: Negation for task and project title search filter
+	* Changed: Set current time in date-preset
 	* Changed: Always prefer internal deadline in task listing headers
 	* Changed: Replaced fixed task-title cropping with css-text-overflow behaviour
 	* Changed: Project and parent task IDs are given as parameters for the task create form hook

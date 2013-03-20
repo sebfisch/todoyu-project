@@ -288,7 +288,7 @@ class TodoyuProjectTaskPresetManager {
 			}
 		}
 
-		return $dateEnd;
+		return $dateEnd + TodoyuTime::getTimeOfDay();
 	}
 
 }
