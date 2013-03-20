@@ -46,7 +46,7 @@ class TodoyuProjectProjectDetailsTabsManager {
 	 * @return	Array[]
 	 */
 	public static function getDetailsTabConfiguration($idProject) {
-		return TodoyuContentItemTabManager::getTabs('project', 'projectdetail', $idProject, false);
+		return TodoyuContentItemTabManager::getTabs('project', 'projectdetail', $idProject);
  	}
 
 
@@ -61,7 +61,7 @@ class TodoyuProjectProjectDetailsTabsManager {
 		$activeTab	= TodoyuProjectPreferences::getActiveProjectDetailTab($idProject);
 
 		if( $activeTab === null) {
-			$activeTab = TodoyuContentItemTabManager::getDefaultTab('project', 'projectdetail', $idProject, true);
+			$activeTab = TodoyuContentItemTabManager::getDefaultTab('project', 'projectdetail', $idProject);
 		}
 
 		return $activeTab;

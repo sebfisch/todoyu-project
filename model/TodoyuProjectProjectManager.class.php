@@ -1466,11 +1466,10 @@ class TodoyuProjectProjectManager {
 	 * Get project detail tabs config array (labels parsed)
 	 *
 	 * @param	Integer		$idProject
-	 * @param	Boolean		$evalLabel		If true, all labels with a function reference will be parsed
 	 * @return	Array
 	 */
-	public static function getTabs($idProject, $evalLabel = true) {
-		return TodoyuContentItemTabManager::getTabs('project', 'project', $idProject, $evalLabel);
+	public static function getTabs($idProject) {
+		return TodoyuContentItemTabManager::getTabs('project', 'project', $idProject);
 	}
 
 
