@@ -265,7 +265,8 @@ Todoyu.Ext.project = {
 	 * Get status of an element
 	 *
 	 * @method	getStatusOfElement
-	 * @param element
+	 * @param	{Element}	element
+	 * @return	{String}
 	 */
 	getStatusOfElement: function(element) {
 		element			= $(element);
