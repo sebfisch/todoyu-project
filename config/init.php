@@ -63,10 +63,10 @@ TodoyuFormRecordsManager::addType('project', 'TodoyuProjectFormElement_RecordsPr
 /* -----------------------
 	Project Detail tabs
    ----------------------- */
-TodoyuProjectProjectDetailsTabsManager::registerDetailsTab('general', 'LLL:project.ext.project.tabs.general', 'TodoyuProjectProjectRenderer::renderProjectDetailGeneral', 1);
+TodoyuProjectProjectDetailsTabsManager::registerDetailsTab('general', 'project.ext.project.tabs.general', 'TodoyuProjectProjectRenderer::renderProjectDetailGeneral', 1);
 
 if( Todoyu::person()->isInternal() ) {
-	TodoyuProjectProjectDetailsTabsManager::registerDetailsTab('preferences', 'LLL:project.ext.project.tabs.preferences', 'TodoyuProjectProjectRenderer::renderProjectDetailPreferences', 30);
+	TodoyuProjectProjectDetailsTabsManager::registerDetailsTab('preferences', 'project.ext.project.tabs.preferences', 'TodoyuProjectProjectRenderer::renderProjectDetailPreferences', 30);
 }
 
 
