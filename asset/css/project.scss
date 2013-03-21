@@ -183,7 +183,7 @@ $projectDetailBorder: 1px solid $colorNeutral03;
 		& .projectDetailLeft {
 			background-color:$white;
 			float:left;
-			margin-top:-1px;
+			margin-top: -1px;
 			position:relative;
 			right:816px;
 			top:1px;
@@ -243,14 +243,14 @@ $projectDetailBorder: 1px solid $colorNeutral03;
 		}
 
 		& .menu {
-			height:50px;
-			border-radius:0 0 0 3px;
-			position:relative;
-			left:1px;
-			margin-left:-1px;
 			background-color:$colorNeutral01;
-			box-shadow:-1px 4px 10px -10px $black;
+			border-radius:0 0 0 3px;
+			box-shadow: -1px 4px 10px -10px $black;
 			cursor:pointer;
+			height:50px;
+			left:1px;
+			margin-left: -1px;
+			position:relative;
 
 			& .icon {
 				background:url(../img/projectheader.png) no-repeat -7px -186px;
@@ -264,23 +264,23 @@ $projectDetailBorder: 1px solid $colorNeutral03;
 		& .tabs {
 
 			& .projectDetailsTab {
-				border:$projectDetailBorder;
-				border-radius:3px 0 0 3px;
-				height:42px;
 				background-color:$white;
-				cursor:pointer;
-				padding:4px 0;
-				margin:3px 0;
-				box-shadow:-11px 0 22px -17px $black inset;
+				border-radius:3px 0 0 3px;
 				border-width:1px 0 1px 1px;
+				border:$projectDetailBorder;
+				box-shadow: -11px 0 22px -17px $black inset;
+				cursor:pointer;
+				height:42px;
+				margin:3px 0;
+				padding:4px 0;
 
 				&.active {
 					background-color:$colorNeutral01;
 					border:none;
-					box-shadow:-1px 4px 10px -10px $black;
+					box-shadow: -1px 4px 10px -10px $black;
 					height:44px;
 					left:1px;
-					margin-left:-1px;
+					margin-left: -1px;
 					position:relative;
 				}
 

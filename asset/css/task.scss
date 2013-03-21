@@ -22,7 +22,7 @@ div.task {
 .task.marked,
 .task.marked h3,
 .task.marked div {
-	background-color:#f9f9b5 !important;
+	background-color:$colorHighlight04 !important;
 }
 
 /* --------------------
@@ -30,19 +30,19 @@ div.task {
    -------------------- */
 .task {
 	> h3 {
-		display:block;
-		position:relative;
-		clear:both;
 		background-color:transparent;
+		clear:both;
+		display:block;
 		height:22px;
 		padding:0;
+		position:relative;
 
 		> .subtaskTrigger {
 			display:inline-block;
 			float:left;
 			height:22px;
-			width:13px;
 			margin-left:10px;
+			width:13px;
 
 			&.expandable {
 				cursor:pointer;
@@ -55,8 +55,8 @@ div.task {
 		}
 
 		.headLabel {
-			display:inline-block;
 			cursor:pointer;
+			display:inline-block;
 			height:22px;
 			padding:4px;
 
@@ -99,7 +99,7 @@ div.task {
 		position:absolute;
 		width:12px;
 		height:22px;
-		left:-4px;
+		left: -4px;
 		top:0;
 
 		&:hover {
@@ -170,8 +170,8 @@ div.task {
 
 	div {
 		position:absolute;
-		left:-31px;
-		top:-12px;
+		left: -31px;
+		top: -12px;
 		height:25px;
 		width:30px;
 		background:url(../img/icons.png) no-repeat;
@@ -187,7 +187,7 @@ div.task {
 	}
 
 	&.before div {
-		top:-14px;
+		top: -14px;
 		background-position:0 -710px;
 	}
 }
@@ -307,7 +307,7 @@ div.task.dragDropTarget > h3 {
 				display:block;
 				width:420px;
 				padding:2px 0;
-				margin-top:-2px;
+				margin-top: -2px;
 			}
 		}
 	}
@@ -412,7 +412,7 @@ div.task.dragDropTarget > h3 {
 				padding:7px 0;
 
 				.task-inline-edit {
-					margin:-7px 0;
+					margin: -7px 0;
 				}
 
 				.description {
@@ -458,12 +458,12 @@ div.task.dragDropTarget > h3 {
 					.unread .icon {
 						background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1288px;
 						display:block !important;
-						margin-left:-14px;
+						margin-left: -14px;
 					}
 					.acknowledged .icon {
 						background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1312px;
 						display:block !important;
-						margin-left:-14px;
+						margin-left: -14px;
 					}
 
 					.sectionStart {
@@ -541,8 +541,7 @@ div.task.dragDropTarget > h3 {
 	h3 a,
 	div.taskdetails {
 		border-left-color:$colorNeutral09;
-		background-color:#fbfbf4;
-		/*background:url(../../../../core/asset/img/bgs/taskcontainer.png);*/
+		background-color:$colorNeutral00;
 	}
 }
 
