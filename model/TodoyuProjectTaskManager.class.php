@@ -1941,8 +1941,6 @@ class TodoyuProjectTaskManager {
 			}
 		}
 
-//		TodoyuDebug::printInFirebug($update['sorting'], 'New position_' . $idTaskMove);
-
 		return $idTaskMove;
 	}
 
@@ -2006,8 +2004,6 @@ class TodoyuProjectTaskManager {
 			'id_parenttask'	=> $taskRef->getParentTaskID()
 		);
 		TodoyuRecordManager::updateRecord(self::TABLE, $idTaskMove, $newTaskMoveData);
-
-		TodoyuDebug::printInFirebug($newPosition, 'New position ' . $idTaskMove);
 
 		return $newPosition;
 	}
