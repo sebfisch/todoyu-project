@@ -37,7 +37,7 @@ Todoyu.Ext.project.Project.Tab = {
 	 * Handle onSelect event of tab: show affected tab which the event occured on
 	 *
 	 * @method	onSelect
-	 * @param	{Event}		event
+	 * @param	{Number}	idProject
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	onSelect: function(idProject, tabKey) {
@@ -52,6 +52,7 @@ Todoyu.Ext.project.Project.Tab = {
 	 * @method	show
 	 * @param	{Number}	idProject
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{Function}	onComplete
 	 */
 	show: function(idProject, tabKey, onComplete) {
 		var tabContainer = this.buildTabID(idProject, tabKey);
@@ -75,6 +76,7 @@ Todoyu.Ext.project.Project.Tab = {
 	 * @method	load
 	 * @param	{Number}	idProject
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{Function}	onComplete
 	 */
 	load: function(idProject, tabKey, onComplete) {
 		this.showAjaxLoader(idProject);
@@ -100,7 +102,7 @@ Todoyu.Ext.project.Project.Tab = {
 	 * @method	onLoaded
 	 * @param	{Number}		idProject
 	 * @param	{String}		tabKey
-	 * @param	{Function}	onComplete callback
+	 * @param	{Function}		onComplete
 	 */
 	onLoaded: function(idProject, tabKey, onComplete) {
 		this.activate(idProject, tabKey);
