@@ -12,6 +12,7 @@ project 1.5.0 - 2013-03-27
 	* Added: Project selector panel widget
 	* Added: Template fields to task listing header. titlePrefix + titlePostfix
 	* Added: Negation for task and project title search filter
+	* Added: New panelwidget projectSelector - allows finding project via title fulltext and customer name, handles virtual project groups
 	* Changed: Set current time in date-preset
 	* Changed: Always prefer internal deadline in task listing headers
 	* Changed: Replaced fixed task-title cropping with css-text-overflow behaviour
@@ -25,10 +26,7 @@ project 1.5.0 - 2013-03-27
 	* Bugfix: Fixed task-link-parsing
 	* Bugfix: set id to 0 on new project for correct marker parsing
 
-project 1.4.1 - not public
-	* Added: New panelwidget projectSelector - allows finding project via title fulltext and customer name, handles virtual project groups
-
-project 1.4.0 - not public
+project 1.4.0 - 2012-07-11
 	* Bugfix: Check for create-right on status done in quicktask
 	* Bugfix: Replace project-details on edit
 	* Bugfix: Fixed JS-Error on task deletion
