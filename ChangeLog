@@ -1,6 +1,6 @@
 todoyu project extension changelog
 
-project 1.5.0 - not released yet
+project 1.5.0 - 2013-03-27
 	* Added: Permission check for task-fields in export
 	* Added: JS-Hook for cancelled project-forms
 	* Added: Dwoo-Plugin for task-number
@@ -25,10 +25,10 @@ project 1.5.0 - not released yet
 	* Bugfix: Fixed task-link-parsing
 	* Bugfix: set id to 0 on new project for correct marker parsing
 
-project 1.4.1 - not released yet
+project 1.4.1 - not public
 	* Added: New panelwidget projectSelector - allows finding project via title fulltext and customer name, handles virtual project groups
 
-project 1.4.0 - not released yet
+project 1.4.0 - not public
 	* Bugfix: Check for create-right on status done in quicktask
 	* Bugfix: Replace project-details on edit
 	* Bugfix: Fixed JS-Error on task deletion
