@@ -157,20 +157,20 @@ h1.headerLine span.projectIcons {
 $projectDetailBorder: 1px solid $colorNeutral03;
 
 .project {
-	& .projectDetails {
+	.projectDetails {
 		position: relative;
 		margin-bottom: 30px;
 		padding-bottom: 10px;
 
-		& .infoBox {
+		.infoBox {
 			border: $projectDetailBorder;
 			margin: 5px;
 
-			& h4 {
+			h4 {
 				border-bottom: $projectDetailBorder;
 			}
 
-			& .content {
+			.content {
 				padding: 0;
 			}
 
@@ -180,7 +180,7 @@ $projectDetailBorder: 1px solid $colorNeutral03;
 
 		}
 
-		& .projectDetailLeft {
+		.projectDetailLeft {
 			background-color:$white;
 			float:left;
 			margin-top: -1px;
@@ -189,14 +189,14 @@ $projectDetailBorder: 1px solid $colorNeutral03;
 			top:1px;
 		}
 
-		& .projectDetailRight {
+		.projectDetailRight {
 			float:left;
 			position:relative;
 			overflow:hidden;
 			background-color:$colorNeutral01;
 		}
 
-		& .ajaxLoader {
+		.ajaxLoader {
 			position:absolute;
 			width:200px;
 			height:25px;
@@ -207,13 +207,13 @@ $projectDetailBorder: 1px solid $colorNeutral03;
 		}
 	}
 
-	& .infoBoxOuter {
+	.infoBoxOuter {
 		background-color:$white;
 		height:100%;
 		padding:0;
 	}
 
-	& .projectDetailsContent {
+	.projectDetailsContent {
 		display:block;
 		float:left;
 		left:816px;
@@ -223,26 +223,26 @@ $projectDetailBorder: 1px solid $colorNeutral03;
 		width:812px;
 	}
 
-	& .projectDetailsTabs {
+	.projectDetailsTabs {
 		float:left;
 		height:100%;
 		left:818px;
 		position:relative;
 		width:100px;
 
-		& .gap {
+		.gap {
 			border-radius:0 3px 3px 0;
 			height:30px;
 		}
 
-		& .icon {
+		.icon {
 			float:none;
 			height:32px;
 			margin-left:6px;
 			width:32px;
 		}
 
-		& .menu {
+		.menu {
 			background-color:$colorNeutral01;
 			border-radius:0 0 0 3px;
 			box-shadow: -1px 4px 10px -10px $black;
@@ -252,18 +252,18 @@ $projectDetailBorder: 1px solid $colorNeutral03;
 			margin-left: -1px;
 			position:relative;
 
-			& .icon {
+			.icon {
 				background:url(../img/projectheader.png) no-repeat -7px -186px;
 			}
 
-			& .label {
+			.label {
 				padding-left:6px;
 			}
 		}
 
-		& .tabs {
+		.tabs {
 
-			& .projectDetailsTab {
+			.projectDetailsTab {
 				background-color:$white;
 				border-radius:3px 0 0 3px;
 				border-width:1px 0 1px 1px;
@@ -284,18 +284,18 @@ $projectDetailBorder: 1px solid $colorNeutral03;
 					position:relative;
 				}
 
-				& .label {
+				.label {
 					padding-left:6px;
 				}
 
 			}
 		}
 
-		& .generalProjectTab .icon {
+		.generalProjectTab .icon {
 			background:url(../img/projectheader.png) no-repeat -7px -124px;
 		}
 
-		& .preferencesProjectTab .icon {
+		.preferencesProjectTab .icon {
 			background:url(../img/projectheader.png) no-repeat 0px 0px;
 		}
 	}
