@@ -33,9 +33,9 @@ Todoyu::$CONFIG['EXT']['project']['info'] = array(
 	'state'			=> 'stable',
 	'version' 		=> '1.5.0',
 	'constraints'	=> array(
-		'core'		=> '2.3.0b1',
+		'core'		=> '2.3.0',
 		'depends'	=> array(
-			'contact' => '1.2.0'
+			'contact' => '1.3.0'
 		),
 		'system'	=> true
 	),
