@@ -171,7 +171,10 @@ class TodoyuProjectTaskActionController extends TodoyuActionController {
 
 			// Initialize form for validation
 		$xmlPath= 'ext/project/config/form/task.xml';
-		$form	= TodoyuFormManager::getForm($xmlPath, $idTask);
+		$form	= TodoyuFormManager::getForm($xmlPath, $idTask, array(
+			'project'	=> $idProject,
+			'parent'	=> $idParentTask
+		), $data);
 
 		$form->setFormData($data);
 

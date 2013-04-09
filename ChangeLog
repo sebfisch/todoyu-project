@@ -1,5 +1,8 @@
 todoyu project extension changelog
 
+project 1.5.1 - not released yet
+	* Changed: Add form data and parameters to task form loading hook. Allows other extension better to hook in
+
 project 1.5.0 - 2013-03-27
 	* Added: Permission check for task-fields in export
 	* Added: JS-Hook for cancelled project-forms
