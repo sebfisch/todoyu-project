@@ -802,7 +802,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	public function Filter_deadlinedateDyn($value, $negate) {
 		$timeStamps = TodoyuSearchFilterHelper::getDynamicDateTimestamp($value, $negate);
 
-		return $this->Filter_dateDyn($timeStamps, 'date_deadline', $negate);
+		return $this->Filter_dateDyn($timeStamps, self::TABLE . '.date_deadline', $negate);
 	}
 
 
@@ -830,7 +830,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	public function Filter_startdateDyn($value, $negate) {
 		$timeStamps = TodoyuSearchFilterHelper::getDynamicDateTimestamp($value, $negate);
 
-		return $this->Filter_dateDyn($timeStamps, 'date_start', $negate);
+		return $this->Filter_dateDyn($timeStamps, self::TABLE . '.date_start', $negate);
 	}
 
 
@@ -870,8 +870,9 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 */
 	public function Filter_enddateDyn($value, $negate = false) {
 		$date = TodoyuSearchFilterHelper::getDynamicDateTimestamp($value, $negate);
+		$field = 'IF(ext_project_task.date_end, ext_project_task.date_end, ext_project_task.date_deadline)';
 
-		return $this->Filter_dateDyn($date, 'date_end', $negate);
+		return $this->Filter_dateDyn($date, $field, $negate);
 	}
 
 
@@ -899,7 +900,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	public function Filter_editdateDyn($value, $negate) {
 		$refDate = TodoyuSearchFilterHelper::getDynamicDateTimestamp($value, $negate);
 
-		return $this->Filter_dateDyn($refDate, 'date_update', $negate);
+		return $this->Filter_dateDyn($refDate, self::TABLE . '.date_update', $negate);
 	}
 
 
@@ -927,7 +928,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	public function Filter_createdateDyn($value, $negate) {
 		$timeStamps = TodoyuSearchFilterHelper::getDynamicDateTimestamp($value, $negate);
 
-		return $this->Filter_dateDyn($timeStamps, 'date_create', $negate);
+		return $this->Filter_dateDyn($timeStamps, self::TABLE . '.date_create', $negate);
 	}
 
 
@@ -943,7 +944,7 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	protected static function Filter_dateDyn($date, $field, $negation = false) {
 		$date		= intval($date);
 		$compare	= $negation ? '>=' : '<=';
-		$fieldName	= self::TABLE . '.' . $field;
+		$fieldName	= $field;
 
 		$where	= '(' .		$fieldName . ' ' . $compare . ' ' . $date
 				. ' AND ' . $fieldName . ' > 0)';
