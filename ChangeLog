@@ -3,6 +3,7 @@ todoyu project extension changelog
 project 1.5.1 - not released yet
 	* Bugfix: Added fallback for date_end to date_deadline for dynamic time filter
 	* Changed: Add form data and parameters to task form loading hook. Allows other extension better to hook in
+	* Changed: Add type parameter to task form edit hook
 
 project 1.5.0 - 2013-03-27
 	* Added: Permission check for task-fields in export

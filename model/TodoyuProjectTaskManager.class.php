@@ -2472,14 +2472,18 @@ class TodoyuProjectTaskManager {
 
 		if( $idTask === 0 ) {
 			$task->set('type', $type);
-		} elseif( $idProject === 0 ) {
-			$idProject	= $task->getProjectID();
+		} else {
+			if( $idProject === 0 ) {
+				$idProject	= $task->getProjectID();
+			}
+			$type = $task->getType();
 		}
 
 			// Construct form object
 		$form		= TodoyuFormManager::getForm($xmlPath, $idTask, array(
 			'project'	=> $idProject,
-			'parent'	=> $idParentTask
+			'parent'	=> $idParentTask,
+			'type'		=> $type
 		));
 
 			// Load form data
