@@ -1164,7 +1164,11 @@ class TodoyuProjectTaskFilter extends TodoyuSearchFilterBase implements TodoyuFi
 	 * @return	Array
 	 */
 	public function Sorting_dateEnd($desc = false) {
-		return $this->Sorting_Attribute('date_end', $desc);
+		return array(
+			'order' => array(
+				'IF( ' . self::TABLE .  '.date_end, ' . self::TABLE . '.date_end, ' . self::TABLE . '.date_deadline) ' . self::getSortDir($desc)
+			)
+		);
 	}
 
 
