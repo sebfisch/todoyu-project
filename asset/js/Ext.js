@@ -385,8 +385,11 @@ Todoyu.Ext.project = {
 
 		if( event.keyCode === 84 && this.altPressed ) {
 			var search = prompt('[LLL:project.task.number]');
-			search = search.split('.');
-			this.quickSearch(search[0], search[1]);
+
+			if( search ) {
+				search = search.split('.');
+				this.quickSearch(search[0], search[1]);
+			}
 		}
 	}
 };
