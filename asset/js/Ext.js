@@ -44,6 +44,13 @@ Todoyu.Ext.project = {
 
 
 	/**
+	 *
+	 */
+	altPressed: false,
+
+
+
+	/**
 	 * Initialization
 	 *
 	 * @method	init
@@ -304,6 +311,82 @@ Todoyu.Ext.project = {
 				element.className	= element.className.replace('Status' + oldStatus, 'Status' + newStatus);
 			}
 		}
-	}
+	},
 
+
+
+	/**
+	 *
+	 * @param	{Number}	idProject
+	 * @param	{Number}	taskNumber
+	 */
+	quickSearch: function(idProject, taskNumber) {
+		if ( idProject && taskNumber && !isNaN(parseInt(idProject)) && !isNaN(parseInt(taskNumber)) ) {
+			var url = Todoyu.getUrl('project', 'task');
+			var options = {
+				parameters: {
+					action: 'number2id',
+					tasknumber: idProject + '.' + taskNumber
+				},
+				onComplete: this.goToTaskInProjectQuickSearch.bind(this, idProject)
+			};
+
+			Todoyu.send(url, options);
+		}
+	},
+
+
+
+	/**
+	 *
+	 * @param [Number}	idProject
+	 * @param response
+	 */
+	goToTaskInProjectQuickSearch: function(idProject, response) {
+		var idTask = response.responseText;
+
+		if( idTask != 0) {
+			Todoyu.Ext.project.goToTaskInProject(idTask, idProject, false, '');
+		}
+	},
+
+
+
+	/**
+	 *
+	 */
+	initQuickSearchPrompt: function() {
+		$(document).on('keydown', this.quickSearchPrompt.bind(this));
+		$(document).on('keyup', this.removeAlt.bind(this));
+	},
+
+
+
+	/**
+	 *
+	 * @param {Event}	event
+	 */
+	removeAlt: function(event) {
+		if( event.keyCode === 18 ) {
+			this.altPressed = false;
+		}
+	},
+
+
+
+	/**
+	 *
+	 * @param {Event}	event
+	 */
+	quickSearchPrompt: function(event) {
+		if( event.keyCode === 18 ) {
+			this.altPressed = true;
+		}
+
+		if( event.keyCode === 84 && this.altPressed ) {
+			var search = prompt('[LLL:project.task.number]');
+			search = search.split('.');
+			this.quickSearch(search[0], search[1]);
+		}
+	}
 };

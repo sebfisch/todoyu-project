@@ -26,6 +26,8 @@ if(  Todoyu::allowed('project', 'general:area') ) {
 	if( Todoyu::allowed('project', 'addtask:addViaQuickCreateHeadlet') ) {
 		TodoyuHeadManager::addHeadlet('TodoyuProjectHeadletQuickTask', 55);
 	}
+
+	TodoyuPage::addJsInit('Todoyu.Ext.project.initQuickSearchPrompt()');
 }
 
 if( TodoyuExtensions::isInstalled('portal') && Todoyu::allowed('portal', 'general:use') ) {

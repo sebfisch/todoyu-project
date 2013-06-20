@@ -8,6 +8,7 @@ project 1.5.1 - not released yet
 	* Changed: Improved task properties readability
 	* Changed: Add form data and parameters to task form loading hook. Allows other extension better to hook in
 	* Changed: Add type parameter to task form edit hook
+	* Added: Functionality for task-quick-search
 
 project 1.5.0 - 2013-03-27
 	* Added: Permission check for task-fields in export
