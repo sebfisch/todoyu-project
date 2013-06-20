@@ -60,7 +60,7 @@ Todoyu.Ext.project.QuickTask = {
 			onComplete:	this.onPopupLoaded.bind(this)
 		};
 
-		Todoyu.Popups.open(this.popupID, '[LLL:project.headlet-quicktask.title]', 520, url, options);
+		Todoyu.Popups.open(this.popupID, '[LLL:project.headlet-quicktask.title]', 600, url, options);
 	},
 
 

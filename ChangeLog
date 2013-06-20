@@ -1,6 +1,7 @@
 todoyu project extension changelog
 
 project 1.5.1 - not released yet
+	* Bugfix: Enlarged width of quicktask-create-dialog to match other dialogs
 	* Bugfix: Filter sorting for end-date with fallback for deadline
 	* Bugfix: Label fix
 	* Bugfix: Added fallback for date_end to date_deadline for dynamic time filter
