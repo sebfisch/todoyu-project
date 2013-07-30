@@ -81,6 +81,10 @@ Project Extension - JavaScript Hooks
 	@param	{Number} status
 	Evoked after task status has been updated.
 
+	project.task.taskInit
+	@param	{Number} idTask
+	Evoked after task has been initialized
+
 	project.taskTab.onLoaded
 	@param	{Number} idTask
 	@param	{Number} status

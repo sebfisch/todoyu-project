@@ -1421,6 +1421,8 @@ Todoyu.Ext.project.Task = {
 	initTask: function(idTask) {
 		this.addContextMenu(idTask);
 		this.reloadSortable();
+
+		Todoyu.Hook.exec('project.task.taskInit', idTask);
 	},
 
 
