@@ -10,6 +10,7 @@ project 1.5.1 - not released yet
 	* Changed: Add type parameter to task form edit hook
 	* Added: Functionality for task-quick-search
 	* Added: Hook on task init
+	* Added: Catalan language. Credits to Carles Baiges Camprubí LaCol (www.lacol.org)
 
 project 1.5.0 - 2013-03-27
 	* Added: Permission check for task-fields in export
