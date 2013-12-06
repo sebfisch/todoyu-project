@@ -348,49 +348,5 @@ Todoyu.Ext.project = {
 		if( idTask != 0) {
 			Todoyu.Ext.project.goToTaskInProject(idTask, idProject, false, '');
 		}
-	},
-
-
-
-	/**
-	 *
-	 */
-	initQuickSearchPrompt: function() {
-		$(document).on('keydown', this.quickSearchPrompt.bind(this));
-		$(document).on('keyup', this.removeAlt.bind(this));
-	},
-
-
-
-	/**
-	 *
-	 * @param {Event}	event
-	 */
-	removeAlt: function(event) {
-		if( event.keyCode === 18 ) {
-			this.altPressed = false;
-		}
-	},
-
-
-
-	/**
-	 *
-	 * @param {Event}	event
-	 */
-	quickSearchPrompt: function(event) {
-		if( event.keyCode === 18 ) {
-			this.altPressed = true;
-		}
-
-		if( event.keyCode === 84 && this.altPressed ) {
-			this.altPressed = false;
-			var search = prompt('[LLL:project.task.number]');
-
-			if( search ) {
-				search = search.split('.');
-				this.quickSearch(search[0], search[1]);
-			}
-		}
 	}
 };

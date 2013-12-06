@@ -8,6 +8,7 @@ project 1.5.1 - not released yet
 	* Changed: Improved task properties readability
 	* Changed: Add form data and parameters to task form loading hook. Allows other extension better to hook in
 	* Changed: Add type parameter to task form edit hook
+	* Changed: Removed task-search over key-combination. Caused to much trouble
 	* Added: Functionality for task-quick-search
 	* Added: Hook on task init
 	* Added: Catalan language. Credits to Carles Baiges Camprubí LaCol (www.lacol.org)
