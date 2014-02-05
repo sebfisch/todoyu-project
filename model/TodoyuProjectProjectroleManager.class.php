@@ -188,7 +188,7 @@ class TodoyuProjectProjectroleManager {
 			'title'	=> 'label'
 		);
 
-		return TodoyuArray::reform($projectroles, $reformConfig);
+		return TodoyuArray::reform($projectroles, $reformConfig, true);
 	}
 
 
