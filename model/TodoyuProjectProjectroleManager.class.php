@@ -134,10 +134,12 @@ class TodoyuProjectProjectroleManager {
 	 * Get all active project roles, optionally parse to render title labels
 	 *
 	 * @param	Boolean	$parse
+	 * @param	Boolean	$onlyActive
 	 * @return	Array
 	 */
-	public static function getProjectroles($parse = true) {
+	public static function getProjectroles($parse = true, $onlyActive = false) {
 		$where	= 'deleted = 0';
+		if ($onlyActive) $where .= ' AND is_active = 1';
 		$order	= 'title';
 
 		$projectroles	= TodoyuRecordManager::getAllRecords(self::TABLE, $where, $order);

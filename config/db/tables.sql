@@ -69,6 +69,7 @@ CREATE TABLE `ext_project_role` (
 	`id_person_create` int(10) unsigned NOT NULL,
 	`title` varchar(64) NOT NULL,
 	`deleted` tinyint(1) NOT NULL DEFAULT '0',
+	`is_active` tinyint(1) NOT NULL DEFAULT '1',
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

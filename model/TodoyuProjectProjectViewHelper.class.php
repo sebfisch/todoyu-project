@@ -128,7 +128,7 @@ class TodoyuProjectProjectViewHelper {
 	 * @return	Array
 	 */
 	public static function getProjectroleOptions(TodoyuFormElement $field) {
-		$roles			= TodoyuProjectProjectroleManager::getProjectroles();
+		$roles			= TodoyuProjectProjectroleManager::getProjectroles(true, true);
 		$reformConfig	= array(
 			'id'	=> 'value',
 			'title'	=> 'label'

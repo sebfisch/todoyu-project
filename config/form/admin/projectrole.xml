@@ -16,6 +16,10 @@
 					<required />
 				</field>
 
+				<field type="checkbox" name="is_active">
+					<label>core.global.attr.is_active</label>
+				</field>
+
 			</elements>
 		</fieldset>
 
