@@ -2,6 +2,7 @@ todoyu project extension changelog
 
 project 1.5.2 - not release yet
 	* Added: Is active flag for project roles
+	* Added: Indonesian Language. Credits to Abdush Shomad.
 	* Changed: copy full record for sysmanager-listing
 
 project 1.5.1 - 2013-12-31
