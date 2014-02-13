@@ -4,6 +4,7 @@ project 1.5.2 - not release yet
 	* Added: Is active flag for project roles
 	* Added: Indonesian Language. Credits to Abdush Shomad.
 	* Changed: copy full record for sysmanager-listing
+	* Bugfix: call updateTask on changing task-order for improved consistency
 
 project 1.5.1 - 2013-12-31
 	* Bugfix: Enlarged width of quicktask-create-dialog to match other dialogs

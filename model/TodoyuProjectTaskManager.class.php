@@ -2003,7 +2003,8 @@ class TodoyuProjectTaskManager {
 			'sorting'		=> $newPosition,
 			'id_parenttask'	=> $taskRef->getParentTaskID()
 		);
-		TodoyuRecordManager::updateRecord(self::TABLE, $idTaskMove, $newTaskMoveData);
+
+		self::updateTask($idTaskMove, $newTaskMoveData);
 
 		return $newPosition;
 	}
